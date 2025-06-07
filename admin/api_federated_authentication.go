@@ -40,7 +40,7 @@ type FederatedAuthenticationApi interface {
 	CreateIdentityProviderExecute(r CreateIdentityProviderApiRequest) (*FederationOidcIdentityProvider, *http.Response, error)
 
 	/*
-		CreateRoleMapping Add One Role Mapping to One Organization
+		CreateRoleMapping Create One Role Mapping in One Organization Configuration
 
 		Adds one role mapping to the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -52,7 +52,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) CreateRoleMappingApiRequest
 	/*
-		CreateRoleMapping Add One Role Mapping to One Organization
+		CreateRoleMapping Create One Role Mapping in One Organization Configuration
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -139,7 +139,7 @@ type FederatedAuthenticationApi interface {
 	DeleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error)
 
 	/*
-		GetConnectedOrgConfig Return One Org Config Connected to One Federation
+		GetConnectedOrgConfig Return One Organization Configuration from One Federation
 
 		Returns the specified connected org config from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in the connected org.
 
@@ -150,7 +150,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) GetConnectedOrgConfigApiRequest
 	/*
-		GetConnectedOrgConfig Return One Org Config Connected to One Federation
+		GetConnectedOrgConfig Return One Organization Configuration from One Federation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -210,7 +210,7 @@ type FederatedAuthenticationApi interface {
 	GetIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
-		GetIdentityProviderMetadata Return the Metadata of One Identity Provider
+		GetIdentityProviderMetadata Return Metadata of One Identity Provider
 
 		Returns the metadata of one identity provider in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -221,7 +221,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetIdentityProviderMetadata(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderMetadataApiRequest
 	/*
-		GetIdentityProviderMetadata Return the Metadata of One Identity Provider
+		GetIdentityProviderMetadata Return Metadata of One Identity Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -259,7 +259,7 @@ type FederatedAuthenticationApi interface {
 	GetRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
-		ListConnectedOrgConfigs Return All Connected Org Configs from One Federation
+		ListConnectedOrgConfigs Return All Organization Configurations from One Federation
 
 		Returns all connected org configs in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in one of the connected orgs.
 
@@ -269,7 +269,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListConnectedOrgConfigs(ctx context.Context, federationSettingsId string) ListConnectedOrgConfigsApiRequest
 	/*
-		ListConnectedOrgConfigs Return All Connected Org Configs from One Federation
+		ListConnectedOrgConfigs Return All Organization Configurations from One Federation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -329,7 +329,7 @@ type FederatedAuthenticationApi interface {
 	ListRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error)
 
 	/*
-		RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
+		RemoveConnectedOrgConfig Remove One Organization Configuration from One Federation
 
 		Removes one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. Note: This request fails if only one connected organization exists in the federation.
 
@@ -340,7 +340,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	RemoveConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) RemoveConnectedOrgConfigApiRequest
 	/*
-		RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
+		RemoveConnectedOrgConfig Remove One Organization Configuration from One Federation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -353,7 +353,7 @@ type FederatedAuthenticationApi interface {
 	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (*http.Response, error)
 
 	/*
-			RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
+			RevokeJwksFromIdentityProvider Revoke JWKS from One OIDC Identity Provider
 
 			Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -366,7 +366,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	RevokeJwksFromIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeJwksFromIdentityProviderApiRequest
 	/*
-		RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
+		RevokeJwksFromIdentityProvider Revoke JWKS from One OIDC Identity Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -379,7 +379,7 @@ type FederatedAuthenticationApi interface {
 	RevokeJwksFromIdentityProviderExecute(r RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error)
 
 	/*
-			UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
+			UpdateConnectedOrgConfig Update One Organization Configuration in One Federation
 
 			Updates one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -399,7 +399,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string, connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest
 	/*
-		UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
+		UpdateConnectedOrgConfig Update One Organization Configuration in One Federation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -622,7 +622,7 @@ func (r CreateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *htt
 }
 
 /*
-CreateRoleMapping Add One Role Mapping to One Organization
+CreateRoleMapping Create One Role Mapping in One Organization Configuration
 
 Adds one role mapping to the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -1071,7 +1071,7 @@ func (r GetConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.R
 }
 
 /*
-GetConnectedOrgConfig Return One Org Config Connected to One Federation
+GetConnectedOrgConfig Return One Organization Configuration from One Federation
 
 Returns the specified connected org config from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in the connected org.
 
@@ -1431,7 +1431,7 @@ func (r GetIdentityProviderMetadataApiRequest) Execute() (string, *http.Response
 }
 
 /*
-GetIdentityProviderMetadata Return the Metadata of One Identity Provider
+GetIdentityProviderMetadata Return Metadata of One Identity Provider
 
 Returns the metadata of one identity provider in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -1701,7 +1701,7 @@ func (r ListConnectedOrgConfigsApiRequest) Execute() (*PaginatedConnectedOrgConf
 }
 
 /*
-ListConnectedOrgConfigs Return All Connected Org Configs from One Federation
+ListConnectedOrgConfigs Return All Organization Configurations from One Federation
 
 Returns all connected org configs in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in one of the connected orgs.
 
@@ -2133,7 +2133,7 @@ func (r RemoveConnectedOrgConfigApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
+RemoveConnectedOrgConfig Remove One Organization Configuration from One Federation
 
 Removes one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. Note: This request fails if only one connected organization exists in the federation.
 
@@ -2239,7 +2239,7 @@ func (r RevokeJwksFromIdentityProviderApiRequest) Execute() (*http.Response, err
 }
 
 /*
-RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
+RevokeJwksFromIdentityProvider Revoke JWKS from One OIDC Identity Provider
 
 Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -2350,7 +2350,7 @@ func (r UpdateConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *htt
 }
 
 /*
-UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
+UpdateConnectedOrgConfig Update One Organization Configuration in One Federation
 
 Updates one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 

@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**CreateServerlessInstance**](ServerlessInstancesApi.md#CreateServerlessInstance) | **Post** /api/atlas/v2/groups/{groupId}/serverless | Create One Serverless Instance in One Project
 [**DeleteServerlessInstance**](ServerlessInstancesApi.md#DeleteServerlessInstance) | **Delete** /api/atlas/v2/groups/{groupId}/serverless/{name} | Remove One Serverless Instance from One Project
 [**GetServerlessInstance**](ServerlessInstancesApi.md#GetServerlessInstance) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{name} | Return One Serverless Instance from One Project
-[**ListServerlessInstances**](ServerlessInstancesApi.md#ListServerlessInstances) | **Get** /api/atlas/v2/groups/{groupId}/serverless | Return All Serverless Instances from One Project
+[**ListServerlessInstances**](ServerlessInstancesApi.md#ListServerlessInstances) | **Get** /api/atlas/v2/groups/{groupId}/serverless | Return All Serverless Instances in One Project
 [**UpdateServerlessInstance**](ServerlessInstancesApi.md#UpdateServerlessInstance) | **Patch** /api/atlas/v2/groups/{groupId}/serverless/{name} | Update One Serverless Instance in One Project
 
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 > PaginatedServerlessInstanceDescription ListServerlessInstances(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Serverless Instances from One Project
+Return All Serverless Instances in One Project
 
 
 ### Example

@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddProjectApiKey**](ProgrammaticAPIKeysApi.md#AddProjectApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Assign One Organization API Key to One Project
 [**CreateApiKey**](ProgrammaticAPIKeysApi.md#CreateApiKey) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys | Create One Organization API Key
-[**CreateApiKeyAccessList**](ProgrammaticAPIKeysApi.md#CreateApiKeyAccessList) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Create Access List Entries for One Organization API Key
+[**CreateApiKeyAccessList**](ProgrammaticAPIKeysApi.md#CreateApiKeyAccessList) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Create One Access List Entry for One Organization API Key
 [**CreateProjectApiKey**](ProgrammaticAPIKeysApi.md#CreateProjectApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys | Create and Assign One Organization API Key to One Project
 [**DeleteApiKey**](ProgrammaticAPIKeysApi.md#DeleteApiKey) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Remove One Organization API Key
 [**DeleteApiKeyAccessListEntry**](ProgrammaticAPIKeysApi.md#DeleteApiKeyAccessListEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Remove One Access List Entry for One Organization API Key
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**ListProjectApiKeys**](ProgrammaticAPIKeysApi.md#ListProjectApiKeys) | **Get** /api/atlas/v2/groups/{groupId}/apiKeys | Return All Organization API Keys Assigned to One Project
 [**RemoveProjectApiKey**](ProgrammaticAPIKeysApi.md#RemoveProjectApiKey) | **Delete** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Unassign One Organization API Key from One Project
 [**UpdateApiKey**](ProgrammaticAPIKeysApi.md#UpdateApiKey) | **Patch** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Update One Organization API Key
-[**UpdateApiKeyRoles**](ProgrammaticAPIKeysApi.md#UpdateApiKeyRoles) | **Patch** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Update Roles of One Organization API Key to One Project
+[**UpdateApiKeyRoles**](ProgrammaticAPIKeysApi.md#UpdateApiKeyRoles) | **Patch** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Update Organization API Key Roles for One Project
 
 
 
@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
 
 > PaginatedApiUserAccessListResponse CreateApiKeyAccessList(ctx, orgId, apiUserId, userAccessListRequest []UserAccessListRequest).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Create Access List Entries for One Organization API Key
+Create One Access List Entry for One Organization API Key
 
 
 ### Example
@@ -1124,7 +1124,7 @@ Name | Type | Description  | Notes
 
 > ApiKeyUserDetails UpdateApiKeyRoles(ctx, groupId, apiUserId, updateAtlasProjectApiKey UpdateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
 
-Update Roles of One Organization API Key to One Project
+Update Organization API Key Roles for One Project
 
 
 ### Example

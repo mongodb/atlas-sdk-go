@@ -6,15 +6,15 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DisableSlowOperationThresholding**](PerformanceAdvisorApi.md#DisableSlowOperationThresholding) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold
 [**EnableSlowOperationThresholding**](PerformanceAdvisorApi.md#EnableSlowOperationThresholding) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold
-[**GetManagedSlowMs**](PerformanceAdvisorApi.md#GetManagedSlowMs) | **Get** /api/atlas/v2/groups/{groupId}/managedSlowMs | Return Managed Slow MS enabled
-[**GetServerlessAutoIndexing**](PerformanceAdvisorApi.md#GetServerlessAutoIndexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto Indexing Enabled
-[**ListClusterSuggestedIndexes**](PerformanceAdvisorApi.md#ListClusterSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes | Return Suggested Indexes
-[**ListDropIndexes**](PerformanceAdvisorApi.md#ListDropIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions | Returns Suggested Indexes to Drop
+[**GetManagedSlowMs**](PerformanceAdvisorApi.md#GetManagedSlowMs) | **Get** /api/atlas/v2/groups/{groupId}/managedSlowMs | Return Managed Slow Operation Threshold Status
+[**GetServerlessAutoIndexing**](PerformanceAdvisorApi.md#GetServerlessAutoIndexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto-Indexing Status
+[**ListClusterSuggestedIndexes**](PerformanceAdvisorApi.md#ListClusterSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes | Return All Suggested Indexes
+[**ListDropIndexes**](PerformanceAdvisorApi.md#ListDropIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions | Return All Suggested Indexes to Drop
 [**ListSchemaAdvice**](PerformanceAdvisorApi.md#ListSchemaAdvice) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/schemaAdvice | Return Schema Advice
 [**ListSlowQueries**](PerformanceAdvisorApi.md#ListSlowQueries) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries
 [**ListSlowQueryNamespaces**](PerformanceAdvisorApi.md#ListSlowQueryNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host
-[**ListSuggestedIndexes**](PerformanceAdvisorApi.md#ListSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return Suggested Indexes
-[**SetServerlessAutoIndexing**](PerformanceAdvisorApi.md#SetServerlessAutoIndexing) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Set Serverless Auto Indexing
+[**ListSuggestedIndexes**](PerformanceAdvisorApi.md#ListSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return All Suggested Indexes
+[**SetServerlessAutoIndexing**](PerformanceAdvisorApi.md#SetServerlessAutoIndexing) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Set Serverless Auto-Indexing Status
 
 
 
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 > bool GetManagedSlowMs(ctx, groupId).Execute()
 
-Return Managed Slow MS enabled
+Return Managed Slow Operation Threshold Status
 
 
 ### Example
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 
 > bool GetServerlessAutoIndexing(ctx, groupId, clusterName).Execute()
 
-Return Serverless Auto Indexing Enabled
+Return Serverless Auto-Indexing Status
 
 
 ### Example
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 > PerformanceAdvisorResponse ListClusterSuggestedIndexes(ctx, groupId, clusterName).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
 
-Return Suggested Indexes
+Return All Suggested Indexes
 
 
 ### Example
@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 
 > DropIndexSuggestionsResponse ListDropIndexes(ctx, groupId, clusterName).Execute()
 
-Returns Suggested Indexes to Drop
+Return All Suggested Indexes to Drop
 
 
 ### Example
@@ -782,7 +782,7 @@ Name | Type | Description  | Notes
 
 > PerformanceAdvisorResponse ListSuggestedIndexes(ctx, groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Duration(duration).Namespaces(namespaces).NExamples(nExamples).NIndexes(nIndexes).Since(since).Execute()
 
-Return Suggested Indexes
+Return All Suggested Indexes
 
 
 ### Example
@@ -881,7 +881,7 @@ Name | Type | Description  | Notes
 
 > SetServerlessAutoIndexing(ctx, groupId, clusterName).Enable(enable).Execute()
 
-Set Serverless Auto Indexing
+Set Serverless Auto-Indexing Status
 
 
 ### Example
