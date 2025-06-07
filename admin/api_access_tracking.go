@@ -13,7 +13,7 @@ import (
 type AccessTrackingApi interface {
 
 	/*
-		ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
+		ListAccessLogsByClusterName Return Database Access History for One Cluster by Cluster Name
 
 		Returns the access logs of one cluster identified by the cluster's name. Access logs contain a list of authentication requests made against your cluster. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting Service Account or API Key must have the Project Monitoring Admin role or the Project Database Access Admin role.
 
@@ -24,7 +24,7 @@ type AccessTrackingApi interface {
 	*/
 	ListAccessLogsByClusterName(ctx context.Context, groupId string, clusterName string) ListAccessLogsByClusterNameApiRequest
 	/*
-		ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
+		ListAccessLogsByClusterName Return Database Access History for One Cluster by Cluster Name
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -37,7 +37,7 @@ type AccessTrackingApi interface {
 	ListAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
 
 	/*
-		ListAccessLogsByHostname Return Database Access History for One Cluster using Its Hostname
+		ListAccessLogsByHostname Return Database Access History for One Cluster by Hostname
 
 		Returns the access logs of one cluster identified by the cluster's hostname. Access logs contain a list of authentication requests made against your clusters. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting Service Account or API Key must have the Project Monitoring Admin role or the Project Database Access Admin role.
 
@@ -48,7 +48,7 @@ type AccessTrackingApi interface {
 	*/
 	ListAccessLogsByHostname(ctx context.Context, groupId string, hostname string) ListAccessLogsByHostnameApiRequest
 	/*
-		ListAccessLogsByHostname Return Database Access History for One Cluster using Its Hostname
+		ListAccessLogsByHostname Return Database Access History for One Cluster by Hostname
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -135,7 +135,7 @@ func (r ListAccessLogsByClusterNameApiRequest) Execute() (*MongoDBAccessLogsList
 }
 
 /*
-ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
+ListAccessLogsByClusterName Return Database Access History for One Cluster by Cluster Name
 
 Returns the access logs of one cluster identified by the cluster's name. Access logs contain a list of authentication requests made against your cluster. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting Service Account or API Key must have the Project Monitoring Admin role or the Project Database Access Admin role.
 
@@ -322,7 +322,7 @@ func (r ListAccessLogsByHostnameApiRequest) Execute() (*MongoDBAccessLogsList, *
 }
 
 /*
-ListAccessLogsByHostname Return Database Access History for One Cluster using Its Hostname
+ListAccessLogsByHostname Return Database Access History for One Cluster by Hostname
 
 Returns the access logs of one cluster identified by the cluster's hostname. Access logs contain a list of authentication requests made against your clusters. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting Service Account or API Key must have the Project Monitoring Admin role or the Project Database Access Admin role.
 

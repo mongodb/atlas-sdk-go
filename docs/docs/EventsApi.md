@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetOrganizationEvent**](EventsApi.md#GetOrganizationEvent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization
 [**GetProjectEvent**](EventsApi.md#GetProjectEvent) | **Get** /api/atlas/v2/groups/{groupId}/events/{eventId} | Return One Event from One Project
-[**ListEventTypes**](EventsApi.md#ListEventTypes) | **Get** /api/atlas/v2/eventTypes | List All Possible Event Types
-[**ListOrganizationEvents**](EventsApi.md#ListOrganizationEvents) | **Get** /api/atlas/v2/orgs/{orgId}/events | Return All Events from One Organization
-[**ListProjectEvents**](EventsApi.md#ListProjectEvents) | **Get** /api/atlas/v2/groups/{groupId}/events | Return All Events from One Project
+[**ListEventTypes**](EventsApi.md#ListEventTypes) | **Get** /api/atlas/v2/eventTypes | Return All Event Types
+[**ListOrganizationEvents**](EventsApi.md#ListOrganizationEvents) | **Get** /api/atlas/v2/orgs/{orgId}/events | Return Events from One Organization
+[**ListProjectEvents**](EventsApi.md#ListProjectEvents) | **Get** /api/atlas/v2/groups/{groupId}/events | Return Events from One Project
 
 
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 > PaginatedEventTypeDetailsResponse ListEventTypes(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-List All Possible Event Types
+Return All Event Types
 
 
 ### Example
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 > OrgPaginatedEvent ListOrganizationEvents(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).EventType(eventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
 
-Return All Events from One Organization
+Return Events from One Organization
 
 
 ### Example
@@ -279,7 +279,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 > GroupPaginatedEvent ListProjectEvents(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ClusterNames(clusterNames).EventType(eventType).ExcludedEventType(excludedEventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
 
-Return All Events from One Project
+Return Events from One Project
 
 
 ### Example
@@ -373,7 +373,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

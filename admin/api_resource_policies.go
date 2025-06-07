@@ -13,7 +13,7 @@ import (
 type ResourcePoliciesApi interface {
 
 	/*
-		CreateAtlasResourcePolicy Create one Atlas Resource Policy
+		CreateAtlasResourcePolicy Create One Atlas Resource Policy
 
 		Create one Atlas Resource Policy for an org.
 
@@ -24,7 +24,7 @@ type ResourcePoliciesApi interface {
 	*/
 	CreateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) CreateAtlasResourcePolicyApiRequest
 	/*
-		CreateAtlasResourcePolicy Create one Atlas Resource Policy
+		CreateAtlasResourcePolicy Create One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -37,7 +37,7 @@ type ResourcePoliciesApi interface {
 	CreateAtlasResourcePolicyExecute(r CreateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
 
 	/*
-		DeleteAtlasResourcePolicy Delete one Atlas Resource Policy
+		DeleteAtlasResourcePolicy Delete One Atlas Resource Policy
 
 		Delete one Atlas Resource Policy for an org.
 
@@ -48,7 +48,7 @@ type ResourcePoliciesApi interface {
 	*/
 	DeleteAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) DeleteAtlasResourcePolicyApiRequest
 	/*
-		DeleteAtlasResourcePolicy Delete one Atlas Resource Policy
+		DeleteAtlasResourcePolicy Delete One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -61,7 +61,7 @@ type ResourcePoliciesApi interface {
 	DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (*http.Response, error)
 
 	/*
-		GetAtlasResourcePolicies Return all Atlas Resource Policies
+		GetAtlasResourcePolicies Return All Atlas Resource Policies
 
 		Return all Atlas Resource Policies for the org.
 
@@ -71,7 +71,7 @@ type ResourcePoliciesApi interface {
 	*/
 	GetAtlasResourcePolicies(ctx context.Context, orgId string) GetAtlasResourcePoliciesApiRequest
 	/*
-		GetAtlasResourcePolicies Return all Atlas Resource Policies
+		GetAtlasResourcePolicies Return All Atlas Resource Policies
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -84,7 +84,7 @@ type ResourcePoliciesApi interface {
 	GetAtlasResourcePoliciesExecute(r GetAtlasResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error)
 
 	/*
-		GetAtlasResourcePolicy Return one Atlas Resource Policy
+		GetAtlasResourcePolicy Return One Atlas Resource Policy
 
 		Return one Atlas Resource Policy for an org.
 
@@ -95,7 +95,7 @@ type ResourcePoliciesApi interface {
 	*/
 	GetAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) GetAtlasResourcePolicyApiRequest
 	/*
-		GetAtlasResourcePolicy Return one Atlas Resource Policy
+		GetAtlasResourcePolicy Return One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -108,7 +108,7 @@ type ResourcePoliciesApi interface {
 	GetAtlasResourcePolicyExecute(r GetAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
 
 	/*
-		GetResourcesNonCompliant Return all non-compliant resources
+		GetResourcesNonCompliant Return All Non-Compliant Resources
 
 		Return all non-compliant resources for an org.
 
@@ -118,7 +118,7 @@ type ResourcePoliciesApi interface {
 	*/
 	GetResourcesNonCompliant(ctx context.Context, orgId string) GetResourcesNonCompliantApiRequest
 	/*
-		GetResourcesNonCompliant Return all non-compliant resources
+		GetResourcesNonCompliant Return All Non-Compliant Resources
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -131,7 +131,7 @@ type ResourcePoliciesApi interface {
 	GetResourcesNonCompliantExecute(r GetResourcesNonCompliantApiRequest) ([]ApiAtlasNonCompliantResource, *http.Response, error)
 
 	/*
-		UpdateAtlasResourcePolicy Update one Atlas Resource Policy
+		UpdateAtlasResourcePolicy Update One Atlas Resource Policy
 
 		Update one Atlas Resource Policy for an org.
 
@@ -143,7 +143,7 @@ type ResourcePoliciesApi interface {
 	*/
 	UpdateAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit) UpdateAtlasResourcePolicyApiRequest
 	/*
-		UpdateAtlasResourcePolicy Update one Atlas Resource Policy
+		UpdateAtlasResourcePolicy Update One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -156,7 +156,7 @@ type ResourcePoliciesApi interface {
 	UpdateAtlasResourcePolicyExecute(r UpdateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
 
 	/*
-		ValidateAtlasResourcePolicy Validate one Atlas Resource Policy
+		ValidateAtlasResourcePolicy Validate One Atlas Resource Policy
 
 		Validate one Atlas Resource Policy for an org.
 
@@ -167,7 +167,7 @@ type ResourcePoliciesApi interface {
 	*/
 	ValidateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) ValidateAtlasResourcePolicyApiRequest
 	/*
-		ValidateAtlasResourcePolicy Validate one Atlas Resource Policy
+		ValidateAtlasResourcePolicy Validate One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -209,7 +209,7 @@ func (r CreateAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy,
 }
 
 /*
-CreateAtlasResourcePolicy Create one Atlas Resource Policy
+CreateAtlasResourcePolicy Create One Atlas Resource Policy
 
 Create one Atlas Resource Policy for an org.
 
@@ -332,7 +332,7 @@ func (r DeleteAtlasResourcePolicyApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteAtlasResourcePolicy Delete one Atlas Resource Policy
+DeleteAtlasResourcePolicy Delete One Atlas Resource Policy
 
 Delete one Atlas Resource Policy for an org.
 
@@ -435,7 +435,7 @@ func (r GetAtlasResourcePoliciesApiRequest) Execute() ([]ApiAtlasResourcePolicy,
 }
 
 /*
-GetAtlasResourcePolicies Return all Atlas Resource Policies
+GetAtlasResourcePolicies Return All Atlas Resource Policies
 
 Return all Atlas Resource Policies for the org.
 
@@ -552,7 +552,7 @@ func (r GetAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *h
 }
 
 /*
-GetAtlasResourcePolicy Return one Atlas Resource Policy
+GetAtlasResourcePolicy Return One Atlas Resource Policy
 
 Return one Atlas Resource Policy for an org.
 
@@ -672,7 +672,7 @@ func (r GetResourcesNonCompliantApiRequest) Execute() ([]ApiAtlasNonCompliantRes
 }
 
 /*
-GetResourcesNonCompliant Return all non-compliant resources
+GetResourcesNonCompliant Return All Non-Compliant Resources
 
 Return all non-compliant resources for an org.
 
@@ -792,7 +792,7 @@ func (r UpdateAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy,
 }
 
 /*
-UpdateAtlasResourcePolicy Update one Atlas Resource Policy
+UpdateAtlasResourcePolicy Update One Atlas Resource Policy
 
 Update one Atlas Resource Policy for an org.
 
@@ -921,7 +921,7 @@ func (r ValidateAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolic
 }
 
 /*
-ValidateAtlasResourcePolicy Validate one Atlas Resource Policy
+ValidateAtlasResourcePolicy Validate One Atlas Resource Policy
 
 Validate one Atlas Resource Policy for an org.
 
