@@ -4,9 +4,9 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EndOutageSimulation**](ClusterOutageSimulationApi.md#EndOutageSimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | End an Outage Simulation
+[**EndOutageSimulation**](ClusterOutageSimulationApi.md#EndOutageSimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | End One Outage Simulation
 [**GetOutageSimulation**](ClusterOutageSimulationApi.md#GetOutageSimulation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Return One Outage Simulation
-[**StartOutageSimulation**](ClusterOutageSimulationApi.md#StartOutageSimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Start an Outage Simulation
+[**StartOutageSimulation**](ClusterOutageSimulationApi.md#StartOutageSimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Start One Outage Simulation
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > ClusterOutageSimulation EndOutageSimulation(ctx, groupId, clusterName).Execute()
 
-End an Outage Simulation
+End One Outage Simulation
 
 
 ### Example
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 > ClusterOutageSimulation StartOutageSimulation(ctx, groupId, clusterName, clusterOutageSimulation ClusterOutageSimulation).Execute()
 
-Start an Outage Simulation
+Start One Outage Simulation
 
 
 ### Example

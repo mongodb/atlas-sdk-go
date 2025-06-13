@@ -12,13 +12,13 @@ Method | HTTP request | Description
 [**CreateUser**](MongoDBCloudUsersApi.md#CreateUser) | **Post** /api/atlas/v2/users | Create One MongoDB Cloud User
 [**GetOrganizationUser**](MongoDBCloudUsersApi.md#GetOrganizationUser) | **Get** /api/atlas/v2/orgs/{orgId}/users/{userId} | Return One MongoDB Cloud User in One Organization
 [**GetProjectUser**](MongoDBCloudUsersApi.md#GetProjectUser) | **Get** /api/atlas/v2/groups/{groupId}/users/{userId} | Return One MongoDB Cloud User in One Project
-[**GetUser**](MongoDBCloudUsersApi.md#GetUser) | **Get** /api/atlas/v2/users/{userId} | Return One MongoDB Cloud User using Its ID
-[**GetUserByUsername**](MongoDBCloudUsersApi.md#GetUserByUsername) | **Get** /api/atlas/v2/users/byName/{userName} | Return One MongoDB Cloud User using Their Username
+[**GetUser**](MongoDBCloudUsersApi.md#GetUser) | **Get** /api/atlas/v2/users/{userId} | Return One MongoDB Cloud User by ID
+[**GetUserByUsername**](MongoDBCloudUsersApi.md#GetUserByUsername) | **Get** /api/atlas/v2/users/byName/{userName} | Return One MongoDB Cloud User by Username
 [**ListOrganizationUsers**](MongoDBCloudUsersApi.md#ListOrganizationUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
 [**ListProjectUsers**](MongoDBCloudUsersApi.md#ListProjectUsers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All MongoDB Cloud Users in One Project
 [**ListTeamUsers**](MongoDBCloudUsersApi.md#ListTeamUsers) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Return All MongoDB Cloud Users Assigned to One Team
 [**RemoveOrganizationRole**](MongoDBCloudUsersApi.md#RemoveOrganizationRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole | Remove One Organization Role from One MongoDB Cloud User
-[**RemoveOrganizationUser**](MongoDBCloudUsersApi.md#RemoveOrganizationUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User From One Organization
+[**RemoveOrganizationUser**](MongoDBCloudUsersApi.md#RemoveOrganizationUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User from One Organization
 [**RemoveProjectRole**](MongoDBCloudUsersApi.md#RemoveProjectRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:removeRole | Remove One Project Role from One MongoDB Cloud User
 [**RemoveProjectUser**](MongoDBCloudUsersApi.md#RemoveProjectUser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One MongoDB Cloud User from One Project
 [**RemoveUserFromTeam**](MongoDBCloudUsersApi.md#RemoveUserFromTeam) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser | Remove One MongoDB Cloud User from One Team
@@ -691,7 +691,7 @@ Name | Type | Description  | Notes
 
 > CloudAppUser GetUser(ctx, userId).Execute()
 
-Return One MongoDB Cloud User using Its ID
+Return One MongoDB Cloud User by ID
 
 
 ### Example
@@ -771,7 +771,7 @@ Name | Type | Description  | Notes
 
 > CloudAppUser GetUserByUsername(ctx, userName).Execute()
 
-Return One MongoDB Cloud User using Their Username
+Return One MongoDB Cloud User by Username
 
 
 ### Example
@@ -1211,7 +1211,7 @@ Name | Type | Description  | Notes
 
 > RemoveOrganizationUser(ctx, orgId, userId).Execute()
 
-Remove One MongoDB Cloud User From One Organization
+Remove One MongoDB Cloud User from One Organization
 
 
 ### Example

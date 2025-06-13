@@ -24,6 +24,8 @@ type SharedTierSnapshotsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param tenantRestore Snapshot to be downloaded.
 			@return DownloadSharedClusterBackupApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for SharedTierSnapshotsApi
 	*/
 	DownloadSharedClusterBackup(ctx context.Context, clusterName string, groupId string, tenantRestore *TenantRestore) DownloadSharedClusterBackupApiRequest
 	/*
@@ -33,6 +35,8 @@ type SharedTierSnapshotsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DownloadSharedClusterBackupApiParams - Parameters for the request
 		@return DownloadSharedClusterBackupApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for SharedTierSnapshotsApi
 	*/
 	DownloadSharedClusterBackupWithParams(ctx context.Context, args *DownloadSharedClusterBackupApiParams) DownloadSharedClusterBackupApiRequest
 
@@ -40,7 +44,7 @@ type SharedTierSnapshotsApi interface {
 	DownloadSharedClusterBackupExecute(r DownloadSharedClusterBackupApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
-			GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
+			GetSharedClusterBackup Return One Snapshot of One M2 or M5 Cluster
 
 			Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -51,15 +55,19 @@ type SharedTierSnapshotsApi interface {
 			@param clusterName Human-readable label that identifies the cluster.
 			@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
 			@return GetSharedClusterBackupApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for SharedTierSnapshotsApi
 	*/
 	GetSharedClusterBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) GetSharedClusterBackupApiRequest
 	/*
-		GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
+		GetSharedClusterBackup Return One Snapshot of One M2 or M5 Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetSharedClusterBackupApiParams - Parameters for the request
 		@return GetSharedClusterBackupApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for SharedTierSnapshotsApi
 	*/
 	GetSharedClusterBackupWithParams(ctx context.Context, args *GetSharedClusterBackupApiParams) GetSharedClusterBackupApiRequest
 
@@ -77,6 +85,8 @@ type SharedTierSnapshotsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param clusterName Human-readable label that identifies the cluster.
 			@return ListSharedClusterBackupsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for SharedTierSnapshotsApi
 	*/
 	ListSharedClusterBackups(ctx context.Context, groupId string, clusterName string) ListSharedClusterBackupsApiRequest
 	/*
@@ -86,6 +96,8 @@ type SharedTierSnapshotsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListSharedClusterBackupsApiParams - Parameters for the request
 		@return ListSharedClusterBackupsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for SharedTierSnapshotsApi
 	*/
 	ListSharedClusterBackupsWithParams(ctx context.Context, args *ListSharedClusterBackupsApiParams) ListSharedClusterBackupsApiRequest
 
@@ -135,6 +147,8 @@ This endpoint can also be used on Flex clusters that were created using the [cre
 	@param clusterName Human-readable label that identifies the cluster.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DownloadSharedClusterBackupApiRequest
+
+Deprecated
 */
 func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackup(ctx context.Context, clusterName string, groupId string, tenantRestore *TenantRestore) DownloadSharedClusterBackupApiRequest {
 	return DownloadSharedClusterBackupApiRequest{
@@ -149,6 +163,8 @@ func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackup(ctx context.
 // DownloadSharedClusterBackupExecute executes the request
 //
 //	@return TenantRestore
+//
+// Deprecated
 func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackupExecute(r DownloadSharedClusterBackupApiRequest) (*TenantRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -259,7 +275,7 @@ func (r GetSharedClusterBackupApiRequest) Execute() (*BackupTenantSnapshot, *htt
 }
 
 /*
-GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
+GetSharedClusterBackup Return One Snapshot of One M2 or M5 Cluster
 
 Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -270,6 +286,8 @@ This endpoint can also be used on Flex clusters that were created using the [cre
 	@param clusterName Human-readable label that identifies the cluster.
 	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
 	@return GetSharedClusterBackupApiRequest
+
+Deprecated
 */
 func (a *SharedTierSnapshotsApiService) GetSharedClusterBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) GetSharedClusterBackupApiRequest {
 	return GetSharedClusterBackupApiRequest{
@@ -284,6 +302,8 @@ func (a *SharedTierSnapshotsApiService) GetSharedClusterBackup(ctx context.Conte
 // GetSharedClusterBackupExecute executes the request
 //
 //	@return BackupTenantSnapshot
+//
+// Deprecated
 func (a *SharedTierSnapshotsApiService) GetSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*BackupTenantSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -400,6 +420,8 @@ This API also works for Flex clusters that were created using the [createCluster
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return ListSharedClusterBackupsApiRequest
+
+Deprecated
 */
 func (a *SharedTierSnapshotsApiService) ListSharedClusterBackups(ctx context.Context, groupId string, clusterName string) ListSharedClusterBackupsApiRequest {
 	return ListSharedClusterBackupsApiRequest{
@@ -413,6 +435,8 @@ func (a *SharedTierSnapshotsApiService) ListSharedClusterBackups(ctx context.Con
 // ListSharedClusterBackupsExecute executes the request
 //
 //	@return PaginatedTenantSnapshot
+//
+// Deprecated
 func (a *SharedTierSnapshotsApiService) ListSharedClusterBackupsExecute(r ListSharedClusterBackupsApiRequest) (*PaginatedTenantSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

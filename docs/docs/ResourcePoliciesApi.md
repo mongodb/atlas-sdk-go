@@ -4,13 +4,13 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAtlasResourcePolicy**](ResourcePoliciesApi.md#CreateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create one Atlas Resource Policy
-[**DeleteAtlasResourcePolicy**](ResourcePoliciesApi.md#DeleteAtlasResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete one Atlas Resource Policy
-[**GetAtlasResourcePolicies**](ResourcePoliciesApi.md#GetAtlasResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return all Atlas Resource Policies
-[**GetAtlasResourcePolicy**](ResourcePoliciesApi.md#GetAtlasResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return one Atlas Resource Policy
-[**GetResourcesNonCompliant**](ResourcePoliciesApi.md#GetResourcesNonCompliant) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return all non-compliant resources
-[**UpdateAtlasResourcePolicy**](ResourcePoliciesApi.md#UpdateAtlasResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update one Atlas Resource Policy
-[**ValidateAtlasResourcePolicy**](ResourcePoliciesApi.md#ValidateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate one Atlas Resource Policy
+[**CreateAtlasResourcePolicy**](ResourcePoliciesApi.md#CreateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy
+[**DeleteAtlasResourcePolicy**](ResourcePoliciesApi.md#DeleteAtlasResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy
+[**GetAtlasResourcePolicies**](ResourcePoliciesApi.md#GetAtlasResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return All Atlas Resource Policies
+[**GetAtlasResourcePolicy**](ResourcePoliciesApi.md#GetAtlasResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return One Atlas Resource Policy
+[**GetResourcesNonCompliant**](ResourcePoliciesApi.md#GetResourcesNonCompliant) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources
+[**UpdateAtlasResourcePolicy**](ResourcePoliciesApi.md#UpdateAtlasResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update One Atlas Resource Policy
+[**ValidateAtlasResourcePolicy**](ResourcePoliciesApi.md#ValidateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate One Atlas Resource Policy
 
 
 
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 > ApiAtlasResourcePolicy CreateAtlasResourcePolicy(ctx, orgId, apiAtlasResourcePolicyCreate ApiAtlasResourcePolicyCreate).Execute()
 
-Create one Atlas Resource Policy
+Create One Atlas Resource Policy
 
 
 ### Example
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 > DeleteAtlasResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
 
-Delete one Atlas Resource Policy
+Delete One Atlas Resource Policy
 
 
 ### Example
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 > []ApiAtlasResourcePolicy GetAtlasResourcePolicies(ctx, orgId).Execute()
 
-Return all Atlas Resource Policies
+Return All Atlas Resource Policies
 
 
 ### Example
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 > ApiAtlasResourcePolicy GetAtlasResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
 
-Return one Atlas Resource Policy
+Return One Atlas Resource Policy
 
 
 ### Example
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 > []ApiAtlasNonCompliantResource GetResourcesNonCompliant(ctx, orgId).Execute()
 
-Return all non-compliant resources
+Return All Non-Compliant Resources
 
 
 ### Example
@@ -431,7 +431,7 @@ Name | Type | Description  | Notes
 
 > ApiAtlasResourcePolicy UpdateAtlasResourcePolicy(ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit ApiAtlasResourcePolicyEdit).Execute()
 
-Update one Atlas Resource Policy
+Update One Atlas Resource Policy
 
 
 ### Example
@@ -516,7 +516,7 @@ Name | Type | Description  | Notes
 
 > ApiAtlasResourcePolicy ValidateAtlasResourcePolicy(ctx, orgId, apiAtlasResourcePolicyCreate ApiAtlasResourcePolicyCreate).Execute()
 
-Validate one Atlas Resource Policy
+Validate One Atlas Resource Policy
 
 
 ### Example

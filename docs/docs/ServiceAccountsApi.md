@@ -5,27 +5,27 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddProjectServiceAccount**](ServiceAccountsApi.md#AddProjectServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite | Assign One Service Account to One Project
-[**CreateProjectServiceAccount**](ServiceAccountsApi.md#CreateProjectServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts | Create and Assign one Service Account to one Project
-[**CreateProjectServiceAccountAccessList**](ServiceAccountsApi.md#CreateProjectServiceAccountAccessList) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Add Access List entries for one Project Service Account
-[**CreateProjectServiceAccountSecret**](ServiceAccountsApi.md#CreateProjectServiceAccountSecret) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets | Create one Project Service Account Secret
-[**CreateServiceAccount**](ServiceAccountsApi.md#CreateServiceAccount) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Create one Organization Service Account
-[**CreateServiceAccountAccessList**](ServiceAccountsApi.md#CreateServiceAccountAccessList) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Add Access List entries for one Organization Service Account
-[**CreateServiceAccountSecret**](ServiceAccountsApi.md#CreateServiceAccountSecret) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets | Create one Organization Service Account Secret
-[**DeleteProjectServiceAccount**](ServiceAccountsApi.md#DeleteProjectServiceAccount) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Unassign One Service Account from One Project
-[**DeleteProjectServiceAccountAccessListEntry**](ServiceAccountsApi.md#DeleteProjectServiceAccountAccessListEntry) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List entry from one Project Service Account
-[**DeleteProjectServiceAccountSecret**](ServiceAccountsApi.md#DeleteProjectServiceAccountSecret) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete one Project Service Account Secret
-[**DeleteServiceAccount**](ServiceAccountsApi.md#DeleteServiceAccount) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Delete one Organization Service Account
-[**DeleteServiceAccountAccessListEntry**](ServiceAccountsApi.md#DeleteServiceAccountAccessListEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List entry from one Organization Service Account
-[**DeleteServiceAccountSecret**](ServiceAccountsApi.md#DeleteServiceAccountSecret) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete a Organization Service Account Secret
-[**GetProjectServiceAccount**](ServiceAccountsApi.md#GetProjectServiceAccount) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Get one Project Service Account
-[**GetServiceAccount**](ServiceAccountsApi.md#GetServiceAccount) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Get one Organization Service Account
-[**ListProjectServiceAccountAccessList**](ServiceAccountsApi.md#ListProjectServiceAccountAccessList) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Return All Access List entries for one Project Service Account
-[**ListProjectServiceAccounts**](ServiceAccountsApi.md#ListProjectServiceAccounts) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts | List All Project Service Accounts
-[**ListServiceAccountAccessList**](ServiceAccountsApi.md#ListServiceAccountAccessList) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Return All Access List entries for one Organization Service Account
-[**ListServiceAccountProjects**](ServiceAccountsApi.md#ListServiceAccountProjects) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups | Return All Service Account Project assignments
-[**ListServiceAccounts**](ServiceAccountsApi.md#ListServiceAccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | List All Organization Service Accounts
-[**UpdateProjectServiceAccount**](ServiceAccountsApi.md#UpdateProjectServiceAccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update one Project Service Account
-[**UpdateServiceAccount**](ServiceAccountsApi.md#UpdateServiceAccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update one Organization Service Account
+[**CreateProjectServiceAccount**](ServiceAccountsApi.md#CreateProjectServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts | Create One Project Service Account
+[**CreateProjectServiceAccountAccessList**](ServiceAccountsApi.md#CreateProjectServiceAccountAccessList) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Project Service Account
+[**CreateProjectServiceAccountSecret**](ServiceAccountsApi.md#CreateProjectServiceAccountSecret) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets | Create One Project Service Account Secret
+[**CreateServiceAccount**](ServiceAccountsApi.md#CreateServiceAccount) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Create One Organization Service Account
+[**CreateServiceAccountAccessList**](ServiceAccountsApi.md#CreateServiceAccountAccessList) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Organization Service Account
+[**CreateServiceAccountSecret**](ServiceAccountsApi.md#CreateServiceAccountSecret) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets | Create One Organization Service Account Secret
+[**DeleteProjectServiceAccount**](ServiceAccountsApi.md#DeleteProjectServiceAccount) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Remove One Project Service Account
+[**DeleteProjectServiceAccountAccessListEntry**](ServiceAccountsApi.md#DeleteProjectServiceAccountAccessListEntry) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Project Service Account
+[**DeleteProjectServiceAccountSecret**](ServiceAccountsApi.md#DeleteProjectServiceAccountSecret) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Project Service Account Secret
+[**DeleteServiceAccount**](ServiceAccountsApi.md#DeleteServiceAccount) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Delete One Organization Service Account
+[**DeleteServiceAccountAccessListEntry**](ServiceAccountsApi.md#DeleteServiceAccountAccessListEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Organization Service Account
+[**DeleteServiceAccountSecret**](ServiceAccountsApi.md#DeleteServiceAccountSecret) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Organization Service Account Secret
+[**GetProjectServiceAccount**](ServiceAccountsApi.md#GetProjectServiceAccount) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Return One Project Service Account
+[**GetServiceAccount**](ServiceAccountsApi.md#GetServiceAccount) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Return One Organization Service Account
+[**ListProjectServiceAccountAccessList**](ServiceAccountsApi.md#ListProjectServiceAccountAccessList) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Project Service Account
+[**ListProjectServiceAccounts**](ServiceAccountsApi.md#ListProjectServiceAccounts) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts | Return All Project Service Accounts
+[**ListServiceAccountAccessList**](ServiceAccountsApi.md#ListServiceAccountAccessList) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Organization Service Account
+[**ListServiceAccountProjects**](ServiceAccountsApi.md#ListServiceAccountProjects) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups | Return All Service Account Project Assignments
+[**ListServiceAccounts**](ServiceAccountsApi.md#ListServiceAccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Return All Organization Service Accounts
+[**UpdateProjectServiceAccount**](ServiceAccountsApi.md#UpdateProjectServiceAccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update One Project Service Account
+[**UpdateServiceAccount**](ServiceAccountsApi.md#UpdateServiceAccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update One Organization Service Account
 
 
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 > GroupServiceAccount CreateProjectServiceAccount(ctx, groupId, groupServiceAccountRequest GroupServiceAccountRequest).Execute()
 
-Create and Assign one Service Account to one Project
+Create One Project Service Account
 
 
 ### Example
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 > PaginatedServiceAccountIPAccessEntry CreateProjectServiceAccountAccessList(ctx, groupId, clientId, serviceAccountIPAccessListEntry []ServiceAccountIPAccessListEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Add Access List entries for one Project Service Account
+Add Access List Entries for One Project Service Account
 
 
 ### Example
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 > ServiceAccountSecret CreateProjectServiceAccountSecret(ctx, groupId, clientId, serviceAccountSecretRequest ServiceAccountSecretRequest).Execute()
 
-Create one Project Service Account Secret
+Create One Project Service Account Secret
 
 
 ### Example
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 > OrgServiceAccount CreateServiceAccount(ctx, orgId, orgServiceAccountRequest OrgServiceAccountRequest).Execute()
 
-Create one Organization Service Account
+Create One Organization Service Account
 
 
 ### Example
@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 > PaginatedServiceAccountIPAccessEntry CreateServiceAccountAccessList(ctx, orgId, clientId, serviceAccountIPAccessListEntry []ServiceAccountIPAccessListEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Add Access List entries for one Organization Service Account
+Add Access List Entries for One Organization Service Account
 
 
 ### Example
@@ -549,7 +549,7 @@ Name | Type | Description  | Notes
 
 > ServiceAccountSecret CreateServiceAccountSecret(ctx, orgId, clientId, serviceAccountSecretRequest ServiceAccountSecretRequest).Execute()
 
-Create one Organization Service Account Secret
+Create One Organization Service Account Secret
 
 
 ### Example
@@ -634,7 +634,7 @@ Name | Type | Description  | Notes
 
 > DeleteProjectServiceAccount(ctx, clientId, groupId).Execute()
 
-Unassign One Service Account from One Project
+Remove One Project Service Account
 
 
 ### Example
@@ -715,7 +715,7 @@ Name | Type | Description  | Notes
 
 > DeleteProjectServiceAccountAccessListEntry(ctx, groupId, clientId, ipAddress).Execute()
 
-Remove One Access List entry from one Project Service Account
+Remove One Access List Entry from One Project Service Account
 
 
 ### Example
@@ -799,7 +799,7 @@ Name | Type | Description  | Notes
 
 > DeleteProjectServiceAccountSecret(ctx, clientId, secretId, groupId).Execute()
 
-Delete one Project Service Account Secret
+Delete One Project Service Account Secret
 
 
 ### Example
@@ -883,7 +883,7 @@ Name | Type | Description  | Notes
 
 > DeleteServiceAccount(ctx, clientId, orgId).Execute()
 
-Delete one Organization Service Account
+Delete One Organization Service Account
 
 
 ### Example
@@ -964,7 +964,7 @@ Name | Type | Description  | Notes
 
 > DeleteServiceAccountAccessListEntry(ctx, orgId, clientId, ipAddress).Execute()
 
-Remove One Access List entry from one Organization Service Account
+Remove One Access List Entry from One Organization Service Account
 
 
 ### Example
@@ -1048,7 +1048,7 @@ Name | Type | Description  | Notes
 
 > DeleteServiceAccountSecret(ctx, clientId, secretId, orgId).Execute()
 
-Delete a Organization Service Account Secret
+Delete One Organization Service Account Secret
 
 
 ### Example
@@ -1132,7 +1132,7 @@ Name | Type | Description  | Notes
 
 > GroupServiceAccount GetProjectServiceAccount(ctx, groupId, clientId).Execute()
 
-Get one Project Service Account
+Return One Project Service Account
 
 
 ### Example
@@ -1215,7 +1215,7 @@ Name | Type | Description  | Notes
 
 > OrgServiceAccount GetServiceAccount(ctx, orgId, clientId).Execute()
 
-Get one Organization Service Account
+Return One Organization Service Account
 
 
 ### Example
@@ -1298,7 +1298,7 @@ Name | Type | Description  | Notes
 
 > PaginatedServiceAccountIPAccessEntry ListProjectServiceAccountAccessList(ctx, groupId, clientId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Access List entries for one Project Service Account
+Return All Access List Entries for One Project Service Account
 
 
 ### Example
@@ -1387,7 +1387,7 @@ Name | Type | Description  | Notes
 
 > PaginatedGroupServiceAccounts ListProjectServiceAccounts(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-List All Project Service Accounts
+Return All Project Service Accounts
 
 
 ### Example
@@ -1471,7 +1471,7 @@ Name | Type | Description  | Notes
 
 > PaginatedServiceAccountIPAccessEntry ListServiceAccountAccessList(ctx, orgId, clientId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Access List entries for one Organization Service Account
+Return All Access List Entries for One Organization Service Account
 
 
 ### Example
@@ -1560,7 +1560,7 @@ Name | Type | Description  | Notes
 
 > PaginatedServiceAccountGroup ListServiceAccountProjects(ctx, orgId, clientId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Service Account Project assignments
+Return All Service Account Project Assignments
 
 
 ### Example
@@ -1647,7 +1647,7 @@ Name | Type | Description  | Notes
 
 > PaginatedOrgServiceAccounts ListServiceAccounts(ctx, orgId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-List All Organization Service Accounts
+Return All Organization Service Accounts
 
 
 ### Example
@@ -1731,7 +1731,7 @@ Name | Type | Description  | Notes
 
 > GroupServiceAccount UpdateProjectServiceAccount(ctx, clientId, groupId, groupServiceAccountUpdateRequest GroupServiceAccountUpdateRequest).Execute()
 
-Update one Project Service Account
+Update One Project Service Account
 
 
 ### Example
@@ -1816,7 +1816,7 @@ Name | Type | Description  | Notes
 
 > OrgServiceAccount UpdateServiceAccount(ctx, clientId, orgId, orgServiceAccountUpdateRequest OrgServiceAccountUpdateRequest).Execute()
 
-Update one Organization Service Account
+Update One Organization Service Account
 
 
 ### Example

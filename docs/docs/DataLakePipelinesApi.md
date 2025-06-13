@@ -6,16 +6,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreatePipeline**](DataLakePipelinesApi.md#CreatePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines | Create One Data Lake Pipeline
 [**DeletePipeline**](DataLakePipelinesApi.md#DeletePipeline) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Remove One Data Lake Pipeline
-[**DeletePipelineRunDataset**](DataLakePipelinesApi.md#DeletePipelineRunDataset) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Delete Pipeline Run Dataset
+[**DeletePipelineRunDataset**](DataLakePipelinesApi.md#DeletePipelineRunDataset) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Delete One Pipeline Run Dataset
 [**GetPipeline**](DataLakePipelinesApi.md#GetPipeline) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Return One Data Lake Pipeline
 [**GetPipelineRun**](DataLakePipelinesApi.md#GetPipelineRun) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Return One Data Lake Pipeline Run
-[**ListPipelineRuns**](DataLakePipelinesApi.md#ListPipelineRuns) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs | Return All Data Lake Pipeline Runs from One Project
-[**ListPipelineSchedules**](DataLakePipelinesApi.md#ListPipelineSchedules) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules | Return Available Ingestion Schedules for One Data Lake Pipeline
-[**ListPipelineSnapshots**](DataLakePipelinesApi.md#ListPipelineSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots | Return Available Backup Snapshots for One Data Lake Pipeline
-[**ListPipelines**](DataLakePipelinesApi.md#ListPipelines) | **Get** /api/atlas/v2/groups/{groupId}/pipelines | Return All Data Lake Pipelines from One Project
+[**ListPipelineRuns**](DataLakePipelinesApi.md#ListPipelineRuns) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs | Return All Data Lake Pipeline Runs in One Project
+[**ListPipelineSchedules**](DataLakePipelinesApi.md#ListPipelineSchedules) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules | Return All Ingestion Schedules for One Data Lake Pipeline
+[**ListPipelineSnapshots**](DataLakePipelinesApi.md#ListPipelineSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots | Return All Backup Snapshots for One Data Lake Pipeline
+[**ListPipelines**](DataLakePipelinesApi.md#ListPipelines) | **Get** /api/atlas/v2/groups/{groupId}/pipelines | Return All Data Lake Pipelines in One Project
 [**PausePipeline**](DataLakePipelinesApi.md#PausePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause | Pause One Data Lake Pipeline
 [**ResumePipeline**](DataLakePipelinesApi.md#ResumePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume | Resume One Data Lake Pipeline
-[**TriggerSnapshotIngestion**](DataLakePipelinesApi.md#TriggerSnapshotIngestion) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger | Trigger on demand snapshot ingestion
+[**TriggerSnapshotIngestion**](DataLakePipelinesApi.md#TriggerSnapshotIngestion) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger | Trigger On-Demand Snapshot Ingestion
 [**UpdatePipeline**](DataLakePipelinesApi.md#UpdatePipeline) | **Patch** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Update One Data Lake Pipeline
 
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 > any DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
 
-Delete Pipeline Run Dataset
+Delete One Pipeline Run Dataset
 
 
 ### Example
@@ -442,7 +442,7 @@ Name | Type | Description  | Notes
 
 > PaginatedPipelineRun ListPipelineRuns(ctx, groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CreatedBefore(createdBefore).Execute()
 
-Return All Data Lake Pipeline Runs from One Project
+Return All Data Lake Pipeline Runs in One Project
 
 
 ### Example
@@ -533,7 +533,7 @@ Name | Type | Description  | Notes
 
 > []DiskBackupApiPolicyItem ListPipelineSchedules(ctx, groupId, pipelineName).Execute()
 
-Return Available Ingestion Schedules for One Data Lake Pipeline
+Return All Ingestion Schedules for One Data Lake Pipeline
 
 
 ### Example
@@ -616,7 +616,7 @@ Name | Type | Description  | Notes
 
 > PaginatedBackupSnapshot ListPipelineSnapshots(ctx, groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
 
-Return Available Backup Snapshots for One Data Lake Pipeline
+Return All Backup Snapshots for One Data Lake Pipeline
 
 
 ### Example
@@ -707,7 +707,7 @@ Name | Type | Description  | Notes
 
 > []DataLakeIngestionPipeline ListPipelines(ctx, groupId).Execute()
 
-Return All Data Lake Pipelines from One Project
+Return All Data Lake Pipelines in One Project
 
 
 ### Example
@@ -953,7 +953,7 @@ Name | Type | Description  | Notes
 
 > IngestionPipelineRun TriggerSnapshotIngestion(ctx, groupId, pipelineName, triggerIngestionPipelineRequest TriggerIngestionPipelineRequest).Execute()
 
-Trigger on demand snapshot ingestion
+Trigger On-Demand Snapshot Ingestion
 
 
 ### Example

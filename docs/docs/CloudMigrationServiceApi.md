@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateLinkToken**](CloudMigrationServiceApi.md#CreateLinkToken) | **Post** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Create One Link-Token
 [**CreatePushMigration**](CloudMigrationServiceApi.md#CreatePushMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Migrate One Local Managed Cluster to MongoDB Atlas
-[**CutoverMigration**](CloudMigrationServiceApi.md#CutoverMigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over the Migrated Cluster
+[**CutoverMigration**](CloudMigrationServiceApi.md#CutoverMigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over One Migrated Cluster
 [**DeleteLinkToken**](CloudMigrationServiceApi.md#DeleteLinkToken) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token
 [**GetPushMigration**](CloudMigrationServiceApi.md#GetPushMigration) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId} | Return One Migration Job
 [**GetValidationStatus**](CloudMigrationServiceApi.md#GetValidationStatus) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId} | Return One Migration Validation Job
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 > CutoverMigration(ctx, groupId, liveMigrationId).Execute()
 
-Cut Over the Migrated Cluster
+Cut Over One Migrated Cluster
 
 
 ### Example

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**DeleteProjectIpAccessList**](ProjectIPAccessListApi.md#DeleteProjectIpAccessList) | **Delete** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Remove One Entry from One Project IP Access List
 [**GetProjectIpAccessListStatus**](ProjectIPAccessListApi.md#GetProjectIpAccessListStatus) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status | Return Status of One Project IP Access List Entry
 [**GetProjectIpList**](ProjectIPAccessListApi.md#GetProjectIpList) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Return One Project IP Access List Entry
-[**ListProjectIpAccessLists**](ProjectIPAccessListApi.md#ListProjectIpAccessLists) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return Project IP Access List
+[**ListProjectIpAccessLists**](ProjectIPAccessListApi.md#ListProjectIpAccessLists) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return All Project IP Access List Entries
 
 
 
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 > PaginatedNetworkAccess ListProjectIpAccessLists(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return Project IP Access List
+Return All Project IP Access List Entries
 
 
 ### Example
