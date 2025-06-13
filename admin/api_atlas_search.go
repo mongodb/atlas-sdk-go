@@ -116,7 +116,7 @@ type AtlasSearchApi interface {
 	DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error)
 
 	/*
-		DeleteAtlasSearchIndex Remove One Atlas Search Index by Id
+		DeleteAtlasSearchIndex Remove One Atlas Search Index by ID
 
 		Removes one Atlas Search index that you identified with its unique ID. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role. This deletion is eventually consistent.
 
@@ -128,7 +128,7 @@ type AtlasSearchApi interface {
 	*/
 	DeleteAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string) DeleteAtlasSearchIndexApiRequest
 	/*
-		DeleteAtlasSearchIndex Remove One Atlas Search Index by Id
+		DeleteAtlasSearchIndex Remove One Atlas Search Index by ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -197,7 +197,7 @@ type AtlasSearchApi interface {
 	DeleteAtlasSearchIndexDeprecatedExecute(r DeleteAtlasSearchIndexDeprecatedApiRequest) (*http.Response, error)
 
 	/*
-		GetAtlasSearchDeployment Return Search Nodes
+		GetAtlasSearchDeployment Return All Search Nodes
 
 		Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}, v2-{2023-01-01}
 
@@ -208,7 +208,7 @@ type AtlasSearchApi interface {
 	*/
 	GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) GetAtlasSearchDeploymentApiRequest
 	/*
-		GetAtlasSearchDeployment Return Search Nodes
+		GetAtlasSearchDeployment Return All Search Nodes
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -407,7 +407,7 @@ type AtlasSearchApi interface {
 	UpdateAtlasSearchDeploymentExecute(r UpdateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
 
 	/*
-		UpdateAtlasSearchIndex Update One Atlas Search Index By ID
+		UpdateAtlasSearchIndex Update One Atlas Search Index by ID
 
 		Updates one Atlas Search index that you identified with its unique ID. Atlas Search indexes define the fields on which to create the index and the analyzers to use when creating the index. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role.
 
@@ -420,7 +420,7 @@ type AtlasSearchApi interface {
 	*/
 	UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, searchIndexUpdateRequest *SearchIndexUpdateRequest) UpdateAtlasSearchIndexApiRequest
 	/*
-		UpdateAtlasSearchIndex Update One Atlas Search Index By ID
+		UpdateAtlasSearchIndex Update One Atlas Search Index by ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -433,7 +433,7 @@ type AtlasSearchApi interface {
 	UpdateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*SearchIndexResponse, *http.Response, error)
 
 	/*
-		UpdateAtlasSearchIndexByName Update One Atlas Search Index By Name
+		UpdateAtlasSearchIndexByName Update One Atlas Search Index by Name
 
 		Updates one Atlas Search index that you identified with its database, collection name, and index name. Atlas Search indexes define the fields on which to create the index and the analyzers to use when creating the index. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role.
 
@@ -448,7 +448,7 @@ type AtlasSearchApi interface {
 	*/
 	UpdateAtlasSearchIndexByName(ctx context.Context, groupId string, clusterName string, collectionName string, databaseName string, indexName string, searchIndexUpdateRequest *SearchIndexUpdateRequest) UpdateAtlasSearchIndexByNameApiRequest
 	/*
-		UpdateAtlasSearchIndexByName Update One Atlas Search Index By Name
+		UpdateAtlasSearchIndexByName Update One Atlas Search Index by Name
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1029,7 +1029,7 @@ func (r DeleteAtlasSearchIndexApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteAtlasSearchIndex Remove One Atlas Search Index by Id
+DeleteAtlasSearchIndex Remove One Atlas Search Index by ID
 
 Removes one Atlas Search index that you identified with its unique ID. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role. This deletion is eventually consistent.
 
@@ -1392,7 +1392,7 @@ func (r GetAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentRespo
 }
 
 /*
-GetAtlasSearchDeployment Return Search Nodes
+GetAtlasSearchDeployment Return All Search Nodes
 
 Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}, v2-{2023-01-01}
 
@@ -2480,7 +2480,7 @@ func (r UpdateAtlasSearchIndexApiRequest) Execute() (*SearchIndexResponse, *http
 }
 
 /*
-UpdateAtlasSearchIndex Update One Atlas Search Index By ID
+UpdateAtlasSearchIndex Update One Atlas Search Index by ID
 
 Updates one Atlas Search index that you identified with its unique ID. Atlas Search indexes define the fields on which to create the index and the analyzers to use when creating the index. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role.
 
@@ -2627,7 +2627,7 @@ func (r UpdateAtlasSearchIndexByNameApiRequest) Execute() (*SearchIndexResponse,
 }
 
 /*
-UpdateAtlasSearchIndexByName Update One Atlas Search Index By Name
+UpdateAtlasSearchIndexByName Update One Atlas Search Index by Name
 
 Updates one Atlas Search index that you identified with its database, collection name, and index name. Atlas Search indexes define the fields on which to create the index and the analyzers to use when creating the index. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role.
 

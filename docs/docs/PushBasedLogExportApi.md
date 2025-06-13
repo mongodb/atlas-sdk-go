@@ -4,10 +4,10 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePushBasedLogConfiguration**](PushBasedLogExportApi.md#CreatePushBasedLogConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Enable the push-based log export feature for a project
-[**DeletePushBasedLogConfiguration**](PushBasedLogExportApi.md#DeletePushBasedLogConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable the push-based log export feature for a project
-[**GetPushBasedLogConfiguration**](PushBasedLogExportApi.md#GetPushBasedLogConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Get the push-based log export configuration for a project
-[**UpdatePushBasedLogConfiguration**](PushBasedLogExportApi.md#UpdatePushBasedLogConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update the push-based log export feature for a project
+[**CreatePushBasedLogConfiguration**](PushBasedLogExportApi.md#CreatePushBasedLogConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Enable Push-Based Log Export for One Project
+[**DeletePushBasedLogConfiguration**](PushBasedLogExportApi.md#DeletePushBasedLogConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
+[**GetPushBasedLogConfiguration**](PushBasedLogExportApi.md#GetPushBasedLogConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return Push-Based Log Export Configuration for One Project
+[**UpdatePushBasedLogConfiguration**](PushBasedLogExportApi.md#UpdatePushBasedLogConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update Push-Based Log Export for One Project
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > CreatePushBasedLogConfiguration(ctx, groupId, createPushBasedLogExportProjectRequest CreatePushBasedLogExportProjectRequest).Execute()
 
-Enable the push-based log export feature for a project
+Enable Push-Based Log Export for One Project
 
 
 ### Example
@@ -28,7 +28,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 > DeletePushBasedLogConfiguration(ctx, groupId).Execute()
 
-Disable the push-based log export feature for a project
+Disable Push-Based Log Export for One Project
 
 
 ### Example
@@ -108,7 +108,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 > PushBasedLogExportProject GetPushBasedLogConfiguration(ctx, groupId).Execute()
 
-Get the push-based log export configuration for a project
+Return Push-Based Log Export Configuration for One Project
 
 
 ### Example
@@ -186,7 +186,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 > UpdatePushBasedLogConfiguration(ctx, groupId, pushBasedLogExportProject PushBasedLogExportProject).Execute()
 
-Update the push-based log export feature for a project
+Update Push-Based Log Export for One Project
 
 
 ### Example
@@ -266,7 +266,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

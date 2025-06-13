@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomZoneMapping**](GlobalClustersApi.md#CreateCustomZoneMapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Entry to One Custom Zone Mapping
+[**CreateCustomZoneMapping**](GlobalClustersApi.md#CreateCustomZoneMapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Custom Zone Mapping to One Global Cluster
 [**CreateManagedNamespace**](GlobalClustersApi.md#CreateManagedNamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Cluster
 [**DeleteAllCustomZoneMappings**](GlobalClustersApi.md#DeleteAllCustomZoneMappings) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster
 [**DeleteManagedNamespace**](GlobalClustersApi.md#DeleteManagedNamespace) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > GeoSharding20240805 CreateCustomZoneMapping(ctx, groupId, clusterName, customZoneMappings CustomZoneMappings).Execute()
 
-Add One Entry to One Custom Zone Mapping
+Add One Custom Zone Mapping to One Global Cluster
 
 
 ### Example
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -282,7 +282,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -369,7 +369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

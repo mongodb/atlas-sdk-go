@@ -13,7 +13,7 @@ import (
 type StreamsApi interface {
 
 	/*
-		AcceptVpcPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+		AcceptVpcPeeringConnection Accept One Incoming VPC Peering Connection
 
 		Requests the acceptance of an incoming VPC Peering connection.
 
@@ -25,7 +25,7 @@ type StreamsApi interface {
 	*/
 	AcceptVpcPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVpcPeeringConnectionApiRequest
 	/*
-		AcceptVpcPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+		AcceptVpcPeeringConnection Accept One Incoming VPC Peering Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -38,7 +38,7 @@ type StreamsApi interface {
 	AcceptVpcPeeringConnectionExecute(r AcceptVpcPeeringConnectionApiRequest) (*http.Response, error)
 
 	/*
-		CreatePrivateLinkConnection Create One Private Link connection
+		CreatePrivateLinkConnection Create One Private Link Connection
 
 		Creates one Private Link in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
 
@@ -49,7 +49,7 @@ type StreamsApi interface {
 	*/
 	CreatePrivateLinkConnection(ctx context.Context, groupId string, streamsPrivateLinkConnection *StreamsPrivateLinkConnection) CreatePrivateLinkConnectionApiRequest
 	/*
-		CreatePrivateLinkConnection Create One Private Link connection
+		CreatePrivateLinkConnection Create One Private Link Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -62,7 +62,7 @@ type StreamsApi interface {
 	CreatePrivateLinkConnectionExecute(r CreatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error)
 
 	/*
-		CreateStreamConnection Create One Connection
+		CreateStreamConnection Create One Stream Connection
 
 		Creates one connection for a stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
 
@@ -74,7 +74,7 @@ type StreamsApi interface {
 	*/
 	CreateStreamConnection(ctx context.Context, groupId string, tenantName string, streamsConnection *StreamsConnection) CreateStreamConnectionApiRequest
 	/*
-		CreateStreamConnection Create One Connection
+		CreateStreamConnection Create One Stream Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -111,7 +111,7 @@ type StreamsApi interface {
 	CreateStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
-		CreateStreamInstanceWithSampleConnections Create One Stream Instance With Sample Connections
+		CreateStreamInstanceWithSampleConnections Create One Stream Instance with Sample Connections
 
 		Creates one stream instance in the specified project with sample connections. To use this resource the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
@@ -122,7 +122,7 @@ type StreamsApi interface {
 	*/
 	CreateStreamInstanceWithSampleConnections(ctx context.Context, groupId string, body *any) CreateStreamInstanceWithSampleConnectionsApiRequest
 	/*
-		CreateStreamInstanceWithSampleConnections Create One Stream Instance With Sample Connections
+		CreateStreamInstanceWithSampleConnections Create One Stream Instance with Sample Connections
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -160,7 +160,7 @@ type StreamsApi interface {
 	CreateStreamProcessorExecute(r CreateStreamProcessorApiRequest) (*StreamsProcessor, *http.Response, error)
 
 	/*
-		DeletePrivateLinkConnection Delete One Private Link connection
+		DeletePrivateLinkConnection Delete One Private Link Connection
 
 		Deletes one Private Link in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
 
@@ -171,7 +171,7 @@ type StreamsApi interface {
 	*/
 	DeletePrivateLinkConnection(ctx context.Context, groupId string, connectionId string) DeletePrivateLinkConnectionApiRequest
 	/*
-		DeletePrivateLinkConnection Delete One Private Link connection
+		DeletePrivateLinkConnection Delete One Private Link Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -258,7 +258,7 @@ type StreamsApi interface {
 	DeleteStreamProcessorExecute(r DeleteStreamProcessorApiRequest) (*http.Response, error)
 
 	/*
-		DeleteVpcPeeringConnection Deletes an incoming VPC Peering connection.
+		DeleteVpcPeeringConnection Delete One VPC Peering Connection
 
 		Deletes an incoming VPC Peering connection.
 
@@ -269,7 +269,7 @@ type StreamsApi interface {
 	*/
 	DeleteVpcPeeringConnection(ctx context.Context, groupId string, id string) DeleteVpcPeeringConnectionApiRequest
 	/*
-		DeleteVpcPeeringConnection Deletes an incoming VPC Peering connection.
+		DeleteVpcPeeringConnection Delete One VPC Peering Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -306,7 +306,7 @@ type StreamsApi interface {
 	DownloadStreamTenantAuditLogsExecute(r DownloadStreamTenantAuditLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
-		GetAccountDetails Returns the Account ID, and the VPC ID for the group and region specified.
+		GetAccountDetails Return Account ID and VPC ID for One Project and Region
 
 		Returns the Account ID, and the VPC ID for the group and region specified.
 
@@ -316,7 +316,7 @@ type StreamsApi interface {
 	*/
 	GetAccountDetails(ctx context.Context, groupId string) GetAccountDetailsApiRequest
 	/*
-		GetAccountDetails Returns the Account ID, and the VPC ID for the group and region specified.
+		GetAccountDetails Return Account ID and VPC ID for One Project and Region
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -329,7 +329,7 @@ type StreamsApi interface {
 	GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AccountDetails, *http.Response, error)
 
 	/*
-		GetActiveVpcPeeringConnections Returns all the active incoming VPC Peering Connections.
+		GetActiveVpcPeeringConnections Return All Active Incoming VPC Peering Connections
 
 		Returns a list of active incoming VPC Peering Connections.
 
@@ -339,7 +339,7 @@ type StreamsApi interface {
 	*/
 	GetActiveVpcPeeringConnections(ctx context.Context, groupId string) GetActiveVpcPeeringConnectionsApiRequest
 	/*
-		GetActiveVpcPeeringConnections Returns all the active incoming VPC Peering Connections.
+		GetActiveVpcPeeringConnections Return All Active Incoming VPC Peering Connections
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -352,7 +352,7 @@ type StreamsApi interface {
 	GetActiveVpcPeeringConnectionsExecute(r GetActiveVpcPeeringConnectionsApiRequest) (*http.Response, error)
 
 	/*
-		GetPrivateLinkConnection Return One PrivateLink Connection
+		GetPrivateLinkConnection Return One Private Link Connection
 
 		Returns the details of one Private Link connection within the project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -363,7 +363,7 @@ type StreamsApi interface {
 	*/
 	GetPrivateLinkConnection(ctx context.Context, groupId string, connectionId string) GetPrivateLinkConnectionApiRequest
 	/*
-		GetPrivateLinkConnection Return One PrivateLink Connection
+		GetPrivateLinkConnection Return One Private Link Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -425,7 +425,7 @@ type StreamsApi interface {
 	GetStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
-		GetStreamProcessor Get One Stream Processor
+		GetStreamProcessor Return One Stream Processor
 
 		Get one Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
@@ -437,7 +437,7 @@ type StreamsApi interface {
 	*/
 	GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) GetStreamProcessorApiRequest
 	/*
-		GetStreamProcessor Get One Stream Processor
+		GetStreamProcessor Return One Stream Processor
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -450,7 +450,7 @@ type StreamsApi interface {
 	GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
 
 	/*
-		GetVpcPeeringConnections Return All VPC Peering Connections.
+		GetVpcPeeringConnections Return All VPC Peering Connections
 
 		Returns a list of incoming VPC Peering Connections.
 
@@ -460,7 +460,7 @@ type StreamsApi interface {
 	*/
 	GetVpcPeeringConnections(ctx context.Context, groupId string) GetVpcPeeringConnectionsApiRequest
 	/*
-		GetVpcPeeringConnections Return All VPC Peering Connections.
+		GetVpcPeeringConnections Return All VPC Peering Connections
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -473,7 +473,7 @@ type StreamsApi interface {
 	GetVpcPeeringConnectionsExecute(r GetVpcPeeringConnectionsApiRequest) (*http.Response, error)
 
 	/*
-		ListPrivateLinkConnections Return All Private Link
+		ListPrivateLinkConnections Return All Private Link Connections
 
 		Returns all Private Link connections for the specified project.To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
 
@@ -483,7 +483,7 @@ type StreamsApi interface {
 	*/
 	ListPrivateLinkConnections(ctx context.Context, groupId string) ListPrivateLinkConnectionsApiRequest
 	/*
-		ListPrivateLinkConnections Return All Private Link
+		ListPrivateLinkConnections Return All Private Link Connections
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -496,7 +496,7 @@ type StreamsApi interface {
 	ListPrivateLinkConnectionsExecute(r ListPrivateLinkConnectionsApiRequest) (*PaginatedApiStreamsPrivateLink, *http.Response, error)
 
 	/*
-		ListStreamConnections Return All Connections Of The Stream Instances
+		ListStreamConnections Return All Connections of the Stream Instances
 
 		Returns all connections of the stream instance for the specified project.To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
 
@@ -507,7 +507,7 @@ type StreamsApi interface {
 	*/
 	ListStreamConnections(ctx context.Context, groupId string, tenantName string) ListStreamConnectionsApiRequest
 	/*
-		ListStreamConnections Return All Connections Of The Stream Instances
+		ListStreamConnections Return All Connections of the Stream Instances
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -520,7 +520,7 @@ type StreamsApi interface {
 	ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error)
 
 	/*
-		ListStreamInstances Return All Project Stream Instances
+		ListStreamInstances Return All Stream Instances in One Project
 
 		Returns all stream instances for the specified project.
 
@@ -530,7 +530,7 @@ type StreamsApi interface {
 	*/
 	ListStreamInstances(ctx context.Context, groupId string) ListStreamInstancesApiRequest
 	/*
-		ListStreamInstances Return All Project Stream Instances
+		ListStreamInstances Return All Stream Instances in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -543,7 +543,7 @@ type StreamsApi interface {
 	ListStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error)
 
 	/*
-		ListStreamProcessors Return All Stream Processors In The Stream Instance.
+		ListStreamProcessors Return All Stream Processors in One Stream Instance
 
 		Returns all Stream Processors within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
@@ -554,7 +554,7 @@ type StreamsApi interface {
 	*/
 	ListStreamProcessors(ctx context.Context, groupId string, tenantName string) ListStreamProcessorsApiRequest
 	/*
-		ListStreamProcessors Return All Stream Processors In The Stream Instance.
+		ListStreamProcessors Return All Stream Processors in One Stream Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -567,7 +567,7 @@ type StreamsApi interface {
 	ListStreamProcessorsExecute(r ListStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)
 
 	/*
-		ModifyStreamProcessor Modify One Stream Processor
+		ModifyStreamProcessor Update One Stream Processor
 
 		Modify one existing Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
@@ -580,7 +580,7 @@ type StreamsApi interface {
 	*/
 	ModifyStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *StreamsModifyStreamProcessor) ModifyStreamProcessorApiRequest
 	/*
-		ModifyStreamProcessor Modify One Stream Processor
+		ModifyStreamProcessor Update One Stream Processor
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -593,7 +593,7 @@ type StreamsApi interface {
 	ModifyStreamProcessorExecute(r ModifyStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
 
 	/*
-		RejectVpcPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+		RejectVpcPeeringConnection Reject One Incoming VPC Peering Connection
 
 		Requests the rejection of an incoming VPC Peering connection.
 
@@ -604,7 +604,7 @@ type StreamsApi interface {
 	*/
 	RejectVpcPeeringConnection(ctx context.Context, groupId string, id string) RejectVpcPeeringConnectionApiRequest
 	/*
-		RejectVpcPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+		RejectVpcPeeringConnection Reject One Incoming VPC Peering Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -776,7 +776,7 @@ func (r AcceptVpcPeeringConnectionApiRequest) Execute() (*http.Response, error) 
 }
 
 /*
-AcceptVpcPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+AcceptVpcPeeringConnection Accept One Incoming VPC Peering Connection
 
 Requests the acceptance of an incoming VPC Peering connection.
 
@@ -888,7 +888,7 @@ func (r CreatePrivateLinkConnectionApiRequest) Execute() (*StreamsPrivateLinkCon
 }
 
 /*
-CreatePrivateLinkConnection Create One Private Link connection
+CreatePrivateLinkConnection Create One Private Link Connection
 
 Creates one Private Link in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
 
@@ -1014,7 +1014,7 @@ func (r CreateStreamConnectionApiRequest) Execute() (*StreamsConnection, *http.R
 }
 
 /*
-CreateStreamConnection Create One Connection
+CreateStreamConnection Create One Stream Connection
 
 Creates one connection for a stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
 
@@ -1266,7 +1266,7 @@ func (r CreateStreamInstanceWithSampleConnectionsApiRequest) Execute() (*Streams
 }
 
 /*
-CreateStreamInstanceWithSampleConnections Create One Stream Instance With Sample Connections
+CreateStreamInstanceWithSampleConnections Create One Stream Instance with Sample Connections
 
 Creates one stream instance in the specified project with sample connections. To use this resource the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
@@ -1521,7 +1521,7 @@ func (r DeletePrivateLinkConnectionApiRequest) Execute() (*http.Response, error)
 }
 
 /*
-DeletePrivateLinkConnection Delete One Private Link connection
+DeletePrivateLinkConnection Delete One Private Link Connection
 
 Deletes one Private Link in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
 
@@ -1963,7 +1963,7 @@ func (r DeleteVpcPeeringConnectionApiRequest) Execute() (*http.Response, error) 
 }
 
 /*
-DeleteVpcPeeringConnection Deletes an incoming VPC Peering connection.
+DeleteVpcPeeringConnection Delete One VPC Peering Connection
 
 Deletes an incoming VPC Peering connection.
 
@@ -2231,7 +2231,7 @@ func (r GetAccountDetailsApiRequest) Execute() (*AccountDetails, *http.Response,
 }
 
 /*
-GetAccountDetails Returns the Account ID, and the VPC ID for the group and region specified.
+GetAccountDetails Return Account ID and VPC ID for One Project and Region
 
 Returns the Account ID, and the VPC ID for the group and region specified.
 
@@ -2371,7 +2371,7 @@ func (r GetActiveVpcPeeringConnectionsApiRequest) Execute() (*http.Response, err
 }
 
 /*
-GetActiveVpcPeeringConnections Returns all the active incoming VPC Peering Connections.
+GetActiveVpcPeeringConnections Return All Active Incoming VPC Peering Connections
 
 Returns a list of active incoming VPC Peering Connections.
 
@@ -2485,7 +2485,7 @@ func (r GetPrivateLinkConnectionApiRequest) Execute() (*StreamsPrivateLinkConnec
 }
 
 /*
-GetPrivateLinkConnection Return One PrivateLink Connection
+GetPrivateLinkConnection Return One Private Link Connection
 
 Returns the details of one Private Link connection within the project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -2878,7 +2878,7 @@ func (r GetStreamProcessorApiRequest) Execute() (*StreamsProcessorWithStats, *ht
 }
 
 /*
-GetStreamProcessor Get One Stream Processor
+GetStreamProcessor Return One Stream Processor
 
 Get one Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
@@ -3031,7 +3031,7 @@ func (r GetVpcPeeringConnectionsApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-GetVpcPeeringConnections Return All VPC Peering Connections.
+GetVpcPeeringConnections Return All VPC Peering Connections
 
 Returns a list of incoming VPC Peering Connections.
 
@@ -3164,7 +3164,7 @@ func (r ListPrivateLinkConnectionsApiRequest) Execute() (*PaginatedApiStreamsPri
 }
 
 /*
-ListPrivateLinkConnections Return All Private Link
+ListPrivateLinkConnections Return All Private Link Connections
 
 Returns all Private Link connections for the specified project.To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
 
@@ -3313,7 +3313,7 @@ func (r ListStreamConnectionsApiRequest) Execute() (*PaginatedApiStreamsConnecti
 }
 
 /*
-ListStreamConnections Return All Connections Of The Stream Instances
+ListStreamConnections Return All Connections of the Stream Instances
 
 Returns all connections of the stream instance for the specified project.To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
 
@@ -3465,7 +3465,7 @@ func (r ListStreamInstancesApiRequest) Execute() (*PaginatedApiStreamsTenant, *h
 }
 
 /*
-ListStreamInstances Return All Project Stream Instances
+ListStreamInstances Return All Stream Instances in One Project
 
 Returns all stream instances for the specified project.
 
@@ -3623,7 +3623,7 @@ func (r ListStreamProcessorsApiRequest) Execute() (*PaginatedApiStreamsStreamPro
 }
 
 /*
-ListStreamProcessors Return All Stream Processors In The Stream Instance.
+ListStreamProcessors Return All Stream Processors in One Stream Instance
 
 Returns all Stream Processors within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
@@ -3773,7 +3773,7 @@ func (r ModifyStreamProcessorApiRequest) Execute() (*StreamsProcessorWithStats, 
 }
 
 /*
-ModifyStreamProcessor Modify One Stream Processor
+ModifyStreamProcessor Update One Stream Processor
 
 Modify one existing Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
@@ -3908,7 +3908,7 @@ func (r RejectVpcPeeringConnectionApiRequest) Execute() (*http.Response, error) 
 }
 
 /*
-RejectVpcPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+RejectVpcPeeringConnection Reject One Incoming VPC Peering Connection
 
 Requests the rejection of an incoming VPC Peering connection.
 

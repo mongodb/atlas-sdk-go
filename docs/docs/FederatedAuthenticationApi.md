@@ -5,21 +5,21 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateIdentityProvider**](FederatedAuthenticationApi.md#CreateIdentityProvider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create One Identity Provider
-[**CreateRoleMapping**](FederatedAuthenticationApi.md#CreateRoleMapping) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Add One Role Mapping to One Organization
+[**CreateRoleMapping**](FederatedAuthenticationApi.md#CreateRoleMapping) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Create One Role Mapping in One Organization Configuration
 [**DeleteFederationApp**](FederatedAuthenticationApi.md#DeleteFederationApp) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete One Federation Settings Instance
 [**DeleteIdentityProvider**](FederatedAuthenticationApi.md#DeleteIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Delete One Identity Provider
 [**DeleteRoleMapping**](FederatedAuthenticationApi.md#DeleteRoleMapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization
-[**GetConnectedOrgConfig**](FederatedAuthenticationApi.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Org Config Connected to One Federation
+[**GetConnectedOrgConfig**](FederatedAuthenticationApi.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Organization Configuration from One Federation
 [**GetFederationSettings**](FederatedAuthenticationApi.md#GetFederationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization
 [**GetIdentityProvider**](FederatedAuthenticationApi.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return One Identity Provider by ID
-[**GetIdentityProviderMetadata**](FederatedAuthenticationApi.md#GetIdentityProviderMetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return the Metadata of One Identity Provider
+[**GetIdentityProviderMetadata**](FederatedAuthenticationApi.md#GetIdentityProviderMetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return Metadata of One Identity Provider
 [**GetRoleMapping**](FederatedAuthenticationApi.md#GetRoleMapping) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Return One Role Mapping from One Organization
-[**ListConnectedOrgConfigs**](FederatedAuthenticationApi.md#ListConnectedOrgConfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Connected Org Configs from One Federation
+[**ListConnectedOrgConfigs**](FederatedAuthenticationApi.md#ListConnectedOrgConfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Organization Configurations from One Federation
 [**ListIdentityProviders**](FederatedAuthenticationApi.md#ListIdentityProviders) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Return All Identity Providers in One Federation
 [**ListRoleMappings**](FederatedAuthenticationApi.md#ListRoleMappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization
-[**RemoveConnectedOrgConfig**](FederatedAuthenticationApi.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Org Config Connected to One Federation
-[**RevokeJwksFromIdentityProvider**](FederatedAuthenticationApi.md#RevokeJwksFromIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke the JWKS from One OIDC Identity Provider
-[**UpdateConnectedOrgConfig**](FederatedAuthenticationApi.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation
+[**RemoveConnectedOrgConfig**](FederatedAuthenticationApi.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Organization Configuration from One Federation
+[**RevokeJwksFromIdentityProvider**](FederatedAuthenticationApi.md#RevokeJwksFromIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke JWKS from One OIDC Identity Provider
+[**UpdateConnectedOrgConfig**](FederatedAuthenticationApi.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Organization Configuration in One Federation
 [**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update One Identity Provider
 [**UpdateRoleMapping**](FederatedAuthenticationApi.md#UpdateRoleMapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization
 
@@ -42,7 +42,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 > AuthFederationRoleMapping CreateRoleMapping(ctx, federationSettingsId, orgId, authFederationRoleMapping AuthFederationRoleMapping).Execute()
 
-Add One Role Mapping to One Organization
+Create One Role Mapping in One Organization Configuration
 
 
 ### Example
@@ -124,7 +124,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -209,7 +209,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -287,7 +287,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -368,7 +368,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -439,7 +439,7 @@ Name | Type | Description  | Notes
 
 > ConnectedOrgConfig GetConnectedOrgConfig(ctx, federationSettingsId, orgId).Execute()
 
-Return One Org Config Connected to One Federation
+Return One Organization Configuration from One Federation
 
 
 ### Example
@@ -452,7 +452,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -535,7 +535,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -615,7 +615,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -685,7 +685,7 @@ Name | Type | Description  | Notes
 
 > string GetIdentityProviderMetadata(ctx, federationSettingsId, identityProviderId).Execute()
 
-Return the Metadata of One Identity Provider
+Return Metadata of One Identity Provider
 
 
 ### Example
@@ -698,7 +698,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -781,7 +781,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -854,7 +854,7 @@ Name | Type | Description  | Notes
 
 > PaginatedConnectedOrgConfigs ListConnectedOrgConfigs(ctx, federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Connected Org Configs from One Federation
+Return All Organization Configurations from One Federation
 
 
 ### Example
@@ -867,7 +867,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -951,7 +951,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1039,7 +1039,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1109,7 +1109,7 @@ Name | Type | Description  | Notes
 
 > RemoveConnectedOrgConfig(ctx, federationSettingsId, orgId).Execute()
 
-Remove One Org Config Connected to One Federation
+Remove One Organization Configuration from One Federation
 
 
 ### Example
@@ -1122,7 +1122,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1190,7 +1190,7 @@ Name | Type | Description  | Notes
 
 > RevokeJwksFromIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
 
-Revoke the JWKS from One OIDC Identity Provider
+Revoke JWKS from One OIDC Identity Provider
 
 
 ### Example
@@ -1203,7 +1203,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1271,7 +1271,7 @@ Name | Type | Description  | Notes
 
 > ConnectedOrgConfig UpdateConnectedOrgConfig(ctx, federationSettingsId, orgId, connectedOrgConfig ConnectedOrgConfig).Execute()
 
-Update One Org Config Connected to One Federation
+Update One Organization Configuration in One Federation
 
 
 ### Example
@@ -1284,7 +1284,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1369,7 +1369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1454,7 +1454,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

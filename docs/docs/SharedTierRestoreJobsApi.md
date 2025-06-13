@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSharedClusterBackupRestoreJob**](SharedTierRestoreJobsApi.md#CreateSharedClusterBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore | Create One Restore Job from One M2 or M5 Cluster
+[**CreateSharedClusterBackupRestoreJob**](SharedTierRestoreJobsApi.md#CreateSharedClusterBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore | Create One Restore Job for One M2 or M5 Cluster
 [**GetSharedClusterBackupRestoreJob**](SharedTierRestoreJobsApi.md#GetSharedClusterBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId} | Return One Restore Job for One M2 or M5 Cluster
 [**ListSharedClusterBackupRestoreJobs**](SharedTierRestoreJobsApi.md#ListSharedClusterBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores | Return All Restore Jobs for One M2 or M5 Cluster
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > TenantRestore CreateSharedClusterBackupRestoreJob(ctx, clusterName, groupId, tenantRestore TenantRestore).Execute()
 
-Create One Restore Job from One M2 or M5 Cluster
+Create One Restore Job for One M2 or M5 Cluster
 
 
 ### Example
@@ -27,7 +27,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

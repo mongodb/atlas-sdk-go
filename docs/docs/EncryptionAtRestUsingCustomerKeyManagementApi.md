@@ -8,8 +8,8 @@ Method | HTTP request | Description
 [**GetEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetEncryptionAtRest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project
 [**GetEncryptionAtRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetEncryptionAtRestPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Return One Private Endpoint for Encryption at Rest Using Customer Key Management
 [**GetEncryptionAtRestPrivateEndpointsForCloudProvider**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetEncryptionAtRestPrivateEndpointsForCloudProvider) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Return Private Endpoints of a Cloud Provider for Encryption at Rest Using Customer Key Management for One Project
-[**RequestEncryptionAtRestPrivateEndpointDeletion**](EncryptionAtRestUsingCustomerKeyManagementApi.md#RequestEncryptionAtRestPrivateEndpointDeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete Private Endpoint for Encryption at Rest Using Customer Key Management
-[**UpdateEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#UpdateEncryptionAtRest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project
+[**RequestEncryptionAtRestPrivateEndpointDeletion**](EncryptionAtRestUsingCustomerKeyManagementApi.md#RequestEncryptionAtRestPrivateEndpointDeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Private Endpoint for Encryption at Rest Using Customer Key Management
+[**UpdateEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#UpdateEncryptionAtRest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Encryption at Rest Configuration for One Project
 
 
 
@@ -30,7 +30,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -115,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -195,7 +195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -281,7 +281,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 
 > RequestEncryptionAtRestPrivateEndpointDeletion(ctx, groupId, cloudProvider, endpointId).Execute()
 
-Delete Private Endpoint for Encryption at Rest Using Customer Key Management
+Delete One Private Endpoint for Encryption at Rest Using Customer Key Management
 
 
 ### Example
@@ -370,7 +370,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 > EncryptionAtRest UpdateEncryptionAtRest(ctx, groupId, encryptionAtRest EncryptionAtRest).Execute()
 
-Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project
+Update Encryption at Rest Configuration for One Project
 
 
 ### Example
@@ -454,7 +454,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

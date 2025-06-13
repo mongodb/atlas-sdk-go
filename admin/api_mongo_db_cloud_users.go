@@ -237,7 +237,7 @@ type MongoDBCloudUsersApi interface {
 	GetProjectUserExecute(r GetProjectUserApiRequest) (*GroupUserResponse, *http.Response, error)
 
 	/*
-		GetUser Return One MongoDB Cloud User using Its ID
+		GetUser Return One MongoDB Cloud User by ID
 
 		Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting Service Account or API Key can have any role.
 
@@ -249,7 +249,7 @@ type MongoDBCloudUsersApi interface {
 	*/
 	GetUser(ctx context.Context, userId string) GetUserApiRequest
 	/*
-		GetUser Return One MongoDB Cloud User using Its ID
+		GetUser Return One MongoDB Cloud User by ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -264,7 +264,7 @@ type MongoDBCloudUsersApi interface {
 	GetUserExecute(r GetUserApiRequest) (*CloudAppUser, *http.Response, error)
 
 	/*
-		GetUserByUsername Return One MongoDB Cloud User using Their Username
+		GetUserByUsername Return One MongoDB Cloud User by Username
 
 		Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. To use this resource, the requesting Service Account or API Key can have any role.
 
@@ -276,7 +276,7 @@ type MongoDBCloudUsersApi interface {
 	*/
 	GetUserByUsername(ctx context.Context, userName string) GetUserByUsernameApiRequest
 	/*
-		GetUserByUsername Return One MongoDB Cloud User using Their Username
+		GetUserByUsername Return One MongoDB Cloud User by Username
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -402,7 +402,7 @@ type MongoDBCloudUsersApi interface {
 	RemoveOrganizationRoleExecute(r RemoveOrganizationRoleApiRequest) (*OrgUserResponse, *http.Response, error)
 
 	/*
-			RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
+			RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
 			Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -417,7 +417,7 @@ type MongoDBCloudUsersApi interface {
 	*/
 	RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest
 	/*
-		RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
+		RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1598,7 +1598,7 @@ func (r GetUserApiRequest) Execute() (*CloudAppUser, *http.Response, error) {
 }
 
 /*
-GetUser Return One MongoDB Cloud User using Its ID
+GetUser Return One MongoDB Cloud User by ID
 
 Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting Service Account or API Key can have any role.
 
@@ -1716,7 +1716,7 @@ func (r GetUserByUsernameApiRequest) Execute() (*CloudAppUser, *http.Response, e
 }
 
 /*
-GetUserByUsername Return One MongoDB Cloud User using Their Username
+GetUserByUsername Return One MongoDB Cloud User by Username
 
 Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. To use this resource, the requesting Service Account or API Key can have any role.
 
@@ -2568,7 +2568,7 @@ func (r RemoveOrganizationUserApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
+RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
 Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
