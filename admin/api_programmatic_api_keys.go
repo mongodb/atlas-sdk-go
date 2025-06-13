@@ -62,7 +62,7 @@ type ProgrammaticAPIKeysApi interface {
 	CreateApiKeyExecute(r CreateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
-		CreateApiKeyAccessList Create Access List Entries for One Organization API Key
+		CreateApiKeyAccessList Create One Access List Entry for One Organization API Key
 
 		Creates the access list entries for the specified organization API key. Resources require all API requests originate from IP addresses on the API access list. To use this resource, the requesting Service Account or API Key must have the Read Write role.
 
@@ -74,7 +74,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	CreateApiKeyAccessList(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]UserAccessListRequest) CreateApiKeyAccessListApiRequest
 	/*
-		CreateApiKeyAccessList Create Access List Entries for One Organization API Key
+		CreateApiKeyAccessList Create One Access List Entry for One Organization API Key
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -328,7 +328,7 @@ type ProgrammaticAPIKeysApi interface {
 	UpdateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
-		UpdateApiKeyRoles Update Roles of One Organization API Key to One Project
+		UpdateApiKeyRoles Update Organization API Key Roles for One Project
 
 		Updates the roles of the organization API key that you specify for the project that you specify. You must specify at least one valid role for the project. The application removes any roles that you do not include in this request if they were previously set in the organization API key that you specify for the project.
 
@@ -340,7 +340,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, updateAtlasProjectApiKey *UpdateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest
 	/*
-		UpdateApiKeyRoles Update Roles of One Organization API Key to One Project
+		UpdateApiKeyRoles Update Organization API Key Roles for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -650,7 +650,7 @@ func (r CreateApiKeyAccessListApiRequest) Execute() (*PaginatedApiUserAccessList
 }
 
 /*
-CreateApiKeyAccessList Create Access List Entries for One Organization API Key
+CreateApiKeyAccessList Create One Access List Entry for One Organization API Key
 
 Creates the access list entries for the specified organization API key. Resources require all API requests originate from IP addresses on the API access list. To use this resource, the requesting Service Account or API Key must have the Read Write role.
 
@@ -2162,7 +2162,7 @@ func (r UpdateApiKeyRolesApiRequest) Execute() (*ApiKeyUserDetails, *http.Respon
 }
 
 /*
-UpdateApiKeyRoles Update Roles of One Organization API Key to One Project
+UpdateApiKeyRoles Update Organization API Key Roles for One Project
 
 Updates the roles of the organization API key that you specify for the project that you specify. You must specify at least one valid role for the project. The application removes any roles that you do not include in this request if they were previously set in the organization API key that you specify for the project.
 
