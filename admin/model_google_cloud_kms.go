@@ -8,6 +8,8 @@ type GoogleCloudKMS struct {
 	Enabled *bool `json:"enabled,omitempty"`
 	// Resource path that displays the key version resource ID for your Google Cloud KMS.
 	KeyVersionResourceID *string `json:"keyVersionResourceID,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the Google Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud KMS.
+	RoleId *string `json:"roleId,omitempty"`
 	// JavaScript Object Notation (JSON) object that contains the Google Cloud Key Management Service (KMS). Format the JSON as a string and not as an object.
 	// Write only field.
 	ServiceAccountKey *string `json:"serviceAccountKey,omitempty"`
@@ -97,6 +99,39 @@ func (o *GoogleCloudKMS) HasKeyVersionResourceID() bool {
 // SetKeyVersionResourceID gets a reference to the given string and assigns it to the KeyVersionResourceID field.
 func (o *GoogleCloudKMS) SetKeyVersionResourceID(v string) {
 	o.KeyVersionResourceID = &v
+}
+
+// GetRoleId returns the RoleId field value if set, zero value otherwise
+func (o *GoogleCloudKMS) GetRoleId() string {
+	if o == nil || IsNil(o.RoleId) {
+		var ret string
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleCloudKMS) GetRoleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleId) {
+		return nil, false
+	}
+
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *GoogleCloudKMS) HasRoleId() bool {
+	if o != nil && !IsNil(o.RoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *GoogleCloudKMS) SetRoleId(v string) {
+	o.RoleId = &v
 }
 
 // GetServiceAccountKey returns the ServiceAccountKey field value if set, zero value otherwise
