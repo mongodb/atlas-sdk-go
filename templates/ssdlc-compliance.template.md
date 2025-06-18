@@ -7,22 +7,22 @@ SSDLC Compliance Report: MongoDB Atlas CLI Plugin Terraform ${VERSION}
 Overview:
 
 - **Product and Release Name**
-- MongoDB Atlas CLI Plugin Terraform ${VERSION}, ${DATE}.
+	- MongoDB Atlas CLI Plugin Terraform ${VERSION}, ${DATE}.
 
 - **Process Document**
-- https://www.mongodb.com/blog/post/how-mongodb-protects-against-supply-chain-vulnerabilities
+	- https://www.mongodb.com/blog/post/how-mongodb-protects-against-supply-chain-vulnerabilities
 
 - **Tool used to track third party vulnerabilities**
-- [Kondukto](https://arcticglow.kondukto.io/)
+	- [Kondukto](https://arcticglow.kondukto.io/)
 
 - **Dependency Information**
-${SBOM_TEXT}
+	${SBOM_TEXT}
 
 - **Security Testing Report**
-- Available as needed from Cloud Security.
+	- Available as needed from Cloud Security.
 
 - **Security Assessment Report**
-- Available as needed from Cloud Security.
+	- Available as needed from Cloud Security.
 
 Assumptions and attestations:
 
