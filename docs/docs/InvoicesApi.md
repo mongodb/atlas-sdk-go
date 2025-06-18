@@ -4,13 +4,13 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCostExplorerQueryProcess**](InvoicesApi.md#CreateCostExplorerQueryProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create Cost Explorer query process
-[**DownloadInvoiceCsv**](InvoicesApi.md#DownloadInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Organization Invoice as CSV
+[**CreateCostExplorerQueryProcess**](InvoicesApi.md#CreateCostExplorerQueryProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
+[**DownloadInvoiceCsv**](InvoicesApi.md#DownloadInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
 [**GetCostExplorerQueryProcess**](InvoicesApi.md#GetCostExplorerQueryProcess) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet.
-[**GetInvoice**](InvoicesApi.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Organization Invoice
+[**GetInvoice**](InvoicesApi.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
 [**ListInvoices**](InvoicesApi.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
 [**ListPendingInvoices**](InvoicesApi.md#ListPendingInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
-[**QueryLineItemsFromSingleInvoice**](InvoicesApi.md#QueryLineItemsFromSingleInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Query lineItems of the specified invoiceId
+[**QueryLineItemsFromSingleInvoice**](InvoicesApi.md#QueryLineItemsFromSingleInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
 
 
 
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 > CostExplorerFilterResponse CreateCostExplorerQueryProcess(ctx, orgId, costExplorerFilterRequestBody CostExplorerFilterRequestBody).Execute()
 
-Create Cost Explorer query process
+Create One Cost Explorer Query Process
 
 
 ### Example
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 > string DownloadInvoiceCsv(ctx, orgId, invoiceId).Execute()
 
-Return One Organization Invoice as CSV
+Return One Invoice as CSV for One Organization
 
 
 ### Example
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 > BillingInvoice GetInvoice(ctx, orgId, invoiceId).Execute()
 
-Return One Organization Invoice
+Return One Invoice for One Organization
 
 
 ### Example
@@ -527,7 +527,7 @@ Name | Type | Description  | Notes
 
 > PaginatedPublicApiUsageDetailsLineItem QueryLineItemsFromSingleInvoice(ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest ApiPublicUsageDetailsQueryRequest).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Query lineItems of the specified invoiceId
+Return All Line Items for One Invoice by Invoice ID
 
 
 ### Example

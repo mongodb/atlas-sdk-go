@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
 **Type** | Pointer to **string** | Type of the connection. | [optional] 
+**ClusterGroupId** | Pointer to **string** | The id of the group that the cluster belongs to. | [optional] 
 **ClusterName** | Pointer to **string** | Name of the cluster configured for this connection. | [optional] 
 **DbRoleToExecute** | Pointer to [**DBRoleToExecute**](DBRoleToExecute.md) |  | [optional] 
 **Authentication** | Pointer to [**StreamsKafkaAuthentication**](StreamsKafkaAuthentication.md) |  | [optional] 
@@ -109,6 +110,30 @@ SetType sets Type field to given value.
 `func (o *StreamsConnection) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+### GetClusterGroupId
+
+`func (o *StreamsConnection) GetClusterGroupId() string`
+
+GetClusterGroupId returns the ClusterGroupId field if non-nil, zero value otherwise.
+
+### GetClusterGroupIdOk
+
+`func (o *StreamsConnection) GetClusterGroupIdOk() (*string, bool)`
+
+GetClusterGroupIdOk returns a tuple with the ClusterGroupId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterGroupId
+
+`func (o *StreamsConnection) SetClusterGroupId(v string)`
+
+SetClusterGroupId sets ClusterGroupId field to given value.
+
+### HasClusterGroupId
+
+`func (o *StreamsConnection) HasClusterGroupId() bool`
+
+HasClusterGroupId returns a boolean if a field has been set.
 ### GetClusterName
 
 `func (o *StreamsConnection) GetClusterName() string`

@@ -60,7 +60,7 @@ type PerformanceAdvisorApi interface {
 	EnableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error)
 
 	/*
-		GetManagedSlowMs Return Managed Slow MS enabled
+		GetManagedSlowMs Return Managed Slow Operation Threshold Status
 
 		Get whether the Managed Slow MS feature is enabled.
 
@@ -70,7 +70,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	GetManagedSlowMs(ctx context.Context, groupId string) GetManagedSlowMsApiRequest
 	/*
-		GetManagedSlowMs Return Managed Slow MS enabled
+		GetManagedSlowMs Return Managed Slow Operation Threshold Status
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -83,7 +83,7 @@ type PerformanceAdvisorApi interface {
 	GetManagedSlowMsExecute(r GetManagedSlowMsApiRequest) (bool, *http.Response, error)
 
 	/*
-		GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
+		GetServerlessAutoIndexing Return Serverless Auto-Indexing Status
 
 		Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
 
@@ -94,7 +94,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	GetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) GetServerlessAutoIndexingApiRequest
 	/*
-		GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
+		GetServerlessAutoIndexing Return Serverless Auto-Indexing Status
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -107,7 +107,7 @@ type PerformanceAdvisorApi interface {
 	GetServerlessAutoIndexingExecute(r GetServerlessAutoIndexingApiRequest) (bool, *http.Response, error)
 
 	/*
-		ListClusterSuggestedIndexes Return Suggested Indexes
+		ListClusterSuggestedIndexes Return All Suggested Indexes
 
 		Returns the indexes that the Performance Advisor suggests. The Performance Advisor monitors queries that MongoDB considers slow and suggests new indexes to improve query performance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -118,7 +118,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListClusterSuggestedIndexes(ctx context.Context, groupId string, clusterName string) ListClusterSuggestedIndexesApiRequest
 	/*
-		ListClusterSuggestedIndexes Return Suggested Indexes
+		ListClusterSuggestedIndexes Return All Suggested Indexes
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -131,7 +131,7 @@ type PerformanceAdvisorApi interface {
 	ListClusterSuggestedIndexesExecute(r ListClusterSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error)
 
 	/*
-		ListDropIndexes Returns Suggested Indexes to Drop
+		ListDropIndexes Return All Suggested Indexes to Drop
 
 		Returns the indexes that the Performance Advisor suggests to drop. The Performance Advisor suggests dropping unused, redundant, and hidden indexes to improve write performance and increase storage space. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -142,7 +142,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListDropIndexes(ctx context.Context, groupId string, clusterName string) ListDropIndexesApiRequest
 	/*
-		ListDropIndexes Returns Suggested Indexes to Drop
+		ListDropIndexes Return All Suggested Indexes to Drop
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -227,7 +227,7 @@ type PerformanceAdvisorApi interface {
 	ListSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error)
 
 	/*
-		ListSuggestedIndexes Return Suggested Indexes
+		ListSuggestedIndexes Return All Suggested Indexes
 
 		Returns the indexes that the Performance Advisor suggests. The Performance Advisor monitors queries that MongoDB considers slow and suggests new indexes to improve query performance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -238,7 +238,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListSuggestedIndexes(ctx context.Context, groupId string, processId string) ListSuggestedIndexesApiRequest
 	/*
-		ListSuggestedIndexes Return Suggested Indexes
+		ListSuggestedIndexes Return All Suggested Indexes
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -251,7 +251,7 @@ type PerformanceAdvisorApi interface {
 	ListSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error)
 
 	/*
-		SetServerlessAutoIndexing Set Serverless Auto Indexing
+		SetServerlessAutoIndexing Set Serverless Auto-Indexing Status
 
 		Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
 
@@ -262,7 +262,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	SetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) SetServerlessAutoIndexingApiRequest
 	/*
-		SetServerlessAutoIndexing Set Serverless Auto Indexing
+		SetServerlessAutoIndexing Set Serverless Auto-Indexing Status
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -495,7 +495,7 @@ func (r GetManagedSlowMsApiRequest) Execute() (bool, *http.Response, error) {
 }
 
 /*
-GetManagedSlowMs Return Managed Slow MS enabled
+GetManagedSlowMs Return Managed Slow Operation Threshold Status
 
 Get whether the Managed Slow MS feature is enabled.
 
@@ -612,7 +612,7 @@ func (r GetServerlessAutoIndexingApiRequest) Execute() (bool, *http.Response, er
 }
 
 /*
-GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
+GetServerlessAutoIndexing Return Serverless Auto-Indexing Status
 
 Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
 
@@ -771,7 +771,7 @@ func (r ListClusterSuggestedIndexesApiRequest) Execute() (*PerformanceAdvisorRes
 }
 
 /*
-ListClusterSuggestedIndexes Return Suggested Indexes
+ListClusterSuggestedIndexes Return All Suggested Indexes
 
 Returns the indexes that the Performance Advisor suggests. The Performance Advisor monitors queries that MongoDB considers slow and suggests new indexes to improve query performance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -914,7 +914,7 @@ func (r ListDropIndexesApiRequest) Execute() (*DropIndexSuggestionsResponse, *ht
 }
 
 /*
-ListDropIndexes Returns Suggested Indexes to Drop
+ListDropIndexes Return All Suggested Indexes to Drop
 
 Returns the indexes that the Performance Advisor suggests to drop. The Performance Advisor suggests dropping unused, redundant, and hidden indexes to improve write performance and increase storage space. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1606,7 +1606,7 @@ func (r ListSuggestedIndexesApiRequest) Execute() (*PerformanceAdvisorResponse, 
 }
 
 /*
-ListSuggestedIndexes Return Suggested Indexes
+ListSuggestedIndexes Return All Suggested Indexes
 
 Returns the indexes that the Performance Advisor suggests. The Performance Advisor monitors queries that MongoDB considers slow and suggests new indexes to improve query performance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1782,7 +1782,7 @@ func (r SetServerlessAutoIndexingApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-SetServerlessAutoIndexing Set Serverless Auto Indexing
+SetServerlessAutoIndexing Set Serverless Auto-Indexing Status
 
 Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
 

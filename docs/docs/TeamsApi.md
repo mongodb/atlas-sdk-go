@@ -4,12 +4,12 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddAllTeamsToProject**](TeamsApi.md#AddAllTeamsToProject) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add One or More Teams to One Project
-[**AddTeamUser**](TeamsApi.md#AddTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users from One Organization to One Team
+[**AddAllTeamsToProject**](TeamsApi.md#AddAllTeamsToProject) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add Teams to One Project
+[**AddTeamUser**](TeamsApi.md#AddTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users in One Organization to One Team
 [**CreateTeam**](TeamsApi.md#CreateTeam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization
 [**DeleteTeam**](TeamsApi.md#DeleteTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Remove One Team from One Organization
-[**GetTeamById**](TeamsApi.md#GetTeamById) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Return One Team using its ID
-[**GetTeamByName**](TeamsApi.md#GetTeamByName) | **Get** /api/atlas/v2/orgs/{orgId}/teams/byName/{teamName} | Return One Team using its Name
+[**GetTeamById**](TeamsApi.md#GetTeamById) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Return One Team by ID
+[**GetTeamByName**](TeamsApi.md#GetTeamByName) | **Get** /api/atlas/v2/orgs/{orgId}/teams/byName/{teamName} | Return One Team by Name
 [**ListOrganizationTeams**](TeamsApi.md#ListOrganizationTeams) | **Get** /api/atlas/v2/orgs/{orgId}/teams | Return All Teams in One Organization
 [**ListProjectTeams**](TeamsApi.md#ListProjectTeams) | **Get** /api/atlas/v2/groups/{groupId}/teams | Return All Teams in One Project
 [**RemoveProjectTeam**](TeamsApi.md#RemoveProjectTeam) | **Delete** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Remove One Team from One Project
@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 > PaginatedTeamRole AddAllTeamsToProject(ctx, groupId, teamRole []TeamRole).Execute()
 
-Add One or More Teams to One Project
+Add Teams to One Project
 
 
 ### Example
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 > PaginatedApiAppUser AddTeamUser(ctx, orgId, teamId, addUserToTeam []AddUserToTeam).Execute()
 
-Assign MongoDB Cloud Users from One Organization to One Team
+Assign MongoDB Cloud Users in One Organization to One Team
 
 
 ### Example
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 > TeamResponse GetTeamById(ctx, orgId, teamId).Execute()
 
-Return One Team using its ID
+Return One Team by ID
 
 
 ### Example
@@ -436,7 +436,7 @@ Name | Type | Description  | Notes
 
 > TeamResponse GetTeamByName(ctx, orgId, teamName).Execute()
 
-Return One Team using its Name
+Return One Team by Name
 
 
 ### Example

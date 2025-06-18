@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteLdapConfiguration**](LDAPConfigurationApi.md#DeleteLdapConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove the Current LDAP User to DN Mapping
-[**GetLdapConfiguration**](LDAPConfigurationApi.md#GetLdapConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return the Current LDAP or X.509 Configuration
-[**GetLdapConfigurationStatus**](LDAPConfigurationApi.md#GetLdapConfigurationStatus) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return the Status of One Verify LDAP Configuration Request
-[**SaveLdapConfiguration**](LDAPConfigurationApi.md#SaveLdapConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Edit the LDAP or X.509 Configuration
-[**VerifyLdapConfiguration**](LDAPConfigurationApi.md#VerifyLdapConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify the LDAP Configuration in One Project
+[**DeleteLdapConfiguration**](LDAPConfigurationApi.md#DeleteLdapConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove LDAP User to DN Mapping
+[**GetLdapConfiguration**](LDAPConfigurationApi.md#GetLdapConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return LDAP or X.509 Configuration
+[**GetLdapConfigurationStatus**](LDAPConfigurationApi.md#GetLdapConfigurationStatus) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return Status of LDAP Configuration Verification in One Project
+[**SaveLdapConfiguration**](LDAPConfigurationApi.md#SaveLdapConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Update LDAP or X.509 Configuration
+[**VerifyLdapConfiguration**](LDAPConfigurationApi.md#VerifyLdapConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify LDAP Configuration in One Project
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > UserSecurity DeleteLdapConfiguration(ctx, groupId).Execute()
 
-Remove the Current LDAP User to DN Mapping
+Remove LDAP User to DN Mapping
 
 
 ### Example
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 > UserSecurity GetLdapConfiguration(ctx, groupId).Execute()
 
-Return the Current LDAP or X.509 Configuration
+Return LDAP or X.509 Configuration
 
 
 ### Example
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 > LDAPVerifyConnectivityJobRequest GetLdapConfigurationStatus(ctx, groupId, requestId).Execute()
 
-Return the Status of One Verify LDAP Configuration Request
+Return Status of LDAP Configuration Verification in One Project
 
 
 ### Example
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 > UserSecurity SaveLdapConfiguration(ctx, groupId, userSecurity UserSecurity).Execute()
 
-Edit the LDAP or X.509 Configuration
+Update LDAP or X.509 Configuration
 
 
 ### Example
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 > LDAPVerifyConnectivityJobRequest VerifyLdapConfiguration(ctx, groupId, lDAPVerifyConnectivityJobRequestParams LDAPVerifyConnectivityJobRequestParams).Execute()
 
-Verify the LDAP Configuration in One Project
+Verify LDAP Configuration in One Project
 
 
 ### Example

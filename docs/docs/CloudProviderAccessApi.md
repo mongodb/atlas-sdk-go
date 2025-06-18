@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**AuthorizeCloudProviderAccessRole**](CloudProviderAccessApi.md#AuthorizeCloudProviderAccessRole) | **Patch** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Authorize One Cloud Provider Access Role
 [**CreateCloudProviderAccessRole**](CloudProviderAccessApi.md#CreateCloudProviderAccessRole) | **Post** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Create One Cloud Provider Access Role
 [**DeauthorizeCloudProviderAccessRole**](CloudProviderAccessApi.md#DeauthorizeCloudProviderAccessRole) | **Delete** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId} | Deauthorize One Cloud Provider Access Role
-[**GetCloudProviderAccessRole**](CloudProviderAccessApi.md#GetCloudProviderAccessRole) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Return specified Cloud Provider Access Role
+[**GetCloudProviderAccessRole**](CloudProviderAccessApi.md#GetCloudProviderAccessRole) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Return One Cloud Provider Access Role
 [**ListCloudProviderAccessRoles**](CloudProviderAccessApi.md#ListCloudProviderAccessRoles) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Return All Cloud Provider Access Roles
 
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 > CloudProviderAccessRole GetCloudProviderAccessRole(ctx, groupId, roleId).Execute()
 
-Return specified Cloud Provider Access Role
+Return One Cloud Provider Access Role
 
 
 ### Example

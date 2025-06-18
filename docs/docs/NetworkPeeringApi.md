@@ -4,19 +4,19 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePeeringConnection**](NetworkPeeringApi.md#CreatePeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/peers | Create One New Network Peering Connection
-[**CreatePeeringContainer**](NetworkPeeringApi.md#CreatePeeringContainer) | **Post** /api/atlas/v2/groups/{groupId}/containers | Create One New Network Peering Container
-[**DeletePeeringConnection**](NetworkPeeringApi.md#DeletePeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Remove One Existing Network Peering Connection
+[**CreatePeeringConnection**](NetworkPeeringApi.md#CreatePeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/peers | Create One Network Peering Connection
+[**CreatePeeringContainer**](NetworkPeeringApi.md#CreatePeeringContainer) | **Post** /api/atlas/v2/groups/{groupId}/containers | Create One Network Peering Container
+[**DeletePeeringConnection**](NetworkPeeringApi.md#DeletePeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Remove One Network Peering Connection
 [**DeletePeeringContainer**](NetworkPeeringApi.md#DeletePeeringContainer) | **Delete** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Remove One Network Peering Container
-[**DisablePeering**](NetworkPeeringApi.md#DisablePeering) | **Patch** /api/atlas/v2/groups/{groupId}/privateIpMode | Disable Connect via Peering Only Mode for One Project
+[**DisablePeering**](NetworkPeeringApi.md#DisablePeering) | **Patch** /api/atlas/v2/groups/{groupId}/privateIpMode | Disable Connect via Peering-Only Mode for One Project
 [**GetPeeringConnection**](NetworkPeeringApi.md#GetPeeringConnection) | **Get** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Return One Network Peering Connection in One Project
 [**GetPeeringContainer**](NetworkPeeringApi.md#GetPeeringContainer) | **Get** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Return One Network Peering Container
 [**ListPeeringConnections**](NetworkPeeringApi.md#ListPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/peers | Return All Network Peering Connections in One Project
 [**ListPeeringContainerByCloudProvider**](NetworkPeeringApi.md#ListPeeringContainerByCloudProvider) | **Get** /api/atlas/v2/groups/{groupId}/containers | Return All Network Peering Containers in One Project for One Cloud Provider
 [**ListPeeringContainers**](NetworkPeeringApi.md#ListPeeringContainers) | **Get** /api/atlas/v2/groups/{groupId}/containers/all | Return All Network Peering Containers in One Project
-[**UpdatePeeringConnection**](NetworkPeeringApi.md#UpdatePeeringConnection) | **Patch** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Update One New Network Peering Connection
+[**UpdatePeeringConnection**](NetworkPeeringApi.md#UpdatePeeringConnection) | **Patch** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Update One Network Peering Connection
 [**UpdatePeeringContainer**](NetworkPeeringApi.md#UpdatePeeringContainer) | **Patch** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Update One Network Peering Container
-[**VerifyConnectViaPeeringOnlyModeForOneProject**](NetworkPeeringApi.md#VerifyConnectViaPeeringOnlyModeForOneProject) | **Get** /api/atlas/v2/groups/{groupId}/privateIpMode | Verify Connect via Peering Only Mode for One Project
+[**VerifyConnectViaPeeringOnlyModeForOneProject**](NetworkPeeringApi.md#VerifyConnectViaPeeringOnlyModeForOneProject) | **Get** /api/atlas/v2/groups/{groupId}/privateIpMode | Verify Connect via Peering-Only Mode for One Project
 
 
 
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 > BaseNetworkPeeringConnectionSettings CreatePeeringConnection(ctx, groupId, baseNetworkPeeringConnectionSettings BaseNetworkPeeringConnectionSettings).Execute()
 
-Create One New Network Peering Connection
+Create One Network Peering Connection
 
 
 ### Example
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 > CloudProviderContainer CreatePeeringContainer(ctx, groupId, cloudProviderContainer CloudProviderContainer).Execute()
 
-Create One New Network Peering Container
+Create One Network Peering Container
 
 
 ### Example
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 > any DeletePeeringConnection(ctx, groupId, peerId).Execute()
 
-Remove One Existing Network Peering Connection
+Remove One Network Peering Connection
 
 
 ### Example
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 
 > PrivateIPMode DisablePeering(ctx, groupId, privateIPMode PrivateIPMode).Execute()
 
-Disable Connect via Peering Only Mode for One Project
+Disable Connect via Peering-Only Mode for One Project
 
 
 ### Example
@@ -862,7 +862,7 @@ Name | Type | Description  | Notes
 
 > BaseNetworkPeeringConnectionSettings UpdatePeeringConnection(ctx, groupId, peerId, baseNetworkPeeringConnectionSettings BaseNetworkPeeringConnectionSettings).Execute()
 
-Update One New Network Peering Connection
+Update One Network Peering Connection
 
 
 ### Example
@@ -1032,7 +1032,7 @@ Name | Type | Description  | Notes
 
 > PrivateIPMode VerifyConnectViaPeeringOnlyModeForOneProject(ctx, groupId).Execute()
 
-Verify Connect via Peering Only Mode for One Project
+Verify Connect via Peering-Only Mode for One Project
 
 
 ### Example

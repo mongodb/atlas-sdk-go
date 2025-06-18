@@ -5,16 +5,16 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetAtlasProcess**](MonitoringAndLogsApi.md#GetAtlasProcess) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId} | Return One MongoDB Process by ID
-[**GetDatabase**](MonitoringAndLogsApi.md#GetDatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for a MongoDB Process
-[**GetDatabaseMeasurements**](MonitoringAndLogsApi.md#GetDatabaseMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements of One Database for One MongoDB Process
+[**GetDatabase**](MonitoringAndLogsApi.md#GetDatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for One MongoDB Process
+[**GetDatabaseMeasurements**](MonitoringAndLogsApi.md#GetDatabaseMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements for One Database in One MongoDB Process
 [**GetDiskMeasurements**](MonitoringAndLogsApi.md#GetDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process
 [**GetHostLogs**](MonitoringAndLogsApi.md#GetHostLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project
 [**GetHostMeasurements**](MonitoringAndLogsApi.md#GetHostMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process
-[**GetIndexMetrics**](MonitoringAndLogsApi.md#GetIndexMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Specified Namespace
+[**GetIndexMetrics**](MonitoringAndLogsApi.md#GetIndexMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Namespace
 [**GetMeasurements**](MonitoringAndLogsApi.md#GetMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics
 [**ListAtlasProcesses**](MonitoringAndLogsApi.md#ListAtlasProcesses) | **Get** /api/atlas/v2/groups/{groupId}/processes | Return All MongoDB Processes in One Project
 [**ListDatabases**](MonitoringAndLogsApi.md#ListDatabases) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases | Return Available Databases for One MongoDB Process
-[**ListDiskMeasurements**](MonitoringAndLogsApi.md#ListDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName} | Return Measurements of One Disk
+[**ListDiskMeasurements**](MonitoringAndLogsApi.md#ListDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName} | Return Measurements for One Disk
 [**ListDiskPartitions**](MonitoringAndLogsApi.md#ListDiskPartitions) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks | Return Available Disks for One MongoDB Process
 [**ListIndexMetrics**](MonitoringAndLogsApi.md#ListIndexMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements | Return All Atlas Search Index Metrics for One Namespace
 [**ListMetricTypes**](MonitoringAndLogsApi.md#ListMetricTypes) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics | Return All Atlas Search Metric Types for One Process
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 > MesurementsDatabase GetDatabase(ctx, groupId, databaseName, processId).Execute()
 
-Return One Database for a MongoDB Process
+Return One Database for One MongoDB Process
 
 
 ### Example
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 > ApiMeasurementsGeneralViewAtlas GetDatabaseMeasurements(ctx, groupId, databaseName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
 
-Return Measurements of One Database for One MongoDB Process
+Return Measurements for One Database in One MongoDB Process
 
 
 ### Example
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 
 > MeasurementsIndexes GetIndexMetrics(ctx, processId, indexName, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
 
-Return Atlas Search Metrics for One Index in One Specified Namespace
+Return Atlas Search Metrics for One Index in One Namespace
 
 
 ### Example
@@ -939,7 +939,7 @@ Name | Type | Description  | Notes
 
 > MeasurementDiskPartition ListDiskMeasurements(ctx, partitionName, groupId, processId).Execute()
 
-Return Measurements of One Disk
+Return Measurements for One Disk
 
 
 ### Example

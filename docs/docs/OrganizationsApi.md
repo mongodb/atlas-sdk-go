@@ -5,14 +5,14 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateOrganization**](OrganizationsApi.md#CreateOrganization) | **Post** /api/atlas/v2/orgs | Create One Organization
-[**CreateOrganizationInvitation**](OrganizationsApi.md#CreateOrganizationInvitation) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Invite One MongoDB Cloud User to Join One Atlas Organization
+[**CreateOrganizationInvitation**](OrganizationsApi.md#CreateOrganizationInvitation) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Invite One MongoDB Cloud User to One Atlas Organization
 [**DeleteOrganization**](OrganizationsApi.md#DeleteOrganization) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
-[**DeleteOrganizationInvitation**](OrganizationsApi.md#DeleteOrganizationInvitation) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Cancel One Organization Invitation
+[**DeleteOrganizationInvitation**](OrganizationsApi.md#DeleteOrganizationInvitation) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Organization Invitation
 [**GetOrganization**](OrganizationsApi.md#GetOrganization) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
 [**GetOrganizationInvitation**](OrganizationsApi.md#GetOrganizationInvitation) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Organization Invitation
 [**GetOrganizationSettings**](OrganizationsApi.md#GetOrganizationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
 [**ListOrganizationInvitations**](OrganizationsApi.md#ListOrganizationInvitations) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Organization Invitations
-[**ListOrganizationProjects**](OrganizationsApi.md#ListOrganizationProjects) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return One or More Projects in One Organization
+[**ListOrganizationProjects**](OrganizationsApi.md#ListOrganizationProjects) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
 [**ListOrganizations**](OrganizationsApi.md#ListOrganizations) | **Get** /api/atlas/v2/orgs | Return All Organizations
 [**UpdateOrganization**](OrganizationsApi.md#UpdateOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
 [**UpdateOrganizationInvitation**](OrganizationsApi.md#UpdateOrganizationInvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 > OrganizationInvitation CreateOrganizationInvitation(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
 
-Invite One MongoDB Cloud User to Join One Atlas Organization
+Invite One MongoDB Cloud User to One Atlas Organization
 
 
 ### Example
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 > DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
 
-Cancel One Organization Invitation
+Remove One Organization Invitation
 
 
 ### Example
@@ -668,7 +668,7 @@ Name | Type | Description  | Notes
 
 > PaginatedAtlasGroup ListOrganizationProjects(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
 
-Return One or More Projects in One Organization
+Return All Projects in One Organization
 
 
 ### Example

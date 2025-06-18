@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**CreateOneDataFederationQueryLimit**](DataFederationApi.md#CreateOneDataFederationQueryLimit) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Configure One Query Limit for One Federated Database Instance
 [**DeleteDataFederationPrivateEndpoint**](DataFederationApi.md#DeleteDataFederationPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
 [**DeleteFederatedDatabase**](DataFederationApi.md#DeleteFederatedDatabase) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Remove One Federated Database Instance from One Project
-[**DeleteOneDataFederationInstanceQueryLimit**](DataFederationApi.md#DeleteOneDataFederationInstanceQueryLimit) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Delete One Query Limit For One Federated Database Instance
+[**DeleteOneDataFederationInstanceQueryLimit**](DataFederationApi.md#DeleteOneDataFederationInstanceQueryLimit) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Delete One Query Limit for One Federated Database Instance
 [**DownloadFederatedDatabaseQueryLogs**](DataFederationApi.md#DownloadFederatedDatabaseQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz | Download Query Logs for One Federated Database Instance
 [**GetDataFederationPrivateEndpoint**](DataFederationApi.md#GetDataFederationPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Return One Federated Database Instance and Online Archive Private Endpoint in One Project
 [**GetFederatedDatabase**](DataFederationApi.md#GetFederatedDatabase) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Return One Federated Database Instance in One Project
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 > DeleteOneDataFederationInstanceQueryLimit(ctx, groupId, tenantName, limitName).Execute()
 
-Delete One Query Limit For One Federated Database Instance
+Delete One Query Limit for One Federated Database Instance
 
 
 ### Example

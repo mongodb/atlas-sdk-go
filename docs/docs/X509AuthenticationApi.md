@@ -4,9 +4,9 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDatabaseUserCertificate**](X509AuthenticationApi.md#CreateDatabaseUserCertificate) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Create One X.509 Certificate for One MongoDB User
+[**CreateDatabaseUserCertificate**](X509AuthenticationApi.md#CreateDatabaseUserCertificate) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Create One X.509 Certificate for One Database User
 [**DisableCustomerManagedX509**](X509AuthenticationApi.md#DisableCustomerManagedX509) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/customerX509 | Disable Customer-Managed X.509
-[**ListDatabaseUserCertificates**](X509AuthenticationApi.md#ListDatabaseUserCertificates) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Return All X.509 Certificates Assigned to One MongoDB User
+[**ListDatabaseUserCertificates**](X509AuthenticationApi.md#ListDatabaseUserCertificates) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Return All X.509 Certificates Assigned to One Database User
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > string CreateDatabaseUserCertificate(ctx, groupId, username, userCert UserCert).Execute()
 
-Create One X.509 Certificate for One MongoDB User
+Create One X.509 Certificate for One Database User
 
 
 ### Example
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 > PaginatedUserCert ListDatabaseUserCertificates(ctx, groupId, username).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All X.509 Certificates Assigned to One MongoDB User
+Return All X.509 Certificates Assigned to One Database User
 
 
 ### Example

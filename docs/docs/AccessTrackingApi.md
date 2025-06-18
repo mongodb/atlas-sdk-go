@@ -4,8 +4,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListAccessLogsByClusterName**](AccessTrackingApi.md#ListAccessLogsByClusterName) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster using Its Cluster Name
-[**ListAccessLogsByHostname**](AccessTrackingApi.md#ListAccessLogsByHostname) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname} | Return Database Access History for One Cluster using Its Hostname
+[**ListAccessLogsByClusterName**](AccessTrackingApi.md#ListAccessLogsByClusterName) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster by Cluster Name
+[**ListAccessLogsByHostname**](AccessTrackingApi.md#ListAccessLogsByHostname) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname} | Return Database Access History for One Cluster by Hostname
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > MongoDBAccessLogsList ListAccessLogsByClusterName(ctx, groupId, clusterName).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
 
-Return Database Access History for One Cluster using Its Cluster Name
+Return Database Access History for One Cluster by Cluster Name
 
 
 ### Example
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 > MongoDBAccessLogsList ListAccessLogsByHostname(ctx, groupId, hostname).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
 
-Return Database Access History for One Cluster using Its Hostname
+Return Database Access History for One Cluster by Hostname
 
 
 ### Example

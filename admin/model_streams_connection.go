@@ -11,6 +11,8 @@ type StreamsConnection struct {
 	Name *string `json:"name,omitempty"`
 	// Type of the connection.
 	Type *string `json:"type,omitempty"`
+	// The id of the group that the cluster belongs to.
+	ClusterGroupId *string `json:"clusterGroupId,omitempty"`
 	// Name of the cluster configured for this connection.
 	ClusterName     *string                     `json:"clusterName,omitempty"`
 	DbRoleToExecute *DBRoleToExecute            `json:"dbRoleToExecute,omitempty"`
@@ -142,6 +144,39 @@ func (o *StreamsConnection) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *StreamsConnection) SetType(v string) {
 	o.Type = &v
+}
+
+// GetClusterGroupId returns the ClusterGroupId field value if set, zero value otherwise
+func (o *StreamsConnection) GetClusterGroupId() string {
+	if o == nil || IsNil(o.ClusterGroupId) {
+		var ret string
+		return ret
+	}
+	return *o.ClusterGroupId
+}
+
+// GetClusterGroupIdOk returns a tuple with the ClusterGroupId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetClusterGroupIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ClusterGroupId) {
+		return nil, false
+	}
+
+	return o.ClusterGroupId, true
+}
+
+// HasClusterGroupId returns a boolean if a field has been set.
+func (o *StreamsConnection) HasClusterGroupId() bool {
+	if o != nil && !IsNil(o.ClusterGroupId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterGroupId gets a reference to the given string and assigns it to the ClusterGroupId field.
+func (o *StreamsConnection) SetClusterGroupId(v string) {
+	o.ClusterGroupId = &v
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
