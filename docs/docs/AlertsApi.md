@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**AcknowledgeAlert**](AlertsApi.md#AcknowledgeAlert) | **Patch** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Acknowledge One Alert from One Project
 [**GetAlert**](AlertsApi.md#GetAlert) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Return One Alert from One Project
 [**ListAlerts**](AlertsApi.md#ListAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alerts | Return All Alerts from One Project
-[**ListAlertsByAlertConfigurationId**](AlertsApi.md#ListAlertsByAlertConfigurationId) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts | Return All Open Alerts for Alert Configuration
+[**ListAlertsByAlertConfigurationId**](AlertsApi.md#ListAlertsByAlertConfigurationId) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts | Return All Open Alerts for One Alert Configuration
 
 
 
@@ -28,7 +28,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -113,7 +113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 > PaginatedAlert ListAlertsByAlertConfigurationId(ctx, groupId, alertConfigId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Open Alerts for Alert Configuration
+Return All Open Alerts for One Alert Configuration
 
 
 ### Example
@@ -284,7 +284,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

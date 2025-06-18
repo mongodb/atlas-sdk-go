@@ -87,7 +87,7 @@ type CloudProviderAccessApi interface {
 	DeauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error)
 
 	/*
-		GetCloudProviderAccessRole Return specified Cloud Provider Access Role
+		GetCloudProviderAccessRole Return One Cloud Provider Access Role
 
 		Returns the access role with the specified id and with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -98,7 +98,7 @@ type CloudProviderAccessApi interface {
 	*/
 	GetCloudProviderAccessRole(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessRoleApiRequest
 	/*
-		GetCloudProviderAccessRole Return specified Cloud Provider Access Role
+		GetCloudProviderAccessRole Return One Cloud Provider Access Role
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -533,7 +533,7 @@ func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRol
 }
 
 /*
-GetCloudProviderAccessRole Return specified Cloud Provider Access Role
+GetCloudProviderAccessRole Return One Cloud Provider Access Role
 
 Returns the access role with the specified id and with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 

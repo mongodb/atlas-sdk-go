@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BucketName** | **string** | The name of the bucket to which the agent will send the logs to. | 
 **IamRoleId** | **string** | ID of the AWS IAM role that will be used to write to the S3 bucket. | 
-**Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **PrefixPath** | **string** | S3 directory in which vector will write to in order to store the logs. An empty string denotes the root directory. | 
 
 ## Methods
@@ -66,30 +65,6 @@ and a boolean to check if the value has been set.
 
 SetIamRoleId sets IamRoleId field to given value.
 
-### GetLinks
-
-`func (o *CreatePushBasedLogExportProjectRequest) GetLinks() []Link`
-
-GetLinks returns the Links field if non-nil, zero value otherwise.
-
-### GetLinksOk
-
-`func (o *CreatePushBasedLogExportProjectRequest) GetLinksOk() (*[]Link, bool)`
-
-GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLinks
-
-`func (o *CreatePushBasedLogExportProjectRequest) SetLinks(v []Link)`
-
-SetLinks sets Links field to given value.
-
-### HasLinks
-
-`func (o *CreatePushBasedLogExportProjectRequest) HasLinks() bool`
-
-HasLinks returns a boolean if a field has been set.
 ### GetPrefixPath
 
 `func (o *CreatePushBasedLogExportProjectRequest) GetPrefixPath() string`

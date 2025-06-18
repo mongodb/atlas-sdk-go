@@ -5,7 +5,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DownloadSharedClusterBackup**](SharedTierSnapshotsApi.md#DownloadSharedClusterBackup) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download | Download One M2 or M5 Cluster Snapshot
-[**GetSharedClusterBackup**](SharedTierSnapshotsApi.md#GetSharedClusterBackup) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId} | Return One Snapshot for One M2 or M5 Cluster
+[**GetSharedClusterBackup**](SharedTierSnapshotsApi.md#GetSharedClusterBackup) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId} | Return One Snapshot of One M2 or M5 Cluster
 [**ListSharedClusterBackups**](SharedTierSnapshotsApi.md#ListSharedClusterBackups) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots | Return All Snapshots for One M2 or M5 Cluster
 
 
@@ -27,7 +27,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 > BackupTenantSnapshot GetSharedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
-Return One Snapshot for One M2 or M5 Cluster
+Return One Snapshot of One M2 or M5 Cluster
 
 
 ### Example
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

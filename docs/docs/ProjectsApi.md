@@ -6,16 +6,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddUserToProject**](ProjectsApi.md#AddUserToProject) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project
 [**CreateProject**](ProjectsApi.md#CreateProject) | **Post** /api/atlas/v2/groups | Create One Project
-[**CreateProjectInvitation**](ProjectsApi.md#CreateProjectInvitation) | **Post** /api/atlas/v2/groups/{groupId}/invites | Invite One MongoDB Cloud User to Join One Project
+[**CreateProjectInvitation**](ProjectsApi.md#CreateProjectInvitation) | **Post** /api/atlas/v2/groups/{groupId}/invites | Invite One MongoDB Cloud User to One Project
 [**DeleteProject**](ProjectsApi.md#DeleteProject) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project
-[**DeleteProjectInvitation**](ProjectsApi.md#DeleteProjectInvitation) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Cancel One Project Invitation
+[**DeleteProjectInvitation**](ProjectsApi.md#DeleteProjectInvitation) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Project Invitation
 [**DeleteProjectLimit**](ProjectsApi.md#DeleteProjectLimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit
 [**GetProject**](ProjectsApi.md#GetProject) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
-[**GetProjectByName**](ProjectsApi.md#GetProjectByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project using Its Name
+[**GetProjectByName**](ProjectsApi.md#GetProjectByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name
 [**GetProjectInvitation**](ProjectsApi.md#GetProjectInvitation) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Project Invitation
 [**GetProjectLimit**](ProjectsApi.md#GetProjectLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
-[**GetProjectLtsVersions**](ProjectsApi.md#GetProjectLtsVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return Available MongoDB LTS Versions for clusters in One Project
-[**GetProjectSettings**](ProjectsApi.md#GetProjectSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return One Project Settings
+[**GetProjectLtsVersions**](ProjectsApi.md#GetProjectLtsVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project
+[**GetProjectSettings**](ProjectsApi.md#GetProjectSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings
 [**ListProjectInvitations**](ProjectsApi.md#ListProjectInvitations) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations
 [**ListProjectLimits**](ProjectsApi.md#ListProjectLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
 [**ListProjects**](ProjectsApi.md#ListProjects) | **Get** /api/atlas/v2/groups | Return All Projects
@@ -26,7 +26,7 @@ Method | HTTP request | Description
 [**UpdateProjectInvitation**](ProjectsApi.md#UpdateProjectInvitation) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation
 [**UpdateProjectInvitationById**](ProjectsApi.md#UpdateProjectInvitationById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID
 [**UpdateProjectRoles**](ProjectsApi.md#UpdateProjectRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
-[**UpdateProjectSettings**](ProjectsApi.md#UpdateProjectSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update One Project Settings
+[**UpdateProjectSettings**](ProjectsApi.md#UpdateProjectSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings
 
 
 
@@ -47,7 +47,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -129,7 +129,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 > GroupInvitation CreateProjectInvitation(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
 
-Invite One MongoDB Cloud User to Join One Project
+Invite One MongoDB Cloud User to One Project
 
 
 ### Example
@@ -207,7 +207,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -289,7 +289,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 > DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
 
-Cancel One Project Invitation
+Remove One Project Invitation
 
 
 ### Example
@@ -367,7 +367,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -448,7 +448,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -529,7 +529,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -596,7 +596,7 @@ Name | Type | Description  | Notes
 
 > Group GetProjectByName(ctx, groupName).Execute()
 
-Return One Project using Its Name
+Return One Project by Name
 
 
 ### Example
@@ -609,7 +609,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -689,7 +689,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -772,7 +772,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -842,7 +842,7 @@ Name | Type | Description  | Notes
 
 > PaginatedAvailableVersion GetProjectLtsVersions(ctx, groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return Available MongoDB LTS Versions for clusters in One Project
+Return All Available MongoDB LTS Versions for Clusters in One Project
 
 
 ### Example
@@ -855,7 +855,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -932,7 +932,7 @@ Name | Type | Description  | Notes
 
 > GroupSettings GetProjectSettings(ctx, groupId).Execute()
 
-Return One Project Settings
+Return Project Settings
 
 
 ### Example
@@ -945,7 +945,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1025,7 +1025,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1107,7 +1107,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1187,7 +1187,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1267,7 +1267,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1349,7 +1349,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1429,7 +1429,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1514,7 +1514,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1596,7 +1596,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1678,7 +1678,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1763,7 +1763,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -1835,7 +1835,7 @@ Name | Type | Description  | Notes
 
 > GroupSettings UpdateProjectSettings(ctx, groupId, groupSettings GroupSettings).Execute()
 
-Update One Project Settings
+Update Project Settings
 
 
 ### Example
@@ -1848,7 +1848,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

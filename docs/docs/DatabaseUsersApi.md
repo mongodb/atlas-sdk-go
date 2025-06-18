@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**CreateDatabaseUser**](DatabaseUsersApi.md#CreateDatabaseUser) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers | Create One Database User in One Project
 [**DeleteDatabaseUser**](DatabaseUsersApi.md#DeleteDatabaseUser) | **Delete** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Remove One Database User from One Project
 [**GetDatabaseUser**](DatabaseUsersApi.md#GetDatabaseUser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project
-[**ListDatabaseUsers**](DatabaseUsersApi.md#ListDatabaseUsers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users from One Project
+[**ListDatabaseUsers**](DatabaseUsersApi.md#ListDatabaseUsers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users in One Project
 [**UpdateDatabaseUser**](DatabaseUsersApi.md#UpdateDatabaseUser) | **Patch** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Update One Database User in One Project
 
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -111,7 +111,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -195,7 +195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 > PaginatedApiAtlasDatabaseUser ListDatabaseUsers(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Database Users from One Project
+Return All Database Users in One Project
 
 
 ### Example
@@ -281,7 +281,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -367,7 +367,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

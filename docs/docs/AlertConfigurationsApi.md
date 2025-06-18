@@ -7,11 +7,11 @@ Method | HTTP request | Description
 [**CreateAlertConfiguration**](AlertConfigurationsApi.md#CreateAlertConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/alertConfigs | Create One Alert Configuration in One Project
 [**DeleteAlertConfiguration**](AlertConfigurationsApi.md#DeleteAlertConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Remove One Alert Configuration from One Project
 [**GetAlertConfiguration**](AlertConfigurationsApi.md#GetAlertConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Return One Alert Configuration from One Project
-[**ListAlertConfigurationMatchersFieldNames**](AlertConfigurationsApi.md#ListAlertConfigurationMatchersFieldNames) | **Get** /api/atlas/v2/alertConfigs/matchers/fieldNames | Get All Alert Configuration Matchers Field Names
-[**ListAlertConfigurations**](AlertConfigurationsApi.md#ListAlertConfigurations) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs | Return All Alert Configurations for One Project
+[**ListAlertConfigurationMatchersFieldNames**](AlertConfigurationsApi.md#ListAlertConfigurationMatchersFieldNames) | **Get** /api/atlas/v2/alertConfigs/matchers/fieldNames | Return All Alert Configuration Matchers Field Names
+[**ListAlertConfigurations**](AlertConfigurationsApi.md#ListAlertConfigurations) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs | Return All Alert Configurations in One Project
 [**ListAlertConfigurationsByAlertId**](AlertConfigurationsApi.md#ListAlertConfigurationsByAlertId) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs | Return All Alert Configurations Set for One Alert
-[**ToggleAlertConfiguration**](AlertConfigurationsApi.md#ToggleAlertConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Toggle One State of One Alert Configuration in One Project
-[**UpdateAlertConfiguration**](AlertConfigurationsApi.md#UpdateAlertConfiguration) | **Put** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Update One Alert Configuration for One Project
+[**ToggleAlertConfiguration**](AlertConfigurationsApi.md#ToggleAlertConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Toggle State of One Alert Configuration in One Project
+[**UpdateAlertConfiguration**](AlertConfigurationsApi.md#UpdateAlertConfiguration) | **Put** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Update One Alert Configuration in One Project
 
 
 
@@ -32,7 +32,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -195,7 +195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 > []string ListAlertConfigurationMatchersFieldNames(ctx).Execute()
 
-Get All Alert Configuration Matchers Field Names
+Return All Alert Configuration Matchers Field Names
 
 
 ### Example
@@ -278,7 +278,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -336,7 +336,7 @@ Other parameters are passed through a pointer to a apiListAlertConfigurationMatc
 
 > PaginatedAlertConfig ListAlertConfigurations(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Alert Configurations for One Project
+Return All Alert Configurations in One Project
 
 
 ### Example
@@ -349,7 +349,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -435,7 +435,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 
 > GroupAlertsConfig ToggleAlertConfiguration(ctx, groupId, alertConfigId, alertsToggle AlertsToggle).Execute()
 
-Toggle One State of One Alert Configuration in One Project
+Toggle State of One Alert Configuration in One Project
 
 
 ### Example
@@ -524,7 +524,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -596,7 +596,7 @@ Name | Type | Description  | Notes
 
 > GroupAlertsConfig UpdateAlertConfiguration(ctx, groupId, alertConfigId, groupAlertsConfig GroupAlertsConfig).Execute()
 
-Update One Alert Configuration for One Project
+Update One Alert Configuration in One Project
 
 
 ### Example
@@ -609,7 +609,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

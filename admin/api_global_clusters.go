@@ -13,7 +13,7 @@ import (
 type GlobalClustersApi interface {
 
 	/*
-		CreateCustomZoneMapping Add One Entry to One Custom Zone Mapping
+		CreateCustomZoneMapping Add One Custom Zone Mapping to One Global Cluster
 
 		Creates one custom zone mapping for the specified global cluster. A custom zone mapping matches one ISO 3166-2 location code to a zone in your global cluster. By default, MongoDB Cloud maps each location code to the closest geographical zone. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
@@ -25,7 +25,7 @@ type GlobalClustersApi interface {
 	*/
 	CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, customZoneMappings *CustomZoneMappings) CreateCustomZoneMappingApiRequest
 	/*
-		CreateCustomZoneMapping Add One Entry to One Custom Zone Mapping
+		CreateCustomZoneMapping Add One Custom Zone Mapping to One Global Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -167,7 +167,7 @@ func (r CreateCustomZoneMappingApiRequest) Execute() (*GeoSharding20240805, *htt
 }
 
 /*
-CreateCustomZoneMapping Add One Entry to One Custom Zone Mapping
+CreateCustomZoneMapping Add One Custom Zone Mapping to One Global Cluster
 
 Creates one custom zone mapping for the specified global cluster. A custom zone mapping matches one ISO 3166-2 location code to a zone in your global cluster. By default, MongoDB Cloud maps each location code to the closest geographical zone. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 

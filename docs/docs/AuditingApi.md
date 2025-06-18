@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAuditingConfiguration**](AuditingApi.md#GetAuditingConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return the Auditing Configuration for One Project
+[**GetAuditingConfiguration**](AuditingApi.md#GetAuditingConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return Auditing Configuration for One Project
 [**UpdateAuditingConfiguration**](AuditingApi.md#UpdateAuditingConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > AuditLog GetAuditingConfiguration(ctx, groupId).Execute()
 
-Return the Auditing Configuration for One Project
+Return Auditing Configuration for One Project
 
 
 ### Example
@@ -26,7 +26,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {
@@ -106,7 +106,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312003/admin"
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
 )
 
 func main() {

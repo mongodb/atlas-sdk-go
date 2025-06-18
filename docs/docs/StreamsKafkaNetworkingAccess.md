@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Reserved. Will be used by PRIVATE_LINK connection type. | [optional] 
 **TgwId** | Pointer to **string** | Reserved. Will be used by TRANSIT_GATEWAY connection type. | [optional] 
+**TgwRouteId** | Pointer to **string** | Reserved. Will be used by TRANSIT_GATEWAY connection type. | [optional] 
 **Type** | Pointer to **string** | Selected networking type. Either PUBLIC, VPC, PRIVATE_LINK, or TRANSIT_GATEWAY. Defaults to PUBLIC. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. TRANSIT_GATEWAY support is coming soon. | [optional] 
 **VpcCIDR** | Pointer to **string** | Reserved. Will be used by TRANSIT_GATEWAY connection type. | [optional] 
 
@@ -126,6 +127,30 @@ SetTgwId sets TgwId field to given value.
 `func (o *StreamsKafkaNetworkingAccess) HasTgwId() bool`
 
 HasTgwId returns a boolean if a field has been set.
+### GetTgwRouteId
+
+`func (o *StreamsKafkaNetworkingAccess) GetTgwRouteId() string`
+
+GetTgwRouteId returns the TgwRouteId field if non-nil, zero value otherwise.
+
+### GetTgwRouteIdOk
+
+`func (o *StreamsKafkaNetworkingAccess) GetTgwRouteIdOk() (*string, bool)`
+
+GetTgwRouteIdOk returns a tuple with the TgwRouteId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTgwRouteId
+
+`func (o *StreamsKafkaNetworkingAccess) SetTgwRouteId(v string)`
+
+SetTgwRouteId sets TgwRouteId field to given value.
+
+### HasTgwRouteId
+
+`func (o *StreamsKafkaNetworkingAccess) HasTgwRouteId() bool`
+
+HasTgwRouteId returns a boolean if a field has been set.
 ### GetType
 
 `func (o *StreamsKafkaNetworkingAccess) GetType() string`
