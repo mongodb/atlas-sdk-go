@@ -10,13 +10,17 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      release_tag: ${{ steps.set_tag.outputs.release_tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Release env
+        id: set_tag
         working-directory: ./tools
         run: |
           ./releaser/scripts/setghenv.sh
+          echo "release_tag=${RELEASE_TAG}" >> $GITHUB_OUTPUT
       - name: Create Release 
         uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631
         with:
@@ -34,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SILKBOMB_IMG: ${{ vars.SILKBOMB_IMG }}
+      RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -56,6 +61,8 @@ jobs:
   generate-ssdlc-report:
     needs: compliance
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
