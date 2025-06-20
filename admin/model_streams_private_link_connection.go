@@ -39,7 +39,7 @@ type StreamsPrivateLinkConnection struct {
 	// State the connection is in.
 	// Read only field.
 	State *string `json:"state,omitempty"`
-	// Vendor that manages the Kafka cluster. The following are the vendor values per provider: - MSK and CONFLUENT for the AWS provider. - EVENTHUB and CONFLUENT for the AZURE provider.  **NOTE** Omitting the vendor field will default to using the EVENTHUB vendor for the AZURE provider.
+	// Vendor that manages the cloud service. The following are the vendor values per provider: - AWS -- MSK for AWS MSK Kafka clusters -- CONFLUENT for Confluent Kafka clusters on AWS -- KINESIS for AWS Kinesis Data Streams (coming soon).  - Azure -- EVENTHUB for Azure EventHub. -- CONFLUENT for the Confluent Kafka clusters on Azure  **NOTE** Omitting the vendor field will default to using the GENERIC vendor.
 	Vendor *string `json:"vendor,omitempty"`
 }
 
