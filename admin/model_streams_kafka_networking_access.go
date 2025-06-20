@@ -2,7 +2,7 @@
 
 package admin
 
-// StreamsKafkaNetworkingAccess Information about the networking access.
+// StreamsKafkaNetworkingAccess Information about networking access.
 type StreamsKafkaNetworkingAccess struct {
 	// Reserved. Will be used by PRIVATE_LINK connection type.
 	ConnectionId *string `json:"connectionId,omitempty"`

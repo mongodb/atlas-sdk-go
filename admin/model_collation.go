@@ -10,7 +10,7 @@ type Collation struct {
 	Backwards *bool `json:"backwards,omitempty"`
 	// Method to handle sort order of case differences during tertiary level comparisons. `\"upper\"` sorts Uppercase before lowercase. `\"lower\"` sorts Lowercase before uppercase. `\"off\"` is similar to \"lower\" with slight differences.
 	CaseFirst *string `json:"caseFirst,omitempty"`
-	// Flag that indicates whether to include case comparison when `\"strength\" : 1` or `\"strength\" : 2`.  | Value | Compare case at level 1 or 2? | Strength Level | Comparisons Include |  |---|---|---|---|  | true | Yes | 1 | Base characters and case. |  |  |  | 2 | Base characters, diacritics (and possible other secondary differences),   and case. |  | false | No |  |  |
+	// Flag that indicates whether to include case comparison when `\"strength\" : 1` or `\"strength\" : 2`. - `true` - Include casing in comparison   - Strength Level: 1 - Base characters and case.   - Strength Level: 2 - Base characters, diacritics (and possible other secondary differences),   and case. - `false` - Case is NOT included in comparison.
 	CaseLevel *bool `json:"caseLevel,omitempty"`
 	// International Components for Unicode (ICU) code that represents a localized language. To specify simple binary comparison, set `\"locale\" : \"simple\"`.
 	Locale string `json:"locale"`
@@ -20,7 +20,7 @@ type Collation struct {
 	Normalization *bool `json:"normalization,omitempty"`
 	// Flag that indicates whether to compare sequences of digits as numbers or as strings. `true` will compare as numbers, this results in `10 > 2`. `false` will Compare as strings. This results in `\"10\" < \"2\"`.
 	NumericOrdering *bool `json:"numericOrdering,omitempty"`
-	// Degree of comparison to perform when sorting words. MongoDB Cloud accepts the following values:  | Value | Comparison Level | Comparison Method | |---|---|---| | 1 | Primary | Compares the base characters only, ignoring other differences such as diacritics and case. | | 2 | Secondary | Compares base characters (primary) and diacritics (secondary). Primary differences take precedence over secondary differences. | | 3 | Tertiary | Compares base characters (primary), diacritics (secondary), and case and variants (tertiary). Differences between base characters takes precedence over secondary differences which take precedence over tertiary differences. | | 4 | Quaternary | Compares for the specific use case to consider punctuation when levels 1 through 3 ignore punctuation or for processing Japanese text. | | 5 | Identical | Compares for the specific use case of tie breaker. |
+	// Degree of comparison to perform when sorting words.  MongoDB Cloud accepts the following _numeric values_ that correspond to the _comparison level_ and what that _comparison method_ is.  - `1` - \"Primary\" - Compares the base characters only, ignoring other differences such as diacritics and case. - `2` - \"Secondary\" - Compares base characters (primary) and diacritics (secondary). Primary differences take precedence over secondary differences. - `3` - \"Tertiary\" - Compares base characters (primary), diacritics (secondary), and case and variants (tertiary). Differences between base characters takes precedence over secondary differences which take precedence over tertiary differences. - `4` - \"Quaternary\" - Compares for the specific use case to consider punctuation when levels 1 through 3 ignore punctuation or for processing Japanese text. - `5` - \"Identical\" - Compares for the specific use case of tie breaker.
 	Strength *int `json:"strength,omitempty"`
 }
 
