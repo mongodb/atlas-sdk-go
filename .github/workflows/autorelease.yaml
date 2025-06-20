@@ -10,13 +10,17 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      release_tag: ${{ steps.set_tag.outputs.release_tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Release env
+        id: set_tag
         working-directory: ./tools
         run: |
           ./releaser/scripts/setghenv.sh
+          echo "release_tag=${RELEASE_TAG}" >> $GITHUB_OUTPUT
       - name: Create Release 
         uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631
         with:
@@ -29,3 +33,50 @@ jobs:
           LATEST_SDK_RELEASE=$(echo "${LATEST_SDK_TAG}" | cut -d '.' -f 1)
           echo "tag: ${LATEST_SDK_TAG}, release: ${LATEST_SDK_RELEASE}"
           curl -sSfL "https://proxy.golang.org/go.mongodb.org/atlas-sdk/${LATEST_SDK_RELEASE}/@v/${LATEST_SDK_TAG}.info"
+  compliance:
+    needs: release
+    runs-on: ubuntu-latest
+    env:
+      SILKBOMB_IMG: ${{ vars.SILKBOMB_IMG }}
+      RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+            ref: ${{ env.RELEASE_TAG }}
+      - name: Generate PURLs and SBOM
+        run: make gen-purls gen-sbom
+      - name: Upload SBOM to Kondukto
+        run: make upload-sbom
+        env:
+          KONDUKTO_TOKEN: ${{ secrets.KONDUKTO_TOKEN }}
+          KONDUKTO_REPO: ${{ vars.KONDUKTO_REPO }}
+          KONDUKTO_BRANCH_PREFIX: ${{ vars.KONDUKTO_BRANCH_PREFIX }}
+      - name: Upload SBOM as release artifact
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631
+        with:
+          files: compliance/sbom.json
+          tag_name: ${{ env.RELEASE_TAG }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  generate-ssdlc-report:
+    needs: compliance
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: ./.github/templates/run-script-and-commit
+        with:
+          script_call: |
+            TAG="${{ env.RELEASE_TAG }}"
+            VERSION="${TAG#v}"
+            AUTHOR="${{ github.actor }}"
+            export AUTHOR VERSION
+            ./scripts/compliance/gen-ssdlc-report.sh
+          file_to_commit: 'compliance/v*/ssdlc-compliance-*.md'
+          commit_message: "chore: Update SSDLC report for ${{ env.RELEASE_TAG }}"
+          apix_bot_pat: ${{ secrets.APIX_BOT_PAT }}
+          remote: https://svc-apix-bot:${{ secrets.APIX_BOT_PAT }}@github.com/${{ github.repository }}
+          gpg_private_key: ${{ secrets.APIX_BOT_GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.APIX_BOT_PASSPHRASE }}

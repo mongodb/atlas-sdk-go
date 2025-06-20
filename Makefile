@@ -72,3 +72,19 @@ openapi-pipeline: install-goimports
 gen-docs:
 	$(MAKE) -C tools generate_docs
 	./scripts/toc.sh
+
+.PHONY: gen-purls
+gen-purls:
+	./scripts/compliance/gen-purls.sh
+
+.PHONY: gen-sbom
+gen-sbom:
+	./scripts/compliance/gen-sbom.sh
+
+.PHONY: gen-ssdlc-report
+gen-ssdlc-report:
+	./scripts/compliance/gen-ssdlc-report.sh
+
+.PHONY: upload-sbom
+upload-sbom:
+	./scripts/compliance/upload-sbom.sh
