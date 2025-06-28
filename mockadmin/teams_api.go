@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312004/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312005/admin"
 
 	http "net/http"
 
@@ -661,6 +661,168 @@ func (_c *TeamsApi_DeleteTeamWithParams_Call) Return(_a0 admin.DeleteTeamApiRequ
 }
 
 func (_c *TeamsApi_DeleteTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteTeamApiParams) admin.DeleteTeamApiRequest) *TeamsApi_DeleteTeamWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectTeam provides a mock function with given fields: ctx, groupId, teamId
+func (_m *TeamsApi) GetProjectTeam(ctx context.Context, groupId string, teamId string) admin.GetProjectTeamApiRequest {
+	ret := _m.Called(ctx, groupId, teamId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectTeam")
+	}
+
+	var r0 admin.GetProjectTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetProjectTeamApiRequest); ok {
+		r0 = rf(ctx, groupId, teamId)
+	} else {
+		r0 = ret.Get(0).(admin.GetProjectTeamApiRequest)
+	}
+
+	return r0
+}
+
+// TeamsApi_GetProjectTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectTeam'
+type TeamsApi_GetProjectTeam_Call struct {
+	*mock.Call
+}
+
+// GetProjectTeam is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - teamId string
+func (_e *TeamsApi_Expecter) GetProjectTeam(ctx any, groupId any, teamId any) *TeamsApi_GetProjectTeam_Call {
+	return &TeamsApi_GetProjectTeam_Call{Call: _e.mock.On("GetProjectTeam", ctx, groupId, teamId)}
+}
+
+func (_c *TeamsApi_GetProjectTeam_Call) Run(run func(ctx context.Context, groupId string, teamId string)) *TeamsApi_GetProjectTeam_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *TeamsApi_GetProjectTeam_Call) Return(_a0 admin.GetProjectTeamApiRequest) *TeamsApi_GetProjectTeam_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *TeamsApi_GetProjectTeam_Call) RunAndReturn(run func(context.Context, string, string) admin.GetProjectTeamApiRequest) *TeamsApi_GetProjectTeam_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) GetProjectTeamExecute(r admin.GetProjectTeamApiRequest) (*admin.TeamRole, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectTeamExecute")
+	}
+
+	var r0 *admin.TeamRole
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetProjectTeamApiRequest) (*admin.TeamRole, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetProjectTeamApiRequest) *admin.TeamRole); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.TeamRole)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetProjectTeamApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetProjectTeamApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// TeamsApi_GetProjectTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectTeamExecute'
+type TeamsApi_GetProjectTeamExecute_Call struct {
+	*mock.Call
+}
+
+// GetProjectTeamExecute is a helper method to define mock.On call
+//   - r admin.GetProjectTeamApiRequest
+func (_e *TeamsApi_Expecter) GetProjectTeamExecute(r any) *TeamsApi_GetProjectTeamExecute_Call {
+	return &TeamsApi_GetProjectTeamExecute_Call{Call: _e.mock.On("GetProjectTeamExecute", r)}
+}
+
+func (_c *TeamsApi_GetProjectTeamExecute_Call) Run(run func(r admin.GetProjectTeamApiRequest)) *TeamsApi_GetProjectTeamExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetProjectTeamApiRequest))
+	})
+	return _c
+}
+
+func (_c *TeamsApi_GetProjectTeamExecute_Call) Return(_a0 *admin.TeamRole, _a1 *http.Response, _a2 error) *TeamsApi_GetProjectTeamExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *TeamsApi_GetProjectTeamExecute_Call) RunAndReturn(run func(admin.GetProjectTeamApiRequest) (*admin.TeamRole, *http.Response, error)) *TeamsApi_GetProjectTeamExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) GetProjectTeamWithParams(ctx context.Context, args *admin.GetProjectTeamApiParams) admin.GetProjectTeamApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectTeamWithParams")
+	}
+
+	var r0 admin.GetProjectTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectTeamApiParams) admin.GetProjectTeamApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetProjectTeamApiRequest)
+	}
+
+	return r0
+}
+
+// TeamsApi_GetProjectTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectTeamWithParams'
+type TeamsApi_GetProjectTeamWithParams_Call struct {
+	*mock.Call
+}
+
+// GetProjectTeamWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetProjectTeamApiParams
+func (_e *TeamsApi_Expecter) GetProjectTeamWithParams(ctx any, args any) *TeamsApi_GetProjectTeamWithParams_Call {
+	return &TeamsApi_GetProjectTeamWithParams_Call{Call: _e.mock.On("GetProjectTeamWithParams", ctx, args)}
+}
+
+func (_c *TeamsApi_GetProjectTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectTeamApiParams)) *TeamsApi_GetProjectTeamWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetProjectTeamApiParams))
+	})
+	return _c
+}
+
+func (_c *TeamsApi_GetProjectTeamWithParams_Call) Return(_a0 admin.GetProjectTeamApiRequest) *TeamsApi_GetProjectTeamWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *TeamsApi_GetProjectTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectTeamApiParams) admin.GetProjectTeamApiRequest) *TeamsApi_GetProjectTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

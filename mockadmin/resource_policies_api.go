@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312004/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312005/admin"
 
 	http "net/http"
 
@@ -25,69 +25,69 @@ func (_m *ResourcePoliciesApi) EXPECT() *ResourcePoliciesApi_Expecter {
 	return &ResourcePoliciesApi_Expecter{mock: &_m.Mock}
 }
 
-// CreateAtlasResourcePolicy provides a mock function with given fields: ctx, orgId, apiAtlasResourcePolicyCreate
-func (_m *ResourcePoliciesApi) CreateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *admin.ApiAtlasResourcePolicyCreate) admin.CreateAtlasResourcePolicyApiRequest {
+// CreateOrgResourcePolicy provides a mock function with given fields: ctx, orgId, apiAtlasResourcePolicyCreate
+func (_m *ResourcePoliciesApi) CreateOrgResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *admin.ApiAtlasResourcePolicyCreate) admin.CreateOrgResourcePolicyApiRequest {
 	ret := _m.Called(ctx, orgId, apiAtlasResourcePolicyCreate)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateAtlasResourcePolicy")
+		panic("no return value specified for CreateOrgResourcePolicy")
 	}
 
-	var r0 admin.CreateAtlasResourcePolicyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ApiAtlasResourcePolicyCreate) admin.CreateAtlasResourcePolicyApiRequest); ok {
+	var r0 admin.CreateOrgResourcePolicyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ApiAtlasResourcePolicyCreate) admin.CreateOrgResourcePolicyApiRequest); ok {
 		r0 = rf(ctx, orgId, apiAtlasResourcePolicyCreate)
 	} else {
-		r0 = ret.Get(0).(admin.CreateAtlasResourcePolicyApiRequest)
+		r0 = ret.Get(0).(admin.CreateOrgResourcePolicyApiRequest)
 	}
 
 	return r0
 }
 
-// ResourcePoliciesApi_CreateAtlasResourcePolicy_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasResourcePolicy'
-type ResourcePoliciesApi_CreateAtlasResourcePolicy_Call struct {
+// ResourcePoliciesApi_CreateOrgResourcePolicy_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgResourcePolicy'
+type ResourcePoliciesApi_CreateOrgResourcePolicy_Call struct {
 	*mock.Call
 }
 
-// CreateAtlasResourcePolicy is a helper method to define mock.On call
+// CreateOrgResourcePolicy is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - apiAtlasResourcePolicyCreate *admin.ApiAtlasResourcePolicyCreate
-func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicy(ctx any, orgId any, apiAtlasResourcePolicyCreate any) *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call {
-	return &ResourcePoliciesApi_CreateAtlasResourcePolicy_Call{Call: _e.mock.On("CreateAtlasResourcePolicy", ctx, orgId, apiAtlasResourcePolicyCreate)}
+func (_e *ResourcePoliciesApi_Expecter) CreateOrgResourcePolicy(ctx any, orgId any, apiAtlasResourcePolicyCreate any) *ResourcePoliciesApi_CreateOrgResourcePolicy_Call {
+	return &ResourcePoliciesApi_CreateOrgResourcePolicy_Call{Call: _e.mock.On("CreateOrgResourcePolicy", ctx, orgId, apiAtlasResourcePolicyCreate)}
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call) Run(run func(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *admin.ApiAtlasResourcePolicyCreate)) *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicy_Call) Run(run func(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *admin.ApiAtlasResourcePolicyCreate)) *ResourcePoliciesApi_CreateOrgResourcePolicy_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.ApiAtlasResourcePolicyCreate))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call) Return(_a0 admin.CreateAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicy_Call) Return(_a0 admin.CreateOrgResourcePolicyApiRequest) *ResourcePoliciesApi_CreateOrgResourcePolicy_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call) RunAndReturn(run func(context.Context, string, *admin.ApiAtlasResourcePolicyCreate) admin.CreateAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicy_Call) RunAndReturn(run func(context.Context, string, *admin.ApiAtlasResourcePolicyCreate) admin.CreateOrgResourcePolicyApiRequest) *ResourcePoliciesApi_CreateOrgResourcePolicy_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateAtlasResourcePolicyExecute provides a mock function with given fields: r
-func (_m *ResourcePoliciesApi) CreateAtlasResourcePolicyExecute(r admin.CreateAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error) {
+// CreateOrgResourcePolicyExecute provides a mock function with given fields: r
+func (_m *ResourcePoliciesApi) CreateOrgResourcePolicyExecute(r admin.CreateOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateAtlasResourcePolicyExecute")
+		panic("no return value specified for CreateOrgResourcePolicyExecute")
 	}
 
 	var r0 *admin.ApiAtlasResourcePolicy
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateAtlasResourcePolicyApiRequest) *admin.ApiAtlasResourcePolicy); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateOrgResourcePolicyApiRequest) *admin.ApiAtlasResourcePolicy); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -95,7 +95,7 @@ func (_m *ResourcePoliciesApi) CreateAtlasResourcePolicyExecute(r admin.CreateAt
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateAtlasResourcePolicyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateOrgResourcePolicyApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -103,7 +103,7 @@ func (_m *ResourcePoliciesApi) CreateAtlasResourcePolicyExecute(r admin.CreateAt
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateAtlasResourcePolicyApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateOrgResourcePolicyApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -112,143 +112,143 @@ func (_m *ResourcePoliciesApi) CreateAtlasResourcePolicyExecute(r admin.CreateAt
 	return r0, r1, r2
 }
 
-// ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasResourcePolicyExecute'
-type ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call struct {
+// ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgResourcePolicyExecute'
+type ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call struct {
 	*mock.Call
 }
 
-// CreateAtlasResourcePolicyExecute is a helper method to define mock.On call
-//   - r admin.CreateAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call {
-	return &ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call{Call: _e.mock.On("CreateAtlasResourcePolicyExecute", r)}
+// CreateOrgResourcePolicyExecute is a helper method to define mock.On call
+//   - r admin.CreateOrgResourcePolicyApiRequest
+func (_e *ResourcePoliciesApi_Expecter) CreateOrgResourcePolicyExecute(r any) *ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call {
+	return &ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call{Call: _e.mock.On("CreateOrgResourcePolicyExecute", r)}
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call) Run(run func(r admin.CreateAtlasResourcePolicyApiRequest)) *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call) Run(run func(r admin.CreateOrgResourcePolicyApiRequest)) *ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateAtlasResourcePolicyApiRequest))
+		run(args[0].(admin.CreateOrgResourcePolicyApiRequest))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call) Return(_a0 *admin.ApiAtlasResourcePolicy, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call) Return(_a0 *admin.ApiAtlasResourcePolicy, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call) RunAndReturn(run func(admin.CreateAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)) *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call) RunAndReturn(run func(admin.CreateOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)) *ResourcePoliciesApi_CreateOrgResourcePolicyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateAtlasResourcePolicyWithParams provides a mock function with given fields: ctx, args
-func (_m *ResourcePoliciesApi) CreateAtlasResourcePolicyWithParams(ctx context.Context, args *admin.CreateAtlasResourcePolicyApiParams) admin.CreateAtlasResourcePolicyApiRequest {
+// CreateOrgResourcePolicyWithParams provides a mock function with given fields: ctx, args
+func (_m *ResourcePoliciesApi) CreateOrgResourcePolicyWithParams(ctx context.Context, args *admin.CreateOrgResourcePolicyApiParams) admin.CreateOrgResourcePolicyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateAtlasResourcePolicyWithParams")
+		panic("no return value specified for CreateOrgResourcePolicyWithParams")
 	}
 
-	var r0 admin.CreateAtlasResourcePolicyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateAtlasResourcePolicyApiParams) admin.CreateAtlasResourcePolicyApiRequest); ok {
+	var r0 admin.CreateOrgResourcePolicyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateOrgResourcePolicyApiParams) admin.CreateOrgResourcePolicyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateAtlasResourcePolicyApiRequest)
+		r0 = ret.Get(0).(admin.CreateOrgResourcePolicyApiRequest)
 	}
 
 	return r0
 }
 
-// ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasResourcePolicyWithParams'
-type ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call struct {
+// ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgResourcePolicyWithParams'
+type ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateAtlasResourcePolicyWithParams is a helper method to define mock.On call
+// CreateOrgResourcePolicyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call {
-	return &ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("CreateAtlasResourcePolicyWithParams", ctx, args)}
+//   - args *admin.CreateOrgResourcePolicyApiParams
+func (_e *ResourcePoliciesApi_Expecter) CreateOrgResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call {
+	return &ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call{Call: _e.mock.On("CreateOrgResourcePolicyWithParams", ctx, args)}
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateAtlasResourcePolicyApiParams)) *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateOrgResourcePolicyApiParams)) *ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateAtlasResourcePolicyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateOrgResourcePolicyApiParams))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call) Return(_a0 admin.CreateAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call) Return(_a0 admin.CreateOrgResourcePolicyApiRequest) *ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateAtlasResourcePolicyApiParams) admin.CreateAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgResourcePolicyApiParams) admin.CreateOrgResourcePolicyApiRequest) *ResourcePoliciesApi_CreateOrgResourcePolicyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAtlasResourcePolicy provides a mock function with given fields: ctx, orgId, resourcePolicyId
-func (_m *ResourcePoliciesApi) DeleteAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) admin.DeleteAtlasResourcePolicyApiRequest {
+// DeleteOrgResourcePolicy provides a mock function with given fields: ctx, orgId, resourcePolicyId
+func (_m *ResourcePoliciesApi) DeleteOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) admin.DeleteOrgResourcePolicyApiRequest {
 	ret := _m.Called(ctx, orgId, resourcePolicyId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAtlasResourcePolicy")
+		panic("no return value specified for DeleteOrgResourcePolicy")
 	}
 
-	var r0 admin.DeleteAtlasResourcePolicyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteAtlasResourcePolicyApiRequest); ok {
+	var r0 admin.DeleteOrgResourcePolicyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteOrgResourcePolicyApiRequest); ok {
 		r0 = rf(ctx, orgId, resourcePolicyId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteAtlasResourcePolicyApiRequest)
+		r0 = ret.Get(0).(admin.DeleteOrgResourcePolicyApiRequest)
 	}
 
 	return r0
 }
 
-// ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasResourcePolicy'
-type ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call struct {
+// ResourcePoliciesApi_DeleteOrgResourcePolicy_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgResourcePolicy'
+type ResourcePoliciesApi_DeleteOrgResourcePolicy_Call struct {
 	*mock.Call
 }
 
-// DeleteAtlasResourcePolicy is a helper method to define mock.On call
+// DeleteOrgResourcePolicy is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - resourcePolicyId string
-func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicy(ctx any, orgId any, resourcePolicyId any) *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call {
-	return &ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call{Call: _e.mock.On("DeleteAtlasResourcePolicy", ctx, orgId, resourcePolicyId)}
+func (_e *ResourcePoliciesApi_Expecter) DeleteOrgResourcePolicy(ctx any, orgId any, resourcePolicyId any) *ResourcePoliciesApi_DeleteOrgResourcePolicy_Call {
+	return &ResourcePoliciesApi_DeleteOrgResourcePolicy_Call{Call: _e.mock.On("DeleteOrgResourcePolicy", ctx, orgId, resourcePolicyId)}
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call) Run(run func(ctx context.Context, orgId string, resourcePolicyId string)) *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicy_Call) Run(run func(ctx context.Context, orgId string, resourcePolicyId string)) *ResourcePoliciesApi_DeleteOrgResourcePolicy_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call) Return(_a0 admin.DeleteAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicy_Call) Return(_a0 admin.DeleteOrgResourcePolicyApiRequest) *ResourcePoliciesApi_DeleteOrgResourcePolicy_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicy_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteOrgResourcePolicyApiRequest) *ResourcePoliciesApi_DeleteOrgResourcePolicy_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAtlasResourcePolicyExecute provides a mock function with given fields: r
-func (_m *ResourcePoliciesApi) DeleteAtlasResourcePolicyExecute(r admin.DeleteAtlasResourcePolicyApiRequest) (*http.Response, error) {
+// DeleteOrgResourcePolicyExecute provides a mock function with given fields: r
+func (_m *ResourcePoliciesApi) DeleteOrgResourcePolicyExecute(r admin.DeleteOrgResourcePolicyApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAtlasResourcePolicyExecute")
+		panic("no return value specified for DeleteOrgResourcePolicyExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasResourcePolicyApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrgResourcePolicyApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasResourcePolicyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrgResourcePolicyApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -256,7 +256,7 @@ func (_m *ResourcePoliciesApi) DeleteAtlasResourcePolicyExecute(r admin.DeleteAt
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasResourcePolicyApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteOrgResourcePolicyApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -265,305 +265,144 @@ func (_m *ResourcePoliciesApi) DeleteAtlasResourcePolicyExecute(r admin.DeleteAt
 	return r0, r1
 }
 
-// ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasResourcePolicyExecute'
-type ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call struct {
+// ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgResourcePolicyExecute'
+type ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteAtlasResourcePolicyExecute is a helper method to define mock.On call
-//   - r admin.DeleteAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
-	return &ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call{Call: _e.mock.On("DeleteAtlasResourcePolicyExecute", r)}
+// DeleteOrgResourcePolicyExecute is a helper method to define mock.On call
+//   - r admin.DeleteOrgResourcePolicyApiRequest
+func (_e *ResourcePoliciesApi_Expecter) DeleteOrgResourcePolicyExecute(r any) *ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call {
+	return &ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call{Call: _e.mock.On("DeleteOrgResourcePolicyExecute", r)}
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call) Run(run func(r admin.DeleteAtlasResourcePolicyApiRequest)) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call) Run(run func(r admin.DeleteOrgResourcePolicyApiRequest)) *ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteAtlasResourcePolicyApiRequest))
+		run(args[0].(admin.DeleteOrgResourcePolicyApiRequest))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call) Return(_a0 *http.Response, _a1 error) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call) Return(_a0 *http.Response, _a1 error) *ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call) RunAndReturn(run func(admin.DeleteAtlasResourcePolicyApiRequest) (*http.Response, error)) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call) RunAndReturn(run func(admin.DeleteOrgResourcePolicyApiRequest) (*http.Response, error)) *ResourcePoliciesApi_DeleteOrgResourcePolicyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAtlasResourcePolicyWithParams provides a mock function with given fields: ctx, args
-func (_m *ResourcePoliciesApi) DeleteAtlasResourcePolicyWithParams(ctx context.Context, args *admin.DeleteAtlasResourcePolicyApiParams) admin.DeleteAtlasResourcePolicyApiRequest {
+// DeleteOrgResourcePolicyWithParams provides a mock function with given fields: ctx, args
+func (_m *ResourcePoliciesApi) DeleteOrgResourcePolicyWithParams(ctx context.Context, args *admin.DeleteOrgResourcePolicyApiParams) admin.DeleteOrgResourcePolicyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAtlasResourcePolicyWithParams")
+		panic("no return value specified for DeleteOrgResourcePolicyWithParams")
 	}
 
-	var r0 admin.DeleteAtlasResourcePolicyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteAtlasResourcePolicyApiParams) admin.DeleteAtlasResourcePolicyApiRequest); ok {
+	var r0 admin.DeleteOrgResourcePolicyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteOrgResourcePolicyApiParams) admin.DeleteOrgResourcePolicyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteAtlasResourcePolicyApiRequest)
+		r0 = ret.Get(0).(admin.DeleteOrgResourcePolicyApiRequest)
 	}
 
 	return r0
 }
 
-// ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasResourcePolicyWithParams'
-type ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call struct {
+// ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgResourcePolicyWithParams'
+type ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteAtlasResourcePolicyWithParams is a helper method to define mock.On call
+// DeleteOrgResourcePolicyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call {
-	return &ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("DeleteAtlasResourcePolicyWithParams", ctx, args)}
+//   - args *admin.DeleteOrgResourcePolicyApiParams
+func (_e *ResourcePoliciesApi_Expecter) DeleteOrgResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call {
+	return &ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call{Call: _e.mock.On("DeleteOrgResourcePolicyWithParams", ctx, args)}
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteAtlasResourcePolicyApiParams)) *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteOrgResourcePolicyApiParams)) *ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteAtlasResourcePolicyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteOrgResourcePolicyApiParams))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call) Return(_a0 admin.DeleteAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call) Return(_a0 admin.DeleteOrgResourcePolicyApiRequest) *ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteAtlasResourcePolicyApiParams) admin.DeleteAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteOrgResourcePolicyApiParams) admin.DeleteOrgResourcePolicyApiRequest) *ResourcePoliciesApi_DeleteOrgResourcePolicyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAtlasResourcePolicies provides a mock function with given fields: ctx, orgId
-func (_m *ResourcePoliciesApi) GetAtlasResourcePolicies(ctx context.Context, orgId string) admin.GetAtlasResourcePoliciesApiRequest {
-	ret := _m.Called(ctx, orgId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasResourcePolicies")
-	}
-
-	var r0 admin.GetAtlasResourcePoliciesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetAtlasResourcePoliciesApiRequest); ok {
-		r0 = rf(ctx, orgId)
-	} else {
-		r0 = ret.Get(0).(admin.GetAtlasResourcePoliciesApiRequest)
-	}
-
-	return r0
-}
-
-// ResourcePoliciesApi_GetAtlasResourcePolicies_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasResourcePolicies'
-type ResourcePoliciesApi_GetAtlasResourcePolicies_Call struct {
-	*mock.Call
-}
-
-// GetAtlasResourcePolicies is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicies(ctx any, orgId any) *ResourcePoliciesApi_GetAtlasResourcePolicies_Call {
-	return &ResourcePoliciesApi_GetAtlasResourcePolicies_Call{Call: _e.mock.On("GetAtlasResourcePolicies", ctx, orgId)}
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicies_Call) Run(run func(ctx context.Context, orgId string)) *ResourcePoliciesApi_GetAtlasResourcePolicies_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicies_Call) Return(_a0 admin.GetAtlasResourcePoliciesApiRequest) *ResourcePoliciesApi_GetAtlasResourcePolicies_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicies_Call) RunAndReturn(run func(context.Context, string) admin.GetAtlasResourcePoliciesApiRequest) *ResourcePoliciesApi_GetAtlasResourcePolicies_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetAtlasResourcePoliciesExecute provides a mock function with given fields: r
-func (_m *ResourcePoliciesApi) GetAtlasResourcePoliciesExecute(r admin.GetAtlasResourcePoliciesApiRequest) ([]admin.ApiAtlasResourcePolicy, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasResourcePoliciesExecute")
-	}
-
-	var r0 []admin.ApiAtlasResourcePolicy
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetAtlasResourcePoliciesApiRequest) ([]admin.ApiAtlasResourcePolicy, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetAtlasResourcePoliciesApiRequest) []admin.ApiAtlasResourcePolicy); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]admin.ApiAtlasResourcePolicy)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetAtlasResourcePoliciesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetAtlasResourcePoliciesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasResourcePoliciesExecute'
-type ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call struct {
-	*mock.Call
-}
-
-// GetAtlasResourcePoliciesExecute is a helper method to define mock.On call
-//   - r admin.GetAtlasResourcePoliciesApiRequest
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePoliciesExecute(r any) *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call {
-	return &ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call{Call: _e.mock.On("GetAtlasResourcePoliciesExecute", r)}
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call) Run(run func(r admin.GetAtlasResourcePoliciesApiRequest)) *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetAtlasResourcePoliciesApiRequest))
-	})
-	return _c
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call) Return(_a0 []admin.ApiAtlasResourcePolicy, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call) RunAndReturn(run func(admin.GetAtlasResourcePoliciesApiRequest) ([]admin.ApiAtlasResourcePolicy, *http.Response, error)) *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetAtlasResourcePoliciesWithParams provides a mock function with given fields: ctx, args
-func (_m *ResourcePoliciesApi) GetAtlasResourcePoliciesWithParams(ctx context.Context, args *admin.GetAtlasResourcePoliciesApiParams) admin.GetAtlasResourcePoliciesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasResourcePoliciesWithParams")
-	}
-
-	var r0 admin.GetAtlasResourcePoliciesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAtlasResourcePoliciesApiParams) admin.GetAtlasResourcePoliciesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetAtlasResourcePoliciesApiRequest)
-	}
-
-	return r0
-}
-
-// ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasResourcePoliciesWithParams'
-type ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call struct {
-	*mock.Call
-}
-
-// GetAtlasResourcePoliciesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetAtlasResourcePoliciesApiParams
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePoliciesWithParams(ctx any, args any) *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call {
-	return &ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call{Call: _e.mock.On("GetAtlasResourcePoliciesWithParams", ctx, args)}
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAtlasResourcePoliciesApiParams)) *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetAtlasResourcePoliciesApiParams))
-	})
-	return _c
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call) Return(_a0 admin.GetAtlasResourcePoliciesApiRequest) *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAtlasResourcePoliciesApiParams) admin.GetAtlasResourcePoliciesApiRequest) *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetAtlasResourcePolicy provides a mock function with given fields: ctx, orgId, resourcePolicyId
-func (_m *ResourcePoliciesApi) GetAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) admin.GetAtlasResourcePolicyApiRequest {
+// GetOrgResourcePolicy provides a mock function with given fields: ctx, orgId, resourcePolicyId
+func (_m *ResourcePoliciesApi) GetOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) admin.GetOrgResourcePolicyApiRequest {
 	ret := _m.Called(ctx, orgId, resourcePolicyId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasResourcePolicy")
+		panic("no return value specified for GetOrgResourcePolicy")
 	}
 
-	var r0 admin.GetAtlasResourcePolicyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetAtlasResourcePolicyApiRequest); ok {
+	var r0 admin.GetOrgResourcePolicyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetOrgResourcePolicyApiRequest); ok {
 		r0 = rf(ctx, orgId, resourcePolicyId)
 	} else {
-		r0 = ret.Get(0).(admin.GetAtlasResourcePolicyApiRequest)
+		r0 = ret.Get(0).(admin.GetOrgResourcePolicyApiRequest)
 	}
 
 	return r0
 }
 
-// ResourcePoliciesApi_GetAtlasResourcePolicy_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasResourcePolicy'
-type ResourcePoliciesApi_GetAtlasResourcePolicy_Call struct {
+// ResourcePoliciesApi_GetOrgResourcePolicy_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgResourcePolicy'
+type ResourcePoliciesApi_GetOrgResourcePolicy_Call struct {
 	*mock.Call
 }
 
-// GetAtlasResourcePolicy is a helper method to define mock.On call
+// GetOrgResourcePolicy is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - resourcePolicyId string
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicy(ctx any, orgId any, resourcePolicyId any) *ResourcePoliciesApi_GetAtlasResourcePolicy_Call {
-	return &ResourcePoliciesApi_GetAtlasResourcePolicy_Call{Call: _e.mock.On("GetAtlasResourcePolicy", ctx, orgId, resourcePolicyId)}
+func (_e *ResourcePoliciesApi_Expecter) GetOrgResourcePolicy(ctx any, orgId any, resourcePolicyId any) *ResourcePoliciesApi_GetOrgResourcePolicy_Call {
+	return &ResourcePoliciesApi_GetOrgResourcePolicy_Call{Call: _e.mock.On("GetOrgResourcePolicy", ctx, orgId, resourcePolicyId)}
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicy_Call) Run(run func(ctx context.Context, orgId string, resourcePolicyId string)) *ResourcePoliciesApi_GetAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicy_Call) Run(run func(ctx context.Context, orgId string, resourcePolicyId string)) *ResourcePoliciesApi_GetOrgResourcePolicy_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicy_Call) Return(_a0 admin.GetAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_GetAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicy_Call) Return(_a0 admin.GetOrgResourcePolicyApiRequest) *ResourcePoliciesApi_GetOrgResourcePolicy_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicy_Call) RunAndReturn(run func(context.Context, string, string) admin.GetAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_GetAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicy_Call) RunAndReturn(run func(context.Context, string, string) admin.GetOrgResourcePolicyApiRequest) *ResourcePoliciesApi_GetOrgResourcePolicy_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAtlasResourcePolicyExecute provides a mock function with given fields: r
-func (_m *ResourcePoliciesApi) GetAtlasResourcePolicyExecute(r admin.GetAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error) {
+// GetOrgResourcePolicyExecute provides a mock function with given fields: r
+func (_m *ResourcePoliciesApi) GetOrgResourcePolicyExecute(r admin.GetOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasResourcePolicyExecute")
+		panic("no return value specified for GetOrgResourcePolicyExecute")
 	}
 
 	var r0 *admin.ApiAtlasResourcePolicy
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetAtlasResourcePolicyApiRequest) *admin.ApiAtlasResourcePolicy); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetOrgResourcePolicyApiRequest) *admin.ApiAtlasResourcePolicy); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -571,7 +410,7 @@ func (_m *ResourcePoliciesApi) GetAtlasResourcePolicyExecute(r admin.GetAtlasRes
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetAtlasResourcePolicyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetOrgResourcePolicyApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -579,7 +418,7 @@ func (_m *ResourcePoliciesApi) GetAtlasResourcePolicyExecute(r admin.GetAtlasRes
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetAtlasResourcePolicyApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetOrgResourcePolicyApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -588,77 +427,77 @@ func (_m *ResourcePoliciesApi) GetAtlasResourcePolicyExecute(r admin.GetAtlasRes
 	return r0, r1, r2
 }
 
-// ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasResourcePolicyExecute'
-type ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call struct {
+// ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgResourcePolicyExecute'
+type ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call struct {
 	*mock.Call
 }
 
-// GetAtlasResourcePolicyExecute is a helper method to define mock.On call
-//   - r admin.GetAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call {
-	return &ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call{Call: _e.mock.On("GetAtlasResourcePolicyExecute", r)}
+// GetOrgResourcePolicyExecute is a helper method to define mock.On call
+//   - r admin.GetOrgResourcePolicyApiRequest
+func (_e *ResourcePoliciesApi_Expecter) GetOrgResourcePolicyExecute(r any) *ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call {
+	return &ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call{Call: _e.mock.On("GetOrgResourcePolicyExecute", r)}
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call) Run(run func(r admin.GetAtlasResourcePolicyApiRequest)) *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call) Run(run func(r admin.GetOrgResourcePolicyApiRequest)) *ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetAtlasResourcePolicyApiRequest))
+		run(args[0].(admin.GetOrgResourcePolicyApiRequest))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call) Return(_a0 *admin.ApiAtlasResourcePolicy, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call) Return(_a0 *admin.ApiAtlasResourcePolicy, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call) RunAndReturn(run func(admin.GetAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)) *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call) RunAndReturn(run func(admin.GetOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)) *ResourcePoliciesApi_GetOrgResourcePolicyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAtlasResourcePolicyWithParams provides a mock function with given fields: ctx, args
-func (_m *ResourcePoliciesApi) GetAtlasResourcePolicyWithParams(ctx context.Context, args *admin.GetAtlasResourcePolicyApiParams) admin.GetAtlasResourcePolicyApiRequest {
+// GetOrgResourcePolicyWithParams provides a mock function with given fields: ctx, args
+func (_m *ResourcePoliciesApi) GetOrgResourcePolicyWithParams(ctx context.Context, args *admin.GetOrgResourcePolicyApiParams) admin.GetOrgResourcePolicyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasResourcePolicyWithParams")
+		panic("no return value specified for GetOrgResourcePolicyWithParams")
 	}
 
-	var r0 admin.GetAtlasResourcePolicyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAtlasResourcePolicyApiParams) admin.GetAtlasResourcePolicyApiRequest); ok {
+	var r0 admin.GetOrgResourcePolicyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetOrgResourcePolicyApiParams) admin.GetOrgResourcePolicyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetAtlasResourcePolicyApiRequest)
+		r0 = ret.Get(0).(admin.GetOrgResourcePolicyApiRequest)
 	}
 
 	return r0
 }
 
-// ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasResourcePolicyWithParams'
-type ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call struct {
+// ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgResourcePolicyWithParams'
+type ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call struct {
 	*mock.Call
 }
 
-// GetAtlasResourcePolicyWithParams is a helper method to define mock.On call
+// GetOrgResourcePolicyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call {
-	return &ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("GetAtlasResourcePolicyWithParams", ctx, args)}
+//   - args *admin.GetOrgResourcePolicyApiParams
+func (_e *ResourcePoliciesApi_Expecter) GetOrgResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call {
+	return &ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call{Call: _e.mock.On("GetOrgResourcePolicyWithParams", ctx, args)}
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAtlasResourcePolicyApiParams)) *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call) Run(run func(ctx context.Context, args *admin.GetOrgResourcePolicyApiParams)) *ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetAtlasResourcePolicyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetOrgResourcePolicyApiParams))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call) Return(_a0 admin.GetAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call) Return(_a0 admin.GetOrgResourcePolicyApiRequest) *ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAtlasResourcePolicyApiParams) admin.GetAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetOrgResourcePolicyApiParams) admin.GetOrgResourcePolicyApiRequest) *ResourcePoliciesApi_GetOrgResourcePolicyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -824,78 +663,76 @@ func (_c *ResourcePoliciesApi_GetResourcesNonCompliantWithParams_Call) RunAndRet
 	return _c
 }
 
-// UpdateAtlasResourcePolicy provides a mock function with given fields: ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit
-func (_m *ResourcePoliciesApi) UpdateAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *admin.ApiAtlasResourcePolicyEdit) admin.UpdateAtlasResourcePolicyApiRequest {
-	ret := _m.Called(ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit)
+// ListOrgResourcePolicies provides a mock function with given fields: ctx, orgId
+func (_m *ResourcePoliciesApi) ListOrgResourcePolicies(ctx context.Context, orgId string) admin.ListOrgResourcePoliciesApiRequest {
+	ret := _m.Called(ctx, orgId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAtlasResourcePolicy")
+		panic("no return value specified for ListOrgResourcePolicies")
 	}
 
-	var r0 admin.UpdateAtlasResourcePolicyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ApiAtlasResourcePolicyEdit) admin.UpdateAtlasResourcePolicyApiRequest); ok {
-		r0 = rf(ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit)
+	var r0 admin.ListOrgResourcePoliciesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListOrgResourcePoliciesApiRequest); ok {
+		r0 = rf(ctx, orgId)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateAtlasResourcePolicyApiRequest)
+		r0 = ret.Get(0).(admin.ListOrgResourcePoliciesApiRequest)
 	}
 
 	return r0
 }
 
-// ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasResourcePolicy'
-type ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call struct {
+// ResourcePoliciesApi_ListOrgResourcePolicies_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgResourcePolicies'
+type ResourcePoliciesApi_ListOrgResourcePolicies_Call struct {
 	*mock.Call
 }
 
-// UpdateAtlasResourcePolicy is a helper method to define mock.On call
+// ListOrgResourcePolicies is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-//   - resourcePolicyId string
-//   - apiAtlasResourcePolicyEdit *admin.ApiAtlasResourcePolicyEdit
-func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicy(ctx any, orgId any, resourcePolicyId any, apiAtlasResourcePolicyEdit any) *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call {
-	return &ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call{Call: _e.mock.On("UpdateAtlasResourcePolicy", ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit)}
+func (_e *ResourcePoliciesApi_Expecter) ListOrgResourcePolicies(ctx any, orgId any) *ResourcePoliciesApi_ListOrgResourcePolicies_Call {
+	return &ResourcePoliciesApi_ListOrgResourcePolicies_Call{Call: _e.mock.On("ListOrgResourcePolicies", ctx, orgId)}
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call) Run(run func(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *admin.ApiAtlasResourcePolicyEdit)) *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePolicies_Call) Run(run func(ctx context.Context, orgId string)) *ResourcePoliciesApi_ListOrgResourcePolicies_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ApiAtlasResourcePolicyEdit))
+		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call) Return(_a0 admin.UpdateAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePolicies_Call) Return(_a0 admin.ListOrgResourcePoliciesApiRequest) *ResourcePoliciesApi_ListOrgResourcePolicies_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call) RunAndReturn(run func(context.Context, string, string, *admin.ApiAtlasResourcePolicyEdit) admin.UpdateAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePolicies_Call) RunAndReturn(run func(context.Context, string) admin.ListOrgResourcePoliciesApiRequest) *ResourcePoliciesApi_ListOrgResourcePolicies_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateAtlasResourcePolicyExecute provides a mock function with given fields: r
-func (_m *ResourcePoliciesApi) UpdateAtlasResourcePolicyExecute(r admin.UpdateAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error) {
+// ListOrgResourcePoliciesExecute provides a mock function with given fields: r
+func (_m *ResourcePoliciesApi) ListOrgResourcePoliciesExecute(r admin.ListOrgResourcePoliciesApiRequest) ([]admin.ApiAtlasResourcePolicy, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAtlasResourcePolicyExecute")
+		panic("no return value specified for ListOrgResourcePoliciesExecute")
 	}
 
-	var r0 *admin.ApiAtlasResourcePolicy
+	var r0 []admin.ApiAtlasResourcePolicy
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListOrgResourcePoliciesApiRequest) ([]admin.ApiAtlasResourcePolicy, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateAtlasResourcePolicyApiRequest) *admin.ApiAtlasResourcePolicy); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListOrgResourcePoliciesApiRequest) []admin.ApiAtlasResourcePolicy); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiAtlasResourcePolicy)
+			r0 = ret.Get(0).([]admin.ApiAtlasResourcePolicy)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateAtlasResourcePolicyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListOrgResourcePoliciesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -903,7 +740,7 @@ func (_m *ResourcePoliciesApi) UpdateAtlasResourcePolicyExecute(r admin.UpdateAt
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateAtlasResourcePolicyApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListOrgResourcePoliciesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -912,77 +749,240 @@ func (_m *ResourcePoliciesApi) UpdateAtlasResourcePolicyExecute(r admin.UpdateAt
 	return r0, r1, r2
 }
 
-// ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasResourcePolicyExecute'
-type ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call struct {
+// ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgResourcePoliciesExecute'
+type ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateAtlasResourcePolicyExecute is a helper method to define mock.On call
-//   - r admin.UpdateAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call {
-	return &ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call{Call: _e.mock.On("UpdateAtlasResourcePolicyExecute", r)}
+// ListOrgResourcePoliciesExecute is a helper method to define mock.On call
+//   - r admin.ListOrgResourcePoliciesApiRequest
+func (_e *ResourcePoliciesApi_Expecter) ListOrgResourcePoliciesExecute(r any) *ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call {
+	return &ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call{Call: _e.mock.On("ListOrgResourcePoliciesExecute", r)}
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call) Run(run func(r admin.UpdateAtlasResourcePolicyApiRequest)) *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call) Run(run func(r admin.ListOrgResourcePoliciesApiRequest)) *ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateAtlasResourcePolicyApiRequest))
+		run(args[0].(admin.ListOrgResourcePoliciesApiRequest))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call) Return(_a0 *admin.ApiAtlasResourcePolicy, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call) Return(_a0 []admin.ApiAtlasResourcePolicy, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call) RunAndReturn(run func(admin.UpdateAtlasResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)) *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call) RunAndReturn(run func(admin.ListOrgResourcePoliciesApiRequest) ([]admin.ApiAtlasResourcePolicy, *http.Response, error)) *ResourcePoliciesApi_ListOrgResourcePoliciesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateAtlasResourcePolicyWithParams provides a mock function with given fields: ctx, args
-func (_m *ResourcePoliciesApi) UpdateAtlasResourcePolicyWithParams(ctx context.Context, args *admin.UpdateAtlasResourcePolicyApiParams) admin.UpdateAtlasResourcePolicyApiRequest {
+// ListOrgResourcePoliciesWithParams provides a mock function with given fields: ctx, args
+func (_m *ResourcePoliciesApi) ListOrgResourcePoliciesWithParams(ctx context.Context, args *admin.ListOrgResourcePoliciesApiParams) admin.ListOrgResourcePoliciesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAtlasResourcePolicyWithParams")
+		panic("no return value specified for ListOrgResourcePoliciesWithParams")
 	}
 
-	var r0 admin.UpdateAtlasResourcePolicyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateAtlasResourcePolicyApiParams) admin.UpdateAtlasResourcePolicyApiRequest); ok {
+	var r0 admin.ListOrgResourcePoliciesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrgResourcePoliciesApiParams) admin.ListOrgResourcePoliciesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateAtlasResourcePolicyApiRequest)
+		r0 = ret.Get(0).(admin.ListOrgResourcePoliciesApiRequest)
 	}
 
 	return r0
 }
 
-// ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasResourcePolicyWithParams'
-type ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call struct {
+// ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgResourcePoliciesWithParams'
+type ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateAtlasResourcePolicyWithParams is a helper method to define mock.On call
+// ListOrgResourcePoliciesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call {
-	return &ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("UpdateAtlasResourcePolicyWithParams", ctx, args)}
+//   - args *admin.ListOrgResourcePoliciesApiParams
+func (_e *ResourcePoliciesApi_Expecter) ListOrgResourcePoliciesWithParams(ctx any, args any) *ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call {
+	return &ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call{Call: _e.mock.On("ListOrgResourcePoliciesWithParams", ctx, args)}
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateAtlasResourcePolicyApiParams)) *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrgResourcePoliciesApiParams)) *ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateAtlasResourcePolicyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListOrgResourcePoliciesApiParams))
 	})
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call) Return(_a0 admin.UpdateAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call) Return(_a0 admin.ListOrgResourcePoliciesApiRequest) *ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateAtlasResourcePolicyApiParams) admin.UpdateAtlasResourcePolicyApiRequest) *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call {
+func (_c *ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrgResourcePoliciesApiParams) admin.ListOrgResourcePoliciesApiRequest) *ResourcePoliciesApi_ListOrgResourcePoliciesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateOrgResourcePolicy provides a mock function with given fields: ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit
+func (_m *ResourcePoliciesApi) UpdateOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *admin.ApiAtlasResourcePolicyEdit) admin.UpdateOrgResourcePolicyApiRequest {
+	ret := _m.Called(ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateOrgResourcePolicy")
+	}
+
+	var r0 admin.UpdateOrgResourcePolicyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ApiAtlasResourcePolicyEdit) admin.UpdateOrgResourcePolicyApiRequest); ok {
+		r0 = rf(ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateOrgResourcePolicyApiRequest)
+	}
+
+	return r0
+}
+
+// ResourcePoliciesApi_UpdateOrgResourcePolicy_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgResourcePolicy'
+type ResourcePoliciesApi_UpdateOrgResourcePolicy_Call struct {
+	*mock.Call
+}
+
+// UpdateOrgResourcePolicy is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - resourcePolicyId string
+//   - apiAtlasResourcePolicyEdit *admin.ApiAtlasResourcePolicyEdit
+func (_e *ResourcePoliciesApi_Expecter) UpdateOrgResourcePolicy(ctx any, orgId any, resourcePolicyId any, apiAtlasResourcePolicyEdit any) *ResourcePoliciesApi_UpdateOrgResourcePolicy_Call {
+	return &ResourcePoliciesApi_UpdateOrgResourcePolicy_Call{Call: _e.mock.On("UpdateOrgResourcePolicy", ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit)}
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicy_Call) Run(run func(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *admin.ApiAtlasResourcePolicyEdit)) *ResourcePoliciesApi_UpdateOrgResourcePolicy_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ApiAtlasResourcePolicyEdit))
+	})
+	return _c
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicy_Call) Return(_a0 admin.UpdateOrgResourcePolicyApiRequest) *ResourcePoliciesApi_UpdateOrgResourcePolicy_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicy_Call) RunAndReturn(run func(context.Context, string, string, *admin.ApiAtlasResourcePolicyEdit) admin.UpdateOrgResourcePolicyApiRequest) *ResourcePoliciesApi_UpdateOrgResourcePolicy_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateOrgResourcePolicyExecute provides a mock function with given fields: r
+func (_m *ResourcePoliciesApi) UpdateOrgResourcePolicyExecute(r admin.UpdateOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateOrgResourcePolicyExecute")
+	}
+
+	var r0 *admin.ApiAtlasResourcePolicy
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateOrgResourcePolicyApiRequest) *admin.ApiAtlasResourcePolicy); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ApiAtlasResourcePolicy)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateOrgResourcePolicyApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateOrgResourcePolicyApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgResourcePolicyExecute'
+type ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateOrgResourcePolicyExecute is a helper method to define mock.On call
+//   - r admin.UpdateOrgResourcePolicyApiRequest
+func (_e *ResourcePoliciesApi_Expecter) UpdateOrgResourcePolicyExecute(r any) *ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call {
+	return &ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call{Call: _e.mock.On("UpdateOrgResourcePolicyExecute", r)}
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call) Run(run func(r admin.UpdateOrgResourcePolicyApiRequest)) *ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateOrgResourcePolicyApiRequest))
+	})
+	return _c
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call) Return(_a0 *admin.ApiAtlasResourcePolicy, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call) RunAndReturn(run func(admin.UpdateOrgResourcePolicyApiRequest) (*admin.ApiAtlasResourcePolicy, *http.Response, error)) *ResourcePoliciesApi_UpdateOrgResourcePolicyExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateOrgResourcePolicyWithParams provides a mock function with given fields: ctx, args
+func (_m *ResourcePoliciesApi) UpdateOrgResourcePolicyWithParams(ctx context.Context, args *admin.UpdateOrgResourcePolicyApiParams) admin.UpdateOrgResourcePolicyApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateOrgResourcePolicyWithParams")
+	}
+
+	var r0 admin.UpdateOrgResourcePolicyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateOrgResourcePolicyApiParams) admin.UpdateOrgResourcePolicyApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateOrgResourcePolicyApiRequest)
+	}
+
+	return r0
+}
+
+// ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgResourcePolicyWithParams'
+type ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateOrgResourcePolicyWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateOrgResourcePolicyApiParams
+func (_e *ResourcePoliciesApi_Expecter) UpdateOrgResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call {
+	return &ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call{Call: _e.mock.On("UpdateOrgResourcePolicyWithParams", ctx, args)}
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateOrgResourcePolicyApiParams)) *ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateOrgResourcePolicyApiParams))
+	})
+	return _c
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call) Return(_a0 admin.UpdateOrgResourcePolicyApiRequest) *ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateOrgResourcePolicyApiParams) admin.UpdateOrgResourcePolicyApiRequest) *ResourcePoliciesApi_UpdateOrgResourcePolicyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
