@@ -4,19 +4,19 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAtlasResourcePolicy**](ResourcePoliciesApi.md#CreateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy
-[**DeleteAtlasResourcePolicy**](ResourcePoliciesApi.md#DeleteAtlasResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy
-[**GetAtlasResourcePolicies**](ResourcePoliciesApi.md#GetAtlasResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return All Atlas Resource Policies
-[**GetAtlasResourcePolicy**](ResourcePoliciesApi.md#GetAtlasResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return One Atlas Resource Policy
+[**CreateOrgResourcePolicy**](ResourcePoliciesApi.md#CreateOrgResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy
+[**DeleteOrgResourcePolicy**](ResourcePoliciesApi.md#DeleteOrgResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy
+[**GetOrgResourcePolicy**](ResourcePoliciesApi.md#GetOrgResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return One Atlas Resource Policy
 [**GetResourcesNonCompliant**](ResourcePoliciesApi.md#GetResourcesNonCompliant) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources
-[**UpdateAtlasResourcePolicy**](ResourcePoliciesApi.md#UpdateAtlasResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update One Atlas Resource Policy
+[**ListOrgResourcePolicies**](ResourcePoliciesApi.md#ListOrgResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return All Atlas Resource Policies
+[**UpdateOrgResourcePolicy**](ResourcePoliciesApi.md#UpdateOrgResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update One Atlas Resource Policy
 [**ValidateAtlasResourcePolicy**](ResourcePoliciesApi.md#ValidateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate One Atlas Resource Policy
 
 
 
-## CreateAtlasResourcePolicy
+## CreateOrgResourcePolicy
 
-> ApiAtlasResourcePolicy CreateAtlasResourcePolicy(ctx, orgId, apiAtlasResourcePolicyCreate ApiAtlasResourcePolicyCreate).Execute()
+> ApiAtlasResourcePolicy CreateOrgResourcePolicy(ctx, orgId, apiAtlasResourcePolicyCreate ApiAtlasResourcePolicyCreate).Execute()
 
 Create One Atlas Resource Policy
 
@@ -54,17 +54,17 @@ func main() {
   };
 ")}) // ApiAtlasResourcePolicyCreate | 
 
-    resp, r, err := sdk.ResourcePoliciesApi.CreateAtlasResourcePolicy(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.CreateOrgResourcePolicy(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.CreateAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.CreateOrgResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateAtlasResourcePolicy`: ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.CreateAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    // response from `CreateOrgResourcePolicy`: ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.CreateOrgResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateAtlasResourcePolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateOrgResourcePolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -103,9 +103,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteAtlasResourcePolicy
+## DeleteOrgResourcePolicy
 
-> DeleteAtlasResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
+> DeleteOrgResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
 
 Delete One Atlas Resource Policy
 
@@ -136,9 +136,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ResourcePoliciesApi.DeleteAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
+    r, err := sdk.ResourcePoliciesApi.DeleteOrgResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.DeleteAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.DeleteOrgResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteAtlasResourcePolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteOrgResourcePolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -184,89 +184,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAtlasResourcePolicies
+## GetOrgResourcePolicy
 
-> []ApiAtlasResourcePolicy GetAtlasResourcePolicies(ctx, orgId).Execute()
-
-Return All Atlas Resource Policies
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312004/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-
-    resp, r, err := sdk.ResourcePoliciesApi.GetAtlasResourcePolicies(context.Background(), orgId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.GetAtlasResourcePolicies`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetAtlasResourcePolicies`: []ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.GetAtlasResourcePolicies`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAtlasResourcePoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]ApiAtlasResourcePolicy**](ApiAtlasResourcePolicy.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2024-08-05+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetAtlasResourcePolicy
-
-> ApiAtlasResourcePolicy GetAtlasResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
+> ApiAtlasResourcePolicy GetOrgResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
 
 Return One Atlas Resource Policy
 
@@ -297,17 +217,17 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ResourcePoliciesApi.GetAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.GetOrgResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.GetAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.GetOrgResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetAtlasResourcePolicy`: ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.GetAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    // response from `GetOrgResourcePolicy`: ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.GetOrgResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -322,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAtlasResourcePolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOrgResourcePolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -427,9 +347,89 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAtlasResourcePolicy
+## ListOrgResourcePolicies
 
-> ApiAtlasResourcePolicy UpdateAtlasResourcePolicy(ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit ApiAtlasResourcePolicyEdit).Execute()
+> []ApiAtlasResourcePolicy ListOrgResourcePolicies(ctx, orgId).Execute()
+
+Return All Atlas Resource Policies
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.ResourcePoliciesApi.ListOrgResourcePolicies(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.ListOrgResourcePolicies`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListOrgResourcePolicies`: []ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.ListOrgResourcePolicies`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOrgResourcePoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]ApiAtlasResourcePolicy**](ApiAtlasResourcePolicy.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrgResourcePolicy
+
+> ApiAtlasResourcePolicy UpdateOrgResourcePolicy(ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit ApiAtlasResourcePolicyEdit).Execute()
 
 Update One Atlas Resource Policy
 
@@ -461,17 +461,17 @@ func main() {
     resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
     apiAtlasResourcePolicyEdit := *openapiclient.NewApiAtlasResourcePolicyEdit() // ApiAtlasResourcePolicyEdit | 
 
-    resp, r, err := sdk.ResourcePoliciesApi.UpdateAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId, &apiAtlasResourcePolicyEdit).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.UpdateOrgResourcePolicy(context.Background(), orgId, resourcePolicyId, &apiAtlasResourcePolicyEdit).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.UpdateAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.UpdateOrgResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateAtlasResourcePolicy`: ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.UpdateAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    // response from `UpdateOrgResourcePolicy`: ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.UpdateOrgResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -486,7 +486,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAtlasResourcePolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOrgResourcePolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

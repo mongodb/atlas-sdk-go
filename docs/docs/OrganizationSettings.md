@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **MultiFactorAuthRequired** | Pointer to **bool** | Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/. | [optional] 
 **RestrictEmployeeAccess** | Pointer to **bool** | Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/. | [optional] 
 **SecurityContact** | Pointer to **string** | String that specifies a single email address for the specified organization to receive security-related notifications. Specifying a security contact does not grant them authorization or access to Atlas for security decisions or approvals. An empty string is valid and clears the existing security contact (if any). | [optional] 
+**StreamsCrossGroupEnabled** | Pointer to **bool** | Flag that indicates whether a group&#39;s Atlas Stream Processing instances in this organization can create connections to other group&#39;s clusters in the same organization. | [optional] 
 
 ## Methods
 
@@ -174,6 +175,30 @@ SetSecurityContact sets SecurityContact field to given value.
 `func (o *OrganizationSettings) HasSecurityContact() bool`
 
 HasSecurityContact returns a boolean if a field has been set.
+### GetStreamsCrossGroupEnabled
+
+`func (o *OrganizationSettings) GetStreamsCrossGroupEnabled() bool`
+
+GetStreamsCrossGroupEnabled returns the StreamsCrossGroupEnabled field if non-nil, zero value otherwise.
+
+### GetStreamsCrossGroupEnabledOk
+
+`func (o *OrganizationSettings) GetStreamsCrossGroupEnabledOk() (*bool, bool)`
+
+GetStreamsCrossGroupEnabledOk returns a tuple with the StreamsCrossGroupEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStreamsCrossGroupEnabled
+
+`func (o *OrganizationSettings) SetStreamsCrossGroupEnabled(v bool)`
+
+SetStreamsCrossGroupEnabled sets StreamsCrossGroupEnabled field to given value.
+
+### HasStreamsCrossGroupEnabled
+
+`func (o *OrganizationSettings) HasStreamsCrossGroupEnabled() bool`
+
+HasStreamsCrossGroupEnabled returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
