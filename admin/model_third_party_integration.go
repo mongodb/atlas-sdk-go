@@ -16,6 +16,8 @@ type ThirdPartyIntegration struct {
 	SendCollectionLatencyMetrics *bool `json:"sendCollectionLatencyMetrics,omitempty"`
 	// Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size.
 	SendDatabaseMetrics *bool `json:"sendDatabaseMetrics,omitempty"`
+	// Toggle sending user provided group and cluster resource tags with the datadog metrics.
+	SendUserProvidedResourceTags *bool `json:"sendUserProvidedResourceTags,omitempty"`
 	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
 	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
 	// Unique 40-hexadecimal digit string that identifies your New Relic account.
@@ -61,6 +63,8 @@ func NewThirdPartyIntegration() *ThirdPartyIntegration {
 	this.SendCollectionLatencyMetrics = &sendCollectionLatencyMetrics
 	var sendDatabaseMetrics bool = false
 	this.SendDatabaseMetrics = &sendDatabaseMetrics
+	var sendUserProvidedResourceTags bool = false
+	this.SendUserProvidedResourceTags = &sendUserProvidedResourceTags
 	return &this
 }
 
@@ -73,6 +77,8 @@ func NewThirdPartyIntegrationWithDefaults() *ThirdPartyIntegration {
 	this.SendCollectionLatencyMetrics = &sendCollectionLatencyMetrics
 	var sendDatabaseMetrics bool = false
 	this.SendDatabaseMetrics = &sendDatabaseMetrics
+	var sendUserProvidedResourceTags bool = false
+	this.SendUserProvidedResourceTags = &sendUserProvidedResourceTags
 	return &this
 }
 
@@ -272,6 +278,39 @@ func (o *ThirdPartyIntegration) HasSendDatabaseMetrics() bool {
 // SetSendDatabaseMetrics gets a reference to the given bool and assigns it to the SendDatabaseMetrics field.
 func (o *ThirdPartyIntegration) SetSendDatabaseMetrics(v bool) {
 	o.SendDatabaseMetrics = &v
+}
+
+// GetSendUserProvidedResourceTags returns the SendUserProvidedResourceTags field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTags() bool {
+	if o == nil || IsNil(o.SendUserProvidedResourceTags) {
+		var ret bool
+		return ret
+	}
+	return *o.SendUserProvidedResourceTags
+}
+
+// GetSendUserProvidedResourceTagsOk returns a tuple with the SendUserProvidedResourceTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTagsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendUserProvidedResourceTags) {
+		return nil, false
+	}
+
+	return o.SendUserProvidedResourceTags, true
+}
+
+// HasSendUserProvidedResourceTags returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasSendUserProvidedResourceTags() bool {
+	if o != nil && !IsNil(o.SendUserProvidedResourceTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendUserProvidedResourceTags gets a reference to the given bool and assigns it to the SendUserProvidedResourceTags field.
+func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTags(v bool) {
+	o.SendUserProvidedResourceTags = &v
 }
 
 // GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise

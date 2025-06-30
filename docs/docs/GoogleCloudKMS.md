@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled encryption at rest for the specified  project. To disable encryption at rest using customer key management and remove the configuration details, pass only this parameter with a value of &#x60;false&#x60;. | [optional] 
 **KeyVersionResourceID** | Pointer to **string** | Resource path that displays the key version resource ID for your Google Cloud KMS. | [optional] 
+**RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Google Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud KMS. | [optional] 
 **ServiceAccountKey** | Pointer to **string** | JavaScript Object Notation (JSON) object that contains the Google Cloud Key Management Service (KMS). Format the JSON as a string and not as an object. | [optional] 
 **Valid** | Pointer to **bool** | Flag that indicates whether the Google Cloud Key Management Service (KMS) encryption key can encrypt and decrypt data. | [optional] [readonly] 
 
@@ -76,6 +77,30 @@ SetKeyVersionResourceID sets KeyVersionResourceID field to given value.
 `func (o *GoogleCloudKMS) HasKeyVersionResourceID() bool`
 
 HasKeyVersionResourceID returns a boolean if a field has been set.
+### GetRoleId
+
+`func (o *GoogleCloudKMS) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *GoogleCloudKMS) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *GoogleCloudKMS) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *GoogleCloudKMS) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
 ### GetServiceAccountKey
 
 `func (o *GoogleCloudKMS) GetServiceAccountKey() string`

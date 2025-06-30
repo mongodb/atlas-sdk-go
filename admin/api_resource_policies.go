@@ -13,99 +13,76 @@ import (
 type ResourcePoliciesApi interface {
 
 	/*
-		CreateAtlasResourcePolicy Create One Atlas Resource Policy
+		CreateOrgResourcePolicy Create One Atlas Resource Policy
 
 		Create one Atlas Resource Policy for an org.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param apiAtlasResourcePolicyCreate Atlas Resource Policy to create.
-		@return CreateAtlasResourcePolicyApiRequest
+		@return CreateOrgResourcePolicyApiRequest
 	*/
-	CreateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) CreateAtlasResourcePolicyApiRequest
+	CreateOrgResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) CreateOrgResourcePolicyApiRequest
 	/*
-		CreateAtlasResourcePolicy Create One Atlas Resource Policy
+		CreateOrgResourcePolicy Create One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateAtlasResourcePolicyApiParams - Parameters for the request
-		@return CreateAtlasResourcePolicyApiRequest
+		@param CreateOrgResourcePolicyApiParams - Parameters for the request
+		@return CreateOrgResourcePolicyApiRequest
 	*/
-	CreateAtlasResourcePolicyWithParams(ctx context.Context, args *CreateAtlasResourcePolicyApiParams) CreateAtlasResourcePolicyApiRequest
+	CreateOrgResourcePolicyWithParams(ctx context.Context, args *CreateOrgResourcePolicyApiParams) CreateOrgResourcePolicyApiRequest
 
 	// Method available only for mocking purposes
-	CreateAtlasResourcePolicyExecute(r CreateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
+	CreateOrgResourcePolicyExecute(r CreateOrgResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
 
 	/*
-		DeleteAtlasResourcePolicy Delete One Atlas Resource Policy
+		DeleteOrgResourcePolicy Delete One Atlas Resource Policy
 
 		Delete one Atlas Resource Policy for an org.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
-		@return DeleteAtlasResourcePolicyApiRequest
+		@return DeleteOrgResourcePolicyApiRequest
 	*/
-	DeleteAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) DeleteAtlasResourcePolicyApiRequest
+	DeleteOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) DeleteOrgResourcePolicyApiRequest
 	/*
-		DeleteAtlasResourcePolicy Delete One Atlas Resource Policy
+		DeleteOrgResourcePolicy Delete One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteAtlasResourcePolicyApiParams - Parameters for the request
-		@return DeleteAtlasResourcePolicyApiRequest
+		@param DeleteOrgResourcePolicyApiParams - Parameters for the request
+		@return DeleteOrgResourcePolicyApiRequest
 	*/
-	DeleteAtlasResourcePolicyWithParams(ctx context.Context, args *DeleteAtlasResourcePolicyApiParams) DeleteAtlasResourcePolicyApiRequest
+	DeleteOrgResourcePolicyWithParams(ctx context.Context, args *DeleteOrgResourcePolicyApiParams) DeleteOrgResourcePolicyApiRequest
 
 	// Method available only for mocking purposes
-	DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (*http.Response, error)
+	DeleteOrgResourcePolicyExecute(r DeleteOrgResourcePolicyApiRequest) (*http.Response, error)
 
 	/*
-		GetAtlasResourcePolicies Return All Atlas Resource Policies
-
-		Return all Atlas Resource Policies for the org.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return GetAtlasResourcePoliciesApiRequest
-	*/
-	GetAtlasResourcePolicies(ctx context.Context, orgId string) GetAtlasResourcePoliciesApiRequest
-	/*
-		GetAtlasResourcePolicies Return All Atlas Resource Policies
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetAtlasResourcePoliciesApiParams - Parameters for the request
-		@return GetAtlasResourcePoliciesApiRequest
-	*/
-	GetAtlasResourcePoliciesWithParams(ctx context.Context, args *GetAtlasResourcePoliciesApiParams) GetAtlasResourcePoliciesApiRequest
-
-	// Method available only for mocking purposes
-	GetAtlasResourcePoliciesExecute(r GetAtlasResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error)
-
-	/*
-		GetAtlasResourcePolicy Return One Atlas Resource Policy
+		GetOrgResourcePolicy Return One Atlas Resource Policy
 
 		Return one Atlas Resource Policy for an org.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
-		@return GetAtlasResourcePolicyApiRequest
+		@return GetOrgResourcePolicyApiRequest
 	*/
-	GetAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) GetAtlasResourcePolicyApiRequest
+	GetOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) GetOrgResourcePolicyApiRequest
 	/*
-		GetAtlasResourcePolicy Return One Atlas Resource Policy
+		GetOrgResourcePolicy Return One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetAtlasResourcePolicyApiParams - Parameters for the request
-		@return GetAtlasResourcePolicyApiRequest
+		@param GetOrgResourcePolicyApiParams - Parameters for the request
+		@return GetOrgResourcePolicyApiRequest
 	*/
-	GetAtlasResourcePolicyWithParams(ctx context.Context, args *GetAtlasResourcePolicyApiParams) GetAtlasResourcePolicyApiRequest
+	GetOrgResourcePolicyWithParams(ctx context.Context, args *GetOrgResourcePolicyApiParams) GetOrgResourcePolicyApiRequest
 
 	// Method available only for mocking purposes
-	GetAtlasResourcePolicyExecute(r GetAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
+	GetOrgResourcePolicyExecute(r GetOrgResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
 
 	/*
 		GetResourcesNonCompliant Return All Non-Compliant Resources
@@ -131,7 +108,30 @@ type ResourcePoliciesApi interface {
 	GetResourcesNonCompliantExecute(r GetResourcesNonCompliantApiRequest) ([]ApiAtlasNonCompliantResource, *http.Response, error)
 
 	/*
-		UpdateAtlasResourcePolicy Update One Atlas Resource Policy
+		ListOrgResourcePolicies Return All Atlas Resource Policies
+
+		Return all Atlas Resource Policies for the org.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return ListOrgResourcePoliciesApiRequest
+	*/
+	ListOrgResourcePolicies(ctx context.Context, orgId string) ListOrgResourcePoliciesApiRequest
+	/*
+		ListOrgResourcePolicies Return All Atlas Resource Policies
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListOrgResourcePoliciesApiParams - Parameters for the request
+		@return ListOrgResourcePoliciesApiRequest
+	*/
+	ListOrgResourcePoliciesWithParams(ctx context.Context, args *ListOrgResourcePoliciesApiParams) ListOrgResourcePoliciesApiRequest
+
+	// Method available only for mocking purposes
+	ListOrgResourcePoliciesExecute(r ListOrgResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error)
+
+	/*
+		UpdateOrgResourcePolicy Update One Atlas Resource Policy
 
 		Update one Atlas Resource Policy for an org.
 
@@ -139,21 +139,21 @@ type ResourcePoliciesApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
 		@param apiAtlasResourcePolicyEdit Atlas Resource Policy to update.
-		@return UpdateAtlasResourcePolicyApiRequest
+		@return UpdateOrgResourcePolicyApiRequest
 	*/
-	UpdateAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit) UpdateAtlasResourcePolicyApiRequest
+	UpdateOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit) UpdateOrgResourcePolicyApiRequest
 	/*
-		UpdateAtlasResourcePolicy Update One Atlas Resource Policy
+		UpdateOrgResourcePolicy Update One Atlas Resource Policy
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdateAtlasResourcePolicyApiParams - Parameters for the request
-		@return UpdateAtlasResourcePolicyApiRequest
+		@param UpdateOrgResourcePolicyApiParams - Parameters for the request
+		@return UpdateOrgResourcePolicyApiRequest
 	*/
-	UpdateAtlasResourcePolicyWithParams(ctx context.Context, args *UpdateAtlasResourcePolicyApiParams) UpdateAtlasResourcePolicyApiRequest
+	UpdateOrgResourcePolicyWithParams(ctx context.Context, args *UpdateOrgResourcePolicyApiParams) UpdateOrgResourcePolicyApiRequest
 
 	// Method available only for mocking purposes
-	UpdateAtlasResourcePolicyExecute(r UpdateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
+	UpdateOrgResourcePolicyExecute(r UpdateOrgResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
 
 	/*
 		ValidateAtlasResourcePolicy Validate One Atlas Resource Policy
@@ -183,20 +183,20 @@ type ResourcePoliciesApi interface {
 // ResourcePoliciesApiService ResourcePoliciesApi service
 type ResourcePoliciesApiService service
 
-type CreateAtlasResourcePolicyApiRequest struct {
+type CreateOrgResourcePolicyApiRequest struct {
 	ctx                          context.Context
 	ApiService                   ResourcePoliciesApi
 	orgId                        string
 	apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate
 }
 
-type CreateAtlasResourcePolicyApiParams struct {
+type CreateOrgResourcePolicyApiParams struct {
 	OrgId                        string
 	ApiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate
 }
 
-func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyWithParams(ctx context.Context, args *CreateAtlasResourcePolicyApiParams) CreateAtlasResourcePolicyApiRequest {
-	return CreateAtlasResourcePolicyApiRequest{
+func (a *ResourcePoliciesApiService) CreateOrgResourcePolicyWithParams(ctx context.Context, args *CreateOrgResourcePolicyApiParams) CreateOrgResourcePolicyApiRequest {
+	return CreateOrgResourcePolicyApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
 		orgId:                        args.OrgId,
@@ -204,21 +204,21 @@ func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyWithParams(ctx con
 	}
 }
 
-func (r CreateAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
-	return r.ApiService.CreateAtlasResourcePolicyExecute(r)
+func (r CreateOrgResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.CreateOrgResourcePolicyExecute(r)
 }
 
 /*
-CreateAtlasResourcePolicy Create One Atlas Resource Policy
+CreateOrgResourcePolicy Create One Atlas Resource Policy
 
 Create one Atlas Resource Policy for an org.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return CreateAtlasResourcePolicyApiRequest
+	@return CreateOrgResourcePolicyApiRequest
 */
-func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) CreateAtlasResourcePolicyApiRequest {
-	return CreateAtlasResourcePolicyApiRequest{
+func (a *ResourcePoliciesApiService) CreateOrgResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) CreateOrgResourcePolicyApiRequest {
+	return CreateOrgResourcePolicyApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
 		orgId:                        orgId,
@@ -226,10 +226,10 @@ func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicy(ctx context.Conte
 	}
 }
 
-// CreateAtlasResourcePolicyExecute executes the request
+// CreateOrgResourcePolicyExecute executes the request
 //
 //	@return ApiAtlasResourcePolicy
-func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyExecute(r CreateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
+func (a *ResourcePoliciesApiService) CreateOrgResourcePolicyExecute(r CreateOrgResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -237,7 +237,7 @@ func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyExecute(r CreateAt
 		localVarReturnValue *ApiAtlasResourcePolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.CreateAtlasResourcePolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.CreateOrgResourcePolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -306,20 +306,20 @@ func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyExecute(r CreateAt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeleteAtlasResourcePolicyApiRequest struct {
+type DeleteOrgResourcePolicyApiRequest struct {
 	ctx              context.Context
 	ApiService       ResourcePoliciesApi
 	orgId            string
 	resourcePolicyId string
 }
 
-type DeleteAtlasResourcePolicyApiParams struct {
+type DeleteOrgResourcePolicyApiParams struct {
 	OrgId            string
 	ResourcePolicyId string
 }
 
-func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyWithParams(ctx context.Context, args *DeleteAtlasResourcePolicyApiParams) DeleteAtlasResourcePolicyApiRequest {
-	return DeleteAtlasResourcePolicyApiRequest{
+func (a *ResourcePoliciesApiService) DeleteOrgResourcePolicyWithParams(ctx context.Context, args *DeleteOrgResourcePolicyApiParams) DeleteOrgResourcePolicyApiRequest {
+	return DeleteOrgResourcePolicyApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		orgId:            args.OrgId,
@@ -327,22 +327,22 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyWithParams(ctx con
 	}
 }
 
-func (r DeleteAtlasResourcePolicyApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteAtlasResourcePolicyExecute(r)
+func (r DeleteOrgResourcePolicyApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteOrgResourcePolicyExecute(r)
 }
 
 /*
-DeleteAtlasResourcePolicy Delete One Atlas Resource Policy
+DeleteOrgResourcePolicy Delete One Atlas Resource Policy
 
 Delete one Atlas Resource Policy for an org.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
-	@return DeleteAtlasResourcePolicyApiRequest
+	@return DeleteOrgResourcePolicyApiRequest
 */
-func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) DeleteAtlasResourcePolicyApiRequest {
-	return DeleteAtlasResourcePolicyApiRequest{
+func (a *ResourcePoliciesApiService) DeleteOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) DeleteOrgResourcePolicyApiRequest {
+	return DeleteOrgResourcePolicyApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		orgId:            orgId,
@@ -350,15 +350,15 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicy(ctx context.Conte
 	}
 }
 
-// DeleteAtlasResourcePolicyExecute executes the request
-func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (*http.Response, error) {
+// DeleteOrgResourcePolicyExecute executes the request
+func (a *ResourcePoliciesApiService) DeleteOrgResourcePolicyExecute(r DeleteOrgResourcePolicyApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.DeleteAtlasResourcePolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.DeleteOrgResourcePolicy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -412,134 +412,20 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAt
 	return localVarHTTPResponse, nil
 }
 
-type GetAtlasResourcePoliciesApiRequest struct {
-	ctx        context.Context
-	ApiService ResourcePoliciesApi
-	orgId      string
-}
-
-type GetAtlasResourcePoliciesApiParams struct {
-	OrgId string
-}
-
-func (a *ResourcePoliciesApiService) GetAtlasResourcePoliciesWithParams(ctx context.Context, args *GetAtlasResourcePoliciesApiParams) GetAtlasResourcePoliciesApiRequest {
-	return GetAtlasResourcePoliciesApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      args.OrgId,
-	}
-}
-
-func (r GetAtlasResourcePoliciesApiRequest) Execute() ([]ApiAtlasResourcePolicy, *http.Response, error) {
-	return r.ApiService.GetAtlasResourcePoliciesExecute(r)
-}
-
-/*
-GetAtlasResourcePolicies Return All Atlas Resource Policies
-
-Return all Atlas Resource Policies for the org.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return GetAtlasResourcePoliciesApiRequest
-*/
-func (a *ResourcePoliciesApiService) GetAtlasResourcePolicies(ctx context.Context, orgId string) GetAtlasResourcePoliciesApiRequest {
-	return GetAtlasResourcePoliciesApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-	}
-}
-
-// GetAtlasResourcePoliciesExecute executes the request
-//
-//	@return []ApiAtlasResourcePolicy
-func (a *ResourcePoliciesApiService) GetAtlasResourcePoliciesExecute(r GetAtlasResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue []ApiAtlasResourcePolicy
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.GetAtlasResourcePolicies")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
-	if r.orgId == "" {
-		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GetAtlasResourcePolicyApiRequest struct {
+type GetOrgResourcePolicyApiRequest struct {
 	ctx              context.Context
 	ApiService       ResourcePoliciesApi
 	orgId            string
 	resourcePolicyId string
 }
 
-type GetAtlasResourcePolicyApiParams struct {
+type GetOrgResourcePolicyApiParams struct {
 	OrgId            string
 	ResourcePolicyId string
 }
 
-func (a *ResourcePoliciesApiService) GetAtlasResourcePolicyWithParams(ctx context.Context, args *GetAtlasResourcePolicyApiParams) GetAtlasResourcePolicyApiRequest {
-	return GetAtlasResourcePolicyApiRequest{
+func (a *ResourcePoliciesApiService) GetOrgResourcePolicyWithParams(ctx context.Context, args *GetOrgResourcePolicyApiParams) GetOrgResourcePolicyApiRequest {
+	return GetOrgResourcePolicyApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		orgId:            args.OrgId,
@@ -547,22 +433,22 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicyWithParams(ctx contex
 	}
 }
 
-func (r GetAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
-	return r.ApiService.GetAtlasResourcePolicyExecute(r)
+func (r GetOrgResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.GetOrgResourcePolicyExecute(r)
 }
 
 /*
-GetAtlasResourcePolicy Return One Atlas Resource Policy
+GetOrgResourcePolicy Return One Atlas Resource Policy
 
 Return one Atlas Resource Policy for an org.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
-	@return GetAtlasResourcePolicyApiRequest
+	@return GetOrgResourcePolicyApiRequest
 */
-func (a *ResourcePoliciesApiService) GetAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) GetAtlasResourcePolicyApiRequest {
-	return GetAtlasResourcePolicyApiRequest{
+func (a *ResourcePoliciesApiService) GetOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) GetOrgResourcePolicyApiRequest {
+	return GetOrgResourcePolicyApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		orgId:            orgId,
@@ -570,10 +456,10 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicy(ctx context.Context,
 	}
 }
 
-// GetAtlasResourcePolicyExecute executes the request
+// GetOrgResourcePolicyExecute executes the request
 //
 //	@return ApiAtlasResourcePolicy
-func (a *ResourcePoliciesApiService) GetAtlasResourcePolicyExecute(r GetAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
+func (a *ResourcePoliciesApiService) GetOrgResourcePolicyExecute(r GetOrgResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -581,7 +467,7 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicyExecute(r GetAtlasRes
 		localVarReturnValue *ApiAtlasResourcePolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.GetAtlasResourcePolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.GetOrgResourcePolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -763,7 +649,121 @@ func (a *ResourcePoliciesApiService) GetResourcesNonCompliantExecute(r GetResour
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpdateAtlasResourcePolicyApiRequest struct {
+type ListOrgResourcePoliciesApiRequest struct {
+	ctx        context.Context
+	ApiService ResourcePoliciesApi
+	orgId      string
+}
+
+type ListOrgResourcePoliciesApiParams struct {
+	OrgId string
+}
+
+func (a *ResourcePoliciesApiService) ListOrgResourcePoliciesWithParams(ctx context.Context, args *ListOrgResourcePoliciesApiParams) ListOrgResourcePoliciesApiRequest {
+	return ListOrgResourcePoliciesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+	}
+}
+
+func (r ListOrgResourcePoliciesApiRequest) Execute() ([]ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.ListOrgResourcePoliciesExecute(r)
+}
+
+/*
+ListOrgResourcePolicies Return All Atlas Resource Policies
+
+Return all Atlas Resource Policies for the org.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListOrgResourcePoliciesApiRequest
+*/
+func (a *ResourcePoliciesApiService) ListOrgResourcePolicies(ctx context.Context, orgId string) ListOrgResourcePoliciesApiRequest {
+	return ListOrgResourcePoliciesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// ListOrgResourcePoliciesExecute executes the request
+//
+//	@return []ApiAtlasResourcePolicy
+func (a *ResourcePoliciesApiService) ListOrgResourcePoliciesExecute(r ListOrgResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue []ApiAtlasResourcePolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.ListOrgResourcePolicies")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateOrgResourcePolicyApiRequest struct {
 	ctx                        context.Context
 	ApiService                 ResourcePoliciesApi
 	orgId                      string
@@ -771,14 +771,14 @@ type UpdateAtlasResourcePolicyApiRequest struct {
 	apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit
 }
 
-type UpdateAtlasResourcePolicyApiParams struct {
+type UpdateOrgResourcePolicyApiParams struct {
 	OrgId                      string
 	ResourcePolicyId           string
 	ApiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit
 }
 
-func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicyWithParams(ctx context.Context, args *UpdateAtlasResourcePolicyApiParams) UpdateAtlasResourcePolicyApiRequest {
-	return UpdateAtlasResourcePolicyApiRequest{
+func (a *ResourcePoliciesApiService) UpdateOrgResourcePolicyWithParams(ctx context.Context, args *UpdateOrgResourcePolicyApiParams) UpdateOrgResourcePolicyApiRequest {
+	return UpdateOrgResourcePolicyApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
 		orgId:                      args.OrgId,
@@ -787,22 +787,22 @@ func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicyWithParams(ctx con
 	}
 }
 
-func (r UpdateAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
-	return r.ApiService.UpdateAtlasResourcePolicyExecute(r)
+func (r UpdateOrgResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.UpdateOrgResourcePolicyExecute(r)
 }
 
 /*
-UpdateAtlasResourcePolicy Update One Atlas Resource Policy
+UpdateOrgResourcePolicy Update One Atlas Resource Policy
 
 Update one Atlas Resource Policy for an org.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
-	@return UpdateAtlasResourcePolicyApiRequest
+	@return UpdateOrgResourcePolicyApiRequest
 */
-func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit) UpdateAtlasResourcePolicyApiRequest {
-	return UpdateAtlasResourcePolicyApiRequest{
+func (a *ResourcePoliciesApiService) UpdateOrgResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit) UpdateOrgResourcePolicyApiRequest {
+	return UpdateOrgResourcePolicyApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
 		orgId:                      orgId,
@@ -811,10 +811,10 @@ func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicy(ctx context.Conte
 	}
 }
 
-// UpdateAtlasResourcePolicyExecute executes the request
+// UpdateOrgResourcePolicyExecute executes the request
 //
 //	@return ApiAtlasResourcePolicy
-func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicyExecute(r UpdateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
+func (a *ResourcePoliciesApiService) UpdateOrgResourcePolicyExecute(r UpdateOrgResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -822,7 +822,7 @@ func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicyExecute(r UpdateAt
 		localVarReturnValue *ApiAtlasResourcePolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.UpdateAtlasResourcePolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.UpdateOrgResourcePolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

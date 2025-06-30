@@ -13,7 +13,7 @@ import (
 type TeamsApi interface {
 
 	/*
-		AddAllTeamsToProject Add Teams to One Project
+		AddAllTeamsToProject Add One Team to One Project
 
 		Adds one team to the specified project. All members of the team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -24,7 +24,7 @@ type TeamsApi interface {
 	*/
 	AddAllTeamsToProject(ctx context.Context, groupId string, teamRole *[]TeamRole) AddAllTeamsToProjectApiRequest
 	/*
-		AddAllTeamsToProject Add Teams to One Project
+		AddAllTeamsToProject Add One Team to One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -114,6 +114,30 @@ type TeamsApi interface {
 
 	// Method available only for mocking purposes
 	DeleteTeamExecute(r DeleteTeamApiRequest) (*http.Response, error)
+
+	/*
+		GetProjectTeam Return One Team in One Project
+
+		Returns one team to which the authenticated user has access in the project specified using its unique 24-hexadecimal digit identifier. All members of the team share the same project access. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param teamId Unique 24-hexadecimal digit string that identifies the team for which you want to get.
+		@return GetProjectTeamApiRequest
+	*/
+	GetProjectTeam(ctx context.Context, groupId string, teamId string) GetProjectTeamApiRequest
+	/*
+		GetProjectTeam Return One Team in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetProjectTeamApiParams - Parameters for the request
+		@return GetProjectTeamApiRequest
+	*/
+	GetProjectTeamWithParams(ctx context.Context, args *GetProjectTeamApiParams) GetProjectTeamApiRequest
+
+	// Method available only for mocking purposes
+	GetProjectTeamExecute(r GetProjectTeamApiRequest) (*TeamRole, *http.Response, error)
 
 	/*
 		GetTeamById Return One Team by ID
@@ -344,7 +368,7 @@ func (r AddAllTeamsToProjectApiRequest) Execute() (*PaginatedTeamRole, *http.Res
 }
 
 /*
-AddAllTeamsToProject Add Teams to One Project
+AddAllTeamsToProject Add One Team to One Project
 
 Adds one team to the specified project. All members of the team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -806,6 +830,129 @@ func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (*http.Respo
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type GetProjectTeamApiRequest struct {
+	ctx        context.Context
+	ApiService TeamsApi
+	groupId    string
+	teamId     string
+}
+
+type GetProjectTeamApiParams struct {
+	GroupId string
+	TeamId  string
+}
+
+func (a *TeamsApiService) GetProjectTeamWithParams(ctx context.Context, args *GetProjectTeamApiParams) GetProjectTeamApiRequest {
+	return GetProjectTeamApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		teamId:     args.TeamId,
+	}
+}
+
+func (r GetProjectTeamApiRequest) Execute() (*TeamRole, *http.Response, error) {
+	return r.ApiService.GetProjectTeamExecute(r)
+}
+
+/*
+GetProjectTeam Return One Team in One Project
+
+Returns one team to which the authenticated user has access in the project specified using its unique 24-hexadecimal digit identifier. All members of the team share the same project access. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param teamId Unique 24-hexadecimal digit string that identifies the team for which you want to get.
+	@return GetProjectTeamApiRequest
+*/
+func (a *TeamsApiService) GetProjectTeam(ctx context.Context, groupId string, teamId string) GetProjectTeamApiRequest {
+	return GetProjectTeamApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		teamId:     teamId,
+	}
+}
+
+// GetProjectTeamExecute executes the request
+//
+//	@return TeamRole
+func (a *TeamsApiService) GetProjectTeamExecute(r GetProjectTeamApiRequest) (*TeamRole, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *TeamRole
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.GetProjectTeam")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/teams/{teamId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.teamId == "" {
+		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type GetTeamByIdApiRequest struct {
