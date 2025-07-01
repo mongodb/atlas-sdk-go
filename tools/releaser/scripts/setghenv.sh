@@ -46,3 +46,8 @@ fi
   echo "$RELEASE_NOTES"
   echo "$EOF"
 } >> "$GITHUB_ENV"
+
+# Set the release_tag output for GitHub Actions
+if [ -n "${GITHUB_OUTPUT:-}" ]; then
+  echo "release_tag=${SDK_VERSION}" >> "$GITHUB_OUTPUT"
+fi
