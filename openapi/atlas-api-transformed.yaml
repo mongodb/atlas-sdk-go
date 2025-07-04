@@ -11353,6 +11353,113 @@ components:
           readOnly: true
           type: string
       type: object
+    QueryShapeSeenMetadata:
+      description: Metadata about when a query shape was seen.
+      properties:
+        applicationName:
+          description: The name of the application that this query shape came from. This can be set via the MongoDB connection string. The application name is set to unknown for internal MongoDB queries.
+          type: string
+        driverName:
+          description: The name of the MongoDB driver that this query shape was executed from. The driver name is set to unknown for internal MongoDB queries.
+          type: string
+        driverVersion:
+          description: The version of the MongoDB driver that this query shape was executed from. The driver version is set to unknown for internal MongoDB queries.
+          type: string
+        timestamp:
+          description: Unix epoch milliseconds of the time.
+          format: int64
+          type: integer
+      type: object
+    QueryStatsDetailsResponse:
+      description: Metadata and summary statistics for a given query shape.
+      properties:
+        firstSeen:
+          $ref: "#/components/schemas/QueryShapeSeenMetadata"
+        lastSeen:
+          $ref: "#/components/schemas/QueryShapeSeenMetadata"
+        queryStats:
+          $ref: "#/components/schemas/QueryStatsSummary"
+      type: object
+    QueryStatsSummary:
+      description: A summary of execution statistics for a given query shape.
+      properties:
+        avgWorkingMillis:
+          description: Average total time in milliseconds spent running queries with the given query shape. If the query resulted in getMore commands, this metric includes the time spent processing the getMore requests. This metric does not include time spent waiting for the client.
+          format: double
+          type: number
+        bytesRead:
+          description: The number of bytes read by the given query shape from the disk to the cache.
+          format: double
+          type: number
+        command:
+          description: The MongoDB command issued for this query shape.
+          type: string
+        docsExamined:
+          description: Total number of documents examined by queries with the given query shape.
+          format: double
+          type: number
+        docsExaminedRatio:
+          description: Ratio of documents examined to documents returned by queries with the given query shape.
+          format: double
+          type: number
+        docsReturned:
+          description: Total number of documents returned by queries with the given query shape.
+          format: double
+          type: number
+        execCount:
+          description: Total number of times that queries with the given query shape have been executed.
+          format: double
+          type: number
+        keysExamined:
+          description: Total number of in-bounds and out-of-bounds index keys examined by queries with the given query shape.
+          format: double
+          type: number
+        keysExaminedRatio:
+          description: Ratio of in-bounds and out-of-bounds index keys examined to indexes containing documents returned by queries with the given query shape.
+          format: double
+          type: number
+        lastExecMicros:
+          description: Execution runtime in microseconds for the most recent query with the given query shape.
+          format: double
+          type: number
+        namespace:
+          description: Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
+          type: string
+        p50ExecMicros:
+          description: The 50th percentile value of execution time in microseconds.
+          format: double
+          type: number
+        p90ExecMicros:
+          description: The 90th percentile value of execution time in microseconds.
+          format: double
+          type: number
+        p99ExecMicros:
+          description: The 99th percentile value of execution time in microseconds.
+          format: double
+          type: number
+        queryShape:
+          description: A query shape is a set of specifications that group similar queries together. Specifications can include filters, sorts, projections, aggregation pipeline stages, a namespace, and others. Queries that have similar specifications have the same query shape.
+          type: string
+        queryShapeHash:
+          description: A hexadecimal string that represents the hash of a MongoDB query shape.
+          type: string
+        totalTimeToResponseMicros:
+          description: Time in microseconds spent from the beginning of query processing to the first server response.
+          format: double
+          type: number
+        totalWorkingMillis:
+          description: Total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
+          format: double
+          type: number
+      type: object
+    QueryStatsSummaryListResponse:
+      properties:
+        summaries:
+          description: List of query shape statistic summaries from Query Shape Insights.
+          items:
+            $ref: "#/components/schemas/QueryStatsSummary"
+          type: array
+      type: object
     RawMetricUnits:
       default: RAW
       description: Element used to express the quantity. This can be an element of time, storage capacity, and the like.
@@ -16126,7 +16233,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 8ff5fb9d270a1863bad8b91f85049e9b133bdffd
+  x-xgen-sha: 0a8bc2713b82e3bef52515e1fbf12532f43feb7b
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -27217,6 +27324,297 @@ paths:
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs" \
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/updateClusterAdvancedConfiguration
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details:
+    get:
+      description: Returns the metadata and statistics summary for a given query shape hash.
+      operationId: getGroupClusterQueryShapeInsightDetails
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: |-
+            Date and time from which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+            - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: since
+          schema:
+            format: int64
+            minimum: 1199145600000
+            type: integer
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+        - description: |-
+            Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+            - If you specify the **until** parameter, you must specify the **since** parameter.
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: until
+          schema:
+            format: int64
+            minimum: 1199145600000
+            type: integer
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+        - description: ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (`&`) between each processId.
+          in: query
+          name: processIds
+          schema:
+            items:
+              pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+              type: string
+            maxItems: 10
+            type: array
+          style: form
+        - description: A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+          in: path
+          name: queryShapeHash
+          required: true
+          schema:
+            pattern: ^([a-fA-F0-9]{64})$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/QueryStatsDetailsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Query Shape Details
+      tags:
+        - Query Shape Insights
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api getGroupClusterQueryShapeInsightDetails --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupClusterQueryShapeInsightDetailsApiParams{}
+            	sdkResp, httpResp, err := client.QueryShapeInsightsApi.
+            		GetGroupClusterQueryShapeInsightDetailsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Query-Shape-Insights/operation/getGroupClusterQueryShapeInsightDetails
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries:
+    get:
+      description: Returns a list of query shape statistics summaries for a given cluster. Query shape statistics provide performance insights about MongoDB queries, helping users identify problematic query patterns and potential optimizations.
+      operationId: getGroupClusterQueryShapeInsightSummaries
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: |-
+            Date and time from which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+            - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: since
+          schema:
+            format: int64
+            minimum: 1199145600000
+            type: integer
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+        - description: |-
+            Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+            - If you specify the **until** parameter, you must specify the **since** parameter.
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: until
+          schema:
+            format: int64
+            minimum: 1199145600000
+            type: integer
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+        - description: ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (`&`) between each processId.
+          in: query
+          name: processIds
+          schema:
+            items:
+              pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+              type: string
+            maxItems: 10
+            type: array
+          style: form
+        - description: "Namespaces from which to retrieve query shape statistics. A namespace consists of one database and one collection resource written as `.`: `<database>.<collection>`. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (`&`) between each namespace. Omit this parameter to return results for all namespaces."
+          in: query
+          name: namespaces
+          schema:
+            items:
+              type: string
+            maxItems: 10
+            type: array
+          style: form
+        - description: Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (`&`) between each command. The currently supported parameters are find, distinct, and aggregate. Omit this parameter to return results for all supported commands.
+          in: query
+          name: commands
+          schema:
+            description: MongoDB commands from which to retrieve query statistics. To include multiple commands, pass the parameter multiple times delimited with an ampersand (`&`) between each command. Omit this parameter to return results for all supported commands.
+            items:
+              type: string
+            maxItems: 3
+            type: array
+            uniqueItems: true
+          style: form
+        - description: Maximum number of query statistic summaries to return.
+          in: query
+          name: nSummaries
+          schema:
+            default: 100
+            format: int64
+            maximum: 100
+            minimum: 1
+            type: integer
+        - description: Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+          in: query
+          name: series
+          schema:
+            description: Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+            items:
+              type: string
+            maxItems: 14
+            type: array
+            uniqueItems: true
+          style: form
+        - description: A list of SHA256 hashes of desired query shapes, output by MongoDB commands like $queryStats and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+          in: query
+          name: queryShapeHashes
+          schema:
+            description: A list of SHA256 hashes of desired query shapes, output by MongoDB commands like $queryStats and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+            items:
+              pattern: ^([a-fA-F0-9]{64})$
+              type: string
+            maxItems: 10
+            type: array
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/QueryStatsSummaryListResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Query Statistic Summaries
+      tags:
+        - Query Shape Insights
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api getGroupClusterQueryShapeInsightSummaries --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupClusterQueryShapeInsightSummariesApiParams{}
+            	sdkResp, httpResp, err := client.QueryShapeInsightsApi.
+            		GetGroupClusterQueryShapeInsightSummariesWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Query-Shape-Insights/operation/getGroupClusterQueryShapeInsightSummaries
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries:
     post:
       description: "Starts a failover test for the specified cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. A failover test checks how MongoDB Cloud handles the failure of the cluster's primary node. During the test, MongoDB Cloud shuts down the primary node and elects a new primary. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Deprecated versions: v2-{2023-01-01}"
