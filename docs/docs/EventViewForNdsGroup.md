@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **Username** | Pointer to **string** | Email address for the user who triggered this event. If this resource returns this parameter, it doesn&#39;t return the **publicApiKey** parameter. | [optional] [readonly] 
 **AlertId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the alert associated with the event. | [optional] [readonly] 
 **AlertConfigId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the alert configuration associated with the **alertId**. | [optional] [readonly] 
+**TargetPublicKey** | Pointer to **string** | Public part of the API key that this event targets. | [optional] [readonly] 
+**WhitelistEntry** | Pointer to **string** | Entry in the list of source host addresses that the API key accepts and this event targets. | [optional] [readonly] 
 **InvoiceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies of the invoice associated with the event. | [optional] [readonly] 
 **PaymentId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the invoice payment associated with this event. | [optional] [readonly] 
 **ShardName** | Pointer to **string** | Human-readable label of the shard associated with the event. | [optional] [readonly] 
@@ -33,7 +35,6 @@ Name | Type | Description | Notes
 **CurrentValue** | Pointer to [**NumberMetricValue**](NumberMetricValue.md) |  | [optional] 
 **MetricName** | Pointer to **string** | Human-readable label of the metric associated with the **alertId**. This field may change type of **currentValue** field. | [optional] [readonly] 
 **DbUserUsername** | Pointer to **string** | The username of the MongoDB User that was created, deleted, or edited. | [optional] [readonly] 
-**WhitelistEntry** | Pointer to **string** | Entry in the list of source host addresses that the API key accepts and this event targets. | [optional] [readonly] 
 **EndpointId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the endpoint associated with this event. | [optional] [readonly] 
 **ProviderEndpointId** | Pointer to **string** | Unique identification string that the cloud provider uses to identify the private endpoint. | [optional] [readonly] 
 **TeamId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization team associated with this event. | [optional] [readonly] 
@@ -427,6 +428,54 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *EventViewForNdsGroup) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
+### GetTargetPublicKey
+
+`func (o *EventViewForNdsGroup) GetTargetPublicKey() string`
+
+GetTargetPublicKey returns the TargetPublicKey field if non-nil, zero value otherwise.
+
+### GetTargetPublicKeyOk
+
+`func (o *EventViewForNdsGroup) GetTargetPublicKeyOk() (*string, bool)`
+
+GetTargetPublicKeyOk returns a tuple with the TargetPublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetPublicKey
+
+`func (o *EventViewForNdsGroup) SetTargetPublicKey(v string)`
+
+SetTargetPublicKey sets TargetPublicKey field to given value.
+
+### HasTargetPublicKey
+
+`func (o *EventViewForNdsGroup) HasTargetPublicKey() bool`
+
+HasTargetPublicKey returns a boolean if a field has been set.
+### GetWhitelistEntry
+
+`func (o *EventViewForNdsGroup) GetWhitelistEntry() string`
+
+GetWhitelistEntry returns the WhitelistEntry field if non-nil, zero value otherwise.
+
+### GetWhitelistEntryOk
+
+`func (o *EventViewForNdsGroup) GetWhitelistEntryOk() (*string, bool)`
+
+GetWhitelistEntryOk returns a tuple with the WhitelistEntry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWhitelistEntry
+
+`func (o *EventViewForNdsGroup) SetWhitelistEntry(v string)`
+
+SetWhitelistEntry sets WhitelistEntry field to given value.
+
+### HasWhitelistEntry
+
+`func (o *EventViewForNdsGroup) HasWhitelistEntry() bool`
+
+HasWhitelistEntry returns a boolean if a field has been set.
 ### GetInvoiceId
 
 `func (o *EventViewForNdsGroup) GetInvoiceId() string`
@@ -763,30 +812,6 @@ SetDbUserUsername sets DbUserUsername field to given value.
 `func (o *EventViewForNdsGroup) HasDbUserUsername() bool`
 
 HasDbUserUsername returns a boolean if a field has been set.
-### GetWhitelistEntry
-
-`func (o *EventViewForNdsGroup) GetWhitelistEntry() string`
-
-GetWhitelistEntry returns the WhitelistEntry field if non-nil, zero value otherwise.
-
-### GetWhitelistEntryOk
-
-`func (o *EventViewForNdsGroup) GetWhitelistEntryOk() (*string, bool)`
-
-GetWhitelistEntryOk returns a tuple with the WhitelistEntry field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWhitelistEntry
-
-`func (o *EventViewForNdsGroup) SetWhitelistEntry(v string)`
-
-SetWhitelistEntry sets WhitelistEntry field to given value.
-
-### HasWhitelistEntry
-
-`func (o *EventViewForNdsGroup) HasWhitelistEntry() bool`
-
-HasWhitelistEntry returns a boolean if a field has been set.
 ### GetEndpointId
 
 `func (o *EventViewForNdsGroup) GetEndpointId() string`

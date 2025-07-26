@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Mode** | Pointer to **string** | MongoDB Cloud computes the current metric value as an average. | [optional] 
 **Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **float64** | Value of metric that, when exceeded, triggers an alert. | [optional] 
-**Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] 
+**Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] [default to "HOURS"]
 
 ## Methods
 
