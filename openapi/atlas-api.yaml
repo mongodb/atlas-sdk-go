@@ -547,6 +547,7 @@ components:
                             - AP_SOUTH_1
                             - AP_SOUTHEAST_1
                             - AP_SOUTHEAST_2
+                            - AP_NORTHEAST_2
                         type: string
                   type: object
             type: object
@@ -579,6 +580,7 @@ components:
                             - AP_SOUTH_1
                             - AP_SOUTHEAST_1
                             - AP_SOUTHEAST_2
+                            - AP_NORTHEAST_2
                         readOnly: true
                         type: string
                   type: object
@@ -1750,6 +1752,7 @@ components:
                 - SAOPAULO_BRA
                 - MONTREAL_CAN
                 - TOKYO_JPN
+                - SEOUL_KOR
                 - SINGAPORE_SGP
             type: string
         ApiAtlasFTSAnalyzersViewManual:
@@ -2763,6 +2766,11 @@ components:
                     pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
                     readOnly: true
                     type: string
+                targetPublicKey:
+                    description: Public part of the API key that this event targets.
+                    example: zmmrboas
+                    readOnly: true
+                    type: string
                 userId:
                     description: Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the **apiKeyId** parameter.
                     example: 32b6e34b3d91647abb20e7b8
@@ -2772,6 +2780,11 @@ components:
                 username:
                     description: Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the **publicApiKey** parameter.
                     format: email
+                    readOnly: true
+                    type: string
+                whitelistEntry:
+                    description: Entry in the list of source host addresses that the API key accepts and this event targets.
+                    example: 0.0.0.0
                     readOnly: true
                     type: string
             required:
@@ -2847,6 +2860,11 @@ components:
                     pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
                     readOnly: true
                     type: string
+                targetPublicKey:
+                    description: Public part of the API key that this event targets.
+                    example: zmmrboas
+                    readOnly: true
+                    type: string
                 userId:
                     description: Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the **apiKeyId** parameter.
                     example: 32b6e34b3d91647abb20e7b8
@@ -2856,6 +2874,11 @@ components:
                 username:
                     description: Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the **publicApiKey** parameter.
                     format: email
+                    readOnly: true
+                    type: string
+                whitelistEntry:
+                    description: Entry in the list of source host addresses that the API key accepts and this event targets.
+                    example: 0.0.0.0
                     readOnly: true
                     type: string
             required:
@@ -3363,6 +3386,7 @@ components:
             enum:
                 - VIRGINIA_USA
                 - AMSTERDAM_NLD
+                - SAOPAULO_BRA
             type: string
         AtlasDataFederationGCPRegion:
             description: Atlas Data Federation GCP Regions.
@@ -3845,7 +3869,14 @@ components:
                         - ISRGROOTX1
                     type: string
                 stateName:
-                    description: Human-readable label that indicates the current operating condition of this cluster.
+                    description: |-
+                        Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.
+
+                         - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.
+                         - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.
+                         - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.
+                         - `DELETING`: The cluster is in the process of deletion and will soon be deleted.
+                         - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
                     enum:
                         - IDLE
                         - CREATING
@@ -4487,6 +4518,7 @@ components:
                         enum:
                             - US_EAST_2
                             - EUROPE_WEST
+                            - BRAZIL_SOUTH
                         type: string
                   type: object
             type: object
@@ -4499,6 +4531,7 @@ components:
                         enum:
                             - US_EAST_2
                             - EUROPE_WEST
+                            - BRAZIL_SOUTH
                         readOnly: true
                         type: string
                   type: object
@@ -8624,7 +8657,14 @@ components:
                         - ISRGROOTX1
                     type: string
                 stateName:
-                    description: Human-readable label that indicates the current operating condition of this cluster.
+                    description: |-
+                        Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.
+
+                         - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.
+                         - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.
+                         - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.
+                         - `DELETING`: The cluster is in the process of deletion and will soon be deleted.
+                         - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
                     enum:
                         - IDLE
                         - CREATING
@@ -10004,6 +10044,8 @@ components:
                     example: 32b6e34b3d91647abb20e7b8
                     pattern: ^([a-f0-9]{24})$
                     type: string
+                serviceAccount:
+                    $ref: '#/components/schemas/OrgServiceAccountRequest'
                 skipDefaultAlertsSettings:
                     default: false
                     description: Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
@@ -10029,6 +10071,8 @@ components:
                     type: string
                 organization:
                     $ref: '#/components/schemas/AtlasOrganization'
+                serviceAccount:
+                    $ref: '#/components/schemas/OrgServiceAccount'
                 skipDefaultAlertsSettings:
                     default: false
                     description: Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
@@ -10138,6 +10182,31 @@ components:
                     readOnly: true
                     type: array
             title: Database User TLS Certificate Settings
+            type: object
+        DLQRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
             type: object
         DLSIngestionSink:
             allOf:
@@ -15419,6 +15488,8 @@ components:
                     - CLUSTER_IP_ROLLED_BACK
                     - AZ_BALANCING_OVERRIDE_MODIFIED
                     - FTDC_SETTINGS_UPDATED
+                    - MONGOTUNE_ENABLED
+                    - MONGOTUNE_DISABLED
                     - PROXY_PROTOCOL_FOR_PRIVATE_LINK_MODE_UPDATED
                   title: NDS Audit Types
                   type: string
@@ -16865,6 +16936,56 @@ components:
                 description: Atlas Search Field Mappings
                 url: https://dochub.mongodb.org/core/field-mapping-definition-fts#define-field-mappings
             type: object
+        FlexAVGCommandExecutionTimeMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/TimeMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexAVGWriteExecutionTimeMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/TimeMetricUnits'
+            required:
+                - metricName
+            type: object
         FlexBackupRestoreJob20241113:
             description: Details for one restore job of a flex cluster.
             properties:
@@ -17189,7 +17310,14 @@ components:
                 providerSettings:
                     $ref: '#/components/schemas/FlexProviderSettings20241113'
                 stateName:
-                    description: Human-readable label that indicates the current operating condition of this instance.
+                    description: |-
+                        Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.
+
+                         - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.
+                         - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.
+                         - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.
+                         - `DELETING`: The cluster is in the process of deletion and will soon be deleted.
+                         - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
                     enum:
                         - IDLE
                         - CREATING
@@ -17287,22 +17415,38 @@ components:
             description: Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
             discriminator:
                 mapping:
-                    FLEX_AVG_COMMAND_EXECUTION_TIME: '#/components/schemas/TimeMetricThresholdView'
+                    FLEX_AVG_COMMAND_EXECUTION_TIME: '#/components/schemas/FlexAVGCommandExecutionTimeMetricThresholdView'
                     FLEX_AVG_READ_EXECUTION_TIME: '#/components/schemas/TimeMetricThresholdView'
-                    FLEX_AVG_WRITE_EXECUTION_TIME: '#/components/schemas/TimeMetricThresholdView'
+                    FLEX_AVG_WRITE_EXECUTION_TIME: '#/components/schemas/FlexAVGWriteExecutionTimeMetricThresholdView'
                     FLEX_CONNECTIONS: '#/components/schemas/RawMetricThresholdView'
-                    FLEX_CONNECTIONS_PERCENT: '#/components/schemas/RawMetricThresholdView'
+                    FLEX_CONNECTIONS_PERCENT: '#/components/schemas/FlexConnectionPercentRawMetricThresholdView'
                     FLEX_DATA_SIZE_TOTAL: '#/components/schemas/DataMetricThresholdView'
-                    FLEX_NETWORK_BYTES_IN: '#/components/schemas/DataMetricThresholdView'
-                    FLEX_NETWORK_BYTES_OUT: '#/components/schemas/DataMetricThresholdView'
-                    FLEX_NETWORK_NUM_REQUESTS: '#/components/schemas/RawMetricThresholdView'
-                    FLEX_OPCOUNTER_CMD: '#/components/schemas/RawMetricThresholdView'
-                    FLEX_OPCOUNTER_DELETE: '#/components/schemas/RawMetricThresholdView'
-                    FLEX_OPCOUNTER_GETMORE: '#/components/schemas/RawMetricThresholdView'
-                    FLEX_OPCOUNTER_INSERT: '#/components/schemas/RawMetricThresholdView'
-                    FLEX_OPCOUNTER_QUERY: '#/components/schemas/RawMetricThresholdView'
-                    FLEX_OPCOUNTER_UPDATE: '#/components/schemas/RawMetricThresholdView'
+                    FLEX_NETWORK_BYTES_IN: '#/components/schemas/FlexNetworkBytesInDataMetricThresholdView'
+                    FLEX_NETWORK_BYTES_OUT: '#/components/schemas/FlexNetworkBytesOutDataMetricThresholdView'
+                    FLEX_NETWORK_NUM_REQUESTS: '#/components/schemas/FlexNetworkNumRequestsRawMetricThresholdView'
+                    FLEX_OPCOUNTER_CMD: '#/components/schemas/FlexOpCounterCMDRawMetricThresholdView'
+                    FLEX_OPCOUNTER_DELETE: '#/components/schemas/FlexOpCounterDeleteRawMetricThresholdView'
+                    FLEX_OPCOUNTER_GETMORE: '#/components/schemas/FlexOpCounterGetMoreRawMetricThresholdView'
+                    FLEX_OPCOUNTER_INSERT: '#/components/schemas/FlexOpCounterInsertRawMetricThresholdView'
+                    FLEX_OPCOUNTER_QUERY: '#/components/schemas/FlexOpCounterQueryRawMetricThresholdView'
+                    FLEX_OPCOUNTER_UPDATE: '#/components/schemas/FlexOpCounterUpdateRawMetricThresholdView'
                 propertyName: metricName
+            oneOf:
+                - $ref: '#/components/schemas/RawMetricThresholdView'
+                - $ref: '#/components/schemas/FlexConnectionPercentRawMetricThresholdView'
+                - $ref: '#/components/schemas/DataMetricThresholdView'
+                - $ref: '#/components/schemas/FlexNetworkBytesInDataMetricThresholdView'
+                - $ref: '#/components/schemas/FlexNetworkBytesOutDataMetricThresholdView'
+                - $ref: '#/components/schemas/FlexNetworkNumRequestsRawMetricThresholdView'
+                - $ref: '#/components/schemas/FlexOpCounterCMDRawMetricThresholdView'
+                - $ref: '#/components/schemas/FlexOpCounterDeleteRawMetricThresholdView'
+                - $ref: '#/components/schemas/FlexOpCounterInsertRawMetricThresholdView'
+                - $ref: '#/components/schemas/FlexOpCounterQueryRawMetricThresholdView'
+                - $ref: '#/components/schemas/FlexOpCounterUpdateRawMetricThresholdView'
+                - $ref: '#/components/schemas/FlexOpCounterGetMoreRawMetricThresholdView'
+                - $ref: '#/components/schemas/TimeMetricThresholdView'
+                - $ref: '#/components/schemas/FlexAVGWriteExecutionTimeMetricThresholdView'
+                - $ref: '#/components/schemas/FlexAVGCommandExecutionTimeMetricThresholdView'
             properties:
                 metricName:
                     description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
@@ -17361,6 +17505,31 @@ components:
             required:
                 - metricName
             title: Flex Cluster Metric Threshold
+            type: object
+        FlexConnectionPercentRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
             type: object
         FlexConnectionStrings20241113:
             description: Collection of Uniform Resource Locators that point to the MongoDB database.
@@ -17457,6 +17626,231 @@ components:
             example: OUTSIDE_FLEX_METRIC_THRESHOLD
             title: Flex Metric Event Types
             type: string
+        FlexNetworkBytesInDataMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/DataMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexNetworkBytesOutDataMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/DataMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexNetworkNumRequestsRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexOpCounterCMDRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexOpCounterDeleteRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexOpCounterGetMoreRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexOpCounterInsertRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexOpCounterQueryRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        FlexOpCounterUpdateRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
         FlexProviderSettings20241113:
             description: Group of cloud provider settings that configure the provisioned MongoDB flex cluster.
             properties:
@@ -18275,9 +18669,8 @@ components:
                     type: array
                 withDefaultAlertsSettings:
                     default: true
-                    description: Flag that indicates whether to create the project with default alert settings.
+                    description: Flag that indicates whether to create the project with default alert settings. This setting cannot be updated after project creation.
                     type: boolean
-                    writeOnly: true
             required:
                 - clusterCount
                 - created
@@ -21191,6 +21584,31 @@ components:
                     type: number
             title: Line Item
             type: object
+        KafkaRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
         LDAPSecuritySettings:
             description: Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details that apply to the specified project.
             properties:
@@ -21623,7 +22041,14 @@ components:
                     readOnly: true
                     type: string
                 stateName:
-                    description: Human-readable label that indicates the current operating condition of the cluster.
+                    description: |-
+                        Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.
+
+                         - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.
+                         - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.
+                         - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.
+                         - `DELETING`: The cluster is in the process of deletion and will soon be deleted.
+                         - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
                     enum:
                         - IDLE
                         - CREATING
@@ -21916,7 +22341,14 @@ components:
                     readOnly: true
                     type: string
                 stateName:
-                    description: Human-readable label that indicates the current operating condition of the cluster.
+                    description: |-
+                        Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.
+
+                         - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.
+                         - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.
+                         - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.
+                         - `DELETING`: The cluster is in the process of deletion and will soon be deleted.
+                         - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
                     enum:
                         - IDLE
                         - CREATING
@@ -22370,6 +22802,7 @@ components:
                 - ARBITER
                 - MONGOS
                 - CONFIG
+                - MONGOT
             example: STANDALONE
             title: Matcher Host Types
             type: string
@@ -23147,6 +23580,8 @@ components:
                 - CLUSTER_IP_ROLLED_BACK
                 - AZ_BALANCING_OVERRIDE_MODIFIED
                 - FTDC_SETTINGS_UPDATED
+                - MONGOTUNE_ENABLED
+                - MONGOTUNE_DISABLED
                 - PROXY_PROTOCOL_FOR_PRIVATE_LINK_MODE_UPDATED
             example: CLUSTER_CREATED
             title: NDS Audit Types
@@ -24700,6 +25135,7 @@ components:
                 - username
             type: object
         OrgServiceAccount:
+            description: Organization Service Account that Atlas created for the organization.
             properties:
                 clientId:
                     description: The Client ID of the Service Account.
@@ -24736,8 +25172,10 @@ components:
                         $ref: '#/components/schemas/ServiceAccountSecret'
                     type: array
                     uniqueItems: true
+            readOnly: true
             type: object
         OrgServiceAccountRequest:
+            description: Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters.
             properties:
                 description:
                     description: Human readable description for the Service Account.
@@ -27363,6 +27801,117 @@ components:
                     readOnly: true
                     type: string
             type: object
+        QueryShapeSeenMetadata:
+            description: Metadata about when a query shape was seen.
+            properties:
+                applicationName:
+                    description: The name of the application that this query shape came from. This can be set via the MongoDB connection string. The application name is set to unknown for internal MongoDB queries.
+                    type: string
+                driverName:
+                    description: The name of the MongoDB driver that this query shape was executed from. The driver name is set to unknown for internal MongoDB queries.
+                    type: string
+                driverVersion:
+                    description: The version of the MongoDB driver that this query shape was executed from. The driver version is set to unknown for internal MongoDB queries.
+                    type: string
+                timestamp:
+                    description: Unix epoch milliseconds of the time.
+                    format: int64
+                    type: integer
+            type: object
+        QueryStatsDetailsResponse:
+            description: Metadata and summary statistics for a given query shape.
+            properties:
+                firstSeen:
+                    $ref: '#/components/schemas/QueryShapeSeenMetadata'
+                lastSeen:
+                    $ref: '#/components/schemas/QueryShapeSeenMetadata'
+                queryStats:
+                    $ref: '#/components/schemas/QueryStatsSummary'
+            type: object
+        QueryStatsSummary:
+            description: A summary of execution statistics for a given query shape.
+            properties:
+                avgWorkingMillis:
+                    description: Average total time in milliseconds spent running queries with the given query shape. If the query resulted in getMore commands, this metric includes the time spent processing the getMore requests. This metric does not include time spent waiting for the client.
+                    format: double
+                    type: number
+                bytesRead:
+                    description: The number of bytes read by the given query shape from the disk to the cache.
+                    format: double
+                    type: number
+                command:
+                    description: The MongoDB command issued for this query shape.
+                    enum:
+                        - find
+                        - distinct
+                        - aggregate
+                    type: string
+                docsExamined:
+                    description: Total number of documents examined by queries with the given query shape.
+                    format: double
+                    type: number
+                docsExaminedRatio:
+                    description: Ratio of documents examined to documents returned by queries with the given query shape.
+                    format: double
+                    type: number
+                docsReturned:
+                    description: Total number of documents returned by queries with the given query shape.
+                    format: double
+                    type: number
+                execCount:
+                    description: Total number of times that queries with the given query shape have been executed.
+                    format: double
+                    type: number
+                keysExamined:
+                    description: Total number of in-bounds and out-of-bounds index keys examined by queries with the given query shape.
+                    format: double
+                    type: number
+                keysExaminedRatio:
+                    description: Ratio of in-bounds and out-of-bounds index keys examined to indexes containing documents returned by queries with the given query shape.
+                    format: double
+                    type: number
+                lastExecMicros:
+                    description: Execution runtime in microseconds for the most recent query with the given query shape.
+                    format: double
+                    type: number
+                namespace:
+                    description: Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
+                    type: string
+                p50ExecMicros:
+                    description: The 50th percentile value of execution time in microseconds.
+                    format: double
+                    type: number
+                p90ExecMicros:
+                    description: The 90th percentile value of execution time in microseconds.
+                    format: double
+                    type: number
+                p99ExecMicros:
+                    description: The 99th percentile value of execution time in microseconds.
+                    format: double
+                    type: number
+                queryShape:
+                    description: A query shape is a set of specifications that group similar queries together. Specifications can include filters, sorts, projections, aggregation pipeline stages, a namespace, and others. Queries that have similar specifications have the same query shape.
+                    type: string
+                queryShapeHash:
+                    description: A hexadecimal string that represents the hash of a MongoDB query shape.
+                    type: string
+                totalTimeToResponseMicros:
+                    description: Time in microseconds spent from the beginning of query processing to the first server response.
+                    format: double
+                    type: number
+                totalWorkingMillis:
+                    description: Total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
+                    format: double
+                    type: number
+            type: object
+        QueryStatsSummaryListResponse:
+            properties:
+                summaries:
+                    description: List of query shape statistic summaries from Query Shape Insights.
+                    items:
+                        $ref: '#/components/schemas/QueryStatsSummary'
+                    type: array
+            type: object
         RPUMetricThresholdView:
             properties:
                 metricName:
@@ -28086,7 +28635,7 @@ components:
                     type: integer
                 regionConfigs:
                     description: |-
-                        Hardware specifications for nodes set for a given region. Each **regionConfigs** object describes the region's priority in elections and the number and type of MongoDB nodes that MongoDB Cloud deploys to the region. Each **regionConfigs** object must have either an **analyticsSpecs** object, **electableSpecs** object, or **readOnlySpecs** object. Tenant clusters only require **electableSpecs. Dedicated** clusters can specify any of these specifications, but must have at least one **electableSpecs** object within a **replicationSpec**. Every hardware specification must use the same **instanceSize**.
+                        Hardware specifications for nodes set for a given region. Each **regionConfigs** object must be unique by region and cloud provider within the **replicationSpec**. Each **regionConfigs** object describes the region's priority in elections and the number and type of MongoDB nodes that MongoDB Cloud deploys to the region. Each **regionConfigs** object must have either an **analyticsSpecs** object, **electableSpecs** object, or **readOnlySpecs** object. Tenant clusters only require **electableSpecs. Dedicated** clusters can specify any of these specifications, but must have at least one **electableSpecs** object within a **replicationSpec**. Every hardware specification must use the same **instanceSize**.
 
                         **Example:**
 
@@ -28116,7 +28665,7 @@ components:
                     type: string
                 regionConfigs:
                     description: |-
-                        Hardware specifications for nodes set for a given region. Each **regionConfigs** object describes the region's priority in elections and the number and type of MongoDB nodes that MongoDB Cloud deploys to the region. Each **regionConfigs** object must have either an **analyticsSpecs** object, **electableSpecs** object, or **readOnlySpecs** object. Tenant clusters only require **electableSpecs. Dedicated** clusters can specify any of these specifications, but must have at least one **electableSpecs** object within a **replicationSpec**.
+                        Hardware specifications for nodes set for a given region. Each **regionConfigs** object must be unique by region and cloud provider within the **replicationSpec**. Each **regionConfigs** object describes the region's priority in elections and the number and type of MongoDB nodes that MongoDB Cloud deploys to the region. Each **regionConfigs** object must have either an **analyticsSpecs** object, **electableSpecs** object, or **readOnlySpecs** object. Tenant clusters only require **electableSpecs. Dedicated** clusters can specify any of these specifications, but must have at least one **electableSpecs** object within a **replicationSpec**.
 
                         **Example:**
 
@@ -29080,6 +29629,56 @@ components:
                 - source
             title: Synonym Mapping Definition
             type: object
+        ServerlessAVGCommandExecutionTimeMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/TimeMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessAVGWriteExecutionTimeMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/TimeMetricUnits'
+            required:
+                - metricName
+            type: object
         ServerlessAWSTenantEndpoint:
             description: View for a serverless AWS tenant endpoint.
             properties:
@@ -29381,6 +29980,31 @@ components:
                     readOnly: true
                     type: integer
             type: object
+        ServerlessConnectionPercentageRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
         ServerlessConnectionStringsPrivateEndpointItem:
             description: Details of a private endpoint deployed for this serverless instance.
             properties:
@@ -29477,7 +30101,14 @@ components:
                 serverlessBackupOptions:
                     $ref: '#/components/schemas/ClusterServerlessBackupOptions'
                 stateName:
-                    description: Human-readable label that indicates the current operating condition of the serverless instance.
+                    description: |-
+                        Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.
+
+                         - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.
+                         - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.
+                         - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.
+                         - `DELETING`: The cluster is in the process of deletion and will soon be deleted.
+                         - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
                     enum:
                         - IDLE
                         - CREATING
@@ -29534,7 +30165,14 @@ components:
                 serverlessBackupOptions:
                     $ref: '#/components/schemas/ClusterServerlessBackupOptions'
                 stateName:
-                    description: Human-readable label that indicates the current operating condition of the serverless instance.
+                    description: |-
+                        Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.
+
+                         - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.
+                         - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.
+                         - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.
+                         - `DELETING`: The cluster is in the process of deletion and will soon be deleted.
+                         - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
                     enum:
                         - IDLE
                         - CREATING
@@ -29642,24 +30280,42 @@ components:
             description: Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
             discriminator:
                 mapping:
-                    SERVERLESS_AVG_COMMAND_EXECUTION_TIME: '#/components/schemas/TimeMetricThresholdView'
+                    SERVERLESS_AVG_COMMAND_EXECUTION_TIME: '#/components/schemas/ServerlessAVGCommandExecutionTimeMetricThresholdView'
                     SERVERLESS_AVG_READ_EXECUTION_TIME: '#/components/schemas/TimeMetricThresholdView'
-                    SERVERLESS_AVG_WRITE_EXECUTION_TIME: '#/components/schemas/TimeMetricThresholdView'
+                    SERVERLESS_AVG_WRITE_EXECUTION_TIME: '#/components/schemas/ServerlessAVGWriteExecutionTimeMetricThresholdView'
                     SERVERLESS_CONNECTIONS: '#/components/schemas/RawMetricThresholdView'
-                    SERVERLESS_CONNECTIONS_PERCENT: '#/components/schemas/RawMetricThresholdView'
+                    SERVERLESS_CONNECTIONS_PERCENT: '#/components/schemas/ServerlessConnectionPercentageRawMetricThresholdView'
                     SERVERLESS_DATA_SIZE_TOTAL: '#/components/schemas/DataMetricThresholdView'
-                    SERVERLESS_NETWORK_BYTES_IN: '#/components/schemas/DataMetricThresholdView'
-                    SERVERLESS_NETWORK_BYTES_OUT: '#/components/schemas/DataMetricThresholdView'
-                    SERVERLESS_NETWORK_NUM_REQUESTS: '#/components/schemas/RawMetricThresholdView'
-                    SERVERLESS_OPCOUNTER_CMD: '#/components/schemas/RawMetricThresholdView'
-                    SERVERLESS_OPCOUNTER_DELETE: '#/components/schemas/RawMetricThresholdView'
-                    SERVERLESS_OPCOUNTER_GETMORE: '#/components/schemas/RawMetricThresholdView'
-                    SERVERLESS_OPCOUNTER_INSERT: '#/components/schemas/RawMetricThresholdView'
-                    SERVERLESS_OPCOUNTER_QUERY: '#/components/schemas/RawMetricThresholdView'
-                    SERVERLESS_OPCOUNTER_UPDATE: '#/components/schemas/RawMetricThresholdView'
+                    SERVERLESS_NETWORK_BYTES_IN: '#/components/schemas/ServerlessNetworkBytesInDataMetricThresholdView'
+                    SERVERLESS_NETWORK_BYTES_OUT: '#/components/schemas/ServerlessNetworkBytesOutDataMetricThresholdView'
+                    SERVERLESS_NETWORK_NUM_REQUESTS: '#/components/schemas/ServerlessNetworkNumRequestRawMetricThresholdView'
+                    SERVERLESS_OPCOUNTER_CMD: '#/components/schemas/ServerlessOpCounterCDMRawMetricThresholdView'
+                    SERVERLESS_OPCOUNTER_DELETE: '#/components/schemas/ServerlessOpCounterDeleteRawMetricThresholdView'
+                    SERVERLESS_OPCOUNTER_GETMORE: '#/components/schemas/ServerlessOpCounterGetMoreRawMetricThresholdView'
+                    SERVERLESS_OPCOUNTER_INSERT: '#/components/schemas/ServerlessOpCounterInsertRawMetricThresholdView'
+                    SERVERLESS_OPCOUNTER_QUERY: '#/components/schemas/ServerlessOpCounterQueryRawMetricThresholdView'
+                    SERVERLESS_OPCOUNTER_UPDATE: '#/components/schemas/ServerlessOpCounterUpdateRawMetricThresholdView'
                     SERVERLESS_TOTAL_READ_UNITS: '#/components/schemas/RPUMetricThresholdView'
-                    SERVERLESS_TOTAL_WRITE_UNITS: '#/components/schemas/RPUMetricThresholdView'
+                    SERVERLESS_TOTAL_WRITE_UNITS: '#/components/schemas/ServerlessTotalWriteUnitsRPUMetricThresholdView'
                 propertyName: metricName
+            oneOf:
+                - $ref: '#/components/schemas/ServerlessAVGCommandExecutionTimeMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessAVGWriteExecutionTimeMetricThresholdView'
+                - $ref: '#/components/schemas/TimeMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessTotalWriteUnitsRPUMetricThresholdView'
+                - $ref: '#/components/schemas/RPUMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessOpCounterUpdateRawMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessOpCounterQueryRawMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessOpCounterInsertRawMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessOpCounterGetMoreRawMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessOpCounterDeleteRawMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessOpCounterCDMRawMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessNetworkNumRequestRawMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessNetworkBytesOutDataMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessNetworkBytesInDataMetricThresholdView'
+                - $ref: '#/components/schemas/DataMetricThresholdView'
+                - $ref: '#/components/schemas/ServerlessConnectionPercentageRawMetricThresholdView'
+                - $ref: '#/components/schemas/RawMetricThresholdView'
             properties:
                 metricName:
                     description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
@@ -29731,6 +30387,231 @@ components:
             example: RPU
             title: Serverless Metric Units
             type: string
+        ServerlessNetworkBytesInDataMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/DataMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessNetworkBytesOutDataMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/DataMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessNetworkNumRequestRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessOpCounterCDMRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessOpCounterDeleteRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessOpCounterGetMoreRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessOpCounterInsertRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessOpCounterQueryRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
+        ServerlessOpCounterUpdateRawMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/RawMetricUnits'
+            required:
+                - metricName
+            type: object
         ServerlessProviderSettings:
             description: Group of cloud provider settings that configure the provisioned MongoDB serverless instance.
             properties:
@@ -29837,6 +30718,31 @@ components:
                     writeOnly: true
             required:
                 - providerName
+            type: object
+        ServerlessTotalWriteUnitsRPUMetricThresholdView:
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    $ref: '#/components/schemas/ServerlessMetricUnits'
+            required:
+                - metricName
             type: object
         ServiceAccountEventTypeViewForNdsGroup:
             description: Unique identifier of event type.
@@ -30683,10 +31589,15 @@ components:
             discriminator:
                 mapping:
                     STREAM_PROCESSOR_CHANGE_STREAM_LAG: '#/components/schemas/TimeMetricThresholdView'
-                    STREAM_PROCESSOR_DLQ_MESSAGE_COUNT: '#/components/schemas/RawMetricThresholdView'
-                    STREAM_PROCESSOR_KAFKA_LAG: '#/components/schemas/RawMetricThresholdView'
+                    STREAM_PROCESSOR_DLQ_MESSAGE_COUNT: '#/components/schemas/DLQRawMetricThresholdView'
+                    STREAM_PROCESSOR_KAFKA_LAG: '#/components/schemas/KafkaRawMetricThresholdView'
                     STREAM_PROCESSOR_OUTPUT_MESSAGE_COUNT: '#/components/schemas/RawMetricThresholdView'
                 propertyName: metricName
+            oneOf:
+                - $ref: '#/components/schemas/KafkaRawMetricThresholdView'
+                - $ref: '#/components/schemas/TimeMetricThresholdView'
+                - $ref: '#/components/schemas/DLQRawMetricThresholdView'
+                - $ref: '#/components/schemas/RawMetricThresholdView'
             properties:
                 metricName:
                     description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
@@ -31377,6 +32288,8 @@ components:
                 - properties:
                     aws:
                         $ref: '#/components/schemas/StreamsAWSConnectionConfig'
+                    networking:
+                        $ref: '#/components/schemas/StreamsKafkaNetworking'
                   type: object
             description: The configuration for S3 connections.
             type: object
@@ -34522,7 +35435,7 @@ info:
     termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
     title: MongoDB Atlas Administration API
     version: "2.0"
-    x-xgen-sha: 8ff5fb9d270a1863bad8b91f85049e9b133bdffd
+    x-xgen-sha: 9214b2b673b27b157a1ea84a3597b107a0977238
 openapi: 3.0.1
 paths:
     /api/atlas/v2:
@@ -40189,6 +41102,8 @@ paths:
                       --header "Content-Type: application/json" \
                       -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters" \
                       -d '{ <Payload> }'
+            x-xgen-changelog:
+                "2025-06-05": Fixed a bug that previously permitted users to configure multiple regionConfigs for the same region and cloud provider within a replicationSpec
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster
     /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:
         delete:
@@ -40463,6 +41378,8 @@ paths:
                       --header "Content-Type: application/json" \
                       -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}" \
                       -d '{ <Payload> }'
+            x-xgen-changelog:
+                "2025-06-05": Fixed a bug that previously permitted users to configure multiple regionConfigs for the same region and cloud provider within a replicationSpec
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/updateCluster
     /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements:
         get:
@@ -45862,6 +46779,320 @@ paths:
                       -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs" \
                       -d '{ <Payload> }'
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/updateClusterAdvancedConfiguration
+    /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details:
+        get:
+            description: Returns the metadata and statistics summary for a given query shape hash.
+            operationId: getGroupClusterQueryShapeInsightDetails
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/pretty'
+                - $ref: '#/components/parameters/groupId'
+                - description: Human-readable label that identifies the cluster.
+                  in: path
+                  name: clusterName
+                  required: true
+                  schema:
+                    pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+                    type: string
+                - description: |-
+                    Date and time from which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+                    - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+                    - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+                  in: query
+                  name: since
+                  schema:
+                    format: int64
+                    minimum: 1.1991456e+12
+                    type: integer
+                  x-xgen-IPA-exception:
+                    xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+                - description: |-
+                    Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+                    - If you specify the **until** parameter, you must specify the **since** parameter.
+                    - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+                  in: query
+                  name: until
+                  schema:
+                    format: int64
+                    minimum: 1.1991456e+12
+                    type: integer
+                  x-xgen-IPA-exception:
+                    xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+                - description: ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (`&`) between each processId.
+                  in: query
+                  name: processIds
+                  schema:
+                    items:
+                        pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+                        type: string
+                    maxItems: 10
+                    type: array
+                  style: form
+                - description: A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+                  in: path
+                  name: queryShapeHash
+                  required: true
+                  schema:
+                    pattern: ^([a-fA-F0-9]{64})$
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            schema:
+                                $ref: '#/components/schemas/QueryStatsDetailsResponse'
+                            x-xgen-version: "2025-03-12"
+                    description: OK
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return Query Shape Details
+            tags:
+                - Query Shape Insights
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api getGroupClusterQueryShapeInsightDetails --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.GetGroupClusterQueryShapeInsightDetailsApiParams{}
+                    	sdkResp, httpResp, err := client.QueryShapeInsightsApi.
+                    		GetGroupClusterQueryShapeInsightDetailsWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details?pretty=true"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details?pretty=true"
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Query-Shape-Insights/operation/getGroupClusterQueryShapeInsightDetails
+    /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries:
+        get:
+            description: Returns a list of query shape statistics summaries for a given cluster. Query shape statistics provide performance insights about MongoDB queries, helping users identify problematic query patterns and potential optimizations.
+            operationId: getGroupClusterQueryShapeInsightSummaries
+            parameters:
+                - $ref: '#/components/parameters/groupId'
+                - description: Human-readable label that identifies the cluster.
+                  in: path
+                  name: clusterName
+                  required: true
+                  schema:
+                    pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+                    type: string
+                - description: |-
+                    Date and time from which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+                    - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+                    - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+                  in: query
+                  name: since
+                  schema:
+                    format: int64
+                    minimum: 1.1991456e+12
+                    type: integer
+                  x-xgen-IPA-exception:
+                    xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+                - description: |-
+                    Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+                    - If you specify the **until** parameter, you must specify the **since** parameter.
+                    - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+                  in: query
+                  name: until
+                  schema:
+                    format: int64
+                    minimum: 1.1991456e+12
+                    type: integer
+                  x-xgen-IPA-exception:
+                    xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+                - description: ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (`&`) between each processId.
+                  in: query
+                  name: processIds
+                  schema:
+                    items:
+                        pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+                        type: string
+                    maxItems: 10
+                    type: array
+                  style: form
+                - description: 'Namespaces from which to retrieve query shape statistics. A namespace consists of one database and one collection resource written as `.`: `<database>.<collection>`. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (`&`) between each namespace. Omit this parameter to return results for all namespaces.'
+                  in: query
+                  name: namespaces
+                  schema:
+                    items:
+                        type: string
+                    maxItems: 10
+                    type: array
+                  style: form
+                - description: Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (`&`) between each command. The currently supported parameters are find, distinct, and aggregate. Omit this parameter to return results for all supported commands.
+                  in: query
+                  name: commands
+                  schema:
+                    description: MongoDB commands from which to retrieve query statistics. To include multiple commands, pass the parameter multiple times delimited with an ampersand (`&`) between each command. Omit this parameter to return results for all supported commands.
+                    items:
+                        enum:
+                            - find
+                            - distinct
+                            - aggregate
+                        type: string
+                    maxItems: 3
+                    type: array
+                    uniqueItems: true
+                  style: form
+                - description: Maximum number of query statistic summaries to return.
+                  in: query
+                  name: nSummaries
+                  schema:
+                    default: 100
+                    format: int64
+                    maximum: 100
+                    minimum: 1
+                    type: integer
+                - description: Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+                  in: query
+                  name: series
+                  schema:
+                    description: Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+                    items:
+                        enum:
+                            - TOTAL_EXECUTION_TIME
+                            - AVG_EXECUTION_TIME
+                            - EXECUTION_COUNT
+                            - KEYS_EXAMINED
+                            - DOCS_EXAMINED
+                            - DOCS_RETURNED
+                            - TOTAL_TIME_TO_RESPONSE
+                            - BYTES_READ
+                            - KEYS_EXAMINED_RETURNED
+                            - DOCS_EXAMINED_RETURNED
+                            - LAST_EXECUTION_TIME
+                            - P50_EXECUTION_TIME
+                            - P90_EXECUTION_TIME
+                            - P99_EXECUTION_TIME
+                        type: string
+                    maxItems: 14
+                    type: array
+                    uniqueItems: true
+                  style: form
+                - description: A list of SHA256 hashes of desired query shapes, output by MongoDB commands like $queryStats and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+                  in: query
+                  name: queryShapeHashes
+                  schema:
+                    description: A list of SHA256 hashes of desired query shapes, output by MongoDB commands like $queryStats and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+                    items:
+                        pattern: ^([a-fA-F0-9]{64})$
+                        type: string
+                    maxItems: 10
+                    type: array
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/pretty'
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            schema:
+                                $ref: '#/components/schemas/QueryStatsSummaryListResponse'
+                            x-xgen-version: "2025-03-12"
+                    description: OK
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return Query Statistic Summaries
+            tags:
+                - Query Shape Insights
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api getGroupClusterQueryShapeInsightSummaries --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.GetGroupClusterQueryShapeInsightSummariesApiParams{}
+                    	sdkResp, httpResp, err := client.QueryShapeInsightsApi.
+                    		GetGroupClusterQueryShapeInsightSummariesWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries?pretty=true"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries?pretty=true"
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Query-Shape-Insights/operation/getGroupClusterQueryShapeInsightSummaries
     /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries:
         post:
             description: 'Starts a failover test for the specified cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. A failover test checks how MongoDB Cloud handles the failure of the cluster''s primary node. During the test, MongoDB Cloud shuts down the primary node and elects a new primary. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Deprecated versions: v2-{2023-01-01}'
@@ -75031,6 +76262,10 @@ paths:
                         application/vnd.atlas.2023-11-15+json:
                             schema:
                                 $ref: '#/components/schemas/ControlPlaneIPAddresses'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
+                                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
+                                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
                             x-xgen-version: "2023-11-15"
                     description: OK
                 "500":
