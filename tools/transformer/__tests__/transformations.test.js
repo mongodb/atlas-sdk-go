@@ -73,8 +73,6 @@ test("applyOperationIdOverrides", () => {
     "getVersionedExample",
   );
   expect(
-    api.paths["/api/atlas/v2/example/info"].get[
-      "x-xgen-operation-id-override"
-    ],
+    api.paths["/api/atlas/v2/example/info"].get["x-xgen-operation-id-override"],
   ).toBeFalsy();
 });
