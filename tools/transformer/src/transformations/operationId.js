@@ -1,7 +1,8 @@
 const OP_ID_OVERRIDE_EXTENSION = "x-xgen-operation-id-override";
 
 /**
- * Replaces Operation IDs if operation ID overrides are present.
+ * Replaces Operation IDs if operation ID overrides are present and removes the
+ * override extension.
  *
  * @param {*} api OpenAPI JSON File
  * @returns {*} transformed OpenAPI JSON File
