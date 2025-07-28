@@ -4,6 +4,7 @@ const {
   applyModelNameTransformations,
   transformAllOf,
   transformOneOf,
+  applyOperationIdOverrides,
 } = require("../src/transformations");
 const cases = require("./transformations-snapshots");
 
@@ -61,4 +62,19 @@ test("applyModelNameTransformations", () => {
     expect(modelKey.startsWith("Api")).toBeFalsy();
     expect(modelKey.endsWith("View")).toBeFalsy();
   }
+});
+
+test("applyOperationIdOverrides", () => {
+  api = applyOperationIdOverrides(api);
+  expect(
+    api.paths["/api/atlas/v1.5/groups/{groupId}/clusters"].post.operationId,
+  ).toEqual("createCluster");
+  expect(api.paths["/api/atlas/v2/example/info"].get.operationId).toEqual(
+    "getVersionedExample",
+  );
+  expect(
+    api.paths["/api/atlas/v2/example/info"].get[
+      "x-xgen-operation-id-override"
+    ],
+  ).toBeFalsy();
 });

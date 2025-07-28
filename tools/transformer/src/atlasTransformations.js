@@ -10,6 +10,7 @@ const {
   removeRefsFromParameters,
   reorderResponseBodies,
   applyFieldTransformations,
+  applyOperationIdOverrides,
 } = require("./transformations");
 const { resolveOpenAPIReference } = require("./engine/transformers");
 
@@ -70,6 +71,8 @@ module.exports = function runTransformations(openapi) {
     "#/components/parameters/envelope",
     "#/components/parameters/pretty",
   ]);
+
+  openapi = applyOperationIdOverrides(openapi);
 
   return openapi;
 };
