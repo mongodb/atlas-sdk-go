@@ -93,7 +93,7 @@ Useful for situations for schemas where nullability handling is not desired.
 
 6. Apply Operation ID Overrides
 
-This transformation updates the operation IDs in the OpenAPI file if the operation has an `x-xgen-operation-id-override` extension. Then, it removed the Operation ID override extension from the OpenAPI file.
+This transformation updates the operation IDs in the OpenAPI file if the operation has an `x-xgen-operation-id-override` extension. Then, it removes the Operation ID override extension from the OpenAPI file.
 
 ## Transformation Validation
 
