@@ -1,4 +1,14 @@
 const OP_ID_OVERRIDE_EXTENSION = "x-xgen-operation-id-override";
+const validHttpMethods = [
+  "get",
+  "put",
+  "post",
+  "delete",
+  "options",
+  "head",
+  "patch",
+  "trace",
+];
 
 /**
  * Replaces Operation IDs if operation ID overrides are present and removes the
@@ -19,17 +29,13 @@ function applyOperationIdOverrides(api) {
       throw new Error("Missing path item in openapi");
     }
 
-    Object.keys(pathItem).forEach((operationKey) => {
-      const operationItem = api.paths[pathKey][operationKey];
-      if (!operationItem) {
-        throw new Error("Missing operation item in openapi");
-      }
-
-      // Update Operation ID based on override extension
-      if (operationItem[OP_ID_OVERRIDE_EXTENSION]) {
-        api.paths[pathKey][operationKey].operationId =
+    validHttpMethods.forEach((method) => {
+      const operationItem = api.paths[pathKey][method];
+      if (operationItem && operationItem[OP_ID_OVERRIDE_EXTENSION]) {
+        // Update Operation ID based on override extension
+        api.paths[pathKey][method].operationId =
           operationItem[OP_ID_OVERRIDE_EXTENSION];
-        delete api.paths[pathKey][operationKey][OP_ID_OVERRIDE_EXTENSION];
+        delete api.paths[pathKey][method][OP_ID_OVERRIDE_EXTENSION];
       }
     });
   });
