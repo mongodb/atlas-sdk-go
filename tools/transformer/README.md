@@ -16,7 +16,7 @@ Additionally, framework enables us to extend it by additional rules per usage to
 
 Transformations should be generic - they should be reusable across OpenAPI files and be generally an unopinionated way of
 handling OpenAPI file. That means that they would improve any public OpenAPI for.
-Parameters for transformations (actuall scripts) can be more finetuned to current OpenAPI file.
+Parameters for transformations (actual scripts) can be more finetuned to current OpenAPI file.
 
 ## Usage
 
@@ -91,10 +91,14 @@ Enums in current form are hard to ensure backwards compatibility.
 This transformation removes all openapi `nullable` fields from the schema.
 Useful for situations for schemas where nullability handling is not desired.
 
+6. Apply Operation ID Overrides
+
+This transformation updates the operation IDs in the OpenAPI file if the operation has an `x-xgen-operation-id-override` extension. Then, it removes the Operation ID override extension from the OpenAPI file.
+
 ## Transformation Validation
 
 Transformation engine does perform validation for invalid cases.
-If transformation fails it usualy means that OpenAPI file is not correct and has issues that require human attention.
+If transformation fails it usually means that OpenAPI file is not correct and has issues that require human attention.
 
 The process of fixing OpenAPI always involves:
 

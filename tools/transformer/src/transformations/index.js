@@ -16,6 +16,7 @@ const { applyRemoveNullableTransformations } = require("./removeNullable");
 const { removeRefsFromParameters } = require("./removeInvalidParams");
 const { reorderResponseBodies } = require("./reorderResponseBodies");
 const { applyFieldTransformations } = require("./fields");
+const { applyOperationIdOverrides } = require("./operationId");
 
 module.exports = {
   applyModelNameTransformations,
@@ -33,4 +34,5 @@ module.exports = {
   removeRefsFromParameters,
   reorderResponseBodies,
   applyFieldTransformations,
+  applyOperationIdOverrides,
 };
