@@ -15,6 +15,9 @@ type DiskBackupSnapshotExportBucketResponse struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
+	// AWS region for the export bucket. This is set by Atlas and is never user-supplied.
+	// Read only field.
+	Region *string `json:"region,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket.
 	RoleId *string `json:"roleId,omitempty"`
 	// URL of the Azure Storage Account to export to. Only standard endpoints (with \"blob.core.windows.net\") are supported.
@@ -179,6 +182,39 @@ func (o *DiskBackupSnapshotExportBucketResponse) HasIamRoleId() bool {
 // SetIamRoleId gets a reference to the given string and assigns it to the IamRoleId field.
 func (o *DiskBackupSnapshotExportBucketResponse) SetIamRoleId(v string) {
 	o.IamRoleId = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise
+func (o *DiskBackupSnapshotExportBucketResponse) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshotExportBucketResponse) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotExportBucketResponse) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *DiskBackupSnapshotExportBucketResponse) SetRegion(v string) {
+	o.Region = &v
 }
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise

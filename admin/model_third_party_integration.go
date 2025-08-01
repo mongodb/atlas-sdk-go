@@ -35,6 +35,8 @@ type ThirdPartyIntegration struct {
 	// Password needed to allow MongoDB Cloud to access your Prometheus account.
 	// Write only field.
 	Password *string `json:"password,omitempty"`
+	// Toggle sending user provided group and cluster resource tags with the prometheus metrics.
+	SendUserProvidedResourceTagsEnabled *bool `json:"sendUserProvidedResourceTagsEnabled,omitempty"`
 	// Desired method to discover the Prometheus service.
 	ServiceDiscovery *string `json:"serviceDiscovery,omitempty"`
 	// Human-readable label that identifies your Prometheus incoming webhook.
@@ -65,6 +67,8 @@ func NewThirdPartyIntegration() *ThirdPartyIntegration {
 	this.SendDatabaseMetrics = &sendDatabaseMetrics
 	var sendUserProvidedResourceTags bool = false
 	this.SendUserProvidedResourceTags = &sendUserProvidedResourceTags
+	var sendUserProvidedResourceTagsEnabled bool = false
+	this.SendUserProvidedResourceTagsEnabled = &sendUserProvidedResourceTagsEnabled
 	return &this
 }
 
@@ -79,6 +83,8 @@ func NewThirdPartyIntegrationWithDefaults() *ThirdPartyIntegration {
 	this.SendDatabaseMetrics = &sendDatabaseMetrics
 	var sendUserProvidedResourceTags bool = false
 	this.SendUserProvidedResourceTags = &sendUserProvidedResourceTags
+	var sendUserProvidedResourceTagsEnabled bool = false
+	this.SendUserProvidedResourceTagsEnabled = &sendUserProvidedResourceTagsEnabled
 	return &this
 }
 
@@ -575,6 +581,39 @@ func (o *ThirdPartyIntegration) HasPassword() bool {
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *ThirdPartyIntegration) SetPassword(v string) {
 	o.Password = &v
+}
+
+// GetSendUserProvidedResourceTagsEnabled returns the SendUserProvidedResourceTagsEnabled field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTagsEnabled() bool {
+	if o == nil || IsNil(o.SendUserProvidedResourceTagsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.SendUserProvidedResourceTagsEnabled
+}
+
+// GetSendUserProvidedResourceTagsEnabledOk returns a tuple with the SendUserProvidedResourceTagsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTagsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendUserProvidedResourceTagsEnabled) {
+		return nil, false
+	}
+
+	return o.SendUserProvidedResourceTagsEnabled, true
+}
+
+// HasSendUserProvidedResourceTagsEnabled returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasSendUserProvidedResourceTagsEnabled() bool {
+	if o != nil && !IsNil(o.SendUserProvidedResourceTagsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendUserProvidedResourceTagsEnabled gets a reference to the given bool and assigns it to the SendUserProvidedResourceTagsEnabled field.
+func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTagsEnabled(v bool) {
+	o.SendUserProvidedResourceTagsEnabled = &v
 }
 
 // GetServiceDiscovery returns the ServiceDiscovery field value if set, zero value otherwise
