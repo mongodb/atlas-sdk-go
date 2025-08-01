@@ -42,7 +42,7 @@ type AlertViewForNdsGroup struct {
 	// Date and time that this alert changed to `\"status\" : \"CLOSED\"`. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter once `\"status\" : \"CLOSED\"`.
 	// Read only field.
 	Resolved *time.Time `json:"resolved,omitempty"`
-	// State of this alert at the time you requested its details.
+	// State of this alert at the time you requested its details. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Date and time when someone last updated this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
