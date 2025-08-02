@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// OrgServiceAccount struct for OrgServiceAccount
+// OrgServiceAccount Organization Service Account that Atlas created for the organization.
 type OrgServiceAccount struct {
 	// The Client ID of the Service Account.
 	ClientId *string `json:"clientId,omitempty"`

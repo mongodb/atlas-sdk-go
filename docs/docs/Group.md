@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **OrgId** | **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud organization to which the project belongs. | 
 **RegionUsageRestrictions** | Pointer to **string** | Applies to Atlas for Government only.  In Commercial Atlas, this field will be rejected in requests and missing in responses.  This field sets restrictions on available regions in the project.  &#x60;COMMERCIAL_FEDRAMP_REGIONS_ONLY&#x60;: Only allows deployments in FedRAMP Moderate regions.  &#x60;GOV_REGIONS_ONLY&#x60;: Only allows deployments in GovCloud regions. | [optional] [default to "COMMERCIAL_FEDRAMP_REGIONS_ONLY"]
 **Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project. | [optional] 
-**WithDefaultAlertsSettings** | Pointer to **bool** | Flag that indicates whether to create the project with default alert settings. | [optional] [default to true]
+**WithDefaultAlertsSettings** | Pointer to **bool** | Flag that indicates whether to create the project with default alert settings. This setting cannot be updated after project creation. | [optional] [default to true]
 
 ## Methods
 
