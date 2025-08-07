@@ -28,8 +28,7 @@ type Group struct {
 	RegionUsageRestrictions *string `json:"regionUsageRestrictions,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project.
 	Tags *[]ResourceTag `json:"tags,omitempty"`
-	// Flag that indicates whether to create the project with default alert settings.
-	// Write only field.
+	// Flag that indicates whether to create the project with default alert settings. This setting cannot be updated after project creation.
 	WithDefaultAlertsSettings *bool `json:"withDefaultAlertsSettings,omitempty"`
 }
 

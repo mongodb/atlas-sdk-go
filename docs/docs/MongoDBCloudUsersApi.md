@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ## AddProjectRole
 
-> OrgUserResponse AddProjectRole(ctx, groupId, userId, addOrRemoveGroupRole AddOrRemoveGroupRole).Execute()
+> GroupUserResponse AddProjectRole(ctx, groupId, userId, addOrRemoveGroupRole AddOrRemoveGroupRole).Execute()
 
 Add One Project Role to One MongoDB Cloud User
 
@@ -154,7 +154,7 @@ func main() {
         }
         return
     }
-    // response from `AddProjectRole`: OrgUserResponse
+    // response from `AddProjectRole`: GroupUserResponse
     fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.AddProjectRole`: %v (%v)\n", resp, r)
 }
 ```
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrgUserResponse**](OrgUserResponse.md)
+[**GroupUserResponse**](GroupUserResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1033,7 +1033,7 @@ Name | Type | Description  | Notes
 
 ## ListTeamUsers
 
-> PaginatedOrgUser ListTeamUsers(ctx, orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).Execute()
+> PaginatedOrgUser ListTeamUsers(ctx, orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).UserId(userId).Execute()
 
 Return All MongoDB Cloud Users Assigned to One Team
 
@@ -1067,8 +1067,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     username := "username_example" // string |  (optional)
     orgMembershipStatus := "ACTIVE" // string |  (optional)
+    userId := "userId_example" // string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.ListTeamUsers(context.Background(), orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersApi.ListTeamUsers(context.Background(), orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).UserId(userId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.ListTeamUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1104,6 +1105,7 @@ Name | Type | Description  | Notes
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **username** | **string** | Email address to filter users by. Not supported in deprecated versions. | 
  **orgMembershipStatus** | **string** | Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions. | 
+ **userId** | **string** | Unique 24-hexadecimal digit string to filter users by. Not supported in deprecated versions. | 
 
 ### Return type
 
@@ -1290,7 +1292,7 @@ Name | Type | Description  | Notes
 
 ## RemoveProjectRole
 
-> OrgUserResponse RemoveProjectRole(ctx, groupId, userId, addOrRemoveGroupRole AddOrRemoveGroupRole).Execute()
+> GroupUserResponse RemoveProjectRole(ctx, groupId, userId, addOrRemoveGroupRole AddOrRemoveGroupRole).Execute()
 
 Remove One Project Role from One MongoDB Cloud User
 
@@ -1331,7 +1333,7 @@ func main() {
         }
         return
     }
-    // response from `RemoveProjectRole`: OrgUserResponse
+    // response from `RemoveProjectRole`: GroupUserResponse
     fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.RemoveProjectRole`: %v (%v)\n", resp, r)
 }
 ```
@@ -1358,7 +1360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrgUserResponse**](OrgUserResponse.md)
+[**GroupUserResponse**](GroupUserResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

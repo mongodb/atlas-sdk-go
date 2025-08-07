@@ -10,7 +10,8 @@ type CreateOrganizationRequest struct {
 	// Human-readable label that identifies the organization.
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. If you provide `federationSettingsId`,  this user must instead have the Organization Owner role on an organization in the specified federation. This parameter is required only when you authenticate with Programmatic API Keys.
-	OrgOwnerId *string `json:"orgOwnerId,omitempty"`
+	OrgOwnerId     *string                   `json:"orgOwnerId,omitempty"`
+	ServiceAccount *OrgServiceAccountRequest `json:"serviceAccount,omitempty"`
 	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
 	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
 }
@@ -158,6 +159,39 @@ func (o *CreateOrganizationRequest) HasOrgOwnerId() bool {
 // SetOrgOwnerId gets a reference to the given string and assigns it to the OrgOwnerId field.
 func (o *CreateOrganizationRequest) SetOrgOwnerId(v string) {
 	o.OrgOwnerId = &v
+}
+
+// GetServiceAccount returns the ServiceAccount field value if set, zero value otherwise
+func (o *CreateOrganizationRequest) GetServiceAccount() OrgServiceAccountRequest {
+	if o == nil || IsNil(o.ServiceAccount) {
+		var ret OrgServiceAccountRequest
+		return ret
+	}
+	return *o.ServiceAccount
+}
+
+// GetServiceAccountOk returns a tuple with the ServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOrganizationRequest) GetServiceAccountOk() (*OrgServiceAccountRequest, bool) {
+	if o == nil || IsNil(o.ServiceAccount) {
+		return nil, false
+	}
+
+	return o.ServiceAccount, true
+}
+
+// HasServiceAccount returns a boolean if a field has been set.
+func (o *CreateOrganizationRequest) HasServiceAccount() bool {
+	if o != nil && !IsNil(o.ServiceAccount) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceAccount gets a reference to the given OrgServiceAccountRequest and assigns it to the ServiceAccount field.
+func (o *CreateOrganizationRequest) SetServiceAccount(v OrgServiceAccountRequest) {
+	o.ServiceAccount = &v
 }
 
 // GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field value if set, zero value otherwise

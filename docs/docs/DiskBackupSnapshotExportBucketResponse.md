@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CloudProvider** | **string** | Human-readable label that identifies the cloud provider that Snapshots will be exported to. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
+**Region** | Pointer to **string** | AWS region for the export bucket. This is set by Atlas and is never user-supplied. | [optional] [readonly] 
 **RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket. | [optional] 
 **ServiceUrl** | Pointer to **string** | URL of the Azure Storage Account to export to. Only standard endpoints (with \&quot;blob.core.windows.net\&quot;) are supported. | [optional] 
 **TenantId** | Pointer to **string** | UUID that identifies the Azure Active Directory Tenant ID used during exports. | [optional] 
@@ -137,6 +138,30 @@ SetIamRoleId sets IamRoleId field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasIamRoleId() bool`
 
 HasIamRoleId returns a boolean if a field has been set.
+### GetRegion
+
+`func (o *DiskBackupSnapshotExportBucketResponse) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *DiskBackupSnapshotExportBucketResponse) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *DiskBackupSnapshotExportBucketResponse) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 ### GetRoleId
 
 `func (o *DiskBackupSnapshotExportBucketResponse) GetRoleId() string`

@@ -23,6 +23,8 @@ type FlexClusterMetricThreshold struct {
 func NewFlexClusterMetricThreshold(metricName string) *FlexClusterMetricThreshold {
 	this := FlexClusterMetricThreshold{}
 	this.MetricName = metricName
+	var units string = "HOURS"
+	this.Units = &units
 	return &this
 }
 
@@ -31,6 +33,8 @@ func NewFlexClusterMetricThreshold(metricName string) *FlexClusterMetricThreshol
 // but it doesn't guarantee that properties required by API are set
 func NewFlexClusterMetricThresholdWithDefaults() *FlexClusterMetricThreshold {
 	this := FlexClusterMetricThreshold{}
+	var units string = "HOURS"
+	this.Units = &units
 	return &this
 }
 

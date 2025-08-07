@@ -66,7 +66,7 @@ type MongoDBCloudUsersApi interface {
 	AddProjectRoleWithParams(ctx context.Context, args *AddProjectRoleApiParams) AddProjectRoleApiRequest
 
 	// Method available only for mocking purposes
-	AddProjectRoleExecute(r AddProjectRoleApiRequest) (*OrgUserResponse, *http.Response, error)
+	AddProjectRoleExecute(r AddProjectRoleApiRequest) (*GroupUserResponse, *http.Response, error)
 
 	/*
 			AddProjectUser Add One MongoDB Cloud User to One Project
@@ -454,7 +454,7 @@ type MongoDBCloudUsersApi interface {
 	RemoveProjectRoleWithParams(ctx context.Context, args *RemoveProjectRoleApiParams) RemoveProjectRoleApiRequest
 
 	// Method available only for mocking purposes
-	RemoveProjectRoleExecute(r RemoveProjectRoleApiRequest) (*OrgUserResponse, *http.Response, error)
+	RemoveProjectRoleExecute(r RemoveProjectRoleApiRequest) (*GroupUserResponse, *http.Response, error)
 
 	/*
 			RemoveProjectUser Remove One MongoDB Cloud User from One Project
@@ -704,7 +704,7 @@ func (a *MongoDBCloudUsersApiService) AddProjectRoleWithParams(ctx context.Conte
 	}
 }
 
-func (r AddProjectRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+func (r AddProjectRoleApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
 	return r.ApiService.AddProjectRoleExecute(r)
 }
 
@@ -732,13 +732,13 @@ func (a *MongoDBCloudUsersApiService) AddProjectRole(ctx context.Context, groupI
 
 // AddProjectRoleExecute executes the request
 //
-//	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) AddProjectRoleExecute(r AddProjectRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
+//	@return GroupUserResponse
+func (a *MongoDBCloudUsersApiService) AddProjectRoleExecute(r AddProjectRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *OrgUserResponse
+		localVarReturnValue *GroupUserResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddProjectRole")
@@ -2232,6 +2232,7 @@ type ListTeamUsersApiRequest struct {
 	pageNum             *int
 	username            *string
 	orgMembershipStatus *string
+	userId              *string
 }
 
 type ListTeamUsersApiParams struct {
@@ -2241,6 +2242,7 @@ type ListTeamUsersApiParams struct {
 	PageNum             *int
 	Username            *string
 	OrgMembershipStatus *string
+	UserId              *string
 }
 
 func (a *MongoDBCloudUsersApiService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
@@ -2253,6 +2255,7 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersWithParams(ctx context.Contex
 		pageNum:             args.PageNum,
 		username:            args.Username,
 		orgMembershipStatus: args.OrgMembershipStatus,
+		userId:              args.UserId,
 	}
 }
 
@@ -2277,6 +2280,12 @@ func (r ListTeamUsersApiRequest) Username(username string) ListTeamUsersApiReque
 // Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
 func (r ListTeamUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListTeamUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+// Unique 24-hexadecimal digit string to filter users by. Not supported in deprecated versions.
+func (r ListTeamUsersApiRequest) UserId(userId string) ListTeamUsersApiRequest {
+	r.userId = &userId
 	return r
 }
 
@@ -2356,6 +2365,9 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 	}
 	if r.orgMembershipStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
+	}
+	if r.userId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "userId", r.userId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2676,7 +2688,7 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectRoleWithParams(ctx context.Co
 	}
 }
 
-func (r RemoveProjectRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+func (r RemoveProjectRoleApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
 	return r.ApiService.RemoveProjectRoleExecute(r)
 }
 
@@ -2704,13 +2716,13 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectRole(ctx context.Context, gro
 
 // RemoveProjectRoleExecute executes the request
 //
-//	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) RemoveProjectRoleExecute(r RemoveProjectRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
+//	@return GroupUserResponse
+func (a *MongoDBCloudUsersApiService) RemoveProjectRoleExecute(r RemoveProjectRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *OrgUserResponse
+		localVarReturnValue *GroupUserResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveProjectRole")
