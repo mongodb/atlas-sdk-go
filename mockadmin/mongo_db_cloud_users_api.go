@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312005/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -238,24 +238,24 @@ func (_c *MongoDBCloudUsersApi_AddProjectRole_Call) RunAndReturn(run func(contex
 }
 
 // AddProjectRoleExecute provides a mock function with given fields: r
-func (_m *MongoDBCloudUsersApi) AddProjectRoleExecute(r admin.AddProjectRoleApiRequest) (*admin.OrgUserResponse, *http.Response, error) {
+func (_m *MongoDBCloudUsersApi) AddProjectRoleExecute(r admin.AddProjectRoleApiRequest) (*admin.GroupUserResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for AddProjectRoleExecute")
 	}
 
-	var r0 *admin.OrgUserResponse
+	var r0 *admin.GroupUserResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AddProjectRoleApiRequest) (*admin.OrgUserResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddProjectRoleApiRequest) (*admin.GroupUserResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AddProjectRoleApiRequest) *admin.OrgUserResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddProjectRoleApiRequest) *admin.GroupUserResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.OrgUserResponse)
+			r0 = ret.Get(0).(*admin.GroupUserResponse)
 		}
 	}
 
@@ -294,12 +294,12 @@ func (_c *MongoDBCloudUsersApi_AddProjectRoleExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *MongoDBCloudUsersApi_AddProjectRoleExecute_Call) Return(_a0 *admin.OrgUserResponse, _a1 *http.Response, _a2 error) *MongoDBCloudUsersApi_AddProjectRoleExecute_Call {
+func (_c *MongoDBCloudUsersApi_AddProjectRoleExecute_Call) Return(_a0 *admin.GroupUserResponse, _a1 *http.Response, _a2 error) *MongoDBCloudUsersApi_AddProjectRoleExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MongoDBCloudUsersApi_AddProjectRoleExecute_Call) RunAndReturn(run func(admin.AddProjectRoleApiRequest) (*admin.OrgUserResponse, *http.Response, error)) *MongoDBCloudUsersApi_AddProjectRoleExecute_Call {
+func (_c *MongoDBCloudUsersApi_AddProjectRoleExecute_Call) RunAndReturn(run func(admin.AddProjectRoleApiRequest) (*admin.GroupUserResponse, *http.Response, error)) *MongoDBCloudUsersApi_AddProjectRoleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2495,24 +2495,24 @@ func (_c *MongoDBCloudUsersApi_RemoveProjectRole_Call) RunAndReturn(run func(con
 }
 
 // RemoveProjectRoleExecute provides a mock function with given fields: r
-func (_m *MongoDBCloudUsersApi) RemoveProjectRoleExecute(r admin.RemoveProjectRoleApiRequest) (*admin.OrgUserResponse, *http.Response, error) {
+func (_m *MongoDBCloudUsersApi) RemoveProjectRoleExecute(r admin.RemoveProjectRoleApiRequest) (*admin.GroupUserResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RemoveProjectRoleExecute")
 	}
 
-	var r0 *admin.OrgUserResponse
+	var r0 *admin.GroupUserResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveProjectRoleApiRequest) (*admin.OrgUserResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectRoleApiRequest) (*admin.GroupUserResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveProjectRoleApiRequest) *admin.OrgUserResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectRoleApiRequest) *admin.GroupUserResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.OrgUserResponse)
+			r0 = ret.Get(0).(*admin.GroupUserResponse)
 		}
 	}
 
@@ -2551,12 +2551,12 @@ func (_c *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call) Return(_a0 *admin.OrgUserResponse, _a1 *http.Response, _a2 error) *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call {
+func (_c *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call) Return(_a0 *admin.GroupUserResponse, _a1 *http.Response, _a2 error) *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call) RunAndReturn(run func(admin.RemoveProjectRoleApiRequest) (*admin.OrgUserResponse, *http.Response, error)) *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call {
+func (_c *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call) RunAndReturn(run func(admin.RemoveProjectRoleApiRequest) (*admin.GroupUserResponse, *http.Response, error)) *MongoDBCloudUsersApi_RemoveProjectRoleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
