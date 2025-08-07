@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **FederationSettingsId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to. | [optional] [readonly] 
 **OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization. | [optional] [readonly] 
 **Organization** | Pointer to [**AtlasOrganization**](AtlasOrganization.md) |  | [optional] 
+**ServiceAccount** | Pointer to [**OrgServiceAccount**](OrgServiceAccount.md) |  | [optional] 
 **SkipDefaultAlertsSettings** | Pointer to **bool** | Disables automatic alert creation. When set to true, no organization level alerts will be created automatically. | [optional] [default to false]
 
 ## Methods
@@ -125,6 +126,30 @@ SetOrganization sets Organization field to given value.
 `func (o *CreateOrganizationResponse) HasOrganization() bool`
 
 HasOrganization returns a boolean if a field has been set.
+### GetServiceAccount
+
+`func (o *CreateOrganizationResponse) GetServiceAccount() OrgServiceAccount`
+
+GetServiceAccount returns the ServiceAccount field if non-nil, zero value otherwise.
+
+### GetServiceAccountOk
+
+`func (o *CreateOrganizationResponse) GetServiceAccountOk() (*OrgServiceAccount, bool)`
+
+GetServiceAccountOk returns a tuple with the ServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceAccount
+
+`func (o *CreateOrganizationResponse) SetServiceAccount(v OrgServiceAccount)`
+
+SetServiceAccount sets ServiceAccount field to given value.
+
+### HasServiceAccount
+
+`func (o *CreateOrganizationResponse) HasServiceAccount() bool`
+
+HasServiceAccount returns a boolean if a field has been set.
 ### GetSkipDefaultAlertsSettings
 
 `func (o *CreateOrganizationResponse) GetSkipDefaultAlertsSettings() bool`

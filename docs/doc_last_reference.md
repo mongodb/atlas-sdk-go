@@ -361,6 +361,8 @@ Class        | Method        | HTTP request  | Description   |
 *PushBasedLogExportApi* | [DeletePushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#deletepushbasedlogconfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project |
 *PushBasedLogExportApi* | [GetPushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#getpushbasedlogconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return Push-Based Log Export Configuration for One Project |
 *PushBasedLogExportApi* | [UpdatePushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#updatepushbasedlogconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update Push-Based Log Export for One Project |
+*QueryShapeInsightsApi* | [GetGroupClusterQueryShapeInsightDetails](./docs/QueryShapeInsightsApi.md#getgroupclusterqueryshapeinsightdetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details |
+*QueryShapeInsightsApi* | [GetGroupClusterQueryShapeInsightSummaries](./docs/QueryShapeInsightsApi.md#getgroupclusterqueryshapeinsightsummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries |
 *ResourcePoliciesApi* | [CreateOrgResourcePolicy](./docs/ResourcePoliciesApi.md#createorgresourcepolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy |
 *ResourcePoliciesApi* | [DeleteOrgResourcePolicy](./docs/ResourcePoliciesApi.md#deleteorgresourcepolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy |
 *ResourcePoliciesApi* | [GetOrgResourcePolicy](./docs/ResourcePoliciesApi.md#getorgresourcepolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return One Atlas Resource Policy |
@@ -836,6 +838,10 @@ Class        | Method        | HTTP request  | Description   |
  - [ProtectedHours](./docs/ProtectedHours.md)
  - [PublicApiUsageDetailsLineItem](./docs/PublicApiUsageDetailsLineItem.md)
  - [PushBasedLogExportProject](./docs/PushBasedLogExportProject.md)
+ - [QueryShapeSeenMetadata](./docs/QueryShapeSeenMetadata.md)
+ - [QueryStatsDetailsResponse](./docs/QueryStatsDetailsResponse.md)
+ - [QueryStatsSummary](./docs/QueryStatsSummary.md)
+ - [QueryStatsSummaryListResponse](./docs/QueryStatsSummaryListResponse.md)
  - [Raw](./docs/Raw.md)
  - [RegionSpec](./docs/RegionSpec.md)
  - [ReplicationSpec20240805](./docs/ReplicationSpec20240805.md)

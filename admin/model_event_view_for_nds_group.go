@@ -50,6 +50,12 @@ type EventViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the alert configuration associated with the **alertId**.
 	// Read only field.
 	AlertConfigId *string `json:"alertConfigId,omitempty"`
+	// Public part of the API key that this event targets.
+	// Read only field.
+	TargetPublicKey *string `json:"targetPublicKey,omitempty"`
+	// Entry in the list of source host addresses that the API key accepts and this event targets.
+	// Read only field.
+	WhitelistEntry *string `json:"whitelistEntry,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies of the invoice associated with the event.
 	// Read only field.
 	InvoiceId *string `json:"invoiceId,omitempty"`
@@ -90,9 +96,6 @@ type EventViewForNdsGroup struct {
 	// The username of the MongoDB User that was created, deleted, or edited.
 	// Read only field.
 	DbUserUsername *string `json:"dbUserUsername,omitempty"`
-	// Entry in the list of source host addresses that the API key accepts and this event targets.
-	// Read only field.
-	WhitelistEntry *string `json:"whitelistEntry,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the endpoint associated with this event.
 	// Read only field.
 	EndpointId *string `json:"endpointId,omitempty"`
@@ -644,6 +647,72 @@ func (o *EventViewForNdsGroup) SetAlertConfigId(v string) {
 	o.AlertConfigId = &v
 }
 
+// GetTargetPublicKey returns the TargetPublicKey field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetTargetPublicKey() string {
+	if o == nil || IsNil(o.TargetPublicKey) {
+		var ret string
+		return ret
+	}
+	return *o.TargetPublicKey
+}
+
+// GetTargetPublicKeyOk returns a tuple with the TargetPublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetTargetPublicKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.TargetPublicKey) {
+		return nil, false
+	}
+
+	return o.TargetPublicKey, true
+}
+
+// HasTargetPublicKey returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasTargetPublicKey() bool {
+	if o != nil && !IsNil(o.TargetPublicKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetPublicKey gets a reference to the given string and assigns it to the TargetPublicKey field.
+func (o *EventViewForNdsGroup) SetTargetPublicKey(v string) {
+	o.TargetPublicKey = &v
+}
+
+// GetWhitelistEntry returns the WhitelistEntry field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetWhitelistEntry() string {
+	if o == nil || IsNil(o.WhitelistEntry) {
+		var ret string
+		return ret
+	}
+	return *o.WhitelistEntry
+}
+
+// GetWhitelistEntryOk returns a tuple with the WhitelistEntry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetWhitelistEntryOk() (*string, bool) {
+	if o == nil || IsNil(o.WhitelistEntry) {
+		return nil, false
+	}
+
+	return o.WhitelistEntry, true
+}
+
+// HasWhitelistEntry returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasWhitelistEntry() bool {
+	if o != nil && !IsNil(o.WhitelistEntry) {
+		return true
+	}
+
+	return false
+}
+
+// SetWhitelistEntry gets a reference to the given string and assigns it to the WhitelistEntry field.
+func (o *EventViewForNdsGroup) SetWhitelistEntry(v string) {
+	o.WhitelistEntry = &v
+}
+
 // GetInvoiceId returns the InvoiceId field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetInvoiceId() string {
 	if o == nil || IsNil(o.InvoiceId) {
@@ -1104,39 +1173,6 @@ func (o *EventViewForNdsGroup) HasDbUserUsername() bool {
 // SetDbUserUsername gets a reference to the given string and assigns it to the DbUserUsername field.
 func (o *EventViewForNdsGroup) SetDbUserUsername(v string) {
 	o.DbUserUsername = &v
-}
-
-// GetWhitelistEntry returns the WhitelistEntry field value if set, zero value otherwise
-func (o *EventViewForNdsGroup) GetWhitelistEntry() string {
-	if o == nil || IsNil(o.WhitelistEntry) {
-		var ret string
-		return ret
-	}
-	return *o.WhitelistEntry
-}
-
-// GetWhitelistEntryOk returns a tuple with the WhitelistEntry field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EventViewForNdsGroup) GetWhitelistEntryOk() (*string, bool) {
-	if o == nil || IsNil(o.WhitelistEntry) {
-		return nil, false
-	}
-
-	return o.WhitelistEntry, true
-}
-
-// HasWhitelistEntry returns a boolean if a field has been set.
-func (o *EventViewForNdsGroup) HasWhitelistEntry() bool {
-	if o != nil && !IsNil(o.WhitelistEntry) {
-		return true
-	}
-
-	return false
-}
-
-// SetWhitelistEntry gets a reference to the given string and assigns it to the WhitelistEntry field.
-func (o *EventViewForNdsGroup) SetWhitelistEntry(v string) {
-	o.WhitelistEntry = &v
 }
 
 // GetEndpointId returns the EndpointId field value if set, zero value otherwise

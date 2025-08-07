@@ -19,10 +19,11 @@ Name | Type | Description | Notes
 **Username** | Pointer to **string** | Email address for the user who triggered this event. If this resource returns this parameter, it doesn&#39;t return the **publicApiKey** parameter. | [optional] [readonly] 
 **AlertId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the alert associated with the event. | [optional] [readonly] 
 **AlertConfigId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the alert configuration associated with the **alertId**. | [optional] [readonly] 
+**TargetPublicKey** | Pointer to **string** | Public part of the API key that this event targets. | [optional] [readonly] 
+**WhitelistEntry** | Pointer to **string** | Entry in the list of source host addresses that the API key accepts and this event targets. | [optional] [readonly] 
 **InvoiceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies of the invoice associated with the event. | [optional] [readonly] 
 **PaymentId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the invoice payment associated with this event. | [optional] [readonly] 
 **DbUserUsername** | Pointer to **string** | The username of the MongoDB User that was created, deleted, or edited. | [optional] [readonly] 
-**WhitelistEntry** | Pointer to **string** | Entry in the list of source host addresses that the API key accepts and this event targets. | [optional] [readonly] 
 **TeamId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization team associated with this event. | [optional] [readonly] 
 **TargetUsername** | Pointer to **string** | Email address for the console user that this event targets. The resource returns this parameter when &#x60;\&quot;eventTypeName\&quot; : \&quot;USER\&quot;&#x60;. | [optional] [readonly] 
 **ResourceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the resource associated with the event. | [optional] [readonly] 
@@ -408,6 +409,54 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *EventViewForOrg) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
+### GetTargetPublicKey
+
+`func (o *EventViewForOrg) GetTargetPublicKey() string`
+
+GetTargetPublicKey returns the TargetPublicKey field if non-nil, zero value otherwise.
+
+### GetTargetPublicKeyOk
+
+`func (o *EventViewForOrg) GetTargetPublicKeyOk() (*string, bool)`
+
+GetTargetPublicKeyOk returns a tuple with the TargetPublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetPublicKey
+
+`func (o *EventViewForOrg) SetTargetPublicKey(v string)`
+
+SetTargetPublicKey sets TargetPublicKey field to given value.
+
+### HasTargetPublicKey
+
+`func (o *EventViewForOrg) HasTargetPublicKey() bool`
+
+HasTargetPublicKey returns a boolean if a field has been set.
+### GetWhitelistEntry
+
+`func (o *EventViewForOrg) GetWhitelistEntry() string`
+
+GetWhitelistEntry returns the WhitelistEntry field if non-nil, zero value otherwise.
+
+### GetWhitelistEntryOk
+
+`func (o *EventViewForOrg) GetWhitelistEntryOk() (*string, bool)`
+
+GetWhitelistEntryOk returns a tuple with the WhitelistEntry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWhitelistEntry
+
+`func (o *EventViewForOrg) SetWhitelistEntry(v string)`
+
+SetWhitelistEntry sets WhitelistEntry field to given value.
+
+### HasWhitelistEntry
+
+`func (o *EventViewForOrg) HasWhitelistEntry() bool`
+
+HasWhitelistEntry returns a boolean if a field has been set.
 ### GetInvoiceId
 
 `func (o *EventViewForOrg) GetInvoiceId() string`
@@ -480,30 +529,6 @@ SetDbUserUsername sets DbUserUsername field to given value.
 `func (o *EventViewForOrg) HasDbUserUsername() bool`
 
 HasDbUserUsername returns a boolean if a field has been set.
-### GetWhitelistEntry
-
-`func (o *EventViewForOrg) GetWhitelistEntry() string`
-
-GetWhitelistEntry returns the WhitelistEntry field if non-nil, zero value otherwise.
-
-### GetWhitelistEntryOk
-
-`func (o *EventViewForOrg) GetWhitelistEntryOk() (*string, bool)`
-
-GetWhitelistEntryOk returns a tuple with the WhitelistEntry field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWhitelistEntry
-
-`func (o *EventViewForOrg) SetWhitelistEntry(v string)`
-
-SetWhitelistEntry sets WhitelistEntry field to given value.
-
-### HasWhitelistEntry
-
-`func (o *EventViewForOrg) HasWhitelistEntry() bool`
-
-HasWhitelistEntry returns a boolean if a field has been set.
 ### GetTeamId
 
 `func (o *EventViewForOrg) GetTeamId() string`

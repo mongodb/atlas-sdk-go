@@ -427,7 +427,7 @@ func (r ListAlertsApiRequest) PageNum(pageNum int) ListAlertsApiRequest {
 	return r
 }
 
-// Status of the alerts to return. Omit to return all alerts in all statuses.
+// Status of the alerts to return. Omit this parameter to return all alerts in all statuses. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved.
 func (r ListAlertsApiRequest) Status(status string) ListAlertsApiRequest {
 	r.status = &status
 	return r

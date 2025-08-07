@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ServiceKey** | Pointer to **string** | Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | [optional] 
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone has activated the Prometheus integration. | [optional] 
 **Password** | Pointer to **string** | Password needed to allow MongoDB Cloud to access your Prometheus account. | [optional] 
+**SendUserProvidedResourceTagsEnabled** | Pointer to **bool** | Toggle sending user provided group and cluster resource tags with the prometheus metrics. | [optional] [default to false]
 **ServiceDiscovery** | Pointer to **string** | Desired method to discover the Prometheus service. | [optional] 
 **Username** | Pointer to **string** | Human-readable label that identifies your Prometheus incoming webhook. | [optional] 
 **ApiToken** | Pointer to **string** | Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported. | [optional] 
@@ -407,6 +408,30 @@ SetPassword sets Password field to given value.
 `func (o *ThirdPartyIntegration) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+### GetSendUserProvidedResourceTagsEnabled
+
+`func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTagsEnabled() bool`
+
+GetSendUserProvidedResourceTagsEnabled returns the SendUserProvidedResourceTagsEnabled field if non-nil, zero value otherwise.
+
+### GetSendUserProvidedResourceTagsEnabledOk
+
+`func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTagsEnabledOk() (*bool, bool)`
+
+GetSendUserProvidedResourceTagsEnabledOk returns a tuple with the SendUserProvidedResourceTagsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSendUserProvidedResourceTagsEnabled
+
+`func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTagsEnabled(v bool)`
+
+SetSendUserProvidedResourceTagsEnabled sets SendUserProvidedResourceTagsEnabled field to given value.
+
+### HasSendUserProvidedResourceTagsEnabled
+
+`func (o *ThirdPartyIntegration) HasSendUserProvidedResourceTagsEnabled() bool`
+
+HasSendUserProvidedResourceTagsEnabled returns a boolean if a field has been set.
 ### GetServiceDiscovery
 
 `func (o *ThirdPartyIntegration) GetServiceDiscovery() string`

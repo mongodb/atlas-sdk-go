@@ -116,6 +116,8 @@ type APIClient struct {
 
 	PushBasedLogExportApi PushBasedLogExportApi
 
+	QueryShapeInsightsApi QueryShapeInsightsApi
+
 	ResourcePoliciesApi ResourcePoliciesApi
 
 	RollingIndexApi RollingIndexApi
@@ -196,6 +198,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectIPAccessListApi = (*ProjectIPAccessListApiService)(&c.common)
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
 	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
+	c.QueryShapeInsightsApi = (*QueryShapeInsightsApiService)(&c.common)
 	c.ResourcePoliciesApi = (*ResourcePoliciesApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)

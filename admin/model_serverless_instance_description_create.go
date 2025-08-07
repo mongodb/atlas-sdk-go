@@ -9,7 +9,7 @@ type ServerlessInstanceDescriptionCreate struct {
 	Name                    string                          `json:"name"`
 	ProviderSettings        ServerlessProviderSettings      `json:"providerSettings"`
 	ServerlessBackupOptions *ClusterServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
-	// Human-readable label that indicates the current operating condition of the serverless instance.
+	// Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.   - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.  - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.  - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.  - `DELETING`: The cluster is in the process of deletion and will soon be deleted.  - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
 	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance.
