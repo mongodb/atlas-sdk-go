@@ -9,7 +9,7 @@
     "yaml": "2.8.0"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "2.21.4",
+    "@openapitools/openapi-generator-cli": "2.21.5",
     "jest": "30.0.5",
     "replace-in-file": "^8.3.0",
     "prettier": "3.6.2"
