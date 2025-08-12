@@ -6,7 +6,7 @@
   "main": "transformer/src/index.js",
   "dependencies": {
     "simple-node-logger": "^21.8.12",
-    "yaml": "2.8.0"
+    "yaml": "2.8.1"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "2.21.4",
