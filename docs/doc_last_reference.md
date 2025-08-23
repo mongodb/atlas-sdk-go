@@ -551,6 +551,8 @@ Class        | Method        | HTTP request  | Description   |
  - [CloudProviderAccessAzureServicePrincipalAllOf](./docs/CloudProviderAccessAzureServicePrincipalAllOf.md)
  - [CloudProviderAccessFeatureUsage](./docs/CloudProviderAccessFeatureUsage.md)
  - [CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId](./docs/CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId.md)
+ - [CloudProviderAccessGCPServiceAccount](./docs/CloudProviderAccessGCPServiceAccount.md)
+ - [CloudProviderAccessGCPServiceAccountAllOf](./docs/CloudProviderAccessGCPServiceAccountAllOf.md)
  - [CloudProviderAccessRole](./docs/CloudProviderAccessRole.md)
  - [CloudProviderAccessRoleRequest](./docs/CloudProviderAccessRoleRequest.md)
  - [CloudProviderAccessRoleRequestUpdate](./docs/CloudProviderAccessRoleRequestUpdate.md)
