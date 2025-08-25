@@ -8,6 +8,8 @@ type CloudProviderAccessRoles struct {
 	AwsIamRoles *[]CloudProviderAccessAWSIAMRole `json:"awsIamRoles,omitempty"`
 	// List that contains the Azure Service Principals registered with MongoDB Cloud.
 	AzureServicePrincipals *[]CloudProviderAccessAzureServicePrincipal `json:"azureServicePrincipals,omitempty"`
+	// List that contains the Google Service Accounts registered and authorized with MongoDB Cloud.
+	GcpServiceAccounts *[]CloudProviderAccessGCPServiceAccount `json:"gcpServiceAccounts,omitempty"`
 }
 
 // NewCloudProviderAccessRoles instantiates a new CloudProviderAccessRoles object
@@ -91,4 +93,37 @@ func (o *CloudProviderAccessRoles) HasAzureServicePrincipals() bool {
 // SetAzureServicePrincipals gets a reference to the given []CloudProviderAccessAzureServicePrincipal and assigns it to the AzureServicePrincipals field.
 func (o *CloudProviderAccessRoles) SetAzureServicePrincipals(v []CloudProviderAccessAzureServicePrincipal) {
 	o.AzureServicePrincipals = &v
+}
+
+// GetGcpServiceAccounts returns the GcpServiceAccounts field value if set, zero value otherwise
+func (o *CloudProviderAccessRoles) GetGcpServiceAccounts() []CloudProviderAccessGCPServiceAccount {
+	if o == nil || IsNil(o.GcpServiceAccounts) {
+		var ret []CloudProviderAccessGCPServiceAccount
+		return ret
+	}
+	return *o.GcpServiceAccounts
+}
+
+// GetGcpServiceAccountsOk returns a tuple with the GcpServiceAccounts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessRoles) GetGcpServiceAccountsOk() (*[]CloudProviderAccessGCPServiceAccount, bool) {
+	if o == nil || IsNil(o.GcpServiceAccounts) {
+		return nil, false
+	}
+
+	return o.GcpServiceAccounts, true
+}
+
+// HasGcpServiceAccounts returns a boolean if a field has been set.
+func (o *CloudProviderAccessRoles) HasGcpServiceAccounts() bool {
+	if o != nil && !IsNil(o.GcpServiceAccounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccounts gets a reference to the given []CloudProviderAccessGCPServiceAccount and assigns it to the GcpServiceAccounts field.
+func (o *CloudProviderAccessRoles) SetGcpServiceAccounts(v []CloudProviderAccessGCPServiceAccount) {
+	o.GcpServiceAccounts = &v
 }

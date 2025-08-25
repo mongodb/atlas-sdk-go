@@ -13,129 +13,129 @@ import (
 type ProjectIPAccessListApi interface {
 
 	/*
-		CreateProjectIpAccessList Add Entries to Project IP Access List
+		CreateAccessListEntry Add Entries to Project IP Access List
 
 		Adds one or more access list entries to the specified project. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. Write each entry as either one IP address or one CIDR-notated block of IP addresses. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations. This endpoint doesn't support concurrent `POST` requests. You must submit multiple `POST` requests synchronously.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param networkPermissionEntry One or more access list entries to add to the specified project.
-		@return CreateProjectIpAccessListApiRequest
+		@return CreateAccessListEntryApiRequest
 	*/
-	CreateProjectIpAccessList(ctx context.Context, groupId string, networkPermissionEntry *[]NetworkPermissionEntry) CreateProjectIpAccessListApiRequest
+	CreateAccessListEntry(ctx context.Context, groupId string, networkPermissionEntry *[]NetworkPermissionEntry) CreateAccessListEntryApiRequest
 	/*
-		CreateProjectIpAccessList Add Entries to Project IP Access List
+		CreateAccessListEntry Add Entries to Project IP Access List
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateProjectIpAccessListApiParams - Parameters for the request
-		@return CreateProjectIpAccessListApiRequest
+		@param CreateAccessListEntryApiParams - Parameters for the request
+		@return CreateAccessListEntryApiRequest
 	*/
-	CreateProjectIpAccessListWithParams(ctx context.Context, args *CreateProjectIpAccessListApiParams) CreateProjectIpAccessListApiRequest
+	CreateAccessListEntryWithParams(ctx context.Context, args *CreateAccessListEntryApiParams) CreateAccessListEntryApiRequest
 
 	// Method available only for mocking purposes
-	CreateProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
+	CreateAccessListEntryExecute(r CreateAccessListEntryApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
 
 	/*
-		DeleteProjectIpAccessList Remove One Entry from One Project IP Access List
+		DeleteAccessListEntry Remove One Entry from One Project IP Access List
 
 		Removes one access list entry from the specified project's IP access list. Each entry in the project's IP access list contains one IP address, one CIDR-notated block of IP addresses, or one AWS Security Group ID. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param entryValue Access list entry that you want to remove from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`). When you remove an entry from the IP access list, existing connections from the removed address or addresses may remain open for a variable amount of time. The amount of time it takes MongoDB Cloud to close the connection depends upon several factors, including:  - how your application established the connection, - how MongoDB Cloud or the driver using the address behaves, and - which protocol (like TCP or UDP) the connection uses.
-		@return DeleteProjectIpAccessListApiRequest
+		@return DeleteAccessListEntryApiRequest
 	*/
-	DeleteProjectIpAccessList(ctx context.Context, groupId string, entryValue string) DeleteProjectIpAccessListApiRequest
+	DeleteAccessListEntry(ctx context.Context, groupId string, entryValue string) DeleteAccessListEntryApiRequest
 	/*
-		DeleteProjectIpAccessList Remove One Entry from One Project IP Access List
+		DeleteAccessListEntry Remove One Entry from One Project IP Access List
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteProjectIpAccessListApiParams - Parameters for the request
-		@return DeleteProjectIpAccessListApiRequest
+		@param DeleteAccessListEntryApiParams - Parameters for the request
+		@return DeleteAccessListEntryApiRequest
 	*/
-	DeleteProjectIpAccessListWithParams(ctx context.Context, args *DeleteProjectIpAccessListApiParams) DeleteProjectIpAccessListApiRequest
+	DeleteAccessListEntryWithParams(ctx context.Context, args *DeleteAccessListEntryApiParams) DeleteAccessListEntryApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (*http.Response, error)
+	DeleteAccessListEntryExecute(r DeleteAccessListEntryApiRequest) (*http.Response, error)
 
 	/*
-		GetProjectIpAccessListStatus Return Status of One Project IP Access List Entry
-
-		Returns the status of one project IP access list entry. This resource checks if the provided project IP access list entry applies to all cloud providers serving clusters from the specified project.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param entryValue Network address or cloud provider security construct that identifies which project access list entry to be verified.
-		@return GetProjectIpAccessListStatusApiRequest
-	*/
-	GetProjectIpAccessListStatus(ctx context.Context, groupId string, entryValue string) GetProjectIpAccessListStatusApiRequest
-	/*
-		GetProjectIpAccessListStatus Return Status of One Project IP Access List Entry
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetProjectIpAccessListStatusApiParams - Parameters for the request
-		@return GetProjectIpAccessListStatusApiRequest
-	*/
-	GetProjectIpAccessListStatusWithParams(ctx context.Context, args *GetProjectIpAccessListStatusApiParams) GetProjectIpAccessListStatusApiRequest
-
-	// Method available only for mocking purposes
-	GetProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error)
-
-	/*
-		GetProjectIpList Return One Project IP Access List Entry
+		GetAccessListEntry Return One Project IP Access List Entry
 
 		Returns one access list entry from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. This endpoint (`/groups/{GROUP-ID}/accessList`) manages the Project IP Access List. It doesn't manage the access list for MongoDB Cloud organizations. TheProgrammatic API Keys endpoint (`/orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist`) manages those access lists.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param entryValue Access list entry that you want to return from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`).
-		@return GetProjectIpListApiRequest
+		@return GetAccessListEntryApiRequest
 	*/
-	GetProjectIpList(ctx context.Context, groupId string, entryValue string) GetProjectIpListApiRequest
+	GetAccessListEntry(ctx context.Context, groupId string, entryValue string) GetAccessListEntryApiRequest
 	/*
-		GetProjectIpList Return One Project IP Access List Entry
+		GetAccessListEntry Return One Project IP Access List Entry
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetProjectIpListApiParams - Parameters for the request
-		@return GetProjectIpListApiRequest
+		@param GetAccessListEntryApiParams - Parameters for the request
+		@return GetAccessListEntryApiRequest
 	*/
-	GetProjectIpListWithParams(ctx context.Context, args *GetProjectIpListApiParams) GetProjectIpListApiRequest
+	GetAccessListEntryWithParams(ctx context.Context, args *GetAccessListEntryApiParams) GetAccessListEntryApiRequest
 
 	// Method available only for mocking purposes
-	GetProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error)
+	GetAccessListEntryExecute(r GetAccessListEntryApiRequest) (*NetworkPermissionEntry, *http.Response, error)
 
 	/*
-		ListProjectIpAccessLists Return All Project IP Access List Entries
+		GetAccessListStatus Return Status of One Project IP Access List Entry
+
+		Returns the status of one project IP access list entry. This resource checks if the provided project IP access list entry applies to all cloud providers serving clusters from the specified project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param entryValue Network address or cloud provider security construct that identifies which project access list entry to be verified.
+		@return GetAccessListStatusApiRequest
+	*/
+	GetAccessListStatus(ctx context.Context, groupId string, entryValue string) GetAccessListStatusApiRequest
+	/*
+		GetAccessListStatus Return Status of One Project IP Access List Entry
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetAccessListStatusApiParams - Parameters for the request
+		@return GetAccessListStatusApiRequest
+	*/
+	GetAccessListStatusWithParams(ctx context.Context, args *GetAccessListStatusApiParams) GetAccessListStatusApiRequest
+
+	// Method available only for mocking purposes
+	GetAccessListStatusExecute(r GetAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error)
+
+	/*
+		ListAccessListEntries Return All Project IP Access List Entries
 
 		Returns all access list entries from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListProjectIpAccessListsApiRequest
+		@return ListAccessListEntriesApiRequest
 	*/
-	ListProjectIpAccessLists(ctx context.Context, groupId string) ListProjectIpAccessListsApiRequest
+	ListAccessListEntries(ctx context.Context, groupId string) ListAccessListEntriesApiRequest
 	/*
-		ListProjectIpAccessLists Return All Project IP Access List Entries
+		ListAccessListEntries Return All Project IP Access List Entries
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListProjectIpAccessListsApiParams - Parameters for the request
-		@return ListProjectIpAccessListsApiRequest
+		@param ListAccessListEntriesApiParams - Parameters for the request
+		@return ListAccessListEntriesApiRequest
 	*/
-	ListProjectIpAccessListsWithParams(ctx context.Context, args *ListProjectIpAccessListsApiParams) ListProjectIpAccessListsApiRequest
+	ListAccessListEntriesWithParams(ctx context.Context, args *ListAccessListEntriesApiParams) ListAccessListEntriesApiRequest
 
 	// Method available only for mocking purposes
-	ListProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
+	ListAccessListEntriesExecute(r ListAccessListEntriesApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
 }
 
 // ProjectIPAccessListApiService ProjectIPAccessListApi service
 type ProjectIPAccessListApiService service
 
-type CreateProjectIpAccessListApiRequest struct {
+type CreateAccessListEntryApiRequest struct {
 	ctx                    context.Context
 	ApiService             ProjectIPAccessListApi
 	groupId                string
@@ -145,7 +145,7 @@ type CreateProjectIpAccessListApiRequest struct {
 	pageNum                *int
 }
 
-type CreateProjectIpAccessListApiParams struct {
+type CreateAccessListEntryApiParams struct {
 	GroupId                string
 	NetworkPermissionEntry *[]NetworkPermissionEntry
 	IncludeCount           *bool
@@ -153,8 +153,8 @@ type CreateProjectIpAccessListApiParams struct {
 	PageNum                *int
 }
 
-func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListWithParams(ctx context.Context, args *CreateProjectIpAccessListApiParams) CreateProjectIpAccessListApiRequest {
-	return CreateProjectIpAccessListApiRequest{
+func (a *ProjectIPAccessListApiService) CreateAccessListEntryWithParams(ctx context.Context, args *CreateAccessListEntryApiParams) CreateAccessListEntryApiRequest {
+	return CreateAccessListEntryApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
 		groupId:                args.GroupId,
@@ -166,38 +166,38 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListWithParams(ctx 
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r CreateProjectIpAccessListApiRequest) IncludeCount(includeCount bool) CreateProjectIpAccessListApiRequest {
+func (r CreateAccessListEntryApiRequest) IncludeCount(includeCount bool) CreateAccessListEntryApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r CreateProjectIpAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateProjectIpAccessListApiRequest {
+func (r CreateAccessListEntryApiRequest) ItemsPerPage(itemsPerPage int) CreateAccessListEntryApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r CreateProjectIpAccessListApiRequest) PageNum(pageNum int) CreateProjectIpAccessListApiRequest {
+func (r CreateAccessListEntryApiRequest) PageNum(pageNum int) CreateAccessListEntryApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r CreateProjectIpAccessListApiRequest) Execute() (*PaginatedNetworkAccess, *http.Response, error) {
-	return r.ApiService.CreateProjectIpAccessListExecute(r)
+func (r CreateAccessListEntryApiRequest) Execute() (*PaginatedNetworkAccess, *http.Response, error) {
+	return r.ApiService.CreateAccessListEntryExecute(r)
 }
 
 /*
-CreateProjectIpAccessList Add Entries to Project IP Access List
+CreateAccessListEntry Add Entries to Project IP Access List
 
 Adds one or more access list entries to the specified project. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. Write each entry as either one IP address or one CIDR-notated block of IP addresses. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations. This endpoint doesn't support concurrent `POST` requests. You must submit multiple `POST` requests synchronously.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreateProjectIpAccessListApiRequest
+	@return CreateAccessListEntryApiRequest
 */
-func (a *ProjectIPAccessListApiService) CreateProjectIpAccessList(ctx context.Context, groupId string, networkPermissionEntry *[]NetworkPermissionEntry) CreateProjectIpAccessListApiRequest {
-	return CreateProjectIpAccessListApiRequest{
+func (a *ProjectIPAccessListApiService) CreateAccessListEntry(ctx context.Context, groupId string, networkPermissionEntry *[]NetworkPermissionEntry) CreateAccessListEntryApiRequest {
+	return CreateAccessListEntryApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
 		groupId:                groupId,
@@ -205,10 +205,10 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessList(ctx context.Co
 	}
 }
 
-// CreateProjectIpAccessListExecute executes the request
+// CreateAccessListEntryExecute executes the request
 //
 //	@return PaginatedNetworkAccess
-func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) CreateAccessListEntryExecute(r CreateAccessListEntryApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -216,7 +216,7 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListExecute(r Creat
 		localVarReturnValue *PaginatedNetworkAccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.CreateProjectIpAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.CreateAccessListEntry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -306,20 +306,20 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListExecute(r Creat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeleteProjectIpAccessListApiRequest struct {
+type DeleteAccessListEntryApiRequest struct {
 	ctx        context.Context
 	ApiService ProjectIPAccessListApi
 	groupId    string
 	entryValue string
 }
 
-type DeleteProjectIpAccessListApiParams struct {
+type DeleteAccessListEntryApiParams struct {
 	GroupId    string
 	EntryValue string
 }
 
-func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListWithParams(ctx context.Context, args *DeleteProjectIpAccessListApiParams) DeleteProjectIpAccessListApiRequest {
-	return DeleteProjectIpAccessListApiRequest{
+func (a *ProjectIPAccessListApiService) DeleteAccessListEntryWithParams(ctx context.Context, args *DeleteAccessListEntryApiParams) DeleteAccessListEntryApiRequest {
+	return DeleteAccessListEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -327,22 +327,22 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListWithParams(ctx 
 	}
 }
 
-func (r DeleteProjectIpAccessListApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteProjectIpAccessListExecute(r)
+func (r DeleteAccessListEntryApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteAccessListEntryExecute(r)
 }
 
 /*
-DeleteProjectIpAccessList Remove One Entry from One Project IP Access List
+DeleteAccessListEntry Remove One Entry from One Project IP Access List
 
 Removes one access list entry from the specified project's IP access list. Each entry in the project's IP access list contains one IP address, one CIDR-notated block of IP addresses, or one AWS Security Group ID. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param entryValue Access list entry that you want to remove from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`). When you remove an entry from the IP access list, existing connections from the removed address or addresses may remain open for a variable amount of time. The amount of time it takes MongoDB Cloud to close the connection depends upon several factors, including:  - how your application established the connection, - how MongoDB Cloud or the driver using the address behaves, and - which protocol (like TCP or UDP) the connection uses.
-	@return DeleteProjectIpAccessListApiRequest
+	@return DeleteAccessListEntryApiRequest
 */
-func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Context, groupId string, entryValue string) DeleteProjectIpAccessListApiRequest {
-	return DeleteProjectIpAccessListApiRequest{
+func (a *ProjectIPAccessListApiService) DeleteAccessListEntry(ctx context.Context, groupId string, entryValue string) DeleteAccessListEntryApiRequest {
+	return DeleteAccessListEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -350,15 +350,15 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Co
 	}
 }
 
-// DeleteProjectIpAccessListExecute executes the request
-func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (*http.Response, error) {
+// DeleteAccessListEntryExecute executes the request
+func (a *ProjectIPAccessListApiService) DeleteAccessListEntryExecute(r DeleteAccessListEntryApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.DeleteProjectIpAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.DeleteAccessListEntry")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -412,20 +412,20 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r Delet
 	return localVarHTTPResponse, nil
 }
 
-type GetProjectIpAccessListStatusApiRequest struct {
+type GetAccessListEntryApiRequest struct {
 	ctx        context.Context
 	ApiService ProjectIPAccessListApi
 	groupId    string
 	entryValue string
 }
 
-type GetProjectIpAccessListStatusApiParams struct {
+type GetAccessListEntryApiParams struct {
 	GroupId    string
 	EntryValue string
 }
 
-func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusWithParams(ctx context.Context, args *GetProjectIpAccessListStatusApiParams) GetProjectIpAccessListStatusApiRequest {
-	return GetProjectIpAccessListStatusApiRequest{
+func (a *ProjectIPAccessListApiService) GetAccessListEntryWithParams(ctx context.Context, args *GetAccessListEntryApiParams) GetAccessListEntryApiRequest {
+	return GetAccessListEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -433,22 +433,22 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusWithParams(c
 	}
 }
 
-func (r GetProjectIpAccessListStatusApiRequest) Execute() (*NetworkPermissionEntryStatus, *http.Response, error) {
-	return r.ApiService.GetProjectIpAccessListStatusExecute(r)
+func (r GetAccessListEntryApiRequest) Execute() (*NetworkPermissionEntry, *http.Response, error) {
+	return r.ApiService.GetAccessListEntryExecute(r)
 }
 
 /*
-GetProjectIpAccessListStatus Return Status of One Project IP Access List Entry
+GetAccessListEntry Return One Project IP Access List Entry
 
-Returns the status of one project IP access list entry. This resource checks if the provided project IP access list entry applies to all cloud providers serving clusters from the specified project.
+Returns one access list entry from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. This endpoint (`/groups/{GROUP-ID}/accessList`) manages the Project IP Access List. It doesn't manage the access list for MongoDB Cloud organizations. TheProgrammatic API Keys endpoint (`/orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist`) manages those access lists.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param entryValue Network address or cloud provider security construct that identifies which project access list entry to be verified.
-	@return GetProjectIpAccessListStatusApiRequest
+	@param entryValue Access list entry that you want to return from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`).
+	@return GetAccessListEntryApiRequest
 */
-func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatus(ctx context.Context, groupId string, entryValue string) GetProjectIpAccessListStatusApiRequest {
-	return GetProjectIpAccessListStatusApiRequest{
+func (a *ProjectIPAccessListApiService) GetAccessListEntry(ctx context.Context, groupId string, entryValue string) GetAccessListEntryApiRequest {
+	return GetAccessListEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -456,10 +456,133 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatus(ctx context
 	}
 }
 
-// GetProjectIpAccessListStatusExecute executes the request
+// GetAccessListEntryExecute executes the request
+//
+//	@return NetworkPermissionEntry
+func (a *ProjectIPAccessListApiService) GetAccessListEntryExecute(r GetAccessListEntryApiRequest) (*NetworkPermissionEntry, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *NetworkPermissionEntry
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.GetAccessListEntry")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.entryValue == "" {
+		return localVarReturnValue, nil, reportError("entryValue is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(r.entryValue), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetAccessListStatusApiRequest struct {
+	ctx        context.Context
+	ApiService ProjectIPAccessListApi
+	groupId    string
+	entryValue string
+}
+
+type GetAccessListStatusApiParams struct {
+	GroupId    string
+	EntryValue string
+}
+
+func (a *ProjectIPAccessListApiService) GetAccessListStatusWithParams(ctx context.Context, args *GetAccessListStatusApiParams) GetAccessListStatusApiRequest {
+	return GetAccessListStatusApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		entryValue: args.EntryValue,
+	}
+}
+
+func (r GetAccessListStatusApiRequest) Execute() (*NetworkPermissionEntryStatus, *http.Response, error) {
+	return r.ApiService.GetAccessListStatusExecute(r)
+}
+
+/*
+GetAccessListStatus Return Status of One Project IP Access List Entry
+
+Returns the status of one project IP access list entry. This resource checks if the provided project IP access list entry applies to all cloud providers serving clusters from the specified project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param entryValue Network address or cloud provider security construct that identifies which project access list entry to be verified.
+	@return GetAccessListStatusApiRequest
+*/
+func (a *ProjectIPAccessListApiService) GetAccessListStatus(ctx context.Context, groupId string, entryValue string) GetAccessListStatusApiRequest {
+	return GetAccessListStatusApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		entryValue: entryValue,
+	}
+}
+
+// GetAccessListStatusExecute executes the request
 //
 //	@return NetworkPermissionEntryStatus
-func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) GetAccessListStatusExecute(r GetAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -467,7 +590,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusExecute(r Ge
 		localVarReturnValue *NetworkPermissionEntryStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.GetProjectIpAccessListStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.GetAccessListStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -535,130 +658,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusExecute(r Ge
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetProjectIpListApiRequest struct {
-	ctx        context.Context
-	ApiService ProjectIPAccessListApi
-	groupId    string
-	entryValue string
-}
-
-type GetProjectIpListApiParams struct {
-	GroupId    string
-	EntryValue string
-}
-
-func (a *ProjectIPAccessListApiService) GetProjectIpListWithParams(ctx context.Context, args *GetProjectIpListApiParams) GetProjectIpListApiRequest {
-	return GetProjectIpListApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		entryValue: args.EntryValue,
-	}
-}
-
-func (r GetProjectIpListApiRequest) Execute() (*NetworkPermissionEntry, *http.Response, error) {
-	return r.ApiService.GetProjectIpListExecute(r)
-}
-
-/*
-GetProjectIpList Return One Project IP Access List Entry
-
-Returns one access list entry from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. This endpoint (`/groups/{GROUP-ID}/accessList`) manages the Project IP Access List. It doesn't manage the access list for MongoDB Cloud organizations. TheProgrammatic API Keys endpoint (`/orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist`) manages those access lists.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param entryValue Access list entry that you want to return from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`).
-	@return GetProjectIpListApiRequest
-*/
-func (a *ProjectIPAccessListApiService) GetProjectIpList(ctx context.Context, groupId string, entryValue string) GetProjectIpListApiRequest {
-	return GetProjectIpListApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		entryValue: entryValue,
-	}
-}
-
-// GetProjectIpListExecute executes the request
-//
-//	@return NetworkPermissionEntry
-func (a *ProjectIPAccessListApiService) GetProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *NetworkPermissionEntry
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.GetProjectIpList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.entryValue == "" {
-		return localVarReturnValue, nil, reportError("entryValue is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(r.entryValue), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ListProjectIpAccessListsApiRequest struct {
+type ListAccessListEntriesApiRequest struct {
 	ctx          context.Context
 	ApiService   ProjectIPAccessListApi
 	groupId      string
@@ -667,15 +667,15 @@ type ListProjectIpAccessListsApiRequest struct {
 	pageNum      *int
 }
 
-type ListProjectIpAccessListsApiParams struct {
+type ListAccessListEntriesApiParams struct {
 	GroupId      string
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
 }
 
-func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsWithParams(ctx context.Context, args *ListProjectIpAccessListsApiParams) ListProjectIpAccessListsApiRequest {
-	return ListProjectIpAccessListsApiRequest{
+func (a *ProjectIPAccessListApiService) ListAccessListEntriesWithParams(ctx context.Context, args *ListAccessListEntriesApiParams) ListAccessListEntriesApiRequest {
+	return ListAccessListEntriesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -686,48 +686,48 @@ func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsWithParams(ctx c
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListProjectIpAccessListsApiRequest) IncludeCount(includeCount bool) ListProjectIpAccessListsApiRequest {
+func (r ListAccessListEntriesApiRequest) IncludeCount(includeCount bool) ListAccessListEntriesApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r ListProjectIpAccessListsApiRequest) ItemsPerPage(itemsPerPage int) ListProjectIpAccessListsApiRequest {
+func (r ListAccessListEntriesApiRequest) ItemsPerPage(itemsPerPage int) ListAccessListEntriesApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectIpAccessListsApiRequest) PageNum(pageNum int) ListProjectIpAccessListsApiRequest {
+func (r ListAccessListEntriesApiRequest) PageNum(pageNum int) ListAccessListEntriesApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r ListProjectIpAccessListsApiRequest) Execute() (*PaginatedNetworkAccess, *http.Response, error) {
-	return r.ApiService.ListProjectIpAccessListsExecute(r)
+func (r ListAccessListEntriesApiRequest) Execute() (*PaginatedNetworkAccess, *http.Response, error) {
+	return r.ApiService.ListAccessListEntriesExecute(r)
 }
 
 /*
-ListProjectIpAccessLists Return All Project IP Access List Entries
+ListAccessListEntries Return All Project IP Access List Entries
 
 Returns all access list entries from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListProjectIpAccessListsApiRequest
+	@return ListAccessListEntriesApiRequest
 */
-func (a *ProjectIPAccessListApiService) ListProjectIpAccessLists(ctx context.Context, groupId string) ListProjectIpAccessListsApiRequest {
-	return ListProjectIpAccessListsApiRequest{
+func (a *ProjectIPAccessListApiService) ListAccessListEntries(ctx context.Context, groupId string) ListAccessListEntriesApiRequest {
+	return ListAccessListEntriesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// ListProjectIpAccessListsExecute executes the request
+// ListAccessListEntriesExecute executes the request
 //
 //	@return PaginatedNetworkAccess
-func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) ListAccessListEntriesExecute(r ListAccessListEntriesApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -735,7 +735,7 @@ func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsExecute(r ListPr
 		localVarReturnValue *PaginatedNetworkAccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.ListProjectIpAccessLists")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.ListAccessListEntries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

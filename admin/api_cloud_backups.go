@@ -114,7 +114,7 @@ type CloudBackupsApi interface {
 	CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotExportBucketResponse, *http.Response, error)
 
 	/*
-			CreateServerlessBackupRestoreJob Restore One Snapshot of One Serverless Instance
+			CreateServerlessRestoreJob Restore One Snapshot of One Serverless Instance
 
 			Restores one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -124,21 +124,21 @@ type CloudBackupsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param clusterName Human-readable label that identifies the serverless instance whose snapshot you want to restore.
 			@param serverlessBackupRestoreJob Restores one snapshot of one serverless instance from the specified project.
-			@return CreateServerlessBackupRestoreJobApiRequest
+			@return CreateServerlessRestoreJobApiRequest
 	*/
-	CreateServerlessBackupRestoreJob(ctx context.Context, groupId string, clusterName string, serverlessBackupRestoreJob *ServerlessBackupRestoreJob) CreateServerlessBackupRestoreJobApiRequest
+	CreateServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, serverlessBackupRestoreJob *ServerlessBackupRestoreJob) CreateServerlessRestoreJobApiRequest
 	/*
-		CreateServerlessBackupRestoreJob Restore One Snapshot of One Serverless Instance
+		CreateServerlessRestoreJob Restore One Snapshot of One Serverless Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateServerlessBackupRestoreJobApiParams - Parameters for the request
-		@return CreateServerlessBackupRestoreJobApiRequest
+		@param CreateServerlessRestoreJobApiParams - Parameters for the request
+		@return CreateServerlessRestoreJobApiRequest
 	*/
-	CreateServerlessBackupRestoreJobWithParams(ctx context.Context, args *CreateServerlessBackupRestoreJobApiParams) CreateServerlessBackupRestoreJobApiRequest
+	CreateServerlessRestoreJobWithParams(ctx context.Context, args *CreateServerlessRestoreJobApiParams) CreateServerlessRestoreJobApiRequest
 
 	// Method available only for mocking purposes
-	CreateServerlessBackupRestoreJobExecute(r CreateServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
+	CreateServerlessRestoreJobExecute(r CreateServerlessRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
 		DeleteAllBackupSchedules Remove All Cloud Backup Schedules
@@ -408,7 +408,7 @@ type CloudBackupsApi interface {
 	GetReplicaSetBackupExecute(r GetReplicaSetBackupApiRequest) (*DiskBackupReplicaSet, *http.Response, error)
 
 	/*
-			GetServerlessBackup Return One Snapshot of One Serverless Instance
+			GetServerlessBackupSnapshot Return One Snapshot of One Serverless Instance
 
 			Returns one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -418,24 +418,24 @@ type CloudBackupsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param clusterName Human-readable label that identifies the serverless instance.
 			@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
-			@return GetServerlessBackupApiRequest
+			@return GetServerlessBackupSnapshotApiRequest
 	*/
-	GetServerlessBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) GetServerlessBackupApiRequest
+	GetServerlessBackupSnapshot(ctx context.Context, groupId string, clusterName string, snapshotId string) GetServerlessBackupSnapshotApiRequest
 	/*
-		GetServerlessBackup Return One Snapshot of One Serverless Instance
+		GetServerlessBackupSnapshot Return One Snapshot of One Serverless Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetServerlessBackupApiParams - Parameters for the request
-		@return GetServerlessBackupApiRequest
+		@param GetServerlessBackupSnapshotApiParams - Parameters for the request
+		@return GetServerlessBackupSnapshotApiRequest
 	*/
-	GetServerlessBackupWithParams(ctx context.Context, args *GetServerlessBackupApiParams) GetServerlessBackupApiRequest
+	GetServerlessBackupSnapshotWithParams(ctx context.Context, args *GetServerlessBackupSnapshotApiParams) GetServerlessBackupSnapshotApiRequest
 
 	// Method available only for mocking purposes
-	GetServerlessBackupExecute(r GetServerlessBackupApiRequest) (*ServerlessBackupSnapshot, *http.Response, error)
+	GetServerlessBackupSnapshotExecute(r GetServerlessBackupSnapshotApiRequest) (*ServerlessBackupSnapshot, *http.Response, error)
 
 	/*
-			GetServerlessBackupRestoreJob Return One Restore Job for One Serverless Instance
+			GetServerlessRestoreJob Return One Restore Job for One Serverless Instance
 
 			Returns one restore job for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -445,21 +445,21 @@ type CloudBackupsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param clusterName Human-readable label that identifies the serverless instance.
 			@param restoreJobId Unique 24-hexadecimal digit string that identifies the restore job to return.
-			@return GetServerlessBackupRestoreJobApiRequest
+			@return GetServerlessRestoreJobApiRequest
 	*/
-	GetServerlessBackupRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJobId string) GetServerlessBackupRestoreJobApiRequest
+	GetServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJobId string) GetServerlessRestoreJobApiRequest
 	/*
-		GetServerlessBackupRestoreJob Return One Restore Job for One Serverless Instance
+		GetServerlessRestoreJob Return One Restore Job for One Serverless Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetServerlessBackupRestoreJobApiParams - Parameters for the request
-		@return GetServerlessBackupRestoreJobApiRequest
+		@param GetServerlessRestoreJobApiParams - Parameters for the request
+		@return GetServerlessRestoreJobApiRequest
 	*/
-	GetServerlessBackupRestoreJobWithParams(ctx context.Context, args *GetServerlessBackupRestoreJobApiParams) GetServerlessBackupRestoreJobApiRequest
+	GetServerlessRestoreJobWithParams(ctx context.Context, args *GetServerlessRestoreJobApiParams) GetServerlessRestoreJobApiRequest
 
 	// Method available only for mocking purposes
-	GetServerlessBackupRestoreJobExecute(r GetServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
+	GetServerlessRestoreJobExecute(r GetServerlessRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
 		GetShardedClusterBackup Return One Sharded Cluster Cloud Backup
@@ -582,33 +582,7 @@ type CloudBackupsApi interface {
 	ListReplicaSetBackupsExecute(r ListReplicaSetBackupsApiRequest) (*PaginatedCloudBackupReplicaSet, *http.Response, error)
 
 	/*
-			ListServerlessBackupRestoreJobs Return All Restore Jobs for One Serverless Instance
-
-			Returns all restore jobs for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-		This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the listFlexBackupRestoreJobs endpoint instead.
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param clusterName Human-readable label that identifies the serverless instance.
-			@return ListServerlessBackupRestoreJobsApiRequest
-	*/
-	ListServerlessBackupRestoreJobs(ctx context.Context, groupId string, clusterName string) ListServerlessBackupRestoreJobsApiRequest
-	/*
-		ListServerlessBackupRestoreJobs Return All Restore Jobs for One Serverless Instance
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListServerlessBackupRestoreJobsApiParams - Parameters for the request
-		@return ListServerlessBackupRestoreJobsApiRequest
-	*/
-	ListServerlessBackupRestoreJobsWithParams(ctx context.Context, args *ListServerlessBackupRestoreJobsApiParams) ListServerlessBackupRestoreJobsApiRequest
-
-	// Method available only for mocking purposes
-	ListServerlessBackupRestoreJobsExecute(r ListServerlessBackupRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error)
-
-	/*
-			ListServerlessBackups Return All Snapshots of One Serverless Instance
+			ListServerlessBackupSnapshots Return All Snapshots of One Serverless Instance
 
 			Returns all snapshots of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -617,21 +591,47 @@ type CloudBackupsApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param clusterName Human-readable label that identifies the serverless instance.
-			@return ListServerlessBackupsApiRequest
+			@return ListServerlessBackupSnapshotsApiRequest
 	*/
-	ListServerlessBackups(ctx context.Context, groupId string, clusterName string) ListServerlessBackupsApiRequest
+	ListServerlessBackupSnapshots(ctx context.Context, groupId string, clusterName string) ListServerlessBackupSnapshotsApiRequest
 	/*
-		ListServerlessBackups Return All Snapshots of One Serverless Instance
+		ListServerlessBackupSnapshots Return All Snapshots of One Serverless Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListServerlessBackupsApiParams - Parameters for the request
-		@return ListServerlessBackupsApiRequest
+		@param ListServerlessBackupSnapshotsApiParams - Parameters for the request
+		@return ListServerlessBackupSnapshotsApiRequest
 	*/
-	ListServerlessBackupsWithParams(ctx context.Context, args *ListServerlessBackupsApiParams) ListServerlessBackupsApiRequest
+	ListServerlessBackupSnapshotsWithParams(ctx context.Context, args *ListServerlessBackupSnapshotsApiParams) ListServerlessBackupSnapshotsApiRequest
 
 	// Method available only for mocking purposes
-	ListServerlessBackupsExecute(r ListServerlessBackupsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error)
+	ListServerlessBackupSnapshotsExecute(r ListServerlessBackupSnapshotsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error)
+
+	/*
+			ListServerlessRestoreJobs Return All Restore Jobs for One Serverless Instance
+
+			Returns all restore jobs for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+		This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the listFlexBackupRestoreJobs endpoint instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the serverless instance.
+			@return ListServerlessRestoreJobsApiRequest
+	*/
+	ListServerlessRestoreJobs(ctx context.Context, groupId string, clusterName string) ListServerlessRestoreJobsApiRequest
+	/*
+		ListServerlessRestoreJobs Return All Restore Jobs for One Serverless Instance
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListServerlessRestoreJobsApiParams - Parameters for the request
+		@return ListServerlessRestoreJobsApiRequest
+	*/
+	ListServerlessRestoreJobsWithParams(ctx context.Context, args *ListServerlessRestoreJobsApiParams) ListServerlessRestoreJobsApiRequest
+
+	// Method available only for mocking purposes
+	ListServerlessRestoreJobsExecute(r ListServerlessRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
 		ListShardedClusterBackups Return All Sharded Cluster Cloud Backups
@@ -1267,7 +1267,7 @@ func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CreateServerlessBackupRestoreJobApiRequest struct {
+type CreateServerlessRestoreJobApiRequest struct {
 	ctx                        context.Context
 	ApiService                 CloudBackupsApi
 	groupId                    string
@@ -1275,14 +1275,14 @@ type CreateServerlessBackupRestoreJobApiRequest struct {
 	serverlessBackupRestoreJob *ServerlessBackupRestoreJob
 }
 
-type CreateServerlessBackupRestoreJobApiParams struct {
+type CreateServerlessRestoreJobApiParams struct {
 	GroupId                    string
 	ClusterName                string
 	ServerlessBackupRestoreJob *ServerlessBackupRestoreJob
 }
 
-func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJobWithParams(ctx context.Context, args *CreateServerlessBackupRestoreJobApiParams) CreateServerlessBackupRestoreJobApiRequest {
-	return CreateServerlessBackupRestoreJobApiRequest{
+func (a *CloudBackupsApiService) CreateServerlessRestoreJobWithParams(ctx context.Context, args *CreateServerlessRestoreJobApiParams) CreateServerlessRestoreJobApiRequest {
+	return CreateServerlessRestoreJobApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    args.GroupId,
@@ -1291,12 +1291,12 @@ func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJobWithParams(ctx 
 	}
 }
 
-func (r CreateServerlessBackupRestoreJobApiRequest) Execute() (*ServerlessBackupRestoreJob, *http.Response, error) {
-	return r.ApiService.CreateServerlessBackupRestoreJobExecute(r)
+func (r CreateServerlessRestoreJobApiRequest) Execute() (*ServerlessBackupRestoreJob, *http.Response, error) {
+	return r.ApiService.CreateServerlessRestoreJobExecute(r)
 }
 
 /*
-CreateServerlessBackupRestoreJob Restore One Snapshot of One Serverless Instance
+CreateServerlessRestoreJob Restore One Snapshot of One Serverless Instance
 
 Restores one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -1305,10 +1305,10 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the serverless instance whose snapshot you want to restore.
-	@return CreateServerlessBackupRestoreJobApiRequest
+	@return CreateServerlessRestoreJobApiRequest
 */
-func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJob(ctx context.Context, groupId string, clusterName string, serverlessBackupRestoreJob *ServerlessBackupRestoreJob) CreateServerlessBackupRestoreJobApiRequest {
-	return CreateServerlessBackupRestoreJobApiRequest{
+func (a *CloudBackupsApiService) CreateServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, serverlessBackupRestoreJob *ServerlessBackupRestoreJob) CreateServerlessRestoreJobApiRequest {
+	return CreateServerlessRestoreJobApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    groupId,
@@ -1317,10 +1317,10 @@ func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJob(ctx context.Co
 	}
 }
 
-// CreateServerlessBackupRestoreJobExecute executes the request
+// CreateServerlessRestoreJobExecute executes the request
 //
 //	@return ServerlessBackupRestoreJob
-func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJobExecute(r CreateServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
+func (a *CloudBackupsApiService) CreateServerlessRestoreJobExecute(r CreateServerlessRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1328,7 +1328,7 @@ func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJobExecute(r Creat
 		localVarReturnValue *ServerlessBackupRestoreJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.CreateServerlessBackupRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.CreateServerlessRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2713,7 +2713,7 @@ func (a *CloudBackupsApiService) GetReplicaSetBackupExecute(r GetReplicaSetBacku
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetServerlessBackupApiRequest struct {
+type GetServerlessBackupSnapshotApiRequest struct {
 	ctx         context.Context
 	ApiService  CloudBackupsApi
 	groupId     string
@@ -2721,14 +2721,14 @@ type GetServerlessBackupApiRequest struct {
 	snapshotId  string
 }
 
-type GetServerlessBackupApiParams struct {
+type GetServerlessBackupSnapshotApiParams struct {
 	GroupId     string
 	ClusterName string
 	SnapshotId  string
 }
 
-func (a *CloudBackupsApiService) GetServerlessBackupWithParams(ctx context.Context, args *GetServerlessBackupApiParams) GetServerlessBackupApiRequest {
-	return GetServerlessBackupApiRequest{
+func (a *CloudBackupsApiService) GetServerlessBackupSnapshotWithParams(ctx context.Context, args *GetServerlessBackupSnapshotApiParams) GetServerlessBackupSnapshotApiRequest {
+	return GetServerlessBackupSnapshotApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     args.GroupId,
@@ -2737,12 +2737,12 @@ func (a *CloudBackupsApiService) GetServerlessBackupWithParams(ctx context.Conte
 	}
 }
 
-func (r GetServerlessBackupApiRequest) Execute() (*ServerlessBackupSnapshot, *http.Response, error) {
-	return r.ApiService.GetServerlessBackupExecute(r)
+func (r GetServerlessBackupSnapshotApiRequest) Execute() (*ServerlessBackupSnapshot, *http.Response, error) {
+	return r.ApiService.GetServerlessBackupSnapshotExecute(r)
 }
 
 /*
-GetServerlessBackup Return One Snapshot of One Serverless Instance
+GetServerlessBackupSnapshot Return One Snapshot of One Serverless Instance
 
 Returns one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -2752,10 +2752,10 @@ This endpoint can also be used on Flex clusters that were created with the [crea
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the serverless instance.
 	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
-	@return GetServerlessBackupApiRequest
+	@return GetServerlessBackupSnapshotApiRequest
 */
-func (a *CloudBackupsApiService) GetServerlessBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) GetServerlessBackupApiRequest {
-	return GetServerlessBackupApiRequest{
+func (a *CloudBackupsApiService) GetServerlessBackupSnapshot(ctx context.Context, groupId string, clusterName string, snapshotId string) GetServerlessBackupSnapshotApiRequest {
+	return GetServerlessBackupSnapshotApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -2764,10 +2764,10 @@ func (a *CloudBackupsApiService) GetServerlessBackup(ctx context.Context, groupI
 	}
 }
 
-// GetServerlessBackupExecute executes the request
+// GetServerlessBackupSnapshotExecute executes the request
 //
 //	@return ServerlessBackupSnapshot
-func (a *CloudBackupsApiService) GetServerlessBackupExecute(r GetServerlessBackupApiRequest) (*ServerlessBackupSnapshot, *http.Response, error) {
+func (a *CloudBackupsApiService) GetServerlessBackupSnapshotExecute(r GetServerlessBackupSnapshotApiRequest) (*ServerlessBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2775,7 +2775,7 @@ func (a *CloudBackupsApiService) GetServerlessBackupExecute(r GetServerlessBacku
 		localVarReturnValue *ServerlessBackupSnapshot
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetServerlessBackup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetServerlessBackupSnapshot")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2847,7 +2847,7 @@ func (a *CloudBackupsApiService) GetServerlessBackupExecute(r GetServerlessBacku
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetServerlessBackupRestoreJobApiRequest struct {
+type GetServerlessRestoreJobApiRequest struct {
 	ctx          context.Context
 	ApiService   CloudBackupsApi
 	groupId      string
@@ -2855,14 +2855,14 @@ type GetServerlessBackupRestoreJobApiRequest struct {
 	restoreJobId string
 }
 
-type GetServerlessBackupRestoreJobApiParams struct {
+type GetServerlessRestoreJobApiParams struct {
 	GroupId      string
 	ClusterName  string
 	RestoreJobId string
 }
 
-func (a *CloudBackupsApiService) GetServerlessBackupRestoreJobWithParams(ctx context.Context, args *GetServerlessBackupRestoreJobApiParams) GetServerlessBackupRestoreJobApiRequest {
-	return GetServerlessBackupRestoreJobApiRequest{
+func (a *CloudBackupsApiService) GetServerlessRestoreJobWithParams(ctx context.Context, args *GetServerlessRestoreJobApiParams) GetServerlessRestoreJobApiRequest {
+	return GetServerlessRestoreJobApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -2871,12 +2871,12 @@ func (a *CloudBackupsApiService) GetServerlessBackupRestoreJobWithParams(ctx con
 	}
 }
 
-func (r GetServerlessBackupRestoreJobApiRequest) Execute() (*ServerlessBackupRestoreJob, *http.Response, error) {
-	return r.ApiService.GetServerlessBackupRestoreJobExecute(r)
+func (r GetServerlessRestoreJobApiRequest) Execute() (*ServerlessBackupRestoreJob, *http.Response, error) {
+	return r.ApiService.GetServerlessRestoreJobExecute(r)
 }
 
 /*
-GetServerlessBackupRestoreJob Return One Restore Job for One Serverless Instance
+GetServerlessRestoreJob Return One Restore Job for One Serverless Instance
 
 Returns one restore job for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -2886,10 +2886,10 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the serverless instance.
 	@param restoreJobId Unique 24-hexadecimal digit string that identifies the restore job to return.
-	@return GetServerlessBackupRestoreJobApiRequest
+	@return GetServerlessRestoreJobApiRequest
 */
-func (a *CloudBackupsApiService) GetServerlessBackupRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJobId string) GetServerlessBackupRestoreJobApiRequest {
-	return GetServerlessBackupRestoreJobApiRequest{
+func (a *CloudBackupsApiService) GetServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJobId string) GetServerlessRestoreJobApiRequest {
+	return GetServerlessRestoreJobApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      groupId,
@@ -2898,10 +2898,10 @@ func (a *CloudBackupsApiService) GetServerlessBackupRestoreJob(ctx context.Conte
 	}
 }
 
-// GetServerlessBackupRestoreJobExecute executes the request
+// GetServerlessRestoreJobExecute executes the request
 //
 //	@return ServerlessBackupRestoreJob
-func (a *CloudBackupsApiService) GetServerlessBackupRestoreJobExecute(r GetServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
+func (a *CloudBackupsApiService) GetServerlessRestoreJobExecute(r GetServerlessRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2909,7 +2909,7 @@ func (a *CloudBackupsApiService) GetServerlessBackupRestoreJobExecute(r GetServe
 		localVarReturnValue *ServerlessBackupRestoreJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetServerlessBackupRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetServerlessRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3788,7 +3788,7 @@ func (a *CloudBackupsApiService) ListReplicaSetBackupsExecute(r ListReplicaSetBa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListServerlessBackupRestoreJobsApiRequest struct {
+type ListServerlessBackupSnapshotsApiRequest struct {
 	ctx          context.Context
 	ApiService   CloudBackupsApi
 	groupId      string
@@ -3798,7 +3798,7 @@ type ListServerlessBackupRestoreJobsApiRequest struct {
 	pageNum      *int
 }
 
-type ListServerlessBackupRestoreJobsApiParams struct {
+type ListServerlessBackupSnapshotsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
@@ -3806,8 +3806,8 @@ type ListServerlessBackupRestoreJobsApiParams struct {
 	PageNum      *int
 }
 
-func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobsWithParams(ctx context.Context, args *ListServerlessBackupRestoreJobsApiParams) ListServerlessBackupRestoreJobsApiRequest {
-	return ListServerlessBackupRestoreJobsApiRequest{
+func (a *CloudBackupsApiService) ListServerlessBackupSnapshotsWithParams(ctx context.Context, args *ListServerlessBackupSnapshotsApiParams) ListServerlessBackupSnapshotsApiRequest {
+	return ListServerlessBackupSnapshotsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -3819,41 +3819,41 @@ func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobsWithParams(ctx c
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListServerlessBackupRestoreJobsApiRequest) IncludeCount(includeCount bool) ListServerlessBackupRestoreJobsApiRequest {
+func (r ListServerlessBackupSnapshotsApiRequest) IncludeCount(includeCount bool) ListServerlessBackupSnapshotsApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r ListServerlessBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListServerlessBackupRestoreJobsApiRequest {
+func (r ListServerlessBackupSnapshotsApiRequest) ItemsPerPage(itemsPerPage int) ListServerlessBackupSnapshotsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServerlessBackupRestoreJobsApiRequest) PageNum(pageNum int) ListServerlessBackupRestoreJobsApiRequest {
+func (r ListServerlessBackupSnapshotsApiRequest) PageNum(pageNum int) ListServerlessBackupSnapshotsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r ListServerlessBackupRestoreJobsApiRequest) Execute() (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
-	return r.ApiService.ListServerlessBackupRestoreJobsExecute(r)
+func (r ListServerlessBackupSnapshotsApiRequest) Execute() (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
+	return r.ApiService.ListServerlessBackupSnapshotsExecute(r)
 }
 
 /*
-ListServerlessBackupRestoreJobs Return All Restore Jobs for One Serverless Instance
+ListServerlessBackupSnapshots Return All Snapshots of One Serverless Instance
 
-Returns all restore jobs for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Returns all snapshots of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the listFlexBackupRestoreJobs endpoint instead.
+This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the listFlexBackups endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the serverless instance.
-	@return ListServerlessBackupRestoreJobsApiRequest
+	@return ListServerlessBackupSnapshotsApiRequest
 */
-func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobs(ctx context.Context, groupId string, clusterName string) ListServerlessBackupRestoreJobsApiRequest {
-	return ListServerlessBackupRestoreJobsApiRequest{
+func (a *CloudBackupsApiService) ListServerlessBackupSnapshots(ctx context.Context, groupId string, clusterName string) ListServerlessBackupSnapshotsApiRequest {
+	return ListServerlessBackupSnapshotsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -3861,23 +3861,23 @@ func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobs(ctx context.Con
 	}
 }
 
-// ListServerlessBackupRestoreJobsExecute executes the request
+// ListServerlessBackupSnapshotsExecute executes the request
 //
-//	@return PaginatedApiAtlasServerlessBackupRestoreJob
-func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobsExecute(r ListServerlessBackupRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
+//	@return PaginatedApiAtlasServerlessBackupSnapshot
+func (a *CloudBackupsApiService) ListServerlessBackupSnapshotsExecute(r ListServerlessBackupSnapshotsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiAtlasServerlessBackupRestoreJob
+		localVarReturnValue *PaginatedApiAtlasServerlessBackupSnapshot
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListServerlessBackupRestoreJobs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListServerlessBackupSnapshots")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs"
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
@@ -3961,7 +3961,7 @@ func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobsExecute(r ListSe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListServerlessBackupsApiRequest struct {
+type ListServerlessRestoreJobsApiRequest struct {
 	ctx          context.Context
 	ApiService   CloudBackupsApi
 	groupId      string
@@ -3971,7 +3971,7 @@ type ListServerlessBackupsApiRequest struct {
 	pageNum      *int
 }
 
-type ListServerlessBackupsApiParams struct {
+type ListServerlessRestoreJobsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
@@ -3979,8 +3979,8 @@ type ListServerlessBackupsApiParams struct {
 	PageNum      *int
 }
 
-func (a *CloudBackupsApiService) ListServerlessBackupsWithParams(ctx context.Context, args *ListServerlessBackupsApiParams) ListServerlessBackupsApiRequest {
-	return ListServerlessBackupsApiRequest{
+func (a *CloudBackupsApiService) ListServerlessRestoreJobsWithParams(ctx context.Context, args *ListServerlessRestoreJobsApiParams) ListServerlessRestoreJobsApiRequest {
+	return ListServerlessRestoreJobsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -3992,41 +3992,41 @@ func (a *CloudBackupsApiService) ListServerlessBackupsWithParams(ctx context.Con
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListServerlessBackupsApiRequest) IncludeCount(includeCount bool) ListServerlessBackupsApiRequest {
+func (r ListServerlessRestoreJobsApiRequest) IncludeCount(includeCount bool) ListServerlessRestoreJobsApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r ListServerlessBackupsApiRequest) ItemsPerPage(itemsPerPage int) ListServerlessBackupsApiRequest {
+func (r ListServerlessRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListServerlessRestoreJobsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServerlessBackupsApiRequest) PageNum(pageNum int) ListServerlessBackupsApiRequest {
+func (r ListServerlessRestoreJobsApiRequest) PageNum(pageNum int) ListServerlessRestoreJobsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r ListServerlessBackupsApiRequest) Execute() (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
-	return r.ApiService.ListServerlessBackupsExecute(r)
+func (r ListServerlessRestoreJobsApiRequest) Execute() (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
+	return r.ApiService.ListServerlessRestoreJobsExecute(r)
 }
 
 /*
-ListServerlessBackups Return All Snapshots of One Serverless Instance
+ListServerlessRestoreJobs Return All Restore Jobs for One Serverless Instance
 
-Returns all snapshots of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns all restore jobs for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the listFlexBackups endpoint instead.
+This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the listFlexBackupRestoreJobs endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the serverless instance.
-	@return ListServerlessBackupsApiRequest
+	@return ListServerlessRestoreJobsApiRequest
 */
-func (a *CloudBackupsApiService) ListServerlessBackups(ctx context.Context, groupId string, clusterName string) ListServerlessBackupsApiRequest {
-	return ListServerlessBackupsApiRequest{
+func (a *CloudBackupsApiService) ListServerlessRestoreJobs(ctx context.Context, groupId string, clusterName string) ListServerlessRestoreJobsApiRequest {
+	return ListServerlessRestoreJobsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -4034,23 +4034,23 @@ func (a *CloudBackupsApiService) ListServerlessBackups(ctx context.Context, grou
 	}
 }
 
-// ListServerlessBackupsExecute executes the request
+// ListServerlessRestoreJobsExecute executes the request
 //
-//	@return PaginatedApiAtlasServerlessBackupSnapshot
-func (a *CloudBackupsApiService) ListServerlessBackupsExecute(r ListServerlessBackupsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
+//	@return PaginatedApiAtlasServerlessBackupRestoreJob
+func (a *CloudBackupsApiService) ListServerlessRestoreJobsExecute(r ListServerlessRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiAtlasServerlessBackupSnapshot
+		localVarReturnValue *PaginatedApiAtlasServerlessBackupRestoreJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListServerlessBackups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListServerlessRestoreJobs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots"
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}

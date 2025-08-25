@@ -44,6 +44,9 @@ type CloudProviderAccessAzureServicePrincipal struct {
 	RoleId *string `json:"roleId,omitempty"`
 	// Email address for the Google Service Account created by Atlas.
 	GcpServiceAccountForAtlas *string `json:"gcpServiceAccountForAtlas,omitempty"`
+	// Provision status of the service account.
+	// Read only field.
+	Status *string `json:"status,omitempty"`
 }
 
 // NewCloudProviderAccessAzureServicePrincipal instantiates a new CloudProviderAccessAzureServicePrincipal object
@@ -515,4 +518,37 @@ func (o *CloudProviderAccessAzureServicePrincipal) HasGcpServiceAccountForAtlas(
 // SetGcpServiceAccountForAtlas gets a reference to the given string and assigns it to the GcpServiceAccountForAtlas field.
 func (o *CloudProviderAccessAzureServicePrincipal) SetGcpServiceAccountForAtlas(v string) {
 	o.GcpServiceAccountForAtlas = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise
+func (o *CloudProviderAccessAzureServicePrincipal) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAzureServicePrincipal) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *CloudProviderAccessAzureServicePrincipal) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *CloudProviderAccessAzureServicePrincipal) SetStatus(v string) {
+	o.Status = &v
 }

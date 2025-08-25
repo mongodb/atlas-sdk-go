@@ -13,99 +13,99 @@ import (
 type AuditingApi interface {
 
 	/*
-		GetAuditingConfiguration Return Auditing Configuration for One Project
+		GetGroupAuditLog Return Auditing Configuration for One Project
 
 		Returns the auditing configuration for the specified project. The auditing configuration defines the events that MongoDB Cloud records in the audit log. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature isn't available for `M0`, `M2`, `M5`, or serverless clusters.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetAuditingConfigurationApiRequest
+		@return GetGroupAuditLogApiRequest
 	*/
-	GetAuditingConfiguration(ctx context.Context, groupId string) GetAuditingConfigurationApiRequest
+	GetGroupAuditLog(ctx context.Context, groupId string) GetGroupAuditLogApiRequest
 	/*
-		GetAuditingConfiguration Return Auditing Configuration for One Project
+		GetGroupAuditLog Return Auditing Configuration for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetAuditingConfigurationApiParams - Parameters for the request
-		@return GetAuditingConfigurationApiRequest
+		@param GetGroupAuditLogApiParams - Parameters for the request
+		@return GetGroupAuditLogApiRequest
 	*/
-	GetAuditingConfigurationWithParams(ctx context.Context, args *GetAuditingConfigurationApiParams) GetAuditingConfigurationApiRequest
+	GetGroupAuditLogWithParams(ctx context.Context, args *GetGroupAuditLogApiParams) GetGroupAuditLogApiRequest
 
 	// Method available only for mocking purposes
-	GetAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error)
+	GetGroupAuditLogExecute(r GetGroupAuditLogApiRequest) (*AuditLog, *http.Response, error)
 
 	/*
-		UpdateAuditingConfiguration Update Auditing Configuration for One Project
+		UpdateAuditLog Update Auditing Configuration for One Project
 
 		Updates the auditing configuration for the specified project. The auditing configuration defines the events that MongoDB Cloud records in the audit log. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature isn't available for `M0`, `M2`, `M5`, or serverless clusters.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param auditLog Updated auditing configuration for the specified project.
-		@return UpdateAuditingConfigurationApiRequest
+		@return UpdateAuditLogApiRequest
 	*/
-	UpdateAuditingConfiguration(ctx context.Context, groupId string, auditLog *AuditLog) UpdateAuditingConfigurationApiRequest
+	UpdateAuditLog(ctx context.Context, groupId string, auditLog *AuditLog) UpdateAuditLogApiRequest
 	/*
-		UpdateAuditingConfiguration Update Auditing Configuration for One Project
+		UpdateAuditLog Update Auditing Configuration for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdateAuditingConfigurationApiParams - Parameters for the request
-		@return UpdateAuditingConfigurationApiRequest
+		@param UpdateAuditLogApiParams - Parameters for the request
+		@return UpdateAuditLogApiRequest
 	*/
-	UpdateAuditingConfigurationWithParams(ctx context.Context, args *UpdateAuditingConfigurationApiParams) UpdateAuditingConfigurationApiRequest
+	UpdateAuditLogWithParams(ctx context.Context, args *UpdateAuditLogApiParams) UpdateAuditLogApiRequest
 
 	// Method available only for mocking purposes
-	UpdateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error)
+	UpdateAuditLogExecute(r UpdateAuditLogApiRequest) (*AuditLog, *http.Response, error)
 }
 
 // AuditingApiService AuditingApi service
 type AuditingApiService service
 
-type GetAuditingConfigurationApiRequest struct {
+type GetGroupAuditLogApiRequest struct {
 	ctx        context.Context
 	ApiService AuditingApi
 	groupId    string
 }
 
-type GetAuditingConfigurationApiParams struct {
+type GetGroupAuditLogApiParams struct {
 	GroupId string
 }
 
-func (a *AuditingApiService) GetAuditingConfigurationWithParams(ctx context.Context, args *GetAuditingConfigurationApiParams) GetAuditingConfigurationApiRequest {
-	return GetAuditingConfigurationApiRequest{
+func (a *AuditingApiService) GetGroupAuditLogWithParams(ctx context.Context, args *GetGroupAuditLogApiParams) GetGroupAuditLogApiRequest {
+	return GetGroupAuditLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r GetAuditingConfigurationApiRequest) Execute() (*AuditLog, *http.Response, error) {
-	return r.ApiService.GetAuditingConfigurationExecute(r)
+func (r GetGroupAuditLogApiRequest) Execute() (*AuditLog, *http.Response, error) {
+	return r.ApiService.GetGroupAuditLogExecute(r)
 }
 
 /*
-GetAuditingConfiguration Return Auditing Configuration for One Project
+GetGroupAuditLog Return Auditing Configuration for One Project
 
 Returns the auditing configuration for the specified project. The auditing configuration defines the events that MongoDB Cloud records in the audit log. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature isn't available for `M0`, `M2`, `M5`, or serverless clusters.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetAuditingConfigurationApiRequest
+	@return GetGroupAuditLogApiRequest
 */
-func (a *AuditingApiService) GetAuditingConfiguration(ctx context.Context, groupId string) GetAuditingConfigurationApiRequest {
-	return GetAuditingConfigurationApiRequest{
+func (a *AuditingApiService) GetGroupAuditLog(ctx context.Context, groupId string) GetGroupAuditLogApiRequest {
+	return GetGroupAuditLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// GetAuditingConfigurationExecute executes the request
+// GetGroupAuditLogExecute executes the request
 //
 //	@return AuditLog
-func (a *AuditingApiService) GetAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
+func (a *AuditingApiService) GetGroupAuditLogExecute(r GetGroupAuditLogApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -113,7 +113,7 @@ func (a *AuditingApiService) GetAuditingConfigurationExecute(r GetAuditingConfig
 		localVarReturnValue *AuditLog
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuditingApiService.GetAuditingConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuditingApiService.GetGroupAuditLog")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -177,20 +177,20 @@ func (a *AuditingApiService) GetAuditingConfigurationExecute(r GetAuditingConfig
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpdateAuditingConfigurationApiRequest struct {
+type UpdateAuditLogApiRequest struct {
 	ctx        context.Context
 	ApiService AuditingApi
 	groupId    string
 	auditLog   *AuditLog
 }
 
-type UpdateAuditingConfigurationApiParams struct {
+type UpdateAuditLogApiParams struct {
 	GroupId  string
 	AuditLog *AuditLog
 }
 
-func (a *AuditingApiService) UpdateAuditingConfigurationWithParams(ctx context.Context, args *UpdateAuditingConfigurationApiParams) UpdateAuditingConfigurationApiRequest {
-	return UpdateAuditingConfigurationApiRequest{
+func (a *AuditingApiService) UpdateAuditLogWithParams(ctx context.Context, args *UpdateAuditLogApiParams) UpdateAuditLogApiRequest {
+	return UpdateAuditLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -198,21 +198,21 @@ func (a *AuditingApiService) UpdateAuditingConfigurationWithParams(ctx context.C
 	}
 }
 
-func (r UpdateAuditingConfigurationApiRequest) Execute() (*AuditLog, *http.Response, error) {
-	return r.ApiService.UpdateAuditingConfigurationExecute(r)
+func (r UpdateAuditLogApiRequest) Execute() (*AuditLog, *http.Response, error) {
+	return r.ApiService.UpdateAuditLogExecute(r)
 }
 
 /*
-UpdateAuditingConfiguration Update Auditing Configuration for One Project
+UpdateAuditLog Update Auditing Configuration for One Project
 
 Updates the auditing configuration for the specified project. The auditing configuration defines the events that MongoDB Cloud records in the audit log. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature isn't available for `M0`, `M2`, `M5`, or serverless clusters.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return UpdateAuditingConfigurationApiRequest
+	@return UpdateAuditLogApiRequest
 */
-func (a *AuditingApiService) UpdateAuditingConfiguration(ctx context.Context, groupId string, auditLog *AuditLog) UpdateAuditingConfigurationApiRequest {
-	return UpdateAuditingConfigurationApiRequest{
+func (a *AuditingApiService) UpdateAuditLog(ctx context.Context, groupId string, auditLog *AuditLog) UpdateAuditLogApiRequest {
+	return UpdateAuditLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -220,10 +220,10 @@ func (a *AuditingApiService) UpdateAuditingConfiguration(ctx context.Context, gr
 	}
 }
 
-// UpdateAuditingConfigurationExecute executes the request
+// UpdateAuditLogExecute executes the request
 //
 //	@return AuditLog
-func (a *AuditingApiService) UpdateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
+func (a *AuditingApiService) UpdateAuditLogExecute(r UpdateAuditLogApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -231,7 +231,7 @@ func (a *AuditingApiService) UpdateAuditingConfigurationExecute(r UpdateAuditing
 		localVarReturnValue *AuditLog
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuditingApiService.UpdateAuditingConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuditingApiService.UpdateAuditLog")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

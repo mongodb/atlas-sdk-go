@@ -15,7 +15,56 @@ import (
 type CollectionLevelMetricsApi interface {
 
 	/*
-		GetCollStatsLatencyNamespaceClusterMeasurements Return Cluster-Level Query Latency
+		GetClusterNamespaces Return Ranked Namespaces from a Cluster
+
+		Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
+		@param clusterView Human-readable label that identifies the cluster topology to retrieve metrics for.
+		@return GetClusterNamespacesApiRequest
+	*/
+	GetClusterNamespaces(ctx context.Context, groupId string, clusterName string, clusterView string) GetClusterNamespacesApiRequest
+	/*
+		GetClusterNamespaces Return Ranked Namespaces from a Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetClusterNamespacesApiParams - Parameters for the request
+		@return GetClusterNamespacesApiRequest
+	*/
+	GetClusterNamespacesWithParams(ctx context.Context, args *GetClusterNamespacesApiParams) GetClusterNamespacesApiRequest
+
+	// Method available only for mocking purposes
+	GetClusterNamespacesExecute(r GetClusterNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error)
+
+	/*
+		GetProcessNamespaces Return Ranked Namespaces from a Host
+
+		Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return GetProcessNamespacesApiRequest
+	*/
+	GetProcessNamespaces(ctx context.Context, groupId string, processId string) GetProcessNamespacesApiRequest
+	/*
+		GetProcessNamespaces Return Ranked Namespaces from a Host
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetProcessNamespacesApiParams - Parameters for the request
+		@return GetProcessNamespacesApiRequest
+	*/
+	GetProcessNamespacesWithParams(ctx context.Context, args *GetProcessNamespacesApiParams) GetProcessNamespacesApiRequest
+
+	// Method available only for mocking purposes
+	GetProcessNamespacesExecute(r GetProcessNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error)
+
+	/*
+		ListCollStatMeasurements Return Cluster-Level Query Latency
 
 		Get a list of the Coll Stats Latency cluster-level measurements for the given namespace.
 
@@ -25,24 +74,71 @@ type CollectionLevelMetricsApi interface {
 		@param clusterView Human-readable label that identifies the cluster topology to retrieve metrics for.
 		@param databaseName Human-readable label that identifies the database.
 		@param collectionName Human-readable label that identifies the collection.
-		@return GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
+		@return ListCollStatMeasurementsApiRequest
 	*/
-	GetCollStatsLatencyNamespaceClusterMeasurements(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string) GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
+	ListCollStatMeasurements(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string) ListCollStatMeasurementsApiRequest
 	/*
-		GetCollStatsLatencyNamespaceClusterMeasurements Return Cluster-Level Query Latency
+		ListCollStatMeasurements Return Cluster-Level Query Latency
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetCollStatsLatencyNamespaceClusterMeasurementsApiParams - Parameters for the request
-		@return GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
+		@param ListCollStatMeasurementsApiParams - Parameters for the request
+		@return ListCollStatMeasurementsApiRequest
 	*/
-	GetCollStatsLatencyNamespaceClusterMeasurementsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceClusterMeasurementsApiParams) GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
+	ListCollStatMeasurementsWithParams(ctx context.Context, args *ListCollStatMeasurementsApiParams) ListCollStatMeasurementsApiRequest
 
 	// Method available only for mocking purposes
-	GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error)
+	ListCollStatMeasurementsExecute(r ListCollStatMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error)
 
 	/*
-		GetCollStatsLatencyNamespaceHostMeasurements Return Host-Level Query Latency
+		ListCollStatMetrics Return all metric names
+
+		Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListCollStatMetricsApiRequest
+	*/
+	ListCollStatMetrics(ctx context.Context, groupId string) ListCollStatMetricsApiRequest
+	/*
+		ListCollStatMetrics Return all metric names
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListCollStatMetricsApiParams - Parameters for the request
+		@return ListCollStatMetricsApiRequest
+	*/
+	ListCollStatMetricsWithParams(ctx context.Context, args *ListCollStatMetricsApiParams) ListCollStatMetricsApiRequest
+
+	// Method available only for mocking purposes
+	ListCollStatMetricsExecute(r ListCollStatMetricsApiRequest) (*http.Response, error)
+
+	/*
+		ListPinnedNamespaces Return Pinned Namespaces
+
+		Returns a list of given cluster's pinned namespaces, a set of namespaces manually selected by users to collect query latency metrics on.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster to retrieve pinned namespaces for.
+		@return ListPinnedNamespacesApiRequest
+	*/
+	ListPinnedNamespaces(ctx context.Context, groupId string, clusterName string) ListPinnedNamespacesApiRequest
+	/*
+		ListPinnedNamespaces Return Pinned Namespaces
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListPinnedNamespacesApiParams - Parameters for the request
+		@return ListPinnedNamespacesApiRequest
+	*/
+	ListPinnedNamespacesWithParams(ctx context.Context, args *ListPinnedNamespacesApiParams) ListPinnedNamespacesApiRequest
+
+	// Method available only for mocking purposes
+	ListPinnedNamespacesExecute(r ListPinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error)
+
+	/*
+		ListProcessMeasurements Return Host-Level Query Latency
 
 		Get a list of the Coll Stats Latency process-level measurements for the given namespace.
 
@@ -51,145 +147,24 @@ type CollectionLevelMetricsApi interface {
 		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
 		@param databaseName Human-readable label that identifies the database.
 		@param collectionName Human-readable label that identifies the collection.
-		@return GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
+		@return ListProcessMeasurementsApiRequest
 	*/
-	GetCollStatsLatencyNamespaceHostMeasurements(ctx context.Context, groupId string, processId string, databaseName string, collectionName string) GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
+	ListProcessMeasurements(ctx context.Context, groupId string, processId string, databaseName string, collectionName string) ListProcessMeasurementsApiRequest
 	/*
-		GetCollStatsLatencyNamespaceHostMeasurements Return Host-Level Query Latency
+		ListProcessMeasurements Return Host-Level Query Latency
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetCollStatsLatencyNamespaceHostMeasurementsApiParams - Parameters for the request
-		@return GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
+		@param ListProcessMeasurementsApiParams - Parameters for the request
+		@return ListProcessMeasurementsApiRequest
 	*/
-	GetCollStatsLatencyNamespaceHostMeasurementsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceHostMeasurementsApiParams) GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
+	ListProcessMeasurementsWithParams(ctx context.Context, args *ListProcessMeasurementsApiParams) ListProcessMeasurementsApiRequest
 
 	// Method available only for mocking purposes
-	GetCollStatsLatencyNamespaceHostMeasurementsExecute(r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) (*MeasurementsCollStatsLatencyHost, *http.Response, error)
+	ListProcessMeasurementsExecute(r ListProcessMeasurementsApiRequest) (*MeasurementsCollStatsLatencyHost, *http.Response, error)
 
 	/*
-		GetCollStatsLatencyNamespaceMetrics Return all metric names
-
-		Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetCollStatsLatencyNamespaceMetricsApiRequest
-	*/
-	GetCollStatsLatencyNamespaceMetrics(ctx context.Context, groupId string) GetCollStatsLatencyNamespaceMetricsApiRequest
-	/*
-		GetCollStatsLatencyNamespaceMetrics Return all metric names
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetCollStatsLatencyNamespaceMetricsApiParams - Parameters for the request
-		@return GetCollStatsLatencyNamespaceMetricsApiRequest
-	*/
-	GetCollStatsLatencyNamespaceMetricsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceMetricsApiParams) GetCollStatsLatencyNamespaceMetricsApiRequest
-
-	// Method available only for mocking purposes
-	GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error)
-
-	/*
-		GetCollStatsLatencyNamespacesForCluster Return Ranked Namespaces from a Cluster
-
-		Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
-		@param clusterView Human-readable label that identifies the cluster topology to retrieve metrics for.
-		@return GetCollStatsLatencyNamespacesForClusterApiRequest
-	*/
-	GetCollStatsLatencyNamespacesForCluster(ctx context.Context, groupId string, clusterName string, clusterView string) GetCollStatsLatencyNamespacesForClusterApiRequest
-	/*
-		GetCollStatsLatencyNamespacesForCluster Return Ranked Namespaces from a Cluster
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetCollStatsLatencyNamespacesForClusterApiParams - Parameters for the request
-		@return GetCollStatsLatencyNamespacesForClusterApiRequest
-	*/
-	GetCollStatsLatencyNamespacesForClusterWithParams(ctx context.Context, args *GetCollStatsLatencyNamespacesForClusterApiParams) GetCollStatsLatencyNamespacesForClusterApiRequest
-
-	// Method available only for mocking purposes
-	GetCollStatsLatencyNamespacesForClusterExecute(r GetCollStatsLatencyNamespacesForClusterApiRequest) (*CollStatsRankedNamespaces, *http.Response, error)
-
-	/*
-		GetCollStatsLatencyNamespacesForHost Return Ranked Namespaces from a Host
-
-		Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-		@return GetCollStatsLatencyNamespacesForHostApiRequest
-	*/
-	GetCollStatsLatencyNamespacesForHost(ctx context.Context, groupId string, processId string) GetCollStatsLatencyNamespacesForHostApiRequest
-	/*
-		GetCollStatsLatencyNamespacesForHost Return Ranked Namespaces from a Host
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetCollStatsLatencyNamespacesForHostApiParams - Parameters for the request
-		@return GetCollStatsLatencyNamespacesForHostApiRequest
-	*/
-	GetCollStatsLatencyNamespacesForHostWithParams(ctx context.Context, args *GetCollStatsLatencyNamespacesForHostApiParams) GetCollStatsLatencyNamespacesForHostApiRequest
-
-	// Method available only for mocking purposes
-	GetCollStatsLatencyNamespacesForHostExecute(r GetCollStatsLatencyNamespacesForHostApiRequest) (*CollStatsRankedNamespaces, *http.Response, error)
-
-	/*
-		GetPinnedNamespaces Return Pinned Namespaces
-
-		Returns a list of given cluster's pinned namespaces, a set of namespaces manually selected by users to collect query latency metrics on.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster to retrieve pinned namespaces for.
-		@return GetPinnedNamespacesApiRequest
-	*/
-	GetPinnedNamespaces(ctx context.Context, groupId string, clusterName string) GetPinnedNamespacesApiRequest
-	/*
-		GetPinnedNamespaces Return Pinned Namespaces
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetPinnedNamespacesApiParams - Parameters for the request
-		@return GetPinnedNamespacesApiRequest
-	*/
-	GetPinnedNamespacesWithParams(ctx context.Context, args *GetPinnedNamespacesApiParams) GetPinnedNamespacesApiRequest
-
-	// Method available only for mocking purposes
-	GetPinnedNamespacesExecute(r GetPinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error)
-
-	/*
-		PinNamespacesPatch Add Pinned Namespaces
-
-		Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
-		@param namespacesRequest List of namespace strings (combination of database and collection name) to pin for query latency metric collection.
-		@return PinNamespacesPatchApiRequest
-	*/
-	PinNamespacesPatch(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) PinNamespacesPatchApiRequest
-	/*
-		PinNamespacesPatch Add Pinned Namespaces
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param PinNamespacesPatchApiParams - Parameters for the request
-		@return PinNamespacesPatchApiRequest
-	*/
-	PinNamespacesPatchWithParams(ctx context.Context, args *PinNamespacesPatchApiParams) PinNamespacesPatchApiRequest
-
-	// Method available only for mocking purposes
-	PinNamespacesPatchExecute(r PinNamespacesPatchApiRequest) (*PinnedNamespaces, *http.Response, error)
-
-	/*
-		PinNamespacesPut Pin Namespaces
+		PinNamespaces Pin Namespaces
 
 		Pin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster. This initializes a pinned namespaces list or replaces any existing pinned namespaces list for the Group and Cluster.
 
@@ -197,21 +172,21 @@ type CollectionLevelMetricsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
 		@param namespacesRequest List of namespace strings (combination of database and collection name) to pin for query latency metric collection.
-		@return PinNamespacesPutApiRequest
+		@return PinNamespacesApiRequest
 	*/
-	PinNamespacesPut(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) PinNamespacesPutApiRequest
+	PinNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) PinNamespacesApiRequest
 	/*
-		PinNamespacesPut Pin Namespaces
+		PinNamespaces Pin Namespaces
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param PinNamespacesPutApiParams - Parameters for the request
-		@return PinNamespacesPutApiRequest
+		@param PinNamespacesApiParams - Parameters for the request
+		@return PinNamespacesApiRequest
 	*/
-	PinNamespacesPutWithParams(ctx context.Context, args *PinNamespacesPutApiParams) PinNamespacesPutApiRequest
+	PinNamespacesWithParams(ctx context.Context, args *PinNamespacesApiParams) PinNamespacesApiRequest
 
 	// Method available only for mocking purposes
-	PinNamespacesPutExecute(r PinNamespacesPutApiRequest) (*PinnedNamespaces, *http.Response, error)
+	PinNamespacesExecute(r PinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error)
 
 	/*
 		UnpinNamespaces Unpin namespaces
@@ -237,12 +212,364 @@ type CollectionLevelMetricsApi interface {
 
 	// Method available only for mocking purposes
 	UnpinNamespacesExecute(r UnpinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error)
+
+	/*
+		UpdatePinnedNamespaces Add Pinned Namespaces
+
+		Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
+		@param namespacesRequest List of namespace strings (combination of database and collection name) to pin for query latency metric collection.
+		@return UpdatePinnedNamespacesApiRequest
+	*/
+	UpdatePinnedNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) UpdatePinnedNamespacesApiRequest
+	/*
+		UpdatePinnedNamespaces Add Pinned Namespaces
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdatePinnedNamespacesApiParams - Parameters for the request
+		@return UpdatePinnedNamespacesApiRequest
+	*/
+	UpdatePinnedNamespacesWithParams(ctx context.Context, args *UpdatePinnedNamespacesApiParams) UpdatePinnedNamespacesApiRequest
+
+	// Method available only for mocking purposes
+	UpdatePinnedNamespacesExecute(r UpdatePinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error)
 }
 
 // CollectionLevelMetricsApiService CollectionLevelMetricsApi service
 type CollectionLevelMetricsApiService service
 
-type GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest struct {
+type GetClusterNamespacesApiRequest struct {
+	ctx         context.Context
+	ApiService  CollectionLevelMetricsApi
+	groupId     string
+	clusterName string
+	clusterView string
+	start       *time.Time
+	end         *time.Time
+	period      *string
+}
+
+type GetClusterNamespacesApiParams struct {
+	GroupId     string
+	ClusterName string
+	ClusterView string
+	Start       *time.Time
+	End         *time.Time
+	Period      *string
+}
+
+func (a *CollectionLevelMetricsApiService) GetClusterNamespacesWithParams(ctx context.Context, args *GetClusterNamespacesApiParams) GetClusterNamespacesApiRequest {
+	return GetClusterNamespacesApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+		clusterView: args.ClusterView,
+		start:       args.Start,
+		end:         args.End,
+		period:      args.Period,
+	}
+}
+
+// Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
+func (r GetClusterNamespacesApiRequest) Start(start time.Time) GetClusterNamespacesApiRequest {
+	r.start = &start
+	return r
+}
+
+// Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
+func (r GetClusterNamespacesApiRequest) End(end time.Time) GetClusterNamespacesApiRequest {
+	r.end = &end
+	return r
+}
+
+// Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
+func (r GetClusterNamespacesApiRequest) Period(period string) GetClusterNamespacesApiRequest {
+	r.period = &period
+	return r
+}
+
+func (r GetClusterNamespacesApiRequest) Execute() (*CollStatsRankedNamespaces, *http.Response, error) {
+	return r.ApiService.GetClusterNamespacesExecute(r)
+}
+
+/*
+GetClusterNamespaces Return Ranked Namespaces from a Cluster
+
+Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
+	@param clusterView Human-readable label that identifies the cluster topology to retrieve metrics for.
+	@return GetClusterNamespacesApiRequest
+*/
+func (a *CollectionLevelMetricsApiService) GetClusterNamespaces(ctx context.Context, groupId string, clusterName string, clusterView string) GetClusterNamespacesApiRequest {
+	return GetClusterNamespacesApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+		clusterView: clusterView,
+	}
+}
+
+// GetClusterNamespacesExecute executes the request
+//
+//	@return CollStatsRankedNamespaces
+func (a *CollectionLevelMetricsApiService) GetClusterNamespacesExecute(r GetClusterNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *CollStatsRankedNamespaces
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetClusterNamespaces")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.clusterView == "" {
+		return localVarReturnValue, nil, reportError("clusterView is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterView"+"}", url.PathEscape(r.clusterView), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
+	}
+	if r.end != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
+	}
+	if r.period != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetProcessNamespacesApiRequest struct {
+	ctx        context.Context
+	ApiService CollectionLevelMetricsApi
+	groupId    string
+	processId  string
+	start      *time.Time
+	end        *time.Time
+	period     *string
+}
+
+type GetProcessNamespacesApiParams struct {
+	GroupId   string
+	ProcessId string
+	Start     *time.Time
+	End       *time.Time
+	Period    *string
+}
+
+func (a *CollectionLevelMetricsApiService) GetProcessNamespacesWithParams(ctx context.Context, args *GetProcessNamespacesApiParams) GetProcessNamespacesApiRequest {
+	return GetProcessNamespacesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		processId:  args.ProcessId,
+		start:      args.Start,
+		end:        args.End,
+		period:     args.Period,
+	}
+}
+
+// Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
+func (r GetProcessNamespacesApiRequest) Start(start time.Time) GetProcessNamespacesApiRequest {
+	r.start = &start
+	return r
+}
+
+// Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
+func (r GetProcessNamespacesApiRequest) End(end time.Time) GetProcessNamespacesApiRequest {
+	r.end = &end
+	return r
+}
+
+// Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
+func (r GetProcessNamespacesApiRequest) Period(period string) GetProcessNamespacesApiRequest {
+	r.period = &period
+	return r
+}
+
+func (r GetProcessNamespacesApiRequest) Execute() (*CollStatsRankedNamespaces, *http.Response, error) {
+	return r.ApiService.GetProcessNamespacesExecute(r)
+}
+
+/*
+GetProcessNamespaces Return Ranked Namespaces from a Host
+
+Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return GetProcessNamespacesApiRequest
+*/
+func (a *CollectionLevelMetricsApiService) GetProcessNamespaces(ctx context.Context, groupId string, processId string) GetProcessNamespacesApiRequest {
+	return GetProcessNamespacesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		processId:  processId,
+	}
+}
+
+// GetProcessNamespacesExecute executes the request
+//
+//	@return CollStatsRankedNamespaces
+func (a *CollectionLevelMetricsApiService) GetProcessNamespacesExecute(r GetProcessNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *CollStatsRankedNamespaces
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetProcessNamespaces")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.processId == "" {
+		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
+	}
+	if r.end != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
+	}
+	if r.period != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListCollStatMeasurementsApiRequest struct {
 	ctx            context.Context
 	ApiService     CollectionLevelMetricsApi
 	groupId        string
@@ -256,7 +583,7 @@ type GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest struct {
 	period         *string
 }
 
-type GetCollStatsLatencyNamespaceClusterMeasurementsApiParams struct {
+type ListCollStatMeasurementsApiParams struct {
 	GroupId        string
 	ClusterName    string
 	ClusterView    string
@@ -268,8 +595,8 @@ type GetCollStatsLatencyNamespaceClusterMeasurementsApiParams struct {
 	Period         *string
 }
 
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMeasurementsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceClusterMeasurementsApiParams) GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest {
-	return GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest{
+func (a *CollectionLevelMetricsApiService) ListCollStatMeasurementsWithParams(ctx context.Context, args *ListCollStatMeasurementsApiParams) ListCollStatMeasurementsApiRequest {
+	return ListCollStatMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		groupId:        args.GroupId,
@@ -285,35 +612,35 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMe
 }
 
 // List that contains the metrics that you want to retrieve for the associated data series. If you don&#39;t set this parameter, this resource returns data series for all Coll Stats Latency metrics.
-func (r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) Metrics(metrics []string) GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest {
+func (r ListCollStatMeasurementsApiRequest) Metrics(metrics []string) ListCollStatMeasurementsApiRequest {
 	r.metrics = &metrics
 	return r
 }
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) Start(start time.Time) GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest {
+func (r ListCollStatMeasurementsApiRequest) Start(start time.Time) ListCollStatMeasurementsApiRequest {
 	r.start = &start
 	return r
 }
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) End(end time.Time) GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest {
+func (r ListCollStatMeasurementsApiRequest) End(end time.Time) ListCollStatMeasurementsApiRequest {
 	r.end = &end
 	return r
 }
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) Period(period string) GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest {
+func (r ListCollStatMeasurementsApiRequest) Period(period string) ListCollStatMeasurementsApiRequest {
 	r.period = &period
 	return r
 }
 
-func (r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) Execute() (*MeasurementsCollStatsLatencyCluster, *http.Response, error) {
-	return r.ApiService.GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r)
+func (r ListCollStatMeasurementsApiRequest) Execute() (*MeasurementsCollStatsLatencyCluster, *http.Response, error) {
+	return r.ApiService.ListCollStatMeasurementsExecute(r)
 }
 
 /*
-GetCollStatsLatencyNamespaceClusterMeasurements Return Cluster-Level Query Latency
+ListCollStatMeasurements Return Cluster-Level Query Latency
 
 Get a list of the Coll Stats Latency cluster-level measurements for the given namespace.
 
@@ -323,10 +650,10 @@ Get a list of the Coll Stats Latency cluster-level measurements for the given na
 	@param clusterView Human-readable label that identifies the cluster topology to retrieve metrics for.
 	@param databaseName Human-readable label that identifies the database.
 	@param collectionName Human-readable label that identifies the collection.
-	@return GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
+	@return ListCollStatMeasurementsApiRequest
 */
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMeasurements(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string) GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest {
-	return GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest{
+func (a *CollectionLevelMetricsApiService) ListCollStatMeasurements(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string) ListCollStatMeasurementsApiRequest {
+	return ListCollStatMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		groupId:        groupId,
@@ -337,10 +664,10 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMe
 	}
 }
 
-// GetCollStatsLatencyNamespaceClusterMeasurementsExecute executes the request
+// ListCollStatMeasurementsExecute executes the request
 //
 //	@return MeasurementsCollStatsLatencyCluster
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) ListCollStatMeasurementsExecute(r ListCollStatMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -348,7 +675,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMe
 		localVarReturnValue *MeasurementsCollStatsLatencyCluster
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetCollStatsLatencyNamespaceClusterMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListCollStatMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -444,7 +771,227 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetCollStatsLatencyNamespaceHostMeasurementsApiRequest struct {
+type ListCollStatMetricsApiRequest struct {
+	ctx        context.Context
+	ApiService CollectionLevelMetricsApi
+	groupId    string
+}
+
+type ListCollStatMetricsApiParams struct {
+	GroupId string
+}
+
+func (a *CollectionLevelMetricsApiService) ListCollStatMetricsWithParams(ctx context.Context, args *ListCollStatMetricsApiParams) ListCollStatMetricsApiRequest {
+	return ListCollStatMetricsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+	}
+}
+
+func (r ListCollStatMetricsApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ListCollStatMetricsExecute(r)
+}
+
+/*
+ListCollStatMetrics Return all metric names
+
+Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListCollStatMetricsApiRequest
+*/
+func (a *CollectionLevelMetricsApiService) ListCollStatMetrics(ctx context.Context, groupId string) ListCollStatMetricsApiRequest {
+	return ListCollStatMetricsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListCollStatMetricsExecute executes the request
+func (a *CollectionLevelMetricsApiService) ListCollStatMetricsExecute(r ListCollStatMetricsApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListCollStatMetrics")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/collStats/metrics"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ListPinnedNamespacesApiRequest struct {
+	ctx         context.Context
+	ApiService  CollectionLevelMetricsApi
+	groupId     string
+	clusterName string
+}
+
+type ListPinnedNamespacesApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *CollectionLevelMetricsApiService) ListPinnedNamespacesWithParams(ctx context.Context, args *ListPinnedNamespacesApiParams) ListPinnedNamespacesApiRequest {
+	return ListPinnedNamespacesApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r ListPinnedNamespacesApiRequest) Execute() (*PinnedNamespaces, *http.Response, error) {
+	return r.ApiService.ListPinnedNamespacesExecute(r)
+}
+
+/*
+ListPinnedNamespaces Return Pinned Namespaces
+
+Returns a list of given cluster's pinned namespaces, a set of namespaces manually selected by users to collect query latency metrics on.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster to retrieve pinned namespaces for.
+	@return ListPinnedNamespacesApiRequest
+*/
+func (a *CollectionLevelMetricsApiService) ListPinnedNamespaces(ctx context.Context, groupId string, clusterName string) ListPinnedNamespacesApiRequest {
+	return ListPinnedNamespacesApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// ListPinnedNamespacesExecute executes the request
+//
+//	@return PinnedNamespaces
+func (a *CollectionLevelMetricsApiService) ListPinnedNamespacesExecute(r ListPinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PinnedNamespaces
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListPinnedNamespaces")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListProcessMeasurementsApiRequest struct {
 	ctx            context.Context
 	ApiService     CollectionLevelMetricsApi
 	groupId        string
@@ -457,7 +1004,7 @@ type GetCollStatsLatencyNamespaceHostMeasurementsApiRequest struct {
 	period         *string
 }
 
-type GetCollStatsLatencyNamespaceHostMeasurementsApiParams struct {
+type ListProcessMeasurementsApiParams struct {
 	GroupId        string
 	ProcessId      string
 	DatabaseName   string
@@ -468,8 +1015,8 @@ type GetCollStatsLatencyNamespaceHostMeasurementsApiParams struct {
 	Period         *string
 }
 
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasurementsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceHostMeasurementsApiParams) GetCollStatsLatencyNamespaceHostMeasurementsApiRequest {
-	return GetCollStatsLatencyNamespaceHostMeasurementsApiRequest{
+func (a *CollectionLevelMetricsApiService) ListProcessMeasurementsWithParams(ctx context.Context, args *ListProcessMeasurementsApiParams) ListProcessMeasurementsApiRequest {
+	return ListProcessMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		groupId:        args.GroupId,
@@ -484,35 +1031,35 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasu
 }
 
 // List that contains the metrics that you want to retrieve for the associated data series. If you don&#39;t set this parameter, this resource returns data series for all Coll Stats Latency metrics.
-func (r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) Metrics(metrics []string) GetCollStatsLatencyNamespaceHostMeasurementsApiRequest {
+func (r ListProcessMeasurementsApiRequest) Metrics(metrics []string) ListProcessMeasurementsApiRequest {
 	r.metrics = &metrics
 	return r
 }
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) Start(start time.Time) GetCollStatsLatencyNamespaceHostMeasurementsApiRequest {
+func (r ListProcessMeasurementsApiRequest) Start(start time.Time) ListProcessMeasurementsApiRequest {
 	r.start = &start
 	return r
 }
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) End(end time.Time) GetCollStatsLatencyNamespaceHostMeasurementsApiRequest {
+func (r ListProcessMeasurementsApiRequest) End(end time.Time) ListProcessMeasurementsApiRequest {
 	r.end = &end
 	return r
 }
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) Period(period string) GetCollStatsLatencyNamespaceHostMeasurementsApiRequest {
+func (r ListProcessMeasurementsApiRequest) Period(period string) ListProcessMeasurementsApiRequest {
 	r.period = &period
 	return r
 }
 
-func (r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) Execute() (*MeasurementsCollStatsLatencyHost, *http.Response, error) {
-	return r.ApiService.GetCollStatsLatencyNamespaceHostMeasurementsExecute(r)
+func (r ListProcessMeasurementsApiRequest) Execute() (*MeasurementsCollStatsLatencyHost, *http.Response, error) {
+	return r.ApiService.ListProcessMeasurementsExecute(r)
 }
 
 /*
-GetCollStatsLatencyNamespaceHostMeasurements Return Host-Level Query Latency
+ListProcessMeasurements Return Host-Level Query Latency
 
 Get a list of the Coll Stats Latency process-level measurements for the given namespace.
 
@@ -521,10 +1068,10 @@ Get a list of the Coll Stats Latency process-level measurements for the given na
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
 	@param databaseName Human-readable label that identifies the database.
 	@param collectionName Human-readable label that identifies the collection.
-	@return GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
+	@return ListProcessMeasurementsApiRequest
 */
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasurements(ctx context.Context, groupId string, processId string, databaseName string, collectionName string) GetCollStatsLatencyNamespaceHostMeasurementsApiRequest {
-	return GetCollStatsLatencyNamespaceHostMeasurementsApiRequest{
+func (a *CollectionLevelMetricsApiService) ListProcessMeasurements(ctx context.Context, groupId string, processId string, databaseName string, collectionName string) ListProcessMeasurementsApiRequest {
+	return ListProcessMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		groupId:        groupId,
@@ -534,10 +1081,10 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasu
 	}
 }
 
-// GetCollStatsLatencyNamespaceHostMeasurementsExecute executes the request
+// ListProcessMeasurementsExecute executes the request
 //
 //	@return MeasurementsCollStatsLatencyHost
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasurementsExecute(r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) (*MeasurementsCollStatsLatencyHost, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) ListProcessMeasurementsExecute(r ListProcessMeasurementsApiRequest) (*MeasurementsCollStatsLatencyHost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -545,7 +1092,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasu
 		localVarReturnValue *MeasurementsCollStatsLatencyHost
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetCollStatsLatencyNamespaceHostMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListProcessMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -637,554 +1184,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetCollStatsLatencyNamespaceMetricsApiRequest struct {
-	ctx        context.Context
-	ApiService CollectionLevelMetricsApi
-	groupId    string
-}
-
-type GetCollStatsLatencyNamespaceMetricsApiParams struct {
-	GroupId string
-}
-
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceMetricsApiParams) GetCollStatsLatencyNamespaceMetricsApiRequest {
-	return GetCollStatsLatencyNamespaceMetricsApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-	}
-}
-
-func (r GetCollStatsLatencyNamespaceMetricsApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.GetCollStatsLatencyNamespaceMetricsExecute(r)
-}
-
-/*
-GetCollStatsLatencyNamespaceMetrics Return all metric names
-
-Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetCollStatsLatencyNamespaceMetricsApiRequest
-*/
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetrics(ctx context.Context, groupId string) GetCollStatsLatencyNamespaceMetricsApiRequest {
-	return GetCollStatsLatencyNamespaceMetricsApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-	}
-}
-
-// GetCollStatsLatencyNamespaceMetricsExecute executes the request
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   any
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetCollStatsLatencyNamespaceMetrics")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/collStats/metrics"
-	if r.groupId == "" {
-		return nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type GetCollStatsLatencyNamespacesForClusterApiRequest struct {
-	ctx         context.Context
-	ApiService  CollectionLevelMetricsApi
-	groupId     string
-	clusterName string
-	clusterView string
-	start       *time.Time
-	end         *time.Time
-	period      *string
-}
-
-type GetCollStatsLatencyNamespacesForClusterApiParams struct {
-	GroupId     string
-	ClusterName string
-	ClusterView string
-	Start       *time.Time
-	End         *time.Time
-	Period      *string
-}
-
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForClusterWithParams(ctx context.Context, args *GetCollStatsLatencyNamespacesForClusterApiParams) GetCollStatsLatencyNamespacesForClusterApiRequest {
-	return GetCollStatsLatencyNamespacesForClusterApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
-		clusterView: args.ClusterView,
-		start:       args.Start,
-		end:         args.End,
-		period:      args.Period,
-	}
-}
-
-// Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetCollStatsLatencyNamespacesForClusterApiRequest) Start(start time.Time) GetCollStatsLatencyNamespacesForClusterApiRequest {
-	r.start = &start
-	return r
-}
-
-// Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetCollStatsLatencyNamespacesForClusterApiRequest) End(end time.Time) GetCollStatsLatencyNamespacesForClusterApiRequest {
-	r.end = &end
-	return r
-}
-
-// Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetCollStatsLatencyNamespacesForClusterApiRequest) Period(period string) GetCollStatsLatencyNamespacesForClusterApiRequest {
-	r.period = &period
-	return r
-}
-
-func (r GetCollStatsLatencyNamespacesForClusterApiRequest) Execute() (*CollStatsRankedNamespaces, *http.Response, error) {
-	return r.ApiService.GetCollStatsLatencyNamespacesForClusterExecute(r)
-}
-
-/*
-GetCollStatsLatencyNamespacesForCluster Return Ranked Namespaces from a Cluster
-
-Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
-	@param clusterView Human-readable label that identifies the cluster topology to retrieve metrics for.
-	@return GetCollStatsLatencyNamespacesForClusterApiRequest
-*/
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForCluster(ctx context.Context, groupId string, clusterName string, clusterView string) GetCollStatsLatencyNamespacesForClusterApiRequest {
-	return GetCollStatsLatencyNamespacesForClusterApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		clusterName: clusterName,
-		clusterView: clusterView,
-	}
-}
-
-// GetCollStatsLatencyNamespacesForClusterExecute executes the request
-//
-//	@return CollStatsRankedNamespaces
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForClusterExecute(r GetCollStatsLatencyNamespacesForClusterApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *CollStatsRankedNamespaces
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetCollStatsLatencyNamespacesForCluster")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.clusterName == "" {
-		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
-	if r.clusterView == "" {
-		return localVarReturnValue, nil, reportError("clusterView is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterView"+"}", url.PathEscape(r.clusterView), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.start != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
-	}
-	if r.end != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
-	}
-	if r.period != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GetCollStatsLatencyNamespacesForHostApiRequest struct {
-	ctx        context.Context
-	ApiService CollectionLevelMetricsApi
-	groupId    string
-	processId  string
-	start      *time.Time
-	end        *time.Time
-	period     *string
-}
-
-type GetCollStatsLatencyNamespacesForHostApiParams struct {
-	GroupId   string
-	ProcessId string
-	Start     *time.Time
-	End       *time.Time
-	Period    *string
-}
-
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForHostWithParams(ctx context.Context, args *GetCollStatsLatencyNamespacesForHostApiParams) GetCollStatsLatencyNamespacesForHostApiRequest {
-	return GetCollStatsLatencyNamespacesForHostApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		processId:  args.ProcessId,
-		start:      args.Start,
-		end:        args.End,
-		period:     args.Period,
-	}
-}
-
-// Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetCollStatsLatencyNamespacesForHostApiRequest) Start(start time.Time) GetCollStatsLatencyNamespacesForHostApiRequest {
-	r.start = &start
-	return r
-}
-
-// Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetCollStatsLatencyNamespacesForHostApiRequest) End(end time.Time) GetCollStatsLatencyNamespacesForHostApiRequest {
-	r.end = &end
-	return r
-}
-
-// Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetCollStatsLatencyNamespacesForHostApiRequest) Period(period string) GetCollStatsLatencyNamespacesForHostApiRequest {
-	r.period = &period
-	return r
-}
-
-func (r GetCollStatsLatencyNamespacesForHostApiRequest) Execute() (*CollStatsRankedNamespaces, *http.Response, error) {
-	return r.ApiService.GetCollStatsLatencyNamespacesForHostExecute(r)
-}
-
-/*
-GetCollStatsLatencyNamespacesForHost Return Ranked Namespaces from a Host
-
-Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetCollStatsLatencyNamespacesForHostApiRequest
-*/
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForHost(ctx context.Context, groupId string, processId string) GetCollStatsLatencyNamespacesForHostApiRequest {
-	return GetCollStatsLatencyNamespacesForHostApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		processId:  processId,
-	}
-}
-
-// GetCollStatsLatencyNamespacesForHostExecute executes the request
-//
-//	@return CollStatsRankedNamespaces
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForHostExecute(r GetCollStatsLatencyNamespacesForHostApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *CollStatsRankedNamespaces
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetCollStatsLatencyNamespacesForHost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.processId == "" {
-		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.start != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
-	}
-	if r.end != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
-	}
-	if r.period != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GetPinnedNamespacesApiRequest struct {
-	ctx         context.Context
-	ApiService  CollectionLevelMetricsApi
-	groupId     string
-	clusterName string
-}
-
-type GetPinnedNamespacesApiParams struct {
-	GroupId     string
-	ClusterName string
-}
-
-func (a *CollectionLevelMetricsApiService) GetPinnedNamespacesWithParams(ctx context.Context, args *GetPinnedNamespacesApiParams) GetPinnedNamespacesApiRequest {
-	return GetPinnedNamespacesApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
-	}
-}
-
-func (r GetPinnedNamespacesApiRequest) Execute() (*PinnedNamespaces, *http.Response, error) {
-	return r.ApiService.GetPinnedNamespacesExecute(r)
-}
-
-/*
-GetPinnedNamespaces Return Pinned Namespaces
-
-Returns a list of given cluster's pinned namespaces, a set of namespaces manually selected by users to collect query latency metrics on.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster to retrieve pinned namespaces for.
-	@return GetPinnedNamespacesApiRequest
-*/
-func (a *CollectionLevelMetricsApiService) GetPinnedNamespaces(ctx context.Context, groupId string, clusterName string) GetPinnedNamespacesApiRequest {
-	return GetPinnedNamespacesApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		clusterName: clusterName,
-	}
-}
-
-// GetPinnedNamespacesExecute executes the request
-//
-//	@return PinnedNamespaces
-func (a *CollectionLevelMetricsApiService) GetPinnedNamespacesExecute(r GetPinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PinnedNamespaces
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetPinnedNamespaces")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.clusterName == "" {
-		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type PinNamespacesPatchApiRequest struct {
+type PinNamespacesApiRequest struct {
 	ctx               context.Context
 	ApiService        CollectionLevelMetricsApi
 	groupId           string
@@ -1192,14 +1192,14 @@ type PinNamespacesPatchApiRequest struct {
 	namespacesRequest *NamespacesRequest
 }
 
-type PinNamespacesPatchApiParams struct {
+type PinNamespacesApiParams struct {
 	GroupId           string
 	ClusterName       string
 	NamespacesRequest *NamespacesRequest
 }
 
-func (a *CollectionLevelMetricsApiService) PinNamespacesPatchWithParams(ctx context.Context, args *PinNamespacesPatchApiParams) PinNamespacesPatchApiRequest {
-	return PinNamespacesPatchApiRequest{
+func (a *CollectionLevelMetricsApiService) PinNamespacesWithParams(ctx context.Context, args *PinNamespacesApiParams) PinNamespacesApiRequest {
+	return PinNamespacesApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
 		groupId:           args.GroupId,
@@ -1208,154 +1208,22 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPatchWithParams(ctx cont
 	}
 }
 
-func (r PinNamespacesPatchApiRequest) Execute() (*PinnedNamespaces, *http.Response, error) {
-	return r.ApiService.PinNamespacesPatchExecute(r)
+func (r PinNamespacesApiRequest) Execute() (*PinnedNamespaces, *http.Response, error) {
+	return r.ApiService.PinNamespacesExecute(r)
 }
 
 /*
-PinNamespacesPatch Add Pinned Namespaces
-
-Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
-	@return PinNamespacesPatchApiRequest
-*/
-func (a *CollectionLevelMetricsApiService) PinNamespacesPatch(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) PinNamespacesPatchApiRequest {
-	return PinNamespacesPatchApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           groupId,
-		clusterName:       clusterName,
-		namespacesRequest: namespacesRequest,
-	}
-}
-
-// PinNamespacesPatchExecute executes the request
-//
-//	@return PinnedNamespaces
-func (a *CollectionLevelMetricsApiService) PinNamespacesPatchExecute(r PinNamespacesPatchApiRequest) (*PinnedNamespaces, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PinnedNamespaces
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.PinNamespacesPatch")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.clusterName == "" {
-		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.namespacesRequest == nil {
-		return localVarReturnValue, nil, reportError("namespacesRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-11-15+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.namespacesRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type PinNamespacesPutApiRequest struct {
-	ctx               context.Context
-	ApiService        CollectionLevelMetricsApi
-	groupId           string
-	clusterName       string
-	namespacesRequest *NamespacesRequest
-}
-
-type PinNamespacesPutApiParams struct {
-	GroupId           string
-	ClusterName       string
-	NamespacesRequest *NamespacesRequest
-}
-
-func (a *CollectionLevelMetricsApiService) PinNamespacesPutWithParams(ctx context.Context, args *PinNamespacesPutApiParams) PinNamespacesPutApiRequest {
-	return PinNamespacesPutApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           args.GroupId,
-		clusterName:       args.ClusterName,
-		namespacesRequest: args.NamespacesRequest,
-	}
-}
-
-func (r PinNamespacesPutApiRequest) Execute() (*PinnedNamespaces, *http.Response, error) {
-	return r.ApiService.PinNamespacesPutExecute(r)
-}
-
-/*
-PinNamespacesPut Pin Namespaces
+PinNamespaces Pin Namespaces
 
 Pin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster. This initializes a pinned namespaces list or replaces any existing pinned namespaces list for the Group and Cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
-	@return PinNamespacesPutApiRequest
+	@return PinNamespacesApiRequest
 */
-func (a *CollectionLevelMetricsApiService) PinNamespacesPut(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) PinNamespacesPutApiRequest {
-	return PinNamespacesPutApiRequest{
+func (a *CollectionLevelMetricsApiService) PinNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) PinNamespacesApiRequest {
+	return PinNamespacesApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
 		groupId:           groupId,
@@ -1364,10 +1232,10 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPut(ctx context.Context,
 	}
 }
 
-// PinNamespacesPutExecute executes the request
+// PinNamespacesExecute executes the request
 //
 //	@return PinnedNamespaces
-func (a *CollectionLevelMetricsApiService) PinNamespacesPutExecute(r PinNamespacesPutApiRequest) (*PinnedNamespaces, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) PinNamespacesExecute(r PinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    any
@@ -1375,7 +1243,7 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPutExecute(r PinNamespac
 		localVarReturnValue *PinnedNamespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.PinNamespacesPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.PinNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1513,6 +1381,138 @@ func (a *CollectionLevelMetricsApiService) UnpinNamespacesExecute(r UnpinNamespa
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.namespacesRequest == nil {
+		return localVarReturnValue, nil, reportError("namespacesRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-11-15+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.namespacesRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdatePinnedNamespacesApiRequest struct {
+	ctx               context.Context
+	ApiService        CollectionLevelMetricsApi
+	groupId           string
+	clusterName       string
+	namespacesRequest *NamespacesRequest
+}
+
+type UpdatePinnedNamespacesApiParams struct {
+	GroupId           string
+	ClusterName       string
+	NamespacesRequest *NamespacesRequest
+}
+
+func (a *CollectionLevelMetricsApiService) UpdatePinnedNamespacesWithParams(ctx context.Context, args *UpdatePinnedNamespacesApiParams) UpdatePinnedNamespacesApiRequest {
+	return UpdatePinnedNamespacesApiRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           args.GroupId,
+		clusterName:       args.ClusterName,
+		namespacesRequest: args.NamespacesRequest,
+	}
+}
+
+func (r UpdatePinnedNamespacesApiRequest) Execute() (*PinnedNamespaces, *http.Response, error) {
+	return r.ApiService.UpdatePinnedNamespacesExecute(r)
+}
+
+/*
+UpdatePinnedNamespaces Add Pinned Namespaces
+
+Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
+	@return UpdatePinnedNamespacesApiRequest
+*/
+func (a *CollectionLevelMetricsApiService) UpdatePinnedNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) UpdatePinnedNamespacesApiRequest {
+	return UpdatePinnedNamespacesApiRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           groupId,
+		clusterName:       clusterName,
+		namespacesRequest: namespacesRequest,
+	}
+}
+
+// UpdatePinnedNamespacesExecute executes the request
+//
+//	@return PinnedNamespaces
+func (a *CollectionLevelMetricsApiService) UpdatePinnedNamespacesExecute(r UpdatePinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PinnedNamespaces
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.UpdatePinnedNamespaces")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
