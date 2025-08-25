@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ServicePrincipalId** | Pointer to **string** | UUID string that identifies the Azure Service Principal. | [optional] 
 **TenantId** | Pointer to **string** | UUID String that identifies the Azure Active Directory Tenant ID. | [optional] 
 **GcpServiceAccountForAtlas** | Pointer to **string** | Email address for the Google Service Account created by Atlas. | [optional] 
+**Status** | Pointer to **string** | Provision status of the service account. | [optional] [readonly] 
 
 ## Methods
 
@@ -369,6 +370,30 @@ SetGcpServiceAccountForAtlas sets GcpServiceAccountForAtlas field to given value
 `func (o *CloudProviderAccessRole) HasGcpServiceAccountForAtlas() bool`
 
 HasGcpServiceAccountForAtlas returns a boolean if a field has been set.
+### GetStatus
+
+`func (o *CloudProviderAccessRole) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CloudProviderAccessRole) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CloudProviderAccessRole) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *CloudProviderAccessRole) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
