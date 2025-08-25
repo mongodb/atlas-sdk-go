@@ -120,30 +120,6 @@ type ClustersApi interface {
 	GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
 
 	/*
-		GetClusterAdvancedConfiguration Return Advanced Configuration Options for One Cluster
-
-		Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, flex clusters, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster.
-		@return GetClusterAdvancedConfigurationApiRequest
-	*/
-	GetClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string) GetClusterAdvancedConfigurationApiRequest
-	/*
-		GetClusterAdvancedConfiguration Return Advanced Configuration Options for One Cluster
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetClusterAdvancedConfigurationApiParams - Parameters for the request
-		@return GetClusterAdvancedConfigurationApiRequest
-	*/
-	GetClusterAdvancedConfigurationWithParams(ctx context.Context, args *GetClusterAdvancedConfigurationApiParams) GetClusterAdvancedConfigurationApiRequest
-
-	// Method available only for mocking purposes
-	GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error)
-
-	/*
 		GetClusterStatus Return Status of All Cluster Operations
 
 		Returns the status of all changes that you made to the specified cluster in the specified project. Use this resource to check the progress MongoDB Cloud has made in processing your changes. The response does not include the deployment of new dedicated clusters. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
@@ -168,31 +144,55 @@ type ClustersApi interface {
 	GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error)
 
 	/*
-		GetSampleDatasetLoadStatus Return Status of Sample Dataset Load for One Cluster
+		GetProcessArgs Return Advanced Configuration Options for One Cluster
+
+		Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, flex clusters, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@return GetProcessArgsApiRequest
+	*/
+	GetProcessArgs(ctx context.Context, groupId string, clusterName string) GetProcessArgsApiRequest
+	/*
+		GetProcessArgs Return Advanced Configuration Options for One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetProcessArgsApiParams - Parameters for the request
+		@return GetProcessArgsApiRequest
+	*/
+	GetProcessArgsWithParams(ctx context.Context, args *GetProcessArgsApiParams) GetProcessArgsApiRequest
+
+	// Method available only for mocking purposes
+	GetProcessArgsExecute(r GetProcessArgsApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error)
+
+	/*
+		GetSampleDatasetLoad Return Status of Sample Dataset Load for One Cluster
 
 		Checks the progress of loading the sample dataset into one cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param sampleDatasetId Unique 24-hexadecimal digit string that identifies the loaded sample dataset.
-		@return GetSampleDatasetLoadStatusApiRequest
+		@return GetSampleDatasetLoadApiRequest
 	*/
-	GetSampleDatasetLoadStatus(ctx context.Context, groupId string, sampleDatasetId string) GetSampleDatasetLoadStatusApiRequest
+	GetSampleDatasetLoad(ctx context.Context, groupId string, sampleDatasetId string) GetSampleDatasetLoadApiRequest
 	/*
-		GetSampleDatasetLoadStatus Return Status of Sample Dataset Load for One Cluster
+		GetSampleDatasetLoad Return Status of Sample Dataset Load for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetSampleDatasetLoadStatusApiParams - Parameters for the request
-		@return GetSampleDatasetLoadStatusApiRequest
+		@param GetSampleDatasetLoadApiParams - Parameters for the request
+		@return GetSampleDatasetLoadApiRequest
 	*/
-	GetSampleDatasetLoadStatusWithParams(ctx context.Context, args *GetSampleDatasetLoadStatusApiParams) GetSampleDatasetLoadStatusApiRequest
+	GetSampleDatasetLoadWithParams(ctx context.Context, args *GetSampleDatasetLoadApiParams) GetSampleDatasetLoadApiRequest
 
 	// Method available only for mocking purposes
-	GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error)
+	GetSampleDatasetLoadExecute(r GetSampleDatasetLoadApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
-		GrantMongoDbEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
+		GrantMongoEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
 
 		Grants MongoDB employee cluster access for the given duration and at the specified level for one cluster.
 
@@ -200,44 +200,66 @@ type ClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies this cluster.
 		@param employeeAccessGrant Grant access level and expiration.
-		@return GrantMongoDbEmployeeAccessApiRequest
+		@return GrantMongoEmployeeAccessApiRequest
 	*/
-	GrantMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDbEmployeeAccessApiRequest
+	GrantMongoEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoEmployeeAccessApiRequest
 	/*
-		GrantMongoDbEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
+		GrantMongoEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GrantMongoDbEmployeeAccessApiParams - Parameters for the request
-		@return GrantMongoDbEmployeeAccessApiRequest
+		@param GrantMongoEmployeeAccessApiParams - Parameters for the request
+		@return GrantMongoEmployeeAccessApiRequest
 	*/
-	GrantMongoDbEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDbEmployeeAccessApiParams) GrantMongoDbEmployeeAccessApiRequest
+	GrantMongoEmployeeAccessWithParams(ctx context.Context, args *GrantMongoEmployeeAccessApiParams) GrantMongoEmployeeAccessApiRequest
 
 	// Method available only for mocking purposes
-	GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmployeeAccessApiRequest) (*http.Response, error)
+	GrantMongoEmployeeAccessExecute(r GrantMongoEmployeeAccessApiRequest) (*http.Response, error)
 
 	/*
-		ListCloudProviderRegions Return All Cloud Provider Regions
+		ListClusterDetails Return All Authorized Clusters in All Projects
+
+		Returns the details for all clusters in all projects to which you have access. Clusters contain a group of hosts that maintain the same data set. The response does not include multi-cloud clusters. To use this resource, the requesting Service Account or API Key can have any cluster-level role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ListClusterDetailsApiRequest
+	*/
+	ListClusterDetails(ctx context.Context) ListClusterDetailsApiRequest
+	/*
+		ListClusterDetails Return All Authorized Clusters in All Projects
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListClusterDetailsApiParams - Parameters for the request
+		@return ListClusterDetailsApiRequest
+	*/
+	ListClusterDetailsWithParams(ctx context.Context, args *ListClusterDetailsApiParams) ListClusterDetailsApiRequest
+
+	// Method available only for mocking purposes
+	ListClusterDetailsExecute(r ListClusterDetailsApiRequest) (*PaginatedOrgGroup, *http.Response, error)
+
+	/*
+		ListClusterProviderRegions Return All Cloud Provider Regions
 
 		Returns the list of regions available for the specified cloud provider at the specified tier. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListCloudProviderRegionsApiRequest
+		@return ListClusterProviderRegionsApiRequest
 	*/
-	ListCloudProviderRegions(ctx context.Context, groupId string) ListCloudProviderRegionsApiRequest
+	ListClusterProviderRegions(ctx context.Context, groupId string) ListClusterProviderRegionsApiRequest
 	/*
-		ListCloudProviderRegions Return All Cloud Provider Regions
+		ListClusterProviderRegions Return All Cloud Provider Regions
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListCloudProviderRegionsApiParams - Parameters for the request
-		@return ListCloudProviderRegionsApiRequest
+		@param ListClusterProviderRegionsApiParams - Parameters for the request
+		@return ListClusterProviderRegionsApiRequest
 	*/
-	ListCloudProviderRegionsWithParams(ctx context.Context, args *ListCloudProviderRegionsApiParams) ListCloudProviderRegionsApiRequest
+	ListClusterProviderRegionsWithParams(ctx context.Context, args *ListClusterProviderRegionsApiParams) ListClusterProviderRegionsApiRequest
 
 	// Method available only for mocking purposes
-	ListCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error)
+	ListClusterProviderRegionsExecute(r ListClusterProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error)
 
 	/*
 			ListClusters Return All Clusters in One Project
@@ -265,52 +287,6 @@ type ClustersApi interface {
 	ListClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescription20240805, *http.Response, error)
 
 	/*
-		ListClustersForAllProjects Return All Authorized Clusters in All Projects
-
-		Returns the details for all clusters in all projects to which you have access. Clusters contain a group of hosts that maintain the same data set. The response does not include multi-cloud clusters. To use this resource, the requesting Service Account or API Key can have any cluster-level role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ListClustersForAllProjectsApiRequest
-	*/
-	ListClustersForAllProjects(ctx context.Context) ListClustersForAllProjectsApiRequest
-	/*
-		ListClustersForAllProjects Return All Authorized Clusters in All Projects
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListClustersForAllProjectsApiParams - Parameters for the request
-		@return ListClustersForAllProjectsApiRequest
-	*/
-	ListClustersForAllProjectsWithParams(ctx context.Context, args *ListClustersForAllProjectsApiParams) ListClustersForAllProjectsApiRequest
-
-	// Method available only for mocking purposes
-	ListClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error)
-
-	/*
-		LoadSampleDataset Load Sample Dataset into One Cluster
-
-		Requests loading the MongoDB sample dataset into the specified cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param name Human-readable label that identifies the cluster into which you load the sample dataset.
-		@return LoadSampleDatasetApiRequest
-	*/
-	LoadSampleDataset(ctx context.Context, groupId string, name string) LoadSampleDatasetApiRequest
-	/*
-		LoadSampleDataset Load Sample Dataset into One Cluster
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param LoadSampleDatasetApiParams - Parameters for the request
-		@return LoadSampleDatasetApiRequest
-	*/
-	LoadSampleDatasetWithParams(ctx context.Context, args *LoadSampleDatasetApiParams) LoadSampleDatasetApiRequest
-
-	// Method available only for mocking purposes
-	LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error)
-
-	/*
 		PinFeatureCompatibilityVersion Pin Feature Compatibility Version for One Cluster in One Project
 
 		Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not repin the FCV.
@@ -336,52 +312,76 @@ type ClustersApi interface {
 	PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (*http.Response, error)
 
 	/*
-		RevokeMongoDbEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
+		RequestSampleDatasetLoad Load Sample Dataset into One Cluster
 
-		Revokes a previously granted MongoDB employee cluster access.
+		Requests loading the MongoDB sample dataset into the specified cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies this cluster.
-		@return RevokeMongoDbEmployeeAccessApiRequest
+		@param name Human-readable label that identifies the cluster into which you load the sample dataset.
+		@return RequestSampleDatasetLoadApiRequest
 	*/
-	RevokeMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDbEmployeeAccessApiRequest
+	RequestSampleDatasetLoad(ctx context.Context, groupId string, name string) RequestSampleDatasetLoadApiRequest
 	/*
-		RevokeMongoDbEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
+		RequestSampleDatasetLoad Load Sample Dataset into One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RevokeMongoDbEmployeeAccessApiParams - Parameters for the request
-		@return RevokeMongoDbEmployeeAccessApiRequest
+		@param RequestSampleDatasetLoadApiParams - Parameters for the request
+		@return RequestSampleDatasetLoadApiRequest
 	*/
-	RevokeMongoDbEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDbEmployeeAccessApiParams) RevokeMongoDbEmployeeAccessApiRequest
+	RequestSampleDatasetLoadWithParams(ctx context.Context, args *RequestSampleDatasetLoadApiParams) RequestSampleDatasetLoadApiRequest
 
 	// Method available only for mocking purposes
-	RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbEmployeeAccessApiRequest) (*http.Response, error)
+	RequestSampleDatasetLoadExecute(r RequestSampleDatasetLoadApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
-		TestFailover Test Failover for One Cluster
+		RestartPrimaries Test Failover for One Cluster
 
 		Starts a failover test for the specified cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. A failover test checks how MongoDB Cloud handles the failure of the cluster's primary node. During the test, MongoDB Cloud shuts down the primary node and elects a new primary. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@return TestFailoverApiRequest
+		@return RestartPrimariesApiRequest
 	*/
-	TestFailover(ctx context.Context, groupId string, clusterName string) TestFailoverApiRequest
+	RestartPrimaries(ctx context.Context, groupId string, clusterName string) RestartPrimariesApiRequest
 	/*
-		TestFailover Test Failover for One Cluster
+		RestartPrimaries Test Failover for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param TestFailoverApiParams - Parameters for the request
-		@return TestFailoverApiRequest
+		@param RestartPrimariesApiParams - Parameters for the request
+		@return RestartPrimariesApiRequest
 	*/
-	TestFailoverWithParams(ctx context.Context, args *TestFailoverApiParams) TestFailoverApiRequest
+	RestartPrimariesWithParams(ctx context.Context, args *RestartPrimariesApiParams) RestartPrimariesApiRequest
 
 	// Method available only for mocking purposes
-	TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error)
+	RestartPrimariesExecute(r RestartPrimariesApiRequest) (*http.Response, error)
+
+	/*
+		RevokeMongoEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
+
+		Revokes a previously granted MongoDB employee cluster access.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies this cluster.
+		@return RevokeMongoEmployeeAccessApiRequest
+	*/
+	RevokeMongoEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoEmployeeAccessApiRequest
+	/*
+		RevokeMongoEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RevokeMongoEmployeeAccessApiParams - Parameters for the request
+		@return RevokeMongoEmployeeAccessApiRequest
+	*/
+	RevokeMongoEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoEmployeeAccessApiParams) RevokeMongoEmployeeAccessApiRequest
+
+	// Method available only for mocking purposes
+	RevokeMongoEmployeeAccessExecute(r RevokeMongoEmployeeAccessApiRequest) (*http.Response, error)
 
 	/*
 		UnpinFeatureCompatibilityVersion Unpin Feature Compatibility Version for One Cluster in One Project
@@ -433,7 +433,7 @@ type ClustersApi interface {
 	UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
 
 	/*
-		UpdateClusterAdvancedConfiguration Update Advanced Configuration Options for One Cluster
+		UpdateProcessArgs Update Advanced Configuration Options for One Cluster
 
 		Updates the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, flex clusters, or serverless clusters. Deprecated versions: v2-{2023-01-01}
 
@@ -441,50 +441,24 @@ type ClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
 		@param clusterDescriptionProcessArgs20240805 Advanced configuration details to add for one cluster in the specified project.
-		@return UpdateClusterAdvancedConfigurationApiRequest
+		@return UpdateProcessArgsApiRequest
 	*/
-	UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805) UpdateClusterAdvancedConfigurationApiRequest
+	UpdateProcessArgs(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805) UpdateProcessArgsApiRequest
 	/*
-		UpdateClusterAdvancedConfiguration Update Advanced Configuration Options for One Cluster
+		UpdateProcessArgs Update Advanced Configuration Options for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdateClusterAdvancedConfigurationApiParams - Parameters for the request
-		@return UpdateClusterAdvancedConfigurationApiRequest
+		@param UpdateProcessArgsApiParams - Parameters for the request
+		@return UpdateProcessArgsApiRequest
 	*/
-	UpdateClusterAdvancedConfigurationWithParams(ctx context.Context, args *UpdateClusterAdvancedConfigurationApiParams) UpdateClusterAdvancedConfigurationApiRequest
+	UpdateProcessArgsWithParams(ctx context.Context, args *UpdateProcessArgsApiParams) UpdateProcessArgsApiRequest
 
 	// Method available only for mocking purposes
-	UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error)
+	UpdateProcessArgsExecute(r UpdateProcessArgsApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error)
 
 	/*
-			UpgradeSharedCluster Upgrade One Shared-Tier Cluster
-
-			Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
-
-		This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param legacyAtlasTenantClusterUpgradeRequest Details of the shared-tier cluster upgrade in the specified project.
-			@return UpgradeSharedClusterApiRequest
-	*/
-	UpgradeSharedCluster(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) UpgradeSharedClusterApiRequest
-	/*
-		UpgradeSharedCluster Upgrade One Shared-Tier Cluster
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpgradeSharedClusterApiParams - Parameters for the request
-		@return UpgradeSharedClusterApiRequest
-	*/
-	UpgradeSharedClusterWithParams(ctx context.Context, args *UpgradeSharedClusterApiParams) UpgradeSharedClusterApiRequest
-
-	// Method available only for mocking purposes
-	UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error)
-
-	/*
-			UpgradeSharedClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
+			UpgradeClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
 
 			This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the upgradeFlexCluster endpoint to upgrade Flex clusters.
 
@@ -493,25 +467,51 @@ type ClustersApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param serverlessInstanceDescription Details of the shared-tier cluster upgrade in the specified project.
-			@return UpgradeSharedClusterToServerlessApiRequest
+			@return UpgradeClusterToServerlessApiRequest
 
 			Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
-	UpgradeSharedClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeSharedClusterToServerlessApiRequest
+	UpgradeClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeClusterToServerlessApiRequest
 	/*
-		UpgradeSharedClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
+		UpgradeClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpgradeSharedClusterToServerlessApiParams - Parameters for the request
-		@return UpgradeSharedClusterToServerlessApiRequest
+		@param UpgradeClusterToServerlessApiParams - Parameters for the request
+		@return UpgradeClusterToServerlessApiRequest
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
-	UpgradeSharedClusterToServerlessWithParams(ctx context.Context, args *UpgradeSharedClusterToServerlessApiParams) UpgradeSharedClusterToServerlessApiRequest
+	UpgradeClusterToServerlessWithParams(ctx context.Context, args *UpgradeClusterToServerlessApiParams) UpgradeClusterToServerlessApiRequest
 
 	// Method available only for mocking purposes
-	UpgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
+	UpgradeClusterToServerlessExecute(r UpgradeClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
+
+	/*
+			UpgradeTenantUpgrade Upgrade One Shared-Tier Cluster
+
+			Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
+
+		This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param legacyAtlasTenantClusterUpgradeRequest Details of the shared-tier cluster upgrade in the specified project.
+			@return UpgradeTenantUpgradeApiRequest
+	*/
+	UpgradeTenantUpgrade(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) UpgradeTenantUpgradeApiRequest
+	/*
+		UpgradeTenantUpgrade Upgrade One Shared-Tier Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpgradeTenantUpgradeApiParams - Parameters for the request
+		@return UpgradeTenantUpgradeApiRequest
+	*/
+	UpgradeTenantUpgradeWithParams(ctx context.Context, args *UpgradeTenantUpgradeApiParams) UpgradeTenantUpgradeApiRequest
+
+	// Method available only for mocking purposes
+	UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeApiRequest) (*LegacyAtlasCluster, *http.Response, error)
 }
 
 // ClustersApiService ClustersApi service
@@ -1014,129 +1014,6 @@ func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*Cluster
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetClusterAdvancedConfigurationApiRequest struct {
-	ctx         context.Context
-	ApiService  ClustersApi
-	groupId     string
-	clusterName string
-}
-
-type GetClusterAdvancedConfigurationApiParams struct {
-	GroupId     string
-	ClusterName string
-}
-
-func (a *ClustersApiService) GetClusterAdvancedConfigurationWithParams(ctx context.Context, args *GetClusterAdvancedConfigurationApiParams) GetClusterAdvancedConfigurationApiRequest {
-	return GetClusterAdvancedConfigurationApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
-	}
-}
-
-func (r GetClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
-	return r.ApiService.GetClusterAdvancedConfigurationExecute(r)
-}
-
-/*
-GetClusterAdvancedConfiguration Return Advanced Configuration Options for One Cluster
-
-Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, flex clusters, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster.
-	@return GetClusterAdvancedConfigurationApiRequest
-*/
-func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string) GetClusterAdvancedConfigurationApiRequest {
-	return GetClusterAdvancedConfigurationApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		clusterName: clusterName,
-	}
-}
-
-// GetClusterAdvancedConfigurationExecute executes the request
-//
-//	@return ClusterDescriptionProcessArgs20240805
-func (a *ClustersApiService) GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *ClusterDescriptionProcessArgs20240805
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterAdvancedConfiguration")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.clusterName == "" {
-		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type GetClusterStatusApiRequest struct {
 	ctx         context.Context
 	ApiService  ClustersApi
@@ -1260,20 +1137,143 @@ func (a *ClustersApiService) GetClusterStatusExecute(r GetClusterStatusApiReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetSampleDatasetLoadStatusApiRequest struct {
+type GetProcessArgsApiRequest struct {
+	ctx         context.Context
+	ApiService  ClustersApi
+	groupId     string
+	clusterName string
+}
+
+type GetProcessArgsApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *ClustersApiService) GetProcessArgsWithParams(ctx context.Context, args *GetProcessArgsApiParams) GetProcessArgsApiRequest {
+	return GetProcessArgsApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r GetProcessArgsApiRequest) Execute() (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
+	return r.ApiService.GetProcessArgsExecute(r)
+}
+
+/*
+GetProcessArgs Return Advanced Configuration Options for One Cluster
+
+Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, flex clusters, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return GetProcessArgsApiRequest
+*/
+func (a *ClustersApiService) GetProcessArgs(ctx context.Context, groupId string, clusterName string) GetProcessArgsApiRequest {
+	return GetProcessArgsApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// GetProcessArgsExecute executes the request
+//
+//	@return ClusterDescriptionProcessArgs20240805
+func (a *ClustersApiService) GetProcessArgsExecute(r GetProcessArgsApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterDescriptionProcessArgs20240805
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetProcessArgs")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetSampleDatasetLoadApiRequest struct {
 	ctx             context.Context
 	ApiService      ClustersApi
 	groupId         string
 	sampleDatasetId string
 }
 
-type GetSampleDatasetLoadStatusApiParams struct {
+type GetSampleDatasetLoadApiParams struct {
 	GroupId         string
 	SampleDatasetId string
 }
 
-func (a *ClustersApiService) GetSampleDatasetLoadStatusWithParams(ctx context.Context, args *GetSampleDatasetLoadStatusApiParams) GetSampleDatasetLoadStatusApiRequest {
-	return GetSampleDatasetLoadStatusApiRequest{
+func (a *ClustersApiService) GetSampleDatasetLoadWithParams(ctx context.Context, args *GetSampleDatasetLoadApiParams) GetSampleDatasetLoadApiRequest {
+	return GetSampleDatasetLoadApiRequest{
 		ApiService:      a,
 		ctx:             ctx,
 		groupId:         args.GroupId,
@@ -1281,22 +1281,22 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatusWithParams(ctx context.Co
 	}
 }
 
-func (r GetSampleDatasetLoadStatusApiRequest) Execute() (*SampleDatasetStatus, *http.Response, error) {
-	return r.ApiService.GetSampleDatasetLoadStatusExecute(r)
+func (r GetSampleDatasetLoadApiRequest) Execute() (*SampleDatasetStatus, *http.Response, error) {
+	return r.ApiService.GetSampleDatasetLoadExecute(r)
 }
 
 /*
-GetSampleDatasetLoadStatus Return Status of Sample Dataset Load for One Cluster
+GetSampleDatasetLoad Return Status of Sample Dataset Load for One Cluster
 
 Checks the progress of loading the sample dataset into one cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param sampleDatasetId Unique 24-hexadecimal digit string that identifies the loaded sample dataset.
-	@return GetSampleDatasetLoadStatusApiRequest
+	@return GetSampleDatasetLoadApiRequest
 */
-func (a *ClustersApiService) GetSampleDatasetLoadStatus(ctx context.Context, groupId string, sampleDatasetId string) GetSampleDatasetLoadStatusApiRequest {
-	return GetSampleDatasetLoadStatusApiRequest{
+func (a *ClustersApiService) GetSampleDatasetLoad(ctx context.Context, groupId string, sampleDatasetId string) GetSampleDatasetLoadApiRequest {
+	return GetSampleDatasetLoadApiRequest{
 		ApiService:      a,
 		ctx:             ctx,
 		groupId:         groupId,
@@ -1304,10 +1304,10 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatus(ctx context.Context, gro
 	}
 }
 
-// GetSampleDatasetLoadStatusExecute executes the request
+// GetSampleDatasetLoadExecute executes the request
 //
 //	@return SampleDatasetStatus
-func (a *ClustersApiService) GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error) {
+func (a *ClustersApiService) GetSampleDatasetLoadExecute(r GetSampleDatasetLoadApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1315,7 +1315,7 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatusExecute(r GetSampleDatase
 		localVarReturnValue *SampleDatasetStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetSampleDatasetLoadStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetSampleDatasetLoad")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1383,7 +1383,7 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatusExecute(r GetSampleDatase
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GrantMongoDbEmployeeAccessApiRequest struct {
+type GrantMongoEmployeeAccessApiRequest struct {
 	ctx                 context.Context
 	ApiService          ClustersApi
 	groupId             string
@@ -1391,14 +1391,14 @@ type GrantMongoDbEmployeeAccessApiRequest struct {
 	employeeAccessGrant *EmployeeAccessGrant
 }
 
-type GrantMongoDbEmployeeAccessApiParams struct {
+type GrantMongoEmployeeAccessApiParams struct {
 	GroupId             string
 	ClusterName         string
 	EmployeeAccessGrant *EmployeeAccessGrant
 }
 
-func (a *ClustersApiService) GrantMongoDbEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDbEmployeeAccessApiParams) GrantMongoDbEmployeeAccessApiRequest {
-	return GrantMongoDbEmployeeAccessApiRequest{
+func (a *ClustersApiService) GrantMongoEmployeeAccessWithParams(ctx context.Context, args *GrantMongoEmployeeAccessApiParams) GrantMongoEmployeeAccessApiRequest {
+	return GrantMongoEmployeeAccessApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
 		groupId:             args.GroupId,
@@ -1407,22 +1407,22 @@ func (a *ClustersApiService) GrantMongoDbEmployeeAccessWithParams(ctx context.Co
 	}
 }
 
-func (r GrantMongoDbEmployeeAccessApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.GrantMongoDbEmployeeAccessExecute(r)
+func (r GrantMongoEmployeeAccessApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GrantMongoEmployeeAccessExecute(r)
 }
 
 /*
-GrantMongoDbEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
+GrantMongoEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
 
 Grants MongoDB employee cluster access for the given duration and at the specified level for one cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies this cluster.
-	@return GrantMongoDbEmployeeAccessApiRequest
+	@return GrantMongoEmployeeAccessApiRequest
 */
-func (a *ClustersApiService) GrantMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDbEmployeeAccessApiRequest {
-	return GrantMongoDbEmployeeAccessApiRequest{
+func (a *ClustersApiService) GrantMongoEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoEmployeeAccessApiRequest {
+	return GrantMongoEmployeeAccessApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
 		groupId:             groupId,
@@ -1431,15 +1431,15 @@ func (a *ClustersApiService) GrantMongoDbEmployeeAccess(ctx context.Context, gro
 	}
 }
 
-// GrantMongoDbEmployeeAccessExecute executes the request
-func (a *ClustersApiService) GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmployeeAccessApiRequest) (*http.Response, error) {
+// GrantMongoEmployeeAccessExecute executes the request
+func (a *ClustersApiService) GrantMongoEmployeeAccessExecute(r GrantMongoEmployeeAccessApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GrantMongoDbEmployeeAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GrantMongoEmployeeAccess")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1498,7 +1498,160 @@ func (a *ClustersApiService) GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmp
 	return localVarHTTPResponse, nil
 }
 
-type ListCloudProviderRegionsApiRequest struct {
+type ListClusterDetailsApiRequest struct {
+	ctx          context.Context
+	ApiService   ClustersApi
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListClusterDetailsApiParams struct {
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *ClustersApiService) ListClusterDetailsWithParams(ctx context.Context, args *ListClusterDetailsApiParams) ListClusterDetailsApiRequest {
+	return ListClusterDetailsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListClusterDetailsApiRequest) IncludeCount(includeCount bool) ListClusterDetailsApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListClusterDetailsApiRequest) ItemsPerPage(itemsPerPage int) ListClusterDetailsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListClusterDetailsApiRequest) PageNum(pageNum int) ListClusterDetailsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListClusterDetailsApiRequest) Execute() (*PaginatedOrgGroup, *http.Response, error) {
+	return r.ApiService.ListClusterDetailsExecute(r)
+}
+
+/*
+ListClusterDetails Return All Authorized Clusters in All Projects
+
+Returns the details for all clusters in all projects to which you have access. Clusters contain a group of hosts that maintain the same data set. The response does not include multi-cloud clusters. To use this resource, the requesting Service Account or API Key can have any cluster-level role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ListClusterDetailsApiRequest
+*/
+func (a *ClustersApiService) ListClusterDetails(ctx context.Context) ListClusterDetailsApiRequest {
+	return ListClusterDetailsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// ListClusterDetailsExecute executes the request
+//
+//	@return PaginatedOrgGroup
+func (a *ClustersApiService) ListClusterDetailsExecute(r ListClusterDetailsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedOrgGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusterDetails")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/clusters"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListClusterProviderRegionsApiRequest struct {
 	ctx          context.Context
 	ApiService   ClustersApi
 	groupId      string
@@ -1509,7 +1662,7 @@ type ListCloudProviderRegionsApiRequest struct {
 	tier         *string
 }
 
-type ListCloudProviderRegionsApiParams struct {
+type ListClusterProviderRegionsApiParams struct {
 	GroupId      string
 	IncludeCount *bool
 	ItemsPerPage *int
@@ -1518,8 +1671,8 @@ type ListCloudProviderRegionsApiParams struct {
 	Tier         *string
 }
 
-func (a *ClustersApiService) ListCloudProviderRegionsWithParams(ctx context.Context, args *ListCloudProviderRegionsApiParams) ListCloudProviderRegionsApiRequest {
-	return ListCloudProviderRegionsApiRequest{
+func (a *ClustersApiService) ListClusterProviderRegionsWithParams(ctx context.Context, args *ListClusterProviderRegionsApiParams) ListClusterProviderRegionsApiRequest {
+	return ListClusterProviderRegionsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -1532,60 +1685,60 @@ func (a *ClustersApiService) ListCloudProviderRegionsWithParams(ctx context.Cont
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListCloudProviderRegionsApiRequest) IncludeCount(includeCount bool) ListCloudProviderRegionsApiRequest {
+func (r ListClusterProviderRegionsApiRequest) IncludeCount(includeCount bool) ListClusterProviderRegionsApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r ListCloudProviderRegionsApiRequest) ItemsPerPage(itemsPerPage int) ListCloudProviderRegionsApiRequest {
+func (r ListClusterProviderRegionsApiRequest) ItemsPerPage(itemsPerPage int) ListClusterProviderRegionsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListCloudProviderRegionsApiRequest) PageNum(pageNum int) ListCloudProviderRegionsApiRequest {
+func (r ListClusterProviderRegionsApiRequest) PageNum(pageNum int) ListClusterProviderRegionsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
 // Cloud providers whose regions to retrieve. When you specify multiple providers, the response can return only tiers and regions that support multi-cloud clusters.
-func (r ListCloudProviderRegionsApiRequest) Providers(providers []string) ListCloudProviderRegionsApiRequest {
+func (r ListClusterProviderRegionsApiRequest) Providers(providers []string) ListClusterProviderRegionsApiRequest {
 	r.providers = &providers
 	return r
 }
 
 // Cluster tier for which to retrieve the regions.
-func (r ListCloudProviderRegionsApiRequest) Tier(tier string) ListCloudProviderRegionsApiRequest {
+func (r ListClusterProviderRegionsApiRequest) Tier(tier string) ListClusterProviderRegionsApiRequest {
 	r.tier = &tier
 	return r
 }
 
-func (r ListCloudProviderRegionsApiRequest) Execute() (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
-	return r.ApiService.ListCloudProviderRegionsExecute(r)
+func (r ListClusterProviderRegionsApiRequest) Execute() (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
+	return r.ApiService.ListClusterProviderRegionsExecute(r)
 }
 
 /*
-ListCloudProviderRegions Return All Cloud Provider Regions
+ListClusterProviderRegions Return All Cloud Provider Regions
 
 Returns the list of regions available for the specified cloud provider at the specified tier. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListCloudProviderRegionsApiRequest
+	@return ListClusterProviderRegionsApiRequest
 */
-func (a *ClustersApiService) ListCloudProviderRegions(ctx context.Context, groupId string) ListCloudProviderRegionsApiRequest {
-	return ListCloudProviderRegionsApiRequest{
+func (a *ClustersApiService) ListClusterProviderRegions(ctx context.Context, groupId string) ListClusterProviderRegionsApiRequest {
+	return ListClusterProviderRegionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// ListCloudProviderRegionsExecute executes the request
+// ListClusterProviderRegionsExecute executes the request
 //
 //	@return PaginatedApiAtlasProviderRegions
-func (a *ClustersApiService) ListCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
+func (a *ClustersApiService) ListClusterProviderRegionsExecute(r ListClusterProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1593,7 +1746,7 @@ func (a *ClustersApiService) ListCloudProviderRegionsExecute(r ListCloudProvider
 		localVarReturnValue *PaginatedApiAtlasProviderRegions
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListCloudProviderRegions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusterProviderRegions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1868,282 +2021,6 @@ func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*Pag
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListClustersForAllProjectsApiRequest struct {
-	ctx          context.Context
-	ApiService   ClustersApi
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
-}
-
-type ListClustersForAllProjectsApiParams struct {
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
-}
-
-func (a *ClustersApiService) ListClustersForAllProjectsWithParams(ctx context.Context, args *ListClustersForAllProjectsApiParams) ListClustersForAllProjectsApiRequest {
-	return ListClustersForAllProjectsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-	}
-}
-
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListClustersForAllProjectsApiRequest) IncludeCount(includeCount bool) ListClustersForAllProjectsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
-
-// Number of items that the response returns per page.
-func (r ListClustersForAllProjectsApiRequest) ItemsPerPage(itemsPerPage int) ListClustersForAllProjectsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListClustersForAllProjectsApiRequest) PageNum(pageNum int) ListClustersForAllProjectsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-func (r ListClustersForAllProjectsApiRequest) Execute() (*PaginatedOrgGroup, *http.Response, error) {
-	return r.ApiService.ListClustersForAllProjectsExecute(r)
-}
-
-/*
-ListClustersForAllProjects Return All Authorized Clusters in All Projects
-
-Returns the details for all clusters in all projects to which you have access. Clusters contain a group of hosts that maintain the same data set. The response does not include multi-cloud clusters. To use this resource, the requesting Service Account or API Key can have any cluster-level role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ListClustersForAllProjectsApiRequest
-*/
-func (a *ClustersApiService) ListClustersForAllProjects(ctx context.Context) ListClustersForAllProjectsApiRequest {
-	return ListClustersForAllProjectsApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// ListClustersForAllProjectsExecute executes the request
-//
-//	@return PaginatedOrgGroup
-func (a *ClustersApiService) ListClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedOrgGroup
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClustersForAllProjects")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/clusters"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.includeCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	} else {
-		var defaultValue bool = true
-		r.includeCount = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	}
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type LoadSampleDatasetApiRequest struct {
-	ctx        context.Context
-	ApiService ClustersApi
-	groupId    string
-	name       string
-}
-
-type LoadSampleDatasetApiParams struct {
-	GroupId string
-	Name    string
-}
-
-func (a *ClustersApiService) LoadSampleDatasetWithParams(ctx context.Context, args *LoadSampleDatasetApiParams) LoadSampleDatasetApiRequest {
-	return LoadSampleDatasetApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		name:       args.Name,
-	}
-}
-
-func (r LoadSampleDatasetApiRequest) Execute() (*SampleDatasetStatus, *http.Response, error) {
-	return r.ApiService.LoadSampleDatasetExecute(r)
-}
-
-/*
-LoadSampleDataset Load Sample Dataset into One Cluster
-
-Requests loading the MongoDB sample dataset into the specified cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param name Human-readable label that identifies the cluster into which you load the sample dataset.
-	@return LoadSampleDatasetApiRequest
-*/
-func (a *ClustersApiService) LoadSampleDataset(ctx context.Context, groupId string, name string) LoadSampleDatasetApiRequest {
-	return LoadSampleDatasetApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		name:       name,
-	}
-}
-
-// LoadSampleDatasetExecute executes the request
-//
-//	@return SampleDatasetStatus
-func (a *ClustersApiService) LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *SampleDatasetStatus
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.LoadSampleDataset")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.name == "" {
-		return localVarReturnValue, nil, reportError("name is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type PinFeatureCompatibilityVersionApiRequest struct {
 	ctx         context.Context
 	ApiService  ClustersApi
@@ -2256,72 +2133,75 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureC
 	return localVarHTTPResponse, nil
 }
 
-type RevokeMongoDbEmployeeAccessApiRequest struct {
-	ctx         context.Context
-	ApiService  ClustersApi
-	groupId     string
-	clusterName string
+type RequestSampleDatasetLoadApiRequest struct {
+	ctx        context.Context
+	ApiService ClustersApi
+	groupId    string
+	name       string
 }
 
-type RevokeMongoDbEmployeeAccessApiParams struct {
-	GroupId     string
-	ClusterName string
+type RequestSampleDatasetLoadApiParams struct {
+	GroupId string
+	Name    string
 }
 
-func (a *ClustersApiService) RevokeMongoDbEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDbEmployeeAccessApiParams) RevokeMongoDbEmployeeAccessApiRequest {
-	return RevokeMongoDbEmployeeAccessApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
+func (a *ClustersApiService) RequestSampleDatasetLoadWithParams(ctx context.Context, args *RequestSampleDatasetLoadApiParams) RequestSampleDatasetLoadApiRequest {
+	return RequestSampleDatasetLoadApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		name:       args.Name,
 	}
 }
 
-func (r RevokeMongoDbEmployeeAccessApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RevokeMongoDbEmployeeAccessExecute(r)
+func (r RequestSampleDatasetLoadApiRequest) Execute() (*SampleDatasetStatus, *http.Response, error) {
+	return r.ApiService.RequestSampleDatasetLoadExecute(r)
 }
 
 /*
-RevokeMongoDbEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
+RequestSampleDatasetLoad Load Sample Dataset into One Cluster
 
-Revokes a previously granted MongoDB employee cluster access.
+Requests loading the MongoDB sample dataset into the specified cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies this cluster.
-	@return RevokeMongoDbEmployeeAccessApiRequest
+	@param name Human-readable label that identifies the cluster into which you load the sample dataset.
+	@return RequestSampleDatasetLoadApiRequest
 */
-func (a *ClustersApiService) RevokeMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDbEmployeeAccessApiRequest {
-	return RevokeMongoDbEmployeeAccessApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		clusterName: clusterName,
+func (a *ClustersApiService) RequestSampleDatasetLoad(ctx context.Context, groupId string, name string) RequestSampleDatasetLoadApiRequest {
+	return RequestSampleDatasetLoadApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		name:       name,
 	}
 }
 
-// RevokeMongoDbEmployeeAccessExecute executes the request
-func (a *ClustersApiService) RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbEmployeeAccessApiRequest) (*http.Response, error) {
+// RequestSampleDatasetLoadExecute executes the request
+//
+//	@return SampleDatasetStatus
+func (a *ClustersApiService) RequestSampleDatasetLoadExecute(r RequestSampleDatasetLoadApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   any
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *SampleDatasetStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RevokeMongoDbEmployeeAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RequestSampleDatasetLoad")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess"
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}"
 	if r.groupId == "" {
-		return nil, reportError("groupId is empty and must be specified")
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.clusterName == "" {
-		return nil, reportError("clusterName is empty and must be specified")
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
 	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2337,7 +2217,7 @@ func (a *ClustersApiService) RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbE
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2346,36 +2226,50 @@ func (a *ClustersApiService) RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbE
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TestFailoverApiRequest struct {
+type RestartPrimariesApiRequest struct {
 	ctx         context.Context
 	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 }
 
-type TestFailoverApiParams struct {
+type RestartPrimariesApiParams struct {
 	GroupId     string
 	ClusterName string
 }
 
-func (a *ClustersApiService) TestFailoverWithParams(ctx context.Context, args *TestFailoverApiParams) TestFailoverApiRequest {
-	return TestFailoverApiRequest{
+func (a *ClustersApiService) RestartPrimariesWithParams(ctx context.Context, args *RestartPrimariesApiParams) RestartPrimariesApiRequest {
+	return RestartPrimariesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     args.GroupId,
@@ -2383,22 +2277,22 @@ func (a *ClustersApiService) TestFailoverWithParams(ctx context.Context, args *T
 	}
 }
 
-func (r TestFailoverApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.TestFailoverExecute(r)
+func (r RestartPrimariesApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RestartPrimariesExecute(r)
 }
 
 /*
-TestFailover Test Failover for One Cluster
+RestartPrimaries Test Failover for One Cluster
 
 Starts a failover test for the specified cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. A failover test checks how MongoDB Cloud handles the failure of the cluster's primary node. During the test, MongoDB Cloud shuts down the primary node and elects a new primary. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
-	@return TestFailoverApiRequest
+	@return RestartPrimariesApiRequest
 */
-func (a *ClustersApiService) TestFailover(ctx context.Context, groupId string, clusterName string) TestFailoverApiRequest {
-	return TestFailoverApiRequest{
+func (a *ClustersApiService) RestartPrimaries(ctx context.Context, groupId string, clusterName string) RestartPrimariesApiRequest {
+	return RestartPrimariesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -2406,15 +2300,15 @@ func (a *ClustersApiService) TestFailover(ctx context.Context, groupId string, c
 	}
 }
 
-// TestFailoverExecute executes the request
-func (a *ClustersApiService) TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error) {
+// RestartPrimariesExecute executes the request
+func (a *ClustersApiService) RestartPrimariesExecute(r RestartPrimariesApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.TestFailover")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RestartPrimaries")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2444,6 +2338,112 @@ func (a *ClustersApiService) TestFailoverExecute(r TestFailoverApiRequest) (*htt
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RevokeMongoEmployeeAccessApiRequest struct {
+	ctx         context.Context
+	ApiService  ClustersApi
+	groupId     string
+	clusterName string
+}
+
+type RevokeMongoEmployeeAccessApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *ClustersApiService) RevokeMongoEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoEmployeeAccessApiParams) RevokeMongoEmployeeAccessApiRequest {
+	return RevokeMongoEmployeeAccessApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r RevokeMongoEmployeeAccessApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RevokeMongoEmployeeAccessExecute(r)
+}
+
+/*
+RevokeMongoEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
+
+Revokes a previously granted MongoDB employee cluster access.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies this cluster.
+	@return RevokeMongoEmployeeAccessApiRequest
+*/
+func (a *ClustersApiService) RevokeMongoEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoEmployeeAccessApiRequest {
+	return RevokeMongoEmployeeAccessApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// RevokeMongoEmployeeAccessExecute executes the request
+func (a *ClustersApiService) RevokeMongoEmployeeAccessExecute(r RevokeMongoEmployeeAccessApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RevokeMongoEmployeeAccess")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2706,7 +2706,7 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpdateClusterAdvancedConfigurationApiRequest struct {
+type UpdateProcessArgsApiRequest struct {
 	ctx                                   context.Context
 	ApiService                            ClustersApi
 	groupId                               string
@@ -2714,14 +2714,14 @@ type UpdateClusterAdvancedConfigurationApiRequest struct {
 	clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805
 }
 
-type UpdateClusterAdvancedConfigurationApiParams struct {
+type UpdateProcessArgsApiParams struct {
 	GroupId                               string
 	ClusterName                           string
 	ClusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805
 }
 
-func (a *ClustersApiService) UpdateClusterAdvancedConfigurationWithParams(ctx context.Context, args *UpdateClusterAdvancedConfigurationApiParams) UpdateClusterAdvancedConfigurationApiRequest {
-	return UpdateClusterAdvancedConfigurationApiRequest{
+func (a *ClustersApiService) UpdateProcessArgsWithParams(ctx context.Context, args *UpdateProcessArgsApiParams) UpdateProcessArgsApiRequest {
+	return UpdateProcessArgsApiRequest{
 		ApiService:                            a,
 		ctx:                                   ctx,
 		groupId:                               args.GroupId,
@@ -2730,22 +2730,22 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationWithParams(ctx co
 	}
 }
 
-func (r UpdateClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
-	return r.ApiService.UpdateClusterAdvancedConfigurationExecute(r)
+func (r UpdateProcessArgsApiRequest) Execute() (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
+	return r.ApiService.UpdateProcessArgsExecute(r)
 }
 
 /*
-UpdateClusterAdvancedConfiguration Update Advanced Configuration Options for One Cluster
+UpdateProcessArgs Update Advanced Configuration Options for One Cluster
 
 Updates the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, flex clusters, or serverless clusters. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
-	@return UpdateClusterAdvancedConfigurationApiRequest
+	@return UpdateProcessArgsApiRequest
 */
-func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805) UpdateClusterAdvancedConfigurationApiRequest {
-	return UpdateClusterAdvancedConfigurationApiRequest{
+func (a *ClustersApiService) UpdateProcessArgs(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805) UpdateProcessArgsApiRequest {
+	return UpdateProcessArgsApiRequest{
 		ApiService:                            a,
 		ctx:                                   ctx,
 		groupId:                               groupId,
@@ -2754,10 +2754,10 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Cont
 	}
 }
 
-// UpdateClusterAdvancedConfigurationExecute executes the request
+// UpdateProcessArgsExecute executes the request
 //
 //	@return ClusterDescriptionProcessArgs20240805
-func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
+func (a *ClustersApiService) UpdateProcessArgsExecute(r UpdateProcessArgsApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2765,7 +2765,7 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateC
 		localVarReturnValue *ClusterDescriptionProcessArgs20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpdateClusterAdvancedConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpdateProcessArgs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2838,145 +2838,20 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradeSharedClusterApiRequest struct {
-	ctx                                    context.Context
-	ApiService                             ClustersApi
-	groupId                                string
-	legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest
-}
-
-type UpgradeSharedClusterApiParams struct {
-	GroupId                                string
-	LegacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest
-}
-
-func (a *ClustersApiService) UpgradeSharedClusterWithParams(ctx context.Context, args *UpgradeSharedClusterApiParams) UpgradeSharedClusterApiRequest {
-	return UpgradeSharedClusterApiRequest{
-		ApiService:                             a,
-		ctx:                                    ctx,
-		groupId:                                args.GroupId,
-		legacyAtlasTenantClusterUpgradeRequest: args.LegacyAtlasTenantClusterUpgradeRequest,
-	}
-}
-
-func (r UpgradeSharedClusterApiRequest) Execute() (*LegacyAtlasCluster, *http.Response, error) {
-	return r.ApiService.UpgradeSharedClusterExecute(r)
-}
-
-/*
-UpgradeSharedCluster Upgrade One Shared-Tier Cluster
-
-Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
-
-This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return UpgradeSharedClusterApiRequest
-*/
-func (a *ClustersApiService) UpgradeSharedCluster(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) UpgradeSharedClusterApiRequest {
-	return UpgradeSharedClusterApiRequest{
-		ApiService:                             a,
-		ctx:                                    ctx,
-		groupId:                                groupId,
-		legacyAtlasTenantClusterUpgradeRequest: legacyAtlasTenantClusterUpgradeRequest,
-	}
-}
-
-// UpgradeSharedClusterExecute executes the request
-//
-//	@return LegacyAtlasCluster
-func (a *ClustersApiService) UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *LegacyAtlasCluster
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpgradeSharedCluster")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.legacyAtlasTenantClusterUpgradeRequest == nil {
-		return localVarReturnValue, nil, reportError("legacyAtlasTenantClusterUpgradeRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.legacyAtlasTenantClusterUpgradeRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type UpgradeSharedClusterToServerlessApiRequest struct {
+type UpgradeClusterToServerlessApiRequest struct {
 	ctx                           context.Context
 	ApiService                    ClustersApi
 	groupId                       string
 	serverlessInstanceDescription *ServerlessInstanceDescription
 }
 
-type UpgradeSharedClusterToServerlessApiParams struct {
+type UpgradeClusterToServerlessApiParams struct {
 	GroupId                       string
 	ServerlessInstanceDescription *ServerlessInstanceDescription
 }
 
-func (a *ClustersApiService) UpgradeSharedClusterToServerlessWithParams(ctx context.Context, args *UpgradeSharedClusterToServerlessApiParams) UpgradeSharedClusterToServerlessApiRequest {
-	return UpgradeSharedClusterToServerlessApiRequest{
+func (a *ClustersApiService) UpgradeClusterToServerlessWithParams(ctx context.Context, args *UpgradeClusterToServerlessApiParams) UpgradeClusterToServerlessApiRequest {
+	return UpgradeClusterToServerlessApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
 		groupId:                       args.GroupId,
@@ -2984,12 +2859,12 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerlessWithParams(ctx cont
 	}
 }
 
-func (r UpgradeSharedClusterToServerlessApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
-	return r.ApiService.UpgradeSharedClusterToServerlessExecute(r)
+func (r UpgradeClusterToServerlessApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
+	return r.ApiService.UpgradeClusterToServerlessExecute(r)
 }
 
 /*
-UpgradeSharedClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
+UpgradeClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
 
 This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the upgradeFlexCluster endpoint to upgrade Flex clusters.
 
@@ -2997,12 +2872,12 @@ This endpoint has been deprecated as of February 2025 as we no longer support th
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return UpgradeSharedClusterToServerlessApiRequest
+	@return UpgradeClusterToServerlessApiRequest
 
 Deprecated
 */
-func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeSharedClusterToServerlessApiRequest {
-	return UpgradeSharedClusterToServerlessApiRequest{
+func (a *ClustersApiService) UpgradeClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeClusterToServerlessApiRequest {
+	return UpgradeClusterToServerlessApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
 		groupId:                       groupId,
@@ -3010,12 +2885,12 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Contex
 	}
 }
 
-// UpgradeSharedClusterToServerlessExecute executes the request
+// UpgradeClusterToServerlessExecute executes the request
 //
 //	@return ServerlessInstanceDescription
 //
 // Deprecated
-func (a *ClustersApiService) UpgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ClustersApiService) UpgradeClusterToServerlessExecute(r UpgradeClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -3023,7 +2898,7 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerlessExecute(r UpgradeSh
 		localVarReturnValue *ServerlessInstanceDescription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpgradeSharedClusterToServerless")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpgradeClusterToServerless")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3060,6 +2935,131 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerlessExecute(r UpgradeSh
 	}
 	// body params
 	localVarPostBody = r.serverlessInstanceDescription
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpgradeTenantUpgradeApiRequest struct {
+	ctx                                    context.Context
+	ApiService                             ClustersApi
+	groupId                                string
+	legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest
+}
+
+type UpgradeTenantUpgradeApiParams struct {
+	GroupId                                string
+	LegacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest
+}
+
+func (a *ClustersApiService) UpgradeTenantUpgradeWithParams(ctx context.Context, args *UpgradeTenantUpgradeApiParams) UpgradeTenantUpgradeApiRequest {
+	return UpgradeTenantUpgradeApiRequest{
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                args.GroupId,
+		legacyAtlasTenantClusterUpgradeRequest: args.LegacyAtlasTenantClusterUpgradeRequest,
+	}
+}
+
+func (r UpgradeTenantUpgradeApiRequest) Execute() (*LegacyAtlasCluster, *http.Response, error) {
+	return r.ApiService.UpgradeTenantUpgradeExecute(r)
+}
+
+/*
+UpgradeTenantUpgrade Upgrade One Shared-Tier Cluster
+
+Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
+
+This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return UpgradeTenantUpgradeApiRequest
+*/
+func (a *ClustersApiService) UpgradeTenantUpgrade(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) UpgradeTenantUpgradeApiRequest {
+	return UpgradeTenantUpgradeApiRequest{
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                groupId,
+		legacyAtlasTenantClusterUpgradeRequest: legacyAtlasTenantClusterUpgradeRequest,
+	}
+}
+
+// UpgradeTenantUpgradeExecute executes the request
+//
+//	@return LegacyAtlasCluster
+func (a *ClustersApiService) UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *LegacyAtlasCluster
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpgradeTenantUpgrade")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.legacyAtlasTenantClusterUpgradeRequest == nil {
+		return localVarReturnValue, nil, reportError("legacyAtlasTenantClusterUpgradeRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.legacyAtlasTenantClusterUpgradeRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

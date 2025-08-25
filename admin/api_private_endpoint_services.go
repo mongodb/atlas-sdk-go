@@ -165,75 +165,75 @@ type PrivateEndpointServicesApi interface {
 	GetPrivateEndpointServiceExecute(r GetPrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error)
 
 	/*
-		GetRegionalizedPrivateEndpointSetting Return Regionalized Private Endpoint Status
+		GetRegionalEndpointMode Return Regionalized Private Endpoint Status
 
 		Checks whether each region in the specified cloud service provider can create multiple private endpoints per region. The cloud service provider manages the private endpoint for the project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetRegionalizedPrivateEndpointSettingApiRequest
+		@return GetRegionalEndpointModeApiRequest
 	*/
-	GetRegionalizedPrivateEndpointSetting(ctx context.Context, groupId string) GetRegionalizedPrivateEndpointSettingApiRequest
+	GetRegionalEndpointMode(ctx context.Context, groupId string) GetRegionalEndpointModeApiRequest
 	/*
-		GetRegionalizedPrivateEndpointSetting Return Regionalized Private Endpoint Status
+		GetRegionalEndpointMode Return Regionalized Private Endpoint Status
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetRegionalizedPrivateEndpointSettingApiParams - Parameters for the request
-		@return GetRegionalizedPrivateEndpointSettingApiRequest
+		@param GetRegionalEndpointModeApiParams - Parameters for the request
+		@return GetRegionalEndpointModeApiRequest
 	*/
-	GetRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *GetRegionalizedPrivateEndpointSettingApiParams) GetRegionalizedPrivateEndpointSettingApiRequest
+	GetRegionalEndpointModeWithParams(ctx context.Context, args *GetRegionalEndpointModeApiParams) GetRegionalEndpointModeApiRequest
 
 	// Method available only for mocking purposes
-	GetRegionalizedPrivateEndpointSettingExecute(r GetRegionalizedPrivateEndpointSettingApiRequest) (*ProjectSettingItem, *http.Response, error)
+	GetRegionalEndpointModeExecute(r GetRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error)
 
 	/*
-		ListPrivateEndpointServices Return All Private Endpoint Services for One Provider
+		ListPrivateEndpointService Return All Private Endpoint Services for One Provider
 
 		Returns the name, interfaces, and state of all private endpoint services for the specified cloud service provider. This cloud service provider manages the private endpoint service for the project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param cloudProvider Cloud service provider that manages this private endpoint service.
-		@return ListPrivateEndpointServicesApiRequest
+		@return ListPrivateEndpointServiceApiRequest
 	*/
-	ListPrivateEndpointServices(ctx context.Context, groupId string, cloudProvider string) ListPrivateEndpointServicesApiRequest
+	ListPrivateEndpointService(ctx context.Context, groupId string, cloudProvider string) ListPrivateEndpointServiceApiRequest
 	/*
-		ListPrivateEndpointServices Return All Private Endpoint Services for One Provider
+		ListPrivateEndpointService Return All Private Endpoint Services for One Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListPrivateEndpointServicesApiParams - Parameters for the request
-		@return ListPrivateEndpointServicesApiRequest
+		@param ListPrivateEndpointServiceApiParams - Parameters for the request
+		@return ListPrivateEndpointServiceApiRequest
 	*/
-	ListPrivateEndpointServicesWithParams(ctx context.Context, args *ListPrivateEndpointServicesApiParams) ListPrivateEndpointServicesApiRequest
+	ListPrivateEndpointServiceWithParams(ctx context.Context, args *ListPrivateEndpointServiceApiParams) ListPrivateEndpointServiceApiRequest
 
 	// Method available only for mocking purposes
-	ListPrivateEndpointServicesExecute(r ListPrivateEndpointServicesApiRequest) ([]EndpointService, *http.Response, error)
+	ListPrivateEndpointServiceExecute(r ListPrivateEndpointServiceApiRequest) ([]EndpointService, *http.Response, error)
 
 	/*
-		ToggleRegionalizedPrivateEndpointSetting Toggle Regionalized Private Endpoint Status
+		ToggleRegionalEndpointMode Toggle Regionalized Private Endpoint Status
 
 		Enables or disables the ability to create multiple private endpoints per region in all cloud service providers in one project. The cloud service provider manages the private endpoints for the project. Connection strings to existing multi-region and global sharded clusters change when you enable this setting. You must update your applications to use the new connection strings. This might cause downtime. To use this resource, the requesting Service Account or API Key must have the Project Owner role and all clusters in the deployment must be sharded clusters. Once enabled, you cannot create replica sets.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param projectSettingItem Enables or disables the ability to create multiple private endpoints per region in all cloud service providers in one project.
-		@return ToggleRegionalizedPrivateEndpointSettingApiRequest
+		@return ToggleRegionalEndpointModeApiRequest
 	*/
-	ToggleRegionalizedPrivateEndpointSetting(ctx context.Context, groupId string, projectSettingItem *ProjectSettingItem) ToggleRegionalizedPrivateEndpointSettingApiRequest
+	ToggleRegionalEndpointMode(ctx context.Context, groupId string, projectSettingItem *ProjectSettingItem) ToggleRegionalEndpointModeApiRequest
 	/*
-		ToggleRegionalizedPrivateEndpointSetting Toggle Regionalized Private Endpoint Status
+		ToggleRegionalEndpointMode Toggle Regionalized Private Endpoint Status
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ToggleRegionalizedPrivateEndpointSettingApiParams - Parameters for the request
-		@return ToggleRegionalizedPrivateEndpointSettingApiRequest
+		@param ToggleRegionalEndpointModeApiParams - Parameters for the request
+		@return ToggleRegionalEndpointModeApiRequest
 	*/
-	ToggleRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *ToggleRegionalizedPrivateEndpointSettingApiParams) ToggleRegionalizedPrivateEndpointSettingApiRequest
+	ToggleRegionalEndpointModeWithParams(ctx context.Context, args *ToggleRegionalEndpointModeApiParams) ToggleRegionalEndpointModeApiRequest
 
 	// Method available only for mocking purposes
-	ToggleRegionalizedPrivateEndpointSettingExecute(r ToggleRegionalizedPrivateEndpointSettingApiRequest) (*ProjectSettingItem, *http.Response, error)
+	ToggleRegionalEndpointModeExecute(r ToggleRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error)
 }
 
 // PrivateEndpointServicesApiService PrivateEndpointServicesApi service
@@ -1015,49 +1015,49 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointServiceExecute(r G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetRegionalizedPrivateEndpointSettingApiRequest struct {
+type GetRegionalEndpointModeApiRequest struct {
 	ctx        context.Context
 	ApiService PrivateEndpointServicesApi
 	groupId    string
 }
 
-type GetRegionalizedPrivateEndpointSettingApiParams struct {
+type GetRegionalEndpointModeApiParams struct {
 	GroupId string
 }
 
-func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *GetRegionalizedPrivateEndpointSettingApiParams) GetRegionalizedPrivateEndpointSettingApiRequest {
-	return GetRegionalizedPrivateEndpointSettingApiRequest{
+func (a *PrivateEndpointServicesApiService) GetRegionalEndpointModeWithParams(ctx context.Context, args *GetRegionalEndpointModeApiParams) GetRegionalEndpointModeApiRequest {
+	return GetRegionalEndpointModeApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r GetRegionalizedPrivateEndpointSettingApiRequest) Execute() (*ProjectSettingItem, *http.Response, error) {
-	return r.ApiService.GetRegionalizedPrivateEndpointSettingExecute(r)
+func (r GetRegionalEndpointModeApiRequest) Execute() (*ProjectSettingItem, *http.Response, error) {
+	return r.ApiService.GetRegionalEndpointModeExecute(r)
 }
 
 /*
-GetRegionalizedPrivateEndpointSetting Return Regionalized Private Endpoint Status
+GetRegionalEndpointMode Return Regionalized Private Endpoint Status
 
 Checks whether each region in the specified cloud service provider can create multiple private endpoints per region. The cloud service provider manages the private endpoint for the project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetRegionalizedPrivateEndpointSettingApiRequest
+	@return GetRegionalEndpointModeApiRequest
 */
-func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSetting(ctx context.Context, groupId string) GetRegionalizedPrivateEndpointSettingApiRequest {
-	return GetRegionalizedPrivateEndpointSettingApiRequest{
+func (a *PrivateEndpointServicesApiService) GetRegionalEndpointMode(ctx context.Context, groupId string) GetRegionalEndpointModeApiRequest {
+	return GetRegionalEndpointModeApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// GetRegionalizedPrivateEndpointSettingExecute executes the request
+// GetRegionalEndpointModeExecute executes the request
 //
 //	@return ProjectSettingItem
-func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSettingExecute(r GetRegionalizedPrivateEndpointSettingApiRequest) (*ProjectSettingItem, *http.Response, error) {
+func (a *PrivateEndpointServicesApiService) GetRegionalEndpointModeExecute(r GetRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1065,7 +1065,7 @@ func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSettin
 		localVarReturnValue *ProjectSettingItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.GetRegionalizedPrivateEndpointSetting")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.GetRegionalEndpointMode")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1129,20 +1129,20 @@ func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSettin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListPrivateEndpointServicesApiRequest struct {
+type ListPrivateEndpointServiceApiRequest struct {
 	ctx           context.Context
 	ApiService    PrivateEndpointServicesApi
 	groupId       string
 	cloudProvider string
 }
 
-type ListPrivateEndpointServicesApiParams struct {
+type ListPrivateEndpointServiceApiParams struct {
 	GroupId       string
 	CloudProvider string
 }
 
-func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServicesWithParams(ctx context.Context, args *ListPrivateEndpointServicesApiParams) ListPrivateEndpointServicesApiRequest {
-	return ListPrivateEndpointServicesApiRequest{
+func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServiceWithParams(ctx context.Context, args *ListPrivateEndpointServiceApiParams) ListPrivateEndpointServiceApiRequest {
+	return ListPrivateEndpointServiceApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		groupId:       args.GroupId,
@@ -1150,22 +1150,22 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServicesWithParam
 	}
 }
 
-func (r ListPrivateEndpointServicesApiRequest) Execute() ([]EndpointService, *http.Response, error) {
-	return r.ApiService.ListPrivateEndpointServicesExecute(r)
+func (r ListPrivateEndpointServiceApiRequest) Execute() ([]EndpointService, *http.Response, error) {
+	return r.ApiService.ListPrivateEndpointServiceExecute(r)
 }
 
 /*
-ListPrivateEndpointServices Return All Private Endpoint Services for One Provider
+ListPrivateEndpointService Return All Private Endpoint Services for One Provider
 
 Returns the name, interfaces, and state of all private endpoint services for the specified cloud service provider. This cloud service provider manages the private endpoint service for the project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param cloudProvider Cloud service provider that manages this private endpoint service.
-	@return ListPrivateEndpointServicesApiRequest
+	@return ListPrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServices(ctx context.Context, groupId string, cloudProvider string) ListPrivateEndpointServicesApiRequest {
-	return ListPrivateEndpointServicesApiRequest{
+func (a *PrivateEndpointServicesApiService) ListPrivateEndpointService(ctx context.Context, groupId string, cloudProvider string) ListPrivateEndpointServiceApiRequest {
+	return ListPrivateEndpointServiceApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		groupId:       groupId,
@@ -1173,10 +1173,10 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServices(ctx cont
 	}
 }
 
-// ListPrivateEndpointServicesExecute executes the request
+// ListPrivateEndpointServiceExecute executes the request
 //
 //	@return []EndpointService
-func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServicesExecute(r ListPrivateEndpointServicesApiRequest) ([]EndpointService, *http.Response, error) {
+func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServiceExecute(r ListPrivateEndpointServiceApiRequest) ([]EndpointService, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1184,7 +1184,7 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServicesExecute(r
 		localVarReturnValue []EndpointService
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.ListPrivateEndpointServices")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.ListPrivateEndpointService")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1252,20 +1252,20 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServicesExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ToggleRegionalizedPrivateEndpointSettingApiRequest struct {
+type ToggleRegionalEndpointModeApiRequest struct {
 	ctx                context.Context
 	ApiService         PrivateEndpointServicesApi
 	groupId            string
 	projectSettingItem *ProjectSettingItem
 }
 
-type ToggleRegionalizedPrivateEndpointSettingApiParams struct {
+type ToggleRegionalEndpointModeApiParams struct {
 	GroupId            string
 	ProjectSettingItem *ProjectSettingItem
 }
 
-func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *ToggleRegionalizedPrivateEndpointSettingApiParams) ToggleRegionalizedPrivateEndpointSettingApiRequest {
-	return ToggleRegionalizedPrivateEndpointSettingApiRequest{
+func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointModeWithParams(ctx context.Context, args *ToggleRegionalEndpointModeApiParams) ToggleRegionalEndpointModeApiRequest {
+	return ToggleRegionalEndpointModeApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
 		groupId:            args.GroupId,
@@ -1273,21 +1273,21 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSet
 	}
 }
 
-func (r ToggleRegionalizedPrivateEndpointSettingApiRequest) Execute() (*ProjectSettingItem, *http.Response, error) {
-	return r.ApiService.ToggleRegionalizedPrivateEndpointSettingExecute(r)
+func (r ToggleRegionalEndpointModeApiRequest) Execute() (*ProjectSettingItem, *http.Response, error) {
+	return r.ApiService.ToggleRegionalEndpointModeExecute(r)
 }
 
 /*
-ToggleRegionalizedPrivateEndpointSetting Toggle Regionalized Private Endpoint Status
+ToggleRegionalEndpointMode Toggle Regionalized Private Endpoint Status
 
 Enables or disables the ability to create multiple private endpoints per region in all cloud service providers in one project. The cloud service provider manages the private endpoints for the project. Connection strings to existing multi-region and global sharded clusters change when you enable this setting. You must update your applications to use the new connection strings. This might cause downtime. To use this resource, the requesting Service Account or API Key must have the Project Owner role and all clusters in the deployment must be sharded clusters. Once enabled, you cannot create replica sets.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ToggleRegionalizedPrivateEndpointSettingApiRequest
+	@return ToggleRegionalEndpointModeApiRequest
 */
-func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSetting(ctx context.Context, groupId string, projectSettingItem *ProjectSettingItem) ToggleRegionalizedPrivateEndpointSettingApiRequest {
-	return ToggleRegionalizedPrivateEndpointSettingApiRequest{
+func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointMode(ctx context.Context, groupId string, projectSettingItem *ProjectSettingItem) ToggleRegionalEndpointModeApiRequest {
+	return ToggleRegionalEndpointModeApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
 		groupId:            groupId,
@@ -1295,10 +1295,10 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSet
 	}
 }
 
-// ToggleRegionalizedPrivateEndpointSettingExecute executes the request
+// ToggleRegionalEndpointModeExecute executes the request
 //
 //	@return ProjectSettingItem
-func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSettingExecute(r ToggleRegionalizedPrivateEndpointSettingApiRequest) (*ProjectSettingItem, *http.Response, error) {
+func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointModeExecute(r ToggleRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1306,7 +1306,7 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSet
 		localVarReturnValue *ProjectSettingItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.ToggleRegionalizedPrivateEndpointSetting")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.ToggleRegionalEndpointMode")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -2,7 +2,7 @@
 
 package admin
 
-// CreateAtlasOrganizationApiKey Details of the programmatic API key to be created.
+// CreateAtlasOrganizationApiKey Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters. Note that API Keys cannot be specified in the same request.
 type CreateAtlasOrganizationApiKey struct {
 	// Purpose or explanation provided when someone created this organization API key.
 	Desc string `json:"desc"`
