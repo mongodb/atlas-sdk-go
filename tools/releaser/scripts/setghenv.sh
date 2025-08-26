@@ -34,7 +34,7 @@ if [ "$SDK_MINOR_VERSION" = "0" ] && [ "$SDK_PATCH_VERSION" = "0" ]; then
     fi
 else
     # For minor versions, include non-breaking changes directly
-    if [ -n "$NON_BREAKING_CHANGES" ]; then
+    if [ -n "${NON_BREAKING_CHANGES:-}" ]; then
         echo "Adding non-breaking changes to release notes"
         RELEASE_NOTES=$(echo -e "${RELEASE_NOTES}\n\n## Changes\n${NON_BREAKING_CHANGES}")
     fi
