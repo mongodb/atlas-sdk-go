@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCustomZoneMapping**](GlobalClustersApi.md#CreateCustomZoneMapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Custom Zone Mapping to One Global Cluster
 [**CreateManagedNamespace**](GlobalClustersApi.md#CreateManagedNamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Cluster
-[**DeleteAllCustomZoneMappings**](GlobalClustersApi.md#DeleteAllCustomZoneMappings) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster
-[**DeleteManagedNamespace**](GlobalClustersApi.md#DeleteManagedNamespace) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster
-[**GetManagedNamespace**](GlobalClustersApi.md#GetManagedNamespace) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Cluster
+[**DeleteCustomZoneMapping**](GlobalClustersApi.md#DeleteCustomZoneMapping) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster
+[**DeleteManagedNamespaces**](GlobalClustersApi.md#DeleteManagedNamespaces) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster
+[**GetClusterGlobalWrites**](GlobalClustersApi.md#GetClusterGlobalWrites) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Cluster
 
 
 
@@ -182,9 +182,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteAllCustomZoneMappings
+## DeleteCustomZoneMapping
 
-> GeoSharding20240805 DeleteAllCustomZoneMappings(ctx, groupId, clusterName).Execute()
+> GeoSharding20240805 DeleteCustomZoneMapping(ctx, groupId, clusterName).Execute()
 
 Remove All Custom Zone Mappings from One Global Cluster
 
@@ -215,17 +215,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.GlobalClustersApi.DeleteAllCustomZoneMappings(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.GlobalClustersApi.DeleteCustomZoneMapping(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.DeleteAllCustomZoneMappings`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.DeleteCustomZoneMapping`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `DeleteAllCustomZoneMappings`: GeoSharding20240805
-    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.DeleteAllCustomZoneMappings`: %v (%v)\n", resp, r)
+    // response from `DeleteCustomZoneMapping`: GeoSharding20240805
+    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.DeleteCustomZoneMapping`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteAllCustomZoneMappingsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteCustomZoneMappingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -265,9 +265,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteManagedNamespace
+## DeleteManagedNamespaces
 
-> GeoSharding20240805 DeleteManagedNamespace(ctx, clusterName, groupId).Db(db).Collection(collection).Execute()
+> GeoSharding20240805 DeleteManagedNamespaces(ctx, clusterName, groupId).Db(db).Collection(collection).Execute()
 
 Remove One Managed Namespace from One Global Cluster
 
@@ -300,17 +300,17 @@ func main() {
     db := "db_example" // string |  (optional)
     collection := "collection_example" // string |  (optional)
 
-    resp, r, err := sdk.GlobalClustersApi.DeleteManagedNamespace(context.Background(), clusterName, groupId).Db(db).Collection(collection).Execute()
+    resp, r, err := sdk.GlobalClustersApi.DeleteManagedNamespaces(context.Background(), clusterName, groupId).Db(db).Collection(collection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.DeleteManagedNamespace`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.DeleteManagedNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `DeleteManagedNamespace`: GeoSharding20240805
-    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.DeleteManagedNamespace`: %v (%v)\n", resp, r)
+    // response from `DeleteManagedNamespaces`: GeoSharding20240805
+    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.DeleteManagedNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteManagedNamespaceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteManagedNamespacesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -352,9 +352,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetManagedNamespace
+## GetClusterGlobalWrites
 
-> GeoSharding20240805 GetManagedNamespace(ctx, groupId, clusterName).Execute()
+> GeoSharding20240805 GetClusterGlobalWrites(ctx, groupId, clusterName).Execute()
 
 Return One Managed Namespace in One Global Cluster
 
@@ -385,17 +385,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.GlobalClustersApi.GetManagedNamespace(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.GlobalClustersApi.GetClusterGlobalWrites(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.GetManagedNamespace`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.GetClusterGlobalWrites`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetManagedNamespace`: GeoSharding20240805
-    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.GetManagedNamespace`: %v (%v)\n", resp, r)
+    // response from `GetClusterGlobalWrites`: GeoSharding20240805
+    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.GetClusterGlobalWrites`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetManagedNamespaceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetClusterGlobalWritesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

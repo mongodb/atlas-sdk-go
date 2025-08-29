@@ -7,33 +7,33 @@ Method | HTTP request | Description
 [**AcceptVpcPeeringConnection**](StreamsApi.md#AcceptVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Accept One Incoming VPC Peering Connection
 [**CreatePrivateLinkConnection**](StreamsApi.md#CreatePrivateLinkConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection
 [**CreateStreamConnection**](StreamsApi.md#CreateStreamConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection
-[**CreateStreamInstance**](StreamsApi.md#CreateStreamInstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance
-[**CreateStreamInstanceWithSampleConnections**](StreamsApi.md#CreateStreamInstanceWithSampleConnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Instance with Sample Connections
 [**CreateStreamProcessor**](StreamsApi.md#CreateStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor
+[**CreateStreamWorkspace**](StreamsApi.md#CreateStreamWorkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance
 [**DeletePrivateLinkConnection**](StreamsApi.md#DeletePrivateLinkConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Delete One Private Link Connection
 [**DeleteStreamConnection**](StreamsApi.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
-[**DeleteStreamInstance**](StreamsApi.md#DeleteStreamInstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance
 [**DeleteStreamProcessor**](StreamsApi.md#DeleteStreamProcessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor
+[**DeleteStreamWorkspace**](StreamsApi.md#DeleteStreamWorkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance
 [**DeleteVpcPeeringConnection**](StreamsApi.md#DeleteVpcPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection
-[**DownloadStreamTenantAuditLogs**](StreamsApi.md#DownloadStreamTenantAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance
+[**DownloadAuditLogs**](StreamsApi.md#DownloadAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance
 [**GetAccountDetails**](StreamsApi.md#GetAccountDetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region
-[**GetActiveVpcPeeringConnections**](StreamsApi.md#GetActiveVpcPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections
 [**GetPrivateLinkConnection**](StreamsApi.md#GetPrivateLinkConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection
 [**GetStreamConnection**](StreamsApi.md#GetStreamConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection
-[**GetStreamInstance**](StreamsApi.md#GetStreamInstance) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance
 [**GetStreamProcessor**](StreamsApi.md#GetStreamProcessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Return One Stream Processor
-[**GetVpcPeeringConnections**](StreamsApi.md#GetVpcPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections
+[**GetStreamProcessors**](StreamsApi.md#GetStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Instance
+[**GetStreamWorkspace**](StreamsApi.md#GetStreamWorkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance
+[**ListActivePeeringConnections**](StreamsApi.md#ListActivePeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections
 [**ListPrivateLinkConnections**](StreamsApi.md#ListPrivateLinkConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link Connections
 [**ListStreamConnections**](StreamsApi.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Instances
-[**ListStreamInstances**](StreamsApi.md#ListStreamInstances) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Instances in One Project
-[**ListStreamProcessors**](StreamsApi.md#ListStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Instance
-[**ModifyStreamProcessor**](StreamsApi.md#ModifyStreamProcessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor
+[**ListStreamWorkspaces**](StreamsApi.md#ListStreamWorkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Instances in One Project
+[**ListVpcPeeringConnections**](StreamsApi.md#ListVpcPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections
 [**RejectVpcPeeringConnection**](StreamsApi.md#RejectVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Reject One Incoming VPC Peering Connection
 [**StartStreamProcessor**](StreamsApi.md#StartStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor
 [**StartStreamProcessorWith**](StreamsApi.md#StartStreamProcessorWith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options
 [**StopStreamProcessor**](StreamsApi.md#StopStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor
 [**UpdateStreamConnection**](StreamsApi.md#UpdateStreamConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection
-[**UpdateStreamInstance**](StreamsApi.md#UpdateStreamInstance) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Instance
+[**UpdateStreamProcessor**](StreamsApi.md#UpdateStreamProcessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor
+[**UpdateStreamWorkspace**](StreamsApi.md#UpdateStreamWorkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Instance
+[**WithStreamSampleConnections**](StreamsApi.md#WithStreamSampleConnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Instance with Sample Connections
 
 
 
@@ -287,170 +287,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateStreamInstance
-
-> StreamsTenant CreateStreamInstance(ctx, groupId, streamsTenant StreamsTenant).Execute()
-
-Create One Stream Instance
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    streamsTenant := *openapiclient.NewStreamsTenant() // StreamsTenant | 
-
-    resp, r, err := sdk.StreamsApi.CreateStreamInstance(context.Background(), groupId, &streamsTenant).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamInstance`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `CreateStreamInstance`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamInstance`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateStreamInstanceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **streamsTenant** | [**StreamsTenant**](StreamsTenant.md) | Details to create one streams instance in the specified project. | 
-
-### Return type
-
-[**StreamsTenant**](StreamsTenant.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: application/vnd.atlas.2023-02-01+json
-- **Accept**: application/vnd.atlas.2023-02-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateStreamInstanceWithSampleConnections
-
-> StreamsTenant CreateStreamInstanceWithSampleConnections(ctx, groupId, body any).Execute()
-
-Create One Stream Instance with Sample Connections
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    body := any{ ... } // any | 
-
-    resp, r, err := sdk.StreamsApi.CreateStreamInstanceWithSampleConnections(context.Background(), groupId, &body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamInstanceWithSampleConnections`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `CreateStreamInstanceWithSampleConnections`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamInstanceWithSampleConnections`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateStreamInstanceWithSampleConnectionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **any** | Details to create one streams instance in the specified project. | 
-
-### Return type
-
-[**StreamsTenant**](StreamsTenant.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: application/vnd.atlas.2024-08-05+json
-- **Accept**: application/vnd.atlas.2024-08-05+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CreateStreamProcessor
 
 > StreamsProcessor CreateStreamProcessor(ctx, groupId, tenantName, streamsProcessor StreamsProcessor).Execute()
@@ -530,6 +366,88 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2024-05-30+json
 - **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateStreamWorkspace
+
+> StreamsTenant CreateStreamWorkspace(ctx, groupId, streamsTenant StreamsTenant).Execute()
+
+Create One Stream Instance
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    streamsTenant := *openapiclient.NewStreamsTenant() // StreamsTenant | 
+
+    resp, r, err := sdk.StreamsApi.CreateStreamWorkspace(context.Background(), groupId, &streamsTenant).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamWorkspace`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateStreamWorkspace`: StreamsTenant
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamWorkspace`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateStreamWorkspaceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **streamsTenant** | [**StreamsTenant**](StreamsTenant.md) | Details to create one streams instance in the specified project. | 
+
+### Return type
+
+[**StreamsTenant**](StreamsTenant.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-02-01+json
+- **Accept**: application/vnd.atlas.2023-02-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -701,87 +619,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteStreamInstance
-
-> DeleteStreamInstance(ctx, groupId, tenantName).Execute()
-
-Delete One Stream Instance
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    tenantName := "tenantName_example" // string | 
-
-    r, err := sdk.StreamsApi.DeleteStreamInstance(context.Background(), groupId, tenantName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamInstance`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance to delete. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteStreamInstanceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## DeleteStreamProcessor
 
 > DeleteStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
@@ -860,6 +697,87 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteStreamWorkspace
+
+> DeleteStreamWorkspace(ctx, groupId, tenantName).Execute()
+
+Delete One Stream Instance
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+
+    r, err := sdk.StreamsApi.DeleteStreamWorkspace(context.Background(), groupId, tenantName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamWorkspace`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Human-readable label that identifies the stream instance to delete. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteStreamWorkspaceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-02-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -947,9 +865,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DownloadStreamTenantAuditLogs
+## DownloadAuditLogs
 
-> io.ReadCloser DownloadStreamTenantAuditLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
+> io.ReadCloser DownloadAuditLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
 
 Download Audit Logs for One Atlas Stream Processing Instance
 
@@ -982,17 +900,17 @@ func main() {
     endDate := int64(1636481348) // int64 |  (optional)
     startDate := int64(1636466948) // int64 |  (optional)
 
-    resp, r, err := sdk.StreamsApi.DownloadStreamTenantAuditLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
+    resp, r, err := sdk.StreamsApi.DownloadAuditLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadStreamTenantAuditLogs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadAuditLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `DownloadStreamTenantAuditLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DownloadStreamTenantAuditLogs`: %v (%v)\n", resp, r)
+    // response from `DownloadAuditLogs`: io.ReadCloser
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DownloadAuditLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1007,7 +925,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDownloadStreamTenantAuditLogsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDownloadAuditLogsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1104,88 +1022,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AccountDetails**](AccountDetails.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2024-11-13+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetActiveVpcPeeringConnections
-
-> GetActiveVpcPeeringConnections(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-
-Return All Active Incoming VPC Peering Connections
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    itemsPerPage := int(56) // int |  (optional) (default to 100)
-    pageNum := int(56) // int |  (optional) (default to 1)
-
-    r, err := sdk.StreamsApi.GetActiveVpcPeeringConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetActiveVpcPeeringConnections`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetActiveVpcPeeringConnectionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
-
-### Return type
-
- (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1369,91 +1205,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetStreamInstance
-
-> StreamsTenant GetStreamInstance(ctx, groupId, tenantName).IncludeConnections(includeConnections).Execute()
-
-Return One Stream Instance
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    tenantName := "tenantName_example" // string | 
-    includeConnections := true // bool |  (optional)
-
-    resp, r, err := sdk.StreamsApi.GetStreamInstance(context.Background(), groupId, tenantName).IncludeConnections(includeConnections).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamInstance`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetStreamInstance`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamInstance`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance to return. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetStreamInstanceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **includeConnections** | **bool** | Flag to indicate whether connections information should be included in the stream instance. | 
-
-### Return type
-
-[**StreamsTenant**](StreamsTenant.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetStreamProcessor
 
 > StreamsProcessorWithStats GetStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
@@ -1540,11 +1291,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetVpcPeeringConnections
+## GetStreamProcessors
 
-> GetVpcPeeringConnections(ctx, groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiStreamsStreamProcessorWithStats GetStreamProcessors(ctx, groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeCount(includeCount).Execute()
 
-Return All VPC Peering Connections
+Return All Stream Processors in One Stream Instance
 
 
 ### Example
@@ -1570,14 +1321,187 @@ func main() {
         return
     }
 
-    requesterAccountId := "requesterAccountId_example" // string | 
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+    includeCount := true // bool |  (optional) (default to true)
+
+    resp, r, err := sdk.StreamsApi.GetStreamProcessors(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeCount(includeCount).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamProcessors`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetStreamProcessors`: PaginatedApiStreamsStreamProcessorWithStats
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamProcessors`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetStreamProcessorsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+
+### Return type
+
+[**PaginatedApiStreamsStreamProcessorWithStats**](PaginatedApiStreamsStreamProcessorWithStats.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetStreamWorkspace
+
+> StreamsTenant GetStreamWorkspace(ctx, groupId, tenantName).IncludeConnections(includeConnections).Execute()
+
+Return One Stream Instance
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    includeConnections := true // bool |  (optional)
+
+    resp, r, err := sdk.StreamsApi.GetStreamWorkspace(context.Background(), groupId, tenantName).IncludeConnections(includeConnections).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamWorkspace`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetStreamWorkspace`: StreamsTenant
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamWorkspace`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Human-readable label that identifies the stream instance to return. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetStreamWorkspaceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **includeConnections** | **bool** | Flag to indicate whether connections information should be included in the stream instance. | 
+
+### Return type
+
+[**StreamsTenant**](StreamsTenant.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-02-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListActivePeeringConnections
+
+> ListActivePeeringConnections(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Active Incoming VPC Peering Connections
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    r, err := sdk.StreamsApi.GetVpcPeeringConnections(context.Background(), groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    r, err := sdk.StreamsApi.ListActivePeeringConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetVpcPeeringConnections`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListActivePeeringConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1597,12 +1521,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetVpcPeeringConnectionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListActivePeeringConnectionsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requesterAccountId** | **string** | The Account ID of the VPC Peering connection/s. | 
 
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
@@ -1617,7 +1540,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+json
+- **Accept**: application/vnd.atlas.2024-11-13+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1795,9 +1718,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListStreamInstances
+## ListStreamWorkspaces
 
-> PaginatedApiStreamsTenant ListStreamInstances(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiStreamsTenant ListStreamWorkspaces(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Stream Instances in One Project
 
@@ -1829,17 +1752,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.StreamsApi.ListStreamInstances(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsApi.ListStreamWorkspaces(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamInstances`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamWorkspaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListStreamInstances`: PaginatedApiStreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamInstances`: %v (%v)\n", resp, r)
+    // response from `ListStreamWorkspaces`: PaginatedApiStreamsTenant
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamWorkspaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1853,7 +1776,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListStreamInstancesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListStreamWorkspacesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1879,11 +1802,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListStreamProcessors
+## ListVpcPeeringConnections
 
-> PaginatedApiStreamsStreamProcessorWithStats ListStreamProcessors(ctx, groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeCount(includeCount).Execute()
+> ListVpcPeeringConnections(ctx, groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Stream Processors in One Stream Instance
+Return All VPC Peering Connections
 
 
 ### Example
@@ -1909,23 +1832,20 @@ func main() {
         return
     }
 
+    requesterAccountId := "requesterAccountId_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    tenantName := "tenantName_example" // string | 
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
-    includeCount := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.StreamsApi.ListStreamProcessors(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeCount(includeCount).Execute()
+    r, err := sdk.StreamsApi.ListVpcPeeringConnections(context.Background(), groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamProcessors`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListVpcPeeringConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListStreamProcessors`: PaginatedApiStreamsStreamProcessorWithStats
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamProcessors`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1936,24 +1856,22 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListStreamProcessorsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListVpcPeeringConnectionsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
+ **requesterAccountId** | **string** | The Account ID of the VPC Peering connection/s. | 
 
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
 
 ### Return type
 
-[**PaginatedApiStreamsStreamProcessorWithStats**](PaginatedApiStreamsStreamProcessorWithStats.md)
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1961,95 +1879,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2024-05-30+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ModifyStreamProcessor
-
-> StreamsProcessorWithStats ModifyStreamProcessor(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor StreamsModifyStreamProcessor).Execute()
-
-Update One Stream Processor
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    tenantName := "tenantName_example" // string | 
-    processorName := "processorName_example" // string | 
-    streamsModifyStreamProcessor := *openapiclient.NewStreamsModifyStreamProcessor() // StreamsModifyStreamProcessor | 
-
-    resp, r, err := sdk.StreamsApi.ModifyStreamProcessor(context.Background(), groupId, tenantName, processorName, &streamsModifyStreamProcessor).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ModifyStreamProcessor`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ModifyStreamProcessor`: StreamsProcessorWithStats
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ModifyStreamProcessor`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**processorName** | **string** | Human-readable label that identifies the stream processor. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiModifyStreamProcessorRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **streamsModifyStreamProcessor** | [**StreamsModifyStreamProcessor**](StreamsModifyStreamProcessor.md) | Modifications to apply to the stream processor. | 
-
-### Return type
-
-[**StreamsProcessorWithStats**](StreamsProcessorWithStats.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: application/vnd.atlas.2024-05-30+json
-- **Accept**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2023-02-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2479,9 +2309,97 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateStreamInstance
+## UpdateStreamProcessor
 
-> StreamsTenant UpdateStreamInstance(ctx, groupId, tenantName, streamsDataProcessRegion StreamsDataProcessRegion).Execute()
+> StreamsProcessorWithStats UpdateStreamProcessor(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor StreamsModifyStreamProcessor).Execute()
+
+Update One Stream Processor
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    processorName := "processorName_example" // string | 
+    streamsModifyStreamProcessor := *openapiclient.NewStreamsModifyStreamProcessor() // StreamsModifyStreamProcessor | 
+
+    resp, r, err := sdk.StreamsApi.UpdateStreamProcessor(context.Background(), groupId, tenantName, processorName, &streamsModifyStreamProcessor).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamProcessor`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateStreamProcessor`: StreamsProcessorWithStats
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamProcessor`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+**processorName** | **string** | Human-readable label that identifies the stream processor. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateStreamProcessorRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **streamsModifyStreamProcessor** | [**StreamsModifyStreamProcessor**](StreamsModifyStreamProcessor.md) | Modifications to apply to the stream processor. | 
+
+### Return type
+
+[**StreamsProcessorWithStats**](StreamsProcessorWithStats.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateStreamWorkspace
+
+> StreamsTenant UpdateStreamWorkspace(ctx, groupId, tenantName, streamsDataProcessRegion StreamsDataProcessRegion).Execute()
 
 Update One Stream Instance
 
@@ -2513,17 +2431,17 @@ func main() {
     tenantName := "tenantName_example" // string | 
     streamsDataProcessRegion := *openapiclient.NewStreamsDataProcessRegion("CloudProvider_example", "Region_example") // StreamsDataProcessRegion | 
 
-    resp, r, err := sdk.StreamsApi.UpdateStreamInstance(context.Background(), groupId, tenantName, &streamsDataProcessRegion).Execute()
+    resp, r, err := sdk.StreamsApi.UpdateStreamWorkspace(context.Background(), groupId, tenantName, &streamsDataProcessRegion).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamInstance`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamWorkspace`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateStreamInstance`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamInstance`: %v (%v)\n", resp, r)
+    // response from `UpdateStreamWorkspace`: StreamsTenant
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamWorkspace`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2538,7 +2456,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateStreamInstanceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateStreamWorkspaceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2558,6 +2476,88 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2023-02-01+json
 - **Accept**: application/vnd.atlas.2023-02-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## WithStreamSampleConnections
+
+> StreamsTenant WithStreamSampleConnections(ctx, groupId, body any).Execute()
+
+Create One Stream Instance with Sample Connections
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    body := any{ ... } // any | 
+
+    resp, r, err := sdk.StreamsApi.WithStreamSampleConnections(context.Background(), groupId, &body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.WithStreamSampleConnections`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `WithStreamSampleConnections`: StreamsTenant
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.WithStreamSampleConnections`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiWithStreamSampleConnectionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **any** | Details to create one streams instance in the specified project. | 
+
+### Return type
+
+[**StreamsTenant**](StreamsTenant.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -6,16 +6,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreatePipeline**](DataLakePipelinesApi.md#CreatePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines | Create One Data Lake Pipeline
 [**DeletePipeline**](DataLakePipelinesApi.md#DeletePipeline) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Remove One Data Lake Pipeline
-[**DeletePipelineRunDataset**](DataLakePipelinesApi.md#DeletePipelineRunDataset) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Delete One Pipeline Run Dataset
+[**DeletePipelineRun**](DataLakePipelinesApi.md#DeletePipelineRun) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Delete One Pipeline Run Dataset
+[**GetAvailablePipelineSchedules**](DataLakePipelinesApi.md#GetAvailablePipelineSchedules) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules | Return All Ingestion Schedules for One Data Lake Pipeline
+[**GetAvailablePipelineSnapshots**](DataLakePipelinesApi.md#GetAvailablePipelineSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots | Return All Backup Snapshots for One Data Lake Pipeline
 [**GetPipeline**](DataLakePipelinesApi.md#GetPipeline) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Return One Data Lake Pipeline
 [**GetPipelineRun**](DataLakePipelinesApi.md#GetPipelineRun) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Return One Data Lake Pipeline Run
 [**ListPipelineRuns**](DataLakePipelinesApi.md#ListPipelineRuns) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs | Return All Data Lake Pipeline Runs in One Project
-[**ListPipelineSchedules**](DataLakePipelinesApi.md#ListPipelineSchedules) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules | Return All Ingestion Schedules for One Data Lake Pipeline
-[**ListPipelineSnapshots**](DataLakePipelinesApi.md#ListPipelineSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots | Return All Backup Snapshots for One Data Lake Pipeline
 [**ListPipelines**](DataLakePipelinesApi.md#ListPipelines) | **Get** /api/atlas/v2/groups/{groupId}/pipelines | Return All Data Lake Pipelines in One Project
 [**PausePipeline**](DataLakePipelinesApi.md#PausePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause | Pause One Data Lake Pipeline
 [**ResumePipeline**](DataLakePipelinesApi.md#ResumePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume | Resume One Data Lake Pipeline
-[**TriggerSnapshotIngestion**](DataLakePipelinesApi.md#TriggerSnapshotIngestion) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger | Trigger On-Demand Snapshot Ingestion
+[**TriggerPipeline**](DataLakePipelinesApi.md#TriggerPipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger | Trigger On-Demand Snapshot Ingestion
 [**UpdatePipeline**](DataLakePipelinesApi.md#UpdatePipeline) | **Patch** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Update One Data Lake Pipeline
 
 
@@ -183,9 +183,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeletePipelineRunDataset
+## DeletePipelineRun
 
-> any DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
+> any DeletePipelineRun(ctx, groupId, pipelineName, pipelineRunId).Execute()
 
 Delete One Pipeline Run Dataset
 
@@ -217,17 +217,17 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     pipelineRunId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.DeletePipelineRunDataset(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.DeletePipelineRun(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipelineRunDataset`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipelineRun`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `DeletePipelineRunDataset`: any
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipelineRunDataset`: %v (%v)\n", resp, r)
+    // response from `DeletePipelineRun`: any
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipelineRun`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeletePipelineRunDatasetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeletePipelineRunRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -255,6 +255,180 @@ Name | Type | Description  | Notes
 ### Return type
 
 **any**
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAvailablePipelineSchedules
+
+> []DiskBackupApiPolicyItem GetAvailablePipelineSchedules(ctx, groupId, pipelineName).Execute()
+
+Return All Ingestion Schedules for One Data Lake Pipeline
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    pipelineName := "pipelineName_example" // string | 
+
+    resp, r, err := sdk.DataLakePipelinesApi.GetAvailablePipelineSchedules(context.Background(), groupId, pipelineName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetAvailablePipelineSchedules`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetAvailablePipelineSchedules`: []DiskBackupApiPolicyItem
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetAvailablePipelineSchedules`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**pipelineName** | **string** | Human-readable label that identifies the Data Lake Pipeline. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAvailablePipelineSchedulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]DiskBackupApiPolicyItem**](DiskBackupApiPolicyItem.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAvailablePipelineSnapshots
+
+> PaginatedBackupSnapshot GetAvailablePipelineSnapshots(ctx, groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
+
+Return All Backup Snapshots for One Data Lake Pipeline
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    pipelineName := "pipelineName_example" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+    completedAfter := time.Now() // time.Time |  (optional)
+
+    resp, r, err := sdk.DataLakePipelinesApi.GetAvailablePipelineSnapshots(context.Background(), groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetAvailablePipelineSnapshots`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetAvailablePipelineSnapshots`: PaginatedBackupSnapshot
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetAvailablePipelineSnapshots`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**pipelineName** | **string** | Human-readable label that identifies the Data Lake Pipeline. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAvailablePipelineSnapshotsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+ **completedAfter** | **time.Time** | Date and time after which MongoDB Cloud created the snapshot. If specified, MongoDB Cloud returns available backup snapshots created after this time and date only. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | 
+
+### Return type
+
+[**PaginatedBackupSnapshot**](PaginatedBackupSnapshot.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -529,180 +703,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListPipelineSchedules
-
-> []DiskBackupApiPolicyItem ListPipelineSchedules(ctx, groupId, pipelineName).Execute()
-
-Return All Ingestion Schedules for One Data Lake Pipeline
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    pipelineName := "pipelineName_example" // string | 
-
-    resp, r, err := sdk.DataLakePipelinesApi.ListPipelineSchedules(context.Background(), groupId, pipelineName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineSchedules`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListPipelineSchedules`: []DiskBackupApiPolicyItem
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineSchedules`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**pipelineName** | **string** | Human-readable label that identifies the Data Lake Pipeline. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListPipelineSchedulesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**[]DiskBackupApiPolicyItem**](DiskBackupApiPolicyItem.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListPipelineSnapshots
-
-> PaginatedBackupSnapshot ListPipelineSnapshots(ctx, groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
-
-Return All Backup Snapshots for One Data Lake Pipeline
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    pipelineName := "pipelineName_example" // string | 
-    includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(56) // int |  (optional) (default to 100)
-    pageNum := int(56) // int |  (optional) (default to 1)
-    completedAfter := time.Now() // time.Time |  (optional)
-
-    resp, r, err := sdk.DataLakePipelinesApi.ListPipelineSnapshots(context.Background(), groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineSnapshots`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListPipelineSnapshots`: PaginatedBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineSnapshots`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**pipelineName** | **string** | Human-readable label that identifies the Data Lake Pipeline. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListPipelineSnapshotsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
- **completedAfter** | **time.Time** | Date and time after which MongoDB Cloud created the snapshot. If specified, MongoDB Cloud returns available backup snapshots created after this time and date only. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | 
-
-### Return type
-
-[**PaginatedBackupSnapshot**](PaginatedBackupSnapshot.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListPipelines
 
 > []DataLakeIngestionPipeline ListPipelines(ctx, groupId).Execute()
@@ -949,9 +949,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## TriggerSnapshotIngestion
+## TriggerPipeline
 
-> IngestionPipelineRun TriggerSnapshotIngestion(ctx, groupId, pipelineName, triggerIngestionPipelineRequest TriggerIngestionPipelineRequest).Execute()
+> IngestionPipelineRun TriggerPipeline(ctx, groupId, pipelineName, triggerIngestionPipelineRequest TriggerIngestionPipelineRequest).Execute()
 
 Trigger On-Demand Snapshot Ingestion
 
@@ -983,17 +983,17 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     triggerIngestionPipelineRequest := *openapiclient.NewTriggerIngestionPipelineRequest("32b6e34b3d91647abb20e7b8") // TriggerIngestionPipelineRequest | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.TriggerSnapshotIngestion(context.Background(), groupId, pipelineName, &triggerIngestionPipelineRequest).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.TriggerPipeline(context.Background(), groupId, pipelineName, &triggerIngestionPipelineRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.TriggerSnapshotIngestion`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.TriggerPipeline`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `TriggerSnapshotIngestion`: IngestionPipelineRun
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.TriggerSnapshotIngestion`: %v (%v)\n", resp, r)
+    // response from `TriggerPipeline`: IngestionPipelineRun
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.TriggerPipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1008,7 +1008,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiTriggerSnapshotIngestionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiTriggerPipelineRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
