@@ -57,7 +57,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
-	projects, _, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
+	projects, _, err := sdk.ProjectsApi.ListGroups(ctx).Execute()
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
