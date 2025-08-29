@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -25,70 +25,70 @@ func (_m *SharedTierSnapshotsApi) EXPECT() *SharedTierSnapshotsApi_Expecter {
 	return &SharedTierSnapshotsApi_Expecter{mock: &_m.Mock}
 }
 
-// DownloadSharedClusterBackup provides a mock function with given fields: ctx, clusterName, groupId, tenantRestore
-func (_m *SharedTierSnapshotsApi) DownloadSharedClusterBackup(ctx context.Context, clusterName string, groupId string, tenantRestore *admin.TenantRestore) admin.DownloadSharedClusterBackupApiRequest {
+// DownloadClusterBackupTenant provides a mock function with given fields: ctx, clusterName, groupId, tenantRestore
+func (_m *SharedTierSnapshotsApi) DownloadClusterBackupTenant(ctx context.Context, clusterName string, groupId string, tenantRestore *admin.TenantRestore) admin.DownloadClusterBackupTenantApiRequest {
 	ret := _m.Called(ctx, clusterName, groupId, tenantRestore)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadSharedClusterBackup")
+		panic("no return value specified for DownloadClusterBackupTenant")
 	}
 
-	var r0 admin.DownloadSharedClusterBackupApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.TenantRestore) admin.DownloadSharedClusterBackupApiRequest); ok {
+	var r0 admin.DownloadClusterBackupTenantApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.TenantRestore) admin.DownloadClusterBackupTenantApiRequest); ok {
 		r0 = rf(ctx, clusterName, groupId, tenantRestore)
 	} else {
-		r0 = ret.Get(0).(admin.DownloadSharedClusterBackupApiRequest)
+		r0 = ret.Get(0).(admin.DownloadClusterBackupTenantApiRequest)
 	}
 
 	return r0
 }
 
-// SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadSharedClusterBackup'
-type SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call struct {
+// SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadClusterBackupTenant'
+type SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call struct {
 	*mock.Call
 }
 
-// DownloadSharedClusterBackup is a helper method to define mock.On call
+// DownloadClusterBackupTenant is a helper method to define mock.On call
 //   - ctx context.Context
 //   - clusterName string
 //   - groupId string
 //   - tenantRestore *admin.TenantRestore
-func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackup(ctx any, clusterName any, groupId any, tenantRestore any) *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call {
-	return &SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call{Call: _e.mock.On("DownloadSharedClusterBackup", ctx, clusterName, groupId, tenantRestore)}
+func (_e *SharedTierSnapshotsApi_Expecter) DownloadClusterBackupTenant(ctx any, clusterName any, groupId any, tenantRestore any) *SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call {
+	return &SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call{Call: _e.mock.On("DownloadClusterBackupTenant", ctx, clusterName, groupId, tenantRestore)}
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call) Run(run func(ctx context.Context, clusterName string, groupId string, tenantRestore *admin.TenantRestore)) *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call) Run(run func(ctx context.Context, clusterName string, groupId string, tenantRestore *admin.TenantRestore)) *SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.TenantRestore))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call) Return(_a0 admin.DownloadSharedClusterBackupApiRequest) *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call) Return(_a0 admin.DownloadClusterBackupTenantApiRequest) *SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call) RunAndReturn(run func(context.Context, string, string, *admin.TenantRestore) admin.DownloadSharedClusterBackupApiRequest) *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call) RunAndReturn(run func(context.Context, string, string, *admin.TenantRestore) admin.DownloadClusterBackupTenantApiRequest) *SharedTierSnapshotsApi_DownloadClusterBackupTenant_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DownloadSharedClusterBackupExecute provides a mock function with given fields: r
-func (_m *SharedTierSnapshotsApi) DownloadSharedClusterBackupExecute(r admin.DownloadSharedClusterBackupApiRequest) (*admin.TenantRestore, *http.Response, error) {
+// DownloadClusterBackupTenantExecute provides a mock function with given fields: r
+func (_m *SharedTierSnapshotsApi) DownloadClusterBackupTenantExecute(r admin.DownloadClusterBackupTenantApiRequest) (*admin.TenantRestore, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadSharedClusterBackupExecute")
+		panic("no return value specified for DownloadClusterBackupTenantExecute")
 	}
 
 	var r0 *admin.TenantRestore
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DownloadSharedClusterBackupApiRequest) (*admin.TenantRestore, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DownloadClusterBackupTenantApiRequest) (*admin.TenantRestore, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DownloadSharedClusterBackupApiRequest) *admin.TenantRestore); ok {
+	if rf, ok := ret.Get(0).(func(admin.DownloadClusterBackupTenantApiRequest) *admin.TenantRestore); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -96,7 +96,7 @@ func (_m *SharedTierSnapshotsApi) DownloadSharedClusterBackupExecute(r admin.Dow
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DownloadSharedClusterBackupApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DownloadClusterBackupTenantApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -104,7 +104,7 @@ func (_m *SharedTierSnapshotsApi) DownloadSharedClusterBackupExecute(r admin.Dow
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DownloadSharedClusterBackupApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DownloadClusterBackupTenantApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -113,145 +113,145 @@ func (_m *SharedTierSnapshotsApi) DownloadSharedClusterBackupExecute(r admin.Dow
 	return r0, r1, r2
 }
 
-// SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadSharedClusterBackupExecute'
-type SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call struct {
+// SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadClusterBackupTenantExecute'
+type SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call struct {
 	*mock.Call
 }
 
-// DownloadSharedClusterBackupExecute is a helper method to define mock.On call
-//   - r admin.DownloadSharedClusterBackupApiRequest
-func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackupExecute(r any) *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call {
-	return &SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call{Call: _e.mock.On("DownloadSharedClusterBackupExecute", r)}
+// DownloadClusterBackupTenantExecute is a helper method to define mock.On call
+//   - r admin.DownloadClusterBackupTenantApiRequest
+func (_e *SharedTierSnapshotsApi_Expecter) DownloadClusterBackupTenantExecute(r any) *SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call {
+	return &SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call{Call: _e.mock.On("DownloadClusterBackupTenantExecute", r)}
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call) Run(run func(r admin.DownloadSharedClusterBackupApiRequest)) *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call) Run(run func(r admin.DownloadClusterBackupTenantApiRequest)) *SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DownloadSharedClusterBackupApiRequest))
+		run(args[0].(admin.DownloadClusterBackupTenantApiRequest))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call) Return(_a0 *admin.TenantRestore, _a1 *http.Response, _a2 error) *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call) Return(_a0 *admin.TenantRestore, _a1 *http.Response, _a2 error) *SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call) RunAndReturn(run func(admin.DownloadSharedClusterBackupApiRequest) (*admin.TenantRestore, *http.Response, error)) *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call) RunAndReturn(run func(admin.DownloadClusterBackupTenantApiRequest) (*admin.TenantRestore, *http.Response, error)) *SharedTierSnapshotsApi_DownloadClusterBackupTenantExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DownloadSharedClusterBackupWithParams provides a mock function with given fields: ctx, args
-func (_m *SharedTierSnapshotsApi) DownloadSharedClusterBackupWithParams(ctx context.Context, args *admin.DownloadSharedClusterBackupApiParams) admin.DownloadSharedClusterBackupApiRequest {
+// DownloadClusterBackupTenantWithParams provides a mock function with given fields: ctx, args
+func (_m *SharedTierSnapshotsApi) DownloadClusterBackupTenantWithParams(ctx context.Context, args *admin.DownloadClusterBackupTenantApiParams) admin.DownloadClusterBackupTenantApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadSharedClusterBackupWithParams")
+		panic("no return value specified for DownloadClusterBackupTenantWithParams")
 	}
 
-	var r0 admin.DownloadSharedClusterBackupApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadSharedClusterBackupApiParams) admin.DownloadSharedClusterBackupApiRequest); ok {
+	var r0 admin.DownloadClusterBackupTenantApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadClusterBackupTenantApiParams) admin.DownloadClusterBackupTenantApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DownloadSharedClusterBackupApiRequest)
+		r0 = ret.Get(0).(admin.DownloadClusterBackupTenantApiRequest)
 	}
 
 	return r0
 }
 
-// SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadSharedClusterBackupWithParams'
-type SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call struct {
+// SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadClusterBackupTenantWithParams'
+type SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call struct {
 	*mock.Call
 }
 
-// DownloadSharedClusterBackupWithParams is a helper method to define mock.On call
+// DownloadClusterBackupTenantWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DownloadSharedClusterBackupApiParams
-func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackupWithParams(ctx any, args any) *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call {
-	return &SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call{Call: _e.mock.On("DownloadSharedClusterBackupWithParams", ctx, args)}
+//   - args *admin.DownloadClusterBackupTenantApiParams
+func (_e *SharedTierSnapshotsApi_Expecter) DownloadClusterBackupTenantWithParams(ctx any, args any) *SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call {
+	return &SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call{Call: _e.mock.On("DownloadClusterBackupTenantWithParams", ctx, args)}
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadSharedClusterBackupApiParams)) *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadClusterBackupTenantApiParams)) *SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DownloadSharedClusterBackupApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DownloadClusterBackupTenantApiParams))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call) Return(_a0 admin.DownloadSharedClusterBackupApiRequest) *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call) Return(_a0 admin.DownloadClusterBackupTenantApiRequest) *SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadSharedClusterBackupApiParams) admin.DownloadSharedClusterBackupApiRequest) *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call {
+func (_c *SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadClusterBackupTenantApiParams) admin.DownloadClusterBackupTenantApiRequest) *SharedTierSnapshotsApi_DownloadClusterBackupTenantWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetSharedClusterBackup provides a mock function with given fields: ctx, groupId, clusterName, snapshotId
-func (_m *SharedTierSnapshotsApi) GetSharedClusterBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) admin.GetSharedClusterBackupApiRequest {
+// GetBackupTenantSnapshot provides a mock function with given fields: ctx, groupId, clusterName, snapshotId
+func (_m *SharedTierSnapshotsApi) GetBackupTenantSnapshot(ctx context.Context, groupId string, clusterName string, snapshotId string) admin.GetBackupTenantSnapshotApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, snapshotId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetSharedClusterBackup")
+		panic("no return value specified for GetBackupTenantSnapshot")
 	}
 
-	var r0 admin.GetSharedClusterBackupApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetSharedClusterBackupApiRequest); ok {
+	var r0 admin.GetBackupTenantSnapshotApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetBackupTenantSnapshotApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, snapshotId)
 	} else {
-		r0 = ret.Get(0).(admin.GetSharedClusterBackupApiRequest)
+		r0 = ret.Get(0).(admin.GetBackupTenantSnapshotApiRequest)
 	}
 
 	return r0
 }
 
-// SharedTierSnapshotsApi_GetSharedClusterBackup_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetSharedClusterBackup'
-type SharedTierSnapshotsApi_GetSharedClusterBackup_Call struct {
+// SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetBackupTenantSnapshot'
+type SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call struct {
 	*mock.Call
 }
 
-// GetSharedClusterBackup is a helper method to define mock.On call
+// GetBackupTenantSnapshot is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackup(ctx any, groupId any, clusterName any, snapshotId any) *SharedTierSnapshotsApi_GetSharedClusterBackup_Call {
-	return &SharedTierSnapshotsApi_GetSharedClusterBackup_Call{Call: _e.mock.On("GetSharedClusterBackup", ctx, groupId, clusterName, snapshotId)}
+func (_e *SharedTierSnapshotsApi_Expecter) GetBackupTenantSnapshot(ctx any, groupId any, clusterName any, snapshotId any) *SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call {
+	return &SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call{Call: _e.mock.On("GetBackupTenantSnapshot", ctx, groupId, clusterName, snapshotId)}
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackup_Call) Run(run func(ctx context.Context, groupId string, clusterName string, snapshotId string)) *SharedTierSnapshotsApi_GetSharedClusterBackup_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call) Run(run func(ctx context.Context, groupId string, clusterName string, snapshotId string)) *SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackup_Call) Return(_a0 admin.GetSharedClusterBackupApiRequest) *SharedTierSnapshotsApi_GetSharedClusterBackup_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call) Return(_a0 admin.GetBackupTenantSnapshotApiRequest) *SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackup_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetSharedClusterBackupApiRequest) *SharedTierSnapshotsApi_GetSharedClusterBackup_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetBackupTenantSnapshotApiRequest) *SharedTierSnapshotsApi_GetBackupTenantSnapshot_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetSharedClusterBackupExecute provides a mock function with given fields: r
-func (_m *SharedTierSnapshotsApi) GetSharedClusterBackupExecute(r admin.GetSharedClusterBackupApiRequest) (*admin.BackupTenantSnapshot, *http.Response, error) {
+// GetBackupTenantSnapshotExecute provides a mock function with given fields: r
+func (_m *SharedTierSnapshotsApi) GetBackupTenantSnapshotExecute(r admin.GetBackupTenantSnapshotApiRequest) (*admin.BackupTenantSnapshot, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetSharedClusterBackupExecute")
+		panic("no return value specified for GetBackupTenantSnapshotExecute")
 	}
 
 	var r0 *admin.BackupTenantSnapshot
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetSharedClusterBackupApiRequest) (*admin.BackupTenantSnapshot, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetBackupTenantSnapshotApiRequest) (*admin.BackupTenantSnapshot, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetSharedClusterBackupApiRequest) *admin.BackupTenantSnapshot); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetBackupTenantSnapshotApiRequest) *admin.BackupTenantSnapshot); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -259,7 +259,7 @@ func (_m *SharedTierSnapshotsApi) GetSharedClusterBackupExecute(r admin.GetShare
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetSharedClusterBackupApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetBackupTenantSnapshotApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -267,7 +267,7 @@ func (_m *SharedTierSnapshotsApi) GetSharedClusterBackupExecute(r admin.GetShare
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetSharedClusterBackupApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetBackupTenantSnapshotApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -276,144 +276,144 @@ func (_m *SharedTierSnapshotsApi) GetSharedClusterBackupExecute(r admin.GetShare
 	return r0, r1, r2
 }
 
-// SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetSharedClusterBackupExecute'
-type SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call struct {
+// SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetBackupTenantSnapshotExecute'
+type SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call struct {
 	*mock.Call
 }
 
-// GetSharedClusterBackupExecute is a helper method to define mock.On call
-//   - r admin.GetSharedClusterBackupApiRequest
-func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackupExecute(r any) *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call {
-	return &SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call{Call: _e.mock.On("GetSharedClusterBackupExecute", r)}
+// GetBackupTenantSnapshotExecute is a helper method to define mock.On call
+//   - r admin.GetBackupTenantSnapshotApiRequest
+func (_e *SharedTierSnapshotsApi_Expecter) GetBackupTenantSnapshotExecute(r any) *SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call {
+	return &SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call{Call: _e.mock.On("GetBackupTenantSnapshotExecute", r)}
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call) Run(run func(r admin.GetSharedClusterBackupApiRequest)) *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call) Run(run func(r admin.GetBackupTenantSnapshotApiRequest)) *SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetSharedClusterBackupApiRequest))
+		run(args[0].(admin.GetBackupTenantSnapshotApiRequest))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call) Return(_a0 *admin.BackupTenantSnapshot, _a1 *http.Response, _a2 error) *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call) Return(_a0 *admin.BackupTenantSnapshot, _a1 *http.Response, _a2 error) *SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call) RunAndReturn(run func(admin.GetSharedClusterBackupApiRequest) (*admin.BackupTenantSnapshot, *http.Response, error)) *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call) RunAndReturn(run func(admin.GetBackupTenantSnapshotApiRequest) (*admin.BackupTenantSnapshot, *http.Response, error)) *SharedTierSnapshotsApi_GetBackupTenantSnapshotExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetSharedClusterBackupWithParams provides a mock function with given fields: ctx, args
-func (_m *SharedTierSnapshotsApi) GetSharedClusterBackupWithParams(ctx context.Context, args *admin.GetSharedClusterBackupApiParams) admin.GetSharedClusterBackupApiRequest {
+// GetBackupTenantSnapshotWithParams provides a mock function with given fields: ctx, args
+func (_m *SharedTierSnapshotsApi) GetBackupTenantSnapshotWithParams(ctx context.Context, args *admin.GetBackupTenantSnapshotApiParams) admin.GetBackupTenantSnapshotApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetSharedClusterBackupWithParams")
+		panic("no return value specified for GetBackupTenantSnapshotWithParams")
 	}
 
-	var r0 admin.GetSharedClusterBackupApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetSharedClusterBackupApiParams) admin.GetSharedClusterBackupApiRequest); ok {
+	var r0 admin.GetBackupTenantSnapshotApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetBackupTenantSnapshotApiParams) admin.GetBackupTenantSnapshotApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetSharedClusterBackupApiRequest)
+		r0 = ret.Get(0).(admin.GetBackupTenantSnapshotApiRequest)
 	}
 
 	return r0
 }
 
-// SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetSharedClusterBackupWithParams'
-type SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call struct {
+// SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetBackupTenantSnapshotWithParams'
+type SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call struct {
 	*mock.Call
 }
 
-// GetSharedClusterBackupWithParams is a helper method to define mock.On call
+// GetBackupTenantSnapshotWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetSharedClusterBackupApiParams
-func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackupWithParams(ctx any, args any) *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call {
-	return &SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call{Call: _e.mock.On("GetSharedClusterBackupWithParams", ctx, args)}
+//   - args *admin.GetBackupTenantSnapshotApiParams
+func (_e *SharedTierSnapshotsApi_Expecter) GetBackupTenantSnapshotWithParams(ctx any, args any) *SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call {
+	return &SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call{Call: _e.mock.On("GetBackupTenantSnapshotWithParams", ctx, args)}
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call) Run(run func(ctx context.Context, args *admin.GetSharedClusterBackupApiParams)) *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call) Run(run func(ctx context.Context, args *admin.GetBackupTenantSnapshotApiParams)) *SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetSharedClusterBackupApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetBackupTenantSnapshotApiParams))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call) Return(_a0 admin.GetSharedClusterBackupApiRequest) *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call) Return(_a0 admin.GetBackupTenantSnapshotApiRequest) *SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetSharedClusterBackupApiParams) admin.GetSharedClusterBackupApiRequest) *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call {
+func (_c *SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetBackupTenantSnapshotApiParams) admin.GetBackupTenantSnapshotApiRequest) *SharedTierSnapshotsApi_GetBackupTenantSnapshotWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListSharedClusterBackups provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *SharedTierSnapshotsApi) ListSharedClusterBackups(ctx context.Context, groupId string, clusterName string) admin.ListSharedClusterBackupsApiRequest {
+// ListClusterBackupSnapshots provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *SharedTierSnapshotsApi) ListClusterBackupSnapshots(ctx context.Context, groupId string, clusterName string) admin.ListClusterBackupSnapshotsApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSharedClusterBackups")
+		panic("no return value specified for ListClusterBackupSnapshots")
 	}
 
-	var r0 admin.ListSharedClusterBackupsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListSharedClusterBackupsApiRequest); ok {
+	var r0 admin.ListClusterBackupSnapshotsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListClusterBackupSnapshotsApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName)
 	} else {
-		r0 = ret.Get(0).(admin.ListSharedClusterBackupsApiRequest)
+		r0 = ret.Get(0).(admin.ListClusterBackupSnapshotsApiRequest)
 	}
 
 	return r0
 }
 
-// SharedTierSnapshotsApi_ListSharedClusterBackups_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSharedClusterBackups'
-type SharedTierSnapshotsApi_ListSharedClusterBackups_Call struct {
+// SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListClusterBackupSnapshots'
+type SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call struct {
 	*mock.Call
 }
 
-// ListSharedClusterBackups is a helper method to define mock.On call
+// ListClusterBackupSnapshots is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackups(ctx any, groupId any, clusterName any) *SharedTierSnapshotsApi_ListSharedClusterBackups_Call {
-	return &SharedTierSnapshotsApi_ListSharedClusterBackups_Call{Call: _e.mock.On("ListSharedClusterBackups", ctx, groupId, clusterName)}
+func (_e *SharedTierSnapshotsApi_Expecter) ListClusterBackupSnapshots(ctx any, groupId any, clusterName any) *SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call {
+	return &SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call{Call: _e.mock.On("ListClusterBackupSnapshots", ctx, groupId, clusterName)}
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackups_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *SharedTierSnapshotsApi_ListSharedClusterBackups_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackups_Call) Return(_a0 admin.ListSharedClusterBackupsApiRequest) *SharedTierSnapshotsApi_ListSharedClusterBackups_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call) Return(_a0 admin.ListClusterBackupSnapshotsApiRequest) *SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackups_Call) RunAndReturn(run func(context.Context, string, string) admin.ListSharedClusterBackupsApiRequest) *SharedTierSnapshotsApi_ListSharedClusterBackups_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call) RunAndReturn(run func(context.Context, string, string) admin.ListClusterBackupSnapshotsApiRequest) *SharedTierSnapshotsApi_ListClusterBackupSnapshots_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListSharedClusterBackupsExecute provides a mock function with given fields: r
-func (_m *SharedTierSnapshotsApi) ListSharedClusterBackupsExecute(r admin.ListSharedClusterBackupsApiRequest) (*admin.PaginatedTenantSnapshot, *http.Response, error) {
+// ListClusterBackupSnapshotsExecute provides a mock function with given fields: r
+func (_m *SharedTierSnapshotsApi) ListClusterBackupSnapshotsExecute(r admin.ListClusterBackupSnapshotsApiRequest) (*admin.PaginatedTenantSnapshot, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSharedClusterBackupsExecute")
+		panic("no return value specified for ListClusterBackupSnapshotsExecute")
 	}
 
 	var r0 *admin.PaginatedTenantSnapshot
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListSharedClusterBackupsApiRequest) (*admin.PaginatedTenantSnapshot, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListClusterBackupSnapshotsApiRequest) (*admin.PaginatedTenantSnapshot, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListSharedClusterBackupsApiRequest) *admin.PaginatedTenantSnapshot); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListClusterBackupSnapshotsApiRequest) *admin.PaginatedTenantSnapshot); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -421,7 +421,7 @@ func (_m *SharedTierSnapshotsApi) ListSharedClusterBackupsExecute(r admin.ListSh
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListSharedClusterBackupsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListClusterBackupSnapshotsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -429,7 +429,7 @@ func (_m *SharedTierSnapshotsApi) ListSharedClusterBackupsExecute(r admin.ListSh
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListSharedClusterBackupsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListClusterBackupSnapshotsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -438,77 +438,77 @@ func (_m *SharedTierSnapshotsApi) ListSharedClusterBackupsExecute(r admin.ListSh
 	return r0, r1, r2
 }
 
-// SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSharedClusterBackupsExecute'
-type SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call struct {
+// SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListClusterBackupSnapshotsExecute'
+type SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call struct {
 	*mock.Call
 }
 
-// ListSharedClusterBackupsExecute is a helper method to define mock.On call
-//   - r admin.ListSharedClusterBackupsApiRequest
-func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackupsExecute(r any) *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call {
-	return &SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call{Call: _e.mock.On("ListSharedClusterBackupsExecute", r)}
+// ListClusterBackupSnapshotsExecute is a helper method to define mock.On call
+//   - r admin.ListClusterBackupSnapshotsApiRequest
+func (_e *SharedTierSnapshotsApi_Expecter) ListClusterBackupSnapshotsExecute(r any) *SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call {
+	return &SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call{Call: _e.mock.On("ListClusterBackupSnapshotsExecute", r)}
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call) Run(run func(r admin.ListSharedClusterBackupsApiRequest)) *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call) Run(run func(r admin.ListClusterBackupSnapshotsApiRequest)) *SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListSharedClusterBackupsApiRequest))
+		run(args[0].(admin.ListClusterBackupSnapshotsApiRequest))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call) Return(_a0 *admin.PaginatedTenantSnapshot, _a1 *http.Response, _a2 error) *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call) Return(_a0 *admin.PaginatedTenantSnapshot, _a1 *http.Response, _a2 error) *SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call) RunAndReturn(run func(admin.ListSharedClusterBackupsApiRequest) (*admin.PaginatedTenantSnapshot, *http.Response, error)) *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call) RunAndReturn(run func(admin.ListClusterBackupSnapshotsApiRequest) (*admin.PaginatedTenantSnapshot, *http.Response, error)) *SharedTierSnapshotsApi_ListClusterBackupSnapshotsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListSharedClusterBackupsWithParams provides a mock function with given fields: ctx, args
-func (_m *SharedTierSnapshotsApi) ListSharedClusterBackupsWithParams(ctx context.Context, args *admin.ListSharedClusterBackupsApiParams) admin.ListSharedClusterBackupsApiRequest {
+// ListClusterBackupSnapshotsWithParams provides a mock function with given fields: ctx, args
+func (_m *SharedTierSnapshotsApi) ListClusterBackupSnapshotsWithParams(ctx context.Context, args *admin.ListClusterBackupSnapshotsApiParams) admin.ListClusterBackupSnapshotsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSharedClusterBackupsWithParams")
+		panic("no return value specified for ListClusterBackupSnapshotsWithParams")
 	}
 
-	var r0 admin.ListSharedClusterBackupsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListSharedClusterBackupsApiParams) admin.ListSharedClusterBackupsApiRequest); ok {
+	var r0 admin.ListClusterBackupSnapshotsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListClusterBackupSnapshotsApiParams) admin.ListClusterBackupSnapshotsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListSharedClusterBackupsApiRequest)
+		r0 = ret.Get(0).(admin.ListClusterBackupSnapshotsApiRequest)
 	}
 
 	return r0
 }
 
-// SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSharedClusterBackupsWithParams'
-type SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call struct {
+// SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListClusterBackupSnapshotsWithParams'
+type SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListSharedClusterBackupsWithParams is a helper method to define mock.On call
+// ListClusterBackupSnapshotsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListSharedClusterBackupsApiParams
-func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackupsWithParams(ctx any, args any) *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call {
-	return &SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call{Call: _e.mock.On("ListSharedClusterBackupsWithParams", ctx, args)}
+//   - args *admin.ListClusterBackupSnapshotsApiParams
+func (_e *SharedTierSnapshotsApi_Expecter) ListClusterBackupSnapshotsWithParams(ctx any, args any) *SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call {
+	return &SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call{Call: _e.mock.On("ListClusterBackupSnapshotsWithParams", ctx, args)}
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListSharedClusterBackupsApiParams)) *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListClusterBackupSnapshotsApiParams)) *SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListSharedClusterBackupsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListClusterBackupSnapshotsApiParams))
 	})
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call) Return(_a0 admin.ListSharedClusterBackupsApiRequest) *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call) Return(_a0 admin.ListClusterBackupSnapshotsApiRequest) *SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListSharedClusterBackupsApiParams) admin.ListSharedClusterBackupsApiRequest) *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call {
+func (_c *SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListClusterBackupSnapshotsApiParams) admin.ListClusterBackupSnapshotsApiRequest) *SharedTierSnapshotsApi_ListClusterBackupSnapshotsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

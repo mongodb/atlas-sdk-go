@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**CreateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#CreateServerlessPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Create One Private Endpoint for One Serverless Instance
 [**DeleteServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#DeleteServerlessPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Remove One Private Endpoint for One Serverless Instance
 [**GetServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#GetServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Return One Private Endpoint for One Serverless Instance
-[**ListServerlessPrivateEndpoints**](ServerlessPrivateEndpointsApi.md#ListServerlessPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Return All Private Endpoints for One Serverless Instance
+[**ListServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#ListServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Return All Private Endpoints for One Serverless Instance
 [**UpdateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#UpdateServerlessPrivateEndpoint) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Update One Private Endpoint for One Serverless Instance
 
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -267,9 +267,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListServerlessPrivateEndpoints
+## ListServerlessPrivateEndpoint
 
-> []ServerlessTenantEndpoint ListServerlessPrivateEndpoints(ctx, groupId, instanceName).Execute()
+> []ServerlessTenantEndpoint ListServerlessPrivateEndpoint(ctx, groupId, instanceName).Execute()
 
 Return All Private Endpoints for One Serverless Instance
 
@@ -284,7 +284,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -300,17 +300,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoints(context.Background(), groupId, instanceName).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoint(context.Background(), groupId, instanceName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoints`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListServerlessPrivateEndpoints`: []ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoints`: %v (%v)\n", resp, r)
+    // response from `ListServerlessPrivateEndpoint`: []ServerlessTenantEndpoint
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListServerlessPrivateEndpointsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListServerlessPrivateEndpointRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -367,7 +367,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {

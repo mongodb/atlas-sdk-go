@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -25,68 +25,68 @@ func (_m *LDAPConfigurationApi) EXPECT() *LDAPConfigurationApi_Expecter {
 	return &LDAPConfigurationApi_Expecter{mock: &_m.Mock}
 }
 
-// DeleteLdapConfiguration provides a mock function with given fields: ctx, groupId
-func (_m *LDAPConfigurationApi) DeleteLdapConfiguration(ctx context.Context, groupId string) admin.DeleteLdapConfigurationApiRequest {
+// DeleteLdapUserMapping provides a mock function with given fields: ctx, groupId
+func (_m *LDAPConfigurationApi) DeleteLdapUserMapping(ctx context.Context, groupId string) admin.DeleteLdapUserMappingApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteLdapConfiguration")
+		panic("no return value specified for DeleteLdapUserMapping")
 	}
 
-	var r0 admin.DeleteLdapConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteLdapConfigurationApiRequest); ok {
+	var r0 admin.DeleteLdapUserMappingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteLdapUserMappingApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteLdapConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.DeleteLdapUserMappingApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_DeleteLdapConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLdapConfiguration'
-type LDAPConfigurationApi_DeleteLdapConfiguration_Call struct {
+// LDAPConfigurationApi_DeleteLdapUserMapping_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLdapUserMapping'
+type LDAPConfigurationApi_DeleteLdapUserMapping_Call struct {
 	*mock.Call
 }
 
-// DeleteLdapConfiguration is a helper method to define mock.On call
+// DeleteLdapUserMapping is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *LDAPConfigurationApi_Expecter) DeleteLdapConfiguration(ctx any, groupId any) *LDAPConfigurationApi_DeleteLdapConfiguration_Call {
-	return &LDAPConfigurationApi_DeleteLdapConfiguration_Call{Call: _e.mock.On("DeleteLdapConfiguration", ctx, groupId)}
+func (_e *LDAPConfigurationApi_Expecter) DeleteLdapUserMapping(ctx any, groupId any) *LDAPConfigurationApi_DeleteLdapUserMapping_Call {
+	return &LDAPConfigurationApi_DeleteLdapUserMapping_Call{Call: _e.mock.On("DeleteLdapUserMapping", ctx, groupId)}
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfiguration_Call) Run(run func(ctx context.Context, groupId string)) *LDAPConfigurationApi_DeleteLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMapping_Call) Run(run func(ctx context.Context, groupId string)) *LDAPConfigurationApi_DeleteLdapUserMapping_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfiguration_Call) Return(_a0 admin.DeleteLdapConfigurationApiRequest) *LDAPConfigurationApi_DeleteLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMapping_Call) Return(_a0 admin.DeleteLdapUserMappingApiRequest) *LDAPConfigurationApi_DeleteLdapUserMapping_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfiguration_Call) RunAndReturn(run func(context.Context, string) admin.DeleteLdapConfigurationApiRequest) *LDAPConfigurationApi_DeleteLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMapping_Call) RunAndReturn(run func(context.Context, string) admin.DeleteLdapUserMappingApiRequest) *LDAPConfigurationApi_DeleteLdapUserMapping_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteLdapConfigurationExecute provides a mock function with given fields: r
-func (_m *LDAPConfigurationApi) DeleteLdapConfigurationExecute(r admin.DeleteLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error) {
+// DeleteLdapUserMappingExecute provides a mock function with given fields: r
+func (_m *LDAPConfigurationApi) DeleteLdapUserMappingExecute(r admin.DeleteLdapUserMappingApiRequest) (*admin.UserSecurity, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteLdapConfigurationExecute")
+		panic("no return value specified for DeleteLdapUserMappingExecute")
 	}
 
 	var r0 *admin.UserSecurity
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLdapUserMappingApiRequest) (*admin.UserSecurity, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteLdapConfigurationApiRequest) *admin.UserSecurity); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLdapUserMappingApiRequest) *admin.UserSecurity); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -94,7 +94,7 @@ func (_m *LDAPConfigurationApi) DeleteLdapConfigurationExecute(r admin.DeleteLda
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteLdapConfigurationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteLdapUserMappingApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -102,7 +102,7 @@ func (_m *LDAPConfigurationApi) DeleteLdapConfigurationExecute(r admin.DeleteLda
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteLdapConfigurationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DeleteLdapUserMappingApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -111,143 +111,143 @@ func (_m *LDAPConfigurationApi) DeleteLdapConfigurationExecute(r admin.DeleteLda
 	return r0, r1, r2
 }
 
-// LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLdapConfigurationExecute'
-type LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call struct {
+// LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLdapUserMappingExecute'
+type LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteLdapConfigurationExecute is a helper method to define mock.On call
-//   - r admin.DeleteLdapConfigurationApiRequest
-func (_e *LDAPConfigurationApi_Expecter) DeleteLdapConfigurationExecute(r any) *LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call {
-	return &LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call{Call: _e.mock.On("DeleteLdapConfigurationExecute", r)}
+// DeleteLdapUserMappingExecute is a helper method to define mock.On call
+//   - r admin.DeleteLdapUserMappingApiRequest
+func (_e *LDAPConfigurationApi_Expecter) DeleteLdapUserMappingExecute(r any) *LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call {
+	return &LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call{Call: _e.mock.On("DeleteLdapUserMappingExecute", r)}
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call) Run(run func(r admin.DeleteLdapConfigurationApiRequest)) *LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call) Run(run func(r admin.DeleteLdapUserMappingApiRequest)) *LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteLdapConfigurationApiRequest))
+		run(args[0].(admin.DeleteLdapUserMappingApiRequest))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call) Return(_a0 *admin.UserSecurity, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call) Return(_a0 *admin.UserSecurity, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call) RunAndReturn(run func(admin.DeleteLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error)) *LDAPConfigurationApi_DeleteLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call) RunAndReturn(run func(admin.DeleteLdapUserMappingApiRequest) (*admin.UserSecurity, *http.Response, error)) *LDAPConfigurationApi_DeleteLdapUserMappingExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteLdapConfigurationWithParams provides a mock function with given fields: ctx, args
-func (_m *LDAPConfigurationApi) DeleteLdapConfigurationWithParams(ctx context.Context, args *admin.DeleteLdapConfigurationApiParams) admin.DeleteLdapConfigurationApiRequest {
+// DeleteLdapUserMappingWithParams provides a mock function with given fields: ctx, args
+func (_m *LDAPConfigurationApi) DeleteLdapUserMappingWithParams(ctx context.Context, args *admin.DeleteLdapUserMappingApiParams) admin.DeleteLdapUserMappingApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteLdapConfigurationWithParams")
+		panic("no return value specified for DeleteLdapUserMappingWithParams")
 	}
 
-	var r0 admin.DeleteLdapConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteLdapConfigurationApiParams) admin.DeleteLdapConfigurationApiRequest); ok {
+	var r0 admin.DeleteLdapUserMappingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteLdapUserMappingApiParams) admin.DeleteLdapUserMappingApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteLdapConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.DeleteLdapUserMappingApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLdapConfigurationWithParams'
-type LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call struct {
+// LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLdapUserMappingWithParams'
+type LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteLdapConfigurationWithParams is a helper method to define mock.On call
+// DeleteLdapUserMappingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteLdapConfigurationApiParams
-func (_e *LDAPConfigurationApi_Expecter) DeleteLdapConfigurationWithParams(ctx any, args any) *LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call {
-	return &LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call{Call: _e.mock.On("DeleteLdapConfigurationWithParams", ctx, args)}
+//   - args *admin.DeleteLdapUserMappingApiParams
+func (_e *LDAPConfigurationApi_Expecter) DeleteLdapUserMappingWithParams(ctx any, args any) *LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call {
+	return &LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call{Call: _e.mock.On("DeleteLdapUserMappingWithParams", ctx, args)}
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteLdapConfigurationApiParams)) *LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteLdapUserMappingApiParams)) *LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteLdapConfigurationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteLdapUserMappingApiParams))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call) Return(_a0 admin.DeleteLdapConfigurationApiRequest) *LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call) Return(_a0 admin.DeleteLdapUserMappingApiRequest) *LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteLdapConfigurationApiParams) admin.DeleteLdapConfigurationApiRequest) *LDAPConfigurationApi_DeleteLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteLdapUserMappingApiParams) admin.DeleteLdapUserMappingApiRequest) *LDAPConfigurationApi_DeleteLdapUserMappingWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetLdapConfiguration provides a mock function with given fields: ctx, groupId
-func (_m *LDAPConfigurationApi) GetLdapConfiguration(ctx context.Context, groupId string) admin.GetLdapConfigurationApiRequest {
+// GetUserSecurity provides a mock function with given fields: ctx, groupId
+func (_m *LDAPConfigurationApi) GetUserSecurity(ctx context.Context, groupId string) admin.GetUserSecurityApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetLdapConfiguration")
+		panic("no return value specified for GetUserSecurity")
 	}
 
-	var r0 admin.GetLdapConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetLdapConfigurationApiRequest); ok {
+	var r0 admin.GetUserSecurityApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetUserSecurityApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetLdapConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.GetUserSecurityApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_GetLdapConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLdapConfiguration'
-type LDAPConfigurationApi_GetLdapConfiguration_Call struct {
+// LDAPConfigurationApi_GetUserSecurity_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUserSecurity'
+type LDAPConfigurationApi_GetUserSecurity_Call struct {
 	*mock.Call
 }
 
-// GetLdapConfiguration is a helper method to define mock.On call
+// GetUserSecurity is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *LDAPConfigurationApi_Expecter) GetLdapConfiguration(ctx any, groupId any) *LDAPConfigurationApi_GetLdapConfiguration_Call {
-	return &LDAPConfigurationApi_GetLdapConfiguration_Call{Call: _e.mock.On("GetLdapConfiguration", ctx, groupId)}
+func (_e *LDAPConfigurationApi_Expecter) GetUserSecurity(ctx any, groupId any) *LDAPConfigurationApi_GetUserSecurity_Call {
+	return &LDAPConfigurationApi_GetUserSecurity_Call{Call: _e.mock.On("GetUserSecurity", ctx, groupId)}
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfiguration_Call) Run(run func(ctx context.Context, groupId string)) *LDAPConfigurationApi_GetLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurity_Call) Run(run func(ctx context.Context, groupId string)) *LDAPConfigurationApi_GetUserSecurity_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfiguration_Call) Return(_a0 admin.GetLdapConfigurationApiRequest) *LDAPConfigurationApi_GetLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurity_Call) Return(_a0 admin.GetUserSecurityApiRequest) *LDAPConfigurationApi_GetUserSecurity_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfiguration_Call) RunAndReturn(run func(context.Context, string) admin.GetLdapConfigurationApiRequest) *LDAPConfigurationApi_GetLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurity_Call) RunAndReturn(run func(context.Context, string) admin.GetUserSecurityApiRequest) *LDAPConfigurationApi_GetUserSecurity_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetLdapConfigurationExecute provides a mock function with given fields: r
-func (_m *LDAPConfigurationApi) GetLdapConfigurationExecute(r admin.GetLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error) {
+// GetUserSecurityExecute provides a mock function with given fields: r
+func (_m *LDAPConfigurationApi) GetUserSecurityExecute(r admin.GetUserSecurityApiRequest) (*admin.UserSecurity, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetLdapConfigurationExecute")
+		panic("no return value specified for GetUserSecurityExecute")
 	}
 
 	var r0 *admin.UserSecurity
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetUserSecurityApiRequest) (*admin.UserSecurity, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetLdapConfigurationApiRequest) *admin.UserSecurity); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetUserSecurityApiRequest) *admin.UserSecurity); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -255,7 +255,7 @@ func (_m *LDAPConfigurationApi) GetLdapConfigurationExecute(r admin.GetLdapConfi
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetLdapConfigurationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetUserSecurityApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -263,7 +263,7 @@ func (_m *LDAPConfigurationApi) GetLdapConfigurationExecute(r admin.GetLdapConfi
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetLdapConfigurationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetUserSecurityApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -272,97 +272,97 @@ func (_m *LDAPConfigurationApi) GetLdapConfigurationExecute(r admin.GetLdapConfi
 	return r0, r1, r2
 }
 
-// LDAPConfigurationApi_GetLdapConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLdapConfigurationExecute'
-type LDAPConfigurationApi_GetLdapConfigurationExecute_Call struct {
+// LDAPConfigurationApi_GetUserSecurityExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUserSecurityExecute'
+type LDAPConfigurationApi_GetUserSecurityExecute_Call struct {
 	*mock.Call
 }
 
-// GetLdapConfigurationExecute is a helper method to define mock.On call
-//   - r admin.GetLdapConfigurationApiRequest
-func (_e *LDAPConfigurationApi_Expecter) GetLdapConfigurationExecute(r any) *LDAPConfigurationApi_GetLdapConfigurationExecute_Call {
-	return &LDAPConfigurationApi_GetLdapConfigurationExecute_Call{Call: _e.mock.On("GetLdapConfigurationExecute", r)}
+// GetUserSecurityExecute is a helper method to define mock.On call
+//   - r admin.GetUserSecurityApiRequest
+func (_e *LDAPConfigurationApi_Expecter) GetUserSecurityExecute(r any) *LDAPConfigurationApi_GetUserSecurityExecute_Call {
+	return &LDAPConfigurationApi_GetUserSecurityExecute_Call{Call: _e.mock.On("GetUserSecurityExecute", r)}
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationExecute_Call) Run(run func(r admin.GetLdapConfigurationApiRequest)) *LDAPConfigurationApi_GetLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityExecute_Call) Run(run func(r admin.GetUserSecurityApiRequest)) *LDAPConfigurationApi_GetUserSecurityExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetLdapConfigurationApiRequest))
+		run(args[0].(admin.GetUserSecurityApiRequest))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationExecute_Call) Return(_a0 *admin.UserSecurity, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_GetLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityExecute_Call) Return(_a0 *admin.UserSecurity, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_GetUserSecurityExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationExecute_Call) RunAndReturn(run func(admin.GetLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error)) *LDAPConfigurationApi_GetLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityExecute_Call) RunAndReturn(run func(admin.GetUserSecurityApiRequest) (*admin.UserSecurity, *http.Response, error)) *LDAPConfigurationApi_GetUserSecurityExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetLdapConfigurationStatus provides a mock function with given fields: ctx, groupId, requestId
-func (_m *LDAPConfigurationApi) GetLdapConfigurationStatus(ctx context.Context, groupId string, requestId string) admin.GetLdapConfigurationStatusApiRequest {
+// GetUserSecurityVerify provides a mock function with given fields: ctx, groupId, requestId
+func (_m *LDAPConfigurationApi) GetUserSecurityVerify(ctx context.Context, groupId string, requestId string) admin.GetUserSecurityVerifyApiRequest {
 	ret := _m.Called(ctx, groupId, requestId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetLdapConfigurationStatus")
+		panic("no return value specified for GetUserSecurityVerify")
 	}
 
-	var r0 admin.GetLdapConfigurationStatusApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetLdapConfigurationStatusApiRequest); ok {
+	var r0 admin.GetUserSecurityVerifyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetUserSecurityVerifyApiRequest); ok {
 		r0 = rf(ctx, groupId, requestId)
 	} else {
-		r0 = ret.Get(0).(admin.GetLdapConfigurationStatusApiRequest)
+		r0 = ret.Get(0).(admin.GetUserSecurityVerifyApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_GetLdapConfigurationStatus_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLdapConfigurationStatus'
-type LDAPConfigurationApi_GetLdapConfigurationStatus_Call struct {
+// LDAPConfigurationApi_GetUserSecurityVerify_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUserSecurityVerify'
+type LDAPConfigurationApi_GetUserSecurityVerify_Call struct {
 	*mock.Call
 }
 
-// GetLdapConfigurationStatus is a helper method to define mock.On call
+// GetUserSecurityVerify is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - requestId string
-func (_e *LDAPConfigurationApi_Expecter) GetLdapConfigurationStatus(ctx any, groupId any, requestId any) *LDAPConfigurationApi_GetLdapConfigurationStatus_Call {
-	return &LDAPConfigurationApi_GetLdapConfigurationStatus_Call{Call: _e.mock.On("GetLdapConfigurationStatus", ctx, groupId, requestId)}
+func (_e *LDAPConfigurationApi_Expecter) GetUserSecurityVerify(ctx any, groupId any, requestId any) *LDAPConfigurationApi_GetUserSecurityVerify_Call {
+	return &LDAPConfigurationApi_GetUserSecurityVerify_Call{Call: _e.mock.On("GetUserSecurityVerify", ctx, groupId, requestId)}
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatus_Call) Run(run func(ctx context.Context, groupId string, requestId string)) *LDAPConfigurationApi_GetLdapConfigurationStatus_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerify_Call) Run(run func(ctx context.Context, groupId string, requestId string)) *LDAPConfigurationApi_GetUserSecurityVerify_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatus_Call) Return(_a0 admin.GetLdapConfigurationStatusApiRequest) *LDAPConfigurationApi_GetLdapConfigurationStatus_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerify_Call) Return(_a0 admin.GetUserSecurityVerifyApiRequest) *LDAPConfigurationApi_GetUserSecurityVerify_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatus_Call) RunAndReturn(run func(context.Context, string, string) admin.GetLdapConfigurationStatusApiRequest) *LDAPConfigurationApi_GetLdapConfigurationStatus_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerify_Call) RunAndReturn(run func(context.Context, string, string) admin.GetUserSecurityVerifyApiRequest) *LDAPConfigurationApi_GetUserSecurityVerify_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetLdapConfigurationStatusExecute provides a mock function with given fields: r
-func (_m *LDAPConfigurationApi) GetLdapConfigurationStatusExecute(r admin.GetLdapConfigurationStatusApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+// GetUserSecurityVerifyExecute provides a mock function with given fields: r
+func (_m *LDAPConfigurationApi) GetUserSecurityVerifyExecute(r admin.GetUserSecurityVerifyApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetLdapConfigurationStatusExecute")
+		panic("no return value specified for GetUserSecurityVerifyExecute")
 	}
 
 	var r0 *admin.LDAPVerifyConnectivityJobRequest
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetLdapConfigurationStatusApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetUserSecurityVerifyApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetLdapConfigurationStatusApiRequest) *admin.LDAPVerifyConnectivityJobRequest); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetUserSecurityVerifyApiRequest) *admin.LDAPVerifyConnectivityJobRequest); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -370,7 +370,7 @@ func (_m *LDAPConfigurationApi) GetLdapConfigurationStatusExecute(r admin.GetLda
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetLdapConfigurationStatusApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetUserSecurityVerifyApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -378,7 +378,7 @@ func (_m *LDAPConfigurationApi) GetLdapConfigurationStatusExecute(r admin.GetLda
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetLdapConfigurationStatusApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetUserSecurityVerifyApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -387,191 +387,191 @@ func (_m *LDAPConfigurationApi) GetLdapConfigurationStatusExecute(r admin.GetLda
 	return r0, r1, r2
 }
 
-// LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLdapConfigurationStatusExecute'
-type LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call struct {
+// LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUserSecurityVerifyExecute'
+type LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call struct {
 	*mock.Call
 }
 
-// GetLdapConfigurationStatusExecute is a helper method to define mock.On call
-//   - r admin.GetLdapConfigurationStatusApiRequest
-func (_e *LDAPConfigurationApi_Expecter) GetLdapConfigurationStatusExecute(r any) *LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call {
-	return &LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call{Call: _e.mock.On("GetLdapConfigurationStatusExecute", r)}
+// GetUserSecurityVerifyExecute is a helper method to define mock.On call
+//   - r admin.GetUserSecurityVerifyApiRequest
+func (_e *LDAPConfigurationApi_Expecter) GetUserSecurityVerifyExecute(r any) *LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call {
+	return &LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call{Call: _e.mock.On("GetUserSecurityVerifyExecute", r)}
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call) Run(run func(r admin.GetLdapConfigurationStatusApiRequest)) *LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call) Run(run func(r admin.GetUserSecurityVerifyApiRequest)) *LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetLdapConfigurationStatusApiRequest))
+		run(args[0].(admin.GetUserSecurityVerifyApiRequest))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call) Return(_a0 *admin.LDAPVerifyConnectivityJobRequest, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call) Return(_a0 *admin.LDAPVerifyConnectivityJobRequest, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call) RunAndReturn(run func(admin.GetLdapConfigurationStatusApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error)) *LDAPConfigurationApi_GetLdapConfigurationStatusExecute_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call) RunAndReturn(run func(admin.GetUserSecurityVerifyApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error)) *LDAPConfigurationApi_GetUserSecurityVerifyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetLdapConfigurationStatusWithParams provides a mock function with given fields: ctx, args
-func (_m *LDAPConfigurationApi) GetLdapConfigurationStatusWithParams(ctx context.Context, args *admin.GetLdapConfigurationStatusApiParams) admin.GetLdapConfigurationStatusApiRequest {
+// GetUserSecurityVerifyWithParams provides a mock function with given fields: ctx, args
+func (_m *LDAPConfigurationApi) GetUserSecurityVerifyWithParams(ctx context.Context, args *admin.GetUserSecurityVerifyApiParams) admin.GetUserSecurityVerifyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetLdapConfigurationStatusWithParams")
+		panic("no return value specified for GetUserSecurityVerifyWithParams")
 	}
 
-	var r0 admin.GetLdapConfigurationStatusApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetLdapConfigurationStatusApiParams) admin.GetLdapConfigurationStatusApiRequest); ok {
+	var r0 admin.GetUserSecurityVerifyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetUserSecurityVerifyApiParams) admin.GetUserSecurityVerifyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetLdapConfigurationStatusApiRequest)
+		r0 = ret.Get(0).(admin.GetUserSecurityVerifyApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLdapConfigurationStatusWithParams'
-type LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call struct {
+// LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUserSecurityVerifyWithParams'
+type LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call struct {
 	*mock.Call
 }
 
-// GetLdapConfigurationStatusWithParams is a helper method to define mock.On call
+// GetUserSecurityVerifyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetLdapConfigurationStatusApiParams
-func (_e *LDAPConfigurationApi_Expecter) GetLdapConfigurationStatusWithParams(ctx any, args any) *LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call {
-	return &LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call{Call: _e.mock.On("GetLdapConfigurationStatusWithParams", ctx, args)}
+//   - args *admin.GetUserSecurityVerifyApiParams
+func (_e *LDAPConfigurationApi_Expecter) GetUserSecurityVerifyWithParams(ctx any, args any) *LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call {
+	return &LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call{Call: _e.mock.On("GetUserSecurityVerifyWithParams", ctx, args)}
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call) Run(run func(ctx context.Context, args *admin.GetLdapConfigurationStatusApiParams)) *LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call) Run(run func(ctx context.Context, args *admin.GetUserSecurityVerifyApiParams)) *LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetLdapConfigurationStatusApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetUserSecurityVerifyApiParams))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call) Return(_a0 admin.GetLdapConfigurationStatusApiRequest) *LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call) Return(_a0 admin.GetUserSecurityVerifyApiRequest) *LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetLdapConfigurationStatusApiParams) admin.GetLdapConfigurationStatusApiRequest) *LDAPConfigurationApi_GetLdapConfigurationStatusWithParams_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetUserSecurityVerifyApiParams) admin.GetUserSecurityVerifyApiRequest) *LDAPConfigurationApi_GetUserSecurityVerifyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetLdapConfigurationWithParams provides a mock function with given fields: ctx, args
-func (_m *LDAPConfigurationApi) GetLdapConfigurationWithParams(ctx context.Context, args *admin.GetLdapConfigurationApiParams) admin.GetLdapConfigurationApiRequest {
+// GetUserSecurityWithParams provides a mock function with given fields: ctx, args
+func (_m *LDAPConfigurationApi) GetUserSecurityWithParams(ctx context.Context, args *admin.GetUserSecurityApiParams) admin.GetUserSecurityApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetLdapConfigurationWithParams")
+		panic("no return value specified for GetUserSecurityWithParams")
 	}
 
-	var r0 admin.GetLdapConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetLdapConfigurationApiParams) admin.GetLdapConfigurationApiRequest); ok {
+	var r0 admin.GetUserSecurityApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetUserSecurityApiParams) admin.GetUserSecurityApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetLdapConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.GetUserSecurityApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_GetLdapConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLdapConfigurationWithParams'
-type LDAPConfigurationApi_GetLdapConfigurationWithParams_Call struct {
+// LDAPConfigurationApi_GetUserSecurityWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUserSecurityWithParams'
+type LDAPConfigurationApi_GetUserSecurityWithParams_Call struct {
 	*mock.Call
 }
 
-// GetLdapConfigurationWithParams is a helper method to define mock.On call
+// GetUserSecurityWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetLdapConfigurationApiParams
-func (_e *LDAPConfigurationApi_Expecter) GetLdapConfigurationWithParams(ctx any, args any) *LDAPConfigurationApi_GetLdapConfigurationWithParams_Call {
-	return &LDAPConfigurationApi_GetLdapConfigurationWithParams_Call{Call: _e.mock.On("GetLdapConfigurationWithParams", ctx, args)}
+//   - args *admin.GetUserSecurityApiParams
+func (_e *LDAPConfigurationApi_Expecter) GetUserSecurityWithParams(ctx any, args any) *LDAPConfigurationApi_GetUserSecurityWithParams_Call {
+	return &LDAPConfigurationApi_GetUserSecurityWithParams_Call{Call: _e.mock.On("GetUserSecurityWithParams", ctx, args)}
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetLdapConfigurationApiParams)) *LDAPConfigurationApi_GetLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityWithParams_Call) Run(run func(ctx context.Context, args *admin.GetUserSecurityApiParams)) *LDAPConfigurationApi_GetUserSecurityWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetLdapConfigurationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetUserSecurityApiParams))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationWithParams_Call) Return(_a0 admin.GetLdapConfigurationApiRequest) *LDAPConfigurationApi_GetLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityWithParams_Call) Return(_a0 admin.GetUserSecurityApiRequest) *LDAPConfigurationApi_GetUserSecurityWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_GetLdapConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetLdapConfigurationApiParams) admin.GetLdapConfigurationApiRequest) *LDAPConfigurationApi_GetLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_GetUserSecurityWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetUserSecurityApiParams) admin.GetUserSecurityApiRequest) *LDAPConfigurationApi_GetUserSecurityWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// SaveLdapConfiguration provides a mock function with given fields: ctx, groupId, userSecurity
-func (_m *LDAPConfigurationApi) SaveLdapConfiguration(ctx context.Context, groupId string, userSecurity *admin.UserSecurity) admin.SaveLdapConfigurationApiRequest {
+// UpdateUserSecurity provides a mock function with given fields: ctx, groupId, userSecurity
+func (_m *LDAPConfigurationApi) UpdateUserSecurity(ctx context.Context, groupId string, userSecurity *admin.UserSecurity) admin.UpdateUserSecurityApiRequest {
 	ret := _m.Called(ctx, groupId, userSecurity)
 
 	if len(ret) == 0 {
-		panic("no return value specified for SaveLdapConfiguration")
+		panic("no return value specified for UpdateUserSecurity")
 	}
 
-	var r0 admin.SaveLdapConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.UserSecurity) admin.SaveLdapConfigurationApiRequest); ok {
+	var r0 admin.UpdateUserSecurityApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.UserSecurity) admin.UpdateUserSecurityApiRequest); ok {
 		r0 = rf(ctx, groupId, userSecurity)
 	} else {
-		r0 = ret.Get(0).(admin.SaveLdapConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.UpdateUserSecurityApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_SaveLdapConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SaveLdapConfiguration'
-type LDAPConfigurationApi_SaveLdapConfiguration_Call struct {
+// LDAPConfigurationApi_UpdateUserSecurity_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateUserSecurity'
+type LDAPConfigurationApi_UpdateUserSecurity_Call struct {
 	*mock.Call
 }
 
-// SaveLdapConfiguration is a helper method to define mock.On call
+// UpdateUserSecurity is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - userSecurity *admin.UserSecurity
-func (_e *LDAPConfigurationApi_Expecter) SaveLdapConfiguration(ctx any, groupId any, userSecurity any) *LDAPConfigurationApi_SaveLdapConfiguration_Call {
-	return &LDAPConfigurationApi_SaveLdapConfiguration_Call{Call: _e.mock.On("SaveLdapConfiguration", ctx, groupId, userSecurity)}
+func (_e *LDAPConfigurationApi_Expecter) UpdateUserSecurity(ctx any, groupId any, userSecurity any) *LDAPConfigurationApi_UpdateUserSecurity_Call {
+	return &LDAPConfigurationApi_UpdateUserSecurity_Call{Call: _e.mock.On("UpdateUserSecurity", ctx, groupId, userSecurity)}
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfiguration_Call) Run(run func(ctx context.Context, groupId string, userSecurity *admin.UserSecurity)) *LDAPConfigurationApi_SaveLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurity_Call) Run(run func(ctx context.Context, groupId string, userSecurity *admin.UserSecurity)) *LDAPConfigurationApi_UpdateUserSecurity_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.UserSecurity))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfiguration_Call) Return(_a0 admin.SaveLdapConfigurationApiRequest) *LDAPConfigurationApi_SaveLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurity_Call) Return(_a0 admin.UpdateUserSecurityApiRequest) *LDAPConfigurationApi_UpdateUserSecurity_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfiguration_Call) RunAndReturn(run func(context.Context, string, *admin.UserSecurity) admin.SaveLdapConfigurationApiRequest) *LDAPConfigurationApi_SaveLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurity_Call) RunAndReturn(run func(context.Context, string, *admin.UserSecurity) admin.UpdateUserSecurityApiRequest) *LDAPConfigurationApi_UpdateUserSecurity_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// SaveLdapConfigurationExecute provides a mock function with given fields: r
-func (_m *LDAPConfigurationApi) SaveLdapConfigurationExecute(r admin.SaveLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error) {
+// UpdateUserSecurityExecute provides a mock function with given fields: r
+func (_m *LDAPConfigurationApi) UpdateUserSecurityExecute(r admin.UpdateUserSecurityApiRequest) (*admin.UserSecurity, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for SaveLdapConfigurationExecute")
+		panic("no return value specified for UpdateUserSecurityExecute")
 	}
 
 	var r0 *admin.UserSecurity
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.SaveLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateUserSecurityApiRequest) (*admin.UserSecurity, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.SaveLdapConfigurationApiRequest) *admin.UserSecurity); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateUserSecurityApiRequest) *admin.UserSecurity); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -579,7 +579,7 @@ func (_m *LDAPConfigurationApi) SaveLdapConfigurationExecute(r admin.SaveLdapCon
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.SaveLdapConfigurationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateUserSecurityApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -587,7 +587,7 @@ func (_m *LDAPConfigurationApi) SaveLdapConfigurationExecute(r admin.SaveLdapCon
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.SaveLdapConfigurationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateUserSecurityApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -596,144 +596,144 @@ func (_m *LDAPConfigurationApi) SaveLdapConfigurationExecute(r admin.SaveLdapCon
 	return r0, r1, r2
 }
 
-// LDAPConfigurationApi_SaveLdapConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SaveLdapConfigurationExecute'
-type LDAPConfigurationApi_SaveLdapConfigurationExecute_Call struct {
+// LDAPConfigurationApi_UpdateUserSecurityExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateUserSecurityExecute'
+type LDAPConfigurationApi_UpdateUserSecurityExecute_Call struct {
 	*mock.Call
 }
 
-// SaveLdapConfigurationExecute is a helper method to define mock.On call
-//   - r admin.SaveLdapConfigurationApiRequest
-func (_e *LDAPConfigurationApi_Expecter) SaveLdapConfigurationExecute(r any) *LDAPConfigurationApi_SaveLdapConfigurationExecute_Call {
-	return &LDAPConfigurationApi_SaveLdapConfigurationExecute_Call{Call: _e.mock.On("SaveLdapConfigurationExecute", r)}
+// UpdateUserSecurityExecute is a helper method to define mock.On call
+//   - r admin.UpdateUserSecurityApiRequest
+func (_e *LDAPConfigurationApi_Expecter) UpdateUserSecurityExecute(r any) *LDAPConfigurationApi_UpdateUserSecurityExecute_Call {
+	return &LDAPConfigurationApi_UpdateUserSecurityExecute_Call{Call: _e.mock.On("UpdateUserSecurityExecute", r)}
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfigurationExecute_Call) Run(run func(r admin.SaveLdapConfigurationApiRequest)) *LDAPConfigurationApi_SaveLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurityExecute_Call) Run(run func(r admin.UpdateUserSecurityApiRequest)) *LDAPConfigurationApi_UpdateUserSecurityExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.SaveLdapConfigurationApiRequest))
+		run(args[0].(admin.UpdateUserSecurityApiRequest))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfigurationExecute_Call) Return(_a0 *admin.UserSecurity, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_SaveLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurityExecute_Call) Return(_a0 *admin.UserSecurity, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_UpdateUserSecurityExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfigurationExecute_Call) RunAndReturn(run func(admin.SaveLdapConfigurationApiRequest) (*admin.UserSecurity, *http.Response, error)) *LDAPConfigurationApi_SaveLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurityExecute_Call) RunAndReturn(run func(admin.UpdateUserSecurityApiRequest) (*admin.UserSecurity, *http.Response, error)) *LDAPConfigurationApi_UpdateUserSecurityExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// SaveLdapConfigurationWithParams provides a mock function with given fields: ctx, args
-func (_m *LDAPConfigurationApi) SaveLdapConfigurationWithParams(ctx context.Context, args *admin.SaveLdapConfigurationApiParams) admin.SaveLdapConfigurationApiRequest {
+// UpdateUserSecurityWithParams provides a mock function with given fields: ctx, args
+func (_m *LDAPConfigurationApi) UpdateUserSecurityWithParams(ctx context.Context, args *admin.UpdateUserSecurityApiParams) admin.UpdateUserSecurityApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for SaveLdapConfigurationWithParams")
+		panic("no return value specified for UpdateUserSecurityWithParams")
 	}
 
-	var r0 admin.SaveLdapConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.SaveLdapConfigurationApiParams) admin.SaveLdapConfigurationApiRequest); ok {
+	var r0 admin.UpdateUserSecurityApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateUserSecurityApiParams) admin.UpdateUserSecurityApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.SaveLdapConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.UpdateUserSecurityApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SaveLdapConfigurationWithParams'
-type LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call struct {
+// LDAPConfigurationApi_UpdateUserSecurityWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateUserSecurityWithParams'
+type LDAPConfigurationApi_UpdateUserSecurityWithParams_Call struct {
 	*mock.Call
 }
 
-// SaveLdapConfigurationWithParams is a helper method to define mock.On call
+// UpdateUserSecurityWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.SaveLdapConfigurationApiParams
-func (_e *LDAPConfigurationApi_Expecter) SaveLdapConfigurationWithParams(ctx any, args any) *LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call {
-	return &LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call{Call: _e.mock.On("SaveLdapConfigurationWithParams", ctx, args)}
+//   - args *admin.UpdateUserSecurityApiParams
+func (_e *LDAPConfigurationApi_Expecter) UpdateUserSecurityWithParams(ctx any, args any) *LDAPConfigurationApi_UpdateUserSecurityWithParams_Call {
+	return &LDAPConfigurationApi_UpdateUserSecurityWithParams_Call{Call: _e.mock.On("UpdateUserSecurityWithParams", ctx, args)}
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.SaveLdapConfigurationApiParams)) *LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurityWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateUserSecurityApiParams)) *LDAPConfigurationApi_UpdateUserSecurityWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.SaveLdapConfigurationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateUserSecurityApiParams))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call) Return(_a0 admin.SaveLdapConfigurationApiRequest) *LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurityWithParams_Call) Return(_a0 admin.UpdateUserSecurityApiRequest) *LDAPConfigurationApi_UpdateUserSecurityWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.SaveLdapConfigurationApiParams) admin.SaveLdapConfigurationApiRequest) *LDAPConfigurationApi_SaveLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_UpdateUserSecurityWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateUserSecurityApiParams) admin.UpdateUserSecurityApiRequest) *LDAPConfigurationApi_UpdateUserSecurityWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// VerifyLdapConfiguration provides a mock function with given fields: ctx, groupId, lDAPVerifyConnectivityJobRequestParams
-func (_m *LDAPConfigurationApi) VerifyLdapConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *admin.LDAPVerifyConnectivityJobRequestParams) admin.VerifyLdapConfigurationApiRequest {
+// VerifyUserSecurityLdap provides a mock function with given fields: ctx, groupId, lDAPVerifyConnectivityJobRequestParams
+func (_m *LDAPConfigurationApi) VerifyUserSecurityLdap(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *admin.LDAPVerifyConnectivityJobRequestParams) admin.VerifyUserSecurityLdapApiRequest {
 	ret := _m.Called(ctx, groupId, lDAPVerifyConnectivityJobRequestParams)
 
 	if len(ret) == 0 {
-		panic("no return value specified for VerifyLdapConfiguration")
+		panic("no return value specified for VerifyUserSecurityLdap")
 	}
 
-	var r0 admin.VerifyLdapConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.LDAPVerifyConnectivityJobRequestParams) admin.VerifyLdapConfigurationApiRequest); ok {
+	var r0 admin.VerifyUserSecurityLdapApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.LDAPVerifyConnectivityJobRequestParams) admin.VerifyUserSecurityLdapApiRequest); ok {
 		r0 = rf(ctx, groupId, lDAPVerifyConnectivityJobRequestParams)
 	} else {
-		r0 = ret.Get(0).(admin.VerifyLdapConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.VerifyUserSecurityLdapApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_VerifyLdapConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyLdapConfiguration'
-type LDAPConfigurationApi_VerifyLdapConfiguration_Call struct {
+// LDAPConfigurationApi_VerifyUserSecurityLdap_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyUserSecurityLdap'
+type LDAPConfigurationApi_VerifyUserSecurityLdap_Call struct {
 	*mock.Call
 }
 
-// VerifyLdapConfiguration is a helper method to define mock.On call
+// VerifyUserSecurityLdap is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - lDAPVerifyConnectivityJobRequestParams *admin.LDAPVerifyConnectivityJobRequestParams
-func (_e *LDAPConfigurationApi_Expecter) VerifyLdapConfiguration(ctx any, groupId any, lDAPVerifyConnectivityJobRequestParams any) *LDAPConfigurationApi_VerifyLdapConfiguration_Call {
-	return &LDAPConfigurationApi_VerifyLdapConfiguration_Call{Call: _e.mock.On("VerifyLdapConfiguration", ctx, groupId, lDAPVerifyConnectivityJobRequestParams)}
+func (_e *LDAPConfigurationApi_Expecter) VerifyUserSecurityLdap(ctx any, groupId any, lDAPVerifyConnectivityJobRequestParams any) *LDAPConfigurationApi_VerifyUserSecurityLdap_Call {
+	return &LDAPConfigurationApi_VerifyUserSecurityLdap_Call{Call: _e.mock.On("VerifyUserSecurityLdap", ctx, groupId, lDAPVerifyConnectivityJobRequestParams)}
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfiguration_Call) Run(run func(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *admin.LDAPVerifyConnectivityJobRequestParams)) *LDAPConfigurationApi_VerifyLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdap_Call) Run(run func(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *admin.LDAPVerifyConnectivityJobRequestParams)) *LDAPConfigurationApi_VerifyUserSecurityLdap_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.LDAPVerifyConnectivityJobRequestParams))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfiguration_Call) Return(_a0 admin.VerifyLdapConfigurationApiRequest) *LDAPConfigurationApi_VerifyLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdap_Call) Return(_a0 admin.VerifyUserSecurityLdapApiRequest) *LDAPConfigurationApi_VerifyUserSecurityLdap_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfiguration_Call) RunAndReturn(run func(context.Context, string, *admin.LDAPVerifyConnectivityJobRequestParams) admin.VerifyLdapConfigurationApiRequest) *LDAPConfigurationApi_VerifyLdapConfiguration_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdap_Call) RunAndReturn(run func(context.Context, string, *admin.LDAPVerifyConnectivityJobRequestParams) admin.VerifyUserSecurityLdapApiRequest) *LDAPConfigurationApi_VerifyUserSecurityLdap_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// VerifyLdapConfigurationExecute provides a mock function with given fields: r
-func (_m *LDAPConfigurationApi) VerifyLdapConfigurationExecute(r admin.VerifyLdapConfigurationApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+// VerifyUserSecurityLdapExecute provides a mock function with given fields: r
+func (_m *LDAPConfigurationApi) VerifyUserSecurityLdapExecute(r admin.VerifyUserSecurityLdapApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for VerifyLdapConfigurationExecute")
+		panic("no return value specified for VerifyUserSecurityLdapExecute")
 	}
 
 	var r0 *admin.LDAPVerifyConnectivityJobRequest
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.VerifyLdapConfigurationApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.VerifyUserSecurityLdapApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.VerifyLdapConfigurationApiRequest) *admin.LDAPVerifyConnectivityJobRequest); ok {
+	if rf, ok := ret.Get(0).(func(admin.VerifyUserSecurityLdapApiRequest) *admin.LDAPVerifyConnectivityJobRequest); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -741,7 +741,7 @@ func (_m *LDAPConfigurationApi) VerifyLdapConfigurationExecute(r admin.VerifyLda
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.VerifyLdapConfigurationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.VerifyUserSecurityLdapApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -749,7 +749,7 @@ func (_m *LDAPConfigurationApi) VerifyLdapConfigurationExecute(r admin.VerifyLda
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.VerifyLdapConfigurationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.VerifyUserSecurityLdapApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -758,77 +758,77 @@ func (_m *LDAPConfigurationApi) VerifyLdapConfigurationExecute(r admin.VerifyLda
 	return r0, r1, r2
 }
 
-// LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyLdapConfigurationExecute'
-type LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call struct {
+// LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyUserSecurityLdapExecute'
+type LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call struct {
 	*mock.Call
 }
 
-// VerifyLdapConfigurationExecute is a helper method to define mock.On call
-//   - r admin.VerifyLdapConfigurationApiRequest
-func (_e *LDAPConfigurationApi_Expecter) VerifyLdapConfigurationExecute(r any) *LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call {
-	return &LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call{Call: _e.mock.On("VerifyLdapConfigurationExecute", r)}
+// VerifyUserSecurityLdapExecute is a helper method to define mock.On call
+//   - r admin.VerifyUserSecurityLdapApiRequest
+func (_e *LDAPConfigurationApi_Expecter) VerifyUserSecurityLdapExecute(r any) *LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call {
+	return &LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call{Call: _e.mock.On("VerifyUserSecurityLdapExecute", r)}
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call) Run(run func(r admin.VerifyLdapConfigurationApiRequest)) *LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call) Run(run func(r admin.VerifyUserSecurityLdapApiRequest)) *LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.VerifyLdapConfigurationApiRequest))
+		run(args[0].(admin.VerifyUserSecurityLdapApiRequest))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call) Return(_a0 *admin.LDAPVerifyConnectivityJobRequest, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call) Return(_a0 *admin.LDAPVerifyConnectivityJobRequest, _a1 *http.Response, _a2 error) *LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call) RunAndReturn(run func(admin.VerifyLdapConfigurationApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error)) *LDAPConfigurationApi_VerifyLdapConfigurationExecute_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call) RunAndReturn(run func(admin.VerifyUserSecurityLdapApiRequest) (*admin.LDAPVerifyConnectivityJobRequest, *http.Response, error)) *LDAPConfigurationApi_VerifyUserSecurityLdapExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// VerifyLdapConfigurationWithParams provides a mock function with given fields: ctx, args
-func (_m *LDAPConfigurationApi) VerifyLdapConfigurationWithParams(ctx context.Context, args *admin.VerifyLdapConfigurationApiParams) admin.VerifyLdapConfigurationApiRequest {
+// VerifyUserSecurityLdapWithParams provides a mock function with given fields: ctx, args
+func (_m *LDAPConfigurationApi) VerifyUserSecurityLdapWithParams(ctx context.Context, args *admin.VerifyUserSecurityLdapApiParams) admin.VerifyUserSecurityLdapApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for VerifyLdapConfigurationWithParams")
+		panic("no return value specified for VerifyUserSecurityLdapWithParams")
 	}
 
-	var r0 admin.VerifyLdapConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.VerifyLdapConfigurationApiParams) admin.VerifyLdapConfigurationApiRequest); ok {
+	var r0 admin.VerifyUserSecurityLdapApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.VerifyUserSecurityLdapApiParams) admin.VerifyUserSecurityLdapApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.VerifyLdapConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.VerifyUserSecurityLdapApiRequest)
 	}
 
 	return r0
 }
 
-// LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyLdapConfigurationWithParams'
-type LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call struct {
+// LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyUserSecurityLdapWithParams'
+type LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call struct {
 	*mock.Call
 }
 
-// VerifyLdapConfigurationWithParams is a helper method to define mock.On call
+// VerifyUserSecurityLdapWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.VerifyLdapConfigurationApiParams
-func (_e *LDAPConfigurationApi_Expecter) VerifyLdapConfigurationWithParams(ctx any, args any) *LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call {
-	return &LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call{Call: _e.mock.On("VerifyLdapConfigurationWithParams", ctx, args)}
+//   - args *admin.VerifyUserSecurityLdapApiParams
+func (_e *LDAPConfigurationApi_Expecter) VerifyUserSecurityLdapWithParams(ctx any, args any) *LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call {
+	return &LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call{Call: _e.mock.On("VerifyUserSecurityLdapWithParams", ctx, args)}
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.VerifyLdapConfigurationApiParams)) *LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call) Run(run func(ctx context.Context, args *admin.VerifyUserSecurityLdapApiParams)) *LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.VerifyLdapConfigurationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.VerifyUserSecurityLdapApiParams))
 	})
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call) Return(_a0 admin.VerifyLdapConfigurationApiRequest) *LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call) Return(_a0 admin.VerifyUserSecurityLdapApiRequest) *LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.VerifyLdapConfigurationApiParams) admin.VerifyLdapConfigurationApiRequest) *LDAPConfigurationApi_VerifyLdapConfigurationWithParams_Call {
+func (_c *LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call) RunAndReturn(run func(context.Context, *admin.VerifyUserSecurityLdapApiParams) admin.VerifyUserSecurityLdapApiRequest) *LDAPConfigurationApi_VerifyUserSecurityLdapWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

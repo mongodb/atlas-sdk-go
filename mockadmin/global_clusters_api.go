@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -351,69 +351,69 @@ func (_c *GlobalClustersApi_CreateManagedNamespaceWithParams_Call) RunAndReturn(
 	return _c
 }
 
-// DeleteAllCustomZoneMappings provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *GlobalClustersApi) DeleteAllCustomZoneMappings(ctx context.Context, groupId string, clusterName string) admin.DeleteAllCustomZoneMappingsApiRequest {
+// DeleteCustomZoneMapping provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *GlobalClustersApi) DeleteCustomZoneMapping(ctx context.Context, groupId string, clusterName string) admin.DeleteCustomZoneMappingApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAllCustomZoneMappings")
+		panic("no return value specified for DeleteCustomZoneMapping")
 	}
 
-	var r0 admin.DeleteAllCustomZoneMappingsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteAllCustomZoneMappingsApiRequest); ok {
+	var r0 admin.DeleteCustomZoneMappingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteCustomZoneMappingApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteAllCustomZoneMappingsApiRequest)
+		r0 = ret.Get(0).(admin.DeleteCustomZoneMappingApiRequest)
 	}
 
 	return r0
 }
 
-// GlobalClustersApi_DeleteAllCustomZoneMappings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAllCustomZoneMappings'
-type GlobalClustersApi_DeleteAllCustomZoneMappings_Call struct {
+// GlobalClustersApi_DeleteCustomZoneMapping_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomZoneMapping'
+type GlobalClustersApi_DeleteCustomZoneMapping_Call struct {
 	*mock.Call
 }
 
-// DeleteAllCustomZoneMappings is a helper method to define mock.On call
+// DeleteCustomZoneMapping is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappings(ctx any, groupId any, clusterName any) *GlobalClustersApi_DeleteAllCustomZoneMappings_Call {
-	return &GlobalClustersApi_DeleteAllCustomZoneMappings_Call{Call: _e.mock.On("DeleteAllCustomZoneMappings", ctx, groupId, clusterName)}
+func (_e *GlobalClustersApi_Expecter) DeleteCustomZoneMapping(ctx any, groupId any, clusterName any) *GlobalClustersApi_DeleteCustomZoneMapping_Call {
+	return &GlobalClustersApi_DeleteCustomZoneMapping_Call{Call: _e.mock.On("DeleteCustomZoneMapping", ctx, groupId, clusterName)}
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappings_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *GlobalClustersApi_DeleteAllCustomZoneMappings_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMapping_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *GlobalClustersApi_DeleteCustomZoneMapping_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappings_Call) Return(_a0 admin.DeleteAllCustomZoneMappingsApiRequest) *GlobalClustersApi_DeleteAllCustomZoneMappings_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMapping_Call) Return(_a0 admin.DeleteCustomZoneMappingApiRequest) *GlobalClustersApi_DeleteCustomZoneMapping_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappings_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteAllCustomZoneMappingsApiRequest) *GlobalClustersApi_DeleteAllCustomZoneMappings_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMapping_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteCustomZoneMappingApiRequest) *GlobalClustersApi_DeleteCustomZoneMapping_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAllCustomZoneMappingsExecute provides a mock function with given fields: r
-func (_m *GlobalClustersApi) DeleteAllCustomZoneMappingsExecute(r admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
+// DeleteCustomZoneMappingExecute provides a mock function with given fields: r
+func (_m *GlobalClustersApi) DeleteCustomZoneMappingExecute(r admin.DeleteCustomZoneMappingApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAllCustomZoneMappingsExecute")
+		panic("no return value specified for DeleteCustomZoneMappingExecute")
 	}
 
 	var r0 *admin.GeoSharding20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteCustomZoneMappingApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAllCustomZoneMappingsApiRequest) *admin.GeoSharding20240805); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteCustomZoneMappingApiRequest) *admin.GeoSharding20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -421,7 +421,7 @@ func (_m *GlobalClustersApi) DeleteAllCustomZoneMappingsExecute(r admin.DeleteAl
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteAllCustomZoneMappingsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteCustomZoneMappingApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -429,7 +429,7 @@ func (_m *GlobalClustersApi) DeleteAllCustomZoneMappingsExecute(r admin.DeleteAl
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteAllCustomZoneMappingsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DeleteCustomZoneMappingApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -438,144 +438,144 @@ func (_m *GlobalClustersApi) DeleteAllCustomZoneMappingsExecute(r admin.DeleteAl
 	return r0, r1, r2
 }
 
-// GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAllCustomZoneMappingsExecute'
-type GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call struct {
+// GlobalClustersApi_DeleteCustomZoneMappingExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomZoneMappingExecute'
+type GlobalClustersApi_DeleteCustomZoneMappingExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteAllCustomZoneMappingsExecute is a helper method to define mock.On call
-//   - r admin.DeleteAllCustomZoneMappingsApiRequest
-func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappingsExecute(r any) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
-	return &GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call{Call: _e.mock.On("DeleteAllCustomZoneMappingsExecute", r)}
+// DeleteCustomZoneMappingExecute is a helper method to define mock.On call
+//   - r admin.DeleteCustomZoneMappingApiRequest
+func (_e *GlobalClustersApi_Expecter) DeleteCustomZoneMappingExecute(r any) *GlobalClustersApi_DeleteCustomZoneMappingExecute_Call {
+	return &GlobalClustersApi_DeleteCustomZoneMappingExecute_Call{Call: _e.mock.On("DeleteCustomZoneMappingExecute", r)}
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call) Run(run func(r admin.DeleteAllCustomZoneMappingsApiRequest)) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMappingExecute_Call) Run(run func(r admin.DeleteCustomZoneMappingApiRequest)) *GlobalClustersApi_DeleteCustomZoneMappingExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteAllCustomZoneMappingsApiRequest))
+		run(args[0].(admin.DeleteCustomZoneMappingApiRequest))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMappingExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_DeleteCustomZoneMappingExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call) RunAndReturn(run func(admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMappingExecute_Call) RunAndReturn(run func(admin.DeleteCustomZoneMappingApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_DeleteCustomZoneMappingExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAllCustomZoneMappingsWithParams provides a mock function with given fields: ctx, args
-func (_m *GlobalClustersApi) DeleteAllCustomZoneMappingsWithParams(ctx context.Context, args *admin.DeleteAllCustomZoneMappingsApiParams) admin.DeleteAllCustomZoneMappingsApiRequest {
+// DeleteCustomZoneMappingWithParams provides a mock function with given fields: ctx, args
+func (_m *GlobalClustersApi) DeleteCustomZoneMappingWithParams(ctx context.Context, args *admin.DeleteCustomZoneMappingApiParams) admin.DeleteCustomZoneMappingApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAllCustomZoneMappingsWithParams")
+		panic("no return value specified for DeleteCustomZoneMappingWithParams")
 	}
 
-	var r0 admin.DeleteAllCustomZoneMappingsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteAllCustomZoneMappingsApiParams) admin.DeleteAllCustomZoneMappingsApiRequest); ok {
+	var r0 admin.DeleteCustomZoneMappingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteCustomZoneMappingApiParams) admin.DeleteCustomZoneMappingApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteAllCustomZoneMappingsApiRequest)
+		r0 = ret.Get(0).(admin.DeleteCustomZoneMappingApiRequest)
 	}
 
 	return r0
 }
 
-// GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAllCustomZoneMappingsWithParams'
-type GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call struct {
+// GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomZoneMappingWithParams'
+type GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteAllCustomZoneMappingsWithParams is a helper method to define mock.On call
+// DeleteCustomZoneMappingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteAllCustomZoneMappingsApiParams
-func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappingsWithParams(ctx any, args any) *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call {
-	return &GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call{Call: _e.mock.On("DeleteAllCustomZoneMappingsWithParams", ctx, args)}
+//   - args *admin.DeleteCustomZoneMappingApiParams
+func (_e *GlobalClustersApi_Expecter) DeleteCustomZoneMappingWithParams(ctx any, args any) *GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call {
+	return &GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call{Call: _e.mock.On("DeleteCustomZoneMappingWithParams", ctx, args)}
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteAllCustomZoneMappingsApiParams)) *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteCustomZoneMappingApiParams)) *GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteAllCustomZoneMappingsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteCustomZoneMappingApiParams))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call) Return(_a0 admin.DeleteAllCustomZoneMappingsApiRequest) *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call) Return(_a0 admin.DeleteCustomZoneMappingApiRequest) *GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteAllCustomZoneMappingsApiParams) admin.DeleteAllCustomZoneMappingsApiRequest) *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call {
+func (_c *GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteCustomZoneMappingApiParams) admin.DeleteCustomZoneMappingApiRequest) *GlobalClustersApi_DeleteCustomZoneMappingWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteManagedNamespace provides a mock function with given fields: ctx, clusterName, groupId
-func (_m *GlobalClustersApi) DeleteManagedNamespace(ctx context.Context, clusterName string, groupId string) admin.DeleteManagedNamespaceApiRequest {
+// DeleteManagedNamespaces provides a mock function with given fields: ctx, clusterName, groupId
+func (_m *GlobalClustersApi) DeleteManagedNamespaces(ctx context.Context, clusterName string, groupId string) admin.DeleteManagedNamespacesApiRequest {
 	ret := _m.Called(ctx, clusterName, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteManagedNamespace")
+		panic("no return value specified for DeleteManagedNamespaces")
 	}
 
-	var r0 admin.DeleteManagedNamespaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteManagedNamespaceApiRequest); ok {
+	var r0 admin.DeleteManagedNamespacesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteManagedNamespacesApiRequest); ok {
 		r0 = rf(ctx, clusterName, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteManagedNamespaceApiRequest)
+		r0 = ret.Get(0).(admin.DeleteManagedNamespacesApiRequest)
 	}
 
 	return r0
 }
 
-// GlobalClustersApi_DeleteManagedNamespace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteManagedNamespace'
-type GlobalClustersApi_DeleteManagedNamespace_Call struct {
+// GlobalClustersApi_DeleteManagedNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteManagedNamespaces'
+type GlobalClustersApi_DeleteManagedNamespaces_Call struct {
 	*mock.Call
 }
 
-// DeleteManagedNamespace is a helper method to define mock.On call
+// DeleteManagedNamespaces is a helper method to define mock.On call
 //   - ctx context.Context
 //   - clusterName string
 //   - groupId string
-func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespace(ctx any, clusterName any, groupId any) *GlobalClustersApi_DeleteManagedNamespace_Call {
-	return &GlobalClustersApi_DeleteManagedNamespace_Call{Call: _e.mock.On("DeleteManagedNamespace", ctx, clusterName, groupId)}
+func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespaces(ctx any, clusterName any, groupId any) *GlobalClustersApi_DeleteManagedNamespaces_Call {
+	return &GlobalClustersApi_DeleteManagedNamespaces_Call{Call: _e.mock.On("DeleteManagedNamespaces", ctx, clusterName, groupId)}
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespace_Call) Run(run func(ctx context.Context, clusterName string, groupId string)) *GlobalClustersApi_DeleteManagedNamespace_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespaces_Call) Run(run func(ctx context.Context, clusterName string, groupId string)) *GlobalClustersApi_DeleteManagedNamespaces_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespace_Call) Return(_a0 admin.DeleteManagedNamespaceApiRequest) *GlobalClustersApi_DeleteManagedNamespace_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespaces_Call) Return(_a0 admin.DeleteManagedNamespacesApiRequest) *GlobalClustersApi_DeleteManagedNamespaces_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespace_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteManagedNamespaceApiRequest) *GlobalClustersApi_DeleteManagedNamespace_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespaces_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteManagedNamespacesApiRequest) *GlobalClustersApi_DeleteManagedNamespaces_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteManagedNamespaceExecute provides a mock function with given fields: r
-func (_m *GlobalClustersApi) DeleteManagedNamespaceExecute(r admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
+// DeleteManagedNamespacesExecute provides a mock function with given fields: r
+func (_m *GlobalClustersApi) DeleteManagedNamespacesExecute(r admin.DeleteManagedNamespacesApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteManagedNamespaceExecute")
+		panic("no return value specified for DeleteManagedNamespacesExecute")
 	}
 
 	var r0 *admin.GeoSharding20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteManagedNamespacesApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteManagedNamespaceApiRequest) *admin.GeoSharding20240805); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteManagedNamespacesApiRequest) *admin.GeoSharding20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -583,7 +583,7 @@ func (_m *GlobalClustersApi) DeleteManagedNamespaceExecute(r admin.DeleteManaged
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteManagedNamespaceApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteManagedNamespacesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -591,7 +591,7 @@ func (_m *GlobalClustersApi) DeleteManagedNamespaceExecute(r admin.DeleteManaged
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteManagedNamespaceApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DeleteManagedNamespacesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -600,144 +600,144 @@ func (_m *GlobalClustersApi) DeleteManagedNamespaceExecute(r admin.DeleteManaged
 	return r0, r1, r2
 }
 
-// GlobalClustersApi_DeleteManagedNamespaceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteManagedNamespaceExecute'
-type GlobalClustersApi_DeleteManagedNamespaceExecute_Call struct {
+// GlobalClustersApi_DeleteManagedNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteManagedNamespacesExecute'
+type GlobalClustersApi_DeleteManagedNamespacesExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteManagedNamespaceExecute is a helper method to define mock.On call
-//   - r admin.DeleteManagedNamespaceApiRequest
-func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespaceExecute(r any) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
-	return &GlobalClustersApi_DeleteManagedNamespaceExecute_Call{Call: _e.mock.On("DeleteManagedNamespaceExecute", r)}
+// DeleteManagedNamespacesExecute is a helper method to define mock.On call
+//   - r admin.DeleteManagedNamespacesApiRequest
+func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespacesExecute(r any) *GlobalClustersApi_DeleteManagedNamespacesExecute_Call {
+	return &GlobalClustersApi_DeleteManagedNamespacesExecute_Call{Call: _e.mock.On("DeleteManagedNamespacesExecute", r)}
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespaceExecute_Call) Run(run func(r admin.DeleteManagedNamespaceApiRequest)) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespacesExecute_Call) Run(run func(r admin.DeleteManagedNamespacesApiRequest)) *GlobalClustersApi_DeleteManagedNamespacesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteManagedNamespaceApiRequest))
+		run(args[0].(admin.DeleteManagedNamespacesApiRequest))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespaceExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespacesExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_DeleteManagedNamespacesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespaceExecute_Call) RunAndReturn(run func(admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespacesExecute_Call) RunAndReturn(run func(admin.DeleteManagedNamespacesApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_DeleteManagedNamespacesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteManagedNamespaceWithParams provides a mock function with given fields: ctx, args
-func (_m *GlobalClustersApi) DeleteManagedNamespaceWithParams(ctx context.Context, args *admin.DeleteManagedNamespaceApiParams) admin.DeleteManagedNamespaceApiRequest {
+// DeleteManagedNamespacesWithParams provides a mock function with given fields: ctx, args
+func (_m *GlobalClustersApi) DeleteManagedNamespacesWithParams(ctx context.Context, args *admin.DeleteManagedNamespacesApiParams) admin.DeleteManagedNamespacesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteManagedNamespaceWithParams")
+		panic("no return value specified for DeleteManagedNamespacesWithParams")
 	}
 
-	var r0 admin.DeleteManagedNamespaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteManagedNamespaceApiParams) admin.DeleteManagedNamespaceApiRequest); ok {
+	var r0 admin.DeleteManagedNamespacesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteManagedNamespacesApiParams) admin.DeleteManagedNamespacesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteManagedNamespaceApiRequest)
+		r0 = ret.Get(0).(admin.DeleteManagedNamespacesApiRequest)
 	}
 
 	return r0
 }
 
-// GlobalClustersApi_DeleteManagedNamespaceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteManagedNamespaceWithParams'
-type GlobalClustersApi_DeleteManagedNamespaceWithParams_Call struct {
+// GlobalClustersApi_DeleteManagedNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteManagedNamespacesWithParams'
+type GlobalClustersApi_DeleteManagedNamespacesWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteManagedNamespaceWithParams is a helper method to define mock.On call
+// DeleteManagedNamespacesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteManagedNamespaceApiParams
-func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespaceWithParams(ctx any, args any) *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call {
-	return &GlobalClustersApi_DeleteManagedNamespaceWithParams_Call{Call: _e.mock.On("DeleteManagedNamespaceWithParams", ctx, args)}
+//   - args *admin.DeleteManagedNamespacesApiParams
+func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespacesWithParams(ctx any, args any) *GlobalClustersApi_DeleteManagedNamespacesWithParams_Call {
+	return &GlobalClustersApi_DeleteManagedNamespacesWithParams_Call{Call: _e.mock.On("DeleteManagedNamespacesWithParams", ctx, args)}
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteManagedNamespaceApiParams)) *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteManagedNamespacesApiParams)) *GlobalClustersApi_DeleteManagedNamespacesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteManagedNamespaceApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteManagedNamespacesApiParams))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call) Return(_a0 admin.DeleteManagedNamespaceApiRequest) *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespacesWithParams_Call) Return(_a0 admin.DeleteManagedNamespacesApiRequest) *GlobalClustersApi_DeleteManagedNamespacesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteManagedNamespaceApiParams) admin.DeleteManagedNamespaceApiRequest) *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteManagedNamespacesApiParams) admin.DeleteManagedNamespacesApiRequest) *GlobalClustersApi_DeleteManagedNamespacesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetManagedNamespace provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *GlobalClustersApi) GetManagedNamespace(ctx context.Context, groupId string, clusterName string) admin.GetManagedNamespaceApiRequest {
+// GetClusterGlobalWrites provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *GlobalClustersApi) GetClusterGlobalWrites(ctx context.Context, groupId string, clusterName string) admin.GetClusterGlobalWritesApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetManagedNamespace")
+		panic("no return value specified for GetClusterGlobalWrites")
 	}
 
-	var r0 admin.GetManagedNamespaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetManagedNamespaceApiRequest); ok {
+	var r0 admin.GetClusterGlobalWritesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetClusterGlobalWritesApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName)
 	} else {
-		r0 = ret.Get(0).(admin.GetManagedNamespaceApiRequest)
+		r0 = ret.Get(0).(admin.GetClusterGlobalWritesApiRequest)
 	}
 
 	return r0
 }
 
-// GlobalClustersApi_GetManagedNamespace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetManagedNamespace'
-type GlobalClustersApi_GetManagedNamespace_Call struct {
+// GlobalClustersApi_GetClusterGlobalWrites_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterGlobalWrites'
+type GlobalClustersApi_GetClusterGlobalWrites_Call struct {
 	*mock.Call
 }
 
-// GetManagedNamespace is a helper method to define mock.On call
+// GetClusterGlobalWrites is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *GlobalClustersApi_Expecter) GetManagedNamespace(ctx any, groupId any, clusterName any) *GlobalClustersApi_GetManagedNamespace_Call {
-	return &GlobalClustersApi_GetManagedNamespace_Call{Call: _e.mock.On("GetManagedNamespace", ctx, groupId, clusterName)}
+func (_e *GlobalClustersApi_Expecter) GetClusterGlobalWrites(ctx any, groupId any, clusterName any) *GlobalClustersApi_GetClusterGlobalWrites_Call {
+	return &GlobalClustersApi_GetClusterGlobalWrites_Call{Call: _e.mock.On("GetClusterGlobalWrites", ctx, groupId, clusterName)}
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespace_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *GlobalClustersApi_GetManagedNamespace_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWrites_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *GlobalClustersApi_GetClusterGlobalWrites_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespace_Call) Return(_a0 admin.GetManagedNamespaceApiRequest) *GlobalClustersApi_GetManagedNamespace_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWrites_Call) Return(_a0 admin.GetClusterGlobalWritesApiRequest) *GlobalClustersApi_GetClusterGlobalWrites_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespace_Call) RunAndReturn(run func(context.Context, string, string) admin.GetManagedNamespaceApiRequest) *GlobalClustersApi_GetManagedNamespace_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWrites_Call) RunAndReturn(run func(context.Context, string, string) admin.GetClusterGlobalWritesApiRequest) *GlobalClustersApi_GetClusterGlobalWrites_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetManagedNamespaceExecute provides a mock function with given fields: r
-func (_m *GlobalClustersApi) GetManagedNamespaceExecute(r admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
+// GetClusterGlobalWritesExecute provides a mock function with given fields: r
+func (_m *GlobalClustersApi) GetClusterGlobalWritesExecute(r admin.GetClusterGlobalWritesApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetManagedNamespaceExecute")
+		panic("no return value specified for GetClusterGlobalWritesExecute")
 	}
 
 	var r0 *admin.GeoSharding20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterGlobalWritesApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetManagedNamespaceApiRequest) *admin.GeoSharding20240805); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterGlobalWritesApiRequest) *admin.GeoSharding20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -745,7 +745,7 @@ func (_m *GlobalClustersApi) GetManagedNamespaceExecute(r admin.GetManagedNamesp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetManagedNamespaceApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetClusterGlobalWritesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -753,7 +753,7 @@ func (_m *GlobalClustersApi) GetManagedNamespaceExecute(r admin.GetManagedNamesp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetManagedNamespaceApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetClusterGlobalWritesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -762,77 +762,77 @@ func (_m *GlobalClustersApi) GetManagedNamespaceExecute(r admin.GetManagedNamesp
 	return r0, r1, r2
 }
 
-// GlobalClustersApi_GetManagedNamespaceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetManagedNamespaceExecute'
-type GlobalClustersApi_GetManagedNamespaceExecute_Call struct {
+// GlobalClustersApi_GetClusterGlobalWritesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterGlobalWritesExecute'
+type GlobalClustersApi_GetClusterGlobalWritesExecute_Call struct {
 	*mock.Call
 }
 
-// GetManagedNamespaceExecute is a helper method to define mock.On call
-//   - r admin.GetManagedNamespaceApiRequest
-func (_e *GlobalClustersApi_Expecter) GetManagedNamespaceExecute(r any) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
-	return &GlobalClustersApi_GetManagedNamespaceExecute_Call{Call: _e.mock.On("GetManagedNamespaceExecute", r)}
+// GetClusterGlobalWritesExecute is a helper method to define mock.On call
+//   - r admin.GetClusterGlobalWritesApiRequest
+func (_e *GlobalClustersApi_Expecter) GetClusterGlobalWritesExecute(r any) *GlobalClustersApi_GetClusterGlobalWritesExecute_Call {
+	return &GlobalClustersApi_GetClusterGlobalWritesExecute_Call{Call: _e.mock.On("GetClusterGlobalWritesExecute", r)}
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespaceExecute_Call) Run(run func(r admin.GetManagedNamespaceApiRequest)) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWritesExecute_Call) Run(run func(r admin.GetClusterGlobalWritesApiRequest)) *GlobalClustersApi_GetClusterGlobalWritesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetManagedNamespaceApiRequest))
+		run(args[0].(admin.GetClusterGlobalWritesApiRequest))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespaceExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWritesExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_GetClusterGlobalWritesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespaceExecute_Call) RunAndReturn(run func(admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWritesExecute_Call) RunAndReturn(run func(admin.GetClusterGlobalWritesApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_GetClusterGlobalWritesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetManagedNamespaceWithParams provides a mock function with given fields: ctx, args
-func (_m *GlobalClustersApi) GetManagedNamespaceWithParams(ctx context.Context, args *admin.GetManagedNamespaceApiParams) admin.GetManagedNamespaceApiRequest {
+// GetClusterGlobalWritesWithParams provides a mock function with given fields: ctx, args
+func (_m *GlobalClustersApi) GetClusterGlobalWritesWithParams(ctx context.Context, args *admin.GetClusterGlobalWritesApiParams) admin.GetClusterGlobalWritesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetManagedNamespaceWithParams")
+		panic("no return value specified for GetClusterGlobalWritesWithParams")
 	}
 
-	var r0 admin.GetManagedNamespaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetManagedNamespaceApiParams) admin.GetManagedNamespaceApiRequest); ok {
+	var r0 admin.GetClusterGlobalWritesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetClusterGlobalWritesApiParams) admin.GetClusterGlobalWritesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetManagedNamespaceApiRequest)
+		r0 = ret.Get(0).(admin.GetClusterGlobalWritesApiRequest)
 	}
 
 	return r0
 }
 
-// GlobalClustersApi_GetManagedNamespaceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetManagedNamespaceWithParams'
-type GlobalClustersApi_GetManagedNamespaceWithParams_Call struct {
+// GlobalClustersApi_GetClusterGlobalWritesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterGlobalWritesWithParams'
+type GlobalClustersApi_GetClusterGlobalWritesWithParams_Call struct {
 	*mock.Call
 }
 
-// GetManagedNamespaceWithParams is a helper method to define mock.On call
+// GetClusterGlobalWritesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetManagedNamespaceApiParams
-func (_e *GlobalClustersApi_Expecter) GetManagedNamespaceWithParams(ctx any, args any) *GlobalClustersApi_GetManagedNamespaceWithParams_Call {
-	return &GlobalClustersApi_GetManagedNamespaceWithParams_Call{Call: _e.mock.On("GetManagedNamespaceWithParams", ctx, args)}
+//   - args *admin.GetClusterGlobalWritesApiParams
+func (_e *GlobalClustersApi_Expecter) GetClusterGlobalWritesWithParams(ctx any, args any) *GlobalClustersApi_GetClusterGlobalWritesWithParams_Call {
+	return &GlobalClustersApi_GetClusterGlobalWritesWithParams_Call{Call: _e.mock.On("GetClusterGlobalWritesWithParams", ctx, args)}
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespaceWithParams_Call) Run(run func(ctx context.Context, args *admin.GetManagedNamespaceApiParams)) *GlobalClustersApi_GetManagedNamespaceWithParams_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWritesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetClusterGlobalWritesApiParams)) *GlobalClustersApi_GetClusterGlobalWritesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetManagedNamespaceApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetClusterGlobalWritesApiParams))
 	})
 	return _c
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespaceWithParams_Call) Return(_a0 admin.GetManagedNamespaceApiRequest) *GlobalClustersApi_GetManagedNamespaceWithParams_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWritesWithParams_Call) Return(_a0 admin.GetClusterGlobalWritesApiRequest) *GlobalClustersApi_GetClusterGlobalWritesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetManagedNamespaceApiParams) admin.GetManagedNamespaceApiRequest) *GlobalClustersApi_GetManagedNamespaceWithParams_Call {
+func (_c *GlobalClustersApi_GetClusterGlobalWritesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetClusterGlobalWritesApiParams) admin.GetClusterGlobalWritesApiRequest) *GlobalClustersApi_GetClusterGlobalWritesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

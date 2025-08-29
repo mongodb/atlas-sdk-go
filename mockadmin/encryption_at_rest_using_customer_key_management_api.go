@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -25,70 +25,70 @@ func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) EXPECT() *EncryptionAtR
 	return &EncryptionAtRestUsingCustomerKeyManagementApi_Expecter{mock: &_m.Mock}
 }
 
-// CreateEncryptionAtRestPrivateEndpoint provides a mock function with given fields: ctx, groupId, cloudProvider, eARPrivateEndpoint
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateEncryptionAtRestPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, eARPrivateEndpoint *admin.EARPrivateEndpoint) admin.CreateEncryptionAtRestPrivateEndpointApiRequest {
+// CreateRestPrivateEndpoint provides a mock function with given fields: ctx, groupId, cloudProvider, eARPrivateEndpoint
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateRestPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, eARPrivateEndpoint *admin.EARPrivateEndpoint) admin.CreateRestPrivateEndpointApiRequest {
 	ret := _m.Called(ctx, groupId, cloudProvider, eARPrivateEndpoint)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateEncryptionAtRestPrivateEndpoint")
+		panic("no return value specified for CreateRestPrivateEndpoint")
 	}
 
-	var r0 admin.CreateEncryptionAtRestPrivateEndpointApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.EARPrivateEndpoint) admin.CreateEncryptionAtRestPrivateEndpointApiRequest); ok {
+	var r0 admin.CreateRestPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.EARPrivateEndpoint) admin.CreateRestPrivateEndpointApiRequest); ok {
 		r0 = rf(ctx, groupId, cloudProvider, eARPrivateEndpoint)
 	} else {
-		r0 = ret.Get(0).(admin.CreateEncryptionAtRestPrivateEndpointApiRequest)
+		r0 = ret.Get(0).(admin.CreateRestPrivateEndpointApiRequest)
 	}
 
 	return r0
 }
 
-// EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateEncryptionAtRestPrivateEndpoint'
-type EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call struct {
+// EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateRestPrivateEndpoint'
+type EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call struct {
 	*mock.Call
 }
 
-// CreateEncryptionAtRestPrivateEndpoint is a helper method to define mock.On call
+// CreateRestPrivateEndpoint is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProvider string
 //   - eARPrivateEndpoint *admin.EARPrivateEndpoint
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) CreateEncryptionAtRestPrivateEndpoint(ctx any, groupId any, cloudProvider any, eARPrivateEndpoint any) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call{Call: _e.mock.On("CreateEncryptionAtRestPrivateEndpoint", ctx, groupId, cloudProvider, eARPrivateEndpoint)}
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) CreateRestPrivateEndpoint(ctx any, groupId any, cloudProvider any, eARPrivateEndpoint any) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call{Call: _e.mock.On("CreateRestPrivateEndpoint", ctx, groupId, cloudProvider, eARPrivateEndpoint)}
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, eARPrivateEndpoint *admin.EARPrivateEndpoint)) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, eARPrivateEndpoint *admin.EARPrivateEndpoint)) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.EARPrivateEndpoint))
 	})
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call) Return(_a0 admin.CreateEncryptionAtRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call) Return(_a0 admin.CreateRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string, *admin.EARPrivateEndpoint) admin.CreateEncryptionAtRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpoint_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string, *admin.EARPrivateEndpoint) admin.CreateRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpoint_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateEncryptionAtRestPrivateEndpointExecute provides a mock function with given fields: r
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateEncryptionAtRestPrivateEndpointExecute(r admin.CreateEncryptionAtRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error) {
+// CreateRestPrivateEndpointExecute provides a mock function with given fields: r
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateRestPrivateEndpointExecute(r admin.CreateRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateEncryptionAtRestPrivateEndpointExecute")
+		panic("no return value specified for CreateRestPrivateEndpointExecute")
 	}
 
 	var r0 *admin.EARPrivateEndpoint
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateEncryptionAtRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateEncryptionAtRestPrivateEndpointApiRequest) *admin.EARPrivateEndpoint); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateRestPrivateEndpointApiRequest) *admin.EARPrivateEndpoint); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -96,7 +96,7 @@ func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateEncryptionAtRestP
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateEncryptionAtRestPrivateEndpointApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateRestPrivateEndpointApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -104,7 +104,7 @@ func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateEncryptionAtRestP
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateEncryptionAtRestPrivateEndpointApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateRestPrivateEndpointApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -113,77 +113,77 @@ func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateEncryptionAtRestP
 	return r0, r1, r2
 }
 
-// EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateEncryptionAtRestPrivateEndpointExecute'
-type EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call struct {
+// EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateRestPrivateEndpointExecute'
+type EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call struct {
 	*mock.Call
 }
 
-// CreateEncryptionAtRestPrivateEndpointExecute is a helper method to define mock.On call
-//   - r admin.CreateEncryptionAtRestPrivateEndpointApiRequest
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) CreateEncryptionAtRestPrivateEndpointExecute(r any) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call{Call: _e.mock.On("CreateEncryptionAtRestPrivateEndpointExecute", r)}
+// CreateRestPrivateEndpointExecute is a helper method to define mock.On call
+//   - r admin.CreateRestPrivateEndpointApiRequest
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) CreateRestPrivateEndpointExecute(r any) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call{Call: _e.mock.On("CreateRestPrivateEndpointExecute", r)}
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call) Run(run func(r admin.CreateEncryptionAtRestPrivateEndpointApiRequest)) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call) Run(run func(r admin.CreateRestPrivateEndpointApiRequest)) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateEncryptionAtRestPrivateEndpointApiRequest))
+		run(args[0].(admin.CreateRestPrivateEndpointApiRequest))
 	})
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call) Return(_a0 *admin.EARPrivateEndpoint, _a1 *http.Response, _a2 error) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call) Return(_a0 *admin.EARPrivateEndpoint, _a1 *http.Response, _a2 error) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call) RunAndReturn(run func(admin.CreateEncryptionAtRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointExecute_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call) RunAndReturn(run func(admin.CreateRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateEncryptionAtRestPrivateEndpointWithParams provides a mock function with given fields: ctx, args
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateEncryptionAtRestPrivateEndpointWithParams(ctx context.Context, args *admin.CreateEncryptionAtRestPrivateEndpointApiParams) admin.CreateEncryptionAtRestPrivateEndpointApiRequest {
+// CreateRestPrivateEndpointWithParams provides a mock function with given fields: ctx, args
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) CreateRestPrivateEndpointWithParams(ctx context.Context, args *admin.CreateRestPrivateEndpointApiParams) admin.CreateRestPrivateEndpointApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateEncryptionAtRestPrivateEndpointWithParams")
+		panic("no return value specified for CreateRestPrivateEndpointWithParams")
 	}
 
-	var r0 admin.CreateEncryptionAtRestPrivateEndpointApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateEncryptionAtRestPrivateEndpointApiParams) admin.CreateEncryptionAtRestPrivateEndpointApiRequest); ok {
+	var r0 admin.CreateRestPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateRestPrivateEndpointApiParams) admin.CreateRestPrivateEndpointApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateEncryptionAtRestPrivateEndpointApiRequest)
+		r0 = ret.Get(0).(admin.CreateRestPrivateEndpointApiRequest)
 	}
 
 	return r0
 }
 
-// EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateEncryptionAtRestPrivateEndpointWithParams'
-type EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call struct {
+// EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateRestPrivateEndpointWithParams'
+type EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateEncryptionAtRestPrivateEndpointWithParams is a helper method to define mock.On call
+// CreateRestPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateEncryptionAtRestPrivateEndpointApiParams
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) CreateEncryptionAtRestPrivateEndpointWithParams(ctx any, args any) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call{Call: _e.mock.On("CreateEncryptionAtRestPrivateEndpointWithParams", ctx, args)}
+//   - args *admin.CreateRestPrivateEndpointApiParams
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) CreateRestPrivateEndpointWithParams(ctx any, args any) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call{Call: _e.mock.On("CreateRestPrivateEndpointWithParams", ctx, args)}
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateEncryptionAtRestPrivateEndpointApiParams)) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateRestPrivateEndpointApiParams)) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateEncryptionAtRestPrivateEndpointApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateRestPrivateEndpointApiParams))
 	})
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call) Return(_a0 admin.CreateEncryptionAtRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call) Return(_a0 admin.CreateRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateEncryptionAtRestPrivateEndpointApiParams) admin.CreateEncryptionAtRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateEncryptionAtRestPrivateEndpointWithParams_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateRestPrivateEndpointApiParams) admin.CreateRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_CreateRestPrivateEndpointWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -302,331 +302,6 @@ func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestExecu
 	return _c
 }
 
-// GetEncryptionAtRestPrivateEndpoint provides a mock function with given fields: ctx, groupId, cloudProvider, endpointId
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetEncryptionAtRestPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) admin.GetEncryptionAtRestPrivateEndpointApiRequest {
-	ret := _m.Called(ctx, groupId, cloudProvider, endpointId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetEncryptionAtRestPrivateEndpoint")
-	}
-
-	var r0 admin.GetEncryptionAtRestPrivateEndpointApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetEncryptionAtRestPrivateEndpointApiRequest); ok {
-		r0 = rf(ctx, groupId, cloudProvider, endpointId)
-	} else {
-		r0 = ret.Get(0).(admin.GetEncryptionAtRestPrivateEndpointApiRequest)
-	}
-
-	return r0
-}
-
-// EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetEncryptionAtRestPrivateEndpoint'
-type EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call struct {
-	*mock.Call
-}
-
-// GetEncryptionAtRestPrivateEndpoint is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - cloudProvider string
-//   - endpointId string
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetEncryptionAtRestPrivateEndpoint(ctx any, groupId any, cloudProvider any, endpointId any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call{Call: _e.mock.On("GetEncryptionAtRestPrivateEndpoint", ctx, groupId, cloudProvider, endpointId)}
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, endpointId string)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
-	})
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call) Return(_a0 admin.GetEncryptionAtRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetEncryptionAtRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpoint_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetEncryptionAtRestPrivateEndpointExecute provides a mock function with given fields: r
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetEncryptionAtRestPrivateEndpointExecute(r admin.GetEncryptionAtRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetEncryptionAtRestPrivateEndpointExecute")
-	}
-
-	var r0 *admin.EARPrivateEndpoint
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetEncryptionAtRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetEncryptionAtRestPrivateEndpointApiRequest) *admin.EARPrivateEndpoint); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.EARPrivateEndpoint)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetEncryptionAtRestPrivateEndpointApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetEncryptionAtRestPrivateEndpointApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetEncryptionAtRestPrivateEndpointExecute'
-type EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call struct {
-	*mock.Call
-}
-
-// GetEncryptionAtRestPrivateEndpointExecute is a helper method to define mock.On call
-//   - r admin.GetEncryptionAtRestPrivateEndpointApiRequest
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetEncryptionAtRestPrivateEndpointExecute(r any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call{Call: _e.mock.On("GetEncryptionAtRestPrivateEndpointExecute", r)}
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call) Run(run func(r admin.GetEncryptionAtRestPrivateEndpointApiRequest)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetEncryptionAtRestPrivateEndpointApiRequest))
-	})
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call) Return(_a0 *admin.EARPrivateEndpoint, _a1 *http.Response, _a2 error) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call) RunAndReturn(run func(admin.GetEncryptionAtRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetEncryptionAtRestPrivateEndpointWithParams provides a mock function with given fields: ctx, args
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetEncryptionAtRestPrivateEndpointWithParams(ctx context.Context, args *admin.GetEncryptionAtRestPrivateEndpointApiParams) admin.GetEncryptionAtRestPrivateEndpointApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetEncryptionAtRestPrivateEndpointWithParams")
-	}
-
-	var r0 admin.GetEncryptionAtRestPrivateEndpointApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetEncryptionAtRestPrivateEndpointApiParams) admin.GetEncryptionAtRestPrivateEndpointApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetEncryptionAtRestPrivateEndpointApiRequest)
-	}
-
-	return r0
-}
-
-// EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetEncryptionAtRestPrivateEndpointWithParams'
-type EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call struct {
-	*mock.Call
-}
-
-// GetEncryptionAtRestPrivateEndpointWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetEncryptionAtRestPrivateEndpointApiParams
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetEncryptionAtRestPrivateEndpointWithParams(ctx any, args any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call{Call: _e.mock.On("GetEncryptionAtRestPrivateEndpointWithParams", ctx, args)}
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.GetEncryptionAtRestPrivateEndpointApiParams)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetEncryptionAtRestPrivateEndpointApiParams))
-	})
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call) Return(_a0 admin.GetEncryptionAtRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetEncryptionAtRestPrivateEndpointApiParams) admin.GetEncryptionAtRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetEncryptionAtRestPrivateEndpointsForCloudProvider provides a mock function with given fields: ctx, groupId, cloudProvider
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetEncryptionAtRestPrivateEndpointsForCloudProvider(ctx context.Context, groupId string, cloudProvider string) admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest {
-	ret := _m.Called(ctx, groupId, cloudProvider)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetEncryptionAtRestPrivateEndpointsForCloudProvider")
-	}
-
-	var r0 admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest); ok {
-		r0 = rf(ctx, groupId, cloudProvider)
-	} else {
-		r0 = ret.Get(0).(admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest)
-	}
-
-	return r0
-}
-
-// EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetEncryptionAtRestPrivateEndpointsForCloudProvider'
-type EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call struct {
-	*mock.Call
-}
-
-// GetEncryptionAtRestPrivateEndpointsForCloudProvider is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - cloudProvider string
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetEncryptionAtRestPrivateEndpointsForCloudProvider(ctx any, groupId any, cloudProvider any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call{Call: _e.mock.On("GetEncryptionAtRestPrivateEndpointsForCloudProvider", ctx, groupId, cloudProvider)}
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call) Return(_a0 admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call) RunAndReturn(run func(context.Context, string, string) admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProvider_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute provides a mock function with given fields: r
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute(r admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) (*admin.PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute")
-	}
-
-	var r0 *admin.PaginatedApiAtlasEARPrivateEndpoint
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) (*admin.PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) *admin.PaginatedApiAtlasEARPrivateEndpoint); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedApiAtlasEARPrivateEndpoint)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute'
-type EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call struct {
-	*mock.Call
-}
-
-// GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute is a helper method to define mock.On call
-//   - r admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute(r any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call{Call: _e.mock.On("GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute", r)}
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call) Run(run func(r admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest))
-	})
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call) Return(_a0 *admin.PaginatedApiAtlasEARPrivateEndpoint, _a1 *http.Response, _a2 error) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call) RunAndReturn(run func(admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) (*admin.PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams provides a mock function with given fields: ctx, args
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams(ctx context.Context, args *admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiParams) admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams")
-	}
-
-	var r0 admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiParams) admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest)
-	}
-
-	return r0
-}
-
-// EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams'
-type EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call struct {
-	*mock.Call
-}
-
-// GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiParams
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams(ctx any, args any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call{Call: _e.mock.On("GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams", ctx, args)}
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call) Run(run func(ctx context.Context, args *admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiParams)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiParams))
-	})
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call) Return(_a0 admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiParams) admin.GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestPrivateEndpointsForCloudProviderWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
 // GetEncryptionAtRestWithParams provides a mock function with given fields: ctx, args
 func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetEncryptionAtRestWithParams(ctx context.Context, args *admin.GetEncryptionAtRestApiParams) admin.GetEncryptionAtRestApiRequest {
 	ret := _m.Called(ctx, args)
@@ -674,69 +349,394 @@ func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetEncryptionAtRestWithP
 	return _c
 }
 
-// RequestEncryptionAtRestPrivateEndpointDeletion provides a mock function with given fields: ctx, groupId, cloudProvider, endpointId
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestEncryptionAtRestPrivateEndpointDeletion(ctx context.Context, groupId string, cloudProvider string, endpointId string) admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest {
+// GetRestPrivateEndpoint provides a mock function with given fields: ctx, groupId, cloudProvider, endpointId
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetRestPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) admin.GetRestPrivateEndpointApiRequest {
 	ret := _m.Called(ctx, groupId, cloudProvider, endpointId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RequestEncryptionAtRestPrivateEndpointDeletion")
+		panic("no return value specified for GetRestPrivateEndpoint")
 	}
 
-	var r0 admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest); ok {
+	var r0 admin.GetRestPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetRestPrivateEndpointApiRequest); ok {
 		r0 = rf(ctx, groupId, cloudProvider, endpointId)
 	} else {
-		r0 = ret.Get(0).(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest)
+		r0 = ret.Get(0).(admin.GetRestPrivateEndpointApiRequest)
 	}
 
 	return r0
 }
 
-// EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RequestEncryptionAtRestPrivateEndpointDeletion'
-type EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call struct {
+// EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRestPrivateEndpoint'
+type EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call struct {
 	*mock.Call
 }
 
-// RequestEncryptionAtRestPrivateEndpointDeletion is a helper method to define mock.On call
+// GetRestPrivateEndpoint is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProvider string
 //   - endpointId string
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) RequestEncryptionAtRestPrivateEndpointDeletion(ctx any, groupId any, cloudProvider any, endpointId any) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call{Call: _e.mock.On("RequestEncryptionAtRestPrivateEndpointDeletion", ctx, groupId, cloudProvider, endpointId)}
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetRestPrivateEndpoint(ctx any, groupId any, cloudProvider any, endpointId any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call{Call: _e.mock.On("GetRestPrivateEndpoint", ctx, groupId, cloudProvider, endpointId)}
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, endpointId string)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, endpointId string)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call) Return(_a0 admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call) Return(_a0 admin.GetRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call) RunAndReturn(run func(context.Context, string, string, string) admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletion_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpoint_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RequestEncryptionAtRestPrivateEndpointDeletionExecute provides a mock function with given fields: r
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestEncryptionAtRestPrivateEndpointDeletionExecute(r admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (*http.Response, error) {
+// GetRestPrivateEndpointExecute provides a mock function with given fields: r
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetRestPrivateEndpointExecute(r admin.GetRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RequestEncryptionAtRestPrivateEndpointDeletionExecute")
+		panic("no return value specified for GetRestPrivateEndpointExecute")
+	}
+
+	var r0 *admin.EARPrivateEndpoint
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetRestPrivateEndpointApiRequest) *admin.EARPrivateEndpoint); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.EARPrivateEndpoint)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetRestPrivateEndpointApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetRestPrivateEndpointApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRestPrivateEndpointExecute'
+type EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call struct {
+	*mock.Call
+}
+
+// GetRestPrivateEndpointExecute is a helper method to define mock.On call
+//   - r admin.GetRestPrivateEndpointApiRequest
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetRestPrivateEndpointExecute(r any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call{Call: _e.mock.On("GetRestPrivateEndpointExecute", r)}
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call) Run(run func(r admin.GetRestPrivateEndpointApiRequest)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetRestPrivateEndpointApiRequest))
+	})
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call) Return(_a0 *admin.EARPrivateEndpoint, _a1 *http.Response, _a2 error) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call) RunAndReturn(run func(admin.GetRestPrivateEndpointApiRequest) (*admin.EARPrivateEndpoint, *http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetRestPrivateEndpointWithParams provides a mock function with given fields: ctx, args
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) GetRestPrivateEndpointWithParams(ctx context.Context, args *admin.GetRestPrivateEndpointApiParams) admin.GetRestPrivateEndpointApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetRestPrivateEndpointWithParams")
+	}
+
+	var r0 admin.GetRestPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetRestPrivateEndpointApiParams) admin.GetRestPrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetRestPrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRestPrivateEndpointWithParams'
+type EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call struct {
+	*mock.Call
+}
+
+// GetRestPrivateEndpointWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetRestPrivateEndpointApiParams
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) GetRestPrivateEndpointWithParams(ctx any, args any) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call{Call: _e.mock.On("GetRestPrivateEndpointWithParams", ctx, args)}
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.GetRestPrivateEndpointApiParams)) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetRestPrivateEndpointApiParams))
+	})
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call) Return(_a0 admin.GetRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetRestPrivateEndpointApiParams) admin.GetRestPrivateEndpointApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_GetRestPrivateEndpointWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListRestPrivateEndpoints provides a mock function with given fields: ctx, groupId, cloudProvider
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) ListRestPrivateEndpoints(ctx context.Context, groupId string, cloudProvider string) admin.ListRestPrivateEndpointsApiRequest {
+	ret := _m.Called(ctx, groupId, cloudProvider)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListRestPrivateEndpoints")
+	}
+
+	var r0 admin.ListRestPrivateEndpointsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListRestPrivateEndpointsApiRequest); ok {
+		r0 = rf(ctx, groupId, cloudProvider)
+	} else {
+		r0 = ret.Get(0).(admin.ListRestPrivateEndpointsApiRequest)
+	}
+
+	return r0
+}
+
+// EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListRestPrivateEndpoints'
+type EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call struct {
+	*mock.Call
+}
+
+// ListRestPrivateEndpoints is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - cloudProvider string
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) ListRestPrivateEndpoints(ctx any, groupId any, cloudProvider any) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call{Call: _e.mock.On("ListRestPrivateEndpoints", ctx, groupId, cloudProvider)}
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string)) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call) Return(_a0 admin.ListRestPrivateEndpointsApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call) RunAndReturn(run func(context.Context, string, string) admin.ListRestPrivateEndpointsApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpoints_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListRestPrivateEndpointsExecute provides a mock function with given fields: r
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) ListRestPrivateEndpointsExecute(r admin.ListRestPrivateEndpointsApiRequest) (*admin.PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListRestPrivateEndpointsExecute")
+	}
+
+	var r0 *admin.PaginatedApiAtlasEARPrivateEndpoint
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListRestPrivateEndpointsApiRequest) (*admin.PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListRestPrivateEndpointsApiRequest) *admin.PaginatedApiAtlasEARPrivateEndpoint); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiAtlasEARPrivateEndpoint)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListRestPrivateEndpointsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListRestPrivateEndpointsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListRestPrivateEndpointsExecute'
+type EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call struct {
+	*mock.Call
+}
+
+// ListRestPrivateEndpointsExecute is a helper method to define mock.On call
+//   - r admin.ListRestPrivateEndpointsApiRequest
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) ListRestPrivateEndpointsExecute(r any) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call{Call: _e.mock.On("ListRestPrivateEndpointsExecute", r)}
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call) Run(run func(r admin.ListRestPrivateEndpointsApiRequest)) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListRestPrivateEndpointsApiRequest))
+	})
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call) Return(_a0 *admin.PaginatedApiAtlasEARPrivateEndpoint, _a1 *http.Response, _a2 error) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call) RunAndReturn(run func(admin.ListRestPrivateEndpointsApiRequest) (*admin.PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListRestPrivateEndpointsWithParams provides a mock function with given fields: ctx, args
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) ListRestPrivateEndpointsWithParams(ctx context.Context, args *admin.ListRestPrivateEndpointsApiParams) admin.ListRestPrivateEndpointsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListRestPrivateEndpointsWithParams")
+	}
+
+	var r0 admin.ListRestPrivateEndpointsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListRestPrivateEndpointsApiParams) admin.ListRestPrivateEndpointsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListRestPrivateEndpointsApiRequest)
+	}
+
+	return r0
+}
+
+// EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListRestPrivateEndpointsWithParams'
+type EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListRestPrivateEndpointsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListRestPrivateEndpointsApiParams
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) ListRestPrivateEndpointsWithParams(ctx any, args any) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call{Call: _e.mock.On("ListRestPrivateEndpointsWithParams", ctx, args)}
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListRestPrivateEndpointsApiParams)) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListRestPrivateEndpointsApiParams))
+	})
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call) Return(_a0 admin.ListRestPrivateEndpointsApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListRestPrivateEndpointsApiParams) admin.ListRestPrivateEndpointsApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_ListRestPrivateEndpointsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RequestPrivateEndpointDeletion provides a mock function with given fields: ctx, groupId, cloudProvider, endpointId
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestPrivateEndpointDeletion(ctx context.Context, groupId string, cloudProvider string, endpointId string) admin.RequestPrivateEndpointDeletionApiRequest {
+	ret := _m.Called(ctx, groupId, cloudProvider, endpointId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RequestPrivateEndpointDeletion")
+	}
+
+	var r0 admin.RequestPrivateEndpointDeletionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.RequestPrivateEndpointDeletionApiRequest); ok {
+		r0 = rf(ctx, groupId, cloudProvider, endpointId)
+	} else {
+		r0 = ret.Get(0).(admin.RequestPrivateEndpointDeletionApiRequest)
+	}
+
+	return r0
+}
+
+// EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RequestPrivateEndpointDeletion'
+type EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call struct {
+	*mock.Call
+}
+
+// RequestPrivateEndpointDeletion is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - cloudProvider string
+//   - endpointId string
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) RequestPrivateEndpointDeletion(ctx any, groupId any, cloudProvider any, endpointId any) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call{Call: _e.mock.On("RequestPrivateEndpointDeletion", ctx, groupId, cloudProvider, endpointId)}
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, endpointId string)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call) Return(_a0 admin.RequestPrivateEndpointDeletionApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call) RunAndReturn(run func(context.Context, string, string, string) admin.RequestPrivateEndpointDeletionApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletion_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RequestPrivateEndpointDeletionExecute provides a mock function with given fields: r
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestPrivateEndpointDeletionExecute(r admin.RequestPrivateEndpointDeletionApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RequestPrivateEndpointDeletionExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RequestPrivateEndpointDeletionApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.RequestPrivateEndpointDeletionApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -744,7 +744,7 @@ func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestEncryptionAtRest
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.RequestPrivateEndpointDeletionApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -753,77 +753,77 @@ func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestEncryptionAtRest
 	return r0, r1
 }
 
-// EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RequestEncryptionAtRestPrivateEndpointDeletionExecute'
-type EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call struct {
+// EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RequestPrivateEndpointDeletionExecute'
+type EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call struct {
 	*mock.Call
 }
 
-// RequestEncryptionAtRestPrivateEndpointDeletionExecute is a helper method to define mock.On call
-//   - r admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) RequestEncryptionAtRestPrivateEndpointDeletionExecute(r any) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call{Call: _e.mock.On("RequestEncryptionAtRestPrivateEndpointDeletionExecute", r)}
+// RequestPrivateEndpointDeletionExecute is a helper method to define mock.On call
+//   - r admin.RequestPrivateEndpointDeletionApiRequest
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) RequestPrivateEndpointDeletionExecute(r any) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call{Call: _e.mock.On("RequestPrivateEndpointDeletionExecute", r)}
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call) Run(run func(r admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call) Run(run func(r admin.RequestPrivateEndpointDeletionApiRequest)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest))
+		run(args[0].(admin.RequestPrivateEndpointDeletionApiRequest))
 	})
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call) Return(_a0 *http.Response, _a1 error) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call) Return(_a0 *http.Response, _a1 error) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call) RunAndReturn(run func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (*http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call) RunAndReturn(run func(admin.RequestPrivateEndpointDeletionApiRequest) (*http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RequestEncryptionAtRestPrivateEndpointDeletionWithParams provides a mock function with given fields: ctx, args
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestEncryptionAtRestPrivateEndpointDeletionWithParams(ctx context.Context, args *admin.RequestEncryptionAtRestPrivateEndpointDeletionApiParams) admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest {
+// RequestPrivateEndpointDeletionWithParams provides a mock function with given fields: ctx, args
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestPrivateEndpointDeletionWithParams(ctx context.Context, args *admin.RequestPrivateEndpointDeletionApiParams) admin.RequestPrivateEndpointDeletionApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RequestEncryptionAtRestPrivateEndpointDeletionWithParams")
+		panic("no return value specified for RequestPrivateEndpointDeletionWithParams")
 	}
 
-	var r0 admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RequestEncryptionAtRestPrivateEndpointDeletionApiParams) admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest); ok {
+	var r0 admin.RequestPrivateEndpointDeletionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RequestPrivateEndpointDeletionApiParams) admin.RequestPrivateEndpointDeletionApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest)
+		r0 = ret.Get(0).(admin.RequestPrivateEndpointDeletionApiRequest)
 	}
 
 	return r0
 }
 
-// EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RequestEncryptionAtRestPrivateEndpointDeletionWithParams'
-type EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call struct {
+// EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RequestPrivateEndpointDeletionWithParams'
+type EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call struct {
 	*mock.Call
 }
 
-// RequestEncryptionAtRestPrivateEndpointDeletionWithParams is a helper method to define mock.On call
+// RequestPrivateEndpointDeletionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.RequestEncryptionAtRestPrivateEndpointDeletionApiParams
-func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) RequestEncryptionAtRestPrivateEndpointDeletionWithParams(ctx any, args any) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call {
-	return &EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call{Call: _e.mock.On("RequestEncryptionAtRestPrivateEndpointDeletionWithParams", ctx, args)}
+//   - args *admin.RequestPrivateEndpointDeletionApiParams
+func (_e *EncryptionAtRestUsingCustomerKeyManagementApi_Expecter) RequestPrivateEndpointDeletionWithParams(ctx any, args any) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call {
+	return &EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call{Call: _e.mock.On("RequestPrivateEndpointDeletionWithParams", ctx, args)}
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call) Run(run func(ctx context.Context, args *admin.RequestEncryptionAtRestPrivateEndpointDeletionApiParams)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call) Run(run func(ctx context.Context, args *admin.RequestPrivateEndpointDeletionApiParams)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RequestEncryptionAtRestPrivateEndpointDeletionApiParams))
+		run(args[0].(context.Context), args[1].(*admin.RequestPrivateEndpointDeletionApiParams))
 	})
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call) Return(_a0 admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call) Return(_a0 admin.RequestPrivateEndpointDeletionApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call) RunAndReturn(run func(context.Context, *admin.RequestEncryptionAtRestPrivateEndpointDeletionApiParams) admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionWithParams_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call) RunAndReturn(run func(context.Context, *admin.RequestPrivateEndpointDeletionApiParams) admin.RequestPrivateEndpointDeletionApiRequest) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestPrivateEndpointDeletionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

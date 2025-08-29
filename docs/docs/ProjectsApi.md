@@ -4,35 +4,35 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddUserToProject**](ProjectsApi.md#AddUserToProject) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project
-[**CreateProject**](ProjectsApi.md#CreateProject) | **Post** /api/atlas/v2/groups | Create One Project
-[**CreateProjectInvitation**](ProjectsApi.md#CreateProjectInvitation) | **Post** /api/atlas/v2/groups/{groupId}/invites | Invite One MongoDB Cloud User to One Project
-[**DeleteProject**](ProjectsApi.md#DeleteProject) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project
-[**DeleteProjectInvitation**](ProjectsApi.md#DeleteProjectInvitation) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Project Invitation
-[**DeleteProjectLimit**](ProjectsApi.md#DeleteProjectLimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit
-[**GetProject**](ProjectsApi.md#GetProject) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
-[**GetProjectByName**](ProjectsApi.md#GetProjectByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name
-[**GetProjectInvitation**](ProjectsApi.md#GetProjectInvitation) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Project Invitation
-[**GetProjectLimit**](ProjectsApi.md#GetProjectLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
-[**GetProjectLtsVersions**](ProjectsApi.md#GetProjectLtsVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project
-[**GetProjectSettings**](ProjectsApi.md#GetProjectSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings
-[**ListProjectInvitations**](ProjectsApi.md#ListProjectInvitations) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations
-[**ListProjectLimits**](ProjectsApi.md#ListProjectLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
-[**ListProjects**](ProjectsApi.md#ListProjects) | **Get** /api/atlas/v2/groups | Return All Projects
-[**MigrateProjectToAnotherOrg**](ProjectsApi.md#MigrateProjectToAnotherOrg) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization
-[**ReturnAllIpAddresses**](ProjectsApi.md#ReturnAllIpAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
-[**SetProjectLimit**](ProjectsApi.md#SetProjectLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
-[**UpdateProject**](ProjectsApi.md#UpdateProject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project
-[**UpdateProjectInvitation**](ProjectsApi.md#UpdateProjectInvitation) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation
-[**UpdateProjectInvitationById**](ProjectsApi.md#UpdateProjectInvitationById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID
-[**UpdateProjectRoles**](ProjectsApi.md#UpdateProjectRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
-[**UpdateProjectSettings**](ProjectsApi.md#UpdateProjectSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings
+[**AddGroupUser**](ProjectsApi.md#AddGroupUser) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project
+[**CreateGroup**](ProjectsApi.md#CreateGroup) | **Post** /api/atlas/v2/groups | Create One Project
+[**CreateGroupInvite**](ProjectsApi.md#CreateGroupInvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Invite One MongoDB Cloud User to One Project
+[**DeleteGroup**](ProjectsApi.md#DeleteGroup) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project
+[**DeleteGroupInvite**](ProjectsApi.md#DeleteGroupInvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Project Invitation
+[**DeleteGroupLimit**](ProjectsApi.md#DeleteGroupLimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit
+[**GetGroup**](ProjectsApi.md#GetGroup) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
+[**GetGroupByName**](ProjectsApi.md#GetGroupByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name
+[**GetGroupInvite**](ProjectsApi.md#GetGroupInvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Project Invitation
+[**GetGroupIpAddresses**](ProjectsApi.md#GetGroupIpAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
+[**GetGroupLimit**](ProjectsApi.md#GetGroupLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
+[**GetGroupSettings**](ProjectsApi.md#GetGroupSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings
+[**GetMongoDbVersions**](ProjectsApi.md#GetMongoDbVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project
+[**ListGroupInvites**](ProjectsApi.md#ListGroupInvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations
+[**ListGroupLimits**](ProjectsApi.md#ListGroupLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
+[**ListGroups**](ProjectsApi.md#ListGroups) | **Get** /api/atlas/v2/groups | Return All Projects
+[**MigrateGroup**](ProjectsApi.md#MigrateGroup) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization
+[**SetGroupLimit**](ProjectsApi.md#SetGroupLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
+[**UpdateGroup**](ProjectsApi.md#UpdateGroup) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project
+[**UpdateGroupInvites**](ProjectsApi.md#UpdateGroupInvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation
+[**UpdateGroupSettings**](ProjectsApi.md#UpdateGroupSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings
+[**UpdateGroupUserRoles**](ProjectsApi.md#UpdateGroupUserRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
+[**UpdateInviteById**](ProjectsApi.md#UpdateInviteById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID
 
 
 
-## AddUserToProject
+## AddGroupUser
 
-> OrganizationInvitation AddUserToProject(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
+> OrganizationInvitation AddGroupUser(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
 
 Add One MongoDB Cloud User to One Project
 
@@ -47,7 +47,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -63,17 +63,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupInvitationRequest := *openapiclient.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.AddUserToProject(context.Background(), groupId, &groupInvitationRequest).Execute()
+    resp, r, err := sdk.ProjectsApi.AddGroupUser(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.AddUserToProject`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.AddGroupUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `AddUserToProject`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.AddUserToProject`: %v (%v)\n", resp, r)
+    // response from `AddGroupUser`: OrganizationInvitation
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.AddGroupUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddUserToProjectRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAddGroupUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -112,9 +112,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateProject
+## CreateGroup
 
-> Group CreateProject(ctx, group Group).ProjectOwnerId(projectOwnerId).Execute()
+> Group CreateGroup(ctx, group Group).ProjectOwnerId(projectOwnerId).Execute()
 
 Create One Project
 
@@ -129,7 +129,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -145,17 +145,17 @@ func main() {
     group := *openapiclient.NewGroup(int64(123), time.Now(), "Name_example", "32b6e34b3d91647abb20e7b8") // Group | 
     projectOwnerId := "projectOwnerId_example" // string |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.CreateProject(context.Background(), &group).ProjectOwnerId(projectOwnerId).Execute()
+    resp, r, err := sdk.ProjectsApi.CreateGroup(context.Background(), &group).ProjectOwnerId(projectOwnerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateProject`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateProject`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateProject`: %v (%v)\n", resp, r)
+    // response from `CreateGroup`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateGroup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -165,7 +165,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateProjectRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -190,9 +190,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateProjectInvitation
+## CreateGroupInvite
 
-> GroupInvitation CreateProjectInvitation(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
+> GroupInvitation CreateGroupInvite(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
 
 Invite One MongoDB Cloud User to One Project
 
@@ -207,7 +207,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -223,17 +223,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupInvitationRequest := *openapiclient.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.CreateProjectInvitation(context.Background(), groupId, &groupInvitationRequest).Execute()
+    resp, r, err := sdk.ProjectsApi.CreateGroupInvite(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateProjectInvitation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateGroupInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateProjectInvitation`: GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateProjectInvitation`: %v (%v)\n", resp, r)
+    // response from `CreateGroupInvite`: GroupInvitation
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateGroupInvite`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateProjectInvitationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateGroupInviteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -272,9 +272,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteProject
+## DeleteGroup
 
-> DeleteProject(ctx, groupId).Execute()
+> DeleteGroup(ctx, groupId).Execute()
 
 Remove One Project
 
@@ -289,7 +289,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -304,9 +304,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteProject(context.Background(), groupId).Execute()
+    r, err := sdk.ProjectsApi.DeleteGroup(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProject`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteProjectRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -350,9 +350,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteProjectInvitation
+## DeleteGroupInvite
 
-> DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
+> DeleteGroupInvite(ctx, groupId, invitationId).Execute()
 
 Remove One Project Invitation
 
@@ -367,7 +367,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -383,9 +383,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     invitationId := "invitationId_example" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteProjectInvitation(context.Background(), groupId, invitationId).Execute()
+    r, err := sdk.ProjectsApi.DeleteGroupInvite(context.Background(), groupId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProjectInvitation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteGroupInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteProjectInvitationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteGroupInviteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -431,9 +431,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteProjectLimit
+## DeleteGroupLimit
 
-> DeleteProjectLimit(ctx, limitName, groupId).Execute()
+> DeleteGroupLimit(ctx, limitName, groupId).Execute()
 
 Remove One Project Limit
 
@@ -448,7 +448,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -464,9 +464,9 @@ func main() {
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteProjectLimit(context.Background(), limitName, groupId).Execute()
+    r, err := sdk.ProjectsApi.DeleteGroupLimit(context.Background(), limitName, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProjectLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteGroupLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -482,12 +482,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**limitName** | **string** | Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 | | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 | | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 | | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 | | atlas.project.security.networkAccess.crossRegionEntries | Limit on the number of cross-region network access entries in this project | 40 | 220 | | atlas.project.security.networkAccess.entries | Limit on the number of network access entries in this project | 200 | 20 | | dataFederation.bytesProcessed.query | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | dataFederation.bytesProcessed.daily | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | dataFederation.bytesProcessed.weekly | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100| | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27| | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |  | 
+**limitName** | **string** | Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 100 | | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 | | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 | | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 100 | | atlas.project.security.networkAccess.crossRegionEntries | Limit on the number of cross-region network access entries in this project | 40 | 220 | | atlas.project.security.networkAccess.entries | Limit on the number of network access entries in this project | 200 | 20 | | dataFederation.bytesProcessed.query | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | dataFederation.bytesProcessed.daily | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | dataFederation.bytesProcessed.weekly | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100| | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|  | 
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteProjectLimitRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteGroupLimitRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -512,9 +512,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetProject
+## GetGroup
 
-> Group GetProject(ctx, groupId).Execute()
+> Group GetGroup(ctx, groupId).Execute()
 
 Return One Project
 
@@ -529,7 +529,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -544,17 +544,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetProject(context.Background(), groupId).Execute()
+    resp, r, err := sdk.ProjectsApi.GetGroup(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProject`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetProject`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProject`: %v (%v)\n", resp, r)
+    // response from `GetGroup`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -568,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetProjectRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -592,9 +592,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetProjectByName
+## GetGroupByName
 
-> Group GetProjectByName(ctx, groupName).Execute()
+> Group GetGroupByName(ctx, groupName).Execute()
 
 Return One Project by Name
 
@@ -609,7 +609,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -624,17 +624,17 @@ func main() {
 
     groupName := "groupName_example" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetProjectByName(context.Background(), groupName).Execute()
+    resp, r, err := sdk.ProjectsApi.GetGroupByName(context.Background(), groupName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectByName`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetProjectByName`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectByName`: %v (%v)\n", resp, r)
+    // response from `GetGroupByName`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -648,7 +648,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetProjectByNameRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetGroupByNameRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -672,9 +672,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetProjectInvitation
+## GetGroupInvite
 
-> GroupInvitation GetProjectInvitation(ctx, groupId, invitationId).Execute()
+> GroupInvitation GetGroupInvite(ctx, groupId, invitationId).Execute()
 
 Return One Project Invitation
 
@@ -689,7 +689,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -705,17 +705,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     invitationId := "invitationId_example" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetProjectInvitation(context.Background(), groupId, invitationId).Execute()
+    resp, r, err := sdk.ProjectsApi.GetGroupInvite(context.Background(), groupId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectInvitation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetProjectInvitation`: GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectInvitation`: %v (%v)\n", resp, r)
+    // response from `GetGroupInvite`: GroupInvitation
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupInvite`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -730,7 +730,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetProjectInvitationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetGroupInviteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -755,9 +755,89 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetProjectLimit
+## GetGroupIpAddresses
 
-> DataFederationLimit GetProjectLimit(ctx, limitName, groupId).Execute()
+> GroupIPAddresses GetGroupIpAddresses(ctx, groupId).Execute()
+
+Return All IP Addresses for One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    resp, r, err := sdk.ProjectsApi.GetGroupIpAddresses(context.Background(), groupId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupIpAddresses`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetGroupIpAddresses`: GroupIPAddresses
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupIpAddresses`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetGroupIpAddressesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupIPAddresses**](GroupIPAddresses.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetGroupLimit
+
+> DataFederationLimit GetGroupLimit(ctx, limitName, groupId).Execute()
 
 Return One Limit for One Project
 
@@ -772,7 +852,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -788,17 +868,17 @@ func main() {
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetProjectLimit(context.Background(), limitName, groupId).Execute()
+    resp, r, err := sdk.ProjectsApi.GetGroupLimit(context.Background(), limitName, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetProjectLimit`: DataFederationLimit
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectLimit`: %v (%v)\n", resp, r)
+    // response from `GetGroupLimit`: DataFederationLimit
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -808,12 +888,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**limitName** | **string** | Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 | | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 | | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 | | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 | | atlas.project.security.networkAccess.crossRegionEntries | Limit on the number of cross-region network access entries in this project | 40 | 220 | | atlas.project.security.networkAccess.entries | Limit on the number of network access entries in this project | 200 | 20 | | dataFederation.bytesProcessed.query | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | dataFederation.bytesProcessed.daily | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | dataFederation.bytesProcessed.weekly | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100| | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27| | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |  | 
+**limitName** | **string** | Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 100 | | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 | | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 | | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 100 | | atlas.project.security.networkAccess.crossRegionEntries | Limit on the number of cross-region network access entries in this project | 40 | 220 | | atlas.project.security.networkAccess.entries | Limit on the number of network access entries in this project | 200 | 20 | | dataFederation.bytesProcessed.query | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | dataFederation.bytesProcessed.daily | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | dataFederation.bytesProcessed.weekly | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100| | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|  | 
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetProjectLimitRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetGroupLimitRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -838,9 +918,89 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetProjectLtsVersions
+## GetGroupSettings
 
-> PaginatedAvailableVersion GetProjectLtsVersions(ctx, groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> GroupSettings GetGroupSettings(ctx, groupId).Execute()
+
+Return Project Settings
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    resp, r, err := sdk.ProjectsApi.GetGroupSettings(context.Background(), groupId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetGroupSettings`: GroupSettings
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetGroupSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupSettings**](GroupSettings.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMongoDbVersions
+
+> PaginatedAvailableVersion GetMongoDbVersions(ctx, groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Available MongoDB LTS Versions for Clusters in One Project
 
@@ -855,7 +1015,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -875,17 +1035,17 @@ func main() {
     itemsPerPage := int64(100) // int64 |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectsApi.GetProjectLtsVersions(context.Background(), groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectsApi.GetMongoDbVersions(context.Background(), groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectLtsVersions`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetMongoDbVersions`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetProjectLtsVersions`: PaginatedAvailableVersion
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectLtsVersions`: %v (%v)\n", resp, r)
+    // response from `GetMongoDbVersions`: PaginatedAvailableVersion
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetMongoDbVersions`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -899,7 +1059,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetProjectLtsVersionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetMongoDbVersionsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -928,89 +1088,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetProjectSettings
+## ListGroupInvites
 
-> GroupSettings GetProjectSettings(ctx, groupId).Execute()
-
-Return Project Settings
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-
-    resp, r, err := sdk.ProjectsApi.GetProjectSettings(context.Background(), groupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectSettings`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetProjectSettings`: GroupSettings
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectSettings`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetProjectSettingsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**GroupSettings**](GroupSettings.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListProjectInvitations
-
-> []GroupInvitation ListProjectInvitations(ctx, groupId).Username(username).Execute()
+> []GroupInvitation ListGroupInvites(ctx, groupId).Username(username).Execute()
 
 Return All Project Invitations
 
@@ -1025,7 +1105,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1041,17 +1121,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     username := "username_example" // string |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.ListProjectInvitations(context.Background(), groupId).Username(username).Execute()
+    resp, r, err := sdk.ProjectsApi.ListGroupInvites(context.Background(), groupId).Username(username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjectInvitations`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListGroupInvites`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListProjectInvitations`: []GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjectInvitations`: %v (%v)\n", resp, r)
+    // response from `ListGroupInvites`: []GroupInvitation
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListGroupInvites`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1065,7 +1145,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListProjectInvitationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListGroupInvitesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1090,9 +1170,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListProjectLimits
+## ListGroupLimits
 
-> []DataFederationLimit ListProjectLimits(ctx, groupId).Execute()
+> []DataFederationLimit ListGroupLimits(ctx, groupId).Execute()
 
 Return All Limits for One Project
 
@@ -1107,7 +1187,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1122,17 +1202,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.ListProjectLimits(context.Background(), groupId).Execute()
+    resp, r, err := sdk.ProjectsApi.ListGroupLimits(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjectLimits`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListGroupLimits`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListProjectLimits`: []DataFederationLimit
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjectLimits`: %v (%v)\n", resp, r)
+    // response from `ListGroupLimits`: []DataFederationLimit
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListGroupLimits`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1146,7 +1226,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListProjectLimitsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListGroupLimitsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1170,9 +1250,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListProjects
+## ListGroups
 
-> PaginatedAtlasGroup ListProjects(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedAtlasGroup ListGroups(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Projects
 
@@ -1187,7 +1267,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1204,17 +1284,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectsApi.ListProjects(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectsApi.ListGroups(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjects`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListGroups`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListProjects`: PaginatedAtlasGroup
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjects`: %v (%v)\n", resp, r)
+    // response from `ListGroups`: PaginatedAtlasGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListGroups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1224,7 +1304,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListProjectsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListGroupsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1250,9 +1330,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## MigrateProjectToAnotherOrg
+## MigrateGroup
 
-> Group MigrateProjectToAnotherOrg(ctx, groupId, groupMigrationRequest GroupMigrationRequest).Execute()
+> Group MigrateGroup(ctx, groupId, groupMigrationRequest GroupMigrationRequest).Execute()
 
 Migrate One Project to Another Organization
 
@@ -1267,7 +1347,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1283,17 +1363,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupMigrationRequest := *openapiclient.NewGroupMigrationRequest() // GroupMigrationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.MigrateProjectToAnotherOrg(context.Background(), groupId, &groupMigrationRequest).Execute()
+    resp, r, err := sdk.ProjectsApi.MigrateGroup(context.Background(), groupId, &groupMigrationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.MigrateProjectToAnotherOrg`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.MigrateGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `MigrateProjectToAnotherOrg`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.MigrateProjectToAnotherOrg`: %v (%v)\n", resp, r)
+    // response from `MigrateGroup`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.MigrateGroup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1307,7 +1387,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiMigrateProjectToAnotherOrgRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiMigrateGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1332,89 +1412,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReturnAllIpAddresses
+## SetGroupLimit
 
-> GroupIPAddresses ReturnAllIpAddresses(ctx, groupId).Execute()
-
-Return All IP Addresses for One Project
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-
-    resp, r, err := sdk.ProjectsApi.ReturnAllIpAddresses(context.Background(), groupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ReturnAllIpAddresses`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ReturnAllIpAddresses`: GroupIPAddresses
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ReturnAllIpAddresses`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiReturnAllIpAddressesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**GroupIPAddresses**](GroupIPAddresses.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetProjectLimit
-
-> DataFederationLimit SetProjectLimit(ctx, limitName, groupId, dataFederationLimit DataFederationLimit).Execute()
+> DataFederationLimit SetGroupLimit(ctx, limitName, groupId, dataFederationLimit DataFederationLimit).Execute()
 
 Set One Project Limit
 
@@ -1429,7 +1429,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1446,17 +1446,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     dataFederationLimit := *openapiclient.NewDataFederationLimit("Name_example", int64(123)) // DataFederationLimit | 
 
-    resp, r, err := sdk.ProjectsApi.SetProjectLimit(context.Background(), limitName, groupId, &dataFederationLimit).Execute()
+    resp, r, err := sdk.ProjectsApi.SetGroupLimit(context.Background(), limitName, groupId, &dataFederationLimit).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.SetProjectLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.SetGroupLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `SetProjectLimit`: DataFederationLimit
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.SetProjectLimit`: %v (%v)\n", resp, r)
+    // response from `SetGroupLimit`: DataFederationLimit
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.SetGroupLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1466,12 +1466,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**limitName** | **string** | Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 | | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 | | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 | | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 | | atlas.project.security.networkAccess.crossRegionEntries | Limit on the number of cross-region network access entries in this project | 40 | 220 | | atlas.project.security.networkAccess.entries | Limit on the number of network access entries in this project | 200 | 20 | | dataFederation.bytesProcessed.query | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | dataFederation.bytesProcessed.daily | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | dataFederation.bytesProcessed.weekly | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100| | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27| | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |  | 
+**limitName** | **string** | Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 100 | | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 | | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 | | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 100 | | atlas.project.security.networkAccess.crossRegionEntries | Limit on the number of cross-region network access entries in this project | 40 | 220 | | atlas.project.security.networkAccess.entries | Limit on the number of network access entries in this project | 200 | 20 | | dataFederation.bytesProcessed.query | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | dataFederation.bytesProcessed.daily | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | dataFederation.bytesProcessed.weekly | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100| | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|  | 
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSetProjectLimitRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSetGroupLimitRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1497,9 +1497,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateProject
+## UpdateGroup
 
-> Group UpdateProject(ctx, groupId, groupUpdate GroupUpdate).Execute()
+> Group UpdateGroup(ctx, groupId, groupUpdate GroupUpdate).Execute()
 
 Update One Project
 
@@ -1514,7 +1514,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1530,17 +1530,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupUpdate := *openapiclient.NewGroupUpdate() // GroupUpdate | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateProject(context.Background(), groupId, &groupUpdate).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateGroup(context.Background(), groupId, &groupUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProject`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateProject`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProject`: %v (%v)\n", resp, r)
+    // response from `UpdateGroup`: Group
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateGroup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1554,7 +1554,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateProjectRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1579,9 +1579,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateProjectInvitation
+## UpdateGroupInvites
 
-> GroupInvitation UpdateProjectInvitation(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
+> GroupInvitation UpdateGroupInvites(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
 
 Update One Project Invitation
 
@@ -1596,7 +1596,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1612,17 +1612,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupInvitationRequest := *openapiclient.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateProjectInvitation(context.Background(), groupId, &groupInvitationRequest).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateGroupInvites(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectInvitation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateGroupInvites`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateProjectInvitation`: GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectInvitation`: %v (%v)\n", resp, r)
+    // response from `UpdateGroupInvites`: GroupInvitation
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateGroupInvites`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1636,7 +1636,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateProjectInvitationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateGroupInvitesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1661,11 +1661,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateProjectInvitationById
+## UpdateGroupSettings
 
-> GroupInvitation UpdateProjectInvitationById(ctx, groupId, invitationId, groupInvitationUpdateRequest GroupInvitationUpdateRequest).Execute()
+> GroupSettings UpdateGroupSettings(ctx, groupId, groupSettings GroupSettings).Execute()
 
-Update One Project Invitation by Invitation ID
+Update Project Settings
 
 
 ### Example
@@ -1678,7 +1678,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1692,20 +1692,19 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    invitationId := "invitationId_example" // string | 
-    groupInvitationUpdateRequest := *openapiclient.NewGroupInvitationUpdateRequest() // GroupInvitationUpdateRequest | 
+    groupSettings := *openapiclient.NewGroupSettings() // GroupSettings | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateProjectInvitationById(context.Background(), groupId, invitationId, &groupInvitationUpdateRequest).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateGroupSettings(context.Background(), groupId, &groupSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectInvitationById`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateGroupSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateProjectInvitationById`: GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectInvitationById`: %v (%v)\n", resp, r)
+    // response from `UpdateGroupSettings`: GroupSettings
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateGroupSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1716,22 +1715,20 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**invitationId** | **string** | Unique 24-hexadecimal digit string that identifies the invitation. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateProjectInvitationByIdRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateGroupSettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
- **groupInvitationUpdateRequest** | [**GroupInvitationUpdateRequest**](GroupInvitationUpdateRequest.md) | Updates the details of one pending invitation to the specified project. | 
+ **groupSettings** | [**GroupSettings**](GroupSettings.md) | Settings to update. | 
 
 ### Return type
 
-[**GroupInvitation**](GroupInvitation.md)
+[**GroupSettings**](GroupSettings.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1746,9 +1743,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateProjectRoles
+## UpdateGroupUserRoles
 
-> UpdateGroupRolesForUser UpdateProjectRoles(ctx, groupId, userId, updateGroupRolesForUser UpdateGroupRolesForUser).Execute()
+> UpdateGroupRolesForUser UpdateGroupUserRoles(ctx, groupId, userId, updateGroupRolesForUser UpdateGroupRolesForUser).Execute()
 
 Update Project Roles for One MongoDB Cloud User
 
@@ -1763,7 +1760,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1780,17 +1777,17 @@ func main() {
     userId := "userId_example" // string | 
     updateGroupRolesForUser := *openapiclient.NewUpdateGroupRolesForUser() // UpdateGroupRolesForUser | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateProjectRoles(context.Background(), groupId, userId, &updateGroupRolesForUser).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateGroupUserRoles(context.Background(), groupId, userId, &updateGroupRolesForUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectRoles`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateGroupUserRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateProjectRoles`: UpdateGroupRolesForUser
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectRoles`: %v (%v)\n", resp, r)
+    // response from `UpdateGroupUserRoles`: UpdateGroupRolesForUser
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateGroupUserRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1805,7 +1802,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateProjectRolesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateGroupUserRolesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1831,11 +1828,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateProjectSettings
+## UpdateInviteById
 
-> GroupSettings UpdateProjectSettings(ctx, groupId, groupSettings GroupSettings).Execute()
+> GroupInvitation UpdateInviteById(ctx, groupId, invitationId, groupInvitationUpdateRequest GroupInvitationUpdateRequest).Execute()
 
-Update Project Settings
+Update One Project Invitation by Invitation ID
 
 
 ### Example
@@ -1848,7 +1845,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1862,19 +1859,20 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupSettings := *openapiclient.NewGroupSettings() // GroupSettings | 
+    invitationId := "invitationId_example" // string | 
+    groupInvitationUpdateRequest := *openapiclient.NewGroupInvitationUpdateRequest() // GroupInvitationUpdateRequest | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateProjectSettings(context.Background(), groupId, &groupSettings).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateInviteById(context.Background(), groupId, invitationId, &groupInvitationUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectSettings`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateInviteById`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateProjectSettings`: GroupSettings
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectSettings`: %v (%v)\n", resp, r)
+    // response from `UpdateInviteById`: GroupInvitation
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateInviteById`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1885,20 +1883,22 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**invitationId** | **string** | Unique 24-hexadecimal digit string that identifies the invitation. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateProjectSettingsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateInviteByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **groupSettings** | [**GroupSettings**](GroupSettings.md) | Settings to update. | 
+
+ **groupInvitationUpdateRequest** | [**GroupInvitationUpdateRequest**](GroupInvitationUpdateRequest.md) | Updates the details of one pending invitation to the specified project. | 
 
 ### Return type
 
-[**GroupSettings**](GroupSettings.md)
+[**GroupInvitation**](GroupInvitation.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

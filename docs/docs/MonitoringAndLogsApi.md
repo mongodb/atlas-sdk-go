@@ -4,28 +4,28 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAtlasProcess**](MonitoringAndLogsApi.md#GetAtlasProcess) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId} | Return One MongoDB Process by ID
+[**DownloadClusterLog**](MonitoringAndLogsApi.md#DownloadClusterLog) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project
 [**GetDatabase**](MonitoringAndLogsApi.md#GetDatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for One MongoDB Process
 [**GetDatabaseMeasurements**](MonitoringAndLogsApi.md#GetDatabaseMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements for One Database in One MongoDB Process
-[**GetDiskMeasurements**](MonitoringAndLogsApi.md#GetDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process
-[**GetHostLogs**](MonitoringAndLogsApi.md#GetHostLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project
-[**GetHostMeasurements**](MonitoringAndLogsApi.md#GetHostMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process
-[**GetIndexMetrics**](MonitoringAndLogsApi.md#GetIndexMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Namespace
-[**GetMeasurements**](MonitoringAndLogsApi.md#GetMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics
-[**ListAtlasProcesses**](MonitoringAndLogsApi.md#ListAtlasProcesses) | **Get** /api/atlas/v2/groups/{groupId}/processes | Return All MongoDB Processes in One Project
+[**GetGroupProcess**](MonitoringAndLogsApi.md#GetGroupProcess) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId} | Return One MongoDB Process by ID
+[**GetIndexMeasurements**](MonitoringAndLogsApi.md#GetIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Namespace
+[**GetProcessDisk**](MonitoringAndLogsApi.md#GetProcessDisk) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName} | Return Measurements for One Disk
+[**GetProcessDiskMeasurements**](MonitoringAndLogsApi.md#GetProcessDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process
+[**GetProcessMeasurements**](MonitoringAndLogsApi.md#GetProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process
 [**ListDatabases**](MonitoringAndLogsApi.md#ListDatabases) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases | Return Available Databases for One MongoDB Process
-[**ListDiskMeasurements**](MonitoringAndLogsApi.md#ListDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName} | Return Measurements for One Disk
-[**ListDiskPartitions**](MonitoringAndLogsApi.md#ListDiskPartitions) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks | Return Available Disks for One MongoDB Process
-[**ListIndexMetrics**](MonitoringAndLogsApi.md#ListIndexMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements | Return All Atlas Search Index Metrics for One Namespace
-[**ListMetricTypes**](MonitoringAndLogsApi.md#ListMetricTypes) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics | Return All Atlas Search Metric Types for One Process
+[**ListGroupProcesses**](MonitoringAndLogsApi.md#ListGroupProcesses) | **Get** /api/atlas/v2/groups/{groupId}/processes | Return All MongoDB Processes in One Project
+[**ListHostFtsMetrics**](MonitoringAndLogsApi.md#ListHostFtsMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics | Return All Atlas Search Metric Types for One Process
+[**ListIndexMeasurements**](MonitoringAndLogsApi.md#ListIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements | Return All Atlas Search Index Metrics for One Namespace
+[**ListMeasurements**](MonitoringAndLogsApi.md#ListMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics
+[**ListProcessDisks**](MonitoringAndLogsApi.md#ListProcessDisks) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks | Return Available Disks for One MongoDB Process
 
 
 
-## GetAtlasProcess
+## DownloadClusterLog
 
-> ApiHostViewAtlas GetAtlasProcess(ctx, groupId, processId).Execute()
+> io.ReadCloser DownloadClusterLog(ctx, groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
 
-Return One MongoDB Process by ID
+Download Logs for One Cluster Host in One Project
 
 
 ### Example
@@ -38,7 +38,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -52,19 +52,22 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    processId := "mongodb.example.com:27017" // string | 
+    hostName := "hostName_example" // string | 
+    logName := "logName_example" // string | 
+    endDate := int64(789) // int64 |  (optional)
+    startDate := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetAtlasProcess(context.Background(), groupId, processId).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.DownloadClusterLog(context.Background(), groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetAtlasProcess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.DownloadClusterLog`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetAtlasProcess`: ApiHostViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetAtlasProcess`: %v (%v)\n", resp, r)
+    // response from `DownloadClusterLog`: io.ReadCloser
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.DownloadClusterLog`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -75,11 +78,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
+**hostName** | **string** | Human-readable label that identifies the host that stores the log files that you want to download. | 
+**logName** | **string** | Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAtlasProcessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDownloadClusterLogRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -87,9 +91,12 @@ Name | Type | Description  | Notes
 
 
 
+ **endDate** | **int64** | Specifies the date and time for the ending point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours after the start date. If the start date is also unspecified, the value will default to the time of the request. | 
+ **startDate** | **int64** | Specifies the date and time for the starting point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours prior to the end date. If the end date is also unspecified, the value will default to 24 hours prior to the time of the request. | 
+
 ### Return type
 
-[**ApiHostViewAtlas**](ApiHostViewAtlas.md)
+[**io.ReadCloser**](io.ReadCloser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -97,7 +104,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
+- **Accept**: application/vnd.atlas.2023-02-01+gzip
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -121,7 +128,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -207,7 +214,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -286,107 +293,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetDiskMeasurements
+## GetGroupProcess
 
-> ApiMeasurementsGeneralViewAtlas GetDiskMeasurements(ctx, groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+> ApiHostViewAtlas GetGroupProcess(ctx, groupId, processId).Execute()
 
-Return Measurements of One Disk for One MongoDB Process
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    partitionName := "partitionName_example" // string | 
-    processId := "mongodb.example.com:27017" // string | 
-    granularity := "PT1M" // string | 
-    m := []string{"Inner_example"} // []string |  (optional)
-    period := "PT10H" // string |  (optional)
-    start := time.Now() // time.Time |  (optional)
-    end := time.Now() // time.Time |  (optional)
-
-    resp, r, err := sdk.MonitoringAndLogsApi.GetDiskMeasurements(context.Background(), groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetDiskMeasurements`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetDiskMeasurements`: ApiMeasurementsGeneralViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDiskMeasurements`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**partitionName** | **string** | Human-readable label of the disk or partition to which the measurements apply. | 
-**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetDiskMeasurementsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
- **m** | **[]string** | One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements. | 
- **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
- **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
- **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
-
-### Return type
-
-[**ApiMeasurementsGeneralViewAtlas**](ApiMeasurementsGeneralViewAtlas.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetHostLogs
-
-> io.ReadCloser GetHostLogs(ctx, groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
-
-Download Logs for One Cluster Host in One Project
+Return One MongoDB Process by ID
 
 
 ### Example
@@ -399,97 +310,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    hostName := "hostName_example" // string | 
-    logName := "logName_example" // string | 
-    endDate := int64(789) // int64 |  (optional)
-    startDate := int64(789) // int64 |  (optional)
-
-    resp, r, err := sdk.MonitoringAndLogsApi.GetHostLogs(context.Background(), groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetHostLogs`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetHostLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetHostLogs`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**hostName** | **string** | Human-readable label that identifies the host that stores the log files that you want to download. | 
-**logName** | **string** | Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetHostLogsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **endDate** | **int64** | Specifies the date and time for the ending point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours after the start date. If the start date is also unspecified, the value will default to the time of the request. | 
- **startDate** | **int64** | Specifies the date and time for the starting point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours prior to the end date. If the end date is also unspecified, the value will default to 24 hours prior to the time of the request. | 
-
-### Return type
-
-[**io.ReadCloser**](io.ReadCloser.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+gzip
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetHostMeasurements
-
-> ApiMeasurementsGeneralViewAtlas GetHostMeasurements(ctx, groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
-
-Return Measurements for One MongoDB Process
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -504,23 +325,18 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "mongodb.example.com:27017" // string | 
-    granularity := "PT1M" // string | 
-    m := []string{"Inner_example"} // []string |  (optional)
-    period := "PT10H" // string |  (optional)
-    start := time.Now() // time.Time |  (optional)
-    end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetHostMeasurements(context.Background(), groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.GetGroupProcess(context.Background(), groupId, processId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetHostMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetGroupProcess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetHostMeasurements`: ApiMeasurementsGeneralViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetHostMeasurements`: %v (%v)\n", resp, r)
+    // response from `GetGroupProcess`: ApiHostViewAtlas
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetGroupProcess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -535,22 +351,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetHostMeasurementsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetGroupProcessRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
- **m** | **[]string** | One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements. | 
- **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
- **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
- **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
 
 ### Return type
 
-[**ApiMeasurementsGeneralViewAtlas**](ApiMeasurementsGeneralViewAtlas.md)
+[**ApiHostViewAtlas**](ApiHostViewAtlas.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -565,9 +376,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetIndexMetrics
+## GetIndexMeasurements
 
-> MeasurementsIndexes GetIndexMetrics(ctx, processId, indexName, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+> MeasurementsIndexes GetIndexMeasurements(ctx, processId, indexName, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
 
 Return Atlas Search Metrics for One Index in One Namespace
 
@@ -582,7 +393,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -606,17 +417,17 @@ func main() {
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetIndexMetrics(context.Background(), processId, indexName, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.GetIndexMeasurements(context.Background(), processId, indexName, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetIndexMetrics`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetIndexMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetIndexMetrics`: MeasurementsIndexes
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetIndexMetrics`: %v (%v)\n", resp, r)
+    // response from `GetIndexMeasurements`: MeasurementsIndexes
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetIndexMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -634,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetIndexMetricsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetIndexMeasurementsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -667,11 +478,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetMeasurements
+## GetProcessDisk
 
-> MeasurementsNonIndex GetMeasurements(ctx, processId, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+> MeasurementDiskPartition GetProcessDisk(ctx, partitionName, groupId, processId).Execute()
 
-Return Atlas Search Hardware and Status Metrics
+Return Measurements for One Disk
 
 
 ### Example
@@ -684,7 +495,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -697,25 +508,21 @@ func main() {
         return
     }
 
-    processId := "my.host.name.com:27017" // string | 
+    partitionName := "partitionName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    granularity := "PT1M" // string | 
-    metrics := []string{"Inner_example"} // []string | 
-    period := "PT10H" // string |  (optional)
-    start := time.Now() // time.Time |  (optional)
-    end := time.Now() // time.Time |  (optional)
+    processId := "mongodb.example.com:27017" // string | 
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetMeasurements(context.Background(), processId, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.GetProcessDisk(context.Background(), partitionName, groupId, processId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetProcessDisk`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetMeasurements`: MeasurementsNonIndex
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetMeasurements`: %v (%v)\n", resp, r)
+    // response from `GetProcessDisk`: MeasurementDiskPartition
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetProcessDisk`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -725,27 +532,24 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**processId** | **string** | Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests. | 
+**partitionName** | **string** | Human-readable label of the disk or partition to which the measurements apply. | 
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetMeasurementsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetProcessDiskRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
- **metrics** | **[]string** | List that contains the metrics that you want MongoDB Atlas to report for the associated data series. If you don&#39;t set this parameter, this resource returns all hardware and status metrics for the associated data series. | 
- **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
- **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
- **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
+
 
 ### Return type
 
-[**MeasurementsNonIndex**](MeasurementsNonIndex.md)
+[**MeasurementDiskPartition**](MeasurementDiskPartition.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -760,11 +564,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListAtlasProcesses
+## GetProcessDiskMeasurements
 
-> PaginatedHostViewAtlas ListAtlasProcesses(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> ApiMeasurementsGeneralViewAtlas GetProcessDiskMeasurements(ctx, groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
 
-Return All MongoDB Processes in One Project
+Return Measurements of One Disk for One MongoDB Process
 
 
 ### Example
@@ -777,7 +581,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -791,21 +595,25 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(56) // int |  (optional) (default to 100)
-    pageNum := int(56) // int |  (optional) (default to 1)
+    partitionName := "partitionName_example" // string | 
+    processId := "mongodb.example.com:27017" // string | 
+    granularity := "PT1M" // string | 
+    m := []string{"Inner_example"} // []string |  (optional)
+    period := "PT10H" // string |  (optional)
+    start := time.Now() // time.Time |  (optional)
+    end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListAtlasProcesses(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.GetProcessDiskMeasurements(context.Background(), groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListAtlasProcesses`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetProcessDiskMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListAtlasProcesses`: PaginatedHostViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListAtlasProcesses`: %v (%v)\n", resp, r)
+    // response from `GetProcessDiskMeasurements`: ApiMeasurementsGeneralViewAtlas
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetProcessDiskMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -816,22 +624,121 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**partitionName** | **string** | Human-readable label of the disk or partition to which the measurements apply. | 
+**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListAtlasProcessesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetProcessDiskMeasurementsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+
+ **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
+ **m** | **[]string** | One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements. | 
+ **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
+ **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
+ **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
 
 ### Return type
 
-[**PaginatedHostViewAtlas**](PaginatedHostViewAtlas.md)
+[**ApiMeasurementsGeneralViewAtlas**](ApiMeasurementsGeneralViewAtlas.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetProcessMeasurements
+
+> ApiMeasurementsGeneralViewAtlas GetProcessMeasurements(ctx, groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+
+Return Measurements for One MongoDB Process
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    processId := "mongodb.example.com:27017" // string | 
+    granularity := "PT1M" // string | 
+    m := []string{"Inner_example"} // []string |  (optional)
+    period := "PT10H" // string |  (optional)
+    start := time.Now() // time.Time |  (optional)
+    end := time.Now() // time.Time |  (optional)
+
+    resp, r, err := sdk.MonitoringAndLogsApi.GetProcessMeasurements(context.Background(), groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetProcessMeasurements`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetProcessMeasurements`: ApiMeasurementsGeneralViewAtlas
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetProcessMeasurements`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetProcessMeasurementsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
+ **m** | **[]string** | One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements. | 
+ **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
+ **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
+ **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
+
+### Return type
+
+[**ApiMeasurementsGeneralViewAtlas**](ApiMeasurementsGeneralViewAtlas.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -863,7 +770,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -935,97 +842,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListDiskMeasurements
+## ListGroupProcesses
 
-> MeasurementDiskPartition ListDiskMeasurements(ctx, partitionName, groupId, processId).Execute()
+> PaginatedHostViewAtlas ListGroupProcesses(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return Measurements for One Disk
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    partitionName := "partitionName_example" // string | 
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    processId := "mongodb.example.com:27017" // string | 
-
-    resp, r, err := sdk.MonitoringAndLogsApi.ListDiskMeasurements(context.Background(), partitionName, groupId, processId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListDiskMeasurements`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListDiskMeasurements`: MeasurementDiskPartition
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListDiskMeasurements`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**partitionName** | **string** | Human-readable label of the disk or partition to which the measurements apply. | 
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListDiskMeasurementsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**MeasurementDiskPartition**](MeasurementDiskPartition.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListDiskPartitions
-
-> PaginatedDiskPartition ListDiskPartitions(ctx, groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-
-Return Available Disks for One MongoDB Process
+Return All MongoDB Processes in One Project
 
 
 ### Example
@@ -1038,7 +859,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1052,22 +873,21 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    processId := "mongodb.example.com:27017" // string | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListDiskPartitions(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.ListGroupProcesses(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListDiskPartitions`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListGroupProcesses`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListDiskPartitions`: PaginatedDiskPartition
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListDiskPartitions`: %v (%v)\n", resp, r)
+    // response from `ListGroupProcesses`: PaginatedHostViewAtlas
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListGroupProcesses`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1078,16 +898,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListDiskPartitionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListGroupProcessesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
@@ -1095,7 +913,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedDiskPartition**](PaginatedDiskPartition.md)
+[**PaginatedHostViewAtlas**](PaginatedHostViewAtlas.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1110,9 +928,92 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListIndexMetrics
+## ListHostFtsMetrics
 
-> MeasurementsIndexes ListIndexMetrics(ctx, processId, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+> CloudSearchMetrics ListHostFtsMetrics(ctx, processId, groupId).Execute()
+
+Return All Atlas Search Metric Types for One Process
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    processId := "my.host.name.com:27017" // string | 
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    resp, r, err := sdk.MonitoringAndLogsApi.ListHostFtsMetrics(context.Background(), processId, groupId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListHostFtsMetrics`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListHostFtsMetrics`: CloudSearchMetrics
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListHostFtsMetrics`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**processId** | **string** | Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests. | 
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListHostFtsMetricsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**CloudSearchMetrics**](CloudSearchMetrics.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListIndexMeasurements
+
+> MeasurementsIndexes ListIndexMeasurements(ctx, processId, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
 
 Return All Atlas Search Index Metrics for One Namespace
 
@@ -1127,7 +1028,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1150,17 +1051,17 @@ func main() {
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListIndexMetrics(context.Background(), processId, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.ListIndexMeasurements(context.Background(), processId, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListIndexMetrics`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListIndexMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListIndexMetrics`: MeasurementsIndexes
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListIndexMetrics`: %v (%v)\n", resp, r)
+    // response from `ListIndexMeasurements`: MeasurementsIndexes
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListIndexMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1177,7 +1078,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListIndexMetricsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListIndexMeasurementsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1209,11 +1110,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListMetricTypes
+## ListMeasurements
 
-> CloudSearchMetrics ListMetricTypes(ctx, processId, groupId).Execute()
+> MeasurementsNonIndex ListMeasurements(ctx, processId, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
 
-Return All Atlas Search Metric Types for One Process
+Return Atlas Search Hardware and Status Metrics
 
 
 ### Example
@@ -1226,7 +1127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -1241,18 +1142,23 @@ func main() {
 
     processId := "my.host.name.com:27017" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    granularity := "PT1M" // string | 
+    metrics := []string{"Inner_example"} // []string | 
+    period := "PT10H" // string |  (optional)
+    start := time.Now() // time.Time |  (optional)
+    end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListMetricTypes(context.Background(), processId, groupId).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.ListMeasurements(context.Background(), processId, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListMetricTypes`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListMetricTypes`: CloudSearchMetrics
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListMetricTypes`: %v (%v)\n", resp, r)
+    // response from `ListMeasurements`: MeasurementsNonIndex
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1267,17 +1173,111 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListMetricTypesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListMeasurementsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
+ **metrics** | **[]string** | List that contains the metrics that you want MongoDB Atlas to report for the associated data series. If you don&#39;t set this parameter, this resource returns all hardware and status metrics for the associated data series. | 
+ **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
+ **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
+ **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
 
 ### Return type
 
-[**CloudSearchMetrics**](CloudSearchMetrics.md)
+[**MeasurementsNonIndex**](MeasurementsNonIndex.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListProcessDisks
+
+> PaginatedDiskPartition ListProcessDisks(ctx, groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return Available Disks for One MongoDB Process
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    processId := "mongodb.example.com:27017" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.MonitoringAndLogsApi.ListProcessDisks(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListProcessDisks`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListProcessDisks`: PaginatedDiskPartition
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListProcessDisks`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListProcessDisksRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedDiskPartition**](PaginatedDiskPartition.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

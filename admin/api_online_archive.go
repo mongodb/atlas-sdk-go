@@ -63,28 +63,28 @@ type OnlineArchiveApi interface {
 	DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (*http.Response, error)
 
 	/*
-		DownloadOnlineArchiveQueryLogs Download Online Archive Query Logs
+		DownloadQueryLogs Download Online Archive Query Logs
 
 		Downloads query logs for the specified online archive. To use this resource, the requesting Service Account or API Key must have the Project Data Access Read Only or higher role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to return the query logs from one online archive.
-		@return DownloadOnlineArchiveQueryLogsApiRequest
+		@return DownloadQueryLogsApiRequest
 	*/
-	DownloadOnlineArchiveQueryLogs(ctx context.Context, groupId string, clusterName string) DownloadOnlineArchiveQueryLogsApiRequest
+	DownloadQueryLogs(ctx context.Context, groupId string, clusterName string) DownloadQueryLogsApiRequest
 	/*
-		DownloadOnlineArchiveQueryLogs Download Online Archive Query Logs
+		DownloadQueryLogs Download Online Archive Query Logs
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DownloadOnlineArchiveQueryLogsApiParams - Parameters for the request
-		@return DownloadOnlineArchiveQueryLogsApiRequest
+		@param DownloadQueryLogsApiParams - Parameters for the request
+		@return DownloadQueryLogsApiRequest
 	*/
-	DownloadOnlineArchiveQueryLogsWithParams(ctx context.Context, args *DownloadOnlineArchiveQueryLogsApiParams) DownloadOnlineArchiveQueryLogsApiRequest
+	DownloadQueryLogsWithParams(ctx context.Context, args *DownloadQueryLogsApiParams) DownloadQueryLogsApiRequest
 
 	// Method available only for mocking purposes
-	DownloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)
+	DownloadQueryLogsExecute(r DownloadQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
 		GetOnlineArchive Return One Online Archive
@@ -412,7 +412,7 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchi
 	return localVarHTTPResponse, nil
 }
 
-type DownloadOnlineArchiveQueryLogsApiRequest struct {
+type DownloadQueryLogsApiRequest struct {
 	ctx         context.Context
 	ApiService  OnlineArchiveApi
 	groupId     string
@@ -422,7 +422,7 @@ type DownloadOnlineArchiveQueryLogsApiRequest struct {
 	archiveOnly *bool
 }
 
-type DownloadOnlineArchiveQueryLogsApiParams struct {
+type DownloadQueryLogsApiParams struct {
 	GroupId     string
 	ClusterName string
 	StartDate   *int64
@@ -430,8 +430,8 @@ type DownloadOnlineArchiveQueryLogsApiParams struct {
 	ArchiveOnly *bool
 }
 
-func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogsWithParams(ctx context.Context, args *DownloadOnlineArchiveQueryLogsApiParams) DownloadOnlineArchiveQueryLogsApiRequest {
-	return DownloadOnlineArchiveQueryLogsApiRequest{
+func (a *OnlineArchiveApiService) DownloadQueryLogsWithParams(ctx context.Context, args *DownloadQueryLogsApiParams) DownloadQueryLogsApiRequest {
+	return DownloadQueryLogsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     args.GroupId,
@@ -443,39 +443,39 @@ func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogsWithParams(ctx c
 }
 
 // Date and time that specifies the starting point for the range of log messages to return. This resource expresses this value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
-func (r DownloadOnlineArchiveQueryLogsApiRequest) StartDate(startDate int64) DownloadOnlineArchiveQueryLogsApiRequest {
+func (r DownloadQueryLogsApiRequest) StartDate(startDate int64) DownloadQueryLogsApiRequest {
 	r.startDate = &startDate
 	return r
 }
 
 // Date and time that specifies the end point for the range of log messages to return. This resource expresses this value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
-func (r DownloadOnlineArchiveQueryLogsApiRequest) EndDate(endDate int64) DownloadOnlineArchiveQueryLogsApiRequest {
+func (r DownloadQueryLogsApiRequest) EndDate(endDate int64) DownloadQueryLogsApiRequest {
 	r.endDate = &endDate
 	return r
 }
 
 // Flag that indicates whether to download logs for queries against your online archive only or both your online archive and cluster.
-func (r DownloadOnlineArchiveQueryLogsApiRequest) ArchiveOnly(archiveOnly bool) DownloadOnlineArchiveQueryLogsApiRequest {
+func (r DownloadQueryLogsApiRequest) ArchiveOnly(archiveOnly bool) DownloadQueryLogsApiRequest {
 	r.archiveOnly = &archiveOnly
 	return r
 }
 
-func (r DownloadOnlineArchiveQueryLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
-	return r.ApiService.DownloadOnlineArchiveQueryLogsExecute(r)
+func (r DownloadQueryLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
+	return r.ApiService.DownloadQueryLogsExecute(r)
 }
 
 /*
-DownloadOnlineArchiveQueryLogs Download Online Archive Query Logs
+DownloadQueryLogs Download Online Archive Query Logs
 
 Downloads query logs for the specified online archive. To use this resource, the requesting Service Account or API Key must have the Project Data Access Read Only or higher role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to return the query logs from one online archive.
-	@return DownloadOnlineArchiveQueryLogsApiRequest
+	@return DownloadQueryLogsApiRequest
 */
-func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogs(ctx context.Context, groupId string, clusterName string) DownloadOnlineArchiveQueryLogsApiRequest {
-	return DownloadOnlineArchiveQueryLogsApiRequest{
+func (a *OnlineArchiveApiService) DownloadQueryLogs(ctx context.Context, groupId string, clusterName string) DownloadQueryLogsApiRequest {
+	return DownloadQueryLogsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -483,10 +483,10 @@ func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogs(ctx context.Con
 	}
 }
 
-// DownloadOnlineArchiveQueryLogsExecute executes the request
+// DownloadQueryLogsExecute executes the request
 //
 //	@return io.ReadCloser
-func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+func (a *OnlineArchiveApiService) DownloadQueryLogsExecute(r DownloadQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -494,7 +494,7 @@ func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogsExecute(r Downlo
 		localVarReturnValue io.ReadCloser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.DownloadOnlineArchiveQueryLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.DownloadQueryLogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

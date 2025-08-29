@@ -5,7 +5,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetSystemStatus**](RootApi.md#GetSystemStatus) | **Get** /api/atlas/v2 | Return the status of this MongoDB application
-[**ReturnAllControlPlaneIpAddresses**](RootApi.md#ReturnAllControlPlaneIpAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
+[**ListControlPlaneAddresses**](RootApi.md#ListControlPlaneAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
 
 
 
@@ -26,7 +26,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -80,9 +80,9 @@ Other parameters are passed through a pointer to a apiGetSystemStatusRequest str
 [[Back to README]](../README.md)
 
 
-## ReturnAllControlPlaneIpAddresses
+## ListControlPlaneAddresses
 
-> ControlPlaneIPAddresses ReturnAllControlPlaneIpAddresses(ctx).Execute()
+> ControlPlaneIPAddresses ListControlPlaneAddresses(ctx).Execute()
 
 Return All Control Plane IP Addresses
 
@@ -97,7 +97,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312001/admin"
 )
 
 func main() {
@@ -111,17 +111,17 @@ func main() {
     }
 
 
-    resp, r, err := sdk.RootApi.ReturnAllControlPlaneIpAddresses(context.Background()).Execute()
+    resp, r, err := sdk.RootApi.ListControlPlaneAddresses(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.ReturnAllControlPlaneIpAddresses`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.ListControlPlaneAddresses`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ReturnAllControlPlaneIpAddresses`: ControlPlaneIPAddresses
-    fmt.Fprintf(os.Stdout, "Response from `RootApi.ReturnAllControlPlaneIpAddresses`: %v (%v)\n", resp, r)
+    // response from `ListControlPlaneAddresses`: ControlPlaneIPAddresses
+    fmt.Fprintf(os.Stdout, "Response from `RootApi.ListControlPlaneAddresses`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -131,7 +131,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReturnAllControlPlaneIpAddressesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListControlPlaneAddressesRequest struct via the builder pattern
 
 
 ### Return type

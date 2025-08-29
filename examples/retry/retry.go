@@ -8,7 +8,7 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312006/admin"
+	"go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
 	"github.com/mongodb-forks/digest"
@@ -49,8 +49,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
-		&admin.ListProjectsApiParams{
+	request := sdk.ProjectsApi.ListGroupsWithParams(ctx,
+		&admin.ListGroupsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),
 			PageNum:      admin.PtrInt(1),
