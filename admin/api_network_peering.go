@@ -13,100 +13,100 @@ import (
 type NetworkPeeringApi interface {
 
 	/*
-		CreatePeeringConnection Create One Network Peering Connection
-
-		Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. To learn more about considerations and prerequisites, see the Network Peering Documentation.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param baseNetworkPeeringConnectionSettings Create one network peering connection.
-		@return CreatePeeringConnectionApiRequest
-	*/
-	CreatePeeringConnection(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreatePeeringConnectionApiRequest
-	/*
-		CreatePeeringConnection Create One Network Peering Connection
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreatePeeringConnectionApiParams - Parameters for the request
-		@return CreatePeeringConnectionApiRequest
-	*/
-	CreatePeeringConnectionWithParams(ctx context.Context, args *CreatePeeringConnectionApiParams) CreatePeeringConnectionApiRequest
-
-	// Method available only for mocking purposes
-	CreatePeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
-
-	/*
-		CreatePeeringContainer Create One Network Peering Container
+		CreateGroupContainer Create One Network Peering Container
 
 		Creates one new network peering container in the specified project. MongoDB Cloud can deploy Network Peering connections in a network peering container. GCP can have one container per project. AWS and Azure can have one container per cloud provider region. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param cloudProviderContainer Creates one new network peering container in the specified project.
-		@return CreatePeeringContainerApiRequest
+		@return CreateGroupContainerApiRequest
 	*/
-	CreatePeeringContainer(ctx context.Context, groupId string, cloudProviderContainer *CloudProviderContainer) CreatePeeringContainerApiRequest
+	CreateGroupContainer(ctx context.Context, groupId string, cloudProviderContainer *CloudProviderContainer) CreateGroupContainerApiRequest
 	/*
-		CreatePeeringContainer Create One Network Peering Container
+		CreateGroupContainer Create One Network Peering Container
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreatePeeringContainerApiParams - Parameters for the request
-		@return CreatePeeringContainerApiRequest
+		@param CreateGroupContainerApiParams - Parameters for the request
+		@return CreateGroupContainerApiRequest
 	*/
-	CreatePeeringContainerWithParams(ctx context.Context, args *CreatePeeringContainerApiParams) CreatePeeringContainerApiRequest
+	CreateGroupContainerWithParams(ctx context.Context, args *CreateGroupContainerApiParams) CreateGroupContainerApiRequest
 
 	// Method available only for mocking purposes
-	CreatePeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
+	CreateGroupContainerExecute(r CreateGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
-		DeletePeeringConnection Remove One Network Peering Connection
+		CreateGroupPeer Create One Network Peering Connection
 
-		Removes one network peering connection in the specified project. If you Removes the last network peering connection associated with a project, MongoDB Cloud also removes any AWS security groups from the project IP access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+		Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. To learn more about considerations and prerequisites, see the Network Peering Documentation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
-		@return DeletePeeringConnectionApiRequest
+		@param baseNetworkPeeringConnectionSettings Create one network peering connection.
+		@return CreateGroupPeerApiRequest
 	*/
-	DeletePeeringConnection(ctx context.Context, groupId string, peerId string) DeletePeeringConnectionApiRequest
+	CreateGroupPeer(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreateGroupPeerApiRequest
 	/*
-		DeletePeeringConnection Remove One Network Peering Connection
+		CreateGroupPeer Create One Network Peering Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeletePeeringConnectionApiParams - Parameters for the request
-		@return DeletePeeringConnectionApiRequest
+		@param CreateGroupPeerApiParams - Parameters for the request
+		@return CreateGroupPeerApiRequest
 	*/
-	DeletePeeringConnectionWithParams(ctx context.Context, args *DeletePeeringConnectionApiParams) DeletePeeringConnectionApiRequest
+	CreateGroupPeerWithParams(ctx context.Context, args *CreateGroupPeerApiParams) CreateGroupPeerApiRequest
 
 	// Method available only for mocking purposes
-	DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (any, *http.Response, error)
+	CreateGroupPeerExecute(r CreateGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
-		DeletePeeringContainer Remove One Network Peering Container
+		DeleteGroupContainer Remove One Network Peering Container
 
 		Removes one network peering container in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
-		@return DeletePeeringContainerApiRequest
+		@return DeleteGroupContainerApiRequest
 	*/
-	DeletePeeringContainer(ctx context.Context, groupId string, containerId string) DeletePeeringContainerApiRequest
+	DeleteGroupContainer(ctx context.Context, groupId string, containerId string) DeleteGroupContainerApiRequest
 	/*
-		DeletePeeringContainer Remove One Network Peering Container
+		DeleteGroupContainer Remove One Network Peering Container
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeletePeeringContainerApiParams - Parameters for the request
-		@return DeletePeeringContainerApiRequest
+		@param DeleteGroupContainerApiParams - Parameters for the request
+		@return DeleteGroupContainerApiRequest
 	*/
-	DeletePeeringContainerWithParams(ctx context.Context, args *DeletePeeringContainerApiParams) DeletePeeringContainerApiRequest
+	DeleteGroupContainerWithParams(ctx context.Context, args *DeleteGroupContainerApiParams) DeleteGroupContainerApiRequest
 
 	// Method available only for mocking purposes
-	DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (*http.Response, error)
+	DeleteGroupContainerExecute(r DeleteGroupContainerApiRequest) (*http.Response, error)
+
+	/*
+		DeleteGroupPeer Remove One Network Peering Connection
+
+		Removes one network peering connection in the specified project. If you Removes the last network peering connection associated with a project, MongoDB Cloud also removes any AWS security groups from the project IP access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
+		@return DeleteGroupPeerApiRequest
+	*/
+	DeleteGroupPeer(ctx context.Context, groupId string, peerId string) DeleteGroupPeerApiRequest
+	/*
+		DeleteGroupPeer Remove One Network Peering Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteGroupPeerApiParams - Parameters for the request
+		@return DeleteGroupPeerApiRequest
+	*/
+	DeleteGroupPeerWithParams(ctx context.Context, args *DeleteGroupPeerApiParams) DeleteGroupPeerApiRequest
+
+	// Method available only for mocking purposes
+	DeleteGroupPeerExecute(r DeleteGroupPeerApiRequest) (any, *http.Response, error)
 
 	/*
 		DisablePeering Disable Connect via Peering-Only Mode for One Project
@@ -137,149 +137,124 @@ type NetworkPeeringApi interface {
 	DisablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error)
 
 	/*
-		GetPeeringConnection Return One Network Peering Connection in One Project
-
-		Returns details about one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
-		@return GetPeeringConnectionApiRequest
-	*/
-	GetPeeringConnection(ctx context.Context, groupId string, peerId string) GetPeeringConnectionApiRequest
-	/*
-		GetPeeringConnection Return One Network Peering Connection in One Project
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetPeeringConnectionApiParams - Parameters for the request
-		@return GetPeeringConnectionApiRequest
-	*/
-	GetPeeringConnectionWithParams(ctx context.Context, args *GetPeeringConnectionApiParams) GetPeeringConnectionApiRequest
-
-	// Method available only for mocking purposes
-	GetPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
-
-	/*
-		GetPeeringContainer Return One Network Peering Container
+		GetGroupContainer Return One Network Peering Container
 
 		Returns details about one network peering container in one specified project. Network peering containers contain network peering connections. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container.
-		@return GetPeeringContainerApiRequest
+		@return GetGroupContainerApiRequest
 	*/
-	GetPeeringContainer(ctx context.Context, groupId string, containerId string) GetPeeringContainerApiRequest
+	GetGroupContainer(ctx context.Context, groupId string, containerId string) GetGroupContainerApiRequest
 	/*
-		GetPeeringContainer Return One Network Peering Container
+		GetGroupContainer Return One Network Peering Container
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetPeeringContainerApiParams - Parameters for the request
-		@return GetPeeringContainerApiRequest
+		@param GetGroupContainerApiParams - Parameters for the request
+		@return GetGroupContainerApiRequest
 	*/
-	GetPeeringContainerWithParams(ctx context.Context, args *GetPeeringContainerApiParams) GetPeeringContainerApiRequest
+	GetGroupContainerWithParams(ctx context.Context, args *GetGroupContainerApiParams) GetGroupContainerApiRequest
 
 	// Method available only for mocking purposes
-	GetPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
+	GetGroupContainerExecute(r GetGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
-		ListPeeringConnections Return All Network Peering Connections in One Project
+		GetGroupPeer Return One Network Peering Connection in One Project
 
-		Returns details about all network peering connections in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns details about one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListPeeringConnectionsApiRequest
+		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
+		@return GetGroupPeerApiRequest
 	*/
-	ListPeeringConnections(ctx context.Context, groupId string) ListPeeringConnectionsApiRequest
+	GetGroupPeer(ctx context.Context, groupId string, peerId string) GetGroupPeerApiRequest
 	/*
-		ListPeeringConnections Return All Network Peering Connections in One Project
+		GetGroupPeer Return One Network Peering Connection in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListPeeringConnectionsApiParams - Parameters for the request
-		@return ListPeeringConnectionsApiRequest
+		@param GetGroupPeerApiParams - Parameters for the request
+		@return GetGroupPeerApiRequest
 	*/
-	ListPeeringConnectionsWithParams(ctx context.Context, args *ListPeeringConnectionsApiParams) ListPeeringConnectionsApiRequest
+	GetGroupPeerWithParams(ctx context.Context, args *GetGroupPeerApiParams) GetGroupPeerApiRequest
 
 	// Method available only for mocking purposes
-	ListPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error)
+	GetGroupPeerExecute(r GetGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
-		ListPeeringContainerByCloudProvider Return All Network Peering Containers in One Project for One Cloud Provider
-
-		Returns details about all network peering containers in the specified project for the specified cloud provider. If you do not specify the cloud provider, MongoDB Cloud returns details about all network peering containers in the project for Amazon Web Services (AWS). To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListPeeringContainerByCloudProviderApiRequest
-	*/
-	ListPeeringContainerByCloudProvider(ctx context.Context, groupId string) ListPeeringContainerByCloudProviderApiRequest
-	/*
-		ListPeeringContainerByCloudProvider Return All Network Peering Containers in One Project for One Cloud Provider
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListPeeringContainerByCloudProviderApiParams - Parameters for the request
-		@return ListPeeringContainerByCloudProviderApiRequest
-	*/
-	ListPeeringContainerByCloudProviderWithParams(ctx context.Context, args *ListPeeringContainerByCloudProviderApiParams) ListPeeringContainerByCloudProviderApiRequest
-
-	// Method available only for mocking purposes
-	ListPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
-
-	/*
-		ListPeeringContainers Return All Network Peering Containers in One Project
+		ListGroupContainerAll Return All Network Peering Containers in One Project
 
 		Returns details about all network peering containers in the specified project. Network peering containers contain network peering connections. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListPeeringContainersApiRequest
+		@return ListGroupContainerAllApiRequest
 	*/
-	ListPeeringContainers(ctx context.Context, groupId string) ListPeeringContainersApiRequest
+	ListGroupContainerAll(ctx context.Context, groupId string) ListGroupContainerAllApiRequest
 	/*
-		ListPeeringContainers Return All Network Peering Containers in One Project
+		ListGroupContainerAll Return All Network Peering Containers in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListPeeringContainersApiParams - Parameters for the request
-		@return ListPeeringContainersApiRequest
+		@param ListGroupContainerAllApiParams - Parameters for the request
+		@return ListGroupContainerAllApiRequest
 	*/
-	ListPeeringContainersWithParams(ctx context.Context, args *ListPeeringContainersApiParams) ListPeeringContainersApiRequest
+	ListGroupContainerAllWithParams(ctx context.Context, args *ListGroupContainerAllApiParams) ListGroupContainerAllApiRequest
 
 	// Method available only for mocking purposes
-	ListPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
+	ListGroupContainerAllExecute(r ListGroupContainerAllApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
-		UpdatePeeringConnection Update One Network Peering Connection
+		ListGroupContainers Return All Network Peering Containers in One Project for One Cloud Provider
 
-		Updates one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+		Returns details about all network peering containers in the specified project for the specified cloud provider. If you do not specify the cloud provider, MongoDB Cloud returns details about all network peering containers in the project for Amazon Web Services (AWS). To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
-		@param baseNetworkPeeringConnectionSettings Modify one network peering connection.
-		@return UpdatePeeringConnectionApiRequest
+		@return ListGroupContainersApiRequest
 	*/
-	UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdatePeeringConnectionApiRequest
+	ListGroupContainers(ctx context.Context, groupId string) ListGroupContainersApiRequest
 	/*
-		UpdatePeeringConnection Update One Network Peering Connection
+		ListGroupContainers Return All Network Peering Containers in One Project for One Cloud Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdatePeeringConnectionApiParams - Parameters for the request
-		@return UpdatePeeringConnectionApiRequest
+		@param ListGroupContainersApiParams - Parameters for the request
+		@return ListGroupContainersApiRequest
 	*/
-	UpdatePeeringConnectionWithParams(ctx context.Context, args *UpdatePeeringConnectionApiParams) UpdatePeeringConnectionApiRequest
+	ListGroupContainersWithParams(ctx context.Context, args *ListGroupContainersApiParams) ListGroupContainersApiRequest
 
 	// Method available only for mocking purposes
-	UpdatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
+	ListGroupContainersExecute(r ListGroupContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
-		UpdatePeeringContainer Update One Network Peering Container
+		ListGroupPeers Return All Network Peering Connections in One Project
+
+		Returns details about all network peering connections in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListGroupPeersApiRequest
+	*/
+	ListGroupPeers(ctx context.Context, groupId string) ListGroupPeersApiRequest
+	/*
+		ListGroupPeers Return All Network Peering Connections in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListGroupPeersApiParams - Parameters for the request
+		@return ListGroupPeersApiRequest
+	*/
+	ListGroupPeersWithParams(ctx context.Context, args *ListGroupPeersApiParams) ListGroupPeersApiRequest
+
+	// Method available only for mocking purposes
+	ListGroupPeersExecute(r ListGroupPeersApiRequest) (*PaginatedContainerPeer, *http.Response, error)
+
+	/*
+		UpdateGroupContainer Update One Network Peering Container
 
 		Updates the network details and labels of one specified network peering container in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -287,190 +262,92 @@ type NetworkPeeringApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
 		@param cloudProviderContainer Updates the network details and labels of one specified network peering container in the specified project.
-		@return UpdatePeeringContainerApiRequest
+		@return UpdateGroupContainerApiRequest
 	*/
-	UpdatePeeringContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *CloudProviderContainer) UpdatePeeringContainerApiRequest
+	UpdateGroupContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *CloudProviderContainer) UpdateGroupContainerApiRequest
 	/*
-		UpdatePeeringContainer Update One Network Peering Container
+		UpdateGroupContainer Update One Network Peering Container
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdatePeeringContainerApiParams - Parameters for the request
-		@return UpdatePeeringContainerApiRequest
+		@param UpdateGroupContainerApiParams - Parameters for the request
+		@return UpdateGroupContainerApiRequest
 	*/
-	UpdatePeeringContainerWithParams(ctx context.Context, args *UpdatePeeringContainerApiParams) UpdatePeeringContainerApiRequest
+	UpdateGroupContainerWithParams(ctx context.Context, args *UpdateGroupContainerApiParams) UpdateGroupContainerApiRequest
 
 	// Method available only for mocking purposes
-	UpdatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
+	UpdateGroupContainerExecute(r UpdateGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
-		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering-Only Mode for One Project
+		UpdateGroupPeer Update One Network Peering Connection
+
+		Updates one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
+		@param baseNetworkPeeringConnectionSettings Modify one network peering connection.
+		@return UpdateGroupPeerApiRequest
+	*/
+	UpdateGroupPeer(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdateGroupPeerApiRequest
+	/*
+		UpdateGroupPeer Update One Network Peering Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateGroupPeerApiParams - Parameters for the request
+		@return UpdateGroupPeerApiRequest
+	*/
+	UpdateGroupPeerWithParams(ctx context.Context, args *UpdateGroupPeerApiParams) UpdateGroupPeerApiRequest
+
+	// Method available only for mocking purposes
+	UpdateGroupPeerExecute(r UpdateGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
+
+	/*
+		VerifyPrivateIpMode Verify Connect via Peering-Only Mode for One Project
 
 		Verifies if someone set the specified project to **Connect via Peering Only** mode. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
+		@return VerifyPrivateIpModeApiRequest
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
-	VerifyConnectViaPeeringOnlyModeForOneProject(ctx context.Context, groupId string) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
+	VerifyPrivateIpMode(ctx context.Context, groupId string) VerifyPrivateIpModeApiRequest
 	/*
-		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering-Only Mode for One Project
+		VerifyPrivateIpMode Verify Connect via Peering-Only Mode for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param VerifyConnectViaPeeringOnlyModeForOneProjectApiParams - Parameters for the request
-		@return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
+		@param VerifyPrivateIpModeApiParams - Parameters for the request
+		@return VerifyPrivateIpModeApiRequest
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
-	VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx context.Context, args *VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
+	VerifyPrivateIpModeWithParams(ctx context.Context, args *VerifyPrivateIpModeApiParams) VerifyPrivateIpModeApiRequest
 
 	// Method available only for mocking purposes
-	VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error)
+	VerifyPrivateIpModeExecute(r VerifyPrivateIpModeApiRequest) (*PrivateIPMode, *http.Response, error)
 }
 
 // NetworkPeeringApiService NetworkPeeringApi service
 type NetworkPeeringApiService service
 
-type CreatePeeringConnectionApiRequest struct {
-	ctx                                  context.Context
-	ApiService                           NetworkPeeringApi
-	groupId                              string
-	baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
-}
-
-type CreatePeeringConnectionApiParams struct {
-	GroupId                              string
-	BaseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
-}
-
-func (a *NetworkPeeringApiService) CreatePeeringConnectionWithParams(ctx context.Context, args *CreatePeeringConnectionApiParams) CreatePeeringConnectionApiRequest {
-	return CreatePeeringConnectionApiRequest{
-		ApiService:                           a,
-		ctx:                                  ctx,
-		groupId:                              args.GroupId,
-		baseNetworkPeeringConnectionSettings: args.BaseNetworkPeeringConnectionSettings,
-	}
-}
-
-func (r CreatePeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	return r.ApiService.CreatePeeringConnectionExecute(r)
-}
-
-/*
-CreatePeeringConnection Create One Network Peering Connection
-
-Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. To learn more about considerations and prerequisites, see the Network Peering Documentation.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreatePeeringConnectionApiRequest
-*/
-func (a *NetworkPeeringApiService) CreatePeeringConnection(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreatePeeringConnectionApiRequest {
-	return CreatePeeringConnectionApiRequest{
-		ApiService:                           a,
-		ctx:                                  ctx,
-		groupId:                              groupId,
-		baseNetworkPeeringConnectionSettings: baseNetworkPeeringConnectionSettings,
-	}
-}
-
-// CreatePeeringConnectionExecute executes the request
-//
-//	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringApiService) CreatePeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *BaseNetworkPeeringConnectionSettings
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreatePeeringConnection")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.baseNetworkPeeringConnectionSettings == nil {
-		return localVarReturnValue, nil, reportError("baseNetworkPeeringConnectionSettings is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.baseNetworkPeeringConnectionSettings
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type CreatePeeringContainerApiRequest struct {
+type CreateGroupContainerApiRequest struct {
 	ctx                    context.Context
 	ApiService             NetworkPeeringApi
 	groupId                string
 	cloudProviderContainer *CloudProviderContainer
 }
 
-type CreatePeeringContainerApiParams struct {
+type CreateGroupContainerApiParams struct {
 	GroupId                string
 	CloudProviderContainer *CloudProviderContainer
 }
 
-func (a *NetworkPeeringApiService) CreatePeeringContainerWithParams(ctx context.Context, args *CreatePeeringContainerApiParams) CreatePeeringContainerApiRequest {
-	return CreatePeeringContainerApiRequest{
+func (a *NetworkPeeringApiService) CreateGroupContainerWithParams(ctx context.Context, args *CreateGroupContainerApiParams) CreateGroupContainerApiRequest {
+	return CreateGroupContainerApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
 		groupId:                args.GroupId,
@@ -478,21 +355,21 @@ func (a *NetworkPeeringApiService) CreatePeeringContainerWithParams(ctx context.
 	}
 }
 
-func (r CreatePeeringContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
-	return r.ApiService.CreatePeeringContainerExecute(r)
+func (r CreateGroupContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
+	return r.ApiService.CreateGroupContainerExecute(r)
 }
 
 /*
-CreatePeeringContainer Create One Network Peering Container
+CreateGroupContainer Create One Network Peering Container
 
 Creates one new network peering container in the specified project. MongoDB Cloud can deploy Network Peering connections in a network peering container. GCP can have one container per project. AWS and Azure can have one container per cloud provider region. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreatePeeringContainerApiRequest
+	@return CreateGroupContainerApiRequest
 */
-func (a *NetworkPeeringApiService) CreatePeeringContainer(ctx context.Context, groupId string, cloudProviderContainer *CloudProviderContainer) CreatePeeringContainerApiRequest {
-	return CreatePeeringContainerApiRequest{
+func (a *NetworkPeeringApiService) CreateGroupContainer(ctx context.Context, groupId string, cloudProviderContainer *CloudProviderContainer) CreateGroupContainerApiRequest {
+	return CreateGroupContainerApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
 		groupId:                groupId,
@@ -500,10 +377,10 @@ func (a *NetworkPeeringApiService) CreatePeeringContainer(ctx context.Context, g
 	}
 }
 
-// CreatePeeringContainerExecute executes the request
+// CreateGroupContainerExecute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringApiService) CreatePeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) CreateGroupContainerExecute(r CreateGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -511,7 +388,7 @@ func (a *NetworkPeeringApiService) CreatePeeringContainerExecute(r CreatePeering
 		localVarReturnValue *CloudProviderContainer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreatePeeringContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreateGroupContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -580,20 +457,249 @@ func (a *NetworkPeeringApiService) CreatePeeringContainerExecute(r CreatePeering
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeletePeeringConnectionApiRequest struct {
+type CreateGroupPeerApiRequest struct {
+	ctx                                  context.Context
+	ApiService                           NetworkPeeringApi
+	groupId                              string
+	baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
+}
+
+type CreateGroupPeerApiParams struct {
+	GroupId                              string
+	BaseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
+}
+
+func (a *NetworkPeeringApiService) CreateGroupPeerWithParams(ctx context.Context, args *CreateGroupPeerApiParams) CreateGroupPeerApiRequest {
+	return CreateGroupPeerApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              args.GroupId,
+		baseNetworkPeeringConnectionSettings: args.BaseNetworkPeeringConnectionSettings,
+	}
+}
+
+func (r CreateGroupPeerApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+	return r.ApiService.CreateGroupPeerExecute(r)
+}
+
+/*
+CreateGroupPeer Create One Network Peering Connection
+
+Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. To learn more about considerations and prerequisites, see the Network Peering Documentation.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateGroupPeerApiRequest
+*/
+func (a *NetworkPeeringApiService) CreateGroupPeer(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreateGroupPeerApiRequest {
+	return CreateGroupPeerApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              groupId,
+		baseNetworkPeeringConnectionSettings: baseNetworkPeeringConnectionSettings,
+	}
+}
+
+// CreateGroupPeerExecute executes the request
+//
+//	@return BaseNetworkPeeringConnectionSettings
+func (a *NetworkPeeringApiService) CreateGroupPeerExecute(r CreateGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *BaseNetworkPeeringConnectionSettings
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreateGroupPeer")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.baseNetworkPeeringConnectionSettings == nil {
+		return localVarReturnValue, nil, reportError("baseNetworkPeeringConnectionSettings is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.baseNetworkPeeringConnectionSettings
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DeleteGroupContainerApiRequest struct {
+	ctx         context.Context
+	ApiService  NetworkPeeringApi
+	groupId     string
+	containerId string
+}
+
+type DeleteGroupContainerApiParams struct {
+	GroupId     string
+	ContainerId string
+}
+
+func (a *NetworkPeeringApiService) DeleteGroupContainerWithParams(ctx context.Context, args *DeleteGroupContainerApiParams) DeleteGroupContainerApiRequest {
+	return DeleteGroupContainerApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		containerId: args.ContainerId,
+	}
+}
+
+func (r DeleteGroupContainerApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteGroupContainerExecute(r)
+}
+
+/*
+DeleteGroupContainer Remove One Network Peering Container
+
+Removes one network peering container in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
+	@return DeleteGroupContainerApiRequest
+*/
+func (a *NetworkPeeringApiService) DeleteGroupContainer(ctx context.Context, groupId string, containerId string) DeleteGroupContainerApiRequest {
+	return DeleteGroupContainerApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		containerId: containerId,
+	}
+}
+
+// DeleteGroupContainerExecute executes the request
+func (a *NetworkPeeringApiService) DeleteGroupContainerExecute(r DeleteGroupContainerApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeleteGroupContainer")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/{containerId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.containerId == "" {
+		return nil, reportError("containerId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DeleteGroupPeerApiRequest struct {
 	ctx        context.Context
 	ApiService NetworkPeeringApi
 	groupId    string
 	peerId     string
 }
 
-type DeletePeeringConnectionApiParams struct {
+type DeleteGroupPeerApiParams struct {
 	GroupId string
 	PeerId  string
 }
 
-func (a *NetworkPeeringApiService) DeletePeeringConnectionWithParams(ctx context.Context, args *DeletePeeringConnectionApiParams) DeletePeeringConnectionApiRequest {
-	return DeletePeeringConnectionApiRequest{
+func (a *NetworkPeeringApiService) DeleteGroupPeerWithParams(ctx context.Context, args *DeleteGroupPeerApiParams) DeleteGroupPeerApiRequest {
+	return DeleteGroupPeerApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -601,22 +707,22 @@ func (a *NetworkPeeringApiService) DeletePeeringConnectionWithParams(ctx context
 	}
 }
 
-func (r DeletePeeringConnectionApiRequest) Execute() (any, *http.Response, error) {
-	return r.ApiService.DeletePeeringConnectionExecute(r)
+func (r DeleteGroupPeerApiRequest) Execute() (any, *http.Response, error) {
+	return r.ApiService.DeleteGroupPeerExecute(r)
 }
 
 /*
-DeletePeeringConnection Remove One Network Peering Connection
+DeleteGroupPeer Remove One Network Peering Connection
 
 Removes one network peering connection in the specified project. If you Removes the last network peering connection associated with a project, MongoDB Cloud also removes any AWS security groups from the project IP access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
-	@return DeletePeeringConnectionApiRequest
+	@return DeleteGroupPeerApiRequest
 */
-func (a *NetworkPeeringApiService) DeletePeeringConnection(ctx context.Context, groupId string, peerId string) DeletePeeringConnectionApiRequest {
-	return DeletePeeringConnectionApiRequest{
+func (a *NetworkPeeringApiService) DeleteGroupPeer(ctx context.Context, groupId string, peerId string) DeleteGroupPeerApiRequest {
+	return DeleteGroupPeerApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -624,10 +730,10 @@ func (a *NetworkPeeringApiService) DeletePeeringConnection(ctx context.Context, 
 	}
 }
 
-// DeletePeeringConnectionExecute executes the request
+// DeleteGroupPeerExecute executes the request
 //
 //	@return any
-func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (any, *http.Response, error) {
+func (a *NetworkPeeringApiService) DeleteGroupPeerExecute(r DeleteGroupPeerApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -635,7 +741,7 @@ func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeerin
 		localVarReturnValue any
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeletePeeringConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeleteGroupPeer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -701,112 +807,6 @@ func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeerin
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DeletePeeringContainerApiRequest struct {
-	ctx         context.Context
-	ApiService  NetworkPeeringApi
-	groupId     string
-	containerId string
-}
-
-type DeletePeeringContainerApiParams struct {
-	GroupId     string
-	ContainerId string
-}
-
-func (a *NetworkPeeringApiService) DeletePeeringContainerWithParams(ctx context.Context, args *DeletePeeringContainerApiParams) DeletePeeringContainerApiRequest {
-	return DeletePeeringContainerApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		containerId: args.ContainerId,
-	}
-}
-
-func (r DeletePeeringContainerApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeletePeeringContainerExecute(r)
-}
-
-/*
-DeletePeeringContainer Remove One Network Peering Container
-
-Removes one network peering container in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
-	@return DeletePeeringContainerApiRequest
-*/
-func (a *NetworkPeeringApiService) DeletePeeringContainer(ctx context.Context, groupId string, containerId string) DeletePeeringContainerApiRequest {
-	return DeletePeeringContainerApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		containerId: containerId,
-	}
-}
-
-// DeletePeeringContainerExecute executes the request
-func (a *NetworkPeeringApiService) DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   any
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeletePeeringContainer")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/{containerId}"
-	if r.groupId == "" {
-		return nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.containerId == "" {
-		return nil, reportError("containerId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
 }
 
 type DisablePeeringApiRequest struct {
@@ -936,143 +936,20 @@ func (a *NetworkPeeringApiService) DisablePeeringExecute(r DisablePeeringApiRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetPeeringConnectionApiRequest struct {
-	ctx        context.Context
-	ApiService NetworkPeeringApi
-	groupId    string
-	peerId     string
-}
-
-type GetPeeringConnectionApiParams struct {
-	GroupId string
-	PeerId  string
-}
-
-func (a *NetworkPeeringApiService) GetPeeringConnectionWithParams(ctx context.Context, args *GetPeeringConnectionApiParams) GetPeeringConnectionApiRequest {
-	return GetPeeringConnectionApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		peerId:     args.PeerId,
-	}
-}
-
-func (r GetPeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	return r.ApiService.GetPeeringConnectionExecute(r)
-}
-
-/*
-GetPeeringConnection Return One Network Peering Connection in One Project
-
-Returns details about one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
-	@return GetPeeringConnectionApiRequest
-*/
-func (a *NetworkPeeringApiService) GetPeeringConnection(ctx context.Context, groupId string, peerId string) GetPeeringConnectionApiRequest {
-	return GetPeeringConnectionApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		peerId:     peerId,
-	}
-}
-
-// GetPeeringConnectionExecute executes the request
-//
-//	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringApiService) GetPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *BaseNetworkPeeringConnectionSettings
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetPeeringConnection")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.peerId == "" {
-		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GetPeeringContainerApiRequest struct {
+type GetGroupContainerApiRequest struct {
 	ctx         context.Context
 	ApiService  NetworkPeeringApi
 	groupId     string
 	containerId string
 }
 
-type GetPeeringContainerApiParams struct {
+type GetGroupContainerApiParams struct {
 	GroupId     string
 	ContainerId string
 }
 
-func (a *NetworkPeeringApiService) GetPeeringContainerWithParams(ctx context.Context, args *GetPeeringContainerApiParams) GetPeeringContainerApiRequest {
-	return GetPeeringContainerApiRequest{
+func (a *NetworkPeeringApiService) GetGroupContainerWithParams(ctx context.Context, args *GetGroupContainerApiParams) GetGroupContainerApiRequest {
+	return GetGroupContainerApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     args.GroupId,
@@ -1080,22 +957,22 @@ func (a *NetworkPeeringApiService) GetPeeringContainerWithParams(ctx context.Con
 	}
 }
 
-func (r GetPeeringContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
-	return r.ApiService.GetPeeringContainerExecute(r)
+func (r GetGroupContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
+	return r.ApiService.GetGroupContainerExecute(r)
 }
 
 /*
-GetPeeringContainer Return One Network Peering Container
+GetGroupContainer Return One Network Peering Container
 
 Returns details about one network peering container in one specified project. Network peering containers contain network peering connections. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container.
-	@return GetPeeringContainerApiRequest
+	@return GetGroupContainerApiRequest
 */
-func (a *NetworkPeeringApiService) GetPeeringContainer(ctx context.Context, groupId string, containerId string) GetPeeringContainerApiRequest {
-	return GetPeeringContainerApiRequest{
+func (a *NetworkPeeringApiService) GetGroupContainer(ctx context.Context, groupId string, containerId string) GetGroupContainerApiRequest {
+	return GetGroupContainerApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -1103,10 +980,10 @@ func (a *NetworkPeeringApiService) GetPeeringContainer(ctx context.Context, grou
 	}
 }
 
-// GetPeeringContainerExecute executes the request
+// GetGroupContainerExecute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringApiService) GetPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) GetGroupContainerExecute(r GetGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1114,7 +991,7 @@ func (a *NetworkPeeringApiService) GetPeeringContainerExecute(r GetPeeringContai
 		localVarReturnValue *CloudProviderContainer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetPeeringContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetGroupContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1182,7 +1059,467 @@ func (a *NetworkPeeringApiService) GetPeeringContainerExecute(r GetPeeringContai
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListPeeringConnectionsApiRequest struct {
+type GetGroupPeerApiRequest struct {
+	ctx        context.Context
+	ApiService NetworkPeeringApi
+	groupId    string
+	peerId     string
+}
+
+type GetGroupPeerApiParams struct {
+	GroupId string
+	PeerId  string
+}
+
+func (a *NetworkPeeringApiService) GetGroupPeerWithParams(ctx context.Context, args *GetGroupPeerApiParams) GetGroupPeerApiRequest {
+	return GetGroupPeerApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		peerId:     args.PeerId,
+	}
+}
+
+func (r GetGroupPeerApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+	return r.ApiService.GetGroupPeerExecute(r)
+}
+
+/*
+GetGroupPeer Return One Network Peering Connection in One Project
+
+Returns details about one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
+	@return GetGroupPeerApiRequest
+*/
+func (a *NetworkPeeringApiService) GetGroupPeer(ctx context.Context, groupId string, peerId string) GetGroupPeerApiRequest {
+	return GetGroupPeerApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		peerId:     peerId,
+	}
+}
+
+// GetGroupPeerExecute executes the request
+//
+//	@return BaseNetworkPeeringConnectionSettings
+func (a *NetworkPeeringApiService) GetGroupPeerExecute(r GetGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *BaseNetworkPeeringConnectionSettings
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetGroupPeer")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.peerId == "" {
+		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListGroupContainerAllApiRequest struct {
+	ctx          context.Context
+	ApiService   NetworkPeeringApi
+	groupId      string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListGroupContainerAllApiParams struct {
+	GroupId      string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *NetworkPeeringApiService) ListGroupContainerAllWithParams(ctx context.Context, args *ListGroupContainerAllApiParams) ListGroupContainerAllApiRequest {
+	return ListGroupContainerAllApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListGroupContainerAllApiRequest) IncludeCount(includeCount bool) ListGroupContainerAllApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListGroupContainerAllApiRequest) ItemsPerPage(itemsPerPage int) ListGroupContainerAllApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListGroupContainerAllApiRequest) PageNum(pageNum int) ListGroupContainerAllApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListGroupContainerAllApiRequest) Execute() (*PaginatedCloudProviderContainer, *http.Response, error) {
+	return r.ApiService.ListGroupContainerAllExecute(r)
+}
+
+/*
+ListGroupContainerAll Return All Network Peering Containers in One Project
+
+Returns details about all network peering containers in the specified project. Network peering containers contain network peering connections. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListGroupContainerAllApiRequest
+*/
+func (a *NetworkPeeringApiService) ListGroupContainerAll(ctx context.Context, groupId string) ListGroupContainerAllApiRequest {
+	return ListGroupContainerAllApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListGroupContainerAllExecute executes the request
+//
+//	@return PaginatedCloudProviderContainer
+func (a *NetworkPeeringApiService) ListGroupContainerAllExecute(r ListGroupContainerAllApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedCloudProviderContainer
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListGroupContainerAll")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/all"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListGroupContainersApiRequest struct {
+	ctx          context.Context
+	ApiService   NetworkPeeringApi
+	groupId      string
+	providerName *string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListGroupContainersApiParams struct {
+	GroupId      string
+	ProviderName *string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *NetworkPeeringApiService) ListGroupContainersWithParams(ctx context.Context, args *ListGroupContainersApiParams) ListGroupContainersApiRequest {
+	return ListGroupContainersApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		providerName: args.ProviderName,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Cloud service provider that serves the desired network peering containers.
+func (r ListGroupContainersApiRequest) ProviderName(providerName string) ListGroupContainersApiRequest {
+	r.providerName = &providerName
+	return r
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListGroupContainersApiRequest) IncludeCount(includeCount bool) ListGroupContainersApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListGroupContainersApiRequest) ItemsPerPage(itemsPerPage int) ListGroupContainersApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListGroupContainersApiRequest) PageNum(pageNum int) ListGroupContainersApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListGroupContainersApiRequest) Execute() (*PaginatedCloudProviderContainer, *http.Response, error) {
+	return r.ApiService.ListGroupContainersExecute(r)
+}
+
+/*
+ListGroupContainers Return All Network Peering Containers in One Project for One Cloud Provider
+
+Returns details about all network peering containers in the specified project for the specified cloud provider. If you do not specify the cloud provider, MongoDB Cloud returns details about all network peering containers in the project for Amazon Web Services (AWS). To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListGroupContainersApiRequest
+*/
+func (a *NetworkPeeringApiService) ListGroupContainers(ctx context.Context, groupId string) ListGroupContainersApiRequest {
+	return ListGroupContainersApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListGroupContainersExecute executes the request
+//
+//	@return PaginatedCloudProviderContainer
+func (a *NetworkPeeringApiService) ListGroupContainersExecute(r ListGroupContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedCloudProviderContainer
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListGroupContainers")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.providerName == nil {
+		return localVarReturnValue, nil, reportError("providerName is required and must be specified")
+	}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "providerName", r.providerName, "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListGroupPeersApiRequest struct {
 	ctx          context.Context
 	ApiService   NetworkPeeringApi
 	groupId      string
@@ -1192,7 +1529,7 @@ type ListPeeringConnectionsApiRequest struct {
 	providerName *string
 }
 
-type ListPeeringConnectionsApiParams struct {
+type ListGroupPeersApiParams struct {
 	GroupId      string
 	IncludeCount *bool
 	ItemsPerPage *int
@@ -1200,8 +1537,8 @@ type ListPeeringConnectionsApiParams struct {
 	ProviderName *string
 }
 
-func (a *NetworkPeeringApiService) ListPeeringConnectionsWithParams(ctx context.Context, args *ListPeeringConnectionsApiParams) ListPeeringConnectionsApiRequest {
-	return ListPeeringConnectionsApiRequest{
+func (a *NetworkPeeringApiService) ListGroupPeersWithParams(ctx context.Context, args *ListGroupPeersApiParams) ListGroupPeersApiRequest {
+	return ListGroupPeersApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -1213,54 +1550,54 @@ func (a *NetworkPeeringApiService) ListPeeringConnectionsWithParams(ctx context.
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListPeeringConnectionsApiRequest) IncludeCount(includeCount bool) ListPeeringConnectionsApiRequest {
+func (r ListGroupPeersApiRequest) IncludeCount(includeCount bool) ListGroupPeersApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r ListPeeringConnectionsApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringConnectionsApiRequest {
+func (r ListGroupPeersApiRequest) ItemsPerPage(itemsPerPage int) ListGroupPeersApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringConnectionsApiRequest) PageNum(pageNum int) ListPeeringConnectionsApiRequest {
+func (r ListGroupPeersApiRequest) PageNum(pageNum int) ListGroupPeersApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
 // Cloud service provider to use for this VPC peering connection.
-func (r ListPeeringConnectionsApiRequest) ProviderName(providerName string) ListPeeringConnectionsApiRequest {
+func (r ListGroupPeersApiRequest) ProviderName(providerName string) ListGroupPeersApiRequest {
 	r.providerName = &providerName
 	return r
 }
 
-func (r ListPeeringConnectionsApiRequest) Execute() (*PaginatedContainerPeer, *http.Response, error) {
-	return r.ApiService.ListPeeringConnectionsExecute(r)
+func (r ListGroupPeersApiRequest) Execute() (*PaginatedContainerPeer, *http.Response, error) {
+	return r.ApiService.ListGroupPeersExecute(r)
 }
 
 /*
-ListPeeringConnections Return All Network Peering Connections in One Project
+ListGroupPeers Return All Network Peering Connections in One Project
 
 Returns details about all network peering connections in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListPeeringConnectionsApiRequest
+	@return ListGroupPeersApiRequest
 */
-func (a *NetworkPeeringApiService) ListPeeringConnections(ctx context.Context, groupId string) ListPeeringConnectionsApiRequest {
-	return ListPeeringConnectionsApiRequest{
+func (a *NetworkPeeringApiService) ListGroupPeers(ctx context.Context, groupId string) ListGroupPeersApiRequest {
+	return ListGroupPeersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// ListPeeringConnectionsExecute executes the request
+// ListGroupPeersExecute executes the request
 //
 //	@return PaginatedContainerPeer
-func (a *NetworkPeeringApiService) ListPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error) {
+func (a *NetworkPeeringApiService) ListGroupPeersExecute(r ListGroupPeersApiRequest) (*PaginatedContainerPeer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1268,7 +1605,7 @@ func (a *NetworkPeeringApiService) ListPeeringConnectionsExecute(r ListPeeringCo
 		localVarReturnValue *PaginatedContainerPeer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListPeeringConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListGroupPeers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1360,476 +1697,7 @@ func (a *NetworkPeeringApiService) ListPeeringConnectionsExecute(r ListPeeringCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListPeeringContainerByCloudProviderApiRequest struct {
-	ctx          context.Context
-	ApiService   NetworkPeeringApi
-	groupId      string
-	providerName *string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
-}
-
-type ListPeeringContainerByCloudProviderApiParams struct {
-	GroupId      string
-	ProviderName *string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
-}
-
-func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderWithParams(ctx context.Context, args *ListPeeringContainerByCloudProviderApiParams) ListPeeringContainerByCloudProviderApiRequest {
-	return ListPeeringContainerByCloudProviderApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		providerName: args.ProviderName,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-	}
-}
-
-// Cloud service provider that serves the desired network peering containers.
-func (r ListPeeringContainerByCloudProviderApiRequest) ProviderName(providerName string) ListPeeringContainerByCloudProviderApiRequest {
-	r.providerName = &providerName
-	return r
-}
-
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListPeeringContainerByCloudProviderApiRequest) IncludeCount(includeCount bool) ListPeeringContainerByCloudProviderApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
-
-// Number of items that the response returns per page.
-func (r ListPeeringContainerByCloudProviderApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringContainerByCloudProviderApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringContainerByCloudProviderApiRequest) PageNum(pageNum int) ListPeeringContainerByCloudProviderApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-func (r ListPeeringContainerByCloudProviderApiRequest) Execute() (*PaginatedCloudProviderContainer, *http.Response, error) {
-	return r.ApiService.ListPeeringContainerByCloudProviderExecute(r)
-}
-
-/*
-ListPeeringContainerByCloudProvider Return All Network Peering Containers in One Project for One Cloud Provider
-
-Returns details about all network peering containers in the specified project for the specified cloud provider. If you do not specify the cloud provider, MongoDB Cloud returns details about all network peering containers in the project for Amazon Web Services (AWS). To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListPeeringContainerByCloudProviderApiRequest
-*/
-func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProvider(ctx context.Context, groupId string) ListPeeringContainerByCloudProviderApiRequest {
-	return ListPeeringContainerByCloudProviderApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-	}
-}
-
-// ListPeeringContainerByCloudProviderExecute executes the request
-//
-//	@return PaginatedCloudProviderContainer
-func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedCloudProviderContainer
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListPeeringContainerByCloudProvider")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.providerName == nil {
-		return localVarReturnValue, nil, reportError("providerName is required and must be specified")
-	}
-
-	if r.includeCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	} else {
-		var defaultValue bool = true
-		r.includeCount = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	}
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "providerName", r.providerName, "")
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ListPeeringContainersApiRequest struct {
-	ctx          context.Context
-	ApiService   NetworkPeeringApi
-	groupId      string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
-}
-
-type ListPeeringContainersApiParams struct {
-	GroupId      string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
-}
-
-func (a *NetworkPeeringApiService) ListPeeringContainersWithParams(ctx context.Context, args *ListPeeringContainersApiParams) ListPeeringContainersApiRequest {
-	return ListPeeringContainersApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-	}
-}
-
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListPeeringContainersApiRequest) IncludeCount(includeCount bool) ListPeeringContainersApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
-
-// Number of items that the response returns per page.
-func (r ListPeeringContainersApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringContainersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringContainersApiRequest) PageNum(pageNum int) ListPeeringContainersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-func (r ListPeeringContainersApiRequest) Execute() (*PaginatedCloudProviderContainer, *http.Response, error) {
-	return r.ApiService.ListPeeringContainersExecute(r)
-}
-
-/*
-ListPeeringContainers Return All Network Peering Containers in One Project
-
-Returns details about all network peering containers in the specified project. Network peering containers contain network peering connections. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListPeeringContainersApiRequest
-*/
-func (a *NetworkPeeringApiService) ListPeeringContainers(ctx context.Context, groupId string) ListPeeringContainersApiRequest {
-	return ListPeeringContainersApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-	}
-}
-
-// ListPeeringContainersExecute executes the request
-//
-//	@return PaginatedCloudProviderContainer
-func (a *NetworkPeeringApiService) ListPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedCloudProviderContainer
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListPeeringContainers")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/all"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.includeCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	} else {
-		var defaultValue bool = true
-		r.includeCount = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	}
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type UpdatePeeringConnectionApiRequest struct {
-	ctx                                  context.Context
-	ApiService                           NetworkPeeringApi
-	groupId                              string
-	peerId                               string
-	baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
-}
-
-type UpdatePeeringConnectionApiParams struct {
-	GroupId                              string
-	PeerId                               string
-	BaseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
-}
-
-func (a *NetworkPeeringApiService) UpdatePeeringConnectionWithParams(ctx context.Context, args *UpdatePeeringConnectionApiParams) UpdatePeeringConnectionApiRequest {
-	return UpdatePeeringConnectionApiRequest{
-		ApiService:                           a,
-		ctx:                                  ctx,
-		groupId:                              args.GroupId,
-		peerId:                               args.PeerId,
-		baseNetworkPeeringConnectionSettings: args.BaseNetworkPeeringConnectionSettings,
-	}
-}
-
-func (r UpdatePeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	return r.ApiService.UpdatePeeringConnectionExecute(r)
-}
-
-/*
-UpdatePeeringConnection Update One Network Peering Connection
-
-Updates one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
-	@return UpdatePeeringConnectionApiRequest
-*/
-func (a *NetworkPeeringApiService) UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdatePeeringConnectionApiRequest {
-	return UpdatePeeringConnectionApiRequest{
-		ApiService:                           a,
-		ctx:                                  ctx,
-		groupId:                              groupId,
-		peerId:                               peerId,
-		baseNetworkPeeringConnectionSettings: baseNetworkPeeringConnectionSettings,
-	}
-}
-
-// UpdatePeeringConnectionExecute executes the request
-//
-//	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringApiService) UpdatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *BaseNetworkPeeringConnectionSettings
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdatePeeringConnection")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.peerId == "" {
-		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.baseNetworkPeeringConnectionSettings == nil {
-		return localVarReturnValue, nil, reportError("baseNetworkPeeringConnectionSettings is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.baseNetworkPeeringConnectionSettings
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type UpdatePeeringContainerApiRequest struct {
+type UpdateGroupContainerApiRequest struct {
 	ctx                    context.Context
 	ApiService             NetworkPeeringApi
 	groupId                string
@@ -1837,14 +1705,14 @@ type UpdatePeeringContainerApiRequest struct {
 	cloudProviderContainer *CloudProviderContainer
 }
 
-type UpdatePeeringContainerApiParams struct {
+type UpdateGroupContainerApiParams struct {
 	GroupId                string
 	ContainerId            string
 	CloudProviderContainer *CloudProviderContainer
 }
 
-func (a *NetworkPeeringApiService) UpdatePeeringContainerWithParams(ctx context.Context, args *UpdatePeeringContainerApiParams) UpdatePeeringContainerApiRequest {
-	return UpdatePeeringContainerApiRequest{
+func (a *NetworkPeeringApiService) UpdateGroupContainerWithParams(ctx context.Context, args *UpdateGroupContainerApiParams) UpdateGroupContainerApiRequest {
+	return UpdateGroupContainerApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
 		groupId:                args.GroupId,
@@ -1853,22 +1721,22 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainerWithParams(ctx context.
 	}
 }
 
-func (r UpdatePeeringContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
-	return r.ApiService.UpdatePeeringContainerExecute(r)
+func (r UpdateGroupContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
+	return r.ApiService.UpdateGroupContainerExecute(r)
 }
 
 /*
-UpdatePeeringContainer Update One Network Peering Container
+UpdateGroupContainer Update One Network Peering Container
 
 Updates the network details and labels of one specified network peering container in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
-	@return UpdatePeeringContainerApiRequest
+	@return UpdateGroupContainerApiRequest
 */
-func (a *NetworkPeeringApiService) UpdatePeeringContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *CloudProviderContainer) UpdatePeeringContainerApiRequest {
-	return UpdatePeeringContainerApiRequest{
+func (a *NetworkPeeringApiService) UpdateGroupContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *CloudProviderContainer) UpdateGroupContainerApiRequest {
+	return UpdateGroupContainerApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
 		groupId:                groupId,
@@ -1877,10 +1745,10 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainer(ctx context.Context, g
 	}
 }
 
-// UpdatePeeringContainerExecute executes the request
+// UpdateGroupContainerExecute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringApiService) UpdatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) UpdateGroupContainerExecute(r UpdateGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1888,7 +1756,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainerExecute(r UpdatePeering
 		localVarReturnValue *CloudProviderContainer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdatePeeringContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdateGroupContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1961,53 +1829,185 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainerExecute(r UpdatePeering
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest struct {
+type UpdateGroupPeerApiRequest struct {
+	ctx                                  context.Context
+	ApiService                           NetworkPeeringApi
+	groupId                              string
+	peerId                               string
+	baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
+}
+
+type UpdateGroupPeerApiParams struct {
+	GroupId                              string
+	PeerId                               string
+	BaseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
+}
+
+func (a *NetworkPeeringApiService) UpdateGroupPeerWithParams(ctx context.Context, args *UpdateGroupPeerApiParams) UpdateGroupPeerApiRequest {
+	return UpdateGroupPeerApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              args.GroupId,
+		peerId:                               args.PeerId,
+		baseNetworkPeeringConnectionSettings: args.BaseNetworkPeeringConnectionSettings,
+	}
+}
+
+func (r UpdateGroupPeerApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+	return r.ApiService.UpdateGroupPeerExecute(r)
+}
+
+/*
+UpdateGroupPeer Update One Network Peering Connection
+
+Updates one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
+	@return UpdateGroupPeerApiRequest
+*/
+func (a *NetworkPeeringApiService) UpdateGroupPeer(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdateGroupPeerApiRequest {
+	return UpdateGroupPeerApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              groupId,
+		peerId:                               peerId,
+		baseNetworkPeeringConnectionSettings: baseNetworkPeeringConnectionSettings,
+	}
+}
+
+// UpdateGroupPeerExecute executes the request
+//
+//	@return BaseNetworkPeeringConnectionSettings
+func (a *NetworkPeeringApiService) UpdateGroupPeerExecute(r UpdateGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *BaseNetworkPeeringConnectionSettings
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdateGroupPeer")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.peerId == "" {
+		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.baseNetworkPeeringConnectionSettings == nil {
+		return localVarReturnValue, nil, reportError("baseNetworkPeeringConnectionSettings is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.baseNetworkPeeringConnectionSettings
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type VerifyPrivateIpModeApiRequest struct {
 	ctx        context.Context
 	ApiService NetworkPeeringApi
 	groupId    string
 }
 
-type VerifyConnectViaPeeringOnlyModeForOneProjectApiParams struct {
+type VerifyPrivateIpModeApiParams struct {
 	GroupId string
 }
 
-func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx context.Context, args *VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest {
-	return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest{
+func (a *NetworkPeeringApiService) VerifyPrivateIpModeWithParams(ctx context.Context, args *VerifyPrivateIpModeApiParams) VerifyPrivateIpModeApiRequest {
+	return VerifyPrivateIpModeApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) Execute() (*PrivateIPMode, *http.Response, error) {
-	return r.ApiService.VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r)
+func (r VerifyPrivateIpModeApiRequest) Execute() (*PrivateIPMode, *http.Response, error) {
+	return r.ApiService.VerifyPrivateIpModeExecute(r)
 }
 
 /*
-VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering-Only Mode for One Project
+VerifyPrivateIpMode Verify Connect via Peering-Only Mode for One Project
 
 Verifies if someone set the specified project to **Connect via Peering Only** mode. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
+	@return VerifyPrivateIpModeApiRequest
 
 Deprecated
 */
-func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProject(ctx context.Context, groupId string) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest {
-	return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest{
+func (a *NetworkPeeringApiService) VerifyPrivateIpMode(ctx context.Context, groupId string) VerifyPrivateIpModeApiRequest {
+	return VerifyPrivateIpModeApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// VerifyConnectViaPeeringOnlyModeForOneProjectExecute executes the request
+// VerifyPrivateIpModeExecute executes the request
 //
 //	@return PrivateIPMode
 //
 // Deprecated
-func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error) {
+func (a *NetworkPeeringApiService) VerifyPrivateIpModeExecute(r VerifyPrivateIpModeApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2015,7 +2015,7 @@ func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectE
 		localVarReturnValue *PrivateIPMode
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.VerifyConnectViaPeeringOnlyModeForOneProject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.VerifyPrivateIpMode")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

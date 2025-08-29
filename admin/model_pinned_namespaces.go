@@ -2,7 +2,7 @@
 
 package admin
 
-// PinnedNamespaces Pinned namespaces view for cluster
+// PinnedNamespaces Pinned namespaces view for cluster.
 type PinnedNamespaces struct {
 	// Unique 24-hexadecimal digit string that identifies the request cluster.
 	// Read only field.

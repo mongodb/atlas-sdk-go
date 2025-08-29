@@ -13,77 +13,77 @@ import (
 type LDAPConfigurationApi interface {
 
 	/*
-		DeleteLdapConfiguration Remove LDAP User to DN Mapping
+		DeleteLdapUserMapping Remove LDAP User to DN Mapping
 
 		Removes the current LDAP Distinguished Name mapping captured in the ``userToDNMapping`` document from the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return DeleteLdapConfigurationApiRequest
+		@return DeleteLdapUserMappingApiRequest
 	*/
-	DeleteLdapConfiguration(ctx context.Context, groupId string) DeleteLdapConfigurationApiRequest
+	DeleteLdapUserMapping(ctx context.Context, groupId string) DeleteLdapUserMappingApiRequest
 	/*
-		DeleteLdapConfiguration Remove LDAP User to DN Mapping
+		DeleteLdapUserMapping Remove LDAP User to DN Mapping
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteLdapConfigurationApiParams - Parameters for the request
-		@return DeleteLdapConfigurationApiRequest
+		@param DeleteLdapUserMappingApiParams - Parameters for the request
+		@return DeleteLdapUserMappingApiRequest
 	*/
-	DeleteLdapConfigurationWithParams(ctx context.Context, args *DeleteLdapConfigurationApiParams) DeleteLdapConfigurationApiRequest
+	DeleteLdapUserMappingWithParams(ctx context.Context, args *DeleteLdapUserMappingApiParams) DeleteLdapUserMappingApiRequest
 
 	// Method available only for mocking purposes
-	DeleteLdapConfigurationExecute(r DeleteLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error)
+	DeleteLdapUserMappingExecute(r DeleteLdapUserMappingApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
-		GetLdapConfiguration Return LDAP or X.509 Configuration
+		GetUserSecurity Return LDAP or X.509 Configuration
 
 		Returns the current LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetLdapConfigurationApiRequest
+		@return GetUserSecurityApiRequest
 	*/
-	GetLdapConfiguration(ctx context.Context, groupId string) GetLdapConfigurationApiRequest
+	GetUserSecurity(ctx context.Context, groupId string) GetUserSecurityApiRequest
 	/*
-		GetLdapConfiguration Return LDAP or X.509 Configuration
+		GetUserSecurity Return LDAP or X.509 Configuration
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetLdapConfigurationApiParams - Parameters for the request
-		@return GetLdapConfigurationApiRequest
+		@param GetUserSecurityApiParams - Parameters for the request
+		@return GetUserSecurityApiRequest
 	*/
-	GetLdapConfigurationWithParams(ctx context.Context, args *GetLdapConfigurationApiParams) GetLdapConfigurationApiRequest
+	GetUserSecurityWithParams(ctx context.Context, args *GetUserSecurityApiParams) GetUserSecurityApiRequest
 
 	// Method available only for mocking purposes
-	GetLdapConfigurationExecute(r GetLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error)
+	GetUserSecurityExecute(r GetUserSecurityApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
-		GetLdapConfigurationStatus Return Status of LDAP Configuration Verification in One Project
+		GetUserSecurityVerify Return Status of LDAP Configuration Verification in One Project
 
 		Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param requestId Unique string that identifies the request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
-		@return GetLdapConfigurationStatusApiRequest
+		@return GetUserSecurityVerifyApiRequest
 	*/
-	GetLdapConfigurationStatus(ctx context.Context, groupId string, requestId string) GetLdapConfigurationStatusApiRequest
+	GetUserSecurityVerify(ctx context.Context, groupId string, requestId string) GetUserSecurityVerifyApiRequest
 	/*
-		GetLdapConfigurationStatus Return Status of LDAP Configuration Verification in One Project
+		GetUserSecurityVerify Return Status of LDAP Configuration Verification in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetLdapConfigurationStatusApiParams - Parameters for the request
-		@return GetLdapConfigurationStatusApiRequest
+		@param GetUserSecurityVerifyApiParams - Parameters for the request
+		@return GetUserSecurityVerifyApiRequest
 	*/
-	GetLdapConfigurationStatusWithParams(ctx context.Context, args *GetLdapConfigurationStatusApiParams) GetLdapConfigurationStatusApiRequest
+	GetUserSecurityVerifyWithParams(ctx context.Context, args *GetUserSecurityVerifyApiParams) GetUserSecurityVerifyApiRequest
 
 	// Method available only for mocking purposes
-	GetLdapConfigurationStatusExecute(r GetLdapConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
+	GetUserSecurityVerifyExecute(r GetUserSecurityVerifyApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 
 	/*
-			SaveLdapConfiguration Update LDAP or X.509 Configuration
+			UpdateUserSecurity Update LDAP or X.509 Configuration
 
 			Edits the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -92,93 +92,93 @@ type LDAPConfigurationApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param userSecurity Updates the LDAP configuration for the specified project.
-			@return SaveLdapConfigurationApiRequest
+			@return UpdateUserSecurityApiRequest
 	*/
-	SaveLdapConfiguration(ctx context.Context, groupId string, userSecurity *UserSecurity) SaveLdapConfigurationApiRequest
+	UpdateUserSecurity(ctx context.Context, groupId string, userSecurity *UserSecurity) UpdateUserSecurityApiRequest
 	/*
-		SaveLdapConfiguration Update LDAP or X.509 Configuration
+		UpdateUserSecurity Update LDAP or X.509 Configuration
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param SaveLdapConfigurationApiParams - Parameters for the request
-		@return SaveLdapConfigurationApiRequest
+		@param UpdateUserSecurityApiParams - Parameters for the request
+		@return UpdateUserSecurityApiRequest
 	*/
-	SaveLdapConfigurationWithParams(ctx context.Context, args *SaveLdapConfigurationApiParams) SaveLdapConfigurationApiRequest
+	UpdateUserSecurityWithParams(ctx context.Context, args *UpdateUserSecurityApiParams) UpdateUserSecurityApiRequest
 
 	// Method available only for mocking purposes
-	SaveLdapConfigurationExecute(r SaveLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error)
+	UpdateUserSecurityExecute(r UpdateUserSecurityApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
-		VerifyLdapConfiguration Verify LDAP Configuration in One Project
+		VerifyUserSecurityLdap Verify LDAP Configuration in One Project
 
 		Verifies the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param lDAPVerifyConnectivityJobRequestParams The LDAP configuration for the specified project that you want to verify.
-		@return VerifyLdapConfigurationApiRequest
+		@return VerifyUserSecurityLdapApiRequest
 	*/
-	VerifyLdapConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyLdapConfigurationApiRequest
+	VerifyUserSecurityLdap(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyUserSecurityLdapApiRequest
 	/*
-		VerifyLdapConfiguration Verify LDAP Configuration in One Project
+		VerifyUserSecurityLdap Verify LDAP Configuration in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param VerifyLdapConfigurationApiParams - Parameters for the request
-		@return VerifyLdapConfigurationApiRequest
+		@param VerifyUserSecurityLdapApiParams - Parameters for the request
+		@return VerifyUserSecurityLdapApiRequest
 	*/
-	VerifyLdapConfigurationWithParams(ctx context.Context, args *VerifyLdapConfigurationApiParams) VerifyLdapConfigurationApiRequest
+	VerifyUserSecurityLdapWithParams(ctx context.Context, args *VerifyUserSecurityLdapApiParams) VerifyUserSecurityLdapApiRequest
 
 	// Method available only for mocking purposes
-	VerifyLdapConfigurationExecute(r VerifyLdapConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
+	VerifyUserSecurityLdapExecute(r VerifyUserSecurityLdapApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 }
 
 // LDAPConfigurationApiService LDAPConfigurationApi service
 type LDAPConfigurationApiService service
 
-type DeleteLdapConfigurationApiRequest struct {
+type DeleteLdapUserMappingApiRequest struct {
 	ctx        context.Context
 	ApiService LDAPConfigurationApi
 	groupId    string
 }
 
-type DeleteLdapConfigurationApiParams struct {
+type DeleteLdapUserMappingApiParams struct {
 	GroupId string
 }
 
-func (a *LDAPConfigurationApiService) DeleteLdapConfigurationWithParams(ctx context.Context, args *DeleteLdapConfigurationApiParams) DeleteLdapConfigurationApiRequest {
-	return DeleteLdapConfigurationApiRequest{
+func (a *LDAPConfigurationApiService) DeleteLdapUserMappingWithParams(ctx context.Context, args *DeleteLdapUserMappingApiParams) DeleteLdapUserMappingApiRequest {
+	return DeleteLdapUserMappingApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r DeleteLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
-	return r.ApiService.DeleteLdapConfigurationExecute(r)
+func (r DeleteLdapUserMappingApiRequest) Execute() (*UserSecurity, *http.Response, error) {
+	return r.ApiService.DeleteLdapUserMappingExecute(r)
 }
 
 /*
-DeleteLdapConfiguration Remove LDAP User to DN Mapping
+DeleteLdapUserMapping Remove LDAP User to DN Mapping
 
 Removes the current LDAP Distinguished Name mapping captured in the “userToDNMapping“ document from the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return DeleteLdapConfigurationApiRequest
+	@return DeleteLdapUserMappingApiRequest
 */
-func (a *LDAPConfigurationApiService) DeleteLdapConfiguration(ctx context.Context, groupId string) DeleteLdapConfigurationApiRequest {
-	return DeleteLdapConfigurationApiRequest{
+func (a *LDAPConfigurationApiService) DeleteLdapUserMapping(ctx context.Context, groupId string) DeleteLdapUserMappingApiRequest {
+	return DeleteLdapUserMappingApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// DeleteLdapConfigurationExecute executes the request
+// DeleteLdapUserMappingExecute executes the request
 //
 //	@return UserSecurity
-func (a *LDAPConfigurationApiService) DeleteLdapConfigurationExecute(r DeleteLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
+func (a *LDAPConfigurationApiService) DeleteLdapUserMappingExecute(r DeleteLdapUserMappingApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -186,7 +186,7 @@ func (a *LDAPConfigurationApiService) DeleteLdapConfigurationExecute(r DeleteLda
 		localVarReturnValue *UserSecurity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.DeleteLdapConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.DeleteLdapUserMapping")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -250,49 +250,49 @@ func (a *LDAPConfigurationApiService) DeleteLdapConfigurationExecute(r DeleteLda
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetLdapConfigurationApiRequest struct {
+type GetUserSecurityApiRequest struct {
 	ctx        context.Context
 	ApiService LDAPConfigurationApi
 	groupId    string
 }
 
-type GetLdapConfigurationApiParams struct {
+type GetUserSecurityApiParams struct {
 	GroupId string
 }
 
-func (a *LDAPConfigurationApiService) GetLdapConfigurationWithParams(ctx context.Context, args *GetLdapConfigurationApiParams) GetLdapConfigurationApiRequest {
-	return GetLdapConfigurationApiRequest{
+func (a *LDAPConfigurationApiService) GetUserSecurityWithParams(ctx context.Context, args *GetUserSecurityApiParams) GetUserSecurityApiRequest {
+	return GetUserSecurityApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r GetLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
-	return r.ApiService.GetLdapConfigurationExecute(r)
+func (r GetUserSecurityApiRequest) Execute() (*UserSecurity, *http.Response, error) {
+	return r.ApiService.GetUserSecurityExecute(r)
 }
 
 /*
-GetLdapConfiguration Return LDAP or X.509 Configuration
+GetUserSecurity Return LDAP or X.509 Configuration
 
 Returns the current LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetLdapConfigurationApiRequest
+	@return GetUserSecurityApiRequest
 */
-func (a *LDAPConfigurationApiService) GetLdapConfiguration(ctx context.Context, groupId string) GetLdapConfigurationApiRequest {
-	return GetLdapConfigurationApiRequest{
+func (a *LDAPConfigurationApiService) GetUserSecurity(ctx context.Context, groupId string) GetUserSecurityApiRequest {
+	return GetUserSecurityApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// GetLdapConfigurationExecute executes the request
+// GetUserSecurityExecute executes the request
 //
 //	@return UserSecurity
-func (a *LDAPConfigurationApiService) GetLdapConfigurationExecute(r GetLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
+func (a *LDAPConfigurationApiService) GetUserSecurityExecute(r GetUserSecurityApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -300,7 +300,7 @@ func (a *LDAPConfigurationApiService) GetLdapConfigurationExecute(r GetLdapConfi
 		localVarReturnValue *UserSecurity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.GetLdapConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.GetUserSecurity")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -364,20 +364,20 @@ func (a *LDAPConfigurationApiService) GetLdapConfigurationExecute(r GetLdapConfi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetLdapConfigurationStatusApiRequest struct {
+type GetUserSecurityVerifyApiRequest struct {
 	ctx        context.Context
 	ApiService LDAPConfigurationApi
 	groupId    string
 	requestId  string
 }
 
-type GetLdapConfigurationStatusApiParams struct {
+type GetUserSecurityVerifyApiParams struct {
 	GroupId   string
 	RequestId string
 }
 
-func (a *LDAPConfigurationApiService) GetLdapConfigurationStatusWithParams(ctx context.Context, args *GetLdapConfigurationStatusApiParams) GetLdapConfigurationStatusApiRequest {
-	return GetLdapConfigurationStatusApiRequest{
+func (a *LDAPConfigurationApiService) GetUserSecurityVerifyWithParams(ctx context.Context, args *GetUserSecurityVerifyApiParams) GetUserSecurityVerifyApiRequest {
+	return GetUserSecurityVerifyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -385,22 +385,22 @@ func (a *LDAPConfigurationApiService) GetLdapConfigurationStatusWithParams(ctx c
 	}
 }
 
-func (r GetLdapConfigurationStatusApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
-	return r.ApiService.GetLdapConfigurationStatusExecute(r)
+func (r GetUserSecurityVerifyApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+	return r.ApiService.GetUserSecurityVerifyExecute(r)
 }
 
 /*
-GetLdapConfigurationStatus Return Status of LDAP Configuration Verification in One Project
+GetUserSecurityVerify Return Status of LDAP Configuration Verification in One Project
 
 Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param requestId Unique string that identifies the request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
-	@return GetLdapConfigurationStatusApiRequest
+	@return GetUserSecurityVerifyApiRequest
 */
-func (a *LDAPConfigurationApiService) GetLdapConfigurationStatus(ctx context.Context, groupId string, requestId string) GetLdapConfigurationStatusApiRequest {
-	return GetLdapConfigurationStatusApiRequest{
+func (a *LDAPConfigurationApiService) GetUserSecurityVerify(ctx context.Context, groupId string, requestId string) GetUserSecurityVerifyApiRequest {
+	return GetUserSecurityVerifyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -408,10 +408,10 @@ func (a *LDAPConfigurationApiService) GetLdapConfigurationStatus(ctx context.Con
 	}
 }
 
-// GetLdapConfigurationStatusExecute executes the request
+// GetUserSecurityVerifyExecute executes the request
 //
 //	@return LDAPVerifyConnectivityJobRequest
-func (a *LDAPConfigurationApiService) GetLdapConfigurationStatusExecute(r GetLdapConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+func (a *LDAPConfigurationApiService) GetUserSecurityVerifyExecute(r GetUserSecurityVerifyApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -419,7 +419,7 @@ func (a *LDAPConfigurationApiService) GetLdapConfigurationStatusExecute(r GetLda
 		localVarReturnValue *LDAPVerifyConnectivityJobRequest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.GetLdapConfigurationStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.GetUserSecurityVerify")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -487,20 +487,20 @@ func (a *LDAPConfigurationApiService) GetLdapConfigurationStatusExecute(r GetLda
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SaveLdapConfigurationApiRequest struct {
+type UpdateUserSecurityApiRequest struct {
 	ctx          context.Context
 	ApiService   LDAPConfigurationApi
 	groupId      string
 	userSecurity *UserSecurity
 }
 
-type SaveLdapConfigurationApiParams struct {
+type UpdateUserSecurityApiParams struct {
 	GroupId      string
 	UserSecurity *UserSecurity
 }
 
-func (a *LDAPConfigurationApiService) SaveLdapConfigurationWithParams(ctx context.Context, args *SaveLdapConfigurationApiParams) SaveLdapConfigurationApiRequest {
-	return SaveLdapConfigurationApiRequest{
+func (a *LDAPConfigurationApiService) UpdateUserSecurityWithParams(ctx context.Context, args *UpdateUserSecurityApiParams) UpdateUserSecurityApiRequest {
+	return UpdateUserSecurityApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -508,12 +508,12 @@ func (a *LDAPConfigurationApiService) SaveLdapConfigurationWithParams(ctx contex
 	}
 }
 
-func (r SaveLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
-	return r.ApiService.SaveLdapConfigurationExecute(r)
+func (r UpdateUserSecurityApiRequest) Execute() (*UserSecurity, *http.Response, error) {
+	return r.ApiService.UpdateUserSecurityExecute(r)
 }
 
 /*
-SaveLdapConfiguration Update LDAP or X.509 Configuration
+UpdateUserSecurity Update LDAP or X.509 Configuration
 
 Edits the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -521,10 +521,10 @@ Updating this configuration triggers a rolling restart of the database.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return SaveLdapConfigurationApiRequest
+	@return UpdateUserSecurityApiRequest
 */
-func (a *LDAPConfigurationApiService) SaveLdapConfiguration(ctx context.Context, groupId string, userSecurity *UserSecurity) SaveLdapConfigurationApiRequest {
-	return SaveLdapConfigurationApiRequest{
+func (a *LDAPConfigurationApiService) UpdateUserSecurity(ctx context.Context, groupId string, userSecurity *UserSecurity) UpdateUserSecurityApiRequest {
+	return UpdateUserSecurityApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      groupId,
@@ -532,10 +532,10 @@ func (a *LDAPConfigurationApiService) SaveLdapConfiguration(ctx context.Context,
 	}
 }
 
-// SaveLdapConfigurationExecute executes the request
+// UpdateUserSecurityExecute executes the request
 //
 //	@return UserSecurity
-func (a *LDAPConfigurationApiService) SaveLdapConfigurationExecute(r SaveLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
+func (a *LDAPConfigurationApiService) UpdateUserSecurityExecute(r UpdateUserSecurityApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -543,7 +543,7 @@ func (a *LDAPConfigurationApiService) SaveLdapConfigurationExecute(r SaveLdapCon
 		localVarReturnValue *UserSecurity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.SaveLdapConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.UpdateUserSecurity")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -612,20 +612,20 @@ func (a *LDAPConfigurationApiService) SaveLdapConfigurationExecute(r SaveLdapCon
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type VerifyLdapConfigurationApiRequest struct {
+type VerifyUserSecurityLdapApiRequest struct {
 	ctx                                    context.Context
 	ApiService                             LDAPConfigurationApi
 	groupId                                string
 	lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams
 }
 
-type VerifyLdapConfigurationApiParams struct {
+type VerifyUserSecurityLdapApiParams struct {
 	GroupId                                string
 	LDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams
 }
 
-func (a *LDAPConfigurationApiService) VerifyLdapConfigurationWithParams(ctx context.Context, args *VerifyLdapConfigurationApiParams) VerifyLdapConfigurationApiRequest {
-	return VerifyLdapConfigurationApiRequest{
+func (a *LDAPConfigurationApiService) VerifyUserSecurityLdapWithParams(ctx context.Context, args *VerifyUserSecurityLdapApiParams) VerifyUserSecurityLdapApiRequest {
+	return VerifyUserSecurityLdapApiRequest{
 		ApiService:                             a,
 		ctx:                                    ctx,
 		groupId:                                args.GroupId,
@@ -633,21 +633,21 @@ func (a *LDAPConfigurationApiService) VerifyLdapConfigurationWithParams(ctx cont
 	}
 }
 
-func (r VerifyLdapConfigurationApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
-	return r.ApiService.VerifyLdapConfigurationExecute(r)
+func (r VerifyUserSecurityLdapApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+	return r.ApiService.VerifyUserSecurityLdapExecute(r)
 }
 
 /*
-VerifyLdapConfiguration Verify LDAP Configuration in One Project
+VerifyUserSecurityLdap Verify LDAP Configuration in One Project
 
 Verifies the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return VerifyLdapConfigurationApiRequest
+	@return VerifyUserSecurityLdapApiRequest
 */
-func (a *LDAPConfigurationApiService) VerifyLdapConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyLdapConfigurationApiRequest {
-	return VerifyLdapConfigurationApiRequest{
+func (a *LDAPConfigurationApiService) VerifyUserSecurityLdap(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyUserSecurityLdapApiRequest {
+	return VerifyUserSecurityLdapApiRequest{
 		ApiService:                             a,
 		ctx:                                    ctx,
 		groupId:                                groupId,
@@ -655,10 +655,10 @@ func (a *LDAPConfigurationApiService) VerifyLdapConfiguration(ctx context.Contex
 	}
 }
 
-// VerifyLdapConfigurationExecute executes the request
+// VerifyUserSecurityLdapExecute executes the request
 //
 //	@return LDAPVerifyConnectivityJobRequest
-func (a *LDAPConfigurationApiService) VerifyLdapConfigurationExecute(r VerifyLdapConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+func (a *LDAPConfigurationApiService) VerifyUserSecurityLdapExecute(r VerifyUserSecurityLdapApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -666,7 +666,7 @@ func (a *LDAPConfigurationApiService) VerifyLdapConfigurationExecute(r VerifyLda
 		localVarReturnValue *LDAPVerifyConnectivityJobRequest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.VerifyLdapConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.VerifyUserSecurityLdap")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

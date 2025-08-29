@@ -4,14 +4,25 @@ package admin
 
 // StreamsKafkaAuthentication User credentials required to connect to a Kafka Cluster. Includes the authentication type, as well as the parameters for that authentication mode.
 type StreamsKafkaAuthentication struct {
+	// OIDC client identifier for authentication to the Kafka cluster.
+	ClientId *string `json:"clientId,omitempty"`
+	// OIDC client secret for authentication to the Kafka cluster.
+	// Write only field.
+	ClientSecret *string `json:"clientSecret,omitempty"`
+	// HTTPS CA certificate in PEM format for SSL/TLS verification.
+	HttpsCaPem *string `json:"httpsCaPem,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Style of authentication. Can be one of PLAIN, SCRAM-256, or SCRAM-512.
+	// Style of authentication. Can be one of PLAIN, SCRAM-256, SCRAM-512, or OAUTHBEARER.
 	Mechanism *string `json:"mechanism,omitempty"`
 	// Password of the account to connect to the Kafka cluster.
 	// Write only field.
 	Password *string `json:"password,omitempty"`
+	// SASL OAUTHBEARER extensions parameter for additional OAuth2 configuration.
+	SaslOauthbearerExtensions *string `json:"saslOauthbearerExtensions,omitempty"`
+	// OIDC scope parameter defining the access permissions requested.
+	Scope *string `json:"scope,omitempty"`
 	// SSL certificate for client authentication to Kafka.
 	SslCertificate *string `json:"sslCertificate,omitempty"`
 	// SSL key for client authentication to Kafka.
@@ -20,6 +31,8 @@ type StreamsKafkaAuthentication struct {
 	// Password for the SSL key, if it is password protected.
 	// Write only field.
 	SslKeyPassword *string `json:"sslKeyPassword,omitempty"`
+	// OIDC token endpoint URL for obtaining access tokens.
+	TokenEndpointUrl *string `json:"tokenEndpointUrl,omitempty"`
 	// Username of the account to connect to the Kafka cluster.
 	Username *string `json:"username,omitempty"`
 }
@@ -39,6 +52,105 @@ func NewStreamsKafkaAuthentication() *StreamsKafkaAuthentication {
 func NewStreamsKafkaAuthenticationWithDefaults() *StreamsKafkaAuthentication {
 	this := StreamsKafkaAuthentication{}
 	return &this
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetClientId() string {
+	if o == nil || IsNil(o.ClientId) {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetClientIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientId) {
+		return nil, false
+	}
+
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasClientId() bool {
+	if o != nil && !IsNil(o.ClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *StreamsKafkaAuthentication) SetClientId(v string) {
+	o.ClientId = &v
+}
+
+// GetClientSecret returns the ClientSecret field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetClientSecret() string {
+	if o == nil || IsNil(o.ClientSecret) {
+		var ret string
+		return ret
+	}
+	return *o.ClientSecret
+}
+
+// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetClientSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientSecret) {
+		return nil, false
+	}
+
+	return o.ClientSecret, true
+}
+
+// HasClientSecret returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasClientSecret() bool {
+	if o != nil && !IsNil(o.ClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
+func (o *StreamsKafkaAuthentication) SetClientSecret(v string) {
+	o.ClientSecret = &v
+}
+
+// GetHttpsCaPem returns the HttpsCaPem field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetHttpsCaPem() string {
+	if o == nil || IsNil(o.HttpsCaPem) {
+		var ret string
+		return ret
+	}
+	return *o.HttpsCaPem
+}
+
+// GetHttpsCaPemOk returns a tuple with the HttpsCaPem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetHttpsCaPemOk() (*string, bool) {
+	if o == nil || IsNil(o.HttpsCaPem) {
+		return nil, false
+	}
+
+	return o.HttpsCaPem, true
+}
+
+// HasHttpsCaPem returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasHttpsCaPem() bool {
+	if o != nil && !IsNil(o.HttpsCaPem) {
+		return true
+	}
+
+	return false
+}
+
+// SetHttpsCaPem gets a reference to the given string and assigns it to the HttpsCaPem field.
+func (o *StreamsKafkaAuthentication) SetHttpsCaPem(v string) {
+	o.HttpsCaPem = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -140,6 +252,72 @@ func (o *StreamsKafkaAuthentication) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetSaslOauthbearerExtensions returns the SaslOauthbearerExtensions field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetSaslOauthbearerExtensions() string {
+	if o == nil || IsNil(o.SaslOauthbearerExtensions) {
+		var ret string
+		return ret
+	}
+	return *o.SaslOauthbearerExtensions
+}
+
+// GetSaslOauthbearerExtensionsOk returns a tuple with the SaslOauthbearerExtensions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetSaslOauthbearerExtensionsOk() (*string, bool) {
+	if o == nil || IsNil(o.SaslOauthbearerExtensions) {
+		return nil, false
+	}
+
+	return o.SaslOauthbearerExtensions, true
+}
+
+// HasSaslOauthbearerExtensions returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasSaslOauthbearerExtensions() bool {
+	if o != nil && !IsNil(o.SaslOauthbearerExtensions) {
+		return true
+	}
+
+	return false
+}
+
+// SetSaslOauthbearerExtensions gets a reference to the given string and assigns it to the SaslOauthbearerExtensions field.
+func (o *StreamsKafkaAuthentication) SetSaslOauthbearerExtensions(v string) {
+	o.SaslOauthbearerExtensions = &v
+}
+
+// GetScope returns the Scope field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetScope() string {
+	if o == nil || IsNil(o.Scope) {
+		var ret string
+		return ret
+	}
+	return *o.Scope
+}
+
+// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetScopeOk() (*string, bool) {
+	if o == nil || IsNil(o.Scope) {
+		return nil, false
+	}
+
+	return o.Scope, true
+}
+
+// HasScope returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasScope() bool {
+	if o != nil && !IsNil(o.Scope) {
+		return true
+	}
+
+	return false
+}
+
+// SetScope gets a reference to the given string and assigns it to the Scope field.
+func (o *StreamsKafkaAuthentication) SetScope(v string) {
+	o.Scope = &v
+}
+
 // GetSslCertificate returns the SslCertificate field value if set, zero value otherwise
 func (o *StreamsKafkaAuthentication) GetSslCertificate() string {
 	if o == nil || IsNil(o.SslCertificate) {
@@ -237,6 +415,39 @@ func (o *StreamsKafkaAuthentication) HasSslKeyPassword() bool {
 // SetSslKeyPassword gets a reference to the given string and assigns it to the SslKeyPassword field.
 func (o *StreamsKafkaAuthentication) SetSslKeyPassword(v string) {
 	o.SslKeyPassword = &v
+}
+
+// GetTokenEndpointUrl returns the TokenEndpointUrl field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetTokenEndpointUrl() string {
+	if o == nil || IsNil(o.TokenEndpointUrl) {
+		var ret string
+		return ret
+	}
+	return *o.TokenEndpointUrl
+}
+
+// GetTokenEndpointUrlOk returns a tuple with the TokenEndpointUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetTokenEndpointUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.TokenEndpointUrl) {
+		return nil, false
+	}
+
+	return o.TokenEndpointUrl, true
+}
+
+// HasTokenEndpointUrl returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasTokenEndpointUrl() bool {
+	if o != nil && !IsNil(o.TokenEndpointUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenEndpointUrl gets a reference to the given string and assigns it to the TokenEndpointUrl field.
+func (o *StreamsKafkaAuthentication) SetTokenEndpointUrl(v string) {
+	o.TokenEndpointUrl = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
