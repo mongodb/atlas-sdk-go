@@ -13,56 +13,7 @@ import (
 type ServiceAccountsApi interface {
 
 	/*
-		AddProjectServiceAccount Assign One Service Account to One Project
-
-		Assigns the specified Service Account to the specified Project.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param clientId The Client ID of the Service Account.
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param groupServiceAccountRoleAssignment The Project permissions for the Service Account in the specified Project.
-		@return AddProjectServiceAccountApiRequest
-	*/
-	AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment) AddProjectServiceAccountApiRequest
-	/*
-		AddProjectServiceAccount Assign One Service Account to One Project
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param AddProjectServiceAccountApiParams - Parameters for the request
-		@return AddProjectServiceAccountApiRequest
-	*/
-	AddProjectServiceAccountWithParams(ctx context.Context, args *AddProjectServiceAccountApiParams) AddProjectServiceAccountApiRequest
-
-	// Method available only for mocking purposes
-	AddProjectServiceAccountExecute(r AddProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
-
-	/*
-		CreateProjectServiceAccount Create One Project Service Account
-
-		Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param groupServiceAccountRequest Details of the new Service Account.
-		@return CreateProjectServiceAccountApiRequest
-	*/
-	CreateProjectServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *GroupServiceAccountRequest) CreateProjectServiceAccountApiRequest
-	/*
-		CreateProjectServiceAccount Create One Project Service Account
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateProjectServiceAccountApiParams - Parameters for the request
-		@return CreateProjectServiceAccountApiRequest
-	*/
-	CreateProjectServiceAccountWithParams(ctx context.Context, args *CreateProjectServiceAccountApiParams) CreateProjectServiceAccountApiRequest
-
-	// Method available only for mocking purposes
-	CreateProjectServiceAccountExecute(r CreateProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
-
-	/*
-		CreateProjectServiceAccountAccessList Add Access List Entries for One Project Service Account
+		CreateAccessList Add Access List Entries for One Project Service Account
 
 		Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
 
@@ -70,24 +21,24 @@ type ServiceAccountsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clientId The Client ID of the Service Account.
 		@param serviceAccountIPAccessListEntry A list of access list entries to add to the access list of the specified Service Account for the project.
-		@return CreateProjectServiceAccountAccessListApiRequest
+		@return CreateAccessListApiRequest
 	*/
-	CreateProjectServiceAccountAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateProjectServiceAccountAccessListApiRequest
+	CreateAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateAccessListApiRequest
 	/*
-		CreateProjectServiceAccountAccessList Add Access List Entries for One Project Service Account
+		CreateAccessList Add Access List Entries for One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateProjectServiceAccountAccessListApiParams - Parameters for the request
-		@return CreateProjectServiceAccountAccessListApiRequest
+		@param CreateAccessListApiParams - Parameters for the request
+		@return CreateAccessListApiRequest
 	*/
-	CreateProjectServiceAccountAccessListWithParams(ctx context.Context, args *CreateProjectServiceAccountAccessListApiParams) CreateProjectServiceAccountAccessListApiRequest
+	CreateAccessListWithParams(ctx context.Context, args *CreateAccessListApiParams) CreateAccessListApiRequest
 
 	// Method available only for mocking purposes
-	CreateProjectServiceAccountAccessListExecute(r CreateProjectServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
+	CreateAccessListExecute(r CreateAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
 
 	/*
-		CreateProjectServiceAccountSecret Create One Project Service Account Secret
+		CreateGroupSecret Create One Project Service Account Secret
 
 		Create a secret for the specified Service Account in the specified Project.
 
@@ -95,48 +46,48 @@ type ServiceAccountsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clientId The Client ID of the Service Account.
 		@param serviceAccountSecretRequest Details for the new secret.
-		@return CreateProjectServiceAccountSecretApiRequest
+		@return CreateGroupSecretApiRequest
 	*/
-	CreateProjectServiceAccountSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateProjectServiceAccountSecretApiRequest
+	CreateGroupSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateGroupSecretApiRequest
 	/*
-		CreateProjectServiceAccountSecret Create One Project Service Account Secret
+		CreateGroupSecret Create One Project Service Account Secret
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateProjectServiceAccountSecretApiParams - Parameters for the request
-		@return CreateProjectServiceAccountSecretApiRequest
+		@param CreateGroupSecretApiParams - Parameters for the request
+		@return CreateGroupSecretApiRequest
 	*/
-	CreateProjectServiceAccountSecretWithParams(ctx context.Context, args *CreateProjectServiceAccountSecretApiParams) CreateProjectServiceAccountSecretApiRequest
+	CreateGroupSecretWithParams(ctx context.Context, args *CreateGroupSecretApiParams) CreateGroupSecretApiRequest
 
 	// Method available only for mocking purposes
-	CreateProjectServiceAccountSecretExecute(r CreateProjectServiceAccountSecretApiRequest) (*ServiceAccountSecret, *http.Response, error)
+	CreateGroupSecretExecute(r CreateGroupSecretApiRequest) (*ServiceAccountSecret, *http.Response, error)
 
 	/*
-		CreateServiceAccount Create One Organization Service Account
+		CreateGroupServiceAccount Create One Project Service Account
 
-		Creates one Service Account for the specified Organization.
+		Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param orgServiceAccountRequest Details of the new Service Account.
-		@return CreateServiceAccountApiRequest
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param groupServiceAccountRequest Details of the new Service Account.
+		@return CreateGroupServiceAccountApiRequest
 	*/
-	CreateServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *OrgServiceAccountRequest) CreateServiceAccountApiRequest
+	CreateGroupServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *GroupServiceAccountRequest) CreateGroupServiceAccountApiRequest
 	/*
-		CreateServiceAccount Create One Organization Service Account
+		CreateGroupServiceAccount Create One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateServiceAccountApiParams - Parameters for the request
-		@return CreateServiceAccountApiRequest
+		@param CreateGroupServiceAccountApiParams - Parameters for the request
+		@return CreateGroupServiceAccountApiRequest
 	*/
-	CreateServiceAccountWithParams(ctx context.Context, args *CreateServiceAccountApiParams) CreateServiceAccountApiRequest
+	CreateGroupServiceAccountWithParams(ctx context.Context, args *CreateGroupServiceAccountApiParams) CreateGroupServiceAccountApiRequest
 
 	// Method available only for mocking purposes
-	CreateServiceAccountExecute(r CreateServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
+	CreateGroupServiceAccountExecute(r CreateGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
 
 	/*
-		CreateServiceAccountAccessList Add Access List Entries for One Organization Service Account
+		CreateOrgAccessList Add Access List Entries for One Organization Service Account
 
 		Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list.
 
@@ -144,24 +95,24 @@ type ServiceAccountsApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@param serviceAccountIPAccessListEntry A list of access list entries to add to the access list of the specified Service Account for the organization.
-		@return CreateServiceAccountAccessListApiRequest
+		@return CreateOrgAccessListApiRequest
 	*/
-	CreateServiceAccountAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateServiceAccountAccessListApiRequest
+	CreateOrgAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateOrgAccessListApiRequest
 	/*
-		CreateServiceAccountAccessList Add Access List Entries for One Organization Service Account
+		CreateOrgAccessList Add Access List Entries for One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateServiceAccountAccessListApiParams - Parameters for the request
-		@return CreateServiceAccountAccessListApiRequest
+		@param CreateOrgAccessListApiParams - Parameters for the request
+		@return CreateOrgAccessListApiRequest
 	*/
-	CreateServiceAccountAccessListWithParams(ctx context.Context, args *CreateServiceAccountAccessListApiParams) CreateServiceAccountAccessListApiRequest
+	CreateOrgAccessListWithParams(ctx context.Context, args *CreateOrgAccessListApiParams) CreateOrgAccessListApiRequest
 
 	// Method available only for mocking purposes
-	CreateServiceAccountAccessListExecute(r CreateServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
+	CreateOrgAccessListExecute(r CreateOrgAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
 
 	/*
-		CreateServiceAccountSecret Create One Organization Service Account Secret
+		CreateOrgSecret Create One Organization Service Account Secret
 
 		Create a secret for the specified Service Account.
 
@@ -169,48 +120,48 @@ type ServiceAccountsApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@param serviceAccountSecretRequest Details for the new secret.
-		@return CreateServiceAccountSecretApiRequest
+		@return CreateOrgSecretApiRequest
 	*/
-	CreateServiceAccountSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateServiceAccountSecretApiRequest
+	CreateOrgSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateOrgSecretApiRequest
 	/*
-		CreateServiceAccountSecret Create One Organization Service Account Secret
+		CreateOrgSecret Create One Organization Service Account Secret
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateServiceAccountSecretApiParams - Parameters for the request
-		@return CreateServiceAccountSecretApiRequest
+		@param CreateOrgSecretApiParams - Parameters for the request
+		@return CreateOrgSecretApiRequest
 	*/
-	CreateServiceAccountSecretWithParams(ctx context.Context, args *CreateServiceAccountSecretApiParams) CreateServiceAccountSecretApiRequest
+	CreateOrgSecretWithParams(ctx context.Context, args *CreateOrgSecretApiParams) CreateOrgSecretApiRequest
 
 	// Method available only for mocking purposes
-	CreateServiceAccountSecretExecute(r CreateServiceAccountSecretApiRequest) (*ServiceAccountSecret, *http.Response, error)
+	CreateOrgSecretExecute(r CreateOrgSecretApiRequest) (*ServiceAccountSecret, *http.Response, error)
 
 	/*
-		DeleteProjectServiceAccount Remove One Project Service Account
+		CreateOrgServiceAccount Create One Organization Service Account
 
-		Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked.
+		Creates one Service Account for the specified Organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param clientId The Client ID of the Service Account.
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return DeleteProjectServiceAccountApiRequest
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgServiceAccountRequest Details of the new Service Account.
+		@return CreateOrgServiceAccountApiRequest
 	*/
-	DeleteProjectServiceAccount(ctx context.Context, clientId string, groupId string) DeleteProjectServiceAccountApiRequest
+	CreateOrgServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *OrgServiceAccountRequest) CreateOrgServiceAccountApiRequest
 	/*
-		DeleteProjectServiceAccount Remove One Project Service Account
+		CreateOrgServiceAccount Create One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteProjectServiceAccountApiParams - Parameters for the request
-		@return DeleteProjectServiceAccountApiRequest
+		@param CreateOrgServiceAccountApiParams - Parameters for the request
+		@return CreateOrgServiceAccountApiRequest
 	*/
-	DeleteProjectServiceAccountWithParams(ctx context.Context, args *DeleteProjectServiceAccountApiParams) DeleteProjectServiceAccountApiRequest
+	CreateOrgServiceAccountWithParams(ctx context.Context, args *CreateOrgServiceAccountApiParams) CreateOrgServiceAccountApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectServiceAccountExecute(r DeleteProjectServiceAccountApiRequest) (*http.Response, error)
+	CreateOrgServiceAccountExecute(r CreateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
 
 	/*
-		DeleteProjectServiceAccountAccessListEntry Remove One Access List Entry from One Project Service Account
+		DeleteGroupAccessEntry Remove One Access List Entry from One Project Service Account
 
 		Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
 
@@ -218,24 +169,24 @@ type ServiceAccountsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clientId The Client ID of the Service Account.
 		@param ipAddress One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
-		@return DeleteProjectServiceAccountAccessListEntryApiRequest
+		@return DeleteGroupAccessEntryApiRequest
 	*/
-	DeleteProjectServiceAccountAccessListEntry(ctx context.Context, groupId string, clientId string, ipAddress string) DeleteProjectServiceAccountAccessListEntryApiRequest
+	DeleteGroupAccessEntry(ctx context.Context, groupId string, clientId string, ipAddress string) DeleteGroupAccessEntryApiRequest
 	/*
-		DeleteProjectServiceAccountAccessListEntry Remove One Access List Entry from One Project Service Account
+		DeleteGroupAccessEntry Remove One Access List Entry from One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteProjectServiceAccountAccessListEntryApiParams - Parameters for the request
-		@return DeleteProjectServiceAccountAccessListEntryApiRequest
+		@param DeleteGroupAccessEntryApiParams - Parameters for the request
+		@return DeleteGroupAccessEntryApiRequest
 	*/
-	DeleteProjectServiceAccountAccessListEntryWithParams(ctx context.Context, args *DeleteProjectServiceAccountAccessListEntryApiParams) DeleteProjectServiceAccountAccessListEntryApiRequest
+	DeleteGroupAccessEntryWithParams(ctx context.Context, args *DeleteGroupAccessEntryApiParams) DeleteGroupAccessEntryApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectServiceAccountAccessListEntryExecute(r DeleteProjectServiceAccountAccessListEntryApiRequest) (*http.Response, error)
+	DeleteGroupAccessEntryExecute(r DeleteGroupAccessEntryApiRequest) (*http.Response, error)
 
 	/*
-		DeleteProjectServiceAccountSecret Delete One Project Service Account Secret
+		DeleteGroupSecret Delete One Project Service Account Secret
 
 		Deletes the specified Service Account secret.
 
@@ -243,48 +194,48 @@ type ServiceAccountsApi interface {
 		@param clientId The Client ID of the Service Account.
 		@param secretId Unique 24-hexadecimal digit string that identifies the secret.
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return DeleteProjectServiceAccountSecretApiRequest
+		@return DeleteGroupSecretApiRequest
 	*/
-	DeleteProjectServiceAccountSecret(ctx context.Context, clientId string, secretId string, groupId string) DeleteProjectServiceAccountSecretApiRequest
+	DeleteGroupSecret(ctx context.Context, clientId string, secretId string, groupId string) DeleteGroupSecretApiRequest
 	/*
-		DeleteProjectServiceAccountSecret Delete One Project Service Account Secret
+		DeleteGroupSecret Delete One Project Service Account Secret
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteProjectServiceAccountSecretApiParams - Parameters for the request
-		@return DeleteProjectServiceAccountSecretApiRequest
+		@param DeleteGroupSecretApiParams - Parameters for the request
+		@return DeleteGroupSecretApiRequest
 	*/
-	DeleteProjectServiceAccountSecretWithParams(ctx context.Context, args *DeleteProjectServiceAccountSecretApiParams) DeleteProjectServiceAccountSecretApiRequest
+	DeleteGroupSecretWithParams(ctx context.Context, args *DeleteGroupSecretApiParams) DeleteGroupSecretApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectServiceAccountSecretExecute(r DeleteProjectServiceAccountSecretApiRequest) (*http.Response, error)
+	DeleteGroupSecretExecute(r DeleteGroupSecretApiRequest) (*http.Response, error)
 
 	/*
-		DeleteServiceAccount Delete One Organization Service Account
+		DeleteGroupServiceAccount Remove One Project Service Account
 
-		Deletes the specified Service Account.
+		Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return DeleteServiceAccountApiRequest
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return DeleteGroupServiceAccountApiRequest
 	*/
-	DeleteServiceAccount(ctx context.Context, clientId string, orgId string) DeleteServiceAccountApiRequest
+	DeleteGroupServiceAccount(ctx context.Context, clientId string, groupId string) DeleteGroupServiceAccountApiRequest
 	/*
-		DeleteServiceAccount Delete One Organization Service Account
+		DeleteGroupServiceAccount Remove One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteServiceAccountApiParams - Parameters for the request
-		@return DeleteServiceAccountApiRequest
+		@param DeleteGroupServiceAccountApiParams - Parameters for the request
+		@return DeleteGroupServiceAccountApiRequest
 	*/
-	DeleteServiceAccountWithParams(ctx context.Context, args *DeleteServiceAccountApiParams) DeleteServiceAccountApiRequest
+	DeleteGroupServiceAccountWithParams(ctx context.Context, args *DeleteGroupServiceAccountApiParams) DeleteGroupServiceAccountApiRequest
 
 	// Method available only for mocking purposes
-	DeleteServiceAccountExecute(r DeleteServiceAccountApiRequest) (*http.Response, error)
+	DeleteGroupServiceAccountExecute(r DeleteGroupServiceAccountApiRequest) (*http.Response, error)
 
 	/*
-		DeleteServiceAccountAccessListEntry Remove One Access List Entry from One Organization Service Account
+		DeleteOrgAccessEntry Remove One Access List Entry from One Organization Service Account
 
 		Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
 
@@ -292,24 +243,24 @@ type ServiceAccountsApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@param ipAddress One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
-		@return DeleteServiceAccountAccessListEntryApiRequest
+		@return DeleteOrgAccessEntryApiRequest
 	*/
-	DeleteServiceAccountAccessListEntry(ctx context.Context, orgId string, clientId string, ipAddress string) DeleteServiceAccountAccessListEntryApiRequest
+	DeleteOrgAccessEntry(ctx context.Context, orgId string, clientId string, ipAddress string) DeleteOrgAccessEntryApiRequest
 	/*
-		DeleteServiceAccountAccessListEntry Remove One Access List Entry from One Organization Service Account
+		DeleteOrgAccessEntry Remove One Access List Entry from One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteServiceAccountAccessListEntryApiParams - Parameters for the request
-		@return DeleteServiceAccountAccessListEntryApiRequest
+		@param DeleteOrgAccessEntryApiParams - Parameters for the request
+		@return DeleteOrgAccessEntryApiRequest
 	*/
-	DeleteServiceAccountAccessListEntryWithParams(ctx context.Context, args *DeleteServiceAccountAccessListEntryApiParams) DeleteServiceAccountAccessListEntryApiRequest
+	DeleteOrgAccessEntryWithParams(ctx context.Context, args *DeleteOrgAccessEntryApiParams) DeleteOrgAccessEntryApiRequest
 
 	// Method available only for mocking purposes
-	DeleteServiceAccountAccessListEntryExecute(r DeleteServiceAccountAccessListEntryApiRequest) (*http.Response, error)
+	DeleteOrgAccessEntryExecute(r DeleteOrgAccessEntryApiRequest) (*http.Response, error)
 
 	/*
-		DeleteServiceAccountSecret Delete One Organization Service Account Secret
+		DeleteOrgSecret Delete One Organization Service Account Secret
 
 		Deletes the specified Service Account secret.
 
@@ -317,190 +268,239 @@ type ServiceAccountsApi interface {
 		@param clientId The Client ID of the Service Account.
 		@param secretId Unique 24-hexadecimal digit string that identifies the secret.
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return DeleteServiceAccountSecretApiRequest
+		@return DeleteOrgSecretApiRequest
 	*/
-	DeleteServiceAccountSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteServiceAccountSecretApiRequest
+	DeleteOrgSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteOrgSecretApiRequest
 	/*
-		DeleteServiceAccountSecret Delete One Organization Service Account Secret
+		DeleteOrgSecret Delete One Organization Service Account Secret
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteServiceAccountSecretApiParams - Parameters for the request
-		@return DeleteServiceAccountSecretApiRequest
+		@param DeleteOrgSecretApiParams - Parameters for the request
+		@return DeleteOrgSecretApiRequest
 	*/
-	DeleteServiceAccountSecretWithParams(ctx context.Context, args *DeleteServiceAccountSecretApiParams) DeleteServiceAccountSecretApiRequest
+	DeleteOrgSecretWithParams(ctx context.Context, args *DeleteOrgSecretApiParams) DeleteOrgSecretApiRequest
 
 	// Method available only for mocking purposes
-	DeleteServiceAccountSecretExecute(r DeleteServiceAccountSecretApiRequest) (*http.Response, error)
+	DeleteOrgSecretExecute(r DeleteOrgSecretApiRequest) (*http.Response, error)
 
 	/*
-		GetProjectServiceAccount Return One Project Service Account
+		DeleteOrgServiceAccount Delete One Organization Service Account
+
+		Deletes the specified Service Account.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId The Client ID of the Service Account.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return DeleteOrgServiceAccountApiRequest
+	*/
+	DeleteOrgServiceAccount(ctx context.Context, clientId string, orgId string) DeleteOrgServiceAccountApiRequest
+	/*
+		DeleteOrgServiceAccount Delete One Organization Service Account
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteOrgServiceAccountApiParams - Parameters for the request
+		@return DeleteOrgServiceAccountApiRequest
+	*/
+	DeleteOrgServiceAccountWithParams(ctx context.Context, args *DeleteOrgServiceAccountApiParams) DeleteOrgServiceAccountApiRequest
+
+	// Method available only for mocking purposes
+	DeleteOrgServiceAccountExecute(r DeleteOrgServiceAccountApiRequest) (*http.Response, error)
+
+	/*
+		GetGroupServiceAccount Return One Project Service Account
 
 		Returns one Service Account in the specified Project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clientId The Client ID of the Service Account.
-		@return GetProjectServiceAccountApiRequest
+		@return GetGroupServiceAccountApiRequest
 	*/
-	GetProjectServiceAccount(ctx context.Context, groupId string, clientId string) GetProjectServiceAccountApiRequest
+	GetGroupServiceAccount(ctx context.Context, groupId string, clientId string) GetGroupServiceAccountApiRequest
 	/*
-		GetProjectServiceAccount Return One Project Service Account
+		GetGroupServiceAccount Return One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetProjectServiceAccountApiParams - Parameters for the request
-		@return GetProjectServiceAccountApiRequest
+		@param GetGroupServiceAccountApiParams - Parameters for the request
+		@return GetGroupServiceAccountApiRequest
 	*/
-	GetProjectServiceAccountWithParams(ctx context.Context, args *GetProjectServiceAccountApiParams) GetProjectServiceAccountApiRequest
+	GetGroupServiceAccountWithParams(ctx context.Context, args *GetGroupServiceAccountApiParams) GetGroupServiceAccountApiRequest
 
 	// Method available only for mocking purposes
-	GetProjectServiceAccountExecute(r GetProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
+	GetGroupServiceAccountExecute(r GetGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
 
 	/*
-		GetServiceAccount Return One Organization Service Account
+		GetOrgServiceAccount Return One Organization Service Account
 
 		Returns the specified Service Account.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
-		@return GetServiceAccountApiRequest
+		@return GetOrgServiceAccountApiRequest
 	*/
-	GetServiceAccount(ctx context.Context, orgId string, clientId string) GetServiceAccountApiRequest
+	GetOrgServiceAccount(ctx context.Context, orgId string, clientId string) GetOrgServiceAccountApiRequest
 	/*
-		GetServiceAccount Return One Organization Service Account
+		GetOrgServiceAccount Return One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetServiceAccountApiParams - Parameters for the request
-		@return GetServiceAccountApiRequest
+		@param GetOrgServiceAccountApiParams - Parameters for the request
+		@return GetOrgServiceAccountApiRequest
 	*/
-	GetServiceAccountWithParams(ctx context.Context, args *GetServiceAccountApiParams) GetServiceAccountApiRequest
+	GetOrgServiceAccountWithParams(ctx context.Context, args *GetOrgServiceAccountApiParams) GetOrgServiceAccountApiRequest
 
 	// Method available only for mocking purposes
-	GetServiceAccountExecute(r GetServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
+	GetOrgServiceAccountExecute(r GetOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
 
 	/*
-		ListProjectServiceAccountAccessList Return All Access List Entries for One Project Service Account
-
-		Returns all access list entries that you configured for the specified Service Account for the project.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clientId The Client ID of the Service Account.
-		@return ListProjectServiceAccountAccessListApiRequest
-	*/
-	ListProjectServiceAccountAccessList(ctx context.Context, groupId string, clientId string) ListProjectServiceAccountAccessListApiRequest
-	/*
-		ListProjectServiceAccountAccessList Return All Access List Entries for One Project Service Account
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListProjectServiceAccountAccessListApiParams - Parameters for the request
-		@return ListProjectServiceAccountAccessListApiRequest
-	*/
-	ListProjectServiceAccountAccessListWithParams(ctx context.Context, args *ListProjectServiceAccountAccessListApiParams) ListProjectServiceAccountAccessListApiRequest
-
-	// Method available only for mocking purposes
-	ListProjectServiceAccountAccessListExecute(r ListProjectServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
-
-	/*
-		ListProjectServiceAccounts Return All Project Service Accounts
-
-		Returns all Service Accounts for the specified Project.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListProjectServiceAccountsApiRequest
-	*/
-	ListProjectServiceAccounts(ctx context.Context, groupId string) ListProjectServiceAccountsApiRequest
-	/*
-		ListProjectServiceAccounts Return All Project Service Accounts
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListProjectServiceAccountsApiParams - Parameters for the request
-		@return ListProjectServiceAccountsApiRequest
-	*/
-	ListProjectServiceAccountsWithParams(ctx context.Context, args *ListProjectServiceAccountsApiParams) ListProjectServiceAccountsApiRequest
-
-	// Method available only for mocking purposes
-	ListProjectServiceAccountsExecute(r ListProjectServiceAccountsApiRequest) (*PaginatedGroupServiceAccounts, *http.Response, error)
-
-	/*
-		ListServiceAccountAccessList Return All Access List Entries for One Organization Service Account
-
-		Returns all access list entries that you configured for the specified Service Account for the organization.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param clientId The Client ID of the Service Account.
-		@return ListServiceAccountAccessListApiRequest
-	*/
-	ListServiceAccountAccessList(ctx context.Context, orgId string, clientId string) ListServiceAccountAccessListApiRequest
-	/*
-		ListServiceAccountAccessList Return All Access List Entries for One Organization Service Account
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListServiceAccountAccessListApiParams - Parameters for the request
-		@return ListServiceAccountAccessListApiRequest
-	*/
-	ListServiceAccountAccessListWithParams(ctx context.Context, args *ListServiceAccountAccessListApiParams) ListServiceAccountAccessListApiRequest
-
-	// Method available only for mocking purposes
-	ListServiceAccountAccessListExecute(r ListServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
-
-	/*
-		ListServiceAccountProjects Return All Service Account Project Assignments
+		GetServiceAccountGroups Return All Service Account Project Assignments
 
 		Returns a list of all projects the specified Service Account is a part of.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
-		@return ListServiceAccountProjectsApiRequest
+		@return GetServiceAccountGroupsApiRequest
 	*/
-	ListServiceAccountProjects(ctx context.Context, orgId string, clientId string) ListServiceAccountProjectsApiRequest
+	GetServiceAccountGroups(ctx context.Context, orgId string, clientId string) GetServiceAccountGroupsApiRequest
 	/*
-		ListServiceAccountProjects Return All Service Account Project Assignments
+		GetServiceAccountGroups Return All Service Account Project Assignments
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListServiceAccountProjectsApiParams - Parameters for the request
-		@return ListServiceAccountProjectsApiRequest
+		@param GetServiceAccountGroupsApiParams - Parameters for the request
+		@return GetServiceAccountGroupsApiRequest
 	*/
-	ListServiceAccountProjectsWithParams(ctx context.Context, args *ListServiceAccountProjectsApiParams) ListServiceAccountProjectsApiRequest
+	GetServiceAccountGroupsWithParams(ctx context.Context, args *GetServiceAccountGroupsApiParams) GetServiceAccountGroupsApiRequest
 
 	// Method available only for mocking purposes
-	ListServiceAccountProjectsExecute(r ListServiceAccountProjectsApiRequest) (*PaginatedServiceAccountGroup, *http.Response, error)
+	GetServiceAccountGroupsExecute(r GetServiceAccountGroupsApiRequest) (*PaginatedServiceAccountGroup, *http.Response, error)
 
 	/*
-		ListServiceAccounts Return All Organization Service Accounts
+		InviteGroupServiceAccount Assign One Service Account to One Project
+
+		Assigns the specified Service Account to the specified Project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId The Client ID of the Service Account.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param groupServiceAccountRoleAssignment The Project permissions for the Service Account in the specified Project.
+		@return InviteGroupServiceAccountApiRequest
+	*/
+	InviteGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment) InviteGroupServiceAccountApiRequest
+	/*
+		InviteGroupServiceAccount Assign One Service Account to One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param InviteGroupServiceAccountApiParams - Parameters for the request
+		@return InviteGroupServiceAccountApiRequest
+	*/
+	InviteGroupServiceAccountWithParams(ctx context.Context, args *InviteGroupServiceAccountApiParams) InviteGroupServiceAccountApiRequest
+
+	// Method available only for mocking purposes
+	InviteGroupServiceAccountExecute(r InviteGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
+
+	/*
+		ListAccessList Return All Access List Entries for One Project Service Account
+
+		Returns all access list entries that you configured for the specified Service Account for the project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clientId The Client ID of the Service Account.
+		@return ListAccessListApiRequest
+	*/
+	ListAccessList(ctx context.Context, groupId string, clientId string) ListAccessListApiRequest
+	/*
+		ListAccessList Return All Access List Entries for One Project Service Account
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListAccessListApiParams - Parameters for the request
+		@return ListAccessListApiRequest
+	*/
+	ListAccessListWithParams(ctx context.Context, args *ListAccessListApiParams) ListAccessListApiRequest
+
+	// Method available only for mocking purposes
+	ListAccessListExecute(r ListAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
+
+	/*
+		ListGroupServiceAccounts Return All Project Service Accounts
+
+		Returns all Service Accounts for the specified Project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListGroupServiceAccountsApiRequest
+	*/
+	ListGroupServiceAccounts(ctx context.Context, groupId string) ListGroupServiceAccountsApiRequest
+	/*
+		ListGroupServiceAccounts Return All Project Service Accounts
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListGroupServiceAccountsApiParams - Parameters for the request
+		@return ListGroupServiceAccountsApiRequest
+	*/
+	ListGroupServiceAccountsWithParams(ctx context.Context, args *ListGroupServiceAccountsApiParams) ListGroupServiceAccountsApiRequest
+
+	// Method available only for mocking purposes
+	ListGroupServiceAccountsExecute(r ListGroupServiceAccountsApiRequest) (*PaginatedGroupServiceAccounts, *http.Response, error)
+
+	/*
+		ListOrgAccessList Return All Access List Entries for One Organization Service Account
+
+		Returns all access list entries that you configured for the specified Service Account for the organization.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param clientId The Client ID of the Service Account.
+		@return ListOrgAccessListApiRequest
+	*/
+	ListOrgAccessList(ctx context.Context, orgId string, clientId string) ListOrgAccessListApiRequest
+	/*
+		ListOrgAccessList Return All Access List Entries for One Organization Service Account
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListOrgAccessListApiParams - Parameters for the request
+		@return ListOrgAccessListApiRequest
+	*/
+	ListOrgAccessListWithParams(ctx context.Context, args *ListOrgAccessListApiParams) ListOrgAccessListApiRequest
+
+	// Method available only for mocking purposes
+	ListOrgAccessListExecute(r ListOrgAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
+
+	/*
+		ListOrgServiceAccounts Return All Organization Service Accounts
 
 		Returns all Service Accounts for the specified Organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return ListServiceAccountsApiRequest
+		@return ListOrgServiceAccountsApiRequest
 	*/
-	ListServiceAccounts(ctx context.Context, orgId string) ListServiceAccountsApiRequest
+	ListOrgServiceAccounts(ctx context.Context, orgId string) ListOrgServiceAccountsApiRequest
 	/*
-		ListServiceAccounts Return All Organization Service Accounts
+		ListOrgServiceAccounts Return All Organization Service Accounts
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListServiceAccountsApiParams - Parameters for the request
-		@return ListServiceAccountsApiRequest
+		@param ListOrgServiceAccountsApiParams - Parameters for the request
+		@return ListOrgServiceAccountsApiRequest
 	*/
-	ListServiceAccountsWithParams(ctx context.Context, args *ListServiceAccountsApiParams) ListServiceAccountsApiRequest
+	ListOrgServiceAccountsWithParams(ctx context.Context, args *ListOrgServiceAccountsApiParams) ListOrgServiceAccountsApiRequest
 
 	// Method available only for mocking purposes
-	ListServiceAccountsExecute(r ListServiceAccountsApiRequest) (*PaginatedOrgServiceAccounts, *http.Response, error)
+	ListOrgServiceAccountsExecute(r ListOrgServiceAccountsApiRequest) (*PaginatedOrgServiceAccounts, *http.Response, error)
 
 	/*
-		UpdateProjectServiceAccount Update One Project Service Account
+		UpdateGroupServiceAccount Update One Project Service Account
 
 		Updates one Service Account in the specified Project.
 
@@ -508,24 +508,24 @@ type ServiceAccountsApi interface {
 		@param clientId The Client ID of the Service Account.
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param groupServiceAccountUpdateRequest The new details for the Service Account.
-		@return UpdateProjectServiceAccountApiRequest
+		@return UpdateGroupServiceAccountApiRequest
 	*/
-	UpdateProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest) UpdateProjectServiceAccountApiRequest
+	UpdateGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest) UpdateGroupServiceAccountApiRequest
 	/*
-		UpdateProjectServiceAccount Update One Project Service Account
+		UpdateGroupServiceAccount Update One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdateProjectServiceAccountApiParams - Parameters for the request
-		@return UpdateProjectServiceAccountApiRequest
+		@param UpdateGroupServiceAccountApiParams - Parameters for the request
+		@return UpdateGroupServiceAccountApiRequest
 	*/
-	UpdateProjectServiceAccountWithParams(ctx context.Context, args *UpdateProjectServiceAccountApiParams) UpdateProjectServiceAccountApiRequest
+	UpdateGroupServiceAccountWithParams(ctx context.Context, args *UpdateGroupServiceAccountApiParams) UpdateGroupServiceAccountApiRequest
 
 	// Method available only for mocking purposes
-	UpdateProjectServiceAccountExecute(r UpdateProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
+	UpdateGroupServiceAccountExecute(r UpdateGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
 
 	/*
-		UpdateServiceAccount Update One Organization Service Account
+		UpdateOrgServiceAccount Update One Organization Service Account
 
 		Updates the specified Service Account in the specified Organization.
 
@@ -533,282 +533,27 @@ type ServiceAccountsApi interface {
 		@param clientId The Client ID of the Service Account.
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param orgServiceAccountUpdateRequest The new details for the Service Account.
-		@return UpdateServiceAccountApiRequest
+		@return UpdateOrgServiceAccountApiRequest
 	*/
-	UpdateServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest) UpdateServiceAccountApiRequest
+	UpdateOrgServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest) UpdateOrgServiceAccountApiRequest
 	/*
-		UpdateServiceAccount Update One Organization Service Account
+		UpdateOrgServiceAccount Update One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdateServiceAccountApiParams - Parameters for the request
-		@return UpdateServiceAccountApiRequest
+		@param UpdateOrgServiceAccountApiParams - Parameters for the request
+		@return UpdateOrgServiceAccountApiRequest
 	*/
-	UpdateServiceAccountWithParams(ctx context.Context, args *UpdateServiceAccountApiParams) UpdateServiceAccountApiRequest
+	UpdateOrgServiceAccountWithParams(ctx context.Context, args *UpdateOrgServiceAccountApiParams) UpdateOrgServiceAccountApiRequest
 
 	// Method available only for mocking purposes
-	UpdateServiceAccountExecute(r UpdateServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
+	UpdateOrgServiceAccountExecute(r UpdateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
 }
 
 // ServiceAccountsApiService ServiceAccountsApi service
 type ServiceAccountsApiService service
 
-type AddProjectServiceAccountApiRequest struct {
-	ctx                               context.Context
-	ApiService                        ServiceAccountsApi
-	clientId                          string
-	groupId                           string
-	groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment
-}
-
-type AddProjectServiceAccountApiParams struct {
-	ClientId                          string
-	GroupId                           string
-	GroupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment
-}
-
-func (a *ServiceAccountsApiService) AddProjectServiceAccountWithParams(ctx context.Context, args *AddProjectServiceAccountApiParams) AddProjectServiceAccountApiRequest {
-	return AddProjectServiceAccountApiRequest{
-		ApiService:                        a,
-		ctx:                               ctx,
-		clientId:                          args.ClientId,
-		groupId:                           args.GroupId,
-		groupServiceAccountRoleAssignment: args.GroupServiceAccountRoleAssignment,
-	}
-}
-
-func (r AddProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, *http.Response, error) {
-	return r.ApiService.AddProjectServiceAccountExecute(r)
-}
-
-/*
-AddProjectServiceAccount Assign One Service Account to One Project
-
-Assigns the specified Service Account to the specified Project.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId The Client ID of the Service Account.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return AddProjectServiceAccountApiRequest
-*/
-func (a *ServiceAccountsApiService) AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment) AddProjectServiceAccountApiRequest {
-	return AddProjectServiceAccountApiRequest{
-		ApiService:                        a,
-		ctx:                               ctx,
-		clientId:                          clientId,
-		groupId:                           groupId,
-		groupServiceAccountRoleAssignment: groupServiceAccountRoleAssignment,
-	}
-}
-
-// AddProjectServiceAccountExecute executes the request
-//
-//	@return GroupServiceAccount
-func (a *ServiceAccountsApiService) AddProjectServiceAccountExecute(r AddProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *GroupServiceAccount
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.AddProjectServiceAccount")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite"
-	if r.clientId == "" {
-		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.groupServiceAccountRoleAssignment == nil {
-		return localVarReturnValue, nil, reportError("groupServiceAccountRoleAssignment is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.groupServiceAccountRoleAssignment
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type CreateProjectServiceAccountApiRequest struct {
-	ctx                        context.Context
-	ApiService                 ServiceAccountsApi
-	groupId                    string
-	groupServiceAccountRequest *GroupServiceAccountRequest
-}
-
-type CreateProjectServiceAccountApiParams struct {
-	GroupId                    string
-	GroupServiceAccountRequest *GroupServiceAccountRequest
-}
-
-func (a *ServiceAccountsApiService) CreateProjectServiceAccountWithParams(ctx context.Context, args *CreateProjectServiceAccountApiParams) CreateProjectServiceAccountApiRequest {
-	return CreateProjectServiceAccountApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    args.GroupId,
-		groupServiceAccountRequest: args.GroupServiceAccountRequest,
-	}
-}
-
-func (r CreateProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, *http.Response, error) {
-	return r.ApiService.CreateProjectServiceAccountExecute(r)
-}
-
-/*
-CreateProjectServiceAccount Create One Project Service Account
-
-Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreateProjectServiceAccountApiRequest
-*/
-func (a *ServiceAccountsApiService) CreateProjectServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *GroupServiceAccountRequest) CreateProjectServiceAccountApiRequest {
-	return CreateProjectServiceAccountApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    groupId,
-		groupServiceAccountRequest: groupServiceAccountRequest,
-	}
-}
-
-// CreateProjectServiceAccountExecute executes the request
-//
-//	@return GroupServiceAccount
-func (a *ServiceAccountsApiService) CreateProjectServiceAccountExecute(r CreateProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *GroupServiceAccount
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateProjectServiceAccount")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.groupServiceAccountRequest == nil {
-		return localVarReturnValue, nil, reportError("groupServiceAccountRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.groupServiceAccountRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type CreateProjectServiceAccountAccessListApiRequest struct {
+type CreateAccessListApiRequest struct {
 	ctx                             context.Context
 	ApiService                      ServiceAccountsApi
 	groupId                         string
@@ -819,7 +564,7 @@ type CreateProjectServiceAccountAccessListApiRequest struct {
 	pageNum                         *int
 }
 
-type CreateProjectServiceAccountAccessListApiParams struct {
+type CreateAccessListApiParams struct {
 	GroupId                         string
 	ClientId                        string
 	ServiceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry
@@ -828,8 +573,8 @@ type CreateProjectServiceAccountAccessListApiParams struct {
 	PageNum                         *int
 }
 
-func (a *ServiceAccountsApiService) CreateProjectServiceAccountAccessListWithParams(ctx context.Context, args *CreateProjectServiceAccountAccessListApiParams) CreateProjectServiceAccountAccessListApiRequest {
-	return CreateProjectServiceAccountAccessListApiRequest{
+func (a *ServiceAccountsApiService) CreateAccessListWithParams(ctx context.Context, args *CreateAccessListApiParams) CreateAccessListApiRequest {
+	return CreateAccessListApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
 		groupId:                         args.GroupId,
@@ -842,39 +587,39 @@ func (a *ServiceAccountsApiService) CreateProjectServiceAccountAccessListWithPar
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r CreateProjectServiceAccountAccessListApiRequest) IncludeCount(includeCount bool) CreateProjectServiceAccountAccessListApiRequest {
+func (r CreateAccessListApiRequest) IncludeCount(includeCount bool) CreateAccessListApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r CreateProjectServiceAccountAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateProjectServiceAccountAccessListApiRequest {
+func (r CreateAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateAccessListApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r CreateProjectServiceAccountAccessListApiRequest) PageNum(pageNum int) CreateProjectServiceAccountAccessListApiRequest {
+func (r CreateAccessListApiRequest) PageNum(pageNum int) CreateAccessListApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r CreateProjectServiceAccountAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
-	return r.ApiService.CreateProjectServiceAccountAccessListExecute(r)
+func (r CreateAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+	return r.ApiService.CreateAccessListExecute(r)
 }
 
 /*
-CreateProjectServiceAccountAccessList Add Access List Entries for One Project Service Account
+CreateAccessList Add Access List Entries for One Project Service Account
 
 Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clientId The Client ID of the Service Account.
-	@return CreateProjectServiceAccountAccessListApiRequest
+	@return CreateAccessListApiRequest
 */
-func (a *ServiceAccountsApiService) CreateProjectServiceAccountAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateProjectServiceAccountAccessListApiRequest {
-	return CreateProjectServiceAccountAccessListApiRequest{
+func (a *ServiceAccountsApiService) CreateAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateAccessListApiRequest {
+	return CreateAccessListApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
 		groupId:                         groupId,
@@ -883,10 +628,10 @@ func (a *ServiceAccountsApiService) CreateProjectServiceAccountAccessList(ctx co
 	}
 }
 
-// CreateProjectServiceAccountAccessListExecute executes the request
+// CreateAccessListExecute executes the request
 //
 //	@return PaginatedServiceAccountIPAccessEntry
-func (a *ServiceAccountsApiService) CreateProjectServiceAccountAccessListExecute(r CreateProjectServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateAccessListExecute(r CreateAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -894,7 +639,7 @@ func (a *ServiceAccountsApiService) CreateProjectServiceAccountAccessListExecute
 		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateProjectServiceAccountAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateAccessList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -988,7 +733,7 @@ func (a *ServiceAccountsApiService) CreateProjectServiceAccountAccessListExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CreateProjectServiceAccountSecretApiRequest struct {
+type CreateGroupSecretApiRequest struct {
 	ctx                         context.Context
 	ApiService                  ServiceAccountsApi
 	groupId                     string
@@ -996,14 +741,14 @@ type CreateProjectServiceAccountSecretApiRequest struct {
 	serviceAccountSecretRequest *ServiceAccountSecretRequest
 }
 
-type CreateProjectServiceAccountSecretApiParams struct {
+type CreateGroupSecretApiParams struct {
 	GroupId                     string
 	ClientId                    string
 	ServiceAccountSecretRequest *ServiceAccountSecretRequest
 }
 
-func (a *ServiceAccountsApiService) CreateProjectServiceAccountSecretWithParams(ctx context.Context, args *CreateProjectServiceAccountSecretApiParams) CreateProjectServiceAccountSecretApiRequest {
-	return CreateProjectServiceAccountSecretApiRequest{
+func (a *ServiceAccountsApiService) CreateGroupSecretWithParams(ctx context.Context, args *CreateGroupSecretApiParams) CreateGroupSecretApiRequest {
+	return CreateGroupSecretApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
 		groupId:                     args.GroupId,
@@ -1012,22 +757,22 @@ func (a *ServiceAccountsApiService) CreateProjectServiceAccountSecretWithParams(
 	}
 }
 
-func (r CreateProjectServiceAccountSecretApiRequest) Execute() (*ServiceAccountSecret, *http.Response, error) {
-	return r.ApiService.CreateProjectServiceAccountSecretExecute(r)
+func (r CreateGroupSecretApiRequest) Execute() (*ServiceAccountSecret, *http.Response, error) {
+	return r.ApiService.CreateGroupSecretExecute(r)
 }
 
 /*
-CreateProjectServiceAccountSecret Create One Project Service Account Secret
+CreateGroupSecret Create One Project Service Account Secret
 
 Create a secret for the specified Service Account in the specified Project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clientId The Client ID of the Service Account.
-	@return CreateProjectServiceAccountSecretApiRequest
+	@return CreateGroupSecretApiRequest
 */
-func (a *ServiceAccountsApiService) CreateProjectServiceAccountSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateProjectServiceAccountSecretApiRequest {
-	return CreateProjectServiceAccountSecretApiRequest{
+func (a *ServiceAccountsApiService) CreateGroupSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateGroupSecretApiRequest {
+	return CreateGroupSecretApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
 		groupId:                     groupId,
@@ -1036,10 +781,10 @@ func (a *ServiceAccountsApiService) CreateProjectServiceAccountSecret(ctx contex
 	}
 }
 
-// CreateProjectServiceAccountSecretExecute executes the request
+// CreateGroupSecretExecute executes the request
 //
 //	@return ServiceAccountSecret
-func (a *ServiceAccountsApiService) CreateProjectServiceAccountSecretExecute(r CreateProjectServiceAccountSecretApiRequest) (*ServiceAccountSecret, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateGroupSecretExecute(r CreateGroupSecretApiRequest) (*ServiceAccountSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1047,7 +792,7 @@ func (a *ServiceAccountsApiService) CreateProjectServiceAccountSecretExecute(r C
 		localVarReturnValue *ServiceAccountSecret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateProjectServiceAccountSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateGroupSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1120,76 +865,76 @@ func (a *ServiceAccountsApiService) CreateProjectServiceAccountSecretExecute(r C
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CreateServiceAccountApiRequest struct {
-	ctx                      context.Context
-	ApiService               ServiceAccountsApi
-	orgId                    string
-	orgServiceAccountRequest *OrgServiceAccountRequest
+type CreateGroupServiceAccountApiRequest struct {
+	ctx                        context.Context
+	ApiService                 ServiceAccountsApi
+	groupId                    string
+	groupServiceAccountRequest *GroupServiceAccountRequest
 }
 
-type CreateServiceAccountApiParams struct {
-	OrgId                    string
-	OrgServiceAccountRequest *OrgServiceAccountRequest
+type CreateGroupServiceAccountApiParams struct {
+	GroupId                    string
+	GroupServiceAccountRequest *GroupServiceAccountRequest
 }
 
-func (a *ServiceAccountsApiService) CreateServiceAccountWithParams(ctx context.Context, args *CreateServiceAccountApiParams) CreateServiceAccountApiRequest {
-	return CreateServiceAccountApiRequest{
-		ApiService:               a,
-		ctx:                      ctx,
-		orgId:                    args.OrgId,
-		orgServiceAccountRequest: args.OrgServiceAccountRequest,
+func (a *ServiceAccountsApiService) CreateGroupServiceAccountWithParams(ctx context.Context, args *CreateGroupServiceAccountApiParams) CreateGroupServiceAccountApiRequest {
+	return CreateGroupServiceAccountApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		groupServiceAccountRequest: args.GroupServiceAccountRequest,
 	}
 }
 
-func (r CreateServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Response, error) {
-	return r.ApiService.CreateServiceAccountExecute(r)
+func (r CreateGroupServiceAccountApiRequest) Execute() (*GroupServiceAccount, *http.Response, error) {
+	return r.ApiService.CreateGroupServiceAccountExecute(r)
 }
 
 /*
-CreateServiceAccount Create One Organization Service Account
+CreateGroupServiceAccount Create One Project Service Account
 
-Creates one Service Account for the specified Organization.
+Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return CreateServiceAccountApiRequest
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsApiService) CreateServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *OrgServiceAccountRequest) CreateServiceAccountApiRequest {
-	return CreateServiceAccountApiRequest{
-		ApiService:               a,
-		ctx:                      ctx,
-		orgId:                    orgId,
-		orgServiceAccountRequest: orgServiceAccountRequest,
+func (a *ServiceAccountsApiService) CreateGroupServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *GroupServiceAccountRequest) CreateGroupServiceAccountApiRequest {
+	return CreateGroupServiceAccountApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		groupServiceAccountRequest: groupServiceAccountRequest,
 	}
 }
 
-// CreateServiceAccountExecute executes the request
+// CreateGroupServiceAccountExecute executes the request
 //
-//	@return OrgServiceAccount
-func (a *ServiceAccountsApiService) CreateServiceAccountExecute(r CreateServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
+//	@return GroupServiceAccount
+func (a *ServiceAccountsApiService) CreateGroupServiceAccountExecute(r CreateGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *OrgServiceAccount
+		localVarReturnValue *GroupServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateGroupServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts"
-	if r.orgId == "" {
-		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.orgServiceAccountRequest == nil {
-		return localVarReturnValue, nil, reportError("orgServiceAccountRequest is required and must be specified")
+	if r.groupServiceAccountRequest == nil {
+		return localVarReturnValue, nil, reportError("groupServiceAccountRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1210,7 +955,7 @@ func (a *ServiceAccountsApiService) CreateServiceAccountExecute(r CreateServiceA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.orgServiceAccountRequest
+	localVarPostBody = r.groupServiceAccountRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1243,7 +988,7 @@ func (a *ServiceAccountsApiService) CreateServiceAccountExecute(r CreateServiceA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CreateServiceAccountAccessListApiRequest struct {
+type CreateOrgAccessListApiRequest struct {
 	ctx                             context.Context
 	ApiService                      ServiceAccountsApi
 	orgId                           string
@@ -1254,7 +999,7 @@ type CreateServiceAccountAccessListApiRequest struct {
 	pageNum                         *int
 }
 
-type CreateServiceAccountAccessListApiParams struct {
+type CreateOrgAccessListApiParams struct {
 	OrgId                           string
 	ClientId                        string
 	ServiceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry
@@ -1263,8 +1008,8 @@ type CreateServiceAccountAccessListApiParams struct {
 	PageNum                         *int
 }
 
-func (a *ServiceAccountsApiService) CreateServiceAccountAccessListWithParams(ctx context.Context, args *CreateServiceAccountAccessListApiParams) CreateServiceAccountAccessListApiRequest {
-	return CreateServiceAccountAccessListApiRequest{
+func (a *ServiceAccountsApiService) CreateOrgAccessListWithParams(ctx context.Context, args *CreateOrgAccessListApiParams) CreateOrgAccessListApiRequest {
+	return CreateOrgAccessListApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
 		orgId:                           args.OrgId,
@@ -1277,39 +1022,39 @@ func (a *ServiceAccountsApiService) CreateServiceAccountAccessListWithParams(ctx
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r CreateServiceAccountAccessListApiRequest) IncludeCount(includeCount bool) CreateServiceAccountAccessListApiRequest {
+func (r CreateOrgAccessListApiRequest) IncludeCount(includeCount bool) CreateOrgAccessListApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r CreateServiceAccountAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateServiceAccountAccessListApiRequest {
+func (r CreateOrgAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateOrgAccessListApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r CreateServiceAccountAccessListApiRequest) PageNum(pageNum int) CreateServiceAccountAccessListApiRequest {
+func (r CreateOrgAccessListApiRequest) PageNum(pageNum int) CreateOrgAccessListApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r CreateServiceAccountAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
-	return r.ApiService.CreateServiceAccountAccessListExecute(r)
+func (r CreateOrgAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+	return r.ApiService.CreateOrgAccessListExecute(r)
 }
 
 /*
-CreateServiceAccountAccessList Add Access List Entries for One Organization Service Account
+CreateOrgAccessList Add Access List Entries for One Organization Service Account
 
 Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
-	@return CreateServiceAccountAccessListApiRequest
+	@return CreateOrgAccessListApiRequest
 */
-func (a *ServiceAccountsApiService) CreateServiceAccountAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateServiceAccountAccessListApiRequest {
-	return CreateServiceAccountAccessListApiRequest{
+func (a *ServiceAccountsApiService) CreateOrgAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateOrgAccessListApiRequest {
+	return CreateOrgAccessListApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
 		orgId:                           orgId,
@@ -1318,10 +1063,10 @@ func (a *ServiceAccountsApiService) CreateServiceAccountAccessList(ctx context.C
 	}
 }
 
-// CreateServiceAccountAccessListExecute executes the request
+// CreateOrgAccessListExecute executes the request
 //
 //	@return PaginatedServiceAccountIPAccessEntry
-func (a *ServiceAccountsApiService) CreateServiceAccountAccessListExecute(r CreateServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateOrgAccessListExecute(r CreateOrgAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1329,7 +1074,7 @@ func (a *ServiceAccountsApiService) CreateServiceAccountAccessListExecute(r Crea
 		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateServiceAccountAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateOrgAccessList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1423,7 +1168,7 @@ func (a *ServiceAccountsApiService) CreateServiceAccountAccessListExecute(r Crea
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CreateServiceAccountSecretApiRequest struct {
+type CreateOrgSecretApiRequest struct {
 	ctx                         context.Context
 	ApiService                  ServiceAccountsApi
 	orgId                       string
@@ -1431,14 +1176,14 @@ type CreateServiceAccountSecretApiRequest struct {
 	serviceAccountSecretRequest *ServiceAccountSecretRequest
 }
 
-type CreateServiceAccountSecretApiParams struct {
+type CreateOrgSecretApiParams struct {
 	OrgId                       string
 	ClientId                    string
 	ServiceAccountSecretRequest *ServiceAccountSecretRequest
 }
 
-func (a *ServiceAccountsApiService) CreateServiceAccountSecretWithParams(ctx context.Context, args *CreateServiceAccountSecretApiParams) CreateServiceAccountSecretApiRequest {
-	return CreateServiceAccountSecretApiRequest{
+func (a *ServiceAccountsApiService) CreateOrgSecretWithParams(ctx context.Context, args *CreateOrgSecretApiParams) CreateOrgSecretApiRequest {
+	return CreateOrgSecretApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
 		orgId:                       args.OrgId,
@@ -1447,22 +1192,22 @@ func (a *ServiceAccountsApiService) CreateServiceAccountSecretWithParams(ctx con
 	}
 }
 
-func (r CreateServiceAccountSecretApiRequest) Execute() (*ServiceAccountSecret, *http.Response, error) {
-	return r.ApiService.CreateServiceAccountSecretExecute(r)
+func (r CreateOrgSecretApiRequest) Execute() (*ServiceAccountSecret, *http.Response, error) {
+	return r.ApiService.CreateOrgSecretExecute(r)
 }
 
 /*
-CreateServiceAccountSecret Create One Organization Service Account Secret
+CreateOrgSecret Create One Organization Service Account Secret
 
 Create a secret for the specified Service Account.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
-	@return CreateServiceAccountSecretApiRequest
+	@return CreateOrgSecretApiRequest
 */
-func (a *ServiceAccountsApiService) CreateServiceAccountSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateServiceAccountSecretApiRequest {
-	return CreateServiceAccountSecretApiRequest{
+func (a *ServiceAccountsApiService) CreateOrgSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateOrgSecretApiRequest {
+	return CreateOrgSecretApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
 		orgId:                       orgId,
@@ -1471,10 +1216,10 @@ func (a *ServiceAccountsApiService) CreateServiceAccountSecret(ctx context.Conte
 	}
 }
 
-// CreateServiceAccountSecretExecute executes the request
+// CreateOrgSecretExecute executes the request
 //
 //	@return ServiceAccountSecret
-func (a *ServiceAccountsApiService) CreateServiceAccountSecretExecute(r CreateServiceAccountSecretApiRequest) (*ServiceAccountSecret, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateOrgSecretExecute(r CreateOrgSecretApiRequest) (*ServiceAccountSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1482,7 +1227,7 @@ func (a *ServiceAccountsApiService) CreateServiceAccountSecretExecute(r CreateSe
 		localVarReturnValue *ServiceAccountSecret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateServiceAccountSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateOrgSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1555,79 +1300,80 @@ func (a *ServiceAccountsApiService) CreateServiceAccountSecretExecute(r CreateSe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeleteProjectServiceAccountApiRequest struct {
-	ctx        context.Context
-	ApiService ServiceAccountsApi
-	clientId   string
-	groupId    string
+type CreateOrgServiceAccountApiRequest struct {
+	ctx                      context.Context
+	ApiService               ServiceAccountsApi
+	orgId                    string
+	orgServiceAccountRequest *OrgServiceAccountRequest
 }
 
-type DeleteProjectServiceAccountApiParams struct {
-	ClientId string
-	GroupId  string
+type CreateOrgServiceAccountApiParams struct {
+	OrgId                    string
+	OrgServiceAccountRequest *OrgServiceAccountRequest
 }
 
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountWithParams(ctx context.Context, args *DeleteProjectServiceAccountApiParams) DeleteProjectServiceAccountApiRequest {
-	return DeleteProjectServiceAccountApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		clientId:   args.ClientId,
-		groupId:    args.GroupId,
+func (a *ServiceAccountsApiService) CreateOrgServiceAccountWithParams(ctx context.Context, args *CreateOrgServiceAccountApiParams) CreateOrgServiceAccountApiRequest {
+	return CreateOrgServiceAccountApiRequest{
+		ApiService:               a,
+		ctx:                      ctx,
+		orgId:                    args.OrgId,
+		orgServiceAccountRequest: args.OrgServiceAccountRequest,
 	}
 }
 
-func (r DeleteProjectServiceAccountApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteProjectServiceAccountExecute(r)
+func (r CreateOrgServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Response, error) {
+	return r.ApiService.CreateOrgServiceAccountExecute(r)
 }
 
 /*
-DeleteProjectServiceAccount Remove One Project Service Account
+CreateOrgServiceAccount Create One Organization Service Account
 
-Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked.
+Creates one Service Account for the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId The Client ID of the Service Account.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return DeleteProjectServiceAccountApiRequest
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return CreateOrgServiceAccountApiRequest
 */
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccount(ctx context.Context, clientId string, groupId string) DeleteProjectServiceAccountApiRequest {
-	return DeleteProjectServiceAccountApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		clientId:   clientId,
-		groupId:    groupId,
+func (a *ServiceAccountsApiService) CreateOrgServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *OrgServiceAccountRequest) CreateOrgServiceAccountApiRequest {
+	return CreateOrgServiceAccountApiRequest{
+		ApiService:               a,
+		ctx:                      ctx,
+		orgId:                    orgId,
+		orgServiceAccountRequest: orgServiceAccountRequest,
 	}
 }
 
-// DeleteProjectServiceAccountExecute executes the request
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountExecute(r DeleteProjectServiceAccountApiRequest) (*http.Response, error) {
+// CreateOrgServiceAccountExecute executes the request
+//
+//	@return OrgServiceAccount
+func (a *ServiceAccountsApiService) CreateOrgServiceAccountExecute(r CreateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   any
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteProjectServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateOrgServiceAccount")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}"
-	if r.clientId == "" {
-		return nil, reportError("clientId is empty and must be specified")
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
-	if r.groupId == "" {
-		return nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.orgServiceAccountRequest == nil {
+		return localVarReturnValue, nil, reportError("orgServiceAccountRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1643,25 +1389,41 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountExecute(r DeleteP
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.orgServiceAccountRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeleteProjectServiceAccountAccessListEntryApiRequest struct {
+type DeleteGroupAccessEntryApiRequest struct {
 	ctx        context.Context
 	ApiService ServiceAccountsApi
 	groupId    string
@@ -1669,14 +1431,14 @@ type DeleteProjectServiceAccountAccessListEntryApiRequest struct {
 	ipAddress  string
 }
 
-type DeleteProjectServiceAccountAccessListEntryApiParams struct {
+type DeleteGroupAccessEntryApiParams struct {
 	GroupId   string
 	ClientId  string
 	IpAddress string
 }
 
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountAccessListEntryWithParams(ctx context.Context, args *DeleteProjectServiceAccountAccessListEntryApiParams) DeleteProjectServiceAccountAccessListEntryApiRequest {
-	return DeleteProjectServiceAccountAccessListEntryApiRequest{
+func (a *ServiceAccountsApiService) DeleteGroupAccessEntryWithParams(ctx context.Context, args *DeleteGroupAccessEntryApiParams) DeleteGroupAccessEntryApiRequest {
+	return DeleteGroupAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -1685,12 +1447,12 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountAccessListEntryWi
 	}
 }
 
-func (r DeleteProjectServiceAccountAccessListEntryApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteProjectServiceAccountAccessListEntryExecute(r)
+func (r DeleteGroupAccessEntryApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteGroupAccessEntryExecute(r)
 }
 
 /*
-DeleteProjectServiceAccountAccessListEntry Remove One Access List Entry from One Project Service Account
+DeleteGroupAccessEntry Remove One Access List Entry from One Project Service Account
 
 Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
 
@@ -1698,10 +1460,10 @@ Removes the specified access list entry from the specified Service Account for t
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clientId The Client ID of the Service Account.
 	@param ipAddress One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
-	@return DeleteProjectServiceAccountAccessListEntryApiRequest
+	@return DeleteGroupAccessEntryApiRequest
 */
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountAccessListEntry(ctx context.Context, groupId string, clientId string, ipAddress string) DeleteProjectServiceAccountAccessListEntryApiRequest {
-	return DeleteProjectServiceAccountAccessListEntryApiRequest{
+func (a *ServiceAccountsApiService) DeleteGroupAccessEntry(ctx context.Context, groupId string, clientId string, ipAddress string) DeleteGroupAccessEntryApiRequest {
+	return DeleteGroupAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -1710,15 +1472,15 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountAccessListEntry(c
 	}
 }
 
-// DeleteProjectServiceAccountAccessListEntryExecute executes the request
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountAccessListEntryExecute(r DeleteProjectServiceAccountAccessListEntryApiRequest) (*http.Response, error) {
+// DeleteGroupAccessEntryExecute executes the request
+func (a *ServiceAccountsApiService) DeleteGroupAccessEntryExecute(r DeleteGroupAccessEntryApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteProjectServiceAccountAccessListEntry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteGroupAccessEntry")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1776,7 +1538,7 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountAccessListEntryEx
 	return localVarHTTPResponse, nil
 }
 
-type DeleteProjectServiceAccountSecretApiRequest struct {
+type DeleteGroupSecretApiRequest struct {
 	ctx        context.Context
 	ApiService ServiceAccountsApi
 	clientId   string
@@ -1784,14 +1546,14 @@ type DeleteProjectServiceAccountSecretApiRequest struct {
 	groupId    string
 }
 
-type DeleteProjectServiceAccountSecretApiParams struct {
+type DeleteGroupSecretApiParams struct {
 	ClientId string
 	SecretId string
 	GroupId  string
 }
 
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountSecretWithParams(ctx context.Context, args *DeleteProjectServiceAccountSecretApiParams) DeleteProjectServiceAccountSecretApiRequest {
-	return DeleteProjectServiceAccountSecretApiRequest{
+func (a *ServiceAccountsApiService) DeleteGroupSecretWithParams(ctx context.Context, args *DeleteGroupSecretApiParams) DeleteGroupSecretApiRequest {
+	return DeleteGroupSecretApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		clientId:   args.ClientId,
@@ -1800,12 +1562,12 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountSecretWithParams(
 	}
 }
 
-func (r DeleteProjectServiceAccountSecretApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteProjectServiceAccountSecretExecute(r)
+func (r DeleteGroupSecretApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteGroupSecretExecute(r)
 }
 
 /*
-DeleteProjectServiceAccountSecret Delete One Project Service Account Secret
+DeleteGroupSecret Delete One Project Service Account Secret
 
 Deletes the specified Service Account secret.
 
@@ -1813,10 +1575,10 @@ Deletes the specified Service Account secret.
 	@param clientId The Client ID of the Service Account.
 	@param secretId Unique 24-hexadecimal digit string that identifies the secret.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return DeleteProjectServiceAccountSecretApiRequest
+	@return DeleteGroupSecretApiRequest
 */
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountSecret(ctx context.Context, clientId string, secretId string, groupId string) DeleteProjectServiceAccountSecretApiRequest {
-	return DeleteProjectServiceAccountSecretApiRequest{
+func (a *ServiceAccountsApiService) DeleteGroupSecret(ctx context.Context, clientId string, secretId string, groupId string) DeleteGroupSecretApiRequest {
+	return DeleteGroupSecretApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		clientId:   clientId,
@@ -1825,15 +1587,15 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountSecret(ctx contex
 	}
 }
 
-// DeleteProjectServiceAccountSecretExecute executes the request
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountSecretExecute(r DeleteProjectServiceAccountSecretApiRequest) (*http.Response, error) {
+// DeleteGroupSecretExecute executes the request
+func (a *ServiceAccountsApiService) DeleteGroupSecretExecute(r DeleteGroupSecretApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteProjectServiceAccountSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteGroupSecret")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1891,72 +1653,72 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountSecretExecute(r D
 	return localVarHTTPResponse, nil
 }
 
-type DeleteServiceAccountApiRequest struct {
+type DeleteGroupServiceAccountApiRequest struct {
 	ctx        context.Context
 	ApiService ServiceAccountsApi
 	clientId   string
-	orgId      string
+	groupId    string
 }
 
-type DeleteServiceAccountApiParams struct {
+type DeleteGroupServiceAccountApiParams struct {
 	ClientId string
-	OrgId    string
+	GroupId  string
 }
 
-func (a *ServiceAccountsApiService) DeleteServiceAccountWithParams(ctx context.Context, args *DeleteServiceAccountApiParams) DeleteServiceAccountApiRequest {
-	return DeleteServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) DeleteGroupServiceAccountWithParams(ctx context.Context, args *DeleteGroupServiceAccountApiParams) DeleteGroupServiceAccountApiRequest {
+	return DeleteGroupServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		clientId:   args.ClientId,
-		orgId:      args.OrgId,
+		groupId:    args.GroupId,
 	}
 }
 
-func (r DeleteServiceAccountApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteServiceAccountExecute(r)
+func (r DeleteGroupServiceAccountApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteGroupServiceAccountExecute(r)
 }
 
 /*
-DeleteServiceAccount Delete One Organization Service Account
+DeleteGroupServiceAccount Remove One Project Service Account
 
-Deletes the specified Service Account.
+Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return DeleteServiceAccountApiRequest
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return DeleteGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsApiService) DeleteServiceAccount(ctx context.Context, clientId string, orgId string) DeleteServiceAccountApiRequest {
-	return DeleteServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) DeleteGroupServiceAccount(ctx context.Context, clientId string, groupId string) DeleteGroupServiceAccountApiRequest {
+	return DeleteGroupServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		clientId:   clientId,
-		orgId:      orgId,
+		groupId:    groupId,
 	}
 }
 
-// DeleteServiceAccountExecute executes the request
-func (a *ServiceAccountsApiService) DeleteServiceAccountExecute(r DeleteServiceAccountApiRequest) (*http.Response, error) {
+// DeleteGroupServiceAccountExecute executes the request
+func (a *ServiceAccountsApiService) DeleteGroupServiceAccountExecute(r DeleteGroupServiceAccountApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteGroupServiceAccount")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}"
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}"
 	if r.clientId == "" {
 		return nil, reportError("clientId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
-	if r.orgId == "" {
-		return nil, reportError("orgId is empty and must be specified")
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
 	}
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1997,7 +1759,7 @@ func (a *ServiceAccountsApiService) DeleteServiceAccountExecute(r DeleteServiceA
 	return localVarHTTPResponse, nil
 }
 
-type DeleteServiceAccountAccessListEntryApiRequest struct {
+type DeleteOrgAccessEntryApiRequest struct {
 	ctx        context.Context
 	ApiService ServiceAccountsApi
 	orgId      string
@@ -2005,14 +1767,14 @@ type DeleteServiceAccountAccessListEntryApiRequest struct {
 	ipAddress  string
 }
 
-type DeleteServiceAccountAccessListEntryApiParams struct {
+type DeleteOrgAccessEntryApiParams struct {
 	OrgId     string
 	ClientId  string
 	IpAddress string
 }
 
-func (a *ServiceAccountsApiService) DeleteServiceAccountAccessListEntryWithParams(ctx context.Context, args *DeleteServiceAccountAccessListEntryApiParams) DeleteServiceAccountAccessListEntryApiRequest {
-	return DeleteServiceAccountAccessListEntryApiRequest{
+func (a *ServiceAccountsApiService) DeleteOrgAccessEntryWithParams(ctx context.Context, args *DeleteOrgAccessEntryApiParams) DeleteOrgAccessEntryApiRequest {
+	return DeleteOrgAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
@@ -2021,12 +1783,12 @@ func (a *ServiceAccountsApiService) DeleteServiceAccountAccessListEntryWithParam
 	}
 }
 
-func (r DeleteServiceAccountAccessListEntryApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteServiceAccountAccessListEntryExecute(r)
+func (r DeleteOrgAccessEntryApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteOrgAccessEntryExecute(r)
 }
 
 /*
-DeleteServiceAccountAccessListEntry Remove One Access List Entry from One Organization Service Account
+DeleteOrgAccessEntry Remove One Access List Entry from One Organization Service Account
 
 Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
 
@@ -2034,10 +1796,10 @@ Removes the specified access list entry from the specified Service Account for t
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
 	@param ipAddress One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
-	@return DeleteServiceAccountAccessListEntryApiRequest
+	@return DeleteOrgAccessEntryApiRequest
 */
-func (a *ServiceAccountsApiService) DeleteServiceAccountAccessListEntry(ctx context.Context, orgId string, clientId string, ipAddress string) DeleteServiceAccountAccessListEntryApiRequest {
-	return DeleteServiceAccountAccessListEntryApiRequest{
+func (a *ServiceAccountsApiService) DeleteOrgAccessEntry(ctx context.Context, orgId string, clientId string, ipAddress string) DeleteOrgAccessEntryApiRequest {
+	return DeleteOrgAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
@@ -2046,15 +1808,15 @@ func (a *ServiceAccountsApiService) DeleteServiceAccountAccessListEntry(ctx cont
 	}
 }
 
-// DeleteServiceAccountAccessListEntryExecute executes the request
-func (a *ServiceAccountsApiService) DeleteServiceAccountAccessListEntryExecute(r DeleteServiceAccountAccessListEntryApiRequest) (*http.Response, error) {
+// DeleteOrgAccessEntryExecute executes the request
+func (a *ServiceAccountsApiService) DeleteOrgAccessEntryExecute(r DeleteOrgAccessEntryApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteServiceAccountAccessListEntry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteOrgAccessEntry")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2112,7 +1874,7 @@ func (a *ServiceAccountsApiService) DeleteServiceAccountAccessListEntryExecute(r
 	return localVarHTTPResponse, nil
 }
 
-type DeleteServiceAccountSecretApiRequest struct {
+type DeleteOrgSecretApiRequest struct {
 	ctx        context.Context
 	ApiService ServiceAccountsApi
 	clientId   string
@@ -2120,14 +1882,14 @@ type DeleteServiceAccountSecretApiRequest struct {
 	orgId      string
 }
 
-type DeleteServiceAccountSecretApiParams struct {
+type DeleteOrgSecretApiParams struct {
 	ClientId string
 	SecretId string
 	OrgId    string
 }
 
-func (a *ServiceAccountsApiService) DeleteServiceAccountSecretWithParams(ctx context.Context, args *DeleteServiceAccountSecretApiParams) DeleteServiceAccountSecretApiRequest {
-	return DeleteServiceAccountSecretApiRequest{
+func (a *ServiceAccountsApiService) DeleteOrgSecretWithParams(ctx context.Context, args *DeleteOrgSecretApiParams) DeleteOrgSecretApiRequest {
+	return DeleteOrgSecretApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		clientId:   args.ClientId,
@@ -2136,12 +1898,12 @@ func (a *ServiceAccountsApiService) DeleteServiceAccountSecretWithParams(ctx con
 	}
 }
 
-func (r DeleteServiceAccountSecretApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteServiceAccountSecretExecute(r)
+func (r DeleteOrgSecretApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteOrgSecretExecute(r)
 }
 
 /*
-DeleteServiceAccountSecret Delete One Organization Service Account Secret
+DeleteOrgSecret Delete One Organization Service Account Secret
 
 Deletes the specified Service Account secret.
 
@@ -2149,10 +1911,10 @@ Deletes the specified Service Account secret.
 	@param clientId The Client ID of the Service Account.
 	@param secretId Unique 24-hexadecimal digit string that identifies the secret.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return DeleteServiceAccountSecretApiRequest
+	@return DeleteOrgSecretApiRequest
 */
-func (a *ServiceAccountsApiService) DeleteServiceAccountSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteServiceAccountSecretApiRequest {
-	return DeleteServiceAccountSecretApiRequest{
+func (a *ServiceAccountsApiService) DeleteOrgSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteOrgSecretApiRequest {
+	return DeleteOrgSecretApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		clientId:   clientId,
@@ -2161,15 +1923,15 @@ func (a *ServiceAccountsApiService) DeleteServiceAccountSecret(ctx context.Conte
 	}
 }
 
-// DeleteServiceAccountSecretExecute executes the request
-func (a *ServiceAccountsApiService) DeleteServiceAccountSecretExecute(r DeleteServiceAccountSecretApiRequest) (*http.Response, error) {
+// DeleteOrgSecretExecute executes the request
+func (a *ServiceAccountsApiService) DeleteOrgSecretExecute(r DeleteOrgSecretApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteServiceAccountSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteOrgSecret")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2227,20 +1989,126 @@ func (a *ServiceAccountsApiService) DeleteServiceAccountSecretExecute(r DeleteSe
 	return localVarHTTPResponse, nil
 }
 
-type GetProjectServiceAccountApiRequest struct {
+type DeleteOrgServiceAccountApiRequest struct {
+	ctx        context.Context
+	ApiService ServiceAccountsApi
+	clientId   string
+	orgId      string
+}
+
+type DeleteOrgServiceAccountApiParams struct {
+	ClientId string
+	OrgId    string
+}
+
+func (a *ServiceAccountsApiService) DeleteOrgServiceAccountWithParams(ctx context.Context, args *DeleteOrgServiceAccountApiParams) DeleteOrgServiceAccountApiRequest {
+	return DeleteOrgServiceAccountApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		clientId:   args.ClientId,
+		orgId:      args.OrgId,
+	}
+}
+
+func (r DeleteOrgServiceAccountApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteOrgServiceAccountExecute(r)
+}
+
+/*
+DeleteOrgServiceAccount Delete One Organization Service Account
+
+Deletes the specified Service Account.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId The Client ID of the Service Account.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return DeleteOrgServiceAccountApiRequest
+*/
+func (a *ServiceAccountsApiService) DeleteOrgServiceAccount(ctx context.Context, clientId string, orgId string) DeleteOrgServiceAccountApiRequest {
+	return DeleteOrgServiceAccountApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		clientId:   clientId,
+		orgId:      orgId,
+	}
+}
+
+// DeleteOrgServiceAccountExecute executes the request
+func (a *ServiceAccountsApiService) DeleteOrgServiceAccountExecute(r DeleteOrgServiceAccountApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteOrgServiceAccount")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}"
+	if r.clientId == "" {
+		return nil, reportError("clientId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GetGroupServiceAccountApiRequest struct {
 	ctx        context.Context
 	ApiService ServiceAccountsApi
 	groupId    string
 	clientId   string
 }
 
-type GetProjectServiceAccountApiParams struct {
+type GetGroupServiceAccountApiParams struct {
 	GroupId  string
 	ClientId string
 }
 
-func (a *ServiceAccountsApiService) GetProjectServiceAccountWithParams(ctx context.Context, args *GetProjectServiceAccountApiParams) GetProjectServiceAccountApiRequest {
-	return GetProjectServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) GetGroupServiceAccountWithParams(ctx context.Context, args *GetGroupServiceAccountApiParams) GetGroupServiceAccountApiRequest {
+	return GetGroupServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -2248,22 +2116,22 @@ func (a *ServiceAccountsApiService) GetProjectServiceAccountWithParams(ctx conte
 	}
 }
 
-func (r GetProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, *http.Response, error) {
-	return r.ApiService.GetProjectServiceAccountExecute(r)
+func (r GetGroupServiceAccountApiRequest) Execute() (*GroupServiceAccount, *http.Response, error) {
+	return r.ApiService.GetGroupServiceAccountExecute(r)
 }
 
 /*
-GetProjectServiceAccount Return One Project Service Account
+GetGroupServiceAccount Return One Project Service Account
 
 Returns one Service Account in the specified Project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clientId The Client ID of the Service Account.
-	@return GetProjectServiceAccountApiRequest
+	@return GetGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsApiService) GetProjectServiceAccount(ctx context.Context, groupId string, clientId string) GetProjectServiceAccountApiRequest {
-	return GetProjectServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) GetGroupServiceAccount(ctx context.Context, groupId string, clientId string) GetGroupServiceAccountApiRequest {
+	return GetGroupServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -2271,10 +2139,10 @@ func (a *ServiceAccountsApiService) GetProjectServiceAccount(ctx context.Context
 	}
 }
 
-// GetProjectServiceAccountExecute executes the request
+// GetGroupServiceAccountExecute executes the request
 //
 //	@return GroupServiceAccount
-func (a *ServiceAccountsApiService) GetProjectServiceAccountExecute(r GetProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) GetGroupServiceAccountExecute(r GetGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2282,7 +2150,7 @@ func (a *ServiceAccountsApiService) GetProjectServiceAccountExecute(r GetProject
 		localVarReturnValue *GroupServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.GetProjectServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.GetGroupServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2350,20 +2218,20 @@ func (a *ServiceAccountsApiService) GetProjectServiceAccountExecute(r GetProject
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetServiceAccountApiRequest struct {
+type GetOrgServiceAccountApiRequest struct {
 	ctx        context.Context
 	ApiService ServiceAccountsApi
 	orgId      string
 	clientId   string
 }
 
-type GetServiceAccountApiParams struct {
+type GetOrgServiceAccountApiParams struct {
 	OrgId    string
 	ClientId string
 }
 
-func (a *ServiceAccountsApiService) GetServiceAccountWithParams(ctx context.Context, args *GetServiceAccountApiParams) GetServiceAccountApiRequest {
-	return GetServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) GetOrgServiceAccountWithParams(ctx context.Context, args *GetOrgServiceAccountApiParams) GetOrgServiceAccountApiRequest {
+	return GetOrgServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
@@ -2371,22 +2239,22 @@ func (a *ServiceAccountsApiService) GetServiceAccountWithParams(ctx context.Cont
 	}
 }
 
-func (r GetServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Response, error) {
-	return r.ApiService.GetServiceAccountExecute(r)
+func (r GetOrgServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Response, error) {
+	return r.ApiService.GetOrgServiceAccountExecute(r)
 }
 
 /*
-GetServiceAccount Return One Organization Service Account
+GetOrgServiceAccount Return One Organization Service Account
 
 Returns the specified Service Account.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
-	@return GetServiceAccountApiRequest
+	@return GetOrgServiceAccountApiRequest
 */
-func (a *ServiceAccountsApiService) GetServiceAccount(ctx context.Context, orgId string, clientId string) GetServiceAccountApiRequest {
-	return GetServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) GetOrgServiceAccount(ctx context.Context, orgId string, clientId string) GetOrgServiceAccountApiRequest {
+	return GetOrgServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
@@ -2394,10 +2262,10 @@ func (a *ServiceAccountsApiService) GetServiceAccount(ctx context.Context, orgId
 	}
 }
 
-// GetServiceAccountExecute executes the request
+// GetOrgServiceAccountExecute executes the request
 //
 //	@return OrgServiceAccount
-func (a *ServiceAccountsApiService) GetServiceAccountExecute(r GetServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) GetOrgServiceAccountExecute(r GetOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2405,7 +2273,7 @@ func (a *ServiceAccountsApiService) GetServiceAccountExecute(r GetServiceAccount
 		localVarReturnValue *OrgServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.GetServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.GetOrgServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2473,495 +2341,7 @@ func (a *ServiceAccountsApiService) GetServiceAccountExecute(r GetServiceAccount
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListProjectServiceAccountAccessListApiRequest struct {
-	ctx          context.Context
-	ApiService   ServiceAccountsApi
-	groupId      string
-	clientId     string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
-}
-
-type ListProjectServiceAccountAccessListApiParams struct {
-	GroupId      string
-	ClientId     string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
-}
-
-func (a *ServiceAccountsApiService) ListProjectServiceAccountAccessListWithParams(ctx context.Context, args *ListProjectServiceAccountAccessListApiParams) ListProjectServiceAccountAccessListApiRequest {
-	return ListProjectServiceAccountAccessListApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		clientId:     args.ClientId,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-	}
-}
-
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListProjectServiceAccountAccessListApiRequest) IncludeCount(includeCount bool) ListProjectServiceAccountAccessListApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
-
-// Number of items that the response returns per page.
-func (r ListProjectServiceAccountAccessListApiRequest) ItemsPerPage(itemsPerPage int) ListProjectServiceAccountAccessListApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectServiceAccountAccessListApiRequest) PageNum(pageNum int) ListProjectServiceAccountAccessListApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-func (r ListProjectServiceAccountAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
-	return r.ApiService.ListProjectServiceAccountAccessListExecute(r)
-}
-
-/*
-ListProjectServiceAccountAccessList Return All Access List Entries for One Project Service Account
-
-Returns all access list entries that you configured for the specified Service Account for the project.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clientId The Client ID of the Service Account.
-	@return ListProjectServiceAccountAccessListApiRequest
-*/
-func (a *ServiceAccountsApiService) ListProjectServiceAccountAccessList(ctx context.Context, groupId string, clientId string) ListProjectServiceAccountAccessListApiRequest {
-	return ListProjectServiceAccountAccessListApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		clientId:   clientId,
-	}
-}
-
-// ListProjectServiceAccountAccessListExecute executes the request
-//
-//	@return PaginatedServiceAccountIPAccessEntry
-func (a *ServiceAccountsApiService) ListProjectServiceAccountAccessListExecute(r ListProjectServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListProjectServiceAccountAccessList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.clientId == "" {
-		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.includeCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	} else {
-		var defaultValue bool = true
-		r.includeCount = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	}
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ListProjectServiceAccountsApiRequest struct {
-	ctx          context.Context
-	ApiService   ServiceAccountsApi
-	groupId      string
-	itemsPerPage *int
-	pageNum      *int
-}
-
-type ListProjectServiceAccountsApiParams struct {
-	GroupId      string
-	ItemsPerPage *int
-	PageNum      *int
-}
-
-func (a *ServiceAccountsApiService) ListProjectServiceAccountsWithParams(ctx context.Context, args *ListProjectServiceAccountsApiParams) ListProjectServiceAccountsApiRequest {
-	return ListProjectServiceAccountsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-	}
-}
-
-// Number of items that the response returns per page.
-func (r ListProjectServiceAccountsApiRequest) ItemsPerPage(itemsPerPage int) ListProjectServiceAccountsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectServiceAccountsApiRequest) PageNum(pageNum int) ListProjectServiceAccountsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-func (r ListProjectServiceAccountsApiRequest) Execute() (*PaginatedGroupServiceAccounts, *http.Response, error) {
-	return r.ApiService.ListProjectServiceAccountsExecute(r)
-}
-
-/*
-ListProjectServiceAccounts Return All Project Service Accounts
-
-Returns all Service Accounts for the specified Project.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListProjectServiceAccountsApiRequest
-*/
-func (a *ServiceAccountsApiService) ListProjectServiceAccounts(ctx context.Context, groupId string) ListProjectServiceAccountsApiRequest {
-	return ListProjectServiceAccountsApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-	}
-}
-
-// ListProjectServiceAccountsExecute executes the request
-//
-//	@return PaginatedGroupServiceAccounts
-func (a *ServiceAccountsApiService) ListProjectServiceAccountsExecute(r ListProjectServiceAccountsApiRequest) (*PaginatedGroupServiceAccounts, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedGroupServiceAccounts
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListProjectServiceAccounts")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ListServiceAccountAccessListApiRequest struct {
-	ctx          context.Context
-	ApiService   ServiceAccountsApi
-	orgId        string
-	clientId     string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
-}
-
-type ListServiceAccountAccessListApiParams struct {
-	OrgId        string
-	ClientId     string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
-}
-
-func (a *ServiceAccountsApiService) ListServiceAccountAccessListWithParams(ctx context.Context, args *ListServiceAccountAccessListApiParams) ListServiceAccountAccessListApiRequest {
-	return ListServiceAccountAccessListApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		orgId:        args.OrgId,
-		clientId:     args.ClientId,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-	}
-}
-
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListServiceAccountAccessListApiRequest) IncludeCount(includeCount bool) ListServiceAccountAccessListApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
-
-// Number of items that the response returns per page.
-func (r ListServiceAccountAccessListApiRequest) ItemsPerPage(itemsPerPage int) ListServiceAccountAccessListApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServiceAccountAccessListApiRequest) PageNum(pageNum int) ListServiceAccountAccessListApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-func (r ListServiceAccountAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
-	return r.ApiService.ListServiceAccountAccessListExecute(r)
-}
-
-/*
-ListServiceAccountAccessList Return All Access List Entries for One Organization Service Account
-
-Returns all access list entries that you configured for the specified Service Account for the organization.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param clientId The Client ID of the Service Account.
-	@return ListServiceAccountAccessListApiRequest
-*/
-func (a *ServiceAccountsApiService) ListServiceAccountAccessList(ctx context.Context, orgId string, clientId string) ListServiceAccountAccessListApiRequest {
-	return ListServiceAccountAccessListApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		clientId:   clientId,
-	}
-}
-
-// ListServiceAccountAccessListExecute executes the request
-//
-//	@return PaginatedServiceAccountIPAccessEntry
-func (a *ServiceAccountsApiService) ListServiceAccountAccessListExecute(r ListServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListServiceAccountAccessList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList"
-	if r.orgId == "" {
-		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
-	if r.clientId == "" {
-		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.includeCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	} else {
-		var defaultValue bool = true
-		r.includeCount = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	}
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ListServiceAccountProjectsApiRequest struct {
+type GetServiceAccountGroupsApiRequest struct {
 	ctx          context.Context
 	ApiService   ServiceAccountsApi
 	orgId        string
@@ -2970,15 +2350,15 @@ type ListServiceAccountProjectsApiRequest struct {
 	pageNum      *int
 }
 
-type ListServiceAccountProjectsApiParams struct {
+type GetServiceAccountGroupsApiParams struct {
 	OrgId        string
 	ClientId     string
 	ItemsPerPage *int
 	PageNum      *int
 }
 
-func (a *ServiceAccountsApiService) ListServiceAccountProjectsWithParams(ctx context.Context, args *ListServiceAccountProjectsApiParams) ListServiceAccountProjectsApiRequest {
-	return ListServiceAccountProjectsApiRequest{
+func (a *ServiceAccountsApiService) GetServiceAccountGroupsWithParams(ctx context.Context, args *GetServiceAccountGroupsApiParams) GetServiceAccountGroupsApiRequest {
+	return GetServiceAccountGroupsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		orgId:        args.OrgId,
@@ -2989,33 +2369,33 @@ func (a *ServiceAccountsApiService) ListServiceAccountProjectsWithParams(ctx con
 }
 
 // Number of items that the response returns per page.
-func (r ListServiceAccountProjectsApiRequest) ItemsPerPage(itemsPerPage int) ListServiceAccountProjectsApiRequest {
+func (r GetServiceAccountGroupsApiRequest) ItemsPerPage(itemsPerPage int) GetServiceAccountGroupsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServiceAccountProjectsApiRequest) PageNum(pageNum int) ListServiceAccountProjectsApiRequest {
+func (r GetServiceAccountGroupsApiRequest) PageNum(pageNum int) GetServiceAccountGroupsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r ListServiceAccountProjectsApiRequest) Execute() (*PaginatedServiceAccountGroup, *http.Response, error) {
-	return r.ApiService.ListServiceAccountProjectsExecute(r)
+func (r GetServiceAccountGroupsApiRequest) Execute() (*PaginatedServiceAccountGroup, *http.Response, error) {
+	return r.ApiService.GetServiceAccountGroupsExecute(r)
 }
 
 /*
-ListServiceAccountProjects Return All Service Account Project Assignments
+GetServiceAccountGroups Return All Service Account Project Assignments
 
 Returns a list of all projects the specified Service Account is a part of.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
-	@return ListServiceAccountProjectsApiRequest
+	@return GetServiceAccountGroupsApiRequest
 */
-func (a *ServiceAccountsApiService) ListServiceAccountProjects(ctx context.Context, orgId string, clientId string) ListServiceAccountProjectsApiRequest {
-	return ListServiceAccountProjectsApiRequest{
+func (a *ServiceAccountsApiService) GetServiceAccountGroups(ctx context.Context, orgId string, clientId string) GetServiceAccountGroupsApiRequest {
+	return GetServiceAccountGroupsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
@@ -3023,10 +2403,10 @@ func (a *ServiceAccountsApiService) ListServiceAccountProjects(ctx context.Conte
 	}
 }
 
-// ListServiceAccountProjectsExecute executes the request
+// GetServiceAccountGroupsExecute executes the request
 //
 //	@return PaginatedServiceAccountGroup
-func (a *ServiceAccountsApiService) ListServiceAccountProjectsExecute(r ListServiceAccountProjectsApiRequest) (*PaginatedServiceAccountGroup, *http.Response, error) {
+func (a *ServiceAccountsApiService) GetServiceAccountGroupsExecute(r GetServiceAccountGroupsApiRequest) (*PaginatedServiceAccountGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3034,7 +2414,7 @@ func (a *ServiceAccountsApiService) ListServiceAccountProjectsExecute(r ListServ
 		localVarReturnValue *PaginatedServiceAccountGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListServiceAccountProjects")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.GetServiceAccountGroups")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3116,7 +2496,627 @@ func (a *ServiceAccountsApiService) ListServiceAccountProjectsExecute(r ListServ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListServiceAccountsApiRequest struct {
+type InviteGroupServiceAccountApiRequest struct {
+	ctx                               context.Context
+	ApiService                        ServiceAccountsApi
+	clientId                          string
+	groupId                           string
+	groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment
+}
+
+type InviteGroupServiceAccountApiParams struct {
+	ClientId                          string
+	GroupId                           string
+	GroupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment
+}
+
+func (a *ServiceAccountsApiService) InviteGroupServiceAccountWithParams(ctx context.Context, args *InviteGroupServiceAccountApiParams) InviteGroupServiceAccountApiRequest {
+	return InviteGroupServiceAccountApiRequest{
+		ApiService:                        a,
+		ctx:                               ctx,
+		clientId:                          args.ClientId,
+		groupId:                           args.GroupId,
+		groupServiceAccountRoleAssignment: args.GroupServiceAccountRoleAssignment,
+	}
+}
+
+func (r InviteGroupServiceAccountApiRequest) Execute() (*GroupServiceAccount, *http.Response, error) {
+	return r.ApiService.InviteGroupServiceAccountExecute(r)
+}
+
+/*
+InviteGroupServiceAccount Assign One Service Account to One Project
+
+Assigns the specified Service Account to the specified Project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId The Client ID of the Service Account.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return InviteGroupServiceAccountApiRequest
+*/
+func (a *ServiceAccountsApiService) InviteGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment) InviteGroupServiceAccountApiRequest {
+	return InviteGroupServiceAccountApiRequest{
+		ApiService:                        a,
+		ctx:                               ctx,
+		clientId:                          clientId,
+		groupId:                           groupId,
+		groupServiceAccountRoleAssignment: groupServiceAccountRoleAssignment,
+	}
+}
+
+// InviteGroupServiceAccountExecute executes the request
+//
+//	@return GroupServiceAccount
+func (a *ServiceAccountsApiService) InviteGroupServiceAccountExecute(r InviteGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *GroupServiceAccount
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.InviteGroupServiceAccount")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite"
+	if r.clientId == "" {
+		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.groupServiceAccountRoleAssignment == nil {
+		return localVarReturnValue, nil, reportError("groupServiceAccountRoleAssignment is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupServiceAccountRoleAssignment
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListAccessListApiRequest struct {
+	ctx          context.Context
+	ApiService   ServiceAccountsApi
+	groupId      string
+	clientId     string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListAccessListApiParams struct {
+	GroupId      string
+	ClientId     string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *ServiceAccountsApiService) ListAccessListWithParams(ctx context.Context, args *ListAccessListApiParams) ListAccessListApiRequest {
+	return ListAccessListApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		clientId:     args.ClientId,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListAccessListApiRequest) IncludeCount(includeCount bool) ListAccessListApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListAccessListApiRequest) ItemsPerPage(itemsPerPage int) ListAccessListApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListAccessListApiRequest) PageNum(pageNum int) ListAccessListApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+	return r.ApiService.ListAccessListExecute(r)
+}
+
+/*
+ListAccessList Return All Access List Entries for One Project Service Account
+
+Returns all access list entries that you configured for the specified Service Account for the project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clientId The Client ID of the Service Account.
+	@return ListAccessListApiRequest
+*/
+func (a *ServiceAccountsApiService) ListAccessList(ctx context.Context, groupId string, clientId string) ListAccessListApiRequest {
+	return ListAccessListApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		clientId:   clientId,
+	}
+}
+
+// ListAccessListExecute executes the request
+//
+//	@return PaginatedServiceAccountIPAccessEntry
+func (a *ServiceAccountsApiService) ListAccessListExecute(r ListAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListAccessList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clientId == "" {
+		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListGroupServiceAccountsApiRequest struct {
+	ctx          context.Context
+	ApiService   ServiceAccountsApi
+	groupId      string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListGroupServiceAccountsApiParams struct {
+	GroupId      string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *ServiceAccountsApiService) ListGroupServiceAccountsWithParams(ctx context.Context, args *ListGroupServiceAccountsApiParams) ListGroupServiceAccountsApiRequest {
+	return ListGroupServiceAccountsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListGroupServiceAccountsApiRequest) ItemsPerPage(itemsPerPage int) ListGroupServiceAccountsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListGroupServiceAccountsApiRequest) PageNum(pageNum int) ListGroupServiceAccountsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListGroupServiceAccountsApiRequest) Execute() (*PaginatedGroupServiceAccounts, *http.Response, error) {
+	return r.ApiService.ListGroupServiceAccountsExecute(r)
+}
+
+/*
+ListGroupServiceAccounts Return All Project Service Accounts
+
+Returns all Service Accounts for the specified Project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListGroupServiceAccountsApiRequest
+*/
+func (a *ServiceAccountsApiService) ListGroupServiceAccounts(ctx context.Context, groupId string) ListGroupServiceAccountsApiRequest {
+	return ListGroupServiceAccountsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListGroupServiceAccountsExecute executes the request
+//
+//	@return PaginatedGroupServiceAccounts
+func (a *ServiceAccountsApiService) ListGroupServiceAccountsExecute(r ListGroupServiceAccountsApiRequest) (*PaginatedGroupServiceAccounts, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedGroupServiceAccounts
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListGroupServiceAccounts")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListOrgAccessListApiRequest struct {
+	ctx          context.Context
+	ApiService   ServiceAccountsApi
+	orgId        string
+	clientId     string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListOrgAccessListApiParams struct {
+	OrgId        string
+	ClientId     string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *ServiceAccountsApiService) ListOrgAccessListWithParams(ctx context.Context, args *ListOrgAccessListApiParams) ListOrgAccessListApiRequest {
+	return ListOrgAccessListApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		orgId:        args.OrgId,
+		clientId:     args.ClientId,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListOrgAccessListApiRequest) IncludeCount(includeCount bool) ListOrgAccessListApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListOrgAccessListApiRequest) ItemsPerPage(itemsPerPage int) ListOrgAccessListApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListOrgAccessListApiRequest) PageNum(pageNum int) ListOrgAccessListApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListOrgAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+	return r.ApiService.ListOrgAccessListExecute(r)
+}
+
+/*
+ListOrgAccessList Return All Access List Entries for One Organization Service Account
+
+Returns all access list entries that you configured for the specified Service Account for the organization.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param clientId The Client ID of the Service Account.
+	@return ListOrgAccessListApiRequest
+*/
+func (a *ServiceAccountsApiService) ListOrgAccessList(ctx context.Context, orgId string, clientId string) ListOrgAccessListApiRequest {
+	return ListOrgAccessListApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		clientId:   clientId,
+	}
+}
+
+// ListOrgAccessListExecute executes the request
+//
+//	@return PaginatedServiceAccountIPAccessEntry
+func (a *ServiceAccountsApiService) ListOrgAccessListExecute(r ListOrgAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListOrgAccessList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.clientId == "" {
+		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListOrgServiceAccountsApiRequest struct {
 	ctx          context.Context
 	ApiService   ServiceAccountsApi
 	orgId        string
@@ -3124,14 +3124,14 @@ type ListServiceAccountsApiRequest struct {
 	pageNum      *int
 }
 
-type ListServiceAccountsApiParams struct {
+type ListOrgServiceAccountsApiParams struct {
 	OrgId        string
 	ItemsPerPage *int
 	PageNum      *int
 }
 
-func (a *ServiceAccountsApiService) ListServiceAccountsWithParams(ctx context.Context, args *ListServiceAccountsApiParams) ListServiceAccountsApiRequest {
-	return ListServiceAccountsApiRequest{
+func (a *ServiceAccountsApiService) ListOrgServiceAccountsWithParams(ctx context.Context, args *ListOrgServiceAccountsApiParams) ListOrgServiceAccountsApiRequest {
+	return ListOrgServiceAccountsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		orgId:        args.OrgId,
@@ -3141,42 +3141,42 @@ func (a *ServiceAccountsApiService) ListServiceAccountsWithParams(ctx context.Co
 }
 
 // Number of items that the response returns per page.
-func (r ListServiceAccountsApiRequest) ItemsPerPage(itemsPerPage int) ListServiceAccountsApiRequest {
+func (r ListOrgServiceAccountsApiRequest) ItemsPerPage(itemsPerPage int) ListOrgServiceAccountsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServiceAccountsApiRequest) PageNum(pageNum int) ListServiceAccountsApiRequest {
+func (r ListOrgServiceAccountsApiRequest) PageNum(pageNum int) ListOrgServiceAccountsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r ListServiceAccountsApiRequest) Execute() (*PaginatedOrgServiceAccounts, *http.Response, error) {
-	return r.ApiService.ListServiceAccountsExecute(r)
+func (r ListOrgServiceAccountsApiRequest) Execute() (*PaginatedOrgServiceAccounts, *http.Response, error) {
+	return r.ApiService.ListOrgServiceAccountsExecute(r)
 }
 
 /*
-ListServiceAccounts Return All Organization Service Accounts
+ListOrgServiceAccounts Return All Organization Service Accounts
 
 Returns all Service Accounts for the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return ListServiceAccountsApiRequest
+	@return ListOrgServiceAccountsApiRequest
 */
-func (a *ServiceAccountsApiService) ListServiceAccounts(ctx context.Context, orgId string) ListServiceAccountsApiRequest {
-	return ListServiceAccountsApiRequest{
+func (a *ServiceAccountsApiService) ListOrgServiceAccounts(ctx context.Context, orgId string) ListOrgServiceAccountsApiRequest {
+	return ListOrgServiceAccountsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
 	}
 }
 
-// ListServiceAccountsExecute executes the request
+// ListOrgServiceAccountsExecute executes the request
 //
 //	@return PaginatedOrgServiceAccounts
-func (a *ServiceAccountsApiService) ListServiceAccountsExecute(r ListServiceAccountsApiRequest) (*PaginatedOrgServiceAccounts, *http.Response, error) {
+func (a *ServiceAccountsApiService) ListOrgServiceAccountsExecute(r ListOrgServiceAccountsApiRequest) (*PaginatedOrgServiceAccounts, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3184,7 +3184,7 @@ func (a *ServiceAccountsApiService) ListServiceAccountsExecute(r ListServiceAcco
 		localVarReturnValue *PaginatedOrgServiceAccounts
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListServiceAccounts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListOrgServiceAccounts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3262,7 +3262,7 @@ func (a *ServiceAccountsApiService) ListServiceAccountsExecute(r ListServiceAcco
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpdateProjectServiceAccountApiRequest struct {
+type UpdateGroupServiceAccountApiRequest struct {
 	ctx                              context.Context
 	ApiService                       ServiceAccountsApi
 	clientId                         string
@@ -3270,14 +3270,14 @@ type UpdateProjectServiceAccountApiRequest struct {
 	groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest
 }
 
-type UpdateProjectServiceAccountApiParams struct {
+type UpdateGroupServiceAccountApiParams struct {
 	ClientId                         string
 	GroupId                          string
 	GroupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest
 }
 
-func (a *ServiceAccountsApiService) UpdateProjectServiceAccountWithParams(ctx context.Context, args *UpdateProjectServiceAccountApiParams) UpdateProjectServiceAccountApiRequest {
-	return UpdateProjectServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) UpdateGroupServiceAccountWithParams(ctx context.Context, args *UpdateGroupServiceAccountApiParams) UpdateGroupServiceAccountApiRequest {
+	return UpdateGroupServiceAccountApiRequest{
 		ApiService:                       a,
 		ctx:                              ctx,
 		clientId:                         args.ClientId,
@@ -3286,22 +3286,22 @@ func (a *ServiceAccountsApiService) UpdateProjectServiceAccountWithParams(ctx co
 	}
 }
 
-func (r UpdateProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, *http.Response, error) {
-	return r.ApiService.UpdateProjectServiceAccountExecute(r)
+func (r UpdateGroupServiceAccountApiRequest) Execute() (*GroupServiceAccount, *http.Response, error) {
+	return r.ApiService.UpdateGroupServiceAccountExecute(r)
 }
 
 /*
-UpdateProjectServiceAccount Update One Project Service Account
+UpdateGroupServiceAccount Update One Project Service Account
 
 Updates one Service Account in the specified Project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return UpdateProjectServiceAccountApiRequest
+	@return UpdateGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsApiService) UpdateProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest) UpdateProjectServiceAccountApiRequest {
-	return UpdateProjectServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) UpdateGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest) UpdateGroupServiceAccountApiRequest {
+	return UpdateGroupServiceAccountApiRequest{
 		ApiService:                       a,
 		ctx:                              ctx,
 		clientId:                         clientId,
@@ -3310,10 +3310,10 @@ func (a *ServiceAccountsApiService) UpdateProjectServiceAccount(ctx context.Cont
 	}
 }
 
-// UpdateProjectServiceAccountExecute executes the request
+// UpdateGroupServiceAccountExecute executes the request
 //
 //	@return GroupServiceAccount
-func (a *ServiceAccountsApiService) UpdateProjectServiceAccountExecute(r UpdateProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) UpdateGroupServiceAccountExecute(r UpdateGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3321,7 +3321,7 @@ func (a *ServiceAccountsApiService) UpdateProjectServiceAccountExecute(r UpdateP
 		localVarReturnValue *GroupServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.UpdateProjectServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.UpdateGroupServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3394,7 +3394,7 @@ func (a *ServiceAccountsApiService) UpdateProjectServiceAccountExecute(r UpdateP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpdateServiceAccountApiRequest struct {
+type UpdateOrgServiceAccountApiRequest struct {
 	ctx                            context.Context
 	ApiService                     ServiceAccountsApi
 	clientId                       string
@@ -3402,14 +3402,14 @@ type UpdateServiceAccountApiRequest struct {
 	orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest
 }
 
-type UpdateServiceAccountApiParams struct {
+type UpdateOrgServiceAccountApiParams struct {
 	ClientId                       string
 	OrgId                          string
 	OrgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest
 }
 
-func (a *ServiceAccountsApiService) UpdateServiceAccountWithParams(ctx context.Context, args *UpdateServiceAccountApiParams) UpdateServiceAccountApiRequest {
-	return UpdateServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) UpdateOrgServiceAccountWithParams(ctx context.Context, args *UpdateOrgServiceAccountApiParams) UpdateOrgServiceAccountApiRequest {
+	return UpdateOrgServiceAccountApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
 		clientId:                       args.ClientId,
@@ -3418,22 +3418,22 @@ func (a *ServiceAccountsApiService) UpdateServiceAccountWithParams(ctx context.C
 	}
 }
 
-func (r UpdateServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Response, error) {
-	return r.ApiService.UpdateServiceAccountExecute(r)
+func (r UpdateOrgServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Response, error) {
+	return r.ApiService.UpdateOrgServiceAccountExecute(r)
 }
 
 /*
-UpdateServiceAccount Update One Organization Service Account
+UpdateOrgServiceAccount Update One Organization Service Account
 
 Updates the specified Service Account in the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return UpdateServiceAccountApiRequest
+	@return UpdateOrgServiceAccountApiRequest
 */
-func (a *ServiceAccountsApiService) UpdateServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest) UpdateServiceAccountApiRequest {
-	return UpdateServiceAccountApiRequest{
+func (a *ServiceAccountsApiService) UpdateOrgServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest) UpdateOrgServiceAccountApiRequest {
+	return UpdateOrgServiceAccountApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
 		clientId:                       clientId,
@@ -3442,10 +3442,10 @@ func (a *ServiceAccountsApiService) UpdateServiceAccount(ctx context.Context, cl
 	}
 }
 
-// UpdateServiceAccountExecute executes the request
+// UpdateOrgServiceAccountExecute executes the request
 //
 //	@return OrgServiceAccount
-func (a *ServiceAccountsApiService) UpdateServiceAccountExecute(r UpdateServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) UpdateOrgServiceAccountExecute(r UpdateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3453,7 +3453,7 @@ func (a *ServiceAccountsApiService) UpdateServiceAccountExecute(r UpdateServiceA
 		localVarReturnValue *OrgServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.UpdateServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.UpdateOrgServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -2,7 +2,7 @@
 
 package admin
 
-// ExtraRetentionSetting extra retention setting item in the desired backup policy.
+// ExtraRetentionSetting Extra retention setting item in the desired backup policy.
 type ExtraRetentionSetting struct {
 	// The frequency type for the extra retention settings for the cluster.
 	FrequencyType *string `json:"frequencyType,omitempty"`

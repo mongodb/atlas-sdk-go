@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// MetricDataPointAtlas value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
+// MetricDataPointAtlas Value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
 type MetricDataPointAtlas struct {
 	// Date and time when this data point occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.

@@ -96,7 +96,7 @@ type ServerlessPrivateEndpointsApi interface {
 	GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
-			ListServerlessPrivateEndpoints Return All Private Endpoints for One Serverless Instance
+			ListServerlessPrivateEndpoint Return All Private Endpoints for One Serverless Instance
 
 			Returns all private endpoints for one serverless instance. You must have at least the Project Read Only role for the project to successfully call this resource.
 
@@ -105,21 +105,21 @@ type ServerlessPrivateEndpointsApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
-			@return ListServerlessPrivateEndpointsApiRequest
+			@return ListServerlessPrivateEndpointApiRequest
 	*/
-	ListServerlessPrivateEndpoints(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointsApiRequest
+	ListServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointApiRequest
 	/*
-		ListServerlessPrivateEndpoints Return All Private Endpoints for One Serverless Instance
+		ListServerlessPrivateEndpoint Return All Private Endpoints for One Serverless Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListServerlessPrivateEndpointsApiParams - Parameters for the request
-		@return ListServerlessPrivateEndpointsApiRequest
+		@param ListServerlessPrivateEndpointApiParams - Parameters for the request
+		@return ListServerlessPrivateEndpointApiRequest
 	*/
-	ListServerlessPrivateEndpointsWithParams(ctx context.Context, args *ListServerlessPrivateEndpointsApiParams) ListServerlessPrivateEndpointsApiRequest
+	ListServerlessPrivateEndpointWithParams(ctx context.Context, args *ListServerlessPrivateEndpointApiParams) ListServerlessPrivateEndpointApiRequest
 
 	// Method available only for mocking purposes
-	ListServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error)
+	ListServerlessPrivateEndpointExecute(r ListServerlessPrivateEndpointApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
 			UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless Instance
@@ -540,20 +540,20 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListServerlessPrivateEndpointsApiRequest struct {
+type ListServerlessPrivateEndpointApiRequest struct {
 	ctx          context.Context
 	ApiService   ServerlessPrivateEndpointsApi
 	groupId      string
 	instanceName string
 }
 
-type ListServerlessPrivateEndpointsApiParams struct {
+type ListServerlessPrivateEndpointApiParams struct {
 	GroupId      string
 	InstanceName string
 }
 
-func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsWithParams(ctx context.Context, args *ListServerlessPrivateEndpointsApiParams) ListServerlessPrivateEndpointsApiRequest {
-	return ListServerlessPrivateEndpointsApiRequest{
+func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointWithParams(ctx context.Context, args *ListServerlessPrivateEndpointApiParams) ListServerlessPrivateEndpointApiRequest {
+	return ListServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -561,12 +561,12 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsWit
 	}
 }
 
-func (r ListServerlessPrivateEndpointsApiRequest) Execute() ([]ServerlessTenantEndpoint, *http.Response, error) {
-	return r.ApiService.ListServerlessPrivateEndpointsExecute(r)
+func (r ListServerlessPrivateEndpointApiRequest) Execute() ([]ServerlessTenantEndpoint, *http.Response, error) {
+	return r.ApiService.ListServerlessPrivateEndpointExecute(r)
 }
 
 /*
-ListServerlessPrivateEndpoints Return All Private Endpoints for One Serverless Instance
+ListServerlessPrivateEndpoint Return All Private Endpoints for One Serverless Instance
 
 Returns all private endpoints for one serverless instance. You must have at least the Project Read Only role for the project to successfully call this resource.
 
@@ -575,10 +575,10 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
-	@return ListServerlessPrivateEndpointsApiRequest
+	@return ListServerlessPrivateEndpointApiRequest
 */
-func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointsApiRequest {
-	return ListServerlessPrivateEndpointsApiRequest{
+func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointApiRequest {
+	return ListServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      groupId,
@@ -586,10 +586,10 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ct
 	}
 }
 
-// ListServerlessPrivateEndpointsExecute executes the request
+// ListServerlessPrivateEndpointExecute executes the request
 //
 //	@return []ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointExecute(r ListServerlessPrivateEndpointApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -597,7 +597,7 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsExe
 		localVarReturnValue []ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.ListServerlessPrivateEndpoints")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.ListServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
