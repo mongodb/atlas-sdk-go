@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -25,76 +25,76 @@ func (_m *X509AuthenticationApi) EXPECT() *X509AuthenticationApi_Expecter {
 	return &X509AuthenticationApi_Expecter{mock: &_m.Mock}
 }
 
-// CreateDatabaseUserCertificate provides a mock function with given fields: ctx, groupId, username, userCert
-func (_m *X509AuthenticationApi) CreateDatabaseUserCertificate(ctx context.Context, groupId string, username string, userCert *admin.UserCert) admin.CreateDatabaseUserCertificateApiRequest {
+// CreateDatabaseUserCert provides a mock function with given fields: ctx, groupId, username, userCert
+func (_m *X509AuthenticationApi) CreateDatabaseUserCert(ctx context.Context, groupId string, username string, userCert *admin.UserCert) admin.CreateDatabaseUserCertApiRequest {
 	ret := _m.Called(ctx, groupId, username, userCert)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateDatabaseUserCertificate")
+		panic("no return value specified for CreateDatabaseUserCert")
 	}
 
-	var r0 admin.CreateDatabaseUserCertificateApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UserCert) admin.CreateDatabaseUserCertificateApiRequest); ok {
+	var r0 admin.CreateDatabaseUserCertApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UserCert) admin.CreateDatabaseUserCertApiRequest); ok {
 		r0 = rf(ctx, groupId, username, userCert)
 	} else {
-		r0 = ret.Get(0).(admin.CreateDatabaseUserCertificateApiRequest)
+		r0 = ret.Get(0).(admin.CreateDatabaseUserCertApiRequest)
 	}
 
 	return r0
 }
 
-// X509AuthenticationApi_CreateDatabaseUserCertificate_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateDatabaseUserCertificate'
-type X509AuthenticationApi_CreateDatabaseUserCertificate_Call struct {
+// X509AuthenticationApi_CreateDatabaseUserCert_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateDatabaseUserCert'
+type X509AuthenticationApi_CreateDatabaseUserCert_Call struct {
 	*mock.Call
 }
 
-// CreateDatabaseUserCertificate is a helper method to define mock.On call
+// CreateDatabaseUserCert is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - username string
 //   - userCert *admin.UserCert
-func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificate(ctx any, groupId any, username any, userCert any) *X509AuthenticationApi_CreateDatabaseUserCertificate_Call {
-	return &X509AuthenticationApi_CreateDatabaseUserCertificate_Call{Call: _e.mock.On("CreateDatabaseUserCertificate", ctx, groupId, username, userCert)}
+func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCert(ctx any, groupId any, username any, userCert any) *X509AuthenticationApi_CreateDatabaseUserCert_Call {
+	return &X509AuthenticationApi_CreateDatabaseUserCert_Call{Call: _e.mock.On("CreateDatabaseUserCert", ctx, groupId, username, userCert)}
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificate_Call) Run(run func(ctx context.Context, groupId string, username string, userCert *admin.UserCert)) *X509AuthenticationApi_CreateDatabaseUserCertificate_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCert_Call) Run(run func(ctx context.Context, groupId string, username string, userCert *admin.UserCert)) *X509AuthenticationApi_CreateDatabaseUserCert_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.UserCert))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificate_Call) Return(_a0 admin.CreateDatabaseUserCertificateApiRequest) *X509AuthenticationApi_CreateDatabaseUserCertificate_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCert_Call) Return(_a0 admin.CreateDatabaseUserCertApiRequest) *X509AuthenticationApi_CreateDatabaseUserCert_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificate_Call) RunAndReturn(run func(context.Context, string, string, *admin.UserCert) admin.CreateDatabaseUserCertificateApiRequest) *X509AuthenticationApi_CreateDatabaseUserCertificate_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCert_Call) RunAndReturn(run func(context.Context, string, string, *admin.UserCert) admin.CreateDatabaseUserCertApiRequest) *X509AuthenticationApi_CreateDatabaseUserCert_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateDatabaseUserCertificateExecute provides a mock function with given fields: r
-func (_m *X509AuthenticationApi) CreateDatabaseUserCertificateExecute(r admin.CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error) {
+// CreateDatabaseUserCertExecute provides a mock function with given fields: r
+func (_m *X509AuthenticationApi) CreateDatabaseUserCertExecute(r admin.CreateDatabaseUserCertApiRequest) (string, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateDatabaseUserCertificateExecute")
+		panic("no return value specified for CreateDatabaseUserCertExecute")
 	}
 
 	var r0 string
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateDatabaseUserCertApiRequest) (string, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateDatabaseUserCertificateApiRequest) string); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateDatabaseUserCertApiRequest) string); ok {
 		r0 = rf(r)
 	} else {
 		r0 = ret.Get(0).(string)
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateDatabaseUserCertificateApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateDatabaseUserCertApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -102,7 +102,7 @@ func (_m *X509AuthenticationApi) CreateDatabaseUserCertificateExecute(r admin.Cr
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateDatabaseUserCertificateApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateDatabaseUserCertApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -111,143 +111,143 @@ func (_m *X509AuthenticationApi) CreateDatabaseUserCertificateExecute(r admin.Cr
 	return r0, r1, r2
 }
 
-// X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateDatabaseUserCertificateExecute'
-type X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call struct {
+// X509AuthenticationApi_CreateDatabaseUserCertExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateDatabaseUserCertExecute'
+type X509AuthenticationApi_CreateDatabaseUserCertExecute_Call struct {
 	*mock.Call
 }
 
-// CreateDatabaseUserCertificateExecute is a helper method to define mock.On call
-//   - r admin.CreateDatabaseUserCertificateApiRequest
-func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificateExecute(r any) *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call {
-	return &X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call{Call: _e.mock.On("CreateDatabaseUserCertificateExecute", r)}
+// CreateDatabaseUserCertExecute is a helper method to define mock.On call
+//   - r admin.CreateDatabaseUserCertApiRequest
+func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertExecute(r any) *X509AuthenticationApi_CreateDatabaseUserCertExecute_Call {
+	return &X509AuthenticationApi_CreateDatabaseUserCertExecute_Call{Call: _e.mock.On("CreateDatabaseUserCertExecute", r)}
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call) Run(run func(r admin.CreateDatabaseUserCertificateApiRequest)) *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCertExecute_Call) Run(run func(r admin.CreateDatabaseUserCertApiRequest)) *X509AuthenticationApi_CreateDatabaseUserCertExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateDatabaseUserCertificateApiRequest))
+		run(args[0].(admin.CreateDatabaseUserCertApiRequest))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call) Return(_a0 string, _a1 *http.Response, _a2 error) *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCertExecute_Call) Return(_a0 string, _a1 *http.Response, _a2 error) *X509AuthenticationApi_CreateDatabaseUserCertExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call) RunAndReturn(run func(admin.CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error)) *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCertExecute_Call) RunAndReturn(run func(admin.CreateDatabaseUserCertApiRequest) (string, *http.Response, error)) *X509AuthenticationApi_CreateDatabaseUserCertExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateDatabaseUserCertificateWithParams provides a mock function with given fields: ctx, args
-func (_m *X509AuthenticationApi) CreateDatabaseUserCertificateWithParams(ctx context.Context, args *admin.CreateDatabaseUserCertificateApiParams) admin.CreateDatabaseUserCertificateApiRequest {
+// CreateDatabaseUserCertWithParams provides a mock function with given fields: ctx, args
+func (_m *X509AuthenticationApi) CreateDatabaseUserCertWithParams(ctx context.Context, args *admin.CreateDatabaseUserCertApiParams) admin.CreateDatabaseUserCertApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateDatabaseUserCertificateWithParams")
+		panic("no return value specified for CreateDatabaseUserCertWithParams")
 	}
 
-	var r0 admin.CreateDatabaseUserCertificateApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateDatabaseUserCertificateApiParams) admin.CreateDatabaseUserCertificateApiRequest); ok {
+	var r0 admin.CreateDatabaseUserCertApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateDatabaseUserCertApiParams) admin.CreateDatabaseUserCertApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateDatabaseUserCertificateApiRequest)
+		r0 = ret.Get(0).(admin.CreateDatabaseUserCertApiRequest)
 	}
 
 	return r0
 }
 
-// X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateDatabaseUserCertificateWithParams'
-type X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call struct {
+// X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateDatabaseUserCertWithParams'
+type X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateDatabaseUserCertificateWithParams is a helper method to define mock.On call
+// CreateDatabaseUserCertWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateDatabaseUserCertificateApiParams
-func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificateWithParams(ctx any, args any) *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call {
-	return &X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call{Call: _e.mock.On("CreateDatabaseUserCertificateWithParams", ctx, args)}
+//   - args *admin.CreateDatabaseUserCertApiParams
+func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertWithParams(ctx any, args any) *X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call {
+	return &X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call{Call: _e.mock.On("CreateDatabaseUserCertWithParams", ctx, args)}
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateDatabaseUserCertificateApiParams)) *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateDatabaseUserCertApiParams)) *X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateDatabaseUserCertificateApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateDatabaseUserCertApiParams))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call) Return(_a0 admin.CreateDatabaseUserCertificateApiRequest) *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call) Return(_a0 admin.CreateDatabaseUserCertApiRequest) *X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateDatabaseUserCertificateApiParams) admin.CreateDatabaseUserCertificateApiRequest) *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call {
+func (_c *X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateDatabaseUserCertApiParams) admin.CreateDatabaseUserCertApiRequest) *X509AuthenticationApi_CreateDatabaseUserCertWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DisableCustomerManagedX509 provides a mock function with given fields: ctx, groupId
-func (_m *X509AuthenticationApi) DisableCustomerManagedX509(ctx context.Context, groupId string) admin.DisableCustomerManagedX509ApiRequest {
+// DisableSecurityCustomerX509 provides a mock function with given fields: ctx, groupId
+func (_m *X509AuthenticationApi) DisableSecurityCustomerX509(ctx context.Context, groupId string) admin.DisableSecurityCustomerX509ApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DisableCustomerManagedX509")
+		panic("no return value specified for DisableSecurityCustomerX509")
 	}
 
-	var r0 admin.DisableCustomerManagedX509ApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DisableCustomerManagedX509ApiRequest); ok {
+	var r0 admin.DisableSecurityCustomerX509ApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DisableSecurityCustomerX509ApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.DisableCustomerManagedX509ApiRequest)
+		r0 = ret.Get(0).(admin.DisableSecurityCustomerX509ApiRequest)
 	}
 
 	return r0
 }
 
-// X509AuthenticationApi_DisableCustomerManagedX509_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableCustomerManagedX509'
-type X509AuthenticationApi_DisableCustomerManagedX509_Call struct {
+// X509AuthenticationApi_DisableSecurityCustomerX509_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableSecurityCustomerX509'
+type X509AuthenticationApi_DisableSecurityCustomerX509_Call struct {
 	*mock.Call
 }
 
-// DisableCustomerManagedX509 is a helper method to define mock.On call
+// DisableSecurityCustomerX509 is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509(ctx any, groupId any) *X509AuthenticationApi_DisableCustomerManagedX509_Call {
-	return &X509AuthenticationApi_DisableCustomerManagedX509_Call{Call: _e.mock.On("DisableCustomerManagedX509", ctx, groupId)}
+func (_e *X509AuthenticationApi_Expecter) DisableSecurityCustomerX509(ctx any, groupId any) *X509AuthenticationApi_DisableSecurityCustomerX509_Call {
+	return &X509AuthenticationApi_DisableSecurityCustomerX509_Call{Call: _e.mock.On("DisableSecurityCustomerX509", ctx, groupId)}
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509_Call) Run(run func(ctx context.Context, groupId string)) *X509AuthenticationApi_DisableCustomerManagedX509_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509_Call) Run(run func(ctx context.Context, groupId string)) *X509AuthenticationApi_DisableSecurityCustomerX509_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509_Call) Return(_a0 admin.DisableCustomerManagedX509ApiRequest) *X509AuthenticationApi_DisableCustomerManagedX509_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509_Call) Return(_a0 admin.DisableSecurityCustomerX509ApiRequest) *X509AuthenticationApi_DisableSecurityCustomerX509_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509_Call) RunAndReturn(run func(context.Context, string) admin.DisableCustomerManagedX509ApiRequest) *X509AuthenticationApi_DisableCustomerManagedX509_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509_Call) RunAndReturn(run func(context.Context, string) admin.DisableSecurityCustomerX509ApiRequest) *X509AuthenticationApi_DisableSecurityCustomerX509_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DisableCustomerManagedX509Execute provides a mock function with given fields: r
-func (_m *X509AuthenticationApi) DisableCustomerManagedX509Execute(r admin.DisableCustomerManagedX509ApiRequest) (*admin.UserSecurity, *http.Response, error) {
+// DisableSecurityCustomerX509Execute provides a mock function with given fields: r
+func (_m *X509AuthenticationApi) DisableSecurityCustomerX509Execute(r admin.DisableSecurityCustomerX509ApiRequest) (*admin.UserSecurity, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DisableCustomerManagedX509Execute")
+		panic("no return value specified for DisableSecurityCustomerX509Execute")
 	}
 
 	var r0 *admin.UserSecurity
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DisableCustomerManagedX509ApiRequest) (*admin.UserSecurity, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DisableSecurityCustomerX509ApiRequest) (*admin.UserSecurity, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DisableCustomerManagedX509ApiRequest) *admin.UserSecurity); ok {
+	if rf, ok := ret.Get(0).(func(admin.DisableSecurityCustomerX509ApiRequest) *admin.UserSecurity); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -255,7 +255,7 @@ func (_m *X509AuthenticationApi) DisableCustomerManagedX509Execute(r admin.Disab
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DisableCustomerManagedX509ApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DisableSecurityCustomerX509ApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -263,7 +263,7 @@ func (_m *X509AuthenticationApi) DisableCustomerManagedX509Execute(r admin.Disab
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DisableCustomerManagedX509ApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DisableSecurityCustomerX509ApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -272,144 +272,144 @@ func (_m *X509AuthenticationApi) DisableCustomerManagedX509Execute(r admin.Disab
 	return r0, r1, r2
 }
 
-// X509AuthenticationApi_DisableCustomerManagedX509Execute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableCustomerManagedX509Execute'
-type X509AuthenticationApi_DisableCustomerManagedX509Execute_Call struct {
+// X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableSecurityCustomerX509Execute'
+type X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call struct {
 	*mock.Call
 }
 
-// DisableCustomerManagedX509Execute is a helper method to define mock.On call
-//   - r admin.DisableCustomerManagedX509ApiRequest
-func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509Execute(r any) *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call {
-	return &X509AuthenticationApi_DisableCustomerManagedX509Execute_Call{Call: _e.mock.On("DisableCustomerManagedX509Execute", r)}
+// DisableSecurityCustomerX509Execute is a helper method to define mock.On call
+//   - r admin.DisableSecurityCustomerX509ApiRequest
+func (_e *X509AuthenticationApi_Expecter) DisableSecurityCustomerX509Execute(r any) *X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call {
+	return &X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call{Call: _e.mock.On("DisableSecurityCustomerX509Execute", r)}
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call) Run(run func(r admin.DisableCustomerManagedX509ApiRequest)) *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call) Run(run func(r admin.DisableSecurityCustomerX509ApiRequest)) *X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DisableCustomerManagedX509ApiRequest))
+		run(args[0].(admin.DisableSecurityCustomerX509ApiRequest))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call) Return(_a0 *admin.UserSecurity, _a1 *http.Response, _a2 error) *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call) Return(_a0 *admin.UserSecurity, _a1 *http.Response, _a2 error) *X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call) RunAndReturn(run func(admin.DisableCustomerManagedX509ApiRequest) (*admin.UserSecurity, *http.Response, error)) *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call) RunAndReturn(run func(admin.DisableSecurityCustomerX509ApiRequest) (*admin.UserSecurity, *http.Response, error)) *X509AuthenticationApi_DisableSecurityCustomerX509Execute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DisableCustomerManagedX509WithParams provides a mock function with given fields: ctx, args
-func (_m *X509AuthenticationApi) DisableCustomerManagedX509WithParams(ctx context.Context, args *admin.DisableCustomerManagedX509ApiParams) admin.DisableCustomerManagedX509ApiRequest {
+// DisableSecurityCustomerX509WithParams provides a mock function with given fields: ctx, args
+func (_m *X509AuthenticationApi) DisableSecurityCustomerX509WithParams(ctx context.Context, args *admin.DisableSecurityCustomerX509ApiParams) admin.DisableSecurityCustomerX509ApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DisableCustomerManagedX509WithParams")
+		panic("no return value specified for DisableSecurityCustomerX509WithParams")
 	}
 
-	var r0 admin.DisableCustomerManagedX509ApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DisableCustomerManagedX509ApiParams) admin.DisableCustomerManagedX509ApiRequest); ok {
+	var r0 admin.DisableSecurityCustomerX509ApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DisableSecurityCustomerX509ApiParams) admin.DisableSecurityCustomerX509ApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DisableCustomerManagedX509ApiRequest)
+		r0 = ret.Get(0).(admin.DisableSecurityCustomerX509ApiRequest)
 	}
 
 	return r0
 }
 
-// X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableCustomerManagedX509WithParams'
-type X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call struct {
+// X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableSecurityCustomerX509WithParams'
+type X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call struct {
 	*mock.Call
 }
 
-// DisableCustomerManagedX509WithParams is a helper method to define mock.On call
+// DisableSecurityCustomerX509WithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DisableCustomerManagedX509ApiParams
-func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509WithParams(ctx any, args any) *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call {
-	return &X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call{Call: _e.mock.On("DisableCustomerManagedX509WithParams", ctx, args)}
+//   - args *admin.DisableSecurityCustomerX509ApiParams
+func (_e *X509AuthenticationApi_Expecter) DisableSecurityCustomerX509WithParams(ctx any, args any) *X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call {
+	return &X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call{Call: _e.mock.On("DisableSecurityCustomerX509WithParams", ctx, args)}
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call) Run(run func(ctx context.Context, args *admin.DisableCustomerManagedX509ApiParams)) *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call) Run(run func(ctx context.Context, args *admin.DisableSecurityCustomerX509ApiParams)) *X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DisableCustomerManagedX509ApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DisableSecurityCustomerX509ApiParams))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call) Return(_a0 admin.DisableCustomerManagedX509ApiRequest) *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call) Return(_a0 admin.DisableSecurityCustomerX509ApiRequest) *X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call) RunAndReturn(run func(context.Context, *admin.DisableCustomerManagedX509ApiParams) admin.DisableCustomerManagedX509ApiRequest) *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call {
+func (_c *X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call) RunAndReturn(run func(context.Context, *admin.DisableSecurityCustomerX509ApiParams) admin.DisableSecurityCustomerX509ApiRequest) *X509AuthenticationApi_DisableSecurityCustomerX509WithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListDatabaseUserCertificates provides a mock function with given fields: ctx, groupId, username
-func (_m *X509AuthenticationApi) ListDatabaseUserCertificates(ctx context.Context, groupId string, username string) admin.ListDatabaseUserCertificatesApiRequest {
+// ListDatabaseUserCerts provides a mock function with given fields: ctx, groupId, username
+func (_m *X509AuthenticationApi) ListDatabaseUserCerts(ctx context.Context, groupId string, username string) admin.ListDatabaseUserCertsApiRequest {
 	ret := _m.Called(ctx, groupId, username)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDatabaseUserCertificates")
+		panic("no return value specified for ListDatabaseUserCerts")
 	}
 
-	var r0 admin.ListDatabaseUserCertificatesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListDatabaseUserCertificatesApiRequest); ok {
+	var r0 admin.ListDatabaseUserCertsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListDatabaseUserCertsApiRequest); ok {
 		r0 = rf(ctx, groupId, username)
 	} else {
-		r0 = ret.Get(0).(admin.ListDatabaseUserCertificatesApiRequest)
+		r0 = ret.Get(0).(admin.ListDatabaseUserCertsApiRequest)
 	}
 
 	return r0
 }
 
-// X509AuthenticationApi_ListDatabaseUserCertificates_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDatabaseUserCertificates'
-type X509AuthenticationApi_ListDatabaseUserCertificates_Call struct {
+// X509AuthenticationApi_ListDatabaseUserCerts_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDatabaseUserCerts'
+type X509AuthenticationApi_ListDatabaseUserCerts_Call struct {
 	*mock.Call
 }
 
-// ListDatabaseUserCertificates is a helper method to define mock.On call
+// ListDatabaseUserCerts is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - username string
-func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificates(ctx any, groupId any, username any) *X509AuthenticationApi_ListDatabaseUserCertificates_Call {
-	return &X509AuthenticationApi_ListDatabaseUserCertificates_Call{Call: _e.mock.On("ListDatabaseUserCertificates", ctx, groupId, username)}
+func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCerts(ctx any, groupId any, username any) *X509AuthenticationApi_ListDatabaseUserCerts_Call {
+	return &X509AuthenticationApi_ListDatabaseUserCerts_Call{Call: _e.mock.On("ListDatabaseUserCerts", ctx, groupId, username)}
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificates_Call) Run(run func(ctx context.Context, groupId string, username string)) *X509AuthenticationApi_ListDatabaseUserCertificates_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCerts_Call) Run(run func(ctx context.Context, groupId string, username string)) *X509AuthenticationApi_ListDatabaseUserCerts_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificates_Call) Return(_a0 admin.ListDatabaseUserCertificatesApiRequest) *X509AuthenticationApi_ListDatabaseUserCertificates_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCerts_Call) Return(_a0 admin.ListDatabaseUserCertsApiRequest) *X509AuthenticationApi_ListDatabaseUserCerts_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificates_Call) RunAndReturn(run func(context.Context, string, string) admin.ListDatabaseUserCertificatesApiRequest) *X509AuthenticationApi_ListDatabaseUserCertificates_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCerts_Call) RunAndReturn(run func(context.Context, string, string) admin.ListDatabaseUserCertsApiRequest) *X509AuthenticationApi_ListDatabaseUserCerts_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListDatabaseUserCertificatesExecute provides a mock function with given fields: r
-func (_m *X509AuthenticationApi) ListDatabaseUserCertificatesExecute(r admin.ListDatabaseUserCertificatesApiRequest) (*admin.PaginatedUserCert, *http.Response, error) {
+// ListDatabaseUserCertsExecute provides a mock function with given fields: r
+func (_m *X509AuthenticationApi) ListDatabaseUserCertsExecute(r admin.ListDatabaseUserCertsApiRequest) (*admin.PaginatedUserCert, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDatabaseUserCertificatesExecute")
+		panic("no return value specified for ListDatabaseUserCertsExecute")
 	}
 
 	var r0 *admin.PaginatedUserCert
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListDatabaseUserCertificatesApiRequest) (*admin.PaginatedUserCert, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListDatabaseUserCertsApiRequest) (*admin.PaginatedUserCert, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListDatabaseUserCertificatesApiRequest) *admin.PaginatedUserCert); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListDatabaseUserCertsApiRequest) *admin.PaginatedUserCert); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -417,7 +417,7 @@ func (_m *X509AuthenticationApi) ListDatabaseUserCertificatesExecute(r admin.Lis
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListDatabaseUserCertificatesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListDatabaseUserCertsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -425,7 +425,7 @@ func (_m *X509AuthenticationApi) ListDatabaseUserCertificatesExecute(r admin.Lis
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListDatabaseUserCertificatesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListDatabaseUserCertsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -434,77 +434,77 @@ func (_m *X509AuthenticationApi) ListDatabaseUserCertificatesExecute(r admin.Lis
 	return r0, r1, r2
 }
 
-// X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDatabaseUserCertificatesExecute'
-type X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call struct {
+// X509AuthenticationApi_ListDatabaseUserCertsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDatabaseUserCertsExecute'
+type X509AuthenticationApi_ListDatabaseUserCertsExecute_Call struct {
 	*mock.Call
 }
 
-// ListDatabaseUserCertificatesExecute is a helper method to define mock.On call
-//   - r admin.ListDatabaseUserCertificatesApiRequest
-func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificatesExecute(r any) *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call {
-	return &X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call{Call: _e.mock.On("ListDatabaseUserCertificatesExecute", r)}
+// ListDatabaseUserCertsExecute is a helper method to define mock.On call
+//   - r admin.ListDatabaseUserCertsApiRequest
+func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertsExecute(r any) *X509AuthenticationApi_ListDatabaseUserCertsExecute_Call {
+	return &X509AuthenticationApi_ListDatabaseUserCertsExecute_Call{Call: _e.mock.On("ListDatabaseUserCertsExecute", r)}
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call) Run(run func(r admin.ListDatabaseUserCertificatesApiRequest)) *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCertsExecute_Call) Run(run func(r admin.ListDatabaseUserCertsApiRequest)) *X509AuthenticationApi_ListDatabaseUserCertsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListDatabaseUserCertificatesApiRequest))
+		run(args[0].(admin.ListDatabaseUserCertsApiRequest))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call) Return(_a0 *admin.PaginatedUserCert, _a1 *http.Response, _a2 error) *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCertsExecute_Call) Return(_a0 *admin.PaginatedUserCert, _a1 *http.Response, _a2 error) *X509AuthenticationApi_ListDatabaseUserCertsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call) RunAndReturn(run func(admin.ListDatabaseUserCertificatesApiRequest) (*admin.PaginatedUserCert, *http.Response, error)) *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCertsExecute_Call) RunAndReturn(run func(admin.ListDatabaseUserCertsApiRequest) (*admin.PaginatedUserCert, *http.Response, error)) *X509AuthenticationApi_ListDatabaseUserCertsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListDatabaseUserCertificatesWithParams provides a mock function with given fields: ctx, args
-func (_m *X509AuthenticationApi) ListDatabaseUserCertificatesWithParams(ctx context.Context, args *admin.ListDatabaseUserCertificatesApiParams) admin.ListDatabaseUserCertificatesApiRequest {
+// ListDatabaseUserCertsWithParams provides a mock function with given fields: ctx, args
+func (_m *X509AuthenticationApi) ListDatabaseUserCertsWithParams(ctx context.Context, args *admin.ListDatabaseUserCertsApiParams) admin.ListDatabaseUserCertsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDatabaseUserCertificatesWithParams")
+		panic("no return value specified for ListDatabaseUserCertsWithParams")
 	}
 
-	var r0 admin.ListDatabaseUserCertificatesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListDatabaseUserCertificatesApiParams) admin.ListDatabaseUserCertificatesApiRequest); ok {
+	var r0 admin.ListDatabaseUserCertsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListDatabaseUserCertsApiParams) admin.ListDatabaseUserCertsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListDatabaseUserCertificatesApiRequest)
+		r0 = ret.Get(0).(admin.ListDatabaseUserCertsApiRequest)
 	}
 
 	return r0
 }
 
-// X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDatabaseUserCertificatesWithParams'
-type X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call struct {
+// X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDatabaseUserCertsWithParams'
+type X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListDatabaseUserCertificatesWithParams is a helper method to define mock.On call
+// ListDatabaseUserCertsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListDatabaseUserCertificatesApiParams
-func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificatesWithParams(ctx any, args any) *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call {
-	return &X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call{Call: _e.mock.On("ListDatabaseUserCertificatesWithParams", ctx, args)}
+//   - args *admin.ListDatabaseUserCertsApiParams
+func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertsWithParams(ctx any, args any) *X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call {
+	return &X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call{Call: _e.mock.On("ListDatabaseUserCertsWithParams", ctx, args)}
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListDatabaseUserCertificatesApiParams)) *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListDatabaseUserCertsApiParams)) *X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListDatabaseUserCertificatesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListDatabaseUserCertsApiParams))
 	})
 	return _c
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call) Return(_a0 admin.ListDatabaseUserCertificatesApiRequest) *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call) Return(_a0 admin.ListDatabaseUserCertsApiRequest) *X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListDatabaseUserCertificatesApiParams) admin.ListDatabaseUserCertificatesApiRequest) *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call {
+func (_c *X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListDatabaseUserCertsApiParams) admin.ListDatabaseUserCertsApiRequest) *X509AuthenticationApi_ListDatabaseUserCertsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

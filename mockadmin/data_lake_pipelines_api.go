@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -293,70 +293,70 @@ func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) RunAndReturn(run func
 	return _c
 }
 
-// DeletePipelineRunDataset provides a mock function with given fields: ctx, groupId, pipelineName, pipelineRunId
-func (_m *DataLakePipelinesApi) DeletePipelineRunDataset(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) admin.DeletePipelineRunDatasetApiRequest {
+// DeletePipelineRun provides a mock function with given fields: ctx, groupId, pipelineName, pipelineRunId
+func (_m *DataLakePipelinesApi) DeletePipelineRun(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) admin.DeletePipelineRunApiRequest {
 	ret := _m.Called(ctx, groupId, pipelineName, pipelineRunId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePipelineRunDataset")
+		panic("no return value specified for DeletePipelineRun")
 	}
 
-	var r0 admin.DeletePipelineRunDatasetApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeletePipelineRunDatasetApiRequest); ok {
+	var r0 admin.DeletePipelineRunApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeletePipelineRunApiRequest); ok {
 		r0 = rf(ctx, groupId, pipelineName, pipelineRunId)
 	} else {
-		r0 = ret.Get(0).(admin.DeletePipelineRunDatasetApiRequest)
+		r0 = ret.Get(0).(admin.DeletePipelineRunApiRequest)
 	}
 
 	return r0
 }
 
-// DataLakePipelinesApi_DeletePipelineRunDataset_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePipelineRunDataset'
-type DataLakePipelinesApi_DeletePipelineRunDataset_Call struct {
+// DataLakePipelinesApi_DeletePipelineRun_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePipelineRun'
+type DataLakePipelinesApi_DeletePipelineRun_Call struct {
 	*mock.Call
 }
 
-// DeletePipelineRunDataset is a helper method to define mock.On call
+// DeletePipelineRun is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
 //   - pipelineRunId string
-func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDataset(ctx any, groupId any, pipelineName any, pipelineRunId any) *DataLakePipelinesApi_DeletePipelineRunDataset_Call {
-	return &DataLakePipelinesApi_DeletePipelineRunDataset_Call{Call: _e.mock.On("DeletePipelineRunDataset", ctx, groupId, pipelineName, pipelineRunId)}
+func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRun(ctx any, groupId any, pipelineName any, pipelineRunId any) *DataLakePipelinesApi_DeletePipelineRun_Call {
+	return &DataLakePipelinesApi_DeletePipelineRun_Call{Call: _e.mock.On("DeletePipelineRun", ctx, groupId, pipelineName, pipelineRunId)}
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDataset_Call) Run(run func(ctx context.Context, groupId string, pipelineName string, pipelineRunId string)) *DataLakePipelinesApi_DeletePipelineRunDataset_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRun_Call) Run(run func(ctx context.Context, groupId string, pipelineName string, pipelineRunId string)) *DataLakePipelinesApi_DeletePipelineRun_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDataset_Call) Return(_a0 admin.DeletePipelineRunDatasetApiRequest) *DataLakePipelinesApi_DeletePipelineRunDataset_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRun_Call) Return(_a0 admin.DeletePipelineRunApiRequest) *DataLakePipelinesApi_DeletePipelineRun_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDataset_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeletePipelineRunDatasetApiRequest) *DataLakePipelinesApi_DeletePipelineRunDataset_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRun_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeletePipelineRunApiRequest) *DataLakePipelinesApi_DeletePipelineRun_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePipelineRunDatasetExecute provides a mock function with given fields: r
-func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetExecute(r admin.DeletePipelineRunDatasetApiRequest) (any, *http.Response, error) {
+// DeletePipelineRunExecute provides a mock function with given fields: r
+func (_m *DataLakePipelinesApi) DeletePipelineRunExecute(r admin.DeletePipelineRunApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePipelineRunDatasetExecute")
+		panic("no return value specified for DeletePipelineRunExecute")
 	}
 
 	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) (any, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -364,7 +364,7 @@ func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetExecute(r admin.DeletePi
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeletePipelineRunDatasetApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeletePipelineRunApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -372,7 +372,7 @@ func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetExecute(r admin.DeletePi
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeletePipelineRunDatasetApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DeletePipelineRunApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -381,77 +381,77 @@ func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetExecute(r admin.DeletePi
 	return r0, r1, r2
 }
 
-// DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePipelineRunDatasetExecute'
-type DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call struct {
+// DataLakePipelinesApi_DeletePipelineRunExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePipelineRunExecute'
+type DataLakePipelinesApi_DeletePipelineRunExecute_Call struct {
 	*mock.Call
 }
 
-// DeletePipelineRunDatasetExecute is a helper method to define mock.On call
-//   - r admin.DeletePipelineRunDatasetApiRequest
-func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDatasetExecute(r any) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
-	return &DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call{Call: _e.mock.On("DeletePipelineRunDatasetExecute", r)}
+// DeletePipelineRunExecute is a helper method to define mock.On call
+//   - r admin.DeletePipelineRunApiRequest
+func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunExecute(r any) *DataLakePipelinesApi_DeletePipelineRunExecute_Call {
+	return &DataLakePipelinesApi_DeletePipelineRunExecute_Call{Call: _e.mock.On("DeletePipelineRunExecute", r)}
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) Run(run func(r admin.DeletePipelineRunDatasetApiRequest)) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunExecute_Call) Run(run func(r admin.DeletePipelineRunApiRequest)) *DataLakePipelinesApi_DeletePipelineRunExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeletePipelineRunDatasetApiRequest))
+		run(args[0].(admin.DeletePipelineRunApiRequest))
 	})
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineRunExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) RunAndReturn(run func(admin.DeletePipelineRunDatasetApiRequest) (any, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunExecute_Call) RunAndReturn(run func(admin.DeletePipelineRunApiRequest) (any, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineRunExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePipelineRunDatasetWithParams provides a mock function with given fields: ctx, args
-func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetWithParams(ctx context.Context, args *admin.DeletePipelineRunDatasetApiParams) admin.DeletePipelineRunDatasetApiRequest {
+// DeletePipelineRunWithParams provides a mock function with given fields: ctx, args
+func (_m *DataLakePipelinesApi) DeletePipelineRunWithParams(ctx context.Context, args *admin.DeletePipelineRunApiParams) admin.DeletePipelineRunApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePipelineRunDatasetWithParams")
+		panic("no return value specified for DeletePipelineRunWithParams")
 	}
 
-	var r0 admin.DeletePipelineRunDatasetApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeletePipelineRunDatasetApiParams) admin.DeletePipelineRunDatasetApiRequest); ok {
+	var r0 admin.DeletePipelineRunApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeletePipelineRunApiParams) admin.DeletePipelineRunApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeletePipelineRunDatasetApiRequest)
+		r0 = ret.Get(0).(admin.DeletePipelineRunApiRequest)
 	}
 
 	return r0
 }
 
-// DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePipelineRunDatasetWithParams'
-type DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call struct {
+// DataLakePipelinesApi_DeletePipelineRunWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePipelineRunWithParams'
+type DataLakePipelinesApi_DeletePipelineRunWithParams_Call struct {
 	*mock.Call
 }
 
-// DeletePipelineRunDatasetWithParams is a helper method to define mock.On call
+// DeletePipelineRunWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeletePipelineRunDatasetApiParams
-func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDatasetWithParams(ctx any, args any) *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call {
-	return &DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call{Call: _e.mock.On("DeletePipelineRunDatasetWithParams", ctx, args)}
+//   - args *admin.DeletePipelineRunApiParams
+func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunWithParams(ctx any, args any) *DataLakePipelinesApi_DeletePipelineRunWithParams_Call {
+	return &DataLakePipelinesApi_DeletePipelineRunWithParams_Call{Call: _e.mock.On("DeletePipelineRunWithParams", ctx, args)}
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call) Run(run func(ctx context.Context, args *admin.DeletePipelineRunDatasetApiParams)) *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunWithParams_Call) Run(run func(ctx context.Context, args *admin.DeletePipelineRunApiParams)) *DataLakePipelinesApi_DeletePipelineRunWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeletePipelineRunDatasetApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeletePipelineRunApiParams))
 	})
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call) Return(_a0 admin.DeletePipelineRunDatasetApiRequest) *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunWithParams_Call) Return(_a0 admin.DeletePipelineRunApiRequest) *DataLakePipelinesApi_DeletePipelineRunWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeletePipelineRunDatasetApiParams) admin.DeletePipelineRunDatasetApiRequest) *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeletePipelineRunApiParams) admin.DeletePipelineRunApiRequest) *DataLakePipelinesApi_DeletePipelineRunWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -499,6 +499,330 @@ func (_c *DataLakePipelinesApi_DeletePipelineWithParams_Call) Return(_a0 admin.D
 }
 
 func (_c *DataLakePipelinesApi_DeletePipelineWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeletePipelineApiParams) admin.DeletePipelineApiRequest) *DataLakePipelinesApi_DeletePipelineWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAvailablePipelineSchedules provides a mock function with given fields: ctx, groupId, pipelineName
+func (_m *DataLakePipelinesApi) GetAvailablePipelineSchedules(ctx context.Context, groupId string, pipelineName string) admin.GetAvailablePipelineSchedulesApiRequest {
+	ret := _m.Called(ctx, groupId, pipelineName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAvailablePipelineSchedules")
+	}
+
+	var r0 admin.GetAvailablePipelineSchedulesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetAvailablePipelineSchedulesApiRequest); ok {
+		r0 = rf(ctx, groupId, pipelineName)
+	} else {
+		r0 = ret.Get(0).(admin.GetAvailablePipelineSchedulesApiRequest)
+	}
+
+	return r0
+}
+
+// DataLakePipelinesApi_GetAvailablePipelineSchedules_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAvailablePipelineSchedules'
+type DataLakePipelinesApi_GetAvailablePipelineSchedules_Call struct {
+	*mock.Call
+}
+
+// GetAvailablePipelineSchedules is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - pipelineName string
+func (_e *DataLakePipelinesApi_Expecter) GetAvailablePipelineSchedules(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_GetAvailablePipelineSchedules_Call {
+	return &DataLakePipelinesApi_GetAvailablePipelineSchedules_Call{Call: _e.mock.On("GetAvailablePipelineSchedules", ctx, groupId, pipelineName)}
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedules_Call) Run(run func(ctx context.Context, groupId string, pipelineName string)) *DataLakePipelinesApi_GetAvailablePipelineSchedules_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedules_Call) Return(_a0 admin.GetAvailablePipelineSchedulesApiRequest) *DataLakePipelinesApi_GetAvailablePipelineSchedules_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedules_Call) RunAndReturn(run func(context.Context, string, string) admin.GetAvailablePipelineSchedulesApiRequest) *DataLakePipelinesApi_GetAvailablePipelineSchedules_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAvailablePipelineSchedulesExecute provides a mock function with given fields: r
+func (_m *DataLakePipelinesApi) GetAvailablePipelineSchedulesExecute(r admin.GetAvailablePipelineSchedulesApiRequest) ([]admin.DiskBackupApiPolicyItem, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAvailablePipelineSchedulesExecute")
+	}
+
+	var r0 []admin.DiskBackupApiPolicyItem
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetAvailablePipelineSchedulesApiRequest) ([]admin.DiskBackupApiPolicyItem, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetAvailablePipelineSchedulesApiRequest) []admin.DiskBackupApiPolicyItem); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]admin.DiskBackupApiPolicyItem)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetAvailablePipelineSchedulesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetAvailablePipelineSchedulesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAvailablePipelineSchedulesExecute'
+type DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call struct {
+	*mock.Call
+}
+
+// GetAvailablePipelineSchedulesExecute is a helper method to define mock.On call
+//   - r admin.GetAvailablePipelineSchedulesApiRequest
+func (_e *DataLakePipelinesApi_Expecter) GetAvailablePipelineSchedulesExecute(r any) *DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call {
+	return &DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call{Call: _e.mock.On("GetAvailablePipelineSchedulesExecute", r)}
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call) Run(run func(r admin.GetAvailablePipelineSchedulesApiRequest)) *DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetAvailablePipelineSchedulesApiRequest))
+	})
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call) Return(_a0 []admin.DiskBackupApiPolicyItem, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call) RunAndReturn(run func(admin.GetAvailablePipelineSchedulesApiRequest) ([]admin.DiskBackupApiPolicyItem, *http.Response, error)) *DataLakePipelinesApi_GetAvailablePipelineSchedulesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAvailablePipelineSchedulesWithParams provides a mock function with given fields: ctx, args
+func (_m *DataLakePipelinesApi) GetAvailablePipelineSchedulesWithParams(ctx context.Context, args *admin.GetAvailablePipelineSchedulesApiParams) admin.GetAvailablePipelineSchedulesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAvailablePipelineSchedulesWithParams")
+	}
+
+	var r0 admin.GetAvailablePipelineSchedulesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAvailablePipelineSchedulesApiParams) admin.GetAvailablePipelineSchedulesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetAvailablePipelineSchedulesApiRequest)
+	}
+
+	return r0
+}
+
+// DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAvailablePipelineSchedulesWithParams'
+type DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call struct {
+	*mock.Call
+}
+
+// GetAvailablePipelineSchedulesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetAvailablePipelineSchedulesApiParams
+func (_e *DataLakePipelinesApi_Expecter) GetAvailablePipelineSchedulesWithParams(ctx any, args any) *DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call {
+	return &DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call{Call: _e.mock.On("GetAvailablePipelineSchedulesWithParams", ctx, args)}
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAvailablePipelineSchedulesApiParams)) *DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetAvailablePipelineSchedulesApiParams))
+	})
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call) Return(_a0 admin.GetAvailablePipelineSchedulesApiRequest) *DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAvailablePipelineSchedulesApiParams) admin.GetAvailablePipelineSchedulesApiRequest) *DataLakePipelinesApi_GetAvailablePipelineSchedulesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAvailablePipelineSnapshots provides a mock function with given fields: ctx, groupId, pipelineName
+func (_m *DataLakePipelinesApi) GetAvailablePipelineSnapshots(ctx context.Context, groupId string, pipelineName string) admin.GetAvailablePipelineSnapshotsApiRequest {
+	ret := _m.Called(ctx, groupId, pipelineName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAvailablePipelineSnapshots")
+	}
+
+	var r0 admin.GetAvailablePipelineSnapshotsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetAvailablePipelineSnapshotsApiRequest); ok {
+		r0 = rf(ctx, groupId, pipelineName)
+	} else {
+		r0 = ret.Get(0).(admin.GetAvailablePipelineSnapshotsApiRequest)
+	}
+
+	return r0
+}
+
+// DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAvailablePipelineSnapshots'
+type DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call struct {
+	*mock.Call
+}
+
+// GetAvailablePipelineSnapshots is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - pipelineName string
+func (_e *DataLakePipelinesApi_Expecter) GetAvailablePipelineSnapshots(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call {
+	return &DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call{Call: _e.mock.On("GetAvailablePipelineSnapshots", ctx, groupId, pipelineName)}
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call) Run(run func(ctx context.Context, groupId string, pipelineName string)) *DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call) Return(_a0 admin.GetAvailablePipelineSnapshotsApiRequest) *DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call) RunAndReturn(run func(context.Context, string, string) admin.GetAvailablePipelineSnapshotsApiRequest) *DataLakePipelinesApi_GetAvailablePipelineSnapshots_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAvailablePipelineSnapshotsExecute provides a mock function with given fields: r
+func (_m *DataLakePipelinesApi) GetAvailablePipelineSnapshotsExecute(r admin.GetAvailablePipelineSnapshotsApiRequest) (*admin.PaginatedBackupSnapshot, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAvailablePipelineSnapshotsExecute")
+	}
+
+	var r0 *admin.PaginatedBackupSnapshot
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetAvailablePipelineSnapshotsApiRequest) (*admin.PaginatedBackupSnapshot, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetAvailablePipelineSnapshotsApiRequest) *admin.PaginatedBackupSnapshot); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedBackupSnapshot)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetAvailablePipelineSnapshotsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetAvailablePipelineSnapshotsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAvailablePipelineSnapshotsExecute'
+type DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call struct {
+	*mock.Call
+}
+
+// GetAvailablePipelineSnapshotsExecute is a helper method to define mock.On call
+//   - r admin.GetAvailablePipelineSnapshotsApiRequest
+func (_e *DataLakePipelinesApi_Expecter) GetAvailablePipelineSnapshotsExecute(r any) *DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call {
+	return &DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call{Call: _e.mock.On("GetAvailablePipelineSnapshotsExecute", r)}
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call) Run(run func(r admin.GetAvailablePipelineSnapshotsApiRequest)) *DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetAvailablePipelineSnapshotsApiRequest))
+	})
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call) Return(_a0 *admin.PaginatedBackupSnapshot, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call) RunAndReturn(run func(admin.GetAvailablePipelineSnapshotsApiRequest) (*admin.PaginatedBackupSnapshot, *http.Response, error)) *DataLakePipelinesApi_GetAvailablePipelineSnapshotsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAvailablePipelineSnapshotsWithParams provides a mock function with given fields: ctx, args
+func (_m *DataLakePipelinesApi) GetAvailablePipelineSnapshotsWithParams(ctx context.Context, args *admin.GetAvailablePipelineSnapshotsApiParams) admin.GetAvailablePipelineSnapshotsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAvailablePipelineSnapshotsWithParams")
+	}
+
+	var r0 admin.GetAvailablePipelineSnapshotsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAvailablePipelineSnapshotsApiParams) admin.GetAvailablePipelineSnapshotsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetAvailablePipelineSnapshotsApiRequest)
+	}
+
+	return r0
+}
+
+// DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAvailablePipelineSnapshotsWithParams'
+type DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetAvailablePipelineSnapshotsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetAvailablePipelineSnapshotsApiParams
+func (_e *DataLakePipelinesApi_Expecter) GetAvailablePipelineSnapshotsWithParams(ctx any, args any) *DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call {
+	return &DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call{Call: _e.mock.On("GetAvailablePipelineSnapshotsWithParams", ctx, args)}
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAvailablePipelineSnapshotsApiParams)) *DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetAvailablePipelineSnapshotsApiParams))
+	})
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call) Return(_a0 admin.GetAvailablePipelineSnapshotsApiRequest) *DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAvailablePipelineSnapshotsApiParams) admin.GetAvailablePipelineSnapshotsApiRequest) *DataLakePipelinesApi_GetAvailablePipelineSnapshotsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -990,330 +1314,6 @@ func (_c *DataLakePipelinesApi_ListPipelineRunsWithParams_Call) RunAndReturn(run
 	return _c
 }
 
-// ListPipelineSchedules provides a mock function with given fields: ctx, groupId, pipelineName
-func (_m *DataLakePipelinesApi) ListPipelineSchedules(ctx context.Context, groupId string, pipelineName string) admin.ListPipelineSchedulesApiRequest {
-	ret := _m.Called(ctx, groupId, pipelineName)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPipelineSchedules")
-	}
-
-	var r0 admin.ListPipelineSchedulesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListPipelineSchedulesApiRequest); ok {
-		r0 = rf(ctx, groupId, pipelineName)
-	} else {
-		r0 = ret.Get(0).(admin.ListPipelineSchedulesApiRequest)
-	}
-
-	return r0
-}
-
-// DataLakePipelinesApi_ListPipelineSchedules_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPipelineSchedules'
-type DataLakePipelinesApi_ListPipelineSchedules_Call struct {
-	*mock.Call
-}
-
-// ListPipelineSchedules is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedules(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_ListPipelineSchedules_Call {
-	return &DataLakePipelinesApi_ListPipelineSchedules_Call{Call: _e.mock.On("ListPipelineSchedules", ctx, groupId, pipelineName)}
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedules_Call) Run(run func(ctx context.Context, groupId string, pipelineName string)) *DataLakePipelinesApi_ListPipelineSchedules_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedules_Call) Return(_a0 admin.ListPipelineSchedulesApiRequest) *DataLakePipelinesApi_ListPipelineSchedules_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedules_Call) RunAndReturn(run func(context.Context, string, string) admin.ListPipelineSchedulesApiRequest) *DataLakePipelinesApi_ListPipelineSchedules_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPipelineSchedulesExecute provides a mock function with given fields: r
-func (_m *DataLakePipelinesApi) ListPipelineSchedulesExecute(r admin.ListPipelineSchedulesApiRequest) ([]admin.DiskBackupApiPolicyItem, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPipelineSchedulesExecute")
-	}
-
-	var r0 []admin.DiskBackupApiPolicyItem
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPipelineSchedulesApiRequest) ([]admin.DiskBackupApiPolicyItem, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListPipelineSchedulesApiRequest) []admin.DiskBackupApiPolicyItem); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]admin.DiskBackupApiPolicyItem)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListPipelineSchedulesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListPipelineSchedulesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// DataLakePipelinesApi_ListPipelineSchedulesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPipelineSchedulesExecute'
-type DataLakePipelinesApi_ListPipelineSchedulesExecute_Call struct {
-	*mock.Call
-}
-
-// ListPipelineSchedulesExecute is a helper method to define mock.On call
-//   - r admin.ListPipelineSchedulesApiRequest
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedulesExecute(r any) *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call {
-	return &DataLakePipelinesApi_ListPipelineSchedulesExecute_Call{Call: _e.mock.On("ListPipelineSchedulesExecute", r)}
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call) Run(run func(r admin.ListPipelineSchedulesApiRequest)) *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPipelineSchedulesApiRequest))
-	})
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call) Return(_a0 []admin.DiskBackupApiPolicyItem, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call) RunAndReturn(run func(admin.ListPipelineSchedulesApiRequest) ([]admin.DiskBackupApiPolicyItem, *http.Response, error)) *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPipelineSchedulesWithParams provides a mock function with given fields: ctx, args
-func (_m *DataLakePipelinesApi) ListPipelineSchedulesWithParams(ctx context.Context, args *admin.ListPipelineSchedulesApiParams) admin.ListPipelineSchedulesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPipelineSchedulesWithParams")
-	}
-
-	var r0 admin.ListPipelineSchedulesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPipelineSchedulesApiParams) admin.ListPipelineSchedulesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListPipelineSchedulesApiRequest)
-	}
-
-	return r0
-}
-
-// DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPipelineSchedulesWithParams'
-type DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call struct {
-	*mock.Call
-}
-
-// ListPipelineSchedulesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListPipelineSchedulesApiParams
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedulesWithParams(ctx any, args any) *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call {
-	return &DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call{Call: _e.mock.On("ListPipelineSchedulesWithParams", ctx, args)}
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPipelineSchedulesApiParams)) *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPipelineSchedulesApiParams))
-	})
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call) Return(_a0 admin.ListPipelineSchedulesApiRequest) *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPipelineSchedulesApiParams) admin.ListPipelineSchedulesApiRequest) *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPipelineSnapshots provides a mock function with given fields: ctx, groupId, pipelineName
-func (_m *DataLakePipelinesApi) ListPipelineSnapshots(ctx context.Context, groupId string, pipelineName string) admin.ListPipelineSnapshotsApiRequest {
-	ret := _m.Called(ctx, groupId, pipelineName)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPipelineSnapshots")
-	}
-
-	var r0 admin.ListPipelineSnapshotsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListPipelineSnapshotsApiRequest); ok {
-		r0 = rf(ctx, groupId, pipelineName)
-	} else {
-		r0 = ret.Get(0).(admin.ListPipelineSnapshotsApiRequest)
-	}
-
-	return r0
-}
-
-// DataLakePipelinesApi_ListPipelineSnapshots_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPipelineSnapshots'
-type DataLakePipelinesApi_ListPipelineSnapshots_Call struct {
-	*mock.Call
-}
-
-// ListPipelineSnapshots is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshots(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_ListPipelineSnapshots_Call {
-	return &DataLakePipelinesApi_ListPipelineSnapshots_Call{Call: _e.mock.On("ListPipelineSnapshots", ctx, groupId, pipelineName)}
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshots_Call) Run(run func(ctx context.Context, groupId string, pipelineName string)) *DataLakePipelinesApi_ListPipelineSnapshots_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshots_Call) Return(_a0 admin.ListPipelineSnapshotsApiRequest) *DataLakePipelinesApi_ListPipelineSnapshots_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshots_Call) RunAndReturn(run func(context.Context, string, string) admin.ListPipelineSnapshotsApiRequest) *DataLakePipelinesApi_ListPipelineSnapshots_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPipelineSnapshotsExecute provides a mock function with given fields: r
-func (_m *DataLakePipelinesApi) ListPipelineSnapshotsExecute(r admin.ListPipelineSnapshotsApiRequest) (*admin.PaginatedBackupSnapshot, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPipelineSnapshotsExecute")
-	}
-
-	var r0 *admin.PaginatedBackupSnapshot
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPipelineSnapshotsApiRequest) (*admin.PaginatedBackupSnapshot, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListPipelineSnapshotsApiRequest) *admin.PaginatedBackupSnapshot); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedBackupSnapshot)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListPipelineSnapshotsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListPipelineSnapshotsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPipelineSnapshotsExecute'
-type DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call struct {
-	*mock.Call
-}
-
-// ListPipelineSnapshotsExecute is a helper method to define mock.On call
-//   - r admin.ListPipelineSnapshotsApiRequest
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshotsExecute(r any) *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call {
-	return &DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call{Call: _e.mock.On("ListPipelineSnapshotsExecute", r)}
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call) Run(run func(r admin.ListPipelineSnapshotsApiRequest)) *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPipelineSnapshotsApiRequest))
-	})
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call) Return(_a0 *admin.PaginatedBackupSnapshot, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call) RunAndReturn(run func(admin.ListPipelineSnapshotsApiRequest) (*admin.PaginatedBackupSnapshot, *http.Response, error)) *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPipelineSnapshotsWithParams provides a mock function with given fields: ctx, args
-func (_m *DataLakePipelinesApi) ListPipelineSnapshotsWithParams(ctx context.Context, args *admin.ListPipelineSnapshotsApiParams) admin.ListPipelineSnapshotsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPipelineSnapshotsWithParams")
-	}
-
-	var r0 admin.ListPipelineSnapshotsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPipelineSnapshotsApiParams) admin.ListPipelineSnapshotsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListPipelineSnapshotsApiRequest)
-	}
-
-	return r0
-}
-
-// DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPipelineSnapshotsWithParams'
-type DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call struct {
-	*mock.Call
-}
-
-// ListPipelineSnapshotsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListPipelineSnapshotsApiParams
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshotsWithParams(ctx any, args any) *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call {
-	return &DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call{Call: _e.mock.On("ListPipelineSnapshotsWithParams", ctx, args)}
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPipelineSnapshotsApiParams)) *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPipelineSnapshotsApiParams))
-	})
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call) Return(_a0 admin.ListPipelineSnapshotsApiRequest) *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPipelineSnapshotsApiParams) admin.ListPipelineSnapshotsApiRequest) *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
 // ListPipelines provides a mock function with given fields: ctx, groupId
 func (_m *DataLakePipelinesApi) ListPipelines(ctx context.Context, groupId string) admin.ListPipelinesApiRequest {
 	ret := _m.Called(ctx, groupId)
@@ -1799,70 +1799,70 @@ func (_c *DataLakePipelinesApi_ResumePipelineWithParams_Call) RunAndReturn(run f
 	return _c
 }
 
-// TriggerSnapshotIngestion provides a mock function with given fields: ctx, groupId, pipelineName, triggerIngestionPipelineRequest
-func (_m *DataLakePipelinesApi) TriggerSnapshotIngestion(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *admin.TriggerIngestionPipelineRequest) admin.TriggerSnapshotIngestionApiRequest {
+// TriggerPipeline provides a mock function with given fields: ctx, groupId, pipelineName, triggerIngestionPipelineRequest
+func (_m *DataLakePipelinesApi) TriggerPipeline(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *admin.TriggerIngestionPipelineRequest) admin.TriggerPipelineApiRequest {
 	ret := _m.Called(ctx, groupId, pipelineName, triggerIngestionPipelineRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for TriggerSnapshotIngestion")
+		panic("no return value specified for TriggerPipeline")
 	}
 
-	var r0 admin.TriggerSnapshotIngestionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.TriggerIngestionPipelineRequest) admin.TriggerSnapshotIngestionApiRequest); ok {
+	var r0 admin.TriggerPipelineApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.TriggerIngestionPipelineRequest) admin.TriggerPipelineApiRequest); ok {
 		r0 = rf(ctx, groupId, pipelineName, triggerIngestionPipelineRequest)
 	} else {
-		r0 = ret.Get(0).(admin.TriggerSnapshotIngestionApiRequest)
+		r0 = ret.Get(0).(admin.TriggerPipelineApiRequest)
 	}
 
 	return r0
 }
 
-// DataLakePipelinesApi_TriggerSnapshotIngestion_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TriggerSnapshotIngestion'
-type DataLakePipelinesApi_TriggerSnapshotIngestion_Call struct {
+// DataLakePipelinesApi_TriggerPipeline_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TriggerPipeline'
+type DataLakePipelinesApi_TriggerPipeline_Call struct {
 	*mock.Call
 }
 
-// TriggerSnapshotIngestion is a helper method to define mock.On call
+// TriggerPipeline is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
 //   - triggerIngestionPipelineRequest *admin.TriggerIngestionPipelineRequest
-func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestion(ctx any, groupId any, pipelineName any, triggerIngestionPipelineRequest any) *DataLakePipelinesApi_TriggerSnapshotIngestion_Call {
-	return &DataLakePipelinesApi_TriggerSnapshotIngestion_Call{Call: _e.mock.On("TriggerSnapshotIngestion", ctx, groupId, pipelineName, triggerIngestionPipelineRequest)}
+func (_e *DataLakePipelinesApi_Expecter) TriggerPipeline(ctx any, groupId any, pipelineName any, triggerIngestionPipelineRequest any) *DataLakePipelinesApi_TriggerPipeline_Call {
+	return &DataLakePipelinesApi_TriggerPipeline_Call{Call: _e.mock.On("TriggerPipeline", ctx, groupId, pipelineName, triggerIngestionPipelineRequest)}
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestion_Call) Run(run func(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *admin.TriggerIngestionPipelineRequest)) *DataLakePipelinesApi_TriggerSnapshotIngestion_Call {
+func (_c *DataLakePipelinesApi_TriggerPipeline_Call) Run(run func(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *admin.TriggerIngestionPipelineRequest)) *DataLakePipelinesApi_TriggerPipeline_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.TriggerIngestionPipelineRequest))
 	})
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestion_Call) Return(_a0 admin.TriggerSnapshotIngestionApiRequest) *DataLakePipelinesApi_TriggerSnapshotIngestion_Call {
+func (_c *DataLakePipelinesApi_TriggerPipeline_Call) Return(_a0 admin.TriggerPipelineApiRequest) *DataLakePipelinesApi_TriggerPipeline_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestion_Call) RunAndReturn(run func(context.Context, string, string, *admin.TriggerIngestionPipelineRequest) admin.TriggerSnapshotIngestionApiRequest) *DataLakePipelinesApi_TriggerSnapshotIngestion_Call {
+func (_c *DataLakePipelinesApi_TriggerPipeline_Call) RunAndReturn(run func(context.Context, string, string, *admin.TriggerIngestionPipelineRequest) admin.TriggerPipelineApiRequest) *DataLakePipelinesApi_TriggerPipeline_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// TriggerSnapshotIngestionExecute provides a mock function with given fields: r
-func (_m *DataLakePipelinesApi) TriggerSnapshotIngestionExecute(r admin.TriggerSnapshotIngestionApiRequest) (*admin.IngestionPipelineRun, *http.Response, error) {
+// TriggerPipelineExecute provides a mock function with given fields: r
+func (_m *DataLakePipelinesApi) TriggerPipelineExecute(r admin.TriggerPipelineApiRequest) (*admin.IngestionPipelineRun, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for TriggerSnapshotIngestionExecute")
+		panic("no return value specified for TriggerPipelineExecute")
 	}
 
 	var r0 *admin.IngestionPipelineRun
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.TriggerSnapshotIngestionApiRequest) (*admin.IngestionPipelineRun, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.TriggerPipelineApiRequest) (*admin.IngestionPipelineRun, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.TriggerSnapshotIngestionApiRequest) *admin.IngestionPipelineRun); ok {
+	if rf, ok := ret.Get(0).(func(admin.TriggerPipelineApiRequest) *admin.IngestionPipelineRun); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1870,7 +1870,7 @@ func (_m *DataLakePipelinesApi) TriggerSnapshotIngestionExecute(r admin.TriggerS
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.TriggerSnapshotIngestionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.TriggerPipelineApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1878,7 +1878,7 @@ func (_m *DataLakePipelinesApi) TriggerSnapshotIngestionExecute(r admin.TriggerS
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.TriggerSnapshotIngestionApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.TriggerPipelineApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1887,77 +1887,77 @@ func (_m *DataLakePipelinesApi) TriggerSnapshotIngestionExecute(r admin.TriggerS
 	return r0, r1, r2
 }
 
-// DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TriggerSnapshotIngestionExecute'
-type DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call struct {
+// DataLakePipelinesApi_TriggerPipelineExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TriggerPipelineExecute'
+type DataLakePipelinesApi_TriggerPipelineExecute_Call struct {
 	*mock.Call
 }
 
-// TriggerSnapshotIngestionExecute is a helper method to define mock.On call
-//   - r admin.TriggerSnapshotIngestionApiRequest
-func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestionExecute(r any) *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call {
-	return &DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call{Call: _e.mock.On("TriggerSnapshotIngestionExecute", r)}
+// TriggerPipelineExecute is a helper method to define mock.On call
+//   - r admin.TriggerPipelineApiRequest
+func (_e *DataLakePipelinesApi_Expecter) TriggerPipelineExecute(r any) *DataLakePipelinesApi_TriggerPipelineExecute_Call {
+	return &DataLakePipelinesApi_TriggerPipelineExecute_Call{Call: _e.mock.On("TriggerPipelineExecute", r)}
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call) Run(run func(r admin.TriggerSnapshotIngestionApiRequest)) *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call {
+func (_c *DataLakePipelinesApi_TriggerPipelineExecute_Call) Run(run func(r admin.TriggerPipelineApiRequest)) *DataLakePipelinesApi_TriggerPipelineExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.TriggerSnapshotIngestionApiRequest))
+		run(args[0].(admin.TriggerPipelineApiRequest))
 	})
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call) Return(_a0 *admin.IngestionPipelineRun, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call {
+func (_c *DataLakePipelinesApi_TriggerPipelineExecute_Call) Return(_a0 *admin.IngestionPipelineRun, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_TriggerPipelineExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call) RunAndReturn(run func(admin.TriggerSnapshotIngestionApiRequest) (*admin.IngestionPipelineRun, *http.Response, error)) *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call {
+func (_c *DataLakePipelinesApi_TriggerPipelineExecute_Call) RunAndReturn(run func(admin.TriggerPipelineApiRequest) (*admin.IngestionPipelineRun, *http.Response, error)) *DataLakePipelinesApi_TriggerPipelineExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// TriggerSnapshotIngestionWithParams provides a mock function with given fields: ctx, args
-func (_m *DataLakePipelinesApi) TriggerSnapshotIngestionWithParams(ctx context.Context, args *admin.TriggerSnapshotIngestionApiParams) admin.TriggerSnapshotIngestionApiRequest {
+// TriggerPipelineWithParams provides a mock function with given fields: ctx, args
+func (_m *DataLakePipelinesApi) TriggerPipelineWithParams(ctx context.Context, args *admin.TriggerPipelineApiParams) admin.TriggerPipelineApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for TriggerSnapshotIngestionWithParams")
+		panic("no return value specified for TriggerPipelineWithParams")
 	}
 
-	var r0 admin.TriggerSnapshotIngestionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.TriggerSnapshotIngestionApiParams) admin.TriggerSnapshotIngestionApiRequest); ok {
+	var r0 admin.TriggerPipelineApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.TriggerPipelineApiParams) admin.TriggerPipelineApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.TriggerSnapshotIngestionApiRequest)
+		r0 = ret.Get(0).(admin.TriggerPipelineApiRequest)
 	}
 
 	return r0
 }
 
-// DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TriggerSnapshotIngestionWithParams'
-type DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call struct {
+// DataLakePipelinesApi_TriggerPipelineWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TriggerPipelineWithParams'
+type DataLakePipelinesApi_TriggerPipelineWithParams_Call struct {
 	*mock.Call
 }
 
-// TriggerSnapshotIngestionWithParams is a helper method to define mock.On call
+// TriggerPipelineWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.TriggerSnapshotIngestionApiParams
-func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestionWithParams(ctx any, args any) *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call {
-	return &DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call{Call: _e.mock.On("TriggerSnapshotIngestionWithParams", ctx, args)}
+//   - args *admin.TriggerPipelineApiParams
+func (_e *DataLakePipelinesApi_Expecter) TriggerPipelineWithParams(ctx any, args any) *DataLakePipelinesApi_TriggerPipelineWithParams_Call {
+	return &DataLakePipelinesApi_TriggerPipelineWithParams_Call{Call: _e.mock.On("TriggerPipelineWithParams", ctx, args)}
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call) Run(run func(ctx context.Context, args *admin.TriggerSnapshotIngestionApiParams)) *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call {
+func (_c *DataLakePipelinesApi_TriggerPipelineWithParams_Call) Run(run func(ctx context.Context, args *admin.TriggerPipelineApiParams)) *DataLakePipelinesApi_TriggerPipelineWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.TriggerSnapshotIngestionApiParams))
+		run(args[0].(context.Context), args[1].(*admin.TriggerPipelineApiParams))
 	})
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call) Return(_a0 admin.TriggerSnapshotIngestionApiRequest) *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call {
+func (_c *DataLakePipelinesApi_TriggerPipelineWithParams_Call) Return(_a0 admin.TriggerPipelineApiRequest) *DataLakePipelinesApi_TriggerPipelineWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call) RunAndReturn(run func(context.Context, *admin.TriggerSnapshotIngestionApiParams) admin.TriggerSnapshotIngestionApiRequest) *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call {
+func (_c *DataLakePipelinesApi_TriggerPipelineWithParams_Call) RunAndReturn(run func(context.Context, *admin.TriggerPipelineApiParams) admin.TriggerPipelineApiRequest) *DataLakePipelinesApi_TriggerPipelineWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

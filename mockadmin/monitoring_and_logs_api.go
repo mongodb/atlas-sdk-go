@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -27,77 +27,78 @@ func (_m *MonitoringAndLogsApi) EXPECT() *MonitoringAndLogsApi_Expecter {
 	return &MonitoringAndLogsApi_Expecter{mock: &_m.Mock}
 }
 
-// GetAtlasProcess provides a mock function with given fields: ctx, groupId, processId
-func (_m *MonitoringAndLogsApi) GetAtlasProcess(ctx context.Context, groupId string, processId string) admin.GetAtlasProcessApiRequest {
-	ret := _m.Called(ctx, groupId, processId)
+// DownloadClusterLog provides a mock function with given fields: ctx, groupId, hostName, logName
+func (_m *MonitoringAndLogsApi) DownloadClusterLog(ctx context.Context, groupId string, hostName string, logName string) admin.DownloadClusterLogApiRequest {
+	ret := _m.Called(ctx, groupId, hostName, logName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasProcess")
+		panic("no return value specified for DownloadClusterLog")
 	}
 
-	var r0 admin.GetAtlasProcessApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetAtlasProcessApiRequest); ok {
-		r0 = rf(ctx, groupId, processId)
+	var r0 admin.DownloadClusterLogApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DownloadClusterLogApiRequest); ok {
+		r0 = rf(ctx, groupId, hostName, logName)
 	} else {
-		r0 = ret.Get(0).(admin.GetAtlasProcessApiRequest)
+		r0 = ret.Get(0).(admin.DownloadClusterLogApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_GetAtlasProcess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasProcess'
-type MonitoringAndLogsApi_GetAtlasProcess_Call struct {
+// MonitoringAndLogsApi_DownloadClusterLog_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadClusterLog'
+type MonitoringAndLogsApi_DownloadClusterLog_Call struct {
 	*mock.Call
 }
 
-// GetAtlasProcess is a helper method to define mock.On call
+// DownloadClusterLog is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcess(ctx any, groupId any, processId any) *MonitoringAndLogsApi_GetAtlasProcess_Call {
-	return &MonitoringAndLogsApi_GetAtlasProcess_Call{Call: _e.mock.On("GetAtlasProcess", ctx, groupId, processId)}
+//   - hostName string
+//   - logName string
+func (_e *MonitoringAndLogsApi_Expecter) DownloadClusterLog(ctx any, groupId any, hostName any, logName any) *MonitoringAndLogsApi_DownloadClusterLog_Call {
+	return &MonitoringAndLogsApi_DownloadClusterLog_Call{Call: _e.mock.On("DownloadClusterLog", ctx, groupId, hostName, logName)}
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcess_Call) Run(run func(ctx context.Context, groupId string, processId string)) *MonitoringAndLogsApi_GetAtlasProcess_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLog_Call) Run(run func(ctx context.Context, groupId string, hostName string, logName string)) *MonitoringAndLogsApi_DownloadClusterLog_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcess_Call) Return(_a0 admin.GetAtlasProcessApiRequest) *MonitoringAndLogsApi_GetAtlasProcess_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLog_Call) Return(_a0 admin.DownloadClusterLogApiRequest) *MonitoringAndLogsApi_DownloadClusterLog_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcess_Call) RunAndReturn(run func(context.Context, string, string) admin.GetAtlasProcessApiRequest) *MonitoringAndLogsApi_GetAtlasProcess_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLog_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DownloadClusterLogApiRequest) *MonitoringAndLogsApi_DownloadClusterLog_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAtlasProcessExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) GetAtlasProcessExecute(r admin.GetAtlasProcessApiRequest) (*admin.ApiHostViewAtlas, *http.Response, error) {
+// DownloadClusterLogExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) DownloadClusterLogExecute(r admin.DownloadClusterLogApiRequest) (io.ReadCloser, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasProcessExecute")
+		panic("no return value specified for DownloadClusterLogExecute")
 	}
 
-	var r0 *admin.ApiHostViewAtlas
+	var r0 io.ReadCloser
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetAtlasProcessApiRequest) (*admin.ApiHostViewAtlas, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DownloadClusterLogApiRequest) (io.ReadCloser, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetAtlasProcessApiRequest) *admin.ApiHostViewAtlas); ok {
+	if rf, ok := ret.Get(0).(func(admin.DownloadClusterLogApiRequest) io.ReadCloser); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiHostViewAtlas)
+			r0 = ret.Get(0).(io.ReadCloser)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetAtlasProcessApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DownloadClusterLogApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -105,7 +106,7 @@ func (_m *MonitoringAndLogsApi) GetAtlasProcessExecute(r admin.GetAtlasProcessAp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetAtlasProcessApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DownloadClusterLogApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -114,77 +115,77 @@ func (_m *MonitoringAndLogsApi) GetAtlasProcessExecute(r admin.GetAtlasProcessAp
 	return r0, r1, r2
 }
 
-// MonitoringAndLogsApi_GetAtlasProcessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasProcessExecute'
-type MonitoringAndLogsApi_GetAtlasProcessExecute_Call struct {
+// MonitoringAndLogsApi_DownloadClusterLogExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadClusterLogExecute'
+type MonitoringAndLogsApi_DownloadClusterLogExecute_Call struct {
 	*mock.Call
 }
 
-// GetAtlasProcessExecute is a helper method to define mock.On call
-//   - r admin.GetAtlasProcessApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcessExecute(r any) *MonitoringAndLogsApi_GetAtlasProcessExecute_Call {
-	return &MonitoringAndLogsApi_GetAtlasProcessExecute_Call{Call: _e.mock.On("GetAtlasProcessExecute", r)}
+// DownloadClusterLogExecute is a helper method to define mock.On call
+//   - r admin.DownloadClusterLogApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) DownloadClusterLogExecute(r any) *MonitoringAndLogsApi_DownloadClusterLogExecute_Call {
+	return &MonitoringAndLogsApi_DownloadClusterLogExecute_Call{Call: _e.mock.On("DownloadClusterLogExecute", r)}
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcessExecute_Call) Run(run func(r admin.GetAtlasProcessApiRequest)) *MonitoringAndLogsApi_GetAtlasProcessExecute_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLogExecute_Call) Run(run func(r admin.DownloadClusterLogApiRequest)) *MonitoringAndLogsApi_DownloadClusterLogExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetAtlasProcessApiRequest))
+		run(args[0].(admin.DownloadClusterLogApiRequest))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcessExecute_Call) Return(_a0 *admin.ApiHostViewAtlas, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetAtlasProcessExecute_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLogExecute_Call) Return(_a0 io.ReadCloser, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_DownloadClusterLogExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcessExecute_Call) RunAndReturn(run func(admin.GetAtlasProcessApiRequest) (*admin.ApiHostViewAtlas, *http.Response, error)) *MonitoringAndLogsApi_GetAtlasProcessExecute_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLogExecute_Call) RunAndReturn(run func(admin.DownloadClusterLogApiRequest) (io.ReadCloser, *http.Response, error)) *MonitoringAndLogsApi_DownloadClusterLogExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAtlasProcessWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) GetAtlasProcessWithParams(ctx context.Context, args *admin.GetAtlasProcessApiParams) admin.GetAtlasProcessApiRequest {
+// DownloadClusterLogWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) DownloadClusterLogWithParams(ctx context.Context, args *admin.DownloadClusterLogApiParams) admin.DownloadClusterLogApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasProcessWithParams")
+		panic("no return value specified for DownloadClusterLogWithParams")
 	}
 
-	var r0 admin.GetAtlasProcessApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAtlasProcessApiParams) admin.GetAtlasProcessApiRequest); ok {
+	var r0 admin.DownloadClusterLogApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadClusterLogApiParams) admin.DownloadClusterLogApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetAtlasProcessApiRequest)
+		r0 = ret.Get(0).(admin.DownloadClusterLogApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_GetAtlasProcessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasProcessWithParams'
-type MonitoringAndLogsApi_GetAtlasProcessWithParams_Call struct {
+// MonitoringAndLogsApi_DownloadClusterLogWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadClusterLogWithParams'
+type MonitoringAndLogsApi_DownloadClusterLogWithParams_Call struct {
 	*mock.Call
 }
 
-// GetAtlasProcessWithParams is a helper method to define mock.On call
+// DownloadClusterLogWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetAtlasProcessApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcessWithParams(ctx any, args any) *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call {
-	return &MonitoringAndLogsApi_GetAtlasProcessWithParams_Call{Call: _e.mock.On("GetAtlasProcessWithParams", ctx, args)}
+//   - args *admin.DownloadClusterLogApiParams
+func (_e *MonitoringAndLogsApi_Expecter) DownloadClusterLogWithParams(ctx any, args any) *MonitoringAndLogsApi_DownloadClusterLogWithParams_Call {
+	return &MonitoringAndLogsApi_DownloadClusterLogWithParams_Call{Call: _e.mock.On("DownloadClusterLogWithParams", ctx, args)}
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAtlasProcessApiParams)) *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLogWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadClusterLogApiParams)) *MonitoringAndLogsApi_DownloadClusterLogWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetAtlasProcessApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DownloadClusterLogApiParams))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call) Return(_a0 admin.GetAtlasProcessApiRequest) *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLogWithParams_Call) Return(_a0 admin.DownloadClusterLogApiRequest) *MonitoringAndLogsApi_DownloadClusterLogWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAtlasProcessApiParams) admin.GetAtlasProcessApiRequest) *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call {
+func (_c *MonitoringAndLogsApi_DownloadClusterLogWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadClusterLogApiParams) admin.DownloadClusterLogApiRequest) *MonitoringAndLogsApi_DownloadClusterLogWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -515,403 +516,77 @@ func (_c *MonitoringAndLogsApi_GetDatabaseWithParams_Call) RunAndReturn(run func
 	return _c
 }
 
-// GetDiskMeasurements provides a mock function with given fields: ctx, groupId, partitionName, processId
-func (_m *MonitoringAndLogsApi) GetDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) admin.GetDiskMeasurementsApiRequest {
-	ret := _m.Called(ctx, groupId, partitionName, processId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetDiskMeasurements")
-	}
-
-	var r0 admin.GetDiskMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetDiskMeasurementsApiRequest); ok {
-		r0 = rf(ctx, groupId, partitionName, processId)
-	} else {
-		r0 = ret.Get(0).(admin.GetDiskMeasurementsApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_GetDiskMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetDiskMeasurements'
-type MonitoringAndLogsApi_GetDiskMeasurements_Call struct {
-	*mock.Call
-}
-
-// GetDiskMeasurements is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - partitionName string
-//   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurements(ctx any, groupId any, partitionName any, processId any) *MonitoringAndLogsApi_GetDiskMeasurements_Call {
-	return &MonitoringAndLogsApi_GetDiskMeasurements_Call{Call: _e.mock.On("GetDiskMeasurements", ctx, groupId, partitionName, processId)}
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurements_Call) Run(run func(ctx context.Context, groupId string, partitionName string, processId string)) *MonitoringAndLogsApi_GetDiskMeasurements_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurements_Call) Return(_a0 admin.GetDiskMeasurementsApiRequest) *MonitoringAndLogsApi_GetDiskMeasurements_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetDiskMeasurementsApiRequest) *MonitoringAndLogsApi_GetDiskMeasurements_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetDiskMeasurementsExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) GetDiskMeasurementsExecute(r admin.GetDiskMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetDiskMeasurementsExecute")
-	}
-
-	var r0 *admin.ApiMeasurementsGeneralViewAtlas
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetDiskMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetDiskMeasurementsApiRequest) *admin.ApiMeasurementsGeneralViewAtlas); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiMeasurementsGeneralViewAtlas)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetDiskMeasurementsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetDiskMeasurementsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetDiskMeasurementsExecute'
-type MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call struct {
-	*mock.Call
-}
-
-// GetDiskMeasurementsExecute is a helper method to define mock.On call
-//   - r admin.GetDiskMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurementsExecute(r any) *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call {
-	return &MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call{Call: _e.mock.On("GetDiskMeasurementsExecute", r)}
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call) Run(run func(r admin.GetDiskMeasurementsApiRequest)) *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetDiskMeasurementsApiRequest))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call) Return(_a0 *admin.ApiMeasurementsGeneralViewAtlas, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call) RunAndReturn(run func(admin.GetDiskMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error)) *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetDiskMeasurementsWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) GetDiskMeasurementsWithParams(ctx context.Context, args *admin.GetDiskMeasurementsApiParams) admin.GetDiskMeasurementsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetDiskMeasurementsWithParams")
-	}
-
-	var r0 admin.GetDiskMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetDiskMeasurementsApiParams) admin.GetDiskMeasurementsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetDiskMeasurementsApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetDiskMeasurementsWithParams'
-type MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call struct {
-	*mock.Call
-}
-
-// GetDiskMeasurementsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetDiskMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call {
-	return &MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call{Call: _e.mock.On("GetDiskMeasurementsWithParams", ctx, args)}
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetDiskMeasurementsApiParams)) *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetDiskMeasurementsApiParams))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call) Return(_a0 admin.GetDiskMeasurementsApiRequest) *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetDiskMeasurementsApiParams) admin.GetDiskMeasurementsApiRequest) *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetHostLogs provides a mock function with given fields: ctx, groupId, hostName, logName
-func (_m *MonitoringAndLogsApi) GetHostLogs(ctx context.Context, groupId string, hostName string, logName string) admin.GetHostLogsApiRequest {
-	ret := _m.Called(ctx, groupId, hostName, logName)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetHostLogs")
-	}
-
-	var r0 admin.GetHostLogsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetHostLogsApiRequest); ok {
-		r0 = rf(ctx, groupId, hostName, logName)
-	} else {
-		r0 = ret.Get(0).(admin.GetHostLogsApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_GetHostLogs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetHostLogs'
-type MonitoringAndLogsApi_GetHostLogs_Call struct {
-	*mock.Call
-}
-
-// GetHostLogs is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - hostName string
-//   - logName string
-func (_e *MonitoringAndLogsApi_Expecter) GetHostLogs(ctx any, groupId any, hostName any, logName any) *MonitoringAndLogsApi_GetHostLogs_Call {
-	return &MonitoringAndLogsApi_GetHostLogs_Call{Call: _e.mock.On("GetHostLogs", ctx, groupId, hostName, logName)}
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogs_Call) Run(run func(ctx context.Context, groupId string, hostName string, logName string)) *MonitoringAndLogsApi_GetHostLogs_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogs_Call) Return(_a0 admin.GetHostLogsApiRequest) *MonitoringAndLogsApi_GetHostLogs_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogs_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetHostLogsApiRequest) *MonitoringAndLogsApi_GetHostLogs_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetHostLogsExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) GetHostLogsExecute(r admin.GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetHostLogsExecute")
-	}
-
-	var r0 io.ReadCloser
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetHostLogsApiRequest) io.ReadCloser); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(io.ReadCloser)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetHostLogsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetHostLogsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// MonitoringAndLogsApi_GetHostLogsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetHostLogsExecute'
-type MonitoringAndLogsApi_GetHostLogsExecute_Call struct {
-	*mock.Call
-}
-
-// GetHostLogsExecute is a helper method to define mock.On call
-//   - r admin.GetHostLogsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetHostLogsExecute(r any) *MonitoringAndLogsApi_GetHostLogsExecute_Call {
-	return &MonitoringAndLogsApi_GetHostLogsExecute_Call{Call: _e.mock.On("GetHostLogsExecute", r)}
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogsExecute_Call) Run(run func(r admin.GetHostLogsApiRequest)) *MonitoringAndLogsApi_GetHostLogsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetHostLogsApiRequest))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogsExecute_Call) Return(_a0 io.ReadCloser, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetHostLogsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogsExecute_Call) RunAndReturn(run func(admin.GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error)) *MonitoringAndLogsApi_GetHostLogsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetHostLogsWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) GetHostLogsWithParams(ctx context.Context, args *admin.GetHostLogsApiParams) admin.GetHostLogsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetHostLogsWithParams")
-	}
-
-	var r0 admin.GetHostLogsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetHostLogsApiParams) admin.GetHostLogsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetHostLogsApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_GetHostLogsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetHostLogsWithParams'
-type MonitoringAndLogsApi_GetHostLogsWithParams_Call struct {
-	*mock.Call
-}
-
-// GetHostLogsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetHostLogsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetHostLogsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetHostLogsWithParams_Call {
-	return &MonitoringAndLogsApi_GetHostLogsWithParams_Call{Call: _e.mock.On("GetHostLogsWithParams", ctx, args)}
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetHostLogsApiParams)) *MonitoringAndLogsApi_GetHostLogsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetHostLogsApiParams))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogsWithParams_Call) Return(_a0 admin.GetHostLogsApiRequest) *MonitoringAndLogsApi_GetHostLogsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_GetHostLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetHostLogsApiParams) admin.GetHostLogsApiRequest) *MonitoringAndLogsApi_GetHostLogsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetHostMeasurements provides a mock function with given fields: ctx, groupId, processId
-func (_m *MonitoringAndLogsApi) GetHostMeasurements(ctx context.Context, groupId string, processId string) admin.GetHostMeasurementsApiRequest {
+// GetGroupProcess provides a mock function with given fields: ctx, groupId, processId
+func (_m *MonitoringAndLogsApi) GetGroupProcess(ctx context.Context, groupId string, processId string) admin.GetGroupProcessApiRequest {
 	ret := _m.Called(ctx, groupId, processId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetHostMeasurements")
+		panic("no return value specified for GetGroupProcess")
 	}
 
-	var r0 admin.GetHostMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetHostMeasurementsApiRequest); ok {
+	var r0 admin.GetGroupProcessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupProcessApiRequest); ok {
 		r0 = rf(ctx, groupId, processId)
 	} else {
-		r0 = ret.Get(0).(admin.GetHostMeasurementsApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupProcessApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_GetHostMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetHostMeasurements'
-type MonitoringAndLogsApi_GetHostMeasurements_Call struct {
+// MonitoringAndLogsApi_GetGroupProcess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupProcess'
+type MonitoringAndLogsApi_GetGroupProcess_Call struct {
 	*mock.Call
 }
 
-// GetHostMeasurements is a helper method to define mock.On call
+// GetGroupProcess is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurements(ctx any, groupId any, processId any) *MonitoringAndLogsApi_GetHostMeasurements_Call {
-	return &MonitoringAndLogsApi_GetHostMeasurements_Call{Call: _e.mock.On("GetHostMeasurements", ctx, groupId, processId)}
+func (_e *MonitoringAndLogsApi_Expecter) GetGroupProcess(ctx any, groupId any, processId any) *MonitoringAndLogsApi_GetGroupProcess_Call {
+	return &MonitoringAndLogsApi_GetGroupProcess_Call{Call: _e.mock.On("GetGroupProcess", ctx, groupId, processId)}
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurements_Call) Run(run func(ctx context.Context, groupId string, processId string)) *MonitoringAndLogsApi_GetHostMeasurements_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcess_Call) Run(run func(ctx context.Context, groupId string, processId string)) *MonitoringAndLogsApi_GetGroupProcess_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurements_Call) Return(_a0 admin.GetHostMeasurementsApiRequest) *MonitoringAndLogsApi_GetHostMeasurements_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcess_Call) Return(_a0 admin.GetGroupProcessApiRequest) *MonitoringAndLogsApi_GetGroupProcess_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurements_Call) RunAndReturn(run func(context.Context, string, string) admin.GetHostMeasurementsApiRequest) *MonitoringAndLogsApi_GetHostMeasurements_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcess_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupProcessApiRequest) *MonitoringAndLogsApi_GetGroupProcess_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetHostMeasurementsExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) GetHostMeasurementsExecute(r admin.GetHostMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+// GetGroupProcessExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) GetGroupProcessExecute(r admin.GetGroupProcessApiRequest) (*admin.ApiHostViewAtlas, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetHostMeasurementsExecute")
+		panic("no return value specified for GetGroupProcessExecute")
 	}
 
-	var r0 *admin.ApiMeasurementsGeneralViewAtlas
+	var r0 *admin.ApiHostViewAtlas
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetHostMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupProcessApiRequest) (*admin.ApiHostViewAtlas, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetHostMeasurementsApiRequest) *admin.ApiMeasurementsGeneralViewAtlas); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupProcessApiRequest) *admin.ApiHostViewAtlas); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiMeasurementsGeneralViewAtlas)
+			r0 = ret.Get(0).(*admin.ApiHostViewAtlas)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetHostMeasurementsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupProcessApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -919,7 +594,7 @@ func (_m *MonitoringAndLogsApi) GetHostMeasurementsExecute(r admin.GetHostMeasur
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetHostMeasurementsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupProcessApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -928,147 +603,147 @@ func (_m *MonitoringAndLogsApi) GetHostMeasurementsExecute(r admin.GetHostMeasur
 	return r0, r1, r2
 }
 
-// MonitoringAndLogsApi_GetHostMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetHostMeasurementsExecute'
-type MonitoringAndLogsApi_GetHostMeasurementsExecute_Call struct {
+// MonitoringAndLogsApi_GetGroupProcessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupProcessExecute'
+type MonitoringAndLogsApi_GetGroupProcessExecute_Call struct {
 	*mock.Call
 }
 
-// GetHostMeasurementsExecute is a helper method to define mock.On call
-//   - r admin.GetHostMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurementsExecute(r any) *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call {
-	return &MonitoringAndLogsApi_GetHostMeasurementsExecute_Call{Call: _e.mock.On("GetHostMeasurementsExecute", r)}
+// GetGroupProcessExecute is a helper method to define mock.On call
+//   - r admin.GetGroupProcessApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) GetGroupProcessExecute(r any) *MonitoringAndLogsApi_GetGroupProcessExecute_Call {
+	return &MonitoringAndLogsApi_GetGroupProcessExecute_Call{Call: _e.mock.On("GetGroupProcessExecute", r)}
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call) Run(run func(r admin.GetHostMeasurementsApiRequest)) *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcessExecute_Call) Run(run func(r admin.GetGroupProcessApiRequest)) *MonitoringAndLogsApi_GetGroupProcessExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetHostMeasurementsApiRequest))
+		run(args[0].(admin.GetGroupProcessApiRequest))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call) Return(_a0 *admin.ApiMeasurementsGeneralViewAtlas, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcessExecute_Call) Return(_a0 *admin.ApiHostViewAtlas, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetGroupProcessExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call) RunAndReturn(run func(admin.GetHostMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error)) *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcessExecute_Call) RunAndReturn(run func(admin.GetGroupProcessApiRequest) (*admin.ApiHostViewAtlas, *http.Response, error)) *MonitoringAndLogsApi_GetGroupProcessExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetHostMeasurementsWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) GetHostMeasurementsWithParams(ctx context.Context, args *admin.GetHostMeasurementsApiParams) admin.GetHostMeasurementsApiRequest {
+// GetGroupProcessWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) GetGroupProcessWithParams(ctx context.Context, args *admin.GetGroupProcessApiParams) admin.GetGroupProcessApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetHostMeasurementsWithParams")
+		panic("no return value specified for GetGroupProcessWithParams")
 	}
 
-	var r0 admin.GetHostMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetHostMeasurementsApiParams) admin.GetHostMeasurementsApiRequest); ok {
+	var r0 admin.GetGroupProcessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupProcessApiParams) admin.GetGroupProcessApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetHostMeasurementsApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupProcessApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetHostMeasurementsWithParams'
-type MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call struct {
+// MonitoringAndLogsApi_GetGroupProcessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupProcessWithParams'
+type MonitoringAndLogsApi_GetGroupProcessWithParams_Call struct {
 	*mock.Call
 }
 
-// GetHostMeasurementsWithParams is a helper method to define mock.On call
+// GetGroupProcessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetHostMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call {
-	return &MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call{Call: _e.mock.On("GetHostMeasurementsWithParams", ctx, args)}
+//   - args *admin.GetGroupProcessApiParams
+func (_e *MonitoringAndLogsApi_Expecter) GetGroupProcessWithParams(ctx any, args any) *MonitoringAndLogsApi_GetGroupProcessWithParams_Call {
+	return &MonitoringAndLogsApi_GetGroupProcessWithParams_Call{Call: _e.mock.On("GetGroupProcessWithParams", ctx, args)}
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetHostMeasurementsApiParams)) *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcessWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupProcessApiParams)) *MonitoringAndLogsApi_GetGroupProcessWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetHostMeasurementsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupProcessApiParams))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call) Return(_a0 admin.GetHostMeasurementsApiRequest) *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcessWithParams_Call) Return(_a0 admin.GetGroupProcessApiRequest) *MonitoringAndLogsApi_GetGroupProcessWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetHostMeasurementsApiParams) admin.GetHostMeasurementsApiRequest) *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetGroupProcessWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupProcessApiParams) admin.GetGroupProcessApiRequest) *MonitoringAndLogsApi_GetGroupProcessWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetIndexMetrics provides a mock function with given fields: ctx, processId, indexName, databaseName, collectionName, groupId
-func (_m *MonitoringAndLogsApi) GetIndexMetrics(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) admin.GetIndexMetricsApiRequest {
+// GetIndexMeasurements provides a mock function with given fields: ctx, processId, indexName, databaseName, collectionName, groupId
+func (_m *MonitoringAndLogsApi) GetIndexMeasurements(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) admin.GetIndexMeasurementsApiRequest {
 	ret := _m.Called(ctx, processId, indexName, databaseName, collectionName, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetIndexMetrics")
+		panic("no return value specified for GetIndexMeasurements")
 	}
 
-	var r0 admin.GetIndexMetricsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string, string) admin.GetIndexMetricsApiRequest); ok {
+	var r0 admin.GetIndexMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string, string) admin.GetIndexMeasurementsApiRequest); ok {
 		r0 = rf(ctx, processId, indexName, databaseName, collectionName, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetIndexMetricsApiRequest)
+		r0 = ret.Get(0).(admin.GetIndexMeasurementsApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_GetIndexMetrics_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetIndexMetrics'
-type MonitoringAndLogsApi_GetIndexMetrics_Call struct {
+// MonitoringAndLogsApi_GetIndexMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetIndexMeasurements'
+type MonitoringAndLogsApi_GetIndexMeasurements_Call struct {
 	*mock.Call
 }
 
-// GetIndexMetrics is a helper method to define mock.On call
+// GetIndexMeasurements is a helper method to define mock.On call
 //   - ctx context.Context
 //   - processId string
 //   - indexName string
 //   - databaseName string
 //   - collectionName string
 //   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetrics(ctx any, processId any, indexName any, databaseName any, collectionName any, groupId any) *MonitoringAndLogsApi_GetIndexMetrics_Call {
-	return &MonitoringAndLogsApi_GetIndexMetrics_Call{Call: _e.mock.On("GetIndexMetrics", ctx, processId, indexName, databaseName, collectionName, groupId)}
+func (_e *MonitoringAndLogsApi_Expecter) GetIndexMeasurements(ctx any, processId any, indexName any, databaseName any, collectionName any, groupId any) *MonitoringAndLogsApi_GetIndexMeasurements_Call {
+	return &MonitoringAndLogsApi_GetIndexMeasurements_Call{Call: _e.mock.On("GetIndexMeasurements", ctx, processId, indexName, databaseName, collectionName, groupId)}
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetrics_Call) Run(run func(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string)) *MonitoringAndLogsApi_GetIndexMetrics_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurements_Call) Run(run func(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string)) *MonitoringAndLogsApi_GetIndexMeasurements_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string), args[5].(string))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetrics_Call) Return(_a0 admin.GetIndexMetricsApiRequest) *MonitoringAndLogsApi_GetIndexMetrics_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurements_Call) Return(_a0 admin.GetIndexMeasurementsApiRequest) *MonitoringAndLogsApi_GetIndexMeasurements_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetrics_Call) RunAndReturn(run func(context.Context, string, string, string, string, string) admin.GetIndexMetricsApiRequest) *MonitoringAndLogsApi_GetIndexMetrics_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string, string, string) admin.GetIndexMeasurementsApiRequest) *MonitoringAndLogsApi_GetIndexMeasurements_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetIndexMetricsExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) GetIndexMetricsExecute(r admin.GetIndexMetricsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error) {
+// GetIndexMeasurementsExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) GetIndexMeasurementsExecute(r admin.GetIndexMeasurementsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetIndexMetricsExecute")
+		panic("no return value specified for GetIndexMeasurementsExecute")
 	}
 
 	var r0 *admin.MeasurementsIndexes
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetIndexMetricsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetIndexMeasurementsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetIndexMetricsApiRequest) *admin.MeasurementsIndexes); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetIndexMeasurementsApiRequest) *admin.MeasurementsIndexes); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1076,7 +751,7 @@ func (_m *MonitoringAndLogsApi) GetIndexMetricsExecute(r admin.GetIndexMetricsAp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetIndexMetricsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetIndexMeasurementsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1084,7 +759,7 @@ func (_m *MonitoringAndLogsApi) GetIndexMetricsExecute(r admin.GetIndexMetricsAp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetIndexMetricsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetIndexMeasurementsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1093,152 +768,478 @@ func (_m *MonitoringAndLogsApi) GetIndexMetricsExecute(r admin.GetIndexMetricsAp
 	return r0, r1, r2
 }
 
-// MonitoringAndLogsApi_GetIndexMetricsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetIndexMetricsExecute'
-type MonitoringAndLogsApi_GetIndexMetricsExecute_Call struct {
+// MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetIndexMeasurementsExecute'
+type MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call struct {
 	*mock.Call
 }
 
-// GetIndexMetricsExecute is a helper method to define mock.On call
-//   - r admin.GetIndexMetricsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetricsExecute(r any) *MonitoringAndLogsApi_GetIndexMetricsExecute_Call {
-	return &MonitoringAndLogsApi_GetIndexMetricsExecute_Call{Call: _e.mock.On("GetIndexMetricsExecute", r)}
+// GetIndexMeasurementsExecute is a helper method to define mock.On call
+//   - r admin.GetIndexMeasurementsApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) GetIndexMeasurementsExecute(r any) *MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call {
+	return &MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call{Call: _e.mock.On("GetIndexMeasurementsExecute", r)}
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetricsExecute_Call) Run(run func(r admin.GetIndexMetricsApiRequest)) *MonitoringAndLogsApi_GetIndexMetricsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call) Run(run func(r admin.GetIndexMeasurementsApiRequest)) *MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetIndexMetricsApiRequest))
+		run(args[0].(admin.GetIndexMeasurementsApiRequest))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetricsExecute_Call) Return(_a0 *admin.MeasurementsIndexes, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetIndexMetricsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call) Return(_a0 *admin.MeasurementsIndexes, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetricsExecute_Call) RunAndReturn(run func(admin.GetIndexMetricsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error)) *MonitoringAndLogsApi_GetIndexMetricsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call) RunAndReturn(run func(admin.GetIndexMeasurementsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error)) *MonitoringAndLogsApi_GetIndexMeasurementsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetIndexMetricsWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) GetIndexMetricsWithParams(ctx context.Context, args *admin.GetIndexMetricsApiParams) admin.GetIndexMetricsApiRequest {
+// GetIndexMeasurementsWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) GetIndexMeasurementsWithParams(ctx context.Context, args *admin.GetIndexMeasurementsApiParams) admin.GetIndexMeasurementsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetIndexMetricsWithParams")
+		panic("no return value specified for GetIndexMeasurementsWithParams")
 	}
 
-	var r0 admin.GetIndexMetricsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetIndexMetricsApiParams) admin.GetIndexMetricsApiRequest); ok {
+	var r0 admin.GetIndexMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetIndexMeasurementsApiParams) admin.GetIndexMeasurementsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetIndexMetricsApiRequest)
+		r0 = ret.Get(0).(admin.GetIndexMeasurementsApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_GetIndexMetricsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetIndexMetricsWithParams'
-type MonitoringAndLogsApi_GetIndexMetricsWithParams_Call struct {
+// MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetIndexMeasurementsWithParams'
+type MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call struct {
 	*mock.Call
 }
 
-// GetIndexMetricsWithParams is a helper method to define mock.On call
+// GetIndexMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetIndexMetricsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetricsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call {
-	return &MonitoringAndLogsApi_GetIndexMetricsWithParams_Call{Call: _e.mock.On("GetIndexMetricsWithParams", ctx, args)}
+//   - args *admin.GetIndexMeasurementsApiParams
+func (_e *MonitoringAndLogsApi_Expecter) GetIndexMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call {
+	return &MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call{Call: _e.mock.On("GetIndexMeasurementsWithParams", ctx, args)}
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetIndexMetricsApiParams)) *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetIndexMeasurementsApiParams)) *MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetIndexMetricsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetIndexMeasurementsApiParams))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call) Return(_a0 admin.GetIndexMetricsApiRequest) *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call) Return(_a0 admin.GetIndexMeasurementsApiRequest) *MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetIndexMetricsApiParams) admin.GetIndexMetricsApiRequest) *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetIndexMeasurementsApiParams) admin.GetIndexMeasurementsApiRequest) *MonitoringAndLogsApi_GetIndexMeasurementsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetMeasurements provides a mock function with given fields: ctx, processId, groupId
-func (_m *MonitoringAndLogsApi) GetMeasurements(ctx context.Context, processId string, groupId string) admin.GetMeasurementsApiRequest {
-	ret := _m.Called(ctx, processId, groupId)
+// GetProcessDisk provides a mock function with given fields: ctx, partitionName, groupId, processId
+func (_m *MonitoringAndLogsApi) GetProcessDisk(ctx context.Context, partitionName string, groupId string, processId string) admin.GetProcessDiskApiRequest {
+	ret := _m.Called(ctx, partitionName, groupId, processId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetMeasurements")
+		panic("no return value specified for GetProcessDisk")
 	}
 
-	var r0 admin.GetMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetMeasurementsApiRequest); ok {
-		r0 = rf(ctx, processId, groupId)
+	var r0 admin.GetProcessDiskApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetProcessDiskApiRequest); ok {
+		r0 = rf(ctx, partitionName, groupId, processId)
 	} else {
-		r0 = ret.Get(0).(admin.GetMeasurementsApiRequest)
+		r0 = ret.Get(0).(admin.GetProcessDiskApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_GetMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMeasurements'
-type MonitoringAndLogsApi_GetMeasurements_Call struct {
+// MonitoringAndLogsApi_GetProcessDisk_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessDisk'
+type MonitoringAndLogsApi_GetProcessDisk_Call struct {
 	*mock.Call
 }
 
-// GetMeasurements is a helper method to define mock.On call
+// GetProcessDisk is a helper method to define mock.On call
 //   - ctx context.Context
-//   - processId string
+//   - partitionName string
 //   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) GetMeasurements(ctx any, processId any, groupId any) *MonitoringAndLogsApi_GetMeasurements_Call {
-	return &MonitoringAndLogsApi_GetMeasurements_Call{Call: _e.mock.On("GetMeasurements", ctx, processId, groupId)}
+//   - processId string
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessDisk(ctx any, partitionName any, groupId any, processId any) *MonitoringAndLogsApi_GetProcessDisk_Call {
+	return &MonitoringAndLogsApi_GetProcessDisk_Call{Call: _e.mock.On("GetProcessDisk", ctx, partitionName, groupId, processId)}
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurements_Call) Run(run func(ctx context.Context, processId string, groupId string)) *MonitoringAndLogsApi_GetMeasurements_Call {
+func (_c *MonitoringAndLogsApi_GetProcessDisk_Call) Run(run func(ctx context.Context, partitionName string, groupId string, processId string)) *MonitoringAndLogsApi_GetProcessDisk_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDisk_Call) Return(_a0 admin.GetProcessDiskApiRequest) *MonitoringAndLogsApi_GetProcessDisk_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDisk_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetProcessDiskApiRequest) *MonitoringAndLogsApi_GetProcessDisk_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProcessDiskExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) GetProcessDiskExecute(r admin.GetProcessDiskApiRequest) (*admin.MeasurementDiskPartition, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProcessDiskExecute")
+	}
+
+	var r0 *admin.MeasurementDiskPartition
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetProcessDiskApiRequest) (*admin.MeasurementDiskPartition, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetProcessDiskApiRequest) *admin.MeasurementDiskPartition); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.MeasurementDiskPartition)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetProcessDiskApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetProcessDiskApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// MonitoringAndLogsApi_GetProcessDiskExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessDiskExecute'
+type MonitoringAndLogsApi_GetProcessDiskExecute_Call struct {
+	*mock.Call
+}
+
+// GetProcessDiskExecute is a helper method to define mock.On call
+//   - r admin.GetProcessDiskApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessDiskExecute(r any) *MonitoringAndLogsApi_GetProcessDiskExecute_Call {
+	return &MonitoringAndLogsApi_GetProcessDiskExecute_Call{Call: _e.mock.On("GetProcessDiskExecute", r)}
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskExecute_Call) Run(run func(r admin.GetProcessDiskApiRequest)) *MonitoringAndLogsApi_GetProcessDiskExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetProcessDiskApiRequest))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskExecute_Call) Return(_a0 *admin.MeasurementDiskPartition, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetProcessDiskExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskExecute_Call) RunAndReturn(run func(admin.GetProcessDiskApiRequest) (*admin.MeasurementDiskPartition, *http.Response, error)) *MonitoringAndLogsApi_GetProcessDiskExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProcessDiskMeasurements provides a mock function with given fields: ctx, groupId, partitionName, processId
+func (_m *MonitoringAndLogsApi) GetProcessDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) admin.GetProcessDiskMeasurementsApiRequest {
+	ret := _m.Called(ctx, groupId, partitionName, processId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProcessDiskMeasurements")
+	}
+
+	var r0 admin.GetProcessDiskMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetProcessDiskMeasurementsApiRequest); ok {
+		r0 = rf(ctx, groupId, partitionName, processId)
+	} else {
+		r0 = ret.Get(0).(admin.GetProcessDiskMeasurementsApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_GetProcessDiskMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessDiskMeasurements'
+type MonitoringAndLogsApi_GetProcessDiskMeasurements_Call struct {
+	*mock.Call
+}
+
+// GetProcessDiskMeasurements is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - partitionName string
+//   - processId string
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessDiskMeasurements(ctx any, groupId any, partitionName any, processId any) *MonitoringAndLogsApi_GetProcessDiskMeasurements_Call {
+	return &MonitoringAndLogsApi_GetProcessDiskMeasurements_Call{Call: _e.mock.On("GetProcessDiskMeasurements", ctx, groupId, partitionName, processId)}
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurements_Call) Run(run func(ctx context.Context, groupId string, partitionName string, processId string)) *MonitoringAndLogsApi_GetProcessDiskMeasurements_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurements_Call) Return(_a0 admin.GetProcessDiskMeasurementsApiRequest) *MonitoringAndLogsApi_GetProcessDiskMeasurements_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetProcessDiskMeasurementsApiRequest) *MonitoringAndLogsApi_GetProcessDiskMeasurements_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProcessDiskMeasurementsExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) GetProcessDiskMeasurementsExecute(r admin.GetProcessDiskMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProcessDiskMeasurementsExecute")
+	}
+
+	var r0 *admin.ApiMeasurementsGeneralViewAtlas
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetProcessDiskMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetProcessDiskMeasurementsApiRequest) *admin.ApiMeasurementsGeneralViewAtlas); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ApiMeasurementsGeneralViewAtlas)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetProcessDiskMeasurementsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetProcessDiskMeasurementsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessDiskMeasurementsExecute'
+type MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call struct {
+	*mock.Call
+}
+
+// GetProcessDiskMeasurementsExecute is a helper method to define mock.On call
+//   - r admin.GetProcessDiskMeasurementsApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessDiskMeasurementsExecute(r any) *MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call {
+	return &MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call{Call: _e.mock.On("GetProcessDiskMeasurementsExecute", r)}
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call) Run(run func(r admin.GetProcessDiskMeasurementsApiRequest)) *MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetProcessDiskMeasurementsApiRequest))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call) Return(_a0 *admin.ApiMeasurementsGeneralViewAtlas, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call) RunAndReturn(run func(admin.GetProcessDiskMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error)) *MonitoringAndLogsApi_GetProcessDiskMeasurementsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProcessDiskMeasurementsWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) GetProcessDiskMeasurementsWithParams(ctx context.Context, args *admin.GetProcessDiskMeasurementsApiParams) admin.GetProcessDiskMeasurementsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProcessDiskMeasurementsWithParams")
+	}
+
+	var r0 admin.GetProcessDiskMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProcessDiskMeasurementsApiParams) admin.GetProcessDiskMeasurementsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetProcessDiskMeasurementsApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessDiskMeasurementsWithParams'
+type MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetProcessDiskMeasurementsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetProcessDiskMeasurementsApiParams
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessDiskMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call {
+	return &MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call{Call: _e.mock.On("GetProcessDiskMeasurementsWithParams", ctx, args)}
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProcessDiskMeasurementsApiParams)) *MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetProcessDiskMeasurementsApiParams))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call) Return(_a0 admin.GetProcessDiskMeasurementsApiRequest) *MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProcessDiskMeasurementsApiParams) admin.GetProcessDiskMeasurementsApiRequest) *MonitoringAndLogsApi_GetProcessDiskMeasurementsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProcessDiskWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) GetProcessDiskWithParams(ctx context.Context, args *admin.GetProcessDiskApiParams) admin.GetProcessDiskApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProcessDiskWithParams")
+	}
+
+	var r0 admin.GetProcessDiskApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProcessDiskApiParams) admin.GetProcessDiskApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetProcessDiskApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_GetProcessDiskWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessDiskWithParams'
+type MonitoringAndLogsApi_GetProcessDiskWithParams_Call struct {
+	*mock.Call
+}
+
+// GetProcessDiskWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetProcessDiskApiParams
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessDiskWithParams(ctx any, args any) *MonitoringAndLogsApi_GetProcessDiskWithParams_Call {
+	return &MonitoringAndLogsApi_GetProcessDiskWithParams_Call{Call: _e.mock.On("GetProcessDiskWithParams", ctx, args)}
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProcessDiskApiParams)) *MonitoringAndLogsApi_GetProcessDiskWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetProcessDiskApiParams))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskWithParams_Call) Return(_a0 admin.GetProcessDiskApiRequest) *MonitoringAndLogsApi_GetProcessDiskWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessDiskWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProcessDiskApiParams) admin.GetProcessDiskApiRequest) *MonitoringAndLogsApi_GetProcessDiskWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProcessMeasurements provides a mock function with given fields: ctx, groupId, processId
+func (_m *MonitoringAndLogsApi) GetProcessMeasurements(ctx context.Context, groupId string, processId string) admin.GetProcessMeasurementsApiRequest {
+	ret := _m.Called(ctx, groupId, processId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProcessMeasurements")
+	}
+
+	var r0 admin.GetProcessMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetProcessMeasurementsApiRequest); ok {
+		r0 = rf(ctx, groupId, processId)
+	} else {
+		r0 = ret.Get(0).(admin.GetProcessMeasurementsApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_GetProcessMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessMeasurements'
+type MonitoringAndLogsApi_GetProcessMeasurements_Call struct {
+	*mock.Call
+}
+
+// GetProcessMeasurements is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - processId string
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessMeasurements(ctx any, groupId any, processId any) *MonitoringAndLogsApi_GetProcessMeasurements_Call {
+	return &MonitoringAndLogsApi_GetProcessMeasurements_Call{Call: _e.mock.On("GetProcessMeasurements", ctx, groupId, processId)}
+}
+
+func (_c *MonitoringAndLogsApi_GetProcessMeasurements_Call) Run(run func(ctx context.Context, groupId string, processId string)) *MonitoringAndLogsApi_GetProcessMeasurements_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurements_Call) Return(_a0 admin.GetMeasurementsApiRequest) *MonitoringAndLogsApi_GetMeasurements_Call {
+func (_c *MonitoringAndLogsApi_GetProcessMeasurements_Call) Return(_a0 admin.GetProcessMeasurementsApiRequest) *MonitoringAndLogsApi_GetProcessMeasurements_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurements_Call) RunAndReturn(run func(context.Context, string, string) admin.GetMeasurementsApiRequest) *MonitoringAndLogsApi_GetMeasurements_Call {
+func (_c *MonitoringAndLogsApi_GetProcessMeasurements_Call) RunAndReturn(run func(context.Context, string, string) admin.GetProcessMeasurementsApiRequest) *MonitoringAndLogsApi_GetProcessMeasurements_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetMeasurementsExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) GetMeasurementsExecute(r admin.GetMeasurementsApiRequest) (*admin.MeasurementsNonIndex, *http.Response, error) {
+// GetProcessMeasurementsExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) GetProcessMeasurementsExecute(r admin.GetProcessMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetMeasurementsExecute")
+		panic("no return value specified for GetProcessMeasurementsExecute")
 	}
 
-	var r0 *admin.MeasurementsNonIndex
+	var r0 *admin.ApiMeasurementsGeneralViewAtlas
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetMeasurementsApiRequest) (*admin.MeasurementsNonIndex, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetProcessMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetMeasurementsApiRequest) *admin.MeasurementsNonIndex); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetProcessMeasurementsApiRequest) *admin.ApiMeasurementsGeneralViewAtlas); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.MeasurementsNonIndex)
+			r0 = ret.Get(0).(*admin.ApiMeasurementsGeneralViewAtlas)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetMeasurementsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetProcessMeasurementsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1246,7 +1247,7 @@ func (_m *MonitoringAndLogsApi) GetMeasurementsExecute(r admin.GetMeasurementsAp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetMeasurementsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetProcessMeasurementsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1255,238 +1256,77 @@ func (_m *MonitoringAndLogsApi) GetMeasurementsExecute(r admin.GetMeasurementsAp
 	return r0, r1, r2
 }
 
-// MonitoringAndLogsApi_GetMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMeasurementsExecute'
-type MonitoringAndLogsApi_GetMeasurementsExecute_Call struct {
+// MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessMeasurementsExecute'
+type MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call struct {
 	*mock.Call
 }
 
-// GetMeasurementsExecute is a helper method to define mock.On call
-//   - r admin.GetMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetMeasurementsExecute(r any) *MonitoringAndLogsApi_GetMeasurementsExecute_Call {
-	return &MonitoringAndLogsApi_GetMeasurementsExecute_Call{Call: _e.mock.On("GetMeasurementsExecute", r)}
+// GetProcessMeasurementsExecute is a helper method to define mock.On call
+//   - r admin.GetProcessMeasurementsApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessMeasurementsExecute(r any) *MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call {
+	return &MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call{Call: _e.mock.On("GetProcessMeasurementsExecute", r)}
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurementsExecute_Call) Run(run func(r admin.GetMeasurementsApiRequest)) *MonitoringAndLogsApi_GetMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call) Run(run func(r admin.GetProcessMeasurementsApiRequest)) *MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetMeasurementsApiRequest))
+		run(args[0].(admin.GetProcessMeasurementsApiRequest))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurementsExecute_Call) Return(_a0 *admin.MeasurementsNonIndex, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call) Return(_a0 *admin.ApiMeasurementsGeneralViewAtlas, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurementsExecute_Call) RunAndReturn(run func(admin.GetMeasurementsApiRequest) (*admin.MeasurementsNonIndex, *http.Response, error)) *MonitoringAndLogsApi_GetMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call) RunAndReturn(run func(admin.GetProcessMeasurementsApiRequest) (*admin.ApiMeasurementsGeneralViewAtlas, *http.Response, error)) *MonitoringAndLogsApi_GetProcessMeasurementsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetMeasurementsWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) GetMeasurementsWithParams(ctx context.Context, args *admin.GetMeasurementsApiParams) admin.GetMeasurementsApiRequest {
+// GetProcessMeasurementsWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) GetProcessMeasurementsWithParams(ctx context.Context, args *admin.GetProcessMeasurementsApiParams) admin.GetProcessMeasurementsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetMeasurementsWithParams")
+		panic("no return value specified for GetProcessMeasurementsWithParams")
 	}
 
-	var r0 admin.GetMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetMeasurementsApiParams) admin.GetMeasurementsApiRequest); ok {
+	var r0 admin.GetProcessMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProcessMeasurementsApiParams) admin.GetProcessMeasurementsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetMeasurementsApiRequest)
+		r0 = ret.Get(0).(admin.GetProcessMeasurementsApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_GetMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMeasurementsWithParams'
-type MonitoringAndLogsApi_GetMeasurementsWithParams_Call struct {
+// MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessMeasurementsWithParams'
+type MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call struct {
 	*mock.Call
 }
 
-// GetMeasurementsWithParams is a helper method to define mock.On call
+// GetProcessMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetMeasurementsWithParams_Call {
-	return &MonitoringAndLogsApi_GetMeasurementsWithParams_Call{Call: _e.mock.On("GetMeasurementsWithParams", ctx, args)}
+//   - args *admin.GetProcessMeasurementsApiParams
+func (_e *MonitoringAndLogsApi_Expecter) GetProcessMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call {
+	return &MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call{Call: _e.mock.On("GetProcessMeasurementsWithParams", ctx, args)}
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetMeasurementsApiParams)) *MonitoringAndLogsApi_GetMeasurementsWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProcessMeasurementsApiParams)) *MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetMeasurementsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetProcessMeasurementsApiParams))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurementsWithParams_Call) Return(_a0 admin.GetMeasurementsApiRequest) *MonitoringAndLogsApi_GetMeasurementsWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call) Return(_a0 admin.GetProcessMeasurementsApiRequest) *MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_GetMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetMeasurementsApiParams) admin.GetMeasurementsApiRequest) *MonitoringAndLogsApi_GetMeasurementsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListAtlasProcesses provides a mock function with given fields: ctx, groupId
-func (_m *MonitoringAndLogsApi) ListAtlasProcesses(ctx context.Context, groupId string) admin.ListAtlasProcessesApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListAtlasProcesses")
-	}
-
-	var r0 admin.ListAtlasProcessesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListAtlasProcessesApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ListAtlasProcessesApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_ListAtlasProcesses_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasProcesses'
-type MonitoringAndLogsApi_ListAtlasProcesses_Call struct {
-	*mock.Call
-}
-
-// ListAtlasProcesses is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcesses(ctx any, groupId any) *MonitoringAndLogsApi_ListAtlasProcesses_Call {
-	return &MonitoringAndLogsApi_ListAtlasProcesses_Call{Call: _e.mock.On("ListAtlasProcesses", ctx, groupId)}
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcesses_Call) Run(run func(ctx context.Context, groupId string)) *MonitoringAndLogsApi_ListAtlasProcesses_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcesses_Call) Return(_a0 admin.ListAtlasProcessesApiRequest) *MonitoringAndLogsApi_ListAtlasProcesses_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcesses_Call) RunAndReturn(run func(context.Context, string) admin.ListAtlasProcessesApiRequest) *MonitoringAndLogsApi_ListAtlasProcesses_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListAtlasProcessesExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) ListAtlasProcessesExecute(r admin.ListAtlasProcessesApiRequest) (*admin.PaginatedHostViewAtlas, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListAtlasProcessesExecute")
-	}
-
-	var r0 *admin.PaginatedHostViewAtlas
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListAtlasProcessesApiRequest) (*admin.PaginatedHostViewAtlas, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListAtlasProcessesApiRequest) *admin.PaginatedHostViewAtlas); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedHostViewAtlas)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListAtlasProcessesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListAtlasProcessesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// MonitoringAndLogsApi_ListAtlasProcessesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasProcessesExecute'
-type MonitoringAndLogsApi_ListAtlasProcessesExecute_Call struct {
-	*mock.Call
-}
-
-// ListAtlasProcessesExecute is a helper method to define mock.On call
-//   - r admin.ListAtlasProcessesApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcessesExecute(r any) *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call {
-	return &MonitoringAndLogsApi_ListAtlasProcessesExecute_Call{Call: _e.mock.On("ListAtlasProcessesExecute", r)}
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call) Run(run func(r admin.ListAtlasProcessesApiRequest)) *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListAtlasProcessesApiRequest))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call) Return(_a0 *admin.PaginatedHostViewAtlas, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call) RunAndReturn(run func(admin.ListAtlasProcessesApiRequest) (*admin.PaginatedHostViewAtlas, *http.Response, error)) *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListAtlasProcessesWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) ListAtlasProcessesWithParams(ctx context.Context, args *admin.ListAtlasProcessesApiParams) admin.ListAtlasProcessesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListAtlasProcessesWithParams")
-	}
-
-	var r0 admin.ListAtlasProcessesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListAtlasProcessesApiParams) admin.ListAtlasProcessesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListAtlasProcessesApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasProcessesWithParams'
-type MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call struct {
-	*mock.Call
-}
-
-// ListAtlasProcessesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListAtlasProcessesApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcessesWithParams(ctx any, args any) *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call {
-	return &MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call{Call: _e.mock.On("ListAtlasProcessesWithParams", ctx, args)}
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListAtlasProcessesApiParams)) *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListAtlasProcessesApiParams))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call) Return(_a0 admin.ListAtlasProcessesApiRequest) *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListAtlasProcessesApiParams) admin.ListAtlasProcessesApiRequest) *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call {
+func (_c *MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProcessMeasurementsApiParams) admin.GetProcessMeasurementsApiRequest) *MonitoringAndLogsApi_GetProcessMeasurementsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1653,78 +1493,76 @@ func (_c *MonitoringAndLogsApi_ListDatabasesWithParams_Call) RunAndReturn(run fu
 	return _c
 }
 
-// ListDiskMeasurements provides a mock function with given fields: ctx, partitionName, groupId, processId
-func (_m *MonitoringAndLogsApi) ListDiskMeasurements(ctx context.Context, partitionName string, groupId string, processId string) admin.ListDiskMeasurementsApiRequest {
-	ret := _m.Called(ctx, partitionName, groupId, processId)
+// ListGroupProcesses provides a mock function with given fields: ctx, groupId
+func (_m *MonitoringAndLogsApi) ListGroupProcesses(ctx context.Context, groupId string) admin.ListGroupProcessesApiRequest {
+	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDiskMeasurements")
+		panic("no return value specified for ListGroupProcesses")
 	}
 
-	var r0 admin.ListDiskMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.ListDiskMeasurementsApiRequest); ok {
-		r0 = rf(ctx, partitionName, groupId, processId)
+	var r0 admin.ListGroupProcessesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupProcessesApiRequest); ok {
+		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.ListDiskMeasurementsApiRequest)
+		r0 = ret.Get(0).(admin.ListGroupProcessesApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_ListDiskMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDiskMeasurements'
-type MonitoringAndLogsApi_ListDiskMeasurements_Call struct {
+// MonitoringAndLogsApi_ListGroupProcesses_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupProcesses'
+type MonitoringAndLogsApi_ListGroupProcesses_Call struct {
 	*mock.Call
 }
 
-// ListDiskMeasurements is a helper method to define mock.On call
+// ListGroupProcesses is a helper method to define mock.On call
 //   - ctx context.Context
-//   - partitionName string
 //   - groupId string
-//   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurements(ctx any, partitionName any, groupId any, processId any) *MonitoringAndLogsApi_ListDiskMeasurements_Call {
-	return &MonitoringAndLogsApi_ListDiskMeasurements_Call{Call: _e.mock.On("ListDiskMeasurements", ctx, partitionName, groupId, processId)}
+func (_e *MonitoringAndLogsApi_Expecter) ListGroupProcesses(ctx any, groupId any) *MonitoringAndLogsApi_ListGroupProcesses_Call {
+	return &MonitoringAndLogsApi_ListGroupProcesses_Call{Call: _e.mock.On("ListGroupProcesses", ctx, groupId)}
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurements_Call) Run(run func(ctx context.Context, partitionName string, groupId string, processId string)) *MonitoringAndLogsApi_ListDiskMeasurements_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcesses_Call) Run(run func(ctx context.Context, groupId string)) *MonitoringAndLogsApi_ListGroupProcesses_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurements_Call) Return(_a0 admin.ListDiskMeasurementsApiRequest) *MonitoringAndLogsApi_ListDiskMeasurements_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcesses_Call) Return(_a0 admin.ListGroupProcessesApiRequest) *MonitoringAndLogsApi_ListGroupProcesses_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string) admin.ListDiskMeasurementsApiRequest) *MonitoringAndLogsApi_ListDiskMeasurements_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcesses_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupProcessesApiRequest) *MonitoringAndLogsApi_ListGroupProcesses_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListDiskMeasurementsExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) ListDiskMeasurementsExecute(r admin.ListDiskMeasurementsApiRequest) (*admin.MeasurementDiskPartition, *http.Response, error) {
+// ListGroupProcessesExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) ListGroupProcessesExecute(r admin.ListGroupProcessesApiRequest) (*admin.PaginatedHostViewAtlas, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDiskMeasurementsExecute")
+		panic("no return value specified for ListGroupProcessesExecute")
 	}
 
-	var r0 *admin.MeasurementDiskPartition
+	var r0 *admin.PaginatedHostViewAtlas
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListDiskMeasurementsApiRequest) (*admin.MeasurementDiskPartition, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListGroupProcessesApiRequest) (*admin.PaginatedHostViewAtlas, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListDiskMeasurementsApiRequest) *admin.MeasurementDiskPartition); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListGroupProcessesApiRequest) *admin.PaginatedHostViewAtlas); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.MeasurementDiskPartition)
+			r0 = ret.Get(0).(*admin.PaginatedHostViewAtlas)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListDiskMeasurementsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListGroupProcessesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1732,7 +1570,7 @@ func (_m *MonitoringAndLogsApi) ListDiskMeasurementsExecute(r admin.ListDiskMeas
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListDiskMeasurementsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListGroupProcessesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1741,470 +1579,144 @@ func (_m *MonitoringAndLogsApi) ListDiskMeasurementsExecute(r admin.ListDiskMeas
 	return r0, r1, r2
 }
 
-// MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDiskMeasurementsExecute'
-type MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call struct {
+// MonitoringAndLogsApi_ListGroupProcessesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupProcessesExecute'
+type MonitoringAndLogsApi_ListGroupProcessesExecute_Call struct {
 	*mock.Call
 }
 
-// ListDiskMeasurementsExecute is a helper method to define mock.On call
-//   - r admin.ListDiskMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurementsExecute(r any) *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call {
-	return &MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call{Call: _e.mock.On("ListDiskMeasurementsExecute", r)}
+// ListGroupProcessesExecute is a helper method to define mock.On call
+//   - r admin.ListGroupProcessesApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) ListGroupProcessesExecute(r any) *MonitoringAndLogsApi_ListGroupProcessesExecute_Call {
+	return &MonitoringAndLogsApi_ListGroupProcessesExecute_Call{Call: _e.mock.On("ListGroupProcessesExecute", r)}
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call) Run(run func(r admin.ListDiskMeasurementsApiRequest)) *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcessesExecute_Call) Run(run func(r admin.ListGroupProcessesApiRequest)) *MonitoringAndLogsApi_ListGroupProcessesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListDiskMeasurementsApiRequest))
+		run(args[0].(admin.ListGroupProcessesApiRequest))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call) Return(_a0 *admin.MeasurementDiskPartition, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcessesExecute_Call) Return(_a0 *admin.PaginatedHostViewAtlas, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListGroupProcessesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call) RunAndReturn(run func(admin.ListDiskMeasurementsApiRequest) (*admin.MeasurementDiskPartition, *http.Response, error)) *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcessesExecute_Call) RunAndReturn(run func(admin.ListGroupProcessesApiRequest) (*admin.PaginatedHostViewAtlas, *http.Response, error)) *MonitoringAndLogsApi_ListGroupProcessesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListDiskMeasurementsWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) ListDiskMeasurementsWithParams(ctx context.Context, args *admin.ListDiskMeasurementsApiParams) admin.ListDiskMeasurementsApiRequest {
+// ListGroupProcessesWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) ListGroupProcessesWithParams(ctx context.Context, args *admin.ListGroupProcessesApiParams) admin.ListGroupProcessesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDiskMeasurementsWithParams")
+		panic("no return value specified for ListGroupProcessesWithParams")
 	}
 
-	var r0 admin.ListDiskMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListDiskMeasurementsApiParams) admin.ListDiskMeasurementsApiRequest); ok {
+	var r0 admin.ListGroupProcessesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupProcessesApiParams) admin.ListGroupProcessesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListDiskMeasurementsApiRequest)
+		r0 = ret.Get(0).(admin.ListGroupProcessesApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDiskMeasurementsWithParams'
-type MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call struct {
+// MonitoringAndLogsApi_ListGroupProcessesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupProcessesWithParams'
+type MonitoringAndLogsApi_ListGroupProcessesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListDiskMeasurementsWithParams is a helper method to define mock.On call
+// ListGroupProcessesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListDiskMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call {
-	return &MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call{Call: _e.mock.On("ListDiskMeasurementsWithParams", ctx, args)}
+//   - args *admin.ListGroupProcessesApiParams
+func (_e *MonitoringAndLogsApi_Expecter) ListGroupProcessesWithParams(ctx any, args any) *MonitoringAndLogsApi_ListGroupProcessesWithParams_Call {
+	return &MonitoringAndLogsApi_ListGroupProcessesWithParams_Call{Call: _e.mock.On("ListGroupProcessesWithParams", ctx, args)}
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListDiskMeasurementsApiParams)) *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcessesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupProcessesApiParams)) *MonitoringAndLogsApi_ListGroupProcessesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListDiskMeasurementsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListGroupProcessesApiParams))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call) Return(_a0 admin.ListDiskMeasurementsApiRequest) *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcessesWithParams_Call) Return(_a0 admin.ListGroupProcessesApiRequest) *MonitoringAndLogsApi_ListGroupProcessesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListDiskMeasurementsApiParams) admin.ListDiskMeasurementsApiRequest) *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call {
+func (_c *MonitoringAndLogsApi_ListGroupProcessesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupProcessesApiParams) admin.ListGroupProcessesApiRequest) *MonitoringAndLogsApi_ListGroupProcessesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListDiskPartitions provides a mock function with given fields: ctx, groupId, processId
-func (_m *MonitoringAndLogsApi) ListDiskPartitions(ctx context.Context, groupId string, processId string) admin.ListDiskPartitionsApiRequest {
-	ret := _m.Called(ctx, groupId, processId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListDiskPartitions")
-	}
-
-	var r0 admin.ListDiskPartitionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListDiskPartitionsApiRequest); ok {
-		r0 = rf(ctx, groupId, processId)
-	} else {
-		r0 = ret.Get(0).(admin.ListDiskPartitionsApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_ListDiskPartitions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDiskPartitions'
-type MonitoringAndLogsApi_ListDiskPartitions_Call struct {
-	*mock.Call
-}
-
-// ListDiskPartitions is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitions(ctx any, groupId any, processId any) *MonitoringAndLogsApi_ListDiskPartitions_Call {
-	return &MonitoringAndLogsApi_ListDiskPartitions_Call{Call: _e.mock.On("ListDiskPartitions", ctx, groupId, processId)}
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitions_Call) Run(run func(ctx context.Context, groupId string, processId string)) *MonitoringAndLogsApi_ListDiskPartitions_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitions_Call) Return(_a0 admin.ListDiskPartitionsApiRequest) *MonitoringAndLogsApi_ListDiskPartitions_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitions_Call) RunAndReturn(run func(context.Context, string, string) admin.ListDiskPartitionsApiRequest) *MonitoringAndLogsApi_ListDiskPartitions_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListDiskPartitionsExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) ListDiskPartitionsExecute(r admin.ListDiskPartitionsApiRequest) (*admin.PaginatedDiskPartition, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListDiskPartitionsExecute")
-	}
-
-	var r0 *admin.PaginatedDiskPartition
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListDiskPartitionsApiRequest) (*admin.PaginatedDiskPartition, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListDiskPartitionsApiRequest) *admin.PaginatedDiskPartition); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedDiskPartition)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListDiskPartitionsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListDiskPartitionsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// MonitoringAndLogsApi_ListDiskPartitionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDiskPartitionsExecute'
-type MonitoringAndLogsApi_ListDiskPartitionsExecute_Call struct {
-	*mock.Call
-}
-
-// ListDiskPartitionsExecute is a helper method to define mock.On call
-//   - r admin.ListDiskPartitionsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitionsExecute(r any) *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call {
-	return &MonitoringAndLogsApi_ListDiskPartitionsExecute_Call{Call: _e.mock.On("ListDiskPartitionsExecute", r)}
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call) Run(run func(r admin.ListDiskPartitionsApiRequest)) *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListDiskPartitionsApiRequest))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call) Return(_a0 *admin.PaginatedDiskPartition, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call) RunAndReturn(run func(admin.ListDiskPartitionsApiRequest) (*admin.PaginatedDiskPartition, *http.Response, error)) *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListDiskPartitionsWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) ListDiskPartitionsWithParams(ctx context.Context, args *admin.ListDiskPartitionsApiParams) admin.ListDiskPartitionsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListDiskPartitionsWithParams")
-	}
-
-	var r0 admin.ListDiskPartitionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListDiskPartitionsApiParams) admin.ListDiskPartitionsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListDiskPartitionsApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDiskPartitionsWithParams'
-type MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call struct {
-	*mock.Call
-}
-
-// ListDiskPartitionsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListDiskPartitionsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitionsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call {
-	return &MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call{Call: _e.mock.On("ListDiskPartitionsWithParams", ctx, args)}
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListDiskPartitionsApiParams)) *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListDiskPartitionsApiParams))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call) Return(_a0 admin.ListDiskPartitionsApiRequest) *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListDiskPartitionsApiParams) admin.ListDiskPartitionsApiRequest) *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListIndexMetrics provides a mock function with given fields: ctx, processId, databaseName, collectionName, groupId
-func (_m *MonitoringAndLogsApi) ListIndexMetrics(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) admin.ListIndexMetricsApiRequest {
-	ret := _m.Called(ctx, processId, databaseName, collectionName, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListIndexMetrics")
-	}
-
-	var r0 admin.ListIndexMetricsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) admin.ListIndexMetricsApiRequest); ok {
-		r0 = rf(ctx, processId, databaseName, collectionName, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ListIndexMetricsApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_ListIndexMetrics_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListIndexMetrics'
-type MonitoringAndLogsApi_ListIndexMetrics_Call struct {
-	*mock.Call
-}
-
-// ListIndexMetrics is a helper method to define mock.On call
-//   - ctx context.Context
-//   - processId string
-//   - databaseName string
-//   - collectionName string
-//   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetrics(ctx any, processId any, databaseName any, collectionName any, groupId any) *MonitoringAndLogsApi_ListIndexMetrics_Call {
-	return &MonitoringAndLogsApi_ListIndexMetrics_Call{Call: _e.mock.On("ListIndexMetrics", ctx, processId, databaseName, collectionName, groupId)}
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetrics_Call) Run(run func(ctx context.Context, processId string, databaseName string, collectionName string, groupId string)) *MonitoringAndLogsApi_ListIndexMetrics_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetrics_Call) Return(_a0 admin.ListIndexMetricsApiRequest) *MonitoringAndLogsApi_ListIndexMetrics_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetrics_Call) RunAndReturn(run func(context.Context, string, string, string, string) admin.ListIndexMetricsApiRequest) *MonitoringAndLogsApi_ListIndexMetrics_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListIndexMetricsExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) ListIndexMetricsExecute(r admin.ListIndexMetricsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListIndexMetricsExecute")
-	}
-
-	var r0 *admin.MeasurementsIndexes
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListIndexMetricsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListIndexMetricsApiRequest) *admin.MeasurementsIndexes); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.MeasurementsIndexes)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListIndexMetricsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListIndexMetricsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// MonitoringAndLogsApi_ListIndexMetricsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListIndexMetricsExecute'
-type MonitoringAndLogsApi_ListIndexMetricsExecute_Call struct {
-	*mock.Call
-}
-
-// ListIndexMetricsExecute is a helper method to define mock.On call
-//   - r admin.ListIndexMetricsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetricsExecute(r any) *MonitoringAndLogsApi_ListIndexMetricsExecute_Call {
-	return &MonitoringAndLogsApi_ListIndexMetricsExecute_Call{Call: _e.mock.On("ListIndexMetricsExecute", r)}
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetricsExecute_Call) Run(run func(r admin.ListIndexMetricsApiRequest)) *MonitoringAndLogsApi_ListIndexMetricsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListIndexMetricsApiRequest))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetricsExecute_Call) Return(_a0 *admin.MeasurementsIndexes, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListIndexMetricsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetricsExecute_Call) RunAndReturn(run func(admin.ListIndexMetricsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error)) *MonitoringAndLogsApi_ListIndexMetricsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListIndexMetricsWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) ListIndexMetricsWithParams(ctx context.Context, args *admin.ListIndexMetricsApiParams) admin.ListIndexMetricsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListIndexMetricsWithParams")
-	}
-
-	var r0 admin.ListIndexMetricsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListIndexMetricsApiParams) admin.ListIndexMetricsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListIndexMetricsApiRequest)
-	}
-
-	return r0
-}
-
-// MonitoringAndLogsApi_ListIndexMetricsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListIndexMetricsWithParams'
-type MonitoringAndLogsApi_ListIndexMetricsWithParams_Call struct {
-	*mock.Call
-}
-
-// ListIndexMetricsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListIndexMetricsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetricsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call {
-	return &MonitoringAndLogsApi_ListIndexMetricsWithParams_Call{Call: _e.mock.On("ListIndexMetricsWithParams", ctx, args)}
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListIndexMetricsApiParams)) *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListIndexMetricsApiParams))
-	})
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call) Return(_a0 admin.ListIndexMetricsApiRequest) *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListIndexMetricsApiParams) admin.ListIndexMetricsApiRequest) *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListMetricTypes provides a mock function with given fields: ctx, processId, groupId
-func (_m *MonitoringAndLogsApi) ListMetricTypes(ctx context.Context, processId string, groupId string) admin.ListMetricTypesApiRequest {
+// ListHostFtsMetrics provides a mock function with given fields: ctx, processId, groupId
+func (_m *MonitoringAndLogsApi) ListHostFtsMetrics(ctx context.Context, processId string, groupId string) admin.ListHostFtsMetricsApiRequest {
 	ret := _m.Called(ctx, processId, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListMetricTypes")
+		panic("no return value specified for ListHostFtsMetrics")
 	}
 
-	var r0 admin.ListMetricTypesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListMetricTypesApiRequest); ok {
+	var r0 admin.ListHostFtsMetricsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListHostFtsMetricsApiRequest); ok {
 		r0 = rf(ctx, processId, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.ListMetricTypesApiRequest)
+		r0 = ret.Get(0).(admin.ListHostFtsMetricsApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_ListMetricTypes_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMetricTypes'
-type MonitoringAndLogsApi_ListMetricTypes_Call struct {
+// MonitoringAndLogsApi_ListHostFtsMetrics_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListHostFtsMetrics'
+type MonitoringAndLogsApi_ListHostFtsMetrics_Call struct {
 	*mock.Call
 }
 
-// ListMetricTypes is a helper method to define mock.On call
+// ListHostFtsMetrics is a helper method to define mock.On call
 //   - ctx context.Context
 //   - processId string
 //   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypes(ctx any, processId any, groupId any) *MonitoringAndLogsApi_ListMetricTypes_Call {
-	return &MonitoringAndLogsApi_ListMetricTypes_Call{Call: _e.mock.On("ListMetricTypes", ctx, processId, groupId)}
+func (_e *MonitoringAndLogsApi_Expecter) ListHostFtsMetrics(ctx any, processId any, groupId any) *MonitoringAndLogsApi_ListHostFtsMetrics_Call {
+	return &MonitoringAndLogsApi_ListHostFtsMetrics_Call{Call: _e.mock.On("ListHostFtsMetrics", ctx, processId, groupId)}
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypes_Call) Run(run func(ctx context.Context, processId string, groupId string)) *MonitoringAndLogsApi_ListMetricTypes_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetrics_Call) Run(run func(ctx context.Context, processId string, groupId string)) *MonitoringAndLogsApi_ListHostFtsMetrics_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypes_Call) Return(_a0 admin.ListMetricTypesApiRequest) *MonitoringAndLogsApi_ListMetricTypes_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetrics_Call) Return(_a0 admin.ListHostFtsMetricsApiRequest) *MonitoringAndLogsApi_ListHostFtsMetrics_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypes_Call) RunAndReturn(run func(context.Context, string, string) admin.ListMetricTypesApiRequest) *MonitoringAndLogsApi_ListMetricTypes_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetrics_Call) RunAndReturn(run func(context.Context, string, string) admin.ListHostFtsMetricsApiRequest) *MonitoringAndLogsApi_ListHostFtsMetrics_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListMetricTypesExecute provides a mock function with given fields: r
-func (_m *MonitoringAndLogsApi) ListMetricTypesExecute(r admin.ListMetricTypesApiRequest) (*admin.CloudSearchMetrics, *http.Response, error) {
+// ListHostFtsMetricsExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) ListHostFtsMetricsExecute(r admin.ListHostFtsMetricsApiRequest) (*admin.CloudSearchMetrics, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListMetricTypesExecute")
+		panic("no return value specified for ListHostFtsMetricsExecute")
 	}
 
 	var r0 *admin.CloudSearchMetrics
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListMetricTypesApiRequest) (*admin.CloudSearchMetrics, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListHostFtsMetricsApiRequest) (*admin.CloudSearchMetrics, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListMetricTypesApiRequest) *admin.CloudSearchMetrics); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListHostFtsMetricsApiRequest) *admin.CloudSearchMetrics); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2212,7 +1724,7 @@ func (_m *MonitoringAndLogsApi) ListMetricTypesExecute(r admin.ListMetricTypesAp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListMetricTypesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListHostFtsMetricsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2220,7 +1732,7 @@ func (_m *MonitoringAndLogsApi) ListMetricTypesExecute(r admin.ListMetricTypesAp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListMetricTypesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListHostFtsMetricsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2229,77 +1741,565 @@ func (_m *MonitoringAndLogsApi) ListMetricTypesExecute(r admin.ListMetricTypesAp
 	return r0, r1, r2
 }
 
-// MonitoringAndLogsApi_ListMetricTypesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMetricTypesExecute'
-type MonitoringAndLogsApi_ListMetricTypesExecute_Call struct {
+// MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListHostFtsMetricsExecute'
+type MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call struct {
 	*mock.Call
 }
 
-// ListMetricTypesExecute is a helper method to define mock.On call
-//   - r admin.ListMetricTypesApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypesExecute(r any) *MonitoringAndLogsApi_ListMetricTypesExecute_Call {
-	return &MonitoringAndLogsApi_ListMetricTypesExecute_Call{Call: _e.mock.On("ListMetricTypesExecute", r)}
+// ListHostFtsMetricsExecute is a helper method to define mock.On call
+//   - r admin.ListHostFtsMetricsApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) ListHostFtsMetricsExecute(r any) *MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call {
+	return &MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call{Call: _e.mock.On("ListHostFtsMetricsExecute", r)}
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypesExecute_Call) Run(run func(r admin.ListMetricTypesApiRequest)) *MonitoringAndLogsApi_ListMetricTypesExecute_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call) Run(run func(r admin.ListHostFtsMetricsApiRequest)) *MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListMetricTypesApiRequest))
+		run(args[0].(admin.ListHostFtsMetricsApiRequest))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypesExecute_Call) Return(_a0 *admin.CloudSearchMetrics, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListMetricTypesExecute_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call) Return(_a0 *admin.CloudSearchMetrics, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypesExecute_Call) RunAndReturn(run func(admin.ListMetricTypesApiRequest) (*admin.CloudSearchMetrics, *http.Response, error)) *MonitoringAndLogsApi_ListMetricTypesExecute_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call) RunAndReturn(run func(admin.ListHostFtsMetricsApiRequest) (*admin.CloudSearchMetrics, *http.Response, error)) *MonitoringAndLogsApi_ListHostFtsMetricsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListMetricTypesWithParams provides a mock function with given fields: ctx, args
-func (_m *MonitoringAndLogsApi) ListMetricTypesWithParams(ctx context.Context, args *admin.ListMetricTypesApiParams) admin.ListMetricTypesApiRequest {
+// ListHostFtsMetricsWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) ListHostFtsMetricsWithParams(ctx context.Context, args *admin.ListHostFtsMetricsApiParams) admin.ListHostFtsMetricsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListMetricTypesWithParams")
+		panic("no return value specified for ListHostFtsMetricsWithParams")
 	}
 
-	var r0 admin.ListMetricTypesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListMetricTypesApiParams) admin.ListMetricTypesApiRequest); ok {
+	var r0 admin.ListHostFtsMetricsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListHostFtsMetricsApiParams) admin.ListHostFtsMetricsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListMetricTypesApiRequest)
+		r0 = ret.Get(0).(admin.ListHostFtsMetricsApiRequest)
 	}
 
 	return r0
 }
 
-// MonitoringAndLogsApi_ListMetricTypesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMetricTypesWithParams'
-type MonitoringAndLogsApi_ListMetricTypesWithParams_Call struct {
+// MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListHostFtsMetricsWithParams'
+type MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListMetricTypesWithParams is a helper method to define mock.On call
+// ListHostFtsMetricsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListMetricTypesApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypesWithParams(ctx any, args any) *MonitoringAndLogsApi_ListMetricTypesWithParams_Call {
-	return &MonitoringAndLogsApi_ListMetricTypesWithParams_Call{Call: _e.mock.On("ListMetricTypesWithParams", ctx, args)}
+//   - args *admin.ListHostFtsMetricsApiParams
+func (_e *MonitoringAndLogsApi_Expecter) ListHostFtsMetricsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call {
+	return &MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call{Call: _e.mock.On("ListHostFtsMetricsWithParams", ctx, args)}
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListMetricTypesApiParams)) *MonitoringAndLogsApi_ListMetricTypesWithParams_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListHostFtsMetricsApiParams)) *MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListMetricTypesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListHostFtsMetricsApiParams))
 	})
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypesWithParams_Call) Return(_a0 admin.ListMetricTypesApiRequest) *MonitoringAndLogsApi_ListMetricTypesWithParams_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call) Return(_a0 admin.ListHostFtsMetricsApiRequest) *MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MonitoringAndLogsApi_ListMetricTypesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListMetricTypesApiParams) admin.ListMetricTypesApiRequest) *MonitoringAndLogsApi_ListMetricTypesWithParams_Call {
+func (_c *MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListHostFtsMetricsApiParams) admin.ListHostFtsMetricsApiRequest) *MonitoringAndLogsApi_ListHostFtsMetricsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListIndexMeasurements provides a mock function with given fields: ctx, processId, databaseName, collectionName, groupId
+func (_m *MonitoringAndLogsApi) ListIndexMeasurements(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) admin.ListIndexMeasurementsApiRequest {
+	ret := _m.Called(ctx, processId, databaseName, collectionName, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListIndexMeasurements")
+	}
+
+	var r0 admin.ListIndexMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) admin.ListIndexMeasurementsApiRequest); ok {
+		r0 = rf(ctx, processId, databaseName, collectionName, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListIndexMeasurementsApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_ListIndexMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListIndexMeasurements'
+type MonitoringAndLogsApi_ListIndexMeasurements_Call struct {
+	*mock.Call
+}
+
+// ListIndexMeasurements is a helper method to define mock.On call
+//   - ctx context.Context
+//   - processId string
+//   - databaseName string
+//   - collectionName string
+//   - groupId string
+func (_e *MonitoringAndLogsApi_Expecter) ListIndexMeasurements(ctx any, processId any, databaseName any, collectionName any, groupId any) *MonitoringAndLogsApi_ListIndexMeasurements_Call {
+	return &MonitoringAndLogsApi_ListIndexMeasurements_Call{Call: _e.mock.On("ListIndexMeasurements", ctx, processId, databaseName, collectionName, groupId)}
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurements_Call) Run(run func(ctx context.Context, processId string, databaseName string, collectionName string, groupId string)) *MonitoringAndLogsApi_ListIndexMeasurements_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurements_Call) Return(_a0 admin.ListIndexMeasurementsApiRequest) *MonitoringAndLogsApi_ListIndexMeasurements_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string, string) admin.ListIndexMeasurementsApiRequest) *MonitoringAndLogsApi_ListIndexMeasurements_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListIndexMeasurementsExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) ListIndexMeasurementsExecute(r admin.ListIndexMeasurementsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListIndexMeasurementsExecute")
+	}
+
+	var r0 *admin.MeasurementsIndexes
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListIndexMeasurementsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListIndexMeasurementsApiRequest) *admin.MeasurementsIndexes); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.MeasurementsIndexes)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListIndexMeasurementsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListIndexMeasurementsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListIndexMeasurementsExecute'
+type MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call struct {
+	*mock.Call
+}
+
+// ListIndexMeasurementsExecute is a helper method to define mock.On call
+//   - r admin.ListIndexMeasurementsApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) ListIndexMeasurementsExecute(r any) *MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call {
+	return &MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call{Call: _e.mock.On("ListIndexMeasurementsExecute", r)}
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call) Run(run func(r admin.ListIndexMeasurementsApiRequest)) *MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListIndexMeasurementsApiRequest))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call) Return(_a0 *admin.MeasurementsIndexes, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call) RunAndReturn(run func(admin.ListIndexMeasurementsApiRequest) (*admin.MeasurementsIndexes, *http.Response, error)) *MonitoringAndLogsApi_ListIndexMeasurementsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListIndexMeasurementsWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) ListIndexMeasurementsWithParams(ctx context.Context, args *admin.ListIndexMeasurementsApiParams) admin.ListIndexMeasurementsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListIndexMeasurementsWithParams")
+	}
+
+	var r0 admin.ListIndexMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListIndexMeasurementsApiParams) admin.ListIndexMeasurementsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListIndexMeasurementsApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListIndexMeasurementsWithParams'
+type MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListIndexMeasurementsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListIndexMeasurementsApiParams
+func (_e *MonitoringAndLogsApi_Expecter) ListIndexMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call {
+	return &MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call{Call: _e.mock.On("ListIndexMeasurementsWithParams", ctx, args)}
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListIndexMeasurementsApiParams)) *MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListIndexMeasurementsApiParams))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call) Return(_a0 admin.ListIndexMeasurementsApiRequest) *MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListIndexMeasurementsApiParams) admin.ListIndexMeasurementsApiRequest) *MonitoringAndLogsApi_ListIndexMeasurementsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListMeasurements provides a mock function with given fields: ctx, processId, groupId
+func (_m *MonitoringAndLogsApi) ListMeasurements(ctx context.Context, processId string, groupId string) admin.ListMeasurementsApiRequest {
+	ret := _m.Called(ctx, processId, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListMeasurements")
+	}
+
+	var r0 admin.ListMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListMeasurementsApiRequest); ok {
+		r0 = rf(ctx, processId, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListMeasurementsApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_ListMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMeasurements'
+type MonitoringAndLogsApi_ListMeasurements_Call struct {
+	*mock.Call
+}
+
+// ListMeasurements is a helper method to define mock.On call
+//   - ctx context.Context
+//   - processId string
+//   - groupId string
+func (_e *MonitoringAndLogsApi_Expecter) ListMeasurements(ctx any, processId any, groupId any) *MonitoringAndLogsApi_ListMeasurements_Call {
+	return &MonitoringAndLogsApi_ListMeasurements_Call{Call: _e.mock.On("ListMeasurements", ctx, processId, groupId)}
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurements_Call) Run(run func(ctx context.Context, processId string, groupId string)) *MonitoringAndLogsApi_ListMeasurements_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurements_Call) Return(_a0 admin.ListMeasurementsApiRequest) *MonitoringAndLogsApi_ListMeasurements_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurements_Call) RunAndReturn(run func(context.Context, string, string) admin.ListMeasurementsApiRequest) *MonitoringAndLogsApi_ListMeasurements_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListMeasurementsExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) ListMeasurementsExecute(r admin.ListMeasurementsApiRequest) (*admin.MeasurementsNonIndex, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListMeasurementsExecute")
+	}
+
+	var r0 *admin.MeasurementsNonIndex
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListMeasurementsApiRequest) (*admin.MeasurementsNonIndex, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListMeasurementsApiRequest) *admin.MeasurementsNonIndex); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.MeasurementsNonIndex)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListMeasurementsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListMeasurementsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// MonitoringAndLogsApi_ListMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMeasurementsExecute'
+type MonitoringAndLogsApi_ListMeasurementsExecute_Call struct {
+	*mock.Call
+}
+
+// ListMeasurementsExecute is a helper method to define mock.On call
+//   - r admin.ListMeasurementsApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) ListMeasurementsExecute(r any) *MonitoringAndLogsApi_ListMeasurementsExecute_Call {
+	return &MonitoringAndLogsApi_ListMeasurementsExecute_Call{Call: _e.mock.On("ListMeasurementsExecute", r)}
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurementsExecute_Call) Run(run func(r admin.ListMeasurementsApiRequest)) *MonitoringAndLogsApi_ListMeasurementsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListMeasurementsApiRequest))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurementsExecute_Call) Return(_a0 *admin.MeasurementsNonIndex, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListMeasurementsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurementsExecute_Call) RunAndReturn(run func(admin.ListMeasurementsApiRequest) (*admin.MeasurementsNonIndex, *http.Response, error)) *MonitoringAndLogsApi_ListMeasurementsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListMeasurementsWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) ListMeasurementsWithParams(ctx context.Context, args *admin.ListMeasurementsApiParams) admin.ListMeasurementsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListMeasurementsWithParams")
+	}
+
+	var r0 admin.ListMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListMeasurementsApiParams) admin.ListMeasurementsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListMeasurementsApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_ListMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMeasurementsWithParams'
+type MonitoringAndLogsApi_ListMeasurementsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListMeasurementsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListMeasurementsApiParams
+func (_e *MonitoringAndLogsApi_Expecter) ListMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListMeasurementsWithParams_Call {
+	return &MonitoringAndLogsApi_ListMeasurementsWithParams_Call{Call: _e.mock.On("ListMeasurementsWithParams", ctx, args)}
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListMeasurementsApiParams)) *MonitoringAndLogsApi_ListMeasurementsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListMeasurementsApiParams))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurementsWithParams_Call) Return(_a0 admin.ListMeasurementsApiRequest) *MonitoringAndLogsApi_ListMeasurementsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListMeasurementsApiParams) admin.ListMeasurementsApiRequest) *MonitoringAndLogsApi_ListMeasurementsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProcessDisks provides a mock function with given fields: ctx, groupId, processId
+func (_m *MonitoringAndLogsApi) ListProcessDisks(ctx context.Context, groupId string, processId string) admin.ListProcessDisksApiRequest {
+	ret := _m.Called(ctx, groupId, processId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProcessDisks")
+	}
+
+	var r0 admin.ListProcessDisksApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListProcessDisksApiRequest); ok {
+		r0 = rf(ctx, groupId, processId)
+	} else {
+		r0 = ret.Get(0).(admin.ListProcessDisksApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_ListProcessDisks_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProcessDisks'
+type MonitoringAndLogsApi_ListProcessDisks_Call struct {
+	*mock.Call
+}
+
+// ListProcessDisks is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - processId string
+func (_e *MonitoringAndLogsApi_Expecter) ListProcessDisks(ctx any, groupId any, processId any) *MonitoringAndLogsApi_ListProcessDisks_Call {
+	return &MonitoringAndLogsApi_ListProcessDisks_Call{Call: _e.mock.On("ListProcessDisks", ctx, groupId, processId)}
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisks_Call) Run(run func(ctx context.Context, groupId string, processId string)) *MonitoringAndLogsApi_ListProcessDisks_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisks_Call) Return(_a0 admin.ListProcessDisksApiRequest) *MonitoringAndLogsApi_ListProcessDisks_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisks_Call) RunAndReturn(run func(context.Context, string, string) admin.ListProcessDisksApiRequest) *MonitoringAndLogsApi_ListProcessDisks_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProcessDisksExecute provides a mock function with given fields: r
+func (_m *MonitoringAndLogsApi) ListProcessDisksExecute(r admin.ListProcessDisksApiRequest) (*admin.PaginatedDiskPartition, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProcessDisksExecute")
+	}
+
+	var r0 *admin.PaginatedDiskPartition
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListProcessDisksApiRequest) (*admin.PaginatedDiskPartition, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListProcessDisksApiRequest) *admin.PaginatedDiskPartition); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedDiskPartition)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListProcessDisksApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListProcessDisksApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// MonitoringAndLogsApi_ListProcessDisksExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProcessDisksExecute'
+type MonitoringAndLogsApi_ListProcessDisksExecute_Call struct {
+	*mock.Call
+}
+
+// ListProcessDisksExecute is a helper method to define mock.On call
+//   - r admin.ListProcessDisksApiRequest
+func (_e *MonitoringAndLogsApi_Expecter) ListProcessDisksExecute(r any) *MonitoringAndLogsApi_ListProcessDisksExecute_Call {
+	return &MonitoringAndLogsApi_ListProcessDisksExecute_Call{Call: _e.mock.On("ListProcessDisksExecute", r)}
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisksExecute_Call) Run(run func(r admin.ListProcessDisksApiRequest)) *MonitoringAndLogsApi_ListProcessDisksExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListProcessDisksApiRequest))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisksExecute_Call) Return(_a0 *admin.PaginatedDiskPartition, _a1 *http.Response, _a2 error) *MonitoringAndLogsApi_ListProcessDisksExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisksExecute_Call) RunAndReturn(run func(admin.ListProcessDisksApiRequest) (*admin.PaginatedDiskPartition, *http.Response, error)) *MonitoringAndLogsApi_ListProcessDisksExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProcessDisksWithParams provides a mock function with given fields: ctx, args
+func (_m *MonitoringAndLogsApi) ListProcessDisksWithParams(ctx context.Context, args *admin.ListProcessDisksApiParams) admin.ListProcessDisksApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProcessDisksWithParams")
+	}
+
+	var r0 admin.ListProcessDisksApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProcessDisksApiParams) admin.ListProcessDisksApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListProcessDisksApiRequest)
+	}
+
+	return r0
+}
+
+// MonitoringAndLogsApi_ListProcessDisksWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProcessDisksWithParams'
+type MonitoringAndLogsApi_ListProcessDisksWithParams_Call struct {
+	*mock.Call
+}
+
+// ListProcessDisksWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListProcessDisksApiParams
+func (_e *MonitoringAndLogsApi_Expecter) ListProcessDisksWithParams(ctx any, args any) *MonitoringAndLogsApi_ListProcessDisksWithParams_Call {
+	return &MonitoringAndLogsApi_ListProcessDisksWithParams_Call{Call: _e.mock.On("ListProcessDisksWithParams", ctx, args)}
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisksWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProcessDisksApiParams)) *MonitoringAndLogsApi_ListProcessDisksWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListProcessDisksApiParams))
+	})
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisksWithParams_Call) Return(_a0 admin.ListProcessDisksApiRequest) *MonitoringAndLogsApi_ListProcessDisksWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MonitoringAndLogsApi_ListProcessDisksWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProcessDisksApiParams) admin.ListProcessDisksApiRequest) *MonitoringAndLogsApi_ListProcessDisksWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

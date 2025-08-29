@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -25,231 +25,69 @@ func (_m *NetworkPeeringApi) EXPECT() *NetworkPeeringApi_Expecter {
 	return &NetworkPeeringApi_Expecter{mock: &_m.Mock}
 }
 
-// CreatePeeringConnection provides a mock function with given fields: ctx, groupId, baseNetworkPeeringConnectionSettings
-func (_m *NetworkPeeringApi) CreatePeeringConnection(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings) admin.CreatePeeringConnectionApiRequest {
-	ret := _m.Called(ctx, groupId, baseNetworkPeeringConnectionSettings)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreatePeeringConnection")
-	}
-
-	var r0 admin.CreatePeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.BaseNetworkPeeringConnectionSettings) admin.CreatePeeringConnectionApiRequest); ok {
-		r0 = rf(ctx, groupId, baseNetworkPeeringConnectionSettings)
-	} else {
-		r0 = ret.Get(0).(admin.CreatePeeringConnectionApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_CreatePeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePeeringConnection'
-type NetworkPeeringApi_CreatePeeringConnection_Call struct {
-	*mock.Call
-}
-
-// CreatePeeringConnection is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnection(ctx any, groupId any, baseNetworkPeeringConnectionSettings any) *NetworkPeeringApi_CreatePeeringConnection_Call {
-	return &NetworkPeeringApi_CreatePeeringConnection_Call{Call: _e.mock.On("CreatePeeringConnection", ctx, groupId, baseNetworkPeeringConnectionSettings)}
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnection_Call) Run(run func(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings)) *NetworkPeeringApi_CreatePeeringConnection_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.BaseNetworkPeeringConnectionSettings))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnection_Call) Return(_a0 admin.CreatePeeringConnectionApiRequest) *NetworkPeeringApi_CreatePeeringConnection_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnection_Call) RunAndReturn(run func(context.Context, string, *admin.BaseNetworkPeeringConnectionSettings) admin.CreatePeeringConnectionApiRequest) *NetworkPeeringApi_CreatePeeringConnection_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreatePeeringConnectionExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) CreatePeeringConnectionExecute(r admin.CreatePeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreatePeeringConnectionExecute")
-	}
-
-	var r0 *admin.BaseNetworkPeeringConnectionSettings
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreatePeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreatePeeringConnectionApiRequest) *admin.BaseNetworkPeeringConnectionSettings); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.BaseNetworkPeeringConnectionSettings)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreatePeeringConnectionApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreatePeeringConnectionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// NetworkPeeringApi_CreatePeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePeeringConnectionExecute'
-type NetworkPeeringApi_CreatePeeringConnectionExecute_Call struct {
-	*mock.Call
-}
-
-// CreatePeeringConnectionExecute is a helper method to define mock.On call
-//   - r admin.CreatePeeringConnectionApiRequest
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnectionExecute(r any) *NetworkPeeringApi_CreatePeeringConnectionExecute_Call {
-	return &NetworkPeeringApi_CreatePeeringConnectionExecute_Call{Call: _e.mock.On("CreatePeeringConnectionExecute", r)}
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnectionExecute_Call) Run(run func(r admin.CreatePeeringConnectionApiRequest)) *NetworkPeeringApi_CreatePeeringConnectionExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreatePeeringConnectionApiRequest))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnectionExecute_Call) Return(_a0 *admin.BaseNetworkPeeringConnectionSettings, _a1 *http.Response, _a2 error) *NetworkPeeringApi_CreatePeeringConnectionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnectionExecute_Call) RunAndReturn(run func(admin.CreatePeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)) *NetworkPeeringApi_CreatePeeringConnectionExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreatePeeringConnectionWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) CreatePeeringConnectionWithParams(ctx context.Context, args *admin.CreatePeeringConnectionApiParams) admin.CreatePeeringConnectionApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreatePeeringConnectionWithParams")
-	}
-
-	var r0 admin.CreatePeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreatePeeringConnectionApiParams) admin.CreatePeeringConnectionApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreatePeeringConnectionApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_CreatePeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePeeringConnectionWithParams'
-type NetworkPeeringApi_CreatePeeringConnectionWithParams_Call struct {
-	*mock.Call
-}
-
-// CreatePeeringConnectionWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreatePeeringConnectionApiParams
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnectionWithParams(ctx any, args any) *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call {
-	return &NetworkPeeringApi_CreatePeeringConnectionWithParams_Call{Call: _e.mock.On("CreatePeeringConnectionWithParams", ctx, args)}
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.CreatePeeringConnectionApiParams)) *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreatePeeringConnectionApiParams))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call) Return(_a0 admin.CreatePeeringConnectionApiRequest) *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreatePeeringConnectionApiParams) admin.CreatePeeringConnectionApiRequest) *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreatePeeringContainer provides a mock function with given fields: ctx, groupId, cloudProviderContainer
-func (_m *NetworkPeeringApi) CreatePeeringContainer(ctx context.Context, groupId string, cloudProviderContainer *admin.CloudProviderContainer) admin.CreatePeeringContainerApiRequest {
+// CreateGroupContainer provides a mock function with given fields: ctx, groupId, cloudProviderContainer
+func (_m *NetworkPeeringApi) CreateGroupContainer(ctx context.Context, groupId string, cloudProviderContainer *admin.CloudProviderContainer) admin.CreateGroupContainerApiRequest {
 	ret := _m.Called(ctx, groupId, cloudProviderContainer)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreatePeeringContainer")
+		panic("no return value specified for CreateGroupContainer")
 	}
 
-	var r0 admin.CreatePeeringContainerApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CloudProviderContainer) admin.CreatePeeringContainerApiRequest); ok {
+	var r0 admin.CreateGroupContainerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CloudProviderContainer) admin.CreateGroupContainerApiRequest); ok {
 		r0 = rf(ctx, groupId, cloudProviderContainer)
 	} else {
-		r0 = ret.Get(0).(admin.CreatePeeringContainerApiRequest)
+		r0 = ret.Get(0).(admin.CreateGroupContainerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_CreatePeeringContainer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePeeringContainer'
-type NetworkPeeringApi_CreatePeeringContainer_Call struct {
+// NetworkPeeringApi_CreateGroupContainer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupContainer'
+type NetworkPeeringApi_CreateGroupContainer_Call struct {
 	*mock.Call
 }
 
-// CreatePeeringContainer is a helper method to define mock.On call
+// CreateGroupContainer is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProviderContainer *admin.CloudProviderContainer
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainer(ctx any, groupId any, cloudProviderContainer any) *NetworkPeeringApi_CreatePeeringContainer_Call {
-	return &NetworkPeeringApi_CreatePeeringContainer_Call{Call: _e.mock.On("CreatePeeringContainer", ctx, groupId, cloudProviderContainer)}
+func (_e *NetworkPeeringApi_Expecter) CreateGroupContainer(ctx any, groupId any, cloudProviderContainer any) *NetworkPeeringApi_CreateGroupContainer_Call {
+	return &NetworkPeeringApi_CreateGroupContainer_Call{Call: _e.mock.On("CreateGroupContainer", ctx, groupId, cloudProviderContainer)}
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainer_Call) Run(run func(ctx context.Context, groupId string, cloudProviderContainer *admin.CloudProviderContainer)) *NetworkPeeringApi_CreatePeeringContainer_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainer_Call) Run(run func(ctx context.Context, groupId string, cloudProviderContainer *admin.CloudProviderContainer)) *NetworkPeeringApi_CreateGroupContainer_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CloudProviderContainer))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainer_Call) Return(_a0 admin.CreatePeeringContainerApiRequest) *NetworkPeeringApi_CreatePeeringContainer_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainer_Call) Return(_a0 admin.CreateGroupContainerApiRequest) *NetworkPeeringApi_CreateGroupContainer_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainer_Call) RunAndReturn(run func(context.Context, string, *admin.CloudProviderContainer) admin.CreatePeeringContainerApiRequest) *NetworkPeeringApi_CreatePeeringContainer_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainer_Call) RunAndReturn(run func(context.Context, string, *admin.CloudProviderContainer) admin.CreateGroupContainerApiRequest) *NetworkPeeringApi_CreateGroupContainer_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreatePeeringContainerExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) CreatePeeringContainerExecute(r admin.CreatePeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error) {
+// CreateGroupContainerExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) CreateGroupContainerExecute(r admin.CreateGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreatePeeringContainerExecute")
+		panic("no return value specified for CreateGroupContainerExecute")
 	}
 
 	var r0 *admin.CloudProviderContainer
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreatePeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreatePeeringContainerApiRequest) *admin.CloudProviderContainer); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupContainerApiRequest) *admin.CloudProviderContainer); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -257,7 +95,7 @@ func (_m *NetworkPeeringApi) CreatePeeringContainerExecute(r admin.CreatePeering
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreatePeeringContainerApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateGroupContainerApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -265,7 +103,7 @@ func (_m *NetworkPeeringApi) CreatePeeringContainerExecute(r admin.CreatePeering
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreatePeeringContainerApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateGroupContainerApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -274,152 +112,152 @@ func (_m *NetworkPeeringApi) CreatePeeringContainerExecute(r admin.CreatePeering
 	return r0, r1, r2
 }
 
-// NetworkPeeringApi_CreatePeeringContainerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePeeringContainerExecute'
-type NetworkPeeringApi_CreatePeeringContainerExecute_Call struct {
+// NetworkPeeringApi_CreateGroupContainerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupContainerExecute'
+type NetworkPeeringApi_CreateGroupContainerExecute_Call struct {
 	*mock.Call
 }
 
-// CreatePeeringContainerExecute is a helper method to define mock.On call
-//   - r admin.CreatePeeringContainerApiRequest
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainerExecute(r any) *NetworkPeeringApi_CreatePeeringContainerExecute_Call {
-	return &NetworkPeeringApi_CreatePeeringContainerExecute_Call{Call: _e.mock.On("CreatePeeringContainerExecute", r)}
+// CreateGroupContainerExecute is a helper method to define mock.On call
+//   - r admin.CreateGroupContainerApiRequest
+func (_e *NetworkPeeringApi_Expecter) CreateGroupContainerExecute(r any) *NetworkPeeringApi_CreateGroupContainerExecute_Call {
+	return &NetworkPeeringApi_CreateGroupContainerExecute_Call{Call: _e.mock.On("CreateGroupContainerExecute", r)}
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainerExecute_Call) Run(run func(r admin.CreatePeeringContainerApiRequest)) *NetworkPeeringApi_CreatePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainerExecute_Call) Run(run func(r admin.CreateGroupContainerApiRequest)) *NetworkPeeringApi_CreateGroupContainerExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreatePeeringContainerApiRequest))
+		run(args[0].(admin.CreateGroupContainerApiRequest))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainerExecute_Call) Return(_a0 *admin.CloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_CreatePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainerExecute_Call) Return(_a0 *admin.CloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_CreateGroupContainerExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainerExecute_Call) RunAndReturn(run func(admin.CreatePeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_CreatePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainerExecute_Call) RunAndReturn(run func(admin.CreateGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_CreateGroupContainerExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreatePeeringContainerWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) CreatePeeringContainerWithParams(ctx context.Context, args *admin.CreatePeeringContainerApiParams) admin.CreatePeeringContainerApiRequest {
+// CreateGroupContainerWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) CreateGroupContainerWithParams(ctx context.Context, args *admin.CreateGroupContainerApiParams) admin.CreateGroupContainerApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreatePeeringContainerWithParams")
+		panic("no return value specified for CreateGroupContainerWithParams")
 	}
 
-	var r0 admin.CreatePeeringContainerApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreatePeeringContainerApiParams) admin.CreatePeeringContainerApiRequest); ok {
+	var r0 admin.CreateGroupContainerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupContainerApiParams) admin.CreateGroupContainerApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreatePeeringContainerApiRequest)
+		r0 = ret.Get(0).(admin.CreateGroupContainerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_CreatePeeringContainerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePeeringContainerWithParams'
-type NetworkPeeringApi_CreatePeeringContainerWithParams_Call struct {
+// NetworkPeeringApi_CreateGroupContainerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupContainerWithParams'
+type NetworkPeeringApi_CreateGroupContainerWithParams_Call struct {
 	*mock.Call
 }
 
-// CreatePeeringContainerWithParams is a helper method to define mock.On call
+// CreateGroupContainerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreatePeeringContainerApiParams
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainerWithParams(ctx any, args any) *NetworkPeeringApi_CreatePeeringContainerWithParams_Call {
-	return &NetworkPeeringApi_CreatePeeringContainerWithParams_Call{Call: _e.mock.On("CreatePeeringContainerWithParams", ctx, args)}
+//   - args *admin.CreateGroupContainerApiParams
+func (_e *NetworkPeeringApi_Expecter) CreateGroupContainerWithParams(ctx any, args any) *NetworkPeeringApi_CreateGroupContainerWithParams_Call {
+	return &NetworkPeeringApi_CreateGroupContainerWithParams_Call{Call: _e.mock.On("CreateGroupContainerWithParams", ctx, args)}
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainerWithParams_Call) Run(run func(ctx context.Context, args *admin.CreatePeeringContainerApiParams)) *NetworkPeeringApi_CreatePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainerWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupContainerApiParams)) *NetworkPeeringApi_CreateGroupContainerWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreatePeeringContainerApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateGroupContainerApiParams))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainerWithParams_Call) Return(_a0 admin.CreatePeeringContainerApiRequest) *NetworkPeeringApi_CreatePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainerWithParams_Call) Return(_a0 admin.CreateGroupContainerApiRequest) *NetworkPeeringApi_CreateGroupContainerWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_CreatePeeringContainerWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreatePeeringContainerApiParams) admin.CreatePeeringContainerApiRequest) *NetworkPeeringApi_CreatePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_CreateGroupContainerWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupContainerApiParams) admin.CreateGroupContainerApiRequest) *NetworkPeeringApi_CreateGroupContainerWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePeeringConnection provides a mock function with given fields: ctx, groupId, peerId
-func (_m *NetworkPeeringApi) DeletePeeringConnection(ctx context.Context, groupId string, peerId string) admin.DeletePeeringConnectionApiRequest {
-	ret := _m.Called(ctx, groupId, peerId)
+// CreateGroupPeer provides a mock function with given fields: ctx, groupId, baseNetworkPeeringConnectionSettings
+func (_m *NetworkPeeringApi) CreateGroupPeer(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings) admin.CreateGroupPeerApiRequest {
+	ret := _m.Called(ctx, groupId, baseNetworkPeeringConnectionSettings)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePeeringConnection")
+		panic("no return value specified for CreateGroupPeer")
 	}
 
-	var r0 admin.DeletePeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeletePeeringConnectionApiRequest); ok {
-		r0 = rf(ctx, groupId, peerId)
+	var r0 admin.CreateGroupPeerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.BaseNetworkPeeringConnectionSettings) admin.CreateGroupPeerApiRequest); ok {
+		r0 = rf(ctx, groupId, baseNetworkPeeringConnectionSettings)
 	} else {
-		r0 = ret.Get(0).(admin.DeletePeeringConnectionApiRequest)
+		r0 = ret.Get(0).(admin.CreateGroupPeerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_DeletePeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePeeringConnection'
-type NetworkPeeringApi_DeletePeeringConnection_Call struct {
+// NetworkPeeringApi_CreateGroupPeer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupPeer'
+type NetworkPeeringApi_CreateGroupPeer_Call struct {
 	*mock.Call
 }
 
-// DeletePeeringConnection is a helper method to define mock.On call
+// CreateGroupPeer is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - peerId string
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnection(ctx any, groupId any, peerId any) *NetworkPeeringApi_DeletePeeringConnection_Call {
-	return &NetworkPeeringApi_DeletePeeringConnection_Call{Call: _e.mock.On("DeletePeeringConnection", ctx, groupId, peerId)}
+//   - baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings
+func (_e *NetworkPeeringApi_Expecter) CreateGroupPeer(ctx any, groupId any, baseNetworkPeeringConnectionSettings any) *NetworkPeeringApi_CreateGroupPeer_Call {
+	return &NetworkPeeringApi_CreateGroupPeer_Call{Call: _e.mock.On("CreateGroupPeer", ctx, groupId, baseNetworkPeeringConnectionSettings)}
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnection_Call) Run(run func(ctx context.Context, groupId string, peerId string)) *NetworkPeeringApi_DeletePeeringConnection_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeer_Call) Run(run func(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings)) *NetworkPeeringApi_CreateGroupPeer_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.BaseNetworkPeeringConnectionSettings))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnection_Call) Return(_a0 admin.DeletePeeringConnectionApiRequest) *NetworkPeeringApi_DeletePeeringConnection_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeer_Call) Return(_a0 admin.CreateGroupPeerApiRequest) *NetworkPeeringApi_CreateGroupPeer_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnection_Call) RunAndReturn(run func(context.Context, string, string) admin.DeletePeeringConnectionApiRequest) *NetworkPeeringApi_DeletePeeringConnection_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeer_Call) RunAndReturn(run func(context.Context, string, *admin.BaseNetworkPeeringConnectionSettings) admin.CreateGroupPeerApiRequest) *NetworkPeeringApi_CreateGroupPeer_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePeeringConnectionExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) DeletePeeringConnectionExecute(r admin.DeletePeeringConnectionApiRequest) (any, *http.Response, error) {
+// CreateGroupPeerExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) CreateGroupPeerExecute(r admin.CreateGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePeeringConnectionExecute")
+		panic("no return value specified for CreateGroupPeerExecute")
 	}
 
-	var r0 any
+	var r0 *admin.BaseNetworkPeeringConnectionSettings
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePeeringConnectionApiRequest) (any, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePeeringConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupPeerApiRequest) *admin.BaseNetworkPeeringConnectionSettings); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*admin.BaseNetworkPeeringConnectionSettings)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeletePeeringConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateGroupPeerApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -427,7 +265,7 @@ func (_m *NetworkPeeringApi) DeletePeeringConnectionExecute(r admin.DeletePeerin
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeletePeeringConnectionApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateGroupPeerApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -436,143 +274,143 @@ func (_m *NetworkPeeringApi) DeletePeeringConnectionExecute(r admin.DeletePeerin
 	return r0, r1, r2
 }
 
-// NetworkPeeringApi_DeletePeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePeeringConnectionExecute'
-type NetworkPeeringApi_DeletePeeringConnectionExecute_Call struct {
+// NetworkPeeringApi_CreateGroupPeerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupPeerExecute'
+type NetworkPeeringApi_CreateGroupPeerExecute_Call struct {
 	*mock.Call
 }
 
-// DeletePeeringConnectionExecute is a helper method to define mock.On call
-//   - r admin.DeletePeeringConnectionApiRequest
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnectionExecute(r any) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
-	return &NetworkPeeringApi_DeletePeeringConnectionExecute_Call{Call: _e.mock.On("DeletePeeringConnectionExecute", r)}
+// CreateGroupPeerExecute is a helper method to define mock.On call
+//   - r admin.CreateGroupPeerApiRequest
+func (_e *NetworkPeeringApi_Expecter) CreateGroupPeerExecute(r any) *NetworkPeeringApi_CreateGroupPeerExecute_Call {
+	return &NetworkPeeringApi_CreateGroupPeerExecute_Call{Call: _e.mock.On("CreateGroupPeerExecute", r)}
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnectionExecute_Call) Run(run func(r admin.DeletePeeringConnectionApiRequest)) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeerExecute_Call) Run(run func(r admin.CreateGroupPeerApiRequest)) *NetworkPeeringApi_CreateGroupPeerExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeletePeeringConnectionApiRequest))
+		run(args[0].(admin.CreateGroupPeerApiRequest))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeerExecute_Call) Return(_a0 *admin.BaseNetworkPeeringConnectionSettings, _a1 *http.Response, _a2 error) *NetworkPeeringApi_CreateGroupPeerExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeletePeeringConnectionApiRequest) (any, *http.Response, error)) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeerExecute_Call) RunAndReturn(run func(admin.CreateGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)) *NetworkPeeringApi_CreateGroupPeerExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePeeringConnectionWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) DeletePeeringConnectionWithParams(ctx context.Context, args *admin.DeletePeeringConnectionApiParams) admin.DeletePeeringConnectionApiRequest {
+// CreateGroupPeerWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) CreateGroupPeerWithParams(ctx context.Context, args *admin.CreateGroupPeerApiParams) admin.CreateGroupPeerApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePeeringConnectionWithParams")
+		panic("no return value specified for CreateGroupPeerWithParams")
 	}
 
-	var r0 admin.DeletePeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeletePeeringConnectionApiParams) admin.DeletePeeringConnectionApiRequest); ok {
+	var r0 admin.CreateGroupPeerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupPeerApiParams) admin.CreateGroupPeerApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeletePeeringConnectionApiRequest)
+		r0 = ret.Get(0).(admin.CreateGroupPeerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_DeletePeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePeeringConnectionWithParams'
-type NetworkPeeringApi_DeletePeeringConnectionWithParams_Call struct {
+// NetworkPeeringApi_CreateGroupPeerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupPeerWithParams'
+type NetworkPeeringApi_CreateGroupPeerWithParams_Call struct {
 	*mock.Call
 }
 
-// DeletePeeringConnectionWithParams is a helper method to define mock.On call
+// CreateGroupPeerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeletePeeringConnectionApiParams
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnectionWithParams(ctx any, args any) *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call {
-	return &NetworkPeeringApi_DeletePeeringConnectionWithParams_Call{Call: _e.mock.On("DeletePeeringConnectionWithParams", ctx, args)}
+//   - args *admin.CreateGroupPeerApiParams
+func (_e *NetworkPeeringApi_Expecter) CreateGroupPeerWithParams(ctx any, args any) *NetworkPeeringApi_CreateGroupPeerWithParams_Call {
+	return &NetworkPeeringApi_CreateGroupPeerWithParams_Call{Call: _e.mock.On("CreateGroupPeerWithParams", ctx, args)}
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.DeletePeeringConnectionApiParams)) *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeerWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupPeerApiParams)) *NetworkPeeringApi_CreateGroupPeerWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeletePeeringConnectionApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateGroupPeerApiParams))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call) Return(_a0 admin.DeletePeeringConnectionApiRequest) *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeerWithParams_Call) Return(_a0 admin.CreateGroupPeerApiRequest) *NetworkPeeringApi_CreateGroupPeerWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeletePeeringConnectionApiParams) admin.DeletePeeringConnectionApiRequest) *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call {
+func (_c *NetworkPeeringApi_CreateGroupPeerWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupPeerApiParams) admin.CreateGroupPeerApiRequest) *NetworkPeeringApi_CreateGroupPeerWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePeeringContainer provides a mock function with given fields: ctx, groupId, containerId
-func (_m *NetworkPeeringApi) DeletePeeringContainer(ctx context.Context, groupId string, containerId string) admin.DeletePeeringContainerApiRequest {
+// DeleteGroupContainer provides a mock function with given fields: ctx, groupId, containerId
+func (_m *NetworkPeeringApi) DeleteGroupContainer(ctx context.Context, groupId string, containerId string) admin.DeleteGroupContainerApiRequest {
 	ret := _m.Called(ctx, groupId, containerId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePeeringContainer")
+		panic("no return value specified for DeleteGroupContainer")
 	}
 
-	var r0 admin.DeletePeeringContainerApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeletePeeringContainerApiRequest); ok {
+	var r0 admin.DeleteGroupContainerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteGroupContainerApiRequest); ok {
 		r0 = rf(ctx, groupId, containerId)
 	} else {
-		r0 = ret.Get(0).(admin.DeletePeeringContainerApiRequest)
+		r0 = ret.Get(0).(admin.DeleteGroupContainerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_DeletePeeringContainer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePeeringContainer'
-type NetworkPeeringApi_DeletePeeringContainer_Call struct {
+// NetworkPeeringApi_DeleteGroupContainer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupContainer'
+type NetworkPeeringApi_DeleteGroupContainer_Call struct {
 	*mock.Call
 }
 
-// DeletePeeringContainer is a helper method to define mock.On call
+// DeleteGroupContainer is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - containerId string
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainer(ctx any, groupId any, containerId any) *NetworkPeeringApi_DeletePeeringContainer_Call {
-	return &NetworkPeeringApi_DeletePeeringContainer_Call{Call: _e.mock.On("DeletePeeringContainer", ctx, groupId, containerId)}
+func (_e *NetworkPeeringApi_Expecter) DeleteGroupContainer(ctx any, groupId any, containerId any) *NetworkPeeringApi_DeleteGroupContainer_Call {
+	return &NetworkPeeringApi_DeleteGroupContainer_Call{Call: _e.mock.On("DeleteGroupContainer", ctx, groupId, containerId)}
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainer_Call) Run(run func(ctx context.Context, groupId string, containerId string)) *NetworkPeeringApi_DeletePeeringContainer_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainer_Call) Run(run func(ctx context.Context, groupId string, containerId string)) *NetworkPeeringApi_DeleteGroupContainer_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainer_Call) Return(_a0 admin.DeletePeeringContainerApiRequest) *NetworkPeeringApi_DeletePeeringContainer_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainer_Call) Return(_a0 admin.DeleteGroupContainerApiRequest) *NetworkPeeringApi_DeleteGroupContainer_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainer_Call) RunAndReturn(run func(context.Context, string, string) admin.DeletePeeringContainerApiRequest) *NetworkPeeringApi_DeletePeeringContainer_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainer_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteGroupContainerApiRequest) *NetworkPeeringApi_DeleteGroupContainer_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePeeringContainerExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) DeletePeeringContainerExecute(r admin.DeletePeeringContainerApiRequest) (*http.Response, error) {
+// DeleteGroupContainerExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) DeleteGroupContainerExecute(r admin.DeleteGroupContainerApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePeeringContainerExecute")
+		panic("no return value specified for DeleteGroupContainerExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePeeringContainerApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupContainerApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePeeringContainerApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupContainerApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -580,7 +418,7 @@ func (_m *NetworkPeeringApi) DeletePeeringContainerExecute(r admin.DeletePeering
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeletePeeringContainerApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteGroupContainerApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -589,77 +427,239 @@ func (_m *NetworkPeeringApi) DeletePeeringContainerExecute(r admin.DeletePeering
 	return r0, r1
 }
 
-// NetworkPeeringApi_DeletePeeringContainerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePeeringContainerExecute'
-type NetworkPeeringApi_DeletePeeringContainerExecute_Call struct {
+// NetworkPeeringApi_DeleteGroupContainerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupContainerExecute'
+type NetworkPeeringApi_DeleteGroupContainerExecute_Call struct {
 	*mock.Call
 }
 
-// DeletePeeringContainerExecute is a helper method to define mock.On call
-//   - r admin.DeletePeeringContainerApiRequest
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainerExecute(r any) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
-	return &NetworkPeeringApi_DeletePeeringContainerExecute_Call{Call: _e.mock.On("DeletePeeringContainerExecute", r)}
+// DeleteGroupContainerExecute is a helper method to define mock.On call
+//   - r admin.DeleteGroupContainerApiRequest
+func (_e *NetworkPeeringApi_Expecter) DeleteGroupContainerExecute(r any) *NetworkPeeringApi_DeleteGroupContainerExecute_Call {
+	return &NetworkPeeringApi_DeleteGroupContainerExecute_Call{Call: _e.mock.On("DeleteGroupContainerExecute", r)}
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainerExecute_Call) Run(run func(r admin.DeletePeeringContainerApiRequest)) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainerExecute_Call) Run(run func(r admin.DeleteGroupContainerApiRequest)) *NetworkPeeringApi_DeleteGroupContainerExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeletePeeringContainerApiRequest))
+		run(args[0].(admin.DeleteGroupContainerApiRequest))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainerExecute_Call) Return(_a0 *http.Response, _a1 error) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainerExecute_Call) Return(_a0 *http.Response, _a1 error) *NetworkPeeringApi_DeleteGroupContainerExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainerExecute_Call) RunAndReturn(run func(admin.DeletePeeringContainerApiRequest) (*http.Response, error)) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainerExecute_Call) RunAndReturn(run func(admin.DeleteGroupContainerApiRequest) (*http.Response, error)) *NetworkPeeringApi_DeleteGroupContainerExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePeeringContainerWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) DeletePeeringContainerWithParams(ctx context.Context, args *admin.DeletePeeringContainerApiParams) admin.DeletePeeringContainerApiRequest {
+// DeleteGroupContainerWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) DeleteGroupContainerWithParams(ctx context.Context, args *admin.DeleteGroupContainerApiParams) admin.DeleteGroupContainerApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePeeringContainerWithParams")
+		panic("no return value specified for DeleteGroupContainerWithParams")
 	}
 
-	var r0 admin.DeletePeeringContainerApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeletePeeringContainerApiParams) admin.DeletePeeringContainerApiRequest); ok {
+	var r0 admin.DeleteGroupContainerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupContainerApiParams) admin.DeleteGroupContainerApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeletePeeringContainerApiRequest)
+		r0 = ret.Get(0).(admin.DeleteGroupContainerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_DeletePeeringContainerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePeeringContainerWithParams'
-type NetworkPeeringApi_DeletePeeringContainerWithParams_Call struct {
+// NetworkPeeringApi_DeleteGroupContainerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupContainerWithParams'
+type NetworkPeeringApi_DeleteGroupContainerWithParams_Call struct {
 	*mock.Call
 }
 
-// DeletePeeringContainerWithParams is a helper method to define mock.On call
+// DeleteGroupContainerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeletePeeringContainerApiParams
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainerWithParams(ctx any, args any) *NetworkPeeringApi_DeletePeeringContainerWithParams_Call {
-	return &NetworkPeeringApi_DeletePeeringContainerWithParams_Call{Call: _e.mock.On("DeletePeeringContainerWithParams", ctx, args)}
+//   - args *admin.DeleteGroupContainerApiParams
+func (_e *NetworkPeeringApi_Expecter) DeleteGroupContainerWithParams(ctx any, args any) *NetworkPeeringApi_DeleteGroupContainerWithParams_Call {
+	return &NetworkPeeringApi_DeleteGroupContainerWithParams_Call{Call: _e.mock.On("DeleteGroupContainerWithParams", ctx, args)}
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainerWithParams_Call) Run(run func(ctx context.Context, args *admin.DeletePeeringContainerApiParams)) *NetworkPeeringApi_DeletePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainerWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupContainerApiParams)) *NetworkPeeringApi_DeleteGroupContainerWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeletePeeringContainerApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteGroupContainerApiParams))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainerWithParams_Call) Return(_a0 admin.DeletePeeringContainerApiRequest) *NetworkPeeringApi_DeletePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainerWithParams_Call) Return(_a0 admin.DeleteGroupContainerApiRequest) *NetworkPeeringApi_DeleteGroupContainerWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainerWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeletePeeringContainerApiParams) admin.DeletePeeringContainerApiRequest) *NetworkPeeringApi_DeletePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_DeleteGroupContainerWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupContainerApiParams) admin.DeleteGroupContainerApiRequest) *NetworkPeeringApi_DeleteGroupContainerWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteGroupPeer provides a mock function with given fields: ctx, groupId, peerId
+func (_m *NetworkPeeringApi) DeleteGroupPeer(ctx context.Context, groupId string, peerId string) admin.DeleteGroupPeerApiRequest {
+	ret := _m.Called(ctx, groupId, peerId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteGroupPeer")
+	}
+
+	var r0 admin.DeleteGroupPeerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteGroupPeerApiRequest); ok {
+		r0 = rf(ctx, groupId, peerId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteGroupPeerApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_DeleteGroupPeer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupPeer'
+type NetworkPeeringApi_DeleteGroupPeer_Call struct {
+	*mock.Call
+}
+
+// DeleteGroupPeer is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - peerId string
+func (_e *NetworkPeeringApi_Expecter) DeleteGroupPeer(ctx any, groupId any, peerId any) *NetworkPeeringApi_DeleteGroupPeer_Call {
+	return &NetworkPeeringApi_DeleteGroupPeer_Call{Call: _e.mock.On("DeleteGroupPeer", ctx, groupId, peerId)}
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeer_Call) Run(run func(ctx context.Context, groupId string, peerId string)) *NetworkPeeringApi_DeleteGroupPeer_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeer_Call) Return(_a0 admin.DeleteGroupPeerApiRequest) *NetworkPeeringApi_DeleteGroupPeer_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeer_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteGroupPeerApiRequest) *NetworkPeeringApi_DeleteGroupPeer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteGroupPeerExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) DeleteGroupPeerExecute(r admin.DeleteGroupPeerApiRequest) (any, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteGroupPeerExecute")
+	}
+
+	var r0 any
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupPeerApiRequest) (any, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupPeerApiRequest) any); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(any)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteGroupPeerApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.DeleteGroupPeerApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// NetworkPeeringApi_DeleteGroupPeerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupPeerExecute'
+type NetworkPeeringApi_DeleteGroupPeerExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteGroupPeerExecute is a helper method to define mock.On call
+//   - r admin.DeleteGroupPeerApiRequest
+func (_e *NetworkPeeringApi_Expecter) DeleteGroupPeerExecute(r any) *NetworkPeeringApi_DeleteGroupPeerExecute_Call {
+	return &NetworkPeeringApi_DeleteGroupPeerExecute_Call{Call: _e.mock.On("DeleteGroupPeerExecute", r)}
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeerExecute_Call) Run(run func(r admin.DeleteGroupPeerApiRequest)) *NetworkPeeringApi_DeleteGroupPeerExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteGroupPeerApiRequest))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeerExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *NetworkPeeringApi_DeleteGroupPeerExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeerExecute_Call) RunAndReturn(run func(admin.DeleteGroupPeerApiRequest) (any, *http.Response, error)) *NetworkPeeringApi_DeleteGroupPeerExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteGroupPeerWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) DeleteGroupPeerWithParams(ctx context.Context, args *admin.DeleteGroupPeerApiParams) admin.DeleteGroupPeerApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteGroupPeerWithParams")
+	}
+
+	var r0 admin.DeleteGroupPeerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupPeerApiParams) admin.DeleteGroupPeerApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteGroupPeerApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_DeleteGroupPeerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupPeerWithParams'
+type NetworkPeeringApi_DeleteGroupPeerWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteGroupPeerWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteGroupPeerApiParams
+func (_e *NetworkPeeringApi_Expecter) DeleteGroupPeerWithParams(ctx any, args any) *NetworkPeeringApi_DeleteGroupPeerWithParams_Call {
+	return &NetworkPeeringApi_DeleteGroupPeerWithParams_Call{Call: _e.mock.On("DeleteGroupPeerWithParams", ctx, args)}
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeerWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupPeerApiParams)) *NetworkPeeringApi_DeleteGroupPeerWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteGroupPeerApiParams))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeerWithParams_Call) Return(_a0 admin.DeleteGroupPeerApiRequest) *NetworkPeeringApi_DeleteGroupPeerWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_DeleteGroupPeerWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupPeerApiParams) admin.DeleteGroupPeerApiRequest) *NetworkPeeringApi_DeleteGroupPeerWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -826,231 +826,69 @@ func (_c *NetworkPeeringApi_DisablePeeringWithParams_Call) RunAndReturn(run func
 	return _c
 }
 
-// GetPeeringConnection provides a mock function with given fields: ctx, groupId, peerId
-func (_m *NetworkPeeringApi) GetPeeringConnection(ctx context.Context, groupId string, peerId string) admin.GetPeeringConnectionApiRequest {
-	ret := _m.Called(ctx, groupId, peerId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetPeeringConnection")
-	}
-
-	var r0 admin.GetPeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetPeeringConnectionApiRequest); ok {
-		r0 = rf(ctx, groupId, peerId)
-	} else {
-		r0 = ret.Get(0).(admin.GetPeeringConnectionApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_GetPeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPeeringConnection'
-type NetworkPeeringApi_GetPeeringConnection_Call struct {
-	*mock.Call
-}
-
-// GetPeeringConnection is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - peerId string
-func (_e *NetworkPeeringApi_Expecter) GetPeeringConnection(ctx any, groupId any, peerId any) *NetworkPeeringApi_GetPeeringConnection_Call {
-	return &NetworkPeeringApi_GetPeeringConnection_Call{Call: _e.mock.On("GetPeeringConnection", ctx, groupId, peerId)}
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnection_Call) Run(run func(ctx context.Context, groupId string, peerId string)) *NetworkPeeringApi_GetPeeringConnection_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnection_Call) Return(_a0 admin.GetPeeringConnectionApiRequest) *NetworkPeeringApi_GetPeeringConnection_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnection_Call) RunAndReturn(run func(context.Context, string, string) admin.GetPeeringConnectionApiRequest) *NetworkPeeringApi_GetPeeringConnection_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) GetPeeringConnectionExecute(r admin.GetPeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetPeeringConnectionExecute")
-	}
-
-	var r0 *admin.BaseNetworkPeeringConnectionSettings
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetPeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetPeeringConnectionApiRequest) *admin.BaseNetworkPeeringConnectionSettings); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.BaseNetworkPeeringConnectionSettings)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetPeeringConnectionApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetPeeringConnectionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// NetworkPeeringApi_GetPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPeeringConnectionExecute'
-type NetworkPeeringApi_GetPeeringConnectionExecute_Call struct {
-	*mock.Call
-}
-
-// GetPeeringConnectionExecute is a helper method to define mock.On call
-//   - r admin.GetPeeringConnectionApiRequest
-func (_e *NetworkPeeringApi_Expecter) GetPeeringConnectionExecute(r any) *NetworkPeeringApi_GetPeeringConnectionExecute_Call {
-	return &NetworkPeeringApi_GetPeeringConnectionExecute_Call{Call: _e.mock.On("GetPeeringConnectionExecute", r)}
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnectionExecute_Call) Run(run func(r admin.GetPeeringConnectionApiRequest)) *NetworkPeeringApi_GetPeeringConnectionExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetPeeringConnectionApiRequest))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnectionExecute_Call) Return(_a0 *admin.BaseNetworkPeeringConnectionSettings, _a1 *http.Response, _a2 error) *NetworkPeeringApi_GetPeeringConnectionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnectionExecute_Call) RunAndReturn(run func(admin.GetPeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)) *NetworkPeeringApi_GetPeeringConnectionExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetPeeringConnectionWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) GetPeeringConnectionWithParams(ctx context.Context, args *admin.GetPeeringConnectionApiParams) admin.GetPeeringConnectionApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetPeeringConnectionWithParams")
-	}
-
-	var r0 admin.GetPeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetPeeringConnectionApiParams) admin.GetPeeringConnectionApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetPeeringConnectionApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_GetPeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPeeringConnectionWithParams'
-type NetworkPeeringApi_GetPeeringConnectionWithParams_Call struct {
-	*mock.Call
-}
-
-// GetPeeringConnectionWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetPeeringConnectionApiParams
-func (_e *NetworkPeeringApi_Expecter) GetPeeringConnectionWithParams(ctx any, args any) *NetworkPeeringApi_GetPeeringConnectionWithParams_Call {
-	return &NetworkPeeringApi_GetPeeringConnectionWithParams_Call{Call: _e.mock.On("GetPeeringConnectionWithParams", ctx, args)}
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.GetPeeringConnectionApiParams)) *NetworkPeeringApi_GetPeeringConnectionWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetPeeringConnectionApiParams))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnectionWithParams_Call) Return(_a0 admin.GetPeeringConnectionApiRequest) *NetworkPeeringApi_GetPeeringConnectionWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_GetPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetPeeringConnectionApiParams) admin.GetPeeringConnectionApiRequest) *NetworkPeeringApi_GetPeeringConnectionWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetPeeringContainer provides a mock function with given fields: ctx, groupId, containerId
-func (_m *NetworkPeeringApi) GetPeeringContainer(ctx context.Context, groupId string, containerId string) admin.GetPeeringContainerApiRequest {
+// GetGroupContainer provides a mock function with given fields: ctx, groupId, containerId
+func (_m *NetworkPeeringApi) GetGroupContainer(ctx context.Context, groupId string, containerId string) admin.GetGroupContainerApiRequest {
 	ret := _m.Called(ctx, groupId, containerId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPeeringContainer")
+		panic("no return value specified for GetGroupContainer")
 	}
 
-	var r0 admin.GetPeeringContainerApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetPeeringContainerApiRequest); ok {
+	var r0 admin.GetGroupContainerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupContainerApiRequest); ok {
 		r0 = rf(ctx, groupId, containerId)
 	} else {
-		r0 = ret.Get(0).(admin.GetPeeringContainerApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupContainerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_GetPeeringContainer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPeeringContainer'
-type NetworkPeeringApi_GetPeeringContainer_Call struct {
+// NetworkPeeringApi_GetGroupContainer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupContainer'
+type NetworkPeeringApi_GetGroupContainer_Call struct {
 	*mock.Call
 }
 
-// GetPeeringContainer is a helper method to define mock.On call
+// GetGroupContainer is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - containerId string
-func (_e *NetworkPeeringApi_Expecter) GetPeeringContainer(ctx any, groupId any, containerId any) *NetworkPeeringApi_GetPeeringContainer_Call {
-	return &NetworkPeeringApi_GetPeeringContainer_Call{Call: _e.mock.On("GetPeeringContainer", ctx, groupId, containerId)}
+func (_e *NetworkPeeringApi_Expecter) GetGroupContainer(ctx any, groupId any, containerId any) *NetworkPeeringApi_GetGroupContainer_Call {
+	return &NetworkPeeringApi_GetGroupContainer_Call{Call: _e.mock.On("GetGroupContainer", ctx, groupId, containerId)}
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainer_Call) Run(run func(ctx context.Context, groupId string, containerId string)) *NetworkPeeringApi_GetPeeringContainer_Call {
+func (_c *NetworkPeeringApi_GetGroupContainer_Call) Run(run func(ctx context.Context, groupId string, containerId string)) *NetworkPeeringApi_GetGroupContainer_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainer_Call) Return(_a0 admin.GetPeeringContainerApiRequest) *NetworkPeeringApi_GetPeeringContainer_Call {
+func (_c *NetworkPeeringApi_GetGroupContainer_Call) Return(_a0 admin.GetGroupContainerApiRequest) *NetworkPeeringApi_GetGroupContainer_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainer_Call) RunAndReturn(run func(context.Context, string, string) admin.GetPeeringContainerApiRequest) *NetworkPeeringApi_GetPeeringContainer_Call {
+func (_c *NetworkPeeringApi_GetGroupContainer_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupContainerApiRequest) *NetworkPeeringApi_GetGroupContainer_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetPeeringContainerExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) GetPeeringContainerExecute(r admin.GetPeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error) {
+// GetGroupContainerExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) GetGroupContainerExecute(r admin.GetGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPeeringContainerExecute")
+		panic("no return value specified for GetGroupContainerExecute")
 	}
 
 	var r0 *admin.CloudProviderContainer
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetPeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetPeeringContainerApiRequest) *admin.CloudProviderContainer); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupContainerApiRequest) *admin.CloudProviderContainer); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1058,7 +896,7 @@ func (_m *NetworkPeeringApi) GetPeeringContainerExecute(r admin.GetPeeringContai
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetPeeringContainerApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupContainerApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1066,7 +904,7 @@ func (_m *NetworkPeeringApi) GetPeeringContainerExecute(r admin.GetPeeringContai
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetPeeringContainerApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupContainerApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1075,143 +913,627 @@ func (_m *NetworkPeeringApi) GetPeeringContainerExecute(r admin.GetPeeringContai
 	return r0, r1, r2
 }
 
-// NetworkPeeringApi_GetPeeringContainerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPeeringContainerExecute'
-type NetworkPeeringApi_GetPeeringContainerExecute_Call struct {
+// NetworkPeeringApi_GetGroupContainerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupContainerExecute'
+type NetworkPeeringApi_GetGroupContainerExecute_Call struct {
 	*mock.Call
 }
 
-// GetPeeringContainerExecute is a helper method to define mock.On call
-//   - r admin.GetPeeringContainerApiRequest
-func (_e *NetworkPeeringApi_Expecter) GetPeeringContainerExecute(r any) *NetworkPeeringApi_GetPeeringContainerExecute_Call {
-	return &NetworkPeeringApi_GetPeeringContainerExecute_Call{Call: _e.mock.On("GetPeeringContainerExecute", r)}
+// GetGroupContainerExecute is a helper method to define mock.On call
+//   - r admin.GetGroupContainerApiRequest
+func (_e *NetworkPeeringApi_Expecter) GetGroupContainerExecute(r any) *NetworkPeeringApi_GetGroupContainerExecute_Call {
+	return &NetworkPeeringApi_GetGroupContainerExecute_Call{Call: _e.mock.On("GetGroupContainerExecute", r)}
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainerExecute_Call) Run(run func(r admin.GetPeeringContainerApiRequest)) *NetworkPeeringApi_GetPeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_GetGroupContainerExecute_Call) Run(run func(r admin.GetGroupContainerApiRequest)) *NetworkPeeringApi_GetGroupContainerExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetPeeringContainerApiRequest))
+		run(args[0].(admin.GetGroupContainerApiRequest))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainerExecute_Call) Return(_a0 *admin.CloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_GetPeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_GetGroupContainerExecute_Call) Return(_a0 *admin.CloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_GetGroupContainerExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainerExecute_Call) RunAndReturn(run func(admin.GetPeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_GetPeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_GetGroupContainerExecute_Call) RunAndReturn(run func(admin.GetGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_GetGroupContainerExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetPeeringContainerWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) GetPeeringContainerWithParams(ctx context.Context, args *admin.GetPeeringContainerApiParams) admin.GetPeeringContainerApiRequest {
+// GetGroupContainerWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) GetGroupContainerWithParams(ctx context.Context, args *admin.GetGroupContainerApiParams) admin.GetGroupContainerApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPeeringContainerWithParams")
+		panic("no return value specified for GetGroupContainerWithParams")
 	}
 
-	var r0 admin.GetPeeringContainerApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetPeeringContainerApiParams) admin.GetPeeringContainerApiRequest); ok {
+	var r0 admin.GetGroupContainerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupContainerApiParams) admin.GetGroupContainerApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetPeeringContainerApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupContainerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_GetPeeringContainerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPeeringContainerWithParams'
-type NetworkPeeringApi_GetPeeringContainerWithParams_Call struct {
+// NetworkPeeringApi_GetGroupContainerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupContainerWithParams'
+type NetworkPeeringApi_GetGroupContainerWithParams_Call struct {
 	*mock.Call
 }
 
-// GetPeeringContainerWithParams is a helper method to define mock.On call
+// GetGroupContainerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetPeeringContainerApiParams
-func (_e *NetworkPeeringApi_Expecter) GetPeeringContainerWithParams(ctx any, args any) *NetworkPeeringApi_GetPeeringContainerWithParams_Call {
-	return &NetworkPeeringApi_GetPeeringContainerWithParams_Call{Call: _e.mock.On("GetPeeringContainerWithParams", ctx, args)}
+//   - args *admin.GetGroupContainerApiParams
+func (_e *NetworkPeeringApi_Expecter) GetGroupContainerWithParams(ctx any, args any) *NetworkPeeringApi_GetGroupContainerWithParams_Call {
+	return &NetworkPeeringApi_GetGroupContainerWithParams_Call{Call: _e.mock.On("GetGroupContainerWithParams", ctx, args)}
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainerWithParams_Call) Run(run func(ctx context.Context, args *admin.GetPeeringContainerApiParams)) *NetworkPeeringApi_GetPeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_GetGroupContainerWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupContainerApiParams)) *NetworkPeeringApi_GetGroupContainerWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetPeeringContainerApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupContainerApiParams))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainerWithParams_Call) Return(_a0 admin.GetPeeringContainerApiRequest) *NetworkPeeringApi_GetPeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_GetGroupContainerWithParams_Call) Return(_a0 admin.GetGroupContainerApiRequest) *NetworkPeeringApi_GetGroupContainerWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_GetPeeringContainerWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetPeeringContainerApiParams) admin.GetPeeringContainerApiRequest) *NetworkPeeringApi_GetPeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_GetGroupContainerWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupContainerApiParams) admin.GetGroupContainerApiRequest) *NetworkPeeringApi_GetGroupContainerWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPeeringConnections provides a mock function with given fields: ctx, groupId
-func (_m *NetworkPeeringApi) ListPeeringConnections(ctx context.Context, groupId string) admin.ListPeeringConnectionsApiRequest {
-	ret := _m.Called(ctx, groupId)
+// GetGroupPeer provides a mock function with given fields: ctx, groupId, peerId
+func (_m *NetworkPeeringApi) GetGroupPeer(ctx context.Context, groupId string, peerId string) admin.GetGroupPeerApiRequest {
+	ret := _m.Called(ctx, groupId, peerId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringConnections")
+		panic("no return value specified for GetGroupPeer")
 	}
 
-	var r0 admin.ListPeeringConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListPeeringConnectionsApiRequest); ok {
-		r0 = rf(ctx, groupId)
+	var r0 admin.GetGroupPeerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupPeerApiRequest); ok {
+		r0 = rf(ctx, groupId, peerId)
 	} else {
-		r0 = ret.Get(0).(admin.ListPeeringConnectionsApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupPeerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_ListPeeringConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringConnections'
-type NetworkPeeringApi_ListPeeringConnections_Call struct {
+// NetworkPeeringApi_GetGroupPeer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupPeer'
+type NetworkPeeringApi_GetGroupPeer_Call struct {
 	*mock.Call
 }
 
-// ListPeeringConnections is a helper method to define mock.On call
+// GetGroupPeer is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *NetworkPeeringApi_Expecter) ListPeeringConnections(ctx any, groupId any) *NetworkPeeringApi_ListPeeringConnections_Call {
-	return &NetworkPeeringApi_ListPeeringConnections_Call{Call: _e.mock.On("ListPeeringConnections", ctx, groupId)}
+//   - peerId string
+func (_e *NetworkPeeringApi_Expecter) GetGroupPeer(ctx any, groupId any, peerId any) *NetworkPeeringApi_GetGroupPeer_Call {
+	return &NetworkPeeringApi_GetGroupPeer_Call{Call: _e.mock.On("GetGroupPeer", ctx, groupId, peerId)}
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnections_Call) Run(run func(ctx context.Context, groupId string)) *NetworkPeeringApi_ListPeeringConnections_Call {
+func (_c *NetworkPeeringApi_GetGroupPeer_Call) Run(run func(ctx context.Context, groupId string, peerId string)) *NetworkPeeringApi_GetGroupPeer_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_GetGroupPeer_Call) Return(_a0 admin.GetGroupPeerApiRequest) *NetworkPeeringApi_GetGroupPeer_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_GetGroupPeer_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupPeerApiRequest) *NetworkPeeringApi_GetGroupPeer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetGroupPeerExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) GetGroupPeerExecute(r admin.GetGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGroupPeerExecute")
+	}
+
+	var r0 *admin.BaseNetworkPeeringConnectionSettings
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetGroupPeerApiRequest) *admin.BaseNetworkPeeringConnectionSettings); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.BaseNetworkPeeringConnectionSettings)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetGroupPeerApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetGroupPeerApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// NetworkPeeringApi_GetGroupPeerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupPeerExecute'
+type NetworkPeeringApi_GetGroupPeerExecute_Call struct {
+	*mock.Call
+}
+
+// GetGroupPeerExecute is a helper method to define mock.On call
+//   - r admin.GetGroupPeerApiRequest
+func (_e *NetworkPeeringApi_Expecter) GetGroupPeerExecute(r any) *NetworkPeeringApi_GetGroupPeerExecute_Call {
+	return &NetworkPeeringApi_GetGroupPeerExecute_Call{Call: _e.mock.On("GetGroupPeerExecute", r)}
+}
+
+func (_c *NetworkPeeringApi_GetGroupPeerExecute_Call) Run(run func(r admin.GetGroupPeerApiRequest)) *NetworkPeeringApi_GetGroupPeerExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetGroupPeerApiRequest))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_GetGroupPeerExecute_Call) Return(_a0 *admin.BaseNetworkPeeringConnectionSettings, _a1 *http.Response, _a2 error) *NetworkPeeringApi_GetGroupPeerExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_GetGroupPeerExecute_Call) RunAndReturn(run func(admin.GetGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)) *NetworkPeeringApi_GetGroupPeerExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetGroupPeerWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) GetGroupPeerWithParams(ctx context.Context, args *admin.GetGroupPeerApiParams) admin.GetGroupPeerApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGroupPeerWithParams")
+	}
+
+	var r0 admin.GetGroupPeerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupPeerApiParams) admin.GetGroupPeerApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetGroupPeerApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_GetGroupPeerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupPeerWithParams'
+type NetworkPeeringApi_GetGroupPeerWithParams_Call struct {
+	*mock.Call
+}
+
+// GetGroupPeerWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetGroupPeerApiParams
+func (_e *NetworkPeeringApi_Expecter) GetGroupPeerWithParams(ctx any, args any) *NetworkPeeringApi_GetGroupPeerWithParams_Call {
+	return &NetworkPeeringApi_GetGroupPeerWithParams_Call{Call: _e.mock.On("GetGroupPeerWithParams", ctx, args)}
+}
+
+func (_c *NetworkPeeringApi_GetGroupPeerWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupPeerApiParams)) *NetworkPeeringApi_GetGroupPeerWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetGroupPeerApiParams))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_GetGroupPeerWithParams_Call) Return(_a0 admin.GetGroupPeerApiRequest) *NetworkPeeringApi_GetGroupPeerWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_GetGroupPeerWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupPeerApiParams) admin.GetGroupPeerApiRequest) *NetworkPeeringApi_GetGroupPeerWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupContainerAll provides a mock function with given fields: ctx, groupId
+func (_m *NetworkPeeringApi) ListGroupContainerAll(ctx context.Context, groupId string) admin.ListGroupContainerAllApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupContainerAll")
+	}
+
+	var r0 admin.ListGroupContainerAllApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupContainerAllApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupContainerAllApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_ListGroupContainerAll_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupContainerAll'
+type NetworkPeeringApi_ListGroupContainerAll_Call struct {
+	*mock.Call
+}
+
+// ListGroupContainerAll is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *NetworkPeeringApi_Expecter) ListGroupContainerAll(ctx any, groupId any) *NetworkPeeringApi_ListGroupContainerAll_Call {
+	return &NetworkPeeringApi_ListGroupContainerAll_Call{Call: _e.mock.On("ListGroupContainerAll", ctx, groupId)}
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainerAll_Call) Run(run func(ctx context.Context, groupId string)) *NetworkPeeringApi_ListGroupContainerAll_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnections_Call) Return(_a0 admin.ListPeeringConnectionsApiRequest) *NetworkPeeringApi_ListPeeringConnections_Call {
+func (_c *NetworkPeeringApi_ListGroupContainerAll_Call) Return(_a0 admin.ListGroupContainerAllApiRequest) *NetworkPeeringApi_ListGroupContainerAll_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnections_Call) RunAndReturn(run func(context.Context, string) admin.ListPeeringConnectionsApiRequest) *NetworkPeeringApi_ListPeeringConnections_Call {
+func (_c *NetworkPeeringApi_ListGroupContainerAll_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupContainerAllApiRequest) *NetworkPeeringApi_ListGroupContainerAll_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPeeringConnectionsExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) ListPeeringConnectionsExecute(r admin.ListPeeringConnectionsApiRequest) (*admin.PaginatedContainerPeer, *http.Response, error) {
+// ListGroupContainerAllExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) ListGroupContainerAllExecute(r admin.ListGroupContainerAllApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringConnectionsExecute")
+		panic("no return value specified for ListGroupContainerAllExecute")
+	}
+
+	var r0 *admin.PaginatedCloudProviderContainer
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListGroupContainerAllApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListGroupContainerAllApiRequest) *admin.PaginatedCloudProviderContainer); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedCloudProviderContainer)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListGroupContainerAllApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListGroupContainerAllApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// NetworkPeeringApi_ListGroupContainerAllExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupContainerAllExecute'
+type NetworkPeeringApi_ListGroupContainerAllExecute_Call struct {
+	*mock.Call
+}
+
+// ListGroupContainerAllExecute is a helper method to define mock.On call
+//   - r admin.ListGroupContainerAllApiRequest
+func (_e *NetworkPeeringApi_Expecter) ListGroupContainerAllExecute(r any) *NetworkPeeringApi_ListGroupContainerAllExecute_Call {
+	return &NetworkPeeringApi_ListGroupContainerAllExecute_Call{Call: _e.mock.On("ListGroupContainerAllExecute", r)}
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainerAllExecute_Call) Run(run func(r admin.ListGroupContainerAllApiRequest)) *NetworkPeeringApi_ListGroupContainerAllExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListGroupContainerAllApiRequest))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainerAllExecute_Call) Return(_a0 *admin.PaginatedCloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_ListGroupContainerAllExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainerAllExecute_Call) RunAndReturn(run func(admin.ListGroupContainerAllApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_ListGroupContainerAllExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupContainerAllWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) ListGroupContainerAllWithParams(ctx context.Context, args *admin.ListGroupContainerAllApiParams) admin.ListGroupContainerAllApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupContainerAllWithParams")
+	}
+
+	var r0 admin.ListGroupContainerAllApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupContainerAllApiParams) admin.ListGroupContainerAllApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupContainerAllApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_ListGroupContainerAllWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupContainerAllWithParams'
+type NetworkPeeringApi_ListGroupContainerAllWithParams_Call struct {
+	*mock.Call
+}
+
+// ListGroupContainerAllWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListGroupContainerAllApiParams
+func (_e *NetworkPeeringApi_Expecter) ListGroupContainerAllWithParams(ctx any, args any) *NetworkPeeringApi_ListGroupContainerAllWithParams_Call {
+	return &NetworkPeeringApi_ListGroupContainerAllWithParams_Call{Call: _e.mock.On("ListGroupContainerAllWithParams", ctx, args)}
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainerAllWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupContainerAllApiParams)) *NetworkPeeringApi_ListGroupContainerAllWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListGroupContainerAllApiParams))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainerAllWithParams_Call) Return(_a0 admin.ListGroupContainerAllApiRequest) *NetworkPeeringApi_ListGroupContainerAllWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainerAllWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupContainerAllApiParams) admin.ListGroupContainerAllApiRequest) *NetworkPeeringApi_ListGroupContainerAllWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupContainers provides a mock function with given fields: ctx, groupId
+func (_m *NetworkPeeringApi) ListGroupContainers(ctx context.Context, groupId string) admin.ListGroupContainersApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupContainers")
+	}
+
+	var r0 admin.ListGroupContainersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupContainersApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupContainersApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_ListGroupContainers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupContainers'
+type NetworkPeeringApi_ListGroupContainers_Call struct {
+	*mock.Call
+}
+
+// ListGroupContainers is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *NetworkPeeringApi_Expecter) ListGroupContainers(ctx any, groupId any) *NetworkPeeringApi_ListGroupContainers_Call {
+	return &NetworkPeeringApi_ListGroupContainers_Call{Call: _e.mock.On("ListGroupContainers", ctx, groupId)}
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainers_Call) Run(run func(ctx context.Context, groupId string)) *NetworkPeeringApi_ListGroupContainers_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainers_Call) Return(_a0 admin.ListGroupContainersApiRequest) *NetworkPeeringApi_ListGroupContainers_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainers_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupContainersApiRequest) *NetworkPeeringApi_ListGroupContainers_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupContainersExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) ListGroupContainersExecute(r admin.ListGroupContainersApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupContainersExecute")
+	}
+
+	var r0 *admin.PaginatedCloudProviderContainer
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListGroupContainersApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListGroupContainersApiRequest) *admin.PaginatedCloudProviderContainer); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedCloudProviderContainer)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListGroupContainersApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListGroupContainersApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// NetworkPeeringApi_ListGroupContainersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupContainersExecute'
+type NetworkPeeringApi_ListGroupContainersExecute_Call struct {
+	*mock.Call
+}
+
+// ListGroupContainersExecute is a helper method to define mock.On call
+//   - r admin.ListGroupContainersApiRequest
+func (_e *NetworkPeeringApi_Expecter) ListGroupContainersExecute(r any) *NetworkPeeringApi_ListGroupContainersExecute_Call {
+	return &NetworkPeeringApi_ListGroupContainersExecute_Call{Call: _e.mock.On("ListGroupContainersExecute", r)}
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainersExecute_Call) Run(run func(r admin.ListGroupContainersApiRequest)) *NetworkPeeringApi_ListGroupContainersExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListGroupContainersApiRequest))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainersExecute_Call) Return(_a0 *admin.PaginatedCloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_ListGroupContainersExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainersExecute_Call) RunAndReturn(run func(admin.ListGroupContainersApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_ListGroupContainersExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupContainersWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) ListGroupContainersWithParams(ctx context.Context, args *admin.ListGroupContainersApiParams) admin.ListGroupContainersApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupContainersWithParams")
+	}
+
+	var r0 admin.ListGroupContainersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupContainersApiParams) admin.ListGroupContainersApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupContainersApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_ListGroupContainersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupContainersWithParams'
+type NetworkPeeringApi_ListGroupContainersWithParams_Call struct {
+	*mock.Call
+}
+
+// ListGroupContainersWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListGroupContainersApiParams
+func (_e *NetworkPeeringApi_Expecter) ListGroupContainersWithParams(ctx any, args any) *NetworkPeeringApi_ListGroupContainersWithParams_Call {
+	return &NetworkPeeringApi_ListGroupContainersWithParams_Call{Call: _e.mock.On("ListGroupContainersWithParams", ctx, args)}
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainersWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupContainersApiParams)) *NetworkPeeringApi_ListGroupContainersWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListGroupContainersApiParams))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainersWithParams_Call) Return(_a0 admin.ListGroupContainersApiRequest) *NetworkPeeringApi_ListGroupContainersWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupContainersWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupContainersApiParams) admin.ListGroupContainersApiRequest) *NetworkPeeringApi_ListGroupContainersWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupPeers provides a mock function with given fields: ctx, groupId
+func (_m *NetworkPeeringApi) ListGroupPeers(ctx context.Context, groupId string) admin.ListGroupPeersApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupPeers")
+	}
+
+	var r0 admin.ListGroupPeersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupPeersApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupPeersApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_ListGroupPeers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupPeers'
+type NetworkPeeringApi_ListGroupPeers_Call struct {
+	*mock.Call
+}
+
+// ListGroupPeers is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *NetworkPeeringApi_Expecter) ListGroupPeers(ctx any, groupId any) *NetworkPeeringApi_ListGroupPeers_Call {
+	return &NetworkPeeringApi_ListGroupPeers_Call{Call: _e.mock.On("ListGroupPeers", ctx, groupId)}
+}
+
+func (_c *NetworkPeeringApi_ListGroupPeers_Call) Run(run func(ctx context.Context, groupId string)) *NetworkPeeringApi_ListGroupPeers_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupPeers_Call) Return(_a0 admin.ListGroupPeersApiRequest) *NetworkPeeringApi_ListGroupPeers_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_ListGroupPeers_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupPeersApiRequest) *NetworkPeeringApi_ListGroupPeers_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupPeersExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) ListGroupPeersExecute(r admin.ListGroupPeersApiRequest) (*admin.PaginatedContainerPeer, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupPeersExecute")
 	}
 
 	var r0 *admin.PaginatedContainerPeer
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPeeringConnectionsApiRequest) (*admin.PaginatedContainerPeer, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListGroupPeersApiRequest) (*admin.PaginatedContainerPeer, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListPeeringConnectionsApiRequest) *admin.PaginatedContainerPeer); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListGroupPeersApiRequest) *admin.PaginatedContainerPeer); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1219,7 +1541,7 @@ func (_m *NetworkPeeringApi) ListPeeringConnectionsExecute(r admin.ListPeeringCo
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListPeeringConnectionsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListGroupPeersApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1227,7 +1549,7 @@ func (_m *NetworkPeeringApi) ListPeeringConnectionsExecute(r admin.ListPeeringCo
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListPeeringConnectionsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListGroupPeersApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1236,630 +1558,145 @@ func (_m *NetworkPeeringApi) ListPeeringConnectionsExecute(r admin.ListPeeringCo
 	return r0, r1, r2
 }
 
-// NetworkPeeringApi_ListPeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringConnectionsExecute'
-type NetworkPeeringApi_ListPeeringConnectionsExecute_Call struct {
+// NetworkPeeringApi_ListGroupPeersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupPeersExecute'
+type NetworkPeeringApi_ListGroupPeersExecute_Call struct {
 	*mock.Call
 }
 
-// ListPeeringConnectionsExecute is a helper method to define mock.On call
-//   - r admin.ListPeeringConnectionsApiRequest
-func (_e *NetworkPeeringApi_Expecter) ListPeeringConnectionsExecute(r any) *NetworkPeeringApi_ListPeeringConnectionsExecute_Call {
-	return &NetworkPeeringApi_ListPeeringConnectionsExecute_Call{Call: _e.mock.On("ListPeeringConnectionsExecute", r)}
+// ListGroupPeersExecute is a helper method to define mock.On call
+//   - r admin.ListGroupPeersApiRequest
+func (_e *NetworkPeeringApi_Expecter) ListGroupPeersExecute(r any) *NetworkPeeringApi_ListGroupPeersExecute_Call {
+	return &NetworkPeeringApi_ListGroupPeersExecute_Call{Call: _e.mock.On("ListGroupPeersExecute", r)}
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnectionsExecute_Call) Run(run func(r admin.ListPeeringConnectionsApiRequest)) *NetworkPeeringApi_ListPeeringConnectionsExecute_Call {
+func (_c *NetworkPeeringApi_ListGroupPeersExecute_Call) Run(run func(r admin.ListGroupPeersApiRequest)) *NetworkPeeringApi_ListGroupPeersExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPeeringConnectionsApiRequest))
+		run(args[0].(admin.ListGroupPeersApiRequest))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnectionsExecute_Call) Return(_a0 *admin.PaginatedContainerPeer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_ListPeeringConnectionsExecute_Call {
+func (_c *NetworkPeeringApi_ListGroupPeersExecute_Call) Return(_a0 *admin.PaginatedContainerPeer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_ListGroupPeersExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnectionsExecute_Call) RunAndReturn(run func(admin.ListPeeringConnectionsApiRequest) (*admin.PaginatedContainerPeer, *http.Response, error)) *NetworkPeeringApi_ListPeeringConnectionsExecute_Call {
+func (_c *NetworkPeeringApi_ListGroupPeersExecute_Call) RunAndReturn(run func(admin.ListGroupPeersApiRequest) (*admin.PaginatedContainerPeer, *http.Response, error)) *NetworkPeeringApi_ListGroupPeersExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPeeringConnectionsWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) ListPeeringConnectionsWithParams(ctx context.Context, args *admin.ListPeeringConnectionsApiParams) admin.ListPeeringConnectionsApiRequest {
+// ListGroupPeersWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) ListGroupPeersWithParams(ctx context.Context, args *admin.ListGroupPeersApiParams) admin.ListGroupPeersApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringConnectionsWithParams")
+		panic("no return value specified for ListGroupPeersWithParams")
 	}
 
-	var r0 admin.ListPeeringConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPeeringConnectionsApiParams) admin.ListPeeringConnectionsApiRequest); ok {
+	var r0 admin.ListGroupPeersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupPeersApiParams) admin.ListGroupPeersApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListPeeringConnectionsApiRequest)
+		r0 = ret.Get(0).(admin.ListGroupPeersApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_ListPeeringConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringConnectionsWithParams'
-type NetworkPeeringApi_ListPeeringConnectionsWithParams_Call struct {
+// NetworkPeeringApi_ListGroupPeersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupPeersWithParams'
+type NetworkPeeringApi_ListGroupPeersWithParams_Call struct {
 	*mock.Call
 }
 
-// ListPeeringConnectionsWithParams is a helper method to define mock.On call
+// ListGroupPeersWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListPeeringConnectionsApiParams
-func (_e *NetworkPeeringApi_Expecter) ListPeeringConnectionsWithParams(ctx any, args any) *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call {
-	return &NetworkPeeringApi_ListPeeringConnectionsWithParams_Call{Call: _e.mock.On("ListPeeringConnectionsWithParams", ctx, args)}
+//   - args *admin.ListGroupPeersApiParams
+func (_e *NetworkPeeringApi_Expecter) ListGroupPeersWithParams(ctx any, args any) *NetworkPeeringApi_ListGroupPeersWithParams_Call {
+	return &NetworkPeeringApi_ListGroupPeersWithParams_Call{Call: _e.mock.On("ListGroupPeersWithParams", ctx, args)}
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPeeringConnectionsApiParams)) *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call {
+func (_c *NetworkPeeringApi_ListGroupPeersWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupPeersApiParams)) *NetworkPeeringApi_ListGroupPeersWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPeeringConnectionsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListGroupPeersApiParams))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call) Return(_a0 admin.ListPeeringConnectionsApiRequest) *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call {
+func (_c *NetworkPeeringApi_ListGroupPeersWithParams_Call) Return(_a0 admin.ListGroupPeersApiRequest) *NetworkPeeringApi_ListGroupPeersWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPeeringConnectionsApiParams) admin.ListPeeringConnectionsApiRequest) *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call {
+func (_c *NetworkPeeringApi_ListGroupPeersWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupPeersApiParams) admin.ListGroupPeersApiRequest) *NetworkPeeringApi_ListGroupPeersWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPeeringContainerByCloudProvider provides a mock function with given fields: ctx, groupId
-func (_m *NetworkPeeringApi) ListPeeringContainerByCloudProvider(ctx context.Context, groupId string) admin.ListPeeringContainerByCloudProviderApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringContainerByCloudProvider")
-	}
-
-	var r0 admin.ListPeeringContainerByCloudProviderApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListPeeringContainerByCloudProviderApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ListPeeringContainerByCloudProviderApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringContainerByCloudProvider'
-type NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call struct {
-	*mock.Call
-}
-
-// ListPeeringContainerByCloudProvider is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProvider(ctx any, groupId any) *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call {
-	return &NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call{Call: _e.mock.On("ListPeeringContainerByCloudProvider", ctx, groupId)}
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call) Run(run func(ctx context.Context, groupId string)) *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call) Return(_a0 admin.ListPeeringContainerByCloudProviderApiRequest) *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call) RunAndReturn(run func(context.Context, string) admin.ListPeeringContainerByCloudProviderApiRequest) *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPeeringContainerByCloudProviderExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) ListPeeringContainerByCloudProviderExecute(r admin.ListPeeringContainerByCloudProviderApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringContainerByCloudProviderExecute")
-	}
-
-	var r0 *admin.PaginatedCloudProviderContainer
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPeeringContainerByCloudProviderApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListPeeringContainerByCloudProviderApiRequest) *admin.PaginatedCloudProviderContainer); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedCloudProviderContainer)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListPeeringContainerByCloudProviderApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListPeeringContainerByCloudProviderApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringContainerByCloudProviderExecute'
-type NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call struct {
-	*mock.Call
-}
-
-// ListPeeringContainerByCloudProviderExecute is a helper method to define mock.On call
-//   - r admin.ListPeeringContainerByCloudProviderApiRequest
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProviderExecute(r any) *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call {
-	return &NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call{Call: _e.mock.On("ListPeeringContainerByCloudProviderExecute", r)}
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call) Run(run func(r admin.ListPeeringContainerByCloudProviderApiRequest)) *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPeeringContainerByCloudProviderApiRequest))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call) Return(_a0 *admin.PaginatedCloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call) RunAndReturn(run func(admin.ListPeeringContainerByCloudProviderApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPeeringContainerByCloudProviderWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) ListPeeringContainerByCloudProviderWithParams(ctx context.Context, args *admin.ListPeeringContainerByCloudProviderApiParams) admin.ListPeeringContainerByCloudProviderApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringContainerByCloudProviderWithParams")
-	}
-
-	var r0 admin.ListPeeringContainerByCloudProviderApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPeeringContainerByCloudProviderApiParams) admin.ListPeeringContainerByCloudProviderApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListPeeringContainerByCloudProviderApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringContainerByCloudProviderWithParams'
-type NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call struct {
-	*mock.Call
-}
-
-// ListPeeringContainerByCloudProviderWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListPeeringContainerByCloudProviderApiParams
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProviderWithParams(ctx any, args any) *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call {
-	return &NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call{Call: _e.mock.On("ListPeeringContainerByCloudProviderWithParams", ctx, args)}
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPeeringContainerByCloudProviderApiParams)) *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPeeringContainerByCloudProviderApiParams))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call) Return(_a0 admin.ListPeeringContainerByCloudProviderApiRequest) *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPeeringContainerByCloudProviderApiParams) admin.ListPeeringContainerByCloudProviderApiRequest) *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPeeringContainers provides a mock function with given fields: ctx, groupId
-func (_m *NetworkPeeringApi) ListPeeringContainers(ctx context.Context, groupId string) admin.ListPeeringContainersApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringContainers")
-	}
-
-	var r0 admin.ListPeeringContainersApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListPeeringContainersApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ListPeeringContainersApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_ListPeeringContainers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringContainers'
-type NetworkPeeringApi_ListPeeringContainers_Call struct {
-	*mock.Call
-}
-
-// ListPeeringContainers is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainers(ctx any, groupId any) *NetworkPeeringApi_ListPeeringContainers_Call {
-	return &NetworkPeeringApi_ListPeeringContainers_Call{Call: _e.mock.On("ListPeeringContainers", ctx, groupId)}
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainers_Call) Run(run func(ctx context.Context, groupId string)) *NetworkPeeringApi_ListPeeringContainers_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainers_Call) Return(_a0 admin.ListPeeringContainersApiRequest) *NetworkPeeringApi_ListPeeringContainers_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainers_Call) RunAndReturn(run func(context.Context, string) admin.ListPeeringContainersApiRequest) *NetworkPeeringApi_ListPeeringContainers_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPeeringContainersExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) ListPeeringContainersExecute(r admin.ListPeeringContainersApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringContainersExecute")
-	}
-
-	var r0 *admin.PaginatedCloudProviderContainer
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPeeringContainersApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListPeeringContainersApiRequest) *admin.PaginatedCloudProviderContainer); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedCloudProviderContainer)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListPeeringContainersApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListPeeringContainersApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// NetworkPeeringApi_ListPeeringContainersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringContainersExecute'
-type NetworkPeeringApi_ListPeeringContainersExecute_Call struct {
-	*mock.Call
-}
-
-// ListPeeringContainersExecute is a helper method to define mock.On call
-//   - r admin.ListPeeringContainersApiRequest
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainersExecute(r any) *NetworkPeeringApi_ListPeeringContainersExecute_Call {
-	return &NetworkPeeringApi_ListPeeringContainersExecute_Call{Call: _e.mock.On("ListPeeringContainersExecute", r)}
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainersExecute_Call) Run(run func(r admin.ListPeeringContainersApiRequest)) *NetworkPeeringApi_ListPeeringContainersExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPeeringContainersApiRequest))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainersExecute_Call) Return(_a0 *admin.PaginatedCloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_ListPeeringContainersExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainersExecute_Call) RunAndReturn(run func(admin.ListPeeringContainersApiRequest) (*admin.PaginatedCloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_ListPeeringContainersExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPeeringContainersWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) ListPeeringContainersWithParams(ctx context.Context, args *admin.ListPeeringContainersApiParams) admin.ListPeeringContainersApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPeeringContainersWithParams")
-	}
-
-	var r0 admin.ListPeeringContainersApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPeeringContainersApiParams) admin.ListPeeringContainersApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListPeeringContainersApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_ListPeeringContainersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPeeringContainersWithParams'
-type NetworkPeeringApi_ListPeeringContainersWithParams_Call struct {
-	*mock.Call
-}
-
-// ListPeeringContainersWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListPeeringContainersApiParams
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainersWithParams(ctx any, args any) *NetworkPeeringApi_ListPeeringContainersWithParams_Call {
-	return &NetworkPeeringApi_ListPeeringContainersWithParams_Call{Call: _e.mock.On("ListPeeringContainersWithParams", ctx, args)}
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainersWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPeeringContainersApiParams)) *NetworkPeeringApi_ListPeeringContainersWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPeeringContainersApiParams))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainersWithParams_Call) Return(_a0 admin.ListPeeringContainersApiRequest) *NetworkPeeringApi_ListPeeringContainersWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_ListPeeringContainersWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPeeringContainersApiParams) admin.ListPeeringContainersApiRequest) *NetworkPeeringApi_ListPeeringContainersWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdatePeeringConnection provides a mock function with given fields: ctx, groupId, peerId, baseNetworkPeeringConnectionSettings
-func (_m *NetworkPeeringApi) UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings) admin.UpdatePeeringConnectionApiRequest {
-	ret := _m.Called(ctx, groupId, peerId, baseNetworkPeeringConnectionSettings)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdatePeeringConnection")
-	}
-
-	var r0 admin.UpdatePeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.BaseNetworkPeeringConnectionSettings) admin.UpdatePeeringConnectionApiRequest); ok {
-		r0 = rf(ctx, groupId, peerId, baseNetworkPeeringConnectionSettings)
-	} else {
-		r0 = ret.Get(0).(admin.UpdatePeeringConnectionApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_UpdatePeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePeeringConnection'
-type NetworkPeeringApi_UpdatePeeringConnection_Call struct {
-	*mock.Call
-}
-
-// UpdatePeeringConnection is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - peerId string
-//   - baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnection(ctx any, groupId any, peerId any, baseNetworkPeeringConnectionSettings any) *NetworkPeeringApi_UpdatePeeringConnection_Call {
-	return &NetworkPeeringApi_UpdatePeeringConnection_Call{Call: _e.mock.On("UpdatePeeringConnection", ctx, groupId, peerId, baseNetworkPeeringConnectionSettings)}
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnection_Call) Run(run func(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings)) *NetworkPeeringApi_UpdatePeeringConnection_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.BaseNetworkPeeringConnectionSettings))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnection_Call) Return(_a0 admin.UpdatePeeringConnectionApiRequest) *NetworkPeeringApi_UpdatePeeringConnection_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnection_Call) RunAndReturn(run func(context.Context, string, string, *admin.BaseNetworkPeeringConnectionSettings) admin.UpdatePeeringConnectionApiRequest) *NetworkPeeringApi_UpdatePeeringConnection_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdatePeeringConnectionExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) UpdatePeeringConnectionExecute(r admin.UpdatePeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdatePeeringConnectionExecute")
-	}
-
-	var r0 *admin.BaseNetworkPeeringConnectionSettings
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdatePeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpdatePeeringConnectionApiRequest) *admin.BaseNetworkPeeringConnectionSettings); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.BaseNetworkPeeringConnectionSettings)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpdatePeeringConnectionApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpdatePeeringConnectionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// NetworkPeeringApi_UpdatePeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePeeringConnectionExecute'
-type NetworkPeeringApi_UpdatePeeringConnectionExecute_Call struct {
-	*mock.Call
-}
-
-// UpdatePeeringConnectionExecute is a helper method to define mock.On call
-//   - r admin.UpdatePeeringConnectionApiRequest
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnectionExecute(r any) *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call {
-	return &NetworkPeeringApi_UpdatePeeringConnectionExecute_Call{Call: _e.mock.On("UpdatePeeringConnectionExecute", r)}
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call) Run(run func(r admin.UpdatePeeringConnectionApiRequest)) *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdatePeeringConnectionApiRequest))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call) Return(_a0 *admin.BaseNetworkPeeringConnectionSettings, _a1 *http.Response, _a2 error) *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call) RunAndReturn(run func(admin.UpdatePeeringConnectionApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)) *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdatePeeringConnectionWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) UpdatePeeringConnectionWithParams(ctx context.Context, args *admin.UpdatePeeringConnectionApiParams) admin.UpdatePeeringConnectionApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdatePeeringConnectionWithParams")
-	}
-
-	var r0 admin.UpdatePeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdatePeeringConnectionApiParams) admin.UpdatePeeringConnectionApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.UpdatePeeringConnectionApiRequest)
-	}
-
-	return r0
-}
-
-// NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePeeringConnectionWithParams'
-type NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call struct {
-	*mock.Call
-}
-
-// UpdatePeeringConnectionWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.UpdatePeeringConnectionApiParams
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnectionWithParams(ctx any, args any) *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call {
-	return &NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call{Call: _e.mock.On("UpdatePeeringConnectionWithParams", ctx, args)}
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdatePeeringConnectionApiParams)) *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdatePeeringConnectionApiParams))
-	})
-	return _c
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call) Return(_a0 admin.UpdatePeeringConnectionApiRequest) *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdatePeeringConnectionApiParams) admin.UpdatePeeringConnectionApiRequest) *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdatePeeringContainer provides a mock function with given fields: ctx, groupId, containerId, cloudProviderContainer
-func (_m *NetworkPeeringApi) UpdatePeeringContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *admin.CloudProviderContainer) admin.UpdatePeeringContainerApiRequest {
+// UpdateGroupContainer provides a mock function with given fields: ctx, groupId, containerId, cloudProviderContainer
+func (_m *NetworkPeeringApi) UpdateGroupContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *admin.CloudProviderContainer) admin.UpdateGroupContainerApiRequest {
 	ret := _m.Called(ctx, groupId, containerId, cloudProviderContainer)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdatePeeringContainer")
+		panic("no return value specified for UpdateGroupContainer")
 	}
 
-	var r0 admin.UpdatePeeringContainerApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.CloudProviderContainer) admin.UpdatePeeringContainerApiRequest); ok {
+	var r0 admin.UpdateGroupContainerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.CloudProviderContainer) admin.UpdateGroupContainerApiRequest); ok {
 		r0 = rf(ctx, groupId, containerId, cloudProviderContainer)
 	} else {
-		r0 = ret.Get(0).(admin.UpdatePeeringContainerApiRequest)
+		r0 = ret.Get(0).(admin.UpdateGroupContainerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_UpdatePeeringContainer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePeeringContainer'
-type NetworkPeeringApi_UpdatePeeringContainer_Call struct {
+// NetworkPeeringApi_UpdateGroupContainer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupContainer'
+type NetworkPeeringApi_UpdateGroupContainer_Call struct {
 	*mock.Call
 }
 
-// UpdatePeeringContainer is a helper method to define mock.On call
+// UpdateGroupContainer is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - containerId string
 //   - cloudProviderContainer *admin.CloudProviderContainer
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainer(ctx any, groupId any, containerId any, cloudProviderContainer any) *NetworkPeeringApi_UpdatePeeringContainer_Call {
-	return &NetworkPeeringApi_UpdatePeeringContainer_Call{Call: _e.mock.On("UpdatePeeringContainer", ctx, groupId, containerId, cloudProviderContainer)}
+func (_e *NetworkPeeringApi_Expecter) UpdateGroupContainer(ctx any, groupId any, containerId any, cloudProviderContainer any) *NetworkPeeringApi_UpdateGroupContainer_Call {
+	return &NetworkPeeringApi_UpdateGroupContainer_Call{Call: _e.mock.On("UpdateGroupContainer", ctx, groupId, containerId, cloudProviderContainer)}
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainer_Call) Run(run func(ctx context.Context, groupId string, containerId string, cloudProviderContainer *admin.CloudProviderContainer)) *NetworkPeeringApi_UpdatePeeringContainer_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainer_Call) Run(run func(ctx context.Context, groupId string, containerId string, cloudProviderContainer *admin.CloudProviderContainer)) *NetworkPeeringApi_UpdateGroupContainer_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.CloudProviderContainer))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainer_Call) Return(_a0 admin.UpdatePeeringContainerApiRequest) *NetworkPeeringApi_UpdatePeeringContainer_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainer_Call) Return(_a0 admin.UpdateGroupContainerApiRequest) *NetworkPeeringApi_UpdateGroupContainer_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainer_Call) RunAndReturn(run func(context.Context, string, string, *admin.CloudProviderContainer) admin.UpdatePeeringContainerApiRequest) *NetworkPeeringApi_UpdatePeeringContainer_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainer_Call) RunAndReturn(run func(context.Context, string, string, *admin.CloudProviderContainer) admin.UpdateGroupContainerApiRequest) *NetworkPeeringApi_UpdateGroupContainer_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdatePeeringContainerExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) UpdatePeeringContainerExecute(r admin.UpdatePeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error) {
+// UpdateGroupContainerExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) UpdateGroupContainerExecute(r admin.UpdateGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdatePeeringContainerExecute")
+		panic("no return value specified for UpdateGroupContainerExecute")
 	}
 
 	var r0 *admin.CloudProviderContainer
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdatePeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdatePeeringContainerApiRequest) *admin.CloudProviderContainer); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupContainerApiRequest) *admin.CloudProviderContainer); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1867,7 +1704,7 @@ func (_m *NetworkPeeringApi) UpdatePeeringContainerExecute(r admin.UpdatePeering
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdatePeeringContainerApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateGroupContainerApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1875,7 +1712,7 @@ func (_m *NetworkPeeringApi) UpdatePeeringContainerExecute(r admin.UpdatePeering
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdatePeeringContainerApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateGroupContainerApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1884,143 +1721,306 @@ func (_m *NetworkPeeringApi) UpdatePeeringContainerExecute(r admin.UpdatePeering
 	return r0, r1, r2
 }
 
-// NetworkPeeringApi_UpdatePeeringContainerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePeeringContainerExecute'
-type NetworkPeeringApi_UpdatePeeringContainerExecute_Call struct {
+// NetworkPeeringApi_UpdateGroupContainerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupContainerExecute'
+type NetworkPeeringApi_UpdateGroupContainerExecute_Call struct {
 	*mock.Call
 }
 
-// UpdatePeeringContainerExecute is a helper method to define mock.On call
-//   - r admin.UpdatePeeringContainerApiRequest
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainerExecute(r any) *NetworkPeeringApi_UpdatePeeringContainerExecute_Call {
-	return &NetworkPeeringApi_UpdatePeeringContainerExecute_Call{Call: _e.mock.On("UpdatePeeringContainerExecute", r)}
+// UpdateGroupContainerExecute is a helper method to define mock.On call
+//   - r admin.UpdateGroupContainerApiRequest
+func (_e *NetworkPeeringApi_Expecter) UpdateGroupContainerExecute(r any) *NetworkPeeringApi_UpdateGroupContainerExecute_Call {
+	return &NetworkPeeringApi_UpdateGroupContainerExecute_Call{Call: _e.mock.On("UpdateGroupContainerExecute", r)}
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainerExecute_Call) Run(run func(r admin.UpdatePeeringContainerApiRequest)) *NetworkPeeringApi_UpdatePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainerExecute_Call) Run(run func(r admin.UpdateGroupContainerApiRequest)) *NetworkPeeringApi_UpdateGroupContainerExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdatePeeringContainerApiRequest))
+		run(args[0].(admin.UpdateGroupContainerApiRequest))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainerExecute_Call) Return(_a0 *admin.CloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_UpdatePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainerExecute_Call) Return(_a0 *admin.CloudProviderContainer, _a1 *http.Response, _a2 error) *NetworkPeeringApi_UpdateGroupContainerExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainerExecute_Call) RunAndReturn(run func(admin.UpdatePeeringContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_UpdatePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainerExecute_Call) RunAndReturn(run func(admin.UpdateGroupContainerApiRequest) (*admin.CloudProviderContainer, *http.Response, error)) *NetworkPeeringApi_UpdateGroupContainerExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdatePeeringContainerWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) UpdatePeeringContainerWithParams(ctx context.Context, args *admin.UpdatePeeringContainerApiParams) admin.UpdatePeeringContainerApiRequest {
+// UpdateGroupContainerWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) UpdateGroupContainerWithParams(ctx context.Context, args *admin.UpdateGroupContainerApiParams) admin.UpdateGroupContainerApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdatePeeringContainerWithParams")
+		panic("no return value specified for UpdateGroupContainerWithParams")
 	}
 
-	var r0 admin.UpdatePeeringContainerApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdatePeeringContainerApiParams) admin.UpdatePeeringContainerApiRequest); ok {
+	var r0 admin.UpdateGroupContainerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupContainerApiParams) admin.UpdateGroupContainerApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdatePeeringContainerApiRequest)
+		r0 = ret.Get(0).(admin.UpdateGroupContainerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_UpdatePeeringContainerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePeeringContainerWithParams'
-type NetworkPeeringApi_UpdatePeeringContainerWithParams_Call struct {
+// NetworkPeeringApi_UpdateGroupContainerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupContainerWithParams'
+type NetworkPeeringApi_UpdateGroupContainerWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdatePeeringContainerWithParams is a helper method to define mock.On call
+// UpdateGroupContainerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdatePeeringContainerApiParams
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainerWithParams(ctx any, args any) *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call {
-	return &NetworkPeeringApi_UpdatePeeringContainerWithParams_Call{Call: _e.mock.On("UpdatePeeringContainerWithParams", ctx, args)}
+//   - args *admin.UpdateGroupContainerApiParams
+func (_e *NetworkPeeringApi_Expecter) UpdateGroupContainerWithParams(ctx any, args any) *NetworkPeeringApi_UpdateGroupContainerWithParams_Call {
+	return &NetworkPeeringApi_UpdateGroupContainerWithParams_Call{Call: _e.mock.On("UpdateGroupContainerWithParams", ctx, args)}
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdatePeeringContainerApiParams)) *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainerWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupContainerApiParams)) *NetworkPeeringApi_UpdateGroupContainerWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdatePeeringContainerApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateGroupContainerApiParams))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call) Return(_a0 admin.UpdatePeeringContainerApiRequest) *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainerWithParams_Call) Return(_a0 admin.UpdateGroupContainerApiRequest) *NetworkPeeringApi_UpdateGroupContainerWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdatePeeringContainerApiParams) admin.UpdatePeeringContainerApiRequest) *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call {
+func (_c *NetworkPeeringApi_UpdateGroupContainerWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupContainerApiParams) admin.UpdateGroupContainerApiRequest) *NetworkPeeringApi_UpdateGroupContainerWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// VerifyConnectViaPeeringOnlyModeForOneProject provides a mock function with given fields: ctx, groupId
-func (_m *NetworkPeeringApi) VerifyConnectViaPeeringOnlyModeForOneProject(ctx context.Context, groupId string) admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest {
-	ret := _m.Called(ctx, groupId)
+// UpdateGroupPeer provides a mock function with given fields: ctx, groupId, peerId, baseNetworkPeeringConnectionSettings
+func (_m *NetworkPeeringApi) UpdateGroupPeer(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings) admin.UpdateGroupPeerApiRequest {
+	ret := _m.Called(ctx, groupId, peerId, baseNetworkPeeringConnectionSettings)
 
 	if len(ret) == 0 {
-		panic("no return value specified for VerifyConnectViaPeeringOnlyModeForOneProject")
+		panic("no return value specified for UpdateGroupPeer")
 	}
 
-	var r0 admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest); ok {
-		r0 = rf(ctx, groupId)
+	var r0 admin.UpdateGroupPeerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.BaseNetworkPeeringConnectionSettings) admin.UpdateGroupPeerApiRequest); ok {
+		r0 = rf(ctx, groupId, peerId, baseNetworkPeeringConnectionSettings)
 	} else {
-		r0 = ret.Get(0).(admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest)
+		r0 = ret.Get(0).(admin.UpdateGroupPeerApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyConnectViaPeeringOnlyModeForOneProject'
-type NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call struct {
+// NetworkPeeringApi_UpdateGroupPeer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupPeer'
+type NetworkPeeringApi_UpdateGroupPeer_Call struct {
 	*mock.Call
 }
 
-// VerifyConnectViaPeeringOnlyModeForOneProject is a helper method to define mock.On call
+// UpdateGroupPeer is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProject(ctx any, groupId any) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call {
-	return &NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call{Call: _e.mock.On("VerifyConnectViaPeeringOnlyModeForOneProject", ctx, groupId)}
+//   - peerId string
+//   - baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings
+func (_e *NetworkPeeringApi_Expecter) UpdateGroupPeer(ctx any, groupId any, peerId any, baseNetworkPeeringConnectionSettings any) *NetworkPeeringApi_UpdateGroupPeer_Call {
+	return &NetworkPeeringApi_UpdateGroupPeer_Call{Call: _e.mock.On("UpdateGroupPeer", ctx, groupId, peerId, baseNetworkPeeringConnectionSettings)}
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call) Run(run func(ctx context.Context, groupId string)) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call {
+func (_c *NetworkPeeringApi_UpdateGroupPeer_Call) Run(run func(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings)) *NetworkPeeringApi_UpdateGroupPeer_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.BaseNetworkPeeringConnectionSettings))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_UpdateGroupPeer_Call) Return(_a0 admin.UpdateGroupPeerApiRequest) *NetworkPeeringApi_UpdateGroupPeer_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_UpdateGroupPeer_Call) RunAndReturn(run func(context.Context, string, string, *admin.BaseNetworkPeeringConnectionSettings) admin.UpdateGroupPeerApiRequest) *NetworkPeeringApi_UpdateGroupPeer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupPeerExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) UpdateGroupPeerExecute(r admin.UpdateGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupPeerExecute")
+	}
+
+	var r0 *admin.BaseNetworkPeeringConnectionSettings
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupPeerApiRequest) *admin.BaseNetworkPeeringConnectionSettings); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.BaseNetworkPeeringConnectionSettings)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateGroupPeerApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateGroupPeerApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// NetworkPeeringApi_UpdateGroupPeerExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupPeerExecute'
+type NetworkPeeringApi_UpdateGroupPeerExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupPeerExecute is a helper method to define mock.On call
+//   - r admin.UpdateGroupPeerApiRequest
+func (_e *NetworkPeeringApi_Expecter) UpdateGroupPeerExecute(r any) *NetworkPeeringApi_UpdateGroupPeerExecute_Call {
+	return &NetworkPeeringApi_UpdateGroupPeerExecute_Call{Call: _e.mock.On("UpdateGroupPeerExecute", r)}
+}
+
+func (_c *NetworkPeeringApi_UpdateGroupPeerExecute_Call) Run(run func(r admin.UpdateGroupPeerApiRequest)) *NetworkPeeringApi_UpdateGroupPeerExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateGroupPeerApiRequest))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_UpdateGroupPeerExecute_Call) Return(_a0 *admin.BaseNetworkPeeringConnectionSettings, _a1 *http.Response, _a2 error) *NetworkPeeringApi_UpdateGroupPeerExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_UpdateGroupPeerExecute_Call) RunAndReturn(run func(admin.UpdateGroupPeerApiRequest) (*admin.BaseNetworkPeeringConnectionSettings, *http.Response, error)) *NetworkPeeringApi_UpdateGroupPeerExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupPeerWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) UpdateGroupPeerWithParams(ctx context.Context, args *admin.UpdateGroupPeerApiParams) admin.UpdateGroupPeerApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupPeerWithParams")
+	}
+
+	var r0 admin.UpdateGroupPeerApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupPeerApiParams) admin.UpdateGroupPeerApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupPeerApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_UpdateGroupPeerWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupPeerWithParams'
+type NetworkPeeringApi_UpdateGroupPeerWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupPeerWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateGroupPeerApiParams
+func (_e *NetworkPeeringApi_Expecter) UpdateGroupPeerWithParams(ctx any, args any) *NetworkPeeringApi_UpdateGroupPeerWithParams_Call {
+	return &NetworkPeeringApi_UpdateGroupPeerWithParams_Call{Call: _e.mock.On("UpdateGroupPeerWithParams", ctx, args)}
+}
+
+func (_c *NetworkPeeringApi_UpdateGroupPeerWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupPeerApiParams)) *NetworkPeeringApi_UpdateGroupPeerWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateGroupPeerApiParams))
+	})
+	return _c
+}
+
+func (_c *NetworkPeeringApi_UpdateGroupPeerWithParams_Call) Return(_a0 admin.UpdateGroupPeerApiRequest) *NetworkPeeringApi_UpdateGroupPeerWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *NetworkPeeringApi_UpdateGroupPeerWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupPeerApiParams) admin.UpdateGroupPeerApiRequest) *NetworkPeeringApi_UpdateGroupPeerWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// VerifyPrivateIpMode provides a mock function with given fields: ctx, groupId
+func (_m *NetworkPeeringApi) VerifyPrivateIpMode(ctx context.Context, groupId string) admin.VerifyPrivateIpModeApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for VerifyPrivateIpMode")
+	}
+
+	var r0 admin.VerifyPrivateIpModeApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.VerifyPrivateIpModeApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.VerifyPrivateIpModeApiRequest)
+	}
+
+	return r0
+}
+
+// NetworkPeeringApi_VerifyPrivateIpMode_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyPrivateIpMode'
+type NetworkPeeringApi_VerifyPrivateIpMode_Call struct {
+	*mock.Call
+}
+
+// VerifyPrivateIpMode is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *NetworkPeeringApi_Expecter) VerifyPrivateIpMode(ctx any, groupId any) *NetworkPeeringApi_VerifyPrivateIpMode_Call {
+	return &NetworkPeeringApi_VerifyPrivateIpMode_Call{Call: _e.mock.On("VerifyPrivateIpMode", ctx, groupId)}
+}
+
+func (_c *NetworkPeeringApi_VerifyPrivateIpMode_Call) Run(run func(ctx context.Context, groupId string)) *NetworkPeeringApi_VerifyPrivateIpMode_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call) Return(_a0 admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call {
+func (_c *NetworkPeeringApi_VerifyPrivateIpMode_Call) Return(_a0 admin.VerifyPrivateIpModeApiRequest) *NetworkPeeringApi_VerifyPrivateIpMode_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call) RunAndReturn(run func(context.Context, string) admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call {
+func (_c *NetworkPeeringApi_VerifyPrivateIpMode_Call) RunAndReturn(run func(context.Context, string) admin.VerifyPrivateIpModeApiRequest) *NetworkPeeringApi_VerifyPrivateIpMode_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// VerifyConnectViaPeeringOnlyModeForOneProjectExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*admin.PrivateIPMode, *http.Response, error) {
+// VerifyPrivateIpModeExecute provides a mock function with given fields: r
+func (_m *NetworkPeeringApi) VerifyPrivateIpModeExecute(r admin.VerifyPrivateIpModeApiRequest) (*admin.PrivateIPMode, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for VerifyConnectViaPeeringOnlyModeForOneProjectExecute")
+		panic("no return value specified for VerifyPrivateIpModeExecute")
 	}
 
 	var r0 *admin.PrivateIPMode
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*admin.PrivateIPMode, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.VerifyPrivateIpModeApiRequest) (*admin.PrivateIPMode, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) *admin.PrivateIPMode); ok {
+	if rf, ok := ret.Get(0).(func(admin.VerifyPrivateIpModeApiRequest) *admin.PrivateIPMode); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2028,7 +2028,7 @@ func (_m *NetworkPeeringApi) VerifyConnectViaPeeringOnlyModeForOneProjectExecute
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.VerifyPrivateIpModeApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2036,7 +2036,7 @@ func (_m *NetworkPeeringApi) VerifyConnectViaPeeringOnlyModeForOneProjectExecute
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.VerifyPrivateIpModeApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2045,77 +2045,77 @@ func (_m *NetworkPeeringApi) VerifyConnectViaPeeringOnlyModeForOneProjectExecute
 	return r0, r1, r2
 }
 
-// NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyConnectViaPeeringOnlyModeForOneProjectExecute'
-type NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call struct {
+// NetworkPeeringApi_VerifyPrivateIpModeExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyPrivateIpModeExecute'
+type NetworkPeeringApi_VerifyPrivateIpModeExecute_Call struct {
 	*mock.Call
 }
 
-// VerifyConnectViaPeeringOnlyModeForOneProjectExecute is a helper method to define mock.On call
-//   - r admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
-func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r any) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call {
-	return &NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call{Call: _e.mock.On("VerifyConnectViaPeeringOnlyModeForOneProjectExecute", r)}
+// VerifyPrivateIpModeExecute is a helper method to define mock.On call
+//   - r admin.VerifyPrivateIpModeApiRequest
+func (_e *NetworkPeeringApi_Expecter) VerifyPrivateIpModeExecute(r any) *NetworkPeeringApi_VerifyPrivateIpModeExecute_Call {
+	return &NetworkPeeringApi_VerifyPrivateIpModeExecute_Call{Call: _e.mock.On("VerifyPrivateIpModeExecute", r)}
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call) Run(run func(r admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest)) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call {
+func (_c *NetworkPeeringApi_VerifyPrivateIpModeExecute_Call) Run(run func(r admin.VerifyPrivateIpModeApiRequest)) *NetworkPeeringApi_VerifyPrivateIpModeExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest))
+		run(args[0].(admin.VerifyPrivateIpModeApiRequest))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call) Return(_a0 *admin.PrivateIPMode, _a1 *http.Response, _a2 error) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call {
+func (_c *NetworkPeeringApi_VerifyPrivateIpModeExecute_Call) Return(_a0 *admin.PrivateIPMode, _a1 *http.Response, _a2 error) *NetworkPeeringApi_VerifyPrivateIpModeExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call) RunAndReturn(run func(admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*admin.PrivateIPMode, *http.Response, error)) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call {
+func (_c *NetworkPeeringApi_VerifyPrivateIpModeExecute_Call) RunAndReturn(run func(admin.VerifyPrivateIpModeApiRequest) (*admin.PrivateIPMode, *http.Response, error)) *NetworkPeeringApi_VerifyPrivateIpModeExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// VerifyConnectViaPeeringOnlyModeForOneProjectWithParams provides a mock function with given fields: ctx, args
-func (_m *NetworkPeeringApi) VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx context.Context, args *admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest {
+// VerifyPrivateIpModeWithParams provides a mock function with given fields: ctx, args
+func (_m *NetworkPeeringApi) VerifyPrivateIpModeWithParams(ctx context.Context, args *admin.VerifyPrivateIpModeApiParams) admin.VerifyPrivateIpModeApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for VerifyConnectViaPeeringOnlyModeForOneProjectWithParams")
+		panic("no return value specified for VerifyPrivateIpModeWithParams")
 	}
 
-	var r0 admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest); ok {
+	var r0 admin.VerifyPrivateIpModeApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.VerifyPrivateIpModeApiParams) admin.VerifyPrivateIpModeApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest)
+		r0 = ret.Get(0).(admin.VerifyPrivateIpModeApiRequest)
 	}
 
 	return r0
 }
 
-// NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyConnectViaPeeringOnlyModeForOneProjectWithParams'
-type NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call struct {
+// NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VerifyPrivateIpModeWithParams'
+type NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call struct {
 	*mock.Call
 }
 
-// VerifyConnectViaPeeringOnlyModeForOneProjectWithParams is a helper method to define mock.On call
+// VerifyPrivateIpModeWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiParams
-func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx any, args any) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call {
-	return &NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call{Call: _e.mock.On("VerifyConnectViaPeeringOnlyModeForOneProjectWithParams", ctx, args)}
+//   - args *admin.VerifyPrivateIpModeApiParams
+func (_e *NetworkPeeringApi_Expecter) VerifyPrivateIpModeWithParams(ctx any, args any) *NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call {
+	return &NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call{Call: _e.mock.On("VerifyPrivateIpModeWithParams", ctx, args)}
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call) Run(run func(ctx context.Context, args *admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiParams)) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call {
+func (_c *NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call) Run(run func(ctx context.Context, args *admin.VerifyPrivateIpModeApiParams)) *NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiParams))
+		run(args[0].(context.Context), args[1].(*admin.VerifyPrivateIpModeApiParams))
 	})
 	return _c
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call) Return(_a0 admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call {
+func (_c *NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call) Return(_a0 admin.VerifyPrivateIpModeApiRequest) *NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call) RunAndReturn(run func(context.Context, *admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call {
+func (_c *NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call) RunAndReturn(run func(context.Context, *admin.VerifyPrivateIpModeApiParams) admin.VerifyPrivateIpModeApiRequest) *NetworkPeeringApi_VerifyPrivateIpModeWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

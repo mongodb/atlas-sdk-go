@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -23,6 +23,168 @@ type CloudMigrationServiceApi_Expecter struct {
 
 func (_m *CloudMigrationServiceApi) EXPECT() *CloudMigrationServiceApi_Expecter {
 	return &CloudMigrationServiceApi_Expecter{mock: &_m.Mock}
+}
+
+// CreateGroupLiveMigration provides a mock function with given fields: ctx, groupId, liveMigrationRequest20240530
+func (_m *CloudMigrationServiceApi) CreateGroupLiveMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530) admin.CreateGroupLiveMigrationApiRequest {
+	ret := _m.Called(ctx, groupId, liveMigrationRequest20240530)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateGroupLiveMigration")
+	}
+
+	var r0 admin.CreateGroupLiveMigrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.LiveMigrationRequest20240530) admin.CreateGroupLiveMigrationApiRequest); ok {
+		r0 = rf(ctx, groupId, liveMigrationRequest20240530)
+	} else {
+		r0 = ret.Get(0).(admin.CreateGroupLiveMigrationApiRequest)
+	}
+
+	return r0
+}
+
+// CloudMigrationServiceApi_CreateGroupLiveMigration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupLiveMigration'
+type CloudMigrationServiceApi_CreateGroupLiveMigration_Call struct {
+	*mock.Call
+}
+
+// CreateGroupLiveMigration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530
+func (_e *CloudMigrationServiceApi_Expecter) CreateGroupLiveMigration(ctx any, groupId any, liveMigrationRequest20240530 any) *CloudMigrationServiceApi_CreateGroupLiveMigration_Call {
+	return &CloudMigrationServiceApi_CreateGroupLiveMigration_Call{Call: _e.mock.On("CreateGroupLiveMigration", ctx, groupId, liveMigrationRequest20240530)}
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigration_Call) Run(run func(ctx context.Context, groupId string, liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530)) *CloudMigrationServiceApi_CreateGroupLiveMigration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.LiveMigrationRequest20240530))
+	})
+	return _c
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigration_Call) Return(_a0 admin.CreateGroupLiveMigrationApiRequest) *CloudMigrationServiceApi_CreateGroupLiveMigration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigration_Call) RunAndReturn(run func(context.Context, string, *admin.LiveMigrationRequest20240530) admin.CreateGroupLiveMigrationApiRequest) *CloudMigrationServiceApi_CreateGroupLiveMigration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateGroupLiveMigrationExecute provides a mock function with given fields: r
+func (_m *CloudMigrationServiceApi) CreateGroupLiveMigrationExecute(r admin.CreateGroupLiveMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateGroupLiveMigrationExecute")
+	}
+
+	var r0 *admin.LiveMigrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupLiveMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupLiveMigrationApiRequest) *admin.LiveMigrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.LiveMigrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateGroupLiveMigrationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateGroupLiveMigrationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupLiveMigrationExecute'
+type CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call struct {
+	*mock.Call
+}
+
+// CreateGroupLiveMigrationExecute is a helper method to define mock.On call
+//   - r admin.CreateGroupLiveMigrationApiRequest
+func (_e *CloudMigrationServiceApi_Expecter) CreateGroupLiveMigrationExecute(r any) *CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call {
+	return &CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call{Call: _e.mock.On("CreateGroupLiveMigrationExecute", r)}
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call) Run(run func(r admin.CreateGroupLiveMigrationApiRequest)) *CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateGroupLiveMigrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call) Return(_a0 *admin.LiveMigrationResponse, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call) RunAndReturn(run func(admin.CreateGroupLiveMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error)) *CloudMigrationServiceApi_CreateGroupLiveMigrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateGroupLiveMigrationWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudMigrationServiceApi) CreateGroupLiveMigrationWithParams(ctx context.Context, args *admin.CreateGroupLiveMigrationApiParams) admin.CreateGroupLiveMigrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateGroupLiveMigrationWithParams")
+	}
+
+	var r0 admin.CreateGroupLiveMigrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupLiveMigrationApiParams) admin.CreateGroupLiveMigrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateGroupLiveMigrationApiRequest)
+	}
+
+	return r0
+}
+
+// CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupLiveMigrationWithParams'
+type CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateGroupLiveMigrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateGroupLiveMigrationApiParams
+func (_e *CloudMigrationServiceApi_Expecter) CreateGroupLiveMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call {
+	return &CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call{Call: _e.mock.On("CreateGroupLiveMigrationWithParams", ctx, args)}
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupLiveMigrationApiParams)) *CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateGroupLiveMigrationApiParams))
+	})
+	return _c
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call) Return(_a0 admin.CreateGroupLiveMigrationApiRequest) *CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupLiveMigrationApiParams) admin.CreateGroupLiveMigrationApiRequest) *CloudMigrationServiceApi_CreateGroupLiveMigrationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // CreateLinkToken provides a mock function with given fields: ctx, orgId, targetOrgRequest
@@ -187,168 +349,6 @@ func (_c *CloudMigrationServiceApi_CreateLinkTokenWithParams_Call) RunAndReturn(
 	return _c
 }
 
-// CreatePushMigration provides a mock function with given fields: ctx, groupId, liveMigrationRequest20240530
-func (_m *CloudMigrationServiceApi) CreatePushMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530) admin.CreatePushMigrationApiRequest {
-	ret := _m.Called(ctx, groupId, liveMigrationRequest20240530)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreatePushMigration")
-	}
-
-	var r0 admin.CreatePushMigrationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.LiveMigrationRequest20240530) admin.CreatePushMigrationApiRequest); ok {
-		r0 = rf(ctx, groupId, liveMigrationRequest20240530)
-	} else {
-		r0 = ret.Get(0).(admin.CreatePushMigrationApiRequest)
-	}
-
-	return r0
-}
-
-// CloudMigrationServiceApi_CreatePushMigration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePushMigration'
-type CloudMigrationServiceApi_CreatePushMigration_Call struct {
-	*mock.Call
-}
-
-// CreatePushMigration is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530
-func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigration(ctx any, groupId any, liveMigrationRequest20240530 any) *CloudMigrationServiceApi_CreatePushMigration_Call {
-	return &CloudMigrationServiceApi_CreatePushMigration_Call{Call: _e.mock.On("CreatePushMigration", ctx, groupId, liveMigrationRequest20240530)}
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigration_Call) Run(run func(ctx context.Context, groupId string, liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530)) *CloudMigrationServiceApi_CreatePushMigration_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.LiveMigrationRequest20240530))
-	})
-	return _c
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigration_Call) Return(_a0 admin.CreatePushMigrationApiRequest) *CloudMigrationServiceApi_CreatePushMigration_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigration_Call) RunAndReturn(run func(context.Context, string, *admin.LiveMigrationRequest20240530) admin.CreatePushMigrationApiRequest) *CloudMigrationServiceApi_CreatePushMigration_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreatePushMigrationExecute provides a mock function with given fields: r
-func (_m *CloudMigrationServiceApi) CreatePushMigrationExecute(r admin.CreatePushMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreatePushMigrationExecute")
-	}
-
-	var r0 *admin.LiveMigrationResponse
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreatePushMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreatePushMigrationApiRequest) *admin.LiveMigrationResponse); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.LiveMigrationResponse)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreatePushMigrationApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreatePushMigrationApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// CloudMigrationServiceApi_CreatePushMigrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePushMigrationExecute'
-type CloudMigrationServiceApi_CreatePushMigrationExecute_Call struct {
-	*mock.Call
-}
-
-// CreatePushMigrationExecute is a helper method to define mock.On call
-//   - r admin.CreatePushMigrationApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigrationExecute(r any) *CloudMigrationServiceApi_CreatePushMigrationExecute_Call {
-	return &CloudMigrationServiceApi_CreatePushMigrationExecute_Call{Call: _e.mock.On("CreatePushMigrationExecute", r)}
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigrationExecute_Call) Run(run func(r admin.CreatePushMigrationApiRequest)) *CloudMigrationServiceApi_CreatePushMigrationExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreatePushMigrationApiRequest))
-	})
-	return _c
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigrationExecute_Call) Return(_a0 *admin.LiveMigrationResponse, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_CreatePushMigrationExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigrationExecute_Call) RunAndReturn(run func(admin.CreatePushMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error)) *CloudMigrationServiceApi_CreatePushMigrationExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreatePushMigrationWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudMigrationServiceApi) CreatePushMigrationWithParams(ctx context.Context, args *admin.CreatePushMigrationApiParams) admin.CreatePushMigrationApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreatePushMigrationWithParams")
-	}
-
-	var r0 admin.CreatePushMigrationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreatePushMigrationApiParams) admin.CreatePushMigrationApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreatePushMigrationApiRequest)
-	}
-
-	return r0
-}
-
-// CloudMigrationServiceApi_CreatePushMigrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePushMigrationWithParams'
-type CloudMigrationServiceApi_CreatePushMigrationWithParams_Call struct {
-	*mock.Call
-}
-
-// CreatePushMigrationWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreatePushMigrationApiParams
-func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call {
-	return &CloudMigrationServiceApi_CreatePushMigrationWithParams_Call{Call: _e.mock.On("CreatePushMigrationWithParams", ctx, args)}
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call) Run(run func(ctx context.Context, args *admin.CreatePushMigrationApiParams)) *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreatePushMigrationApiParams))
-	})
-	return _c
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call) Return(_a0 admin.CreatePushMigrationApiRequest) *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreatePushMigrationApiParams) admin.CreatePushMigrationApiRequest) *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
 // CutoverMigration provides a mock function with given fields: ctx, groupId, liveMigrationId
 func (_m *CloudMigrationServiceApi) CutoverMigration(ctx context.Context, groupId string, liveMigrationId string) admin.CutoverMigrationApiRequest {
 	ret := _m.Called(ctx, groupId, liveMigrationId)
@@ -502,67 +502,67 @@ func (_c *CloudMigrationServiceApi_CutoverMigrationWithParams_Call) RunAndReturn
 	return _c
 }
 
-// DeleteLinkToken provides a mock function with given fields: ctx, orgId
-func (_m *CloudMigrationServiceApi) DeleteLinkToken(ctx context.Context, orgId string) admin.DeleteLinkTokenApiRequest {
+// DeleteLinkTokens provides a mock function with given fields: ctx, orgId
+func (_m *CloudMigrationServiceApi) DeleteLinkTokens(ctx context.Context, orgId string) admin.DeleteLinkTokensApiRequest {
 	ret := _m.Called(ctx, orgId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteLinkToken")
+		panic("no return value specified for DeleteLinkTokens")
 	}
 
-	var r0 admin.DeleteLinkTokenApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteLinkTokenApiRequest); ok {
+	var r0 admin.DeleteLinkTokensApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteLinkTokensApiRequest); ok {
 		r0 = rf(ctx, orgId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteLinkTokenApiRequest)
+		r0 = ret.Get(0).(admin.DeleteLinkTokensApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_DeleteLinkToken_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLinkToken'
-type CloudMigrationServiceApi_DeleteLinkToken_Call struct {
+// CloudMigrationServiceApi_DeleteLinkTokens_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLinkTokens'
+type CloudMigrationServiceApi_DeleteLinkTokens_Call struct {
 	*mock.Call
 }
 
-// DeleteLinkToken is a helper method to define mock.On call
+// DeleteLinkTokens is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkToken(ctx any, orgId any) *CloudMigrationServiceApi_DeleteLinkToken_Call {
-	return &CloudMigrationServiceApi_DeleteLinkToken_Call{Call: _e.mock.On("DeleteLinkToken", ctx, orgId)}
+func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokens(ctx any, orgId any) *CloudMigrationServiceApi_DeleteLinkTokens_Call {
+	return &CloudMigrationServiceApi_DeleteLinkTokens_Call{Call: _e.mock.On("DeleteLinkTokens", ctx, orgId)}
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkToken_Call) Run(run func(ctx context.Context, orgId string)) *CloudMigrationServiceApi_DeleteLinkToken_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokens_Call) Run(run func(ctx context.Context, orgId string)) *CloudMigrationServiceApi_DeleteLinkTokens_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkToken_Call) Return(_a0 admin.DeleteLinkTokenApiRequest) *CloudMigrationServiceApi_DeleteLinkToken_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokens_Call) Return(_a0 admin.DeleteLinkTokensApiRequest) *CloudMigrationServiceApi_DeleteLinkTokens_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkToken_Call) RunAndReturn(run func(context.Context, string) admin.DeleteLinkTokenApiRequest) *CloudMigrationServiceApi_DeleteLinkToken_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokens_Call) RunAndReturn(run func(context.Context, string) admin.DeleteLinkTokensApiRequest) *CloudMigrationServiceApi_DeleteLinkTokens_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteLinkTokenExecute provides a mock function with given fields: r
-func (_m *CloudMigrationServiceApi) DeleteLinkTokenExecute(r admin.DeleteLinkTokenApiRequest) (*http.Response, error) {
+// DeleteLinkTokensExecute provides a mock function with given fields: r
+func (_m *CloudMigrationServiceApi) DeleteLinkTokensExecute(r admin.DeleteLinkTokensApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteLinkTokenExecute")
+		panic("no return value specified for DeleteLinkTokensExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteLinkTokenApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLinkTokensApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteLinkTokenApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLinkTokensApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -570,7 +570,7 @@ func (_m *CloudMigrationServiceApi) DeleteLinkTokenExecute(r admin.DeleteLinkTok
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteLinkTokenApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteLinkTokensApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -579,144 +579,144 @@ func (_m *CloudMigrationServiceApi) DeleteLinkTokenExecute(r admin.DeleteLinkTok
 	return r0, r1
 }
 
-// CloudMigrationServiceApi_DeleteLinkTokenExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLinkTokenExecute'
-type CloudMigrationServiceApi_DeleteLinkTokenExecute_Call struct {
+// CloudMigrationServiceApi_DeleteLinkTokensExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLinkTokensExecute'
+type CloudMigrationServiceApi_DeleteLinkTokensExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteLinkTokenExecute is a helper method to define mock.On call
-//   - r admin.DeleteLinkTokenApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokenExecute(r any) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
-	return &CloudMigrationServiceApi_DeleteLinkTokenExecute_Call{Call: _e.mock.On("DeleteLinkTokenExecute", r)}
+// DeleteLinkTokensExecute is a helper method to define mock.On call
+//   - r admin.DeleteLinkTokensApiRequest
+func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokensExecute(r any) *CloudMigrationServiceApi_DeleteLinkTokensExecute_Call {
+	return &CloudMigrationServiceApi_DeleteLinkTokensExecute_Call{Call: _e.mock.On("DeleteLinkTokensExecute", r)}
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call) Run(run func(r admin.DeleteLinkTokenApiRequest)) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokensExecute_Call) Run(run func(r admin.DeleteLinkTokensApiRequest)) *CloudMigrationServiceApi_DeleteLinkTokensExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteLinkTokenApiRequest))
+		run(args[0].(admin.DeleteLinkTokensApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokensExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudMigrationServiceApi_DeleteLinkTokensExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call) RunAndReturn(run func(admin.DeleteLinkTokenApiRequest) (*http.Response, error)) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokensExecute_Call) RunAndReturn(run func(admin.DeleteLinkTokensApiRequest) (*http.Response, error)) *CloudMigrationServiceApi_DeleteLinkTokensExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteLinkTokenWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudMigrationServiceApi) DeleteLinkTokenWithParams(ctx context.Context, args *admin.DeleteLinkTokenApiParams) admin.DeleteLinkTokenApiRequest {
+// DeleteLinkTokensWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudMigrationServiceApi) DeleteLinkTokensWithParams(ctx context.Context, args *admin.DeleteLinkTokensApiParams) admin.DeleteLinkTokensApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteLinkTokenWithParams")
+		panic("no return value specified for DeleteLinkTokensWithParams")
 	}
 
-	var r0 admin.DeleteLinkTokenApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteLinkTokenApiParams) admin.DeleteLinkTokenApiRequest); ok {
+	var r0 admin.DeleteLinkTokensApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteLinkTokensApiParams) admin.DeleteLinkTokensApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteLinkTokenApiRequest)
+		r0 = ret.Get(0).(admin.DeleteLinkTokensApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLinkTokenWithParams'
-type CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call struct {
+// CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLinkTokensWithParams'
+type CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteLinkTokenWithParams is a helper method to define mock.On call
+// DeleteLinkTokensWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteLinkTokenApiParams
-func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokenWithParams(ctx any, args any) *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call {
-	return &CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call{Call: _e.mock.On("DeleteLinkTokenWithParams", ctx, args)}
+//   - args *admin.DeleteLinkTokensApiParams
+func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokensWithParams(ctx any, args any) *CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call {
+	return &CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call{Call: _e.mock.On("DeleteLinkTokensWithParams", ctx, args)}
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteLinkTokenApiParams)) *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteLinkTokensApiParams)) *CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteLinkTokenApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteLinkTokensApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call) Return(_a0 admin.DeleteLinkTokenApiRequest) *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call) Return(_a0 admin.DeleteLinkTokensApiRequest) *CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteLinkTokenApiParams) admin.DeleteLinkTokenApiRequest) *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteLinkTokensApiParams) admin.DeleteLinkTokensApiRequest) *CloudMigrationServiceApi_DeleteLinkTokensWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetPushMigration provides a mock function with given fields: ctx, groupId, liveMigrationId
-func (_m *CloudMigrationServiceApi) GetPushMigration(ctx context.Context, groupId string, liveMigrationId string) admin.GetPushMigrationApiRequest {
+// GetGroupLiveMigration provides a mock function with given fields: ctx, groupId, liveMigrationId
+func (_m *CloudMigrationServiceApi) GetGroupLiveMigration(ctx context.Context, groupId string, liveMigrationId string) admin.GetGroupLiveMigrationApiRequest {
 	ret := _m.Called(ctx, groupId, liveMigrationId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPushMigration")
+		panic("no return value specified for GetGroupLiveMigration")
 	}
 
-	var r0 admin.GetPushMigrationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetPushMigrationApiRequest); ok {
+	var r0 admin.GetGroupLiveMigrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupLiveMigrationApiRequest); ok {
 		r0 = rf(ctx, groupId, liveMigrationId)
 	} else {
-		r0 = ret.Get(0).(admin.GetPushMigrationApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupLiveMigrationApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_GetPushMigration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPushMigration'
-type CloudMigrationServiceApi_GetPushMigration_Call struct {
+// CloudMigrationServiceApi_GetGroupLiveMigration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLiveMigration'
+type CloudMigrationServiceApi_GetGroupLiveMigration_Call struct {
 	*mock.Call
 }
 
-// GetPushMigration is a helper method to define mock.On call
+// GetGroupLiveMigration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - liveMigrationId string
-func (_e *CloudMigrationServiceApi_Expecter) GetPushMigration(ctx any, groupId any, liveMigrationId any) *CloudMigrationServiceApi_GetPushMigration_Call {
-	return &CloudMigrationServiceApi_GetPushMigration_Call{Call: _e.mock.On("GetPushMigration", ctx, groupId, liveMigrationId)}
+func (_e *CloudMigrationServiceApi_Expecter) GetGroupLiveMigration(ctx any, groupId any, liveMigrationId any) *CloudMigrationServiceApi_GetGroupLiveMigration_Call {
+	return &CloudMigrationServiceApi_GetGroupLiveMigration_Call{Call: _e.mock.On("GetGroupLiveMigration", ctx, groupId, liveMigrationId)}
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigration_Call) Run(run func(ctx context.Context, groupId string, liveMigrationId string)) *CloudMigrationServiceApi_GetPushMigration_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigration_Call) Run(run func(ctx context.Context, groupId string, liveMigrationId string)) *CloudMigrationServiceApi_GetGroupLiveMigration_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigration_Call) Return(_a0 admin.GetPushMigrationApiRequest) *CloudMigrationServiceApi_GetPushMigration_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigration_Call) Return(_a0 admin.GetGroupLiveMigrationApiRequest) *CloudMigrationServiceApi_GetGroupLiveMigration_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigration_Call) RunAndReturn(run func(context.Context, string, string) admin.GetPushMigrationApiRequest) *CloudMigrationServiceApi_GetPushMigration_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigration_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupLiveMigrationApiRequest) *CloudMigrationServiceApi_GetGroupLiveMigration_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetPushMigrationExecute provides a mock function with given fields: r
-func (_m *CloudMigrationServiceApi) GetPushMigrationExecute(r admin.GetPushMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error) {
+// GetGroupLiveMigrationExecute provides a mock function with given fields: r
+func (_m *CloudMigrationServiceApi) GetGroupLiveMigrationExecute(r admin.GetGroupLiveMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPushMigrationExecute")
+		panic("no return value specified for GetGroupLiveMigrationExecute")
 	}
 
 	var r0 *admin.LiveMigrationResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetPushMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupLiveMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetPushMigrationApiRequest) *admin.LiveMigrationResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupLiveMigrationApiRequest) *admin.LiveMigrationResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -724,7 +724,7 @@ func (_m *CloudMigrationServiceApi) GetPushMigrationExecute(r admin.GetPushMigra
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetPushMigrationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupLiveMigrationApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -732,7 +732,7 @@ func (_m *CloudMigrationServiceApi) GetPushMigrationExecute(r admin.GetPushMigra
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetPushMigrationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupLiveMigrationApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -741,144 +741,144 @@ func (_m *CloudMigrationServiceApi) GetPushMigrationExecute(r admin.GetPushMigra
 	return r0, r1, r2
 }
 
-// CloudMigrationServiceApi_GetPushMigrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPushMigrationExecute'
-type CloudMigrationServiceApi_GetPushMigrationExecute_Call struct {
+// CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLiveMigrationExecute'
+type CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call struct {
 	*mock.Call
 }
 
-// GetPushMigrationExecute is a helper method to define mock.On call
-//   - r admin.GetPushMigrationApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) GetPushMigrationExecute(r any) *CloudMigrationServiceApi_GetPushMigrationExecute_Call {
-	return &CloudMigrationServiceApi_GetPushMigrationExecute_Call{Call: _e.mock.On("GetPushMigrationExecute", r)}
+// GetGroupLiveMigrationExecute is a helper method to define mock.On call
+//   - r admin.GetGroupLiveMigrationApiRequest
+func (_e *CloudMigrationServiceApi_Expecter) GetGroupLiveMigrationExecute(r any) *CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call {
+	return &CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call{Call: _e.mock.On("GetGroupLiveMigrationExecute", r)}
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigrationExecute_Call) Run(run func(r admin.GetPushMigrationApiRequest)) *CloudMigrationServiceApi_GetPushMigrationExecute_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call) Run(run func(r admin.GetGroupLiveMigrationApiRequest)) *CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetPushMigrationApiRequest))
+		run(args[0].(admin.GetGroupLiveMigrationApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigrationExecute_Call) Return(_a0 *admin.LiveMigrationResponse, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_GetPushMigrationExecute_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call) Return(_a0 *admin.LiveMigrationResponse, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigrationExecute_Call) RunAndReturn(run func(admin.GetPushMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error)) *CloudMigrationServiceApi_GetPushMigrationExecute_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call) RunAndReturn(run func(admin.GetGroupLiveMigrationApiRequest) (*admin.LiveMigrationResponse, *http.Response, error)) *CloudMigrationServiceApi_GetGroupLiveMigrationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetPushMigrationWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudMigrationServiceApi) GetPushMigrationWithParams(ctx context.Context, args *admin.GetPushMigrationApiParams) admin.GetPushMigrationApiRequest {
+// GetGroupLiveMigrationWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudMigrationServiceApi) GetGroupLiveMigrationWithParams(ctx context.Context, args *admin.GetGroupLiveMigrationApiParams) admin.GetGroupLiveMigrationApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPushMigrationWithParams")
+		panic("no return value specified for GetGroupLiveMigrationWithParams")
 	}
 
-	var r0 admin.GetPushMigrationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetPushMigrationApiParams) admin.GetPushMigrationApiRequest); ok {
+	var r0 admin.GetGroupLiveMigrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupLiveMigrationApiParams) admin.GetGroupLiveMigrationApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetPushMigrationApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupLiveMigrationApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_GetPushMigrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPushMigrationWithParams'
-type CloudMigrationServiceApi_GetPushMigrationWithParams_Call struct {
+// CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLiveMigrationWithParams'
+type CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call struct {
 	*mock.Call
 }
 
-// GetPushMigrationWithParams is a helper method to define mock.On call
+// GetGroupLiveMigrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetPushMigrationApiParams
-func (_e *CloudMigrationServiceApi_Expecter) GetPushMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_GetPushMigrationWithParams_Call {
-	return &CloudMigrationServiceApi_GetPushMigrationWithParams_Call{Call: _e.mock.On("GetPushMigrationWithParams", ctx, args)}
+//   - args *admin.GetGroupLiveMigrationApiParams
+func (_e *CloudMigrationServiceApi_Expecter) GetGroupLiveMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call {
+	return &CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call{Call: _e.mock.On("GetGroupLiveMigrationWithParams", ctx, args)}
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigrationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetPushMigrationApiParams)) *CloudMigrationServiceApi_GetPushMigrationWithParams_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupLiveMigrationApiParams)) *CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetPushMigrationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupLiveMigrationApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigrationWithParams_Call) Return(_a0 admin.GetPushMigrationApiRequest) *CloudMigrationServiceApi_GetPushMigrationWithParams_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call) Return(_a0 admin.GetGroupLiveMigrationApiRequest) *CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetPushMigrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetPushMigrationApiParams) admin.GetPushMigrationApiRequest) *CloudMigrationServiceApi_GetPushMigrationWithParams_Call {
+func (_c *CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupLiveMigrationApiParams) admin.GetGroupLiveMigrationApiRequest) *CloudMigrationServiceApi_GetGroupLiveMigrationWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetValidationStatus provides a mock function with given fields: ctx, groupId, validationId
-func (_m *CloudMigrationServiceApi) GetValidationStatus(ctx context.Context, groupId string, validationId string) admin.GetValidationStatusApiRequest {
+// GetMigrationValidateStatus provides a mock function with given fields: ctx, groupId, validationId
+func (_m *CloudMigrationServiceApi) GetMigrationValidateStatus(ctx context.Context, groupId string, validationId string) admin.GetMigrationValidateStatusApiRequest {
 	ret := _m.Called(ctx, groupId, validationId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetValidationStatus")
+		panic("no return value specified for GetMigrationValidateStatus")
 	}
 
-	var r0 admin.GetValidationStatusApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetValidationStatusApiRequest); ok {
+	var r0 admin.GetMigrationValidateStatusApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetMigrationValidateStatusApiRequest); ok {
 		r0 = rf(ctx, groupId, validationId)
 	} else {
-		r0 = ret.Get(0).(admin.GetValidationStatusApiRequest)
+		r0 = ret.Get(0).(admin.GetMigrationValidateStatusApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_GetValidationStatus_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetValidationStatus'
-type CloudMigrationServiceApi_GetValidationStatus_Call struct {
+// CloudMigrationServiceApi_GetMigrationValidateStatus_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMigrationValidateStatus'
+type CloudMigrationServiceApi_GetMigrationValidateStatus_Call struct {
 	*mock.Call
 }
 
-// GetValidationStatus is a helper method to define mock.On call
+// GetMigrationValidateStatus is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - validationId string
-func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatus(ctx any, groupId any, validationId any) *CloudMigrationServiceApi_GetValidationStatus_Call {
-	return &CloudMigrationServiceApi_GetValidationStatus_Call{Call: _e.mock.On("GetValidationStatus", ctx, groupId, validationId)}
+func (_e *CloudMigrationServiceApi_Expecter) GetMigrationValidateStatus(ctx any, groupId any, validationId any) *CloudMigrationServiceApi_GetMigrationValidateStatus_Call {
+	return &CloudMigrationServiceApi_GetMigrationValidateStatus_Call{Call: _e.mock.On("GetMigrationValidateStatus", ctx, groupId, validationId)}
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatus_Call) Run(run func(ctx context.Context, groupId string, validationId string)) *CloudMigrationServiceApi_GetValidationStatus_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatus_Call) Run(run func(ctx context.Context, groupId string, validationId string)) *CloudMigrationServiceApi_GetMigrationValidateStatus_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatus_Call) Return(_a0 admin.GetValidationStatusApiRequest) *CloudMigrationServiceApi_GetValidationStatus_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatus_Call) Return(_a0 admin.GetMigrationValidateStatusApiRequest) *CloudMigrationServiceApi_GetMigrationValidateStatus_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatus_Call) RunAndReturn(run func(context.Context, string, string) admin.GetValidationStatusApiRequest) *CloudMigrationServiceApi_GetValidationStatus_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatus_Call) RunAndReturn(run func(context.Context, string, string) admin.GetMigrationValidateStatusApiRequest) *CloudMigrationServiceApi_GetMigrationValidateStatus_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetValidationStatusExecute provides a mock function with given fields: r
-func (_m *CloudMigrationServiceApi) GetValidationStatusExecute(r admin.GetValidationStatusApiRequest) (*admin.LiveImportValidation, *http.Response, error) {
+// GetMigrationValidateStatusExecute provides a mock function with given fields: r
+func (_m *CloudMigrationServiceApi) GetMigrationValidateStatusExecute(r admin.GetMigrationValidateStatusApiRequest) (*admin.LiveImportValidation, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetValidationStatusExecute")
+		panic("no return value specified for GetMigrationValidateStatusExecute")
 	}
 
 	var r0 *admin.LiveImportValidation
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetValidationStatusApiRequest) (*admin.LiveImportValidation, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetMigrationValidateStatusApiRequest) (*admin.LiveImportValidation, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetValidationStatusApiRequest) *admin.LiveImportValidation); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetMigrationValidateStatusApiRequest) *admin.LiveImportValidation); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -886,7 +886,7 @@ func (_m *CloudMigrationServiceApi) GetValidationStatusExecute(r admin.GetValida
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetValidationStatusApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetMigrationValidateStatusApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -894,7 +894,7 @@ func (_m *CloudMigrationServiceApi) GetValidationStatusExecute(r admin.GetValida
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetValidationStatusApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetMigrationValidateStatusApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -903,143 +903,143 @@ func (_m *CloudMigrationServiceApi) GetValidationStatusExecute(r admin.GetValida
 	return r0, r1, r2
 }
 
-// CloudMigrationServiceApi_GetValidationStatusExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetValidationStatusExecute'
-type CloudMigrationServiceApi_GetValidationStatusExecute_Call struct {
+// CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMigrationValidateStatusExecute'
+type CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call struct {
 	*mock.Call
 }
 
-// GetValidationStatusExecute is a helper method to define mock.On call
-//   - r admin.GetValidationStatusApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatusExecute(r any) *CloudMigrationServiceApi_GetValidationStatusExecute_Call {
-	return &CloudMigrationServiceApi_GetValidationStatusExecute_Call{Call: _e.mock.On("GetValidationStatusExecute", r)}
+// GetMigrationValidateStatusExecute is a helper method to define mock.On call
+//   - r admin.GetMigrationValidateStatusApiRequest
+func (_e *CloudMigrationServiceApi_Expecter) GetMigrationValidateStatusExecute(r any) *CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call {
+	return &CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call{Call: _e.mock.On("GetMigrationValidateStatusExecute", r)}
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatusExecute_Call) Run(run func(r admin.GetValidationStatusApiRequest)) *CloudMigrationServiceApi_GetValidationStatusExecute_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call) Run(run func(r admin.GetMigrationValidateStatusApiRequest)) *CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetValidationStatusApiRequest))
+		run(args[0].(admin.GetMigrationValidateStatusApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatusExecute_Call) Return(_a0 *admin.LiveImportValidation, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_GetValidationStatusExecute_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call) Return(_a0 *admin.LiveImportValidation, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatusExecute_Call) RunAndReturn(run func(admin.GetValidationStatusApiRequest) (*admin.LiveImportValidation, *http.Response, error)) *CloudMigrationServiceApi_GetValidationStatusExecute_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call) RunAndReturn(run func(admin.GetMigrationValidateStatusApiRequest) (*admin.LiveImportValidation, *http.Response, error)) *CloudMigrationServiceApi_GetMigrationValidateStatusExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetValidationStatusWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudMigrationServiceApi) GetValidationStatusWithParams(ctx context.Context, args *admin.GetValidationStatusApiParams) admin.GetValidationStatusApiRequest {
+// GetMigrationValidateStatusWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudMigrationServiceApi) GetMigrationValidateStatusWithParams(ctx context.Context, args *admin.GetMigrationValidateStatusApiParams) admin.GetMigrationValidateStatusApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetValidationStatusWithParams")
+		panic("no return value specified for GetMigrationValidateStatusWithParams")
 	}
 
-	var r0 admin.GetValidationStatusApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetValidationStatusApiParams) admin.GetValidationStatusApiRequest); ok {
+	var r0 admin.GetMigrationValidateStatusApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetMigrationValidateStatusApiParams) admin.GetMigrationValidateStatusApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetValidationStatusApiRequest)
+		r0 = ret.Get(0).(admin.GetMigrationValidateStatusApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_GetValidationStatusWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetValidationStatusWithParams'
-type CloudMigrationServiceApi_GetValidationStatusWithParams_Call struct {
+// CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMigrationValidateStatusWithParams'
+type CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call struct {
 	*mock.Call
 }
 
-// GetValidationStatusWithParams is a helper method to define mock.On call
+// GetMigrationValidateStatusWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetValidationStatusApiParams
-func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatusWithParams(ctx any, args any) *CloudMigrationServiceApi_GetValidationStatusWithParams_Call {
-	return &CloudMigrationServiceApi_GetValidationStatusWithParams_Call{Call: _e.mock.On("GetValidationStatusWithParams", ctx, args)}
+//   - args *admin.GetMigrationValidateStatusApiParams
+func (_e *CloudMigrationServiceApi_Expecter) GetMigrationValidateStatusWithParams(ctx any, args any) *CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call {
+	return &CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call{Call: _e.mock.On("GetMigrationValidateStatusWithParams", ctx, args)}
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatusWithParams_Call) Run(run func(ctx context.Context, args *admin.GetValidationStatusApiParams)) *CloudMigrationServiceApi_GetValidationStatusWithParams_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call) Run(run func(ctx context.Context, args *admin.GetMigrationValidateStatusApiParams)) *CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetValidationStatusApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetMigrationValidateStatusApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatusWithParams_Call) Return(_a0 admin.GetValidationStatusApiRequest) *CloudMigrationServiceApi_GetValidationStatusWithParams_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call) Return(_a0 admin.GetMigrationValidateStatusApiRequest) *CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_GetValidationStatusWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetValidationStatusApiParams) admin.GetValidationStatusApiRequest) *CloudMigrationServiceApi_GetValidationStatusWithParams_Call {
+func (_c *CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetMigrationValidateStatusApiParams) admin.GetMigrationValidateStatusApiRequest) *CloudMigrationServiceApi_GetMigrationValidateStatusWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListSourceProjects provides a mock function with given fields: ctx, orgId
-func (_m *CloudMigrationServiceApi) ListSourceProjects(ctx context.Context, orgId string) admin.ListSourceProjectsApiRequest {
+// ListAvailableProjects provides a mock function with given fields: ctx, orgId
+func (_m *CloudMigrationServiceApi) ListAvailableProjects(ctx context.Context, orgId string) admin.ListAvailableProjectsApiRequest {
 	ret := _m.Called(ctx, orgId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSourceProjects")
+		panic("no return value specified for ListAvailableProjects")
 	}
 
-	var r0 admin.ListSourceProjectsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListSourceProjectsApiRequest); ok {
+	var r0 admin.ListAvailableProjectsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListAvailableProjectsApiRequest); ok {
 		r0 = rf(ctx, orgId)
 	} else {
-		r0 = ret.Get(0).(admin.ListSourceProjectsApiRequest)
+		r0 = ret.Get(0).(admin.ListAvailableProjectsApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_ListSourceProjects_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSourceProjects'
-type CloudMigrationServiceApi_ListSourceProjects_Call struct {
+// CloudMigrationServiceApi_ListAvailableProjects_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAvailableProjects'
+type CloudMigrationServiceApi_ListAvailableProjects_Call struct {
 	*mock.Call
 }
 
-// ListSourceProjects is a helper method to define mock.On call
+// ListAvailableProjects is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjects(ctx any, orgId any) *CloudMigrationServiceApi_ListSourceProjects_Call {
-	return &CloudMigrationServiceApi_ListSourceProjects_Call{Call: _e.mock.On("ListSourceProjects", ctx, orgId)}
+func (_e *CloudMigrationServiceApi_Expecter) ListAvailableProjects(ctx any, orgId any) *CloudMigrationServiceApi_ListAvailableProjects_Call {
+	return &CloudMigrationServiceApi_ListAvailableProjects_Call{Call: _e.mock.On("ListAvailableProjects", ctx, orgId)}
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjects_Call) Run(run func(ctx context.Context, orgId string)) *CloudMigrationServiceApi_ListSourceProjects_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjects_Call) Run(run func(ctx context.Context, orgId string)) *CloudMigrationServiceApi_ListAvailableProjects_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjects_Call) Return(_a0 admin.ListSourceProjectsApiRequest) *CloudMigrationServiceApi_ListSourceProjects_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjects_Call) Return(_a0 admin.ListAvailableProjectsApiRequest) *CloudMigrationServiceApi_ListAvailableProjects_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjects_Call) RunAndReturn(run func(context.Context, string) admin.ListSourceProjectsApiRequest) *CloudMigrationServiceApi_ListSourceProjects_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjects_Call) RunAndReturn(run func(context.Context, string) admin.ListAvailableProjectsApiRequest) *CloudMigrationServiceApi_ListAvailableProjects_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListSourceProjectsExecute provides a mock function with given fields: r
-func (_m *CloudMigrationServiceApi) ListSourceProjectsExecute(r admin.ListSourceProjectsApiRequest) ([]admin.LiveImportAvailableProject, *http.Response, error) {
+// ListAvailableProjectsExecute provides a mock function with given fields: r
+func (_m *CloudMigrationServiceApi) ListAvailableProjectsExecute(r admin.ListAvailableProjectsApiRequest) ([]admin.LiveImportAvailableProject, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSourceProjectsExecute")
+		panic("no return value specified for ListAvailableProjectsExecute")
 	}
 
 	var r0 []admin.LiveImportAvailableProject
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListSourceProjectsApiRequest) ([]admin.LiveImportAvailableProject, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListAvailableProjectsApiRequest) ([]admin.LiveImportAvailableProject, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListSourceProjectsApiRequest) []admin.LiveImportAvailableProject); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListAvailableProjectsApiRequest) []admin.LiveImportAvailableProject); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1047,7 +1047,7 @@ func (_m *CloudMigrationServiceApi) ListSourceProjectsExecute(r admin.ListSource
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListSourceProjectsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListAvailableProjectsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1055,7 +1055,7 @@ func (_m *CloudMigrationServiceApi) ListSourceProjectsExecute(r admin.ListSource
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListSourceProjectsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListAvailableProjectsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1064,144 +1064,144 @@ func (_m *CloudMigrationServiceApi) ListSourceProjectsExecute(r admin.ListSource
 	return r0, r1, r2
 }
 
-// CloudMigrationServiceApi_ListSourceProjectsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSourceProjectsExecute'
-type CloudMigrationServiceApi_ListSourceProjectsExecute_Call struct {
+// CloudMigrationServiceApi_ListAvailableProjectsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAvailableProjectsExecute'
+type CloudMigrationServiceApi_ListAvailableProjectsExecute_Call struct {
 	*mock.Call
 }
 
-// ListSourceProjectsExecute is a helper method to define mock.On call
-//   - r admin.ListSourceProjectsApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjectsExecute(r any) *CloudMigrationServiceApi_ListSourceProjectsExecute_Call {
-	return &CloudMigrationServiceApi_ListSourceProjectsExecute_Call{Call: _e.mock.On("ListSourceProjectsExecute", r)}
+// ListAvailableProjectsExecute is a helper method to define mock.On call
+//   - r admin.ListAvailableProjectsApiRequest
+func (_e *CloudMigrationServiceApi_Expecter) ListAvailableProjectsExecute(r any) *CloudMigrationServiceApi_ListAvailableProjectsExecute_Call {
+	return &CloudMigrationServiceApi_ListAvailableProjectsExecute_Call{Call: _e.mock.On("ListAvailableProjectsExecute", r)}
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjectsExecute_Call) Run(run func(r admin.ListSourceProjectsApiRequest)) *CloudMigrationServiceApi_ListSourceProjectsExecute_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjectsExecute_Call) Run(run func(r admin.ListAvailableProjectsApiRequest)) *CloudMigrationServiceApi_ListAvailableProjectsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListSourceProjectsApiRequest))
+		run(args[0].(admin.ListAvailableProjectsApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjectsExecute_Call) Return(_a0 []admin.LiveImportAvailableProject, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_ListSourceProjectsExecute_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjectsExecute_Call) Return(_a0 []admin.LiveImportAvailableProject, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_ListAvailableProjectsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjectsExecute_Call) RunAndReturn(run func(admin.ListSourceProjectsApiRequest) ([]admin.LiveImportAvailableProject, *http.Response, error)) *CloudMigrationServiceApi_ListSourceProjectsExecute_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjectsExecute_Call) RunAndReturn(run func(admin.ListAvailableProjectsApiRequest) ([]admin.LiveImportAvailableProject, *http.Response, error)) *CloudMigrationServiceApi_ListAvailableProjectsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListSourceProjectsWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudMigrationServiceApi) ListSourceProjectsWithParams(ctx context.Context, args *admin.ListSourceProjectsApiParams) admin.ListSourceProjectsApiRequest {
+// ListAvailableProjectsWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudMigrationServiceApi) ListAvailableProjectsWithParams(ctx context.Context, args *admin.ListAvailableProjectsApiParams) admin.ListAvailableProjectsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSourceProjectsWithParams")
+		panic("no return value specified for ListAvailableProjectsWithParams")
 	}
 
-	var r0 admin.ListSourceProjectsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListSourceProjectsApiParams) admin.ListSourceProjectsApiRequest); ok {
+	var r0 admin.ListAvailableProjectsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListAvailableProjectsApiParams) admin.ListAvailableProjectsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListSourceProjectsApiRequest)
+		r0 = ret.Get(0).(admin.ListAvailableProjectsApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_ListSourceProjectsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSourceProjectsWithParams'
-type CloudMigrationServiceApi_ListSourceProjectsWithParams_Call struct {
+// CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAvailableProjectsWithParams'
+type CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListSourceProjectsWithParams is a helper method to define mock.On call
+// ListAvailableProjectsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListSourceProjectsApiParams
-func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjectsWithParams(ctx any, args any) *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call {
-	return &CloudMigrationServiceApi_ListSourceProjectsWithParams_Call{Call: _e.mock.On("ListSourceProjectsWithParams", ctx, args)}
+//   - args *admin.ListAvailableProjectsApiParams
+func (_e *CloudMigrationServiceApi_Expecter) ListAvailableProjectsWithParams(ctx any, args any) *CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call {
+	return &CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call{Call: _e.mock.On("ListAvailableProjectsWithParams", ctx, args)}
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListSourceProjectsApiParams)) *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListAvailableProjectsApiParams)) *CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListSourceProjectsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListAvailableProjectsApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call) Return(_a0 admin.ListSourceProjectsApiRequest) *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call) Return(_a0 admin.ListAvailableProjectsApiRequest) *CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListSourceProjectsApiParams) admin.ListSourceProjectsApiRequest) *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call {
+func (_c *CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListAvailableProjectsApiParams) admin.ListAvailableProjectsApiRequest) *CloudMigrationServiceApi_ListAvailableProjectsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ValidateMigration provides a mock function with given fields: ctx, groupId, liveMigrationRequest20240530
-func (_m *CloudMigrationServiceApi) ValidateMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530) admin.ValidateMigrationApiRequest {
+// ValidateLiveMigrations provides a mock function with given fields: ctx, groupId, liveMigrationRequest20240530
+func (_m *CloudMigrationServiceApi) ValidateLiveMigrations(ctx context.Context, groupId string, liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530) admin.ValidateLiveMigrationsApiRequest {
 	ret := _m.Called(ctx, groupId, liveMigrationRequest20240530)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ValidateMigration")
+		panic("no return value specified for ValidateLiveMigrations")
 	}
 
-	var r0 admin.ValidateMigrationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.LiveMigrationRequest20240530) admin.ValidateMigrationApiRequest); ok {
+	var r0 admin.ValidateLiveMigrationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.LiveMigrationRequest20240530) admin.ValidateLiveMigrationsApiRequest); ok {
 		r0 = rf(ctx, groupId, liveMigrationRequest20240530)
 	} else {
-		r0 = ret.Get(0).(admin.ValidateMigrationApiRequest)
+		r0 = ret.Get(0).(admin.ValidateLiveMigrationsApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_ValidateMigration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateMigration'
-type CloudMigrationServiceApi_ValidateMigration_Call struct {
+// CloudMigrationServiceApi_ValidateLiveMigrations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateLiveMigrations'
+type CloudMigrationServiceApi_ValidateLiveMigrations_Call struct {
 	*mock.Call
 }
 
-// ValidateMigration is a helper method to define mock.On call
+// ValidateLiveMigrations is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530
-func (_e *CloudMigrationServiceApi_Expecter) ValidateMigration(ctx any, groupId any, liveMigrationRequest20240530 any) *CloudMigrationServiceApi_ValidateMigration_Call {
-	return &CloudMigrationServiceApi_ValidateMigration_Call{Call: _e.mock.On("ValidateMigration", ctx, groupId, liveMigrationRequest20240530)}
+func (_e *CloudMigrationServiceApi_Expecter) ValidateLiveMigrations(ctx any, groupId any, liveMigrationRequest20240530 any) *CloudMigrationServiceApi_ValidateLiveMigrations_Call {
+	return &CloudMigrationServiceApi_ValidateLiveMigrations_Call{Call: _e.mock.On("ValidateLiveMigrations", ctx, groupId, liveMigrationRequest20240530)}
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigration_Call) Run(run func(ctx context.Context, groupId string, liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530)) *CloudMigrationServiceApi_ValidateMigration_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrations_Call) Run(run func(ctx context.Context, groupId string, liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530)) *CloudMigrationServiceApi_ValidateLiveMigrations_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.LiveMigrationRequest20240530))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigration_Call) Return(_a0 admin.ValidateMigrationApiRequest) *CloudMigrationServiceApi_ValidateMigration_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrations_Call) Return(_a0 admin.ValidateLiveMigrationsApiRequest) *CloudMigrationServiceApi_ValidateLiveMigrations_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigration_Call) RunAndReturn(run func(context.Context, string, *admin.LiveMigrationRequest20240530) admin.ValidateMigrationApiRequest) *CloudMigrationServiceApi_ValidateMigration_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrations_Call) RunAndReturn(run func(context.Context, string, *admin.LiveMigrationRequest20240530) admin.ValidateLiveMigrationsApiRequest) *CloudMigrationServiceApi_ValidateLiveMigrations_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ValidateMigrationExecute provides a mock function with given fields: r
-func (_m *CloudMigrationServiceApi) ValidateMigrationExecute(r admin.ValidateMigrationApiRequest) (*admin.LiveImportValidation, *http.Response, error) {
+// ValidateLiveMigrationsExecute provides a mock function with given fields: r
+func (_m *CloudMigrationServiceApi) ValidateLiveMigrationsExecute(r admin.ValidateLiveMigrationsApiRequest) (*admin.LiveImportValidation, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ValidateMigrationExecute")
+		panic("no return value specified for ValidateLiveMigrationsExecute")
 	}
 
 	var r0 *admin.LiveImportValidation
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ValidateMigrationApiRequest) (*admin.LiveImportValidation, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ValidateLiveMigrationsApiRequest) (*admin.LiveImportValidation, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ValidateMigrationApiRequest) *admin.LiveImportValidation); ok {
+	if rf, ok := ret.Get(0).(func(admin.ValidateLiveMigrationsApiRequest) *admin.LiveImportValidation); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1209,7 +1209,7 @@ func (_m *CloudMigrationServiceApi) ValidateMigrationExecute(r admin.ValidateMig
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ValidateMigrationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ValidateLiveMigrationsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1217,7 +1217,7 @@ func (_m *CloudMigrationServiceApi) ValidateMigrationExecute(r admin.ValidateMig
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ValidateMigrationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ValidateLiveMigrationsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1226,77 +1226,77 @@ func (_m *CloudMigrationServiceApi) ValidateMigrationExecute(r admin.ValidateMig
 	return r0, r1, r2
 }
 
-// CloudMigrationServiceApi_ValidateMigrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateMigrationExecute'
-type CloudMigrationServiceApi_ValidateMigrationExecute_Call struct {
+// CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateLiveMigrationsExecute'
+type CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call struct {
 	*mock.Call
 }
 
-// ValidateMigrationExecute is a helper method to define mock.On call
-//   - r admin.ValidateMigrationApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) ValidateMigrationExecute(r any) *CloudMigrationServiceApi_ValidateMigrationExecute_Call {
-	return &CloudMigrationServiceApi_ValidateMigrationExecute_Call{Call: _e.mock.On("ValidateMigrationExecute", r)}
+// ValidateLiveMigrationsExecute is a helper method to define mock.On call
+//   - r admin.ValidateLiveMigrationsApiRequest
+func (_e *CloudMigrationServiceApi_Expecter) ValidateLiveMigrationsExecute(r any) *CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call {
+	return &CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call{Call: _e.mock.On("ValidateLiveMigrationsExecute", r)}
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigrationExecute_Call) Run(run func(r admin.ValidateMigrationApiRequest)) *CloudMigrationServiceApi_ValidateMigrationExecute_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call) Run(run func(r admin.ValidateLiveMigrationsApiRequest)) *CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ValidateMigrationApiRequest))
+		run(args[0].(admin.ValidateLiveMigrationsApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigrationExecute_Call) Return(_a0 *admin.LiveImportValidation, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_ValidateMigrationExecute_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call) Return(_a0 *admin.LiveImportValidation, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigrationExecute_Call) RunAndReturn(run func(admin.ValidateMigrationApiRequest) (*admin.LiveImportValidation, *http.Response, error)) *CloudMigrationServiceApi_ValidateMigrationExecute_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call) RunAndReturn(run func(admin.ValidateLiveMigrationsApiRequest) (*admin.LiveImportValidation, *http.Response, error)) *CloudMigrationServiceApi_ValidateLiveMigrationsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ValidateMigrationWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudMigrationServiceApi) ValidateMigrationWithParams(ctx context.Context, args *admin.ValidateMigrationApiParams) admin.ValidateMigrationApiRequest {
+// ValidateLiveMigrationsWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudMigrationServiceApi) ValidateLiveMigrationsWithParams(ctx context.Context, args *admin.ValidateLiveMigrationsApiParams) admin.ValidateLiveMigrationsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ValidateMigrationWithParams")
+		panic("no return value specified for ValidateLiveMigrationsWithParams")
 	}
 
-	var r0 admin.ValidateMigrationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ValidateMigrationApiParams) admin.ValidateMigrationApiRequest); ok {
+	var r0 admin.ValidateLiveMigrationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ValidateLiveMigrationsApiParams) admin.ValidateLiveMigrationsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ValidateMigrationApiRequest)
+		r0 = ret.Get(0).(admin.ValidateLiveMigrationsApiRequest)
 	}
 
 	return r0
 }
 
-// CloudMigrationServiceApi_ValidateMigrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateMigrationWithParams'
-type CloudMigrationServiceApi_ValidateMigrationWithParams_Call struct {
+// CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateLiveMigrationsWithParams'
+type CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call struct {
 	*mock.Call
 }
 
-// ValidateMigrationWithParams is a helper method to define mock.On call
+// ValidateLiveMigrationsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ValidateMigrationApiParams
-func (_e *CloudMigrationServiceApi_Expecter) ValidateMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_ValidateMigrationWithParams_Call {
-	return &CloudMigrationServiceApi_ValidateMigrationWithParams_Call{Call: _e.mock.On("ValidateMigrationWithParams", ctx, args)}
+//   - args *admin.ValidateLiveMigrationsApiParams
+func (_e *CloudMigrationServiceApi_Expecter) ValidateLiveMigrationsWithParams(ctx any, args any) *CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call {
+	return &CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call{Call: _e.mock.On("ValidateLiveMigrationsWithParams", ctx, args)}
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigrationWithParams_Call) Run(run func(ctx context.Context, args *admin.ValidateMigrationApiParams)) *CloudMigrationServiceApi_ValidateMigrationWithParams_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call) Run(run func(ctx context.Context, args *admin.ValidateLiveMigrationsApiParams)) *CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ValidateMigrationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ValidateLiveMigrationsApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigrationWithParams_Call) Return(_a0 admin.ValidateMigrationApiRequest) *CloudMigrationServiceApi_ValidateMigrationWithParams_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call) Return(_a0 admin.ValidateLiveMigrationsApiRequest) *CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_ValidateMigrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.ValidateMigrationApiParams) admin.ValidateMigrationApiRequest) *CloudMigrationServiceApi_ValidateMigrationWithParams_Call {
+func (_c *CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ValidateLiveMigrationsApiParams) admin.ValidateLiveMigrationsApiRequest) *CloudMigrationServiceApi_ValidateLiveMigrationsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
