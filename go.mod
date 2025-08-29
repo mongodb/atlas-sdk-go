@@ -7,7 +7,7 @@ toolchain go1.23.7
 require (
 	github.com/go-test/deep v1.1.1
 	github.com/mongodb-forks/digest v1.1.0
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.0
 	golang.org/x/oauth2 v0.30.0
 )
 
