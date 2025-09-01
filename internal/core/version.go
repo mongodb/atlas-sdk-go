@@ -7,5 +7,5 @@ const (
 	// SDK release tag version.
 	Version = "v20250312006.1.0"
 	// Resource Version.
-	Resource = ""
+	Resource = "20250312"
 )

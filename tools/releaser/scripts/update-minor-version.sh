@@ -22,6 +22,7 @@ npm exec -c "replace-in-file /$SDK_MAJOR_VERSION\.$SDK_MINOR_VERSION\.0/g $BUMPE
 
 ## Explicitly update version.go file
 export SDK_VERSION="${BUMPED_VERSION}"
+export NEW_RESOURCE_VERSION="${SDK_RESOURCE_VERSION}" # resource version remains the same, defined to avoid an empty value
 
 echo "Updating version.go file: $SDK_VERSION"
 target_file_path="$script_path/../../../internal/core/version.go"
