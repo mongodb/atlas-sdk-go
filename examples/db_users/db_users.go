@@ -36,7 +36,7 @@ func main() {
 	current := new(admin.CloudDatabaseUser)
 	update(current)
 
-	_, response, err := sdk.ProjectsApi.GetProject(ctx, current.GroupId).Execute()
+	_, response, err := sdk.ProjectsApi.GetGroup(ctx, current.GroupId).Execute()
 	if err != nil {
 		fmt.Println("Project missconfigured. Did you set the correct values in update() function?")
 		examples.HandleErr(err, response)
