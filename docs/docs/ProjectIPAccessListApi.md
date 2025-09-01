@@ -4,17 +4,17 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAccessListEntry**](ProjectIPAccessListApi.md#CreateAccessListEntry) | **Post** /api/atlas/v2/groups/{groupId}/accessList | Add Entries to Project IP Access List
-[**DeleteAccessListEntry**](ProjectIPAccessListApi.md#DeleteAccessListEntry) | **Delete** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Remove One Entry from One Project IP Access List
-[**GetAccessListEntry**](ProjectIPAccessListApi.md#GetAccessListEntry) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Return One Project IP Access List Entry
-[**GetAccessListStatus**](ProjectIPAccessListApi.md#GetAccessListStatus) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status | Return Status of One Project IP Access List Entry
-[**ListAccessListEntries**](ProjectIPAccessListApi.md#ListAccessListEntries) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return All Project IP Access List Entries
+[**CreateProjectIpAccessList**](ProjectIPAccessListApi.md#CreateProjectIpAccessList) | **Post** /api/atlas/v2/groups/{groupId}/accessList | Add Entries to Project IP Access List
+[**DeleteProjectIpAccessList**](ProjectIPAccessListApi.md#DeleteProjectIpAccessList) | **Delete** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Remove One Entry from One Project IP Access List
+[**GetProjectIpAccessListStatus**](ProjectIPAccessListApi.md#GetProjectIpAccessListStatus) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status | Return Status of One Project IP Access List Entry
+[**GetProjectIpList**](ProjectIPAccessListApi.md#GetProjectIpList) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Return One Project IP Access List Entry
+[**ListProjectIpAccessLists**](ProjectIPAccessListApi.md#ListProjectIpAccessLists) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return All Project IP Access List Entries
 
 
 
-## CreateAccessListEntry
+## CreateProjectIpAccessList
 
-> PaginatedNetworkAccess CreateAccessListEntry(ctx, groupId, networkPermissionEntry []NetworkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedNetworkAccess CreateProjectIpAccessList(ctx, groupId, networkPermissionEntry []NetworkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Add Entries to Project IP Access List
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -48,17 +48,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectIPAccessListApi.CreateAccessListEntry(context.Background(), groupId, &networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectIPAccessListApi.CreateProjectIpAccessList(context.Background(), groupId, &networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.CreateAccessListEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.CreateProjectIpAccessList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateAccessListEntry`: PaginatedNetworkAccess
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.CreateAccessListEntry`: %v (%v)\n", resp, r)
+    // response from `CreateProjectIpAccessList`: PaginatedNetworkAccess
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.CreateProjectIpAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateAccessListEntryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateProjectIpAccessListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -100,9 +100,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteAccessListEntry
+## DeleteProjectIpAccessList
 
-> DeleteAccessListEntry(ctx, groupId, entryValue).Execute()
+> DeleteProjectIpAccessList(ctx, groupId, entryValue).Execute()
 
 Remove One Entry from One Project IP Access List
 
@@ -117,7 +117,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -133,9 +133,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
-    r, err := sdk.ProjectIPAccessListApi.DeleteAccessListEntry(context.Background(), groupId, entryValue).Execute()
+    r, err := sdk.ProjectIPAccessListApi.DeleteProjectIpAccessList(context.Background(), groupId, entryValue).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.DeleteAccessListEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.DeleteProjectIpAccessList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteAccessListEntryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteProjectIpAccessListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -181,92 +181,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAccessListEntry
+## GetProjectIpAccessListStatus
 
-> NetworkPermissionEntry GetAccessListEntry(ctx, groupId, entryValue).Execute()
-
-Return One Project IP Access List Entry
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
-
-    resp, r, err := sdk.ProjectIPAccessListApi.GetAccessListEntry(context.Background(), groupId, entryValue).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetAccessListEntry`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetAccessListEntry`: NetworkPermissionEntry
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetAccessListEntry`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**entryValue** | **string** | Access list entry that you want to return from the project&#39;s IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (&#x60;/&#x60;) with its URL-encoded value (&#x60;%2F&#x60;). | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAccessListEntryRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**NetworkPermissionEntry**](NetworkPermissionEntry.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetAccessListStatus
-
-> NetworkPermissionEntryStatus GetAccessListStatus(ctx, groupId, entryValue).Execute()
+> NetworkPermissionEntryStatus GetProjectIpAccessListStatus(ctx, groupId, entryValue).Execute()
 
 Return Status of One Project IP Access List Entry
 
@@ -281,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -297,17 +214,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
-    resp, r, err := sdk.ProjectIPAccessListApi.GetAccessListStatus(context.Background(), groupId, entryValue).Execute()
+    resp, r, err := sdk.ProjectIPAccessListApi.GetProjectIpAccessListStatus(context.Background(), groupId, entryValue).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetAccessListStatus`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetProjectIpAccessListStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetAccessListStatus`: NetworkPermissionEntryStatus
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetAccessListStatus`: %v (%v)\n", resp, r)
+    // response from `GetProjectIpAccessListStatus`: NetworkPermissionEntryStatus
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetProjectIpAccessListStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -322,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAccessListStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetProjectIpAccessListStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -347,9 +264,92 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListAccessListEntries
+## GetProjectIpList
 
-> PaginatedNetworkAccess ListAccessListEntries(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> NetworkPermissionEntry GetProjectIpList(ctx, groupId, entryValue).Execute()
+
+Return One Project IP Access List Entry
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
+
+    resp, r, err := sdk.ProjectIPAccessListApi.GetProjectIpList(context.Background(), groupId, entryValue).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetProjectIpList`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetProjectIpList`: NetworkPermissionEntry
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetProjectIpList`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**entryValue** | **string** | Access list entry that you want to return from the project&#39;s IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (&#x60;/&#x60;) with its URL-encoded value (&#x60;%2F&#x60;). | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetProjectIpListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**NetworkPermissionEntry**](NetworkPermissionEntry.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListProjectIpAccessLists
+
+> PaginatedNetworkAccess ListProjectIpAccessLists(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Project IP Access List Entries
 
@@ -364,7 +364,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -382,17 +382,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectIPAccessListApi.ListAccessListEntries(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectIPAccessListApi.ListProjectIpAccessLists(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.ListAccessListEntries`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.ListProjectIpAccessLists`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListAccessListEntries`: PaginatedNetworkAccess
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.ListAccessListEntries`: %v (%v)\n", resp, r)
+    // response from `ListProjectIpAccessLists`: PaginatedNetworkAccess
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.ListProjectIpAccessLists`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListAccessListEntriesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListProjectIpAccessListsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

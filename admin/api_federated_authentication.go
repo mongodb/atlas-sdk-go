@@ -65,27 +65,27 @@ type FederatedAuthenticationApi interface {
 	CreateRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
-		DeleteFederationSetting Delete One Federation Settings Instance
+		DeleteFederationApp Delete One Federation Settings Instance
 
 		Deletes the federation settings instance and all associated data, including identity providers and domains. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in the last remaining connected organization. **Note**: requests to this resource will fail if there is more than one connected organization in the federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-		@return DeleteFederationSettingApiRequest
+		@return DeleteFederationAppApiRequest
 	*/
-	DeleteFederationSetting(ctx context.Context, federationSettingsId string) DeleteFederationSettingApiRequest
+	DeleteFederationApp(ctx context.Context, federationSettingsId string) DeleteFederationAppApiRequest
 	/*
-		DeleteFederationSetting Delete One Federation Settings Instance
+		DeleteFederationApp Delete One Federation Settings Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteFederationSettingApiParams - Parameters for the request
-		@return DeleteFederationSettingApiRequest
+		@param DeleteFederationAppApiParams - Parameters for the request
+		@return DeleteFederationAppApiRequest
 	*/
-	DeleteFederationSettingWithParams(ctx context.Context, args *DeleteFederationSettingApiParams) DeleteFederationSettingApiRequest
+	DeleteFederationAppWithParams(ctx context.Context, args *DeleteFederationAppApiParams) DeleteFederationAppApiRequest
 
 	// Method available only for mocking purposes
-	DeleteFederationSettingExecute(r DeleteFederationSettingApiRequest) (*http.Response, error)
+	DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error)
 
 	/*
 			DeleteIdentityProvider Delete One Identity Provider
@@ -353,7 +353,7 @@ type FederatedAuthenticationApi interface {
 	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (*http.Response, error)
 
 	/*
-			RevokeIdentityProviderJwks Revoke JWKS from One OIDC Identity Provider
+			RevokeJwksFromIdentityProvider Revoke JWKS from One OIDC Identity Provider
 
 			Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -362,21 +362,21 @@ type FederatedAuthenticationApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 			@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
-			@return RevokeIdentityProviderJwksApiRequest
+			@return RevokeJwksFromIdentityProviderApiRequest
 	*/
-	RevokeIdentityProviderJwks(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeIdentityProviderJwksApiRequest
+	RevokeJwksFromIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeJwksFromIdentityProviderApiRequest
 	/*
-		RevokeIdentityProviderJwks Revoke JWKS from One OIDC Identity Provider
+		RevokeJwksFromIdentityProvider Revoke JWKS from One OIDC Identity Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RevokeIdentityProviderJwksApiParams - Parameters for the request
-		@return RevokeIdentityProviderJwksApiRequest
+		@param RevokeJwksFromIdentityProviderApiParams - Parameters for the request
+		@return RevokeJwksFromIdentityProviderApiRequest
 	*/
-	RevokeIdentityProviderJwksWithParams(ctx context.Context, args *RevokeIdentityProviderJwksApiParams) RevokeIdentityProviderJwksApiRequest
+	RevokeJwksFromIdentityProviderWithParams(ctx context.Context, args *RevokeJwksFromIdentityProviderApiParams) RevokeJwksFromIdentityProviderApiRequest
 
 	// Method available only for mocking purposes
-	RevokeIdentityProviderJwksExecute(r RevokeIdentityProviderJwksApiRequest) (*http.Response, error)
+	RevokeJwksFromIdentityProviderExecute(r RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error)
 
 	/*
 			UpdateConnectedOrgConfig Update One Organization Configuration in One Federation
@@ -725,54 +725,54 @@ func (a *FederatedAuthenticationApiService) CreateRoleMappingExecute(r CreateRol
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeleteFederationSettingApiRequest struct {
+type DeleteFederationAppApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 }
 
-type DeleteFederationSettingApiParams struct {
+type DeleteFederationAppApiParams struct {
 	FederationSettingsId string
 }
 
-func (a *FederatedAuthenticationApiService) DeleteFederationSettingWithParams(ctx context.Context, args *DeleteFederationSettingApiParams) DeleteFederationSettingApiRequest {
-	return DeleteFederationSettingApiRequest{
+func (a *FederatedAuthenticationApiService) DeleteFederationAppWithParams(ctx context.Context, args *DeleteFederationAppApiParams) DeleteFederationAppApiRequest {
+	return DeleteFederationAppApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 	}
 }
 
-func (r DeleteFederationSettingApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteFederationSettingExecute(r)
+func (r DeleteFederationAppApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteFederationAppExecute(r)
 }
 
 /*
-DeleteFederationSetting Delete One Federation Settings Instance
+DeleteFederationApp Delete One Federation Settings Instance
 
 Deletes the federation settings instance and all associated data, including identity providers and domains. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in the last remaining connected organization. **Note**: requests to this resource will fail if there is more than one connected organization in the federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-	@return DeleteFederationSettingApiRequest
+	@return DeleteFederationAppApiRequest
 */
-func (a *FederatedAuthenticationApiService) DeleteFederationSetting(ctx context.Context, federationSettingsId string) DeleteFederationSettingApiRequest {
-	return DeleteFederationSettingApiRequest{
+func (a *FederatedAuthenticationApiService) DeleteFederationApp(ctx context.Context, federationSettingsId string) DeleteFederationAppApiRequest {
+	return DeleteFederationAppApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: federationSettingsId,
 	}
 }
 
-// DeleteFederationSettingExecute executes the request
-func (a *FederatedAuthenticationApiService) DeleteFederationSettingExecute(r DeleteFederationSettingApiRequest) (*http.Response, error) {
+// DeleteFederationAppExecute executes the request
+func (a *FederatedAuthenticationApiService) DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.DeleteFederationSetting")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.DeleteFederationApp")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2213,20 +2213,20 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r Re
 	return localVarHTTPResponse, nil
 }
 
-type RevokeIdentityProviderJwksApiRequest struct {
+type RevokeJwksFromIdentityProviderApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	identityProviderId   string
 }
 
-type RevokeIdentityProviderJwksApiParams struct {
+type RevokeJwksFromIdentityProviderApiParams struct {
 	FederationSettingsId string
 	IdentityProviderId   string
 }
 
-func (a *FederatedAuthenticationApiService) RevokeIdentityProviderJwksWithParams(ctx context.Context, args *RevokeIdentityProviderJwksApiParams) RevokeIdentityProviderJwksApiRequest {
-	return RevokeIdentityProviderJwksApiRequest{
+func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProviderWithParams(ctx context.Context, args *RevokeJwksFromIdentityProviderApiParams) RevokeJwksFromIdentityProviderApiRequest {
+	return RevokeJwksFromIdentityProviderApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
@@ -2234,12 +2234,12 @@ func (a *FederatedAuthenticationApiService) RevokeIdentityProviderJwksWithParams
 	}
 }
 
-func (r RevokeIdentityProviderJwksApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RevokeIdentityProviderJwksExecute(r)
+func (r RevokeJwksFromIdentityProviderApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RevokeJwksFromIdentityProviderExecute(r)
 }
 
 /*
-RevokeIdentityProviderJwks Revoke JWKS from One OIDC Identity Provider
+RevokeJwksFromIdentityProvider Revoke JWKS from One OIDC Identity Provider
 
 Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -2248,10 +2248,10 @@ Revokes the JWKS tokens from the requested OIDC identity provider. To use this r
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 	@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
-	@return RevokeIdentityProviderJwksApiRequest
+	@return RevokeJwksFromIdentityProviderApiRequest
 */
-func (a *FederatedAuthenticationApiService) RevokeIdentityProviderJwks(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeIdentityProviderJwksApiRequest {
-	return RevokeIdentityProviderJwksApiRequest{
+func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeJwksFromIdentityProviderApiRequest {
+	return RevokeJwksFromIdentityProviderApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: federationSettingsId,
@@ -2259,15 +2259,15 @@ func (a *FederatedAuthenticationApiService) RevokeIdentityProviderJwks(ctx conte
 	}
 }
 
-// RevokeIdentityProviderJwksExecute executes the request
-func (a *FederatedAuthenticationApiService) RevokeIdentityProviderJwksExecute(r RevokeIdentityProviderJwksApiRequest) (*http.Response, error) {
+// RevokeJwksFromIdentityProviderExecute executes the request
+func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProviderExecute(r RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.RevokeIdentityProviderJwks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.RevokeJwksFromIdentityProvider")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

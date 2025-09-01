@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -25,69 +25,69 @@ func (_m *ProgrammaticAPIKeysApi) EXPECT() *ProgrammaticAPIKeysApi_Expecter {
 	return &ProgrammaticAPIKeysApi_Expecter{mock: &_m.Mock}
 }
 
-// AddGroupApiKey provides a mock function with given fields: ctx, groupId, apiUserId, userAccessRoleAssignment
-func (_m *ProgrammaticAPIKeysApi) AddGroupApiKey(ctx context.Context, groupId string, apiUserId string, userAccessRoleAssignment *[]admin.UserAccessRoleAssignment) admin.AddGroupApiKeyApiRequest {
+// AddProjectApiKey provides a mock function with given fields: ctx, groupId, apiUserId, userAccessRoleAssignment
+func (_m *ProgrammaticAPIKeysApi) AddProjectApiKey(ctx context.Context, groupId string, apiUserId string, userAccessRoleAssignment *[]admin.UserAccessRoleAssignment) admin.AddProjectApiKeyApiRequest {
 	ret := _m.Called(ctx, groupId, apiUserId, userAccessRoleAssignment)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddGroupApiKey")
+		panic("no return value specified for AddProjectApiKey")
 	}
 
-	var r0 admin.AddGroupApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.UserAccessRoleAssignment) admin.AddGroupApiKeyApiRequest); ok {
+	var r0 admin.AddProjectApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.UserAccessRoleAssignment) admin.AddProjectApiKeyApiRequest); ok {
 		r0 = rf(ctx, groupId, apiUserId, userAccessRoleAssignment)
 	} else {
-		r0 = ret.Get(0).(admin.AddGroupApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.AddProjectApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_AddGroupApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupApiKey'
-type ProgrammaticAPIKeysApi_AddGroupApiKey_Call struct {
+// ProgrammaticAPIKeysApi_AddProjectApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddProjectApiKey'
+type ProgrammaticAPIKeysApi_AddProjectApiKey_Call struct {
 	*mock.Call
 }
 
-// AddGroupApiKey is a helper method to define mock.On call
+// AddProjectApiKey is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - apiUserId string
 //   - userAccessRoleAssignment *[]admin.UserAccessRoleAssignment
-func (_e *ProgrammaticAPIKeysApi_Expecter) AddGroupApiKey(ctx any, groupId any, apiUserId any, userAccessRoleAssignment any) *ProgrammaticAPIKeysApi_AddGroupApiKey_Call {
-	return &ProgrammaticAPIKeysApi_AddGroupApiKey_Call{Call: _e.mock.On("AddGroupApiKey", ctx, groupId, apiUserId, userAccessRoleAssignment)}
+func (_e *ProgrammaticAPIKeysApi_Expecter) AddProjectApiKey(ctx any, groupId any, apiUserId any, userAccessRoleAssignment any) *ProgrammaticAPIKeysApi_AddProjectApiKey_Call {
+	return &ProgrammaticAPIKeysApi_AddProjectApiKey_Call{Call: _e.mock.On("AddProjectApiKey", ctx, groupId, apiUserId, userAccessRoleAssignment)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKey_Call) Run(run func(ctx context.Context, groupId string, apiUserId string, userAccessRoleAssignment *[]admin.UserAccessRoleAssignment)) *ProgrammaticAPIKeysApi_AddGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKey_Call) Run(run func(ctx context.Context, groupId string, apiUserId string, userAccessRoleAssignment *[]admin.UserAccessRoleAssignment)) *ProgrammaticAPIKeysApi_AddProjectApiKey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*[]admin.UserAccessRoleAssignment))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKey_Call) Return(_a0 admin.AddGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_AddGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKey_Call) Return(_a0 admin.AddProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_AddProjectApiKey_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKey_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.UserAccessRoleAssignment) admin.AddGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_AddGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKey_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.UserAccessRoleAssignment) admin.AddProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_AddProjectApiKey_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddGroupApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) AddGroupApiKeyExecute(r admin.AddGroupApiKeyApiRequest) (*http.Response, error) {
+// AddProjectApiKeyExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) AddProjectApiKeyExecute(r admin.AddProjectApiKeyApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddGroupApiKeyExecute")
+		panic("no return value specified for AddProjectApiKeyExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.AddGroupApiKeyApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddProjectApiKeyApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AddGroupApiKeyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddProjectApiKeyApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -95,7 +95,7 @@ func (_m *ProgrammaticAPIKeysApi) AddGroupApiKeyExecute(r admin.AddGroupApiKeyAp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.AddGroupApiKeyApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.AddProjectApiKeyApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -104,307 +104,193 @@ func (_m *ProgrammaticAPIKeysApi) AddGroupApiKeyExecute(r admin.AddGroupApiKeyAp
 	return r0, r1
 }
 
-// ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupApiKeyExecute'
-type ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call struct {
+// ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddProjectApiKeyExecute'
+type ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call struct {
 	*mock.Call
 }
 
-// AddGroupApiKeyExecute is a helper method to define mock.On call
-//   - r admin.AddGroupApiKeyApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) AddGroupApiKeyExecute(r any) *ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call {
-	return &ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call{Call: _e.mock.On("AddGroupApiKeyExecute", r)}
+// AddProjectApiKeyExecute is a helper method to define mock.On call
+//   - r admin.AddProjectApiKeyApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) AddProjectApiKeyExecute(r any) *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call {
+	return &ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call{Call: _e.mock.On("AddProjectApiKeyExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call) Run(run func(r admin.AddGroupApiKeyApiRequest)) *ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call) Run(run func(r admin.AddProjectApiKeyApiRequest)) *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.AddGroupApiKeyApiRequest))
+		run(args[0].(admin.AddProjectApiKeyApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call) Return(_a0 *http.Response, _a1 error) *ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call) Return(_a0 *http.Response, _a1 error) *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call) RunAndReturn(run func(admin.AddGroupApiKeyApiRequest) (*http.Response, error)) *ProgrammaticAPIKeysApi_AddGroupApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call) RunAndReturn(run func(admin.AddProjectApiKeyApiRequest) (*http.Response, error)) *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddGroupApiKeyWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) AddGroupApiKeyWithParams(ctx context.Context, args *admin.AddGroupApiKeyApiParams) admin.AddGroupApiKeyApiRequest {
+// AddProjectApiKeyWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) AddProjectApiKeyWithParams(ctx context.Context, args *admin.AddProjectApiKeyApiParams) admin.AddProjectApiKeyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddGroupApiKeyWithParams")
+		panic("no return value specified for AddProjectApiKeyWithParams")
 	}
 
-	var r0 admin.AddGroupApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddGroupApiKeyApiParams) admin.AddGroupApiKeyApiRequest); ok {
+	var r0 admin.AddProjectApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddProjectApiKeyApiParams) admin.AddProjectApiKeyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.AddGroupApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.AddProjectApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupApiKeyWithParams'
-type ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call struct {
+// ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddProjectApiKeyWithParams'
+type ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call struct {
 	*mock.Call
 }
 
-// AddGroupApiKeyWithParams is a helper method to define mock.On call
+// AddProjectApiKeyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.AddGroupApiKeyApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) AddGroupApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call {
-	return &ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call{Call: _e.mock.On("AddGroupApiKeyWithParams", ctx, args)}
+//   - args *admin.AddProjectApiKeyApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) AddProjectApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call {
+	return &ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call{Call: _e.mock.On("AddProjectApiKeyWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.AddGroupApiKeyApiParams)) *ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.AddProjectApiKeyApiParams)) *ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.AddGroupApiKeyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.AddProjectApiKeyApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call) Return(_a0 admin.AddGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call) Return(_a0 admin.AddProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddGroupApiKeyApiParams) admin.AddGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_AddGroupApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddProjectApiKeyApiParams) admin.AddProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_AddProjectApiKeyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateGroupApiKey provides a mock function with given fields: ctx, groupId, createAtlasProjectApiKey
-func (_m *ProgrammaticAPIKeysApi) CreateGroupApiKey(ctx context.Context, groupId string, createAtlasProjectApiKey *admin.CreateAtlasProjectApiKey) admin.CreateGroupApiKeyApiRequest {
-	ret := _m.Called(ctx, groupId, createAtlasProjectApiKey)
+// CreateApiKey provides a mock function with given fields: ctx, orgId, createAtlasOrganizationApiKey
+func (_m *ProgrammaticAPIKeysApi) CreateApiKey(ctx context.Context, orgId string, createAtlasOrganizationApiKey *admin.CreateAtlasOrganizationApiKey) admin.CreateApiKeyApiRequest {
+	ret := _m.Called(ctx, orgId, createAtlasOrganizationApiKey)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupApiKey")
+		panic("no return value specified for CreateApiKey")
 	}
 
-	var r0 admin.CreateGroupApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CreateAtlasProjectApiKey) admin.CreateGroupApiKeyApiRequest); ok {
-		r0 = rf(ctx, groupId, createAtlasProjectApiKey)
+	var r0 admin.CreateApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CreateAtlasOrganizationApiKey) admin.CreateApiKeyApiRequest); ok {
+		r0 = rf(ctx, orgId, createAtlasOrganizationApiKey)
 	} else {
-		r0 = ret.Get(0).(admin.CreateGroupApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.CreateApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_CreateGroupApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupApiKey'
-type ProgrammaticAPIKeysApi_CreateGroupApiKey_Call struct {
+// ProgrammaticAPIKeysApi_CreateApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateApiKey'
+type ProgrammaticAPIKeysApi_CreateApiKey_Call struct {
 	*mock.Call
 }
 
-// CreateGroupApiKey is a helper method to define mock.On call
+// CreateApiKey is a helper method to define mock.On call
 //   - ctx context.Context
-//   - groupId string
-//   - createAtlasProjectApiKey *admin.CreateAtlasProjectApiKey
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateGroupApiKey(ctx any, groupId any, createAtlasProjectApiKey any) *ProgrammaticAPIKeysApi_CreateGroupApiKey_Call {
-	return &ProgrammaticAPIKeysApi_CreateGroupApiKey_Call{Call: _e.mock.On("CreateGroupApiKey", ctx, groupId, createAtlasProjectApiKey)}
+//   - orgId string
+//   - createAtlasOrganizationApiKey *admin.CreateAtlasOrganizationApiKey
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateApiKey(ctx any, orgId any, createAtlasOrganizationApiKey any) *ProgrammaticAPIKeysApi_CreateApiKey_Call {
+	return &ProgrammaticAPIKeysApi_CreateApiKey_Call{Call: _e.mock.On("CreateApiKey", ctx, orgId, createAtlasOrganizationApiKey)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKey_Call) Run(run func(ctx context.Context, groupId string, createAtlasProjectApiKey *admin.CreateAtlasProjectApiKey)) *ProgrammaticAPIKeysApi_CreateGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKey_Call) Run(run func(ctx context.Context, orgId string, createAtlasOrganizationApiKey *admin.CreateAtlasOrganizationApiKey)) *ProgrammaticAPIKeysApi_CreateApiKey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CreateAtlasProjectApiKey))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CreateAtlasOrganizationApiKey))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKey_Call) Return(_a0 admin.CreateGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKey_Call) Return(_a0 admin.CreateApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateApiKey_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKey_Call) RunAndReturn(run func(context.Context, string, *admin.CreateAtlasProjectApiKey) admin.CreateGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKey_Call) RunAndReturn(run func(context.Context, string, *admin.CreateAtlasOrganizationApiKey) admin.CreateApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateApiKey_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateGroupApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) CreateGroupApiKeyExecute(r admin.CreateGroupApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupApiKeyExecute")
-	}
-
-	var r0 *admin.ApiKeyUserDetails
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateGroupApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreateGroupApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiKeyUserDetails)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreateGroupApiKeyApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreateGroupApiKeyApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupApiKeyExecute'
-type ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call struct {
-	*mock.Call
-}
-
-// CreateGroupApiKeyExecute is a helper method to define mock.On call
-//   - r admin.CreateGroupApiKeyApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateGroupApiKeyExecute(r any) *ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call {
-	return &ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call{Call: _e.mock.On("CreateGroupApiKeyExecute", r)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call) Run(run func(r admin.CreateGroupApiKeyApiRequest)) *ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateGroupApiKeyApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call) RunAndReturn(run func(admin.CreateGroupApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_CreateGroupApiKeyExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateGroupApiKeyWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) CreateGroupApiKeyWithParams(ctx context.Context, args *admin.CreateGroupApiKeyApiParams) admin.CreateGroupApiKeyApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupApiKeyWithParams")
-	}
-
-	var r0 admin.CreateGroupApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupApiKeyApiParams) admin.CreateGroupApiKeyApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreateGroupApiKeyApiRequest)
-	}
-
-	return r0
-}
-
-// ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupApiKeyWithParams'
-type ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call struct {
-	*mock.Call
-}
-
-// CreateGroupApiKeyWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreateGroupApiKeyApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateGroupApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call {
-	return &ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call{Call: _e.mock.On("CreateGroupApiKeyWithParams", ctx, args)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupApiKeyApiParams)) *ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateGroupApiKeyApiParams))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call) Return(_a0 admin.CreateGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupApiKeyApiParams) admin.CreateGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateGroupApiKeyWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgAccessEntry provides a mock function with given fields: ctx, orgId, apiUserId, userAccessListRequest
-func (_m *ProgrammaticAPIKeysApi) CreateOrgAccessEntry(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]admin.UserAccessListRequest) admin.CreateOrgAccessEntryApiRequest {
+// CreateApiKeyAccessList provides a mock function with given fields: ctx, orgId, apiUserId, userAccessListRequest
+func (_m *ProgrammaticAPIKeysApi) CreateApiKeyAccessList(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]admin.UserAccessListRequest) admin.CreateApiKeyAccessListApiRequest {
 	ret := _m.Called(ctx, orgId, apiUserId, userAccessListRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgAccessEntry")
+		panic("no return value specified for CreateApiKeyAccessList")
 	}
 
-	var r0 admin.CreateOrgAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.UserAccessListRequest) admin.CreateOrgAccessEntryApiRequest); ok {
+	var r0 admin.CreateApiKeyAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.UserAccessListRequest) admin.CreateApiKeyAccessListApiRequest); ok {
 		r0 = rf(ctx, orgId, apiUserId, userAccessListRequest)
 	} else {
-		r0 = ret.Get(0).(admin.CreateOrgAccessEntryApiRequest)
+		r0 = ret.Get(0).(admin.CreateApiKeyAccessListApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgAccessEntry'
-type ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call struct {
+// ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateApiKeyAccessList'
+type ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call struct {
 	*mock.Call
 }
 
-// CreateOrgAccessEntry is a helper method to define mock.On call
+// CreateApiKeyAccessList is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - apiUserId string
 //   - userAccessListRequest *[]admin.UserAccessListRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateOrgAccessEntry(ctx any, orgId any, apiUserId any, userAccessListRequest any) *ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call {
-	return &ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call{Call: _e.mock.On("CreateOrgAccessEntry", ctx, orgId, apiUserId, userAccessListRequest)}
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateApiKeyAccessList(ctx any, orgId any, apiUserId any, userAccessListRequest any) *ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call {
+	return &ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call{Call: _e.mock.On("CreateApiKeyAccessList", ctx, orgId, apiUserId, userAccessListRequest)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call) Run(run func(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]admin.UserAccessListRequest)) *ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call) Run(run func(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]admin.UserAccessListRequest)) *ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*[]admin.UserAccessListRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call) Return(_a0 admin.CreateOrgAccessEntryApiRequest) *ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call) Return(_a0 admin.CreateApiKeyAccessListApiRequest) *ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.UserAccessListRequest) admin.CreateOrgAccessEntryApiRequest) *ProgrammaticAPIKeysApi_CreateOrgAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.UserAccessListRequest) admin.CreateApiKeyAccessListApiRequest) *ProgrammaticAPIKeysApi_CreateApiKeyAccessList_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateOrgAccessEntryExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) CreateOrgAccessEntryExecute(r admin.CreateOrgAccessEntryApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error) {
+// CreateApiKeyAccessListExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) CreateApiKeyAccessListExecute(r admin.CreateApiKeyAccessListApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgAccessEntryExecute")
+		panic("no return value specified for CreateApiKeyAccessListExecute")
 	}
 
 	var r0 *admin.PaginatedApiUserAccessListResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgAccessEntryApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateApiKeyAccessListApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgAccessEntryApiRequest) *admin.PaginatedApiUserAccessListResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateApiKeyAccessListApiRequest) *admin.PaginatedApiUserAccessListResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -412,7 +298,7 @@ func (_m *ProgrammaticAPIKeysApi) CreateOrgAccessEntryExecute(r admin.CreateOrgA
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateOrgAccessEntryApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateApiKeyAccessListApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -420,7 +306,7 @@ func (_m *ProgrammaticAPIKeysApi) CreateOrgAccessEntryExecute(r admin.CreateOrgA
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateOrgAccessEntryApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateApiKeyAccessListApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -429,144 +315,96 @@ func (_m *ProgrammaticAPIKeysApi) CreateOrgAccessEntryExecute(r admin.CreateOrgA
 	return r0, r1, r2
 }
 
-// ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgAccessEntryExecute'
-type ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call struct {
+// ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateApiKeyAccessListExecute'
+type ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call struct {
 	*mock.Call
 }
 
-// CreateOrgAccessEntryExecute is a helper method to define mock.On call
-//   - r admin.CreateOrgAccessEntryApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateOrgAccessEntryExecute(r any) *ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call {
-	return &ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call{Call: _e.mock.On("CreateOrgAccessEntryExecute", r)}
+// CreateApiKeyAccessListExecute is a helper method to define mock.On call
+//   - r admin.CreateApiKeyAccessListApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateApiKeyAccessListExecute(r any) *ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call {
+	return &ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call{Call: _e.mock.On("CreateApiKeyAccessListExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call) Run(run func(r admin.CreateOrgAccessEntryApiRequest)) *ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call) Run(run func(r admin.CreateApiKeyAccessListApiRequest)) *ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateOrgAccessEntryApiRequest))
+		run(args[0].(admin.CreateApiKeyAccessListApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call) Return(_a0 *admin.PaginatedApiUserAccessListResponse, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call) Return(_a0 *admin.PaginatedApiUserAccessListResponse, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call) RunAndReturn(run func(admin.CreateOrgAccessEntryApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error)) *ProgrammaticAPIKeysApi_CreateOrgAccessEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call) RunAndReturn(run func(admin.CreateApiKeyAccessListApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error)) *ProgrammaticAPIKeysApi_CreateApiKeyAccessListExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateOrgAccessEntryWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) CreateOrgAccessEntryWithParams(ctx context.Context, args *admin.CreateOrgAccessEntryApiParams) admin.CreateOrgAccessEntryApiRequest {
+// CreateApiKeyAccessListWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) CreateApiKeyAccessListWithParams(ctx context.Context, args *admin.CreateApiKeyAccessListApiParams) admin.CreateApiKeyAccessListApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgAccessEntryWithParams")
+		panic("no return value specified for CreateApiKeyAccessListWithParams")
 	}
 
-	var r0 admin.CreateOrgAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateOrgAccessEntryApiParams) admin.CreateOrgAccessEntryApiRequest); ok {
+	var r0 admin.CreateApiKeyAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateApiKeyAccessListApiParams) admin.CreateApiKeyAccessListApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateOrgAccessEntryApiRequest)
+		r0 = ret.Get(0).(admin.CreateApiKeyAccessListApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgAccessEntryWithParams'
-type ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call struct {
+// ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateApiKeyAccessListWithParams'
+type ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateOrgAccessEntryWithParams is a helper method to define mock.On call
+// CreateApiKeyAccessListWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateOrgAccessEntryApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateOrgAccessEntryWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call {
-	return &ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call{Call: _e.mock.On("CreateOrgAccessEntryWithParams", ctx, args)}
+//   - args *admin.CreateApiKeyAccessListApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateApiKeyAccessListWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call {
+	return &ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call{Call: _e.mock.On("CreateApiKeyAccessListWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateOrgAccessEntryApiParams)) *ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateApiKeyAccessListApiParams)) *ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateOrgAccessEntryApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateApiKeyAccessListApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call) Return(_a0 admin.CreateOrgAccessEntryApiRequest) *ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call) Return(_a0 admin.CreateApiKeyAccessListApiRequest) *ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgAccessEntryApiParams) admin.CreateOrgAccessEntryApiRequest) *ProgrammaticAPIKeysApi_CreateOrgAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateApiKeyAccessListApiParams) admin.CreateApiKeyAccessListApiRequest) *ProgrammaticAPIKeysApi_CreateApiKeyAccessListWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateOrgApiKey provides a mock function with given fields: ctx, orgId, createAtlasOrganizationApiKey
-func (_m *ProgrammaticAPIKeysApi) CreateOrgApiKey(ctx context.Context, orgId string, createAtlasOrganizationApiKey *admin.CreateAtlasOrganizationApiKey) admin.CreateOrgApiKeyApiRequest {
-	ret := _m.Called(ctx, orgId, createAtlasOrganizationApiKey)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgApiKey")
-	}
-
-	var r0 admin.CreateOrgApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CreateAtlasOrganizationApiKey) admin.CreateOrgApiKeyApiRequest); ok {
-		r0 = rf(ctx, orgId, createAtlasOrganizationApiKey)
-	} else {
-		r0 = ret.Get(0).(admin.CreateOrgApiKeyApiRequest)
-	}
-
-	return r0
-}
-
-// ProgrammaticAPIKeysApi_CreateOrgApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgApiKey'
-type ProgrammaticAPIKeysApi_CreateOrgApiKey_Call struct {
-	*mock.Call
-}
-
-// CreateOrgApiKey is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - createAtlasOrganizationApiKey *admin.CreateAtlasOrganizationApiKey
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateOrgApiKey(ctx any, orgId any, createAtlasOrganizationApiKey any) *ProgrammaticAPIKeysApi_CreateOrgApiKey_Call {
-	return &ProgrammaticAPIKeysApi_CreateOrgApiKey_Call{Call: _e.mock.On("CreateOrgApiKey", ctx, orgId, createAtlasOrganizationApiKey)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKey_Call) Run(run func(ctx context.Context, orgId string, createAtlasOrganizationApiKey *admin.CreateAtlasOrganizationApiKey)) *ProgrammaticAPIKeysApi_CreateOrgApiKey_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CreateAtlasOrganizationApiKey))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKey_Call) Return(_a0 admin.CreateOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateOrgApiKey_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKey_Call) RunAndReturn(run func(context.Context, string, *admin.CreateAtlasOrganizationApiKey) admin.CreateOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateOrgApiKey_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) CreateOrgApiKeyExecute(r admin.CreateOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
+// CreateApiKeyExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) CreateApiKeyExecute(r admin.CreateApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgApiKeyExecute")
+		panic("no return value specified for CreateApiKeyExecute")
 	}
 
 	var r0 *admin.ApiKeyUserDetails
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -574,7 +412,7 @@ func (_m *ProgrammaticAPIKeysApi) CreateOrgApiKeyExecute(r admin.CreateOrgApiKey
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateOrgApiKeyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateApiKeyApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -582,7 +420,7 @@ func (_m *ProgrammaticAPIKeysApi) CreateOrgApiKeyExecute(r admin.CreateOrgApiKey
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateOrgApiKeyApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateApiKeyApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -591,297 +429,354 @@ func (_m *ProgrammaticAPIKeysApi) CreateOrgApiKeyExecute(r admin.CreateOrgApiKey
 	return r0, r1, r2
 }
 
-// ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgApiKeyExecute'
-type ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call struct {
+// ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateApiKeyExecute'
+type ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call struct {
 	*mock.Call
 }
 
-// CreateOrgApiKeyExecute is a helper method to define mock.On call
-//   - r admin.CreateOrgApiKeyApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateOrgApiKeyExecute(r any) *ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call {
-	return &ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call{Call: _e.mock.On("CreateOrgApiKeyExecute", r)}
+// CreateApiKeyExecute is a helper method to define mock.On call
+//   - r admin.CreateApiKeyApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateApiKeyExecute(r any) *ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call {
+	return &ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call{Call: _e.mock.On("CreateApiKeyExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call) Run(run func(r admin.CreateOrgApiKeyApiRequest)) *ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call) Run(run func(r admin.CreateApiKeyApiRequest)) *ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateOrgApiKeyApiRequest))
+		run(args[0].(admin.CreateApiKeyApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call) RunAndReturn(run func(admin.CreateOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_CreateOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call) RunAndReturn(run func(admin.CreateApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_CreateApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateOrgApiKeyWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) CreateOrgApiKeyWithParams(ctx context.Context, args *admin.CreateOrgApiKeyApiParams) admin.CreateOrgApiKeyApiRequest {
+// CreateApiKeyWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) CreateApiKeyWithParams(ctx context.Context, args *admin.CreateApiKeyApiParams) admin.CreateApiKeyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgApiKeyWithParams")
+		panic("no return value specified for CreateApiKeyWithParams")
 	}
 
-	var r0 admin.CreateOrgApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateOrgApiKeyApiParams) admin.CreateOrgApiKeyApiRequest); ok {
+	var r0 admin.CreateApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateApiKeyApiParams) admin.CreateApiKeyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateOrgApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.CreateApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgApiKeyWithParams'
-type ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call struct {
+// ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateApiKeyWithParams'
+type ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateOrgApiKeyWithParams is a helper method to define mock.On call
+// CreateApiKeyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateOrgApiKeyApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) CreateOrgApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call {
-	return &ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call{Call: _e.mock.On("CreateOrgApiKeyWithParams", ctx, args)}
+//   - args *admin.CreateApiKeyApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call {
+	return &ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call{Call: _e.mock.On("CreateApiKeyWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateOrgApiKeyApiParams)) *ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateApiKeyApiParams)) *ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateOrgApiKeyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateApiKeyApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call) Return(_a0 admin.CreateOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call) Return(_a0 admin.CreateApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgApiKeyApiParams) admin.CreateOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateApiKeyApiParams) admin.CreateApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateApiKeyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAccessEntry provides a mock function with given fields: ctx, orgId, apiUserId, ipAddress
-func (_m *ProgrammaticAPIKeysApi) DeleteAccessEntry(ctx context.Context, orgId string, apiUserId string, ipAddress string) admin.DeleteAccessEntryApiRequest {
-	ret := _m.Called(ctx, orgId, apiUserId, ipAddress)
+// CreateProjectApiKey provides a mock function with given fields: ctx, groupId, createAtlasProjectApiKey
+func (_m *ProgrammaticAPIKeysApi) CreateProjectApiKey(ctx context.Context, groupId string, createAtlasProjectApiKey *admin.CreateAtlasProjectApiKey) admin.CreateProjectApiKeyApiRequest {
+	ret := _m.Called(ctx, groupId, createAtlasProjectApiKey)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAccessEntry")
+		panic("no return value specified for CreateProjectApiKey")
 	}
 
-	var r0 admin.DeleteAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteAccessEntryApiRequest); ok {
-		r0 = rf(ctx, orgId, apiUserId, ipAddress)
+	var r0 admin.CreateProjectApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CreateAtlasProjectApiKey) admin.CreateProjectApiKeyApiRequest); ok {
+		r0 = rf(ctx, groupId, createAtlasProjectApiKey)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteAccessEntryApiRequest)
+		r0 = ret.Get(0).(admin.CreateProjectApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_DeleteAccessEntry_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAccessEntry'
-type ProgrammaticAPIKeysApi_DeleteAccessEntry_Call struct {
+// ProgrammaticAPIKeysApi_CreateProjectApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectApiKey'
+type ProgrammaticAPIKeysApi_CreateProjectApiKey_Call struct {
 	*mock.Call
 }
 
-// DeleteAccessEntry is a helper method to define mock.On call
+// CreateProjectApiKey is a helper method to define mock.On call
 //   - ctx context.Context
-//   - orgId string
-//   - apiUserId string
-//   - ipAddress string
-func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteAccessEntry(ctx any, orgId any, apiUserId any, ipAddress any) *ProgrammaticAPIKeysApi_DeleteAccessEntry_Call {
-	return &ProgrammaticAPIKeysApi_DeleteAccessEntry_Call{Call: _e.mock.On("DeleteAccessEntry", ctx, orgId, apiUserId, ipAddress)}
+//   - groupId string
+//   - createAtlasProjectApiKey *admin.CreateAtlasProjectApiKey
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateProjectApiKey(ctx any, groupId any, createAtlasProjectApiKey any) *ProgrammaticAPIKeysApi_CreateProjectApiKey_Call {
+	return &ProgrammaticAPIKeysApi_CreateProjectApiKey_Call{Call: _e.mock.On("CreateProjectApiKey", ctx, groupId, createAtlasProjectApiKey)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntry_Call) Run(run func(ctx context.Context, orgId string, apiUserId string, ipAddress string)) *ProgrammaticAPIKeysApi_DeleteAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKey_Call) Run(run func(ctx context.Context, groupId string, createAtlasProjectApiKey *admin.CreateAtlasProjectApiKey)) *ProgrammaticAPIKeysApi_CreateProjectApiKey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CreateAtlasProjectApiKey))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntry_Call) Return(_a0 admin.DeleteAccessEntryApiRequest) *ProgrammaticAPIKeysApi_DeleteAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKey_Call) Return(_a0 admin.CreateProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateProjectApiKey_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntry_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteAccessEntryApiRequest) *ProgrammaticAPIKeysApi_DeleteAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKey_Call) RunAndReturn(run func(context.Context, string, *admin.CreateAtlasProjectApiKey) admin.CreateProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateProjectApiKey_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAccessEntryExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) DeleteAccessEntryExecute(r admin.DeleteAccessEntryApiRequest) (*http.Response, error) {
+// CreateProjectApiKeyExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) CreateProjectApiKeyExecute(r admin.CreateProjectApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAccessEntryExecute")
+		panic("no return value specified for CreateProjectApiKeyExecute")
 	}
 
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAccessEntryApiRequest) (*http.Response, error)); ok {
+	var r0 *admin.ApiKeyUserDetails
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateProjectApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAccessEntryApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateProjectApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
+			r0 = ret.Get(0).(*admin.ApiKeyUserDetails)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteAccessEntryApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateProjectApiKeyApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
-		r1 = ret.Error(1)
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
 	}
 
-	return r0, r1
+	if rf, ok := ret.Get(2).(func(admin.CreateProjectApiKeyApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
 }
 
-// ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAccessEntryExecute'
-type ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call struct {
+// ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectApiKeyExecute'
+type ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteAccessEntryExecute is a helper method to define mock.On call
-//   - r admin.DeleteAccessEntryApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteAccessEntryExecute(r any) *ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call {
-	return &ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call{Call: _e.mock.On("DeleteAccessEntryExecute", r)}
+// CreateProjectApiKeyExecute is a helper method to define mock.On call
+//   - r admin.CreateProjectApiKeyApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateProjectApiKeyExecute(r any) *ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call {
+	return &ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call{Call: _e.mock.On("CreateProjectApiKeyExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call) Run(run func(r admin.DeleteAccessEntryApiRequest)) *ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call) Run(run func(r admin.CreateProjectApiKeyApiRequest)) *ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteAccessEntryApiRequest))
+		run(args[0].(admin.CreateProjectApiKeyApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call) Return(_a0 *http.Response, _a1 error) *ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call {
-	_c.Call.Return(_a0, _a1)
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call) RunAndReturn(run func(admin.DeleteAccessEntryApiRequest) (*http.Response, error)) *ProgrammaticAPIKeysApi_DeleteAccessEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call) RunAndReturn(run func(admin.CreateProjectApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_CreateProjectApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAccessEntryWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) DeleteAccessEntryWithParams(ctx context.Context, args *admin.DeleteAccessEntryApiParams) admin.DeleteAccessEntryApiRequest {
+// CreateProjectApiKeyWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) CreateProjectApiKeyWithParams(ctx context.Context, args *admin.CreateProjectApiKeyApiParams) admin.CreateProjectApiKeyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAccessEntryWithParams")
+		panic("no return value specified for CreateProjectApiKeyWithParams")
 	}
 
-	var r0 admin.DeleteAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteAccessEntryApiParams) admin.DeleteAccessEntryApiRequest); ok {
+	var r0 admin.CreateProjectApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateProjectApiKeyApiParams) admin.CreateProjectApiKeyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteAccessEntryApiRequest)
+		r0 = ret.Get(0).(admin.CreateProjectApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAccessEntryWithParams'
-type ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call struct {
+// ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectApiKeyWithParams'
+type ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteAccessEntryWithParams is a helper method to define mock.On call
+// CreateProjectApiKeyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteAccessEntryApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteAccessEntryWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call {
-	return &ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call{Call: _e.mock.On("DeleteAccessEntryWithParams", ctx, args)}
+//   - args *admin.CreateProjectApiKeyApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) CreateProjectApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call {
+	return &ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call{Call: _e.mock.On("CreateProjectApiKeyWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteAccessEntryApiParams)) *ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateProjectApiKeyApiParams)) *ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteAccessEntryApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateProjectApiKeyApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call) Return(_a0 admin.DeleteAccessEntryApiRequest) *ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call) Return(_a0 admin.CreateProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteAccessEntryApiParams) admin.DeleteAccessEntryApiRequest) *ProgrammaticAPIKeysApi_DeleteAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateProjectApiKeyApiParams) admin.CreateProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_CreateProjectApiKeyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteOrgApiKey provides a mock function with given fields: ctx, orgId, apiUserId
-func (_m *ProgrammaticAPIKeysApi) DeleteOrgApiKey(ctx context.Context, orgId string, apiUserId string) admin.DeleteOrgApiKeyApiRequest {
+// DeleteApiKey provides a mock function with given fields: ctx, orgId, apiUserId
+func (_m *ProgrammaticAPIKeysApi) DeleteApiKey(ctx context.Context, orgId string, apiUserId string) admin.DeleteApiKeyApiRequest {
 	ret := _m.Called(ctx, orgId, apiUserId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgApiKey")
+		panic("no return value specified for DeleteApiKey")
 	}
 
-	var r0 admin.DeleteOrgApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteOrgApiKeyApiRequest); ok {
+	var r0 admin.DeleteApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteApiKeyApiRequest); ok {
 		r0 = rf(ctx, orgId, apiUserId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteOrgApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.DeleteApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgApiKey'
-type ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call struct {
+// ProgrammaticAPIKeysApi_DeleteApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteApiKey'
+type ProgrammaticAPIKeysApi_DeleteApiKey_Call struct {
 	*mock.Call
 }
 
-// DeleteOrgApiKey is a helper method to define mock.On call
+// DeleteApiKey is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - apiUserId string
-func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteOrgApiKey(ctx any, orgId any, apiUserId any) *ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call {
-	return &ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call{Call: _e.mock.On("DeleteOrgApiKey", ctx, orgId, apiUserId)}
+func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteApiKey(ctx any, orgId any, apiUserId any) *ProgrammaticAPIKeysApi_DeleteApiKey_Call {
+	return &ProgrammaticAPIKeysApi_DeleteApiKey_Call{Call: _e.mock.On("DeleteApiKey", ctx, orgId, apiUserId)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call) Run(run func(ctx context.Context, orgId string, apiUserId string)) *ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKey_Call) Run(run func(ctx context.Context, orgId string, apiUserId string)) *ProgrammaticAPIKeysApi_DeleteApiKey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call) Return(_a0 admin.DeleteOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKey_Call) Return(_a0 admin.DeleteApiKeyApiRequest) *ProgrammaticAPIKeysApi_DeleteApiKey_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_DeleteOrgApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKey_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteApiKeyApiRequest) *ProgrammaticAPIKeysApi_DeleteApiKey_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteOrgApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) DeleteOrgApiKeyExecute(r admin.DeleteOrgApiKeyApiRequest) (*http.Response, error) {
+// DeleteApiKeyAccessListEntry provides a mock function with given fields: ctx, orgId, apiUserId, ipAddress
+func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyAccessListEntry(ctx context.Context, orgId string, apiUserId string, ipAddress string) admin.DeleteApiKeyAccessListEntryApiRequest {
+	ret := _m.Called(ctx, orgId, apiUserId, ipAddress)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteApiKeyAccessListEntry")
+	}
+
+	var r0 admin.DeleteApiKeyAccessListEntryApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteApiKeyAccessListEntryApiRequest); ok {
+		r0 = rf(ctx, orgId, apiUserId, ipAddress)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteApiKeyAccessListEntryApiRequest)
+	}
+
+	return r0
+}
+
+// ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteApiKeyAccessListEntry'
+type ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call struct {
+	*mock.Call
+}
+
+// DeleteApiKeyAccessListEntry is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - apiUserId string
+//   - ipAddress string
+func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteApiKeyAccessListEntry(ctx any, orgId any, apiUserId any, ipAddress any) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call {
+	return &ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call{Call: _e.mock.On("DeleteApiKeyAccessListEntry", ctx, orgId, apiUserId, ipAddress)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call) Run(run func(ctx context.Context, orgId string, apiUserId string, ipAddress string)) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call) Return(_a0 admin.DeleteApiKeyAccessListEntryApiRequest) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteApiKeyAccessListEntryApiRequest) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteApiKeyAccessListEntryExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyAccessListEntryExecute(r admin.DeleteApiKeyAccessListEntryApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgApiKeyExecute")
+		panic("no return value specified for DeleteApiKeyAccessListEntryExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrgApiKeyApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyAccessListEntryApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrgApiKeyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyAccessListEntryApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -889,7 +784,7 @@ func (_m *ProgrammaticAPIKeysApi) DeleteOrgApiKeyExecute(r admin.DeleteOrgApiKey
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteOrgApiKeyApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteApiKeyAccessListEntryApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -898,145 +793,298 @@ func (_m *ProgrammaticAPIKeysApi) DeleteOrgApiKeyExecute(r admin.DeleteOrgApiKey
 	return r0, r1
 }
 
-// ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgApiKeyExecute'
-type ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call struct {
+// ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteApiKeyAccessListEntryExecute'
+type ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteOrgApiKeyExecute is a helper method to define mock.On call
-//   - r admin.DeleteOrgApiKeyApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteOrgApiKeyExecute(r any) *ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call {
-	return &ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call{Call: _e.mock.On("DeleteOrgApiKeyExecute", r)}
+// DeleteApiKeyAccessListEntryExecute is a helper method to define mock.On call
+//   - r admin.DeleteApiKeyAccessListEntryApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteApiKeyAccessListEntryExecute(r any) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call {
+	return &ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call{Call: _e.mock.On("DeleteApiKeyAccessListEntryExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call) Run(run func(r admin.DeleteOrgApiKeyApiRequest)) *ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call) Run(run func(r admin.DeleteApiKeyAccessListEntryApiRequest)) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteOrgApiKeyApiRequest))
+		run(args[0].(admin.DeleteApiKeyAccessListEntryApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call) Return(_a0 *http.Response, _a1 error) *ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call) Return(_a0 *http.Response, _a1 error) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call) RunAndReturn(run func(admin.DeleteOrgApiKeyApiRequest) (*http.Response, error)) *ProgrammaticAPIKeysApi_DeleteOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call) RunAndReturn(run func(admin.DeleteApiKeyAccessListEntryApiRequest) (*http.Response, error)) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteOrgApiKeyWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) DeleteOrgApiKeyWithParams(ctx context.Context, args *admin.DeleteOrgApiKeyApiParams) admin.DeleteOrgApiKeyApiRequest {
+// DeleteApiKeyAccessListEntryWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyAccessListEntryWithParams(ctx context.Context, args *admin.DeleteApiKeyAccessListEntryApiParams) admin.DeleteApiKeyAccessListEntryApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgApiKeyWithParams")
+		panic("no return value specified for DeleteApiKeyAccessListEntryWithParams")
 	}
 
-	var r0 admin.DeleteOrgApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteOrgApiKeyApiParams) admin.DeleteOrgApiKeyApiRequest); ok {
+	var r0 admin.DeleteApiKeyAccessListEntryApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteApiKeyAccessListEntryApiParams) admin.DeleteApiKeyAccessListEntryApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteOrgApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.DeleteApiKeyAccessListEntryApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgApiKeyWithParams'
-type ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call struct {
+// ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteApiKeyAccessListEntryWithParams'
+type ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteOrgApiKeyWithParams is a helper method to define mock.On call
+// DeleteApiKeyAccessListEntryWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteOrgApiKeyApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteOrgApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call {
-	return &ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call{Call: _e.mock.On("DeleteOrgApiKeyWithParams", ctx, args)}
+//   - args *admin.DeleteApiKeyAccessListEntryApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteApiKeyAccessListEntryWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call {
+	return &ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call{Call: _e.mock.On("DeleteApiKeyAccessListEntryWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteOrgApiKeyApiParams)) *ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteApiKeyAccessListEntryApiParams)) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteOrgApiKeyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteApiKeyAccessListEntryApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call) Return(_a0 admin.DeleteOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call) Return(_a0 admin.DeleteApiKeyAccessListEntryApiRequest) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteOrgApiKeyApiParams) admin.DeleteOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_DeleteOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteApiKeyAccessListEntryApiParams) admin.DeleteApiKeyAccessListEntryApiRequest) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetOrgAccessEntry provides a mock function with given fields: ctx, orgId, ipAddress, apiUserId
-func (_m *ProgrammaticAPIKeysApi) GetOrgAccessEntry(ctx context.Context, orgId string, ipAddress string, apiUserId string) admin.GetOrgAccessEntryApiRequest {
-	ret := _m.Called(ctx, orgId, ipAddress, apiUserId)
+// DeleteApiKeyExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyExecute(r admin.DeleteApiKeyApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetOrgAccessEntry")
+		panic("no return value specified for DeleteApiKeyExecute")
 	}
 
-	var r0 admin.GetOrgAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetOrgAccessEntryApiRequest); ok {
-		r0 = rf(ctx, orgId, ipAddress, apiUserId)
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyApiRequest) *http.Response); ok {
+		r0 = rf(r)
 	} else {
-		r0 = ret.Get(0).(admin.GetOrgAccessEntryApiRequest)
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteApiKeyApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteApiKeyExecute'
+type ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteApiKeyExecute is a helper method to define mock.On call
+//   - r admin.DeleteApiKeyApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteApiKeyExecute(r any) *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call {
+	return &ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call{Call: _e.mock.On("DeleteApiKeyExecute", r)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call) Run(run func(r admin.DeleteApiKeyApiRequest)) *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteApiKeyApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call) Return(_a0 *http.Response, _a1 error) *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call) RunAndReturn(run func(admin.DeleteApiKeyApiRequest) (*http.Response, error)) *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteApiKeyWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyWithParams(ctx context.Context, args *admin.DeleteApiKeyApiParams) admin.DeleteApiKeyApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteApiKeyWithParams")
+	}
+
+	var r0 admin.DeleteApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteApiKeyApiParams) admin.DeleteApiKeyApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgAccessEntry'
-type ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call struct {
+// ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteApiKeyWithParams'
+type ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call struct {
 	*mock.Call
 }
 
-// GetOrgAccessEntry is a helper method to define mock.On call
+// DeleteApiKeyWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteApiKeyApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) DeleteApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call {
+	return &ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call{Call: _e.mock.On("DeleteApiKeyWithParams", ctx, args)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteApiKeyApiParams)) *ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteApiKeyApiParams))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call) Return(_a0 admin.DeleteApiKeyApiRequest) *ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteApiKeyApiParams) admin.DeleteApiKeyApiRequest) *ProgrammaticAPIKeysApi_DeleteApiKeyWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetApiKey provides a mock function with given fields: ctx, orgId, apiUserId
+func (_m *ProgrammaticAPIKeysApi) GetApiKey(ctx context.Context, orgId string, apiUserId string) admin.GetApiKeyApiRequest {
+	ret := _m.Called(ctx, orgId, apiUserId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetApiKey")
+	}
+
+	var r0 admin.GetApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetApiKeyApiRequest); ok {
+		r0 = rf(ctx, orgId, apiUserId)
+	} else {
+		r0 = ret.Get(0).(admin.GetApiKeyApiRequest)
+	}
+
+	return r0
+}
+
+// ProgrammaticAPIKeysApi_GetApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetApiKey'
+type ProgrammaticAPIKeysApi_GetApiKey_Call struct {
+	*mock.Call
+}
+
+// GetApiKey is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - apiUserId string
+func (_e *ProgrammaticAPIKeysApi_Expecter) GetApiKey(ctx any, orgId any, apiUserId any) *ProgrammaticAPIKeysApi_GetApiKey_Call {
+	return &ProgrammaticAPIKeysApi_GetApiKey_Call{Call: _e.mock.On("GetApiKey", ctx, orgId, apiUserId)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_GetApiKey_Call) Run(run func(ctx context.Context, orgId string, apiUserId string)) *ProgrammaticAPIKeysApi_GetApiKey_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_GetApiKey_Call) Return(_a0 admin.GetApiKeyApiRequest) *ProgrammaticAPIKeysApi_GetApiKey_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_GetApiKey_Call) RunAndReturn(run func(context.Context, string, string) admin.GetApiKeyApiRequest) *ProgrammaticAPIKeysApi_GetApiKey_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetApiKeyAccessList provides a mock function with given fields: ctx, orgId, ipAddress, apiUserId
+func (_m *ProgrammaticAPIKeysApi) GetApiKeyAccessList(ctx context.Context, orgId string, ipAddress string, apiUserId string) admin.GetApiKeyAccessListApiRequest {
+	ret := _m.Called(ctx, orgId, ipAddress, apiUserId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetApiKeyAccessList")
+	}
+
+	var r0 admin.GetApiKeyAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetApiKeyAccessListApiRequest); ok {
+		r0 = rf(ctx, orgId, ipAddress, apiUserId)
+	} else {
+		r0 = ret.Get(0).(admin.GetApiKeyAccessListApiRequest)
+	}
+
+	return r0
+}
+
+// ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetApiKeyAccessList'
+type ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call struct {
+	*mock.Call
+}
+
+// GetApiKeyAccessList is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - ipAddress string
 //   - apiUserId string
-func (_e *ProgrammaticAPIKeysApi_Expecter) GetOrgAccessEntry(ctx any, orgId any, ipAddress any, apiUserId any) *ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call {
-	return &ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call{Call: _e.mock.On("GetOrgAccessEntry", ctx, orgId, ipAddress, apiUserId)}
+func (_e *ProgrammaticAPIKeysApi_Expecter) GetApiKeyAccessList(ctx any, orgId any, ipAddress any, apiUserId any) *ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call {
+	return &ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call{Call: _e.mock.On("GetApiKeyAccessList", ctx, orgId, ipAddress, apiUserId)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call) Run(run func(ctx context.Context, orgId string, ipAddress string, apiUserId string)) *ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call) Run(run func(ctx context.Context, orgId string, ipAddress string, apiUserId string)) *ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call) Return(_a0 admin.GetOrgAccessEntryApiRequest) *ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call) Return(_a0 admin.GetApiKeyAccessListApiRequest) *ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetOrgAccessEntryApiRequest) *ProgrammaticAPIKeysApi_GetOrgAccessEntry_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetApiKeyAccessListApiRequest) *ProgrammaticAPIKeysApi_GetApiKeyAccessList_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetOrgAccessEntryExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) GetOrgAccessEntryExecute(r admin.GetOrgAccessEntryApiRequest) (*admin.UserAccessListResponse, *http.Response, error) {
+// GetApiKeyAccessListExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) GetApiKeyAccessListExecute(r admin.GetApiKeyAccessListApiRequest) (*admin.UserAccessListResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetOrgAccessEntryExecute")
+		panic("no return value specified for GetApiKeyAccessListExecute")
 	}
 
 	var r0 *admin.UserAccessListResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetOrgAccessEntryApiRequest) (*admin.UserAccessListResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetApiKeyAccessListApiRequest) (*admin.UserAccessListResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetOrgAccessEntryApiRequest) *admin.UserAccessListResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetApiKeyAccessListApiRequest) *admin.UserAccessListResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1044,7 +1092,7 @@ func (_m *ProgrammaticAPIKeysApi) GetOrgAccessEntryExecute(r admin.GetOrgAccessE
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetOrgAccessEntryApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetApiKeyAccessListApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1052,7 +1100,7 @@ func (_m *ProgrammaticAPIKeysApi) GetOrgAccessEntryExecute(r admin.GetOrgAccessE
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetOrgAccessEntryApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetApiKeyAccessListApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1061,144 +1109,96 @@ func (_m *ProgrammaticAPIKeysApi) GetOrgAccessEntryExecute(r admin.GetOrgAccessE
 	return r0, r1, r2
 }
 
-// ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgAccessEntryExecute'
-type ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call struct {
+// ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetApiKeyAccessListExecute'
+type ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call struct {
 	*mock.Call
 }
 
-// GetOrgAccessEntryExecute is a helper method to define mock.On call
-//   - r admin.GetOrgAccessEntryApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) GetOrgAccessEntryExecute(r any) *ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call {
-	return &ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call{Call: _e.mock.On("GetOrgAccessEntryExecute", r)}
+// GetApiKeyAccessListExecute is a helper method to define mock.On call
+//   - r admin.GetApiKeyAccessListApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) GetApiKeyAccessListExecute(r any) *ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call {
+	return &ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call{Call: _e.mock.On("GetApiKeyAccessListExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call) Run(run func(r admin.GetOrgAccessEntryApiRequest)) *ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call) Run(run func(r admin.GetApiKeyAccessListApiRequest)) *ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetOrgAccessEntryApiRequest))
+		run(args[0].(admin.GetApiKeyAccessListApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call) Return(_a0 *admin.UserAccessListResponse, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call) Return(_a0 *admin.UserAccessListResponse, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call) RunAndReturn(run func(admin.GetOrgAccessEntryApiRequest) (*admin.UserAccessListResponse, *http.Response, error)) *ProgrammaticAPIKeysApi_GetOrgAccessEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call) RunAndReturn(run func(admin.GetApiKeyAccessListApiRequest) (*admin.UserAccessListResponse, *http.Response, error)) *ProgrammaticAPIKeysApi_GetApiKeyAccessListExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetOrgAccessEntryWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) GetOrgAccessEntryWithParams(ctx context.Context, args *admin.GetOrgAccessEntryApiParams) admin.GetOrgAccessEntryApiRequest {
+// GetApiKeyAccessListWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) GetApiKeyAccessListWithParams(ctx context.Context, args *admin.GetApiKeyAccessListApiParams) admin.GetApiKeyAccessListApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetOrgAccessEntryWithParams")
+		panic("no return value specified for GetApiKeyAccessListWithParams")
 	}
 
-	var r0 admin.GetOrgAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetOrgAccessEntryApiParams) admin.GetOrgAccessEntryApiRequest); ok {
+	var r0 admin.GetApiKeyAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetApiKeyAccessListApiParams) admin.GetApiKeyAccessListApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetOrgAccessEntryApiRequest)
+		r0 = ret.Get(0).(admin.GetApiKeyAccessListApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgAccessEntryWithParams'
-type ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call struct {
+// ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetApiKeyAccessListWithParams'
+type ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call struct {
 	*mock.Call
 }
 
-// GetOrgAccessEntryWithParams is a helper method to define mock.On call
+// GetApiKeyAccessListWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetOrgAccessEntryApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) GetOrgAccessEntryWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call {
-	return &ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call{Call: _e.mock.On("GetOrgAccessEntryWithParams", ctx, args)}
+//   - args *admin.GetApiKeyAccessListApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) GetApiKeyAccessListWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call {
+	return &ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call{Call: _e.mock.On("GetApiKeyAccessListWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call) Run(run func(ctx context.Context, args *admin.GetOrgAccessEntryApiParams)) *ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.GetApiKeyAccessListApiParams)) *ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetOrgAccessEntryApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetApiKeyAccessListApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call) Return(_a0 admin.GetOrgAccessEntryApiRequest) *ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call) Return(_a0 admin.GetApiKeyAccessListApiRequest) *ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetOrgAccessEntryApiParams) admin.GetOrgAccessEntryApiRequest) *ProgrammaticAPIKeysApi_GetOrgAccessEntryWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetApiKeyAccessListApiParams) admin.GetApiKeyAccessListApiRequest) *ProgrammaticAPIKeysApi_GetApiKeyAccessListWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetOrgApiKey provides a mock function with given fields: ctx, orgId, apiUserId
-func (_m *ProgrammaticAPIKeysApi) GetOrgApiKey(ctx context.Context, orgId string, apiUserId string) admin.GetOrgApiKeyApiRequest {
-	ret := _m.Called(ctx, orgId, apiUserId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetOrgApiKey")
-	}
-
-	var r0 admin.GetOrgApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetOrgApiKeyApiRequest); ok {
-		r0 = rf(ctx, orgId, apiUserId)
-	} else {
-		r0 = ret.Get(0).(admin.GetOrgApiKeyApiRequest)
-	}
-
-	return r0
-}
-
-// ProgrammaticAPIKeysApi_GetOrgApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgApiKey'
-type ProgrammaticAPIKeysApi_GetOrgApiKey_Call struct {
-	*mock.Call
-}
-
-// GetOrgApiKey is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - apiUserId string
-func (_e *ProgrammaticAPIKeysApi_Expecter) GetOrgApiKey(ctx any, orgId any, apiUserId any) *ProgrammaticAPIKeysApi_GetOrgApiKey_Call {
-	return &ProgrammaticAPIKeysApi_GetOrgApiKey_Call{Call: _e.mock.On("GetOrgApiKey", ctx, orgId, apiUserId)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKey_Call) Run(run func(ctx context.Context, orgId string, apiUserId string)) *ProgrammaticAPIKeysApi_GetOrgApiKey_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKey_Call) Return(_a0 admin.GetOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_GetOrgApiKey_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKey_Call) RunAndReturn(run func(context.Context, string, string) admin.GetOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_GetOrgApiKey_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetOrgApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) GetOrgApiKeyExecute(r admin.GetOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
+// GetApiKeyExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) GetApiKeyExecute(r admin.GetApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetOrgApiKeyExecute")
+		panic("no return value specified for GetApiKeyExecute")
 	}
 
 	var r0 *admin.ApiKeyUserDetails
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetOrgApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1206,7 +1206,7 @@ func (_m *ProgrammaticAPIKeysApi) GetOrgApiKeyExecute(r admin.GetOrgApiKeyApiReq
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetOrgApiKeyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetApiKeyApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1214,7 +1214,7 @@ func (_m *ProgrammaticAPIKeysApi) GetOrgApiKeyExecute(r admin.GetOrgApiKeyApiReq
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetOrgApiKeyApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetApiKeyApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1223,305 +1223,144 @@ func (_m *ProgrammaticAPIKeysApi) GetOrgApiKeyExecute(r admin.GetOrgApiKeyApiReq
 	return r0, r1, r2
 }
 
-// ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgApiKeyExecute'
-type ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call struct {
+// ProgrammaticAPIKeysApi_GetApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetApiKeyExecute'
+type ProgrammaticAPIKeysApi_GetApiKeyExecute_Call struct {
 	*mock.Call
 }
 
-// GetOrgApiKeyExecute is a helper method to define mock.On call
-//   - r admin.GetOrgApiKeyApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) GetOrgApiKeyExecute(r any) *ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call {
-	return &ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call{Call: _e.mock.On("GetOrgApiKeyExecute", r)}
+// GetApiKeyExecute is a helper method to define mock.On call
+//   - r admin.GetApiKeyApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) GetApiKeyExecute(r any) *ProgrammaticAPIKeysApi_GetApiKeyExecute_Call {
+	return &ProgrammaticAPIKeysApi_GetApiKeyExecute_Call{Call: _e.mock.On("GetApiKeyExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call) Run(run func(r admin.GetOrgApiKeyApiRequest)) *ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyExecute_Call) Run(run func(r admin.GetApiKeyApiRequest)) *ProgrammaticAPIKeysApi_GetApiKeyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetOrgApiKeyApiRequest))
+		run(args[0].(admin.GetApiKeyApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_GetApiKeyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call) RunAndReturn(run func(admin.GetOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_GetOrgApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyExecute_Call) RunAndReturn(run func(admin.GetApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_GetApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetOrgApiKeyWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) GetOrgApiKeyWithParams(ctx context.Context, args *admin.GetOrgApiKeyApiParams) admin.GetOrgApiKeyApiRequest {
+// GetApiKeyWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) GetApiKeyWithParams(ctx context.Context, args *admin.GetApiKeyApiParams) admin.GetApiKeyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetOrgApiKeyWithParams")
+		panic("no return value specified for GetApiKeyWithParams")
 	}
 
-	var r0 admin.GetOrgApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetOrgApiKeyApiParams) admin.GetOrgApiKeyApiRequest); ok {
+	var r0 admin.GetApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetApiKeyApiParams) admin.GetApiKeyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetOrgApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.GetApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgApiKeyWithParams'
-type ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call struct {
+// ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetApiKeyWithParams'
+type ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call struct {
 	*mock.Call
 }
 
-// GetOrgApiKeyWithParams is a helper method to define mock.On call
+// GetApiKeyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetOrgApiKeyApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) GetOrgApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call {
-	return &ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call{Call: _e.mock.On("GetOrgApiKeyWithParams", ctx, args)}
+//   - args *admin.GetApiKeyApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) GetApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call {
+	return &ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call{Call: _e.mock.On("GetApiKeyWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.GetOrgApiKeyApiParams)) *ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.GetApiKeyApiParams)) *ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetOrgApiKeyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetApiKeyApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call) Return(_a0 admin.GetOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call) Return(_a0 admin.GetApiKeyApiRequest) *ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetOrgApiKeyApiParams) admin.GetOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_GetOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetApiKeyApiParams) admin.GetApiKeyApiRequest) *ProgrammaticAPIKeysApi_GetApiKeyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListGroupApiKeys provides a mock function with given fields: ctx, groupId
-func (_m *ProgrammaticAPIKeysApi) ListGroupApiKeys(ctx context.Context, groupId string) admin.ListGroupApiKeysApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListGroupApiKeys")
-	}
-
-	var r0 admin.ListGroupApiKeysApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupApiKeysApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ListGroupApiKeysApiRequest)
-	}
-
-	return r0
-}
-
-// ProgrammaticAPIKeysApi_ListGroupApiKeys_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupApiKeys'
-type ProgrammaticAPIKeysApi_ListGroupApiKeys_Call struct {
-	*mock.Call
-}
-
-// ListGroupApiKeys is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListGroupApiKeys(ctx any, groupId any) *ProgrammaticAPIKeysApi_ListGroupApiKeys_Call {
-	return &ProgrammaticAPIKeysApi_ListGroupApiKeys_Call{Call: _e.mock.On("ListGroupApiKeys", ctx, groupId)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeys_Call) Run(run func(ctx context.Context, groupId string)) *ProgrammaticAPIKeysApi_ListGroupApiKeys_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeys_Call) Return(_a0 admin.ListGroupApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListGroupApiKeys_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeys_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListGroupApiKeys_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListGroupApiKeysExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) ListGroupApiKeysExecute(r admin.ListGroupApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListGroupApiKeysExecute")
-	}
-
-	var r0 *admin.PaginatedApiApiUser
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListGroupApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListGroupApiKeysApiRequest) *admin.PaginatedApiApiUser); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedApiApiUser)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListGroupApiKeysApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListGroupApiKeysApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupApiKeysExecute'
-type ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call struct {
-	*mock.Call
-}
-
-// ListGroupApiKeysExecute is a helper method to define mock.On call
-//   - r admin.ListGroupApiKeysApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListGroupApiKeysExecute(r any) *ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call {
-	return &ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call{Call: _e.mock.On("ListGroupApiKeysExecute", r)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call) Run(run func(r admin.ListGroupApiKeysApiRequest)) *ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListGroupApiKeysApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call) Return(_a0 *admin.PaginatedApiApiUser, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call) RunAndReturn(run func(admin.ListGroupApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error)) *ProgrammaticAPIKeysApi_ListGroupApiKeysExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListGroupApiKeysWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) ListGroupApiKeysWithParams(ctx context.Context, args *admin.ListGroupApiKeysApiParams) admin.ListGroupApiKeysApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListGroupApiKeysWithParams")
-	}
-
-	var r0 admin.ListGroupApiKeysApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupApiKeysApiParams) admin.ListGroupApiKeysApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListGroupApiKeysApiRequest)
-	}
-
-	return r0
-}
-
-// ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupApiKeysWithParams'
-type ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call struct {
-	*mock.Call
-}
-
-// ListGroupApiKeysWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListGroupApiKeysApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListGroupApiKeysWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call {
-	return &ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call{Call: _e.mock.On("ListGroupApiKeysWithParams", ctx, args)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupApiKeysApiParams)) *ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListGroupApiKeysApiParams))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call) Return(_a0 admin.ListGroupApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupApiKeysApiParams) admin.ListGroupApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListGroupApiKeysWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListOrgAccessEntries provides a mock function with given fields: ctx, orgId, apiUserId
-func (_m *ProgrammaticAPIKeysApi) ListOrgAccessEntries(ctx context.Context, orgId string, apiUserId string) admin.ListOrgAccessEntriesApiRequest {
+// ListApiKeyAccessListsEntries provides a mock function with given fields: ctx, orgId, apiUserId
+func (_m *ProgrammaticAPIKeysApi) ListApiKeyAccessListsEntries(ctx context.Context, orgId string, apiUserId string) admin.ListApiKeyAccessListsEntriesApiRequest {
 	ret := _m.Called(ctx, orgId, apiUserId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgAccessEntries")
+		panic("no return value specified for ListApiKeyAccessListsEntries")
 	}
 
-	var r0 admin.ListOrgAccessEntriesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListOrgAccessEntriesApiRequest); ok {
+	var r0 admin.ListApiKeyAccessListsEntriesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListApiKeyAccessListsEntriesApiRequest); ok {
 		r0 = rf(ctx, orgId, apiUserId)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrgAccessEntriesApiRequest)
+		r0 = ret.Get(0).(admin.ListApiKeyAccessListsEntriesApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgAccessEntries'
-type ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call struct {
+// ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListApiKeyAccessListsEntries'
+type ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call struct {
 	*mock.Call
 }
 
-// ListOrgAccessEntries is a helper method to define mock.On call
+// ListApiKeyAccessListsEntries is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - apiUserId string
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListOrgAccessEntries(ctx any, orgId any, apiUserId any) *ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call {
-	return &ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call{Call: _e.mock.On("ListOrgAccessEntries", ctx, orgId, apiUserId)}
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListApiKeyAccessListsEntries(ctx any, orgId any, apiUserId any) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call {
+	return &ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call{Call: _e.mock.On("ListApiKeyAccessListsEntries", ctx, orgId, apiUserId)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call) Run(run func(ctx context.Context, orgId string, apiUserId string)) *ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call) Run(run func(ctx context.Context, orgId string, apiUserId string)) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call) Return(_a0 admin.ListOrgAccessEntriesApiRequest) *ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call) Return(_a0 admin.ListApiKeyAccessListsEntriesApiRequest) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call) RunAndReturn(run func(context.Context, string, string) admin.ListOrgAccessEntriesApiRequest) *ProgrammaticAPIKeysApi_ListOrgAccessEntries_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call) RunAndReturn(run func(context.Context, string, string) admin.ListApiKeyAccessListsEntriesApiRequest) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntries_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgAccessEntriesExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) ListOrgAccessEntriesExecute(r admin.ListOrgAccessEntriesApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error) {
+// ListApiKeyAccessListsEntriesExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) ListApiKeyAccessListsEntriesExecute(r admin.ListApiKeyAccessListsEntriesApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgAccessEntriesExecute")
+		panic("no return value specified for ListApiKeyAccessListsEntriesExecute")
 	}
 
 	var r0 *admin.PaginatedApiUserAccessListResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListOrgAccessEntriesApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListApiKeyAccessListsEntriesApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListOrgAccessEntriesApiRequest) *admin.PaginatedApiUserAccessListResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListApiKeyAccessListsEntriesApiRequest) *admin.PaginatedApiUserAccessListResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1529,7 +1368,7 @@ func (_m *ProgrammaticAPIKeysApi) ListOrgAccessEntriesExecute(r admin.ListOrgAcc
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListOrgAccessEntriesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListApiKeyAccessListsEntriesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1537,7 +1376,7 @@ func (_m *ProgrammaticAPIKeysApi) ListOrgAccessEntriesExecute(r admin.ListOrgAcc
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListOrgAccessEntriesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListApiKeyAccessListsEntriesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1546,143 +1385,143 @@ func (_m *ProgrammaticAPIKeysApi) ListOrgAccessEntriesExecute(r admin.ListOrgAcc
 	return r0, r1, r2
 }
 
-// ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgAccessEntriesExecute'
-type ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call struct {
+// ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListApiKeyAccessListsEntriesExecute'
+type ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call struct {
 	*mock.Call
 }
 
-// ListOrgAccessEntriesExecute is a helper method to define mock.On call
-//   - r admin.ListOrgAccessEntriesApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListOrgAccessEntriesExecute(r any) *ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call {
-	return &ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call{Call: _e.mock.On("ListOrgAccessEntriesExecute", r)}
+// ListApiKeyAccessListsEntriesExecute is a helper method to define mock.On call
+//   - r admin.ListApiKeyAccessListsEntriesApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListApiKeyAccessListsEntriesExecute(r any) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call {
+	return &ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call{Call: _e.mock.On("ListApiKeyAccessListsEntriesExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call) Run(run func(r admin.ListOrgAccessEntriesApiRequest)) *ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call) Run(run func(r admin.ListApiKeyAccessListsEntriesApiRequest)) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListOrgAccessEntriesApiRequest))
+		run(args[0].(admin.ListApiKeyAccessListsEntriesApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call) Return(_a0 *admin.PaginatedApiUserAccessListResponse, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call) Return(_a0 *admin.PaginatedApiUserAccessListResponse, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call) RunAndReturn(run func(admin.ListOrgAccessEntriesApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error)) *ProgrammaticAPIKeysApi_ListOrgAccessEntriesExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call) RunAndReturn(run func(admin.ListApiKeyAccessListsEntriesApiRequest) (*admin.PaginatedApiUserAccessListResponse, *http.Response, error)) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgAccessEntriesWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) ListOrgAccessEntriesWithParams(ctx context.Context, args *admin.ListOrgAccessEntriesApiParams) admin.ListOrgAccessEntriesApiRequest {
+// ListApiKeyAccessListsEntriesWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) ListApiKeyAccessListsEntriesWithParams(ctx context.Context, args *admin.ListApiKeyAccessListsEntriesApiParams) admin.ListApiKeyAccessListsEntriesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgAccessEntriesWithParams")
+		panic("no return value specified for ListApiKeyAccessListsEntriesWithParams")
 	}
 
-	var r0 admin.ListOrgAccessEntriesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrgAccessEntriesApiParams) admin.ListOrgAccessEntriesApiRequest); ok {
+	var r0 admin.ListApiKeyAccessListsEntriesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListApiKeyAccessListsEntriesApiParams) admin.ListApiKeyAccessListsEntriesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrgAccessEntriesApiRequest)
+		r0 = ret.Get(0).(admin.ListApiKeyAccessListsEntriesApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgAccessEntriesWithParams'
-type ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call struct {
+// ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListApiKeyAccessListsEntriesWithParams'
+type ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListOrgAccessEntriesWithParams is a helper method to define mock.On call
+// ListApiKeyAccessListsEntriesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListOrgAccessEntriesApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListOrgAccessEntriesWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call {
-	return &ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call{Call: _e.mock.On("ListOrgAccessEntriesWithParams", ctx, args)}
+//   - args *admin.ListApiKeyAccessListsEntriesApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListApiKeyAccessListsEntriesWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call {
+	return &ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call{Call: _e.mock.On("ListApiKeyAccessListsEntriesWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrgAccessEntriesApiParams)) *ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListApiKeyAccessListsEntriesApiParams)) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListOrgAccessEntriesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListApiKeyAccessListsEntriesApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call) Return(_a0 admin.ListOrgAccessEntriesApiRequest) *ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call) Return(_a0 admin.ListApiKeyAccessListsEntriesApiRequest) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrgAccessEntriesApiParams) admin.ListOrgAccessEntriesApiRequest) *ProgrammaticAPIKeysApi_ListOrgAccessEntriesWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListApiKeyAccessListsEntriesApiParams) admin.ListApiKeyAccessListsEntriesApiRequest) *ProgrammaticAPIKeysApi_ListApiKeyAccessListsEntriesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgApiKeys provides a mock function with given fields: ctx, orgId
-func (_m *ProgrammaticAPIKeysApi) ListOrgApiKeys(ctx context.Context, orgId string) admin.ListOrgApiKeysApiRequest {
+// ListApiKeys provides a mock function with given fields: ctx, orgId
+func (_m *ProgrammaticAPIKeysApi) ListApiKeys(ctx context.Context, orgId string) admin.ListApiKeysApiRequest {
 	ret := _m.Called(ctx, orgId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgApiKeys")
+		panic("no return value specified for ListApiKeys")
 	}
 
-	var r0 admin.ListOrgApiKeysApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListOrgApiKeysApiRequest); ok {
+	var r0 admin.ListApiKeysApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListApiKeysApiRequest); ok {
 		r0 = rf(ctx, orgId)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrgApiKeysApiRequest)
+		r0 = ret.Get(0).(admin.ListApiKeysApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_ListOrgApiKeys_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgApiKeys'
-type ProgrammaticAPIKeysApi_ListOrgApiKeys_Call struct {
+// ProgrammaticAPIKeysApi_ListApiKeys_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListApiKeys'
+type ProgrammaticAPIKeysApi_ListApiKeys_Call struct {
 	*mock.Call
 }
 
-// ListOrgApiKeys is a helper method to define mock.On call
+// ListApiKeys is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListOrgApiKeys(ctx any, orgId any) *ProgrammaticAPIKeysApi_ListOrgApiKeys_Call {
-	return &ProgrammaticAPIKeysApi_ListOrgApiKeys_Call{Call: _e.mock.On("ListOrgApiKeys", ctx, orgId)}
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListApiKeys(ctx any, orgId any) *ProgrammaticAPIKeysApi_ListApiKeys_Call {
+	return &ProgrammaticAPIKeysApi_ListApiKeys_Call{Call: _e.mock.On("ListApiKeys", ctx, orgId)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeys_Call) Run(run func(ctx context.Context, orgId string)) *ProgrammaticAPIKeysApi_ListOrgApiKeys_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeys_Call) Run(run func(ctx context.Context, orgId string)) *ProgrammaticAPIKeysApi_ListApiKeys_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeys_Call) Return(_a0 admin.ListOrgApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListOrgApiKeys_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeys_Call) Return(_a0 admin.ListApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListApiKeys_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeys_Call) RunAndReturn(run func(context.Context, string) admin.ListOrgApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListOrgApiKeys_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeys_Call) RunAndReturn(run func(context.Context, string) admin.ListApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListApiKeys_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgApiKeysExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) ListOrgApiKeysExecute(r admin.ListOrgApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error) {
+// ListApiKeysExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) ListApiKeysExecute(r admin.ListApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgApiKeysExecute")
+		panic("no return value specified for ListApiKeysExecute")
 	}
 
 	var r0 *admin.PaginatedApiApiUser
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListOrgApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListOrgApiKeysApiRequest) *admin.PaginatedApiApiUser); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListApiKeysApiRequest) *admin.PaginatedApiApiUser); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1690,7 +1529,7 @@ func (_m *ProgrammaticAPIKeysApi) ListOrgApiKeysExecute(r admin.ListOrgApiKeysAp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListOrgApiKeysApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListApiKeysApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1698,7 +1537,7 @@ func (_m *ProgrammaticAPIKeysApi) ListOrgApiKeysExecute(r admin.ListOrgApiKeysAp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListOrgApiKeysApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListApiKeysApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1707,143 +1546,304 @@ func (_m *ProgrammaticAPIKeysApi) ListOrgApiKeysExecute(r admin.ListOrgApiKeysAp
 	return r0, r1, r2
 }
 
-// ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgApiKeysExecute'
-type ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call struct {
+// ProgrammaticAPIKeysApi_ListApiKeysExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListApiKeysExecute'
+type ProgrammaticAPIKeysApi_ListApiKeysExecute_Call struct {
 	*mock.Call
 }
 
-// ListOrgApiKeysExecute is a helper method to define mock.On call
-//   - r admin.ListOrgApiKeysApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListOrgApiKeysExecute(r any) *ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call {
-	return &ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call{Call: _e.mock.On("ListOrgApiKeysExecute", r)}
+// ListApiKeysExecute is a helper method to define mock.On call
+//   - r admin.ListApiKeysApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListApiKeysExecute(r any) *ProgrammaticAPIKeysApi_ListApiKeysExecute_Call {
+	return &ProgrammaticAPIKeysApi_ListApiKeysExecute_Call{Call: _e.mock.On("ListApiKeysExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call) Run(run func(r admin.ListOrgApiKeysApiRequest)) *ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeysExecute_Call) Run(run func(r admin.ListApiKeysApiRequest)) *ProgrammaticAPIKeysApi_ListApiKeysExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListOrgApiKeysApiRequest))
+		run(args[0].(admin.ListApiKeysApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call) Return(_a0 *admin.PaginatedApiApiUser, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeysExecute_Call) Return(_a0 *admin.PaginatedApiApiUser, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_ListApiKeysExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call) RunAndReturn(run func(admin.ListOrgApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error)) *ProgrammaticAPIKeysApi_ListOrgApiKeysExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeysExecute_Call) RunAndReturn(run func(admin.ListApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error)) *ProgrammaticAPIKeysApi_ListApiKeysExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgApiKeysWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) ListOrgApiKeysWithParams(ctx context.Context, args *admin.ListOrgApiKeysApiParams) admin.ListOrgApiKeysApiRequest {
+// ListApiKeysWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) ListApiKeysWithParams(ctx context.Context, args *admin.ListApiKeysApiParams) admin.ListApiKeysApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgApiKeysWithParams")
+		panic("no return value specified for ListApiKeysWithParams")
 	}
 
-	var r0 admin.ListOrgApiKeysApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrgApiKeysApiParams) admin.ListOrgApiKeysApiRequest); ok {
+	var r0 admin.ListApiKeysApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListApiKeysApiParams) admin.ListApiKeysApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrgApiKeysApiRequest)
+		r0 = ret.Get(0).(admin.ListApiKeysApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgApiKeysWithParams'
-type ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call struct {
+// ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListApiKeysWithParams'
+type ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call struct {
 	*mock.Call
 }
 
-// ListOrgApiKeysWithParams is a helper method to define mock.On call
+// ListApiKeysWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListOrgApiKeysApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) ListOrgApiKeysWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call {
-	return &ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call{Call: _e.mock.On("ListOrgApiKeysWithParams", ctx, args)}
+//   - args *admin.ListApiKeysApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListApiKeysWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call {
+	return &ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call{Call: _e.mock.On("ListApiKeysWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrgApiKeysApiParams)) *ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call) Run(run func(ctx context.Context, args *admin.ListApiKeysApiParams)) *ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListOrgApiKeysApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListApiKeysApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call) Return(_a0 admin.ListOrgApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call) Return(_a0 admin.ListApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrgApiKeysApiParams) admin.ListOrgApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListOrgApiKeysWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListApiKeysApiParams) admin.ListApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListApiKeysWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RemoveGroupApiKey provides a mock function with given fields: ctx, groupId, apiUserId
-func (_m *ProgrammaticAPIKeysApi) RemoveGroupApiKey(ctx context.Context, groupId string, apiUserId string) admin.RemoveGroupApiKeyApiRequest {
-	ret := _m.Called(ctx, groupId, apiUserId)
+// ListProjectApiKeys provides a mock function with given fields: ctx, groupId
+func (_m *ProgrammaticAPIKeysApi) ListProjectApiKeys(ctx context.Context, groupId string) admin.ListProjectApiKeysApiRequest {
+	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveGroupApiKey")
+		panic("no return value specified for ListProjectApiKeys")
 	}
 
-	var r0 admin.RemoveGroupApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RemoveGroupApiKeyApiRequest); ok {
-		r0 = rf(ctx, groupId, apiUserId)
+	var r0 admin.ListProjectApiKeysApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListProjectApiKeysApiRequest); ok {
+		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.RemoveGroupApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.ListProjectApiKeysApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveGroupApiKey'
-type ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call struct {
+// ProgrammaticAPIKeysApi_ListProjectApiKeys_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectApiKeys'
+type ProgrammaticAPIKeysApi_ListProjectApiKeys_Call struct {
 	*mock.Call
 }
 
-// RemoveGroupApiKey is a helper method to define mock.On call
+// ListProjectApiKeys is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListProjectApiKeys(ctx any, groupId any) *ProgrammaticAPIKeysApi_ListProjectApiKeys_Call {
+	return &ProgrammaticAPIKeysApi_ListProjectApiKeys_Call{Call: _e.mock.On("ListProjectApiKeys", ctx, groupId)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeys_Call) Run(run func(ctx context.Context, groupId string)) *ProgrammaticAPIKeysApi_ListProjectApiKeys_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeys_Call) Return(_a0 admin.ListProjectApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListProjectApiKeys_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeys_Call) RunAndReturn(run func(context.Context, string) admin.ListProjectApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListProjectApiKeys_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectApiKeysExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) ListProjectApiKeysExecute(r admin.ListProjectApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectApiKeysExecute")
+	}
+
+	var r0 *admin.PaginatedApiApiUser
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListProjectApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListProjectApiKeysApiRequest) *admin.PaginatedApiApiUser); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiApiUser)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListProjectApiKeysApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListProjectApiKeysApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectApiKeysExecute'
+type ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call struct {
+	*mock.Call
+}
+
+// ListProjectApiKeysExecute is a helper method to define mock.On call
+//   - r admin.ListProjectApiKeysApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListProjectApiKeysExecute(r any) *ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call {
+	return &ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call{Call: _e.mock.On("ListProjectApiKeysExecute", r)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call) Run(run func(r admin.ListProjectApiKeysApiRequest)) *ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListProjectApiKeysApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call) Return(_a0 *admin.PaginatedApiApiUser, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call) RunAndReturn(run func(admin.ListProjectApiKeysApiRequest) (*admin.PaginatedApiApiUser, *http.Response, error)) *ProgrammaticAPIKeysApi_ListProjectApiKeysExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectApiKeysWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) ListProjectApiKeysWithParams(ctx context.Context, args *admin.ListProjectApiKeysApiParams) admin.ListProjectApiKeysApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectApiKeysWithParams")
+	}
+
+	var r0 admin.ListProjectApiKeysApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProjectApiKeysApiParams) admin.ListProjectApiKeysApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListProjectApiKeysApiRequest)
+	}
+
+	return r0
+}
+
+// ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectApiKeysWithParams'
+type ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call struct {
+	*mock.Call
+}
+
+// ListProjectApiKeysWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListProjectApiKeysApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) ListProjectApiKeysWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call {
+	return &ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call{Call: _e.mock.On("ListProjectApiKeysWithParams", ctx, args)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProjectApiKeysApiParams)) *ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListProjectApiKeysApiParams))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call) Return(_a0 admin.ListProjectApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectApiKeysApiParams) admin.ListProjectApiKeysApiRequest) *ProgrammaticAPIKeysApi_ListProjectApiKeysWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RemoveProjectApiKey provides a mock function with given fields: ctx, groupId, apiUserId
+func (_m *ProgrammaticAPIKeysApi) RemoveProjectApiKey(ctx context.Context, groupId string, apiUserId string) admin.RemoveProjectApiKeyApiRequest {
+	ret := _m.Called(ctx, groupId, apiUserId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveProjectApiKey")
+	}
+
+	var r0 admin.RemoveProjectApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RemoveProjectApiKeyApiRequest); ok {
+		r0 = rf(ctx, groupId, apiUserId)
+	} else {
+		r0 = ret.Get(0).(admin.RemoveProjectApiKeyApiRequest)
+	}
+
+	return r0
+}
+
+// ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectApiKey'
+type ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call struct {
+	*mock.Call
+}
+
+// RemoveProjectApiKey is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - apiUserId string
-func (_e *ProgrammaticAPIKeysApi_Expecter) RemoveGroupApiKey(ctx any, groupId any, apiUserId any) *ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call {
-	return &ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call{Call: _e.mock.On("RemoveGroupApiKey", ctx, groupId, apiUserId)}
+func (_e *ProgrammaticAPIKeysApi_Expecter) RemoveProjectApiKey(ctx any, groupId any, apiUserId any) *ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call {
+	return &ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call{Call: _e.mock.On("RemoveProjectApiKey", ctx, groupId, apiUserId)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call) Run(run func(ctx context.Context, groupId string, apiUserId string)) *ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call) Run(run func(ctx context.Context, groupId string, apiUserId string)) *ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call) Return(_a0 admin.RemoveGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call) Return(_a0 admin.RemoveProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call) RunAndReturn(run func(context.Context, string, string) admin.RemoveGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_RemoveGroupApiKey_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call) RunAndReturn(run func(context.Context, string, string) admin.RemoveProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RemoveGroupApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) RemoveGroupApiKeyExecute(r admin.RemoveGroupApiKeyApiRequest) (*http.Response, error) {
+// RemoveProjectApiKeyExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) RemoveProjectApiKeyExecute(r admin.RemoveProjectApiKeyApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveGroupApiKeyExecute")
+		panic("no return value specified for RemoveProjectApiKeyExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveGroupApiKeyApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectApiKeyApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveGroupApiKeyApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectApiKeyApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1851,7 +1851,7 @@ func (_m *ProgrammaticAPIKeysApi) RemoveGroupApiKeyExecute(r admin.RemoveGroupAp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RemoveGroupApiKeyApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.RemoveProjectApiKeyApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -1860,77 +1860,193 @@ func (_m *ProgrammaticAPIKeysApi) RemoveGroupApiKeyExecute(r admin.RemoveGroupAp
 	return r0, r1
 }
 
-// ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveGroupApiKeyExecute'
-type ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call struct {
+// ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectApiKeyExecute'
+type ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call struct {
 	*mock.Call
 }
 
-// RemoveGroupApiKeyExecute is a helper method to define mock.On call
-//   - r admin.RemoveGroupApiKeyApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) RemoveGroupApiKeyExecute(r any) *ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call {
-	return &ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call{Call: _e.mock.On("RemoveGroupApiKeyExecute", r)}
+// RemoveProjectApiKeyExecute is a helper method to define mock.On call
+//   - r admin.RemoveProjectApiKeyApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) RemoveProjectApiKeyExecute(r any) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call {
+	return &ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call{Call: _e.mock.On("RemoveProjectApiKeyExecute", r)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call) Run(run func(r admin.RemoveGroupApiKeyApiRequest)) *ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call) Run(run func(r admin.RemoveProjectApiKeyApiRequest)) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RemoveGroupApiKeyApiRequest))
+		run(args[0].(admin.RemoveProjectApiKeyApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call) Return(_a0 *http.Response, _a1 error) *ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call) Return(_a0 *http.Response, _a1 error) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call) RunAndReturn(run func(admin.RemoveGroupApiKeyApiRequest) (*http.Response, error)) *ProgrammaticAPIKeysApi_RemoveGroupApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call) RunAndReturn(run func(admin.RemoveProjectApiKeyApiRequest) (*http.Response, error)) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RemoveGroupApiKeyWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) RemoveGroupApiKeyWithParams(ctx context.Context, args *admin.RemoveGroupApiKeyApiParams) admin.RemoveGroupApiKeyApiRequest {
+// RemoveProjectApiKeyWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) RemoveProjectApiKeyWithParams(ctx context.Context, args *admin.RemoveProjectApiKeyApiParams) admin.RemoveProjectApiKeyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveGroupApiKeyWithParams")
+		panic("no return value specified for RemoveProjectApiKeyWithParams")
 	}
 
-	var r0 admin.RemoveGroupApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveGroupApiKeyApiParams) admin.RemoveGroupApiKeyApiRequest); ok {
+	var r0 admin.RemoveProjectApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveProjectApiKeyApiParams) admin.RemoveProjectApiKeyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.RemoveGroupApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.RemoveProjectApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveGroupApiKeyWithParams'
-type ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call struct {
+// ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectApiKeyWithParams'
+type ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call struct {
 	*mock.Call
 }
 
-// RemoveGroupApiKeyWithParams is a helper method to define mock.On call
+// RemoveProjectApiKeyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.RemoveGroupApiKeyApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) RemoveGroupApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call {
-	return &ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call{Call: _e.mock.On("RemoveGroupApiKeyWithParams", ctx, args)}
+//   - args *admin.RemoveProjectApiKeyApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) RemoveProjectApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call {
+	return &ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call{Call: _e.mock.On("RemoveProjectApiKeyWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveGroupApiKeyApiParams)) *ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveProjectApiKeyApiParams)) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RemoveGroupApiKeyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.RemoveProjectApiKeyApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call) Return(_a0 admin.RemoveGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call) Return(_a0 admin.RemoveProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveGroupApiKeyApiParams) admin.RemoveGroupApiKeyApiRequest) *ProgrammaticAPIKeysApi_RemoveGroupApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveProjectApiKeyApiParams) admin.RemoveProjectApiKeyApiRequest) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateApiKey provides a mock function with given fields: ctx, orgId, apiUserId, updateAtlasOrganizationApiKey
+func (_m *ProgrammaticAPIKeysApi) UpdateApiKey(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *admin.UpdateAtlasOrganizationApiKey) admin.UpdateApiKeyApiRequest {
+	ret := _m.Called(ctx, orgId, apiUserId, updateAtlasOrganizationApiKey)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateApiKey")
+	}
+
+	var r0 admin.UpdateApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UpdateAtlasOrganizationApiKey) admin.UpdateApiKeyApiRequest); ok {
+		r0 = rf(ctx, orgId, apiUserId, updateAtlasOrganizationApiKey)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateApiKeyApiRequest)
+	}
+
+	return r0
+}
+
+// ProgrammaticAPIKeysApi_UpdateApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateApiKey'
+type ProgrammaticAPIKeysApi_UpdateApiKey_Call struct {
+	*mock.Call
+}
+
+// UpdateApiKey is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - apiUserId string
+//   - updateAtlasOrganizationApiKey *admin.UpdateAtlasOrganizationApiKey
+func (_e *ProgrammaticAPIKeysApi_Expecter) UpdateApiKey(ctx any, orgId any, apiUserId any, updateAtlasOrganizationApiKey any) *ProgrammaticAPIKeysApi_UpdateApiKey_Call {
+	return &ProgrammaticAPIKeysApi_UpdateApiKey_Call{Call: _e.mock.On("UpdateApiKey", ctx, orgId, apiUserId, updateAtlasOrganizationApiKey)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKey_Call) Run(run func(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *admin.UpdateAtlasOrganizationApiKey)) *ProgrammaticAPIKeysApi_UpdateApiKey_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.UpdateAtlasOrganizationApiKey))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKey_Call) Return(_a0 admin.UpdateApiKeyApiRequest) *ProgrammaticAPIKeysApi_UpdateApiKey_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKey_Call) RunAndReturn(run func(context.Context, string, string, *admin.UpdateAtlasOrganizationApiKey) admin.UpdateApiKeyApiRequest) *ProgrammaticAPIKeysApi_UpdateApiKey_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateApiKeyExecute provides a mock function with given fields: r
+func (_m *ProgrammaticAPIKeysApi) UpdateApiKeyExecute(r admin.UpdateApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateApiKeyExecute")
+	}
+
+	var r0 *admin.ApiKeyUserDetails
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ApiKeyUserDetails)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateApiKeyApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateApiKeyApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateApiKeyExecute'
+type ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateApiKeyExecute is a helper method to define mock.On call
+//   - r admin.UpdateApiKeyApiRequest
+func (_e *ProgrammaticAPIKeysApi_Expecter) UpdateApiKeyExecute(r any) *ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call {
+	return &ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call{Call: _e.mock.On("UpdateApiKeyExecute", r)}
+}
+
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call) Run(run func(r admin.UpdateApiKeyApiRequest)) *ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateApiKeyApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call) RunAndReturn(run func(admin.UpdateApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_UpdateApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2098,165 +2214,49 @@ func (_c *ProgrammaticAPIKeysApi_UpdateApiKeyRolesWithParams_Call) RunAndReturn(
 	return _c
 }
 
-// UpdateOrgApiKey provides a mock function with given fields: ctx, orgId, apiUserId, updateAtlasOrganizationApiKey
-func (_m *ProgrammaticAPIKeysApi) UpdateOrgApiKey(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *admin.UpdateAtlasOrganizationApiKey) admin.UpdateOrgApiKeyApiRequest {
-	ret := _m.Called(ctx, orgId, apiUserId, updateAtlasOrganizationApiKey)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateOrgApiKey")
-	}
-
-	var r0 admin.UpdateOrgApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UpdateAtlasOrganizationApiKey) admin.UpdateOrgApiKeyApiRequest); ok {
-		r0 = rf(ctx, orgId, apiUserId, updateAtlasOrganizationApiKey)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateOrgApiKeyApiRequest)
-	}
-
-	return r0
-}
-
-// ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgApiKey'
-type ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call struct {
-	*mock.Call
-}
-
-// UpdateOrgApiKey is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - apiUserId string
-//   - updateAtlasOrganizationApiKey *admin.UpdateAtlasOrganizationApiKey
-func (_e *ProgrammaticAPIKeysApi_Expecter) UpdateOrgApiKey(ctx any, orgId any, apiUserId any, updateAtlasOrganizationApiKey any) *ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call {
-	return &ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call{Call: _e.mock.On("UpdateOrgApiKey", ctx, orgId, apiUserId, updateAtlasOrganizationApiKey)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call) Run(run func(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *admin.UpdateAtlasOrganizationApiKey)) *ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.UpdateAtlasOrganizationApiKey))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call) Return(_a0 admin.UpdateOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call) RunAndReturn(run func(context.Context, string, string, *admin.UpdateAtlasOrganizationApiKey) admin.UpdateOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_UpdateOrgApiKey_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateOrgApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) UpdateOrgApiKeyExecute(r admin.UpdateOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateOrgApiKeyExecute")
-	}
-
-	var r0 *admin.ApiKeyUserDetails
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateOrgApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiKeyUserDetails)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpdateOrgApiKeyApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpdateOrgApiKeyApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgApiKeyExecute'
-type ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call struct {
-	*mock.Call
-}
-
-// UpdateOrgApiKeyExecute is a helper method to define mock.On call
-//   - r admin.UpdateOrgApiKeyApiRequest
-func (_e *ProgrammaticAPIKeysApi_Expecter) UpdateOrgApiKeyExecute(r any) *ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call {
-	return &ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call{Call: _e.mock.On("UpdateOrgApiKeyExecute", r)}
-}
-
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call) Run(run func(r admin.UpdateOrgApiKeyApiRequest)) *ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateOrgApiKeyApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call) RunAndReturn(run func(admin.UpdateOrgApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_UpdateOrgApiKeyExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateOrgApiKeyWithParams provides a mock function with given fields: ctx, args
-func (_m *ProgrammaticAPIKeysApi) UpdateOrgApiKeyWithParams(ctx context.Context, args *admin.UpdateOrgApiKeyApiParams) admin.UpdateOrgApiKeyApiRequest {
+// UpdateApiKeyWithParams provides a mock function with given fields: ctx, args
+func (_m *ProgrammaticAPIKeysApi) UpdateApiKeyWithParams(ctx context.Context, args *admin.UpdateApiKeyApiParams) admin.UpdateApiKeyApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateOrgApiKeyWithParams")
+		panic("no return value specified for UpdateApiKeyWithParams")
 	}
 
-	var r0 admin.UpdateOrgApiKeyApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateOrgApiKeyApiParams) admin.UpdateOrgApiKeyApiRequest); ok {
+	var r0 admin.UpdateApiKeyApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateApiKeyApiParams) admin.UpdateApiKeyApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateOrgApiKeyApiRequest)
+		r0 = ret.Get(0).(admin.UpdateApiKeyApiRequest)
 	}
 
 	return r0
 }
 
-// ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgApiKeyWithParams'
-type ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call struct {
+// ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateApiKeyWithParams'
+type ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateOrgApiKeyWithParams is a helper method to define mock.On call
+// UpdateApiKeyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateOrgApiKeyApiParams
-func (_e *ProgrammaticAPIKeysApi_Expecter) UpdateOrgApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call {
-	return &ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call{Call: _e.mock.On("UpdateOrgApiKeyWithParams", ctx, args)}
+//   - args *admin.UpdateApiKeyApiParams
+func (_e *ProgrammaticAPIKeysApi_Expecter) UpdateApiKeyWithParams(ctx any, args any) *ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call {
+	return &ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call{Call: _e.mock.On("UpdateApiKeyWithParams", ctx, args)}
 }
 
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateOrgApiKeyApiParams)) *ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateApiKeyApiParams)) *ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateOrgApiKeyApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateApiKeyApiParams))
 	})
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call) Return(_a0 admin.UpdateOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call) Return(_a0 admin.UpdateApiKeyApiRequest) *ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateOrgApiKeyApiParams) admin.UpdateOrgApiKeyApiRequest) *ProgrammaticAPIKeysApi_UpdateOrgApiKeyWithParams_Call {
+func (_c *ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateApiKeyApiParams) admin.UpdateApiKeyApiRequest) *ProgrammaticAPIKeysApi_UpdateApiKeyWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

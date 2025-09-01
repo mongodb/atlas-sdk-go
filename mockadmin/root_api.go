@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -185,67 +185,67 @@ func (_c *RootApi_GetSystemStatusWithParams_Call) RunAndReturn(run func(context.
 	return _c
 }
 
-// ListControlPlaneAddresses provides a mock function with given fields: ctx
-func (_m *RootApi) ListControlPlaneAddresses(ctx context.Context) admin.ListControlPlaneAddressesApiRequest {
+// ReturnAllControlPlaneIpAddresses provides a mock function with given fields: ctx
+func (_m *RootApi) ReturnAllControlPlaneIpAddresses(ctx context.Context) admin.ReturnAllControlPlaneIpAddressesApiRequest {
 	ret := _m.Called(ctx)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListControlPlaneAddresses")
+		panic("no return value specified for ReturnAllControlPlaneIpAddresses")
 	}
 
-	var r0 admin.ListControlPlaneAddressesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context) admin.ListControlPlaneAddressesApiRequest); ok {
+	var r0 admin.ReturnAllControlPlaneIpAddressesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context) admin.ReturnAllControlPlaneIpAddressesApiRequest); ok {
 		r0 = rf(ctx)
 	} else {
-		r0 = ret.Get(0).(admin.ListControlPlaneAddressesApiRequest)
+		r0 = ret.Get(0).(admin.ReturnAllControlPlaneIpAddressesApiRequest)
 	}
 
 	return r0
 }
 
-// RootApi_ListControlPlaneAddresses_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListControlPlaneAddresses'
-type RootApi_ListControlPlaneAddresses_Call struct {
+// RootApi_ReturnAllControlPlaneIpAddresses_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ReturnAllControlPlaneIpAddresses'
+type RootApi_ReturnAllControlPlaneIpAddresses_Call struct {
 	*mock.Call
 }
 
-// ListControlPlaneAddresses is a helper method to define mock.On call
+// ReturnAllControlPlaneIpAddresses is a helper method to define mock.On call
 //   - ctx context.Context
-func (_e *RootApi_Expecter) ListControlPlaneAddresses(ctx any) *RootApi_ListControlPlaneAddresses_Call {
-	return &RootApi_ListControlPlaneAddresses_Call{Call: _e.mock.On("ListControlPlaneAddresses", ctx)}
+func (_e *RootApi_Expecter) ReturnAllControlPlaneIpAddresses(ctx any) *RootApi_ReturnAllControlPlaneIpAddresses_Call {
+	return &RootApi_ReturnAllControlPlaneIpAddresses_Call{Call: _e.mock.On("ReturnAllControlPlaneIpAddresses", ctx)}
 }
 
-func (_c *RootApi_ListControlPlaneAddresses_Call) Run(run func(ctx context.Context)) *RootApi_ListControlPlaneAddresses_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddresses_Call) Run(run func(ctx context.Context)) *RootApi_ReturnAllControlPlaneIpAddresses_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context))
 	})
 	return _c
 }
 
-func (_c *RootApi_ListControlPlaneAddresses_Call) Return(_a0 admin.ListControlPlaneAddressesApiRequest) *RootApi_ListControlPlaneAddresses_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddresses_Call) Return(_a0 admin.ReturnAllControlPlaneIpAddressesApiRequest) *RootApi_ReturnAllControlPlaneIpAddresses_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *RootApi_ListControlPlaneAddresses_Call) RunAndReturn(run func(context.Context) admin.ListControlPlaneAddressesApiRequest) *RootApi_ListControlPlaneAddresses_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddresses_Call) RunAndReturn(run func(context.Context) admin.ReturnAllControlPlaneIpAddressesApiRequest) *RootApi_ReturnAllControlPlaneIpAddresses_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListControlPlaneAddressesExecute provides a mock function with given fields: r
-func (_m *RootApi) ListControlPlaneAddressesExecute(r admin.ListControlPlaneAddressesApiRequest) (*admin.ControlPlaneIPAddresses, *http.Response, error) {
+// ReturnAllControlPlaneIpAddressesExecute provides a mock function with given fields: r
+func (_m *RootApi) ReturnAllControlPlaneIpAddressesExecute(r admin.ReturnAllControlPlaneIpAddressesApiRequest) (*admin.ControlPlaneIPAddresses, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListControlPlaneAddressesExecute")
+		panic("no return value specified for ReturnAllControlPlaneIpAddressesExecute")
 	}
 
 	var r0 *admin.ControlPlaneIPAddresses
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListControlPlaneAddressesApiRequest) (*admin.ControlPlaneIPAddresses, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ReturnAllControlPlaneIpAddressesApiRequest) (*admin.ControlPlaneIPAddresses, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListControlPlaneAddressesApiRequest) *admin.ControlPlaneIPAddresses); ok {
+	if rf, ok := ret.Get(0).(func(admin.ReturnAllControlPlaneIpAddressesApiRequest) *admin.ControlPlaneIPAddresses); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -253,7 +253,7 @@ func (_m *RootApi) ListControlPlaneAddressesExecute(r admin.ListControlPlaneAddr
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListControlPlaneAddressesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ReturnAllControlPlaneIpAddressesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -261,7 +261,7 @@ func (_m *RootApi) ListControlPlaneAddressesExecute(r admin.ListControlPlaneAddr
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListControlPlaneAddressesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ReturnAllControlPlaneIpAddressesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -270,77 +270,77 @@ func (_m *RootApi) ListControlPlaneAddressesExecute(r admin.ListControlPlaneAddr
 	return r0, r1, r2
 }
 
-// RootApi_ListControlPlaneAddressesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListControlPlaneAddressesExecute'
-type RootApi_ListControlPlaneAddressesExecute_Call struct {
+// RootApi_ReturnAllControlPlaneIpAddressesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ReturnAllControlPlaneIpAddressesExecute'
+type RootApi_ReturnAllControlPlaneIpAddressesExecute_Call struct {
 	*mock.Call
 }
 
-// ListControlPlaneAddressesExecute is a helper method to define mock.On call
-//   - r admin.ListControlPlaneAddressesApiRequest
-func (_e *RootApi_Expecter) ListControlPlaneAddressesExecute(r any) *RootApi_ListControlPlaneAddressesExecute_Call {
-	return &RootApi_ListControlPlaneAddressesExecute_Call{Call: _e.mock.On("ListControlPlaneAddressesExecute", r)}
+// ReturnAllControlPlaneIpAddressesExecute is a helper method to define mock.On call
+//   - r admin.ReturnAllControlPlaneIpAddressesApiRequest
+func (_e *RootApi_Expecter) ReturnAllControlPlaneIpAddressesExecute(r any) *RootApi_ReturnAllControlPlaneIpAddressesExecute_Call {
+	return &RootApi_ReturnAllControlPlaneIpAddressesExecute_Call{Call: _e.mock.On("ReturnAllControlPlaneIpAddressesExecute", r)}
 }
 
-func (_c *RootApi_ListControlPlaneAddressesExecute_Call) Run(run func(r admin.ListControlPlaneAddressesApiRequest)) *RootApi_ListControlPlaneAddressesExecute_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddressesExecute_Call) Run(run func(r admin.ReturnAllControlPlaneIpAddressesApiRequest)) *RootApi_ReturnAllControlPlaneIpAddressesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListControlPlaneAddressesApiRequest))
+		run(args[0].(admin.ReturnAllControlPlaneIpAddressesApiRequest))
 	})
 	return _c
 }
 
-func (_c *RootApi_ListControlPlaneAddressesExecute_Call) Return(_a0 *admin.ControlPlaneIPAddresses, _a1 *http.Response, _a2 error) *RootApi_ListControlPlaneAddressesExecute_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddressesExecute_Call) Return(_a0 *admin.ControlPlaneIPAddresses, _a1 *http.Response, _a2 error) *RootApi_ReturnAllControlPlaneIpAddressesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *RootApi_ListControlPlaneAddressesExecute_Call) RunAndReturn(run func(admin.ListControlPlaneAddressesApiRequest) (*admin.ControlPlaneIPAddresses, *http.Response, error)) *RootApi_ListControlPlaneAddressesExecute_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddressesExecute_Call) RunAndReturn(run func(admin.ReturnAllControlPlaneIpAddressesApiRequest) (*admin.ControlPlaneIPAddresses, *http.Response, error)) *RootApi_ReturnAllControlPlaneIpAddressesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListControlPlaneAddressesWithParams provides a mock function with given fields: ctx, args
-func (_m *RootApi) ListControlPlaneAddressesWithParams(ctx context.Context, args *admin.ListControlPlaneAddressesApiParams) admin.ListControlPlaneAddressesApiRequest {
+// ReturnAllControlPlaneIpAddressesWithParams provides a mock function with given fields: ctx, args
+func (_m *RootApi) ReturnAllControlPlaneIpAddressesWithParams(ctx context.Context, args *admin.ReturnAllControlPlaneIpAddressesApiParams) admin.ReturnAllControlPlaneIpAddressesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListControlPlaneAddressesWithParams")
+		panic("no return value specified for ReturnAllControlPlaneIpAddressesWithParams")
 	}
 
-	var r0 admin.ListControlPlaneAddressesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListControlPlaneAddressesApiParams) admin.ListControlPlaneAddressesApiRequest); ok {
+	var r0 admin.ReturnAllControlPlaneIpAddressesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ReturnAllControlPlaneIpAddressesApiParams) admin.ReturnAllControlPlaneIpAddressesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListControlPlaneAddressesApiRequest)
+		r0 = ret.Get(0).(admin.ReturnAllControlPlaneIpAddressesApiRequest)
 	}
 
 	return r0
 }
 
-// RootApi_ListControlPlaneAddressesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListControlPlaneAddressesWithParams'
-type RootApi_ListControlPlaneAddressesWithParams_Call struct {
+// RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ReturnAllControlPlaneIpAddressesWithParams'
+type RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListControlPlaneAddressesWithParams is a helper method to define mock.On call
+// ReturnAllControlPlaneIpAddressesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListControlPlaneAddressesApiParams
-func (_e *RootApi_Expecter) ListControlPlaneAddressesWithParams(ctx any, args any) *RootApi_ListControlPlaneAddressesWithParams_Call {
-	return &RootApi_ListControlPlaneAddressesWithParams_Call{Call: _e.mock.On("ListControlPlaneAddressesWithParams", ctx, args)}
+//   - args *admin.ReturnAllControlPlaneIpAddressesApiParams
+func (_e *RootApi_Expecter) ReturnAllControlPlaneIpAddressesWithParams(ctx any, args any) *RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call {
+	return &RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call{Call: _e.mock.On("ReturnAllControlPlaneIpAddressesWithParams", ctx, args)}
 }
 
-func (_c *RootApi_ListControlPlaneAddressesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListControlPlaneAddressesApiParams)) *RootApi_ListControlPlaneAddressesWithParams_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call) Run(run func(ctx context.Context, args *admin.ReturnAllControlPlaneIpAddressesApiParams)) *RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListControlPlaneAddressesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ReturnAllControlPlaneIpAddressesApiParams))
 	})
 	return _c
 }
 
-func (_c *RootApi_ListControlPlaneAddressesWithParams_Call) Return(_a0 admin.ListControlPlaneAddressesApiRequest) *RootApi_ListControlPlaneAddressesWithParams_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call) Return(_a0 admin.ReturnAllControlPlaneIpAddressesApiRequest) *RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *RootApi_ListControlPlaneAddressesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListControlPlaneAddressesApiParams) admin.ListControlPlaneAddressesApiRequest) *RootApi_ListControlPlaneAddressesWithParams_Call {
+func (_c *RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ReturnAllControlPlaneIpAddressesApiParams) admin.ReturnAllControlPlaneIpAddressesApiRequest) *RootApi_ReturnAllControlPlaneIpAddressesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

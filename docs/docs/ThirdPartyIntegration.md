@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **Region** | Pointer to **string** | PagerDuty region that indicates the API Uniform Resource Locator (URL) to use. | [optional] 
 **SendCollectionLatencyMetrics** | Pointer to **bool** | Toggle sending collection latency metrics that includes database names and collection namesand latency metrics on reads, writes, commands, and transactions. | [optional] [default to false]
 **SendDatabaseMetrics** | Pointer to **bool** | Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size. | [optional] [default to false]
-**SendQueryStatsMetrics** | Pointer to **bool** | Toggle sending query shape metrics that includes query hash and metrics on latency, execution frequency, documents returned, and timestamps. | [optional] [default to false]
 **SendUserProvidedResourceTags** | Pointer to **bool** | Toggle sending user provided group and cluster resource tags with the datadog metrics. | [optional] [default to false]
 **MicrosoftTeamsWebhookUrl** | Pointer to **string** | Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted. | [optional] 
 **AccountId** | Pointer to **string** | Unique 40-hexadecimal digit string that identifies your New Relic account. | [optional] 
@@ -193,30 +192,6 @@ SetSendDatabaseMetrics sets SendDatabaseMetrics field to given value.
 `func (o *ThirdPartyIntegration) HasSendDatabaseMetrics() bool`
 
 HasSendDatabaseMetrics returns a boolean if a field has been set.
-### GetSendQueryStatsMetrics
-
-`func (o *ThirdPartyIntegration) GetSendQueryStatsMetrics() bool`
-
-GetSendQueryStatsMetrics returns the SendQueryStatsMetrics field if non-nil, zero value otherwise.
-
-### GetSendQueryStatsMetricsOk
-
-`func (o *ThirdPartyIntegration) GetSendQueryStatsMetricsOk() (*bool, bool)`
-
-GetSendQueryStatsMetricsOk returns a tuple with the SendQueryStatsMetrics field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSendQueryStatsMetrics
-
-`func (o *ThirdPartyIntegration) SetSendQueryStatsMetrics(v bool)`
-
-SetSendQueryStatsMetrics sets SendQueryStatsMetrics field to given value.
-
-### HasSendQueryStatsMetrics
-
-`func (o *ThirdPartyIntegration) HasSendQueryStatsMetrics() bool`
-
-HasSendQueryStatsMetrics returns a boolean if a field has been set.
 ### GetSendUserProvidedResourceTags
 
 `func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTags() bool`

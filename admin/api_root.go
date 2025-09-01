@@ -34,26 +34,26 @@ type RootApi interface {
 	GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error)
 
 	/*
-		ListControlPlaneAddresses Return All Control Plane IP Addresses
+		ReturnAllControlPlaneIpAddresses Return All Control Plane IP Addresses
 
 		Returns all control plane IP addresses.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ListControlPlaneAddressesApiRequest
+		@return ReturnAllControlPlaneIpAddressesApiRequest
 	*/
-	ListControlPlaneAddresses(ctx context.Context) ListControlPlaneAddressesApiRequest
+	ReturnAllControlPlaneIpAddresses(ctx context.Context) ReturnAllControlPlaneIpAddressesApiRequest
 	/*
-		ListControlPlaneAddresses Return All Control Plane IP Addresses
+		ReturnAllControlPlaneIpAddresses Return All Control Plane IP Addresses
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListControlPlaneAddressesApiParams - Parameters for the request
-		@return ListControlPlaneAddressesApiRequest
+		@param ReturnAllControlPlaneIpAddressesApiParams - Parameters for the request
+		@return ReturnAllControlPlaneIpAddressesApiRequest
 	*/
-	ListControlPlaneAddressesWithParams(ctx context.Context, args *ListControlPlaneAddressesApiParams) ListControlPlaneAddressesApiRequest
+	ReturnAllControlPlaneIpAddressesWithParams(ctx context.Context, args *ReturnAllControlPlaneIpAddressesApiParams) ReturnAllControlPlaneIpAddressesApiRequest
 
 	// Method available only for mocking purposes
-	ListControlPlaneAddressesExecute(r ListControlPlaneAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error)
+	ReturnAllControlPlaneIpAddressesExecute(r ReturnAllControlPlaneIpAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error)
 }
 
 // RootApiService RootApi service
@@ -164,44 +164,44 @@ func (a *RootApiService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*S
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListControlPlaneAddressesApiRequest struct {
+type ReturnAllControlPlaneIpAddressesApiRequest struct {
 	ctx        context.Context
 	ApiService RootApi
 }
 
-type ListControlPlaneAddressesApiParams struct {
+type ReturnAllControlPlaneIpAddressesApiParams struct {
 }
 
-func (a *RootApiService) ListControlPlaneAddressesWithParams(ctx context.Context, args *ListControlPlaneAddressesApiParams) ListControlPlaneAddressesApiRequest {
-	return ListControlPlaneAddressesApiRequest{
+func (a *RootApiService) ReturnAllControlPlaneIpAddressesWithParams(ctx context.Context, args *ReturnAllControlPlaneIpAddressesApiParams) ReturnAllControlPlaneIpAddressesApiRequest {
+	return ReturnAllControlPlaneIpAddressesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
-func (r ListControlPlaneAddressesApiRequest) Execute() (*ControlPlaneIPAddresses, *http.Response, error) {
-	return r.ApiService.ListControlPlaneAddressesExecute(r)
+func (r ReturnAllControlPlaneIpAddressesApiRequest) Execute() (*ControlPlaneIPAddresses, *http.Response, error) {
+	return r.ApiService.ReturnAllControlPlaneIpAddressesExecute(r)
 }
 
 /*
-ListControlPlaneAddresses Return All Control Plane IP Addresses
+ReturnAllControlPlaneIpAddresses Return All Control Plane IP Addresses
 
 Returns all control plane IP addresses.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ListControlPlaneAddressesApiRequest
+	@return ReturnAllControlPlaneIpAddressesApiRequest
 */
-func (a *RootApiService) ListControlPlaneAddresses(ctx context.Context) ListControlPlaneAddressesApiRequest {
-	return ListControlPlaneAddressesApiRequest{
+func (a *RootApiService) ReturnAllControlPlaneIpAddresses(ctx context.Context) ReturnAllControlPlaneIpAddressesApiRequest {
+	return ReturnAllControlPlaneIpAddressesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
-// ListControlPlaneAddressesExecute executes the request
+// ReturnAllControlPlaneIpAddressesExecute executes the request
 //
 //	@return ControlPlaneIPAddresses
-func (a *RootApiService) ListControlPlaneAddressesExecute(r ListControlPlaneAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
+func (a *RootApiService) ReturnAllControlPlaneIpAddressesExecute(r ReturnAllControlPlaneIpAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -209,7 +209,7 @@ func (a *RootApiService) ListControlPlaneAddressesExecute(r ListControlPlaneAddr
 		localVarReturnValue *ControlPlaneIPAddresses
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.ListControlPlaneAddresses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.ReturnAllControlPlaneIpAddresses")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

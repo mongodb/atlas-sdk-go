@@ -4,13 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"go.mongodb.org/atlas-sdk/v20250312001/auth"
+	"go.mongodb.org/atlas-sdk/v20250312006/auth"
 	"log"
 	"os"
 	"strings"
 
-	"go.mongodb.org/atlas-sdk/v20250312001/admin"
-	"go.mongodb.org/atlas-sdk/v20250312001/auth/clientcredentials"
+	"go.mongodb.org/atlas-sdk/v20250312006/admin"
+	"go.mongodb.org/atlas-sdk/v20250312006/auth/clientcredentials"
 )
 
 // Variable provided as example.
@@ -57,7 +57,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
-	projects, _, err := sdk.ProjectsApi.ListGroups(ctx).Execute()
+	projects, _, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
 	if err != nil {
 		log.Fatalln(err.Error())
 	}

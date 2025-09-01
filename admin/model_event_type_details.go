@@ -2,7 +2,7 @@
 
 package admin
 
-// EventTypeDetails A singular type of event.
+// EventTypeDetails A singular type of event
 type EventTypeDetails struct {
 	// Whether or not this event type can be configured as an alert via the API.
 	// Read only field.

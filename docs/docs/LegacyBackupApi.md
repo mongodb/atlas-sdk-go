@@ -4,23 +4,23 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClusterRestoreJob**](LegacyBackupApi.md#CreateClusterRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Create One Legacy Backup Restore Job
-[**DeleteClusterSnapshot**](LegacyBackupApi.md#DeleteClusterSnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Remove One Legacy Backup Snapshot
-[**GetClusterBackupCheckpoint**](LegacyBackupApi.md#GetClusterBackupCheckpoint) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId} | Return One Legacy Backup Checkpoint
-[**GetClusterRestoreJob**](LegacyBackupApi.md#GetClusterRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId} | Return One Legacy Backup Restore Job
-[**GetClusterSnapshot**](LegacyBackupApi.md#GetClusterSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Return One Legacy Backup Snapshot
-[**GetClusterSnapshotSchedule**](LegacyBackupApi.md#GetClusterSnapshotSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Return One Snapshot Schedule
-[**ListClusterBackupCheckpoints**](LegacyBackupApi.md#ListClusterBackupCheckpoints) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints | Return All Legacy Backup Checkpoints
-[**ListClusterRestoreJobs**](LegacyBackupApi.md#ListClusterRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Return All Legacy Backup Restore Jobs
-[**ListClusterSnapshots**](LegacyBackupApi.md#ListClusterSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots | Return All Legacy Backup Snapshots
-[**UpdateClusterSnapshot**](LegacyBackupApi.md#UpdateClusterSnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Update Expiration Date for One Legacy Backup Snapshot
-[**UpdateClusterSnapshotSchedule**](LegacyBackupApi.md#UpdateClusterSnapshotSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Update Snapshot Schedule for One Cluster
+[**CreateLegacyBackupRestoreJob**](LegacyBackupApi.md#CreateLegacyBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Create One Legacy Backup Restore Job
+[**DeleteLegacySnapshot**](LegacyBackupApi.md#DeleteLegacySnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Remove One Legacy Backup Snapshot
+[**GetLegacyBackupCheckpoint**](LegacyBackupApi.md#GetLegacyBackupCheckpoint) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId} | Return One Legacy Backup Checkpoint
+[**GetLegacyBackupRestoreJob**](LegacyBackupApi.md#GetLegacyBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId} | Return One Legacy Backup Restore Job
+[**GetLegacySnapshot**](LegacyBackupApi.md#GetLegacySnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Return One Legacy Backup Snapshot
+[**GetLegacySnapshotSchedule**](LegacyBackupApi.md#GetLegacySnapshotSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Return One Snapshot Schedule
+[**ListLegacyBackupCheckpoints**](LegacyBackupApi.md#ListLegacyBackupCheckpoints) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints | Return All Legacy Backup Checkpoints
+[**ListLegacyBackupRestoreJobs**](LegacyBackupApi.md#ListLegacyBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Return All Legacy Backup Restore Jobs
+[**ListLegacySnapshots**](LegacyBackupApi.md#ListLegacySnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots | Return All Legacy Backup Snapshots
+[**UpdateLegacySnapshotRetention**](LegacyBackupApi.md#UpdateLegacySnapshotRetention) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Update Expiration Date for One Legacy Backup Snapshot
+[**UpdateLegacySnapshotSchedule**](LegacyBackupApi.md#UpdateLegacySnapshotSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Update Snapshot Schedule for One Cluster
 
 
 
-## CreateClusterRestoreJob
+## CreateLegacyBackupRestoreJob
 
-> PaginatedRestoreJob CreateClusterRestoreJob(ctx, groupId, clusterName, backupRestoreJob BackupRestoreJob).Execute()
+> PaginatedRestoreJob CreateLegacyBackupRestoreJob(ctx, groupId, clusterName, backupRestoreJob BackupRestoreJob).Execute()
 
 Create One Legacy Backup Restore Job
 
@@ -35,7 +35,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -52,17 +52,17 @@ func main() {
     clusterName := "clusterName_example" // string | 
     backupRestoreJob := *openapiclient.NewBackupRestoreJob(*openapiclient.NewBackupRestoreJobDelivery("MethodName_example")) // BackupRestoreJob | 
 
-    resp, r, err := sdk.LegacyBackupApi.CreateClusterRestoreJob(context.Background(), groupId, clusterName, &backupRestoreJob).Execute()
+    resp, r, err := sdk.LegacyBackupApi.CreateLegacyBackupRestoreJob(context.Background(), groupId, clusterName, &backupRestoreJob).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.CreateClusterRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.CreateLegacyBackupRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateClusterRestoreJob`: PaginatedRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.CreateClusterRestoreJob`: %v (%v)\n", resp, r)
+    // response from `CreateLegacyBackupRestoreJob`: PaginatedRestoreJob
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.CreateLegacyBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateClusterRestoreJobRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateLegacyBackupRestoreJobRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -103,9 +103,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteClusterSnapshot
+## DeleteLegacySnapshot
 
-> DeleteClusterSnapshot(ctx, groupId, clusterName, snapshotId).Execute()
+> DeleteLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Legacy Backup Snapshot
 
@@ -120,7 +120,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -137,9 +137,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    r, err := sdk.LegacyBackupApi.DeleteClusterSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    r, err := sdk.LegacyBackupApi.DeleteLegacySnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.DeleteClusterSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.DeleteLegacySnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteClusterSnapshotRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteLegacySnapshotRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -187,9 +187,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetClusterBackupCheckpoint
+## GetLegacyBackupCheckpoint
 
-> ApiAtlasCheckpoint GetClusterBackupCheckpoint(ctx, groupId, checkpointId, clusterName).Execute()
+> ApiAtlasCheckpoint GetLegacyBackupCheckpoint(ctx, groupId, checkpointId, clusterName).Execute()
 
 Return One Legacy Backup Checkpoint
 
@@ -204,7 +204,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -221,17 +221,17 @@ func main() {
     checkpointId := "checkpointId_example" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.LegacyBackupApi.GetClusterBackupCheckpoint(context.Background(), groupId, checkpointId, clusterName).Execute()
+    resp, r, err := sdk.LegacyBackupApi.GetLegacyBackupCheckpoint(context.Background(), groupId, checkpointId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetClusterBackupCheckpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacyBackupCheckpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetClusterBackupCheckpoint`: ApiAtlasCheckpoint
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetClusterBackupCheckpoint`: %v (%v)\n", resp, r)
+    // response from `GetLegacyBackupCheckpoint`: ApiAtlasCheckpoint
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacyBackupCheckpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetClusterBackupCheckpointRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLegacyBackupCheckpointRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -273,9 +273,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetClusterRestoreJob
+## GetLegacyBackupRestoreJob
 
-> BackupRestoreJob GetClusterRestoreJob(ctx, groupId, clusterName, jobId).Execute()
+> BackupRestoreJob GetLegacyBackupRestoreJob(ctx, groupId, clusterName, jobId).Execute()
 
 Return One Legacy Backup Restore Job
 
@@ -290,7 +290,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -307,17 +307,17 @@ func main() {
     clusterName := "clusterName_example" // string | 
     jobId := "jobId_example" // string | 
 
-    resp, r, err := sdk.LegacyBackupApi.GetClusterRestoreJob(context.Background(), groupId, clusterName, jobId).Execute()
+    resp, r, err := sdk.LegacyBackupApi.GetLegacyBackupRestoreJob(context.Background(), groupId, clusterName, jobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetClusterRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacyBackupRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetClusterRestoreJob`: BackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetClusterRestoreJob`: %v (%v)\n", resp, r)
+    // response from `GetLegacyBackupRestoreJob`: BackupRestoreJob
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacyBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetClusterRestoreJobRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLegacyBackupRestoreJobRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -359,9 +359,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetClusterSnapshot
+## GetLegacySnapshot
 
-> BackupSnapshot GetClusterSnapshot(ctx, groupId, clusterName, snapshotId).Execute()
+> BackupSnapshot GetLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
 
 Return One Legacy Backup Snapshot
 
@@ -376,7 +376,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -393,17 +393,17 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    resp, r, err := sdk.LegacyBackupApi.GetClusterSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.LegacyBackupApi.GetLegacySnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetClusterSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacySnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetClusterSnapshot`: BackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetClusterSnapshot`: %v (%v)\n", resp, r)
+    // response from `GetLegacySnapshot`: BackupSnapshot
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacySnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetClusterSnapshotRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLegacySnapshotRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -445,9 +445,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetClusterSnapshotSchedule
+## GetLegacySnapshotSchedule
 
-> ApiAtlasSnapshotSchedule GetClusterSnapshotSchedule(ctx, groupId, clusterName).Execute()
+> ApiAtlasSnapshotSchedule GetLegacySnapshotSchedule(ctx, groupId, clusterName).Execute()
 
 Return One Snapshot Schedule
 
@@ -462,7 +462,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -478,17 +478,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.LegacyBackupApi.GetClusterSnapshotSchedule(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.LegacyBackupApi.GetLegacySnapshotSchedule(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetClusterSnapshotSchedule`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacySnapshotSchedule`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetClusterSnapshotSchedule`: ApiAtlasSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetClusterSnapshotSchedule`: %v (%v)\n", resp, r)
+    // response from `GetLegacySnapshotSchedule`: ApiAtlasSnapshotSchedule
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacySnapshotSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetClusterSnapshotScheduleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLegacySnapshotScheduleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -528,9 +528,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListClusterBackupCheckpoints
+## ListLegacyBackupCheckpoints
 
-> PaginatedApiAtlasCheckpoint ListClusterBackupCheckpoints(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiAtlasCheckpoint ListLegacyBackupCheckpoints(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Legacy Backup Checkpoints
 
@@ -545,7 +545,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -564,17 +564,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.LegacyBackupApi.ListClusterBackupCheckpoints(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.LegacyBackupApi.ListLegacyBackupCheckpoints(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListClusterBackupCheckpoints`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacyBackupCheckpoints`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListClusterBackupCheckpoints`: PaginatedApiAtlasCheckpoint
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListClusterBackupCheckpoints`: %v (%v)\n", resp, r)
+    // response from `ListLegacyBackupCheckpoints`: PaginatedApiAtlasCheckpoint
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacyBackupCheckpoints`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -589,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListClusterBackupCheckpointsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListLegacyBackupCheckpointsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -617,9 +617,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListClusterRestoreJobs
+## ListLegacyBackupRestoreJobs
 
-> PaginatedRestoreJob ListClusterRestoreJobs(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).BatchId(batchId).Execute()
+> PaginatedRestoreJob ListLegacyBackupRestoreJobs(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).BatchId(batchId).Execute()
 
 Return All Legacy Backup Restore Jobs
 
@@ -634,7 +634,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -654,17 +654,17 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     batchId := "batchId_example" // string |  (optional)
 
-    resp, r, err := sdk.LegacyBackupApi.ListClusterRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).BatchId(batchId).Execute()
+    resp, r, err := sdk.LegacyBackupApi.ListLegacyBackupRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).BatchId(batchId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListClusterRestoreJobs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacyBackupRestoreJobs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListClusterRestoreJobs`: PaginatedRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListClusterRestoreJobs`: %v (%v)\n", resp, r)
+    // response from `ListLegacyBackupRestoreJobs`: PaginatedRestoreJob
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacyBackupRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -679,7 +679,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListClusterRestoreJobsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListLegacyBackupRestoreJobsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -708,9 +708,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListClusterSnapshots
+## ListLegacySnapshots
 
-> PaginatedSnapshot ListClusterSnapshots(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Completed(completed).Execute()
+> PaginatedSnapshot ListLegacySnapshots(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Completed(completed).Execute()
 
 Return All Legacy Backup Snapshots
 
@@ -725,7 +725,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -745,17 +745,17 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     completed := "completed_example" // string |  (optional) (default to "true")
 
-    resp, r, err := sdk.LegacyBackupApi.ListClusterSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Completed(completed).Execute()
+    resp, r, err := sdk.LegacyBackupApi.ListLegacySnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Completed(completed).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListClusterSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacySnapshots`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListClusterSnapshots`: PaginatedSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListClusterSnapshots`: %v (%v)\n", resp, r)
+    // response from `ListLegacySnapshots`: PaginatedSnapshot
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacySnapshots`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -770,7 +770,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListClusterSnapshotsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListLegacySnapshotsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -799,9 +799,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateClusterSnapshot
+## UpdateLegacySnapshotRetention
 
-> BackupSnapshot UpdateClusterSnapshot(ctx, groupId, clusterName, snapshotId, backupSnapshot BackupSnapshot).Execute()
+> BackupSnapshot UpdateLegacySnapshotRetention(ctx, groupId, clusterName, snapshotId, backupSnapshot BackupSnapshot).Execute()
 
 Update Expiration Date for One Legacy Backup Snapshot
 
@@ -816,7 +816,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -834,17 +834,17 @@ func main() {
     snapshotId := "snapshotId_example" // string | 
     backupSnapshot := *openapiclient.NewBackupSnapshot() // BackupSnapshot | 
 
-    resp, r, err := sdk.LegacyBackupApi.UpdateClusterSnapshot(context.Background(), groupId, clusterName, snapshotId, &backupSnapshot).Execute()
+    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotRetention(context.Background(), groupId, clusterName, snapshotId, &backupSnapshot).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateClusterSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotRetention`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateClusterSnapshot`: BackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateClusterSnapshot`: %v (%v)\n", resp, r)
+    // response from `UpdateLegacySnapshotRetention`: BackupSnapshot
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateLegacySnapshotRetention`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -860,7 +860,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateClusterSnapshotRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateLegacySnapshotRetentionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -887,9 +887,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateClusterSnapshotSchedule
+## UpdateLegacySnapshotSchedule
 
-> ApiAtlasSnapshotSchedule UpdateClusterSnapshotSchedule(ctx, groupId, clusterName, apiAtlasSnapshotSchedule ApiAtlasSnapshotSchedule).Execute()
+> ApiAtlasSnapshotSchedule UpdateLegacySnapshotSchedule(ctx, groupId, clusterName, apiAtlasSnapshotSchedule ApiAtlasSnapshotSchedule).Execute()
 
 Update Snapshot Schedule for One Cluster
 
@@ -904,7 +904,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -921,17 +921,17 @@ func main() {
     clusterName := "clusterName_example" // string | 
     apiAtlasSnapshotSchedule := *openapiclient.NewApiAtlasSnapshotSchedule(int(123), "32b6e34b3d91647abb20e7b8", int(123), "32b6e34b3d91647abb20e7b8", int(123), int(123), int(123), int(123), int(123)) // ApiAtlasSnapshotSchedule | 
 
-    resp, r, err := sdk.LegacyBackupApi.UpdateClusterSnapshotSchedule(context.Background(), groupId, clusterName, &apiAtlasSnapshotSchedule).Execute()
+    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotSchedule(context.Background(), groupId, clusterName, &apiAtlasSnapshotSchedule).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateClusterSnapshotSchedule`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotSchedule`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateClusterSnapshotSchedule`: ApiAtlasSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateClusterSnapshotSchedule`: %v (%v)\n", resp, r)
+    // response from `UpdateLegacySnapshotSchedule`: ApiAtlasSnapshotSchedule
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateLegacySnapshotSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -946,7 +946,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateClusterSnapshotScheduleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateLegacySnapshotScheduleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

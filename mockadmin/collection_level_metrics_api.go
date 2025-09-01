@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -25,397 +25,72 @@ func (_m *CollectionLevelMetricsApi) EXPECT() *CollectionLevelMetricsApi_Expecte
 	return &CollectionLevelMetricsApi_Expecter{mock: &_m.Mock}
 }
 
-// GetClusterNamespaces provides a mock function with given fields: ctx, groupId, clusterName, clusterView
-func (_m *CollectionLevelMetricsApi) GetClusterNamespaces(ctx context.Context, groupId string, clusterName string, clusterView string) admin.GetClusterNamespacesApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName, clusterView)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetClusterNamespaces")
-	}
-
-	var r0 admin.GetClusterNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetClusterNamespacesApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName, clusterView)
-	} else {
-		r0 = ret.Get(0).(admin.GetClusterNamespacesApiRequest)
-	}
-
-	return r0
-}
-
-// CollectionLevelMetricsApi_GetClusterNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterNamespaces'
-type CollectionLevelMetricsApi_GetClusterNamespaces_Call struct {
-	*mock.Call
-}
-
-// GetClusterNamespaces is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - clusterName string
-//   - clusterView string
-func (_e *CollectionLevelMetricsApi_Expecter) GetClusterNamespaces(ctx any, groupId any, clusterName any, clusterView any) *CollectionLevelMetricsApi_GetClusterNamespaces_Call {
-	return &CollectionLevelMetricsApi_GetClusterNamespaces_Call{Call: _e.mock.On("GetClusterNamespaces", ctx, groupId, clusterName, clusterView)}
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespaces_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterView string)) *CollectionLevelMetricsApi_GetClusterNamespaces_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespaces_Call) Return(_a0 admin.GetClusterNamespacesApiRequest) *CollectionLevelMetricsApi_GetClusterNamespaces_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespaces_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetClusterNamespacesApiRequest) *CollectionLevelMetricsApi_GetClusterNamespaces_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetClusterNamespacesExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) GetClusterNamespacesExecute(r admin.GetClusterNamespacesApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetClusterNamespacesExecute")
-	}
-
-	var r0 *admin.CollStatsRankedNamespaces
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetClusterNamespacesApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetClusterNamespacesApiRequest) *admin.CollStatsRankedNamespaces); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.CollStatsRankedNamespaces)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetClusterNamespacesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetClusterNamespacesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterNamespacesExecute'
-type CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call struct {
-	*mock.Call
-}
-
-// GetClusterNamespacesExecute is a helper method to define mock.On call
-//   - r admin.GetClusterNamespacesApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) GetClusterNamespacesExecute(r any) *CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call {
-	return &CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call{Call: _e.mock.On("GetClusterNamespacesExecute", r)}
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call) Run(run func(r admin.GetClusterNamespacesApiRequest)) *CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetClusterNamespacesApiRequest))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call) Return(_a0 *admin.CollStatsRankedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call) RunAndReturn(run func(admin.GetClusterNamespacesApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_GetClusterNamespacesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetClusterNamespacesWithParams provides a mock function with given fields: ctx, args
-func (_m *CollectionLevelMetricsApi) GetClusterNamespacesWithParams(ctx context.Context, args *admin.GetClusterNamespacesApiParams) admin.GetClusterNamespacesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetClusterNamespacesWithParams")
-	}
-
-	var r0 admin.GetClusterNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetClusterNamespacesApiParams) admin.GetClusterNamespacesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetClusterNamespacesApiRequest)
-	}
-
-	return r0
-}
-
-// CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterNamespacesWithParams'
-type CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call struct {
-	*mock.Call
-}
-
-// GetClusterNamespacesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetClusterNamespacesApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) GetClusterNamespacesWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call {
-	return &CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call{Call: _e.mock.On("GetClusterNamespacesWithParams", ctx, args)}
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetClusterNamespacesApiParams)) *CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetClusterNamespacesApiParams))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call) Return(_a0 admin.GetClusterNamespacesApiRequest) *CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetClusterNamespacesApiParams) admin.GetClusterNamespacesApiRequest) *CollectionLevelMetricsApi_GetClusterNamespacesWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProcessNamespaces provides a mock function with given fields: ctx, groupId, processId
-func (_m *CollectionLevelMetricsApi) GetProcessNamespaces(ctx context.Context, groupId string, processId string) admin.GetProcessNamespacesApiRequest {
-	ret := _m.Called(ctx, groupId, processId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProcessNamespaces")
-	}
-
-	var r0 admin.GetProcessNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetProcessNamespacesApiRequest); ok {
-		r0 = rf(ctx, groupId, processId)
-	} else {
-		r0 = ret.Get(0).(admin.GetProcessNamespacesApiRequest)
-	}
-
-	return r0
-}
-
-// CollectionLevelMetricsApi_GetProcessNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessNamespaces'
-type CollectionLevelMetricsApi_GetProcessNamespaces_Call struct {
-	*mock.Call
-}
-
-// GetProcessNamespaces is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - processId string
-func (_e *CollectionLevelMetricsApi_Expecter) GetProcessNamespaces(ctx any, groupId any, processId any) *CollectionLevelMetricsApi_GetProcessNamespaces_Call {
-	return &CollectionLevelMetricsApi_GetProcessNamespaces_Call{Call: _e.mock.On("GetProcessNamespaces", ctx, groupId, processId)}
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespaces_Call) Run(run func(ctx context.Context, groupId string, processId string)) *CollectionLevelMetricsApi_GetProcessNamespaces_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespaces_Call) Return(_a0 admin.GetProcessNamespacesApiRequest) *CollectionLevelMetricsApi_GetProcessNamespaces_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespaces_Call) RunAndReturn(run func(context.Context, string, string) admin.GetProcessNamespacesApiRequest) *CollectionLevelMetricsApi_GetProcessNamespaces_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProcessNamespacesExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) GetProcessNamespacesExecute(r admin.GetProcessNamespacesApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProcessNamespacesExecute")
-	}
-
-	var r0 *admin.CollStatsRankedNamespaces
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetProcessNamespacesApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetProcessNamespacesApiRequest) *admin.CollStatsRankedNamespaces); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.CollStatsRankedNamespaces)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetProcessNamespacesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetProcessNamespacesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessNamespacesExecute'
-type CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call struct {
-	*mock.Call
-}
-
-// GetProcessNamespacesExecute is a helper method to define mock.On call
-//   - r admin.GetProcessNamespacesApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) GetProcessNamespacesExecute(r any) *CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call {
-	return &CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call{Call: _e.mock.On("GetProcessNamespacesExecute", r)}
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call) Run(run func(r admin.GetProcessNamespacesApiRequest)) *CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetProcessNamespacesApiRequest))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call) Return(_a0 *admin.CollStatsRankedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call) RunAndReturn(run func(admin.GetProcessNamespacesApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_GetProcessNamespacesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProcessNamespacesWithParams provides a mock function with given fields: ctx, args
-func (_m *CollectionLevelMetricsApi) GetProcessNamespacesWithParams(ctx context.Context, args *admin.GetProcessNamespacesApiParams) admin.GetProcessNamespacesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProcessNamespacesWithParams")
-	}
-
-	var r0 admin.GetProcessNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProcessNamespacesApiParams) admin.GetProcessNamespacesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetProcessNamespacesApiRequest)
-	}
-
-	return r0
-}
-
-// CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProcessNamespacesWithParams'
-type CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call struct {
-	*mock.Call
-}
-
-// GetProcessNamespacesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetProcessNamespacesApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) GetProcessNamespacesWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call {
-	return &CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call{Call: _e.mock.On("GetProcessNamespacesWithParams", ctx, args)}
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProcessNamespacesApiParams)) *CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetProcessNamespacesApiParams))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call) Return(_a0 admin.GetProcessNamespacesApiRequest) *CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProcessNamespacesApiParams) admin.GetProcessNamespacesApiRequest) *CollectionLevelMetricsApi_GetProcessNamespacesWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListCollStatMeasurements provides a mock function with given fields: ctx, groupId, clusterName, clusterView, databaseName, collectionName
-func (_m *CollectionLevelMetricsApi) ListCollStatMeasurements(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string) admin.ListCollStatMeasurementsApiRequest {
+// GetCollStatsLatencyNamespaceClusterMeasurements provides a mock function with given fields: ctx, groupId, clusterName, clusterView, databaseName, collectionName
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceClusterMeasurements(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string) admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, clusterView, databaseName, collectionName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCollStatMeasurements")
+		panic("no return value specified for GetCollStatsLatencyNamespaceClusterMeasurements")
 	}
 
-	var r0 admin.ListCollStatMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string, string) admin.ListCollStatMeasurementsApiRequest); ok {
+	var r0 admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string, string) admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, clusterView, databaseName, collectionName)
 	} else {
-		r0 = ret.Get(0).(admin.ListCollStatMeasurementsApiRequest)
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest)
 	}
 
 	return r0
 }
 
-// CollectionLevelMetricsApi_ListCollStatMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCollStatMeasurements'
-type CollectionLevelMetricsApi_ListCollStatMeasurements_Call struct {
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceClusterMeasurements'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call struct {
 	*mock.Call
 }
 
-// ListCollStatMeasurements is a helper method to define mock.On call
+// GetCollStatsLatencyNamespaceClusterMeasurements is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - clusterView string
 //   - databaseName string
 //   - collectionName string
-func (_e *CollectionLevelMetricsApi_Expecter) ListCollStatMeasurements(ctx any, groupId any, clusterName any, clusterView any, databaseName any, collectionName any) *CollectionLevelMetricsApi_ListCollStatMeasurements_Call {
-	return &CollectionLevelMetricsApi_ListCollStatMeasurements_Call{Call: _e.mock.On("ListCollStatMeasurements", ctx, groupId, clusterName, clusterView, databaseName, collectionName)}
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurements(ctx any, groupId any, clusterName any, clusterView any, databaseName any, collectionName any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceClusterMeasurements", ctx, groupId, clusterName, clusterView, databaseName, collectionName)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurements_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string)) *CollectionLevelMetricsApi_ListCollStatMeasurements_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string), args[5].(string))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurements_Call) Return(_a0 admin.ListCollStatMeasurementsApiRequest) *CollectionLevelMetricsApi_ListCollStatMeasurements_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call) Return(_a0 admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string, string, string) admin.ListCollStatMeasurementsApiRequest) *CollectionLevelMetricsApi_ListCollStatMeasurements_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string, string, string) admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCollStatMeasurementsExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) ListCollStatMeasurementsExecute(r admin.ListCollStatMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyCluster, *http.Response, error) {
+// GetCollStatsLatencyNamespaceClusterMeasurementsExecute provides a mock function with given fields: r
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyCluster, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCollStatMeasurementsExecute")
+		panic("no return value specified for GetCollStatsLatencyNamespaceClusterMeasurementsExecute")
 	}
 
 	var r0 *admin.MeasurementsCollStatsLatencyCluster
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListCollStatMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyCluster, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyCluster, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListCollStatMeasurementsApiRequest) *admin.MeasurementsCollStatsLatencyCluster); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) *admin.MeasurementsCollStatsLatencyCluster); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -423,7 +98,7 @@ func (_m *CollectionLevelMetricsApi) ListCollStatMeasurementsExecute(r admin.Lis
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListCollStatMeasurementsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -431,7 +106,7 @@ func (_m *CollectionLevelMetricsApi) ListCollStatMeasurementsExecute(r admin.Lis
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListCollStatMeasurementsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -440,142 +115,306 @@ func (_m *CollectionLevelMetricsApi) ListCollStatMeasurementsExecute(r admin.Lis
 	return r0, r1, r2
 }
 
-// CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCollStatMeasurementsExecute'
-type CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call struct {
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceClusterMeasurementsExecute'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call struct {
 	*mock.Call
 }
 
-// ListCollStatMeasurementsExecute is a helper method to define mock.On call
-//   - r admin.ListCollStatMeasurementsApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) ListCollStatMeasurementsExecute(r any) *CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call {
-	return &CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call{Call: _e.mock.On("ListCollStatMeasurementsExecute", r)}
+// GetCollStatsLatencyNamespaceClusterMeasurementsExecute is a helper method to define mock.On call
+//   - r admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceClusterMeasurementsExecute", r)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call) Run(run func(r admin.ListCollStatMeasurementsApiRequest)) *CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call) Run(run func(r admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListCollStatMeasurementsApiRequest))
+		run(args[0].(admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call) Return(_a0 *admin.MeasurementsCollStatsLatencyCluster, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call) Return(_a0 *admin.MeasurementsCollStatsLatencyCluster, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call) RunAndReturn(run func(admin.ListCollStatMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyCluster, *http.Response, error)) *CollectionLevelMetricsApi_ListCollStatMeasurementsExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call) RunAndReturn(run func(admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyCluster, *http.Response, error)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCollStatMeasurementsWithParams provides a mock function with given fields: ctx, args
-func (_m *CollectionLevelMetricsApi) ListCollStatMeasurementsWithParams(ctx context.Context, args *admin.ListCollStatMeasurementsApiParams) admin.ListCollStatMeasurementsApiRequest {
+// GetCollStatsLatencyNamespaceClusterMeasurementsWithParams provides a mock function with given fields: ctx, args
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceClusterMeasurementsWithParams(ctx context.Context, args *admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiParams) admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCollStatMeasurementsWithParams")
+		panic("no return value specified for GetCollStatsLatencyNamespaceClusterMeasurementsWithParams")
 	}
 
-	var r0 admin.ListCollStatMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListCollStatMeasurementsApiParams) admin.ListCollStatMeasurementsApiRequest); ok {
+	var r0 admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiParams) admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListCollStatMeasurementsApiRequest)
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest)
 	}
 
 	return r0
 }
 
-// CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCollStatMeasurementsWithParams'
-type CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call struct {
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceClusterMeasurementsWithParams'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListCollStatMeasurementsWithParams is a helper method to define mock.On call
+// GetCollStatsLatencyNamespaceClusterMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListCollStatMeasurementsApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) ListCollStatMeasurementsWithParams(ctx any, args any) *CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call {
-	return &CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call{Call: _e.mock.On("ListCollStatMeasurementsWithParams", ctx, args)}
+//   - args *admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiParams
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurementsWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceClusterMeasurementsWithParams", ctx, args)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListCollStatMeasurementsApiParams)) *CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiParams)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListCollStatMeasurementsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiParams))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call) Return(_a0 admin.ListCollStatMeasurementsApiRequest) *CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call) Return(_a0 admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListCollStatMeasurementsApiParams) admin.ListCollStatMeasurementsApiRequest) *CollectionLevelMetricsApi_ListCollStatMeasurementsWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiParams) admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCollStatMetrics provides a mock function with given fields: ctx, groupId
-func (_m *CollectionLevelMetricsApi) ListCollStatMetrics(ctx context.Context, groupId string) admin.ListCollStatMetricsApiRequest {
-	ret := _m.Called(ctx, groupId)
+// GetCollStatsLatencyNamespaceHostMeasurements provides a mock function with given fields: ctx, groupId, processId, databaseName, collectionName
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceHostMeasurements(ctx context.Context, groupId string, processId string, databaseName string, collectionName string) admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest {
+	ret := _m.Called(ctx, groupId, processId, databaseName, collectionName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCollStatMetrics")
+		panic("no return value specified for GetCollStatsLatencyNamespaceHostMeasurements")
 	}
 
-	var r0 admin.ListCollStatMetricsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListCollStatMetricsApiRequest); ok {
-		r0 = rf(ctx, groupId)
+	var r0 admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest); ok {
+		r0 = rf(ctx, groupId, processId, databaseName, collectionName)
 	} else {
-		r0 = ret.Get(0).(admin.ListCollStatMetricsApiRequest)
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest)
 	}
 
 	return r0
 }
 
-// CollectionLevelMetricsApi_ListCollStatMetrics_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCollStatMetrics'
-type CollectionLevelMetricsApi_ListCollStatMetrics_Call struct {
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceHostMeasurements'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call struct {
 	*mock.Call
 }
 
-// ListCollStatMetrics is a helper method to define mock.On call
+// GetCollStatsLatencyNamespaceHostMeasurements is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *CollectionLevelMetricsApi_Expecter) ListCollStatMetrics(ctx any, groupId any) *CollectionLevelMetricsApi_ListCollStatMetrics_Call {
-	return &CollectionLevelMetricsApi_ListCollStatMetrics_Call{Call: _e.mock.On("ListCollStatMetrics", ctx, groupId)}
+//   - processId string
+//   - databaseName string
+//   - collectionName string
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurements(ctx any, groupId any, processId any, databaseName any, collectionName any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceHostMeasurements", ctx, groupId, processId, databaseName, collectionName)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetrics_Call) Run(run func(ctx context.Context, groupId string)) *CollectionLevelMetricsApi_ListCollStatMetrics_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call) Run(run func(ctx context.Context, groupId string, processId string, databaseName string, collectionName string)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call) Return(_a0 admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string, string) admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCollStatsLatencyNamespaceHostMeasurementsExecute provides a mock function with given fields: r
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceHostMeasurementsExecute(r admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyHost, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCollStatsLatencyNamespaceHostMeasurementsExecute")
+	}
+
+	var r0 *admin.MeasurementsCollStatsLatencyHost
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyHost, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) *admin.MeasurementsCollStatsLatencyHost); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.MeasurementsCollStatsLatencyHost)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceHostMeasurementsExecute'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call struct {
+	*mock.Call
+}
+
+// GetCollStatsLatencyNamespaceHostMeasurementsExecute is a helper method to define mock.On call
+//   - r admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurementsExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceHostMeasurementsExecute", r)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call) Run(run func(r admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call) Return(_a0 *admin.MeasurementsCollStatsLatencyHost, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call) RunAndReturn(run func(admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyHost, *http.Response, error)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCollStatsLatencyNamespaceHostMeasurementsWithParams provides a mock function with given fields: ctx, args
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceHostMeasurementsWithParams(ctx context.Context, args *admin.GetCollStatsLatencyNamespaceHostMeasurementsApiParams) admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCollStatsLatencyNamespaceHostMeasurementsWithParams")
+	}
+
+	var r0 admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCollStatsLatencyNamespaceHostMeasurementsApiParams) admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest)
+	}
+
+	return r0
+}
+
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceHostMeasurementsWithParams'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetCollStatsLatencyNamespaceHostMeasurementsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetCollStatsLatencyNamespaceHostMeasurementsApiParams
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurementsWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceHostMeasurementsWithParams", ctx, args)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCollStatsLatencyNamespaceHostMeasurementsApiParams)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetCollStatsLatencyNamespaceHostMeasurementsApiParams))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call) Return(_a0 admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCollStatsLatencyNamespaceHostMeasurementsApiParams) admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCollStatsLatencyNamespaceMetrics provides a mock function with given fields: ctx, groupId
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceMetrics(ctx context.Context, groupId string) admin.GetCollStatsLatencyNamespaceMetricsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCollStatsLatencyNamespaceMetrics")
+	}
+
+	var r0 admin.GetCollStatsLatencyNamespaceMetricsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetCollStatsLatencyNamespaceMetricsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespaceMetricsApiRequest)
+	}
+
+	return r0
+}
+
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceMetrics'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call struct {
+	*mock.Call
+}
+
+// GetCollStatsLatencyNamespaceMetrics is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetrics(ctx any, groupId any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceMetrics", ctx, groupId)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call) Run(run func(ctx context.Context, groupId string)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetrics_Call) Return(_a0 admin.ListCollStatMetricsApiRequest) *CollectionLevelMetricsApi_ListCollStatMetrics_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call) Return(_a0 admin.GetCollStatsLatencyNamespaceMetricsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetrics_Call) RunAndReturn(run func(context.Context, string) admin.ListCollStatMetricsApiRequest) *CollectionLevelMetricsApi_ListCollStatMetrics_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call) RunAndReturn(run func(context.Context, string) admin.GetCollStatsLatencyNamespaceMetricsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCollStatMetricsExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) ListCollStatMetricsExecute(r admin.ListCollStatMetricsApiRequest) (*http.Response, error) {
+// GetCollStatsLatencyNamespaceMetricsExecute provides a mock function with given fields: r
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceMetricsExecute(r admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCollStatMetricsExecute")
+		panic("no return value specified for GetCollStatsLatencyNamespaceMetricsExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.ListCollStatMetricsApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListCollStatMetricsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -583,7 +422,7 @@ func (_m *CollectionLevelMetricsApi) ListCollStatMetricsExecute(r admin.ListColl
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListCollStatMetricsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -592,144 +431,469 @@ func (_m *CollectionLevelMetricsApi) ListCollStatMetricsExecute(r admin.ListColl
 	return r0, r1
 }
 
-// CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCollStatMetricsExecute'
-type CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call struct {
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceMetricsExecute'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call struct {
 	*mock.Call
 }
 
-// ListCollStatMetricsExecute is a helper method to define mock.On call
-//   - r admin.ListCollStatMetricsApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) ListCollStatMetricsExecute(r any) *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call {
-	return &CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call{Call: _e.mock.On("ListCollStatMetricsExecute", r)}
+// GetCollStatsLatencyNamespaceMetricsExecute is a helper method to define mock.On call
+//   - r admin.GetCollStatsLatencyNamespaceMetricsApiRequest
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetricsExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceMetricsExecute", r)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call) Run(run func(r admin.ListCollStatMetricsApiRequest)) *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call) Run(run func(r admin.GetCollStatsLatencyNamespaceMetricsApiRequest)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListCollStatMetricsApiRequest))
+		run(args[0].(admin.GetCollStatsLatencyNamespaceMetricsApiRequest))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call) Return(_a0 *http.Response, _a1 error) *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call) Return(_a0 *http.Response, _a1 error) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call) RunAndReturn(run func(admin.ListCollStatMetricsApiRequest) (*http.Response, error)) *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call) RunAndReturn(run func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCollStatMetricsWithParams provides a mock function with given fields: ctx, args
-func (_m *CollectionLevelMetricsApi) ListCollStatMetricsWithParams(ctx context.Context, args *admin.ListCollStatMetricsApiParams) admin.ListCollStatMetricsApiRequest {
+// GetCollStatsLatencyNamespaceMetricsWithParams provides a mock function with given fields: ctx, args
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceMetricsWithParams(ctx context.Context, args *admin.GetCollStatsLatencyNamespaceMetricsApiParams) admin.GetCollStatsLatencyNamespaceMetricsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCollStatMetricsWithParams")
+		panic("no return value specified for GetCollStatsLatencyNamespaceMetricsWithParams")
 	}
 
-	var r0 admin.ListCollStatMetricsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListCollStatMetricsApiParams) admin.ListCollStatMetricsApiRequest); ok {
+	var r0 admin.GetCollStatsLatencyNamespaceMetricsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCollStatsLatencyNamespaceMetricsApiParams) admin.GetCollStatsLatencyNamespaceMetricsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListCollStatMetricsApiRequest)
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespaceMetricsApiRequest)
 	}
 
 	return r0
 }
 
-// CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCollStatMetricsWithParams'
-type CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call struct {
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespaceMetricsWithParams'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListCollStatMetricsWithParams is a helper method to define mock.On call
+// GetCollStatsLatencyNamespaceMetricsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListCollStatMetricsApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) ListCollStatMetricsWithParams(ctx any, args any) *CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call {
-	return &CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call{Call: _e.mock.On("ListCollStatMetricsWithParams", ctx, args)}
+//   - args *admin.GetCollStatsLatencyNamespaceMetricsApiParams
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetricsWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceMetricsWithParams", ctx, args)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListCollStatMetricsApiParams)) *CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCollStatsLatencyNamespaceMetricsApiParams)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListCollStatMetricsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetCollStatsLatencyNamespaceMetricsApiParams))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call) Return(_a0 admin.ListCollStatMetricsApiRequest) *CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call) Return(_a0 admin.GetCollStatsLatencyNamespaceMetricsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListCollStatMetricsApiParams) admin.ListCollStatMetricsApiRequest) *CollectionLevelMetricsApi_ListCollStatMetricsWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCollStatsLatencyNamespaceMetricsApiParams) admin.GetCollStatsLatencyNamespaceMetricsApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPinnedNamespaces provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *CollectionLevelMetricsApi) ListPinnedNamespaces(ctx context.Context, groupId string, clusterName string) admin.ListPinnedNamespacesApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName)
+// GetCollStatsLatencyNamespacesForCluster provides a mock function with given fields: ctx, groupId, clusterName, clusterView
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespacesForCluster(ctx context.Context, groupId string, clusterName string, clusterView string) admin.GetCollStatsLatencyNamespacesForClusterApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, clusterView)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPinnedNamespaces")
+		panic("no return value specified for GetCollStatsLatencyNamespacesForCluster")
 	}
 
-	var r0 admin.ListPinnedNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListPinnedNamespacesApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName)
+	var r0 admin.GetCollStatsLatencyNamespacesForClusterApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetCollStatsLatencyNamespacesForClusterApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, clusterView)
 	} else {
-		r0 = ret.Get(0).(admin.ListPinnedNamespacesApiRequest)
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespacesForClusterApiRequest)
 	}
 
 	return r0
 }
 
-// CollectionLevelMetricsApi_ListPinnedNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPinnedNamespaces'
-type CollectionLevelMetricsApi_ListPinnedNamespaces_Call struct {
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespacesForCluster'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call struct {
 	*mock.Call
 }
 
-// ListPinnedNamespaces is a helper method to define mock.On call
+// GetCollStatsLatencyNamespacesForCluster is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CollectionLevelMetricsApi_Expecter) ListPinnedNamespaces(ctx any, groupId any, clusterName any) *CollectionLevelMetricsApi_ListPinnedNamespaces_Call {
-	return &CollectionLevelMetricsApi_ListPinnedNamespaces_Call{Call: _e.mock.On("ListPinnedNamespaces", ctx, groupId, clusterName)}
+//   - clusterView string
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForCluster(ctx any, groupId any, clusterName any, clusterView any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForCluster", ctx, groupId, clusterName, clusterView)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespaces_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *CollectionLevelMetricsApi_ListPinnedNamespaces_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterView string)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call) Return(_a0 admin.GetCollStatsLatencyNamespacesForClusterApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetCollStatsLatencyNamespacesForClusterApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCollStatsLatencyNamespacesForClusterExecute provides a mock function with given fields: r
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespacesForClusterExecute(r admin.GetCollStatsLatencyNamespacesForClusterApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCollStatsLatencyNamespacesForClusterExecute")
+	}
+
+	var r0 *admin.CollStatsRankedNamespaces
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespacesForClusterApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespacesForClusterApiRequest) *admin.CollStatsRankedNamespaces); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.CollStatsRankedNamespaces)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetCollStatsLatencyNamespacesForClusterApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetCollStatsLatencyNamespacesForClusterApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespacesForClusterExecute'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call struct {
+	*mock.Call
+}
+
+// GetCollStatsLatencyNamespacesForClusterExecute is a helper method to define mock.On call
+//   - r admin.GetCollStatsLatencyNamespacesForClusterApiRequest
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForClusterExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForClusterExecute", r)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call) Run(run func(r admin.GetCollStatsLatencyNamespacesForClusterApiRequest)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetCollStatsLatencyNamespacesForClusterApiRequest))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call) Return(_a0 *admin.CollStatsRankedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call) RunAndReturn(run func(admin.GetCollStatsLatencyNamespacesForClusterApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCollStatsLatencyNamespacesForClusterWithParams provides a mock function with given fields: ctx, args
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespacesForClusterWithParams(ctx context.Context, args *admin.GetCollStatsLatencyNamespacesForClusterApiParams) admin.GetCollStatsLatencyNamespacesForClusterApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCollStatsLatencyNamespacesForClusterWithParams")
+	}
+
+	var r0 admin.GetCollStatsLatencyNamespacesForClusterApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCollStatsLatencyNamespacesForClusterApiParams) admin.GetCollStatsLatencyNamespacesForClusterApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespacesForClusterApiRequest)
+	}
+
+	return r0
+}
+
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespacesForClusterWithParams'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call struct {
+	*mock.Call
+}
+
+// GetCollStatsLatencyNamespacesForClusterWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetCollStatsLatencyNamespacesForClusterApiParams
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForClusterWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForClusterWithParams", ctx, args)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCollStatsLatencyNamespacesForClusterApiParams)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetCollStatsLatencyNamespacesForClusterApiParams))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call) Return(_a0 admin.GetCollStatsLatencyNamespacesForClusterApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCollStatsLatencyNamespacesForClusterApiParams) admin.GetCollStatsLatencyNamespacesForClusterApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCollStatsLatencyNamespacesForHost provides a mock function with given fields: ctx, groupId, processId
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespacesForHost(ctx context.Context, groupId string, processId string) admin.GetCollStatsLatencyNamespacesForHostApiRequest {
+	ret := _m.Called(ctx, groupId, processId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCollStatsLatencyNamespacesForHost")
+	}
+
+	var r0 admin.GetCollStatsLatencyNamespacesForHostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetCollStatsLatencyNamespacesForHostApiRequest); ok {
+		r0 = rf(ctx, groupId, processId)
+	} else {
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespacesForHostApiRequest)
+	}
+
+	return r0
+}
+
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespacesForHost'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call struct {
+	*mock.Call
+}
+
+// GetCollStatsLatencyNamespacesForHost is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - processId string
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHost(ctx any, groupId any, processId any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForHost", ctx, groupId, processId)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call) Run(run func(ctx context.Context, groupId string, processId string)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespaces_Call) Return(_a0 admin.ListPinnedNamespacesApiRequest) *CollectionLevelMetricsApi_ListPinnedNamespaces_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call) Return(_a0 admin.GetCollStatsLatencyNamespacesForHostApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespaces_Call) RunAndReturn(run func(context.Context, string, string) admin.ListPinnedNamespacesApiRequest) *CollectionLevelMetricsApi_ListPinnedNamespaces_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call) RunAndReturn(run func(context.Context, string, string) admin.GetCollStatsLatencyNamespacesForHostApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPinnedNamespacesExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) ListPinnedNamespacesExecute(r admin.ListPinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error) {
+// GetCollStatsLatencyNamespacesForHostExecute provides a mock function with given fields: r
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespacesForHostExecute(r admin.GetCollStatsLatencyNamespacesForHostApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPinnedNamespacesExecute")
+		panic("no return value specified for GetCollStatsLatencyNamespacesForHostExecute")
+	}
+
+	var r0 *admin.CollStatsRankedNamespaces
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespacesForHostApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespacesForHostApiRequest) *admin.CollStatsRankedNamespaces); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.CollStatsRankedNamespaces)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetCollStatsLatencyNamespacesForHostApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetCollStatsLatencyNamespacesForHostApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespacesForHostExecute'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call struct {
+	*mock.Call
+}
+
+// GetCollStatsLatencyNamespacesForHostExecute is a helper method to define mock.On call
+//   - r admin.GetCollStatsLatencyNamespacesForHostApiRequest
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHostExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForHostExecute", r)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call) Run(run func(r admin.GetCollStatsLatencyNamespacesForHostApiRequest)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetCollStatsLatencyNamespacesForHostApiRequest))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call) Return(_a0 *admin.CollStatsRankedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call) RunAndReturn(run func(admin.GetCollStatsLatencyNamespacesForHostApiRequest) (*admin.CollStatsRankedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCollStatsLatencyNamespacesForHostWithParams provides a mock function with given fields: ctx, args
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespacesForHostWithParams(ctx context.Context, args *admin.GetCollStatsLatencyNamespacesForHostApiParams) admin.GetCollStatsLatencyNamespacesForHostApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCollStatsLatencyNamespacesForHostWithParams")
+	}
+
+	var r0 admin.GetCollStatsLatencyNamespacesForHostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCollStatsLatencyNamespacesForHostApiParams) admin.GetCollStatsLatencyNamespacesForHostApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetCollStatsLatencyNamespacesForHostApiRequest)
+	}
+
+	return r0
+}
+
+// CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCollStatsLatencyNamespacesForHostWithParams'
+type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call struct {
+	*mock.Call
+}
+
+// GetCollStatsLatencyNamespacesForHostWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetCollStatsLatencyNamespacesForHostApiParams
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHostWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call {
+	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForHostWithParams", ctx, args)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCollStatsLatencyNamespacesForHostApiParams)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetCollStatsLatencyNamespacesForHostApiParams))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call) Return(_a0 admin.GetCollStatsLatencyNamespacesForHostApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCollStatsLatencyNamespacesForHostApiParams) admin.GetCollStatsLatencyNamespacesForHostApiRequest) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetPinnedNamespaces provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *CollectionLevelMetricsApi) GetPinnedNamespaces(ctx context.Context, groupId string, clusterName string) admin.GetPinnedNamespacesApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPinnedNamespaces")
+	}
+
+	var r0 admin.GetPinnedNamespacesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetPinnedNamespacesApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.GetPinnedNamespacesApiRequest)
+	}
+
+	return r0
+}
+
+// CollectionLevelMetricsApi_GetPinnedNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPinnedNamespaces'
+type CollectionLevelMetricsApi_GetPinnedNamespaces_Call struct {
+	*mock.Call
+}
+
+// GetPinnedNamespaces is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespaces(ctx any, groupId any, clusterName any) *CollectionLevelMetricsApi_GetPinnedNamespaces_Call {
+	return &CollectionLevelMetricsApi_GetPinnedNamespaces_Call{Call: _e.mock.On("GetPinnedNamespaces", ctx, groupId, clusterName)}
+}
+
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespaces_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *CollectionLevelMetricsApi_GetPinnedNamespaces_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespaces_Call) Return(_a0 admin.GetPinnedNamespacesApiRequest) *CollectionLevelMetricsApi_GetPinnedNamespaces_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespaces_Call) RunAndReturn(run func(context.Context, string, string) admin.GetPinnedNamespacesApiRequest) *CollectionLevelMetricsApi_GetPinnedNamespaces_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetPinnedNamespacesExecute provides a mock function with given fields: r
+func (_m *CollectionLevelMetricsApi) GetPinnedNamespacesExecute(r admin.GetPinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPinnedNamespacesExecute")
 	}
 
 	var r0 *admin.PinnedNamespaces
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetPinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListPinnedNamespacesApiRequest) *admin.PinnedNamespaces); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetPinnedNamespacesApiRequest) *admin.PinnedNamespaces); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -737,7 +901,7 @@ func (_m *CollectionLevelMetricsApi) ListPinnedNamespacesExecute(r admin.ListPin
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListPinnedNamespacesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetPinnedNamespacesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -745,7 +909,7 @@ func (_m *CollectionLevelMetricsApi) ListPinnedNamespacesExecute(r admin.ListPin
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListPinnedNamespacesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetPinnedNamespacesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -754,309 +918,145 @@ func (_m *CollectionLevelMetricsApi) ListPinnedNamespacesExecute(r admin.ListPin
 	return r0, r1, r2
 }
 
-// CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPinnedNamespacesExecute'
-type CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call struct {
+// CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPinnedNamespacesExecute'
+type CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call struct {
 	*mock.Call
 }
 
-// ListPinnedNamespacesExecute is a helper method to define mock.On call
-//   - r admin.ListPinnedNamespacesApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) ListPinnedNamespacesExecute(r any) *CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call {
-	return &CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call{Call: _e.mock.On("ListPinnedNamespacesExecute", r)}
+// GetPinnedNamespacesExecute is a helper method to define mock.On call
+//   - r admin.GetPinnedNamespacesApiRequest
+func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespacesExecute(r any) *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call {
+	return &CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call{Call: _e.mock.On("GetPinnedNamespacesExecute", r)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call) Run(run func(r admin.ListPinnedNamespacesApiRequest)) *CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call) Run(run func(r admin.GetPinnedNamespacesApiRequest)) *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPinnedNamespacesApiRequest))
+		run(args[0].(admin.GetPinnedNamespacesApiRequest))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call) Return(_a0 *admin.PinnedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call) Return(_a0 *admin.PinnedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call) RunAndReturn(run func(admin.ListPinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_ListPinnedNamespacesExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call) RunAndReturn(run func(admin.GetPinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPinnedNamespacesWithParams provides a mock function with given fields: ctx, args
-func (_m *CollectionLevelMetricsApi) ListPinnedNamespacesWithParams(ctx context.Context, args *admin.ListPinnedNamespacesApiParams) admin.ListPinnedNamespacesApiRequest {
+// GetPinnedNamespacesWithParams provides a mock function with given fields: ctx, args
+func (_m *CollectionLevelMetricsApi) GetPinnedNamespacesWithParams(ctx context.Context, args *admin.GetPinnedNamespacesApiParams) admin.GetPinnedNamespacesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPinnedNamespacesWithParams")
+		panic("no return value specified for GetPinnedNamespacesWithParams")
 	}
 
-	var r0 admin.ListPinnedNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPinnedNamespacesApiParams) admin.ListPinnedNamespacesApiRequest); ok {
+	var r0 admin.GetPinnedNamespacesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetPinnedNamespacesApiParams) admin.GetPinnedNamespacesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListPinnedNamespacesApiRequest)
+		r0 = ret.Get(0).(admin.GetPinnedNamespacesApiRequest)
 	}
 
 	return r0
 }
 
-// CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPinnedNamespacesWithParams'
-type CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call struct {
+// CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPinnedNamespacesWithParams'
+type CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListPinnedNamespacesWithParams is a helper method to define mock.On call
+// GetPinnedNamespacesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListPinnedNamespacesApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) ListPinnedNamespacesWithParams(ctx any, args any) *CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call {
-	return &CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call{Call: _e.mock.On("ListPinnedNamespacesWithParams", ctx, args)}
+//   - args *admin.GetPinnedNamespacesApiParams
+func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespacesWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call {
+	return &CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call{Call: _e.mock.On("GetPinnedNamespacesWithParams", ctx, args)}
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPinnedNamespacesApiParams)) *CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetPinnedNamespacesApiParams)) *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPinnedNamespacesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetPinnedNamespacesApiParams))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call) Return(_a0 admin.ListPinnedNamespacesApiRequest) *CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call) Return(_a0 admin.GetPinnedNamespacesApiRequest) *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPinnedNamespacesApiParams) admin.ListPinnedNamespacesApiRequest) *CollectionLevelMetricsApi_ListPinnedNamespacesWithParams_Call {
+func (_c *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetPinnedNamespacesApiParams) admin.GetPinnedNamespacesApiRequest) *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListProcessMeasurements provides a mock function with given fields: ctx, groupId, processId, databaseName, collectionName
-func (_m *CollectionLevelMetricsApi) ListProcessMeasurements(ctx context.Context, groupId string, processId string, databaseName string, collectionName string) admin.ListProcessMeasurementsApiRequest {
-	ret := _m.Called(ctx, groupId, processId, databaseName, collectionName)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProcessMeasurements")
-	}
-
-	var r0 admin.ListProcessMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) admin.ListProcessMeasurementsApiRequest); ok {
-		r0 = rf(ctx, groupId, processId, databaseName, collectionName)
-	} else {
-		r0 = ret.Get(0).(admin.ListProcessMeasurementsApiRequest)
-	}
-
-	return r0
-}
-
-// CollectionLevelMetricsApi_ListProcessMeasurements_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProcessMeasurements'
-type CollectionLevelMetricsApi_ListProcessMeasurements_Call struct {
-	*mock.Call
-}
-
-// ListProcessMeasurements is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - processId string
-//   - databaseName string
-//   - collectionName string
-func (_e *CollectionLevelMetricsApi_Expecter) ListProcessMeasurements(ctx any, groupId any, processId any, databaseName any, collectionName any) *CollectionLevelMetricsApi_ListProcessMeasurements_Call {
-	return &CollectionLevelMetricsApi_ListProcessMeasurements_Call{Call: _e.mock.On("ListProcessMeasurements", ctx, groupId, processId, databaseName, collectionName)}
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurements_Call) Run(run func(ctx context.Context, groupId string, processId string, databaseName string, collectionName string)) *CollectionLevelMetricsApi_ListProcessMeasurements_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurements_Call) Return(_a0 admin.ListProcessMeasurementsApiRequest) *CollectionLevelMetricsApi_ListProcessMeasurements_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurements_Call) RunAndReturn(run func(context.Context, string, string, string, string) admin.ListProcessMeasurementsApiRequest) *CollectionLevelMetricsApi_ListProcessMeasurements_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProcessMeasurementsExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) ListProcessMeasurementsExecute(r admin.ListProcessMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyHost, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProcessMeasurementsExecute")
-	}
-
-	var r0 *admin.MeasurementsCollStatsLatencyHost
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListProcessMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyHost, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListProcessMeasurementsApiRequest) *admin.MeasurementsCollStatsLatencyHost); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.MeasurementsCollStatsLatencyHost)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListProcessMeasurementsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListProcessMeasurementsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProcessMeasurementsExecute'
-type CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call struct {
-	*mock.Call
-}
-
-// ListProcessMeasurementsExecute is a helper method to define mock.On call
-//   - r admin.ListProcessMeasurementsApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) ListProcessMeasurementsExecute(r any) *CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call {
-	return &CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call{Call: _e.mock.On("ListProcessMeasurementsExecute", r)}
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call) Run(run func(r admin.ListProcessMeasurementsApiRequest)) *CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListProcessMeasurementsApiRequest))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call) Return(_a0 *admin.MeasurementsCollStatsLatencyHost, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call) RunAndReturn(run func(admin.ListProcessMeasurementsApiRequest) (*admin.MeasurementsCollStatsLatencyHost, *http.Response, error)) *CollectionLevelMetricsApi_ListProcessMeasurementsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProcessMeasurementsWithParams provides a mock function with given fields: ctx, args
-func (_m *CollectionLevelMetricsApi) ListProcessMeasurementsWithParams(ctx context.Context, args *admin.ListProcessMeasurementsApiParams) admin.ListProcessMeasurementsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProcessMeasurementsWithParams")
-	}
-
-	var r0 admin.ListProcessMeasurementsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProcessMeasurementsApiParams) admin.ListProcessMeasurementsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListProcessMeasurementsApiRequest)
-	}
-
-	return r0
-}
-
-// CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProcessMeasurementsWithParams'
-type CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call struct {
-	*mock.Call
-}
-
-// ListProcessMeasurementsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListProcessMeasurementsApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) ListProcessMeasurementsWithParams(ctx any, args any) *CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call {
-	return &CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call{Call: _e.mock.On("ListProcessMeasurementsWithParams", ctx, args)}
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProcessMeasurementsApiParams)) *CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListProcessMeasurementsApiParams))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call) Return(_a0 admin.ListProcessMeasurementsApiRequest) *CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProcessMeasurementsApiParams) admin.ListProcessMeasurementsApiRequest) *CollectionLevelMetricsApi_ListProcessMeasurementsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// PinNamespaces provides a mock function with given fields: ctx, groupId, clusterName, namespacesRequest
-func (_m *CollectionLevelMetricsApi) PinNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *admin.NamespacesRequest) admin.PinNamespacesApiRequest {
+// PinNamespacesPatch provides a mock function with given fields: ctx, groupId, clusterName, namespacesRequest
+func (_m *CollectionLevelMetricsApi) PinNamespacesPatch(ctx context.Context, groupId string, clusterName string, namespacesRequest *admin.NamespacesRequest) admin.PinNamespacesPatchApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, namespacesRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for PinNamespaces")
+		panic("no return value specified for PinNamespacesPatch")
 	}
 
-	var r0 admin.PinNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.NamespacesRequest) admin.PinNamespacesApiRequest); ok {
+	var r0 admin.PinNamespacesPatchApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.NamespacesRequest) admin.PinNamespacesPatchApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, namespacesRequest)
 	} else {
-		r0 = ret.Get(0).(admin.PinNamespacesApiRequest)
+		r0 = ret.Get(0).(admin.PinNamespacesPatchApiRequest)
 	}
 
 	return r0
 }
 
-// CollectionLevelMetricsApi_PinNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespaces'
-type CollectionLevelMetricsApi_PinNamespaces_Call struct {
+// CollectionLevelMetricsApi_PinNamespacesPatch_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespacesPatch'
+type CollectionLevelMetricsApi_PinNamespacesPatch_Call struct {
 	*mock.Call
 }
 
-// PinNamespaces is a helper method to define mock.On call
+// PinNamespacesPatch is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - namespacesRequest *admin.NamespacesRequest
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespaces(ctx any, groupId any, clusterName any, namespacesRequest any) *CollectionLevelMetricsApi_PinNamespaces_Call {
-	return &CollectionLevelMetricsApi_PinNamespaces_Call{Call: _e.mock.On("PinNamespaces", ctx, groupId, clusterName, namespacesRequest)}
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatch(ctx any, groupId any, clusterName any, namespacesRequest any) *CollectionLevelMetricsApi_PinNamespacesPatch_Call {
+	return &CollectionLevelMetricsApi_PinNamespacesPatch_Call{Call: _e.mock.On("PinNamespacesPatch", ctx, groupId, clusterName, namespacesRequest)}
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespaces_Call) Run(run func(ctx context.Context, groupId string, clusterName string, namespacesRequest *admin.NamespacesRequest)) *CollectionLevelMetricsApi_PinNamespaces_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatch_Call) Run(run func(ctx context.Context, groupId string, clusterName string, namespacesRequest *admin.NamespacesRequest)) *CollectionLevelMetricsApi_PinNamespacesPatch_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.NamespacesRequest))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespaces_Call) Return(_a0 admin.PinNamespacesApiRequest) *CollectionLevelMetricsApi_PinNamespaces_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatch_Call) Return(_a0 admin.PinNamespacesPatchApiRequest) *CollectionLevelMetricsApi_PinNamespacesPatch_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespaces_Call) RunAndReturn(run func(context.Context, string, string, *admin.NamespacesRequest) admin.PinNamespacesApiRequest) *CollectionLevelMetricsApi_PinNamespaces_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatch_Call) RunAndReturn(run func(context.Context, string, string, *admin.NamespacesRequest) admin.PinNamespacesPatchApiRequest) *CollectionLevelMetricsApi_PinNamespacesPatch_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// PinNamespacesExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) PinNamespacesExecute(r admin.PinNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error) {
+// PinNamespacesPatchExecute provides a mock function with given fields: r
+func (_m *CollectionLevelMetricsApi) PinNamespacesPatchExecute(r admin.PinNamespacesPatchApiRequest) (*admin.PinnedNamespaces, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for PinNamespacesExecute")
+		panic("no return value specified for PinNamespacesPatchExecute")
 	}
 
 	var r0 *admin.PinnedNamespaces
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.PinNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.PinNamespacesPatchApiRequest) (*admin.PinnedNamespaces, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.PinNamespacesApiRequest) *admin.PinnedNamespaces); ok {
+	if rf, ok := ret.Get(0).(func(admin.PinNamespacesPatchApiRequest) *admin.PinnedNamespaces); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1064,7 +1064,7 @@ func (_m *CollectionLevelMetricsApi) PinNamespacesExecute(r admin.PinNamespacesA
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.PinNamespacesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.PinNamespacesPatchApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1072,7 +1072,7 @@ func (_m *CollectionLevelMetricsApi) PinNamespacesExecute(r admin.PinNamespacesA
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.PinNamespacesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.PinNamespacesPatchApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1081,77 +1081,240 @@ func (_m *CollectionLevelMetricsApi) PinNamespacesExecute(r admin.PinNamespacesA
 	return r0, r1, r2
 }
 
-// CollectionLevelMetricsApi_PinNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespacesExecute'
-type CollectionLevelMetricsApi_PinNamespacesExecute_Call struct {
+// CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespacesPatchExecute'
+type CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call struct {
 	*mock.Call
 }
 
-// PinNamespacesExecute is a helper method to define mock.On call
-//   - r admin.PinNamespacesApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesExecute(r any) *CollectionLevelMetricsApi_PinNamespacesExecute_Call {
-	return &CollectionLevelMetricsApi_PinNamespacesExecute_Call{Call: _e.mock.On("PinNamespacesExecute", r)}
+// PinNamespacesPatchExecute is a helper method to define mock.On call
+//   - r admin.PinNamespacesPatchApiRequest
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatchExecute(r any) *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call {
+	return &CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call{Call: _e.mock.On("PinNamespacesPatchExecute", r)}
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespacesExecute_Call) Run(run func(r admin.PinNamespacesApiRequest)) *CollectionLevelMetricsApi_PinNamespacesExecute_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call) Run(run func(r admin.PinNamespacesPatchApiRequest)) *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.PinNamespacesApiRequest))
+		run(args[0].(admin.PinNamespacesPatchApiRequest))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespacesExecute_Call) Return(_a0 *admin.PinnedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_PinNamespacesExecute_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call) Return(_a0 *admin.PinnedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespacesExecute_Call) RunAndReturn(run func(admin.PinNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_PinNamespacesExecute_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call) RunAndReturn(run func(admin.PinNamespacesPatchApiRequest) (*admin.PinnedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// PinNamespacesWithParams provides a mock function with given fields: ctx, args
-func (_m *CollectionLevelMetricsApi) PinNamespacesWithParams(ctx context.Context, args *admin.PinNamespacesApiParams) admin.PinNamespacesApiRequest {
+// PinNamespacesPatchWithParams provides a mock function with given fields: ctx, args
+func (_m *CollectionLevelMetricsApi) PinNamespacesPatchWithParams(ctx context.Context, args *admin.PinNamespacesPatchApiParams) admin.PinNamespacesPatchApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for PinNamespacesWithParams")
+		panic("no return value specified for PinNamespacesPatchWithParams")
 	}
 
-	var r0 admin.PinNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.PinNamespacesApiParams) admin.PinNamespacesApiRequest); ok {
+	var r0 admin.PinNamespacesPatchApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.PinNamespacesPatchApiParams) admin.PinNamespacesPatchApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.PinNamespacesApiRequest)
+		r0 = ret.Get(0).(admin.PinNamespacesPatchApiRequest)
 	}
 
 	return r0
 }
 
-// CollectionLevelMetricsApi_PinNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespacesWithParams'
-type CollectionLevelMetricsApi_PinNamespacesWithParams_Call struct {
+// CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespacesPatchWithParams'
+type CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call struct {
 	*mock.Call
 }
 
-// PinNamespacesWithParams is a helper method to define mock.On call
+// PinNamespacesPatchWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.PinNamespacesApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesWithParams(ctx any, args any) *CollectionLevelMetricsApi_PinNamespacesWithParams_Call {
-	return &CollectionLevelMetricsApi_PinNamespacesWithParams_Call{Call: _e.mock.On("PinNamespacesWithParams", ctx, args)}
+//   - args *admin.PinNamespacesPatchApiParams
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatchWithParams(ctx any, args any) *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call {
+	return &CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call{Call: _e.mock.On("PinNamespacesPatchWithParams", ctx, args)}
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.PinNamespacesApiParams)) *CollectionLevelMetricsApi_PinNamespacesWithParams_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call) Run(run func(ctx context.Context, args *admin.PinNamespacesPatchApiParams)) *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.PinNamespacesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.PinNamespacesPatchApiParams))
 	})
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespacesWithParams_Call) Return(_a0 admin.PinNamespacesApiRequest) *CollectionLevelMetricsApi_PinNamespacesWithParams_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call) Return(_a0 admin.PinNamespacesPatchApiRequest) *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_PinNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.PinNamespacesApiParams) admin.PinNamespacesApiRequest) *CollectionLevelMetricsApi_PinNamespacesWithParams_Call {
+func (_c *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call) RunAndReturn(run func(context.Context, *admin.PinNamespacesPatchApiParams) admin.PinNamespacesPatchApiRequest) *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// PinNamespacesPut provides a mock function with given fields: ctx, groupId, clusterName, namespacesRequest
+func (_m *CollectionLevelMetricsApi) PinNamespacesPut(ctx context.Context, groupId string, clusterName string, namespacesRequest *admin.NamespacesRequest) admin.PinNamespacesPutApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, namespacesRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for PinNamespacesPut")
+	}
+
+	var r0 admin.PinNamespacesPutApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.NamespacesRequest) admin.PinNamespacesPutApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, namespacesRequest)
+	} else {
+		r0 = ret.Get(0).(admin.PinNamespacesPutApiRequest)
+	}
+
+	return r0
+}
+
+// CollectionLevelMetricsApi_PinNamespacesPut_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespacesPut'
+type CollectionLevelMetricsApi_PinNamespacesPut_Call struct {
+	*mock.Call
+}
+
+// PinNamespacesPut is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - namespacesRequest *admin.NamespacesRequest
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPut(ctx any, groupId any, clusterName any, namespacesRequest any) *CollectionLevelMetricsApi_PinNamespacesPut_Call {
+	return &CollectionLevelMetricsApi_PinNamespacesPut_Call{Call: _e.mock.On("PinNamespacesPut", ctx, groupId, clusterName, namespacesRequest)}
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPut_Call) Run(run func(ctx context.Context, groupId string, clusterName string, namespacesRequest *admin.NamespacesRequest)) *CollectionLevelMetricsApi_PinNamespacesPut_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.NamespacesRequest))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPut_Call) Return(_a0 admin.PinNamespacesPutApiRequest) *CollectionLevelMetricsApi_PinNamespacesPut_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPut_Call) RunAndReturn(run func(context.Context, string, string, *admin.NamespacesRequest) admin.PinNamespacesPutApiRequest) *CollectionLevelMetricsApi_PinNamespacesPut_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// PinNamespacesPutExecute provides a mock function with given fields: r
+func (_m *CollectionLevelMetricsApi) PinNamespacesPutExecute(r admin.PinNamespacesPutApiRequest) (*admin.PinnedNamespaces, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for PinNamespacesPutExecute")
+	}
+
+	var r0 *admin.PinnedNamespaces
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.PinNamespacesPutApiRequest) (*admin.PinnedNamespaces, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.PinNamespacesPutApiRequest) *admin.PinnedNamespaces); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PinnedNamespaces)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.PinNamespacesPutApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.PinNamespacesPutApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CollectionLevelMetricsApi_PinNamespacesPutExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespacesPutExecute'
+type CollectionLevelMetricsApi_PinNamespacesPutExecute_Call struct {
+	*mock.Call
+}
+
+// PinNamespacesPutExecute is a helper method to define mock.On call
+//   - r admin.PinNamespacesPutApiRequest
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPutExecute(r any) *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call {
+	return &CollectionLevelMetricsApi_PinNamespacesPutExecute_Call{Call: _e.mock.On("PinNamespacesPutExecute", r)}
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call) Run(run func(r admin.PinNamespacesPutApiRequest)) *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.PinNamespacesPutApiRequest))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call) Return(_a0 *admin.PinnedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call) RunAndReturn(run func(admin.PinNamespacesPutApiRequest) (*admin.PinnedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// PinNamespacesPutWithParams provides a mock function with given fields: ctx, args
+func (_m *CollectionLevelMetricsApi) PinNamespacesPutWithParams(ctx context.Context, args *admin.PinNamespacesPutApiParams) admin.PinNamespacesPutApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for PinNamespacesPutWithParams")
+	}
+
+	var r0 admin.PinNamespacesPutApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.PinNamespacesPutApiParams) admin.PinNamespacesPutApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.PinNamespacesPutApiRequest)
+	}
+
+	return r0
+}
+
+// CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinNamespacesPutWithParams'
+type CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call struct {
+	*mock.Call
+}
+
+// PinNamespacesPutWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.PinNamespacesPutApiParams
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPutWithParams(ctx any, args any) *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call {
+	return &CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call{Call: _e.mock.On("PinNamespacesPutWithParams", ctx, args)}
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call) Run(run func(ctx context.Context, args *admin.PinNamespacesPutApiParams)) *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.PinNamespacesPutApiParams))
+	})
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call) Return(_a0 admin.PinNamespacesPutApiRequest) *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call) RunAndReturn(run func(context.Context, *admin.PinNamespacesPutApiParams) admin.PinNamespacesPutApiRequest) *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1315,169 +1478,6 @@ func (_c *CollectionLevelMetricsApi_UnpinNamespacesWithParams_Call) Return(_a0 a
 }
 
 func (_c *CollectionLevelMetricsApi_UnpinNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.UnpinNamespacesApiParams) admin.UnpinNamespacesApiRequest) *CollectionLevelMetricsApi_UnpinNamespacesWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdatePinnedNamespaces provides a mock function with given fields: ctx, groupId, clusterName, namespacesRequest
-func (_m *CollectionLevelMetricsApi) UpdatePinnedNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *admin.NamespacesRequest) admin.UpdatePinnedNamespacesApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName, namespacesRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdatePinnedNamespaces")
-	}
-
-	var r0 admin.UpdatePinnedNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.NamespacesRequest) admin.UpdatePinnedNamespacesApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName, namespacesRequest)
-	} else {
-		r0 = ret.Get(0).(admin.UpdatePinnedNamespacesApiRequest)
-	}
-
-	return r0
-}
-
-// CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePinnedNamespaces'
-type CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call struct {
-	*mock.Call
-}
-
-// UpdatePinnedNamespaces is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - clusterName string
-//   - namespacesRequest *admin.NamespacesRequest
-func (_e *CollectionLevelMetricsApi_Expecter) UpdatePinnedNamespaces(ctx any, groupId any, clusterName any, namespacesRequest any) *CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call {
-	return &CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call{Call: _e.mock.On("UpdatePinnedNamespaces", ctx, groupId, clusterName, namespacesRequest)}
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call) Run(run func(ctx context.Context, groupId string, clusterName string, namespacesRequest *admin.NamespacesRequest)) *CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.NamespacesRequest))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call) Return(_a0 admin.UpdatePinnedNamespacesApiRequest) *CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call) RunAndReturn(run func(context.Context, string, string, *admin.NamespacesRequest) admin.UpdatePinnedNamespacesApiRequest) *CollectionLevelMetricsApi_UpdatePinnedNamespaces_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdatePinnedNamespacesExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) UpdatePinnedNamespacesExecute(r admin.UpdatePinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdatePinnedNamespacesExecute")
-	}
-
-	var r0 *admin.PinnedNamespaces
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdatePinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpdatePinnedNamespacesApiRequest) *admin.PinnedNamespaces); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PinnedNamespaces)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpdatePinnedNamespacesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpdatePinnedNamespacesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePinnedNamespacesExecute'
-type CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call struct {
-	*mock.Call
-}
-
-// UpdatePinnedNamespacesExecute is a helper method to define mock.On call
-//   - r admin.UpdatePinnedNamespacesApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) UpdatePinnedNamespacesExecute(r any) *CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call {
-	return &CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call{Call: _e.mock.On("UpdatePinnedNamespacesExecute", r)}
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call) Run(run func(r admin.UpdatePinnedNamespacesApiRequest)) *CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdatePinnedNamespacesApiRequest))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call) Return(_a0 *admin.PinnedNamespaces, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call) RunAndReturn(run func(admin.UpdatePinnedNamespacesApiRequest) (*admin.PinnedNamespaces, *http.Response, error)) *CollectionLevelMetricsApi_UpdatePinnedNamespacesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdatePinnedNamespacesWithParams provides a mock function with given fields: ctx, args
-func (_m *CollectionLevelMetricsApi) UpdatePinnedNamespacesWithParams(ctx context.Context, args *admin.UpdatePinnedNamespacesApiParams) admin.UpdatePinnedNamespacesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdatePinnedNamespacesWithParams")
-	}
-
-	var r0 admin.UpdatePinnedNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdatePinnedNamespacesApiParams) admin.UpdatePinnedNamespacesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.UpdatePinnedNamespacesApiRequest)
-	}
-
-	return r0
-}
-
-// CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePinnedNamespacesWithParams'
-type CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call struct {
-	*mock.Call
-}
-
-// UpdatePinnedNamespacesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.UpdatePinnedNamespacesApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) UpdatePinnedNamespacesWithParams(ctx any, args any) *CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call {
-	return &CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call{Call: _e.mock.On("UpdatePinnedNamespacesWithParams", ctx, args)}
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdatePinnedNamespacesApiParams)) *CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdatePinnedNamespacesApiParams))
-	})
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call) Return(_a0 admin.UpdatePinnedNamespacesApiRequest) *CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdatePinnedNamespacesApiParams) admin.UpdatePinnedNamespacesApiRequest) *CollectionLevelMetricsApi_UpdatePinnedNamespacesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -7,8 +7,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312001/admin"
-	"go.mongodb.org/atlas-sdk/v20250312001/examples"
+	"go.mongodb.org/atlas-sdk/v20250312006/admin"
+	"go.mongodb.org/atlas-sdk/v20250312006/examples"
 )
 
 /*
@@ -29,8 +29,8 @@ func main() {
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	projects, response, err := sdk.ProjectsApi.ListGroupsWithParams(ctx,
-		&admin.ListGroupsApiParams{
+	projects, response, err := sdk.ProjectsApi.ListProjectsWithParams(ctx,
+		&admin.ListProjectsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),
 			PageNum:      admin.PtrInt(1),
@@ -43,7 +43,7 @@ func main() {
 
 	projectId := projects.GetResults()[0].GetId()
 	providers := []string{"AWS", "GCP", "AZURE"}
-	regions, response, err := sdk.ClustersApi.ListClusterProviderRegions(ctx, projectId).Providers(providers).Execute()
+	regions, response, err := sdk.ClustersApi.ListCloudProviderRegions(ctx, projectId).Providers(providers).Execute()
 	examples.HandleErr(err, response)
 	fmt.Println(regions)
 }

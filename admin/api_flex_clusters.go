@@ -108,30 +108,6 @@ type FlexClustersApi interface {
 	ListFlexClustersExecute(r ListFlexClustersApiRequest) (*PaginatedFlexClusters20241113, *http.Response, error)
 
 	/*
-		TenantUpgrade Upgrade One Flex Cluster
-
-		Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param atlasTenantClusterUpgradeRequest20240805 Details of the flex cluster upgrade in the specified project.
-		@return TenantUpgradeApiRequest
-	*/
-	TenantUpgrade(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805) TenantUpgradeApiRequest
-	/*
-		TenantUpgrade Upgrade One Flex Cluster
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param TenantUpgradeApiParams - Parameters for the request
-		@return TenantUpgradeApiRequest
-	*/
-	TenantUpgradeWithParams(ctx context.Context, args *TenantUpgradeApiParams) TenantUpgradeApiRequest
-
-	// Method available only for mocking purposes
-	TenantUpgradeExecute(r TenantUpgradeApiRequest) (*FlexClusterDescription20241113, *http.Response, error)
-
-	/*
 		UpdateFlexCluster Update One Flex Cluster in One Project
 
 		Updates one flex cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
@@ -155,6 +131,30 @@ type FlexClustersApi interface {
 
 	// Method available only for mocking purposes
 	UpdateFlexClusterExecute(r UpdateFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error)
+
+	/*
+		UpgradeFlexCluster Upgrade One Flex Cluster
+
+		Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param atlasTenantClusterUpgradeRequest20240805 Details of the flex cluster upgrade in the specified project.
+		@return UpgradeFlexClusterApiRequest
+	*/
+	UpgradeFlexCluster(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805) UpgradeFlexClusterApiRequest
+	/*
+		UpgradeFlexCluster Upgrade One Flex Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpgradeFlexClusterApiParams - Parameters for the request
+		@return UpgradeFlexClusterApiRequest
+	*/
+	UpgradeFlexClusterWithParams(ctx context.Context, args *UpgradeFlexClusterApiParams) UpgradeFlexClusterApiRequest
+
+	// Method available only for mocking purposes
+	UpgradeFlexClusterExecute(r UpgradeFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error)
 }
 
 // FlexClustersApiService FlexClustersApi service
@@ -674,129 +674,6 @@ func (a *FlexClustersApiService) ListFlexClustersExecute(r ListFlexClustersApiRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TenantUpgradeApiRequest struct {
-	ctx                                      context.Context
-	ApiService                               FlexClustersApi
-	groupId                                  string
-	atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805
-}
-
-type TenantUpgradeApiParams struct {
-	GroupId                                  string
-	AtlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805
-}
-
-func (a *FlexClustersApiService) TenantUpgradeWithParams(ctx context.Context, args *TenantUpgradeApiParams) TenantUpgradeApiRequest {
-	return TenantUpgradeApiRequest{
-		ApiService:                               a,
-		ctx:                                      ctx,
-		groupId:                                  args.GroupId,
-		atlasTenantClusterUpgradeRequest20240805: args.AtlasTenantClusterUpgradeRequest20240805,
-	}
-}
-
-func (r TenantUpgradeApiRequest) Execute() (*FlexClusterDescription20241113, *http.Response, error) {
-	return r.ApiService.TenantUpgradeExecute(r)
-}
-
-/*
-TenantUpgrade Upgrade One Flex Cluster
-
-Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return TenantUpgradeApiRequest
-*/
-func (a *FlexClustersApiService) TenantUpgrade(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805) TenantUpgradeApiRequest {
-	return TenantUpgradeApiRequest{
-		ApiService:                               a,
-		ctx:                                      ctx,
-		groupId:                                  groupId,
-		atlasTenantClusterUpgradeRequest20240805: atlasTenantClusterUpgradeRequest20240805,
-	}
-}
-
-// TenantUpgradeExecute executes the request
-//
-//	@return FlexClusterDescription20241113
-func (a *FlexClustersApiService) TenantUpgradeExecute(r TenantUpgradeApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *FlexClusterDescription20241113
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.TenantUpgrade")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.atlasTenantClusterUpgradeRequest20240805 == nil {
-		return localVarReturnValue, nil, reportError("atlasTenantClusterUpgradeRequest20240805 is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-11-13+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-11-13+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.atlasTenantClusterUpgradeRequest20240805
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type UpdateFlexClusterApiRequest struct {
 	ctx                                  context.Context
 	ApiService                           FlexClustersApi
@@ -897,6 +774,129 @@ func (a *FlexClustersApiService) UpdateFlexClusterExecute(r UpdateFlexClusterApi
 	}
 	// body params
 	localVarPostBody = r.flexClusterDescriptionUpdate20241113
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpgradeFlexClusterApiRequest struct {
+	ctx                                      context.Context
+	ApiService                               FlexClustersApi
+	groupId                                  string
+	atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805
+}
+
+type UpgradeFlexClusterApiParams struct {
+	GroupId                                  string
+	AtlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805
+}
+
+func (a *FlexClustersApiService) UpgradeFlexClusterWithParams(ctx context.Context, args *UpgradeFlexClusterApiParams) UpgradeFlexClusterApiRequest {
+	return UpgradeFlexClusterApiRequest{
+		ApiService:                               a,
+		ctx:                                      ctx,
+		groupId:                                  args.GroupId,
+		atlasTenantClusterUpgradeRequest20240805: args.AtlasTenantClusterUpgradeRequest20240805,
+	}
+}
+
+func (r UpgradeFlexClusterApiRequest) Execute() (*FlexClusterDescription20241113, *http.Response, error) {
+	return r.ApiService.UpgradeFlexClusterExecute(r)
+}
+
+/*
+UpgradeFlexCluster Upgrade One Flex Cluster
+
+Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return UpgradeFlexClusterApiRequest
+*/
+func (a *FlexClustersApiService) UpgradeFlexCluster(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805) UpgradeFlexClusterApiRequest {
+	return UpgradeFlexClusterApiRequest{
+		ApiService:                               a,
+		ctx:                                      ctx,
+		groupId:                                  groupId,
+		atlasTenantClusterUpgradeRequest20240805: atlasTenantClusterUpgradeRequest20240805,
+	}
+}
+
+// UpgradeFlexClusterExecute executes the request
+//
+//	@return FlexClusterDescription20241113
+func (a *FlexClustersApiService) UpgradeFlexClusterExecute(r UpgradeFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *FlexClusterDescription20241113
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.UpgradeFlexCluster")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.atlasTenantClusterUpgradeRequest20240805 == nil {
+		return localVarReturnValue, nil, reportError("atlasTenantClusterUpgradeRequest20240805 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-11-13+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-11-13+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.atlasTenantClusterUpgradeRequest20240805
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

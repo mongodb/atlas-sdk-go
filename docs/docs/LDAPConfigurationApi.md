@@ -4,17 +4,17 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteLdapUserMapping**](LDAPConfigurationApi.md#DeleteLdapUserMapping) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove LDAP User to DN Mapping
-[**GetUserSecurity**](LDAPConfigurationApi.md#GetUserSecurity) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return LDAP or X.509 Configuration
-[**GetUserSecurityVerify**](LDAPConfigurationApi.md#GetUserSecurityVerify) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return Status of LDAP Configuration Verification in One Project
-[**UpdateUserSecurity**](LDAPConfigurationApi.md#UpdateUserSecurity) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Update LDAP or X.509 Configuration
-[**VerifyUserSecurityLdap**](LDAPConfigurationApi.md#VerifyUserSecurityLdap) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify LDAP Configuration in One Project
+[**DeleteLdapConfiguration**](LDAPConfigurationApi.md#DeleteLdapConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove LDAP User to DN Mapping
+[**GetLdapConfiguration**](LDAPConfigurationApi.md#GetLdapConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return LDAP or X.509 Configuration
+[**GetLdapConfigurationStatus**](LDAPConfigurationApi.md#GetLdapConfigurationStatus) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return Status of LDAP Configuration Verification in One Project
+[**SaveLdapConfiguration**](LDAPConfigurationApi.md#SaveLdapConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Update LDAP or X.509 Configuration
+[**VerifyLdapConfiguration**](LDAPConfigurationApi.md#VerifyLdapConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify LDAP Configuration in One Project
 
 
 
-## DeleteLdapUserMapping
+## DeleteLdapConfiguration
 
-> UserSecurity DeleteLdapUserMapping(ctx, groupId).Execute()
+> UserSecurity DeleteLdapConfiguration(ctx, groupId).Execute()
 
 Remove LDAP User to DN Mapping
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -44,17 +44,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.DeleteLdapUserMapping(context.Background(), groupId).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.DeleteLdapConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.DeleteLdapUserMapping`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.DeleteLdapConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `DeleteLdapUserMapping`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.DeleteLdapUserMapping`: %v (%v)\n", resp, r)
+    // response from `DeleteLdapConfiguration`: UserSecurity
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.DeleteLdapConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteLdapUserMappingRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteLdapConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -92,9 +92,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetUserSecurity
+## GetLdapConfiguration
 
-> UserSecurity GetUserSecurity(ctx, groupId).Execute()
+> UserSecurity GetLdapConfiguration(ctx, groupId).Execute()
 
 Return LDAP or X.509 Configuration
 
@@ -109,7 +109,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -124,17 +124,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.GetUserSecurity(context.Background(), groupId).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.GetLdapConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetUserSecurity`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLdapConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetUserSecurity`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetUserSecurity`: %v (%v)\n", resp, r)
+    // response from `GetLdapConfiguration`: UserSecurity
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLdapConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUserSecurityRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLdapConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -172,9 +172,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetUserSecurityVerify
+## GetLdapConfigurationStatus
 
-> LDAPVerifyConnectivityJobRequest GetUserSecurityVerify(ctx, groupId, requestId).Execute()
+> LDAPVerifyConnectivityJobRequest GetLdapConfigurationStatus(ctx, groupId, requestId).Execute()
 
 Return Status of LDAP Configuration Verification in One Project
 
@@ -189,7 +189,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -205,17 +205,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     requestId := "requestId_example" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.GetUserSecurityVerify(context.Background(), groupId, requestId).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.GetLdapConfigurationStatus(context.Background(), groupId, requestId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetUserSecurityVerify`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLdapConfigurationStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetUserSecurityVerify`: LDAPVerifyConnectivityJobRequest
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetUserSecurityVerify`: %v (%v)\n", resp, r)
+    // response from `GetLdapConfigurationStatus`: LDAPVerifyConnectivityJobRequest
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLdapConfigurationStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUserSecurityVerifyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLdapConfigurationStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -255,9 +255,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateUserSecurity
+## SaveLdapConfiguration
 
-> UserSecurity UpdateUserSecurity(ctx, groupId, userSecurity UserSecurity).Execute()
+> UserSecurity SaveLdapConfiguration(ctx, groupId, userSecurity UserSecurity).Execute()
 
 Update LDAP or X.509 Configuration
 
@@ -272,7 +272,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -288,17 +288,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userSecurity := *openapiclient.NewUserSecurity() // UserSecurity | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.UpdateUserSecurity(context.Background(), groupId, &userSecurity).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.SaveLdapConfiguration(context.Background(), groupId, &userSecurity).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.UpdateUserSecurity`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.SaveLdapConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateUserSecurity`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.UpdateUserSecurity`: %v (%v)\n", resp, r)
+    // response from `SaveLdapConfiguration`: UserSecurity
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.SaveLdapConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateUserSecurityRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSaveLdapConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -337,9 +337,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## VerifyUserSecurityLdap
+## VerifyLdapConfiguration
 
-> LDAPVerifyConnectivityJobRequest VerifyUserSecurityLdap(ctx, groupId, lDAPVerifyConnectivityJobRequestParams LDAPVerifyConnectivityJobRequestParams).Execute()
+> LDAPVerifyConnectivityJobRequest VerifyLdapConfiguration(ctx, groupId, lDAPVerifyConnectivityJobRequestParams LDAPVerifyConnectivityJobRequestParams).Execute()
 
 Verify LDAP Configuration in One Project
 
@@ -354,7 +354,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -370,17 +370,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     lDAPVerifyConnectivityJobRequestParams := *openapiclient.NewLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // LDAPVerifyConnectivityJobRequestParams | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.VerifyUserSecurityLdap(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.VerifyLdapConfiguration(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyUserSecurityLdap`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyLdapConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `VerifyUserSecurityLdap`: LDAPVerifyConnectivityJobRequest
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.VerifyUserSecurityLdap`: %v (%v)\n", resp, r)
+    // response from `VerifyLdapConfiguration`: LDAPVerifyConnectivityJobRequest
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.VerifyLdapConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiVerifyUserSecurityLdapRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiVerifyLdapConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

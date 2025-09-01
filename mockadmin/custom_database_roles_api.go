@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -25,69 +25,69 @@ func (_m *CustomDatabaseRolesApi) EXPECT() *CustomDatabaseRolesApi_Expecter {
 	return &CustomDatabaseRolesApi_Expecter{mock: &_m.Mock}
 }
 
-// CreateCustomDbRole provides a mock function with given fields: ctx, groupId, userCustomDBRole
-func (_m *CustomDatabaseRolesApi) CreateCustomDbRole(ctx context.Context, groupId string, userCustomDBRole *admin.UserCustomDBRole) admin.CreateCustomDbRoleApiRequest {
+// CreateCustomDatabaseRole provides a mock function with given fields: ctx, groupId, userCustomDBRole
+func (_m *CustomDatabaseRolesApi) CreateCustomDatabaseRole(ctx context.Context, groupId string, userCustomDBRole *admin.UserCustomDBRole) admin.CreateCustomDatabaseRoleApiRequest {
 	ret := _m.Called(ctx, groupId, userCustomDBRole)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCustomDbRole")
+		panic("no return value specified for CreateCustomDatabaseRole")
 	}
 
-	var r0 admin.CreateCustomDbRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.UserCustomDBRole) admin.CreateCustomDbRoleApiRequest); ok {
+	var r0 admin.CreateCustomDatabaseRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.UserCustomDBRole) admin.CreateCustomDatabaseRoleApiRequest); ok {
 		r0 = rf(ctx, groupId, userCustomDBRole)
 	} else {
-		r0 = ret.Get(0).(admin.CreateCustomDbRoleApiRequest)
+		r0 = ret.Get(0).(admin.CreateCustomDatabaseRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_CreateCustomDbRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomDbRole'
-type CustomDatabaseRolesApi_CreateCustomDbRole_Call struct {
+// CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomDatabaseRole'
+type CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call struct {
 	*mock.Call
 }
 
-// CreateCustomDbRole is a helper method to define mock.On call
+// CreateCustomDatabaseRole is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - userCustomDBRole *admin.UserCustomDBRole
-func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDbRole(ctx any, groupId any, userCustomDBRole any) *CustomDatabaseRolesApi_CreateCustomDbRole_Call {
-	return &CustomDatabaseRolesApi_CreateCustomDbRole_Call{Call: _e.mock.On("CreateCustomDbRole", ctx, groupId, userCustomDBRole)}
+func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRole(ctx any, groupId any, userCustomDBRole any) *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call {
+	return &CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call{Call: _e.mock.On("CreateCustomDatabaseRole", ctx, groupId, userCustomDBRole)}
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRole_Call) Run(run func(ctx context.Context, groupId string, userCustomDBRole *admin.UserCustomDBRole)) *CustomDatabaseRolesApi_CreateCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call) Run(run func(ctx context.Context, groupId string, userCustomDBRole *admin.UserCustomDBRole)) *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.UserCustomDBRole))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRole_Call) Return(_a0 admin.CreateCustomDbRoleApiRequest) *CustomDatabaseRolesApi_CreateCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call) Return(_a0 admin.CreateCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRole_Call) RunAndReturn(run func(context.Context, string, *admin.UserCustomDBRole) admin.CreateCustomDbRoleApiRequest) *CustomDatabaseRolesApi_CreateCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call) RunAndReturn(run func(context.Context, string, *admin.UserCustomDBRole) admin.CreateCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateCustomDbRoleExecute provides a mock function with given fields: r
-func (_m *CustomDatabaseRolesApi) CreateCustomDbRoleExecute(r admin.CreateCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error) {
+// CreateCustomDatabaseRoleExecute provides a mock function with given fields: r
+func (_m *CustomDatabaseRolesApi) CreateCustomDatabaseRoleExecute(r admin.CreateCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCustomDbRoleExecute")
+		panic("no return value specified for CreateCustomDatabaseRoleExecute")
 	}
 
 	var r0 *admin.UserCustomDBRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateCustomDbRoleApiRequest) *admin.UserCustomDBRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCustomDatabaseRoleApiRequest) *admin.UserCustomDBRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -95,7 +95,7 @@ func (_m *CustomDatabaseRolesApi) CreateCustomDbRoleExecute(r admin.CreateCustom
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateCustomDbRoleApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateCustomDatabaseRoleApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -103,7 +103,7 @@ func (_m *CustomDatabaseRolesApi) CreateCustomDbRoleExecute(r admin.CreateCustom
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateCustomDbRoleApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateCustomDatabaseRoleApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -112,143 +112,143 @@ func (_m *CustomDatabaseRolesApi) CreateCustomDbRoleExecute(r admin.CreateCustom
 	return r0, r1, r2
 }
 
-// CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomDbRoleExecute'
-type CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call struct {
+// CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomDatabaseRoleExecute'
+type CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call struct {
 	*mock.Call
 }
 
-// CreateCustomDbRoleExecute is a helper method to define mock.On call
-//   - r admin.CreateCustomDbRoleApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDbRoleExecute(r any) *CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call {
-	return &CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call{Call: _e.mock.On("CreateCustomDbRoleExecute", r)}
+// CreateCustomDatabaseRoleExecute is a helper method to define mock.On call
+//   - r admin.CreateCustomDatabaseRoleApiRequest
+func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRoleExecute(r any) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call {
+	return &CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call{Call: _e.mock.On("CreateCustomDatabaseRoleExecute", r)}
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call) Run(run func(r admin.CreateCustomDbRoleApiRequest)) *CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call) Run(run func(r admin.CreateCustomDatabaseRoleApiRequest)) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateCustomDbRoleApiRequest))
+		run(args[0].(admin.CreateCustomDatabaseRoleApiRequest))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call) Return(_a0 *admin.UserCustomDBRole, _a1 *http.Response, _a2 error) *CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call) Return(_a0 *admin.UserCustomDBRole, _a1 *http.Response, _a2 error) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call) RunAndReturn(run func(admin.CreateCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)) *CustomDatabaseRolesApi_CreateCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call) RunAndReturn(run func(admin.CreateCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateCustomDbRoleWithParams provides a mock function with given fields: ctx, args
-func (_m *CustomDatabaseRolesApi) CreateCustomDbRoleWithParams(ctx context.Context, args *admin.CreateCustomDbRoleApiParams) admin.CreateCustomDbRoleApiRequest {
+// CreateCustomDatabaseRoleWithParams provides a mock function with given fields: ctx, args
+func (_m *CustomDatabaseRolesApi) CreateCustomDatabaseRoleWithParams(ctx context.Context, args *admin.CreateCustomDatabaseRoleApiParams) admin.CreateCustomDatabaseRoleApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCustomDbRoleWithParams")
+		panic("no return value specified for CreateCustomDatabaseRoleWithParams")
 	}
 
-	var r0 admin.CreateCustomDbRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateCustomDbRoleApiParams) admin.CreateCustomDbRoleApiRequest); ok {
+	var r0 admin.CreateCustomDatabaseRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateCustomDatabaseRoleApiParams) admin.CreateCustomDatabaseRoleApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateCustomDbRoleApiRequest)
+		r0 = ret.Get(0).(admin.CreateCustomDatabaseRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomDbRoleWithParams'
-type CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call struct {
+// CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomDatabaseRoleWithParams'
+type CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateCustomDbRoleWithParams is a helper method to define mock.On call
+// CreateCustomDatabaseRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateCustomDbRoleApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDbRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call {
-	return &CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call{Call: _e.mock.On("CreateCustomDbRoleWithParams", ctx, args)}
+//   - args *admin.CreateCustomDatabaseRoleApiParams
+func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call {
+	return &CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call{Call: _e.mock.On("CreateCustomDatabaseRoleWithParams", ctx, args)}
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateCustomDbRoleApiParams)) *CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateCustomDatabaseRoleApiParams)) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateCustomDbRoleApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateCustomDatabaseRoleApiParams))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call) Return(_a0 admin.CreateCustomDbRoleApiRequest) *CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call) Return(_a0 admin.CreateCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateCustomDbRoleApiParams) admin.CreateCustomDbRoleApiRequest) *CustomDatabaseRolesApi_CreateCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateCustomDatabaseRoleApiParams) admin.CreateCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteCustomDbRole provides a mock function with given fields: ctx, groupId, roleName
-func (_m *CustomDatabaseRolesApi) DeleteCustomDbRole(ctx context.Context, groupId string, roleName string) admin.DeleteCustomDbRoleApiRequest {
+// DeleteCustomDatabaseRole provides a mock function with given fields: ctx, groupId, roleName
+func (_m *CustomDatabaseRolesApi) DeleteCustomDatabaseRole(ctx context.Context, groupId string, roleName string) admin.DeleteCustomDatabaseRoleApiRequest {
 	ret := _m.Called(ctx, groupId, roleName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteCustomDbRole")
+		panic("no return value specified for DeleteCustomDatabaseRole")
 	}
 
-	var r0 admin.DeleteCustomDbRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteCustomDbRoleApiRequest); ok {
+	var r0 admin.DeleteCustomDatabaseRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteCustomDatabaseRoleApiRequest); ok {
 		r0 = rf(ctx, groupId, roleName)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteCustomDbRoleApiRequest)
+		r0 = ret.Get(0).(admin.DeleteCustomDatabaseRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_DeleteCustomDbRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomDbRole'
-type CustomDatabaseRolesApi_DeleteCustomDbRole_Call struct {
+// CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomDatabaseRole'
+type CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call struct {
 	*mock.Call
 }
 
-// DeleteCustomDbRole is a helper method to define mock.On call
+// DeleteCustomDatabaseRole is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - roleName string
-func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDbRole(ctx any, groupId any, roleName any) *CustomDatabaseRolesApi_DeleteCustomDbRole_Call {
-	return &CustomDatabaseRolesApi_DeleteCustomDbRole_Call{Call: _e.mock.On("DeleteCustomDbRole", ctx, groupId, roleName)}
+func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRole(ctx any, groupId any, roleName any) *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call {
+	return &CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call{Call: _e.mock.On("DeleteCustomDatabaseRole", ctx, groupId, roleName)}
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRole_Call) Run(run func(ctx context.Context, groupId string, roleName string)) *CustomDatabaseRolesApi_DeleteCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call) Run(run func(ctx context.Context, groupId string, roleName string)) *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRole_Call) Return(_a0 admin.DeleteCustomDbRoleApiRequest) *CustomDatabaseRolesApi_DeleteCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call) Return(_a0 admin.DeleteCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRole_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteCustomDbRoleApiRequest) *CustomDatabaseRolesApi_DeleteCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteCustomDbRoleExecute provides a mock function with given fields: r
-func (_m *CustomDatabaseRolesApi) DeleteCustomDbRoleExecute(r admin.DeleteCustomDbRoleApiRequest) (*http.Response, error) {
+// DeleteCustomDatabaseRoleExecute provides a mock function with given fields: r
+func (_m *CustomDatabaseRolesApi) DeleteCustomDatabaseRoleExecute(r admin.DeleteCustomDatabaseRoleApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteCustomDbRoleExecute")
+		panic("no return value specified for DeleteCustomDatabaseRoleExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteCustomDbRoleApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteCustomDatabaseRoleApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteCustomDbRoleApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteCustomDatabaseRoleApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -256,7 +256,7 @@ func (_m *CustomDatabaseRolesApi) DeleteCustomDbRoleExecute(r admin.DeleteCustom
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteCustomDbRoleApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteCustomDatabaseRoleApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -265,144 +265,144 @@ func (_m *CustomDatabaseRolesApi) DeleteCustomDbRoleExecute(r admin.DeleteCustom
 	return r0, r1
 }
 
-// CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomDbRoleExecute'
-type CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call struct {
+// CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomDatabaseRoleExecute'
+type CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteCustomDbRoleExecute is a helper method to define mock.On call
-//   - r admin.DeleteCustomDbRoleApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDbRoleExecute(r any) *CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call {
-	return &CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call{Call: _e.mock.On("DeleteCustomDbRoleExecute", r)}
+// DeleteCustomDatabaseRoleExecute is a helper method to define mock.On call
+//   - r admin.DeleteCustomDatabaseRoleApiRequest
+func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRoleExecute(r any) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call {
+	return &CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call{Call: _e.mock.On("DeleteCustomDatabaseRoleExecute", r)}
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call) Run(run func(r admin.DeleteCustomDbRoleApiRequest)) *CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call) Run(run func(r admin.DeleteCustomDatabaseRoleApiRequest)) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteCustomDbRoleApiRequest))
+		run(args[0].(admin.DeleteCustomDatabaseRoleApiRequest))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call) Return(_a0 *http.Response, _a1 error) *CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call) Return(_a0 *http.Response, _a1 error) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call) RunAndReturn(run func(admin.DeleteCustomDbRoleApiRequest) (*http.Response, error)) *CustomDatabaseRolesApi_DeleteCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call) RunAndReturn(run func(admin.DeleteCustomDatabaseRoleApiRequest) (*http.Response, error)) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteCustomDbRoleWithParams provides a mock function with given fields: ctx, args
-func (_m *CustomDatabaseRolesApi) DeleteCustomDbRoleWithParams(ctx context.Context, args *admin.DeleteCustomDbRoleApiParams) admin.DeleteCustomDbRoleApiRequest {
+// DeleteCustomDatabaseRoleWithParams provides a mock function with given fields: ctx, args
+func (_m *CustomDatabaseRolesApi) DeleteCustomDatabaseRoleWithParams(ctx context.Context, args *admin.DeleteCustomDatabaseRoleApiParams) admin.DeleteCustomDatabaseRoleApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteCustomDbRoleWithParams")
+		panic("no return value specified for DeleteCustomDatabaseRoleWithParams")
 	}
 
-	var r0 admin.DeleteCustomDbRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteCustomDbRoleApiParams) admin.DeleteCustomDbRoleApiRequest); ok {
+	var r0 admin.DeleteCustomDatabaseRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteCustomDatabaseRoleApiParams) admin.DeleteCustomDatabaseRoleApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteCustomDbRoleApiRequest)
+		r0 = ret.Get(0).(admin.DeleteCustomDatabaseRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomDbRoleWithParams'
-type CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call struct {
+// CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCustomDatabaseRoleWithParams'
+type CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteCustomDbRoleWithParams is a helper method to define mock.On call
+// DeleteCustomDatabaseRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteCustomDbRoleApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDbRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call {
-	return &CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call{Call: _e.mock.On("DeleteCustomDbRoleWithParams", ctx, args)}
+//   - args *admin.DeleteCustomDatabaseRoleApiParams
+func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call {
+	return &CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call{Call: _e.mock.On("DeleteCustomDatabaseRoleWithParams", ctx, args)}
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteCustomDbRoleApiParams)) *CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteCustomDatabaseRoleApiParams)) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteCustomDbRoleApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteCustomDatabaseRoleApiParams))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call) Return(_a0 admin.DeleteCustomDbRoleApiRequest) *CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call) Return(_a0 admin.DeleteCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteCustomDbRoleApiParams) admin.DeleteCustomDbRoleApiRequest) *CustomDatabaseRolesApi_DeleteCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteCustomDatabaseRoleApiParams) admin.DeleteCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCustomDbRole provides a mock function with given fields: ctx, groupId, roleName
-func (_m *CustomDatabaseRolesApi) GetCustomDbRole(ctx context.Context, groupId string, roleName string) admin.GetCustomDbRoleApiRequest {
+// GetCustomDatabaseRole provides a mock function with given fields: ctx, groupId, roleName
+func (_m *CustomDatabaseRolesApi) GetCustomDatabaseRole(ctx context.Context, groupId string, roleName string) admin.GetCustomDatabaseRoleApiRequest {
 	ret := _m.Called(ctx, groupId, roleName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCustomDbRole")
+		panic("no return value specified for GetCustomDatabaseRole")
 	}
 
-	var r0 admin.GetCustomDbRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetCustomDbRoleApiRequest); ok {
+	var r0 admin.GetCustomDatabaseRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetCustomDatabaseRoleApiRequest); ok {
 		r0 = rf(ctx, groupId, roleName)
 	} else {
-		r0 = ret.Get(0).(admin.GetCustomDbRoleApiRequest)
+		r0 = ret.Get(0).(admin.GetCustomDatabaseRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_GetCustomDbRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomDbRole'
-type CustomDatabaseRolesApi_GetCustomDbRole_Call struct {
+// CustomDatabaseRolesApi_GetCustomDatabaseRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomDatabaseRole'
+type CustomDatabaseRolesApi_GetCustomDatabaseRole_Call struct {
 	*mock.Call
 }
 
-// GetCustomDbRole is a helper method to define mock.On call
+// GetCustomDatabaseRole is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - roleName string
-func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDbRole(ctx any, groupId any, roleName any) *CustomDatabaseRolesApi_GetCustomDbRole_Call {
-	return &CustomDatabaseRolesApi_GetCustomDbRole_Call{Call: _e.mock.On("GetCustomDbRole", ctx, groupId, roleName)}
+func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRole(ctx any, groupId any, roleName any) *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call {
+	return &CustomDatabaseRolesApi_GetCustomDatabaseRole_Call{Call: _e.mock.On("GetCustomDatabaseRole", ctx, groupId, roleName)}
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRole_Call) Run(run func(ctx context.Context, groupId string, roleName string)) *CustomDatabaseRolesApi_GetCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call) Run(run func(ctx context.Context, groupId string, roleName string)) *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRole_Call) Return(_a0 admin.GetCustomDbRoleApiRequest) *CustomDatabaseRolesApi_GetCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call) Return(_a0 admin.GetCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRole_Call) RunAndReturn(run func(context.Context, string, string) admin.GetCustomDbRoleApiRequest) *CustomDatabaseRolesApi_GetCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call) RunAndReturn(run func(context.Context, string, string) admin.GetCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCustomDbRoleExecute provides a mock function with given fields: r
-func (_m *CustomDatabaseRolesApi) GetCustomDbRoleExecute(r admin.GetCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error) {
+// GetCustomDatabaseRoleExecute provides a mock function with given fields: r
+func (_m *CustomDatabaseRolesApi) GetCustomDatabaseRoleExecute(r admin.GetCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCustomDbRoleExecute")
+		panic("no return value specified for GetCustomDatabaseRoleExecute")
 	}
 
 	var r0 *admin.UserCustomDBRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetCustomDbRoleApiRequest) *admin.UserCustomDBRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCustomDatabaseRoleApiRequest) *admin.UserCustomDBRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -410,7 +410,7 @@ func (_m *CustomDatabaseRolesApi) GetCustomDbRoleExecute(r admin.GetCustomDbRole
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetCustomDbRoleApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetCustomDatabaseRoleApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -418,7 +418,7 @@ func (_m *CustomDatabaseRolesApi) GetCustomDbRoleExecute(r admin.GetCustomDbRole
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetCustomDbRoleApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetCustomDatabaseRoleApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -427,143 +427,143 @@ func (_m *CustomDatabaseRolesApi) GetCustomDbRoleExecute(r admin.GetCustomDbRole
 	return r0, r1, r2
 }
 
-// CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomDbRoleExecute'
-type CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call struct {
+// CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomDatabaseRoleExecute'
+type CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call struct {
 	*mock.Call
 }
 
-// GetCustomDbRoleExecute is a helper method to define mock.On call
-//   - r admin.GetCustomDbRoleApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDbRoleExecute(r any) *CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call {
-	return &CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call{Call: _e.mock.On("GetCustomDbRoleExecute", r)}
+// GetCustomDatabaseRoleExecute is a helper method to define mock.On call
+//   - r admin.GetCustomDatabaseRoleApiRequest
+func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRoleExecute(r any) *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call {
+	return &CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call{Call: _e.mock.On("GetCustomDatabaseRoleExecute", r)}
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call) Run(run func(r admin.GetCustomDbRoleApiRequest)) *CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call) Run(run func(r admin.GetCustomDatabaseRoleApiRequest)) *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetCustomDbRoleApiRequest))
+		run(args[0].(admin.GetCustomDatabaseRoleApiRequest))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call) Return(_a0 *admin.UserCustomDBRole, _a1 *http.Response, _a2 error) *CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call) Return(_a0 *admin.UserCustomDBRole, _a1 *http.Response, _a2 error) *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call) RunAndReturn(run func(admin.GetCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)) *CustomDatabaseRolesApi_GetCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call) RunAndReturn(run func(admin.GetCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)) *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCustomDbRoleWithParams provides a mock function with given fields: ctx, args
-func (_m *CustomDatabaseRolesApi) GetCustomDbRoleWithParams(ctx context.Context, args *admin.GetCustomDbRoleApiParams) admin.GetCustomDbRoleApiRequest {
+// GetCustomDatabaseRoleWithParams provides a mock function with given fields: ctx, args
+func (_m *CustomDatabaseRolesApi) GetCustomDatabaseRoleWithParams(ctx context.Context, args *admin.GetCustomDatabaseRoleApiParams) admin.GetCustomDatabaseRoleApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCustomDbRoleWithParams")
+		panic("no return value specified for GetCustomDatabaseRoleWithParams")
 	}
 
-	var r0 admin.GetCustomDbRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCustomDbRoleApiParams) admin.GetCustomDbRoleApiRequest); ok {
+	var r0 admin.GetCustomDatabaseRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCustomDatabaseRoleApiParams) admin.GetCustomDatabaseRoleApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetCustomDbRoleApiRequest)
+		r0 = ret.Get(0).(admin.GetCustomDatabaseRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomDbRoleWithParams'
-type CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call struct {
+// CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomDatabaseRoleWithParams'
+type CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call struct {
 	*mock.Call
 }
 
-// GetCustomDbRoleWithParams is a helper method to define mock.On call
+// GetCustomDatabaseRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetCustomDbRoleApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDbRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call {
-	return &CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call{Call: _e.mock.On("GetCustomDbRoleWithParams", ctx, args)}
+//   - args *admin.GetCustomDatabaseRoleApiParams
+func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call {
+	return &CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call{Call: _e.mock.On("GetCustomDatabaseRoleWithParams", ctx, args)}
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCustomDbRoleApiParams)) *CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCustomDatabaseRoleApiParams)) *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetCustomDbRoleApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetCustomDatabaseRoleApiParams))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call) Return(_a0 admin.GetCustomDbRoleApiRequest) *CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call) Return(_a0 admin.GetCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCustomDbRoleApiParams) admin.GetCustomDbRoleApiRequest) *CustomDatabaseRolesApi_GetCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCustomDatabaseRoleApiParams) admin.GetCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCustomDbRoles provides a mock function with given fields: ctx, groupId
-func (_m *CustomDatabaseRolesApi) ListCustomDbRoles(ctx context.Context, groupId string) admin.ListCustomDbRolesApiRequest {
+// ListCustomDatabaseRoles provides a mock function with given fields: ctx, groupId
+func (_m *CustomDatabaseRolesApi) ListCustomDatabaseRoles(ctx context.Context, groupId string) admin.ListCustomDatabaseRolesApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCustomDbRoles")
+		panic("no return value specified for ListCustomDatabaseRoles")
 	}
 
-	var r0 admin.ListCustomDbRolesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListCustomDbRolesApiRequest); ok {
+	var r0 admin.ListCustomDatabaseRolesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListCustomDatabaseRolesApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.ListCustomDbRolesApiRequest)
+		r0 = ret.Get(0).(admin.ListCustomDatabaseRolesApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_ListCustomDbRoles_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCustomDbRoles'
-type CustomDatabaseRolesApi_ListCustomDbRoles_Call struct {
+// CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCustomDatabaseRoles'
+type CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call struct {
 	*mock.Call
 }
 
-// ListCustomDbRoles is a helper method to define mock.On call
+// ListCustomDatabaseRoles is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDbRoles(ctx any, groupId any) *CustomDatabaseRolesApi_ListCustomDbRoles_Call {
-	return &CustomDatabaseRolesApi_ListCustomDbRoles_Call{Call: _e.mock.On("ListCustomDbRoles", ctx, groupId)}
+func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRoles(ctx any, groupId any) *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call {
+	return &CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call{Call: _e.mock.On("ListCustomDatabaseRoles", ctx, groupId)}
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRoles_Call) Run(run func(ctx context.Context, groupId string)) *CustomDatabaseRolesApi_ListCustomDbRoles_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call) Run(run func(ctx context.Context, groupId string)) *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRoles_Call) Return(_a0 admin.ListCustomDbRolesApiRequest) *CustomDatabaseRolesApi_ListCustomDbRoles_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call) Return(_a0 admin.ListCustomDatabaseRolesApiRequest) *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRoles_Call) RunAndReturn(run func(context.Context, string) admin.ListCustomDbRolesApiRequest) *CustomDatabaseRolesApi_ListCustomDbRoles_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call) RunAndReturn(run func(context.Context, string) admin.ListCustomDatabaseRolesApiRequest) *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCustomDbRolesExecute provides a mock function with given fields: r
-func (_m *CustomDatabaseRolesApi) ListCustomDbRolesExecute(r admin.ListCustomDbRolesApiRequest) ([]admin.UserCustomDBRole, *http.Response, error) {
+// ListCustomDatabaseRolesExecute provides a mock function with given fields: r
+func (_m *CustomDatabaseRolesApi) ListCustomDatabaseRolesExecute(r admin.ListCustomDatabaseRolesApiRequest) ([]admin.UserCustomDBRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCustomDbRolesExecute")
+		panic("no return value specified for ListCustomDatabaseRolesExecute")
 	}
 
 	var r0 []admin.UserCustomDBRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListCustomDbRolesApiRequest) ([]admin.UserCustomDBRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListCustomDatabaseRolesApiRequest) ([]admin.UserCustomDBRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListCustomDbRolesApiRequest) []admin.UserCustomDBRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListCustomDatabaseRolesApiRequest) []admin.UserCustomDBRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -571,7 +571,7 @@ func (_m *CustomDatabaseRolesApi) ListCustomDbRolesExecute(r admin.ListCustomDbR
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListCustomDbRolesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListCustomDatabaseRolesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -579,7 +579,7 @@ func (_m *CustomDatabaseRolesApi) ListCustomDbRolesExecute(r admin.ListCustomDbR
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListCustomDbRolesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListCustomDatabaseRolesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -588,145 +588,145 @@ func (_m *CustomDatabaseRolesApi) ListCustomDbRolesExecute(r admin.ListCustomDbR
 	return r0, r1, r2
 }
 
-// CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCustomDbRolesExecute'
-type CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call struct {
+// CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCustomDatabaseRolesExecute'
+type CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call struct {
 	*mock.Call
 }
 
-// ListCustomDbRolesExecute is a helper method to define mock.On call
-//   - r admin.ListCustomDbRolesApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDbRolesExecute(r any) *CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call {
-	return &CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call{Call: _e.mock.On("ListCustomDbRolesExecute", r)}
+// ListCustomDatabaseRolesExecute is a helper method to define mock.On call
+//   - r admin.ListCustomDatabaseRolesApiRequest
+func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRolesExecute(r any) *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call {
+	return &CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call{Call: _e.mock.On("ListCustomDatabaseRolesExecute", r)}
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call) Run(run func(r admin.ListCustomDbRolesApiRequest)) *CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call) Run(run func(r admin.ListCustomDatabaseRolesApiRequest)) *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListCustomDbRolesApiRequest))
+		run(args[0].(admin.ListCustomDatabaseRolesApiRequest))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call) Return(_a0 []admin.UserCustomDBRole, _a1 *http.Response, _a2 error) *CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call) Return(_a0 []admin.UserCustomDBRole, _a1 *http.Response, _a2 error) *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call) RunAndReturn(run func(admin.ListCustomDbRolesApiRequest) ([]admin.UserCustomDBRole, *http.Response, error)) *CustomDatabaseRolesApi_ListCustomDbRolesExecute_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call) RunAndReturn(run func(admin.ListCustomDatabaseRolesApiRequest) ([]admin.UserCustomDBRole, *http.Response, error)) *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCustomDbRolesWithParams provides a mock function with given fields: ctx, args
-func (_m *CustomDatabaseRolesApi) ListCustomDbRolesWithParams(ctx context.Context, args *admin.ListCustomDbRolesApiParams) admin.ListCustomDbRolesApiRequest {
+// ListCustomDatabaseRolesWithParams provides a mock function with given fields: ctx, args
+func (_m *CustomDatabaseRolesApi) ListCustomDatabaseRolesWithParams(ctx context.Context, args *admin.ListCustomDatabaseRolesApiParams) admin.ListCustomDatabaseRolesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCustomDbRolesWithParams")
+		panic("no return value specified for ListCustomDatabaseRolesWithParams")
 	}
 
-	var r0 admin.ListCustomDbRolesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListCustomDbRolesApiParams) admin.ListCustomDbRolesApiRequest); ok {
+	var r0 admin.ListCustomDatabaseRolesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListCustomDatabaseRolesApiParams) admin.ListCustomDatabaseRolesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListCustomDbRolesApiRequest)
+		r0 = ret.Get(0).(admin.ListCustomDatabaseRolesApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCustomDbRolesWithParams'
-type CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call struct {
+// CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCustomDatabaseRolesWithParams'
+type CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListCustomDbRolesWithParams is a helper method to define mock.On call
+// ListCustomDatabaseRolesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListCustomDbRolesApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDbRolesWithParams(ctx any, args any) *CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call {
-	return &CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call{Call: _e.mock.On("ListCustomDbRolesWithParams", ctx, args)}
+//   - args *admin.ListCustomDatabaseRolesApiParams
+func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRolesWithParams(ctx any, args any) *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call {
+	return &CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call{Call: _e.mock.On("ListCustomDatabaseRolesWithParams", ctx, args)}
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListCustomDbRolesApiParams)) *CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListCustomDatabaseRolesApiParams)) *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListCustomDbRolesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListCustomDatabaseRolesApiParams))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call) Return(_a0 admin.ListCustomDbRolesApiRequest) *CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call) Return(_a0 admin.ListCustomDatabaseRolesApiRequest) *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListCustomDbRolesApiParams) admin.ListCustomDbRolesApiRequest) *CustomDatabaseRolesApi_ListCustomDbRolesWithParams_Call {
+func (_c *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListCustomDatabaseRolesApiParams) admin.ListCustomDatabaseRolesApiRequest) *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateCustomDbRole provides a mock function with given fields: ctx, groupId, roleName, updateCustomDBRole
-func (_m *CustomDatabaseRolesApi) UpdateCustomDbRole(ctx context.Context, groupId string, roleName string, updateCustomDBRole *admin.UpdateCustomDBRole) admin.UpdateCustomDbRoleApiRequest {
+// UpdateCustomDatabaseRole provides a mock function with given fields: ctx, groupId, roleName, updateCustomDBRole
+func (_m *CustomDatabaseRolesApi) UpdateCustomDatabaseRole(ctx context.Context, groupId string, roleName string, updateCustomDBRole *admin.UpdateCustomDBRole) admin.UpdateCustomDatabaseRoleApiRequest {
 	ret := _m.Called(ctx, groupId, roleName, updateCustomDBRole)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateCustomDbRole")
+		panic("no return value specified for UpdateCustomDatabaseRole")
 	}
 
-	var r0 admin.UpdateCustomDbRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UpdateCustomDBRole) admin.UpdateCustomDbRoleApiRequest); ok {
+	var r0 admin.UpdateCustomDatabaseRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UpdateCustomDBRole) admin.UpdateCustomDatabaseRoleApiRequest); ok {
 		r0 = rf(ctx, groupId, roleName, updateCustomDBRole)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateCustomDbRoleApiRequest)
+		r0 = ret.Get(0).(admin.UpdateCustomDatabaseRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_UpdateCustomDbRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCustomDbRole'
-type CustomDatabaseRolesApi_UpdateCustomDbRole_Call struct {
+// CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCustomDatabaseRole'
+type CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call struct {
 	*mock.Call
 }
 
-// UpdateCustomDbRole is a helper method to define mock.On call
+// UpdateCustomDatabaseRole is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - roleName string
 //   - updateCustomDBRole *admin.UpdateCustomDBRole
-func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDbRole(ctx any, groupId any, roleName any, updateCustomDBRole any) *CustomDatabaseRolesApi_UpdateCustomDbRole_Call {
-	return &CustomDatabaseRolesApi_UpdateCustomDbRole_Call{Call: _e.mock.On("UpdateCustomDbRole", ctx, groupId, roleName, updateCustomDBRole)}
+func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRole(ctx any, groupId any, roleName any, updateCustomDBRole any) *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call {
+	return &CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call{Call: _e.mock.On("UpdateCustomDatabaseRole", ctx, groupId, roleName, updateCustomDBRole)}
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRole_Call) Run(run func(ctx context.Context, groupId string, roleName string, updateCustomDBRole *admin.UpdateCustomDBRole)) *CustomDatabaseRolesApi_UpdateCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call) Run(run func(ctx context.Context, groupId string, roleName string, updateCustomDBRole *admin.UpdateCustomDBRole)) *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.UpdateCustomDBRole))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRole_Call) Return(_a0 admin.UpdateCustomDbRoleApiRequest) *CustomDatabaseRolesApi_UpdateCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call) Return(_a0 admin.UpdateCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRole_Call) RunAndReturn(run func(context.Context, string, string, *admin.UpdateCustomDBRole) admin.UpdateCustomDbRoleApiRequest) *CustomDatabaseRolesApi_UpdateCustomDbRole_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call) RunAndReturn(run func(context.Context, string, string, *admin.UpdateCustomDBRole) admin.UpdateCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateCustomDbRoleExecute provides a mock function with given fields: r
-func (_m *CustomDatabaseRolesApi) UpdateCustomDbRoleExecute(r admin.UpdateCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error) {
+// UpdateCustomDatabaseRoleExecute provides a mock function with given fields: r
+func (_m *CustomDatabaseRolesApi) UpdateCustomDatabaseRoleExecute(r admin.UpdateCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateCustomDbRoleExecute")
+		panic("no return value specified for UpdateCustomDatabaseRoleExecute")
 	}
 
 	var r0 *admin.UserCustomDBRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateCustomDbRoleApiRequest) *admin.UserCustomDBRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateCustomDatabaseRoleApiRequest) *admin.UserCustomDBRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -734,7 +734,7 @@ func (_m *CustomDatabaseRolesApi) UpdateCustomDbRoleExecute(r admin.UpdateCustom
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateCustomDbRoleApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateCustomDatabaseRoleApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -742,7 +742,7 @@ func (_m *CustomDatabaseRolesApi) UpdateCustomDbRoleExecute(r admin.UpdateCustom
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateCustomDbRoleApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateCustomDatabaseRoleApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -751,77 +751,77 @@ func (_m *CustomDatabaseRolesApi) UpdateCustomDbRoleExecute(r admin.UpdateCustom
 	return r0, r1, r2
 }
 
-// CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCustomDbRoleExecute'
-type CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call struct {
+// CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCustomDatabaseRoleExecute'
+type CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateCustomDbRoleExecute is a helper method to define mock.On call
-//   - r admin.UpdateCustomDbRoleApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDbRoleExecute(r any) *CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call {
-	return &CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call{Call: _e.mock.On("UpdateCustomDbRoleExecute", r)}
+// UpdateCustomDatabaseRoleExecute is a helper method to define mock.On call
+//   - r admin.UpdateCustomDatabaseRoleApiRequest
+func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRoleExecute(r any) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call {
+	return &CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call{Call: _e.mock.On("UpdateCustomDatabaseRoleExecute", r)}
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call) Run(run func(r admin.UpdateCustomDbRoleApiRequest)) *CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call) Run(run func(r admin.UpdateCustomDatabaseRoleApiRequest)) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateCustomDbRoleApiRequest))
+		run(args[0].(admin.UpdateCustomDatabaseRoleApiRequest))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call) Return(_a0 *admin.UserCustomDBRole, _a1 *http.Response, _a2 error) *CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call) Return(_a0 *admin.UserCustomDBRole, _a1 *http.Response, _a2 error) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call) RunAndReturn(run func(admin.UpdateCustomDbRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)) *CustomDatabaseRolesApi_UpdateCustomDbRoleExecute_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call) RunAndReturn(run func(admin.UpdateCustomDatabaseRoleApiRequest) (*admin.UserCustomDBRole, *http.Response, error)) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateCustomDbRoleWithParams provides a mock function with given fields: ctx, args
-func (_m *CustomDatabaseRolesApi) UpdateCustomDbRoleWithParams(ctx context.Context, args *admin.UpdateCustomDbRoleApiParams) admin.UpdateCustomDbRoleApiRequest {
+// UpdateCustomDatabaseRoleWithParams provides a mock function with given fields: ctx, args
+func (_m *CustomDatabaseRolesApi) UpdateCustomDatabaseRoleWithParams(ctx context.Context, args *admin.UpdateCustomDatabaseRoleApiParams) admin.UpdateCustomDatabaseRoleApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateCustomDbRoleWithParams")
+		panic("no return value specified for UpdateCustomDatabaseRoleWithParams")
 	}
 
-	var r0 admin.UpdateCustomDbRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateCustomDbRoleApiParams) admin.UpdateCustomDbRoleApiRequest); ok {
+	var r0 admin.UpdateCustomDatabaseRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateCustomDatabaseRoleApiParams) admin.UpdateCustomDatabaseRoleApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateCustomDbRoleApiRequest)
+		r0 = ret.Get(0).(admin.UpdateCustomDatabaseRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCustomDbRoleWithParams'
-type CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call struct {
+// CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCustomDatabaseRoleWithParams'
+type CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateCustomDbRoleWithParams is a helper method to define mock.On call
+// UpdateCustomDatabaseRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateCustomDbRoleApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDbRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call {
-	return &CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call{Call: _e.mock.On("UpdateCustomDbRoleWithParams", ctx, args)}
+//   - args *admin.UpdateCustomDatabaseRoleApiParams
+func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call {
+	return &CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call{Call: _e.mock.On("UpdateCustomDatabaseRoleWithParams", ctx, args)}
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateCustomDbRoleApiParams)) *CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateCustomDatabaseRoleApiParams)) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateCustomDbRoleApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateCustomDatabaseRoleApiParams))
 	})
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call) Return(_a0 admin.UpdateCustomDbRoleApiRequest) *CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call) Return(_a0 admin.UpdateCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateCustomDbRoleApiParams) admin.UpdateCustomDbRoleApiRequest) *CustomDatabaseRolesApi_UpdateCustomDbRoleWithParams_Call {
+func (_c *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateCustomDatabaseRoleApiParams) admin.UpdateCustomDatabaseRoleApiRequest) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

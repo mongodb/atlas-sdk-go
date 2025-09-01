@@ -4,97 +4,15 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupLiveMigration**](CloudMigrationServiceApi.md#CreateGroupLiveMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Migrate One Local Managed Cluster to MongoDB Atlas
 [**CreateLinkToken**](CloudMigrationServiceApi.md#CreateLinkToken) | **Post** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Create One Link-Token
+[**CreatePushMigration**](CloudMigrationServiceApi.md#CreatePushMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Migrate One Local Managed Cluster to MongoDB Atlas
 [**CutoverMigration**](CloudMigrationServiceApi.md#CutoverMigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over One Migrated Cluster
-[**DeleteLinkTokens**](CloudMigrationServiceApi.md#DeleteLinkTokens) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token
-[**GetGroupLiveMigration**](CloudMigrationServiceApi.md#GetGroupLiveMigration) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId} | Return One Migration Job
-[**GetMigrationValidateStatus**](CloudMigrationServiceApi.md#GetMigrationValidateStatus) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId} | Return One Migration Validation Job
-[**ListAvailableProjects**](CloudMigrationServiceApi.md#ListAvailableProjects) | **Get** /api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects | Return All Projects Available for Migration
-[**ValidateLiveMigrations**](CloudMigrationServiceApi.md#ValidateLiveMigrations) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations/validate | Validate One Migration Request
+[**DeleteLinkToken**](CloudMigrationServiceApi.md#DeleteLinkToken) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token
+[**GetPushMigration**](CloudMigrationServiceApi.md#GetPushMigration) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId} | Return One Migration Job
+[**GetValidationStatus**](CloudMigrationServiceApi.md#GetValidationStatus) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId} | Return One Migration Validation Job
+[**ListSourceProjects**](CloudMigrationServiceApi.md#ListSourceProjects) | **Get** /api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects | Return All Projects Available for Migration
+[**ValidateMigration**](CloudMigrationServiceApi.md#ValidateMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations/validate | Validate One Migration Request
 
-
-
-## CreateGroupLiveMigration
-
-> LiveMigrationResponse CreateGroupLiveMigration(ctx, groupId, liveMigrationRequest20240530 LiveMigrationRequest20240530).Execute()
-
-Migrate One Local Managed Cluster to MongoDB Atlas
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
-
-    resp, r, err := sdk.CloudMigrationServiceApi.CreateGroupLiveMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreateGroupLiveMigration`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `CreateGroupLiveMigration`: LiveMigrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.CreateGroupLiveMigration`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateGroupLiveMigrationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **liveMigrationRequest20240530** | [**LiveMigrationRequest20240530**](LiveMigrationRequest20240530.md) | One migration to be created. | 
-
-### Return type
-
-[**LiveMigrationResponse**](LiveMigrationResponse.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: application/vnd.atlas.2024-05-30+json
-- **Accept**: application/vnd.atlas.2024-05-30+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CreateLinkToken
@@ -114,7 +32,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -179,6 +97,88 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreatePushMigration
+
+> LiveMigrationResponse CreatePushMigration(ctx, groupId, liveMigrationRequest20240530 LiveMigrationRequest20240530).Execute()
+
+Migrate One Local Managed Cluster to MongoDB Atlas
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
+
+    resp, r, err := sdk.CloudMigrationServiceApi.CreatePushMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreatePushMigration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreatePushMigration`: LiveMigrationResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.CreatePushMigration`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePushMigrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **liveMigrationRequest20240530** | [**LiveMigrationRequest20240530**](LiveMigrationRequest20240530.md) | One migration to be created. | 
+
+### Return type
+
+[**LiveMigrationResponse**](LiveMigrationResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CutoverMigration
 
 > CutoverMigration(ctx, groupId, liveMigrationId).Execute()
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -260,9 +260,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteLinkTokens
+## DeleteLinkToken
 
-> DeleteLinkTokens(ctx, orgId).Execute()
+> DeleteLinkToken(ctx, orgId).Execute()
 
 Remove One Link-Token
 
@@ -277,7 +277,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -292,9 +292,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.CloudMigrationServiceApi.DeleteLinkTokens(context.Background(), orgId).Execute()
+    r, err := sdk.CloudMigrationServiceApi.DeleteLinkToken(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.DeleteLinkTokens`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.DeleteLinkToken`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteLinkTokensRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteLinkTokenRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -338,9 +338,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetGroupLiveMigration
+## GetPushMigration
 
-> LiveMigrationResponse GetGroupLiveMigration(ctx, groupId, liveMigrationId).Execute()
+> LiveMigrationResponse GetPushMigration(ctx, groupId, liveMigrationId).Execute()
 
 Return One Migration Job
 
@@ -355,7 +355,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -371,17 +371,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationId := "6296fb4c7c7aa997cf94e9a8" // string | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.GetGroupLiveMigration(context.Background(), groupId, liveMigrationId).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.GetPushMigration(context.Background(), groupId, liveMigrationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetGroupLiveMigration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetPushMigration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetGroupLiveMigration`: LiveMigrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetGroupLiveMigration`: %v (%v)\n", resp, r)
+    // response from `GetPushMigration`: LiveMigrationResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetPushMigration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetGroupLiveMigrationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPushMigrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -421,9 +421,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetMigrationValidateStatus
+## GetValidationStatus
 
-> LiveImportValidation GetMigrationValidateStatus(ctx, groupId, validationId).Execute()
+> LiveImportValidation GetValidationStatus(ctx, groupId, validationId).Execute()
 
 Return One Migration Validation Job
 
@@ -438,7 +438,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -454,17 +454,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     validationId := "507f1f77bcf86cd799439011" // string | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.GetMigrationValidateStatus(context.Background(), groupId, validationId).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.GetValidationStatus(context.Background(), groupId, validationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetMigrationValidateStatus`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetValidationStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetMigrationValidateStatus`: LiveImportValidation
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetMigrationValidateStatus`: %v (%v)\n", resp, r)
+    // response from `GetValidationStatus`: LiveImportValidation
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetValidationStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetMigrationValidateStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetValidationStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -504,9 +504,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListAvailableProjects
+## ListSourceProjects
 
-> []LiveImportAvailableProject ListAvailableProjects(ctx, orgId).Execute()
+> []LiveImportAvailableProject ListSourceProjects(ctx, orgId).Execute()
 
 Return All Projects Available for Migration
 
@@ -521,7 +521,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -536,17 +536,17 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.ListAvailableProjects(context.Background(), orgId).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.ListSourceProjects(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ListAvailableProjects`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ListSourceProjects`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListAvailableProjects`: []LiveImportAvailableProject
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ListAvailableProjects`: %v (%v)\n", resp, r)
+    // response from `ListSourceProjects`: []LiveImportAvailableProject
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ListSourceProjects`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -560,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListAvailableProjectsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListSourceProjectsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -584,9 +584,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ValidateLiveMigrations
+## ValidateMigration
 
-> LiveImportValidation ValidateLiveMigrations(ctx, groupId, liveMigrationRequest20240530 LiveMigrationRequest20240530).Execute()
+> LiveImportValidation ValidateMigration(ctx, groupId, liveMigrationRequest20240530 LiveMigrationRequest20240530).Execute()
 
 Validate One Migration Request
 
@@ -601,7 +601,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -617,17 +617,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.ValidateLiveMigrations(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.ValidateMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ValidateLiveMigrations`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ValidateMigration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ValidateLiveMigrations`: LiveImportValidation
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ValidateLiveMigrations`: %v (%v)\n", resp, r)
+    // response from `ValidateMigration`: LiveImportValidation
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ValidateMigration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiValidateLiveMigrationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiValidateMigrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

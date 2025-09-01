@@ -4,7 +4,7 @@ package admin
 
 // CostExplorerFilterRequestBody Request body for a cost explorer query.
 type CostExplorerFilterRequestBody struct {
-	// The list of clusters to be included in the Cost Explorer Query.
+	// The list of projects to be included in the Cost Explorer Query.
 	Clusters *[]string `json:"clusters,omitempty"`
 	// The exclusive ending date for the Cost Explorer query. The date must be the start of a month.
 	EndDate string `json:"endDate"`

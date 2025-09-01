@@ -4,23 +4,23 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DisableManagedSlowMs**](PerformanceAdvisorApi.md#DisableManagedSlowMs) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold
-[**EnableManagedSlowMs**](PerformanceAdvisorApi.md#EnableManagedSlowMs) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold
+[**DisableSlowOperationThresholding**](PerformanceAdvisorApi.md#DisableSlowOperationThresholding) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold
+[**EnableSlowOperationThresholding**](PerformanceAdvisorApi.md#EnableSlowOperationThresholding) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold
 [**GetManagedSlowMs**](PerformanceAdvisorApi.md#GetManagedSlowMs) | **Get** /api/atlas/v2/groups/{groupId}/managedSlowMs | Return Managed Slow Operation Threshold Status
 [**GetServerlessAutoIndexing**](PerformanceAdvisorApi.md#GetServerlessAutoIndexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto-Indexing Status
 [**ListClusterSuggestedIndexes**](PerformanceAdvisorApi.md#ListClusterSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes | Return All Suggested Indexes
-[**ListDropIndexSuggestions**](PerformanceAdvisorApi.md#ListDropIndexSuggestions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions | Return All Suggested Indexes to Drop
-[**ListPerformanceAdvisorNamespaces**](PerformanceAdvisorApi.md#ListPerformanceAdvisorNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host
+[**ListDropIndexes**](PerformanceAdvisorApi.md#ListDropIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions | Return All Suggested Indexes to Drop
 [**ListSchemaAdvice**](PerformanceAdvisorApi.md#ListSchemaAdvice) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/schemaAdvice | Return Schema Advice
-[**ListSlowQueryLogs**](PerformanceAdvisorApi.md#ListSlowQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries
+[**ListSlowQueries**](PerformanceAdvisorApi.md#ListSlowQueries) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries
+[**ListSlowQueryNamespaces**](PerformanceAdvisorApi.md#ListSlowQueryNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host
 [**ListSuggestedIndexes**](PerformanceAdvisorApi.md#ListSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return All Suggested Indexes
 [**SetServerlessAutoIndexing**](PerformanceAdvisorApi.md#SetServerlessAutoIndexing) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Set Serverless Auto-Indexing Status
 
 
 
-## DisableManagedSlowMs
+## DisableSlowOperationThresholding
 
-> DisableManagedSlowMs(ctx, groupId).Execute()
+> DisableSlowOperationThresholding(ctx, groupId).Execute()
 
 Disable Managed Slow Operation Threshold
 
@@ -35,7 +35,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -50,9 +50,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.PerformanceAdvisorApi.DisableManagedSlowMs(context.Background(), groupId).Execute()
+    r, err := sdk.PerformanceAdvisorApi.DisableSlowOperationThresholding(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.DisableManagedSlowMs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.DisableSlowOperationThresholding`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDisableManagedSlowMsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDisableSlowOperationThresholdingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -96,9 +96,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## EnableManagedSlowMs
+## EnableSlowOperationThresholding
 
-> EnableManagedSlowMs(ctx, groupId).Execute()
+> EnableSlowOperationThresholding(ctx, groupId).Execute()
 
 Enable Managed Slow Operation Threshold
 
@@ -113,7 +113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -128,9 +128,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.PerformanceAdvisorApi.EnableManagedSlowMs(context.Background(), groupId).Execute()
+    r, err := sdk.PerformanceAdvisorApi.EnableSlowOperationThresholding(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.EnableManagedSlowMs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.EnableSlowOperationThresholding`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnableManagedSlowMsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnableSlowOperationThresholdingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -191,7 +191,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -271,7 +271,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -354,7 +354,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -428,9 +428,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListDropIndexSuggestions
+## ListDropIndexes
 
-> DropIndexSuggestionsResponse ListDropIndexSuggestions(ctx, groupId, clusterName).Execute()
+> DropIndexSuggestionsResponse ListDropIndexes(ctx, groupId, clusterName).Execute()
 
 Return All Suggested Indexes to Drop
 
@@ -445,7 +445,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -461,17 +461,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListDropIndexSuggestions(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.PerformanceAdvisorApi.ListDropIndexes(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListDropIndexSuggestions`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListDropIndexes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListDropIndexSuggestions`: DropIndexSuggestionsResponse
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListDropIndexSuggestions`: %v (%v)\n", resp, r)
+    // response from `ListDropIndexes`: DropIndexSuggestionsResponse
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListDropIndexes`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -486,7 +486,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListDropIndexSuggestionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListDropIndexesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -511,93 +511,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListPerformanceAdvisorNamespaces
-
-> Namespaces ListPerformanceAdvisorNamespaces(ctx, groupId, processId).Duration(duration).Since(since).Execute()
-
-Return All Namespaces for One Host
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    processId := "processId_example" // string | 
-    duration := int64(789) // int64 |  (optional)
-    since := int64(789) // int64 |  (optional)
-
-    resp, r, err := sdk.PerformanceAdvisorApi.ListPerformanceAdvisorNamespaces(context.Background(), groupId, processId).Duration(duration).Since(since).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListPerformanceAdvisorNamespaces`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListPerformanceAdvisorNamespaces`: Namespaces
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListPerformanceAdvisorNamespaces`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**processId** | **string** | Combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListPerformanceAdvisorNamespacesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **duration** | **int64** | Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.  - If you don&#39;t specify the **since** parameter, the endpoint returns data covering the duration before the current time. - If you specify neither the **duration** nor **since** parameters, the endpoint returns data from the previous 24 hours. | 
- **since** | **int64** | Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours. | 
-
-### Return type
-
-[**Namespaces**](Namespaces.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListSchemaAdvice
 
 > SchemaAdvisorResponse ListSchemaAdvice(ctx, groupId, clusterName).Execute()
@@ -615,7 +528,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -681,9 +594,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSlowQueryLogs
+## ListSlowQueries
 
-> PerformanceAdvisorSlowQueryList ListSlowQueryLogs(ctx, groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).IncludeMetrics(includeMetrics).IncludeReplicaState(includeReplicaState).IncludeOpType(includeOpType).Execute()
+> PerformanceAdvisorSlowQueryList ListSlowQueries(ctx, groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).IncludeMetrics(includeMetrics).IncludeReplicaState(includeReplicaState).IncludeOpType(includeOpType).Execute()
 
 Return Slow Queries
 
@@ -698,7 +611,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -721,17 +634,17 @@ func main() {
     includeReplicaState := true // bool |  (optional) (default to false)
     includeOpType := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListSlowQueryLogs(context.Background(), groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).IncludeMetrics(includeMetrics).IncludeReplicaState(includeReplicaState).IncludeOpType(includeOpType).Execute()
+    resp, r, err := sdk.PerformanceAdvisorApi.ListSlowQueries(context.Background(), groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).IncludeMetrics(includeMetrics).IncludeReplicaState(includeReplicaState).IncludeOpType(includeOpType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueryLogs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueries`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListSlowQueryLogs`: PerformanceAdvisorSlowQueryList
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueryLogs`: %v (%v)\n", resp, r)
+    // response from `ListSlowQueries`: PerformanceAdvisorSlowQueryList
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueries`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -746,7 +659,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListSlowQueryLogsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListSlowQueriesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -778,6 +691,93 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListSlowQueryNamespaces
+
+> Namespaces ListSlowQueryNamespaces(ctx, groupId, processId).Duration(duration).Since(since).Execute()
+
+Return All Namespaces for One Host
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    processId := "processId_example" // string | 
+    duration := int64(789) // int64 |  (optional)
+    since := int64(789) // int64 |  (optional)
+
+    resp, r, err := sdk.PerformanceAdvisorApi.ListSlowQueryNamespaces(context.Background(), groupId, processId).Duration(duration).Since(since).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueryNamespaces`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListSlowQueryNamespaces`: Namespaces
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueryNamespaces`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**processId** | **string** | Combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSlowQueryNamespacesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **duration** | **int64** | Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.  - If you don&#39;t specify the **since** parameter, the endpoint returns data covering the duration before the current time. - If you specify neither the **duration** nor **since** parameters, the endpoint returns data from the previous 24 hours. | 
+ **since** | **int64** | Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours. | 
+
+### Return type
+
+[**Namespaces**](Namespaces.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListSuggestedIndexes
 
 > PerformanceAdvisorResponse ListSuggestedIndexes(ctx, groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Duration(duration).Namespaces(namespaces).NExamples(nExamples).NIndexes(nIndexes).Since(since).Execute()
@@ -795,7 +795,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -894,7 +894,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {

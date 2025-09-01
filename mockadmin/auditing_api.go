@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -25,68 +25,68 @@ func (_m *AuditingApi) EXPECT() *AuditingApi_Expecter {
 	return &AuditingApi_Expecter{mock: &_m.Mock}
 }
 
-// GetGroupAuditLog provides a mock function with given fields: ctx, groupId
-func (_m *AuditingApi) GetGroupAuditLog(ctx context.Context, groupId string) admin.GetGroupAuditLogApiRequest {
+// GetAuditingConfiguration provides a mock function with given fields: ctx, groupId
+func (_m *AuditingApi) GetAuditingConfiguration(ctx context.Context, groupId string) admin.GetAuditingConfigurationApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetGroupAuditLog")
+		panic("no return value specified for GetAuditingConfiguration")
 	}
 
-	var r0 admin.GetGroupAuditLogApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetGroupAuditLogApiRequest); ok {
+	var r0 admin.GetAuditingConfigurationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetAuditingConfigurationApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetGroupAuditLogApiRequest)
+		r0 = ret.Get(0).(admin.GetAuditingConfigurationApiRequest)
 	}
 
 	return r0
 }
 
-// AuditingApi_GetGroupAuditLog_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupAuditLog'
-type AuditingApi_GetGroupAuditLog_Call struct {
+// AuditingApi_GetAuditingConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAuditingConfiguration'
+type AuditingApi_GetAuditingConfiguration_Call struct {
 	*mock.Call
 }
 
-// GetGroupAuditLog is a helper method to define mock.On call
+// GetAuditingConfiguration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *AuditingApi_Expecter) GetGroupAuditLog(ctx any, groupId any) *AuditingApi_GetGroupAuditLog_Call {
-	return &AuditingApi_GetGroupAuditLog_Call{Call: _e.mock.On("GetGroupAuditLog", ctx, groupId)}
+func (_e *AuditingApi_Expecter) GetAuditingConfiguration(ctx any, groupId any) *AuditingApi_GetAuditingConfiguration_Call {
+	return &AuditingApi_GetAuditingConfiguration_Call{Call: _e.mock.On("GetAuditingConfiguration", ctx, groupId)}
 }
 
-func (_c *AuditingApi_GetGroupAuditLog_Call) Run(run func(ctx context.Context, groupId string)) *AuditingApi_GetGroupAuditLog_Call {
+func (_c *AuditingApi_GetAuditingConfiguration_Call) Run(run func(ctx context.Context, groupId string)) *AuditingApi_GetAuditingConfiguration_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *AuditingApi_GetGroupAuditLog_Call) Return(_a0 admin.GetGroupAuditLogApiRequest) *AuditingApi_GetGroupAuditLog_Call {
+func (_c *AuditingApi_GetAuditingConfiguration_Call) Return(_a0 admin.GetAuditingConfigurationApiRequest) *AuditingApi_GetAuditingConfiguration_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AuditingApi_GetGroupAuditLog_Call) RunAndReturn(run func(context.Context, string) admin.GetGroupAuditLogApiRequest) *AuditingApi_GetGroupAuditLog_Call {
+func (_c *AuditingApi_GetAuditingConfiguration_Call) RunAndReturn(run func(context.Context, string) admin.GetAuditingConfigurationApiRequest) *AuditingApi_GetAuditingConfiguration_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetGroupAuditLogExecute provides a mock function with given fields: r
-func (_m *AuditingApi) GetGroupAuditLogExecute(r admin.GetGroupAuditLogApiRequest) (*admin.AuditLog, *http.Response, error) {
+// GetAuditingConfigurationExecute provides a mock function with given fields: r
+func (_m *AuditingApi) GetAuditingConfigurationExecute(r admin.GetAuditingConfigurationApiRequest) (*admin.AuditLog, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetGroupAuditLogExecute")
+		panic("no return value specified for GetAuditingConfigurationExecute")
 	}
 
 	var r0 *admin.AuditLog
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetGroupAuditLogApiRequest) (*admin.AuditLog, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAuditingConfigurationApiRequest) (*admin.AuditLog, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetGroupAuditLogApiRequest) *admin.AuditLog); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAuditingConfigurationApiRequest) *admin.AuditLog); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -94,7 +94,7 @@ func (_m *AuditingApi) GetGroupAuditLogExecute(r admin.GetGroupAuditLogApiReques
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetGroupAuditLogApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetAuditingConfigurationApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -102,7 +102,7 @@ func (_m *AuditingApi) GetGroupAuditLogExecute(r admin.GetGroupAuditLogApiReques
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetGroupAuditLogApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetAuditingConfigurationApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -111,144 +111,144 @@ func (_m *AuditingApi) GetGroupAuditLogExecute(r admin.GetGroupAuditLogApiReques
 	return r0, r1, r2
 }
 
-// AuditingApi_GetGroupAuditLogExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupAuditLogExecute'
-type AuditingApi_GetGroupAuditLogExecute_Call struct {
+// AuditingApi_GetAuditingConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAuditingConfigurationExecute'
+type AuditingApi_GetAuditingConfigurationExecute_Call struct {
 	*mock.Call
 }
 
-// GetGroupAuditLogExecute is a helper method to define mock.On call
-//   - r admin.GetGroupAuditLogApiRequest
-func (_e *AuditingApi_Expecter) GetGroupAuditLogExecute(r any) *AuditingApi_GetGroupAuditLogExecute_Call {
-	return &AuditingApi_GetGroupAuditLogExecute_Call{Call: _e.mock.On("GetGroupAuditLogExecute", r)}
+// GetAuditingConfigurationExecute is a helper method to define mock.On call
+//   - r admin.GetAuditingConfigurationApiRequest
+func (_e *AuditingApi_Expecter) GetAuditingConfigurationExecute(r any) *AuditingApi_GetAuditingConfigurationExecute_Call {
+	return &AuditingApi_GetAuditingConfigurationExecute_Call{Call: _e.mock.On("GetAuditingConfigurationExecute", r)}
 }
 
-func (_c *AuditingApi_GetGroupAuditLogExecute_Call) Run(run func(r admin.GetGroupAuditLogApiRequest)) *AuditingApi_GetGroupAuditLogExecute_Call {
+func (_c *AuditingApi_GetAuditingConfigurationExecute_Call) Run(run func(r admin.GetAuditingConfigurationApiRequest)) *AuditingApi_GetAuditingConfigurationExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetGroupAuditLogApiRequest))
+		run(args[0].(admin.GetAuditingConfigurationApiRequest))
 	})
 	return _c
 }
 
-func (_c *AuditingApi_GetGroupAuditLogExecute_Call) Return(_a0 *admin.AuditLog, _a1 *http.Response, _a2 error) *AuditingApi_GetGroupAuditLogExecute_Call {
+func (_c *AuditingApi_GetAuditingConfigurationExecute_Call) Return(_a0 *admin.AuditLog, _a1 *http.Response, _a2 error) *AuditingApi_GetAuditingConfigurationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AuditingApi_GetGroupAuditLogExecute_Call) RunAndReturn(run func(admin.GetGroupAuditLogApiRequest) (*admin.AuditLog, *http.Response, error)) *AuditingApi_GetGroupAuditLogExecute_Call {
+func (_c *AuditingApi_GetAuditingConfigurationExecute_Call) RunAndReturn(run func(admin.GetAuditingConfigurationApiRequest) (*admin.AuditLog, *http.Response, error)) *AuditingApi_GetAuditingConfigurationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetGroupAuditLogWithParams provides a mock function with given fields: ctx, args
-func (_m *AuditingApi) GetGroupAuditLogWithParams(ctx context.Context, args *admin.GetGroupAuditLogApiParams) admin.GetGroupAuditLogApiRequest {
+// GetAuditingConfigurationWithParams provides a mock function with given fields: ctx, args
+func (_m *AuditingApi) GetAuditingConfigurationWithParams(ctx context.Context, args *admin.GetAuditingConfigurationApiParams) admin.GetAuditingConfigurationApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetGroupAuditLogWithParams")
+		panic("no return value specified for GetAuditingConfigurationWithParams")
 	}
 
-	var r0 admin.GetGroupAuditLogApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupAuditLogApiParams) admin.GetGroupAuditLogApiRequest); ok {
+	var r0 admin.GetAuditingConfigurationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAuditingConfigurationApiParams) admin.GetAuditingConfigurationApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetGroupAuditLogApiRequest)
+		r0 = ret.Get(0).(admin.GetAuditingConfigurationApiRequest)
 	}
 
 	return r0
 }
 
-// AuditingApi_GetGroupAuditLogWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupAuditLogWithParams'
-type AuditingApi_GetGroupAuditLogWithParams_Call struct {
+// AuditingApi_GetAuditingConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAuditingConfigurationWithParams'
+type AuditingApi_GetAuditingConfigurationWithParams_Call struct {
 	*mock.Call
 }
 
-// GetGroupAuditLogWithParams is a helper method to define mock.On call
+// GetAuditingConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetGroupAuditLogApiParams
-func (_e *AuditingApi_Expecter) GetGroupAuditLogWithParams(ctx any, args any) *AuditingApi_GetGroupAuditLogWithParams_Call {
-	return &AuditingApi_GetGroupAuditLogWithParams_Call{Call: _e.mock.On("GetGroupAuditLogWithParams", ctx, args)}
+//   - args *admin.GetAuditingConfigurationApiParams
+func (_e *AuditingApi_Expecter) GetAuditingConfigurationWithParams(ctx any, args any) *AuditingApi_GetAuditingConfigurationWithParams_Call {
+	return &AuditingApi_GetAuditingConfigurationWithParams_Call{Call: _e.mock.On("GetAuditingConfigurationWithParams", ctx, args)}
 }
 
-func (_c *AuditingApi_GetGroupAuditLogWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupAuditLogApiParams)) *AuditingApi_GetGroupAuditLogWithParams_Call {
+func (_c *AuditingApi_GetAuditingConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAuditingConfigurationApiParams)) *AuditingApi_GetAuditingConfigurationWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetGroupAuditLogApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetAuditingConfigurationApiParams))
 	})
 	return _c
 }
 
-func (_c *AuditingApi_GetGroupAuditLogWithParams_Call) Return(_a0 admin.GetGroupAuditLogApiRequest) *AuditingApi_GetGroupAuditLogWithParams_Call {
+func (_c *AuditingApi_GetAuditingConfigurationWithParams_Call) Return(_a0 admin.GetAuditingConfigurationApiRequest) *AuditingApi_GetAuditingConfigurationWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AuditingApi_GetGroupAuditLogWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupAuditLogApiParams) admin.GetGroupAuditLogApiRequest) *AuditingApi_GetGroupAuditLogWithParams_Call {
+func (_c *AuditingApi_GetAuditingConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAuditingConfigurationApiParams) admin.GetAuditingConfigurationApiRequest) *AuditingApi_GetAuditingConfigurationWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateAuditLog provides a mock function with given fields: ctx, groupId, auditLog
-func (_m *AuditingApi) UpdateAuditLog(ctx context.Context, groupId string, auditLog *admin.AuditLog) admin.UpdateAuditLogApiRequest {
+// UpdateAuditingConfiguration provides a mock function with given fields: ctx, groupId, auditLog
+func (_m *AuditingApi) UpdateAuditingConfiguration(ctx context.Context, groupId string, auditLog *admin.AuditLog) admin.UpdateAuditingConfigurationApiRequest {
 	ret := _m.Called(ctx, groupId, auditLog)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAuditLog")
+		panic("no return value specified for UpdateAuditingConfiguration")
 	}
 
-	var r0 admin.UpdateAuditLogApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AuditLog) admin.UpdateAuditLogApiRequest); ok {
+	var r0 admin.UpdateAuditingConfigurationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AuditLog) admin.UpdateAuditingConfigurationApiRequest); ok {
 		r0 = rf(ctx, groupId, auditLog)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateAuditLogApiRequest)
+		r0 = ret.Get(0).(admin.UpdateAuditingConfigurationApiRequest)
 	}
 
 	return r0
 }
 
-// AuditingApi_UpdateAuditLog_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAuditLog'
-type AuditingApi_UpdateAuditLog_Call struct {
+// AuditingApi_UpdateAuditingConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAuditingConfiguration'
+type AuditingApi_UpdateAuditingConfiguration_Call struct {
 	*mock.Call
 }
 
-// UpdateAuditLog is a helper method to define mock.On call
+// UpdateAuditingConfiguration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - auditLog *admin.AuditLog
-func (_e *AuditingApi_Expecter) UpdateAuditLog(ctx any, groupId any, auditLog any) *AuditingApi_UpdateAuditLog_Call {
-	return &AuditingApi_UpdateAuditLog_Call{Call: _e.mock.On("UpdateAuditLog", ctx, groupId, auditLog)}
+func (_e *AuditingApi_Expecter) UpdateAuditingConfiguration(ctx any, groupId any, auditLog any) *AuditingApi_UpdateAuditingConfiguration_Call {
+	return &AuditingApi_UpdateAuditingConfiguration_Call{Call: _e.mock.On("UpdateAuditingConfiguration", ctx, groupId, auditLog)}
 }
 
-func (_c *AuditingApi_UpdateAuditLog_Call) Run(run func(ctx context.Context, groupId string, auditLog *admin.AuditLog)) *AuditingApi_UpdateAuditLog_Call {
+func (_c *AuditingApi_UpdateAuditingConfiguration_Call) Run(run func(ctx context.Context, groupId string, auditLog *admin.AuditLog)) *AuditingApi_UpdateAuditingConfiguration_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.AuditLog))
 	})
 	return _c
 }
 
-func (_c *AuditingApi_UpdateAuditLog_Call) Return(_a0 admin.UpdateAuditLogApiRequest) *AuditingApi_UpdateAuditLog_Call {
+func (_c *AuditingApi_UpdateAuditingConfiguration_Call) Return(_a0 admin.UpdateAuditingConfigurationApiRequest) *AuditingApi_UpdateAuditingConfiguration_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AuditingApi_UpdateAuditLog_Call) RunAndReturn(run func(context.Context, string, *admin.AuditLog) admin.UpdateAuditLogApiRequest) *AuditingApi_UpdateAuditLog_Call {
+func (_c *AuditingApi_UpdateAuditingConfiguration_Call) RunAndReturn(run func(context.Context, string, *admin.AuditLog) admin.UpdateAuditingConfigurationApiRequest) *AuditingApi_UpdateAuditingConfiguration_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateAuditLogExecute provides a mock function with given fields: r
-func (_m *AuditingApi) UpdateAuditLogExecute(r admin.UpdateAuditLogApiRequest) (*admin.AuditLog, *http.Response, error) {
+// UpdateAuditingConfigurationExecute provides a mock function with given fields: r
+func (_m *AuditingApi) UpdateAuditingConfigurationExecute(r admin.UpdateAuditingConfigurationApiRequest) (*admin.AuditLog, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAuditLogExecute")
+		panic("no return value specified for UpdateAuditingConfigurationExecute")
 	}
 
 	var r0 *admin.AuditLog
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateAuditLogApiRequest) (*admin.AuditLog, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateAuditingConfigurationApiRequest) (*admin.AuditLog, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateAuditLogApiRequest) *admin.AuditLog); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateAuditingConfigurationApiRequest) *admin.AuditLog); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -256,7 +256,7 @@ func (_m *AuditingApi) UpdateAuditLogExecute(r admin.UpdateAuditLogApiRequest) (
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateAuditLogApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateAuditingConfigurationApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -264,7 +264,7 @@ func (_m *AuditingApi) UpdateAuditLogExecute(r admin.UpdateAuditLogApiRequest) (
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateAuditLogApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateAuditingConfigurationApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -273,77 +273,77 @@ func (_m *AuditingApi) UpdateAuditLogExecute(r admin.UpdateAuditLogApiRequest) (
 	return r0, r1, r2
 }
 
-// AuditingApi_UpdateAuditLogExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAuditLogExecute'
-type AuditingApi_UpdateAuditLogExecute_Call struct {
+// AuditingApi_UpdateAuditingConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAuditingConfigurationExecute'
+type AuditingApi_UpdateAuditingConfigurationExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateAuditLogExecute is a helper method to define mock.On call
-//   - r admin.UpdateAuditLogApiRequest
-func (_e *AuditingApi_Expecter) UpdateAuditLogExecute(r any) *AuditingApi_UpdateAuditLogExecute_Call {
-	return &AuditingApi_UpdateAuditLogExecute_Call{Call: _e.mock.On("UpdateAuditLogExecute", r)}
+// UpdateAuditingConfigurationExecute is a helper method to define mock.On call
+//   - r admin.UpdateAuditingConfigurationApiRequest
+func (_e *AuditingApi_Expecter) UpdateAuditingConfigurationExecute(r any) *AuditingApi_UpdateAuditingConfigurationExecute_Call {
+	return &AuditingApi_UpdateAuditingConfigurationExecute_Call{Call: _e.mock.On("UpdateAuditingConfigurationExecute", r)}
 }
 
-func (_c *AuditingApi_UpdateAuditLogExecute_Call) Run(run func(r admin.UpdateAuditLogApiRequest)) *AuditingApi_UpdateAuditLogExecute_Call {
+func (_c *AuditingApi_UpdateAuditingConfigurationExecute_Call) Run(run func(r admin.UpdateAuditingConfigurationApiRequest)) *AuditingApi_UpdateAuditingConfigurationExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateAuditLogApiRequest))
+		run(args[0].(admin.UpdateAuditingConfigurationApiRequest))
 	})
 	return _c
 }
 
-func (_c *AuditingApi_UpdateAuditLogExecute_Call) Return(_a0 *admin.AuditLog, _a1 *http.Response, _a2 error) *AuditingApi_UpdateAuditLogExecute_Call {
+func (_c *AuditingApi_UpdateAuditingConfigurationExecute_Call) Return(_a0 *admin.AuditLog, _a1 *http.Response, _a2 error) *AuditingApi_UpdateAuditingConfigurationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AuditingApi_UpdateAuditLogExecute_Call) RunAndReturn(run func(admin.UpdateAuditLogApiRequest) (*admin.AuditLog, *http.Response, error)) *AuditingApi_UpdateAuditLogExecute_Call {
+func (_c *AuditingApi_UpdateAuditingConfigurationExecute_Call) RunAndReturn(run func(admin.UpdateAuditingConfigurationApiRequest) (*admin.AuditLog, *http.Response, error)) *AuditingApi_UpdateAuditingConfigurationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateAuditLogWithParams provides a mock function with given fields: ctx, args
-func (_m *AuditingApi) UpdateAuditLogWithParams(ctx context.Context, args *admin.UpdateAuditLogApiParams) admin.UpdateAuditLogApiRequest {
+// UpdateAuditingConfigurationWithParams provides a mock function with given fields: ctx, args
+func (_m *AuditingApi) UpdateAuditingConfigurationWithParams(ctx context.Context, args *admin.UpdateAuditingConfigurationApiParams) admin.UpdateAuditingConfigurationApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAuditLogWithParams")
+		panic("no return value specified for UpdateAuditingConfigurationWithParams")
 	}
 
-	var r0 admin.UpdateAuditLogApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateAuditLogApiParams) admin.UpdateAuditLogApiRequest); ok {
+	var r0 admin.UpdateAuditingConfigurationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateAuditingConfigurationApiParams) admin.UpdateAuditingConfigurationApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateAuditLogApiRequest)
+		r0 = ret.Get(0).(admin.UpdateAuditingConfigurationApiRequest)
 	}
 
 	return r0
 }
 
-// AuditingApi_UpdateAuditLogWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAuditLogWithParams'
-type AuditingApi_UpdateAuditLogWithParams_Call struct {
+// AuditingApi_UpdateAuditingConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAuditingConfigurationWithParams'
+type AuditingApi_UpdateAuditingConfigurationWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateAuditLogWithParams is a helper method to define mock.On call
+// UpdateAuditingConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateAuditLogApiParams
-func (_e *AuditingApi_Expecter) UpdateAuditLogWithParams(ctx any, args any) *AuditingApi_UpdateAuditLogWithParams_Call {
-	return &AuditingApi_UpdateAuditLogWithParams_Call{Call: _e.mock.On("UpdateAuditLogWithParams", ctx, args)}
+//   - args *admin.UpdateAuditingConfigurationApiParams
+func (_e *AuditingApi_Expecter) UpdateAuditingConfigurationWithParams(ctx any, args any) *AuditingApi_UpdateAuditingConfigurationWithParams_Call {
+	return &AuditingApi_UpdateAuditingConfigurationWithParams_Call{Call: _e.mock.On("UpdateAuditingConfigurationWithParams", ctx, args)}
 }
 
-func (_c *AuditingApi_UpdateAuditLogWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateAuditLogApiParams)) *AuditingApi_UpdateAuditLogWithParams_Call {
+func (_c *AuditingApi_UpdateAuditingConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateAuditingConfigurationApiParams)) *AuditingApi_UpdateAuditingConfigurationWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateAuditLogApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateAuditingConfigurationApiParams))
 	})
 	return _c
 }
 
-func (_c *AuditingApi_UpdateAuditLogWithParams_Call) Return(_a0 admin.UpdateAuditLogApiRequest) *AuditingApi_UpdateAuditLogWithParams_Call {
+func (_c *AuditingApi_UpdateAuditingConfigurationWithParams_Call) Return(_a0 admin.UpdateAuditingConfigurationApiRequest) *AuditingApi_UpdateAuditingConfigurationWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AuditingApi_UpdateAuditLogWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateAuditLogApiParams) admin.UpdateAuditLogApiRequest) *AuditingApi_UpdateAuditLogWithParams_Call {
+func (_c *AuditingApi_UpdateAuditingConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateAuditingConfigurationApiParams) admin.UpdateAuditingConfigurationApiRequest) *AuditingApi_UpdateAuditingConfigurationWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

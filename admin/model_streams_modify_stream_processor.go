@@ -2,7 +2,7 @@
 
 package admin
 
-// StreamsModifyStreamProcessor A request to modify an existing stream processor.
+// StreamsModifyStreamProcessor A request to modify an existing stream processor
 type StreamsModifyStreamProcessor struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
