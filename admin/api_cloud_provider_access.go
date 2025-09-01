@@ -13,7 +13,7 @@ import (
 type CloudProviderAccessApi interface {
 
 	/*
-		AuthorizeProviderAccessRole Authorize One Cloud Provider Access Role
+		AuthorizeCloudProviderAccessRole Authorize One Cloud Provider Access Role
 
 		Grants access to the specified project for the specified access role. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This API endpoint is one step in a procedure to create unified access for MongoDB Cloud services. This is not required for GCP service account access.
 
@@ -21,48 +21,48 @@ type CloudProviderAccessApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param roleId Unique 24-hexadecimal digit string that identifies the role.
 		@param cloudProviderAccessRoleRequestUpdate Grants access to the specified project for the specified access role.
-		@return AuthorizeProviderAccessRoleApiRequest
+		@return AuthorizeCloudProviderAccessRoleApiRequest
 	*/
-	AuthorizeProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeProviderAccessRoleApiRequest
+	AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeCloudProviderAccessRoleApiRequest
 	/*
-		AuthorizeProviderAccessRole Authorize One Cloud Provider Access Role
+		AuthorizeCloudProviderAccessRole Authorize One Cloud Provider Access Role
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param AuthorizeProviderAccessRoleApiParams - Parameters for the request
-		@return AuthorizeProviderAccessRoleApiRequest
+		@param AuthorizeCloudProviderAccessRoleApiParams - Parameters for the request
+		@return AuthorizeCloudProviderAccessRoleApiRequest
 	*/
-	AuthorizeProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeProviderAccessRoleApiParams) AuthorizeProviderAccessRoleApiRequest
+	AuthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeCloudProviderAccessRoleApiParams) AuthorizeCloudProviderAccessRoleApiRequest
 
 	// Method available only for mocking purposes
-	AuthorizeProviderAccessRoleExecute(r AuthorizeProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
+	AuthorizeCloudProviderAccessRoleExecute(r AuthorizeCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
-		CreateCloudProviderAccess Create One Cloud Provider Access Role
+		CreateCloudProviderAccessRole Create One Cloud Provider Access Role
 
 		Creates one access role for the specified cloud provider. Some MongoDB Cloud features use these cloud provider access roles for authentication. To use this resource, the requesting Service Account or API Key must have the Project Owner role. For the GCP provider, if the project folder is not yet provisioned, Atlas will now create the role asynchronously. An intermediate role with status `IN_PROGRESS` will be returned, and the final service account will be provisioned. Once the GCP project is set up, subsequent requests will create the service account synchronously.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param cloudProviderAccessRoleRequest Creates one role for the specified cloud provider.
-		@return CreateCloudProviderAccessApiRequest
+		@return CreateCloudProviderAccessRoleApiRequest
 	*/
-	CreateCloudProviderAccess(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest) CreateCloudProviderAccessApiRequest
+	CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest) CreateCloudProviderAccessRoleApiRequest
 	/*
-		CreateCloudProviderAccess Create One Cloud Provider Access Role
+		CreateCloudProviderAccessRole Create One Cloud Provider Access Role
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateCloudProviderAccessApiParams - Parameters for the request
-		@return CreateCloudProviderAccessApiRequest
+		@param CreateCloudProviderAccessRoleApiParams - Parameters for the request
+		@return CreateCloudProviderAccessRoleApiRequest
 	*/
-	CreateCloudProviderAccessWithParams(ctx context.Context, args *CreateCloudProviderAccessApiParams) CreateCloudProviderAccessApiRequest
+	CreateCloudProviderAccessRoleWithParams(ctx context.Context, args *CreateCloudProviderAccessRoleApiParams) CreateCloudProviderAccessRoleApiRequest
 
 	// Method available only for mocking purposes
-	CreateCloudProviderAccessExecute(r CreateCloudProviderAccessApiRequest) (*CloudProviderAccessRole, *http.Response, error)
+	CreateCloudProviderAccessRoleExecute(r CreateCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
-		DeauthorizeProviderAccessRole Deauthorize One Cloud Provider Access Role
+		DeauthorizeCloudProviderAccessRole Deauthorize One Cloud Provider Access Role
 
 		Revokes access to the specified project for the specified access role. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -70,74 +70,74 @@ type CloudProviderAccessApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param cloudProvider Human-readable label that identifies the cloud provider of the role to deauthorize.
 		@param roleId Unique 24-hexadecimal digit string that identifies the role.
-		@return DeauthorizeProviderAccessRoleApiRequest
+		@return DeauthorizeCloudProviderAccessRoleApiRequest
 	*/
-	DeauthorizeProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) DeauthorizeProviderAccessRoleApiRequest
+	DeauthorizeCloudProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) DeauthorizeCloudProviderAccessRoleApiRequest
 	/*
-		DeauthorizeProviderAccessRole Deauthorize One Cloud Provider Access Role
+		DeauthorizeCloudProviderAccessRole Deauthorize One Cloud Provider Access Role
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeauthorizeProviderAccessRoleApiParams - Parameters for the request
-		@return DeauthorizeProviderAccessRoleApiRequest
+		@param DeauthorizeCloudProviderAccessRoleApiParams - Parameters for the request
+		@return DeauthorizeCloudProviderAccessRoleApiRequest
 	*/
-	DeauthorizeProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeProviderAccessRoleApiParams) DeauthorizeProviderAccessRoleApiRequest
+	DeauthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeCloudProviderAccessRoleApiParams) DeauthorizeCloudProviderAccessRoleApiRequest
 
 	// Method available only for mocking purposes
-	DeauthorizeProviderAccessRoleExecute(r DeauthorizeProviderAccessRoleApiRequest) (*http.Response, error)
+	DeauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error)
 
 	/*
-		GetCloudProviderAccess Return One Cloud Provider Access Role
+		GetCloudProviderAccessRole Return One Cloud Provider Access Role
 
 		Returns the access role with the specified id and with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param roleId Unique 24-hexadecimal digit string that identifies the role.
-		@return GetCloudProviderAccessApiRequest
+		@return GetCloudProviderAccessRoleApiRequest
 	*/
-	GetCloudProviderAccess(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessApiRequest
+	GetCloudProviderAccessRole(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessRoleApiRequest
 	/*
-		GetCloudProviderAccess Return One Cloud Provider Access Role
+		GetCloudProviderAccessRole Return One Cloud Provider Access Role
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetCloudProviderAccessApiParams - Parameters for the request
-		@return GetCloudProviderAccessApiRequest
+		@param GetCloudProviderAccessRoleApiParams - Parameters for the request
+		@return GetCloudProviderAccessRoleApiRequest
 	*/
-	GetCloudProviderAccessWithParams(ctx context.Context, args *GetCloudProviderAccessApiParams) GetCloudProviderAccessApiRequest
+	GetCloudProviderAccessRoleWithParams(ctx context.Context, args *GetCloudProviderAccessRoleApiParams) GetCloudProviderAccessRoleApiRequest
 
 	// Method available only for mocking purposes
-	GetCloudProviderAccessExecute(r GetCloudProviderAccessApiRequest) (*CloudProviderAccessRole, *http.Response, error)
+	GetCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
-		ListCloudProviderAccess Return All Cloud Provider Access Roles
+		ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
 
 		Returns all cloud provider access roles with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListCloudProviderAccessApiRequest
+		@return ListCloudProviderAccessRolesApiRequest
 	*/
-	ListCloudProviderAccess(ctx context.Context, groupId string) ListCloudProviderAccessApiRequest
+	ListCloudProviderAccessRoles(ctx context.Context, groupId string) ListCloudProviderAccessRolesApiRequest
 	/*
-		ListCloudProviderAccess Return All Cloud Provider Access Roles
+		ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListCloudProviderAccessApiParams - Parameters for the request
-		@return ListCloudProviderAccessApiRequest
+		@param ListCloudProviderAccessRolesApiParams - Parameters for the request
+		@return ListCloudProviderAccessRolesApiRequest
 	*/
-	ListCloudProviderAccessWithParams(ctx context.Context, args *ListCloudProviderAccessApiParams) ListCloudProviderAccessApiRequest
+	ListCloudProviderAccessRolesWithParams(ctx context.Context, args *ListCloudProviderAccessRolesApiParams) ListCloudProviderAccessRolesApiRequest
 
 	// Method available only for mocking purposes
-	ListCloudProviderAccessExecute(r ListCloudProviderAccessApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
+	ListCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
 }
 
 // CloudProviderAccessApiService CloudProviderAccessApi service
 type CloudProviderAccessApiService service
 
-type AuthorizeProviderAccessRoleApiRequest struct {
+type AuthorizeCloudProviderAccessRoleApiRequest struct {
 	ctx                                  context.Context
 	ApiService                           CloudProviderAccessApi
 	groupId                              string
@@ -145,14 +145,14 @@ type AuthorizeProviderAccessRoleApiRequest struct {
 	cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate
 }
 
-type AuthorizeProviderAccessRoleApiParams struct {
+type AuthorizeCloudProviderAccessRoleApiParams struct {
 	GroupId                              string
 	RoleId                               string
 	CloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate
 }
 
-func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeProviderAccessRoleApiParams) AuthorizeProviderAccessRoleApiRequest {
-	return AuthorizeProviderAccessRoleApiRequest{
+func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeCloudProviderAccessRoleApiParams) AuthorizeCloudProviderAccessRoleApiRequest {
+	return AuthorizeCloudProviderAccessRoleApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
 		groupId:                              args.GroupId,
@@ -161,22 +161,22 @@ func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRoleWithParams(ct
 	}
 }
 
-func (r AuthorizeProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
-	return r.ApiService.AuthorizeProviderAccessRoleExecute(r)
+func (r AuthorizeCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
+	return r.ApiService.AuthorizeCloudProviderAccessRoleExecute(r)
 }
 
 /*
-AuthorizeProviderAccessRole Authorize One Cloud Provider Access Role
+AuthorizeCloudProviderAccessRole Authorize One Cloud Provider Access Role
 
 Grants access to the specified project for the specified access role. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This API endpoint is one step in a procedure to create unified access for MongoDB Cloud services. This is not required for GCP service account access.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param roleId Unique 24-hexadecimal digit string that identifies the role.
-	@return AuthorizeProviderAccessRoleApiRequest
+	@return AuthorizeCloudProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeProviderAccessRoleApiRequest {
-	return AuthorizeProviderAccessRoleApiRequest{
+func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeCloudProviderAccessRoleApiRequest {
+	return AuthorizeCloudProviderAccessRoleApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
 		groupId:                              groupId,
@@ -185,10 +185,10 @@ func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRole(ctx context.
 	}
 }
 
-// AuthorizeProviderAccessRoleExecute executes the request
+// AuthorizeCloudProviderAccessRoleExecute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRoleExecute(r AuthorizeProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(r AuthorizeCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -196,7 +196,7 @@ func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRoleExecute(r Aut
 		localVarReturnValue *CloudProviderAccessRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.AuthorizeProviderAccessRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.AuthorizeCloudProviderAccessRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -269,20 +269,20 @@ func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRoleExecute(r Aut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CreateCloudProviderAccessApiRequest struct {
+type CreateCloudProviderAccessRoleApiRequest struct {
 	ctx                            context.Context
 	ApiService                     CloudProviderAccessApi
 	groupId                        string
 	cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest
 }
 
-type CreateCloudProviderAccessApiParams struct {
+type CreateCloudProviderAccessRoleApiParams struct {
 	GroupId                        string
 	CloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest
 }
 
-func (a *CloudProviderAccessApiService) CreateCloudProviderAccessWithParams(ctx context.Context, args *CreateCloudProviderAccessApiParams) CreateCloudProviderAccessApiRequest {
-	return CreateCloudProviderAccessApiRequest{
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleWithParams(ctx context.Context, args *CreateCloudProviderAccessRoleApiParams) CreateCloudProviderAccessRoleApiRequest {
+	return CreateCloudProviderAccessRoleApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
 		groupId:                        args.GroupId,
@@ -290,21 +290,21 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessWithParams(ctx 
 	}
 }
 
-func (r CreateCloudProviderAccessApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
-	return r.ApiService.CreateCloudProviderAccessExecute(r)
+func (r CreateCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
+	return r.ApiService.CreateCloudProviderAccessRoleExecute(r)
 }
 
 /*
-CreateCloudProviderAccess Create One Cloud Provider Access Role
+CreateCloudProviderAccessRole Create One Cloud Provider Access Role
 
 Creates one access role for the specified cloud provider. Some MongoDB Cloud features use these cloud provider access roles for authentication. To use this resource, the requesting Service Account or API Key must have the Project Owner role. For the GCP provider, if the project folder is not yet provisioned, Atlas will now create the role asynchronously. An intermediate role with status `IN_PROGRESS` will be returned, and the final service account will be provisioned. Once the GCP project is set up, subsequent requests will create the service account synchronously.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreateCloudProviderAccessApiRequest
+	@return CreateCloudProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessApiService) CreateCloudProviderAccess(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest) CreateCloudProviderAccessApiRequest {
-	return CreateCloudProviderAccessApiRequest{
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest) CreateCloudProviderAccessRoleApiRequest {
+	return CreateCloudProviderAccessRoleApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
 		groupId:                        groupId,
@@ -312,10 +312,10 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccess(ctx context.Co
 	}
 }
 
-// CreateCloudProviderAccessExecute executes the request
+// CreateCloudProviderAccessRoleExecute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessApiService) CreateCloudProviderAccessExecute(r CreateCloudProviderAccessApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r CreateCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -323,7 +323,7 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessExecute(r Creat
 		localVarReturnValue *CloudProviderAccessRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.CreateCloudProviderAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.CreateCloudProviderAccessRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -392,7 +392,7 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessExecute(r Creat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeauthorizeProviderAccessRoleApiRequest struct {
+type DeauthorizeCloudProviderAccessRoleApiRequest struct {
 	ctx           context.Context
 	ApiService    CloudProviderAccessApi
 	groupId       string
@@ -400,14 +400,14 @@ type DeauthorizeProviderAccessRoleApiRequest struct {
 	roleId        string
 }
 
-type DeauthorizeProviderAccessRoleApiParams struct {
+type DeauthorizeCloudProviderAccessRoleApiParams struct {
 	GroupId       string
 	CloudProvider string
 	RoleId        string
 }
 
-func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeProviderAccessRoleApiParams) DeauthorizeProviderAccessRoleApiRequest {
-	return DeauthorizeProviderAccessRoleApiRequest{
+func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeCloudProviderAccessRoleApiParams) DeauthorizeCloudProviderAccessRoleApiRequest {
+	return DeauthorizeCloudProviderAccessRoleApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		groupId:       args.GroupId,
@@ -416,12 +416,12 @@ func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRoleWithParams(
 	}
 }
 
-func (r DeauthorizeProviderAccessRoleApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeauthorizeProviderAccessRoleExecute(r)
+func (r DeauthorizeCloudProviderAccessRoleApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeauthorizeCloudProviderAccessRoleExecute(r)
 }
 
 /*
-DeauthorizeProviderAccessRole Deauthorize One Cloud Provider Access Role
+DeauthorizeCloudProviderAccessRole Deauthorize One Cloud Provider Access Role
 
 Revokes access to the specified project for the specified access role. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -429,10 +429,10 @@ Revokes access to the specified project for the specified access role. To use th
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param cloudProvider Human-readable label that identifies the cloud provider of the role to deauthorize.
 	@param roleId Unique 24-hexadecimal digit string that identifies the role.
-	@return DeauthorizeProviderAccessRoleApiRequest
+	@return DeauthorizeCloudProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) DeauthorizeProviderAccessRoleApiRequest {
-	return DeauthorizeProviderAccessRoleApiRequest{
+func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) DeauthorizeCloudProviderAccessRoleApiRequest {
+	return DeauthorizeCloudProviderAccessRoleApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		groupId:       groupId,
@@ -441,15 +441,15 @@ func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRole(ctx contex
 	}
 }
 
-// DeauthorizeProviderAccessRoleExecute executes the request
-func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRoleExecute(r DeauthorizeProviderAccessRoleApiRequest) (*http.Response, error) {
+// DeauthorizeCloudProviderAccessRoleExecute executes the request
+func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.DeauthorizeProviderAccessRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.DeauthorizeCloudProviderAccessRole")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -507,20 +507,20 @@ func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRoleExecute(r D
 	return localVarHTTPResponse, nil
 }
 
-type GetCloudProviderAccessApiRequest struct {
+type GetCloudProviderAccessRoleApiRequest struct {
 	ctx        context.Context
 	ApiService CloudProviderAccessApi
 	groupId    string
 	roleId     string
 }
 
-type GetCloudProviderAccessApiParams struct {
+type GetCloudProviderAccessRoleApiParams struct {
 	GroupId string
 	RoleId  string
 }
 
-func (a *CloudProviderAccessApiService) GetCloudProviderAccessWithParams(ctx context.Context, args *GetCloudProviderAccessApiParams) GetCloudProviderAccessApiRequest {
-	return GetCloudProviderAccessApiRequest{
+func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleWithParams(ctx context.Context, args *GetCloudProviderAccessRoleApiParams) GetCloudProviderAccessRoleApiRequest {
+	return GetCloudProviderAccessRoleApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -528,22 +528,22 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessWithParams(ctx con
 	}
 }
 
-func (r GetCloudProviderAccessApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
-	return r.ApiService.GetCloudProviderAccessExecute(r)
+func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
+	return r.ApiService.GetCloudProviderAccessRoleExecute(r)
 }
 
 /*
-GetCloudProviderAccess Return One Cloud Provider Access Role
+GetCloudProviderAccessRole Return One Cloud Provider Access Role
 
 Returns the access role with the specified id and with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param roleId Unique 24-hexadecimal digit string that identifies the role.
-	@return GetCloudProviderAccessApiRequest
+	@return GetCloudProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessApiService) GetCloudProviderAccess(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessApiRequest {
-	return GetCloudProviderAccessApiRequest{
+func (a *CloudProviderAccessApiService) GetCloudProviderAccessRole(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessRoleApiRequest {
+	return GetCloudProviderAccessRoleApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -551,10 +551,10 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccess(ctx context.Conte
 	}
 }
 
-// GetCloudProviderAccessExecute executes the request
+// GetCloudProviderAccessRoleExecute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessApiService) GetCloudProviderAccessExecute(r GetCloudProviderAccessApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -562,7 +562,7 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessExecute(r GetCloud
 		localVarReturnValue *CloudProviderAccessRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.GetCloudProviderAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.GetCloudProviderAccessRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -630,49 +630,49 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessExecute(r GetCloud
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListCloudProviderAccessApiRequest struct {
+type ListCloudProviderAccessRolesApiRequest struct {
 	ctx        context.Context
 	ApiService CloudProviderAccessApi
 	groupId    string
 }
 
-type ListCloudProviderAccessApiParams struct {
+type ListCloudProviderAccessRolesApiParams struct {
 	GroupId string
 }
 
-func (a *CloudProviderAccessApiService) ListCloudProviderAccessWithParams(ctx context.Context, args *ListCloudProviderAccessApiParams) ListCloudProviderAccessApiRequest {
-	return ListCloudProviderAccessApiRequest{
+func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesWithParams(ctx context.Context, args *ListCloudProviderAccessRolesApiParams) ListCloudProviderAccessRolesApiRequest {
+	return ListCloudProviderAccessRolesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r ListCloudProviderAccessApiRequest) Execute() (*CloudProviderAccessRoles, *http.Response, error) {
-	return r.ApiService.ListCloudProviderAccessExecute(r)
+func (r ListCloudProviderAccessRolesApiRequest) Execute() (*CloudProviderAccessRoles, *http.Response, error) {
+	return r.ApiService.ListCloudProviderAccessRolesExecute(r)
 }
 
 /*
-ListCloudProviderAccess Return All Cloud Provider Access Roles
+ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
 
 Returns all cloud provider access roles with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListCloudProviderAccessApiRequest
+	@return ListCloudProviderAccessRolesApiRequest
 */
-func (a *CloudProviderAccessApiService) ListCloudProviderAccess(ctx context.Context, groupId string) ListCloudProviderAccessApiRequest {
-	return ListCloudProviderAccessApiRequest{
+func (a *CloudProviderAccessApiService) ListCloudProviderAccessRoles(ctx context.Context, groupId string) ListCloudProviderAccessRolesApiRequest {
+	return ListCloudProviderAccessRolesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// ListCloudProviderAccessExecute executes the request
+// ListCloudProviderAccessRolesExecute executes the request
 //
 //	@return CloudProviderAccessRoles
-func (a *CloudProviderAccessApiService) ListCloudProviderAccessExecute(r ListCloudProviderAccessApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
+func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -680,7 +680,7 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessExecute(r ListClo
 		localVarReturnValue *CloudProviderAccessRoles
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.ListCloudProviderAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.ListCloudProviderAccessRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

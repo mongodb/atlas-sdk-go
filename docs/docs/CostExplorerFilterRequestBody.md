@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Clusters** | Pointer to **[]string** | The list of clusters to be included in the Cost Explorer Query. | [optional] 
+**Clusters** | Pointer to **[]string** | The list of projects to be included in the Cost Explorer Query. | [optional] 
 **EndDate** | **string** | The exclusive ending date for the Cost Explorer query. The date must be the start of a month. | 
 **GroupBy** | Pointer to **string** | The dimension to group the returned usage results by. At least one filter value needs to be provided for a dimension to be used. | [optional] 
 **IncludePartialMatches** | Pointer to **bool** | Flag to control whether usage that matches the filter criteria, but does not have values for all filter criteria is included in response. Default is false, which excludes the partially matching data. | [optional] 

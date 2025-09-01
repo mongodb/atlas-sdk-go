@@ -13,117 +13,117 @@ import (
 type PushBasedLogExportApi interface {
 
 	/*
-		CreateLogExport Enable Push-Based Log Export for One Project
+		CreatePushBasedLogConfiguration Enable Push-Based Log Export for One Project
 
 		Configures the project level settings for the push-based log export feature.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param createPushBasedLogExportProjectRequest The project configuration details. The S3 bucket name, IAM role ID, and prefix path fields are required.
-		@return CreateLogExportApiRequest
+		@return CreatePushBasedLogConfigurationApiRequest
 	*/
-	CreateLogExport(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreateLogExportApiRequest
+	CreatePushBasedLogConfiguration(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreatePushBasedLogConfigurationApiRequest
 	/*
-		CreateLogExport Enable Push-Based Log Export for One Project
+		CreatePushBasedLogConfiguration Enable Push-Based Log Export for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateLogExportApiParams - Parameters for the request
-		@return CreateLogExportApiRequest
+		@param CreatePushBasedLogConfigurationApiParams - Parameters for the request
+		@return CreatePushBasedLogConfigurationApiRequest
 	*/
-	CreateLogExportWithParams(ctx context.Context, args *CreateLogExportApiParams) CreateLogExportApiRequest
+	CreatePushBasedLogConfigurationWithParams(ctx context.Context, args *CreatePushBasedLogConfigurationApiParams) CreatePushBasedLogConfigurationApiRequest
 
 	// Method available only for mocking purposes
-	CreateLogExportExecute(r CreateLogExportApiRequest) (*http.Response, error)
+	CreatePushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error)
 
 	/*
-		DeleteLogExport Disable Push-Based Log Export for One Project
+		DeletePushBasedLogConfiguration Disable Push-Based Log Export for One Project
 
 		Disables the push-based log export feature by resetting the project level settings to its default configuration.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return DeleteLogExportApiRequest
+		@return DeletePushBasedLogConfigurationApiRequest
 	*/
-	DeleteLogExport(ctx context.Context, groupId string) DeleteLogExportApiRequest
+	DeletePushBasedLogConfiguration(ctx context.Context, groupId string) DeletePushBasedLogConfigurationApiRequest
 	/*
-		DeleteLogExport Disable Push-Based Log Export for One Project
+		DeletePushBasedLogConfiguration Disable Push-Based Log Export for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteLogExportApiParams - Parameters for the request
-		@return DeleteLogExportApiRequest
+		@param DeletePushBasedLogConfigurationApiParams - Parameters for the request
+		@return DeletePushBasedLogConfigurationApiRequest
 	*/
-	DeleteLogExportWithParams(ctx context.Context, args *DeleteLogExportApiParams) DeleteLogExportApiRequest
+	DeletePushBasedLogConfigurationWithParams(ctx context.Context, args *DeletePushBasedLogConfigurationApiParams) DeletePushBasedLogConfigurationApiRequest
 
 	// Method available only for mocking purposes
-	DeleteLogExportExecute(r DeleteLogExportApiRequest) (*http.Response, error)
+	DeletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error)
 
 	/*
-		GetLogExport Return Push-Based Log Export Configuration for One Project
+		GetPushBasedLogConfiguration Return Push-Based Log Export Configuration for One Project
 
 		Fetches the current project level settings for the push-based log export feature.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetLogExportApiRequest
+		@return GetPushBasedLogConfigurationApiRequest
 	*/
-	GetLogExport(ctx context.Context, groupId string) GetLogExportApiRequest
+	GetPushBasedLogConfiguration(ctx context.Context, groupId string) GetPushBasedLogConfigurationApiRequest
 	/*
-		GetLogExport Return Push-Based Log Export Configuration for One Project
+		GetPushBasedLogConfiguration Return Push-Based Log Export Configuration for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetLogExportApiParams - Parameters for the request
-		@return GetLogExportApiRequest
+		@param GetPushBasedLogConfigurationApiParams - Parameters for the request
+		@return GetPushBasedLogConfigurationApiRequest
 	*/
-	GetLogExportWithParams(ctx context.Context, args *GetLogExportApiParams) GetLogExportApiRequest
+	GetPushBasedLogConfigurationWithParams(ctx context.Context, args *GetPushBasedLogConfigurationApiParams) GetPushBasedLogConfigurationApiRequest
 
 	// Method available only for mocking purposes
-	GetLogExportExecute(r GetLogExportApiRequest) (*PushBasedLogExportProject, *http.Response, error)
+	GetPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error)
 
 	/*
-		UpdateLogExport Update Push-Based Log Export for One Project
+		UpdatePushBasedLogConfiguration Update Push-Based Log Export for One Project
 
 		Updates the project level settings for the push-based log export feature.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param pushBasedLogExportProject The project configuration details. The S3 bucket name, IAM role ID, and prefix path fields are the only fields that may be specified. Fields left unspecified will not be modified.
-		@return UpdateLogExportApiRequest
+		@return UpdatePushBasedLogConfigurationApiRequest
 	*/
-	UpdateLogExport(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdateLogExportApiRequest
+	UpdatePushBasedLogConfiguration(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdatePushBasedLogConfigurationApiRequest
 	/*
-		UpdateLogExport Update Push-Based Log Export for One Project
+		UpdatePushBasedLogConfiguration Update Push-Based Log Export for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdateLogExportApiParams - Parameters for the request
-		@return UpdateLogExportApiRequest
+		@param UpdatePushBasedLogConfigurationApiParams - Parameters for the request
+		@return UpdatePushBasedLogConfigurationApiRequest
 	*/
-	UpdateLogExportWithParams(ctx context.Context, args *UpdateLogExportApiParams) UpdateLogExportApiRequest
+	UpdatePushBasedLogConfigurationWithParams(ctx context.Context, args *UpdatePushBasedLogConfigurationApiParams) UpdatePushBasedLogConfigurationApiRequest
 
 	// Method available only for mocking purposes
-	UpdateLogExportExecute(r UpdateLogExportApiRequest) (*http.Response, error)
+	UpdatePushBasedLogConfigurationExecute(r UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error)
 }
 
 // PushBasedLogExportApiService PushBasedLogExportApi service
 type PushBasedLogExportApiService service
 
-type CreateLogExportApiRequest struct {
+type CreatePushBasedLogConfigurationApiRequest struct {
 	ctx                                    context.Context
 	ApiService                             PushBasedLogExportApi
 	groupId                                string
 	createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest
 }
 
-type CreateLogExportApiParams struct {
+type CreatePushBasedLogConfigurationApiParams struct {
 	GroupId                                string
 	CreatePushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest
 }
 
-func (a *PushBasedLogExportApiService) CreateLogExportWithParams(ctx context.Context, args *CreateLogExportApiParams) CreateLogExportApiRequest {
-	return CreateLogExportApiRequest{
+func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationWithParams(ctx context.Context, args *CreatePushBasedLogConfigurationApiParams) CreatePushBasedLogConfigurationApiRequest {
+	return CreatePushBasedLogConfigurationApiRequest{
 		ApiService:                             a,
 		ctx:                                    ctx,
 		groupId:                                args.GroupId,
@@ -131,21 +131,21 @@ func (a *PushBasedLogExportApiService) CreateLogExportWithParams(ctx context.Con
 	}
 }
 
-func (r CreateLogExportApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CreateLogExportExecute(r)
+func (r CreatePushBasedLogConfigurationApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CreatePushBasedLogConfigurationExecute(r)
 }
 
 /*
-CreateLogExport Enable Push-Based Log Export for One Project
+CreatePushBasedLogConfiguration Enable Push-Based Log Export for One Project
 
 Configures the project level settings for the push-based log export feature.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreateLogExportApiRequest
+	@return CreatePushBasedLogConfigurationApiRequest
 */
-func (a *PushBasedLogExportApiService) CreateLogExport(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreateLogExportApiRequest {
-	return CreateLogExportApiRequest{
+func (a *PushBasedLogExportApiService) CreatePushBasedLogConfiguration(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreatePushBasedLogConfigurationApiRequest {
+	return CreatePushBasedLogConfigurationApiRequest{
 		ApiService:                             a,
 		ctx:                                    ctx,
 		groupId:                                groupId,
@@ -153,15 +153,15 @@ func (a *PushBasedLogExportApiService) CreateLogExport(ctx context.Context, grou
 	}
 }
 
-// CreateLogExportExecute executes the request
-func (a *PushBasedLogExportApiService) CreateLogExportExecute(r CreateLogExportApiRequest) (*http.Response, error) {
+// CreatePushBasedLogConfigurationExecute executes the request
+func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.CreateLogExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.CreatePushBasedLogConfiguration")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -216,54 +216,54 @@ func (a *PushBasedLogExportApiService) CreateLogExportExecute(r CreateLogExportA
 	return localVarHTTPResponse, nil
 }
 
-type DeleteLogExportApiRequest struct {
+type DeletePushBasedLogConfigurationApiRequest struct {
 	ctx        context.Context
 	ApiService PushBasedLogExportApi
 	groupId    string
 }
 
-type DeleteLogExportApiParams struct {
+type DeletePushBasedLogConfigurationApiParams struct {
 	GroupId string
 }
 
-func (a *PushBasedLogExportApiService) DeleteLogExportWithParams(ctx context.Context, args *DeleteLogExportApiParams) DeleteLogExportApiRequest {
-	return DeleteLogExportApiRequest{
+func (a *PushBasedLogExportApiService) DeletePushBasedLogConfigurationWithParams(ctx context.Context, args *DeletePushBasedLogConfigurationApiParams) DeletePushBasedLogConfigurationApiRequest {
+	return DeletePushBasedLogConfigurationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r DeleteLogExportApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteLogExportExecute(r)
+func (r DeletePushBasedLogConfigurationApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeletePushBasedLogConfigurationExecute(r)
 }
 
 /*
-DeleteLogExport Disable Push-Based Log Export for One Project
+DeletePushBasedLogConfiguration Disable Push-Based Log Export for One Project
 
 Disables the push-based log export feature by resetting the project level settings to its default configuration.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return DeleteLogExportApiRequest
+	@return DeletePushBasedLogConfigurationApiRequest
 */
-func (a *PushBasedLogExportApiService) DeleteLogExport(ctx context.Context, groupId string) DeleteLogExportApiRequest {
-	return DeleteLogExportApiRequest{
+func (a *PushBasedLogExportApiService) DeletePushBasedLogConfiguration(ctx context.Context, groupId string) DeletePushBasedLogConfigurationApiRequest {
+	return DeletePushBasedLogConfigurationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// DeleteLogExportExecute executes the request
-func (a *PushBasedLogExportApiService) DeleteLogExportExecute(r DeleteLogExportApiRequest) (*http.Response, error) {
+// DeletePushBasedLogConfigurationExecute executes the request
+func (a *PushBasedLogExportApiService) DeletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.DeleteLogExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.DeletePushBasedLogConfiguration")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -313,49 +313,49 @@ func (a *PushBasedLogExportApiService) DeleteLogExportExecute(r DeleteLogExportA
 	return localVarHTTPResponse, nil
 }
 
-type GetLogExportApiRequest struct {
+type GetPushBasedLogConfigurationApiRequest struct {
 	ctx        context.Context
 	ApiService PushBasedLogExportApi
 	groupId    string
 }
 
-type GetLogExportApiParams struct {
+type GetPushBasedLogConfigurationApiParams struct {
 	GroupId string
 }
 
-func (a *PushBasedLogExportApiService) GetLogExportWithParams(ctx context.Context, args *GetLogExportApiParams) GetLogExportApiRequest {
-	return GetLogExportApiRequest{
+func (a *PushBasedLogExportApiService) GetPushBasedLogConfigurationWithParams(ctx context.Context, args *GetPushBasedLogConfigurationApiParams) GetPushBasedLogConfigurationApiRequest {
+	return GetPushBasedLogConfigurationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r GetLogExportApiRequest) Execute() (*PushBasedLogExportProject, *http.Response, error) {
-	return r.ApiService.GetLogExportExecute(r)
+func (r GetPushBasedLogConfigurationApiRequest) Execute() (*PushBasedLogExportProject, *http.Response, error) {
+	return r.ApiService.GetPushBasedLogConfigurationExecute(r)
 }
 
 /*
-GetLogExport Return Push-Based Log Export Configuration for One Project
+GetPushBasedLogConfiguration Return Push-Based Log Export Configuration for One Project
 
 Fetches the current project level settings for the push-based log export feature.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetLogExportApiRequest
+	@return GetPushBasedLogConfigurationApiRequest
 */
-func (a *PushBasedLogExportApiService) GetLogExport(ctx context.Context, groupId string) GetLogExportApiRequest {
-	return GetLogExportApiRequest{
+func (a *PushBasedLogExportApiService) GetPushBasedLogConfiguration(ctx context.Context, groupId string) GetPushBasedLogConfigurationApiRequest {
+	return GetPushBasedLogConfigurationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// GetLogExportExecute executes the request
+// GetPushBasedLogConfigurationExecute executes the request
 //
 //	@return PushBasedLogExportProject
-func (a *PushBasedLogExportApiService) GetLogExportExecute(r GetLogExportApiRequest) (*PushBasedLogExportProject, *http.Response, error) {
+func (a *PushBasedLogExportApiService) GetPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -363,7 +363,7 @@ func (a *PushBasedLogExportApiService) GetLogExportExecute(r GetLogExportApiRequ
 		localVarReturnValue *PushBasedLogExportProject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.GetLogExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.GetPushBasedLogConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -427,20 +427,20 @@ func (a *PushBasedLogExportApiService) GetLogExportExecute(r GetLogExportApiRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpdateLogExportApiRequest struct {
+type UpdatePushBasedLogConfigurationApiRequest struct {
 	ctx                       context.Context
 	ApiService                PushBasedLogExportApi
 	groupId                   string
 	pushBasedLogExportProject *PushBasedLogExportProject
 }
 
-type UpdateLogExportApiParams struct {
+type UpdatePushBasedLogConfigurationApiParams struct {
 	GroupId                   string
 	PushBasedLogExportProject *PushBasedLogExportProject
 }
 
-func (a *PushBasedLogExportApiService) UpdateLogExportWithParams(ctx context.Context, args *UpdateLogExportApiParams) UpdateLogExportApiRequest {
-	return UpdateLogExportApiRequest{
+func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfigurationWithParams(ctx context.Context, args *UpdatePushBasedLogConfigurationApiParams) UpdatePushBasedLogConfigurationApiRequest {
+	return UpdatePushBasedLogConfigurationApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
 		groupId:                   args.GroupId,
@@ -448,21 +448,21 @@ func (a *PushBasedLogExportApiService) UpdateLogExportWithParams(ctx context.Con
 	}
 }
 
-func (r UpdateLogExportApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.UpdateLogExportExecute(r)
+func (r UpdatePushBasedLogConfigurationApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UpdatePushBasedLogConfigurationExecute(r)
 }
 
 /*
-UpdateLogExport Update Push-Based Log Export for One Project
+UpdatePushBasedLogConfiguration Update Push-Based Log Export for One Project
 
 Updates the project level settings for the push-based log export feature.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return UpdateLogExportApiRequest
+	@return UpdatePushBasedLogConfigurationApiRequest
 */
-func (a *PushBasedLogExportApiService) UpdateLogExport(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdateLogExportApiRequest {
-	return UpdateLogExportApiRequest{
+func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfiguration(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdatePushBasedLogConfigurationApiRequest {
+	return UpdatePushBasedLogConfigurationApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
 		groupId:                   groupId,
@@ -470,15 +470,15 @@ func (a *PushBasedLogExportApiService) UpdateLogExport(ctx context.Context, grou
 	}
 }
 
-// UpdateLogExportExecute executes the request
-func (a *PushBasedLogExportApiService) UpdateLogExportExecute(r UpdateLogExportApiRequest) (*http.Response, error) {
+// UpdatePushBasedLogConfigurationExecute executes the request
+func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfigurationExecute(r UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPatch
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.UpdateLogExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.UpdatePushBasedLogConfiguration")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

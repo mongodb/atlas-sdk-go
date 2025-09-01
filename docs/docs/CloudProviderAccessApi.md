@@ -4,17 +4,17 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthorizeProviderAccessRole**](CloudProviderAccessApi.md#AuthorizeProviderAccessRole) | **Patch** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Authorize One Cloud Provider Access Role
-[**CreateCloudProviderAccess**](CloudProviderAccessApi.md#CreateCloudProviderAccess) | **Post** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Create One Cloud Provider Access Role
-[**DeauthorizeProviderAccessRole**](CloudProviderAccessApi.md#DeauthorizeProviderAccessRole) | **Delete** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId} | Deauthorize One Cloud Provider Access Role
-[**GetCloudProviderAccess**](CloudProviderAccessApi.md#GetCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Return One Cloud Provider Access Role
-[**ListCloudProviderAccess**](CloudProviderAccessApi.md#ListCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Return All Cloud Provider Access Roles
+[**AuthorizeCloudProviderAccessRole**](CloudProviderAccessApi.md#AuthorizeCloudProviderAccessRole) | **Patch** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Authorize One Cloud Provider Access Role
+[**CreateCloudProviderAccessRole**](CloudProviderAccessApi.md#CreateCloudProviderAccessRole) | **Post** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Create One Cloud Provider Access Role
+[**DeauthorizeCloudProviderAccessRole**](CloudProviderAccessApi.md#DeauthorizeCloudProviderAccessRole) | **Delete** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId} | Deauthorize One Cloud Provider Access Role
+[**GetCloudProviderAccessRole**](CloudProviderAccessApi.md#GetCloudProviderAccessRole) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Return One Cloud Provider Access Role
+[**ListCloudProviderAccessRoles**](CloudProviderAccessApi.md#ListCloudProviderAccessRoles) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Return All Cloud Provider Access Roles
 
 
 
-## AuthorizeProviderAccessRole
+## AuthorizeCloudProviderAccessRole
 
-> CloudProviderAccessRole AuthorizeProviderAccessRole(ctx, groupId, roleId, cloudProviderAccessRoleRequestUpdate CloudProviderAccessRoleRequestUpdate).Execute()
+> CloudProviderAccessRole AuthorizeCloudProviderAccessRole(ctx, groupId, roleId, cloudProviderAccessRoleRequestUpdate CloudProviderAccessRoleRequestUpdate).Execute()
 
 Authorize One Cloud Provider Access Role
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -46,17 +46,17 @@ func main() {
     roleId := "roleId_example" // string | 
     cloudProviderAccessRoleRequestUpdate := *openapiclient.NewCloudProviderAccessRoleRequestUpdate("ProviderName_example") // CloudProviderAccessRoleRequestUpdate | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessRoleRequestUpdate).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeCloudProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessRoleRequestUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.AuthorizeProviderAccessRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.AuthorizeCloudProviderAccessRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `AuthorizeProviderAccessRole`: CloudProviderAccessRole
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.AuthorizeProviderAccessRole`: %v (%v)\n", resp, r)
+    // response from `AuthorizeCloudProviderAccessRole`: CloudProviderAccessRole
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.AuthorizeCloudProviderAccessRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthorizeProviderAccessRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAuthorizeCloudProviderAccessRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -97,9 +97,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateCloudProviderAccess
+## CreateCloudProviderAccessRole
 
-> CloudProviderAccessRole CreateCloudProviderAccess(ctx, groupId, cloudProviderAccessRoleRequest CloudProviderAccessRoleRequest).Execute()
+> CloudProviderAccessRole CreateCloudProviderAccessRole(ctx, groupId, cloudProviderAccessRoleRequest CloudProviderAccessRoleRequest).Execute()
 
 Create One Cloud Provider Access Role
 
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -130,17 +130,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderAccessRoleRequest := *openapiclient.NewCloudProviderAccessRoleRequest("ProviderName_example") // CloudProviderAccessRoleRequest | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccess(context.Background(), groupId, &cloudProviderAccessRoleRequest).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccessRole(context.Background(), groupId, &cloudProviderAccessRoleRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.CreateCloudProviderAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.CreateCloudProviderAccessRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateCloudProviderAccess`: CloudProviderAccessRole
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.CreateCloudProviderAccess`: %v (%v)\n", resp, r)
+    // response from `CreateCloudProviderAccessRole`: CloudProviderAccessRole
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.CreateCloudProviderAccessRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateCloudProviderAccessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateCloudProviderAccessRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -179,9 +179,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeauthorizeProviderAccessRole
+## DeauthorizeCloudProviderAccessRole
 
-> DeauthorizeProviderAccessRole(ctx, groupId, cloudProvider, roleId).Execute()
+> DeauthorizeCloudProviderAccessRole(ctx, groupId, cloudProvider, roleId).Execute()
 
 Deauthorize One Cloud Provider Access Role
 
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -213,9 +213,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     roleId := "roleId_example" // string | 
 
-    r, err := sdk.CloudProviderAccessApi.DeauthorizeProviderAccessRole(context.Background(), groupId, cloudProvider, roleId).Execute()
+    r, err := sdk.CloudProviderAccessApi.DeauthorizeCloudProviderAccessRole(context.Background(), groupId, cloudProvider, roleId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.DeauthorizeProviderAccessRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.DeauthorizeCloudProviderAccessRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeauthorizeProviderAccessRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeauthorizeCloudProviderAccessRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -263,9 +263,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCloudProviderAccess
+## GetCloudProviderAccessRole
 
-> CloudProviderAccessRole GetCloudProviderAccess(ctx, groupId, roleId).Execute()
+> CloudProviderAccessRole GetCloudProviderAccessRole(ctx, groupId, roleId).Execute()
 
 Return One Cloud Provider Access Role
 
@@ -280,7 +280,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -296,17 +296,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleId := "roleId_example" // string | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.GetCloudProviderAccess(context.Background(), groupId, roleId).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.GetCloudProviderAccessRole(context.Background(), groupId, roleId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.GetCloudProviderAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.GetCloudProviderAccessRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetCloudProviderAccess`: CloudProviderAccessRole
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.GetCloudProviderAccess`: %v (%v)\n", resp, r)
+    // response from `GetCloudProviderAccessRole`: CloudProviderAccessRole
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.GetCloudProviderAccessRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetCloudProviderAccessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCloudProviderAccessRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -346,9 +346,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListCloudProviderAccess
+## ListCloudProviderAccessRoles
 
-> CloudProviderAccessRoles ListCloudProviderAccess(ctx, groupId).Execute()
+> CloudProviderAccessRoles ListCloudProviderAccessRoles(ctx, groupId).Execute()
 
 Return All Cloud Provider Access Roles
 
@@ -363,7 +363,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -378,17 +378,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.ListCloudProviderAccess(context.Background(), groupId).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.ListCloudProviderAccessRoles(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.ListCloudProviderAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.ListCloudProviderAccessRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListCloudProviderAccess`: CloudProviderAccessRoles
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.ListCloudProviderAccess`: %v (%v)\n", resp, r)
+    // response from `ListCloudProviderAccessRoles`: CloudProviderAccessRoles
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.ListCloudProviderAccessRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListCloudProviderAccessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListCloudProviderAccessRolesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

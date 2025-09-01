@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **BucketName** | Pointer to **string** | Human-readable label that identifies the Google Cloud Storage Bucket that the role is authorized to export to. | [optional] 
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
-**RequirePrivateNetworking** | Pointer to **bool** | Indicates whether to do exports over PrivateLink as opposed to public IPs. Defaults to False. | [optional] 
 **RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket. | [optional] 
 **ServiceUrl** | Pointer to **string** | URL of the Azure Storage Account to export to. For example: \&quot;https://examplestorageaccount.blob.core.windows.net/exportcontainer\&quot;. Only standard endpoints (with \&quot;blob.core.windows.net\&quot;) are supported. | [optional] 
 **TenantId** | Pointer to **string** | UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the tenantId of the Cloud Provider Access role (from roleId) is used. | [optional] 
@@ -123,30 +122,6 @@ SetIamRoleId sets IamRoleId field to given value.
 `func (o *DiskBackupSnapshotExportBucketRequest) HasIamRoleId() bool`
 
 HasIamRoleId returns a boolean if a field has been set.
-### GetRequirePrivateNetworking
-
-`func (o *DiskBackupSnapshotExportBucketRequest) GetRequirePrivateNetworking() bool`
-
-GetRequirePrivateNetworking returns the RequirePrivateNetworking field if non-nil, zero value otherwise.
-
-### GetRequirePrivateNetworkingOk
-
-`func (o *DiskBackupSnapshotExportBucketRequest) GetRequirePrivateNetworkingOk() (*bool, bool)`
-
-GetRequirePrivateNetworkingOk returns a tuple with the RequirePrivateNetworking field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequirePrivateNetworking
-
-`func (o *DiskBackupSnapshotExportBucketRequest) SetRequirePrivateNetworking(v bool)`
-
-SetRequirePrivateNetworking sets RequirePrivateNetworking field to given value.
-
-### HasRequirePrivateNetworking
-
-`func (o *DiskBackupSnapshotExportBucketRequest) HasRequirePrivateNetworking() bool`
-
-HasRequirePrivateNetworking returns a boolean if a field has been set.
 ### GetRoleId
 
 `func (o *DiskBackupSnapshotExportBucketRequest) GetRoleId() string`

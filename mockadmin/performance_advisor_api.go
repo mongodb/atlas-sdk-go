@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -25,67 +25,67 @@ func (_m *PerformanceAdvisorApi) EXPECT() *PerformanceAdvisorApi_Expecter {
 	return &PerformanceAdvisorApi_Expecter{mock: &_m.Mock}
 }
 
-// DisableManagedSlowMs provides a mock function with given fields: ctx, groupId
-func (_m *PerformanceAdvisorApi) DisableManagedSlowMs(ctx context.Context, groupId string) admin.DisableManagedSlowMsApiRequest {
+// DisableSlowOperationThresholding provides a mock function with given fields: ctx, groupId
+func (_m *PerformanceAdvisorApi) DisableSlowOperationThresholding(ctx context.Context, groupId string) admin.DisableSlowOperationThresholdingApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DisableManagedSlowMs")
+		panic("no return value specified for DisableSlowOperationThresholding")
 	}
 
-	var r0 admin.DisableManagedSlowMsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DisableManagedSlowMsApiRequest); ok {
+	var r0 admin.DisableSlowOperationThresholdingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DisableSlowOperationThresholdingApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.DisableManagedSlowMsApiRequest)
+		r0 = ret.Get(0).(admin.DisableSlowOperationThresholdingApiRequest)
 	}
 
 	return r0
 }
 
-// PerformanceAdvisorApi_DisableManagedSlowMs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableManagedSlowMs'
-type PerformanceAdvisorApi_DisableManagedSlowMs_Call struct {
+// PerformanceAdvisorApi_DisableSlowOperationThresholding_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableSlowOperationThresholding'
+type PerformanceAdvisorApi_DisableSlowOperationThresholding_Call struct {
 	*mock.Call
 }
 
-// DisableManagedSlowMs is a helper method to define mock.On call
+// DisableSlowOperationThresholding is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PerformanceAdvisorApi_Expecter) DisableManagedSlowMs(ctx any, groupId any) *PerformanceAdvisorApi_DisableManagedSlowMs_Call {
-	return &PerformanceAdvisorApi_DisableManagedSlowMs_Call{Call: _e.mock.On("DisableManagedSlowMs", ctx, groupId)}
+func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholding(ctx any, groupId any) *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call {
+	return &PerformanceAdvisorApi_DisableSlowOperationThresholding_Call{Call: _e.mock.On("DisableSlowOperationThresholding", ctx, groupId)}
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMs_Call) Run(run func(ctx context.Context, groupId string)) *PerformanceAdvisorApi_DisableManagedSlowMs_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call) Run(run func(ctx context.Context, groupId string)) *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMs_Call) Return(_a0 admin.DisableManagedSlowMsApiRequest) *PerformanceAdvisorApi_DisableManagedSlowMs_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call) Return(_a0 admin.DisableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMs_Call) RunAndReturn(run func(context.Context, string) admin.DisableManagedSlowMsApiRequest) *PerformanceAdvisorApi_DisableManagedSlowMs_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call) RunAndReturn(run func(context.Context, string) admin.DisableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DisableManagedSlowMsExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorApi) DisableManagedSlowMsExecute(r admin.DisableManagedSlowMsApiRequest) (*http.Response, error) {
+// DisableSlowOperationThresholdingExecute provides a mock function with given fields: r
+func (_m *PerformanceAdvisorApi) DisableSlowOperationThresholdingExecute(r admin.DisableSlowOperationThresholdingApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DisableManagedSlowMsExecute")
+		panic("no return value specified for DisableSlowOperationThresholdingExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DisableManagedSlowMsApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DisableSlowOperationThresholdingApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DisableManagedSlowMsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DisableSlowOperationThresholdingApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -93,7 +93,7 @@ func (_m *PerformanceAdvisorApi) DisableManagedSlowMsExecute(r admin.DisableMana
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DisableManagedSlowMsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DisableSlowOperationThresholdingApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -102,142 +102,142 @@ func (_m *PerformanceAdvisorApi) DisableManagedSlowMsExecute(r admin.DisableMana
 	return r0, r1
 }
 
-// PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableManagedSlowMsExecute'
-type PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call struct {
+// PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableSlowOperationThresholdingExecute'
+type PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call struct {
 	*mock.Call
 }
 
-// DisableManagedSlowMsExecute is a helper method to define mock.On call
-//   - r admin.DisableManagedSlowMsApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) DisableManagedSlowMsExecute(r any) *PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call {
-	return &PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call{Call: _e.mock.On("DisableManagedSlowMsExecute", r)}
+// DisableSlowOperationThresholdingExecute is a helper method to define mock.On call
+//   - r admin.DisableSlowOperationThresholdingApiRequest
+func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholdingExecute(r any) *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call {
+	return &PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call{Call: _e.mock.On("DisableSlowOperationThresholdingExecute", r)}
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call) Run(run func(r admin.DisableManagedSlowMsApiRequest)) *PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call) Run(run func(r admin.DisableSlowOperationThresholdingApiRequest)) *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DisableManagedSlowMsApiRequest))
+		run(args[0].(admin.DisableSlowOperationThresholdingApiRequest))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call) Return(_a0 *http.Response, _a1 error) *PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call) Return(_a0 *http.Response, _a1 error) *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call) RunAndReturn(run func(admin.DisableManagedSlowMsApiRequest) (*http.Response, error)) *PerformanceAdvisorApi_DisableManagedSlowMsExecute_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call) RunAndReturn(run func(admin.DisableSlowOperationThresholdingApiRequest) (*http.Response, error)) *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DisableManagedSlowMsWithParams provides a mock function with given fields: ctx, args
-func (_m *PerformanceAdvisorApi) DisableManagedSlowMsWithParams(ctx context.Context, args *admin.DisableManagedSlowMsApiParams) admin.DisableManagedSlowMsApiRequest {
+// DisableSlowOperationThresholdingWithParams provides a mock function with given fields: ctx, args
+func (_m *PerformanceAdvisorApi) DisableSlowOperationThresholdingWithParams(ctx context.Context, args *admin.DisableSlowOperationThresholdingApiParams) admin.DisableSlowOperationThresholdingApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DisableManagedSlowMsWithParams")
+		panic("no return value specified for DisableSlowOperationThresholdingWithParams")
 	}
 
-	var r0 admin.DisableManagedSlowMsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DisableManagedSlowMsApiParams) admin.DisableManagedSlowMsApiRequest); ok {
+	var r0 admin.DisableSlowOperationThresholdingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DisableSlowOperationThresholdingApiParams) admin.DisableSlowOperationThresholdingApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DisableManagedSlowMsApiRequest)
+		r0 = ret.Get(0).(admin.DisableSlowOperationThresholdingApiRequest)
 	}
 
 	return r0
 }
 
-// PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableManagedSlowMsWithParams'
-type PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call struct {
+// PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableSlowOperationThresholdingWithParams'
+type PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call struct {
 	*mock.Call
 }
 
-// DisableManagedSlowMsWithParams is a helper method to define mock.On call
+// DisableSlowOperationThresholdingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DisableManagedSlowMsApiParams
-func (_e *PerformanceAdvisorApi_Expecter) DisableManagedSlowMsWithParams(ctx any, args any) *PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call {
-	return &PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call{Call: _e.mock.On("DisableManagedSlowMsWithParams", ctx, args)}
+//   - args *admin.DisableSlowOperationThresholdingApiParams
+func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholdingWithParams(ctx any, args any) *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call {
+	return &PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call{Call: _e.mock.On("DisableSlowOperationThresholdingWithParams", ctx, args)}
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call) Run(run func(ctx context.Context, args *admin.DisableManagedSlowMsApiParams)) *PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call) Run(run func(ctx context.Context, args *admin.DisableSlowOperationThresholdingApiParams)) *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DisableManagedSlowMsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DisableSlowOperationThresholdingApiParams))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call) Return(_a0 admin.DisableManagedSlowMsApiRequest) *PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call) Return(_a0 admin.DisableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DisableManagedSlowMsApiParams) admin.DisableManagedSlowMsApiRequest) *PerformanceAdvisorApi_DisableManagedSlowMsWithParams_Call {
+func (_c *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call) RunAndReturn(run func(context.Context, *admin.DisableSlowOperationThresholdingApiParams) admin.DisableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// EnableManagedSlowMs provides a mock function with given fields: ctx, groupId
-func (_m *PerformanceAdvisorApi) EnableManagedSlowMs(ctx context.Context, groupId string) admin.EnableManagedSlowMsApiRequest {
+// EnableSlowOperationThresholding provides a mock function with given fields: ctx, groupId
+func (_m *PerformanceAdvisorApi) EnableSlowOperationThresholding(ctx context.Context, groupId string) admin.EnableSlowOperationThresholdingApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for EnableManagedSlowMs")
+		panic("no return value specified for EnableSlowOperationThresholding")
 	}
 
-	var r0 admin.EnableManagedSlowMsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.EnableManagedSlowMsApiRequest); ok {
+	var r0 admin.EnableSlowOperationThresholdingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.EnableSlowOperationThresholdingApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.EnableManagedSlowMsApiRequest)
+		r0 = ret.Get(0).(admin.EnableSlowOperationThresholdingApiRequest)
 	}
 
 	return r0
 }
 
-// PerformanceAdvisorApi_EnableManagedSlowMs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EnableManagedSlowMs'
-type PerformanceAdvisorApi_EnableManagedSlowMs_Call struct {
+// PerformanceAdvisorApi_EnableSlowOperationThresholding_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EnableSlowOperationThresholding'
+type PerformanceAdvisorApi_EnableSlowOperationThresholding_Call struct {
 	*mock.Call
 }
 
-// EnableManagedSlowMs is a helper method to define mock.On call
+// EnableSlowOperationThresholding is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PerformanceAdvisorApi_Expecter) EnableManagedSlowMs(ctx any, groupId any) *PerformanceAdvisorApi_EnableManagedSlowMs_Call {
-	return &PerformanceAdvisorApi_EnableManagedSlowMs_Call{Call: _e.mock.On("EnableManagedSlowMs", ctx, groupId)}
+func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholding(ctx any, groupId any) *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call {
+	return &PerformanceAdvisorApi_EnableSlowOperationThresholding_Call{Call: _e.mock.On("EnableSlowOperationThresholding", ctx, groupId)}
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMs_Call) Run(run func(ctx context.Context, groupId string)) *PerformanceAdvisorApi_EnableManagedSlowMs_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call) Run(run func(ctx context.Context, groupId string)) *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMs_Call) Return(_a0 admin.EnableManagedSlowMsApiRequest) *PerformanceAdvisorApi_EnableManagedSlowMs_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call) Return(_a0 admin.EnableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMs_Call) RunAndReturn(run func(context.Context, string) admin.EnableManagedSlowMsApiRequest) *PerformanceAdvisorApi_EnableManagedSlowMs_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call) RunAndReturn(run func(context.Context, string) admin.EnableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// EnableManagedSlowMsExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorApi) EnableManagedSlowMsExecute(r admin.EnableManagedSlowMsApiRequest) (*http.Response, error) {
+// EnableSlowOperationThresholdingExecute provides a mock function with given fields: r
+func (_m *PerformanceAdvisorApi) EnableSlowOperationThresholdingExecute(r admin.EnableSlowOperationThresholdingApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for EnableManagedSlowMsExecute")
+		panic("no return value specified for EnableSlowOperationThresholdingExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.EnableManagedSlowMsApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.EnableSlowOperationThresholdingApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.EnableManagedSlowMsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.EnableSlowOperationThresholdingApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -245,7 +245,7 @@ func (_m *PerformanceAdvisorApi) EnableManagedSlowMsExecute(r admin.EnableManage
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.EnableManagedSlowMsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.EnableSlowOperationThresholdingApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -254,77 +254,77 @@ func (_m *PerformanceAdvisorApi) EnableManagedSlowMsExecute(r admin.EnableManage
 	return r0, r1
 }
 
-// PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EnableManagedSlowMsExecute'
-type PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call struct {
+// PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EnableSlowOperationThresholdingExecute'
+type PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call struct {
 	*mock.Call
 }
 
-// EnableManagedSlowMsExecute is a helper method to define mock.On call
-//   - r admin.EnableManagedSlowMsApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) EnableManagedSlowMsExecute(r any) *PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call {
-	return &PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call{Call: _e.mock.On("EnableManagedSlowMsExecute", r)}
+// EnableSlowOperationThresholdingExecute is a helper method to define mock.On call
+//   - r admin.EnableSlowOperationThresholdingApiRequest
+func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholdingExecute(r any) *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call {
+	return &PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call{Call: _e.mock.On("EnableSlowOperationThresholdingExecute", r)}
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call) Run(run func(r admin.EnableManagedSlowMsApiRequest)) *PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call) Run(run func(r admin.EnableSlowOperationThresholdingApiRequest)) *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.EnableManagedSlowMsApiRequest))
+		run(args[0].(admin.EnableSlowOperationThresholdingApiRequest))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call) Return(_a0 *http.Response, _a1 error) *PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call) Return(_a0 *http.Response, _a1 error) *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call) RunAndReturn(run func(admin.EnableManagedSlowMsApiRequest) (*http.Response, error)) *PerformanceAdvisorApi_EnableManagedSlowMsExecute_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call) RunAndReturn(run func(admin.EnableSlowOperationThresholdingApiRequest) (*http.Response, error)) *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// EnableManagedSlowMsWithParams provides a mock function with given fields: ctx, args
-func (_m *PerformanceAdvisorApi) EnableManagedSlowMsWithParams(ctx context.Context, args *admin.EnableManagedSlowMsApiParams) admin.EnableManagedSlowMsApiRequest {
+// EnableSlowOperationThresholdingWithParams provides a mock function with given fields: ctx, args
+func (_m *PerformanceAdvisorApi) EnableSlowOperationThresholdingWithParams(ctx context.Context, args *admin.EnableSlowOperationThresholdingApiParams) admin.EnableSlowOperationThresholdingApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for EnableManagedSlowMsWithParams")
+		panic("no return value specified for EnableSlowOperationThresholdingWithParams")
 	}
 
-	var r0 admin.EnableManagedSlowMsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.EnableManagedSlowMsApiParams) admin.EnableManagedSlowMsApiRequest); ok {
+	var r0 admin.EnableSlowOperationThresholdingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.EnableSlowOperationThresholdingApiParams) admin.EnableSlowOperationThresholdingApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.EnableManagedSlowMsApiRequest)
+		r0 = ret.Get(0).(admin.EnableSlowOperationThresholdingApiRequest)
 	}
 
 	return r0
 }
 
-// PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EnableManagedSlowMsWithParams'
-type PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call struct {
+// PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EnableSlowOperationThresholdingWithParams'
+type PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call struct {
 	*mock.Call
 }
 
-// EnableManagedSlowMsWithParams is a helper method to define mock.On call
+// EnableSlowOperationThresholdingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.EnableManagedSlowMsApiParams
-func (_e *PerformanceAdvisorApi_Expecter) EnableManagedSlowMsWithParams(ctx any, args any) *PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call {
-	return &PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call{Call: _e.mock.On("EnableManagedSlowMsWithParams", ctx, args)}
+//   - args *admin.EnableSlowOperationThresholdingApiParams
+func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholdingWithParams(ctx any, args any) *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call {
+	return &PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call{Call: _e.mock.On("EnableSlowOperationThresholdingWithParams", ctx, args)}
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call) Run(run func(ctx context.Context, args *admin.EnableManagedSlowMsApiParams)) *PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call) Run(run func(ctx context.Context, args *admin.EnableSlowOperationThresholdingApiParams)) *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.EnableManagedSlowMsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.EnableSlowOperationThresholdingApiParams))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call) Return(_a0 admin.EnableManagedSlowMsApiRequest) *PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call) Return(_a0 admin.EnableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call) RunAndReturn(run func(context.Context, *admin.EnableManagedSlowMsApiParams) admin.EnableManagedSlowMsApiRequest) *PerformanceAdvisorApi_EnableManagedSlowMsWithParams_Call {
+func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call) RunAndReturn(run func(context.Context, *admin.EnableSlowOperationThresholdingApiParams) admin.EnableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -810,69 +810,69 @@ func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call) RunA
 	return _c
 }
 
-// ListDropIndexSuggestions provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *PerformanceAdvisorApi) ListDropIndexSuggestions(ctx context.Context, groupId string, clusterName string) admin.ListDropIndexSuggestionsApiRequest {
+// ListDropIndexes provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *PerformanceAdvisorApi) ListDropIndexes(ctx context.Context, groupId string, clusterName string) admin.ListDropIndexesApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDropIndexSuggestions")
+		panic("no return value specified for ListDropIndexes")
 	}
 
-	var r0 admin.ListDropIndexSuggestionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListDropIndexSuggestionsApiRequest); ok {
+	var r0 admin.ListDropIndexesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListDropIndexesApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName)
 	} else {
-		r0 = ret.Get(0).(admin.ListDropIndexSuggestionsApiRequest)
+		r0 = ret.Get(0).(admin.ListDropIndexesApiRequest)
 	}
 
 	return r0
 }
 
-// PerformanceAdvisorApi_ListDropIndexSuggestions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDropIndexSuggestions'
-type PerformanceAdvisorApi_ListDropIndexSuggestions_Call struct {
+// PerformanceAdvisorApi_ListDropIndexes_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDropIndexes'
+type PerformanceAdvisorApi_ListDropIndexes_Call struct {
 	*mock.Call
 }
 
-// ListDropIndexSuggestions is a helper method to define mock.On call
+// ListDropIndexes is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *PerformanceAdvisorApi_Expecter) ListDropIndexSuggestions(ctx any, groupId any, clusterName any) *PerformanceAdvisorApi_ListDropIndexSuggestions_Call {
-	return &PerformanceAdvisorApi_ListDropIndexSuggestions_Call{Call: _e.mock.On("ListDropIndexSuggestions", ctx, groupId, clusterName)}
+func (_e *PerformanceAdvisorApi_Expecter) ListDropIndexes(ctx any, groupId any, clusterName any) *PerformanceAdvisorApi_ListDropIndexes_Call {
+	return &PerformanceAdvisorApi_ListDropIndexes_Call{Call: _e.mock.On("ListDropIndexes", ctx, groupId, clusterName)}
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestions_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *PerformanceAdvisorApi_ListDropIndexSuggestions_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexes_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *PerformanceAdvisorApi_ListDropIndexes_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestions_Call) Return(_a0 admin.ListDropIndexSuggestionsApiRequest) *PerformanceAdvisorApi_ListDropIndexSuggestions_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexes_Call) Return(_a0 admin.ListDropIndexesApiRequest) *PerformanceAdvisorApi_ListDropIndexes_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestions_Call) RunAndReturn(run func(context.Context, string, string) admin.ListDropIndexSuggestionsApiRequest) *PerformanceAdvisorApi_ListDropIndexSuggestions_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexes_Call) RunAndReturn(run func(context.Context, string, string) admin.ListDropIndexesApiRequest) *PerformanceAdvisorApi_ListDropIndexes_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListDropIndexSuggestionsExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorApi) ListDropIndexSuggestionsExecute(r admin.ListDropIndexSuggestionsApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error) {
+// ListDropIndexesExecute provides a mock function with given fields: r
+func (_m *PerformanceAdvisorApi) ListDropIndexesExecute(r admin.ListDropIndexesApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDropIndexSuggestionsExecute")
+		panic("no return value specified for ListDropIndexesExecute")
 	}
 
 	var r0 *admin.DropIndexSuggestionsResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListDropIndexSuggestionsApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListDropIndexesApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListDropIndexSuggestionsApiRequest) *admin.DropIndexSuggestionsResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListDropIndexesApiRequest) *admin.DropIndexSuggestionsResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -880,7 +880,7 @@ func (_m *PerformanceAdvisorApi) ListDropIndexSuggestionsExecute(r admin.ListDro
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListDropIndexSuggestionsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListDropIndexesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -888,7 +888,7 @@ func (_m *PerformanceAdvisorApi) ListDropIndexSuggestionsExecute(r admin.ListDro
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListDropIndexSuggestionsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListDropIndexesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -897,239 +897,77 @@ func (_m *PerformanceAdvisorApi) ListDropIndexSuggestionsExecute(r admin.ListDro
 	return r0, r1, r2
 }
 
-// PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDropIndexSuggestionsExecute'
-type PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call struct {
+// PerformanceAdvisorApi_ListDropIndexesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDropIndexesExecute'
+type PerformanceAdvisorApi_ListDropIndexesExecute_Call struct {
 	*mock.Call
 }
 
-// ListDropIndexSuggestionsExecute is a helper method to define mock.On call
-//   - r admin.ListDropIndexSuggestionsApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) ListDropIndexSuggestionsExecute(r any) *PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call {
-	return &PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call{Call: _e.mock.On("ListDropIndexSuggestionsExecute", r)}
+// ListDropIndexesExecute is a helper method to define mock.On call
+//   - r admin.ListDropIndexesApiRequest
+func (_e *PerformanceAdvisorApi_Expecter) ListDropIndexesExecute(r any) *PerformanceAdvisorApi_ListDropIndexesExecute_Call {
+	return &PerformanceAdvisorApi_ListDropIndexesExecute_Call{Call: _e.mock.On("ListDropIndexesExecute", r)}
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call) Run(run func(r admin.ListDropIndexSuggestionsApiRequest)) *PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexesExecute_Call) Run(run func(r admin.ListDropIndexesApiRequest)) *PerformanceAdvisorApi_ListDropIndexesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListDropIndexSuggestionsApiRequest))
+		run(args[0].(admin.ListDropIndexesApiRequest))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call) Return(_a0 *admin.DropIndexSuggestionsResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexesExecute_Call) Return(_a0 *admin.DropIndexSuggestionsResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_ListDropIndexesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call) RunAndReturn(run func(admin.ListDropIndexSuggestionsApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error)) *PerformanceAdvisorApi_ListDropIndexSuggestionsExecute_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexesExecute_Call) RunAndReturn(run func(admin.ListDropIndexesApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error)) *PerformanceAdvisorApi_ListDropIndexesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListDropIndexSuggestionsWithParams provides a mock function with given fields: ctx, args
-func (_m *PerformanceAdvisorApi) ListDropIndexSuggestionsWithParams(ctx context.Context, args *admin.ListDropIndexSuggestionsApiParams) admin.ListDropIndexSuggestionsApiRequest {
+// ListDropIndexesWithParams provides a mock function with given fields: ctx, args
+func (_m *PerformanceAdvisorApi) ListDropIndexesWithParams(ctx context.Context, args *admin.ListDropIndexesApiParams) admin.ListDropIndexesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListDropIndexSuggestionsWithParams")
+		panic("no return value specified for ListDropIndexesWithParams")
 	}
 
-	var r0 admin.ListDropIndexSuggestionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListDropIndexSuggestionsApiParams) admin.ListDropIndexSuggestionsApiRequest); ok {
+	var r0 admin.ListDropIndexesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListDropIndexesApiParams) admin.ListDropIndexesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListDropIndexSuggestionsApiRequest)
+		r0 = ret.Get(0).(admin.ListDropIndexesApiRequest)
 	}
 
 	return r0
 }
 
-// PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDropIndexSuggestionsWithParams'
-type PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call struct {
+// PerformanceAdvisorApi_ListDropIndexesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListDropIndexesWithParams'
+type PerformanceAdvisorApi_ListDropIndexesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListDropIndexSuggestionsWithParams is a helper method to define mock.On call
+// ListDropIndexesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListDropIndexSuggestionsApiParams
-func (_e *PerformanceAdvisorApi_Expecter) ListDropIndexSuggestionsWithParams(ctx any, args any) *PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call {
-	return &PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call{Call: _e.mock.On("ListDropIndexSuggestionsWithParams", ctx, args)}
+//   - args *admin.ListDropIndexesApiParams
+func (_e *PerformanceAdvisorApi_Expecter) ListDropIndexesWithParams(ctx any, args any) *PerformanceAdvisorApi_ListDropIndexesWithParams_Call {
+	return &PerformanceAdvisorApi_ListDropIndexesWithParams_Call{Call: _e.mock.On("ListDropIndexesWithParams", ctx, args)}
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListDropIndexSuggestionsApiParams)) *PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListDropIndexesApiParams)) *PerformanceAdvisorApi_ListDropIndexesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListDropIndexSuggestionsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListDropIndexesApiParams))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call) Return(_a0 admin.ListDropIndexSuggestionsApiRequest) *PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexesWithParams_Call) Return(_a0 admin.ListDropIndexesApiRequest) *PerformanceAdvisorApi_ListDropIndexesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListDropIndexSuggestionsApiParams) admin.ListDropIndexSuggestionsApiRequest) *PerformanceAdvisorApi_ListDropIndexSuggestionsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPerformanceAdvisorNamespaces provides a mock function with given fields: ctx, groupId, processId
-func (_m *PerformanceAdvisorApi) ListPerformanceAdvisorNamespaces(ctx context.Context, groupId string, processId string) admin.ListPerformanceAdvisorNamespacesApiRequest {
-	ret := _m.Called(ctx, groupId, processId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPerformanceAdvisorNamespaces")
-	}
-
-	var r0 admin.ListPerformanceAdvisorNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListPerformanceAdvisorNamespacesApiRequest); ok {
-		r0 = rf(ctx, groupId, processId)
-	} else {
-		r0 = ret.Get(0).(admin.ListPerformanceAdvisorNamespacesApiRequest)
-	}
-
-	return r0
-}
-
-// PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPerformanceAdvisorNamespaces'
-type PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call struct {
-	*mock.Call
-}
-
-// ListPerformanceAdvisorNamespaces is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - processId string
-func (_e *PerformanceAdvisorApi_Expecter) ListPerformanceAdvisorNamespaces(ctx any, groupId any, processId any) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call {
-	return &PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call{Call: _e.mock.On("ListPerformanceAdvisorNamespaces", ctx, groupId, processId)}
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call) Run(run func(ctx context.Context, groupId string, processId string)) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call) Return(_a0 admin.ListPerformanceAdvisorNamespacesApiRequest) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call) RunAndReturn(run func(context.Context, string, string) admin.ListPerformanceAdvisorNamespacesApiRequest) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespaces_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPerformanceAdvisorNamespacesExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorApi) ListPerformanceAdvisorNamespacesExecute(r admin.ListPerformanceAdvisorNamespacesApiRequest) (*admin.Namespaces, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPerformanceAdvisorNamespacesExecute")
-	}
-
-	var r0 *admin.Namespaces
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPerformanceAdvisorNamespacesApiRequest) (*admin.Namespaces, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListPerformanceAdvisorNamespacesApiRequest) *admin.Namespaces); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.Namespaces)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListPerformanceAdvisorNamespacesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListPerformanceAdvisorNamespacesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPerformanceAdvisorNamespacesExecute'
-type PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call struct {
-	*mock.Call
-}
-
-// ListPerformanceAdvisorNamespacesExecute is a helper method to define mock.On call
-//   - r admin.ListPerformanceAdvisorNamespacesApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) ListPerformanceAdvisorNamespacesExecute(r any) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call {
-	return &PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call{Call: _e.mock.On("ListPerformanceAdvisorNamespacesExecute", r)}
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call) Run(run func(r admin.ListPerformanceAdvisorNamespacesApiRequest)) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPerformanceAdvisorNamespacesApiRequest))
-	})
-	return _c
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call) Return(_a0 *admin.Namespaces, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call) RunAndReturn(run func(admin.ListPerformanceAdvisorNamespacesApiRequest) (*admin.Namespaces, *http.Response, error)) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPerformanceAdvisorNamespacesWithParams provides a mock function with given fields: ctx, args
-func (_m *PerformanceAdvisorApi) ListPerformanceAdvisorNamespacesWithParams(ctx context.Context, args *admin.ListPerformanceAdvisorNamespacesApiParams) admin.ListPerformanceAdvisorNamespacesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPerformanceAdvisorNamespacesWithParams")
-	}
-
-	var r0 admin.ListPerformanceAdvisorNamespacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPerformanceAdvisorNamespacesApiParams) admin.ListPerformanceAdvisorNamespacesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListPerformanceAdvisorNamespacesApiRequest)
-	}
-
-	return r0
-}
-
-// PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPerformanceAdvisorNamespacesWithParams'
-type PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call struct {
-	*mock.Call
-}
-
-// ListPerformanceAdvisorNamespacesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListPerformanceAdvisorNamespacesApiParams
-func (_e *PerformanceAdvisorApi_Expecter) ListPerformanceAdvisorNamespacesWithParams(ctx any, args any) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call {
-	return &PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call{Call: _e.mock.On("ListPerformanceAdvisorNamespacesWithParams", ctx, args)}
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPerformanceAdvisorNamespacesApiParams)) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPerformanceAdvisorNamespacesApiParams))
-	})
-	return _c
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call) Return(_a0 admin.ListPerformanceAdvisorNamespacesApiRequest) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPerformanceAdvisorNamespacesApiParams) admin.ListPerformanceAdvisorNamespacesApiRequest) *PerformanceAdvisorApi_ListPerformanceAdvisorNamespacesWithParams_Call {
+func (_c *PerformanceAdvisorApi_ListDropIndexesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListDropIndexesApiParams) admin.ListDropIndexesApiRequest) *PerformanceAdvisorApi_ListDropIndexesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1296,69 +1134,69 @@ func (_c *PerformanceAdvisorApi_ListSchemaAdviceWithParams_Call) RunAndReturn(ru
 	return _c
 }
 
-// ListSlowQueryLogs provides a mock function with given fields: ctx, groupId, processId
-func (_m *PerformanceAdvisorApi) ListSlowQueryLogs(ctx context.Context, groupId string, processId string) admin.ListSlowQueryLogsApiRequest {
+// ListSlowQueries provides a mock function with given fields: ctx, groupId, processId
+func (_m *PerformanceAdvisorApi) ListSlowQueries(ctx context.Context, groupId string, processId string) admin.ListSlowQueriesApiRequest {
 	ret := _m.Called(ctx, groupId, processId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSlowQueryLogs")
+		panic("no return value specified for ListSlowQueries")
 	}
 
-	var r0 admin.ListSlowQueryLogsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListSlowQueryLogsApiRequest); ok {
+	var r0 admin.ListSlowQueriesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListSlowQueriesApiRequest); ok {
 		r0 = rf(ctx, groupId, processId)
 	} else {
-		r0 = ret.Get(0).(admin.ListSlowQueryLogsApiRequest)
+		r0 = ret.Get(0).(admin.ListSlowQueriesApiRequest)
 	}
 
 	return r0
 }
 
-// PerformanceAdvisorApi_ListSlowQueryLogs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueryLogs'
-type PerformanceAdvisorApi_ListSlowQueryLogs_Call struct {
+// PerformanceAdvisorApi_ListSlowQueries_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueries'
+type PerformanceAdvisorApi_ListSlowQueries_Call struct {
 	*mock.Call
 }
 
-// ListSlowQueryLogs is a helper method to define mock.On call
+// ListSlowQueries is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryLogs(ctx any, groupId any, processId any) *PerformanceAdvisorApi_ListSlowQueryLogs_Call {
-	return &PerformanceAdvisorApi_ListSlowQueryLogs_Call{Call: _e.mock.On("ListSlowQueryLogs", ctx, groupId, processId)}
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueries(ctx any, groupId any, processId any) *PerformanceAdvisorApi_ListSlowQueries_Call {
+	return &PerformanceAdvisorApi_ListSlowQueries_Call{Call: _e.mock.On("ListSlowQueries", ctx, groupId, processId)}
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogs_Call) Run(run func(ctx context.Context, groupId string, processId string)) *PerformanceAdvisorApi_ListSlowQueryLogs_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueries_Call) Run(run func(ctx context.Context, groupId string, processId string)) *PerformanceAdvisorApi_ListSlowQueries_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogs_Call) Return(_a0 admin.ListSlowQueryLogsApiRequest) *PerformanceAdvisorApi_ListSlowQueryLogs_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueries_Call) Return(_a0 admin.ListSlowQueriesApiRequest) *PerformanceAdvisorApi_ListSlowQueries_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogs_Call) RunAndReturn(run func(context.Context, string, string) admin.ListSlowQueryLogsApiRequest) *PerformanceAdvisorApi_ListSlowQueryLogs_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueries_Call) RunAndReturn(run func(context.Context, string, string) admin.ListSlowQueriesApiRequest) *PerformanceAdvisorApi_ListSlowQueries_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListSlowQueryLogsExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorApi) ListSlowQueryLogsExecute(r admin.ListSlowQueryLogsApiRequest) (*admin.PerformanceAdvisorSlowQueryList, *http.Response, error) {
+// ListSlowQueriesExecute provides a mock function with given fields: r
+func (_m *PerformanceAdvisorApi) ListSlowQueriesExecute(r admin.ListSlowQueriesApiRequest) (*admin.PerformanceAdvisorSlowQueryList, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSlowQueryLogsExecute")
+		panic("no return value specified for ListSlowQueriesExecute")
 	}
 
 	var r0 *admin.PerformanceAdvisorSlowQueryList
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListSlowQueryLogsApiRequest) (*admin.PerformanceAdvisorSlowQueryList, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListSlowQueriesApiRequest) (*admin.PerformanceAdvisorSlowQueryList, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListSlowQueryLogsApiRequest) *admin.PerformanceAdvisorSlowQueryList); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListSlowQueriesApiRequest) *admin.PerformanceAdvisorSlowQueryList); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1366,7 +1204,7 @@ func (_m *PerformanceAdvisorApi) ListSlowQueryLogsExecute(r admin.ListSlowQueryL
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListSlowQueryLogsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListSlowQueriesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1374,7 +1212,7 @@ func (_m *PerformanceAdvisorApi) ListSlowQueryLogsExecute(r admin.ListSlowQueryL
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListSlowQueryLogsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListSlowQueriesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1383,77 +1221,239 @@ func (_m *PerformanceAdvisorApi) ListSlowQueryLogsExecute(r admin.ListSlowQueryL
 	return r0, r1, r2
 }
 
-// PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueryLogsExecute'
-type PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call struct {
+// PerformanceAdvisorApi_ListSlowQueriesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueriesExecute'
+type PerformanceAdvisorApi_ListSlowQueriesExecute_Call struct {
 	*mock.Call
 }
 
-// ListSlowQueryLogsExecute is a helper method to define mock.On call
-//   - r admin.ListSlowQueryLogsApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryLogsExecute(r any) *PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call {
-	return &PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call{Call: _e.mock.On("ListSlowQueryLogsExecute", r)}
+// ListSlowQueriesExecute is a helper method to define mock.On call
+//   - r admin.ListSlowQueriesApiRequest
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueriesExecute(r any) *PerformanceAdvisorApi_ListSlowQueriesExecute_Call {
+	return &PerformanceAdvisorApi_ListSlowQueriesExecute_Call{Call: _e.mock.On("ListSlowQueriesExecute", r)}
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call) Run(run func(r admin.ListSlowQueryLogsApiRequest)) *PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueriesExecute_Call) Run(run func(r admin.ListSlowQueriesApiRequest)) *PerformanceAdvisorApi_ListSlowQueriesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListSlowQueryLogsApiRequest))
+		run(args[0].(admin.ListSlowQueriesApiRequest))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call) Return(_a0 *admin.PerformanceAdvisorSlowQueryList, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueriesExecute_Call) Return(_a0 *admin.PerformanceAdvisorSlowQueryList, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_ListSlowQueriesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call) RunAndReturn(run func(admin.ListSlowQueryLogsApiRequest) (*admin.PerformanceAdvisorSlowQueryList, *http.Response, error)) *PerformanceAdvisorApi_ListSlowQueryLogsExecute_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueriesExecute_Call) RunAndReturn(run func(admin.ListSlowQueriesApiRequest) (*admin.PerformanceAdvisorSlowQueryList, *http.Response, error)) *PerformanceAdvisorApi_ListSlowQueriesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListSlowQueryLogsWithParams provides a mock function with given fields: ctx, args
-func (_m *PerformanceAdvisorApi) ListSlowQueryLogsWithParams(ctx context.Context, args *admin.ListSlowQueryLogsApiParams) admin.ListSlowQueryLogsApiRequest {
+// ListSlowQueriesWithParams provides a mock function with given fields: ctx, args
+func (_m *PerformanceAdvisorApi) ListSlowQueriesWithParams(ctx context.Context, args *admin.ListSlowQueriesApiParams) admin.ListSlowQueriesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListSlowQueryLogsWithParams")
+		panic("no return value specified for ListSlowQueriesWithParams")
 	}
 
-	var r0 admin.ListSlowQueryLogsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListSlowQueryLogsApiParams) admin.ListSlowQueryLogsApiRequest); ok {
+	var r0 admin.ListSlowQueriesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListSlowQueriesApiParams) admin.ListSlowQueriesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListSlowQueryLogsApiRequest)
+		r0 = ret.Get(0).(admin.ListSlowQueriesApiRequest)
 	}
 
 	return r0
 }
 
-// PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueryLogsWithParams'
-type PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call struct {
+// PerformanceAdvisorApi_ListSlowQueriesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueriesWithParams'
+type PerformanceAdvisorApi_ListSlowQueriesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListSlowQueryLogsWithParams is a helper method to define mock.On call
+// ListSlowQueriesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListSlowQueryLogsApiParams
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryLogsWithParams(ctx any, args any) *PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call {
-	return &PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call{Call: _e.mock.On("ListSlowQueryLogsWithParams", ctx, args)}
+//   - args *admin.ListSlowQueriesApiParams
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueriesWithParams(ctx any, args any) *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call {
+	return &PerformanceAdvisorApi_ListSlowQueriesWithParams_Call{Call: _e.mock.On("ListSlowQueriesWithParams", ctx, args)}
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListSlowQueryLogsApiParams)) *PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListSlowQueriesApiParams)) *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListSlowQueryLogsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListSlowQueriesApiParams))
 	})
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call) Return(_a0 admin.ListSlowQueryLogsApiRequest) *PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call) Return(_a0 admin.ListSlowQueriesApiRequest) *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListSlowQueryLogsApiParams) admin.ListSlowQueryLogsApiRequest) *PerformanceAdvisorApi_ListSlowQueryLogsWithParams_Call {
+func (_c *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListSlowQueriesApiParams) admin.ListSlowQueriesApiRequest) *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSlowQueryNamespaces provides a mock function with given fields: ctx, groupId, processId
+func (_m *PerformanceAdvisorApi) ListSlowQueryNamespaces(ctx context.Context, groupId string, processId string) admin.ListSlowQueryNamespacesApiRequest {
+	ret := _m.Called(ctx, groupId, processId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSlowQueryNamespaces")
+	}
+
+	var r0 admin.ListSlowQueryNamespacesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListSlowQueryNamespacesApiRequest); ok {
+		r0 = rf(ctx, groupId, processId)
+	} else {
+		r0 = ret.Get(0).(admin.ListSlowQueryNamespacesApiRequest)
+	}
+
+	return r0
+}
+
+// PerformanceAdvisorApi_ListSlowQueryNamespaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueryNamespaces'
+type PerformanceAdvisorApi_ListSlowQueryNamespaces_Call struct {
+	*mock.Call
+}
+
+// ListSlowQueryNamespaces is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - processId string
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespaces(ctx any, groupId any, processId any) *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call {
+	return &PerformanceAdvisorApi_ListSlowQueryNamespaces_Call{Call: _e.mock.On("ListSlowQueryNamespaces", ctx, groupId, processId)}
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call) Run(run func(ctx context.Context, groupId string, processId string)) *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call) Return(_a0 admin.ListSlowQueryNamespacesApiRequest) *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call) RunAndReturn(run func(context.Context, string, string) admin.ListSlowQueryNamespacesApiRequest) *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSlowQueryNamespacesExecute provides a mock function with given fields: r
+func (_m *PerformanceAdvisorApi) ListSlowQueryNamespacesExecute(r admin.ListSlowQueryNamespacesApiRequest) (*admin.Namespaces, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSlowQueryNamespacesExecute")
+	}
+
+	var r0 *admin.Namespaces
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListSlowQueryNamespacesApiRequest) (*admin.Namespaces, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListSlowQueryNamespacesApiRequest) *admin.Namespaces); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.Namespaces)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListSlowQueryNamespacesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListSlowQueryNamespacesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueryNamespacesExecute'
+type PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call struct {
+	*mock.Call
+}
+
+// ListSlowQueryNamespacesExecute is a helper method to define mock.On call
+//   - r admin.ListSlowQueryNamespacesApiRequest
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespacesExecute(r any) *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call {
+	return &PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call{Call: _e.mock.On("ListSlowQueryNamespacesExecute", r)}
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call) Run(run func(r admin.ListSlowQueryNamespacesApiRequest)) *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListSlowQueryNamespacesApiRequest))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call) Return(_a0 *admin.Namespaces, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call) RunAndReturn(run func(admin.ListSlowQueryNamespacesApiRequest) (*admin.Namespaces, *http.Response, error)) *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSlowQueryNamespacesWithParams provides a mock function with given fields: ctx, args
+func (_m *PerformanceAdvisorApi) ListSlowQueryNamespacesWithParams(ctx context.Context, args *admin.ListSlowQueryNamespacesApiParams) admin.ListSlowQueryNamespacesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSlowQueryNamespacesWithParams")
+	}
+
+	var r0 admin.ListSlowQueryNamespacesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListSlowQueryNamespacesApiParams) admin.ListSlowQueryNamespacesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListSlowQueryNamespacesApiRequest)
+	}
+
+	return r0
+}
+
+// PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSlowQueryNamespacesWithParams'
+type PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call struct {
+	*mock.Call
+}
+
+// ListSlowQueryNamespacesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListSlowQueryNamespacesApiParams
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespacesWithParams(ctx any, args any) *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call {
+	return &PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call{Call: _e.mock.On("ListSlowQueryNamespacesWithParams", ctx, args)}
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListSlowQueryNamespacesApiParams)) *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListSlowQueryNamespacesApiParams))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call) Return(_a0 admin.ListSlowQueryNamespacesApiRequest) *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListSlowQueryNamespacesApiParams) admin.ListSlowQueryNamespacesApiRequest) *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

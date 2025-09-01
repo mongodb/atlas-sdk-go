@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -344,69 +344,69 @@ func (_c *OnlineArchiveApi_DeleteOnlineArchiveWithParams_Call) RunAndReturn(run 
 	return _c
 }
 
-// DownloadQueryLogs provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *OnlineArchiveApi) DownloadQueryLogs(ctx context.Context, groupId string, clusterName string) admin.DownloadQueryLogsApiRequest {
+// DownloadOnlineArchiveQueryLogs provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *OnlineArchiveApi) DownloadOnlineArchiveQueryLogs(ctx context.Context, groupId string, clusterName string) admin.DownloadOnlineArchiveQueryLogsApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadQueryLogs")
+		panic("no return value specified for DownloadOnlineArchiveQueryLogs")
 	}
 
-	var r0 admin.DownloadQueryLogsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DownloadQueryLogsApiRequest); ok {
+	var r0 admin.DownloadOnlineArchiveQueryLogsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DownloadOnlineArchiveQueryLogsApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName)
 	} else {
-		r0 = ret.Get(0).(admin.DownloadQueryLogsApiRequest)
+		r0 = ret.Get(0).(admin.DownloadOnlineArchiveQueryLogsApiRequest)
 	}
 
 	return r0
 }
 
-// OnlineArchiveApi_DownloadQueryLogs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadQueryLogs'
-type OnlineArchiveApi_DownloadQueryLogs_Call struct {
+// OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadOnlineArchiveQueryLogs'
+type OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call struct {
 	*mock.Call
 }
 
-// DownloadQueryLogs is a helper method to define mock.On call
+// DownloadOnlineArchiveQueryLogs is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *OnlineArchiveApi_Expecter) DownloadQueryLogs(ctx any, groupId any, clusterName any) *OnlineArchiveApi_DownloadQueryLogs_Call {
-	return &OnlineArchiveApi_DownloadQueryLogs_Call{Call: _e.mock.On("DownloadQueryLogs", ctx, groupId, clusterName)}
+func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogs(ctx any, groupId any, clusterName any) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call {
+	return &OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call{Call: _e.mock.On("DownloadOnlineArchiveQueryLogs", ctx, groupId, clusterName)}
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogs_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *OnlineArchiveApi_DownloadQueryLogs_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogs_Call) Return(_a0 admin.DownloadQueryLogsApiRequest) *OnlineArchiveApi_DownloadQueryLogs_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call) Return(_a0 admin.DownloadOnlineArchiveQueryLogsApiRequest) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogs_Call) RunAndReturn(run func(context.Context, string, string) admin.DownloadQueryLogsApiRequest) *OnlineArchiveApi_DownloadQueryLogs_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call) RunAndReturn(run func(context.Context, string, string) admin.DownloadOnlineArchiveQueryLogsApiRequest) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DownloadQueryLogsExecute provides a mock function with given fields: r
-func (_m *OnlineArchiveApi) DownloadQueryLogsExecute(r admin.DownloadQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+// DownloadOnlineArchiveQueryLogsExecute provides a mock function with given fields: r
+func (_m *OnlineArchiveApi) DownloadOnlineArchiveQueryLogsExecute(r admin.DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadQueryLogsExecute")
+		panic("no return value specified for DownloadOnlineArchiveQueryLogsExecute")
 	}
 
 	var r0 io.ReadCloser
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DownloadQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DownloadQueryLogsApiRequest) io.ReadCloser); ok {
+	if rf, ok := ret.Get(0).(func(admin.DownloadOnlineArchiveQueryLogsApiRequest) io.ReadCloser); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -414,7 +414,7 @@ func (_m *OnlineArchiveApi) DownloadQueryLogsExecute(r admin.DownloadQueryLogsAp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DownloadQueryLogsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DownloadOnlineArchiveQueryLogsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -422,7 +422,7 @@ func (_m *OnlineArchiveApi) DownloadQueryLogsExecute(r admin.DownloadQueryLogsAp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DownloadQueryLogsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DownloadOnlineArchiveQueryLogsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -431,77 +431,77 @@ func (_m *OnlineArchiveApi) DownloadQueryLogsExecute(r admin.DownloadQueryLogsAp
 	return r0, r1, r2
 }
 
-// OnlineArchiveApi_DownloadQueryLogsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadQueryLogsExecute'
-type OnlineArchiveApi_DownloadQueryLogsExecute_Call struct {
+// OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadOnlineArchiveQueryLogsExecute'
+type OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call struct {
 	*mock.Call
 }
 
-// DownloadQueryLogsExecute is a helper method to define mock.On call
-//   - r admin.DownloadQueryLogsApiRequest
-func (_e *OnlineArchiveApi_Expecter) DownloadQueryLogsExecute(r any) *OnlineArchiveApi_DownloadQueryLogsExecute_Call {
-	return &OnlineArchiveApi_DownloadQueryLogsExecute_Call{Call: _e.mock.On("DownloadQueryLogsExecute", r)}
+// DownloadOnlineArchiveQueryLogsExecute is a helper method to define mock.On call
+//   - r admin.DownloadOnlineArchiveQueryLogsApiRequest
+func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogsExecute(r any) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call {
+	return &OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call{Call: _e.mock.On("DownloadOnlineArchiveQueryLogsExecute", r)}
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogsExecute_Call) Run(run func(r admin.DownloadQueryLogsApiRequest)) *OnlineArchiveApi_DownloadQueryLogsExecute_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call) Run(run func(r admin.DownloadOnlineArchiveQueryLogsApiRequest)) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DownloadQueryLogsApiRequest))
+		run(args[0].(admin.DownloadOnlineArchiveQueryLogsApiRequest))
 	})
 	return _c
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogsExecute_Call) Return(_a0 io.ReadCloser, _a1 *http.Response, _a2 error) *OnlineArchiveApi_DownloadQueryLogsExecute_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call) Return(_a0 io.ReadCloser, _a1 *http.Response, _a2 error) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogsExecute_Call) RunAndReturn(run func(admin.DownloadQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)) *OnlineArchiveApi_DownloadQueryLogsExecute_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call) RunAndReturn(run func(admin.DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DownloadQueryLogsWithParams provides a mock function with given fields: ctx, args
-func (_m *OnlineArchiveApi) DownloadQueryLogsWithParams(ctx context.Context, args *admin.DownloadQueryLogsApiParams) admin.DownloadQueryLogsApiRequest {
+// DownloadOnlineArchiveQueryLogsWithParams provides a mock function with given fields: ctx, args
+func (_m *OnlineArchiveApi) DownloadOnlineArchiveQueryLogsWithParams(ctx context.Context, args *admin.DownloadOnlineArchiveQueryLogsApiParams) admin.DownloadOnlineArchiveQueryLogsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadQueryLogsWithParams")
+		panic("no return value specified for DownloadOnlineArchiveQueryLogsWithParams")
 	}
 
-	var r0 admin.DownloadQueryLogsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadQueryLogsApiParams) admin.DownloadQueryLogsApiRequest); ok {
+	var r0 admin.DownloadOnlineArchiveQueryLogsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadOnlineArchiveQueryLogsApiParams) admin.DownloadOnlineArchiveQueryLogsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DownloadQueryLogsApiRequest)
+		r0 = ret.Get(0).(admin.DownloadOnlineArchiveQueryLogsApiRequest)
 	}
 
 	return r0
 }
 
-// OnlineArchiveApi_DownloadQueryLogsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadQueryLogsWithParams'
-type OnlineArchiveApi_DownloadQueryLogsWithParams_Call struct {
+// OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadOnlineArchiveQueryLogsWithParams'
+type OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call struct {
 	*mock.Call
 }
 
-// DownloadQueryLogsWithParams is a helper method to define mock.On call
+// DownloadOnlineArchiveQueryLogsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DownloadQueryLogsApiParams
-func (_e *OnlineArchiveApi_Expecter) DownloadQueryLogsWithParams(ctx any, args any) *OnlineArchiveApi_DownloadQueryLogsWithParams_Call {
-	return &OnlineArchiveApi_DownloadQueryLogsWithParams_Call{Call: _e.mock.On("DownloadQueryLogsWithParams", ctx, args)}
+//   - args *admin.DownloadOnlineArchiveQueryLogsApiParams
+func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogsWithParams(ctx any, args any) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call {
+	return &OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call{Call: _e.mock.On("DownloadOnlineArchiveQueryLogsWithParams", ctx, args)}
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogsWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadQueryLogsApiParams)) *OnlineArchiveApi_DownloadQueryLogsWithParams_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadOnlineArchiveQueryLogsApiParams)) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DownloadQueryLogsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DownloadOnlineArchiveQueryLogsApiParams))
 	})
 	return _c
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogsWithParams_Call) Return(_a0 admin.DownloadQueryLogsApiRequest) *OnlineArchiveApi_DownloadQueryLogsWithParams_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call) Return(_a0 admin.DownloadOnlineArchiveQueryLogsApiRequest) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *OnlineArchiveApi_DownloadQueryLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadQueryLogsApiParams) admin.DownloadQueryLogsApiRequest) *OnlineArchiveApi_DownloadQueryLogsWithParams_Call {
+func (_c *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadOnlineArchiveQueryLogsApiParams) admin.DownloadOnlineArchiveQueryLogsApiRequest) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

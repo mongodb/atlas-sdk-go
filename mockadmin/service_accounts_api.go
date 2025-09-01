@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -25,2454 +25,70 @@ func (_m *ServiceAccountsApi) EXPECT() *ServiceAccountsApi_Expecter {
 	return &ServiceAccountsApi_Expecter{mock: &_m.Mock}
 }
 
-// CreateAccessList provides a mock function with given fields: ctx, groupId, clientId, serviceAccountIPAccessListEntry
-func (_m *ServiceAccountsApi) CreateAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry) admin.CreateAccessListApiRequest {
-	ret := _m.Called(ctx, groupId, clientId, serviceAccountIPAccessListEntry)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateAccessList")
-	}
-
-	var r0 admin.CreateAccessListApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.ServiceAccountIPAccessListEntry) admin.CreateAccessListApiRequest); ok {
-		r0 = rf(ctx, groupId, clientId, serviceAccountIPAccessListEntry)
-	} else {
-		r0 = ret.Get(0).(admin.CreateAccessListApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAccessList'
-type ServiceAccountsApi_CreateAccessList_Call struct {
-	*mock.Call
-}
-
-// CreateAccessList is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - clientId string
-//   - serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry
-func (_e *ServiceAccountsApi_Expecter) CreateAccessList(ctx any, groupId any, clientId any, serviceAccountIPAccessListEntry any) *ServiceAccountsApi_CreateAccessList_Call {
-	return &ServiceAccountsApi_CreateAccessList_Call{Call: _e.mock.On("CreateAccessList", ctx, groupId, clientId, serviceAccountIPAccessListEntry)}
-}
-
-func (_c *ServiceAccountsApi_CreateAccessList_Call) Run(run func(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry)) *ServiceAccountsApi_CreateAccessList_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*[]admin.ServiceAccountIPAccessListEntry))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateAccessList_Call) Return(_a0 admin.CreateAccessListApiRequest) *ServiceAccountsApi_CreateAccessList_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateAccessList_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.ServiceAccountIPAccessListEntry) admin.CreateAccessListApiRequest) *ServiceAccountsApi_CreateAccessList_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateAccessListExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) CreateAccessListExecute(r admin.CreateAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateAccessListExecute")
-	}
-
-	var r0 *admin.PaginatedServiceAccountIPAccessEntry
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreateAccessListApiRequest) *admin.PaginatedServiceAccountIPAccessEntry); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedServiceAccountIPAccessEntry)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreateAccessListApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreateAccessListApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_CreateAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAccessListExecute'
-type ServiceAccountsApi_CreateAccessListExecute_Call struct {
-	*mock.Call
-}
-
-// CreateAccessListExecute is a helper method to define mock.On call
-//   - r admin.CreateAccessListApiRequest
-func (_e *ServiceAccountsApi_Expecter) CreateAccessListExecute(r any) *ServiceAccountsApi_CreateAccessListExecute_Call {
-	return &ServiceAccountsApi_CreateAccessListExecute_Call{Call: _e.mock.On("CreateAccessListExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_CreateAccessListExecute_Call) Run(run func(r admin.CreateAccessListApiRequest)) *ServiceAccountsApi_CreateAccessListExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateAccessListApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateAccessListExecute_Call) Return(_a0 *admin.PaginatedServiceAccountIPAccessEntry, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateAccessListExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateAccessListExecute_Call) RunAndReturn(run func(admin.CreateAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)) *ServiceAccountsApi_CreateAccessListExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateAccessListWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) CreateAccessListWithParams(ctx context.Context, args *admin.CreateAccessListApiParams) admin.CreateAccessListApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateAccessListWithParams")
-	}
-
-	var r0 admin.CreateAccessListApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateAccessListApiParams) admin.CreateAccessListApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreateAccessListApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAccessListWithParams'
-type ServiceAccountsApi_CreateAccessListWithParams_Call struct {
-	*mock.Call
-}
-
-// CreateAccessListWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreateAccessListApiParams
-func (_e *ServiceAccountsApi_Expecter) CreateAccessListWithParams(ctx any, args any) *ServiceAccountsApi_CreateAccessListWithParams_Call {
-	return &ServiceAccountsApi_CreateAccessListWithParams_Call{Call: _e.mock.On("CreateAccessListWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_CreateAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateAccessListApiParams)) *ServiceAccountsApi_CreateAccessListWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateAccessListApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateAccessListWithParams_Call) Return(_a0 admin.CreateAccessListApiRequest) *ServiceAccountsApi_CreateAccessListWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateAccessListApiParams) admin.CreateAccessListApiRequest) *ServiceAccountsApi_CreateAccessListWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateGroupSecret provides a mock function with given fields: ctx, groupId, clientId, serviceAccountSecretRequest
-func (_m *ServiceAccountsApi) CreateGroupSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *admin.ServiceAccountSecretRequest) admin.CreateGroupSecretApiRequest {
-	ret := _m.Called(ctx, groupId, clientId, serviceAccountSecretRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupSecret")
-	}
-
-	var r0 admin.CreateGroupSecretApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ServiceAccountSecretRequest) admin.CreateGroupSecretApiRequest); ok {
-		r0 = rf(ctx, groupId, clientId, serviceAccountSecretRequest)
-	} else {
-		r0 = ret.Get(0).(admin.CreateGroupSecretApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateGroupSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupSecret'
-type ServiceAccountsApi_CreateGroupSecret_Call struct {
-	*mock.Call
-}
-
-// CreateGroupSecret is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - clientId string
-//   - serviceAccountSecretRequest *admin.ServiceAccountSecretRequest
-func (_e *ServiceAccountsApi_Expecter) CreateGroupSecret(ctx any, groupId any, clientId any, serviceAccountSecretRequest any) *ServiceAccountsApi_CreateGroupSecret_Call {
-	return &ServiceAccountsApi_CreateGroupSecret_Call{Call: _e.mock.On("CreateGroupSecret", ctx, groupId, clientId, serviceAccountSecretRequest)}
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecret_Call) Run(run func(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *admin.ServiceAccountSecretRequest)) *ServiceAccountsApi_CreateGroupSecret_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ServiceAccountSecretRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecret_Call) Return(_a0 admin.CreateGroupSecretApiRequest) *ServiceAccountsApi_CreateGroupSecret_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecret_Call) RunAndReturn(run func(context.Context, string, string, *admin.ServiceAccountSecretRequest) admin.CreateGroupSecretApiRequest) *ServiceAccountsApi_CreateGroupSecret_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateGroupSecretExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) CreateGroupSecretExecute(r admin.CreateGroupSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupSecretExecute")
-	}
-
-	var r0 *admin.ServiceAccountSecret
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateGroupSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreateGroupSecretApiRequest) *admin.ServiceAccountSecret); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ServiceAccountSecret)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreateGroupSecretApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreateGroupSecretApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_CreateGroupSecretExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupSecretExecute'
-type ServiceAccountsApi_CreateGroupSecretExecute_Call struct {
-	*mock.Call
-}
-
-// CreateGroupSecretExecute is a helper method to define mock.On call
-//   - r admin.CreateGroupSecretApiRequest
-func (_e *ServiceAccountsApi_Expecter) CreateGroupSecretExecute(r any) *ServiceAccountsApi_CreateGroupSecretExecute_Call {
-	return &ServiceAccountsApi_CreateGroupSecretExecute_Call{Call: _e.mock.On("CreateGroupSecretExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecretExecute_Call) Run(run func(r admin.CreateGroupSecretApiRequest)) *ServiceAccountsApi_CreateGroupSecretExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateGroupSecretApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecretExecute_Call) Return(_a0 *admin.ServiceAccountSecret, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateGroupSecretExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecretExecute_Call) RunAndReturn(run func(admin.CreateGroupSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error)) *ServiceAccountsApi_CreateGroupSecretExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateGroupSecretWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) CreateGroupSecretWithParams(ctx context.Context, args *admin.CreateGroupSecretApiParams) admin.CreateGroupSecretApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupSecretWithParams")
-	}
-
-	var r0 admin.CreateGroupSecretApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupSecretApiParams) admin.CreateGroupSecretApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreateGroupSecretApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateGroupSecretWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupSecretWithParams'
-type ServiceAccountsApi_CreateGroupSecretWithParams_Call struct {
-	*mock.Call
-}
-
-// CreateGroupSecretWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreateGroupSecretApiParams
-func (_e *ServiceAccountsApi_Expecter) CreateGroupSecretWithParams(ctx any, args any) *ServiceAccountsApi_CreateGroupSecretWithParams_Call {
-	return &ServiceAccountsApi_CreateGroupSecretWithParams_Call{Call: _e.mock.On("CreateGroupSecretWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecretWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupSecretApiParams)) *ServiceAccountsApi_CreateGroupSecretWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateGroupSecretApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecretWithParams_Call) Return(_a0 admin.CreateGroupSecretApiRequest) *ServiceAccountsApi_CreateGroupSecretWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupSecretWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupSecretApiParams) admin.CreateGroupSecretApiRequest) *ServiceAccountsApi_CreateGroupSecretWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateGroupServiceAccount provides a mock function with given fields: ctx, groupId, groupServiceAccountRequest
-func (_m *ServiceAccountsApi) CreateGroupServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *admin.GroupServiceAccountRequest) admin.CreateGroupServiceAccountApiRequest {
-	ret := _m.Called(ctx, groupId, groupServiceAccountRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupServiceAccount")
-	}
-
-	var r0 admin.CreateGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupServiceAccountRequest) admin.CreateGroupServiceAccountApiRequest); ok {
-		r0 = rf(ctx, groupId, groupServiceAccountRequest)
-	} else {
-		r0 = ret.Get(0).(admin.CreateGroupServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateGroupServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupServiceAccount'
-type ServiceAccountsApi_CreateGroupServiceAccount_Call struct {
-	*mock.Call
-}
-
-// CreateGroupServiceAccount is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - groupServiceAccountRequest *admin.GroupServiceAccountRequest
-func (_e *ServiceAccountsApi_Expecter) CreateGroupServiceAccount(ctx any, groupId any, groupServiceAccountRequest any) *ServiceAccountsApi_CreateGroupServiceAccount_Call {
-	return &ServiceAccountsApi_CreateGroupServiceAccount_Call{Call: _e.mock.On("CreateGroupServiceAccount", ctx, groupId, groupServiceAccountRequest)}
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccount_Call) Run(run func(ctx context.Context, groupId string, groupServiceAccountRequest *admin.GroupServiceAccountRequest)) *ServiceAccountsApi_CreateGroupServiceAccount_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupServiceAccountRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccount_Call) Return(_a0 admin.CreateGroupServiceAccountApiRequest) *ServiceAccountsApi_CreateGroupServiceAccount_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccount_Call) RunAndReturn(run func(context.Context, string, *admin.GroupServiceAccountRequest) admin.CreateGroupServiceAccountApiRequest) *ServiceAccountsApi_CreateGroupServiceAccount_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateGroupServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) CreateGroupServiceAccountExecute(r admin.CreateGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupServiceAccountExecute")
-	}
-
-	var r0 *admin.GroupServiceAccount
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreateGroupServiceAccountApiRequest) *admin.GroupServiceAccount); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GroupServiceAccount)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreateGroupServiceAccountApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreateGroupServiceAccountApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_CreateGroupServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupServiceAccountExecute'
-type ServiceAccountsApi_CreateGroupServiceAccountExecute_Call struct {
-	*mock.Call
-}
-
-// CreateGroupServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.CreateGroupServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) CreateGroupServiceAccountExecute(r any) *ServiceAccountsApi_CreateGroupServiceAccountExecute_Call {
-	return &ServiceAccountsApi_CreateGroupServiceAccountExecute_Call{Call: _e.mock.On("CreateGroupServiceAccountExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccountExecute_Call) Run(run func(r admin.CreateGroupServiceAccountApiRequest)) *ServiceAccountsApi_CreateGroupServiceAccountExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateGroupServiceAccountApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccountExecute_Call) Return(_a0 *admin.GroupServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateGroupServiceAccountExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccountExecute_Call) RunAndReturn(run func(admin.CreateGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)) *ServiceAccountsApi_CreateGroupServiceAccountExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateGroupServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) CreateGroupServiceAccountWithParams(ctx context.Context, args *admin.CreateGroupServiceAccountApiParams) admin.CreateGroupServiceAccountApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateGroupServiceAccountWithParams")
-	}
-
-	var r0 admin.CreateGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupServiceAccountApiParams) admin.CreateGroupServiceAccountApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreateGroupServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupServiceAccountWithParams'
-type ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call struct {
-	*mock.Call
-}
-
-// CreateGroupServiceAccountWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreateGroupServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) CreateGroupServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call{Call: _e.mock.On("CreateGroupServiceAccountWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupServiceAccountApiParams)) *ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateGroupServiceAccountApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call) Return(_a0 admin.CreateGroupServiceAccountApiRequest) *ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupServiceAccountApiParams) admin.CreateGroupServiceAccountApiRequest) *ServiceAccountsApi_CreateGroupServiceAccountWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgAccessList provides a mock function with given fields: ctx, orgId, clientId, serviceAccountIPAccessListEntry
-func (_m *ServiceAccountsApi) CreateOrgAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry) admin.CreateOrgAccessListApiRequest {
-	ret := _m.Called(ctx, orgId, clientId, serviceAccountIPAccessListEntry)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgAccessList")
-	}
-
-	var r0 admin.CreateOrgAccessListApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.ServiceAccountIPAccessListEntry) admin.CreateOrgAccessListApiRequest); ok {
-		r0 = rf(ctx, orgId, clientId, serviceAccountIPAccessListEntry)
-	} else {
-		r0 = ret.Get(0).(admin.CreateOrgAccessListApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateOrgAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgAccessList'
-type ServiceAccountsApi_CreateOrgAccessList_Call struct {
-	*mock.Call
-}
-
-// CreateOrgAccessList is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - clientId string
-//   - serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry
-func (_e *ServiceAccountsApi_Expecter) CreateOrgAccessList(ctx any, orgId any, clientId any, serviceAccountIPAccessListEntry any) *ServiceAccountsApi_CreateOrgAccessList_Call {
-	return &ServiceAccountsApi_CreateOrgAccessList_Call{Call: _e.mock.On("CreateOrgAccessList", ctx, orgId, clientId, serviceAccountIPAccessListEntry)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessList_Call) Run(run func(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry)) *ServiceAccountsApi_CreateOrgAccessList_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*[]admin.ServiceAccountIPAccessListEntry))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessList_Call) Return(_a0 admin.CreateOrgAccessListApiRequest) *ServiceAccountsApi_CreateOrgAccessList_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessList_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.ServiceAccountIPAccessListEntry) admin.CreateOrgAccessListApiRequest) *ServiceAccountsApi_CreateOrgAccessList_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgAccessListExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) CreateOrgAccessListExecute(r admin.CreateOrgAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgAccessListExecute")
-	}
-
-	var r0 *admin.PaginatedServiceAccountIPAccessEntry
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgAccessListApiRequest) *admin.PaginatedServiceAccountIPAccessEntry); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedServiceAccountIPAccessEntry)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreateOrgAccessListApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreateOrgAccessListApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_CreateOrgAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgAccessListExecute'
-type ServiceAccountsApi_CreateOrgAccessListExecute_Call struct {
-	*mock.Call
-}
-
-// CreateOrgAccessListExecute is a helper method to define mock.On call
-//   - r admin.CreateOrgAccessListApiRequest
-func (_e *ServiceAccountsApi_Expecter) CreateOrgAccessListExecute(r any) *ServiceAccountsApi_CreateOrgAccessListExecute_Call {
-	return &ServiceAccountsApi_CreateOrgAccessListExecute_Call{Call: _e.mock.On("CreateOrgAccessListExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessListExecute_Call) Run(run func(r admin.CreateOrgAccessListApiRequest)) *ServiceAccountsApi_CreateOrgAccessListExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateOrgAccessListApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessListExecute_Call) Return(_a0 *admin.PaginatedServiceAccountIPAccessEntry, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateOrgAccessListExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessListExecute_Call) RunAndReturn(run func(admin.CreateOrgAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)) *ServiceAccountsApi_CreateOrgAccessListExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgAccessListWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) CreateOrgAccessListWithParams(ctx context.Context, args *admin.CreateOrgAccessListApiParams) admin.CreateOrgAccessListApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgAccessListWithParams")
-	}
-
-	var r0 admin.CreateOrgAccessListApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateOrgAccessListApiParams) admin.CreateOrgAccessListApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreateOrgAccessListApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateOrgAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgAccessListWithParams'
-type ServiceAccountsApi_CreateOrgAccessListWithParams_Call struct {
-	*mock.Call
-}
-
-// CreateOrgAccessListWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreateOrgAccessListApiParams
-func (_e *ServiceAccountsApi_Expecter) CreateOrgAccessListWithParams(ctx any, args any) *ServiceAccountsApi_CreateOrgAccessListWithParams_Call {
-	return &ServiceAccountsApi_CreateOrgAccessListWithParams_Call{Call: _e.mock.On("CreateOrgAccessListWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateOrgAccessListApiParams)) *ServiceAccountsApi_CreateOrgAccessListWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateOrgAccessListApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessListWithParams_Call) Return(_a0 admin.CreateOrgAccessListApiRequest) *ServiceAccountsApi_CreateOrgAccessListWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgAccessListApiParams) admin.CreateOrgAccessListApiRequest) *ServiceAccountsApi_CreateOrgAccessListWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgSecret provides a mock function with given fields: ctx, orgId, clientId, serviceAccountSecretRequest
-func (_m *ServiceAccountsApi) CreateOrgSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *admin.ServiceAccountSecretRequest) admin.CreateOrgSecretApiRequest {
-	ret := _m.Called(ctx, orgId, clientId, serviceAccountSecretRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgSecret")
-	}
-
-	var r0 admin.CreateOrgSecretApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ServiceAccountSecretRequest) admin.CreateOrgSecretApiRequest); ok {
-		r0 = rf(ctx, orgId, clientId, serviceAccountSecretRequest)
-	} else {
-		r0 = ret.Get(0).(admin.CreateOrgSecretApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateOrgSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgSecret'
-type ServiceAccountsApi_CreateOrgSecret_Call struct {
-	*mock.Call
-}
-
-// CreateOrgSecret is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - clientId string
-//   - serviceAccountSecretRequest *admin.ServiceAccountSecretRequest
-func (_e *ServiceAccountsApi_Expecter) CreateOrgSecret(ctx any, orgId any, clientId any, serviceAccountSecretRequest any) *ServiceAccountsApi_CreateOrgSecret_Call {
-	return &ServiceAccountsApi_CreateOrgSecret_Call{Call: _e.mock.On("CreateOrgSecret", ctx, orgId, clientId, serviceAccountSecretRequest)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecret_Call) Run(run func(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *admin.ServiceAccountSecretRequest)) *ServiceAccountsApi_CreateOrgSecret_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ServiceAccountSecretRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecret_Call) Return(_a0 admin.CreateOrgSecretApiRequest) *ServiceAccountsApi_CreateOrgSecret_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecret_Call) RunAndReturn(run func(context.Context, string, string, *admin.ServiceAccountSecretRequest) admin.CreateOrgSecretApiRequest) *ServiceAccountsApi_CreateOrgSecret_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgSecretExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) CreateOrgSecretExecute(r admin.CreateOrgSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgSecretExecute")
-	}
-
-	var r0 *admin.ServiceAccountSecret
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgSecretApiRequest) *admin.ServiceAccountSecret); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ServiceAccountSecret)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreateOrgSecretApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreateOrgSecretApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_CreateOrgSecretExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgSecretExecute'
-type ServiceAccountsApi_CreateOrgSecretExecute_Call struct {
-	*mock.Call
-}
-
-// CreateOrgSecretExecute is a helper method to define mock.On call
-//   - r admin.CreateOrgSecretApiRequest
-func (_e *ServiceAccountsApi_Expecter) CreateOrgSecretExecute(r any) *ServiceAccountsApi_CreateOrgSecretExecute_Call {
-	return &ServiceAccountsApi_CreateOrgSecretExecute_Call{Call: _e.mock.On("CreateOrgSecretExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecretExecute_Call) Run(run func(r admin.CreateOrgSecretApiRequest)) *ServiceAccountsApi_CreateOrgSecretExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateOrgSecretApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecretExecute_Call) Return(_a0 *admin.ServiceAccountSecret, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateOrgSecretExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecretExecute_Call) RunAndReturn(run func(admin.CreateOrgSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error)) *ServiceAccountsApi_CreateOrgSecretExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgSecretWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) CreateOrgSecretWithParams(ctx context.Context, args *admin.CreateOrgSecretApiParams) admin.CreateOrgSecretApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgSecretWithParams")
-	}
-
-	var r0 admin.CreateOrgSecretApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateOrgSecretApiParams) admin.CreateOrgSecretApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreateOrgSecretApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateOrgSecretWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgSecretWithParams'
-type ServiceAccountsApi_CreateOrgSecretWithParams_Call struct {
-	*mock.Call
-}
-
-// CreateOrgSecretWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreateOrgSecretApiParams
-func (_e *ServiceAccountsApi_Expecter) CreateOrgSecretWithParams(ctx any, args any) *ServiceAccountsApi_CreateOrgSecretWithParams_Call {
-	return &ServiceAccountsApi_CreateOrgSecretWithParams_Call{Call: _e.mock.On("CreateOrgSecretWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecretWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateOrgSecretApiParams)) *ServiceAccountsApi_CreateOrgSecretWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateOrgSecretApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecretWithParams_Call) Return(_a0 admin.CreateOrgSecretApiRequest) *ServiceAccountsApi_CreateOrgSecretWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgSecretWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgSecretApiParams) admin.CreateOrgSecretApiRequest) *ServiceAccountsApi_CreateOrgSecretWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgServiceAccount provides a mock function with given fields: ctx, orgId, orgServiceAccountRequest
-func (_m *ServiceAccountsApi) CreateOrgServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *admin.OrgServiceAccountRequest) admin.CreateOrgServiceAccountApiRequest {
-	ret := _m.Called(ctx, orgId, orgServiceAccountRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgServiceAccount")
-	}
-
-	var r0 admin.CreateOrgServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.OrgServiceAccountRequest) admin.CreateOrgServiceAccountApiRequest); ok {
-		r0 = rf(ctx, orgId, orgServiceAccountRequest)
-	} else {
-		r0 = ret.Get(0).(admin.CreateOrgServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateOrgServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgServiceAccount'
-type ServiceAccountsApi_CreateOrgServiceAccount_Call struct {
-	*mock.Call
-}
-
-// CreateOrgServiceAccount is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - orgServiceAccountRequest *admin.OrgServiceAccountRequest
-func (_e *ServiceAccountsApi_Expecter) CreateOrgServiceAccount(ctx any, orgId any, orgServiceAccountRequest any) *ServiceAccountsApi_CreateOrgServiceAccount_Call {
-	return &ServiceAccountsApi_CreateOrgServiceAccount_Call{Call: _e.mock.On("CreateOrgServiceAccount", ctx, orgId, orgServiceAccountRequest)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccount_Call) Run(run func(ctx context.Context, orgId string, orgServiceAccountRequest *admin.OrgServiceAccountRequest)) *ServiceAccountsApi_CreateOrgServiceAccount_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.OrgServiceAccountRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccount_Call) Return(_a0 admin.CreateOrgServiceAccountApiRequest) *ServiceAccountsApi_CreateOrgServiceAccount_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccount_Call) RunAndReturn(run func(context.Context, string, *admin.OrgServiceAccountRequest) admin.CreateOrgServiceAccountApiRequest) *ServiceAccountsApi_CreateOrgServiceAccount_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) CreateOrgServiceAccountExecute(r admin.CreateOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgServiceAccountExecute")
-	}
-
-	var r0 *admin.OrgServiceAccount
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreateOrgServiceAccountApiRequest) *admin.OrgServiceAccount); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.OrgServiceAccount)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreateOrgServiceAccountApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreateOrgServiceAccountApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_CreateOrgServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgServiceAccountExecute'
-type ServiceAccountsApi_CreateOrgServiceAccountExecute_Call struct {
-	*mock.Call
-}
-
-// CreateOrgServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.CreateOrgServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) CreateOrgServiceAccountExecute(r any) *ServiceAccountsApi_CreateOrgServiceAccountExecute_Call {
-	return &ServiceAccountsApi_CreateOrgServiceAccountExecute_Call{Call: _e.mock.On("CreateOrgServiceAccountExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccountExecute_Call) Run(run func(r admin.CreateOrgServiceAccountApiRequest)) *ServiceAccountsApi_CreateOrgServiceAccountExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateOrgServiceAccountApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccountExecute_Call) Return(_a0 *admin.OrgServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateOrgServiceAccountExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccountExecute_Call) RunAndReturn(run func(admin.CreateOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)) *ServiceAccountsApi_CreateOrgServiceAccountExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateOrgServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) CreateOrgServiceAccountWithParams(ctx context.Context, args *admin.CreateOrgServiceAccountApiParams) admin.CreateOrgServiceAccountApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateOrgServiceAccountWithParams")
-	}
-
-	var r0 admin.CreateOrgServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateOrgServiceAccountApiParams) admin.CreateOrgServiceAccountApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreateOrgServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgServiceAccountWithParams'
-type ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call struct {
-	*mock.Call
-}
-
-// CreateOrgServiceAccountWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreateOrgServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) CreateOrgServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call{Call: _e.mock.On("CreateOrgServiceAccountWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateOrgServiceAccountApiParams)) *ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateOrgServiceAccountApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call) Return(_a0 admin.CreateOrgServiceAccountApiRequest) *ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgServiceAccountApiParams) admin.CreateOrgServiceAccountApiRequest) *ServiceAccountsApi_CreateOrgServiceAccountWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupAccessEntry provides a mock function with given fields: ctx, groupId, clientId, ipAddress
-func (_m *ServiceAccountsApi) DeleteGroupAccessEntry(ctx context.Context, groupId string, clientId string, ipAddress string) admin.DeleteGroupAccessEntryApiRequest {
-	ret := _m.Called(ctx, groupId, clientId, ipAddress)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupAccessEntry")
-	}
-
-	var r0 admin.DeleteGroupAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteGroupAccessEntryApiRequest); ok {
-		r0 = rf(ctx, groupId, clientId, ipAddress)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteGroupAccessEntryApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteGroupAccessEntry_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupAccessEntry'
-type ServiceAccountsApi_DeleteGroupAccessEntry_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupAccessEntry is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - clientId string
-//   - ipAddress string
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupAccessEntry(ctx any, groupId any, clientId any, ipAddress any) *ServiceAccountsApi_DeleteGroupAccessEntry_Call {
-	return &ServiceAccountsApi_DeleteGroupAccessEntry_Call{Call: _e.mock.On("DeleteGroupAccessEntry", ctx, groupId, clientId, ipAddress)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntry_Call) Run(run func(ctx context.Context, groupId string, clientId string, ipAddress string)) *ServiceAccountsApi_DeleteGroupAccessEntry_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntry_Call) Return(_a0 admin.DeleteGroupAccessEntryApiRequest) *ServiceAccountsApi_DeleteGroupAccessEntry_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntry_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteGroupAccessEntryApiRequest) *ServiceAccountsApi_DeleteGroupAccessEntry_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupAccessEntryExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) DeleteGroupAccessEntryExecute(r admin.DeleteGroupAccessEntryApiRequest) (*http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupAccessEntryExecute")
-	}
-
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteGroupAccessEntryApiRequest) (*http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteGroupAccessEntryApiRequest) *http.Response); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.DeleteGroupAccessEntryApiRequest) error); ok {
-		r1 = rf(r)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupAccessEntryExecute'
-type ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupAccessEntryExecute is a helper method to define mock.On call
-//   - r admin.DeleteGroupAccessEntryApiRequest
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupAccessEntryExecute(r any) *ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call {
-	return &ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call{Call: _e.mock.On("DeleteGroupAccessEntryExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call) Run(run func(r admin.DeleteGroupAccessEntryApiRequest)) *ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteGroupAccessEntryApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call) RunAndReturn(run func(admin.DeleteGroupAccessEntryApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteGroupAccessEntryExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupAccessEntryWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) DeleteGroupAccessEntryWithParams(ctx context.Context, args *admin.DeleteGroupAccessEntryApiParams) admin.DeleteGroupAccessEntryApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupAccessEntryWithParams")
-	}
-
-	var r0 admin.DeleteGroupAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupAccessEntryApiParams) admin.DeleteGroupAccessEntryApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteGroupAccessEntryApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupAccessEntryWithParams'
-type ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupAccessEntryWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.DeleteGroupAccessEntryApiParams
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupAccessEntryWithParams(ctx any, args any) *ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call {
-	return &ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call{Call: _e.mock.On("DeleteGroupAccessEntryWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupAccessEntryApiParams)) *ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteGroupAccessEntryApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call) Return(_a0 admin.DeleteGroupAccessEntryApiRequest) *ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupAccessEntryApiParams) admin.DeleteGroupAccessEntryApiRequest) *ServiceAccountsApi_DeleteGroupAccessEntryWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupSecret provides a mock function with given fields: ctx, clientId, secretId, groupId
-func (_m *ServiceAccountsApi) DeleteGroupSecret(ctx context.Context, clientId string, secretId string, groupId string) admin.DeleteGroupSecretApiRequest {
-	ret := _m.Called(ctx, clientId, secretId, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupSecret")
-	}
-
-	var r0 admin.DeleteGroupSecretApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteGroupSecretApiRequest); ok {
-		r0 = rf(ctx, clientId, secretId, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteGroupSecretApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteGroupSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupSecret'
-type ServiceAccountsApi_DeleteGroupSecret_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupSecret is a helper method to define mock.On call
-//   - ctx context.Context
-//   - clientId string
-//   - secretId string
-//   - groupId string
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupSecret(ctx any, clientId any, secretId any, groupId any) *ServiceAccountsApi_DeleteGroupSecret_Call {
-	return &ServiceAccountsApi_DeleteGroupSecret_Call{Call: _e.mock.On("DeleteGroupSecret", ctx, clientId, secretId, groupId)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecret_Call) Run(run func(ctx context.Context, clientId string, secretId string, groupId string)) *ServiceAccountsApi_DeleteGroupSecret_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecret_Call) Return(_a0 admin.DeleteGroupSecretApiRequest) *ServiceAccountsApi_DeleteGroupSecret_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecret_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteGroupSecretApiRequest) *ServiceAccountsApi_DeleteGroupSecret_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupSecretExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) DeleteGroupSecretExecute(r admin.DeleteGroupSecretApiRequest) (*http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupSecretExecute")
-	}
-
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteGroupSecretApiRequest) (*http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteGroupSecretApiRequest) *http.Response); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.DeleteGroupSecretApiRequest) error); ok {
-		r1 = rf(r)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// ServiceAccountsApi_DeleteGroupSecretExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupSecretExecute'
-type ServiceAccountsApi_DeleteGroupSecretExecute_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupSecretExecute is a helper method to define mock.On call
-//   - r admin.DeleteGroupSecretApiRequest
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupSecretExecute(r any) *ServiceAccountsApi_DeleteGroupSecretExecute_Call {
-	return &ServiceAccountsApi_DeleteGroupSecretExecute_Call{Call: _e.mock.On("DeleteGroupSecretExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecretExecute_Call) Run(run func(r admin.DeleteGroupSecretApiRequest)) *ServiceAccountsApi_DeleteGroupSecretExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteGroupSecretApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecretExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteGroupSecretExecute_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecretExecute_Call) RunAndReturn(run func(admin.DeleteGroupSecretApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteGroupSecretExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupSecretWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) DeleteGroupSecretWithParams(ctx context.Context, args *admin.DeleteGroupSecretApiParams) admin.DeleteGroupSecretApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupSecretWithParams")
-	}
-
-	var r0 admin.DeleteGroupSecretApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupSecretApiParams) admin.DeleteGroupSecretApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteGroupSecretApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteGroupSecretWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupSecretWithParams'
-type ServiceAccountsApi_DeleteGroupSecretWithParams_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupSecretWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.DeleteGroupSecretApiParams
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupSecretWithParams(ctx any, args any) *ServiceAccountsApi_DeleteGroupSecretWithParams_Call {
-	return &ServiceAccountsApi_DeleteGroupSecretWithParams_Call{Call: _e.mock.On("DeleteGroupSecretWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecretWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupSecretApiParams)) *ServiceAccountsApi_DeleteGroupSecretWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteGroupSecretApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecretWithParams_Call) Return(_a0 admin.DeleteGroupSecretApiRequest) *ServiceAccountsApi_DeleteGroupSecretWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupSecretWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupSecretApiParams) admin.DeleteGroupSecretApiRequest) *ServiceAccountsApi_DeleteGroupSecretWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupServiceAccount provides a mock function with given fields: ctx, clientId, groupId
-func (_m *ServiceAccountsApi) DeleteGroupServiceAccount(ctx context.Context, clientId string, groupId string) admin.DeleteGroupServiceAccountApiRequest {
-	ret := _m.Called(ctx, clientId, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupServiceAccount")
-	}
-
-	var r0 admin.DeleteGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteGroupServiceAccountApiRequest); ok {
-		r0 = rf(ctx, clientId, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteGroupServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteGroupServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupServiceAccount'
-type ServiceAccountsApi_DeleteGroupServiceAccount_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupServiceAccount is a helper method to define mock.On call
-//   - ctx context.Context
-//   - clientId string
-//   - groupId string
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupServiceAccount(ctx any, clientId any, groupId any) *ServiceAccountsApi_DeleteGroupServiceAccount_Call {
-	return &ServiceAccountsApi_DeleteGroupServiceAccount_Call{Call: _e.mock.On("DeleteGroupServiceAccount", ctx, clientId, groupId)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccount_Call) Run(run func(ctx context.Context, clientId string, groupId string)) *ServiceAccountsApi_DeleteGroupServiceAccount_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccount_Call) Return(_a0 admin.DeleteGroupServiceAccountApiRequest) *ServiceAccountsApi_DeleteGroupServiceAccount_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccount_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteGroupServiceAccountApiRequest) *ServiceAccountsApi_DeleteGroupServiceAccount_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) DeleteGroupServiceAccountExecute(r admin.DeleteGroupServiceAccountApiRequest) (*http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupServiceAccountExecute")
-	}
-
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteGroupServiceAccountApiRequest) (*http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteGroupServiceAccountApiRequest) *http.Response); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.DeleteGroupServiceAccountApiRequest) error); ok {
-		r1 = rf(r)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupServiceAccountExecute'
-type ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.DeleteGroupServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupServiceAccountExecute(r any) *ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call {
-	return &ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call{Call: _e.mock.On("DeleteGroupServiceAccountExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call) Run(run func(r admin.DeleteGroupServiceAccountApiRequest)) *ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteGroupServiceAccountApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call) RunAndReturn(run func(admin.DeleteGroupServiceAccountApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteGroupServiceAccountExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteGroupServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) DeleteGroupServiceAccountWithParams(ctx context.Context, args *admin.DeleteGroupServiceAccountApiParams) admin.DeleteGroupServiceAccountApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteGroupServiceAccountWithParams")
-	}
-
-	var r0 admin.DeleteGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupServiceAccountApiParams) admin.DeleteGroupServiceAccountApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteGroupServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupServiceAccountWithParams'
-type ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call struct {
-	*mock.Call
-}
-
-// DeleteGroupServiceAccountWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.DeleteGroupServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) DeleteGroupServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call{Call: _e.mock.On("DeleteGroupServiceAccountWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupServiceAccountApiParams)) *ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteGroupServiceAccountApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call) Return(_a0 admin.DeleteGroupServiceAccountApiRequest) *ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupServiceAccountApiParams) admin.DeleteGroupServiceAccountApiRequest) *ServiceAccountsApi_DeleteGroupServiceAccountWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgAccessEntry provides a mock function with given fields: ctx, orgId, clientId, ipAddress
-func (_m *ServiceAccountsApi) DeleteOrgAccessEntry(ctx context.Context, orgId string, clientId string, ipAddress string) admin.DeleteOrgAccessEntryApiRequest {
-	ret := _m.Called(ctx, orgId, clientId, ipAddress)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgAccessEntry")
-	}
-
-	var r0 admin.DeleteOrgAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteOrgAccessEntryApiRequest); ok {
-		r0 = rf(ctx, orgId, clientId, ipAddress)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteOrgAccessEntryApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteOrgAccessEntry_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgAccessEntry'
-type ServiceAccountsApi_DeleteOrgAccessEntry_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgAccessEntry is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - clientId string
-//   - ipAddress string
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgAccessEntry(ctx any, orgId any, clientId any, ipAddress any) *ServiceAccountsApi_DeleteOrgAccessEntry_Call {
-	return &ServiceAccountsApi_DeleteOrgAccessEntry_Call{Call: _e.mock.On("DeleteOrgAccessEntry", ctx, orgId, clientId, ipAddress)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntry_Call) Run(run func(ctx context.Context, orgId string, clientId string, ipAddress string)) *ServiceAccountsApi_DeleteOrgAccessEntry_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntry_Call) Return(_a0 admin.DeleteOrgAccessEntryApiRequest) *ServiceAccountsApi_DeleteOrgAccessEntry_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntry_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteOrgAccessEntryApiRequest) *ServiceAccountsApi_DeleteOrgAccessEntry_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgAccessEntryExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) DeleteOrgAccessEntryExecute(r admin.DeleteOrgAccessEntryApiRequest) (*http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgAccessEntryExecute")
-	}
-
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrgAccessEntryApiRequest) (*http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrgAccessEntryApiRequest) *http.Response); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.DeleteOrgAccessEntryApiRequest) error); ok {
-		r1 = rf(r)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgAccessEntryExecute'
-type ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgAccessEntryExecute is a helper method to define mock.On call
-//   - r admin.DeleteOrgAccessEntryApiRequest
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgAccessEntryExecute(r any) *ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call {
-	return &ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call{Call: _e.mock.On("DeleteOrgAccessEntryExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call) Run(run func(r admin.DeleteOrgAccessEntryApiRequest)) *ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteOrgAccessEntryApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call) RunAndReturn(run func(admin.DeleteOrgAccessEntryApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteOrgAccessEntryExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgAccessEntryWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) DeleteOrgAccessEntryWithParams(ctx context.Context, args *admin.DeleteOrgAccessEntryApiParams) admin.DeleteOrgAccessEntryApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgAccessEntryWithParams")
-	}
-
-	var r0 admin.DeleteOrgAccessEntryApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteOrgAccessEntryApiParams) admin.DeleteOrgAccessEntryApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteOrgAccessEntryApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgAccessEntryWithParams'
-type ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgAccessEntryWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.DeleteOrgAccessEntryApiParams
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgAccessEntryWithParams(ctx any, args any) *ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call {
-	return &ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call{Call: _e.mock.On("DeleteOrgAccessEntryWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteOrgAccessEntryApiParams)) *ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteOrgAccessEntryApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call) Return(_a0 admin.DeleteOrgAccessEntryApiRequest) *ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteOrgAccessEntryApiParams) admin.DeleteOrgAccessEntryApiRequest) *ServiceAccountsApi_DeleteOrgAccessEntryWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgSecret provides a mock function with given fields: ctx, clientId, secretId, orgId
-func (_m *ServiceAccountsApi) DeleteOrgSecret(ctx context.Context, clientId string, secretId string, orgId string) admin.DeleteOrgSecretApiRequest {
-	ret := _m.Called(ctx, clientId, secretId, orgId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgSecret")
-	}
-
-	var r0 admin.DeleteOrgSecretApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteOrgSecretApiRequest); ok {
-		r0 = rf(ctx, clientId, secretId, orgId)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteOrgSecretApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteOrgSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgSecret'
-type ServiceAccountsApi_DeleteOrgSecret_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgSecret is a helper method to define mock.On call
-//   - ctx context.Context
-//   - clientId string
-//   - secretId string
-//   - orgId string
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgSecret(ctx any, clientId any, secretId any, orgId any) *ServiceAccountsApi_DeleteOrgSecret_Call {
-	return &ServiceAccountsApi_DeleteOrgSecret_Call{Call: _e.mock.On("DeleteOrgSecret", ctx, clientId, secretId, orgId)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecret_Call) Run(run func(ctx context.Context, clientId string, secretId string, orgId string)) *ServiceAccountsApi_DeleteOrgSecret_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecret_Call) Return(_a0 admin.DeleteOrgSecretApiRequest) *ServiceAccountsApi_DeleteOrgSecret_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecret_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteOrgSecretApiRequest) *ServiceAccountsApi_DeleteOrgSecret_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgSecretExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) DeleteOrgSecretExecute(r admin.DeleteOrgSecretApiRequest) (*http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgSecretExecute")
-	}
-
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrgSecretApiRequest) (*http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrgSecretApiRequest) *http.Response); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.DeleteOrgSecretApiRequest) error); ok {
-		r1 = rf(r)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// ServiceAccountsApi_DeleteOrgSecretExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgSecretExecute'
-type ServiceAccountsApi_DeleteOrgSecretExecute_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgSecretExecute is a helper method to define mock.On call
-//   - r admin.DeleteOrgSecretApiRequest
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgSecretExecute(r any) *ServiceAccountsApi_DeleteOrgSecretExecute_Call {
-	return &ServiceAccountsApi_DeleteOrgSecretExecute_Call{Call: _e.mock.On("DeleteOrgSecretExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecretExecute_Call) Run(run func(r admin.DeleteOrgSecretApiRequest)) *ServiceAccountsApi_DeleteOrgSecretExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteOrgSecretApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecretExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteOrgSecretExecute_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecretExecute_Call) RunAndReturn(run func(admin.DeleteOrgSecretApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteOrgSecretExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgSecretWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) DeleteOrgSecretWithParams(ctx context.Context, args *admin.DeleteOrgSecretApiParams) admin.DeleteOrgSecretApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgSecretWithParams")
-	}
-
-	var r0 admin.DeleteOrgSecretApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteOrgSecretApiParams) admin.DeleteOrgSecretApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteOrgSecretApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteOrgSecretWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgSecretWithParams'
-type ServiceAccountsApi_DeleteOrgSecretWithParams_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgSecretWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.DeleteOrgSecretApiParams
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgSecretWithParams(ctx any, args any) *ServiceAccountsApi_DeleteOrgSecretWithParams_Call {
-	return &ServiceAccountsApi_DeleteOrgSecretWithParams_Call{Call: _e.mock.On("DeleteOrgSecretWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecretWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteOrgSecretApiParams)) *ServiceAccountsApi_DeleteOrgSecretWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteOrgSecretApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecretWithParams_Call) Return(_a0 admin.DeleteOrgSecretApiRequest) *ServiceAccountsApi_DeleteOrgSecretWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgSecretWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteOrgSecretApiParams) admin.DeleteOrgSecretApiRequest) *ServiceAccountsApi_DeleteOrgSecretWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgServiceAccount provides a mock function with given fields: ctx, clientId, orgId
-func (_m *ServiceAccountsApi) DeleteOrgServiceAccount(ctx context.Context, clientId string, orgId string) admin.DeleteOrgServiceAccountApiRequest {
-	ret := _m.Called(ctx, clientId, orgId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgServiceAccount")
-	}
-
-	var r0 admin.DeleteOrgServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteOrgServiceAccountApiRequest); ok {
-		r0 = rf(ctx, clientId, orgId)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteOrgServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteOrgServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgServiceAccount'
-type ServiceAccountsApi_DeleteOrgServiceAccount_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgServiceAccount is a helper method to define mock.On call
-//   - ctx context.Context
-//   - clientId string
-//   - orgId string
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgServiceAccount(ctx any, clientId any, orgId any) *ServiceAccountsApi_DeleteOrgServiceAccount_Call {
-	return &ServiceAccountsApi_DeleteOrgServiceAccount_Call{Call: _e.mock.On("DeleteOrgServiceAccount", ctx, clientId, orgId)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccount_Call) Run(run func(ctx context.Context, clientId string, orgId string)) *ServiceAccountsApi_DeleteOrgServiceAccount_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccount_Call) Return(_a0 admin.DeleteOrgServiceAccountApiRequest) *ServiceAccountsApi_DeleteOrgServiceAccount_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccount_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteOrgServiceAccountApiRequest) *ServiceAccountsApi_DeleteOrgServiceAccount_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) DeleteOrgServiceAccountExecute(r admin.DeleteOrgServiceAccountApiRequest) (*http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgServiceAccountExecute")
-	}
-
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrgServiceAccountApiRequest) (*http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrgServiceAccountApiRequest) *http.Response); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.DeleteOrgServiceAccountApiRequest) error); ok {
-		r1 = rf(r)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgServiceAccountExecute'
-type ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.DeleteOrgServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgServiceAccountExecute(r any) *ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call {
-	return &ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call{Call: _e.mock.On("DeleteOrgServiceAccountExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call) Run(run func(r admin.DeleteOrgServiceAccountApiRequest)) *ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteOrgServiceAccountApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call) RunAndReturn(run func(admin.DeleteOrgServiceAccountApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteOrgServiceAccountExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteOrgServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) DeleteOrgServiceAccountWithParams(ctx context.Context, args *admin.DeleteOrgServiceAccountApiParams) admin.DeleteOrgServiceAccountApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteOrgServiceAccountWithParams")
-	}
-
-	var r0 admin.DeleteOrgServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteOrgServiceAccountApiParams) admin.DeleteOrgServiceAccountApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteOrgServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgServiceAccountWithParams'
-type ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call struct {
-	*mock.Call
-}
-
-// DeleteOrgServiceAccountWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.DeleteOrgServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) DeleteOrgServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call{Call: _e.mock.On("DeleteOrgServiceAccountWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteOrgServiceAccountApiParams)) *ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteOrgServiceAccountApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call) Return(_a0 admin.DeleteOrgServiceAccountApiRequest) *ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteOrgServiceAccountApiParams) admin.DeleteOrgServiceAccountApiRequest) *ServiceAccountsApi_DeleteOrgServiceAccountWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetGroupServiceAccount provides a mock function with given fields: ctx, groupId, clientId
-func (_m *ServiceAccountsApi) GetGroupServiceAccount(ctx context.Context, groupId string, clientId string) admin.GetGroupServiceAccountApiRequest {
-	ret := _m.Called(ctx, groupId, clientId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetGroupServiceAccount")
-	}
-
-	var r0 admin.GetGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupServiceAccountApiRequest); ok {
-		r0 = rf(ctx, groupId, clientId)
-	} else {
-		r0 = ret.Get(0).(admin.GetGroupServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_GetGroupServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupServiceAccount'
-type ServiceAccountsApi_GetGroupServiceAccount_Call struct {
-	*mock.Call
-}
-
-// GetGroupServiceAccount is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - clientId string
-func (_e *ServiceAccountsApi_Expecter) GetGroupServiceAccount(ctx any, groupId any, clientId any) *ServiceAccountsApi_GetGroupServiceAccount_Call {
-	return &ServiceAccountsApi_GetGroupServiceAccount_Call{Call: _e.mock.On("GetGroupServiceAccount", ctx, groupId, clientId)}
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccount_Call) Run(run func(ctx context.Context, groupId string, clientId string)) *ServiceAccountsApi_GetGroupServiceAccount_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccount_Call) Return(_a0 admin.GetGroupServiceAccountApiRequest) *ServiceAccountsApi_GetGroupServiceAccount_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccount_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupServiceAccountApiRequest) *ServiceAccountsApi_GetGroupServiceAccount_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetGroupServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) GetGroupServiceAccountExecute(r admin.GetGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetGroupServiceAccountExecute")
-	}
-
-	var r0 *admin.GroupServiceAccount
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetGroupServiceAccountApiRequest) *admin.GroupServiceAccount); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GroupServiceAccount)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetGroupServiceAccountApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetGroupServiceAccountApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_GetGroupServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupServiceAccountExecute'
-type ServiceAccountsApi_GetGroupServiceAccountExecute_Call struct {
-	*mock.Call
-}
-
-// GetGroupServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.GetGroupServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) GetGroupServiceAccountExecute(r any) *ServiceAccountsApi_GetGroupServiceAccountExecute_Call {
-	return &ServiceAccountsApi_GetGroupServiceAccountExecute_Call{Call: _e.mock.On("GetGroupServiceAccountExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccountExecute_Call) Run(run func(r admin.GetGroupServiceAccountApiRequest)) *ServiceAccountsApi_GetGroupServiceAccountExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetGroupServiceAccountApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccountExecute_Call) Return(_a0 *admin.GroupServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_GetGroupServiceAccountExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccountExecute_Call) RunAndReturn(run func(admin.GetGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)) *ServiceAccountsApi_GetGroupServiceAccountExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetGroupServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) GetGroupServiceAccountWithParams(ctx context.Context, args *admin.GetGroupServiceAccountApiParams) admin.GetGroupServiceAccountApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetGroupServiceAccountWithParams")
-	}
-
-	var r0 admin.GetGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupServiceAccountApiParams) admin.GetGroupServiceAccountApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetGroupServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_GetGroupServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupServiceAccountWithParams'
-type ServiceAccountsApi_GetGroupServiceAccountWithParams_Call struct {
-	*mock.Call
-}
-
-// GetGroupServiceAccountWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetGroupServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) GetGroupServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_GetGroupServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_GetGroupServiceAccountWithParams_Call{Call: _e.mock.On("GetGroupServiceAccountWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupServiceAccountApiParams)) *ServiceAccountsApi_GetGroupServiceAccountWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetGroupServiceAccountApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccountWithParams_Call) Return(_a0 admin.GetGroupServiceAccountApiRequest) *ServiceAccountsApi_GetGroupServiceAccountWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetGroupServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupServiceAccountApiParams) admin.GetGroupServiceAccountApiRequest) *ServiceAccountsApi_GetGroupServiceAccountWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetOrgServiceAccount provides a mock function with given fields: ctx, orgId, clientId
-func (_m *ServiceAccountsApi) GetOrgServiceAccount(ctx context.Context, orgId string, clientId string) admin.GetOrgServiceAccountApiRequest {
-	ret := _m.Called(ctx, orgId, clientId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetOrgServiceAccount")
-	}
-
-	var r0 admin.GetOrgServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetOrgServiceAccountApiRequest); ok {
-		r0 = rf(ctx, orgId, clientId)
-	} else {
-		r0 = ret.Get(0).(admin.GetOrgServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_GetOrgServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgServiceAccount'
-type ServiceAccountsApi_GetOrgServiceAccount_Call struct {
-	*mock.Call
-}
-
-// GetOrgServiceAccount is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - clientId string
-func (_e *ServiceAccountsApi_Expecter) GetOrgServiceAccount(ctx any, orgId any, clientId any) *ServiceAccountsApi_GetOrgServiceAccount_Call {
-	return &ServiceAccountsApi_GetOrgServiceAccount_Call{Call: _e.mock.On("GetOrgServiceAccount", ctx, orgId, clientId)}
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccount_Call) Run(run func(ctx context.Context, orgId string, clientId string)) *ServiceAccountsApi_GetOrgServiceAccount_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccount_Call) Return(_a0 admin.GetOrgServiceAccountApiRequest) *ServiceAccountsApi_GetOrgServiceAccount_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccount_Call) RunAndReturn(run func(context.Context, string, string) admin.GetOrgServiceAccountApiRequest) *ServiceAccountsApi_GetOrgServiceAccount_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetOrgServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) GetOrgServiceAccountExecute(r admin.GetOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetOrgServiceAccountExecute")
-	}
-
-	var r0 *admin.OrgServiceAccount
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetOrgServiceAccountApiRequest) *admin.OrgServiceAccount); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.OrgServiceAccount)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetOrgServiceAccountApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetOrgServiceAccountApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_GetOrgServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgServiceAccountExecute'
-type ServiceAccountsApi_GetOrgServiceAccountExecute_Call struct {
-	*mock.Call
-}
-
-// GetOrgServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.GetOrgServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) GetOrgServiceAccountExecute(r any) *ServiceAccountsApi_GetOrgServiceAccountExecute_Call {
-	return &ServiceAccountsApi_GetOrgServiceAccountExecute_Call{Call: _e.mock.On("GetOrgServiceAccountExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccountExecute_Call) Run(run func(r admin.GetOrgServiceAccountApiRequest)) *ServiceAccountsApi_GetOrgServiceAccountExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetOrgServiceAccountApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccountExecute_Call) Return(_a0 *admin.OrgServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_GetOrgServiceAccountExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccountExecute_Call) RunAndReturn(run func(admin.GetOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)) *ServiceAccountsApi_GetOrgServiceAccountExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetOrgServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) GetOrgServiceAccountWithParams(ctx context.Context, args *admin.GetOrgServiceAccountApiParams) admin.GetOrgServiceAccountApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetOrgServiceAccountWithParams")
-	}
-
-	var r0 admin.GetOrgServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetOrgServiceAccountApiParams) admin.GetOrgServiceAccountApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetOrgServiceAccountApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_GetOrgServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgServiceAccountWithParams'
-type ServiceAccountsApi_GetOrgServiceAccountWithParams_Call struct {
-	*mock.Call
-}
-
-// GetOrgServiceAccountWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetOrgServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) GetOrgServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_GetOrgServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_GetOrgServiceAccountWithParams_Call{Call: _e.mock.On("GetOrgServiceAccountWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.GetOrgServiceAccountApiParams)) *ServiceAccountsApi_GetOrgServiceAccountWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetOrgServiceAccountApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccountWithParams_Call) Return(_a0 admin.GetOrgServiceAccountApiRequest) *ServiceAccountsApi_GetOrgServiceAccountWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetOrgServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetOrgServiceAccountApiParams) admin.GetOrgServiceAccountApiRequest) *ServiceAccountsApi_GetOrgServiceAccountWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetServiceAccountGroups provides a mock function with given fields: ctx, orgId, clientId
-func (_m *ServiceAccountsApi) GetServiceAccountGroups(ctx context.Context, orgId string, clientId string) admin.GetServiceAccountGroupsApiRequest {
-	ret := _m.Called(ctx, orgId, clientId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetServiceAccountGroups")
-	}
-
-	var r0 admin.GetServiceAccountGroupsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetServiceAccountGroupsApiRequest); ok {
-		r0 = rf(ctx, orgId, clientId)
-	} else {
-		r0 = ret.Get(0).(admin.GetServiceAccountGroupsApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_GetServiceAccountGroups_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetServiceAccountGroups'
-type ServiceAccountsApi_GetServiceAccountGroups_Call struct {
-	*mock.Call
-}
-
-// GetServiceAccountGroups is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - clientId string
-func (_e *ServiceAccountsApi_Expecter) GetServiceAccountGroups(ctx any, orgId any, clientId any) *ServiceAccountsApi_GetServiceAccountGroups_Call {
-	return &ServiceAccountsApi_GetServiceAccountGroups_Call{Call: _e.mock.On("GetServiceAccountGroups", ctx, orgId, clientId)}
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroups_Call) Run(run func(ctx context.Context, orgId string, clientId string)) *ServiceAccountsApi_GetServiceAccountGroups_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroups_Call) Return(_a0 admin.GetServiceAccountGroupsApiRequest) *ServiceAccountsApi_GetServiceAccountGroups_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroups_Call) RunAndReturn(run func(context.Context, string, string) admin.GetServiceAccountGroupsApiRequest) *ServiceAccountsApi_GetServiceAccountGroups_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetServiceAccountGroupsExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) GetServiceAccountGroupsExecute(r admin.GetServiceAccountGroupsApiRequest) (*admin.PaginatedServiceAccountGroup, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetServiceAccountGroupsExecute")
-	}
-
-	var r0 *admin.PaginatedServiceAccountGroup
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetServiceAccountGroupsApiRequest) (*admin.PaginatedServiceAccountGroup, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetServiceAccountGroupsApiRequest) *admin.PaginatedServiceAccountGroup); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedServiceAccountGroup)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetServiceAccountGroupsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetServiceAccountGroupsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ServiceAccountsApi_GetServiceAccountGroupsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetServiceAccountGroupsExecute'
-type ServiceAccountsApi_GetServiceAccountGroupsExecute_Call struct {
-	*mock.Call
-}
-
-// GetServiceAccountGroupsExecute is a helper method to define mock.On call
-//   - r admin.GetServiceAccountGroupsApiRequest
-func (_e *ServiceAccountsApi_Expecter) GetServiceAccountGroupsExecute(r any) *ServiceAccountsApi_GetServiceAccountGroupsExecute_Call {
-	return &ServiceAccountsApi_GetServiceAccountGroupsExecute_Call{Call: _e.mock.On("GetServiceAccountGroupsExecute", r)}
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroupsExecute_Call) Run(run func(r admin.GetServiceAccountGroupsApiRequest)) *ServiceAccountsApi_GetServiceAccountGroupsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetServiceAccountGroupsApiRequest))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroupsExecute_Call) Return(_a0 *admin.PaginatedServiceAccountGroup, _a1 *http.Response, _a2 error) *ServiceAccountsApi_GetServiceAccountGroupsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroupsExecute_Call) RunAndReturn(run func(admin.GetServiceAccountGroupsApiRequest) (*admin.PaginatedServiceAccountGroup, *http.Response, error)) *ServiceAccountsApi_GetServiceAccountGroupsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetServiceAccountGroupsWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) GetServiceAccountGroupsWithParams(ctx context.Context, args *admin.GetServiceAccountGroupsApiParams) admin.GetServiceAccountGroupsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetServiceAccountGroupsWithParams")
-	}
-
-	var r0 admin.GetServiceAccountGroupsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetServiceAccountGroupsApiParams) admin.GetServiceAccountGroupsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetServiceAccountGroupsApiRequest)
-	}
-
-	return r0
-}
-
-// ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetServiceAccountGroupsWithParams'
-type ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call struct {
-	*mock.Call
-}
-
-// GetServiceAccountGroupsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetServiceAccountGroupsApiParams
-func (_e *ServiceAccountsApi_Expecter) GetServiceAccountGroupsWithParams(ctx any, args any) *ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call {
-	return &ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call{Call: _e.mock.On("GetServiceAccountGroupsWithParams", ctx, args)}
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetServiceAccountGroupsApiParams)) *ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetServiceAccountGroupsApiParams))
-	})
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call) Return(_a0 admin.GetServiceAccountGroupsApiRequest) *ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetServiceAccountGroupsApiParams) admin.GetServiceAccountGroupsApiRequest) *ServiceAccountsApi_GetServiceAccountGroupsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// InviteGroupServiceAccount provides a mock function with given fields: ctx, clientId, groupId, groupServiceAccountRoleAssignment
-func (_m *ServiceAccountsApi) InviteGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *admin.GroupServiceAccountRoleAssignment) admin.InviteGroupServiceAccountApiRequest {
+// AddProjectServiceAccount provides a mock function with given fields: ctx, clientId, groupId, groupServiceAccountRoleAssignment
+func (_m *ServiceAccountsApi) AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest {
 	ret := _m.Called(ctx, clientId, groupId, groupServiceAccountRoleAssignment)
 
 	if len(ret) == 0 {
-		panic("no return value specified for InviteGroupServiceAccount")
+		panic("no return value specified for AddProjectServiceAccount")
 	}
 
-	var r0 admin.InviteGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.GroupServiceAccountRoleAssignment) admin.InviteGroupServiceAccountApiRequest); ok {
+	var r0 admin.AddProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest); ok {
 		r0 = rf(ctx, clientId, groupId, groupServiceAccountRoleAssignment)
 	} else {
-		r0 = ret.Get(0).(admin.InviteGroupServiceAccountApiRequest)
+		r0 = ret.Get(0).(admin.AddProjectServiceAccountApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_InviteGroupServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'InviteGroupServiceAccount'
-type ServiceAccountsApi_InviteGroupServiceAccount_Call struct {
+// ServiceAccountsApi_AddProjectServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddProjectServiceAccount'
+type ServiceAccountsApi_AddProjectServiceAccount_Call struct {
 	*mock.Call
 }
 
-// InviteGroupServiceAccount is a helper method to define mock.On call
+// AddProjectServiceAccount is a helper method to define mock.On call
 //   - ctx context.Context
 //   - clientId string
 //   - groupId string
 //   - groupServiceAccountRoleAssignment *admin.GroupServiceAccountRoleAssignment
-func (_e *ServiceAccountsApi_Expecter) InviteGroupServiceAccount(ctx any, clientId any, groupId any, groupServiceAccountRoleAssignment any) *ServiceAccountsApi_InviteGroupServiceAccount_Call {
-	return &ServiceAccountsApi_InviteGroupServiceAccount_Call{Call: _e.mock.On("InviteGroupServiceAccount", ctx, clientId, groupId, groupServiceAccountRoleAssignment)}
+func (_e *ServiceAccountsApi_Expecter) AddProjectServiceAccount(ctx any, clientId any, groupId any, groupServiceAccountRoleAssignment any) *ServiceAccountsApi_AddProjectServiceAccount_Call {
+	return &ServiceAccountsApi_AddProjectServiceAccount_Call{Call: _e.mock.On("AddProjectServiceAccount", ctx, clientId, groupId, groupServiceAccountRoleAssignment)}
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccount_Call) Run(run func(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *admin.GroupServiceAccountRoleAssignment)) *ServiceAccountsApi_InviteGroupServiceAccount_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccount_Call) Run(run func(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *admin.GroupServiceAccountRoleAssignment)) *ServiceAccountsApi_AddProjectServiceAccount_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.GroupServiceAccountRoleAssignment))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccount_Call) Return(_a0 admin.InviteGroupServiceAccountApiRequest) *ServiceAccountsApi_InviteGroupServiceAccount_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccount_Call) Return(_a0 admin.AddProjectServiceAccountApiRequest) *ServiceAccountsApi_AddProjectServiceAccount_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccount_Call) RunAndReturn(run func(context.Context, string, string, *admin.GroupServiceAccountRoleAssignment) admin.InviteGroupServiceAccountApiRequest) *ServiceAccountsApi_InviteGroupServiceAccount_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccount_Call) RunAndReturn(run func(context.Context, string, string, *admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest) *ServiceAccountsApi_AddProjectServiceAccount_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// InviteGroupServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) InviteGroupServiceAccountExecute(r admin.InviteGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error) {
+// AddProjectServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) AddProjectServiceAccountExecute(r admin.AddProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for InviteGroupServiceAccountExecute")
+		panic("no return value specified for AddProjectServiceAccountExecute")
 	}
 
 	var r0 *admin.GroupServiceAccount
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.InviteGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.InviteGroupServiceAccountApiRequest) *admin.GroupServiceAccount); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddProjectServiceAccountApiRequest) *admin.GroupServiceAccount); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2480,7 +96,7 @@ func (_m *ServiceAccountsApi) InviteGroupServiceAccountExecute(r admin.InviteGro
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.InviteGroupServiceAccountApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.AddProjectServiceAccountApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2488,7 +104,7 @@ func (_m *ServiceAccountsApi) InviteGroupServiceAccountExecute(r admin.InviteGro
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.InviteGroupServiceAccountApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.AddProjectServiceAccountApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2497,144 +113,193 @@ func (_m *ServiceAccountsApi) InviteGroupServiceAccountExecute(r admin.InviteGro
 	return r0, r1, r2
 }
 
-// ServiceAccountsApi_InviteGroupServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'InviteGroupServiceAccountExecute'
-type ServiceAccountsApi_InviteGroupServiceAccountExecute_Call struct {
+// ServiceAccountsApi_AddProjectServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddProjectServiceAccountExecute'
+type ServiceAccountsApi_AddProjectServiceAccountExecute_Call struct {
 	*mock.Call
 }
 
-// InviteGroupServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.InviteGroupServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) InviteGroupServiceAccountExecute(r any) *ServiceAccountsApi_InviteGroupServiceAccountExecute_Call {
-	return &ServiceAccountsApi_InviteGroupServiceAccountExecute_Call{Call: _e.mock.On("InviteGroupServiceAccountExecute", r)}
+// AddProjectServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.AddProjectServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) AddProjectServiceAccountExecute(r any) *ServiceAccountsApi_AddProjectServiceAccountExecute_Call {
+	return &ServiceAccountsApi_AddProjectServiceAccountExecute_Call{Call: _e.mock.On("AddProjectServiceAccountExecute", r)}
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccountExecute_Call) Run(run func(r admin.InviteGroupServiceAccountApiRequest)) *ServiceAccountsApi_InviteGroupServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccountExecute_Call) Run(run func(r admin.AddProjectServiceAccountApiRequest)) *ServiceAccountsApi_AddProjectServiceAccountExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.InviteGroupServiceAccountApiRequest))
+		run(args[0].(admin.AddProjectServiceAccountApiRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccountExecute_Call) Return(_a0 *admin.GroupServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_InviteGroupServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccountExecute_Call) Return(_a0 *admin.GroupServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_AddProjectServiceAccountExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccountExecute_Call) RunAndReturn(run func(admin.InviteGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)) *ServiceAccountsApi_InviteGroupServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccountExecute_Call) RunAndReturn(run func(admin.AddProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)) *ServiceAccountsApi_AddProjectServiceAccountExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// InviteGroupServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) InviteGroupServiceAccountWithParams(ctx context.Context, args *admin.InviteGroupServiceAccountApiParams) admin.InviteGroupServiceAccountApiRequest {
+// AddProjectServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) AddProjectServiceAccountWithParams(ctx context.Context, args *admin.AddProjectServiceAccountApiParams) admin.AddProjectServiceAccountApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for InviteGroupServiceAccountWithParams")
+		panic("no return value specified for AddProjectServiceAccountWithParams")
 	}
 
-	var r0 admin.InviteGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.InviteGroupServiceAccountApiParams) admin.InviteGroupServiceAccountApiRequest); ok {
+	var r0 admin.AddProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddProjectServiceAccountApiParams) admin.AddProjectServiceAccountApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.InviteGroupServiceAccountApiRequest)
+		r0 = ret.Get(0).(admin.AddProjectServiceAccountApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'InviteGroupServiceAccountWithParams'
-type ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call struct {
+// ServiceAccountsApi_AddProjectServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddProjectServiceAccountWithParams'
+type ServiceAccountsApi_AddProjectServiceAccountWithParams_Call struct {
 	*mock.Call
 }
 
-// InviteGroupServiceAccountWithParams is a helper method to define mock.On call
+// AddProjectServiceAccountWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.InviteGroupServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) InviteGroupServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call{Call: _e.mock.On("InviteGroupServiceAccountWithParams", ctx, args)}
+//   - args *admin.AddProjectServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) AddProjectServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_AddProjectServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_AddProjectServiceAccountWithParams_Call{Call: _e.mock.On("AddProjectServiceAccountWithParams", ctx, args)}
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.InviteGroupServiceAccountApiParams)) *ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.AddProjectServiceAccountApiParams)) *ServiceAccountsApi_AddProjectServiceAccountWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.InviteGroupServiceAccountApiParams))
+		run(args[0].(context.Context), args[1].(*admin.AddProjectServiceAccountApiParams))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call) Return(_a0 admin.InviteGroupServiceAccountApiRequest) *ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccountWithParams_Call) Return(_a0 admin.AddProjectServiceAccountApiRequest) *ServiceAccountsApi_AddProjectServiceAccountWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.InviteGroupServiceAccountApiParams) admin.InviteGroupServiceAccountApiRequest) *ServiceAccountsApi_InviteGroupServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddProjectServiceAccountApiParams) admin.AddProjectServiceAccountApiRequest) *ServiceAccountsApi_AddProjectServiceAccountWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAccessList provides a mock function with given fields: ctx, groupId, clientId
-func (_m *ServiceAccountsApi) ListAccessList(ctx context.Context, groupId string, clientId string) admin.ListAccessListApiRequest {
-	ret := _m.Called(ctx, groupId, clientId)
+// CreateProjectServiceAccount provides a mock function with given fields: ctx, groupId, groupServiceAccountRequest
+func (_m *ServiceAccountsApi) CreateProjectServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *admin.GroupServiceAccountRequest) admin.CreateProjectServiceAccountApiRequest {
+	ret := _m.Called(ctx, groupId, groupServiceAccountRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessList")
+		panic("no return value specified for CreateProjectServiceAccount")
 	}
 
-	var r0 admin.ListAccessListApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListAccessListApiRequest); ok {
-		r0 = rf(ctx, groupId, clientId)
+	var r0 admin.CreateProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupServiceAccountRequest) admin.CreateProjectServiceAccountApiRequest); ok {
+		r0 = rf(ctx, groupId, groupServiceAccountRequest)
 	} else {
-		r0 = ret.Get(0).(admin.ListAccessListApiRequest)
+		r0 = ret.Get(0).(admin.CreateProjectServiceAccountApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_ListAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessList'
-type ServiceAccountsApi_ListAccessList_Call struct {
+// ServiceAccountsApi_CreateProjectServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccount'
+type ServiceAccountsApi_CreateProjectServiceAccount_Call struct {
 	*mock.Call
 }
 
-// ListAccessList is a helper method to define mock.On call
+// CreateProjectServiceAccount is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - groupServiceAccountRequest *admin.GroupServiceAccountRequest
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccount(ctx any, groupId any, groupServiceAccountRequest any) *ServiceAccountsApi_CreateProjectServiceAccount_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccount_Call{Call: _e.mock.On("CreateProjectServiceAccount", ctx, groupId, groupServiceAccountRequest)}
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccount_Call) Run(run func(ctx context.Context, groupId string, groupServiceAccountRequest *admin.GroupServiceAccountRequest)) *ServiceAccountsApi_CreateProjectServiceAccount_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupServiceAccountRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccount_Call) Return(_a0 admin.CreateProjectServiceAccountApiRequest) *ServiceAccountsApi_CreateProjectServiceAccount_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccount_Call) RunAndReturn(run func(context.Context, string, *admin.GroupServiceAccountRequest) admin.CreateProjectServiceAccountApiRequest) *ServiceAccountsApi_CreateProjectServiceAccount_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateProjectServiceAccountAccessList provides a mock function with given fields: ctx, groupId, clientId, serviceAccountIPAccessListEntry
+func (_m *ServiceAccountsApi) CreateProjectServiceAccountAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry) admin.CreateProjectServiceAccountAccessListApiRequest {
+	ret := _m.Called(ctx, groupId, clientId, serviceAccountIPAccessListEntry)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateProjectServiceAccountAccessList")
+	}
+
+	var r0 admin.CreateProjectServiceAccountAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.ServiceAccountIPAccessListEntry) admin.CreateProjectServiceAccountAccessListApiRequest); ok {
+		r0 = rf(ctx, groupId, clientId, serviceAccountIPAccessListEntry)
+	} else {
+		r0 = ret.Get(0).(admin.CreateProjectServiceAccountAccessListApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccountAccessList'
+type ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call struct {
+	*mock.Call
+}
+
+// CreateProjectServiceAccountAccessList is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clientId string
-func (_e *ServiceAccountsApi_Expecter) ListAccessList(ctx any, groupId any, clientId any) *ServiceAccountsApi_ListAccessList_Call {
-	return &ServiceAccountsApi_ListAccessList_Call{Call: _e.mock.On("ListAccessList", ctx, groupId, clientId)}
+//   - serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccountAccessList(ctx any, groupId any, clientId any, serviceAccountIPAccessListEntry any) *ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call{Call: _e.mock.On("CreateProjectServiceAccountAccessList", ctx, groupId, clientId, serviceAccountIPAccessListEntry)}
 }
 
-func (_c *ServiceAccountsApi_ListAccessList_Call) Run(run func(ctx context.Context, groupId string, clientId string)) *ServiceAccountsApi_ListAccessList_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call) Run(run func(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry)) *ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*[]admin.ServiceAccountIPAccessListEntry))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListAccessList_Call) Return(_a0 admin.ListAccessListApiRequest) *ServiceAccountsApi_ListAccessList_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call) Return(_a0 admin.CreateProjectServiceAccountAccessListApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListAccessList_Call) RunAndReturn(run func(context.Context, string, string) admin.ListAccessListApiRequest) *ServiceAccountsApi_ListAccessList_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.ServiceAccountIPAccessListEntry) admin.CreateProjectServiceAccountAccessListApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountAccessList_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAccessListExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) ListAccessListExecute(r admin.ListAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+// CreateProjectServiceAccountAccessListExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) CreateProjectServiceAccountAccessListExecute(r admin.CreateProjectServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessListExecute")
+		panic("no return value specified for CreateProjectServiceAccountAccessListExecute")
 	}
 
 	var r0 *admin.PaginatedServiceAccountIPAccessEntry
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateProjectServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListAccessListApiRequest) *admin.PaginatedServiceAccountIPAccessEntry); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateProjectServiceAccountAccessListApiRequest) *admin.PaginatedServiceAccountIPAccessEntry); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2642,7 +307,7 @@ func (_m *ServiceAccountsApi) ListAccessListExecute(r admin.ListAccessListApiReq
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListAccessListApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateProjectServiceAccountAccessListApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2650,7 +315,7 @@ func (_m *ServiceAccountsApi) ListAccessListExecute(r admin.ListAccessListApiReq
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListAccessListApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateProjectServiceAccountAccessListApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2659,143 +324,2316 @@ func (_m *ServiceAccountsApi) ListAccessListExecute(r admin.ListAccessListApiReq
 	return r0, r1, r2
 }
 
-// ServiceAccountsApi_ListAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessListExecute'
-type ServiceAccountsApi_ListAccessListExecute_Call struct {
+// ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccountAccessListExecute'
+type ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call struct {
 	*mock.Call
 }
 
-// ListAccessListExecute is a helper method to define mock.On call
-//   - r admin.ListAccessListApiRequest
-func (_e *ServiceAccountsApi_Expecter) ListAccessListExecute(r any) *ServiceAccountsApi_ListAccessListExecute_Call {
-	return &ServiceAccountsApi_ListAccessListExecute_Call{Call: _e.mock.On("ListAccessListExecute", r)}
+// CreateProjectServiceAccountAccessListExecute is a helper method to define mock.On call
+//   - r admin.CreateProjectServiceAccountAccessListApiRequest
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccountAccessListExecute(r any) *ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call{Call: _e.mock.On("CreateProjectServiceAccountAccessListExecute", r)}
 }
 
-func (_c *ServiceAccountsApi_ListAccessListExecute_Call) Run(run func(r admin.ListAccessListApiRequest)) *ServiceAccountsApi_ListAccessListExecute_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call) Run(run func(r admin.CreateProjectServiceAccountAccessListApiRequest)) *ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListAccessListApiRequest))
+		run(args[0].(admin.CreateProjectServiceAccountAccessListApiRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListAccessListExecute_Call) Return(_a0 *admin.PaginatedServiceAccountIPAccessEntry, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListAccessListExecute_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call) Return(_a0 *admin.PaginatedServiceAccountIPAccessEntry, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListAccessListExecute_Call) RunAndReturn(run func(admin.ListAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)) *ServiceAccountsApi_ListAccessListExecute_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call) RunAndReturn(run func(admin.CreateProjectServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)) *ServiceAccountsApi_CreateProjectServiceAccountAccessListExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAccessListWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) ListAccessListWithParams(ctx context.Context, args *admin.ListAccessListApiParams) admin.ListAccessListApiRequest {
+// CreateProjectServiceAccountAccessListWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) CreateProjectServiceAccountAccessListWithParams(ctx context.Context, args *admin.CreateProjectServiceAccountAccessListApiParams) admin.CreateProjectServiceAccountAccessListApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessListWithParams")
+		panic("no return value specified for CreateProjectServiceAccountAccessListWithParams")
 	}
 
-	var r0 admin.ListAccessListApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListAccessListApiParams) admin.ListAccessListApiRequest); ok {
+	var r0 admin.CreateProjectServiceAccountAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateProjectServiceAccountAccessListApiParams) admin.CreateProjectServiceAccountAccessListApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListAccessListApiRequest)
+		r0 = ret.Get(0).(admin.CreateProjectServiceAccountAccessListApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_ListAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessListWithParams'
-type ServiceAccountsApi_ListAccessListWithParams_Call struct {
+// ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccountAccessListWithParams'
+type ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call struct {
 	*mock.Call
 }
 
-// ListAccessListWithParams is a helper method to define mock.On call
+// CreateProjectServiceAccountAccessListWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListAccessListApiParams
-func (_e *ServiceAccountsApi_Expecter) ListAccessListWithParams(ctx any, args any) *ServiceAccountsApi_ListAccessListWithParams_Call {
-	return &ServiceAccountsApi_ListAccessListWithParams_Call{Call: _e.mock.On("ListAccessListWithParams", ctx, args)}
+//   - args *admin.CreateProjectServiceAccountAccessListApiParams
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccountAccessListWithParams(ctx any, args any) *ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call{Call: _e.mock.On("CreateProjectServiceAccountAccessListWithParams", ctx, args)}
 }
 
-func (_c *ServiceAccountsApi_ListAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.ListAccessListApiParams)) *ServiceAccountsApi_ListAccessListWithParams_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateProjectServiceAccountAccessListApiParams)) *ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListAccessListApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateProjectServiceAccountAccessListApiParams))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListAccessListWithParams_Call) Return(_a0 admin.ListAccessListApiRequest) *ServiceAccountsApi_ListAccessListWithParams_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call) Return(_a0 admin.CreateProjectServiceAccountAccessListApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListAccessListApiParams) admin.ListAccessListApiRequest) *ServiceAccountsApi_ListAccessListWithParams_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateProjectServiceAccountAccessListApiParams) admin.CreateProjectServiceAccountAccessListApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountAccessListWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListGroupServiceAccounts provides a mock function with given fields: ctx, groupId
-func (_m *ServiceAccountsApi) ListGroupServiceAccounts(ctx context.Context, groupId string) admin.ListGroupServiceAccountsApiRequest {
-	ret := _m.Called(ctx, groupId)
+// CreateProjectServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) CreateProjectServiceAccountExecute(r admin.CreateProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error) {
+	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListGroupServiceAccounts")
+		panic("no return value specified for CreateProjectServiceAccountExecute")
 	}
 
-	var r0 admin.ListGroupServiceAccountsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupServiceAccountsApiRequest); ok {
-		r0 = rf(ctx, groupId)
+	var r0 *admin.GroupServiceAccount
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateProjectServiceAccountApiRequest) *admin.GroupServiceAccount); ok {
+		r0 = rf(r)
 	} else {
-		r0 = ret.Get(0).(admin.ListGroupServiceAccountsApiRequest)
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.GroupServiceAccount)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateProjectServiceAccountApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateProjectServiceAccountApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_CreateProjectServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccountExecute'
+type ServiceAccountsApi_CreateProjectServiceAccountExecute_Call struct {
+	*mock.Call
+}
+
+// CreateProjectServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.CreateProjectServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccountExecute(r any) *ServiceAccountsApi_CreateProjectServiceAccountExecute_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccountExecute_Call{Call: _e.mock.On("CreateProjectServiceAccountExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountExecute_Call) Run(run func(r admin.CreateProjectServiceAccountApiRequest)) *ServiceAccountsApi_CreateProjectServiceAccountExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateProjectServiceAccountApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountExecute_Call) Return(_a0 *admin.GroupServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateProjectServiceAccountExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountExecute_Call) RunAndReturn(run func(admin.CreateProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)) *ServiceAccountsApi_CreateProjectServiceAccountExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateProjectServiceAccountSecret provides a mock function with given fields: ctx, groupId, clientId, serviceAccountSecretRequest
+func (_m *ServiceAccountsApi) CreateProjectServiceAccountSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *admin.ServiceAccountSecretRequest) admin.CreateProjectServiceAccountSecretApiRequest {
+	ret := _m.Called(ctx, groupId, clientId, serviceAccountSecretRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateProjectServiceAccountSecret")
+	}
+
+	var r0 admin.CreateProjectServiceAccountSecretApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ServiceAccountSecretRequest) admin.CreateProjectServiceAccountSecretApiRequest); ok {
+		r0 = rf(ctx, groupId, clientId, serviceAccountSecretRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateProjectServiceAccountSecretApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_ListGroupServiceAccounts_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupServiceAccounts'
-type ServiceAccountsApi_ListGroupServiceAccounts_Call struct {
+// ServiceAccountsApi_CreateProjectServiceAccountSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccountSecret'
+type ServiceAccountsApi_CreateProjectServiceAccountSecret_Call struct {
 	*mock.Call
 }
 
-// ListGroupServiceAccounts is a helper method to define mock.On call
+// CreateProjectServiceAccountSecret is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ServiceAccountsApi_Expecter) ListGroupServiceAccounts(ctx any, groupId any) *ServiceAccountsApi_ListGroupServiceAccounts_Call {
-	return &ServiceAccountsApi_ListGroupServiceAccounts_Call{Call: _e.mock.On("ListGroupServiceAccounts", ctx, groupId)}
+//   - clientId string
+//   - serviceAccountSecretRequest *admin.ServiceAccountSecretRequest
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccountSecret(ctx any, groupId any, clientId any, serviceAccountSecretRequest any) *ServiceAccountsApi_CreateProjectServiceAccountSecret_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccountSecret_Call{Call: _e.mock.On("CreateProjectServiceAccountSecret", ctx, groupId, clientId, serviceAccountSecretRequest)}
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccounts_Call) Run(run func(ctx context.Context, groupId string)) *ServiceAccountsApi_ListGroupServiceAccounts_Call {
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecret_Call) Run(run func(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *admin.ServiceAccountSecretRequest)) *ServiceAccountsApi_CreateProjectServiceAccountSecret_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ServiceAccountSecretRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecret_Call) Return(_a0 admin.CreateProjectServiceAccountSecretApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountSecret_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecret_Call) RunAndReturn(run func(context.Context, string, string, *admin.ServiceAccountSecretRequest) admin.CreateProjectServiceAccountSecretApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountSecret_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateProjectServiceAccountSecretExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) CreateProjectServiceAccountSecretExecute(r admin.CreateProjectServiceAccountSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateProjectServiceAccountSecretExecute")
+	}
+
+	var r0 *admin.ServiceAccountSecret
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateProjectServiceAccountSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateProjectServiceAccountSecretApiRequest) *admin.ServiceAccountSecret); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ServiceAccountSecret)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateProjectServiceAccountSecretApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateProjectServiceAccountSecretApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccountSecretExecute'
+type ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call struct {
+	*mock.Call
+}
+
+// CreateProjectServiceAccountSecretExecute is a helper method to define mock.On call
+//   - r admin.CreateProjectServiceAccountSecretApiRequest
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccountSecretExecute(r any) *ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call{Call: _e.mock.On("CreateProjectServiceAccountSecretExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call) Run(run func(r admin.CreateProjectServiceAccountSecretApiRequest)) *ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateProjectServiceAccountSecretApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call) Return(_a0 *admin.ServiceAccountSecret, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call) RunAndReturn(run func(admin.CreateProjectServiceAccountSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error)) *ServiceAccountsApi_CreateProjectServiceAccountSecretExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateProjectServiceAccountSecretWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) CreateProjectServiceAccountSecretWithParams(ctx context.Context, args *admin.CreateProjectServiceAccountSecretApiParams) admin.CreateProjectServiceAccountSecretApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateProjectServiceAccountSecretWithParams")
+	}
+
+	var r0 admin.CreateProjectServiceAccountSecretApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateProjectServiceAccountSecretApiParams) admin.CreateProjectServiceAccountSecretApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateProjectServiceAccountSecretApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccountSecretWithParams'
+type ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateProjectServiceAccountSecretWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateProjectServiceAccountSecretApiParams
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccountSecretWithParams(ctx any, args any) *ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call{Call: _e.mock.On("CreateProjectServiceAccountSecretWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateProjectServiceAccountSecretApiParams)) *ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateProjectServiceAccountSecretApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call) Return(_a0 admin.CreateProjectServiceAccountSecretApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateProjectServiceAccountSecretApiParams) admin.CreateProjectServiceAccountSecretApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountSecretWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateProjectServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) CreateProjectServiceAccountWithParams(ctx context.Context, args *admin.CreateProjectServiceAccountApiParams) admin.CreateProjectServiceAccountApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateProjectServiceAccountWithParams")
+	}
+
+	var r0 admin.CreateProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateProjectServiceAccountApiParams) admin.CreateProjectServiceAccountApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateProjectServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectServiceAccountWithParams'
+type ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateProjectServiceAccountWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateProjectServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) CreateProjectServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call{Call: _e.mock.On("CreateProjectServiceAccountWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateProjectServiceAccountApiParams)) *ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateProjectServiceAccountApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call) Return(_a0 admin.CreateProjectServiceAccountApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateProjectServiceAccountApiParams) admin.CreateProjectServiceAccountApiRequest) *ServiceAccountsApi_CreateProjectServiceAccountWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccount provides a mock function with given fields: ctx, orgId, orgServiceAccountRequest
+func (_m *ServiceAccountsApi) CreateServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *admin.OrgServiceAccountRequest) admin.CreateServiceAccountApiRequest {
+	ret := _m.Called(ctx, orgId, orgServiceAccountRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccount")
+	}
+
+	var r0 admin.CreateServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.OrgServiceAccountRequest) admin.CreateServiceAccountApiRequest); ok {
+		r0 = rf(ctx, orgId, orgServiceAccountRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccount'
+type ServiceAccountsApi_CreateServiceAccount_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccount is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - orgServiceAccountRequest *admin.OrgServiceAccountRequest
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccount(ctx any, orgId any, orgServiceAccountRequest any) *ServiceAccountsApi_CreateServiceAccount_Call {
+	return &ServiceAccountsApi_CreateServiceAccount_Call{Call: _e.mock.On("CreateServiceAccount", ctx, orgId, orgServiceAccountRequest)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccount_Call) Run(run func(ctx context.Context, orgId string, orgServiceAccountRequest *admin.OrgServiceAccountRequest)) *ServiceAccountsApi_CreateServiceAccount_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.OrgServiceAccountRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccount_Call) Return(_a0 admin.CreateServiceAccountApiRequest) *ServiceAccountsApi_CreateServiceAccount_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccount_Call) RunAndReturn(run func(context.Context, string, *admin.OrgServiceAccountRequest) admin.CreateServiceAccountApiRequest) *ServiceAccountsApi_CreateServiceAccount_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccountAccessList provides a mock function with given fields: ctx, orgId, clientId, serviceAccountIPAccessListEntry
+func (_m *ServiceAccountsApi) CreateServiceAccountAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry) admin.CreateServiceAccountAccessListApiRequest {
+	ret := _m.Called(ctx, orgId, clientId, serviceAccountIPAccessListEntry)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccountAccessList")
+	}
+
+	var r0 admin.CreateServiceAccountAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.ServiceAccountIPAccessListEntry) admin.CreateServiceAccountAccessListApiRequest); ok {
+		r0 = rf(ctx, orgId, clientId, serviceAccountIPAccessListEntry)
+	} else {
+		r0 = ret.Get(0).(admin.CreateServiceAccountAccessListApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateServiceAccountAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccountAccessList'
+type ServiceAccountsApi_CreateServiceAccountAccessList_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccountAccessList is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - clientId string
+//   - serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccountAccessList(ctx any, orgId any, clientId any, serviceAccountIPAccessListEntry any) *ServiceAccountsApi_CreateServiceAccountAccessList_Call {
+	return &ServiceAccountsApi_CreateServiceAccountAccessList_Call{Call: _e.mock.On("CreateServiceAccountAccessList", ctx, orgId, clientId, serviceAccountIPAccessListEntry)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessList_Call) Run(run func(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]admin.ServiceAccountIPAccessListEntry)) *ServiceAccountsApi_CreateServiceAccountAccessList_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*[]admin.ServiceAccountIPAccessListEntry))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessList_Call) Return(_a0 admin.CreateServiceAccountAccessListApiRequest) *ServiceAccountsApi_CreateServiceAccountAccessList_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessList_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.ServiceAccountIPAccessListEntry) admin.CreateServiceAccountAccessListApiRequest) *ServiceAccountsApi_CreateServiceAccountAccessList_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccountAccessListExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) CreateServiceAccountAccessListExecute(r admin.CreateServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccountAccessListExecute")
+	}
+
+	var r0 *admin.PaginatedServiceAccountIPAccessEntry
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateServiceAccountAccessListApiRequest) *admin.PaginatedServiceAccountIPAccessEntry); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedServiceAccountIPAccessEntry)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateServiceAccountAccessListApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateServiceAccountAccessListApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccountAccessListExecute'
+type ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccountAccessListExecute is a helper method to define mock.On call
+//   - r admin.CreateServiceAccountAccessListApiRequest
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccountAccessListExecute(r any) *ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call {
+	return &ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call{Call: _e.mock.On("CreateServiceAccountAccessListExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call) Run(run func(r admin.CreateServiceAccountAccessListApiRequest)) *ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateServiceAccountAccessListApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call) Return(_a0 *admin.PaginatedServiceAccountIPAccessEntry, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call) RunAndReturn(run func(admin.CreateServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)) *ServiceAccountsApi_CreateServiceAccountAccessListExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccountAccessListWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) CreateServiceAccountAccessListWithParams(ctx context.Context, args *admin.CreateServiceAccountAccessListApiParams) admin.CreateServiceAccountAccessListApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccountAccessListWithParams")
+	}
+
+	var r0 admin.CreateServiceAccountAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateServiceAccountAccessListApiParams) admin.CreateServiceAccountAccessListApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateServiceAccountAccessListApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccountAccessListWithParams'
+type ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccountAccessListWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateServiceAccountAccessListApiParams
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccountAccessListWithParams(ctx any, args any) *ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call {
+	return &ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call{Call: _e.mock.On("CreateServiceAccountAccessListWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateServiceAccountAccessListApiParams)) *ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateServiceAccountAccessListApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call) Return(_a0 admin.CreateServiceAccountAccessListApiRequest) *ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateServiceAccountAccessListApiParams) admin.CreateServiceAccountAccessListApiRequest) *ServiceAccountsApi_CreateServiceAccountAccessListWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) CreateServiceAccountExecute(r admin.CreateServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccountExecute")
+	}
+
+	var r0 *admin.OrgServiceAccount
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateServiceAccountApiRequest) *admin.OrgServiceAccount); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.OrgServiceAccount)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateServiceAccountApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateServiceAccountApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_CreateServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccountExecute'
+type ServiceAccountsApi_CreateServiceAccountExecute_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.CreateServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccountExecute(r any) *ServiceAccountsApi_CreateServiceAccountExecute_Call {
+	return &ServiceAccountsApi_CreateServiceAccountExecute_Call{Call: _e.mock.On("CreateServiceAccountExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountExecute_Call) Run(run func(r admin.CreateServiceAccountApiRequest)) *ServiceAccountsApi_CreateServiceAccountExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateServiceAccountApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountExecute_Call) Return(_a0 *admin.OrgServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateServiceAccountExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountExecute_Call) RunAndReturn(run func(admin.CreateServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)) *ServiceAccountsApi_CreateServiceAccountExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccountSecret provides a mock function with given fields: ctx, orgId, clientId, serviceAccountSecretRequest
+func (_m *ServiceAccountsApi) CreateServiceAccountSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *admin.ServiceAccountSecretRequest) admin.CreateServiceAccountSecretApiRequest {
+	ret := _m.Called(ctx, orgId, clientId, serviceAccountSecretRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccountSecret")
+	}
+
+	var r0 admin.CreateServiceAccountSecretApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ServiceAccountSecretRequest) admin.CreateServiceAccountSecretApiRequest); ok {
+		r0 = rf(ctx, orgId, clientId, serviceAccountSecretRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateServiceAccountSecretApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateServiceAccountSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccountSecret'
+type ServiceAccountsApi_CreateServiceAccountSecret_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccountSecret is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - clientId string
+//   - serviceAccountSecretRequest *admin.ServiceAccountSecretRequest
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccountSecret(ctx any, orgId any, clientId any, serviceAccountSecretRequest any) *ServiceAccountsApi_CreateServiceAccountSecret_Call {
+	return &ServiceAccountsApi_CreateServiceAccountSecret_Call{Call: _e.mock.On("CreateServiceAccountSecret", ctx, orgId, clientId, serviceAccountSecretRequest)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecret_Call) Run(run func(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *admin.ServiceAccountSecretRequest)) *ServiceAccountsApi_CreateServiceAccountSecret_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ServiceAccountSecretRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecret_Call) Return(_a0 admin.CreateServiceAccountSecretApiRequest) *ServiceAccountsApi_CreateServiceAccountSecret_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecret_Call) RunAndReturn(run func(context.Context, string, string, *admin.ServiceAccountSecretRequest) admin.CreateServiceAccountSecretApiRequest) *ServiceAccountsApi_CreateServiceAccountSecret_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccountSecretExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) CreateServiceAccountSecretExecute(r admin.CreateServiceAccountSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccountSecretExecute")
+	}
+
+	var r0 *admin.ServiceAccountSecret
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateServiceAccountSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateServiceAccountSecretApiRequest) *admin.ServiceAccountSecret); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ServiceAccountSecret)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateServiceAccountSecretApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateServiceAccountSecretApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_CreateServiceAccountSecretExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccountSecretExecute'
+type ServiceAccountsApi_CreateServiceAccountSecretExecute_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccountSecretExecute is a helper method to define mock.On call
+//   - r admin.CreateServiceAccountSecretApiRequest
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccountSecretExecute(r any) *ServiceAccountsApi_CreateServiceAccountSecretExecute_Call {
+	return &ServiceAccountsApi_CreateServiceAccountSecretExecute_Call{Call: _e.mock.On("CreateServiceAccountSecretExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecretExecute_Call) Run(run func(r admin.CreateServiceAccountSecretApiRequest)) *ServiceAccountsApi_CreateServiceAccountSecretExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateServiceAccountSecretApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecretExecute_Call) Return(_a0 *admin.ServiceAccountSecret, _a1 *http.Response, _a2 error) *ServiceAccountsApi_CreateServiceAccountSecretExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecretExecute_Call) RunAndReturn(run func(admin.CreateServiceAccountSecretApiRequest) (*admin.ServiceAccountSecret, *http.Response, error)) *ServiceAccountsApi_CreateServiceAccountSecretExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccountSecretWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) CreateServiceAccountSecretWithParams(ctx context.Context, args *admin.CreateServiceAccountSecretApiParams) admin.CreateServiceAccountSecretApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccountSecretWithParams")
+	}
+
+	var r0 admin.CreateServiceAccountSecretApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateServiceAccountSecretApiParams) admin.CreateServiceAccountSecretApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateServiceAccountSecretApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccountSecretWithParams'
+type ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccountSecretWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateServiceAccountSecretApiParams
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccountSecretWithParams(ctx any, args any) *ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call {
+	return &ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call{Call: _e.mock.On("CreateServiceAccountSecretWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateServiceAccountSecretApiParams)) *ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateServiceAccountSecretApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call) Return(_a0 admin.CreateServiceAccountSecretApiRequest) *ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateServiceAccountSecretApiParams) admin.CreateServiceAccountSecretApiRequest) *ServiceAccountsApi_CreateServiceAccountSecretWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) CreateServiceAccountWithParams(ctx context.Context, args *admin.CreateServiceAccountApiParams) admin.CreateServiceAccountApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateServiceAccountWithParams")
+	}
+
+	var r0 admin.CreateServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateServiceAccountApiParams) admin.CreateServiceAccountApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_CreateServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateServiceAccountWithParams'
+type ServiceAccountsApi_CreateServiceAccountWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateServiceAccountWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) CreateServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_CreateServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_CreateServiceAccountWithParams_Call{Call: _e.mock.On("CreateServiceAccountWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateServiceAccountApiParams)) *ServiceAccountsApi_CreateServiceAccountWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateServiceAccountApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountWithParams_Call) Return(_a0 admin.CreateServiceAccountApiRequest) *ServiceAccountsApi_CreateServiceAccountWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_CreateServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateServiceAccountApiParams) admin.CreateServiceAccountApiRequest) *ServiceAccountsApi_CreateServiceAccountWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccount provides a mock function with given fields: ctx, clientId, groupId
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccount(ctx context.Context, clientId string, groupId string) admin.DeleteProjectServiceAccountApiRequest {
+	ret := _m.Called(ctx, clientId, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccount")
+	}
+
+	var r0 admin.DeleteProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteProjectServiceAccountApiRequest); ok {
+		r0 = rf(ctx, clientId, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteProjectServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccount'
+type ServiceAccountsApi_DeleteProjectServiceAccount_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccount is a helper method to define mock.On call
+//   - ctx context.Context
+//   - clientId string
+//   - groupId string
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccount(ctx any, clientId any, groupId any) *ServiceAccountsApi_DeleteProjectServiceAccount_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccount_Call{Call: _e.mock.On("DeleteProjectServiceAccount", ctx, clientId, groupId)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccount_Call) Run(run func(ctx context.Context, clientId string, groupId string)) *ServiceAccountsApi_DeleteProjectServiceAccount_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccount_Call) Return(_a0 admin.DeleteProjectServiceAccountApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccount_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccount_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteProjectServiceAccountApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccount_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccountAccessListEntry provides a mock function with given fields: ctx, groupId, clientId, ipAddress
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccountAccessListEntry(ctx context.Context, groupId string, clientId string, ipAddress string) admin.DeleteProjectServiceAccountAccessListEntryApiRequest {
+	ret := _m.Called(ctx, groupId, clientId, ipAddress)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccountAccessListEntry")
+	}
+
+	var r0 admin.DeleteProjectServiceAccountAccessListEntryApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteProjectServiceAccountAccessListEntryApiRequest); ok {
+		r0 = rf(ctx, groupId, clientId, ipAddress)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteProjectServiceAccountAccessListEntryApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccountAccessListEntry'
+type ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccountAccessListEntry is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clientId string
+//   - ipAddress string
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccountAccessListEntry(ctx any, groupId any, clientId any, ipAddress any) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call{Call: _e.mock.On("DeleteProjectServiceAccountAccessListEntry", ctx, groupId, clientId, ipAddress)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call) Run(run func(ctx context.Context, groupId string, clientId string, ipAddress string)) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call) Return(_a0 admin.DeleteProjectServiceAccountAccessListEntryApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteProjectServiceAccountAccessListEntryApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntry_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccountAccessListEntryExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccountAccessListEntryExecute(r admin.DeleteProjectServiceAccountAccessListEntryApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccountAccessListEntryExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectServiceAccountAccessListEntryApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectServiceAccountAccessListEntryApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteProjectServiceAccountAccessListEntryApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccountAccessListEntryExecute'
+type ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccountAccessListEntryExecute is a helper method to define mock.On call
+//   - r admin.DeleteProjectServiceAccountAccessListEntryApiRequest
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccountAccessListEntryExecute(r any) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call{Call: _e.mock.On("DeleteProjectServiceAccountAccessListEntryExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call) Run(run func(r admin.DeleteProjectServiceAccountAccessListEntryApiRequest)) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteProjectServiceAccountAccessListEntryApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call) RunAndReturn(run func(admin.DeleteProjectServiceAccountAccessListEntryApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccountAccessListEntryWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccountAccessListEntryWithParams(ctx context.Context, args *admin.DeleteProjectServiceAccountAccessListEntryApiParams) admin.DeleteProjectServiceAccountAccessListEntryApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccountAccessListEntryWithParams")
+	}
+
+	var r0 admin.DeleteProjectServiceAccountAccessListEntryApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteProjectServiceAccountAccessListEntryApiParams) admin.DeleteProjectServiceAccountAccessListEntryApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteProjectServiceAccountAccessListEntryApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccountAccessListEntryWithParams'
+type ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccountAccessListEntryWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteProjectServiceAccountAccessListEntryApiParams
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccountAccessListEntryWithParams(ctx any, args any) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call{Call: _e.mock.On("DeleteProjectServiceAccountAccessListEntryWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteProjectServiceAccountAccessListEntryApiParams)) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteProjectServiceAccountAccessListEntryApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call) Return(_a0 admin.DeleteProjectServiceAccountAccessListEntryApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteProjectServiceAccountAccessListEntryApiParams) admin.DeleteProjectServiceAccountAccessListEntryApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountAccessListEntryWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccountExecute(r admin.DeleteProjectServiceAccountApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccountExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectServiceAccountApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectServiceAccountApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteProjectServiceAccountApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccountExecute'
+type ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.DeleteProjectServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccountExecute(r any) *ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call{Call: _e.mock.On("DeleteProjectServiceAccountExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call) Run(run func(r admin.DeleteProjectServiceAccountApiRequest)) *ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteProjectServiceAccountApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call) RunAndReturn(run func(admin.DeleteProjectServiceAccountApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteProjectServiceAccountExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccountSecret provides a mock function with given fields: ctx, clientId, secretId, groupId
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccountSecret(ctx context.Context, clientId string, secretId string, groupId string) admin.DeleteProjectServiceAccountSecretApiRequest {
+	ret := _m.Called(ctx, clientId, secretId, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccountSecret")
+	}
+
+	var r0 admin.DeleteProjectServiceAccountSecretApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteProjectServiceAccountSecretApiRequest); ok {
+		r0 = rf(ctx, clientId, secretId, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteProjectServiceAccountSecretApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccountSecret'
+type ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccountSecret is a helper method to define mock.On call
+//   - ctx context.Context
+//   - clientId string
+//   - secretId string
+//   - groupId string
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccountSecret(ctx any, clientId any, secretId any, groupId any) *ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call{Call: _e.mock.On("DeleteProjectServiceAccountSecret", ctx, clientId, secretId, groupId)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call) Run(run func(ctx context.Context, clientId string, secretId string, groupId string)) *ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call) Return(_a0 admin.DeleteProjectServiceAccountSecretApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteProjectServiceAccountSecretApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountSecret_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccountSecretExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccountSecretExecute(r admin.DeleteProjectServiceAccountSecretApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccountSecretExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectServiceAccountSecretApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectServiceAccountSecretApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteProjectServiceAccountSecretApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccountSecretExecute'
+type ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccountSecretExecute is a helper method to define mock.On call
+//   - r admin.DeleteProjectServiceAccountSecretApiRequest
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccountSecretExecute(r any) *ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call{Call: _e.mock.On("DeleteProjectServiceAccountSecretExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call) Run(run func(r admin.DeleteProjectServiceAccountSecretApiRequest)) *ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteProjectServiceAccountSecretApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call) RunAndReturn(run func(admin.DeleteProjectServiceAccountSecretApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteProjectServiceAccountSecretExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccountSecretWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccountSecretWithParams(ctx context.Context, args *admin.DeleteProjectServiceAccountSecretApiParams) admin.DeleteProjectServiceAccountSecretApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccountSecretWithParams")
+	}
+
+	var r0 admin.DeleteProjectServiceAccountSecretApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteProjectServiceAccountSecretApiParams) admin.DeleteProjectServiceAccountSecretApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteProjectServiceAccountSecretApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccountSecretWithParams'
+type ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccountSecretWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteProjectServiceAccountSecretApiParams
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccountSecretWithParams(ctx any, args any) *ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call{Call: _e.mock.On("DeleteProjectServiceAccountSecretWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteProjectServiceAccountSecretApiParams)) *ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteProjectServiceAccountSecretApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call) Return(_a0 admin.DeleteProjectServiceAccountSecretApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteProjectServiceAccountSecretApiParams) admin.DeleteProjectServiceAccountSecretApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountSecretWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProjectServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) DeleteProjectServiceAccountWithParams(ctx context.Context, args *admin.DeleteProjectServiceAccountApiParams) admin.DeleteProjectServiceAccountApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProjectServiceAccountWithParams")
+	}
+
+	var r0 admin.DeleteProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteProjectServiceAccountApiParams) admin.DeleteProjectServiceAccountApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteProjectServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectServiceAccountWithParams'
+type ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteProjectServiceAccountWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteProjectServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) DeleteProjectServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call{Call: _e.mock.On("DeleteProjectServiceAccountWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteProjectServiceAccountApiParams)) *ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteProjectServiceAccountApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call) Return(_a0 admin.DeleteProjectServiceAccountApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteProjectServiceAccountApiParams) admin.DeleteProjectServiceAccountApiRequest) *ServiceAccountsApi_DeleteProjectServiceAccountWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccount provides a mock function with given fields: ctx, clientId, orgId
+func (_m *ServiceAccountsApi) DeleteServiceAccount(ctx context.Context, clientId string, orgId string) admin.DeleteServiceAccountApiRequest {
+	ret := _m.Called(ctx, clientId, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccount")
+	}
+
+	var r0 admin.DeleteServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteServiceAccountApiRequest); ok {
+		r0 = rf(ctx, clientId, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccount'
+type ServiceAccountsApi_DeleteServiceAccount_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccount is a helper method to define mock.On call
+//   - ctx context.Context
+//   - clientId string
+//   - orgId string
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccount(ctx any, clientId any, orgId any) *ServiceAccountsApi_DeleteServiceAccount_Call {
+	return &ServiceAccountsApi_DeleteServiceAccount_Call{Call: _e.mock.On("DeleteServiceAccount", ctx, clientId, orgId)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccount_Call) Run(run func(ctx context.Context, clientId string, orgId string)) *ServiceAccountsApi_DeleteServiceAccount_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccount_Call) Return(_a0 admin.DeleteServiceAccountApiRequest) *ServiceAccountsApi_DeleteServiceAccount_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccount_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteServiceAccountApiRequest) *ServiceAccountsApi_DeleteServiceAccount_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccountAccessListEntry provides a mock function with given fields: ctx, orgId, clientId, ipAddress
+func (_m *ServiceAccountsApi) DeleteServiceAccountAccessListEntry(ctx context.Context, orgId string, clientId string, ipAddress string) admin.DeleteServiceAccountAccessListEntryApiRequest {
+	ret := _m.Called(ctx, orgId, clientId, ipAddress)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccountAccessListEntry")
+	}
+
+	var r0 admin.DeleteServiceAccountAccessListEntryApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteServiceAccountAccessListEntryApiRequest); ok {
+		r0 = rf(ctx, orgId, clientId, ipAddress)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteServiceAccountAccessListEntryApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccountAccessListEntry'
+type ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccountAccessListEntry is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - clientId string
+//   - ipAddress string
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccountAccessListEntry(ctx any, orgId any, clientId any, ipAddress any) *ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call {
+	return &ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call{Call: _e.mock.On("DeleteServiceAccountAccessListEntry", ctx, orgId, clientId, ipAddress)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call) Run(run func(ctx context.Context, orgId string, clientId string, ipAddress string)) *ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call) Return(_a0 admin.DeleteServiceAccountAccessListEntryApiRequest) *ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteServiceAccountAccessListEntryApiRequest) *ServiceAccountsApi_DeleteServiceAccountAccessListEntry_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccountAccessListEntryExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) DeleteServiceAccountAccessListEntryExecute(r admin.DeleteServiceAccountAccessListEntryApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccountAccessListEntryExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteServiceAccountAccessListEntryApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteServiceAccountAccessListEntryApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteServiceAccountAccessListEntryApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccountAccessListEntryExecute'
+type ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccountAccessListEntryExecute is a helper method to define mock.On call
+//   - r admin.DeleteServiceAccountAccessListEntryApiRequest
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccountAccessListEntryExecute(r any) *ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call {
+	return &ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call{Call: _e.mock.On("DeleteServiceAccountAccessListEntryExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call) Run(run func(r admin.DeleteServiceAccountAccessListEntryApiRequest)) *ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteServiceAccountAccessListEntryApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call) RunAndReturn(run func(admin.DeleteServiceAccountAccessListEntryApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteServiceAccountAccessListEntryExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccountAccessListEntryWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) DeleteServiceAccountAccessListEntryWithParams(ctx context.Context, args *admin.DeleteServiceAccountAccessListEntryApiParams) admin.DeleteServiceAccountAccessListEntryApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccountAccessListEntryWithParams")
+	}
+
+	var r0 admin.DeleteServiceAccountAccessListEntryApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteServiceAccountAccessListEntryApiParams) admin.DeleteServiceAccountAccessListEntryApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteServiceAccountAccessListEntryApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccountAccessListEntryWithParams'
+type ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccountAccessListEntryWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteServiceAccountAccessListEntryApiParams
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccountAccessListEntryWithParams(ctx any, args any) *ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call {
+	return &ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call{Call: _e.mock.On("DeleteServiceAccountAccessListEntryWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteServiceAccountAccessListEntryApiParams)) *ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteServiceAccountAccessListEntryApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call) Return(_a0 admin.DeleteServiceAccountAccessListEntryApiRequest) *ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteServiceAccountAccessListEntryApiParams) admin.DeleteServiceAccountAccessListEntryApiRequest) *ServiceAccountsApi_DeleteServiceAccountAccessListEntryWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) DeleteServiceAccountExecute(r admin.DeleteServiceAccountApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccountExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteServiceAccountApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteServiceAccountApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteServiceAccountApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// ServiceAccountsApi_DeleteServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccountExecute'
+type ServiceAccountsApi_DeleteServiceAccountExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.DeleteServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccountExecute(r any) *ServiceAccountsApi_DeleteServiceAccountExecute_Call {
+	return &ServiceAccountsApi_DeleteServiceAccountExecute_Call{Call: _e.mock.On("DeleteServiceAccountExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountExecute_Call) Run(run func(r admin.DeleteServiceAccountApiRequest)) *ServiceAccountsApi_DeleteServiceAccountExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteServiceAccountApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteServiceAccountExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountExecute_Call) RunAndReturn(run func(admin.DeleteServiceAccountApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteServiceAccountExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccountSecret provides a mock function with given fields: ctx, clientId, secretId, orgId
+func (_m *ServiceAccountsApi) DeleteServiceAccountSecret(ctx context.Context, clientId string, secretId string, orgId string) admin.DeleteServiceAccountSecretApiRequest {
+	ret := _m.Called(ctx, clientId, secretId, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccountSecret")
+	}
+
+	var r0 admin.DeleteServiceAccountSecretApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteServiceAccountSecretApiRequest); ok {
+		r0 = rf(ctx, clientId, secretId, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteServiceAccountSecretApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteServiceAccountSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccountSecret'
+type ServiceAccountsApi_DeleteServiceAccountSecret_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccountSecret is a helper method to define mock.On call
+//   - ctx context.Context
+//   - clientId string
+//   - secretId string
+//   - orgId string
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccountSecret(ctx any, clientId any, secretId any, orgId any) *ServiceAccountsApi_DeleteServiceAccountSecret_Call {
+	return &ServiceAccountsApi_DeleteServiceAccountSecret_Call{Call: _e.mock.On("DeleteServiceAccountSecret", ctx, clientId, secretId, orgId)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecret_Call) Run(run func(ctx context.Context, clientId string, secretId string, orgId string)) *ServiceAccountsApi_DeleteServiceAccountSecret_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecret_Call) Return(_a0 admin.DeleteServiceAccountSecretApiRequest) *ServiceAccountsApi_DeleteServiceAccountSecret_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecret_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteServiceAccountSecretApiRequest) *ServiceAccountsApi_DeleteServiceAccountSecret_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccountSecretExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) DeleteServiceAccountSecretExecute(r admin.DeleteServiceAccountSecretApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccountSecretExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteServiceAccountSecretApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteServiceAccountSecretApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteServiceAccountSecretApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccountSecretExecute'
+type ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccountSecretExecute is a helper method to define mock.On call
+//   - r admin.DeleteServiceAccountSecretApiRequest
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccountSecretExecute(r any) *ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call {
+	return &ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call{Call: _e.mock.On("DeleteServiceAccountSecretExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call) Run(run func(r admin.DeleteServiceAccountSecretApiRequest)) *ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteServiceAccountSecretApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call) Return(_a0 *http.Response, _a1 error) *ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call) RunAndReturn(run func(admin.DeleteServiceAccountSecretApiRequest) (*http.Response, error)) *ServiceAccountsApi_DeleteServiceAccountSecretExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccountSecretWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) DeleteServiceAccountSecretWithParams(ctx context.Context, args *admin.DeleteServiceAccountSecretApiParams) admin.DeleteServiceAccountSecretApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccountSecretWithParams")
+	}
+
+	var r0 admin.DeleteServiceAccountSecretApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteServiceAccountSecretApiParams) admin.DeleteServiceAccountSecretApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteServiceAccountSecretApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccountSecretWithParams'
+type ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccountSecretWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteServiceAccountSecretApiParams
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccountSecretWithParams(ctx any, args any) *ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call {
+	return &ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call{Call: _e.mock.On("DeleteServiceAccountSecretWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteServiceAccountSecretApiParams)) *ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteServiceAccountSecretApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call) Return(_a0 admin.DeleteServiceAccountSecretApiRequest) *ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteServiceAccountSecretApiParams) admin.DeleteServiceAccountSecretApiRequest) *ServiceAccountsApi_DeleteServiceAccountSecretWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) DeleteServiceAccountWithParams(ctx context.Context, args *admin.DeleteServiceAccountApiParams) admin.DeleteServiceAccountApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteServiceAccountWithParams")
+	}
+
+	var r0 admin.DeleteServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteServiceAccountApiParams) admin.DeleteServiceAccountApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_DeleteServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServiceAccountWithParams'
+type ServiceAccountsApi_DeleteServiceAccountWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteServiceAccountWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) DeleteServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_DeleteServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_DeleteServiceAccountWithParams_Call{Call: _e.mock.On("DeleteServiceAccountWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteServiceAccountApiParams)) *ServiceAccountsApi_DeleteServiceAccountWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteServiceAccountApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountWithParams_Call) Return(_a0 admin.DeleteServiceAccountApiRequest) *ServiceAccountsApi_DeleteServiceAccountWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_DeleteServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteServiceAccountApiParams) admin.DeleteServiceAccountApiRequest) *ServiceAccountsApi_DeleteServiceAccountWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectServiceAccount provides a mock function with given fields: ctx, groupId, clientId
+func (_m *ServiceAccountsApi) GetProjectServiceAccount(ctx context.Context, groupId string, clientId string) admin.GetProjectServiceAccountApiRequest {
+	ret := _m.Called(ctx, groupId, clientId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectServiceAccount")
+	}
+
+	var r0 admin.GetProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetProjectServiceAccountApiRequest); ok {
+		r0 = rf(ctx, groupId, clientId)
+	} else {
+		r0 = ret.Get(0).(admin.GetProjectServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_GetProjectServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectServiceAccount'
+type ServiceAccountsApi_GetProjectServiceAccount_Call struct {
+	*mock.Call
+}
+
+// GetProjectServiceAccount is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clientId string
+func (_e *ServiceAccountsApi_Expecter) GetProjectServiceAccount(ctx any, groupId any, clientId any) *ServiceAccountsApi_GetProjectServiceAccount_Call {
+	return &ServiceAccountsApi_GetProjectServiceAccount_Call{Call: _e.mock.On("GetProjectServiceAccount", ctx, groupId, clientId)}
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccount_Call) Run(run func(ctx context.Context, groupId string, clientId string)) *ServiceAccountsApi_GetProjectServiceAccount_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccount_Call) Return(_a0 admin.GetProjectServiceAccountApiRequest) *ServiceAccountsApi_GetProjectServiceAccount_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccount_Call) RunAndReturn(run func(context.Context, string, string) admin.GetProjectServiceAccountApiRequest) *ServiceAccountsApi_GetProjectServiceAccount_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) GetProjectServiceAccountExecute(r admin.GetProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectServiceAccountExecute")
+	}
+
+	var r0 *admin.GroupServiceAccount
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetProjectServiceAccountApiRequest) *admin.GroupServiceAccount); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.GroupServiceAccount)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetProjectServiceAccountApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetProjectServiceAccountApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_GetProjectServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectServiceAccountExecute'
+type ServiceAccountsApi_GetProjectServiceAccountExecute_Call struct {
+	*mock.Call
+}
+
+// GetProjectServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.GetProjectServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) GetProjectServiceAccountExecute(r any) *ServiceAccountsApi_GetProjectServiceAccountExecute_Call {
+	return &ServiceAccountsApi_GetProjectServiceAccountExecute_Call{Call: _e.mock.On("GetProjectServiceAccountExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccountExecute_Call) Run(run func(r admin.GetProjectServiceAccountApiRequest)) *ServiceAccountsApi_GetProjectServiceAccountExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetProjectServiceAccountApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccountExecute_Call) Return(_a0 *admin.GroupServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_GetProjectServiceAccountExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccountExecute_Call) RunAndReturn(run func(admin.GetProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)) *ServiceAccountsApi_GetProjectServiceAccountExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) GetProjectServiceAccountWithParams(ctx context.Context, args *admin.GetProjectServiceAccountApiParams) admin.GetProjectServiceAccountApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectServiceAccountWithParams")
+	}
+
+	var r0 admin.GetProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectServiceAccountApiParams) admin.GetProjectServiceAccountApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetProjectServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_GetProjectServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectServiceAccountWithParams'
+type ServiceAccountsApi_GetProjectServiceAccountWithParams_Call struct {
+	*mock.Call
+}
+
+// GetProjectServiceAccountWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetProjectServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) GetProjectServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_GetProjectServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_GetProjectServiceAccountWithParams_Call{Call: _e.mock.On("GetProjectServiceAccountWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectServiceAccountApiParams)) *ServiceAccountsApi_GetProjectServiceAccountWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetProjectServiceAccountApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccountWithParams_Call) Return(_a0 admin.GetProjectServiceAccountApiRequest) *ServiceAccountsApi_GetProjectServiceAccountWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetProjectServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectServiceAccountApiParams) admin.GetProjectServiceAccountApiRequest) *ServiceAccountsApi_GetProjectServiceAccountWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetServiceAccount provides a mock function with given fields: ctx, orgId, clientId
+func (_m *ServiceAccountsApi) GetServiceAccount(ctx context.Context, orgId string, clientId string) admin.GetServiceAccountApiRequest {
+	ret := _m.Called(ctx, orgId, clientId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetServiceAccount")
+	}
+
+	var r0 admin.GetServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetServiceAccountApiRequest); ok {
+		r0 = rf(ctx, orgId, clientId)
+	} else {
+		r0 = ret.Get(0).(admin.GetServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_GetServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetServiceAccount'
+type ServiceAccountsApi_GetServiceAccount_Call struct {
+	*mock.Call
+}
+
+// GetServiceAccount is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - clientId string
+func (_e *ServiceAccountsApi_Expecter) GetServiceAccount(ctx any, orgId any, clientId any) *ServiceAccountsApi_GetServiceAccount_Call {
+	return &ServiceAccountsApi_GetServiceAccount_Call{Call: _e.mock.On("GetServiceAccount", ctx, orgId, clientId)}
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccount_Call) Run(run func(ctx context.Context, orgId string, clientId string)) *ServiceAccountsApi_GetServiceAccount_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccount_Call) Return(_a0 admin.GetServiceAccountApiRequest) *ServiceAccountsApi_GetServiceAccount_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccount_Call) RunAndReturn(run func(context.Context, string, string) admin.GetServiceAccountApiRequest) *ServiceAccountsApi_GetServiceAccount_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) GetServiceAccountExecute(r admin.GetServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetServiceAccountExecute")
+	}
+
+	var r0 *admin.OrgServiceAccount
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetServiceAccountApiRequest) *admin.OrgServiceAccount); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.OrgServiceAccount)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetServiceAccountApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetServiceAccountApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_GetServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetServiceAccountExecute'
+type ServiceAccountsApi_GetServiceAccountExecute_Call struct {
+	*mock.Call
+}
+
+// GetServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.GetServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) GetServiceAccountExecute(r any) *ServiceAccountsApi_GetServiceAccountExecute_Call {
+	return &ServiceAccountsApi_GetServiceAccountExecute_Call{Call: _e.mock.On("GetServiceAccountExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccountExecute_Call) Run(run func(r admin.GetServiceAccountApiRequest)) *ServiceAccountsApi_GetServiceAccountExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetServiceAccountApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccountExecute_Call) Return(_a0 *admin.OrgServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_GetServiceAccountExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccountExecute_Call) RunAndReturn(run func(admin.GetServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)) *ServiceAccountsApi_GetServiceAccountExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) GetServiceAccountWithParams(ctx context.Context, args *admin.GetServiceAccountApiParams) admin.GetServiceAccountApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetServiceAccountWithParams")
+	}
+
+	var r0 admin.GetServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetServiceAccountApiParams) admin.GetServiceAccountApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetServiceAccountApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_GetServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetServiceAccountWithParams'
+type ServiceAccountsApi_GetServiceAccountWithParams_Call struct {
+	*mock.Call
+}
+
+// GetServiceAccountWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) GetServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_GetServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_GetServiceAccountWithParams_Call{Call: _e.mock.On("GetServiceAccountWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.GetServiceAccountApiParams)) *ServiceAccountsApi_GetServiceAccountWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetServiceAccountApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccountWithParams_Call) Return(_a0 admin.GetServiceAccountApiRequest) *ServiceAccountsApi_GetServiceAccountWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_GetServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetServiceAccountApiParams) admin.GetServiceAccountApiRequest) *ServiceAccountsApi_GetServiceAccountWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectServiceAccountAccessList provides a mock function with given fields: ctx, groupId, clientId
+func (_m *ServiceAccountsApi) ListProjectServiceAccountAccessList(ctx context.Context, groupId string, clientId string) admin.ListProjectServiceAccountAccessListApiRequest {
+	ret := _m.Called(ctx, groupId, clientId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectServiceAccountAccessList")
+	}
+
+	var r0 admin.ListProjectServiceAccountAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListProjectServiceAccountAccessListApiRequest); ok {
+		r0 = rf(ctx, groupId, clientId)
+	} else {
+		r0 = ret.Get(0).(admin.ListProjectServiceAccountAccessListApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_ListProjectServiceAccountAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectServiceAccountAccessList'
+type ServiceAccountsApi_ListProjectServiceAccountAccessList_Call struct {
+	*mock.Call
+}
+
+// ListProjectServiceAccountAccessList is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clientId string
+func (_e *ServiceAccountsApi_Expecter) ListProjectServiceAccountAccessList(ctx any, groupId any, clientId any) *ServiceAccountsApi_ListProjectServiceAccountAccessList_Call {
+	return &ServiceAccountsApi_ListProjectServiceAccountAccessList_Call{Call: _e.mock.On("ListProjectServiceAccountAccessList", ctx, groupId, clientId)}
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessList_Call) Run(run func(ctx context.Context, groupId string, clientId string)) *ServiceAccountsApi_ListProjectServiceAccountAccessList_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessList_Call) Return(_a0 admin.ListProjectServiceAccountAccessListApiRequest) *ServiceAccountsApi_ListProjectServiceAccountAccessList_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessList_Call) RunAndReturn(run func(context.Context, string, string) admin.ListProjectServiceAccountAccessListApiRequest) *ServiceAccountsApi_ListProjectServiceAccountAccessList_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectServiceAccountAccessListExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) ListProjectServiceAccountAccessListExecute(r admin.ListProjectServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectServiceAccountAccessListExecute")
+	}
+
+	var r0 *admin.PaginatedServiceAccountIPAccessEntry
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListProjectServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListProjectServiceAccountAccessListApiRequest) *admin.PaginatedServiceAccountIPAccessEntry); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedServiceAccountIPAccessEntry)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListProjectServiceAccountAccessListApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListProjectServiceAccountAccessListApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectServiceAccountAccessListExecute'
+type ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call struct {
+	*mock.Call
+}
+
+// ListProjectServiceAccountAccessListExecute is a helper method to define mock.On call
+//   - r admin.ListProjectServiceAccountAccessListApiRequest
+func (_e *ServiceAccountsApi_Expecter) ListProjectServiceAccountAccessListExecute(r any) *ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call {
+	return &ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call{Call: _e.mock.On("ListProjectServiceAccountAccessListExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call) Run(run func(r admin.ListProjectServiceAccountAccessListApiRequest)) *ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListProjectServiceAccountAccessListApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call) Return(_a0 *admin.PaginatedServiceAccountIPAccessEntry, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call) RunAndReturn(run func(admin.ListProjectServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)) *ServiceAccountsApi_ListProjectServiceAccountAccessListExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectServiceAccountAccessListWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) ListProjectServiceAccountAccessListWithParams(ctx context.Context, args *admin.ListProjectServiceAccountAccessListApiParams) admin.ListProjectServiceAccountAccessListApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectServiceAccountAccessListWithParams")
+	}
+
+	var r0 admin.ListProjectServiceAccountAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProjectServiceAccountAccessListApiParams) admin.ListProjectServiceAccountAccessListApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListProjectServiceAccountAccessListApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectServiceAccountAccessListWithParams'
+type ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call struct {
+	*mock.Call
+}
+
+// ListProjectServiceAccountAccessListWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListProjectServiceAccountAccessListApiParams
+func (_e *ServiceAccountsApi_Expecter) ListProjectServiceAccountAccessListWithParams(ctx any, args any) *ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call {
+	return &ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call{Call: _e.mock.On("ListProjectServiceAccountAccessListWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProjectServiceAccountAccessListApiParams)) *ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListProjectServiceAccountAccessListApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call) Return(_a0 admin.ListProjectServiceAccountAccessListApiRequest) *ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectServiceAccountAccessListApiParams) admin.ListProjectServiceAccountAccessListApiRequest) *ServiceAccountsApi_ListProjectServiceAccountAccessListWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectServiceAccounts provides a mock function with given fields: ctx, groupId
+func (_m *ServiceAccountsApi) ListProjectServiceAccounts(ctx context.Context, groupId string) admin.ListProjectServiceAccountsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectServiceAccounts")
+	}
+
+	var r0 admin.ListProjectServiceAccountsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListProjectServiceAccountsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListProjectServiceAccountsApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_ListProjectServiceAccounts_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectServiceAccounts'
+type ServiceAccountsApi_ListProjectServiceAccounts_Call struct {
+	*mock.Call
+}
+
+// ListProjectServiceAccounts is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *ServiceAccountsApi_Expecter) ListProjectServiceAccounts(ctx any, groupId any) *ServiceAccountsApi_ListProjectServiceAccounts_Call {
+	return &ServiceAccountsApi_ListProjectServiceAccounts_Call{Call: _e.mock.On("ListProjectServiceAccounts", ctx, groupId)}
+}
+
+func (_c *ServiceAccountsApi_ListProjectServiceAccounts_Call) Run(run func(ctx context.Context, groupId string)) *ServiceAccountsApi_ListProjectServiceAccounts_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccounts_Call) Return(_a0 admin.ListGroupServiceAccountsApiRequest) *ServiceAccountsApi_ListGroupServiceAccounts_Call {
+func (_c *ServiceAccountsApi_ListProjectServiceAccounts_Call) Return(_a0 admin.ListProjectServiceAccountsApiRequest) *ServiceAccountsApi_ListProjectServiceAccounts_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccounts_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupServiceAccountsApiRequest) *ServiceAccountsApi_ListGroupServiceAccounts_Call {
+func (_c *ServiceAccountsApi_ListProjectServiceAccounts_Call) RunAndReturn(run func(context.Context, string) admin.ListProjectServiceAccountsApiRequest) *ServiceAccountsApi_ListProjectServiceAccounts_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListGroupServiceAccountsExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) ListGroupServiceAccountsExecute(r admin.ListGroupServiceAccountsApiRequest) (*admin.PaginatedGroupServiceAccounts, *http.Response, error) {
+// ListProjectServiceAccountsExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) ListProjectServiceAccountsExecute(r admin.ListProjectServiceAccountsApiRequest) (*admin.PaginatedGroupServiceAccounts, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListGroupServiceAccountsExecute")
+		panic("no return value specified for ListProjectServiceAccountsExecute")
 	}
 
 	var r0 *admin.PaginatedGroupServiceAccounts
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListGroupServiceAccountsApiRequest) (*admin.PaginatedGroupServiceAccounts, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListProjectServiceAccountsApiRequest) (*admin.PaginatedGroupServiceAccounts, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListGroupServiceAccountsApiRequest) *admin.PaginatedGroupServiceAccounts); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListProjectServiceAccountsApiRequest) *admin.PaginatedGroupServiceAccounts); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2803,7 +2641,7 @@ func (_m *ServiceAccountsApi) ListGroupServiceAccountsExecute(r admin.ListGroupS
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListGroupServiceAccountsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListProjectServiceAccountsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2811,7 +2649,7 @@ func (_m *ServiceAccountsApi) ListGroupServiceAccountsExecute(r admin.ListGroupS
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListGroupServiceAccountsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListProjectServiceAccountsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2820,144 +2658,144 @@ func (_m *ServiceAccountsApi) ListGroupServiceAccountsExecute(r admin.ListGroupS
 	return r0, r1, r2
 }
 
-// ServiceAccountsApi_ListGroupServiceAccountsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupServiceAccountsExecute'
-type ServiceAccountsApi_ListGroupServiceAccountsExecute_Call struct {
+// ServiceAccountsApi_ListProjectServiceAccountsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectServiceAccountsExecute'
+type ServiceAccountsApi_ListProjectServiceAccountsExecute_Call struct {
 	*mock.Call
 }
 
-// ListGroupServiceAccountsExecute is a helper method to define mock.On call
-//   - r admin.ListGroupServiceAccountsApiRequest
-func (_e *ServiceAccountsApi_Expecter) ListGroupServiceAccountsExecute(r any) *ServiceAccountsApi_ListGroupServiceAccountsExecute_Call {
-	return &ServiceAccountsApi_ListGroupServiceAccountsExecute_Call{Call: _e.mock.On("ListGroupServiceAccountsExecute", r)}
+// ListProjectServiceAccountsExecute is a helper method to define mock.On call
+//   - r admin.ListProjectServiceAccountsApiRequest
+func (_e *ServiceAccountsApi_Expecter) ListProjectServiceAccountsExecute(r any) *ServiceAccountsApi_ListProjectServiceAccountsExecute_Call {
+	return &ServiceAccountsApi_ListProjectServiceAccountsExecute_Call{Call: _e.mock.On("ListProjectServiceAccountsExecute", r)}
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccountsExecute_Call) Run(run func(r admin.ListGroupServiceAccountsApiRequest)) *ServiceAccountsApi_ListGroupServiceAccountsExecute_Call {
+func (_c *ServiceAccountsApi_ListProjectServiceAccountsExecute_Call) Run(run func(r admin.ListProjectServiceAccountsApiRequest)) *ServiceAccountsApi_ListProjectServiceAccountsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListGroupServiceAccountsApiRequest))
+		run(args[0].(admin.ListProjectServiceAccountsApiRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccountsExecute_Call) Return(_a0 *admin.PaginatedGroupServiceAccounts, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListGroupServiceAccountsExecute_Call {
+func (_c *ServiceAccountsApi_ListProjectServiceAccountsExecute_Call) Return(_a0 *admin.PaginatedGroupServiceAccounts, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListProjectServiceAccountsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccountsExecute_Call) RunAndReturn(run func(admin.ListGroupServiceAccountsApiRequest) (*admin.PaginatedGroupServiceAccounts, *http.Response, error)) *ServiceAccountsApi_ListGroupServiceAccountsExecute_Call {
+func (_c *ServiceAccountsApi_ListProjectServiceAccountsExecute_Call) RunAndReturn(run func(admin.ListProjectServiceAccountsApiRequest) (*admin.PaginatedGroupServiceAccounts, *http.Response, error)) *ServiceAccountsApi_ListProjectServiceAccountsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListGroupServiceAccountsWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) ListGroupServiceAccountsWithParams(ctx context.Context, args *admin.ListGroupServiceAccountsApiParams) admin.ListGroupServiceAccountsApiRequest {
+// ListProjectServiceAccountsWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) ListProjectServiceAccountsWithParams(ctx context.Context, args *admin.ListProjectServiceAccountsApiParams) admin.ListProjectServiceAccountsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListGroupServiceAccountsWithParams")
+		panic("no return value specified for ListProjectServiceAccountsWithParams")
 	}
 
-	var r0 admin.ListGroupServiceAccountsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupServiceAccountsApiParams) admin.ListGroupServiceAccountsApiRequest); ok {
+	var r0 admin.ListProjectServiceAccountsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProjectServiceAccountsApiParams) admin.ListProjectServiceAccountsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListGroupServiceAccountsApiRequest)
+		r0 = ret.Get(0).(admin.ListProjectServiceAccountsApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupServiceAccountsWithParams'
-type ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call struct {
+// ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectServiceAccountsWithParams'
+type ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListGroupServiceAccountsWithParams is a helper method to define mock.On call
+// ListProjectServiceAccountsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListGroupServiceAccountsApiParams
-func (_e *ServiceAccountsApi_Expecter) ListGroupServiceAccountsWithParams(ctx any, args any) *ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call {
-	return &ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call{Call: _e.mock.On("ListGroupServiceAccountsWithParams", ctx, args)}
+//   - args *admin.ListProjectServiceAccountsApiParams
+func (_e *ServiceAccountsApi_Expecter) ListProjectServiceAccountsWithParams(ctx any, args any) *ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call {
+	return &ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call{Call: _e.mock.On("ListProjectServiceAccountsWithParams", ctx, args)}
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupServiceAccountsApiParams)) *ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call {
+func (_c *ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProjectServiceAccountsApiParams)) *ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListGroupServiceAccountsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListProjectServiceAccountsApiParams))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call) Return(_a0 admin.ListGroupServiceAccountsApiRequest) *ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call {
+func (_c *ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call) Return(_a0 admin.ListProjectServiceAccountsApiRequest) *ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupServiceAccountsApiParams) admin.ListGroupServiceAccountsApiRequest) *ServiceAccountsApi_ListGroupServiceAccountsWithParams_Call {
+func (_c *ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectServiceAccountsApiParams) admin.ListProjectServiceAccountsApiRequest) *ServiceAccountsApi_ListProjectServiceAccountsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgAccessList provides a mock function with given fields: ctx, orgId, clientId
-func (_m *ServiceAccountsApi) ListOrgAccessList(ctx context.Context, orgId string, clientId string) admin.ListOrgAccessListApiRequest {
+// ListServiceAccountAccessList provides a mock function with given fields: ctx, orgId, clientId
+func (_m *ServiceAccountsApi) ListServiceAccountAccessList(ctx context.Context, orgId string, clientId string) admin.ListServiceAccountAccessListApiRequest {
 	ret := _m.Called(ctx, orgId, clientId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgAccessList")
+		panic("no return value specified for ListServiceAccountAccessList")
 	}
 
-	var r0 admin.ListOrgAccessListApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListOrgAccessListApiRequest); ok {
+	var r0 admin.ListServiceAccountAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListServiceAccountAccessListApiRequest); ok {
 		r0 = rf(ctx, orgId, clientId)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrgAccessListApiRequest)
+		r0 = ret.Get(0).(admin.ListServiceAccountAccessListApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_ListOrgAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgAccessList'
-type ServiceAccountsApi_ListOrgAccessList_Call struct {
+// ServiceAccountsApi_ListServiceAccountAccessList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccountAccessList'
+type ServiceAccountsApi_ListServiceAccountAccessList_Call struct {
 	*mock.Call
 }
 
-// ListOrgAccessList is a helper method to define mock.On call
+// ListServiceAccountAccessList is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - clientId string
-func (_e *ServiceAccountsApi_Expecter) ListOrgAccessList(ctx any, orgId any, clientId any) *ServiceAccountsApi_ListOrgAccessList_Call {
-	return &ServiceAccountsApi_ListOrgAccessList_Call{Call: _e.mock.On("ListOrgAccessList", ctx, orgId, clientId)}
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccountAccessList(ctx any, orgId any, clientId any) *ServiceAccountsApi_ListServiceAccountAccessList_Call {
+	return &ServiceAccountsApi_ListServiceAccountAccessList_Call{Call: _e.mock.On("ListServiceAccountAccessList", ctx, orgId, clientId)}
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessList_Call) Run(run func(ctx context.Context, orgId string, clientId string)) *ServiceAccountsApi_ListOrgAccessList_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessList_Call) Run(run func(ctx context.Context, orgId string, clientId string)) *ServiceAccountsApi_ListServiceAccountAccessList_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessList_Call) Return(_a0 admin.ListOrgAccessListApiRequest) *ServiceAccountsApi_ListOrgAccessList_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessList_Call) Return(_a0 admin.ListServiceAccountAccessListApiRequest) *ServiceAccountsApi_ListServiceAccountAccessList_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessList_Call) RunAndReturn(run func(context.Context, string, string) admin.ListOrgAccessListApiRequest) *ServiceAccountsApi_ListOrgAccessList_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessList_Call) RunAndReturn(run func(context.Context, string, string) admin.ListServiceAccountAccessListApiRequest) *ServiceAccountsApi_ListServiceAccountAccessList_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgAccessListExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) ListOrgAccessListExecute(r admin.ListOrgAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+// ListServiceAccountAccessListExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) ListServiceAccountAccessListExecute(r admin.ListServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgAccessListExecute")
+		panic("no return value specified for ListServiceAccountAccessListExecute")
 	}
 
 	var r0 *admin.PaginatedServiceAccountIPAccessEntry
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListOrgAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListOrgAccessListApiRequest) *admin.PaginatedServiceAccountIPAccessEntry); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListServiceAccountAccessListApiRequest) *admin.PaginatedServiceAccountIPAccessEntry); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2965,7 +2803,7 @@ func (_m *ServiceAccountsApi) ListOrgAccessListExecute(r admin.ListOrgAccessList
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListOrgAccessListApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListServiceAccountAccessListApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2973,7 +2811,7 @@ func (_m *ServiceAccountsApi) ListOrgAccessListExecute(r admin.ListOrgAccessList
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListOrgAccessListApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListServiceAccountAccessListApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2982,143 +2820,305 @@ func (_m *ServiceAccountsApi) ListOrgAccessListExecute(r admin.ListOrgAccessList
 	return r0, r1, r2
 }
 
-// ServiceAccountsApi_ListOrgAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgAccessListExecute'
-type ServiceAccountsApi_ListOrgAccessListExecute_Call struct {
+// ServiceAccountsApi_ListServiceAccountAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccountAccessListExecute'
+type ServiceAccountsApi_ListServiceAccountAccessListExecute_Call struct {
 	*mock.Call
 }
 
-// ListOrgAccessListExecute is a helper method to define mock.On call
-//   - r admin.ListOrgAccessListApiRequest
-func (_e *ServiceAccountsApi_Expecter) ListOrgAccessListExecute(r any) *ServiceAccountsApi_ListOrgAccessListExecute_Call {
-	return &ServiceAccountsApi_ListOrgAccessListExecute_Call{Call: _e.mock.On("ListOrgAccessListExecute", r)}
+// ListServiceAccountAccessListExecute is a helper method to define mock.On call
+//   - r admin.ListServiceAccountAccessListApiRequest
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccountAccessListExecute(r any) *ServiceAccountsApi_ListServiceAccountAccessListExecute_Call {
+	return &ServiceAccountsApi_ListServiceAccountAccessListExecute_Call{Call: _e.mock.On("ListServiceAccountAccessListExecute", r)}
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessListExecute_Call) Run(run func(r admin.ListOrgAccessListApiRequest)) *ServiceAccountsApi_ListOrgAccessListExecute_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessListExecute_Call) Run(run func(r admin.ListServiceAccountAccessListApiRequest)) *ServiceAccountsApi_ListServiceAccountAccessListExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListOrgAccessListApiRequest))
+		run(args[0].(admin.ListServiceAccountAccessListApiRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessListExecute_Call) Return(_a0 *admin.PaginatedServiceAccountIPAccessEntry, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListOrgAccessListExecute_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessListExecute_Call) Return(_a0 *admin.PaginatedServiceAccountIPAccessEntry, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListServiceAccountAccessListExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessListExecute_Call) RunAndReturn(run func(admin.ListOrgAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)) *ServiceAccountsApi_ListOrgAccessListExecute_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessListExecute_Call) RunAndReturn(run func(admin.ListServiceAccountAccessListApiRequest) (*admin.PaginatedServiceAccountIPAccessEntry, *http.Response, error)) *ServiceAccountsApi_ListServiceAccountAccessListExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgAccessListWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) ListOrgAccessListWithParams(ctx context.Context, args *admin.ListOrgAccessListApiParams) admin.ListOrgAccessListApiRequest {
+// ListServiceAccountAccessListWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) ListServiceAccountAccessListWithParams(ctx context.Context, args *admin.ListServiceAccountAccessListApiParams) admin.ListServiceAccountAccessListApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgAccessListWithParams")
+		panic("no return value specified for ListServiceAccountAccessListWithParams")
 	}
 
-	var r0 admin.ListOrgAccessListApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrgAccessListApiParams) admin.ListOrgAccessListApiRequest); ok {
+	var r0 admin.ListServiceAccountAccessListApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListServiceAccountAccessListApiParams) admin.ListServiceAccountAccessListApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrgAccessListApiRequest)
+		r0 = ret.Get(0).(admin.ListServiceAccountAccessListApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_ListOrgAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgAccessListWithParams'
-type ServiceAccountsApi_ListOrgAccessListWithParams_Call struct {
+// ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccountAccessListWithParams'
+type ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call struct {
 	*mock.Call
 }
 
-// ListOrgAccessListWithParams is a helper method to define mock.On call
+// ListServiceAccountAccessListWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListOrgAccessListApiParams
-func (_e *ServiceAccountsApi_Expecter) ListOrgAccessListWithParams(ctx any, args any) *ServiceAccountsApi_ListOrgAccessListWithParams_Call {
-	return &ServiceAccountsApi_ListOrgAccessListWithParams_Call{Call: _e.mock.On("ListOrgAccessListWithParams", ctx, args)}
+//   - args *admin.ListServiceAccountAccessListApiParams
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccountAccessListWithParams(ctx any, args any) *ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call {
+	return &ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call{Call: _e.mock.On("ListServiceAccountAccessListWithParams", ctx, args)}
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrgAccessListApiParams)) *ServiceAccountsApi_ListOrgAccessListWithParams_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call) Run(run func(ctx context.Context, args *admin.ListServiceAccountAccessListApiParams)) *ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListOrgAccessListApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListServiceAccountAccessListApiParams))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessListWithParams_Call) Return(_a0 admin.ListOrgAccessListApiRequest) *ServiceAccountsApi_ListOrgAccessListWithParams_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call) Return(_a0 admin.ListServiceAccountAccessListApiRequest) *ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrgAccessListApiParams) admin.ListOrgAccessListApiRequest) *ServiceAccountsApi_ListOrgAccessListWithParams_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListServiceAccountAccessListApiParams) admin.ListServiceAccountAccessListApiRequest) *ServiceAccountsApi_ListServiceAccountAccessListWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgServiceAccounts provides a mock function with given fields: ctx, orgId
-func (_m *ServiceAccountsApi) ListOrgServiceAccounts(ctx context.Context, orgId string) admin.ListOrgServiceAccountsApiRequest {
-	ret := _m.Called(ctx, orgId)
+// ListServiceAccountProjects provides a mock function with given fields: ctx, orgId, clientId
+func (_m *ServiceAccountsApi) ListServiceAccountProjects(ctx context.Context, orgId string, clientId string) admin.ListServiceAccountProjectsApiRequest {
+	ret := _m.Called(ctx, orgId, clientId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgServiceAccounts")
+		panic("no return value specified for ListServiceAccountProjects")
 	}
 
-	var r0 admin.ListOrgServiceAccountsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListOrgServiceAccountsApiRequest); ok {
-		r0 = rf(ctx, orgId)
+	var r0 admin.ListServiceAccountProjectsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListServiceAccountProjectsApiRequest); ok {
+		r0 = rf(ctx, orgId, clientId)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrgServiceAccountsApiRequest)
+		r0 = ret.Get(0).(admin.ListServiceAccountProjectsApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_ListOrgServiceAccounts_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgServiceAccounts'
-type ServiceAccountsApi_ListOrgServiceAccounts_Call struct {
+// ServiceAccountsApi_ListServiceAccountProjects_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccountProjects'
+type ServiceAccountsApi_ListServiceAccountProjects_Call struct {
 	*mock.Call
 }
 
-// ListOrgServiceAccounts is a helper method to define mock.On call
+// ListServiceAccountProjects is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *ServiceAccountsApi_Expecter) ListOrgServiceAccounts(ctx any, orgId any) *ServiceAccountsApi_ListOrgServiceAccounts_Call {
-	return &ServiceAccountsApi_ListOrgServiceAccounts_Call{Call: _e.mock.On("ListOrgServiceAccounts", ctx, orgId)}
+//   - clientId string
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccountProjects(ctx any, orgId any, clientId any) *ServiceAccountsApi_ListServiceAccountProjects_Call {
+	return &ServiceAccountsApi_ListServiceAccountProjects_Call{Call: _e.mock.On("ListServiceAccountProjects", ctx, orgId, clientId)}
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccounts_Call) Run(run func(ctx context.Context, orgId string)) *ServiceAccountsApi_ListOrgServiceAccounts_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountProjects_Call) Run(run func(ctx context.Context, orgId string, clientId string)) *ServiceAccountsApi_ListServiceAccountProjects_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccountProjects_Call) Return(_a0 admin.ListServiceAccountProjectsApiRequest) *ServiceAccountsApi_ListServiceAccountProjects_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccountProjects_Call) RunAndReturn(run func(context.Context, string, string) admin.ListServiceAccountProjectsApiRequest) *ServiceAccountsApi_ListServiceAccountProjects_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListServiceAccountProjectsExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) ListServiceAccountProjectsExecute(r admin.ListServiceAccountProjectsApiRequest) (*admin.PaginatedServiceAccountGroup, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListServiceAccountProjectsExecute")
+	}
+
+	var r0 *admin.PaginatedServiceAccountGroup
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListServiceAccountProjectsApiRequest) (*admin.PaginatedServiceAccountGroup, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListServiceAccountProjectsApiRequest) *admin.PaginatedServiceAccountGroup); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedServiceAccountGroup)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListServiceAccountProjectsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListServiceAccountProjectsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ServiceAccountsApi_ListServiceAccountProjectsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccountProjectsExecute'
+type ServiceAccountsApi_ListServiceAccountProjectsExecute_Call struct {
+	*mock.Call
+}
+
+// ListServiceAccountProjectsExecute is a helper method to define mock.On call
+//   - r admin.ListServiceAccountProjectsApiRequest
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccountProjectsExecute(r any) *ServiceAccountsApi_ListServiceAccountProjectsExecute_Call {
+	return &ServiceAccountsApi_ListServiceAccountProjectsExecute_Call{Call: _e.mock.On("ListServiceAccountProjectsExecute", r)}
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccountProjectsExecute_Call) Run(run func(r admin.ListServiceAccountProjectsApiRequest)) *ServiceAccountsApi_ListServiceAccountProjectsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListServiceAccountProjectsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccountProjectsExecute_Call) Return(_a0 *admin.PaginatedServiceAccountGroup, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListServiceAccountProjectsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccountProjectsExecute_Call) RunAndReturn(run func(admin.ListServiceAccountProjectsApiRequest) (*admin.PaginatedServiceAccountGroup, *http.Response, error)) *ServiceAccountsApi_ListServiceAccountProjectsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListServiceAccountProjectsWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) ListServiceAccountProjectsWithParams(ctx context.Context, args *admin.ListServiceAccountProjectsApiParams) admin.ListServiceAccountProjectsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListServiceAccountProjectsWithParams")
+	}
+
+	var r0 admin.ListServiceAccountProjectsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListServiceAccountProjectsApiParams) admin.ListServiceAccountProjectsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListServiceAccountProjectsApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccountProjectsWithParams'
+type ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListServiceAccountProjectsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListServiceAccountProjectsApiParams
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccountProjectsWithParams(ctx any, args any) *ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call {
+	return &ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call{Call: _e.mock.On("ListServiceAccountProjectsWithParams", ctx, args)}
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListServiceAccountProjectsApiParams)) *ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListServiceAccountProjectsApiParams))
+	})
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call) Return(_a0 admin.ListServiceAccountProjectsApiRequest) *ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListServiceAccountProjectsApiParams) admin.ListServiceAccountProjectsApiRequest) *ServiceAccountsApi_ListServiceAccountProjectsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListServiceAccounts provides a mock function with given fields: ctx, orgId
+func (_m *ServiceAccountsApi) ListServiceAccounts(ctx context.Context, orgId string) admin.ListServiceAccountsApiRequest {
+	ret := _m.Called(ctx, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListServiceAccounts")
+	}
+
+	var r0 admin.ListServiceAccountsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListServiceAccountsApiRequest); ok {
+		r0 = rf(ctx, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.ListServiceAccountsApiRequest)
+	}
+
+	return r0
+}
+
+// ServiceAccountsApi_ListServiceAccounts_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccounts'
+type ServiceAccountsApi_ListServiceAccounts_Call struct {
+	*mock.Call
+}
+
+// ListServiceAccounts is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccounts(ctx any, orgId any) *ServiceAccountsApi_ListServiceAccounts_Call {
+	return &ServiceAccountsApi_ListServiceAccounts_Call{Call: _e.mock.On("ListServiceAccounts", ctx, orgId)}
+}
+
+func (_c *ServiceAccountsApi_ListServiceAccounts_Call) Run(run func(ctx context.Context, orgId string)) *ServiceAccountsApi_ListServiceAccounts_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccounts_Call) Return(_a0 admin.ListOrgServiceAccountsApiRequest) *ServiceAccountsApi_ListOrgServiceAccounts_Call {
+func (_c *ServiceAccountsApi_ListServiceAccounts_Call) Return(_a0 admin.ListServiceAccountsApiRequest) *ServiceAccountsApi_ListServiceAccounts_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccounts_Call) RunAndReturn(run func(context.Context, string) admin.ListOrgServiceAccountsApiRequest) *ServiceAccountsApi_ListOrgServiceAccounts_Call {
+func (_c *ServiceAccountsApi_ListServiceAccounts_Call) RunAndReturn(run func(context.Context, string) admin.ListServiceAccountsApiRequest) *ServiceAccountsApi_ListServiceAccounts_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgServiceAccountsExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) ListOrgServiceAccountsExecute(r admin.ListOrgServiceAccountsApiRequest) (*admin.PaginatedOrgServiceAccounts, *http.Response, error) {
+// ListServiceAccountsExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) ListServiceAccountsExecute(r admin.ListServiceAccountsApiRequest) (*admin.PaginatedOrgServiceAccounts, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgServiceAccountsExecute")
+		panic("no return value specified for ListServiceAccountsExecute")
 	}
 
 	var r0 *admin.PaginatedOrgServiceAccounts
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListOrgServiceAccountsApiRequest) (*admin.PaginatedOrgServiceAccounts, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListServiceAccountsApiRequest) (*admin.PaginatedOrgServiceAccounts, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListOrgServiceAccountsApiRequest) *admin.PaginatedOrgServiceAccounts); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListServiceAccountsApiRequest) *admin.PaginatedOrgServiceAccounts); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -3126,7 +3126,7 @@ func (_m *ServiceAccountsApi) ListOrgServiceAccountsExecute(r admin.ListOrgServi
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListOrgServiceAccountsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListServiceAccountsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -3134,7 +3134,7 @@ func (_m *ServiceAccountsApi) ListOrgServiceAccountsExecute(r admin.ListOrgServi
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListOrgServiceAccountsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListServiceAccountsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -3143,145 +3143,145 @@ func (_m *ServiceAccountsApi) ListOrgServiceAccountsExecute(r admin.ListOrgServi
 	return r0, r1, r2
 }
 
-// ServiceAccountsApi_ListOrgServiceAccountsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgServiceAccountsExecute'
-type ServiceAccountsApi_ListOrgServiceAccountsExecute_Call struct {
+// ServiceAccountsApi_ListServiceAccountsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccountsExecute'
+type ServiceAccountsApi_ListServiceAccountsExecute_Call struct {
 	*mock.Call
 }
 
-// ListOrgServiceAccountsExecute is a helper method to define mock.On call
-//   - r admin.ListOrgServiceAccountsApiRequest
-func (_e *ServiceAccountsApi_Expecter) ListOrgServiceAccountsExecute(r any) *ServiceAccountsApi_ListOrgServiceAccountsExecute_Call {
-	return &ServiceAccountsApi_ListOrgServiceAccountsExecute_Call{Call: _e.mock.On("ListOrgServiceAccountsExecute", r)}
+// ListServiceAccountsExecute is a helper method to define mock.On call
+//   - r admin.ListServiceAccountsApiRequest
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccountsExecute(r any) *ServiceAccountsApi_ListServiceAccountsExecute_Call {
+	return &ServiceAccountsApi_ListServiceAccountsExecute_Call{Call: _e.mock.On("ListServiceAccountsExecute", r)}
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccountsExecute_Call) Run(run func(r admin.ListOrgServiceAccountsApiRequest)) *ServiceAccountsApi_ListOrgServiceAccountsExecute_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountsExecute_Call) Run(run func(r admin.ListServiceAccountsApiRequest)) *ServiceAccountsApi_ListServiceAccountsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListOrgServiceAccountsApiRequest))
+		run(args[0].(admin.ListServiceAccountsApiRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccountsExecute_Call) Return(_a0 *admin.PaginatedOrgServiceAccounts, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListOrgServiceAccountsExecute_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountsExecute_Call) Return(_a0 *admin.PaginatedOrgServiceAccounts, _a1 *http.Response, _a2 error) *ServiceAccountsApi_ListServiceAccountsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccountsExecute_Call) RunAndReturn(run func(admin.ListOrgServiceAccountsApiRequest) (*admin.PaginatedOrgServiceAccounts, *http.Response, error)) *ServiceAccountsApi_ListOrgServiceAccountsExecute_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountsExecute_Call) RunAndReturn(run func(admin.ListServiceAccountsApiRequest) (*admin.PaginatedOrgServiceAccounts, *http.Response, error)) *ServiceAccountsApi_ListServiceAccountsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrgServiceAccountsWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) ListOrgServiceAccountsWithParams(ctx context.Context, args *admin.ListOrgServiceAccountsApiParams) admin.ListOrgServiceAccountsApiRequest {
+// ListServiceAccountsWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) ListServiceAccountsWithParams(ctx context.Context, args *admin.ListServiceAccountsApiParams) admin.ListServiceAccountsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrgServiceAccountsWithParams")
+		panic("no return value specified for ListServiceAccountsWithParams")
 	}
 
-	var r0 admin.ListOrgServiceAccountsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrgServiceAccountsApiParams) admin.ListOrgServiceAccountsApiRequest); ok {
+	var r0 admin.ListServiceAccountsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListServiceAccountsApiParams) admin.ListServiceAccountsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrgServiceAccountsApiRequest)
+		r0 = ret.Get(0).(admin.ListServiceAccountsApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgServiceAccountsWithParams'
-type ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call struct {
+// ServiceAccountsApi_ListServiceAccountsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServiceAccountsWithParams'
+type ServiceAccountsApi_ListServiceAccountsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListOrgServiceAccountsWithParams is a helper method to define mock.On call
+// ListServiceAccountsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListOrgServiceAccountsApiParams
-func (_e *ServiceAccountsApi_Expecter) ListOrgServiceAccountsWithParams(ctx any, args any) *ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call {
-	return &ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call{Call: _e.mock.On("ListOrgServiceAccountsWithParams", ctx, args)}
+//   - args *admin.ListServiceAccountsApiParams
+func (_e *ServiceAccountsApi_Expecter) ListServiceAccountsWithParams(ctx any, args any) *ServiceAccountsApi_ListServiceAccountsWithParams_Call {
+	return &ServiceAccountsApi_ListServiceAccountsWithParams_Call{Call: _e.mock.On("ListServiceAccountsWithParams", ctx, args)}
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrgServiceAccountsApiParams)) *ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListServiceAccountsApiParams)) *ServiceAccountsApi_ListServiceAccountsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListOrgServiceAccountsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListServiceAccountsApiParams))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call) Return(_a0 admin.ListOrgServiceAccountsApiRequest) *ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountsWithParams_Call) Return(_a0 admin.ListServiceAccountsApiRequest) *ServiceAccountsApi_ListServiceAccountsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrgServiceAccountsApiParams) admin.ListOrgServiceAccountsApiRequest) *ServiceAccountsApi_ListOrgServiceAccountsWithParams_Call {
+func (_c *ServiceAccountsApi_ListServiceAccountsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListServiceAccountsApiParams) admin.ListServiceAccountsApiRequest) *ServiceAccountsApi_ListServiceAccountsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateGroupServiceAccount provides a mock function with given fields: ctx, clientId, groupId, groupServiceAccountUpdateRequest
-func (_m *ServiceAccountsApi) UpdateGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *admin.GroupServiceAccountUpdateRequest) admin.UpdateGroupServiceAccountApiRequest {
+// UpdateProjectServiceAccount provides a mock function with given fields: ctx, clientId, groupId, groupServiceAccountUpdateRequest
+func (_m *ServiceAccountsApi) UpdateProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *admin.GroupServiceAccountUpdateRequest) admin.UpdateProjectServiceAccountApiRequest {
 	ret := _m.Called(ctx, clientId, groupId, groupServiceAccountUpdateRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateGroupServiceAccount")
+		panic("no return value specified for UpdateProjectServiceAccount")
 	}
 
-	var r0 admin.UpdateGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.GroupServiceAccountUpdateRequest) admin.UpdateGroupServiceAccountApiRequest); ok {
+	var r0 admin.UpdateProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.GroupServiceAccountUpdateRequest) admin.UpdateProjectServiceAccountApiRequest); ok {
 		r0 = rf(ctx, clientId, groupId, groupServiceAccountUpdateRequest)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateGroupServiceAccountApiRequest)
+		r0 = ret.Get(0).(admin.UpdateProjectServiceAccountApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_UpdateGroupServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupServiceAccount'
-type ServiceAccountsApi_UpdateGroupServiceAccount_Call struct {
+// ServiceAccountsApi_UpdateProjectServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectServiceAccount'
+type ServiceAccountsApi_UpdateProjectServiceAccount_Call struct {
 	*mock.Call
 }
 
-// UpdateGroupServiceAccount is a helper method to define mock.On call
+// UpdateProjectServiceAccount is a helper method to define mock.On call
 //   - ctx context.Context
 //   - clientId string
 //   - groupId string
 //   - groupServiceAccountUpdateRequest *admin.GroupServiceAccountUpdateRequest
-func (_e *ServiceAccountsApi_Expecter) UpdateGroupServiceAccount(ctx any, clientId any, groupId any, groupServiceAccountUpdateRequest any) *ServiceAccountsApi_UpdateGroupServiceAccount_Call {
-	return &ServiceAccountsApi_UpdateGroupServiceAccount_Call{Call: _e.mock.On("UpdateGroupServiceAccount", ctx, clientId, groupId, groupServiceAccountUpdateRequest)}
+func (_e *ServiceAccountsApi_Expecter) UpdateProjectServiceAccount(ctx any, clientId any, groupId any, groupServiceAccountUpdateRequest any) *ServiceAccountsApi_UpdateProjectServiceAccount_Call {
+	return &ServiceAccountsApi_UpdateProjectServiceAccount_Call{Call: _e.mock.On("UpdateProjectServiceAccount", ctx, clientId, groupId, groupServiceAccountUpdateRequest)}
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccount_Call) Run(run func(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *admin.GroupServiceAccountUpdateRequest)) *ServiceAccountsApi_UpdateGroupServiceAccount_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccount_Call) Run(run func(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *admin.GroupServiceAccountUpdateRequest)) *ServiceAccountsApi_UpdateProjectServiceAccount_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.GroupServiceAccountUpdateRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccount_Call) Return(_a0 admin.UpdateGroupServiceAccountApiRequest) *ServiceAccountsApi_UpdateGroupServiceAccount_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccount_Call) Return(_a0 admin.UpdateProjectServiceAccountApiRequest) *ServiceAccountsApi_UpdateProjectServiceAccount_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccount_Call) RunAndReturn(run func(context.Context, string, string, *admin.GroupServiceAccountUpdateRequest) admin.UpdateGroupServiceAccountApiRequest) *ServiceAccountsApi_UpdateGroupServiceAccount_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccount_Call) RunAndReturn(run func(context.Context, string, string, *admin.GroupServiceAccountUpdateRequest) admin.UpdateProjectServiceAccountApiRequest) *ServiceAccountsApi_UpdateProjectServiceAccount_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateGroupServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) UpdateGroupServiceAccountExecute(r admin.UpdateGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error) {
+// UpdateProjectServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) UpdateProjectServiceAccountExecute(r admin.UpdateProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateGroupServiceAccountExecute")
+		panic("no return value specified for UpdateProjectServiceAccountExecute")
 	}
 
 	var r0 *admin.GroupServiceAccount
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateGroupServiceAccountApiRequest) *admin.GroupServiceAccount); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateProjectServiceAccountApiRequest) *admin.GroupServiceAccount); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -3289,7 +3289,7 @@ func (_m *ServiceAccountsApi) UpdateGroupServiceAccountExecute(r admin.UpdateGro
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateGroupServiceAccountApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateProjectServiceAccountApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -3297,7 +3297,7 @@ func (_m *ServiceAccountsApi) UpdateGroupServiceAccountExecute(r admin.UpdateGro
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateGroupServiceAccountApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateProjectServiceAccountApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -3306,145 +3306,145 @@ func (_m *ServiceAccountsApi) UpdateGroupServiceAccountExecute(r admin.UpdateGro
 	return r0, r1, r2
 }
 
-// ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupServiceAccountExecute'
-type ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call struct {
+// ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectServiceAccountExecute'
+type ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateGroupServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.UpdateGroupServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) UpdateGroupServiceAccountExecute(r any) *ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call {
-	return &ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call{Call: _e.mock.On("UpdateGroupServiceAccountExecute", r)}
+// UpdateProjectServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.UpdateProjectServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) UpdateProjectServiceAccountExecute(r any) *ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call {
+	return &ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call{Call: _e.mock.On("UpdateProjectServiceAccountExecute", r)}
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call) Run(run func(r admin.UpdateGroupServiceAccountApiRequest)) *ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call) Run(run func(r admin.UpdateProjectServiceAccountApiRequest)) *ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateGroupServiceAccountApiRequest))
+		run(args[0].(admin.UpdateProjectServiceAccountApiRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call) Return(_a0 *admin.GroupServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call) Return(_a0 *admin.GroupServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call) RunAndReturn(run func(admin.UpdateGroupServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)) *ServiceAccountsApi_UpdateGroupServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call) RunAndReturn(run func(admin.UpdateProjectServiceAccountApiRequest) (*admin.GroupServiceAccount, *http.Response, error)) *ServiceAccountsApi_UpdateProjectServiceAccountExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateGroupServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) UpdateGroupServiceAccountWithParams(ctx context.Context, args *admin.UpdateGroupServiceAccountApiParams) admin.UpdateGroupServiceAccountApiRequest {
+// UpdateProjectServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) UpdateProjectServiceAccountWithParams(ctx context.Context, args *admin.UpdateProjectServiceAccountApiParams) admin.UpdateProjectServiceAccountApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateGroupServiceAccountWithParams")
+		panic("no return value specified for UpdateProjectServiceAccountWithParams")
 	}
 
-	var r0 admin.UpdateGroupServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupServiceAccountApiParams) admin.UpdateGroupServiceAccountApiRequest); ok {
+	var r0 admin.UpdateProjectServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateProjectServiceAccountApiParams) admin.UpdateProjectServiceAccountApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateGroupServiceAccountApiRequest)
+		r0 = ret.Get(0).(admin.UpdateProjectServiceAccountApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupServiceAccountWithParams'
-type ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call struct {
+// ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectServiceAccountWithParams'
+type ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateGroupServiceAccountWithParams is a helper method to define mock.On call
+// UpdateProjectServiceAccountWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateGroupServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) UpdateGroupServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call{Call: _e.mock.On("UpdateGroupServiceAccountWithParams", ctx, args)}
+//   - args *admin.UpdateProjectServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) UpdateProjectServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call{Call: _e.mock.On("UpdateProjectServiceAccountWithParams", ctx, args)}
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupServiceAccountApiParams)) *ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateProjectServiceAccountApiParams)) *ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateGroupServiceAccountApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateProjectServiceAccountApiParams))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call) Return(_a0 admin.UpdateGroupServiceAccountApiRequest) *ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call) Return(_a0 admin.UpdateProjectServiceAccountApiRequest) *ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupServiceAccountApiParams) admin.UpdateGroupServiceAccountApiRequest) *ServiceAccountsApi_UpdateGroupServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateProjectServiceAccountApiParams) admin.UpdateProjectServiceAccountApiRequest) *ServiceAccountsApi_UpdateProjectServiceAccountWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateOrgServiceAccount provides a mock function with given fields: ctx, clientId, orgId, orgServiceAccountUpdateRequest
-func (_m *ServiceAccountsApi) UpdateOrgServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *admin.OrgServiceAccountUpdateRequest) admin.UpdateOrgServiceAccountApiRequest {
+// UpdateServiceAccount provides a mock function with given fields: ctx, clientId, orgId, orgServiceAccountUpdateRequest
+func (_m *ServiceAccountsApi) UpdateServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *admin.OrgServiceAccountUpdateRequest) admin.UpdateServiceAccountApiRequest {
 	ret := _m.Called(ctx, clientId, orgId, orgServiceAccountUpdateRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateOrgServiceAccount")
+		panic("no return value specified for UpdateServiceAccount")
 	}
 
-	var r0 admin.UpdateOrgServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.OrgServiceAccountUpdateRequest) admin.UpdateOrgServiceAccountApiRequest); ok {
+	var r0 admin.UpdateServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.OrgServiceAccountUpdateRequest) admin.UpdateServiceAccountApiRequest); ok {
 		r0 = rf(ctx, clientId, orgId, orgServiceAccountUpdateRequest)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateOrgServiceAccountApiRequest)
+		r0 = ret.Get(0).(admin.UpdateServiceAccountApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_UpdateOrgServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgServiceAccount'
-type ServiceAccountsApi_UpdateOrgServiceAccount_Call struct {
+// ServiceAccountsApi_UpdateServiceAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateServiceAccount'
+type ServiceAccountsApi_UpdateServiceAccount_Call struct {
 	*mock.Call
 }
 
-// UpdateOrgServiceAccount is a helper method to define mock.On call
+// UpdateServiceAccount is a helper method to define mock.On call
 //   - ctx context.Context
 //   - clientId string
 //   - orgId string
 //   - orgServiceAccountUpdateRequest *admin.OrgServiceAccountUpdateRequest
-func (_e *ServiceAccountsApi_Expecter) UpdateOrgServiceAccount(ctx any, clientId any, orgId any, orgServiceAccountUpdateRequest any) *ServiceAccountsApi_UpdateOrgServiceAccount_Call {
-	return &ServiceAccountsApi_UpdateOrgServiceAccount_Call{Call: _e.mock.On("UpdateOrgServiceAccount", ctx, clientId, orgId, orgServiceAccountUpdateRequest)}
+func (_e *ServiceAccountsApi_Expecter) UpdateServiceAccount(ctx any, clientId any, orgId any, orgServiceAccountUpdateRequest any) *ServiceAccountsApi_UpdateServiceAccount_Call {
+	return &ServiceAccountsApi_UpdateServiceAccount_Call{Call: _e.mock.On("UpdateServiceAccount", ctx, clientId, orgId, orgServiceAccountUpdateRequest)}
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccount_Call) Run(run func(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *admin.OrgServiceAccountUpdateRequest)) *ServiceAccountsApi_UpdateOrgServiceAccount_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccount_Call) Run(run func(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *admin.OrgServiceAccountUpdateRequest)) *ServiceAccountsApi_UpdateServiceAccount_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.OrgServiceAccountUpdateRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccount_Call) Return(_a0 admin.UpdateOrgServiceAccountApiRequest) *ServiceAccountsApi_UpdateOrgServiceAccount_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccount_Call) Return(_a0 admin.UpdateServiceAccountApiRequest) *ServiceAccountsApi_UpdateServiceAccount_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccount_Call) RunAndReturn(run func(context.Context, string, string, *admin.OrgServiceAccountUpdateRequest) admin.UpdateOrgServiceAccountApiRequest) *ServiceAccountsApi_UpdateOrgServiceAccount_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccount_Call) RunAndReturn(run func(context.Context, string, string, *admin.OrgServiceAccountUpdateRequest) admin.UpdateServiceAccountApiRequest) *ServiceAccountsApi_UpdateServiceAccount_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateOrgServiceAccountExecute provides a mock function with given fields: r
-func (_m *ServiceAccountsApi) UpdateOrgServiceAccountExecute(r admin.UpdateOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error) {
+// UpdateServiceAccountExecute provides a mock function with given fields: r
+func (_m *ServiceAccountsApi) UpdateServiceAccountExecute(r admin.UpdateServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateOrgServiceAccountExecute")
+		panic("no return value specified for UpdateServiceAccountExecute")
 	}
 
 	var r0 *admin.OrgServiceAccount
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateOrgServiceAccountApiRequest) *admin.OrgServiceAccount); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateServiceAccountApiRequest) *admin.OrgServiceAccount); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -3452,7 +3452,7 @@ func (_m *ServiceAccountsApi) UpdateOrgServiceAccountExecute(r admin.UpdateOrgSe
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateOrgServiceAccountApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateServiceAccountApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -3460,7 +3460,7 @@ func (_m *ServiceAccountsApi) UpdateOrgServiceAccountExecute(r admin.UpdateOrgSe
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateOrgServiceAccountApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateServiceAccountApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -3469,77 +3469,77 @@ func (_m *ServiceAccountsApi) UpdateOrgServiceAccountExecute(r admin.UpdateOrgSe
 	return r0, r1, r2
 }
 
-// ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgServiceAccountExecute'
-type ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call struct {
+// ServiceAccountsApi_UpdateServiceAccountExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateServiceAccountExecute'
+type ServiceAccountsApi_UpdateServiceAccountExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateOrgServiceAccountExecute is a helper method to define mock.On call
-//   - r admin.UpdateOrgServiceAccountApiRequest
-func (_e *ServiceAccountsApi_Expecter) UpdateOrgServiceAccountExecute(r any) *ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call {
-	return &ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call{Call: _e.mock.On("UpdateOrgServiceAccountExecute", r)}
+// UpdateServiceAccountExecute is a helper method to define mock.On call
+//   - r admin.UpdateServiceAccountApiRequest
+func (_e *ServiceAccountsApi_Expecter) UpdateServiceAccountExecute(r any) *ServiceAccountsApi_UpdateServiceAccountExecute_Call {
+	return &ServiceAccountsApi_UpdateServiceAccountExecute_Call{Call: _e.mock.On("UpdateServiceAccountExecute", r)}
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call) Run(run func(r admin.UpdateOrgServiceAccountApiRequest)) *ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccountExecute_Call) Run(run func(r admin.UpdateServiceAccountApiRequest)) *ServiceAccountsApi_UpdateServiceAccountExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateOrgServiceAccountApiRequest))
+		run(args[0].(admin.UpdateServiceAccountApiRequest))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call) Return(_a0 *admin.OrgServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccountExecute_Call) Return(_a0 *admin.OrgServiceAccount, _a1 *http.Response, _a2 error) *ServiceAccountsApi_UpdateServiceAccountExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call) RunAndReturn(run func(admin.UpdateOrgServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)) *ServiceAccountsApi_UpdateOrgServiceAccountExecute_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccountExecute_Call) RunAndReturn(run func(admin.UpdateServiceAccountApiRequest) (*admin.OrgServiceAccount, *http.Response, error)) *ServiceAccountsApi_UpdateServiceAccountExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateOrgServiceAccountWithParams provides a mock function with given fields: ctx, args
-func (_m *ServiceAccountsApi) UpdateOrgServiceAccountWithParams(ctx context.Context, args *admin.UpdateOrgServiceAccountApiParams) admin.UpdateOrgServiceAccountApiRequest {
+// UpdateServiceAccountWithParams provides a mock function with given fields: ctx, args
+func (_m *ServiceAccountsApi) UpdateServiceAccountWithParams(ctx context.Context, args *admin.UpdateServiceAccountApiParams) admin.UpdateServiceAccountApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateOrgServiceAccountWithParams")
+		panic("no return value specified for UpdateServiceAccountWithParams")
 	}
 
-	var r0 admin.UpdateOrgServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateOrgServiceAccountApiParams) admin.UpdateOrgServiceAccountApiRequest); ok {
+	var r0 admin.UpdateServiceAccountApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateServiceAccountApiParams) admin.UpdateServiceAccountApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateOrgServiceAccountApiRequest)
+		r0 = ret.Get(0).(admin.UpdateServiceAccountApiRequest)
 	}
 
 	return r0
 }
 
-// ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgServiceAccountWithParams'
-type ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call struct {
+// ServiceAccountsApi_UpdateServiceAccountWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateServiceAccountWithParams'
+type ServiceAccountsApi_UpdateServiceAccountWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateOrgServiceAccountWithParams is a helper method to define mock.On call
+// UpdateServiceAccountWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateOrgServiceAccountApiParams
-func (_e *ServiceAccountsApi_Expecter) UpdateOrgServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call {
-	return &ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call{Call: _e.mock.On("UpdateOrgServiceAccountWithParams", ctx, args)}
+//   - args *admin.UpdateServiceAccountApiParams
+func (_e *ServiceAccountsApi_Expecter) UpdateServiceAccountWithParams(ctx any, args any) *ServiceAccountsApi_UpdateServiceAccountWithParams_Call {
+	return &ServiceAccountsApi_UpdateServiceAccountWithParams_Call{Call: _e.mock.On("UpdateServiceAccountWithParams", ctx, args)}
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateOrgServiceAccountApiParams)) *ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccountWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateServiceAccountApiParams)) *ServiceAccountsApi_UpdateServiceAccountWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateOrgServiceAccountApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateServiceAccountApiParams))
 	})
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call) Return(_a0 admin.UpdateOrgServiceAccountApiRequest) *ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccountWithParams_Call) Return(_a0 admin.UpdateServiceAccountApiRequest) *ServiceAccountsApi_UpdateServiceAccountWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateOrgServiceAccountApiParams) admin.UpdateOrgServiceAccountApiRequest) *ServiceAccountsApi_UpdateOrgServiceAccountWithParams_Call {
+func (_c *ServiceAccountsApi_UpdateServiceAccountWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateServiceAccountApiParams) admin.UpdateServiceAccountApiRequest) *ServiceAccountsApi_UpdateServiceAccountWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

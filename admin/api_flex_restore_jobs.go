@@ -13,7 +13,7 @@ import (
 type FlexRestoreJobsApi interface {
 
 	/*
-		CreateFlexRestoreJob Restore One Snapshot of One Flex Cluster
+		CreateFlexBackupRestoreJob Restore One Snapshot of One Flex Cluster
 
 		Restores one snapshot of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -21,24 +21,24 @@ type FlexRestoreJobsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param name Human-readable label that identifies the flex cluster whose snapshot you want to restore.
 		@param flexBackupRestoreJobCreate20241113 Restores one snapshot of one flex cluster from the specified project.
-		@return CreateFlexRestoreJobApiRequest
+		@return CreateFlexBackupRestoreJobApiRequest
 	*/
-	CreateFlexRestoreJob(ctx context.Context, groupId string, name string, flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113) CreateFlexRestoreJobApiRequest
+	CreateFlexBackupRestoreJob(ctx context.Context, groupId string, name string, flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113) CreateFlexBackupRestoreJobApiRequest
 	/*
-		CreateFlexRestoreJob Restore One Snapshot of One Flex Cluster
+		CreateFlexBackupRestoreJob Restore One Snapshot of One Flex Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateFlexRestoreJobApiParams - Parameters for the request
-		@return CreateFlexRestoreJobApiRequest
+		@param CreateFlexBackupRestoreJobApiParams - Parameters for the request
+		@return CreateFlexBackupRestoreJobApiRequest
 	*/
-	CreateFlexRestoreJobWithParams(ctx context.Context, args *CreateFlexRestoreJobApiParams) CreateFlexRestoreJobApiRequest
+	CreateFlexBackupRestoreJobWithParams(ctx context.Context, args *CreateFlexBackupRestoreJobApiParams) CreateFlexBackupRestoreJobApiRequest
 
 	// Method available only for mocking purposes
-	CreateFlexRestoreJobExecute(r CreateFlexRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error)
+	CreateFlexBackupRestoreJobExecute(r CreateFlexBackupRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error)
 
 	/*
-		GetFlexRestoreJob Return One Restore Job for One Flex Cluster
+		GetFlexBackupRestoreJob Return One Restore Job for One Flex Cluster
 
 		Returns one restore job for one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -46,51 +46,51 @@ type FlexRestoreJobsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param name Human-readable label that identifies the flex cluster.
 		@param restoreJobId Unique 24-hexadecimal digit string that identifies the restore job to return.
-		@return GetFlexRestoreJobApiRequest
+		@return GetFlexBackupRestoreJobApiRequest
 	*/
-	GetFlexRestoreJob(ctx context.Context, groupId string, name string, restoreJobId string) GetFlexRestoreJobApiRequest
+	GetFlexBackupRestoreJob(ctx context.Context, groupId string, name string, restoreJobId string) GetFlexBackupRestoreJobApiRequest
 	/*
-		GetFlexRestoreJob Return One Restore Job for One Flex Cluster
+		GetFlexBackupRestoreJob Return One Restore Job for One Flex Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetFlexRestoreJobApiParams - Parameters for the request
-		@return GetFlexRestoreJobApiRequest
+		@param GetFlexBackupRestoreJobApiParams - Parameters for the request
+		@return GetFlexBackupRestoreJobApiRequest
 	*/
-	GetFlexRestoreJobWithParams(ctx context.Context, args *GetFlexRestoreJobApiParams) GetFlexRestoreJobApiRequest
+	GetFlexBackupRestoreJobWithParams(ctx context.Context, args *GetFlexBackupRestoreJobApiParams) GetFlexBackupRestoreJobApiRequest
 
 	// Method available only for mocking purposes
-	GetFlexRestoreJobExecute(r GetFlexRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error)
+	GetFlexBackupRestoreJobExecute(r GetFlexBackupRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error)
 
 	/*
-		ListFlexRestoreJobs Return All Restore Jobs for One Flex Cluster
+		ListFlexBackupRestoreJobs Return All Restore Jobs for One Flex Cluster
 
 		Returns all restore jobs for one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param name Human-readable label that identifies the flex cluster.
-		@return ListFlexRestoreJobsApiRequest
+		@return ListFlexBackupRestoreJobsApiRequest
 	*/
-	ListFlexRestoreJobs(ctx context.Context, groupId string, name string) ListFlexRestoreJobsApiRequest
+	ListFlexBackupRestoreJobs(ctx context.Context, groupId string, name string) ListFlexBackupRestoreJobsApiRequest
 	/*
-		ListFlexRestoreJobs Return All Restore Jobs for One Flex Cluster
+		ListFlexBackupRestoreJobs Return All Restore Jobs for One Flex Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListFlexRestoreJobsApiParams - Parameters for the request
-		@return ListFlexRestoreJobsApiRequest
+		@param ListFlexBackupRestoreJobsApiParams - Parameters for the request
+		@return ListFlexBackupRestoreJobsApiRequest
 	*/
-	ListFlexRestoreJobsWithParams(ctx context.Context, args *ListFlexRestoreJobsApiParams) ListFlexRestoreJobsApiRequest
+	ListFlexBackupRestoreJobsWithParams(ctx context.Context, args *ListFlexBackupRestoreJobsApiParams) ListFlexBackupRestoreJobsApiRequest
 
 	// Method available only for mocking purposes
-	ListFlexRestoreJobsExecute(r ListFlexRestoreJobsApiRequest) (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error)
+	ListFlexBackupRestoreJobsExecute(r ListFlexBackupRestoreJobsApiRequest) (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error)
 }
 
 // FlexRestoreJobsApiService FlexRestoreJobsApi service
 type FlexRestoreJobsApiService service
 
-type CreateFlexRestoreJobApiRequest struct {
+type CreateFlexBackupRestoreJobApiRequest struct {
 	ctx                                context.Context
 	ApiService                         FlexRestoreJobsApi
 	groupId                            string
@@ -98,14 +98,14 @@ type CreateFlexRestoreJobApiRequest struct {
 	flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113
 }
 
-type CreateFlexRestoreJobApiParams struct {
+type CreateFlexBackupRestoreJobApiParams struct {
 	GroupId                            string
 	Name                               string
 	FlexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113
 }
 
-func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobWithParams(ctx context.Context, args *CreateFlexRestoreJobApiParams) CreateFlexRestoreJobApiRequest {
-	return CreateFlexRestoreJobApiRequest{
+func (a *FlexRestoreJobsApiService) CreateFlexBackupRestoreJobWithParams(ctx context.Context, args *CreateFlexBackupRestoreJobApiParams) CreateFlexBackupRestoreJobApiRequest {
+	return CreateFlexBackupRestoreJobApiRequest{
 		ApiService:                         a,
 		ctx:                                ctx,
 		groupId:                            args.GroupId,
@@ -114,22 +114,22 @@ func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobWithParams(ctx context.C
 	}
 }
 
-func (r CreateFlexRestoreJobApiRequest) Execute() (*FlexBackupRestoreJob20241113, *http.Response, error) {
-	return r.ApiService.CreateFlexRestoreJobExecute(r)
+func (r CreateFlexBackupRestoreJobApiRequest) Execute() (*FlexBackupRestoreJob20241113, *http.Response, error) {
+	return r.ApiService.CreateFlexBackupRestoreJobExecute(r)
 }
 
 /*
-CreateFlexRestoreJob Restore One Snapshot of One Flex Cluster
+CreateFlexBackupRestoreJob Restore One Snapshot of One Flex Cluster
 
 Restores one snapshot of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param name Human-readable label that identifies the flex cluster whose snapshot you want to restore.
-	@return CreateFlexRestoreJobApiRequest
+	@return CreateFlexBackupRestoreJobApiRequest
 */
-func (a *FlexRestoreJobsApiService) CreateFlexRestoreJob(ctx context.Context, groupId string, name string, flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113) CreateFlexRestoreJobApiRequest {
-	return CreateFlexRestoreJobApiRequest{
+func (a *FlexRestoreJobsApiService) CreateFlexBackupRestoreJob(ctx context.Context, groupId string, name string, flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113) CreateFlexBackupRestoreJobApiRequest {
+	return CreateFlexBackupRestoreJobApiRequest{
 		ApiService:                         a,
 		ctx:                                ctx,
 		groupId:                            groupId,
@@ -138,10 +138,10 @@ func (a *FlexRestoreJobsApiService) CreateFlexRestoreJob(ctx context.Context, gr
 	}
 }
 
-// CreateFlexRestoreJobExecute executes the request
+// CreateFlexBackupRestoreJobExecute executes the request
 //
 //	@return FlexBackupRestoreJob20241113
-func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobExecute(r CreateFlexRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
+func (a *FlexRestoreJobsApiService) CreateFlexBackupRestoreJobExecute(r CreateFlexBackupRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -149,7 +149,7 @@ func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobExecute(r CreateFlexRest
 		localVarReturnValue *FlexBackupRestoreJob20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.CreateFlexRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.CreateFlexBackupRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -222,7 +222,7 @@ func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobExecute(r CreateFlexRest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetFlexRestoreJobApiRequest struct {
+type GetFlexBackupRestoreJobApiRequest struct {
 	ctx          context.Context
 	ApiService   FlexRestoreJobsApi
 	groupId      string
@@ -230,14 +230,14 @@ type GetFlexRestoreJobApiRequest struct {
 	restoreJobId string
 }
 
-type GetFlexRestoreJobApiParams struct {
+type GetFlexBackupRestoreJobApiParams struct {
 	GroupId      string
 	Name         string
 	RestoreJobId string
 }
 
-func (a *FlexRestoreJobsApiService) GetFlexRestoreJobWithParams(ctx context.Context, args *GetFlexRestoreJobApiParams) GetFlexRestoreJobApiRequest {
-	return GetFlexRestoreJobApiRequest{
+func (a *FlexRestoreJobsApiService) GetFlexBackupRestoreJobWithParams(ctx context.Context, args *GetFlexBackupRestoreJobApiParams) GetFlexBackupRestoreJobApiRequest {
+	return GetFlexBackupRestoreJobApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -246,12 +246,12 @@ func (a *FlexRestoreJobsApiService) GetFlexRestoreJobWithParams(ctx context.Cont
 	}
 }
 
-func (r GetFlexRestoreJobApiRequest) Execute() (*FlexBackupRestoreJob20241113, *http.Response, error) {
-	return r.ApiService.GetFlexRestoreJobExecute(r)
+func (r GetFlexBackupRestoreJobApiRequest) Execute() (*FlexBackupRestoreJob20241113, *http.Response, error) {
+	return r.ApiService.GetFlexBackupRestoreJobExecute(r)
 }
 
 /*
-GetFlexRestoreJob Return One Restore Job for One Flex Cluster
+GetFlexBackupRestoreJob Return One Restore Job for One Flex Cluster
 
 Returns one restore job for one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -259,10 +259,10 @@ Returns one restore job for one flex cluster from the specified project. To use 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param name Human-readable label that identifies the flex cluster.
 	@param restoreJobId Unique 24-hexadecimal digit string that identifies the restore job to return.
-	@return GetFlexRestoreJobApiRequest
+	@return GetFlexBackupRestoreJobApiRequest
 */
-func (a *FlexRestoreJobsApiService) GetFlexRestoreJob(ctx context.Context, groupId string, name string, restoreJobId string) GetFlexRestoreJobApiRequest {
-	return GetFlexRestoreJobApiRequest{
+func (a *FlexRestoreJobsApiService) GetFlexBackupRestoreJob(ctx context.Context, groupId string, name string, restoreJobId string) GetFlexBackupRestoreJobApiRequest {
+	return GetFlexBackupRestoreJobApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      groupId,
@@ -271,10 +271,10 @@ func (a *FlexRestoreJobsApiService) GetFlexRestoreJob(ctx context.Context, group
 	}
 }
 
-// GetFlexRestoreJobExecute executes the request
+// GetFlexBackupRestoreJobExecute executes the request
 //
 //	@return FlexBackupRestoreJob20241113
-func (a *FlexRestoreJobsApiService) GetFlexRestoreJobExecute(r GetFlexRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
+func (a *FlexRestoreJobsApiService) GetFlexBackupRestoreJobExecute(r GetFlexBackupRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -282,7 +282,7 @@ func (a *FlexRestoreJobsApiService) GetFlexRestoreJobExecute(r GetFlexRestoreJob
 		localVarReturnValue *FlexBackupRestoreJob20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.GetFlexRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.GetFlexBackupRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -354,7 +354,7 @@ func (a *FlexRestoreJobsApiService) GetFlexRestoreJobExecute(r GetFlexRestoreJob
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListFlexRestoreJobsApiRequest struct {
+type ListFlexBackupRestoreJobsApiRequest struct {
 	ctx          context.Context
 	ApiService   FlexRestoreJobsApi
 	groupId      string
@@ -364,7 +364,7 @@ type ListFlexRestoreJobsApiRequest struct {
 	pageNum      *int
 }
 
-type ListFlexRestoreJobsApiParams struct {
+type ListFlexBackupRestoreJobsApiParams struct {
 	GroupId      string
 	Name         string
 	IncludeCount *bool
@@ -372,8 +372,8 @@ type ListFlexRestoreJobsApiParams struct {
 	PageNum      *int
 }
 
-func (a *FlexRestoreJobsApiService) ListFlexRestoreJobsWithParams(ctx context.Context, args *ListFlexRestoreJobsApiParams) ListFlexRestoreJobsApiRequest {
-	return ListFlexRestoreJobsApiRequest{
+func (a *FlexRestoreJobsApiService) ListFlexBackupRestoreJobsWithParams(ctx context.Context, args *ListFlexBackupRestoreJobsApiParams) ListFlexBackupRestoreJobsApiRequest {
+	return ListFlexBackupRestoreJobsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -385,39 +385,39 @@ func (a *FlexRestoreJobsApiService) ListFlexRestoreJobsWithParams(ctx context.Co
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListFlexRestoreJobsApiRequest) IncludeCount(includeCount bool) ListFlexRestoreJobsApiRequest {
+func (r ListFlexBackupRestoreJobsApiRequest) IncludeCount(includeCount bool) ListFlexBackupRestoreJobsApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r ListFlexRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListFlexRestoreJobsApiRequest {
+func (r ListFlexBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListFlexBackupRestoreJobsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListFlexRestoreJobsApiRequest) PageNum(pageNum int) ListFlexRestoreJobsApiRequest {
+func (r ListFlexBackupRestoreJobsApiRequest) PageNum(pageNum int) ListFlexBackupRestoreJobsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r ListFlexRestoreJobsApiRequest) Execute() (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error) {
-	return r.ApiService.ListFlexRestoreJobsExecute(r)
+func (r ListFlexBackupRestoreJobsApiRequest) Execute() (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error) {
+	return r.ApiService.ListFlexBackupRestoreJobsExecute(r)
 }
 
 /*
-ListFlexRestoreJobs Return All Restore Jobs for One Flex Cluster
+ListFlexBackupRestoreJobs Return All Restore Jobs for One Flex Cluster
 
 Returns all restore jobs for one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param name Human-readable label that identifies the flex cluster.
-	@return ListFlexRestoreJobsApiRequest
+	@return ListFlexBackupRestoreJobsApiRequest
 */
-func (a *FlexRestoreJobsApiService) ListFlexRestoreJobs(ctx context.Context, groupId string, name string) ListFlexRestoreJobsApiRequest {
-	return ListFlexRestoreJobsApiRequest{
+func (a *FlexRestoreJobsApiService) ListFlexBackupRestoreJobs(ctx context.Context, groupId string, name string) ListFlexBackupRestoreJobsApiRequest {
+	return ListFlexBackupRestoreJobsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -425,10 +425,10 @@ func (a *FlexRestoreJobsApiService) ListFlexRestoreJobs(ctx context.Context, gro
 	}
 }
 
-// ListFlexRestoreJobsExecute executes the request
+// ListFlexBackupRestoreJobsExecute executes the request
 //
 //	@return PaginatedApiAtlasFlexBackupRestoreJob20241113
-func (a *FlexRestoreJobsApiService) ListFlexRestoreJobsExecute(r ListFlexRestoreJobsApiRequest) (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error) {
+func (a *FlexRestoreJobsApiService) ListFlexBackupRestoreJobsExecute(r ListFlexBackupRestoreJobsApiRequest) (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -436,7 +436,7 @@ func (a *FlexRestoreJobsApiService) ListFlexRestoreJobsExecute(r ListFlexRestore
 		localVarReturnValue *PaginatedApiAtlasFlexBackupRestoreJob20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.ListFlexRestoreJobs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.ListFlexBackupRestoreJobs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

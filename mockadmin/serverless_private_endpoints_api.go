@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -505,69 +505,69 @@ func (_c *ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointWithParams_C
 	return _c
 }
 
-// ListServerlessPrivateEndpoint provides a mock function with given fields: ctx, groupId, instanceName
-func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) admin.ListServerlessPrivateEndpointApiRequest {
+// ListServerlessPrivateEndpoints provides a mock function with given fields: ctx, groupId, instanceName
+func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpoints(ctx context.Context, groupId string, instanceName string) admin.ListServerlessPrivateEndpointsApiRequest {
 	ret := _m.Called(ctx, groupId, instanceName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListServerlessPrivateEndpoint")
+		panic("no return value specified for ListServerlessPrivateEndpoints")
 	}
 
-	var r0 admin.ListServerlessPrivateEndpointApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListServerlessPrivateEndpointApiRequest); ok {
+	var r0 admin.ListServerlessPrivateEndpointsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListServerlessPrivateEndpointsApiRequest); ok {
 		r0 = rf(ctx, groupId, instanceName)
 	} else {
-		r0 = ret.Get(0).(admin.ListServerlessPrivateEndpointApiRequest)
+		r0 = ret.Get(0).(admin.ListServerlessPrivateEndpointsApiRequest)
 	}
 
 	return r0
 }
 
-// ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServerlessPrivateEndpoint'
-type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call struct {
+// ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServerlessPrivateEndpoints'
+type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call struct {
 	*mock.Call
 }
 
-// ListServerlessPrivateEndpoint is a helper method to define mock.On call
+// ListServerlessPrivateEndpoints is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - instanceName string
-func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpoint(ctx any, groupId any, instanceName any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call {
-	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call{Call: _e.mock.On("ListServerlessPrivateEndpoint", ctx, groupId, instanceName)}
+func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpoints(ctx any, groupId any, instanceName any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call {
+	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call{Call: _e.mock.On("ListServerlessPrivateEndpoints", ctx, groupId, instanceName)}
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, instanceName string)) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call) Run(run func(ctx context.Context, groupId string, instanceName string)) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call) Return(_a0 admin.ListServerlessPrivateEndpointApiRequest) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call) Return(_a0 admin.ListServerlessPrivateEndpointsApiRequest) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string) admin.ListServerlessPrivateEndpointApiRequest) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoint_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call) RunAndReturn(run func(context.Context, string, string) admin.ListServerlessPrivateEndpointsApiRequest) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListServerlessPrivateEndpointExecute provides a mock function with given fields: r
-func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpointExecute(r admin.ListServerlessPrivateEndpointApiRequest) ([]admin.ServerlessTenantEndpoint, *http.Response, error) {
+// ListServerlessPrivateEndpointsExecute provides a mock function with given fields: r
+func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpointsExecute(r admin.ListServerlessPrivateEndpointsApiRequest) ([]admin.ServerlessTenantEndpoint, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListServerlessPrivateEndpointExecute")
+		panic("no return value specified for ListServerlessPrivateEndpointsExecute")
 	}
 
 	var r0 []admin.ServerlessTenantEndpoint
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListServerlessPrivateEndpointApiRequest) ([]admin.ServerlessTenantEndpoint, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListServerlessPrivateEndpointsApiRequest) ([]admin.ServerlessTenantEndpoint, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListServerlessPrivateEndpointApiRequest) []admin.ServerlessTenantEndpoint); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListServerlessPrivateEndpointsApiRequest) []admin.ServerlessTenantEndpoint); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -575,7 +575,7 @@ func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpointExecute(r 
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListServerlessPrivateEndpointApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListServerlessPrivateEndpointsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -583,7 +583,7 @@ func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpointExecute(r 
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListServerlessPrivateEndpointApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListServerlessPrivateEndpointsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -592,77 +592,77 @@ func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpointExecute(r 
 	return r0, r1, r2
 }
 
-// ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServerlessPrivateEndpointExecute'
-type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call struct {
+// ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServerlessPrivateEndpointsExecute'
+type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call struct {
 	*mock.Call
 }
 
-// ListServerlessPrivateEndpointExecute is a helper method to define mock.On call
-//   - r admin.ListServerlessPrivateEndpointApiRequest
-func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpointExecute(r any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call {
-	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call{Call: _e.mock.On("ListServerlessPrivateEndpointExecute", r)}
+// ListServerlessPrivateEndpointsExecute is a helper method to define mock.On call
+//   - r admin.ListServerlessPrivateEndpointsApiRequest
+func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpointsExecute(r any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call {
+	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call{Call: _e.mock.On("ListServerlessPrivateEndpointsExecute", r)}
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call) Run(run func(r admin.ListServerlessPrivateEndpointApiRequest)) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call) Run(run func(r admin.ListServerlessPrivateEndpointsApiRequest)) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListServerlessPrivateEndpointApiRequest))
+		run(args[0].(admin.ListServerlessPrivateEndpointsApiRequest))
 	})
 	return _c
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call) Return(_a0 []admin.ServerlessTenantEndpoint, _a1 *http.Response, _a2 error) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call) Return(_a0 []admin.ServerlessTenantEndpoint, _a1 *http.Response, _a2 error) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call) RunAndReturn(run func(admin.ListServerlessPrivateEndpointApiRequest) ([]admin.ServerlessTenantEndpoint, *http.Response, error)) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointExecute_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call) RunAndReturn(run func(admin.ListServerlessPrivateEndpointsApiRequest) ([]admin.ServerlessTenantEndpoint, *http.Response, error)) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListServerlessPrivateEndpointWithParams provides a mock function with given fields: ctx, args
-func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpointWithParams(ctx context.Context, args *admin.ListServerlessPrivateEndpointApiParams) admin.ListServerlessPrivateEndpointApiRequest {
+// ListServerlessPrivateEndpointsWithParams provides a mock function with given fields: ctx, args
+func (_m *ServerlessPrivateEndpointsApi) ListServerlessPrivateEndpointsWithParams(ctx context.Context, args *admin.ListServerlessPrivateEndpointsApiParams) admin.ListServerlessPrivateEndpointsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListServerlessPrivateEndpointWithParams")
+		panic("no return value specified for ListServerlessPrivateEndpointsWithParams")
 	}
 
-	var r0 admin.ListServerlessPrivateEndpointApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListServerlessPrivateEndpointApiParams) admin.ListServerlessPrivateEndpointApiRequest); ok {
+	var r0 admin.ListServerlessPrivateEndpointsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListServerlessPrivateEndpointsApiParams) admin.ListServerlessPrivateEndpointsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListServerlessPrivateEndpointApiRequest)
+		r0 = ret.Get(0).(admin.ListServerlessPrivateEndpointsApiRequest)
 	}
 
 	return r0
 }
 
-// ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServerlessPrivateEndpointWithParams'
-type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call struct {
+// ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListServerlessPrivateEndpointsWithParams'
+type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListServerlessPrivateEndpointWithParams is a helper method to define mock.On call
+// ListServerlessPrivateEndpointsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListServerlessPrivateEndpointApiParams
-func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpointWithParams(ctx any, args any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call {
-	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call{Call: _e.mock.On("ListServerlessPrivateEndpointWithParams", ctx, args)}
+//   - args *admin.ListServerlessPrivateEndpointsApiParams
+func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpointsWithParams(ctx any, args any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call {
+	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call{Call: _e.mock.On("ListServerlessPrivateEndpointsWithParams", ctx, args)}
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.ListServerlessPrivateEndpointApiParams)) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListServerlessPrivateEndpointsApiParams)) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListServerlessPrivateEndpointApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListServerlessPrivateEndpointsApiParams))
 	})
 	return _c
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call) Return(_a0 admin.ListServerlessPrivateEndpointApiRequest) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call) Return(_a0 admin.ListServerlessPrivateEndpointsApiRequest) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListServerlessPrivateEndpointApiParams) admin.ListServerlessPrivateEndpointApiRequest) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointWithParams_Call {
+func (_c *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListServerlessPrivateEndpointsApiParams) admin.ListServerlessPrivateEndpointsApiRequest) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

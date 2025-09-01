@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -188,70 +188,70 @@ func (_c *FlexSnapshotsApi_DownloadFlexBackupWithParams_Call) RunAndReturn(run f
 	return _c
 }
 
-// GetFlexBackupSnapshot provides a mock function with given fields: ctx, groupId, name, snapshotId
-func (_m *FlexSnapshotsApi) GetFlexBackupSnapshot(ctx context.Context, groupId string, name string, snapshotId string) admin.GetFlexBackupSnapshotApiRequest {
+// GetFlexBackup provides a mock function with given fields: ctx, groupId, name, snapshotId
+func (_m *FlexSnapshotsApi) GetFlexBackup(ctx context.Context, groupId string, name string, snapshotId string) admin.GetFlexBackupApiRequest {
 	ret := _m.Called(ctx, groupId, name, snapshotId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetFlexBackupSnapshot")
+		panic("no return value specified for GetFlexBackup")
 	}
 
-	var r0 admin.GetFlexBackupSnapshotApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetFlexBackupSnapshotApiRequest); ok {
+	var r0 admin.GetFlexBackupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetFlexBackupApiRequest); ok {
 		r0 = rf(ctx, groupId, name, snapshotId)
 	} else {
-		r0 = ret.Get(0).(admin.GetFlexBackupSnapshotApiRequest)
+		r0 = ret.Get(0).(admin.GetFlexBackupApiRequest)
 	}
 
 	return r0
 }
 
-// FlexSnapshotsApi_GetFlexBackupSnapshot_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetFlexBackupSnapshot'
-type FlexSnapshotsApi_GetFlexBackupSnapshot_Call struct {
+// FlexSnapshotsApi_GetFlexBackup_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetFlexBackup'
+type FlexSnapshotsApi_GetFlexBackup_Call struct {
 	*mock.Call
 }
 
-// GetFlexBackupSnapshot is a helper method to define mock.On call
+// GetFlexBackup is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - name string
 //   - snapshotId string
-func (_e *FlexSnapshotsApi_Expecter) GetFlexBackupSnapshot(ctx any, groupId any, name any, snapshotId any) *FlexSnapshotsApi_GetFlexBackupSnapshot_Call {
-	return &FlexSnapshotsApi_GetFlexBackupSnapshot_Call{Call: _e.mock.On("GetFlexBackupSnapshot", ctx, groupId, name, snapshotId)}
+func (_e *FlexSnapshotsApi_Expecter) GetFlexBackup(ctx any, groupId any, name any, snapshotId any) *FlexSnapshotsApi_GetFlexBackup_Call {
+	return &FlexSnapshotsApi_GetFlexBackup_Call{Call: _e.mock.On("GetFlexBackup", ctx, groupId, name, snapshotId)}
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshot_Call) Run(run func(ctx context.Context, groupId string, name string, snapshotId string)) *FlexSnapshotsApi_GetFlexBackupSnapshot_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackup_Call) Run(run func(ctx context.Context, groupId string, name string, snapshotId string)) *FlexSnapshotsApi_GetFlexBackup_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshot_Call) Return(_a0 admin.GetFlexBackupSnapshotApiRequest) *FlexSnapshotsApi_GetFlexBackupSnapshot_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackup_Call) Return(_a0 admin.GetFlexBackupApiRequest) *FlexSnapshotsApi_GetFlexBackup_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshot_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetFlexBackupSnapshotApiRequest) *FlexSnapshotsApi_GetFlexBackupSnapshot_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackup_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetFlexBackupApiRequest) *FlexSnapshotsApi_GetFlexBackup_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetFlexBackupSnapshotExecute provides a mock function with given fields: r
-func (_m *FlexSnapshotsApi) GetFlexBackupSnapshotExecute(r admin.GetFlexBackupSnapshotApiRequest) (*admin.FlexBackupSnapshot20241113, *http.Response, error) {
+// GetFlexBackupExecute provides a mock function with given fields: r
+func (_m *FlexSnapshotsApi) GetFlexBackupExecute(r admin.GetFlexBackupApiRequest) (*admin.FlexBackupSnapshot20241113, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetFlexBackupSnapshotExecute")
+		panic("no return value specified for GetFlexBackupExecute")
 	}
 
 	var r0 *admin.FlexBackupSnapshot20241113
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetFlexBackupSnapshotApiRequest) (*admin.FlexBackupSnapshot20241113, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetFlexBackupApiRequest) (*admin.FlexBackupSnapshot20241113, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetFlexBackupSnapshotApiRequest) *admin.FlexBackupSnapshot20241113); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetFlexBackupApiRequest) *admin.FlexBackupSnapshot20241113); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -259,7 +259,7 @@ func (_m *FlexSnapshotsApi) GetFlexBackupSnapshotExecute(r admin.GetFlexBackupSn
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetFlexBackupSnapshotApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetFlexBackupApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -267,7 +267,7 @@ func (_m *FlexSnapshotsApi) GetFlexBackupSnapshotExecute(r admin.GetFlexBackupSn
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetFlexBackupSnapshotApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetFlexBackupApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -276,144 +276,144 @@ func (_m *FlexSnapshotsApi) GetFlexBackupSnapshotExecute(r admin.GetFlexBackupSn
 	return r0, r1, r2
 }
 
-// FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetFlexBackupSnapshotExecute'
-type FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call struct {
+// FlexSnapshotsApi_GetFlexBackupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetFlexBackupExecute'
+type FlexSnapshotsApi_GetFlexBackupExecute_Call struct {
 	*mock.Call
 }
 
-// GetFlexBackupSnapshotExecute is a helper method to define mock.On call
-//   - r admin.GetFlexBackupSnapshotApiRequest
-func (_e *FlexSnapshotsApi_Expecter) GetFlexBackupSnapshotExecute(r any) *FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call {
-	return &FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call{Call: _e.mock.On("GetFlexBackupSnapshotExecute", r)}
+// GetFlexBackupExecute is a helper method to define mock.On call
+//   - r admin.GetFlexBackupApiRequest
+func (_e *FlexSnapshotsApi_Expecter) GetFlexBackupExecute(r any) *FlexSnapshotsApi_GetFlexBackupExecute_Call {
+	return &FlexSnapshotsApi_GetFlexBackupExecute_Call{Call: _e.mock.On("GetFlexBackupExecute", r)}
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call) Run(run func(r admin.GetFlexBackupSnapshotApiRequest)) *FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackupExecute_Call) Run(run func(r admin.GetFlexBackupApiRequest)) *FlexSnapshotsApi_GetFlexBackupExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetFlexBackupSnapshotApiRequest))
+		run(args[0].(admin.GetFlexBackupApiRequest))
 	})
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call) Return(_a0 *admin.FlexBackupSnapshot20241113, _a1 *http.Response, _a2 error) *FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackupExecute_Call) Return(_a0 *admin.FlexBackupSnapshot20241113, _a1 *http.Response, _a2 error) *FlexSnapshotsApi_GetFlexBackupExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call) RunAndReturn(run func(admin.GetFlexBackupSnapshotApiRequest) (*admin.FlexBackupSnapshot20241113, *http.Response, error)) *FlexSnapshotsApi_GetFlexBackupSnapshotExecute_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackupExecute_Call) RunAndReturn(run func(admin.GetFlexBackupApiRequest) (*admin.FlexBackupSnapshot20241113, *http.Response, error)) *FlexSnapshotsApi_GetFlexBackupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetFlexBackupSnapshotWithParams provides a mock function with given fields: ctx, args
-func (_m *FlexSnapshotsApi) GetFlexBackupSnapshotWithParams(ctx context.Context, args *admin.GetFlexBackupSnapshotApiParams) admin.GetFlexBackupSnapshotApiRequest {
+// GetFlexBackupWithParams provides a mock function with given fields: ctx, args
+func (_m *FlexSnapshotsApi) GetFlexBackupWithParams(ctx context.Context, args *admin.GetFlexBackupApiParams) admin.GetFlexBackupApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetFlexBackupSnapshotWithParams")
+		panic("no return value specified for GetFlexBackupWithParams")
 	}
 
-	var r0 admin.GetFlexBackupSnapshotApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetFlexBackupSnapshotApiParams) admin.GetFlexBackupSnapshotApiRequest); ok {
+	var r0 admin.GetFlexBackupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetFlexBackupApiParams) admin.GetFlexBackupApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetFlexBackupSnapshotApiRequest)
+		r0 = ret.Get(0).(admin.GetFlexBackupApiRequest)
 	}
 
 	return r0
 }
 
-// FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetFlexBackupSnapshotWithParams'
-type FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call struct {
+// FlexSnapshotsApi_GetFlexBackupWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetFlexBackupWithParams'
+type FlexSnapshotsApi_GetFlexBackupWithParams_Call struct {
 	*mock.Call
 }
 
-// GetFlexBackupSnapshotWithParams is a helper method to define mock.On call
+// GetFlexBackupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetFlexBackupSnapshotApiParams
-func (_e *FlexSnapshotsApi_Expecter) GetFlexBackupSnapshotWithParams(ctx any, args any) *FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call {
-	return &FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call{Call: _e.mock.On("GetFlexBackupSnapshotWithParams", ctx, args)}
+//   - args *admin.GetFlexBackupApiParams
+func (_e *FlexSnapshotsApi_Expecter) GetFlexBackupWithParams(ctx any, args any) *FlexSnapshotsApi_GetFlexBackupWithParams_Call {
+	return &FlexSnapshotsApi_GetFlexBackupWithParams_Call{Call: _e.mock.On("GetFlexBackupWithParams", ctx, args)}
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call) Run(run func(ctx context.Context, args *admin.GetFlexBackupSnapshotApiParams)) *FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackupWithParams_Call) Run(run func(ctx context.Context, args *admin.GetFlexBackupApiParams)) *FlexSnapshotsApi_GetFlexBackupWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetFlexBackupSnapshotApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetFlexBackupApiParams))
 	})
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call) Return(_a0 admin.GetFlexBackupSnapshotApiRequest) *FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackupWithParams_Call) Return(_a0 admin.GetFlexBackupApiRequest) *FlexSnapshotsApi_GetFlexBackupWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetFlexBackupSnapshotApiParams) admin.GetFlexBackupSnapshotApiRequest) *FlexSnapshotsApi_GetFlexBackupSnapshotWithParams_Call {
+func (_c *FlexSnapshotsApi_GetFlexBackupWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetFlexBackupApiParams) admin.GetFlexBackupApiRequest) *FlexSnapshotsApi_GetFlexBackupWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListFlexBackupSnapshots provides a mock function with given fields: ctx, groupId, name
-func (_m *FlexSnapshotsApi) ListFlexBackupSnapshots(ctx context.Context, groupId string, name string) admin.ListFlexBackupSnapshotsApiRequest {
+// ListFlexBackups provides a mock function with given fields: ctx, groupId, name
+func (_m *FlexSnapshotsApi) ListFlexBackups(ctx context.Context, groupId string, name string) admin.ListFlexBackupsApiRequest {
 	ret := _m.Called(ctx, groupId, name)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListFlexBackupSnapshots")
+		panic("no return value specified for ListFlexBackups")
 	}
 
-	var r0 admin.ListFlexBackupSnapshotsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListFlexBackupSnapshotsApiRequest); ok {
+	var r0 admin.ListFlexBackupsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListFlexBackupsApiRequest); ok {
 		r0 = rf(ctx, groupId, name)
 	} else {
-		r0 = ret.Get(0).(admin.ListFlexBackupSnapshotsApiRequest)
+		r0 = ret.Get(0).(admin.ListFlexBackupsApiRequest)
 	}
 
 	return r0
 }
 
-// FlexSnapshotsApi_ListFlexBackupSnapshots_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFlexBackupSnapshots'
-type FlexSnapshotsApi_ListFlexBackupSnapshots_Call struct {
+// FlexSnapshotsApi_ListFlexBackups_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFlexBackups'
+type FlexSnapshotsApi_ListFlexBackups_Call struct {
 	*mock.Call
 }
 
-// ListFlexBackupSnapshots is a helper method to define mock.On call
+// ListFlexBackups is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - name string
-func (_e *FlexSnapshotsApi_Expecter) ListFlexBackupSnapshots(ctx any, groupId any, name any) *FlexSnapshotsApi_ListFlexBackupSnapshots_Call {
-	return &FlexSnapshotsApi_ListFlexBackupSnapshots_Call{Call: _e.mock.On("ListFlexBackupSnapshots", ctx, groupId, name)}
+func (_e *FlexSnapshotsApi_Expecter) ListFlexBackups(ctx any, groupId any, name any) *FlexSnapshotsApi_ListFlexBackups_Call {
+	return &FlexSnapshotsApi_ListFlexBackups_Call{Call: _e.mock.On("ListFlexBackups", ctx, groupId, name)}
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshots_Call) Run(run func(ctx context.Context, groupId string, name string)) *FlexSnapshotsApi_ListFlexBackupSnapshots_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackups_Call) Run(run func(ctx context.Context, groupId string, name string)) *FlexSnapshotsApi_ListFlexBackups_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshots_Call) Return(_a0 admin.ListFlexBackupSnapshotsApiRequest) *FlexSnapshotsApi_ListFlexBackupSnapshots_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackups_Call) Return(_a0 admin.ListFlexBackupsApiRequest) *FlexSnapshotsApi_ListFlexBackups_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshots_Call) RunAndReturn(run func(context.Context, string, string) admin.ListFlexBackupSnapshotsApiRequest) *FlexSnapshotsApi_ListFlexBackupSnapshots_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackups_Call) RunAndReturn(run func(context.Context, string, string) admin.ListFlexBackupsApiRequest) *FlexSnapshotsApi_ListFlexBackups_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListFlexBackupSnapshotsExecute provides a mock function with given fields: r
-func (_m *FlexSnapshotsApi) ListFlexBackupSnapshotsExecute(r admin.ListFlexBackupSnapshotsApiRequest) (*admin.PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error) {
+// ListFlexBackupsExecute provides a mock function with given fields: r
+func (_m *FlexSnapshotsApi) ListFlexBackupsExecute(r admin.ListFlexBackupsApiRequest) (*admin.PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListFlexBackupSnapshotsExecute")
+		panic("no return value specified for ListFlexBackupsExecute")
 	}
 
 	var r0 *admin.PaginatedApiAtlasFlexBackupSnapshot20241113
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListFlexBackupSnapshotsApiRequest) (*admin.PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListFlexBackupsApiRequest) (*admin.PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListFlexBackupSnapshotsApiRequest) *admin.PaginatedApiAtlasFlexBackupSnapshot20241113); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListFlexBackupsApiRequest) *admin.PaginatedApiAtlasFlexBackupSnapshot20241113); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -421,7 +421,7 @@ func (_m *FlexSnapshotsApi) ListFlexBackupSnapshotsExecute(r admin.ListFlexBacku
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListFlexBackupSnapshotsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListFlexBackupsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -429,7 +429,7 @@ func (_m *FlexSnapshotsApi) ListFlexBackupSnapshotsExecute(r admin.ListFlexBacku
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListFlexBackupSnapshotsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListFlexBackupsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -438,77 +438,77 @@ func (_m *FlexSnapshotsApi) ListFlexBackupSnapshotsExecute(r admin.ListFlexBacku
 	return r0, r1, r2
 }
 
-// FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFlexBackupSnapshotsExecute'
-type FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call struct {
+// FlexSnapshotsApi_ListFlexBackupsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFlexBackupsExecute'
+type FlexSnapshotsApi_ListFlexBackupsExecute_Call struct {
 	*mock.Call
 }
 
-// ListFlexBackupSnapshotsExecute is a helper method to define mock.On call
-//   - r admin.ListFlexBackupSnapshotsApiRequest
-func (_e *FlexSnapshotsApi_Expecter) ListFlexBackupSnapshotsExecute(r any) *FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call {
-	return &FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call{Call: _e.mock.On("ListFlexBackupSnapshotsExecute", r)}
+// ListFlexBackupsExecute is a helper method to define mock.On call
+//   - r admin.ListFlexBackupsApiRequest
+func (_e *FlexSnapshotsApi_Expecter) ListFlexBackupsExecute(r any) *FlexSnapshotsApi_ListFlexBackupsExecute_Call {
+	return &FlexSnapshotsApi_ListFlexBackupsExecute_Call{Call: _e.mock.On("ListFlexBackupsExecute", r)}
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call) Run(run func(r admin.ListFlexBackupSnapshotsApiRequest)) *FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackupsExecute_Call) Run(run func(r admin.ListFlexBackupsApiRequest)) *FlexSnapshotsApi_ListFlexBackupsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListFlexBackupSnapshotsApiRequest))
+		run(args[0].(admin.ListFlexBackupsApiRequest))
 	})
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call) Return(_a0 *admin.PaginatedApiAtlasFlexBackupSnapshot20241113, _a1 *http.Response, _a2 error) *FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackupsExecute_Call) Return(_a0 *admin.PaginatedApiAtlasFlexBackupSnapshot20241113, _a1 *http.Response, _a2 error) *FlexSnapshotsApi_ListFlexBackupsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call) RunAndReturn(run func(admin.ListFlexBackupSnapshotsApiRequest) (*admin.PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error)) *FlexSnapshotsApi_ListFlexBackupSnapshotsExecute_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackupsExecute_Call) RunAndReturn(run func(admin.ListFlexBackupsApiRequest) (*admin.PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error)) *FlexSnapshotsApi_ListFlexBackupsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListFlexBackupSnapshotsWithParams provides a mock function with given fields: ctx, args
-func (_m *FlexSnapshotsApi) ListFlexBackupSnapshotsWithParams(ctx context.Context, args *admin.ListFlexBackupSnapshotsApiParams) admin.ListFlexBackupSnapshotsApiRequest {
+// ListFlexBackupsWithParams provides a mock function with given fields: ctx, args
+func (_m *FlexSnapshotsApi) ListFlexBackupsWithParams(ctx context.Context, args *admin.ListFlexBackupsApiParams) admin.ListFlexBackupsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListFlexBackupSnapshotsWithParams")
+		panic("no return value specified for ListFlexBackupsWithParams")
 	}
 
-	var r0 admin.ListFlexBackupSnapshotsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListFlexBackupSnapshotsApiParams) admin.ListFlexBackupSnapshotsApiRequest); ok {
+	var r0 admin.ListFlexBackupsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListFlexBackupsApiParams) admin.ListFlexBackupsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListFlexBackupSnapshotsApiRequest)
+		r0 = ret.Get(0).(admin.ListFlexBackupsApiRequest)
 	}
 
 	return r0
 }
 
-// FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFlexBackupSnapshotsWithParams'
-type FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call struct {
+// FlexSnapshotsApi_ListFlexBackupsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFlexBackupsWithParams'
+type FlexSnapshotsApi_ListFlexBackupsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListFlexBackupSnapshotsWithParams is a helper method to define mock.On call
+// ListFlexBackupsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListFlexBackupSnapshotsApiParams
-func (_e *FlexSnapshotsApi_Expecter) ListFlexBackupSnapshotsWithParams(ctx any, args any) *FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call {
-	return &FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call{Call: _e.mock.On("ListFlexBackupSnapshotsWithParams", ctx, args)}
+//   - args *admin.ListFlexBackupsApiParams
+func (_e *FlexSnapshotsApi_Expecter) ListFlexBackupsWithParams(ctx any, args any) *FlexSnapshotsApi_ListFlexBackupsWithParams_Call {
+	return &FlexSnapshotsApi_ListFlexBackupsWithParams_Call{Call: _e.mock.On("ListFlexBackupsWithParams", ctx, args)}
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListFlexBackupSnapshotsApiParams)) *FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackupsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListFlexBackupsApiParams)) *FlexSnapshotsApi_ListFlexBackupsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListFlexBackupSnapshotsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListFlexBackupsApiParams))
 	})
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call) Return(_a0 admin.ListFlexBackupSnapshotsApiRequest) *FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackupsWithParams_Call) Return(_a0 admin.ListFlexBackupsApiRequest) *FlexSnapshotsApi_ListFlexBackupsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListFlexBackupSnapshotsApiParams) admin.ListFlexBackupSnapshotsApiRequest) *FlexSnapshotsApi_ListFlexBackupSnapshotsWithParams_Call {
+func (_c *FlexSnapshotsApi_ListFlexBackupsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListFlexBackupsApiParams) admin.ListFlexBackupsApiRequest) *FlexSnapshotsApi_ListFlexBackupsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

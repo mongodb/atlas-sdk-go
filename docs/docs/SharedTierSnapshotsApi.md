@@ -4,15 +4,15 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DownloadClusterBackupTenant**](SharedTierSnapshotsApi.md#DownloadClusterBackupTenant) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download | Download One M2 or M5 Cluster Snapshot
-[**GetBackupTenantSnapshot**](SharedTierSnapshotsApi.md#GetBackupTenantSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId} | Return One Snapshot of One M2 or M5 Cluster
-[**ListClusterBackupSnapshots**](SharedTierSnapshotsApi.md#ListClusterBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots | Return All Snapshots for One M2 or M5 Cluster
+[**DownloadSharedClusterBackup**](SharedTierSnapshotsApi.md#DownloadSharedClusterBackup) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download | Download One M2 or M5 Cluster Snapshot
+[**GetSharedClusterBackup**](SharedTierSnapshotsApi.md#GetSharedClusterBackup) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId} | Return One Snapshot of One M2 or M5 Cluster
+[**ListSharedClusterBackups**](SharedTierSnapshotsApi.md#ListSharedClusterBackups) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots | Return All Snapshots for One M2 or M5 Cluster
 
 
 
-## DownloadClusterBackupTenant
+## DownloadSharedClusterBackup
 
-> TenantRestore DownloadClusterBackupTenant(ctx, clusterName, groupId, tenantRestore TenantRestore).Execute()
+> TenantRestore DownloadSharedClusterBackup(ctx, clusterName, groupId, tenantRestore TenantRestore).Execute()
 
 Download One M2 or M5 Cluster Snapshot
 
@@ -27,7 +27,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -44,17 +44,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantRestore := *openapiclient.NewTenantRestore("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // TenantRestore | 
 
-    resp, r, err := sdk.SharedTierSnapshotsApi.DownloadClusterBackupTenant(context.Background(), clusterName, groupId, &tenantRestore).Execute()
+    resp, r, err := sdk.SharedTierSnapshotsApi.DownloadSharedClusterBackup(context.Background(), clusterName, groupId, &tenantRestore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.DownloadClusterBackupTenant`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.DownloadSharedClusterBackup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `DownloadClusterBackupTenant`: TenantRestore
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.DownloadClusterBackupTenant`: %v (%v)\n", resp, r)
+    // response from `DownloadSharedClusterBackup`: TenantRestore
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.DownloadSharedClusterBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDownloadClusterBackupTenantRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDownloadSharedClusterBackupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetBackupTenantSnapshot
+## GetSharedClusterBackup
 
-> BackupTenantSnapshot GetBackupTenantSnapshot(ctx, groupId, clusterName, snapshotId).Execute()
+> BackupTenantSnapshot GetSharedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Return One Snapshot of One M2 or M5 Cluster
 
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -129,17 +129,17 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    resp, r, err := sdk.SharedTierSnapshotsApi.GetBackupTenantSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.SharedTierSnapshotsApi.GetSharedClusterBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.GetBackupTenantSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.GetSharedClusterBackup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetBackupTenantSnapshot`: BackupTenantSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.GetBackupTenantSnapshot`: %v (%v)\n", resp, r)
+    // response from `GetSharedClusterBackup`: BackupTenantSnapshot
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.GetSharedClusterBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetBackupTenantSnapshotRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSharedClusterBackupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -181,9 +181,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListClusterBackupSnapshots
+## ListSharedClusterBackups
 
-> PaginatedTenantSnapshot ListClusterBackupSnapshots(ctx, groupId, clusterName).Execute()
+> PaginatedTenantSnapshot ListSharedClusterBackups(ctx, groupId, clusterName).Execute()
 
 Return All Snapshots for One M2 or M5 Cluster
 
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -214,17 +214,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.SharedTierSnapshotsApi.ListClusterBackupSnapshots(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.SharedTierSnapshotsApi.ListSharedClusterBackups(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.ListClusterBackupSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.ListSharedClusterBackups`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListClusterBackupSnapshots`: PaginatedTenantSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.ListClusterBackupSnapshots`: %v (%v)\n", resp, r)
+    // response from `ListSharedClusterBackups`: PaginatedTenantSnapshot
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.ListSharedClusterBackups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListClusterBackupSnapshotsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListSharedClusterBackupsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

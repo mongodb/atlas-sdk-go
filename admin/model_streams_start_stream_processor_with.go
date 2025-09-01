@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// StreamsStartStreamProcessorWith A request to start a stream processor.
+// StreamsStartStreamProcessorWith A request to start a stream processor
 type StreamsStartStreamProcessorWith struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.

@@ -16,8 +16,6 @@ type ThirdPartyIntegration struct {
 	SendCollectionLatencyMetrics *bool `json:"sendCollectionLatencyMetrics,omitempty"`
 	// Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size.
 	SendDatabaseMetrics *bool `json:"sendDatabaseMetrics,omitempty"`
-	// Toggle sending query shape metrics that includes query hash and metrics on latency, execution frequency, documents returned, and timestamps.
-	SendQueryStatsMetrics *bool `json:"sendQueryStatsMetrics,omitempty"`
 	// Toggle sending user provided group and cluster resource tags with the datadog metrics.
 	SendUserProvidedResourceTags *bool `json:"sendUserProvidedResourceTags,omitempty"`
 	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
@@ -67,8 +65,6 @@ func NewThirdPartyIntegration() *ThirdPartyIntegration {
 	this.SendCollectionLatencyMetrics = &sendCollectionLatencyMetrics
 	var sendDatabaseMetrics bool = false
 	this.SendDatabaseMetrics = &sendDatabaseMetrics
-	var sendQueryStatsMetrics bool = false
-	this.SendQueryStatsMetrics = &sendQueryStatsMetrics
 	var sendUserProvidedResourceTags bool = false
 	this.SendUserProvidedResourceTags = &sendUserProvidedResourceTags
 	var sendUserProvidedResourceTagsEnabled bool = false
@@ -85,8 +81,6 @@ func NewThirdPartyIntegrationWithDefaults() *ThirdPartyIntegration {
 	this.SendCollectionLatencyMetrics = &sendCollectionLatencyMetrics
 	var sendDatabaseMetrics bool = false
 	this.SendDatabaseMetrics = &sendDatabaseMetrics
-	var sendQueryStatsMetrics bool = false
-	this.SendQueryStatsMetrics = &sendQueryStatsMetrics
 	var sendUserProvidedResourceTags bool = false
 	this.SendUserProvidedResourceTags = &sendUserProvidedResourceTags
 	var sendUserProvidedResourceTagsEnabled bool = false
@@ -290,39 +284,6 @@ func (o *ThirdPartyIntegration) HasSendDatabaseMetrics() bool {
 // SetSendDatabaseMetrics gets a reference to the given bool and assigns it to the SendDatabaseMetrics field.
 func (o *ThirdPartyIntegration) SetSendDatabaseMetrics(v bool) {
 	o.SendDatabaseMetrics = &v
-}
-
-// GetSendQueryStatsMetrics returns the SendQueryStatsMetrics field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetSendQueryStatsMetrics() bool {
-	if o == nil || IsNil(o.SendQueryStatsMetrics) {
-		var ret bool
-		return ret
-	}
-	return *o.SendQueryStatsMetrics
-}
-
-// GetSendQueryStatsMetricsOk returns a tuple with the SendQueryStatsMetrics field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetSendQueryStatsMetricsOk() (*bool, bool) {
-	if o == nil || IsNil(o.SendQueryStatsMetrics) {
-		return nil, false
-	}
-
-	return o.SendQueryStatsMetrics, true
-}
-
-// HasSendQueryStatsMetrics returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasSendQueryStatsMetrics() bool {
-	if o != nil && !IsNil(o.SendQueryStatsMetrics) {
-		return true
-	}
-
-	return false
-}
-
-// SetSendQueryStatsMetrics gets a reference to the given bool and assigns it to the SendQueryStatsMetrics field.
-func (o *ThirdPartyIntegration) SetSendQueryStatsMetrics(v bool) {
-	o.SendQueryStatsMetrics = &v
 }
 
 // GetSendUserProvidedResourceTags returns the SendUserProvidedResourceTags field value if set, zero value otherwise

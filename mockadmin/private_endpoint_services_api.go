@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -987,68 +987,68 @@ func (_c *PrivateEndpointServicesApi_GetPrivateEndpointWithParams_Call) RunAndRe
 	return _c
 }
 
-// GetRegionalEndpointMode provides a mock function with given fields: ctx, groupId
-func (_m *PrivateEndpointServicesApi) GetRegionalEndpointMode(ctx context.Context, groupId string) admin.GetRegionalEndpointModeApiRequest {
+// GetRegionalizedPrivateEndpointSetting provides a mock function with given fields: ctx, groupId
+func (_m *PrivateEndpointServicesApi) GetRegionalizedPrivateEndpointSetting(ctx context.Context, groupId string) admin.GetRegionalizedPrivateEndpointSettingApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetRegionalEndpointMode")
+		panic("no return value specified for GetRegionalizedPrivateEndpointSetting")
 	}
 
-	var r0 admin.GetRegionalEndpointModeApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetRegionalEndpointModeApiRequest); ok {
+	var r0 admin.GetRegionalizedPrivateEndpointSettingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetRegionalizedPrivateEndpointSettingApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetRegionalEndpointModeApiRequest)
+		r0 = ret.Get(0).(admin.GetRegionalizedPrivateEndpointSettingApiRequest)
 	}
 
 	return r0
 }
 
-// PrivateEndpointServicesApi_GetRegionalEndpointMode_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRegionalEndpointMode'
-type PrivateEndpointServicesApi_GetRegionalEndpointMode_Call struct {
+// PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRegionalizedPrivateEndpointSetting'
+type PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call struct {
 	*mock.Call
 }
 
-// GetRegionalEndpointMode is a helper method to define mock.On call
+// GetRegionalizedPrivateEndpointSetting is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalEndpointMode(ctx any, groupId any) *PrivateEndpointServicesApi_GetRegionalEndpointMode_Call {
-	return &PrivateEndpointServicesApi_GetRegionalEndpointMode_Call{Call: _e.mock.On("GetRegionalEndpointMode", ctx, groupId)}
+func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSetting(ctx any, groupId any) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call {
+	return &PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call{Call: _e.mock.On("GetRegionalizedPrivateEndpointSetting", ctx, groupId)}
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointMode_Call) Run(run func(ctx context.Context, groupId string)) *PrivateEndpointServicesApi_GetRegionalEndpointMode_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call) Run(run func(ctx context.Context, groupId string)) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointMode_Call) Return(_a0 admin.GetRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_GetRegionalEndpointMode_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call) Return(_a0 admin.GetRegionalizedPrivateEndpointSettingApiRequest) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointMode_Call) RunAndReturn(run func(context.Context, string) admin.GetRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_GetRegionalEndpointMode_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call) RunAndReturn(run func(context.Context, string) admin.GetRegionalizedPrivateEndpointSettingApiRequest) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetRegionalEndpointModeExecute provides a mock function with given fields: r
-func (_m *PrivateEndpointServicesApi) GetRegionalEndpointModeExecute(r admin.GetRegionalEndpointModeApiRequest) (*admin.ProjectSettingItem, *http.Response, error) {
+// GetRegionalizedPrivateEndpointSettingExecute provides a mock function with given fields: r
+func (_m *PrivateEndpointServicesApi) GetRegionalizedPrivateEndpointSettingExecute(r admin.GetRegionalizedPrivateEndpointSettingApiRequest) (*admin.ProjectSettingItem, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetRegionalEndpointModeExecute")
+		panic("no return value specified for GetRegionalizedPrivateEndpointSettingExecute")
 	}
 
 	var r0 *admin.ProjectSettingItem
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetRegionalEndpointModeApiRequest) (*admin.ProjectSettingItem, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetRegionalizedPrivateEndpointSettingApiRequest) (*admin.ProjectSettingItem, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetRegionalEndpointModeApiRequest) *admin.ProjectSettingItem); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetRegionalizedPrivateEndpointSettingApiRequest) *admin.ProjectSettingItem); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1056,7 +1056,7 @@ func (_m *PrivateEndpointServicesApi) GetRegionalEndpointModeExecute(r admin.Get
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetRegionalEndpointModeApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetRegionalizedPrivateEndpointSettingApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1064,7 +1064,7 @@ func (_m *PrivateEndpointServicesApi) GetRegionalEndpointModeExecute(r admin.Get
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetRegionalEndpointModeApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetRegionalizedPrivateEndpointSettingApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1073,144 +1073,144 @@ func (_m *PrivateEndpointServicesApi) GetRegionalEndpointModeExecute(r admin.Get
 	return r0, r1, r2
 }
 
-// PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRegionalEndpointModeExecute'
-type PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call struct {
+// PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRegionalizedPrivateEndpointSettingExecute'
+type PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call struct {
 	*mock.Call
 }
 
-// GetRegionalEndpointModeExecute is a helper method to define mock.On call
-//   - r admin.GetRegionalEndpointModeApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalEndpointModeExecute(r any) *PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call {
-	return &PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call{Call: _e.mock.On("GetRegionalEndpointModeExecute", r)}
+// GetRegionalizedPrivateEndpointSettingExecute is a helper method to define mock.On call
+//   - r admin.GetRegionalizedPrivateEndpointSettingApiRequest
+func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSettingExecute(r any) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call {
+	return &PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call{Call: _e.mock.On("GetRegionalizedPrivateEndpointSettingExecute", r)}
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call) Run(run func(r admin.GetRegionalEndpointModeApiRequest)) *PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call) Run(run func(r admin.GetRegionalizedPrivateEndpointSettingApiRequest)) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetRegionalEndpointModeApiRequest))
+		run(args[0].(admin.GetRegionalizedPrivateEndpointSettingApiRequest))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call) Return(_a0 *admin.ProjectSettingItem, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call) Return(_a0 *admin.ProjectSettingItem, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call) RunAndReturn(run func(admin.GetRegionalEndpointModeApiRequest) (*admin.ProjectSettingItem, *http.Response, error)) *PrivateEndpointServicesApi_GetRegionalEndpointModeExecute_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call) RunAndReturn(run func(admin.GetRegionalizedPrivateEndpointSettingApiRequest) (*admin.ProjectSettingItem, *http.Response, error)) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetRegionalEndpointModeWithParams provides a mock function with given fields: ctx, args
-func (_m *PrivateEndpointServicesApi) GetRegionalEndpointModeWithParams(ctx context.Context, args *admin.GetRegionalEndpointModeApiParams) admin.GetRegionalEndpointModeApiRequest {
+// GetRegionalizedPrivateEndpointSettingWithParams provides a mock function with given fields: ctx, args
+func (_m *PrivateEndpointServicesApi) GetRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *admin.GetRegionalizedPrivateEndpointSettingApiParams) admin.GetRegionalizedPrivateEndpointSettingApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetRegionalEndpointModeWithParams")
+		panic("no return value specified for GetRegionalizedPrivateEndpointSettingWithParams")
 	}
 
-	var r0 admin.GetRegionalEndpointModeApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetRegionalEndpointModeApiParams) admin.GetRegionalEndpointModeApiRequest); ok {
+	var r0 admin.GetRegionalizedPrivateEndpointSettingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetRegionalizedPrivateEndpointSettingApiParams) admin.GetRegionalizedPrivateEndpointSettingApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetRegionalEndpointModeApiRequest)
+		r0 = ret.Get(0).(admin.GetRegionalizedPrivateEndpointSettingApiRequest)
 	}
 
 	return r0
 }
 
-// PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRegionalEndpointModeWithParams'
-type PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call struct {
+// PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetRegionalizedPrivateEndpointSettingWithParams'
+type PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call struct {
 	*mock.Call
 }
 
-// GetRegionalEndpointModeWithParams is a helper method to define mock.On call
+// GetRegionalizedPrivateEndpointSettingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetRegionalEndpointModeApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalEndpointModeWithParams(ctx any, args any) *PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call {
-	return &PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call{Call: _e.mock.On("GetRegionalEndpointModeWithParams", ctx, args)}
+//   - args *admin.GetRegionalizedPrivateEndpointSettingApiParams
+func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSettingWithParams(ctx any, args any) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call {
+	return &PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call{Call: _e.mock.On("GetRegionalizedPrivateEndpointSettingWithParams", ctx, args)}
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call) Run(run func(ctx context.Context, args *admin.GetRegionalEndpointModeApiParams)) *PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call) Run(run func(ctx context.Context, args *admin.GetRegionalizedPrivateEndpointSettingApiParams)) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetRegionalEndpointModeApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetRegionalizedPrivateEndpointSettingApiParams))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call) Return(_a0 admin.GetRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call) Return(_a0 admin.GetRegionalizedPrivateEndpointSettingApiRequest) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetRegionalEndpointModeApiParams) admin.GetRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_GetRegionalEndpointModeWithParams_Call {
+func (_c *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetRegionalizedPrivateEndpointSettingApiParams) admin.GetRegionalizedPrivateEndpointSettingApiRequest) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPrivateEndpointService provides a mock function with given fields: ctx, groupId, cloudProvider
-func (_m *PrivateEndpointServicesApi) ListPrivateEndpointService(ctx context.Context, groupId string, cloudProvider string) admin.ListPrivateEndpointServiceApiRequest {
+// ListPrivateEndpointServices provides a mock function with given fields: ctx, groupId, cloudProvider
+func (_m *PrivateEndpointServicesApi) ListPrivateEndpointServices(ctx context.Context, groupId string, cloudProvider string) admin.ListPrivateEndpointServicesApiRequest {
 	ret := _m.Called(ctx, groupId, cloudProvider)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPrivateEndpointService")
+		panic("no return value specified for ListPrivateEndpointServices")
 	}
 
-	var r0 admin.ListPrivateEndpointServiceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListPrivateEndpointServiceApiRequest); ok {
+	var r0 admin.ListPrivateEndpointServicesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListPrivateEndpointServicesApiRequest); ok {
 		r0 = rf(ctx, groupId, cloudProvider)
 	} else {
-		r0 = ret.Get(0).(admin.ListPrivateEndpointServiceApiRequest)
+		r0 = ret.Get(0).(admin.ListPrivateEndpointServicesApiRequest)
 	}
 
 	return r0
 }
 
-// PrivateEndpointServicesApi_ListPrivateEndpointService_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateEndpointService'
-type PrivateEndpointServicesApi_ListPrivateEndpointService_Call struct {
+// PrivateEndpointServicesApi_ListPrivateEndpointServices_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateEndpointServices'
+type PrivateEndpointServicesApi_ListPrivateEndpointServices_Call struct {
 	*mock.Call
 }
 
-// ListPrivateEndpointService is a helper method to define mock.On call
+// ListPrivateEndpointServices is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProvider string
-func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointService(ctx any, groupId any, cloudProvider any) *PrivateEndpointServicesApi_ListPrivateEndpointService_Call {
-	return &PrivateEndpointServicesApi_ListPrivateEndpointService_Call{Call: _e.mock.On("ListPrivateEndpointService", ctx, groupId, cloudProvider)}
+func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServices(ctx any, groupId any, cloudProvider any) *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call {
+	return &PrivateEndpointServicesApi_ListPrivateEndpointServices_Call{Call: _e.mock.On("ListPrivateEndpointServices", ctx, groupId, cloudProvider)}
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointService_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string)) *PrivateEndpointServicesApi_ListPrivateEndpointService_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string)) *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointService_Call) Return(_a0 admin.ListPrivateEndpointServiceApiRequest) *PrivateEndpointServicesApi_ListPrivateEndpointService_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call) Return(_a0 admin.ListPrivateEndpointServicesApiRequest) *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointService_Call) RunAndReturn(run func(context.Context, string, string) admin.ListPrivateEndpointServiceApiRequest) *PrivateEndpointServicesApi_ListPrivateEndpointService_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call) RunAndReturn(run func(context.Context, string, string) admin.ListPrivateEndpointServicesApiRequest) *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPrivateEndpointServiceExecute provides a mock function with given fields: r
-func (_m *PrivateEndpointServicesApi) ListPrivateEndpointServiceExecute(r admin.ListPrivateEndpointServiceApiRequest) ([]admin.EndpointService, *http.Response, error) {
+// ListPrivateEndpointServicesExecute provides a mock function with given fields: r
+func (_m *PrivateEndpointServicesApi) ListPrivateEndpointServicesExecute(r admin.ListPrivateEndpointServicesApiRequest) ([]admin.EndpointService, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPrivateEndpointServiceExecute")
+		panic("no return value specified for ListPrivateEndpointServicesExecute")
 	}
 
 	var r0 []admin.EndpointService
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPrivateEndpointServiceApiRequest) ([]admin.EndpointService, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListPrivateEndpointServicesApiRequest) ([]admin.EndpointService, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListPrivateEndpointServiceApiRequest) []admin.EndpointService); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListPrivateEndpointServicesApiRequest) []admin.EndpointService); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1218,7 +1218,7 @@ func (_m *PrivateEndpointServicesApi) ListPrivateEndpointServiceExecute(r admin.
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListPrivateEndpointServiceApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListPrivateEndpointServicesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1226,7 +1226,7 @@ func (_m *PrivateEndpointServicesApi) ListPrivateEndpointServiceExecute(r admin.
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListPrivateEndpointServiceApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListPrivateEndpointServicesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1235,144 +1235,144 @@ func (_m *PrivateEndpointServicesApi) ListPrivateEndpointServiceExecute(r admin.
 	return r0, r1, r2
 }
 
-// PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateEndpointServiceExecute'
-type PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call struct {
+// PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateEndpointServicesExecute'
+type PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call struct {
 	*mock.Call
 }
 
-// ListPrivateEndpointServiceExecute is a helper method to define mock.On call
-//   - r admin.ListPrivateEndpointServiceApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServiceExecute(r any) *PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call {
-	return &PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call{Call: _e.mock.On("ListPrivateEndpointServiceExecute", r)}
+// ListPrivateEndpointServicesExecute is a helper method to define mock.On call
+//   - r admin.ListPrivateEndpointServicesApiRequest
+func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServicesExecute(r any) *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call {
+	return &PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call{Call: _e.mock.On("ListPrivateEndpointServicesExecute", r)}
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call) Run(run func(r admin.ListPrivateEndpointServiceApiRequest)) *PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call) Run(run func(r admin.ListPrivateEndpointServicesApiRequest)) *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPrivateEndpointServiceApiRequest))
+		run(args[0].(admin.ListPrivateEndpointServicesApiRequest))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call) Return(_a0 []admin.EndpointService, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call) Return(_a0 []admin.EndpointService, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call) RunAndReturn(run func(admin.ListPrivateEndpointServiceApiRequest) ([]admin.EndpointService, *http.Response, error)) *PrivateEndpointServicesApi_ListPrivateEndpointServiceExecute_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call) RunAndReturn(run func(admin.ListPrivateEndpointServicesApiRequest) ([]admin.EndpointService, *http.Response, error)) *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListPrivateEndpointServiceWithParams provides a mock function with given fields: ctx, args
-func (_m *PrivateEndpointServicesApi) ListPrivateEndpointServiceWithParams(ctx context.Context, args *admin.ListPrivateEndpointServiceApiParams) admin.ListPrivateEndpointServiceApiRequest {
+// ListPrivateEndpointServicesWithParams provides a mock function with given fields: ctx, args
+func (_m *PrivateEndpointServicesApi) ListPrivateEndpointServicesWithParams(ctx context.Context, args *admin.ListPrivateEndpointServicesApiParams) admin.ListPrivateEndpointServicesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListPrivateEndpointServiceWithParams")
+		panic("no return value specified for ListPrivateEndpointServicesWithParams")
 	}
 
-	var r0 admin.ListPrivateEndpointServiceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPrivateEndpointServiceApiParams) admin.ListPrivateEndpointServiceApiRequest); ok {
+	var r0 admin.ListPrivateEndpointServicesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPrivateEndpointServicesApiParams) admin.ListPrivateEndpointServicesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListPrivateEndpointServiceApiRequest)
+		r0 = ret.Get(0).(admin.ListPrivateEndpointServicesApiRequest)
 	}
 
 	return r0
 }
 
-// PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateEndpointServiceWithParams'
-type PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call struct {
+// PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateEndpointServicesWithParams'
+type PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListPrivateEndpointServiceWithParams is a helper method to define mock.On call
+// ListPrivateEndpointServicesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListPrivateEndpointServiceApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServiceWithParams(ctx any, args any) *PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call {
-	return &PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call{Call: _e.mock.On("ListPrivateEndpointServiceWithParams", ctx, args)}
+//   - args *admin.ListPrivateEndpointServicesApiParams
+func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServicesWithParams(ctx any, args any) *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call {
+	return &PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call{Call: _e.mock.On("ListPrivateEndpointServicesWithParams", ctx, args)}
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPrivateEndpointServiceApiParams)) *PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPrivateEndpointServicesApiParams)) *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPrivateEndpointServiceApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListPrivateEndpointServicesApiParams))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call) Return(_a0 admin.ListPrivateEndpointServiceApiRequest) *PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call) Return(_a0 admin.ListPrivateEndpointServicesApiRequest) *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPrivateEndpointServiceApiParams) admin.ListPrivateEndpointServiceApiRequest) *PrivateEndpointServicesApi_ListPrivateEndpointServiceWithParams_Call {
+func (_c *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPrivateEndpointServicesApiParams) admin.ListPrivateEndpointServicesApiRequest) *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ToggleRegionalEndpointMode provides a mock function with given fields: ctx, groupId, projectSettingItem
-func (_m *PrivateEndpointServicesApi) ToggleRegionalEndpointMode(ctx context.Context, groupId string, projectSettingItem *admin.ProjectSettingItem) admin.ToggleRegionalEndpointModeApiRequest {
+// ToggleRegionalizedPrivateEndpointSetting provides a mock function with given fields: ctx, groupId, projectSettingItem
+func (_m *PrivateEndpointServicesApi) ToggleRegionalizedPrivateEndpointSetting(ctx context.Context, groupId string, projectSettingItem *admin.ProjectSettingItem) admin.ToggleRegionalizedPrivateEndpointSettingApiRequest {
 	ret := _m.Called(ctx, groupId, projectSettingItem)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ToggleRegionalEndpointMode")
+		panic("no return value specified for ToggleRegionalizedPrivateEndpointSetting")
 	}
 
-	var r0 admin.ToggleRegionalEndpointModeApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ProjectSettingItem) admin.ToggleRegionalEndpointModeApiRequest); ok {
+	var r0 admin.ToggleRegionalizedPrivateEndpointSettingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ProjectSettingItem) admin.ToggleRegionalizedPrivateEndpointSettingApiRequest); ok {
 		r0 = rf(ctx, groupId, projectSettingItem)
 	} else {
-		r0 = ret.Get(0).(admin.ToggleRegionalEndpointModeApiRequest)
+		r0 = ret.Get(0).(admin.ToggleRegionalizedPrivateEndpointSettingApiRequest)
 	}
 
 	return r0
 }
 
-// PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleRegionalEndpointMode'
-type PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call struct {
+// PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleRegionalizedPrivateEndpointSetting'
+type PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call struct {
 	*mock.Call
 }
 
-// ToggleRegionalEndpointMode is a helper method to define mock.On call
+// ToggleRegionalizedPrivateEndpointSetting is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - projectSettingItem *admin.ProjectSettingItem
-func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalEndpointMode(ctx any, groupId any, projectSettingItem any) *PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call {
-	return &PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call{Call: _e.mock.On("ToggleRegionalEndpointMode", ctx, groupId, projectSettingItem)}
+func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSetting(ctx any, groupId any, projectSettingItem any) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call {
+	return &PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call{Call: _e.mock.On("ToggleRegionalizedPrivateEndpointSetting", ctx, groupId, projectSettingItem)}
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call) Run(run func(ctx context.Context, groupId string, projectSettingItem *admin.ProjectSettingItem)) *PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call) Run(run func(ctx context.Context, groupId string, projectSettingItem *admin.ProjectSettingItem)) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.ProjectSettingItem))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call) Return(_a0 admin.ToggleRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call) Return(_a0 admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call) RunAndReturn(run func(context.Context, string, *admin.ProjectSettingItem) admin.ToggleRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_ToggleRegionalEndpointMode_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call) RunAndReturn(run func(context.Context, string, *admin.ProjectSettingItem) admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ToggleRegionalEndpointModeExecute provides a mock function with given fields: r
-func (_m *PrivateEndpointServicesApi) ToggleRegionalEndpointModeExecute(r admin.ToggleRegionalEndpointModeApiRequest) (*admin.ProjectSettingItem, *http.Response, error) {
+// ToggleRegionalizedPrivateEndpointSettingExecute provides a mock function with given fields: r
+func (_m *PrivateEndpointServicesApi) ToggleRegionalizedPrivateEndpointSettingExecute(r admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) (*admin.ProjectSettingItem, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ToggleRegionalEndpointModeExecute")
+		panic("no return value specified for ToggleRegionalizedPrivateEndpointSettingExecute")
 	}
 
 	var r0 *admin.ProjectSettingItem
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ToggleRegionalEndpointModeApiRequest) (*admin.ProjectSettingItem, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) (*admin.ProjectSettingItem, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ToggleRegionalEndpointModeApiRequest) *admin.ProjectSettingItem); ok {
+	if rf, ok := ret.Get(0).(func(admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) *admin.ProjectSettingItem); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1380,7 +1380,7 @@ func (_m *PrivateEndpointServicesApi) ToggleRegionalEndpointModeExecute(r admin.
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ToggleRegionalEndpointModeApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1388,7 +1388,7 @@ func (_m *PrivateEndpointServicesApi) ToggleRegionalEndpointModeExecute(r admin.
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ToggleRegionalEndpointModeApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1397,77 +1397,77 @@ func (_m *PrivateEndpointServicesApi) ToggleRegionalEndpointModeExecute(r admin.
 	return r0, r1, r2
 }
 
-// PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleRegionalEndpointModeExecute'
-type PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call struct {
+// PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleRegionalizedPrivateEndpointSettingExecute'
+type PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call struct {
 	*mock.Call
 }
 
-// ToggleRegionalEndpointModeExecute is a helper method to define mock.On call
-//   - r admin.ToggleRegionalEndpointModeApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalEndpointModeExecute(r any) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call {
-	return &PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call{Call: _e.mock.On("ToggleRegionalEndpointModeExecute", r)}
+// ToggleRegionalizedPrivateEndpointSettingExecute is a helper method to define mock.On call
+//   - r admin.ToggleRegionalizedPrivateEndpointSettingApiRequest
+func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSettingExecute(r any) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call {
+	return &PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call{Call: _e.mock.On("ToggleRegionalizedPrivateEndpointSettingExecute", r)}
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call) Run(run func(r admin.ToggleRegionalEndpointModeApiRequest)) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call) Run(run func(r admin.ToggleRegionalizedPrivateEndpointSettingApiRequest)) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ToggleRegionalEndpointModeApiRequest))
+		run(args[0].(admin.ToggleRegionalizedPrivateEndpointSettingApiRequest))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call) Return(_a0 *admin.ProjectSettingItem, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call) Return(_a0 *admin.ProjectSettingItem, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call) RunAndReturn(run func(admin.ToggleRegionalEndpointModeApiRequest) (*admin.ProjectSettingItem, *http.Response, error)) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeExecute_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call) RunAndReturn(run func(admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) (*admin.ProjectSettingItem, *http.Response, error)) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ToggleRegionalEndpointModeWithParams provides a mock function with given fields: ctx, args
-func (_m *PrivateEndpointServicesApi) ToggleRegionalEndpointModeWithParams(ctx context.Context, args *admin.ToggleRegionalEndpointModeApiParams) admin.ToggleRegionalEndpointModeApiRequest {
+// ToggleRegionalizedPrivateEndpointSettingWithParams provides a mock function with given fields: ctx, args
+func (_m *PrivateEndpointServicesApi) ToggleRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *admin.ToggleRegionalizedPrivateEndpointSettingApiParams) admin.ToggleRegionalizedPrivateEndpointSettingApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ToggleRegionalEndpointModeWithParams")
+		panic("no return value specified for ToggleRegionalizedPrivateEndpointSettingWithParams")
 	}
 
-	var r0 admin.ToggleRegionalEndpointModeApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ToggleRegionalEndpointModeApiParams) admin.ToggleRegionalEndpointModeApiRequest); ok {
+	var r0 admin.ToggleRegionalizedPrivateEndpointSettingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ToggleRegionalizedPrivateEndpointSettingApiParams) admin.ToggleRegionalizedPrivateEndpointSettingApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ToggleRegionalEndpointModeApiRequest)
+		r0 = ret.Get(0).(admin.ToggleRegionalizedPrivateEndpointSettingApiRequest)
 	}
 
 	return r0
 }
 
-// PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleRegionalEndpointModeWithParams'
-type PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call struct {
+// PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleRegionalizedPrivateEndpointSettingWithParams'
+type PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call struct {
 	*mock.Call
 }
 
-// ToggleRegionalEndpointModeWithParams is a helper method to define mock.On call
+// ToggleRegionalizedPrivateEndpointSettingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ToggleRegionalEndpointModeApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalEndpointModeWithParams(ctx any, args any) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call {
-	return &PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call{Call: _e.mock.On("ToggleRegionalEndpointModeWithParams", ctx, args)}
+//   - args *admin.ToggleRegionalizedPrivateEndpointSettingApiParams
+func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSettingWithParams(ctx any, args any) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call {
+	return &PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call{Call: _e.mock.On("ToggleRegionalizedPrivateEndpointSettingWithParams", ctx, args)}
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call) Run(run func(ctx context.Context, args *admin.ToggleRegionalEndpointModeApiParams)) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call) Run(run func(ctx context.Context, args *admin.ToggleRegionalizedPrivateEndpointSettingApiParams)) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ToggleRegionalEndpointModeApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ToggleRegionalizedPrivateEndpointSettingApiParams))
 	})
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call) Return(_a0 admin.ToggleRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call) Return(_a0 admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call) RunAndReturn(run func(context.Context, *admin.ToggleRegionalEndpointModeApiParams) admin.ToggleRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call {
+func (_c *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call) RunAndReturn(run func(context.Context, *admin.ToggleRegionalizedPrivateEndpointSettingApiParams) admin.ToggleRegionalizedPrivateEndpointSettingApiRequest) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

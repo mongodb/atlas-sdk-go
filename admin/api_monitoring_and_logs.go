@@ -15,29 +15,28 @@ import (
 type MonitoringAndLogsApi interface {
 
 	/*
-		DownloadClusterLog Download Logs for One Cluster Host in One Project
+		GetAtlasProcess Return One MongoDB Process by ID
 
-		Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. MongoDB updates process and audit logs from the cluster backend infrastructure every five minutes. Logs are stored in chunks approximately five minutes in length, but this duration may vary. If you poll the API for log files, we recommend polling every five minutes even though consecutive polls could contain some overlapping logs. This feature isn't available for `M0` free clusters, `M2`, `M5`, flex, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Data Access Read Only or higher role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip". Deprecated versions: v2-{2023-01-01}
+		Returns the processes for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param hostName Human-readable label that identifies the host that stores the log files that you want to download.
-		@param logName Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project.
-		@return DownloadClusterLogApiRequest
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return GetAtlasProcessApiRequest
 	*/
-	DownloadClusterLog(ctx context.Context, groupId string, hostName string, logName string) DownloadClusterLogApiRequest
+	GetAtlasProcess(ctx context.Context, groupId string, processId string) GetAtlasProcessApiRequest
 	/*
-		DownloadClusterLog Download Logs for One Cluster Host in One Project
+		GetAtlasProcess Return One MongoDB Process by ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DownloadClusterLogApiParams - Parameters for the request
-		@return DownloadClusterLogApiRequest
+		@param GetAtlasProcessApiParams - Parameters for the request
+		@return GetAtlasProcessApiRequest
 	*/
-	DownloadClusterLogWithParams(ctx context.Context, args *DownloadClusterLogApiParams) DownloadClusterLogApiRequest
+	GetAtlasProcessWithParams(ctx context.Context, args *GetAtlasProcessApiParams) GetAtlasProcessApiRequest
 
 	// Method available only for mocking purposes
-	DownloadClusterLogExecute(r DownloadClusterLogApiRequest) (io.ReadCloser, *http.Response, error)
+	GetAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error)
 
 	/*
 		GetDatabase Return One Database for One MongoDB Process
@@ -90,83 +89,7 @@ type MonitoringAndLogsApi interface {
 	GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-		GetGroupProcess Return One MongoDB Process by ID
-
-		Returns the processes for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-		@return GetGroupProcessApiRequest
-	*/
-	GetGroupProcess(ctx context.Context, groupId string, processId string) GetGroupProcessApiRequest
-	/*
-		GetGroupProcess Return One MongoDB Process by ID
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetGroupProcessApiParams - Parameters for the request
-		@return GetGroupProcessApiRequest
-	*/
-	GetGroupProcessWithParams(ctx context.Context, args *GetGroupProcessApiParams) GetGroupProcessApiRequest
-
-	// Method available only for mocking purposes
-	GetGroupProcessExecute(r GetGroupProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error)
-
-	/*
-		GetIndexMeasurements Return Atlas Search Metrics for One Index in One Namespace
-
-		Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-		@param indexName Human-readable label that identifies the index.
-		@param databaseName Human-readable label that identifies the database.
-		@param collectionName Human-readable label that identifies the collection.
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetIndexMeasurementsApiRequest
-	*/
-	GetIndexMeasurements(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMeasurementsApiRequest
-	/*
-		GetIndexMeasurements Return Atlas Search Metrics for One Index in One Namespace
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetIndexMeasurementsApiParams - Parameters for the request
-		@return GetIndexMeasurementsApiRequest
-	*/
-	GetIndexMeasurementsWithParams(ctx context.Context, args *GetIndexMeasurementsApiParams) GetIndexMeasurementsApiRequest
-
-	// Method available only for mocking purposes
-	GetIndexMeasurementsExecute(r GetIndexMeasurementsApiRequest) (*MeasurementsIndexes, *http.Response, error)
-
-	/*
-		GetProcessDisk Return Measurements for One Disk
-
-		Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param partitionName Human-readable label of the disk or partition to which the measurements apply.
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-		@return GetProcessDiskApiRequest
-	*/
-	GetProcessDisk(ctx context.Context, partitionName string, groupId string, processId string) GetProcessDiskApiRequest
-	/*
-		GetProcessDisk Return Measurements for One Disk
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetProcessDiskApiParams - Parameters for the request
-		@return GetProcessDiskApiRequest
-	*/
-	GetProcessDiskWithParams(ctx context.Context, args *GetProcessDiskApiParams) GetProcessDiskApiRequest
-
-	// Method available only for mocking purposes
-	GetProcessDiskExecute(r GetProcessDiskApiRequest) (*MeasurementDiskPartition, *http.Response, error)
-
-	/*
-			GetProcessDiskMeasurements Return Measurements of One Disk for One MongoDB Process
+			GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
 
 			Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
 		- Throughput of I/O operations for the disk partition used for the MongoDB process
@@ -180,24 +103,49 @@ type MonitoringAndLogsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param partitionName Human-readable label of the disk or partition to which the measurements apply.
 			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-			@return GetProcessDiskMeasurementsApiRequest
+			@return GetDiskMeasurementsApiRequest
 	*/
-	GetProcessDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetProcessDiskMeasurementsApiRequest
+	GetDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetDiskMeasurementsApiRequest
 	/*
-		GetProcessDiskMeasurements Return Measurements of One Disk for One MongoDB Process
+		GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetProcessDiskMeasurementsApiParams - Parameters for the request
-		@return GetProcessDiskMeasurementsApiRequest
+		@param GetDiskMeasurementsApiParams - Parameters for the request
+		@return GetDiskMeasurementsApiRequest
 	*/
-	GetProcessDiskMeasurementsWithParams(ctx context.Context, args *GetProcessDiskMeasurementsApiParams) GetProcessDiskMeasurementsApiRequest
+	GetDiskMeasurementsWithParams(ctx context.Context, args *GetDiskMeasurementsApiParams) GetDiskMeasurementsApiRequest
 
 	// Method available only for mocking purposes
-	GetProcessDiskMeasurementsExecute(r GetProcessDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
+	GetDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-			GetProcessMeasurements Return Measurements for One MongoDB Process
+		GetHostLogs Download Logs for One Cluster Host in One Project
+
+		Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. MongoDB updates process and audit logs from the cluster backend infrastructure every five minutes. Logs are stored in chunks approximately five minutes in length, but this duration may vary. If you poll the API for log files, we recommend polling every five minutes even though consecutive polls could contain some overlapping logs. This feature isn't available for `M0` free clusters, `M2`, `M5`, flex, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Data Access Read Only or higher role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip". Deprecated versions: v2-{2023-01-01}
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param hostName Human-readable label that identifies the host that stores the log files that you want to download.
+		@param logName Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project.
+		@return GetHostLogsApiRequest
+	*/
+	GetHostLogs(ctx context.Context, groupId string, hostName string, logName string) GetHostLogsApiRequest
+	/*
+		GetHostLogs Download Logs for One Cluster Host in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetHostLogsApiParams - Parameters for the request
+		@return GetHostLogsApiRequest
+	*/
+	GetHostLogsWithParams(ctx context.Context, args *GetHostLogsApiParams) GetHostLogsApiRequest
+
+	// Method available only for mocking purposes
+	GetHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error)
+
+	/*
+			GetHostMeasurements Return Measurements for One MongoDB Process
 
 			Returns disk, partition, or host measurements per process for the specified host for the specified project. Returned value can be one of the following:
 		- Throughput of I/O operations for the disk partition used for the MongoDB process
@@ -211,21 +159,95 @@ type MonitoringAndLogsApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-			@return GetProcessMeasurementsApiRequest
+			@return GetHostMeasurementsApiRequest
 	*/
-	GetProcessMeasurements(ctx context.Context, groupId string, processId string) GetProcessMeasurementsApiRequest
+	GetHostMeasurements(ctx context.Context, groupId string, processId string) GetHostMeasurementsApiRequest
 	/*
-		GetProcessMeasurements Return Measurements for One MongoDB Process
+		GetHostMeasurements Return Measurements for One MongoDB Process
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetProcessMeasurementsApiParams - Parameters for the request
-		@return GetProcessMeasurementsApiRequest
+		@param GetHostMeasurementsApiParams - Parameters for the request
+		@return GetHostMeasurementsApiRequest
 	*/
-	GetProcessMeasurementsWithParams(ctx context.Context, args *GetProcessMeasurementsApiParams) GetProcessMeasurementsApiRequest
+	GetHostMeasurementsWithParams(ctx context.Context, args *GetHostMeasurementsApiParams) GetHostMeasurementsApiRequest
 
 	// Method available only for mocking purposes
-	GetProcessMeasurementsExecute(r GetProcessMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
+	GetHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
+
+	/*
+		GetIndexMetrics Return Atlas Search Metrics for One Index in One Namespace
+
+		Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+		@param indexName Human-readable label that identifies the index.
+		@param databaseName Human-readable label that identifies the database.
+		@param collectionName Human-readable label that identifies the collection.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return GetIndexMetricsApiRequest
+	*/
+	GetIndexMetrics(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMetricsApiRequest
+	/*
+		GetIndexMetrics Return Atlas Search Metrics for One Index in One Namespace
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetIndexMetricsApiParams - Parameters for the request
+		@return GetIndexMetricsApiRequest
+	*/
+	GetIndexMetricsWithParams(ctx context.Context, args *GetIndexMetricsApiParams) GetIndexMetricsApiRequest
+
+	// Method available only for mocking purposes
+	GetIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
+
+	/*
+		GetMeasurements Return Atlas Search Hardware and Status Metrics
+
+		Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return GetMeasurementsApiRequest
+	*/
+	GetMeasurements(ctx context.Context, processId string, groupId string) GetMeasurementsApiRequest
+	/*
+		GetMeasurements Return Atlas Search Hardware and Status Metrics
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetMeasurementsApiParams - Parameters for the request
+		@return GetMeasurementsApiRequest
+	*/
+	GetMeasurementsWithParams(ctx context.Context, args *GetMeasurementsApiParams) GetMeasurementsApiRequest
+
+	// Method available only for mocking purposes
+	GetMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error)
+
+	/*
+		ListAtlasProcesses Return All MongoDB Processes in One Project
+
+		Returns details of all processes for the specified project. A MongoDB process can be either a `mongod` or `mongos`. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListAtlasProcessesApiRequest
+	*/
+	ListAtlasProcesses(ctx context.Context, groupId string) ListAtlasProcessesApiRequest
+	/*
+		ListAtlasProcesses Return All MongoDB Processes in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListAtlasProcessesApiParams - Parameters for the request
+		@return ListAtlasProcessesApiRequest
+	*/
+	ListAtlasProcessesWithParams(ctx context.Context, args *ListAtlasProcessesApiParams) ListAtlasProcessesApiRequest
+
+	// Method available only for mocking purposes
+	ListAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error)
 
 	/*
 		ListDatabases Return Available Databases for One MongoDB Process
@@ -252,54 +274,56 @@ type MonitoringAndLogsApi interface {
 	ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error)
 
 	/*
-		ListGroupProcesses Return All MongoDB Processes in One Project
+		ListDiskMeasurements Return Measurements for One Disk
 
-		Returns details of all processes for the specified project. A MongoDB process can be either a `mongod` or `mongos`. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return ListDiskMeasurementsApiRequest
+	*/
+	ListDiskMeasurements(ctx context.Context, partitionName string, groupId string, processId string) ListDiskMeasurementsApiRequest
+	/*
+		ListDiskMeasurements Return Measurements for One Disk
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListDiskMeasurementsApiParams - Parameters for the request
+		@return ListDiskMeasurementsApiRequest
+	*/
+	ListDiskMeasurementsWithParams(ctx context.Context, args *ListDiskMeasurementsApiParams) ListDiskMeasurementsApiRequest
+
+	// Method available only for mocking purposes
+	ListDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error)
+
+	/*
+		ListDiskPartitions Return Available Disks for One MongoDB Process
+
+		Returns the list of disks or partitions for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListGroupProcessesApiRequest
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return ListDiskPartitionsApiRequest
 	*/
-	ListGroupProcesses(ctx context.Context, groupId string) ListGroupProcessesApiRequest
+	ListDiskPartitions(ctx context.Context, groupId string, processId string) ListDiskPartitionsApiRequest
 	/*
-		ListGroupProcesses Return All MongoDB Processes in One Project
+		ListDiskPartitions Return Available Disks for One MongoDB Process
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListGroupProcessesApiParams - Parameters for the request
-		@return ListGroupProcessesApiRequest
+		@param ListDiskPartitionsApiParams - Parameters for the request
+		@return ListDiskPartitionsApiRequest
 	*/
-	ListGroupProcessesWithParams(ctx context.Context, args *ListGroupProcessesApiParams) ListGroupProcessesApiRequest
+	ListDiskPartitionsWithParams(ctx context.Context, args *ListDiskPartitionsApiParams) ListDiskPartitionsApiRequest
 
 	// Method available only for mocking purposes
-	ListGroupProcessesExecute(r ListGroupProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error)
+	ListDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error)
 
 	/*
-		ListHostFtsMetrics Return All Atlas Search Metric Types for One Process
-
-		Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListHostFtsMetricsApiRequest
-	*/
-	ListHostFtsMetrics(ctx context.Context, processId string, groupId string) ListHostFtsMetricsApiRequest
-	/*
-		ListHostFtsMetrics Return All Atlas Search Metric Types for One Process
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListHostFtsMetricsApiParams - Parameters for the request
-		@return ListHostFtsMetricsApiRequest
-	*/
-	ListHostFtsMetricsWithParams(ctx context.Context, args *ListHostFtsMetricsApiParams) ListHostFtsMetricsApiRequest
-
-	// Method available only for mocking purposes
-	ListHostFtsMetricsExecute(r ListHostFtsMetricsApiRequest) (*CloudSearchMetrics, *http.Response, error)
-
-	/*
-		ListIndexMeasurements Return All Atlas Search Index Metrics for One Namespace
+		ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
 
 		Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
@@ -308,181 +332,124 @@ type MonitoringAndLogsApi interface {
 		@param databaseName Human-readable label that identifies the database.
 		@param collectionName Human-readable label that identifies the collection.
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListIndexMeasurementsApiRequest
+		@return ListIndexMetricsApiRequest
 	*/
-	ListIndexMeasurements(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMeasurementsApiRequest
+	ListIndexMetrics(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMetricsApiRequest
 	/*
-		ListIndexMeasurements Return All Atlas Search Index Metrics for One Namespace
+		ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListIndexMeasurementsApiParams - Parameters for the request
-		@return ListIndexMeasurementsApiRequest
+		@param ListIndexMetricsApiParams - Parameters for the request
+		@return ListIndexMetricsApiRequest
 	*/
-	ListIndexMeasurementsWithParams(ctx context.Context, args *ListIndexMeasurementsApiParams) ListIndexMeasurementsApiRequest
+	ListIndexMetricsWithParams(ctx context.Context, args *ListIndexMetricsApiParams) ListIndexMetricsApiRequest
 
 	// Method available only for mocking purposes
-	ListIndexMeasurementsExecute(r ListIndexMeasurementsApiRequest) (*MeasurementsIndexes, *http.Response, error)
+	ListIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
-		ListMeasurements Return Atlas Search Hardware and Status Metrics
+		ListMetricTypes Return All Atlas Search Metric Types for One Process
 
-		Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+		Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListMeasurementsApiRequest
+		@return ListMetricTypesApiRequest
 	*/
-	ListMeasurements(ctx context.Context, processId string, groupId string) ListMeasurementsApiRequest
+	ListMetricTypes(ctx context.Context, processId string, groupId string) ListMetricTypesApiRequest
 	/*
-		ListMeasurements Return Atlas Search Hardware and Status Metrics
+		ListMetricTypes Return All Atlas Search Metric Types for One Process
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListMeasurementsApiParams - Parameters for the request
-		@return ListMeasurementsApiRequest
+		@param ListMetricTypesApiParams - Parameters for the request
+		@return ListMetricTypesApiRequest
 	*/
-	ListMeasurementsWithParams(ctx context.Context, args *ListMeasurementsApiParams) ListMeasurementsApiRequest
+	ListMetricTypesWithParams(ctx context.Context, args *ListMetricTypesApiParams) ListMetricTypesApiRequest
 
 	// Method available only for mocking purposes
-	ListMeasurementsExecute(r ListMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error)
-
-	/*
-		ListProcessDisks Return Available Disks for One MongoDB Process
-
-		Returns the list of disks or partitions for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-		@return ListProcessDisksApiRequest
-	*/
-	ListProcessDisks(ctx context.Context, groupId string, processId string) ListProcessDisksApiRequest
-	/*
-		ListProcessDisks Return Available Disks for One MongoDB Process
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListProcessDisksApiParams - Parameters for the request
-		@return ListProcessDisksApiRequest
-	*/
-	ListProcessDisksWithParams(ctx context.Context, args *ListProcessDisksApiParams) ListProcessDisksApiRequest
-
-	// Method available only for mocking purposes
-	ListProcessDisksExecute(r ListProcessDisksApiRequest) (*PaginatedDiskPartition, *http.Response, error)
+	ListMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error)
 }
 
 // MonitoringAndLogsApiService MonitoringAndLogsApi service
 type MonitoringAndLogsApiService service
 
-type DownloadClusterLogApiRequest struct {
+type GetAtlasProcessApiRequest struct {
 	ctx        context.Context
 	ApiService MonitoringAndLogsApi
 	groupId    string
-	hostName   string
-	logName    string
-	endDate    *int64
-	startDate  *int64
+	processId  string
 }
 
-type DownloadClusterLogApiParams struct {
+type GetAtlasProcessApiParams struct {
 	GroupId   string
-	HostName  string
-	LogName   string
-	EndDate   *int64
-	StartDate *int64
+	ProcessId string
 }
 
-func (a *MonitoringAndLogsApiService) DownloadClusterLogWithParams(ctx context.Context, args *DownloadClusterLogApiParams) DownloadClusterLogApiRequest {
-	return DownloadClusterLogApiRequest{
+func (a *MonitoringAndLogsApiService) GetAtlasProcessWithParams(ctx context.Context, args *GetAtlasProcessApiParams) GetAtlasProcessApiRequest {
+	return GetAtlasProcessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
-		hostName:   args.HostName,
-		logName:    args.LogName,
-		endDate:    args.EndDate,
-		startDate:  args.StartDate,
+		processId:  args.ProcessId,
 	}
 }
 
-// Specifies the date and time for the ending point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours after the start date. If the start date is also unspecified, the value will default to the time of the request.
-func (r DownloadClusterLogApiRequest) EndDate(endDate int64) DownloadClusterLogApiRequest {
-	r.endDate = &endDate
-	return r
-}
-
-// Specifies the date and time for the starting point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours prior to the end date. If the end date is also unspecified, the value will default to 24 hours prior to the time of the request.
-func (r DownloadClusterLogApiRequest) StartDate(startDate int64) DownloadClusterLogApiRequest {
-	r.startDate = &startDate
-	return r
-}
-
-func (r DownloadClusterLogApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
-	return r.ApiService.DownloadClusterLogExecute(r)
+func (r GetAtlasProcessApiRequest) Execute() (*ApiHostViewAtlas, *http.Response, error) {
+	return r.ApiService.GetAtlasProcessExecute(r)
 }
 
 /*
-DownloadClusterLog Download Logs for One Cluster Host in One Project
+GetAtlasProcess Return One MongoDB Process by ID
 
-Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. MongoDB updates process and audit logs from the cluster backend infrastructure every five minutes. Logs are stored in chunks approximately five minutes in length, but this duration may vary. If you poll the API for log files, we recommend polling every five minutes even though consecutive polls could contain some overlapping logs. This feature isn't available for `M0` free clusters, `M2`, `M5`, flex, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Data Access Read Only or higher role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip". Deprecated versions: v2-{2023-01-01}
+Returns the processes for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param hostName Human-readable label that identifies the host that stores the log files that you want to download.
-	@param logName Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project.
-	@return DownloadClusterLogApiRequest
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return GetAtlasProcessApiRequest
 */
-func (a *MonitoringAndLogsApiService) DownloadClusterLog(ctx context.Context, groupId string, hostName string, logName string) DownloadClusterLogApiRequest {
-	return DownloadClusterLogApiRequest{
+func (a *MonitoringAndLogsApiService) GetAtlasProcess(ctx context.Context, groupId string, processId string) GetAtlasProcessApiRequest {
+	return GetAtlasProcessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
-		hostName:   hostName,
-		logName:    logName,
+		processId:  processId,
 	}
 }
 
-// DownloadClusterLogExecute executes the request
+// GetAtlasProcessExecute executes the request
 //
-//	@return io.ReadCloser
-func (a *MonitoringAndLogsApiService) DownloadClusterLogExecute(r DownloadClusterLogApiRequest) (io.ReadCloser, *http.Response, error) {
+//	@return ApiHostViewAtlas
+func (a *MonitoringAndLogsApiService) GetAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue io.ReadCloser
+		localVarReturnValue *ApiHostViewAtlas
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.DownloadClusterLog")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetAtlasProcess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz"
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.hostName == "" {
-		return localVarReturnValue, nil, reportError("hostName is empty and must be specified")
+	if r.processId == "" {
+		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
 	}
-	localVarPath = strings.Replace(localVarPath, "{"+"hostName"+"}", url.PathEscape(r.hostName), -1)
-	if r.logName == "" {
-		return localVarReturnValue, nil, reportError("logName is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"logName"+"}", url.PathEscape(r.logName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
-	}
-	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -493,7 +460,7 @@ func (a *MonitoringAndLogsApiService) DownloadClusterLogExecute(r DownloadCluste
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+gzip"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -861,71 +828,131 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsExecute(r GetDataba
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetGroupProcessApiRequest struct {
-	ctx        context.Context
-	ApiService MonitoringAndLogsApi
-	groupId    string
-	processId  string
+type GetDiskMeasurementsApiRequest struct {
+	ctx           context.Context
+	ApiService    MonitoringAndLogsApi
+	groupId       string
+	partitionName string
+	processId     string
+	granularity   *string
+	m             *[]string
+	period        *string
+	start         *time.Time
+	end           *time.Time
 }
 
-type GetGroupProcessApiParams struct {
-	GroupId   string
-	ProcessId string
+type GetDiskMeasurementsApiParams struct {
+	GroupId       string
+	PartitionName string
+	ProcessId     string
+	Granularity   *string
+	M             *[]string
+	Period        *string
+	Start         *time.Time
+	End           *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) GetGroupProcessWithParams(ctx context.Context, args *GetGroupProcessApiParams) GetGroupProcessApiRequest {
-	return GetGroupProcessApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		processId:  args.ProcessId,
+func (a *MonitoringAndLogsApiService) GetDiskMeasurementsWithParams(ctx context.Context, args *GetDiskMeasurementsApiParams) GetDiskMeasurementsApiRequest {
+	return GetDiskMeasurementsApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
+		partitionName: args.PartitionName,
+		processId:     args.ProcessId,
+		granularity:   args.Granularity,
+		m:             args.M,
+		period:        args.Period,
+		start:         args.Start,
+		end:           args.End,
 	}
 }
 
-func (r GetGroupProcessApiRequest) Execute() (*ApiHostViewAtlas, *http.Response, error) {
-	return r.ApiService.GetGroupProcessExecute(r)
+// Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
+func (r GetDiskMeasurementsApiRequest) Granularity(granularity string) GetDiskMeasurementsApiRequest {
+	r.granularity = &granularity
+	return r
+}
+
+// One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements.
+func (r GetDiskMeasurementsApiRequest) M(m []string) GetDiskMeasurementsApiRequest {
+	r.m = &m
+	return r
+}
+
+// Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
+func (r GetDiskMeasurementsApiRequest) Period(period string) GetDiskMeasurementsApiRequest {
+	r.period = &period
+	return r
+}
+
+// Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
+func (r GetDiskMeasurementsApiRequest) Start(start time.Time) GetDiskMeasurementsApiRequest {
+	r.start = &start
+	return r
+}
+
+// Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
+func (r GetDiskMeasurementsApiRequest) End(end time.Time) GetDiskMeasurementsApiRequest {
+	r.end = &end
+	return r
+}
+
+func (r GetDiskMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+	return r.ApiService.GetDiskMeasurementsExecute(r)
 }
 
 /*
-GetGroupProcess Return One MongoDB Process by ID
+GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
 
-Returns the processes for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
+- Throughput of I/O operations for the disk partition used for the MongoDB process
+- Percentage of time during which requests the partition issued and serviced
+- Latency per operation type of the disk partition used for the MongoDB process
+- Amount of free and used disk space on the disk partition used for the MongoDB process
+
+To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param partitionName Human-readable label of the disk or partition to which the measurements apply.
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetGroupProcessApiRequest
+	@return GetDiskMeasurementsApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetGroupProcess(ctx context.Context, groupId string, processId string) GetGroupProcessApiRequest {
-	return GetGroupProcessApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		processId:  processId,
+func (a *MonitoringAndLogsApiService) GetDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetDiskMeasurementsApiRequest {
+	return GetDiskMeasurementsApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       groupId,
+		partitionName: partitionName,
+		processId:     processId,
 	}
 }
 
-// GetGroupProcessExecute executes the request
+// GetDiskMeasurementsExecute executes the request
 //
-//	@return ApiHostViewAtlas
-func (a *MonitoringAndLogsApiService) GetGroupProcessExecute(r GetGroupProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
+//	@return ApiMeasurementsGeneralViewAtlas
+func (a *MonitoringAndLogsApiService) GetDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ApiHostViewAtlas
+		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetGroupProcess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDiskMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}"
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.partitionName == "" {
+		return localVarReturnValue, nil, reportError("partitionName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(r.partitionName), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
 	}
@@ -934,7 +961,27 @@ func (a *MonitoringAndLogsApiService) GetGroupProcessExecute(r GetGroupProcessAp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
+	if r.m != nil {
+		t := *r.m
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
+
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	if r.period != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
+	}
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
+	}
+	if r.end != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -984,7 +1031,358 @@ func (a *MonitoringAndLogsApiService) GetGroupProcessExecute(r GetGroupProcessAp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetIndexMeasurementsApiRequest struct {
+type GetHostLogsApiRequest struct {
+	ctx        context.Context
+	ApiService MonitoringAndLogsApi
+	groupId    string
+	hostName   string
+	logName    string
+	endDate    *int64
+	startDate  *int64
+}
+
+type GetHostLogsApiParams struct {
+	GroupId   string
+	HostName  string
+	LogName   string
+	EndDate   *int64
+	StartDate *int64
+}
+
+func (a *MonitoringAndLogsApiService) GetHostLogsWithParams(ctx context.Context, args *GetHostLogsApiParams) GetHostLogsApiRequest {
+	return GetHostLogsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		hostName:   args.HostName,
+		logName:    args.LogName,
+		endDate:    args.EndDate,
+		startDate:  args.StartDate,
+	}
+}
+
+// Specifies the date and time for the ending point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours after the start date. If the start date is also unspecified, the value will default to the time of the request.
+func (r GetHostLogsApiRequest) EndDate(endDate int64) GetHostLogsApiRequest {
+	r.endDate = &endDate
+	return r
+}
+
+// Specifies the date and time for the starting point of the range of log messages to retrieve, in the number of seconds that have elapsed since the UNIX epoch. This value will default to 24 hours prior to the end date. If the end date is also unspecified, the value will default to 24 hours prior to the time of the request.
+func (r GetHostLogsApiRequest) StartDate(startDate int64) GetHostLogsApiRequest {
+	r.startDate = &startDate
+	return r
+}
+
+func (r GetHostLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
+	return r.ApiService.GetHostLogsExecute(r)
+}
+
+/*
+GetHostLogs Download Logs for One Cluster Host in One Project
+
+Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. MongoDB updates process and audit logs from the cluster backend infrastructure every five minutes. Logs are stored in chunks approximately five minutes in length, but this duration may vary. If you poll the API for log files, we recommend polling every five minutes even though consecutive polls could contain some overlapping logs. This feature isn't available for `M0` free clusters, `M2`, `M5`, flex, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Data Access Read Only or higher role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip". Deprecated versions: v2-{2023-01-01}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param hostName Human-readable label that identifies the host that stores the log files that you want to download.
+	@param logName Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project.
+	@return GetHostLogsApiRequest
+*/
+func (a *MonitoringAndLogsApiService) GetHostLogs(ctx context.Context, groupId string, hostName string, logName string) GetHostLogsApiRequest {
+	return GetHostLogsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		hostName:   hostName,
+		logName:    logName,
+	}
+}
+
+// GetHostLogsExecute executes the request
+//
+//	@return io.ReadCloser
+func (a *MonitoringAndLogsApiService) GetHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue io.ReadCloser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetHostLogs")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.hostName == "" {
+		return localVarReturnValue, nil, reportError("hostName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"hostName"+"}", url.PathEscape(r.hostName), -1)
+	if r.logName == "" {
+		return localVarReturnValue, nil, reportError("logName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"logName"+"}", url.PathEscape(r.logName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.endDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
+	}
+	if r.startDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+gzip"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetHostMeasurementsApiRequest struct {
+	ctx         context.Context
+	ApiService  MonitoringAndLogsApi
+	groupId     string
+	processId   string
+	granularity *string
+	m           *[]string
+	period      *string
+	start       *time.Time
+	end         *time.Time
+}
+
+type GetHostMeasurementsApiParams struct {
+	GroupId     string
+	ProcessId   string
+	Granularity *string
+	M           *[]string
+	Period      *string
+	Start       *time.Time
+	End         *time.Time
+}
+
+func (a *MonitoringAndLogsApiService) GetHostMeasurementsWithParams(ctx context.Context, args *GetHostMeasurementsApiParams) GetHostMeasurementsApiRequest {
+	return GetHostMeasurementsApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		processId:   args.ProcessId,
+		granularity: args.Granularity,
+		m:           args.M,
+		period:      args.Period,
+		start:       args.Start,
+		end:         args.End,
+	}
+}
+
+// Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
+func (r GetHostMeasurementsApiRequest) Granularity(granularity string) GetHostMeasurementsApiRequest {
+	r.granularity = &granularity
+	return r
+}
+
+// One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements.
+func (r GetHostMeasurementsApiRequest) M(m []string) GetHostMeasurementsApiRequest {
+	r.m = &m
+	return r
+}
+
+// Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
+func (r GetHostMeasurementsApiRequest) Period(period string) GetHostMeasurementsApiRequest {
+	r.period = &period
+	return r
+}
+
+// Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
+func (r GetHostMeasurementsApiRequest) Start(start time.Time) GetHostMeasurementsApiRequest {
+	r.start = &start
+	return r
+}
+
+// Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
+func (r GetHostMeasurementsApiRequest) End(end time.Time) GetHostMeasurementsApiRequest {
+	r.end = &end
+	return r
+}
+
+func (r GetHostMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+	return r.ApiService.GetHostMeasurementsExecute(r)
+}
+
+/*
+GetHostMeasurements Return Measurements for One MongoDB Process
+
+Returns disk, partition, or host measurements per process for the specified host for the specified project. Returned value can be one of the following:
+- Throughput of I/O operations for the disk partition used for the MongoDB process
+- Percentage of time during which requests the partition issued and serviced
+- Latency per operation type of the disk partition used for the MongoDB process
+- Amount of free and used disk space on the disk partition used for the MongoDB process
+- Measurements for the host, such as CPU usage or number of I/O operations
+
+To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return GetHostMeasurementsApiRequest
+*/
+func (a *MonitoringAndLogsApiService) GetHostMeasurements(ctx context.Context, groupId string, processId string) GetHostMeasurementsApiRequest {
+	return GetHostMeasurementsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		processId:  processId,
+	}
+}
+
+// GetHostMeasurementsExecute executes the request
+//
+//	@return ApiMeasurementsGeneralViewAtlas
+func (a *MonitoringAndLogsApiService) GetHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetHostMeasurements")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/measurements"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.processId == "" {
+		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+
+	if r.m != nil {
+		t := *r.m
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
+
+	}
+	if r.period != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
+	}
+	if r.end != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetIndexMetricsApiRequest struct {
 	ctx            context.Context
 	ApiService     MonitoringAndLogsApi
 	processId      string
@@ -999,7 +1397,7 @@ type GetIndexMeasurementsApiRequest struct {
 	end            *time.Time
 }
 
-type GetIndexMeasurementsApiParams struct {
+type GetIndexMetricsApiParams struct {
 	ProcessId      string
 	IndexName      string
 	DatabaseName   string
@@ -1012,8 +1410,8 @@ type GetIndexMeasurementsApiParams struct {
 	End            *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) GetIndexMeasurementsWithParams(ctx context.Context, args *GetIndexMeasurementsApiParams) GetIndexMeasurementsApiRequest {
-	return GetIndexMeasurementsApiRequest{
+func (a *MonitoringAndLogsApiService) GetIndexMetricsWithParams(ctx context.Context, args *GetIndexMetricsApiParams) GetIndexMetricsApiRequest {
+	return GetIndexMetricsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		processId:      args.ProcessId,
@@ -1030,41 +1428,41 @@ func (a *MonitoringAndLogsApiService) GetIndexMeasurementsWithParams(ctx context
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r GetIndexMeasurementsApiRequest) Granularity(granularity string) GetIndexMeasurementsApiRequest {
+func (r GetIndexMetricsApiRequest) Granularity(granularity string) GetIndexMetricsApiRequest {
 	r.granularity = &granularity
 	return r
 }
 
 // List that contains the measurements that MongoDB Atlas reports for the associated data series.
-func (r GetIndexMeasurementsApiRequest) Metrics(metrics []string) GetIndexMeasurementsApiRequest {
+func (r GetIndexMetricsApiRequest) Metrics(metrics []string) GetIndexMetricsApiRequest {
 	r.metrics = &metrics
 	return r
 }
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetIndexMeasurementsApiRequest) Period(period string) GetIndexMeasurementsApiRequest {
+func (r GetIndexMetricsApiRequest) Period(period string) GetIndexMetricsApiRequest {
 	r.period = &period
 	return r
 }
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetIndexMeasurementsApiRequest) Start(start time.Time) GetIndexMeasurementsApiRequest {
+func (r GetIndexMetricsApiRequest) Start(start time.Time) GetIndexMetricsApiRequest {
 	r.start = &start
 	return r
 }
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetIndexMeasurementsApiRequest) End(end time.Time) GetIndexMeasurementsApiRequest {
+func (r GetIndexMetricsApiRequest) End(end time.Time) GetIndexMetricsApiRequest {
 	r.end = &end
 	return r
 }
 
-func (r GetIndexMeasurementsApiRequest) Execute() (*MeasurementsIndexes, *http.Response, error) {
-	return r.ApiService.GetIndexMeasurementsExecute(r)
+func (r GetIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Response, error) {
+	return r.ApiService.GetIndexMetricsExecute(r)
 }
 
 /*
-GetIndexMeasurements Return Atlas Search Metrics for One Index in One Namespace
+GetIndexMetrics Return Atlas Search Metrics for One Index in One Namespace
 
 Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
@@ -1074,10 +1472,10 @@ Returns the Atlas Search metrics data series within the provided time range for 
 	@param databaseName Human-readable label that identifies the database.
 	@param collectionName Human-readable label that identifies the collection.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetIndexMeasurementsApiRequest
+	@return GetIndexMetricsApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetIndexMeasurements(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMeasurementsApiRequest {
-	return GetIndexMeasurementsApiRequest{
+func (a *MonitoringAndLogsApiService) GetIndexMetrics(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMetricsApiRequest {
+	return GetIndexMetricsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		processId:      processId,
@@ -1088,10 +1486,10 @@ func (a *MonitoringAndLogsApiService) GetIndexMeasurements(ctx context.Context, 
 	}
 }
 
-// GetIndexMeasurementsExecute executes the request
+// GetIndexMetricsExecute executes the request
 //
 //	@return MeasurementsIndexes
-func (a *MonitoringAndLogsApiService) GetIndexMeasurementsExecute(r GetIndexMeasurementsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1099,7 +1497,7 @@ func (a *MonitoringAndLogsApiService) GetIndexMeasurementsExecute(r GetIndexMeas
 		localVarReturnValue *MeasurementsIndexes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetIndexMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetIndexMetrics")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1201,371 +1599,36 @@ func (a *MonitoringAndLogsApiService) GetIndexMeasurementsExecute(r GetIndexMeas
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetProcessDiskApiRequest struct {
-	ctx           context.Context
-	ApiService    MonitoringAndLogsApi
-	partitionName string
-	groupId       string
-	processId     string
-}
-
-type GetProcessDiskApiParams struct {
-	PartitionName string
-	GroupId       string
-	ProcessId     string
-}
-
-func (a *MonitoringAndLogsApiService) GetProcessDiskWithParams(ctx context.Context, args *GetProcessDiskApiParams) GetProcessDiskApiRequest {
-	return GetProcessDiskApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		partitionName: args.PartitionName,
-		groupId:       args.GroupId,
-		processId:     args.ProcessId,
-	}
-}
-
-func (r GetProcessDiskApiRequest) Execute() (*MeasurementDiskPartition, *http.Response, error) {
-	return r.ApiService.GetProcessDiskExecute(r)
-}
-
-/*
-GetProcessDisk Return Measurements for One Disk
-
-Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param partitionName Human-readable label of the disk or partition to which the measurements apply.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetProcessDiskApiRequest
-*/
-func (a *MonitoringAndLogsApiService) GetProcessDisk(ctx context.Context, partitionName string, groupId string, processId string) GetProcessDiskApiRequest {
-	return GetProcessDiskApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		partitionName: partitionName,
-		groupId:       groupId,
-		processId:     processId,
-	}
-}
-
-// GetProcessDiskExecute executes the request
-//
-//	@return MeasurementDiskPartition
-func (a *MonitoringAndLogsApiService) GetProcessDiskExecute(r GetProcessDiskApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *MeasurementDiskPartition
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetProcessDisk")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}"
-	if r.partitionName == "" {
-		return localVarReturnValue, nil, reportError("partitionName is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(r.partitionName), -1)
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.processId == "" {
-		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GetProcessDiskMeasurementsApiRequest struct {
-	ctx           context.Context
-	ApiService    MonitoringAndLogsApi
-	groupId       string
-	partitionName string
-	processId     string
-	granularity   *string
-	m             *[]string
-	period        *string
-	start         *time.Time
-	end           *time.Time
-}
-
-type GetProcessDiskMeasurementsApiParams struct {
-	GroupId       string
-	PartitionName string
-	ProcessId     string
-	Granularity   *string
-	M             *[]string
-	Period        *string
-	Start         *time.Time
-	End           *time.Time
-}
-
-func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurementsWithParams(ctx context.Context, args *GetProcessDiskMeasurementsApiParams) GetProcessDiskMeasurementsApiRequest {
-	return GetProcessDiskMeasurementsApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		groupId:       args.GroupId,
-		partitionName: args.PartitionName,
-		processId:     args.ProcessId,
-		granularity:   args.Granularity,
-		m:             args.M,
-		period:        args.Period,
-		start:         args.Start,
-		end:           args.End,
-	}
-}
-
-// Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r GetProcessDiskMeasurementsApiRequest) Granularity(granularity string) GetProcessDiskMeasurementsApiRequest {
-	r.granularity = &granularity
-	return r
-}
-
-// One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements.
-func (r GetProcessDiskMeasurementsApiRequest) M(m []string) GetProcessDiskMeasurementsApiRequest {
-	r.m = &m
-	return r
-}
-
-// Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetProcessDiskMeasurementsApiRequest) Period(period string) GetProcessDiskMeasurementsApiRequest {
-	r.period = &period
-	return r
-}
-
-// Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetProcessDiskMeasurementsApiRequest) Start(start time.Time) GetProcessDiskMeasurementsApiRequest {
-	r.start = &start
-	return r
-}
-
-// Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetProcessDiskMeasurementsApiRequest) End(end time.Time) GetProcessDiskMeasurementsApiRequest {
-	r.end = &end
-	return r
-}
-
-func (r GetProcessDiskMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
-	return r.ApiService.GetProcessDiskMeasurementsExecute(r)
-}
-
-/*
-GetProcessDiskMeasurements Return Measurements of One Disk for One MongoDB Process
-
-Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
-- Throughput of I/O operations for the disk partition used for the MongoDB process
-- Percentage of time during which requests the partition issued and serviced
-- Latency per operation type of the disk partition used for the MongoDB process
-- Amount of free and used disk space on the disk partition used for the MongoDB process
-
-To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param partitionName Human-readable label of the disk or partition to which the measurements apply.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetProcessDiskMeasurementsApiRequest
-*/
-func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetProcessDiskMeasurementsApiRequest {
-	return GetProcessDiskMeasurementsApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		groupId:       groupId,
-		partitionName: partitionName,
-		processId:     processId,
-	}
-}
-
-// GetProcessDiskMeasurementsExecute executes the request
-//
-//	@return ApiMeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurementsExecute(r GetProcessDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetProcessDiskMeasurements")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.partitionName == "" {
-		return localVarReturnValue, nil, reportError("partitionName is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(r.partitionName), -1)
-	if r.processId == "" {
-		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.granularity == nil {
-		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
-	}
-
-	if r.m != nil {
-		t := *r.m
-		// Workaround for unused import
-		_ = reflect.Append
-		parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
-
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
-	if r.period != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
-	}
-	if r.start != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
-	}
-	if r.end != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GetProcessMeasurementsApiRequest struct {
+type GetMeasurementsApiRequest struct {
 	ctx         context.Context
 	ApiService  MonitoringAndLogsApi
-	groupId     string
 	processId   string
+	groupId     string
 	granularity *string
-	m           *[]string
+	metrics     *[]string
 	period      *string
 	start       *time.Time
 	end         *time.Time
 }
 
-type GetProcessMeasurementsApiParams struct {
-	GroupId     string
+type GetMeasurementsApiParams struct {
 	ProcessId   string
+	GroupId     string
 	Granularity *string
-	M           *[]string
+	Metrics     *[]string
 	Period      *string
 	Start       *time.Time
 	End         *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) GetProcessMeasurementsWithParams(ctx context.Context, args *GetProcessMeasurementsApiParams) GetProcessMeasurementsApiRequest {
-	return GetProcessMeasurementsApiRequest{
+func (a *MonitoringAndLogsApiService) GetMeasurementsWithParams(ctx context.Context, args *GetMeasurementsApiParams) GetMeasurementsApiRequest {
+	return GetMeasurementsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
-		groupId:     args.GroupId,
 		processId:   args.ProcessId,
+		groupId:     args.GroupId,
 		granularity: args.Granularity,
-		m:           args.M,
+		metrics:     args.Metrics,
 		period:      args.Period,
 		start:       args.Start,
 		end:         args.End,
@@ -1573,90 +1636,83 @@ func (a *MonitoringAndLogsApiService) GetProcessMeasurementsWithParams(ctx conte
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r GetProcessMeasurementsApiRequest) Granularity(granularity string) GetProcessMeasurementsApiRequest {
+func (r GetMeasurementsApiRequest) Granularity(granularity string) GetMeasurementsApiRequest {
 	r.granularity = &granularity
 	return r
 }
 
-// One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements.
-func (r GetProcessMeasurementsApiRequest) M(m []string) GetProcessMeasurementsApiRequest {
-	r.m = &m
+// List that contains the metrics that you want MongoDB Atlas to report for the associated data series. If you don&#39;t set this parameter, this resource returns all hardware and status metrics for the associated data series.
+func (r GetMeasurementsApiRequest) Metrics(metrics []string) GetMeasurementsApiRequest {
+	r.metrics = &metrics
 	return r
 }
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetProcessMeasurementsApiRequest) Period(period string) GetProcessMeasurementsApiRequest {
+func (r GetMeasurementsApiRequest) Period(period string) GetMeasurementsApiRequest {
 	r.period = &period
 	return r
 }
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetProcessMeasurementsApiRequest) Start(start time.Time) GetProcessMeasurementsApiRequest {
+func (r GetMeasurementsApiRequest) Start(start time.Time) GetMeasurementsApiRequest {
 	r.start = &start
 	return r
 }
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetProcessMeasurementsApiRequest) End(end time.Time) GetProcessMeasurementsApiRequest {
+func (r GetMeasurementsApiRequest) End(end time.Time) GetMeasurementsApiRequest {
 	r.end = &end
 	return r
 }
 
-func (r GetProcessMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
-	return r.ApiService.GetProcessMeasurementsExecute(r)
+func (r GetMeasurementsApiRequest) Execute() (*MeasurementsNonIndex, *http.Response, error) {
+	return r.ApiService.GetMeasurementsExecute(r)
 }
 
 /*
-GetProcessMeasurements Return Measurements for One MongoDB Process
+GetMeasurements Return Atlas Search Hardware and Status Metrics
 
-Returns disk, partition, or host measurements per process for the specified host for the specified project. Returned value can be one of the following:
-- Throughput of I/O operations for the disk partition used for the MongoDB process
-- Percentage of time during which requests the partition issued and serviced
-- Latency per operation type of the disk partition used for the MongoDB process
-- Amount of free and used disk space on the disk partition used for the MongoDB process
-- Measurements for the host, such as CPU usage or number of I/O operations
-
-To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetProcessMeasurementsApiRequest
+	@return GetMeasurementsApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetProcessMeasurements(ctx context.Context, groupId string, processId string) GetProcessMeasurementsApiRequest {
-	return GetProcessMeasurementsApiRequest{
+func (a *MonitoringAndLogsApiService) GetMeasurements(ctx context.Context, processId string, groupId string) GetMeasurementsApiRequest {
+	return GetMeasurementsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
-		groupId:    groupId,
 		processId:  processId,
+		groupId:    groupId,
 	}
 }
 
-// GetProcessMeasurementsExecute executes the request
+// GetMeasurementsExecute executes the request
 //
-//	@return ApiMeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) GetProcessMeasurementsExecute(r GetProcessMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+//	@return MeasurementsNonIndex
+func (a *MonitoringAndLogsApiService) GetMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
+		localVarReturnValue *MeasurementsNonIndex
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetProcessMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/measurements"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements"
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1664,23 +1720,187 @@ func (a *MonitoringAndLogsApiService) GetProcessMeasurementsExecute(r GetProcess
 	if r.granularity == nil {
 		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
 	}
-
-	if r.m != nil {
-		t := *r.m
-		// Workaround for unused import
-		_ = reflect.Append
-		parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
-
+	if r.metrics == nil {
+		return localVarReturnValue, nil, reportError("metrics is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
 	if r.period != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
 	}
 	if r.end != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
+	}
+	{
+		t := *r.metrics
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", t, "multi")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListAtlasProcessesApiRequest struct {
+	ctx          context.Context
+	ApiService   MonitoringAndLogsApi
+	groupId      string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListAtlasProcessesApiParams struct {
+	GroupId      string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *MonitoringAndLogsApiService) ListAtlasProcessesWithParams(ctx context.Context, args *ListAtlasProcessesApiParams) ListAtlasProcessesApiRequest {
+	return ListAtlasProcessesApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListAtlasProcessesApiRequest) IncludeCount(includeCount bool) ListAtlasProcessesApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListAtlasProcessesApiRequest) ItemsPerPage(itemsPerPage int) ListAtlasProcessesApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListAtlasProcessesApiRequest) PageNum(pageNum int) ListAtlasProcessesApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListAtlasProcessesApiRequest) Execute() (*PaginatedHostViewAtlas, *http.Response, error) {
+	return r.ApiService.ListAtlasProcessesExecute(r)
+}
+
+/*
+ListAtlasProcesses Return All MongoDB Processes in One Project
+
+Returns details of all processes for the specified project. A MongoDB process can be either a `mongod` or `mongos`. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListAtlasProcessesApiRequest
+*/
+func (a *MonitoringAndLogsApiService) ListAtlasProcesses(ctx context.Context, groupId string) ListAtlasProcessesApiRequest {
+	return ListAtlasProcessesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListAtlasProcessesExecute executes the request
+//
+//	@return PaginatedHostViewAtlas
+func (a *MonitoringAndLogsApiService) ListAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedHostViewAtlas
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListAtlasProcesses")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1902,27 +2122,162 @@ func (a *MonitoringAndLogsApiService) ListDatabasesExecute(r ListDatabasesApiReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListGroupProcessesApiRequest struct {
+type ListDiskMeasurementsApiRequest struct {
+	ctx           context.Context
+	ApiService    MonitoringAndLogsApi
+	partitionName string
+	groupId       string
+	processId     string
+}
+
+type ListDiskMeasurementsApiParams struct {
+	PartitionName string
+	GroupId       string
+	ProcessId     string
+}
+
+func (a *MonitoringAndLogsApiService) ListDiskMeasurementsWithParams(ctx context.Context, args *ListDiskMeasurementsApiParams) ListDiskMeasurementsApiRequest {
+	return ListDiskMeasurementsApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		partitionName: args.PartitionName,
+		groupId:       args.GroupId,
+		processId:     args.ProcessId,
+	}
+}
+
+func (r ListDiskMeasurementsApiRequest) Execute() (*MeasurementDiskPartition, *http.Response, error) {
+	return r.ApiService.ListDiskMeasurementsExecute(r)
+}
+
+/*
+ListDiskMeasurements Return Measurements for One Disk
+
+Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return ListDiskMeasurementsApiRequest
+*/
+func (a *MonitoringAndLogsApiService) ListDiskMeasurements(ctx context.Context, partitionName string, groupId string, processId string) ListDiskMeasurementsApiRequest {
+	return ListDiskMeasurementsApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		partitionName: partitionName,
+		groupId:       groupId,
+		processId:     processId,
+	}
+}
+
+// ListDiskMeasurementsExecute executes the request
+//
+//	@return MeasurementDiskPartition
+func (a *MonitoringAndLogsApiService) ListDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *MeasurementDiskPartition
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListDiskMeasurements")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}"
+	if r.partitionName == "" {
+		return localVarReturnValue, nil, reportError("partitionName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(r.partitionName), -1)
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.processId == "" {
+		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListDiskPartitionsApiRequest struct {
 	ctx          context.Context
 	ApiService   MonitoringAndLogsApi
 	groupId      string
+	processId    string
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
 }
 
-type ListGroupProcessesApiParams struct {
+type ListDiskPartitionsApiParams struct {
 	GroupId      string
+	ProcessId    string
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
 }
 
-func (a *MonitoringAndLogsApiService) ListGroupProcessesWithParams(ctx context.Context, args *ListGroupProcessesApiParams) ListGroupProcessesApiRequest {
-	return ListGroupProcessesApiRequest{
+func (a *MonitoringAndLogsApiService) ListDiskPartitionsWithParams(ctx context.Context, args *ListDiskPartitionsApiParams) ListDiskPartitionsApiRequest {
+	return ListDiskPartitionsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
+		processId:    args.ProcessId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
@@ -1930,65 +2285,71 @@ func (a *MonitoringAndLogsApiService) ListGroupProcessesWithParams(ctx context.C
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListGroupProcessesApiRequest) IncludeCount(includeCount bool) ListGroupProcessesApiRequest {
+func (r ListDiskPartitionsApiRequest) IncludeCount(includeCount bool) ListDiskPartitionsApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r ListGroupProcessesApiRequest) ItemsPerPage(itemsPerPage int) ListGroupProcessesApiRequest {
+func (r ListDiskPartitionsApiRequest) ItemsPerPage(itemsPerPage int) ListDiskPartitionsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListGroupProcessesApiRequest) PageNum(pageNum int) ListGroupProcessesApiRequest {
+func (r ListDiskPartitionsApiRequest) PageNum(pageNum int) ListDiskPartitionsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r ListGroupProcessesApiRequest) Execute() (*PaginatedHostViewAtlas, *http.Response, error) {
-	return r.ApiService.ListGroupProcessesExecute(r)
+func (r ListDiskPartitionsApiRequest) Execute() (*PaginatedDiskPartition, *http.Response, error) {
+	return r.ApiService.ListDiskPartitionsExecute(r)
 }
 
 /*
-ListGroupProcesses Return All MongoDB Processes in One Project
+ListDiskPartitions Return Available Disks for One MongoDB Process
 
-Returns details of all processes for the specified project. A MongoDB process can be either a `mongod` or `mongos`. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns the list of disks or partitions for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListGroupProcessesApiRequest
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return ListDiskPartitionsApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListGroupProcesses(ctx context.Context, groupId string) ListGroupProcessesApiRequest {
-	return ListGroupProcessesApiRequest{
+func (a *MonitoringAndLogsApiService) ListDiskPartitions(ctx context.Context, groupId string, processId string) ListDiskPartitionsApiRequest {
+	return ListDiskPartitionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
+		processId:  processId,
 	}
 }
 
-// ListGroupProcessesExecute executes the request
+// ListDiskPartitionsExecute executes the request
 //
-//	@return PaginatedHostViewAtlas
-func (a *MonitoringAndLogsApiService) ListGroupProcessesExecute(r ListGroupProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
+//	@return PaginatedDiskPartition
+func (a *MonitoringAndLogsApiService) ListDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PaginatedHostViewAtlas
+		localVarReturnValue *PaginatedDiskPartition
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListGroupProcesses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListDiskPartitions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes"
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.processId == "" {
+		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2064,130 +2425,7 @@ func (a *MonitoringAndLogsApiService) ListGroupProcessesExecute(r ListGroupProce
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListHostFtsMetricsApiRequest struct {
-	ctx        context.Context
-	ApiService MonitoringAndLogsApi
-	processId  string
-	groupId    string
-}
-
-type ListHostFtsMetricsApiParams struct {
-	ProcessId string
-	GroupId   string
-}
-
-func (a *MonitoringAndLogsApiService) ListHostFtsMetricsWithParams(ctx context.Context, args *ListHostFtsMetricsApiParams) ListHostFtsMetricsApiRequest {
-	return ListHostFtsMetricsApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		processId:  args.ProcessId,
-		groupId:    args.GroupId,
-	}
-}
-
-func (r ListHostFtsMetricsApiRequest) Execute() (*CloudSearchMetrics, *http.Response, error) {
-	return r.ApiService.ListHostFtsMetricsExecute(r)
-}
-
-/*
-ListHostFtsMetrics Return All Atlas Search Metric Types for One Process
-
-Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListHostFtsMetricsApiRequest
-*/
-func (a *MonitoringAndLogsApiService) ListHostFtsMetrics(ctx context.Context, processId string, groupId string) ListHostFtsMetricsApiRequest {
-	return ListHostFtsMetricsApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		processId:  processId,
-		groupId:    groupId,
-	}
-}
-
-// ListHostFtsMetricsExecute executes the request
-//
-//	@return CloudSearchMetrics
-func (a *MonitoringAndLogsApiService) ListHostFtsMetricsExecute(r ListHostFtsMetricsApiRequest) (*CloudSearchMetrics, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *CloudSearchMetrics
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListHostFtsMetrics")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics"
-	if r.processId == "" {
-		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ListIndexMeasurementsApiRequest struct {
+type ListIndexMetricsApiRequest struct {
 	ctx            context.Context
 	ApiService     MonitoringAndLogsApi
 	processId      string
@@ -2201,7 +2439,7 @@ type ListIndexMeasurementsApiRequest struct {
 	end            *time.Time
 }
 
-type ListIndexMeasurementsApiParams struct {
+type ListIndexMetricsApiParams struct {
 	ProcessId      string
 	DatabaseName   string
 	CollectionName string
@@ -2213,8 +2451,8 @@ type ListIndexMeasurementsApiParams struct {
 	End            *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) ListIndexMeasurementsWithParams(ctx context.Context, args *ListIndexMeasurementsApiParams) ListIndexMeasurementsApiRequest {
-	return ListIndexMeasurementsApiRequest{
+func (a *MonitoringAndLogsApiService) ListIndexMetricsWithParams(ctx context.Context, args *ListIndexMetricsApiParams) ListIndexMetricsApiRequest {
+	return ListIndexMetricsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		processId:      args.ProcessId,
@@ -2230,41 +2468,41 @@ func (a *MonitoringAndLogsApiService) ListIndexMeasurementsWithParams(ctx contex
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r ListIndexMeasurementsApiRequest) Granularity(granularity string) ListIndexMeasurementsApiRequest {
+func (r ListIndexMetricsApiRequest) Granularity(granularity string) ListIndexMetricsApiRequest {
 	r.granularity = &granularity
 	return r
 }
 
 // List that contains the measurements that MongoDB Atlas reports for the associated data series.
-func (r ListIndexMeasurementsApiRequest) Metrics(metrics []string) ListIndexMeasurementsApiRequest {
+func (r ListIndexMetricsApiRequest) Metrics(metrics []string) ListIndexMetricsApiRequest {
 	r.metrics = &metrics
 	return r
 }
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r ListIndexMeasurementsApiRequest) Period(period string) ListIndexMeasurementsApiRequest {
+func (r ListIndexMetricsApiRequest) Period(period string) ListIndexMetricsApiRequest {
 	r.period = &period
 	return r
 }
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r ListIndexMeasurementsApiRequest) Start(start time.Time) ListIndexMeasurementsApiRequest {
+func (r ListIndexMetricsApiRequest) Start(start time.Time) ListIndexMetricsApiRequest {
 	r.start = &start
 	return r
 }
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r ListIndexMeasurementsApiRequest) End(end time.Time) ListIndexMeasurementsApiRequest {
+func (r ListIndexMetricsApiRequest) End(end time.Time) ListIndexMetricsApiRequest {
 	r.end = &end
 	return r
 }
 
-func (r ListIndexMeasurementsApiRequest) Execute() (*MeasurementsIndexes, *http.Response, error) {
-	return r.ApiService.ListIndexMeasurementsExecute(r)
+func (r ListIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Response, error) {
+	return r.ApiService.ListIndexMetricsExecute(r)
 }
 
 /*
-ListIndexMeasurements Return All Atlas Search Index Metrics for One Namespace
+ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
 
 Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
@@ -2273,10 +2511,10 @@ Returns the Atlas Search index metrics within the specified time range for one n
 	@param databaseName Human-readable label that identifies the database.
 	@param collectionName Human-readable label that identifies the collection.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListIndexMeasurementsApiRequest
+	@return ListIndexMetricsApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListIndexMeasurements(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMeasurementsApiRequest {
-	return ListIndexMeasurementsApiRequest{
+func (a *MonitoringAndLogsApiService) ListIndexMetrics(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMetricsApiRequest {
+	return ListIndexMetricsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		processId:      processId,
@@ -2286,10 +2524,10 @@ func (a *MonitoringAndLogsApiService) ListIndexMeasurements(ctx context.Context,
 	}
 }
 
-// ListIndexMeasurementsExecute executes the request
+// ListIndexMetricsExecute executes the request
 //
 //	@return MeasurementsIndexes
-func (a *MonitoringAndLogsApiService) ListIndexMeasurementsExecute(r ListIndexMeasurementsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) ListIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2297,7 +2535,7 @@ func (a *MonitoringAndLogsApiService) ListIndexMeasurementsExecute(r ListIndexMe
 		localVarReturnValue *MeasurementsIndexes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListIndexMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListIndexMetrics")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2395,88 +2633,43 @@ func (a *MonitoringAndLogsApiService) ListIndexMeasurementsExecute(r ListIndexMe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListMeasurementsApiRequest struct {
-	ctx         context.Context
-	ApiService  MonitoringAndLogsApi
-	processId   string
-	groupId     string
-	granularity *string
-	metrics     *[]string
-	period      *string
-	start       *time.Time
-	end         *time.Time
+type ListMetricTypesApiRequest struct {
+	ctx        context.Context
+	ApiService MonitoringAndLogsApi
+	processId  string
+	groupId    string
 }
 
-type ListMeasurementsApiParams struct {
-	ProcessId   string
-	GroupId     string
-	Granularity *string
-	Metrics     *[]string
-	Period      *string
-	Start       *time.Time
-	End         *time.Time
+type ListMetricTypesApiParams struct {
+	ProcessId string
+	GroupId   string
 }
 
-func (a *MonitoringAndLogsApiService) ListMeasurementsWithParams(ctx context.Context, args *ListMeasurementsApiParams) ListMeasurementsApiRequest {
-	return ListMeasurementsApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		processId:   args.ProcessId,
-		groupId:     args.GroupId,
-		granularity: args.Granularity,
-		metrics:     args.Metrics,
-		period:      args.Period,
-		start:       args.Start,
-		end:         args.End,
+func (a *MonitoringAndLogsApiService) ListMetricTypesWithParams(ctx context.Context, args *ListMetricTypesApiParams) ListMetricTypesApiRequest {
+	return ListMetricTypesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		processId:  args.ProcessId,
+		groupId:    args.GroupId,
 	}
 }
 
-// Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r ListMeasurementsApiRequest) Granularity(granularity string) ListMeasurementsApiRequest {
-	r.granularity = &granularity
-	return r
-}
-
-// List that contains the metrics that you want MongoDB Atlas to report for the associated data series. If you don&#39;t set this parameter, this resource returns all hardware and status metrics for the associated data series.
-func (r ListMeasurementsApiRequest) Metrics(metrics []string) ListMeasurementsApiRequest {
-	r.metrics = &metrics
-	return r
-}
-
-// Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r ListMeasurementsApiRequest) Period(period string) ListMeasurementsApiRequest {
-	r.period = &period
-	return r
-}
-
-// Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r ListMeasurementsApiRequest) Start(start time.Time) ListMeasurementsApiRequest {
-	r.start = &start
-	return r
-}
-
-// Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r ListMeasurementsApiRequest) End(end time.Time) ListMeasurementsApiRequest {
-	r.end = &end
-	return r
-}
-
-func (r ListMeasurementsApiRequest) Execute() (*MeasurementsNonIndex, *http.Response, error) {
-	return r.ApiService.ListMeasurementsExecute(r)
+func (r ListMetricTypesApiRequest) Execute() (*CloudSearchMetrics, *http.Response, error) {
+	return r.ApiService.ListMetricTypesExecute(r)
 }
 
 /*
-ListMeasurements Return Atlas Search Hardware and Status Metrics
+ListMetricTypes Return All Atlas Search Metric Types for One Process
 
-Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListMeasurementsApiRequest
+	@return ListMetricTypesApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListMeasurements(ctx context.Context, processId string, groupId string) ListMeasurementsApiRequest {
-	return ListMeasurementsApiRequest{
+func (a *MonitoringAndLogsApiService) ListMetricTypes(ctx context.Context, processId string, groupId string) ListMetricTypesApiRequest {
+	return ListMetricTypesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		processId:  processId,
@@ -2484,23 +2677,23 @@ func (a *MonitoringAndLogsApiService) ListMeasurements(ctx context.Context, proc
 	}
 }
 
-// ListMeasurementsExecute executes the request
+// ListMetricTypesExecute executes the request
 //
-//	@return MeasurementsNonIndex
-func (a *MonitoringAndLogsApiService) ListMeasurementsExecute(r ListMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
+//	@return CloudSearchMetrics
+func (a *MonitoringAndLogsApiService) ListMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *MeasurementsNonIndex
+		localVarReturnValue *CloudSearchMetrics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListMetricTypes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements"
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics"
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
 	}
@@ -2513,200 +2706,7 @@ func (a *MonitoringAndLogsApiService) ListMeasurementsExecute(r ListMeasurements
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.granularity == nil {
-		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
-	}
-	if r.metrics == nil {
-		return localVarReturnValue, nil, reportError("metrics is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
-	if r.period != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
-	}
-	if r.start != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "")
-	}
-	if r.end != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "end", r.end, "")
-	}
-	{
-		t := *r.metrics
-		// Workaround for unused import
-		_ = reflect.Append
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", t, "multi")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ListProcessDisksApiRequest struct {
-	ctx          context.Context
-	ApiService   MonitoringAndLogsApi
-	groupId      string
-	processId    string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
-}
-
-type ListProcessDisksApiParams struct {
-	GroupId      string
-	ProcessId    string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
-}
-
-func (a *MonitoringAndLogsApiService) ListProcessDisksWithParams(ctx context.Context, args *ListProcessDisksApiParams) ListProcessDisksApiRequest {
-	return ListProcessDisksApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		processId:    args.ProcessId,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-	}
-}
-
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListProcessDisksApiRequest) IncludeCount(includeCount bool) ListProcessDisksApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
-
-// Number of items that the response returns per page.
-func (r ListProcessDisksApiRequest) ItemsPerPage(itemsPerPage int) ListProcessDisksApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProcessDisksApiRequest) PageNum(pageNum int) ListProcessDisksApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-func (r ListProcessDisksApiRequest) Execute() (*PaginatedDiskPartition, *http.Response, error) {
-	return r.ApiService.ListProcessDisksExecute(r)
-}
-
-/*
-ListProcessDisks Return Available Disks for One MongoDB Process
-
-Returns the list of disks or partitions for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return ListProcessDisksApiRequest
-*/
-func (a *MonitoringAndLogsApiService) ListProcessDisks(ctx context.Context, groupId string, processId string) ListProcessDisksApiRequest {
-	return ListProcessDisksApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		processId:  processId,
-	}
-}
-
-// ListProcessDisksExecute executes the request
-//
-//	@return PaginatedDiskPartition
-func (a *MonitoringAndLogsApiService) ListProcessDisksExecute(r ListProcessDisksApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedDiskPartition
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListProcessDisks")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.processId == "" {
-		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.includeCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	} else {
-		var defaultValue bool = true
-		r.includeCount = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	}
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

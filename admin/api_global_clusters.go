@@ -63,76 +63,76 @@ type GlobalClustersApi interface {
 	CreateManagedNamespaceExecute(r CreateManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error)
 
 	/*
-		DeleteCustomZoneMapping Remove All Custom Zone Mappings from One Global Cluster
+		DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Cluster
 
 		Removes all custom zone mappings for the specified global cluster. A custom zone mapping matches one ISO 3166-2 location code to a zone in your global cluster. Removing the custom zone mappings restores the default mapping. By default, MongoDB Cloud maps each location code to the closest geographical zone. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies this cluster.
-		@return DeleteCustomZoneMappingApiRequest
+		@return DeleteAllCustomZoneMappingsApiRequest
 	*/
-	DeleteCustomZoneMapping(ctx context.Context, groupId string, clusterName string) DeleteCustomZoneMappingApiRequest
+	DeleteAllCustomZoneMappings(ctx context.Context, groupId string, clusterName string) DeleteAllCustomZoneMappingsApiRequest
 	/*
-		DeleteCustomZoneMapping Remove All Custom Zone Mappings from One Global Cluster
+		DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteCustomZoneMappingApiParams - Parameters for the request
-		@return DeleteCustomZoneMappingApiRequest
+		@param DeleteAllCustomZoneMappingsApiParams - Parameters for the request
+		@return DeleteAllCustomZoneMappingsApiRequest
 	*/
-	DeleteCustomZoneMappingWithParams(ctx context.Context, args *DeleteCustomZoneMappingApiParams) DeleteCustomZoneMappingApiRequest
+	DeleteAllCustomZoneMappingsWithParams(ctx context.Context, args *DeleteAllCustomZoneMappingsApiParams) DeleteAllCustomZoneMappingsApiRequest
 
 	// Method available only for mocking purposes
-	DeleteCustomZoneMappingExecute(r DeleteCustomZoneMappingApiRequest) (*GeoSharding20240805, *http.Response, error)
+	DeleteAllCustomZoneMappingsExecute(r DeleteAllCustomZoneMappingsApiRequest) (*GeoSharding20240805, *http.Response, error)
 
 	/*
-		DeleteManagedNamespaces Remove One Managed Namespace from One Global Cluster
+		DeleteManagedNamespace Remove One Managed Namespace from One Global Cluster
 
 		Removes one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. Deleting a managed namespace does not remove the associated collection or data. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clusterName Human-readable label that identifies this cluster.
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return DeleteManagedNamespacesApiRequest
+		@return DeleteManagedNamespaceApiRequest
 	*/
-	DeleteManagedNamespaces(ctx context.Context, clusterName string, groupId string) DeleteManagedNamespacesApiRequest
+	DeleteManagedNamespace(ctx context.Context, clusterName string, groupId string) DeleteManagedNamespaceApiRequest
 	/*
-		DeleteManagedNamespaces Remove One Managed Namespace from One Global Cluster
+		DeleteManagedNamespace Remove One Managed Namespace from One Global Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteManagedNamespacesApiParams - Parameters for the request
-		@return DeleteManagedNamespacesApiRequest
+		@param DeleteManagedNamespaceApiParams - Parameters for the request
+		@return DeleteManagedNamespaceApiRequest
 	*/
-	DeleteManagedNamespacesWithParams(ctx context.Context, args *DeleteManagedNamespacesApiParams) DeleteManagedNamespacesApiRequest
+	DeleteManagedNamespaceWithParams(ctx context.Context, args *DeleteManagedNamespaceApiParams) DeleteManagedNamespaceApiRequest
 
 	// Method available only for mocking purposes
-	DeleteManagedNamespacesExecute(r DeleteManagedNamespacesApiRequest) (*GeoSharding20240805, *http.Response, error)
+	DeleteManagedNamespaceExecute(r DeleteManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error)
 
 	/*
-		GetClusterGlobalWrites Return One Managed Namespace in One Global Cluster
+		GetManagedNamespace Return One Managed Namespace in One Global Cluster
 
 		Returns one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies this cluster.
-		@return GetClusterGlobalWritesApiRequest
+		@return GetManagedNamespaceApiRequest
 	*/
-	GetClusterGlobalWrites(ctx context.Context, groupId string, clusterName string) GetClusterGlobalWritesApiRequest
+	GetManagedNamespace(ctx context.Context, groupId string, clusterName string) GetManagedNamespaceApiRequest
 	/*
-		GetClusterGlobalWrites Return One Managed Namespace in One Global Cluster
+		GetManagedNamespace Return One Managed Namespace in One Global Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetClusterGlobalWritesApiParams - Parameters for the request
-		@return GetClusterGlobalWritesApiRequest
+		@param GetManagedNamespaceApiParams - Parameters for the request
+		@return GetManagedNamespaceApiRequest
 	*/
-	GetClusterGlobalWritesWithParams(ctx context.Context, args *GetClusterGlobalWritesApiParams) GetClusterGlobalWritesApiRequest
+	GetManagedNamespaceWithParams(ctx context.Context, args *GetManagedNamespaceApiParams) GetManagedNamespaceApiRequest
 
 	// Method available only for mocking purposes
-	GetClusterGlobalWritesExecute(r GetClusterGlobalWritesApiRequest) (*GeoSharding20240805, *http.Response, error)
+	GetManagedNamespaceExecute(r GetManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error)
 }
 
 // GlobalClustersApiService GlobalClustersApi service
@@ -402,20 +402,20 @@ func (a *GlobalClustersApiService) CreateManagedNamespaceExecute(r CreateManaged
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeleteCustomZoneMappingApiRequest struct {
+type DeleteAllCustomZoneMappingsApiRequest struct {
 	ctx         context.Context
 	ApiService  GlobalClustersApi
 	groupId     string
 	clusterName string
 }
 
-type DeleteCustomZoneMappingApiParams struct {
+type DeleteAllCustomZoneMappingsApiParams struct {
 	GroupId     string
 	ClusterName string
 }
 
-func (a *GlobalClustersApiService) DeleteCustomZoneMappingWithParams(ctx context.Context, args *DeleteCustomZoneMappingApiParams) DeleteCustomZoneMappingApiRequest {
-	return DeleteCustomZoneMappingApiRequest{
+func (a *GlobalClustersApiService) DeleteAllCustomZoneMappingsWithParams(ctx context.Context, args *DeleteAllCustomZoneMappingsApiParams) DeleteAllCustomZoneMappingsApiRequest {
+	return DeleteAllCustomZoneMappingsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     args.GroupId,
@@ -423,22 +423,22 @@ func (a *GlobalClustersApiService) DeleteCustomZoneMappingWithParams(ctx context
 	}
 }
 
-func (r DeleteCustomZoneMappingApiRequest) Execute() (*GeoSharding20240805, *http.Response, error) {
-	return r.ApiService.DeleteCustomZoneMappingExecute(r)
+func (r DeleteAllCustomZoneMappingsApiRequest) Execute() (*GeoSharding20240805, *http.Response, error) {
+	return r.ApiService.DeleteAllCustomZoneMappingsExecute(r)
 }
 
 /*
-DeleteCustomZoneMapping Remove All Custom Zone Mappings from One Global Cluster
+DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Cluster
 
 Removes all custom zone mappings for the specified global cluster. A custom zone mapping matches one ISO 3166-2 location code to a zone in your global cluster. Removing the custom zone mappings restores the default mapping. By default, MongoDB Cloud maps each location code to the closest geographical zone. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies this cluster.
-	@return DeleteCustomZoneMappingApiRequest
+	@return DeleteAllCustomZoneMappingsApiRequest
 */
-func (a *GlobalClustersApiService) DeleteCustomZoneMapping(ctx context.Context, groupId string, clusterName string) DeleteCustomZoneMappingApiRequest {
-	return DeleteCustomZoneMappingApiRequest{
+func (a *GlobalClustersApiService) DeleteAllCustomZoneMappings(ctx context.Context, groupId string, clusterName string) DeleteAllCustomZoneMappingsApiRequest {
+	return DeleteAllCustomZoneMappingsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -446,10 +446,10 @@ func (a *GlobalClustersApiService) DeleteCustomZoneMapping(ctx context.Context, 
 	}
 }
 
-// DeleteCustomZoneMappingExecute executes the request
+// DeleteAllCustomZoneMappingsExecute executes the request
 //
 //	@return GeoSharding20240805
-func (a *GlobalClustersApiService) DeleteCustomZoneMappingExecute(r DeleteCustomZoneMappingApiRequest) (*GeoSharding20240805, *http.Response, error) {
+func (a *GlobalClustersApiService) DeleteAllCustomZoneMappingsExecute(r DeleteAllCustomZoneMappingsApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -457,7 +457,7 @@ func (a *GlobalClustersApiService) DeleteCustomZoneMappingExecute(r DeleteCustom
 		localVarReturnValue *GeoSharding20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.DeleteCustomZoneMapping")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.DeleteAllCustomZoneMappings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -525,7 +525,7 @@ func (a *GlobalClustersApiService) DeleteCustomZoneMappingExecute(r DeleteCustom
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeleteManagedNamespacesApiRequest struct {
+type DeleteManagedNamespaceApiRequest struct {
 	ctx         context.Context
 	ApiService  GlobalClustersApi
 	clusterName string
@@ -534,15 +534,15 @@ type DeleteManagedNamespacesApiRequest struct {
 	collection  *string
 }
 
-type DeleteManagedNamespacesApiParams struct {
+type DeleteManagedNamespaceApiParams struct {
 	ClusterName string
 	GroupId     string
 	Db          *string
 	Collection  *string
 }
 
-func (a *GlobalClustersApiService) DeleteManagedNamespacesWithParams(ctx context.Context, args *DeleteManagedNamespacesApiParams) DeleteManagedNamespacesApiRequest {
-	return DeleteManagedNamespacesApiRequest{
+func (a *GlobalClustersApiService) DeleteManagedNamespaceWithParams(ctx context.Context, args *DeleteManagedNamespaceApiParams) DeleteManagedNamespaceApiRequest {
+	return DeleteManagedNamespaceApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		clusterName: args.ClusterName,
@@ -553,33 +553,33 @@ func (a *GlobalClustersApiService) DeleteManagedNamespacesWithParams(ctx context
 }
 
 // Human-readable label that identifies the database that contains the collection.
-func (r DeleteManagedNamespacesApiRequest) Db(db string) DeleteManagedNamespacesApiRequest {
+func (r DeleteManagedNamespaceApiRequest) Db(db string) DeleteManagedNamespaceApiRequest {
 	r.db = &db
 	return r
 }
 
 // Human-readable label that identifies the collection associated with the managed namespace.
-func (r DeleteManagedNamespacesApiRequest) Collection(collection string) DeleteManagedNamespacesApiRequest {
+func (r DeleteManagedNamespaceApiRequest) Collection(collection string) DeleteManagedNamespaceApiRequest {
 	r.collection = &collection
 	return r
 }
 
-func (r DeleteManagedNamespacesApiRequest) Execute() (*GeoSharding20240805, *http.Response, error) {
-	return r.ApiService.DeleteManagedNamespacesExecute(r)
+func (r DeleteManagedNamespaceApiRequest) Execute() (*GeoSharding20240805, *http.Response, error) {
+	return r.ApiService.DeleteManagedNamespaceExecute(r)
 }
 
 /*
-DeleteManagedNamespaces Remove One Managed Namespace from One Global Cluster
+DeleteManagedNamespace Remove One Managed Namespace from One Global Cluster
 
 Removes one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. Deleting a managed namespace does not remove the associated collection or data. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clusterName Human-readable label that identifies this cluster.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return DeleteManagedNamespacesApiRequest
+	@return DeleteManagedNamespaceApiRequest
 */
-func (a *GlobalClustersApiService) DeleteManagedNamespaces(ctx context.Context, clusterName string, groupId string) DeleteManagedNamespacesApiRequest {
-	return DeleteManagedNamespacesApiRequest{
+func (a *GlobalClustersApiService) DeleteManagedNamespace(ctx context.Context, clusterName string, groupId string) DeleteManagedNamespaceApiRequest {
+	return DeleteManagedNamespaceApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		clusterName: clusterName,
@@ -587,10 +587,10 @@ func (a *GlobalClustersApiService) DeleteManagedNamespaces(ctx context.Context, 
 	}
 }
 
-// DeleteManagedNamespacesExecute executes the request
+// DeleteManagedNamespaceExecute executes the request
 //
 //	@return GeoSharding20240805
-func (a *GlobalClustersApiService) DeleteManagedNamespacesExecute(r DeleteManagedNamespacesApiRequest) (*GeoSharding20240805, *http.Response, error) {
+func (a *GlobalClustersApiService) DeleteManagedNamespaceExecute(r DeleteManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -598,7 +598,7 @@ func (a *GlobalClustersApiService) DeleteManagedNamespacesExecute(r DeleteManage
 		localVarReturnValue *GeoSharding20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.DeleteManagedNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.DeleteManagedNamespace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -672,20 +672,20 @@ func (a *GlobalClustersApiService) DeleteManagedNamespacesExecute(r DeleteManage
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetClusterGlobalWritesApiRequest struct {
+type GetManagedNamespaceApiRequest struct {
 	ctx         context.Context
 	ApiService  GlobalClustersApi
 	groupId     string
 	clusterName string
 }
 
-type GetClusterGlobalWritesApiParams struct {
+type GetManagedNamespaceApiParams struct {
 	GroupId     string
 	ClusterName string
 }
 
-func (a *GlobalClustersApiService) GetClusterGlobalWritesWithParams(ctx context.Context, args *GetClusterGlobalWritesApiParams) GetClusterGlobalWritesApiRequest {
-	return GetClusterGlobalWritesApiRequest{
+func (a *GlobalClustersApiService) GetManagedNamespaceWithParams(ctx context.Context, args *GetManagedNamespaceApiParams) GetManagedNamespaceApiRequest {
+	return GetManagedNamespaceApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     args.GroupId,
@@ -693,22 +693,22 @@ func (a *GlobalClustersApiService) GetClusterGlobalWritesWithParams(ctx context.
 	}
 }
 
-func (r GetClusterGlobalWritesApiRequest) Execute() (*GeoSharding20240805, *http.Response, error) {
-	return r.ApiService.GetClusterGlobalWritesExecute(r)
+func (r GetManagedNamespaceApiRequest) Execute() (*GeoSharding20240805, *http.Response, error) {
+	return r.ApiService.GetManagedNamespaceExecute(r)
 }
 
 /*
-GetClusterGlobalWrites Return One Managed Namespace in One Global Cluster
+GetManagedNamespace Return One Managed Namespace in One Global Cluster
 
 Returns one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies this cluster.
-	@return GetClusterGlobalWritesApiRequest
+	@return GetManagedNamespaceApiRequest
 */
-func (a *GlobalClustersApiService) GetClusterGlobalWrites(ctx context.Context, groupId string, clusterName string) GetClusterGlobalWritesApiRequest {
-	return GetClusterGlobalWritesApiRequest{
+func (a *GlobalClustersApiService) GetManagedNamespace(ctx context.Context, groupId string, clusterName string) GetManagedNamespaceApiRequest {
+	return GetManagedNamespaceApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -716,10 +716,10 @@ func (a *GlobalClustersApiService) GetClusterGlobalWrites(ctx context.Context, g
 	}
 }
 
-// GetClusterGlobalWritesExecute executes the request
+// GetManagedNamespaceExecute executes the request
 //
 //	@return GeoSharding20240805
-func (a *GlobalClustersApiService) GetClusterGlobalWritesExecute(r GetClusterGlobalWritesApiRequest) (*GeoSharding20240805, *http.Response, error) {
+func (a *GlobalClustersApiService) GetManagedNamespaceExecute(r GetManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -727,7 +727,7 @@ func (a *GlobalClustersApiService) GetClusterGlobalWritesExecute(r GetClusterGlo
 		localVarReturnValue *GeoSharding20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.GetClusterGlobalWrites")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.GetManagedNamespace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

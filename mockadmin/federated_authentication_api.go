@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -350,67 +350,67 @@ func (_c *FederatedAuthenticationApi_CreateRoleMappingWithParams_Call) RunAndRet
 	return _c
 }
 
-// DeleteFederationSetting provides a mock function with given fields: ctx, federationSettingsId
-func (_m *FederatedAuthenticationApi) DeleteFederationSetting(ctx context.Context, federationSettingsId string) admin.DeleteFederationSettingApiRequest {
+// DeleteFederationApp provides a mock function with given fields: ctx, federationSettingsId
+func (_m *FederatedAuthenticationApi) DeleteFederationApp(ctx context.Context, federationSettingsId string) admin.DeleteFederationAppApiRequest {
 	ret := _m.Called(ctx, federationSettingsId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteFederationSetting")
+		panic("no return value specified for DeleteFederationApp")
 	}
 
-	var r0 admin.DeleteFederationSettingApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteFederationSettingApiRequest); ok {
+	var r0 admin.DeleteFederationAppApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteFederationAppApiRequest); ok {
 		r0 = rf(ctx, federationSettingsId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteFederationSettingApiRequest)
+		r0 = ret.Get(0).(admin.DeleteFederationAppApiRequest)
 	}
 
 	return r0
 }
 
-// FederatedAuthenticationApi_DeleteFederationSetting_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteFederationSetting'
-type FederatedAuthenticationApi_DeleteFederationSetting_Call struct {
+// FederatedAuthenticationApi_DeleteFederationApp_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteFederationApp'
+type FederatedAuthenticationApi_DeleteFederationApp_Call struct {
 	*mock.Call
 }
 
-// DeleteFederationSetting is a helper method to define mock.On call
+// DeleteFederationApp is a helper method to define mock.On call
 //   - ctx context.Context
 //   - federationSettingsId string
-func (_e *FederatedAuthenticationApi_Expecter) DeleteFederationSetting(ctx any, federationSettingsId any) *FederatedAuthenticationApi_DeleteFederationSetting_Call {
-	return &FederatedAuthenticationApi_DeleteFederationSetting_Call{Call: _e.mock.On("DeleteFederationSetting", ctx, federationSettingsId)}
+func (_e *FederatedAuthenticationApi_Expecter) DeleteFederationApp(ctx any, federationSettingsId any) *FederatedAuthenticationApi_DeleteFederationApp_Call {
+	return &FederatedAuthenticationApi_DeleteFederationApp_Call{Call: _e.mock.On("DeleteFederationApp", ctx, federationSettingsId)}
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSetting_Call) Run(run func(ctx context.Context, federationSettingsId string)) *FederatedAuthenticationApi_DeleteFederationSetting_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationApp_Call) Run(run func(ctx context.Context, federationSettingsId string)) *FederatedAuthenticationApi_DeleteFederationApp_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSetting_Call) Return(_a0 admin.DeleteFederationSettingApiRequest) *FederatedAuthenticationApi_DeleteFederationSetting_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationApp_Call) Return(_a0 admin.DeleteFederationAppApiRequest) *FederatedAuthenticationApi_DeleteFederationApp_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSetting_Call) RunAndReturn(run func(context.Context, string) admin.DeleteFederationSettingApiRequest) *FederatedAuthenticationApi_DeleteFederationSetting_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationApp_Call) RunAndReturn(run func(context.Context, string) admin.DeleteFederationAppApiRequest) *FederatedAuthenticationApi_DeleteFederationApp_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteFederationSettingExecute provides a mock function with given fields: r
-func (_m *FederatedAuthenticationApi) DeleteFederationSettingExecute(r admin.DeleteFederationSettingApiRequest) (*http.Response, error) {
+// DeleteFederationAppExecute provides a mock function with given fields: r
+func (_m *FederatedAuthenticationApi) DeleteFederationAppExecute(r admin.DeleteFederationAppApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteFederationSettingExecute")
+		panic("no return value specified for DeleteFederationAppExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteFederationSettingApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteFederationAppApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteFederationSettingApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteFederationAppApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -418,7 +418,7 @@ func (_m *FederatedAuthenticationApi) DeleteFederationSettingExecute(r admin.Del
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteFederationSettingApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteFederationAppApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -427,77 +427,77 @@ func (_m *FederatedAuthenticationApi) DeleteFederationSettingExecute(r admin.Del
 	return r0, r1
 }
 
-// FederatedAuthenticationApi_DeleteFederationSettingExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteFederationSettingExecute'
-type FederatedAuthenticationApi_DeleteFederationSettingExecute_Call struct {
+// FederatedAuthenticationApi_DeleteFederationAppExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteFederationAppExecute'
+type FederatedAuthenticationApi_DeleteFederationAppExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteFederationSettingExecute is a helper method to define mock.On call
-//   - r admin.DeleteFederationSettingApiRequest
-func (_e *FederatedAuthenticationApi_Expecter) DeleteFederationSettingExecute(r any) *FederatedAuthenticationApi_DeleteFederationSettingExecute_Call {
-	return &FederatedAuthenticationApi_DeleteFederationSettingExecute_Call{Call: _e.mock.On("DeleteFederationSettingExecute", r)}
+// DeleteFederationAppExecute is a helper method to define mock.On call
+//   - r admin.DeleteFederationAppApiRequest
+func (_e *FederatedAuthenticationApi_Expecter) DeleteFederationAppExecute(r any) *FederatedAuthenticationApi_DeleteFederationAppExecute_Call {
+	return &FederatedAuthenticationApi_DeleteFederationAppExecute_Call{Call: _e.mock.On("DeleteFederationAppExecute", r)}
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSettingExecute_Call) Run(run func(r admin.DeleteFederationSettingApiRequest)) *FederatedAuthenticationApi_DeleteFederationSettingExecute_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationAppExecute_Call) Run(run func(r admin.DeleteFederationAppApiRequest)) *FederatedAuthenticationApi_DeleteFederationAppExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteFederationSettingApiRequest))
+		run(args[0].(admin.DeleteFederationAppApiRequest))
 	})
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSettingExecute_Call) Return(_a0 *http.Response, _a1 error) *FederatedAuthenticationApi_DeleteFederationSettingExecute_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationAppExecute_Call) Return(_a0 *http.Response, _a1 error) *FederatedAuthenticationApi_DeleteFederationAppExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSettingExecute_Call) RunAndReturn(run func(admin.DeleteFederationSettingApiRequest) (*http.Response, error)) *FederatedAuthenticationApi_DeleteFederationSettingExecute_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationAppExecute_Call) RunAndReturn(run func(admin.DeleteFederationAppApiRequest) (*http.Response, error)) *FederatedAuthenticationApi_DeleteFederationAppExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteFederationSettingWithParams provides a mock function with given fields: ctx, args
-func (_m *FederatedAuthenticationApi) DeleteFederationSettingWithParams(ctx context.Context, args *admin.DeleteFederationSettingApiParams) admin.DeleteFederationSettingApiRequest {
+// DeleteFederationAppWithParams provides a mock function with given fields: ctx, args
+func (_m *FederatedAuthenticationApi) DeleteFederationAppWithParams(ctx context.Context, args *admin.DeleteFederationAppApiParams) admin.DeleteFederationAppApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteFederationSettingWithParams")
+		panic("no return value specified for DeleteFederationAppWithParams")
 	}
 
-	var r0 admin.DeleteFederationSettingApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteFederationSettingApiParams) admin.DeleteFederationSettingApiRequest); ok {
+	var r0 admin.DeleteFederationAppApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteFederationAppApiParams) admin.DeleteFederationAppApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteFederationSettingApiRequest)
+		r0 = ret.Get(0).(admin.DeleteFederationAppApiRequest)
 	}
 
 	return r0
 }
 
-// FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteFederationSettingWithParams'
-type FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call struct {
+// FederatedAuthenticationApi_DeleteFederationAppWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteFederationAppWithParams'
+type FederatedAuthenticationApi_DeleteFederationAppWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteFederationSettingWithParams is a helper method to define mock.On call
+// DeleteFederationAppWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteFederationSettingApiParams
-func (_e *FederatedAuthenticationApi_Expecter) DeleteFederationSettingWithParams(ctx any, args any) *FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call {
-	return &FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call{Call: _e.mock.On("DeleteFederationSettingWithParams", ctx, args)}
+//   - args *admin.DeleteFederationAppApiParams
+func (_e *FederatedAuthenticationApi_Expecter) DeleteFederationAppWithParams(ctx any, args any) *FederatedAuthenticationApi_DeleteFederationAppWithParams_Call {
+	return &FederatedAuthenticationApi_DeleteFederationAppWithParams_Call{Call: _e.mock.On("DeleteFederationAppWithParams", ctx, args)}
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteFederationSettingApiParams)) *FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationAppWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteFederationAppApiParams)) *FederatedAuthenticationApi_DeleteFederationAppWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteFederationSettingApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteFederationAppApiParams))
 	})
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call) Return(_a0 admin.DeleteFederationSettingApiRequest) *FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationAppWithParams_Call) Return(_a0 admin.DeleteFederationAppApiRequest) *FederatedAuthenticationApi_DeleteFederationAppWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteFederationSettingApiParams) admin.DeleteFederationSettingApiRequest) *FederatedAuthenticationApi_DeleteFederationSettingWithParams_Call {
+func (_c *FederatedAuthenticationApi_DeleteFederationAppWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteFederationAppApiParams) admin.DeleteFederationAppApiRequest) *FederatedAuthenticationApi_DeleteFederationAppWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2254,68 +2254,68 @@ func (_c *FederatedAuthenticationApi_RemoveConnectedOrgConfigWithParams_Call) Ru
 	return _c
 }
 
-// RevokeIdentityProviderJwks provides a mock function with given fields: ctx, federationSettingsId, identityProviderId
-func (_m *FederatedAuthenticationApi) RevokeIdentityProviderJwks(ctx context.Context, federationSettingsId string, identityProviderId string) admin.RevokeIdentityProviderJwksApiRequest {
+// RevokeJwksFromIdentityProvider provides a mock function with given fields: ctx, federationSettingsId, identityProviderId
+func (_m *FederatedAuthenticationApi) RevokeJwksFromIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) admin.RevokeJwksFromIdentityProviderApiRequest {
 	ret := _m.Called(ctx, federationSettingsId, identityProviderId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RevokeIdentityProviderJwks")
+		panic("no return value specified for RevokeJwksFromIdentityProvider")
 	}
 
-	var r0 admin.RevokeIdentityProviderJwksApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RevokeIdentityProviderJwksApiRequest); ok {
+	var r0 admin.RevokeJwksFromIdentityProviderApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RevokeJwksFromIdentityProviderApiRequest); ok {
 		r0 = rf(ctx, federationSettingsId, identityProviderId)
 	} else {
-		r0 = ret.Get(0).(admin.RevokeIdentityProviderJwksApiRequest)
+		r0 = ret.Get(0).(admin.RevokeJwksFromIdentityProviderApiRequest)
 	}
 
 	return r0
 }
 
-// FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeIdentityProviderJwks'
-type FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call struct {
+// FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeJwksFromIdentityProvider'
+type FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call struct {
 	*mock.Call
 }
 
-// RevokeIdentityProviderJwks is a helper method to define mock.On call
+// RevokeJwksFromIdentityProvider is a helper method to define mock.On call
 //   - ctx context.Context
 //   - federationSettingsId string
 //   - identityProviderId string
-func (_e *FederatedAuthenticationApi_Expecter) RevokeIdentityProviderJwks(ctx any, federationSettingsId any, identityProviderId any) *FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call {
-	return &FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call{Call: _e.mock.On("RevokeIdentityProviderJwks", ctx, federationSettingsId, identityProviderId)}
+func (_e *FederatedAuthenticationApi_Expecter) RevokeJwksFromIdentityProvider(ctx any, federationSettingsId any, identityProviderId any) *FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call {
+	return &FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call{Call: _e.mock.On("RevokeJwksFromIdentityProvider", ctx, federationSettingsId, identityProviderId)}
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call) Run(run func(ctx context.Context, federationSettingsId string, identityProviderId string)) *FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call) Run(run func(ctx context.Context, federationSettingsId string, identityProviderId string)) *FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call) Return(_a0 admin.RevokeIdentityProviderJwksApiRequest) *FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call) Return(_a0 admin.RevokeJwksFromIdentityProviderApiRequest) *FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call) RunAndReturn(run func(context.Context, string, string) admin.RevokeIdentityProviderJwksApiRequest) *FederatedAuthenticationApi_RevokeIdentityProviderJwks_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call) RunAndReturn(run func(context.Context, string, string) admin.RevokeJwksFromIdentityProviderApiRequest) *FederatedAuthenticationApi_RevokeJwksFromIdentityProvider_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RevokeIdentityProviderJwksExecute provides a mock function with given fields: r
-func (_m *FederatedAuthenticationApi) RevokeIdentityProviderJwksExecute(r admin.RevokeIdentityProviderJwksApiRequest) (*http.Response, error) {
+// RevokeJwksFromIdentityProviderExecute provides a mock function with given fields: r
+func (_m *FederatedAuthenticationApi) RevokeJwksFromIdentityProviderExecute(r admin.RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RevokeIdentityProviderJwksExecute")
+		panic("no return value specified for RevokeJwksFromIdentityProviderExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.RevokeIdentityProviderJwksApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RevokeIdentityProviderJwksApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.RevokeJwksFromIdentityProviderApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2323,7 +2323,7 @@ func (_m *FederatedAuthenticationApi) RevokeIdentityProviderJwksExecute(r admin.
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RevokeIdentityProviderJwksApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.RevokeJwksFromIdentityProviderApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -2332,77 +2332,77 @@ func (_m *FederatedAuthenticationApi) RevokeIdentityProviderJwksExecute(r admin.
 	return r0, r1
 }
 
-// FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeIdentityProviderJwksExecute'
-type FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call struct {
+// FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeJwksFromIdentityProviderExecute'
+type FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call struct {
 	*mock.Call
 }
 
-// RevokeIdentityProviderJwksExecute is a helper method to define mock.On call
-//   - r admin.RevokeIdentityProviderJwksApiRequest
-func (_e *FederatedAuthenticationApi_Expecter) RevokeIdentityProviderJwksExecute(r any) *FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call {
-	return &FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call{Call: _e.mock.On("RevokeIdentityProviderJwksExecute", r)}
+// RevokeJwksFromIdentityProviderExecute is a helper method to define mock.On call
+//   - r admin.RevokeJwksFromIdentityProviderApiRequest
+func (_e *FederatedAuthenticationApi_Expecter) RevokeJwksFromIdentityProviderExecute(r any) *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call {
+	return &FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call{Call: _e.mock.On("RevokeJwksFromIdentityProviderExecute", r)}
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call) Run(run func(r admin.RevokeIdentityProviderJwksApiRequest)) *FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call) Run(run func(r admin.RevokeJwksFromIdentityProviderApiRequest)) *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RevokeIdentityProviderJwksApiRequest))
+		run(args[0].(admin.RevokeJwksFromIdentityProviderApiRequest))
 	})
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call) Return(_a0 *http.Response, _a1 error) *FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call) Return(_a0 *http.Response, _a1 error) *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call) RunAndReturn(run func(admin.RevokeIdentityProviderJwksApiRequest) (*http.Response, error)) *FederatedAuthenticationApi_RevokeIdentityProviderJwksExecute_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call) RunAndReturn(run func(admin.RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error)) *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RevokeIdentityProviderJwksWithParams provides a mock function with given fields: ctx, args
-func (_m *FederatedAuthenticationApi) RevokeIdentityProviderJwksWithParams(ctx context.Context, args *admin.RevokeIdentityProviderJwksApiParams) admin.RevokeIdentityProviderJwksApiRequest {
+// RevokeJwksFromIdentityProviderWithParams provides a mock function with given fields: ctx, args
+func (_m *FederatedAuthenticationApi) RevokeJwksFromIdentityProviderWithParams(ctx context.Context, args *admin.RevokeJwksFromIdentityProviderApiParams) admin.RevokeJwksFromIdentityProviderApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RevokeIdentityProviderJwksWithParams")
+		panic("no return value specified for RevokeJwksFromIdentityProviderWithParams")
 	}
 
-	var r0 admin.RevokeIdentityProviderJwksApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RevokeIdentityProviderJwksApiParams) admin.RevokeIdentityProviderJwksApiRequest); ok {
+	var r0 admin.RevokeJwksFromIdentityProviderApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RevokeJwksFromIdentityProviderApiParams) admin.RevokeJwksFromIdentityProviderApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.RevokeIdentityProviderJwksApiRequest)
+		r0 = ret.Get(0).(admin.RevokeJwksFromIdentityProviderApiRequest)
 	}
 
 	return r0
 }
 
-// FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeIdentityProviderJwksWithParams'
-type FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call struct {
+// FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeJwksFromIdentityProviderWithParams'
+type FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call struct {
 	*mock.Call
 }
 
-// RevokeIdentityProviderJwksWithParams is a helper method to define mock.On call
+// RevokeJwksFromIdentityProviderWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.RevokeIdentityProviderJwksApiParams
-func (_e *FederatedAuthenticationApi_Expecter) RevokeIdentityProviderJwksWithParams(ctx any, args any) *FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call {
-	return &FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call{Call: _e.mock.On("RevokeIdentityProviderJwksWithParams", ctx, args)}
+//   - args *admin.RevokeJwksFromIdentityProviderApiParams
+func (_e *FederatedAuthenticationApi_Expecter) RevokeJwksFromIdentityProviderWithParams(ctx any, args any) *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call {
+	return &FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call{Call: _e.mock.On("RevokeJwksFromIdentityProviderWithParams", ctx, args)}
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call) Run(run func(ctx context.Context, args *admin.RevokeIdentityProviderJwksApiParams)) *FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call) Run(run func(ctx context.Context, args *admin.RevokeJwksFromIdentityProviderApiParams)) *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RevokeIdentityProviderJwksApiParams))
+		run(args[0].(context.Context), args[1].(*admin.RevokeJwksFromIdentityProviderApiParams))
 	})
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call) Return(_a0 admin.RevokeIdentityProviderJwksApiRequest) *FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call) Return(_a0 admin.RevokeJwksFromIdentityProviderApiRequest) *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call) RunAndReturn(run func(context.Context, *admin.RevokeIdentityProviderJwksApiParams) admin.RevokeIdentityProviderJwksApiRequest) *FederatedAuthenticationApi_RevokeIdentityProviderJwksWithParams_Call {
+func (_c *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call) RunAndReturn(run func(context.Context, *admin.RevokeJwksFromIdentityProviderApiParams) admin.RevokeJwksFromIdentityProviderApiRequest) *FederatedAuthenticationApi_RevokeJwksFromIdentityProviderWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

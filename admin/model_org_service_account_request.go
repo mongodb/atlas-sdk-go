@@ -2,7 +2,7 @@
 
 package admin
 
-// OrgServiceAccountRequest Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters. Note that API Keys cannot be specified in the same request.
+// OrgServiceAccountRequest Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters.
 type OrgServiceAccountRequest struct {
 	// Human readable description for the Service Account.
 	Description string `json:"description"`

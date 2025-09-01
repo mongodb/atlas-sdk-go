@@ -12,9 +12,13 @@ type StreamsKafkaNetworkingAccess struct {
 	// Reserved. Will be used by PRIVATE_LINK connection type.
 	Name *string `json:"name,omitempty"`
 	// Reserved. Will be used by TRANSIT_GATEWAY connection type.
+	TgwId *string `json:"tgwId,omitempty"`
+	// Reserved. Will be used by TRANSIT_GATEWAY connection type.
 	TgwRouteId *string `json:"tgwRouteId,omitempty"`
 	// Selected networking type. Either PUBLIC, VPC, PRIVATE_LINK, or TRANSIT_GATEWAY. Defaults to PUBLIC. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. TRANSIT_GATEWAY support is coming soon.
 	Type *string `json:"type,omitempty"`
+	// Reserved. Will be used by TRANSIT_GATEWAY connection type.
+	VpcCIDR *string `json:"vpcCIDR,omitempty"`
 }
 
 // NewStreamsKafkaNetworkingAccess instantiates a new StreamsKafkaNetworkingAccess object
@@ -133,6 +137,39 @@ func (o *StreamsKafkaNetworkingAccess) SetName(v string) {
 	o.Name = &v
 }
 
+// GetTgwId returns the TgwId field value if set, zero value otherwise
+func (o *StreamsKafkaNetworkingAccess) GetTgwId() string {
+	if o == nil || IsNil(o.TgwId) {
+		var ret string
+		return ret
+	}
+	return *o.TgwId
+}
+
+// GetTgwIdOk returns a tuple with the TgwId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaNetworkingAccess) GetTgwIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TgwId) {
+		return nil, false
+	}
+
+	return o.TgwId, true
+}
+
+// HasTgwId returns a boolean if a field has been set.
+func (o *StreamsKafkaNetworkingAccess) HasTgwId() bool {
+	if o != nil && !IsNil(o.TgwId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTgwId gets a reference to the given string and assigns it to the TgwId field.
+func (o *StreamsKafkaNetworkingAccess) SetTgwId(v string) {
+	o.TgwId = &v
+}
+
 // GetTgwRouteId returns the TgwRouteId field value if set, zero value otherwise
 func (o *StreamsKafkaNetworkingAccess) GetTgwRouteId() string {
 	if o == nil || IsNil(o.TgwRouteId) {
@@ -197,4 +234,37 @@ func (o *StreamsKafkaNetworkingAccess) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *StreamsKafkaNetworkingAccess) SetType(v string) {
 	o.Type = &v
+}
+
+// GetVpcCIDR returns the VpcCIDR field value if set, zero value otherwise
+func (o *StreamsKafkaNetworkingAccess) GetVpcCIDR() string {
+	if o == nil || IsNil(o.VpcCIDR) {
+		var ret string
+		return ret
+	}
+	return *o.VpcCIDR
+}
+
+// GetVpcCIDROk returns a tuple with the VpcCIDR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaNetworkingAccess) GetVpcCIDROk() (*string, bool) {
+	if o == nil || IsNil(o.VpcCIDR) {
+		return nil, false
+	}
+
+	return o.VpcCIDR, true
+}
+
+// HasVpcCIDR returns a boolean if a field has been set.
+func (o *StreamsKafkaNetworkingAccess) HasVpcCIDR() bool {
+	if o != nil && !IsNil(o.VpcCIDR) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcCIDR gets a reference to the given string and assigns it to the VpcCIDR field.
+func (o *StreamsKafkaNetworkingAccess) SetVpcCIDR(v string) {
+	o.VpcCIDR = &v
 }

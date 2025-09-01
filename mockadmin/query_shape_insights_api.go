@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -25,70 +25,70 @@ func (_m *QueryShapeInsightsApi) EXPECT() *QueryShapeInsightsApi_Expecter {
 	return &QueryShapeInsightsApi_Expecter{mock: &_m.Mock}
 }
 
-// GetQueryShapeDetails provides a mock function with given fields: ctx, groupId, clusterName, queryShapeHash
-func (_m *QueryShapeInsightsApi) GetQueryShapeDetails(ctx context.Context, groupId string, clusterName string, queryShapeHash string) admin.GetQueryShapeDetailsApiRequest {
+// GetGroupClusterQueryShapeInsightDetails provides a mock function with given fields: ctx, groupId, clusterName, queryShapeHash
+func (_m *QueryShapeInsightsApi) GetGroupClusterQueryShapeInsightDetails(ctx context.Context, groupId string, clusterName string, queryShapeHash string) admin.GetGroupClusterQueryShapeInsightDetailsApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, queryShapeHash)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetQueryShapeDetails")
+		panic("no return value specified for GetGroupClusterQueryShapeInsightDetails")
 	}
 
-	var r0 admin.GetQueryShapeDetailsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetQueryShapeDetailsApiRequest); ok {
+	var r0 admin.GetGroupClusterQueryShapeInsightDetailsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetGroupClusterQueryShapeInsightDetailsApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, queryShapeHash)
 	} else {
-		r0 = ret.Get(0).(admin.GetQueryShapeDetailsApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupClusterQueryShapeInsightDetailsApiRequest)
 	}
 
 	return r0
 }
 
-// QueryShapeInsightsApi_GetQueryShapeDetails_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetQueryShapeDetails'
-type QueryShapeInsightsApi_GetQueryShapeDetails_Call struct {
+// QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupClusterQueryShapeInsightDetails'
+type QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call struct {
 	*mock.Call
 }
 
-// GetQueryShapeDetails is a helper method to define mock.On call
+// GetGroupClusterQueryShapeInsightDetails is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - queryShapeHash string
-func (_e *QueryShapeInsightsApi_Expecter) GetQueryShapeDetails(ctx any, groupId any, clusterName any, queryShapeHash any) *QueryShapeInsightsApi_GetQueryShapeDetails_Call {
-	return &QueryShapeInsightsApi_GetQueryShapeDetails_Call{Call: _e.mock.On("GetQueryShapeDetails", ctx, groupId, clusterName, queryShapeHash)}
+func (_e *QueryShapeInsightsApi_Expecter) GetGroupClusterQueryShapeInsightDetails(ctx any, groupId any, clusterName any, queryShapeHash any) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call {
+	return &QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call{Call: _e.mock.On("GetGroupClusterQueryShapeInsightDetails", ctx, groupId, clusterName, queryShapeHash)}
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetails_Call) Run(run func(ctx context.Context, groupId string, clusterName string, queryShapeHash string)) *QueryShapeInsightsApi_GetQueryShapeDetails_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call) Run(run func(ctx context.Context, groupId string, clusterName string, queryShapeHash string)) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetails_Call) Return(_a0 admin.GetQueryShapeDetailsApiRequest) *QueryShapeInsightsApi_GetQueryShapeDetails_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call) Return(_a0 admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetails_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetQueryShapeDetailsApiRequest) *QueryShapeInsightsApi_GetQueryShapeDetails_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetails_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetQueryShapeDetailsExecute provides a mock function with given fields: r
-func (_m *QueryShapeInsightsApi) GetQueryShapeDetailsExecute(r admin.GetQueryShapeDetailsApiRequest) (*admin.QueryStatsDetailsResponse, *http.Response, error) {
+// GetGroupClusterQueryShapeInsightDetailsExecute provides a mock function with given fields: r
+func (_m *QueryShapeInsightsApi) GetGroupClusterQueryShapeInsightDetailsExecute(r admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) (*admin.QueryStatsDetailsResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetQueryShapeDetailsExecute")
+		panic("no return value specified for GetGroupClusterQueryShapeInsightDetailsExecute")
 	}
 
 	var r0 *admin.QueryStatsDetailsResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetQueryShapeDetailsApiRequest) (*admin.QueryStatsDetailsResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) (*admin.QueryStatsDetailsResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetQueryShapeDetailsApiRequest) *admin.QueryStatsDetailsResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) *admin.QueryStatsDetailsResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -96,7 +96,7 @@ func (_m *QueryShapeInsightsApi) GetQueryShapeDetailsExecute(r admin.GetQuerySha
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetQueryShapeDetailsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -104,7 +104,7 @@ func (_m *QueryShapeInsightsApi) GetQueryShapeDetailsExecute(r admin.GetQuerySha
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetQueryShapeDetailsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -113,144 +113,144 @@ func (_m *QueryShapeInsightsApi) GetQueryShapeDetailsExecute(r admin.GetQuerySha
 	return r0, r1, r2
 }
 
-// QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetQueryShapeDetailsExecute'
-type QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call struct {
+// QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupClusterQueryShapeInsightDetailsExecute'
+type QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call struct {
 	*mock.Call
 }
 
-// GetQueryShapeDetailsExecute is a helper method to define mock.On call
-//   - r admin.GetQueryShapeDetailsApiRequest
-func (_e *QueryShapeInsightsApi_Expecter) GetQueryShapeDetailsExecute(r any) *QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call {
-	return &QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call{Call: _e.mock.On("GetQueryShapeDetailsExecute", r)}
+// GetGroupClusterQueryShapeInsightDetailsExecute is a helper method to define mock.On call
+//   - r admin.GetGroupClusterQueryShapeInsightDetailsApiRequest
+func (_e *QueryShapeInsightsApi_Expecter) GetGroupClusterQueryShapeInsightDetailsExecute(r any) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call {
+	return &QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call{Call: _e.mock.On("GetGroupClusterQueryShapeInsightDetailsExecute", r)}
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call) Run(run func(r admin.GetQueryShapeDetailsApiRequest)) *QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call) Run(run func(r admin.GetGroupClusterQueryShapeInsightDetailsApiRequest)) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetQueryShapeDetailsApiRequest))
+		run(args[0].(admin.GetGroupClusterQueryShapeInsightDetailsApiRequest))
 	})
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call) Return(_a0 *admin.QueryStatsDetailsResponse, _a1 *http.Response, _a2 error) *QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call) Return(_a0 *admin.QueryStatsDetailsResponse, _a1 *http.Response, _a2 error) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call) RunAndReturn(run func(admin.GetQueryShapeDetailsApiRequest) (*admin.QueryStatsDetailsResponse, *http.Response, error)) *QueryShapeInsightsApi_GetQueryShapeDetailsExecute_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call) RunAndReturn(run func(admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) (*admin.QueryStatsDetailsResponse, *http.Response, error)) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetQueryShapeDetailsWithParams provides a mock function with given fields: ctx, args
-func (_m *QueryShapeInsightsApi) GetQueryShapeDetailsWithParams(ctx context.Context, args *admin.GetQueryShapeDetailsApiParams) admin.GetQueryShapeDetailsApiRequest {
+// GetGroupClusterQueryShapeInsightDetailsWithParams provides a mock function with given fields: ctx, args
+func (_m *QueryShapeInsightsApi) GetGroupClusterQueryShapeInsightDetailsWithParams(ctx context.Context, args *admin.GetGroupClusterQueryShapeInsightDetailsApiParams) admin.GetGroupClusterQueryShapeInsightDetailsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetQueryShapeDetailsWithParams")
+		panic("no return value specified for GetGroupClusterQueryShapeInsightDetailsWithParams")
 	}
 
-	var r0 admin.GetQueryShapeDetailsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetQueryShapeDetailsApiParams) admin.GetQueryShapeDetailsApiRequest); ok {
+	var r0 admin.GetGroupClusterQueryShapeInsightDetailsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupClusterQueryShapeInsightDetailsApiParams) admin.GetGroupClusterQueryShapeInsightDetailsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetQueryShapeDetailsApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupClusterQueryShapeInsightDetailsApiRequest)
 	}
 
 	return r0
 }
 
-// QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetQueryShapeDetailsWithParams'
-type QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call struct {
+// QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupClusterQueryShapeInsightDetailsWithParams'
+type QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call struct {
 	*mock.Call
 }
 
-// GetQueryShapeDetailsWithParams is a helper method to define mock.On call
+// GetGroupClusterQueryShapeInsightDetailsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetQueryShapeDetailsApiParams
-func (_e *QueryShapeInsightsApi_Expecter) GetQueryShapeDetailsWithParams(ctx any, args any) *QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call {
-	return &QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call{Call: _e.mock.On("GetQueryShapeDetailsWithParams", ctx, args)}
+//   - args *admin.GetGroupClusterQueryShapeInsightDetailsApiParams
+func (_e *QueryShapeInsightsApi_Expecter) GetGroupClusterQueryShapeInsightDetailsWithParams(ctx any, args any) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call {
+	return &QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call{Call: _e.mock.On("GetGroupClusterQueryShapeInsightDetailsWithParams", ctx, args)}
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetQueryShapeDetailsApiParams)) *QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupClusterQueryShapeInsightDetailsApiParams)) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetQueryShapeDetailsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupClusterQueryShapeInsightDetailsApiParams))
 	})
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call) Return(_a0 admin.GetQueryShapeDetailsApiRequest) *QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call) Return(_a0 admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetQueryShapeDetailsApiParams) admin.GetQueryShapeDetailsApiRequest) *QueryShapeInsightsApi_GetQueryShapeDetailsWithParams_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupClusterQueryShapeInsightDetailsApiParams) admin.GetGroupClusterQueryShapeInsightDetailsApiRequest) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightDetailsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListQueryShapeSummaries provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *QueryShapeInsightsApi) ListQueryShapeSummaries(ctx context.Context, groupId string, clusterName string) admin.ListQueryShapeSummariesApiRequest {
+// GetGroupClusterQueryShapeInsightSummaries provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *QueryShapeInsightsApi) GetGroupClusterQueryShapeInsightSummaries(ctx context.Context, groupId string, clusterName string) admin.GetGroupClusterQueryShapeInsightSummariesApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListQueryShapeSummaries")
+		panic("no return value specified for GetGroupClusterQueryShapeInsightSummaries")
 	}
 
-	var r0 admin.ListQueryShapeSummariesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListQueryShapeSummariesApiRequest); ok {
+	var r0 admin.GetGroupClusterQueryShapeInsightSummariesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupClusterQueryShapeInsightSummariesApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName)
 	} else {
-		r0 = ret.Get(0).(admin.ListQueryShapeSummariesApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupClusterQueryShapeInsightSummariesApiRequest)
 	}
 
 	return r0
 }
 
-// QueryShapeInsightsApi_ListQueryShapeSummaries_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListQueryShapeSummaries'
-type QueryShapeInsightsApi_ListQueryShapeSummaries_Call struct {
+// QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupClusterQueryShapeInsightSummaries'
+type QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call struct {
 	*mock.Call
 }
 
-// ListQueryShapeSummaries is a helper method to define mock.On call
+// GetGroupClusterQueryShapeInsightSummaries is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *QueryShapeInsightsApi_Expecter) ListQueryShapeSummaries(ctx any, groupId any, clusterName any) *QueryShapeInsightsApi_ListQueryShapeSummaries_Call {
-	return &QueryShapeInsightsApi_ListQueryShapeSummaries_Call{Call: _e.mock.On("ListQueryShapeSummaries", ctx, groupId, clusterName)}
+func (_e *QueryShapeInsightsApi_Expecter) GetGroupClusterQueryShapeInsightSummaries(ctx any, groupId any, clusterName any) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call {
+	return &QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call{Call: _e.mock.On("GetGroupClusterQueryShapeInsightSummaries", ctx, groupId, clusterName)}
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummaries_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *QueryShapeInsightsApi_ListQueryShapeSummaries_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummaries_Call) Return(_a0 admin.ListQueryShapeSummariesApiRequest) *QueryShapeInsightsApi_ListQueryShapeSummaries_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call) Return(_a0 admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummaries_Call) RunAndReturn(run func(context.Context, string, string) admin.ListQueryShapeSummariesApiRequest) *QueryShapeInsightsApi_ListQueryShapeSummaries_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummaries_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListQueryShapeSummariesExecute provides a mock function with given fields: r
-func (_m *QueryShapeInsightsApi) ListQueryShapeSummariesExecute(r admin.ListQueryShapeSummariesApiRequest) (*admin.QueryStatsSummaryListResponse, *http.Response, error) {
+// GetGroupClusterQueryShapeInsightSummariesExecute provides a mock function with given fields: r
+func (_m *QueryShapeInsightsApi) GetGroupClusterQueryShapeInsightSummariesExecute(r admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) (*admin.QueryStatsSummaryListResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListQueryShapeSummariesExecute")
+		panic("no return value specified for GetGroupClusterQueryShapeInsightSummariesExecute")
 	}
 
 	var r0 *admin.QueryStatsSummaryListResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListQueryShapeSummariesApiRequest) (*admin.QueryStatsSummaryListResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) (*admin.QueryStatsSummaryListResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListQueryShapeSummariesApiRequest) *admin.QueryStatsSummaryListResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) *admin.QueryStatsSummaryListResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -258,7 +258,7 @@ func (_m *QueryShapeInsightsApi) ListQueryShapeSummariesExecute(r admin.ListQuer
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListQueryShapeSummariesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -266,7 +266,7 @@ func (_m *QueryShapeInsightsApi) ListQueryShapeSummariesExecute(r admin.ListQuer
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListQueryShapeSummariesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -275,77 +275,77 @@ func (_m *QueryShapeInsightsApi) ListQueryShapeSummariesExecute(r admin.ListQuer
 	return r0, r1, r2
 }
 
-// QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListQueryShapeSummariesExecute'
-type QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call struct {
+// QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupClusterQueryShapeInsightSummariesExecute'
+type QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call struct {
 	*mock.Call
 }
 
-// ListQueryShapeSummariesExecute is a helper method to define mock.On call
-//   - r admin.ListQueryShapeSummariesApiRequest
-func (_e *QueryShapeInsightsApi_Expecter) ListQueryShapeSummariesExecute(r any) *QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call {
-	return &QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call{Call: _e.mock.On("ListQueryShapeSummariesExecute", r)}
+// GetGroupClusterQueryShapeInsightSummariesExecute is a helper method to define mock.On call
+//   - r admin.GetGroupClusterQueryShapeInsightSummariesApiRequest
+func (_e *QueryShapeInsightsApi_Expecter) GetGroupClusterQueryShapeInsightSummariesExecute(r any) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call {
+	return &QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call{Call: _e.mock.On("GetGroupClusterQueryShapeInsightSummariesExecute", r)}
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call) Run(run func(r admin.ListQueryShapeSummariesApiRequest)) *QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call) Run(run func(r admin.GetGroupClusterQueryShapeInsightSummariesApiRequest)) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListQueryShapeSummariesApiRequest))
+		run(args[0].(admin.GetGroupClusterQueryShapeInsightSummariesApiRequest))
 	})
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call) Return(_a0 *admin.QueryStatsSummaryListResponse, _a1 *http.Response, _a2 error) *QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call) Return(_a0 *admin.QueryStatsSummaryListResponse, _a1 *http.Response, _a2 error) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call) RunAndReturn(run func(admin.ListQueryShapeSummariesApiRequest) (*admin.QueryStatsSummaryListResponse, *http.Response, error)) *QueryShapeInsightsApi_ListQueryShapeSummariesExecute_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call) RunAndReturn(run func(admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) (*admin.QueryStatsSummaryListResponse, *http.Response, error)) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListQueryShapeSummariesWithParams provides a mock function with given fields: ctx, args
-func (_m *QueryShapeInsightsApi) ListQueryShapeSummariesWithParams(ctx context.Context, args *admin.ListQueryShapeSummariesApiParams) admin.ListQueryShapeSummariesApiRequest {
+// GetGroupClusterQueryShapeInsightSummariesWithParams provides a mock function with given fields: ctx, args
+func (_m *QueryShapeInsightsApi) GetGroupClusterQueryShapeInsightSummariesWithParams(ctx context.Context, args *admin.GetGroupClusterQueryShapeInsightSummariesApiParams) admin.GetGroupClusterQueryShapeInsightSummariesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListQueryShapeSummariesWithParams")
+		panic("no return value specified for GetGroupClusterQueryShapeInsightSummariesWithParams")
 	}
 
-	var r0 admin.ListQueryShapeSummariesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListQueryShapeSummariesApiParams) admin.ListQueryShapeSummariesApiRequest); ok {
+	var r0 admin.GetGroupClusterQueryShapeInsightSummariesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupClusterQueryShapeInsightSummariesApiParams) admin.GetGroupClusterQueryShapeInsightSummariesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListQueryShapeSummariesApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupClusterQueryShapeInsightSummariesApiRequest)
 	}
 
 	return r0
 }
 
-// QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListQueryShapeSummariesWithParams'
-type QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call struct {
+// QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupClusterQueryShapeInsightSummariesWithParams'
+type QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListQueryShapeSummariesWithParams is a helper method to define mock.On call
+// GetGroupClusterQueryShapeInsightSummariesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListQueryShapeSummariesApiParams
-func (_e *QueryShapeInsightsApi_Expecter) ListQueryShapeSummariesWithParams(ctx any, args any) *QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call {
-	return &QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call{Call: _e.mock.On("ListQueryShapeSummariesWithParams", ctx, args)}
+//   - args *admin.GetGroupClusterQueryShapeInsightSummariesApiParams
+func (_e *QueryShapeInsightsApi_Expecter) GetGroupClusterQueryShapeInsightSummariesWithParams(ctx any, args any) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call {
+	return &QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call{Call: _e.mock.On("GetGroupClusterQueryShapeInsightSummariesWithParams", ctx, args)}
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListQueryShapeSummariesApiParams)) *QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupClusterQueryShapeInsightSummariesApiParams)) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListQueryShapeSummariesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupClusterQueryShapeInsightSummariesApiParams))
 	})
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call) Return(_a0 admin.ListQueryShapeSummariesApiRequest) *QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call) Return(_a0 admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListQueryShapeSummariesApiParams) admin.ListQueryShapeSummariesApiRequest) *QueryShapeInsightsApi_ListQueryShapeSummariesWithParams_Call {
+func (_c *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupClusterQueryShapeInsightSummariesApiParams) admin.GetGroupClusterQueryShapeInsightSummariesApiRequest) *QueryShapeInsightsApi_GetGroupClusterQueryShapeInsightSummariesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

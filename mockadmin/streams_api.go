@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
 
 	http "net/http"
 
@@ -506,6 +506,330 @@ func (_c *StreamsApi_CreateStreamConnectionWithParams_Call) RunAndReturn(run fun
 	return _c
 }
 
+// CreateStreamInstance provides a mock function with given fields: ctx, groupId, streamsTenant
+func (_m *StreamsApi) CreateStreamInstance(ctx context.Context, groupId string, streamsTenant *admin.StreamsTenant) admin.CreateStreamInstanceApiRequest {
+	ret := _m.Called(ctx, groupId, streamsTenant)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstance")
+	}
+
+	var r0 admin.CreateStreamInstanceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.StreamsTenant) admin.CreateStreamInstanceApiRequest); ok {
+		r0 = rf(ctx, groupId, streamsTenant)
+	} else {
+		r0 = ret.Get(0).(admin.CreateStreamInstanceApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateStreamInstance_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstance'
+type StreamsApi_CreateStreamInstance_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstance is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - streamsTenant *admin.StreamsTenant
+func (_e *StreamsApi_Expecter) CreateStreamInstance(ctx any, groupId any, streamsTenant any) *StreamsApi_CreateStreamInstance_Call {
+	return &StreamsApi_CreateStreamInstance_Call{Call: _e.mock.On("CreateStreamInstance", ctx, groupId, streamsTenant)}
+}
+
+func (_c *StreamsApi_CreateStreamInstance_Call) Run(run func(ctx context.Context, groupId string, streamsTenant *admin.StreamsTenant)) *StreamsApi_CreateStreamInstance_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.StreamsTenant))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstance_Call) Return(_a0 admin.CreateStreamInstanceApiRequest) *StreamsApi_CreateStreamInstance_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstance_Call) RunAndReturn(run func(context.Context, string, *admin.StreamsTenant) admin.CreateStreamInstanceApiRequest) *StreamsApi_CreateStreamInstance_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamInstanceExecute provides a mock function with given fields: r
+func (_m *StreamsApi) CreateStreamInstanceExecute(r admin.CreateStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstanceExecute")
+	}
+
+	var r0 *admin.StreamsTenant
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateStreamInstanceApiRequest) *admin.StreamsTenant); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTenant)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateStreamInstanceApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateStreamInstanceApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_CreateStreamInstanceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstanceExecute'
+type StreamsApi_CreateStreamInstanceExecute_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstanceExecute is a helper method to define mock.On call
+//   - r admin.CreateStreamInstanceApiRequest
+func (_e *StreamsApi_Expecter) CreateStreamInstanceExecute(r any) *StreamsApi_CreateStreamInstanceExecute_Call {
+	return &StreamsApi_CreateStreamInstanceExecute_Call{Call: _e.mock.On("CreateStreamInstanceExecute", r)}
+}
+
+func (_c *StreamsApi_CreateStreamInstanceExecute_Call) Run(run func(r admin.CreateStreamInstanceApiRequest)) *StreamsApi_CreateStreamInstanceExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateStreamInstanceApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_CreateStreamInstanceExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceExecute_Call) RunAndReturn(run func(admin.CreateStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_CreateStreamInstanceExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamInstanceWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) CreateStreamInstanceWithParams(ctx context.Context, args *admin.CreateStreamInstanceApiParams) admin.CreateStreamInstanceApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstanceWithParams")
+	}
+
+	var r0 admin.CreateStreamInstanceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateStreamInstanceApiParams) admin.CreateStreamInstanceApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateStreamInstanceApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateStreamInstanceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstanceWithParams'
+type StreamsApi_CreateStreamInstanceWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstanceWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateStreamInstanceApiParams
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithParams(ctx any, args any) *StreamsApi_CreateStreamInstanceWithParams_Call {
+	return &StreamsApi_CreateStreamInstanceWithParams_Call{Call: _e.mock.On("CreateStreamInstanceWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateStreamInstanceApiParams)) *StreamsApi_CreateStreamInstanceWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateStreamInstanceApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithParams_Call) Return(_a0 admin.CreateStreamInstanceApiRequest) *StreamsApi_CreateStreamInstanceWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateStreamInstanceApiParams) admin.CreateStreamInstanceApiRequest) *StreamsApi_CreateStreamInstanceWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamInstanceWithSampleConnections provides a mock function with given fields: ctx, groupId, body
+func (_m *StreamsApi) CreateStreamInstanceWithSampleConnections(ctx context.Context, groupId string, body *any) admin.CreateStreamInstanceWithSampleConnectionsApiRequest {
+	ret := _m.Called(ctx, groupId, body)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstanceWithSampleConnections")
+	}
+
+	var r0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *any) admin.CreateStreamInstanceWithSampleConnectionsApiRequest); ok {
+		r0 = rf(ctx, groupId, body)
+	} else {
+		r0 = ret.Get(0).(admin.CreateStreamInstanceWithSampleConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateStreamInstanceWithSampleConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstanceWithSampleConnections'
+type StreamsApi_CreateStreamInstanceWithSampleConnections_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstanceWithSampleConnections is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - body *any
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnections(ctx any, groupId any, body any) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+	return &StreamsApi_CreateStreamInstanceWithSampleConnections_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnections", ctx, groupId, body)}
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) Run(run func(ctx context.Context, groupId string, body *any)) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*any))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) Return(_a0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) RunAndReturn(run func(context.Context, string, *any) admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamInstanceWithSampleConnectionsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) CreateStreamInstanceWithSampleConnectionsExecute(r admin.CreateStreamInstanceWithSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstanceWithSampleConnectionsExecute")
+	}
+
+	var r0 *admin.StreamsTenant
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *admin.StreamsTenant); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTenant)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstanceWithSampleConnectionsExecute'
+type StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstanceWithSampleConnectionsExecute is a helper method to define mock.On call
+//   - r admin.CreateStreamInstanceWithSampleConnectionsApiRequest
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnectionsExecute(r any) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+	return &StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnectionsExecute", r)}
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call) Run(run func(r admin.CreateStreamInstanceWithSampleConnectionsApiRequest)) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateStreamInstanceWithSampleConnectionsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call) RunAndReturn(run func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamInstanceWithSampleConnectionsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) CreateStreamInstanceWithSampleConnectionsWithParams(ctx context.Context, args *admin.CreateStreamInstanceWithSampleConnectionsApiParams) admin.CreateStreamInstanceWithSampleConnectionsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstanceWithSampleConnectionsWithParams")
+	}
+
+	var r0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateStreamInstanceWithSampleConnectionsApiParams) admin.CreateStreamInstanceWithSampleConnectionsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateStreamInstanceWithSampleConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstanceWithSampleConnectionsWithParams'
+type StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstanceWithSampleConnectionsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateStreamInstanceWithSampleConnectionsApiParams
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnectionsWithParams(ctx any, args any) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+	return &StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnectionsWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateStreamInstanceWithSampleConnectionsApiParams)) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateStreamInstanceWithSampleConnectionsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call) Return(_a0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateStreamInstanceWithSampleConnectionsApiParams) admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreateStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, streamsProcessor
 func (_m *StreamsApi) CreateStreamProcessor(ctx context.Context, groupId string, tenantName string, streamsProcessor *admin.StreamsProcessor) admin.CreateStreamProcessorApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName, streamsProcessor)
@@ -665,168 +989,6 @@ func (_c *StreamsApi_CreateStreamProcessorWithParams_Call) Return(_a0 admin.Crea
 }
 
 func (_c *StreamsApi_CreateStreamProcessorWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateStreamProcessorApiParams) admin.CreateStreamProcessorApiRequest) *StreamsApi_CreateStreamProcessorWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateStreamWorkspace provides a mock function with given fields: ctx, groupId, streamsTenant
-func (_m *StreamsApi) CreateStreamWorkspace(ctx context.Context, groupId string, streamsTenant *admin.StreamsTenant) admin.CreateStreamWorkspaceApiRequest {
-	ret := _m.Called(ctx, groupId, streamsTenant)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateStreamWorkspace")
-	}
-
-	var r0 admin.CreateStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.StreamsTenant) admin.CreateStreamWorkspaceApiRequest); ok {
-		r0 = rf(ctx, groupId, streamsTenant)
-	} else {
-		r0 = ret.Get(0).(admin.CreateStreamWorkspaceApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_CreateStreamWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamWorkspace'
-type StreamsApi_CreateStreamWorkspace_Call struct {
-	*mock.Call
-}
-
-// CreateStreamWorkspace is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - streamsTenant *admin.StreamsTenant
-func (_e *StreamsApi_Expecter) CreateStreamWorkspace(ctx any, groupId any, streamsTenant any) *StreamsApi_CreateStreamWorkspace_Call {
-	return &StreamsApi_CreateStreamWorkspace_Call{Call: _e.mock.On("CreateStreamWorkspace", ctx, groupId, streamsTenant)}
-}
-
-func (_c *StreamsApi_CreateStreamWorkspace_Call) Run(run func(ctx context.Context, groupId string, streamsTenant *admin.StreamsTenant)) *StreamsApi_CreateStreamWorkspace_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.StreamsTenant))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_CreateStreamWorkspace_Call) Return(_a0 admin.CreateStreamWorkspaceApiRequest) *StreamsApi_CreateStreamWorkspace_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_CreateStreamWorkspace_Call) RunAndReturn(run func(context.Context, string, *admin.StreamsTenant) admin.CreateStreamWorkspaceApiRequest) *StreamsApi_CreateStreamWorkspace_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateStreamWorkspaceExecute provides a mock function with given fields: r
-func (_m *StreamsApi) CreateStreamWorkspaceExecute(r admin.CreateStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateStreamWorkspaceExecute")
-	}
-
-	var r0 *admin.StreamsTenant
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.CreateStreamWorkspaceApiRequest) *admin.StreamsTenant); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.StreamsTenant)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.CreateStreamWorkspaceApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.CreateStreamWorkspaceApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// StreamsApi_CreateStreamWorkspaceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamWorkspaceExecute'
-type StreamsApi_CreateStreamWorkspaceExecute_Call struct {
-	*mock.Call
-}
-
-// CreateStreamWorkspaceExecute is a helper method to define mock.On call
-//   - r admin.CreateStreamWorkspaceApiRequest
-func (_e *StreamsApi_Expecter) CreateStreamWorkspaceExecute(r any) *StreamsApi_CreateStreamWorkspaceExecute_Call {
-	return &StreamsApi_CreateStreamWorkspaceExecute_Call{Call: _e.mock.On("CreateStreamWorkspaceExecute", r)}
-}
-
-func (_c *StreamsApi_CreateStreamWorkspaceExecute_Call) Run(run func(r admin.CreateStreamWorkspaceApiRequest)) *StreamsApi_CreateStreamWorkspaceExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateStreamWorkspaceApiRequest))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_CreateStreamWorkspaceExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_CreateStreamWorkspaceExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *StreamsApi_CreateStreamWorkspaceExecute_Call) RunAndReturn(run func(admin.CreateStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_CreateStreamWorkspaceExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateStreamWorkspaceWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) CreateStreamWorkspaceWithParams(ctx context.Context, args *admin.CreateStreamWorkspaceApiParams) admin.CreateStreamWorkspaceApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateStreamWorkspaceWithParams")
-	}
-
-	var r0 admin.CreateStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateStreamWorkspaceApiParams) admin.CreateStreamWorkspaceApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.CreateStreamWorkspaceApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_CreateStreamWorkspaceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamWorkspaceWithParams'
-type StreamsApi_CreateStreamWorkspaceWithParams_Call struct {
-	*mock.Call
-}
-
-// CreateStreamWorkspaceWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.CreateStreamWorkspaceApiParams
-func (_e *StreamsApi_Expecter) CreateStreamWorkspaceWithParams(ctx any, args any) *StreamsApi_CreateStreamWorkspaceWithParams_Call {
-	return &StreamsApi_CreateStreamWorkspaceWithParams_Call{Call: _e.mock.On("CreateStreamWorkspaceWithParams", ctx, args)}
-}
-
-func (_c *StreamsApi_CreateStreamWorkspaceWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateStreamWorkspaceApiParams)) *StreamsApi_CreateStreamWorkspaceWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateStreamWorkspaceApiParams))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_CreateStreamWorkspaceWithParams_Call) Return(_a0 admin.CreateStreamWorkspaceApiRequest) *StreamsApi_CreateStreamWorkspaceWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_CreateStreamWorkspaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateStreamWorkspaceApiParams) admin.CreateStreamWorkspaceApiRequest) *StreamsApi_CreateStreamWorkspaceWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1138,6 +1300,159 @@ func (_c *StreamsApi_DeleteStreamConnectionWithParams_Call) RunAndReturn(run fun
 	return _c
 }
 
+// DeleteStreamInstance provides a mock function with given fields: ctx, groupId, tenantName
+func (_m *StreamsApi) DeleteStreamInstance(ctx context.Context, groupId string, tenantName string) admin.DeleteStreamInstanceApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteStreamInstance")
+	}
+
+	var r0 admin.DeleteStreamInstanceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteStreamInstanceApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteStreamInstanceApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_DeleteStreamInstance_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamInstance'
+type StreamsApi_DeleteStreamInstance_Call struct {
+	*mock.Call
+}
+
+// DeleteStreamInstance is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+func (_e *StreamsApi_Expecter) DeleteStreamInstance(ctx any, groupId any, tenantName any) *StreamsApi_DeleteStreamInstance_Call {
+	return &StreamsApi_DeleteStreamInstance_Call{Call: _e.mock.On("DeleteStreamInstance", ctx, groupId, tenantName)}
+}
+
+func (_c *StreamsApi_DeleteStreamInstance_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_DeleteStreamInstance_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamInstance_Call) Return(_a0 admin.DeleteStreamInstanceApiRequest) *StreamsApi_DeleteStreamInstance_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamInstance_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteStreamInstanceApiRequest) *StreamsApi_DeleteStreamInstance_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteStreamInstanceExecute provides a mock function with given fields: r
+func (_m *StreamsApi) DeleteStreamInstanceExecute(r admin.DeleteStreamInstanceApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteStreamInstanceExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteStreamInstanceApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsApi_DeleteStreamInstanceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamInstanceExecute'
+type StreamsApi_DeleteStreamInstanceExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteStreamInstanceExecute is a helper method to define mock.On call
+//   - r admin.DeleteStreamInstanceApiRequest
+func (_e *StreamsApi_Expecter) DeleteStreamInstanceExecute(r any) *StreamsApi_DeleteStreamInstanceExecute_Call {
+	return &StreamsApi_DeleteStreamInstanceExecute_Call{Call: _e.mock.On("DeleteStreamInstanceExecute", r)}
+}
+
+func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) Run(run func(r admin.DeleteStreamInstanceApiRequest)) *StreamsApi_DeleteStreamInstanceExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteStreamInstanceApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_DeleteStreamInstanceExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) RunAndReturn(run func(admin.DeleteStreamInstanceApiRequest) (*http.Response, error)) *StreamsApi_DeleteStreamInstanceExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteStreamInstanceWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) DeleteStreamInstanceWithParams(ctx context.Context, args *admin.DeleteStreamInstanceApiParams) admin.DeleteStreamInstanceApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteStreamInstanceWithParams")
+	}
+
+	var r0 admin.DeleteStreamInstanceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteStreamInstanceApiParams) admin.DeleteStreamInstanceApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteStreamInstanceApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_DeleteStreamInstanceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamInstanceWithParams'
+type StreamsApi_DeleteStreamInstanceWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteStreamInstanceWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteStreamInstanceApiParams
+func (_e *StreamsApi_Expecter) DeleteStreamInstanceWithParams(ctx any, args any) *StreamsApi_DeleteStreamInstanceWithParams_Call {
+	return &StreamsApi_DeleteStreamInstanceWithParams_Call{Call: _e.mock.On("DeleteStreamInstanceWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_DeleteStreamInstanceWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteStreamInstanceApiParams)) *StreamsApi_DeleteStreamInstanceWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteStreamInstanceApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamInstanceWithParams_Call) Return(_a0 admin.DeleteStreamInstanceApiRequest) *StreamsApi_DeleteStreamInstanceWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamInstanceWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteStreamInstanceApiParams) admin.DeleteStreamInstanceApiRequest) *StreamsApi_DeleteStreamInstanceWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, processorName
 func (_m *StreamsApi) DeleteStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) admin.DeleteStreamProcessorApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName, processorName)
@@ -1288,159 +1603,6 @@ func (_c *StreamsApi_DeleteStreamProcessorWithParams_Call) Return(_a0 admin.Dele
 }
 
 func (_c *StreamsApi_DeleteStreamProcessorWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteStreamProcessorApiParams) admin.DeleteStreamProcessorApiRequest) *StreamsApi_DeleteStreamProcessorWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteStreamWorkspace provides a mock function with given fields: ctx, groupId, tenantName
-func (_m *StreamsApi) DeleteStreamWorkspace(ctx context.Context, groupId string, tenantName string) admin.DeleteStreamWorkspaceApiRequest {
-	ret := _m.Called(ctx, groupId, tenantName)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteStreamWorkspace")
-	}
-
-	var r0 admin.DeleteStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteStreamWorkspaceApiRequest); ok {
-		r0 = rf(ctx, groupId, tenantName)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteStreamWorkspaceApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_DeleteStreamWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamWorkspace'
-type StreamsApi_DeleteStreamWorkspace_Call struct {
-	*mock.Call
-}
-
-// DeleteStreamWorkspace is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - tenantName string
-func (_e *StreamsApi_Expecter) DeleteStreamWorkspace(ctx any, groupId any, tenantName any) *StreamsApi_DeleteStreamWorkspace_Call {
-	return &StreamsApi_DeleteStreamWorkspace_Call{Call: _e.mock.On("DeleteStreamWorkspace", ctx, groupId, tenantName)}
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspace_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_DeleteStreamWorkspace_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspace_Call) Return(_a0 admin.DeleteStreamWorkspaceApiRequest) *StreamsApi_DeleteStreamWorkspace_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspace_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteStreamWorkspaceApiRequest) *StreamsApi_DeleteStreamWorkspace_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteStreamWorkspaceExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeleteStreamWorkspaceExecute(r admin.DeleteStreamWorkspaceApiRequest) (*http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteStreamWorkspaceExecute")
-	}
-
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamWorkspaceApiRequest) (*http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamWorkspaceApiRequest) *http.Response); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.DeleteStreamWorkspaceApiRequest) error); ok {
-		r1 = rf(r)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// StreamsApi_DeleteStreamWorkspaceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamWorkspaceExecute'
-type StreamsApi_DeleteStreamWorkspaceExecute_Call struct {
-	*mock.Call
-}
-
-// DeleteStreamWorkspaceExecute is a helper method to define mock.On call
-//   - r admin.DeleteStreamWorkspaceApiRequest
-func (_e *StreamsApi_Expecter) DeleteStreamWorkspaceExecute(r any) *StreamsApi_DeleteStreamWorkspaceExecute_Call {
-	return &StreamsApi_DeleteStreamWorkspaceExecute_Call{Call: _e.mock.On("DeleteStreamWorkspaceExecute", r)}
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspaceExecute_Call) Run(run func(r admin.DeleteStreamWorkspaceApiRequest)) *StreamsApi_DeleteStreamWorkspaceExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteStreamWorkspaceApiRequest))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspaceExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_DeleteStreamWorkspaceExecute_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspaceExecute_Call) RunAndReturn(run func(admin.DeleteStreamWorkspaceApiRequest) (*http.Response, error)) *StreamsApi_DeleteStreamWorkspaceExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DeleteStreamWorkspaceWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) DeleteStreamWorkspaceWithParams(ctx context.Context, args *admin.DeleteStreamWorkspaceApiParams) admin.DeleteStreamWorkspaceApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DeleteStreamWorkspaceWithParams")
-	}
-
-	var r0 admin.DeleteStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteStreamWorkspaceApiParams) admin.DeleteStreamWorkspaceApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.DeleteStreamWorkspaceApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_DeleteStreamWorkspaceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamWorkspaceWithParams'
-type StreamsApi_DeleteStreamWorkspaceWithParams_Call struct {
-	*mock.Call
-}
-
-// DeleteStreamWorkspaceWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.DeleteStreamWorkspaceApiParams
-func (_e *StreamsApi_Expecter) DeleteStreamWorkspaceWithParams(ctx any, args any) *StreamsApi_DeleteStreamWorkspaceWithParams_Call {
-	return &StreamsApi_DeleteStreamWorkspaceWithParams_Call{Call: _e.mock.On("DeleteStreamWorkspaceWithParams", ctx, args)}
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspaceWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteStreamWorkspaceApiParams)) *StreamsApi_DeleteStreamWorkspaceWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteStreamWorkspaceApiParams))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspaceWithParams_Call) Return(_a0 admin.DeleteStreamWorkspaceApiRequest) *StreamsApi_DeleteStreamWorkspaceWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_DeleteStreamWorkspaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteStreamWorkspaceApiParams) admin.DeleteStreamWorkspaceApiRequest) *StreamsApi_DeleteStreamWorkspaceWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1598,69 +1760,69 @@ func (_c *StreamsApi_DeleteVpcPeeringConnectionWithParams_Call) RunAndReturn(run
 	return _c
 }
 
-// DownloadAuditLogs provides a mock function with given fields: ctx, groupId, tenantName
-func (_m *StreamsApi) DownloadAuditLogs(ctx context.Context, groupId string, tenantName string) admin.DownloadAuditLogsApiRequest {
+// DownloadStreamTenantAuditLogs provides a mock function with given fields: ctx, groupId, tenantName
+func (_m *StreamsApi) DownloadStreamTenantAuditLogs(ctx context.Context, groupId string, tenantName string) admin.DownloadStreamTenantAuditLogsApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadAuditLogs")
+		panic("no return value specified for DownloadStreamTenantAuditLogs")
 	}
 
-	var r0 admin.DownloadAuditLogsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DownloadAuditLogsApiRequest); ok {
+	var r0 admin.DownloadStreamTenantAuditLogsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DownloadStreamTenantAuditLogsApiRequest); ok {
 		r0 = rf(ctx, groupId, tenantName)
 	} else {
-		r0 = ret.Get(0).(admin.DownloadAuditLogsApiRequest)
+		r0 = ret.Get(0).(admin.DownloadStreamTenantAuditLogsApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_DownloadAuditLogs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadAuditLogs'
-type StreamsApi_DownloadAuditLogs_Call struct {
+// StreamsApi_DownloadStreamTenantAuditLogs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadStreamTenantAuditLogs'
+type StreamsApi_DownloadStreamTenantAuditLogs_Call struct {
 	*mock.Call
 }
 
-// DownloadAuditLogs is a helper method to define mock.On call
+// DownloadStreamTenantAuditLogs is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *StreamsApi_Expecter) DownloadAuditLogs(ctx any, groupId any, tenantName any) *StreamsApi_DownloadAuditLogs_Call {
-	return &StreamsApi_DownloadAuditLogs_Call{Call: _e.mock.On("DownloadAuditLogs", ctx, groupId, tenantName)}
+func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogs(ctx any, groupId any, tenantName any) *StreamsApi_DownloadStreamTenantAuditLogs_Call {
+	return &StreamsApi_DownloadStreamTenantAuditLogs_Call{Call: _e.mock.On("DownloadStreamTenantAuditLogs", ctx, groupId, tenantName)}
 }
 
-func (_c *StreamsApi_DownloadAuditLogs_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_DownloadAuditLogs_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogs_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_DownloadStreamTenantAuditLogs_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_DownloadAuditLogs_Call) Return(_a0 admin.DownloadAuditLogsApiRequest) *StreamsApi_DownloadAuditLogs_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogs_Call) Return(_a0 admin.DownloadStreamTenantAuditLogsApiRequest) *StreamsApi_DownloadStreamTenantAuditLogs_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_DownloadAuditLogs_Call) RunAndReturn(run func(context.Context, string, string) admin.DownloadAuditLogsApiRequest) *StreamsApi_DownloadAuditLogs_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogs_Call) RunAndReturn(run func(context.Context, string, string) admin.DownloadStreamTenantAuditLogsApiRequest) *StreamsApi_DownloadStreamTenantAuditLogs_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DownloadAuditLogsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DownloadAuditLogsExecute(r admin.DownloadAuditLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+// DownloadStreamTenantAuditLogsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) DownloadStreamTenantAuditLogsExecute(r admin.DownloadStreamTenantAuditLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadAuditLogsExecute")
+		panic("no return value specified for DownloadStreamTenantAuditLogsExecute")
 	}
 
 	var r0 io.ReadCloser
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DownloadAuditLogsApiRequest) (io.ReadCloser, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DownloadStreamTenantAuditLogsApiRequest) (io.ReadCloser, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DownloadAuditLogsApiRequest) io.ReadCloser); ok {
+	if rf, ok := ret.Get(0).(func(admin.DownloadStreamTenantAuditLogsApiRequest) io.ReadCloser); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1668,7 +1830,7 @@ func (_m *StreamsApi) DownloadAuditLogsExecute(r admin.DownloadAuditLogsApiReque
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DownloadAuditLogsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DownloadStreamTenantAuditLogsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1676,7 +1838,7 @@ func (_m *StreamsApi) DownloadAuditLogsExecute(r admin.DownloadAuditLogsApiReque
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DownloadAuditLogsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DownloadStreamTenantAuditLogsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1685,77 +1847,77 @@ func (_m *StreamsApi) DownloadAuditLogsExecute(r admin.DownloadAuditLogsApiReque
 	return r0, r1, r2
 }
 
-// StreamsApi_DownloadAuditLogsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadAuditLogsExecute'
-type StreamsApi_DownloadAuditLogsExecute_Call struct {
+// StreamsApi_DownloadStreamTenantAuditLogsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadStreamTenantAuditLogsExecute'
+type StreamsApi_DownloadStreamTenantAuditLogsExecute_Call struct {
 	*mock.Call
 }
 
-// DownloadAuditLogsExecute is a helper method to define mock.On call
-//   - r admin.DownloadAuditLogsApiRequest
-func (_e *StreamsApi_Expecter) DownloadAuditLogsExecute(r any) *StreamsApi_DownloadAuditLogsExecute_Call {
-	return &StreamsApi_DownloadAuditLogsExecute_Call{Call: _e.mock.On("DownloadAuditLogsExecute", r)}
+// DownloadStreamTenantAuditLogsExecute is a helper method to define mock.On call
+//   - r admin.DownloadStreamTenantAuditLogsApiRequest
+func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogsExecute(r any) *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call {
+	return &StreamsApi_DownloadStreamTenantAuditLogsExecute_Call{Call: _e.mock.On("DownloadStreamTenantAuditLogsExecute", r)}
 }
 
-func (_c *StreamsApi_DownloadAuditLogsExecute_Call) Run(run func(r admin.DownloadAuditLogsApiRequest)) *StreamsApi_DownloadAuditLogsExecute_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call) Run(run func(r admin.DownloadStreamTenantAuditLogsApiRequest)) *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DownloadAuditLogsApiRequest))
+		run(args[0].(admin.DownloadStreamTenantAuditLogsApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_DownloadAuditLogsExecute_Call) Return(_a0 io.ReadCloser, _a1 *http.Response, _a2 error) *StreamsApi_DownloadAuditLogsExecute_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call) Return(_a0 io.ReadCloser, _a1 *http.Response, _a2 error) *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_DownloadAuditLogsExecute_Call) RunAndReturn(run func(admin.DownloadAuditLogsApiRequest) (io.ReadCloser, *http.Response, error)) *StreamsApi_DownloadAuditLogsExecute_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call) RunAndReturn(run func(admin.DownloadStreamTenantAuditLogsApiRequest) (io.ReadCloser, *http.Response, error)) *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DownloadAuditLogsWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) DownloadAuditLogsWithParams(ctx context.Context, args *admin.DownloadAuditLogsApiParams) admin.DownloadAuditLogsApiRequest {
+// DownloadStreamTenantAuditLogsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) DownloadStreamTenantAuditLogsWithParams(ctx context.Context, args *admin.DownloadStreamTenantAuditLogsApiParams) admin.DownloadStreamTenantAuditLogsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DownloadAuditLogsWithParams")
+		panic("no return value specified for DownloadStreamTenantAuditLogsWithParams")
 	}
 
-	var r0 admin.DownloadAuditLogsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadAuditLogsApiParams) admin.DownloadAuditLogsApiRequest); ok {
+	var r0 admin.DownloadStreamTenantAuditLogsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadStreamTenantAuditLogsApiParams) admin.DownloadStreamTenantAuditLogsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DownloadAuditLogsApiRequest)
+		r0 = ret.Get(0).(admin.DownloadStreamTenantAuditLogsApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_DownloadAuditLogsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadAuditLogsWithParams'
-type StreamsApi_DownloadAuditLogsWithParams_Call struct {
+// StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadStreamTenantAuditLogsWithParams'
+type StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call struct {
 	*mock.Call
 }
 
-// DownloadAuditLogsWithParams is a helper method to define mock.On call
+// DownloadStreamTenantAuditLogsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DownloadAuditLogsApiParams
-func (_e *StreamsApi_Expecter) DownloadAuditLogsWithParams(ctx any, args any) *StreamsApi_DownloadAuditLogsWithParams_Call {
-	return &StreamsApi_DownloadAuditLogsWithParams_Call{Call: _e.mock.On("DownloadAuditLogsWithParams", ctx, args)}
+//   - args *admin.DownloadStreamTenantAuditLogsApiParams
+func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogsWithParams(ctx any, args any) *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call {
+	return &StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call{Call: _e.mock.On("DownloadStreamTenantAuditLogsWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_DownloadAuditLogsWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadAuditLogsApiParams)) *StreamsApi_DownloadAuditLogsWithParams_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadStreamTenantAuditLogsApiParams)) *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DownloadAuditLogsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DownloadStreamTenantAuditLogsApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_DownloadAuditLogsWithParams_Call) Return(_a0 admin.DownloadAuditLogsApiRequest) *StreamsApi_DownloadAuditLogsWithParams_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call) Return(_a0 admin.DownloadStreamTenantAuditLogsApiRequest) *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_DownloadAuditLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadAuditLogsApiParams) admin.DownloadAuditLogsApiRequest) *StreamsApi_DownloadAuditLogsWithParams_Call {
+func (_c *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadStreamTenantAuditLogsApiParams) admin.DownloadStreamTenantAuditLogsApiRequest) *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1917,6 +2079,158 @@ func (_c *StreamsApi_GetAccountDetailsWithParams_Call) Return(_a0 admin.GetAccou
 }
 
 func (_c *StreamsApi_GetAccountDetailsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAccountDetailsApiParams) admin.GetAccountDetailsApiRequest) *StreamsApi_GetAccountDetailsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetActiveVpcPeeringConnections provides a mock function with given fields: ctx, groupId
+func (_m *StreamsApi) GetActiveVpcPeeringConnections(ctx context.Context, groupId string) admin.GetActiveVpcPeeringConnectionsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetActiveVpcPeeringConnections")
+	}
+
+	var r0 admin.GetActiveVpcPeeringConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetActiveVpcPeeringConnectionsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.GetActiveVpcPeeringConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_GetActiveVpcPeeringConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetActiveVpcPeeringConnections'
+type StreamsApi_GetActiveVpcPeeringConnections_Call struct {
+	*mock.Call
+}
+
+// GetActiveVpcPeeringConnections is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *StreamsApi_Expecter) GetActiveVpcPeeringConnections(ctx any, groupId any) *StreamsApi_GetActiveVpcPeeringConnections_Call {
+	return &StreamsApi_GetActiveVpcPeeringConnections_Call{Call: _e.mock.On("GetActiveVpcPeeringConnections", ctx, groupId)}
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnections_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_GetActiveVpcPeeringConnections_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnections_Call) Return(_a0 admin.GetActiveVpcPeeringConnectionsApiRequest) *StreamsApi_GetActiveVpcPeeringConnections_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnections_Call) RunAndReturn(run func(context.Context, string) admin.GetActiveVpcPeeringConnectionsApiRequest) *StreamsApi_GetActiveVpcPeeringConnections_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetActiveVpcPeeringConnectionsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) GetActiveVpcPeeringConnectionsExecute(r admin.GetActiveVpcPeeringConnectionsApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetActiveVpcPeeringConnectionsExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.GetActiveVpcPeeringConnectionsApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetActiveVpcPeeringConnectionsApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetActiveVpcPeeringConnectionsApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetActiveVpcPeeringConnectionsExecute'
+type StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call struct {
+	*mock.Call
+}
+
+// GetActiveVpcPeeringConnectionsExecute is a helper method to define mock.On call
+//   - r admin.GetActiveVpcPeeringConnectionsApiRequest
+func (_e *StreamsApi_Expecter) GetActiveVpcPeeringConnectionsExecute(r any) *StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call {
+	return &StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call{Call: _e.mock.On("GetActiveVpcPeeringConnectionsExecute", r)}
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call) Run(run func(r admin.GetActiveVpcPeeringConnectionsApiRequest)) *StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetActiveVpcPeeringConnectionsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call) RunAndReturn(run func(admin.GetActiveVpcPeeringConnectionsApiRequest) (*http.Response, error)) *StreamsApi_GetActiveVpcPeeringConnectionsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetActiveVpcPeeringConnectionsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) GetActiveVpcPeeringConnectionsWithParams(ctx context.Context, args *admin.GetActiveVpcPeeringConnectionsApiParams) admin.GetActiveVpcPeeringConnectionsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetActiveVpcPeeringConnectionsWithParams")
+	}
+
+	var r0 admin.GetActiveVpcPeeringConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetActiveVpcPeeringConnectionsApiParams) admin.GetActiveVpcPeeringConnectionsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetActiveVpcPeeringConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetActiveVpcPeeringConnectionsWithParams'
+type StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetActiveVpcPeeringConnectionsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetActiveVpcPeeringConnectionsApiParams
+func (_e *StreamsApi_Expecter) GetActiveVpcPeeringConnectionsWithParams(ctx any, args any) *StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call {
+	return &StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call{Call: _e.mock.On("GetActiveVpcPeeringConnectionsWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetActiveVpcPeeringConnectionsApiParams)) *StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetActiveVpcPeeringConnectionsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call) Return(_a0 admin.GetActiveVpcPeeringConnectionsApiRequest) *StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetActiveVpcPeeringConnectionsApiParams) admin.GetActiveVpcPeeringConnectionsApiRequest) *StreamsApi_GetActiveVpcPeeringConnectionsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2246,6 +2560,168 @@ func (_c *StreamsApi_GetStreamConnectionWithParams_Call) RunAndReturn(run func(c
 	return _c
 }
 
+// GetStreamInstance provides a mock function with given fields: ctx, groupId, tenantName
+func (_m *StreamsApi) GetStreamInstance(ctx context.Context, groupId string, tenantName string) admin.GetStreamInstanceApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetStreamInstance")
+	}
+
+	var r0 admin.GetStreamInstanceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetStreamInstanceApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName)
+	} else {
+		r0 = ret.Get(0).(admin.GetStreamInstanceApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_GetStreamInstance_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamInstance'
+type StreamsApi_GetStreamInstance_Call struct {
+	*mock.Call
+}
+
+// GetStreamInstance is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+func (_e *StreamsApi_Expecter) GetStreamInstance(ctx any, groupId any, tenantName any) *StreamsApi_GetStreamInstance_Call {
+	return &StreamsApi_GetStreamInstance_Call{Call: _e.mock.On("GetStreamInstance", ctx, groupId, tenantName)}
+}
+
+func (_c *StreamsApi_GetStreamInstance_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_GetStreamInstance_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamInstance_Call) Return(_a0 admin.GetStreamInstanceApiRequest) *StreamsApi_GetStreamInstance_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamInstance_Call) RunAndReturn(run func(context.Context, string, string) admin.GetStreamInstanceApiRequest) *StreamsApi_GetStreamInstance_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetStreamInstanceExecute provides a mock function with given fields: r
+func (_m *StreamsApi) GetStreamInstanceExecute(r admin.GetStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetStreamInstanceExecute")
+	}
+
+	var r0 *admin.StreamsTenant
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetStreamInstanceApiRequest) *admin.StreamsTenant); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTenant)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetStreamInstanceApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetStreamInstanceApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_GetStreamInstanceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamInstanceExecute'
+type StreamsApi_GetStreamInstanceExecute_Call struct {
+	*mock.Call
+}
+
+// GetStreamInstanceExecute is a helper method to define mock.On call
+//   - r admin.GetStreamInstanceApiRequest
+func (_e *StreamsApi_Expecter) GetStreamInstanceExecute(r any) *StreamsApi_GetStreamInstanceExecute_Call {
+	return &StreamsApi_GetStreamInstanceExecute_Call{Call: _e.mock.On("GetStreamInstanceExecute", r)}
+}
+
+func (_c *StreamsApi_GetStreamInstanceExecute_Call) Run(run func(r admin.GetStreamInstanceApiRequest)) *StreamsApi_GetStreamInstanceExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetStreamInstanceApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamInstanceExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_GetStreamInstanceExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamInstanceExecute_Call) RunAndReturn(run func(admin.GetStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_GetStreamInstanceExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetStreamInstanceWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) GetStreamInstanceWithParams(ctx context.Context, args *admin.GetStreamInstanceApiParams) admin.GetStreamInstanceApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetStreamInstanceWithParams")
+	}
+
+	var r0 admin.GetStreamInstanceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetStreamInstanceApiParams) admin.GetStreamInstanceApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetStreamInstanceApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_GetStreamInstanceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamInstanceWithParams'
+type StreamsApi_GetStreamInstanceWithParams_Call struct {
+	*mock.Call
+}
+
+// GetStreamInstanceWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetStreamInstanceApiParams
+func (_e *StreamsApi_Expecter) GetStreamInstanceWithParams(ctx any, args any) *StreamsApi_GetStreamInstanceWithParams_Call {
+	return &StreamsApi_GetStreamInstanceWithParams_Call{Call: _e.mock.On("GetStreamInstanceWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_GetStreamInstanceWithParams_Call) Run(run func(ctx context.Context, args *admin.GetStreamInstanceApiParams)) *StreamsApi_GetStreamInstanceWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetStreamInstanceApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamInstanceWithParams_Call) Return(_a0 admin.GetStreamInstanceApiRequest) *StreamsApi_GetStreamInstanceWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamInstanceWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetStreamInstanceApiParams) admin.GetStreamInstanceApiRequest) *StreamsApi_GetStreamInstanceWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, processorName
 func (_m *StreamsApi) GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) admin.GetStreamProcessorApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName, processorName)
@@ -2409,391 +2885,67 @@ func (_c *StreamsApi_GetStreamProcessorWithParams_Call) RunAndReturn(run func(co
 	return _c
 }
 
-// GetStreamProcessors provides a mock function with given fields: ctx, groupId, tenantName
-func (_m *StreamsApi) GetStreamProcessors(ctx context.Context, groupId string, tenantName string) admin.GetStreamProcessorsApiRequest {
-	ret := _m.Called(ctx, groupId, tenantName)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetStreamProcessors")
-	}
-
-	var r0 admin.GetStreamProcessorsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetStreamProcessorsApiRequest); ok {
-		r0 = rf(ctx, groupId, tenantName)
-	} else {
-		r0 = ret.Get(0).(admin.GetStreamProcessorsApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_GetStreamProcessors_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamProcessors'
-type StreamsApi_GetStreamProcessors_Call struct {
-	*mock.Call
-}
-
-// GetStreamProcessors is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - tenantName string
-func (_e *StreamsApi_Expecter) GetStreamProcessors(ctx any, groupId any, tenantName any) *StreamsApi_GetStreamProcessors_Call {
-	return &StreamsApi_GetStreamProcessors_Call{Call: _e.mock.On("GetStreamProcessors", ctx, groupId, tenantName)}
-}
-
-func (_c *StreamsApi_GetStreamProcessors_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_GetStreamProcessors_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamProcessors_Call) Return(_a0 admin.GetStreamProcessorsApiRequest) *StreamsApi_GetStreamProcessors_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamProcessors_Call) RunAndReturn(run func(context.Context, string, string) admin.GetStreamProcessorsApiRequest) *StreamsApi_GetStreamProcessors_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetStreamProcessorsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) GetStreamProcessorsExecute(r admin.GetStreamProcessorsApiRequest) (*admin.PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetStreamProcessorsExecute")
-	}
-
-	var r0 *admin.PaginatedApiStreamsStreamProcessorWithStats
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetStreamProcessorsApiRequest) (*admin.PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetStreamProcessorsApiRequest) *admin.PaginatedApiStreamsStreamProcessorWithStats); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedApiStreamsStreamProcessorWithStats)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetStreamProcessorsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetStreamProcessorsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// StreamsApi_GetStreamProcessorsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamProcessorsExecute'
-type StreamsApi_GetStreamProcessorsExecute_Call struct {
-	*mock.Call
-}
-
-// GetStreamProcessorsExecute is a helper method to define mock.On call
-//   - r admin.GetStreamProcessorsApiRequest
-func (_e *StreamsApi_Expecter) GetStreamProcessorsExecute(r any) *StreamsApi_GetStreamProcessorsExecute_Call {
-	return &StreamsApi_GetStreamProcessorsExecute_Call{Call: _e.mock.On("GetStreamProcessorsExecute", r)}
-}
-
-func (_c *StreamsApi_GetStreamProcessorsExecute_Call) Run(run func(r admin.GetStreamProcessorsApiRequest)) *StreamsApi_GetStreamProcessorsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetStreamProcessorsApiRequest))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamProcessorsExecute_Call) Return(_a0 *admin.PaginatedApiStreamsStreamProcessorWithStats, _a1 *http.Response, _a2 error) *StreamsApi_GetStreamProcessorsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamProcessorsExecute_Call) RunAndReturn(run func(admin.GetStreamProcessorsApiRequest) (*admin.PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)) *StreamsApi_GetStreamProcessorsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetStreamProcessorsWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) GetStreamProcessorsWithParams(ctx context.Context, args *admin.GetStreamProcessorsApiParams) admin.GetStreamProcessorsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetStreamProcessorsWithParams")
-	}
-
-	var r0 admin.GetStreamProcessorsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetStreamProcessorsApiParams) admin.GetStreamProcessorsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetStreamProcessorsApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_GetStreamProcessorsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamProcessorsWithParams'
-type StreamsApi_GetStreamProcessorsWithParams_Call struct {
-	*mock.Call
-}
-
-// GetStreamProcessorsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetStreamProcessorsApiParams
-func (_e *StreamsApi_Expecter) GetStreamProcessorsWithParams(ctx any, args any) *StreamsApi_GetStreamProcessorsWithParams_Call {
-	return &StreamsApi_GetStreamProcessorsWithParams_Call{Call: _e.mock.On("GetStreamProcessorsWithParams", ctx, args)}
-}
-
-func (_c *StreamsApi_GetStreamProcessorsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetStreamProcessorsApiParams)) *StreamsApi_GetStreamProcessorsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetStreamProcessorsApiParams))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamProcessorsWithParams_Call) Return(_a0 admin.GetStreamProcessorsApiRequest) *StreamsApi_GetStreamProcessorsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamProcessorsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetStreamProcessorsApiParams) admin.GetStreamProcessorsApiRequest) *StreamsApi_GetStreamProcessorsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetStreamWorkspace provides a mock function with given fields: ctx, groupId, tenantName
-func (_m *StreamsApi) GetStreamWorkspace(ctx context.Context, groupId string, tenantName string) admin.GetStreamWorkspaceApiRequest {
-	ret := _m.Called(ctx, groupId, tenantName)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetStreamWorkspace")
-	}
-
-	var r0 admin.GetStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetStreamWorkspaceApiRequest); ok {
-		r0 = rf(ctx, groupId, tenantName)
-	} else {
-		r0 = ret.Get(0).(admin.GetStreamWorkspaceApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_GetStreamWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamWorkspace'
-type StreamsApi_GetStreamWorkspace_Call struct {
-	*mock.Call
-}
-
-// GetStreamWorkspace is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - tenantName string
-func (_e *StreamsApi_Expecter) GetStreamWorkspace(ctx any, groupId any, tenantName any) *StreamsApi_GetStreamWorkspace_Call {
-	return &StreamsApi_GetStreamWorkspace_Call{Call: _e.mock.On("GetStreamWorkspace", ctx, groupId, tenantName)}
-}
-
-func (_c *StreamsApi_GetStreamWorkspace_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_GetStreamWorkspace_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamWorkspace_Call) Return(_a0 admin.GetStreamWorkspaceApiRequest) *StreamsApi_GetStreamWorkspace_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamWorkspace_Call) RunAndReturn(run func(context.Context, string, string) admin.GetStreamWorkspaceApiRequest) *StreamsApi_GetStreamWorkspace_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetStreamWorkspaceExecute provides a mock function with given fields: r
-func (_m *StreamsApi) GetStreamWorkspaceExecute(r admin.GetStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetStreamWorkspaceExecute")
-	}
-
-	var r0 *admin.StreamsTenant
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetStreamWorkspaceApiRequest) *admin.StreamsTenant); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.StreamsTenant)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetStreamWorkspaceApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetStreamWorkspaceApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// StreamsApi_GetStreamWorkspaceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamWorkspaceExecute'
-type StreamsApi_GetStreamWorkspaceExecute_Call struct {
-	*mock.Call
-}
-
-// GetStreamWorkspaceExecute is a helper method to define mock.On call
-//   - r admin.GetStreamWorkspaceApiRequest
-func (_e *StreamsApi_Expecter) GetStreamWorkspaceExecute(r any) *StreamsApi_GetStreamWorkspaceExecute_Call {
-	return &StreamsApi_GetStreamWorkspaceExecute_Call{Call: _e.mock.On("GetStreamWorkspaceExecute", r)}
-}
-
-func (_c *StreamsApi_GetStreamWorkspaceExecute_Call) Run(run func(r admin.GetStreamWorkspaceApiRequest)) *StreamsApi_GetStreamWorkspaceExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetStreamWorkspaceApiRequest))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamWorkspaceExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_GetStreamWorkspaceExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamWorkspaceExecute_Call) RunAndReturn(run func(admin.GetStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_GetStreamWorkspaceExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetStreamWorkspaceWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) GetStreamWorkspaceWithParams(ctx context.Context, args *admin.GetStreamWorkspaceApiParams) admin.GetStreamWorkspaceApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetStreamWorkspaceWithParams")
-	}
-
-	var r0 admin.GetStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetStreamWorkspaceApiParams) admin.GetStreamWorkspaceApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetStreamWorkspaceApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_GetStreamWorkspaceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamWorkspaceWithParams'
-type StreamsApi_GetStreamWorkspaceWithParams_Call struct {
-	*mock.Call
-}
-
-// GetStreamWorkspaceWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetStreamWorkspaceApiParams
-func (_e *StreamsApi_Expecter) GetStreamWorkspaceWithParams(ctx any, args any) *StreamsApi_GetStreamWorkspaceWithParams_Call {
-	return &StreamsApi_GetStreamWorkspaceWithParams_Call{Call: _e.mock.On("GetStreamWorkspaceWithParams", ctx, args)}
-}
-
-func (_c *StreamsApi_GetStreamWorkspaceWithParams_Call) Run(run func(ctx context.Context, args *admin.GetStreamWorkspaceApiParams)) *StreamsApi_GetStreamWorkspaceWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetStreamWorkspaceApiParams))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamWorkspaceWithParams_Call) Return(_a0 admin.GetStreamWorkspaceApiRequest) *StreamsApi_GetStreamWorkspaceWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_GetStreamWorkspaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetStreamWorkspaceApiParams) admin.GetStreamWorkspaceApiRequest) *StreamsApi_GetStreamWorkspaceWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListActivePeeringConnections provides a mock function with given fields: ctx, groupId
-func (_m *StreamsApi) ListActivePeeringConnections(ctx context.Context, groupId string) admin.ListActivePeeringConnectionsApiRequest {
+// GetVpcPeeringConnections provides a mock function with given fields: ctx, groupId
+func (_m *StreamsApi) GetVpcPeeringConnections(ctx context.Context, groupId string) admin.GetVpcPeeringConnectionsApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListActivePeeringConnections")
+		panic("no return value specified for GetVpcPeeringConnections")
 	}
 
-	var r0 admin.ListActivePeeringConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListActivePeeringConnectionsApiRequest); ok {
+	var r0 admin.GetVpcPeeringConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetVpcPeeringConnectionsApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.ListActivePeeringConnectionsApiRequest)
+		r0 = ret.Get(0).(admin.GetVpcPeeringConnectionsApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_ListActivePeeringConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListActivePeeringConnections'
-type StreamsApi_ListActivePeeringConnections_Call struct {
+// StreamsApi_GetVpcPeeringConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVpcPeeringConnections'
+type StreamsApi_GetVpcPeeringConnections_Call struct {
 	*mock.Call
 }
 
-// ListActivePeeringConnections is a helper method to define mock.On call
+// GetVpcPeeringConnections is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *StreamsApi_Expecter) ListActivePeeringConnections(ctx any, groupId any) *StreamsApi_ListActivePeeringConnections_Call {
-	return &StreamsApi_ListActivePeeringConnections_Call{Call: _e.mock.On("ListActivePeeringConnections", ctx, groupId)}
+func (_e *StreamsApi_Expecter) GetVpcPeeringConnections(ctx any, groupId any) *StreamsApi_GetVpcPeeringConnections_Call {
+	return &StreamsApi_GetVpcPeeringConnections_Call{Call: _e.mock.On("GetVpcPeeringConnections", ctx, groupId)}
 }
 
-func (_c *StreamsApi_ListActivePeeringConnections_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_ListActivePeeringConnections_Call {
+func (_c *StreamsApi_GetVpcPeeringConnections_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_GetVpcPeeringConnections_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListActivePeeringConnections_Call) Return(_a0 admin.ListActivePeeringConnectionsApiRequest) *StreamsApi_ListActivePeeringConnections_Call {
+func (_c *StreamsApi_GetVpcPeeringConnections_Call) Return(_a0 admin.GetVpcPeeringConnectionsApiRequest) *StreamsApi_GetVpcPeeringConnections_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_ListActivePeeringConnections_Call) RunAndReturn(run func(context.Context, string) admin.ListActivePeeringConnectionsApiRequest) *StreamsApi_ListActivePeeringConnections_Call {
+func (_c *StreamsApi_GetVpcPeeringConnections_Call) RunAndReturn(run func(context.Context, string) admin.GetVpcPeeringConnectionsApiRequest) *StreamsApi_GetVpcPeeringConnections_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListActivePeeringConnectionsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) ListActivePeeringConnectionsExecute(r admin.ListActivePeeringConnectionsApiRequest) (*http.Response, error) {
+// GetVpcPeeringConnectionsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) GetVpcPeeringConnectionsExecute(r admin.GetVpcPeeringConnectionsApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListActivePeeringConnectionsExecute")
+		panic("no return value specified for GetVpcPeeringConnectionsExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.ListActivePeeringConnectionsApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetVpcPeeringConnectionsApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListActivePeeringConnectionsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetVpcPeeringConnectionsApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2801,7 +2953,7 @@ func (_m *StreamsApi) ListActivePeeringConnectionsExecute(r admin.ListActivePeer
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListActivePeeringConnectionsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetVpcPeeringConnectionsApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -2810,77 +2962,77 @@ func (_m *StreamsApi) ListActivePeeringConnectionsExecute(r admin.ListActivePeer
 	return r0, r1
 }
 
-// StreamsApi_ListActivePeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListActivePeeringConnectionsExecute'
-type StreamsApi_ListActivePeeringConnectionsExecute_Call struct {
+// StreamsApi_GetVpcPeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVpcPeeringConnectionsExecute'
+type StreamsApi_GetVpcPeeringConnectionsExecute_Call struct {
 	*mock.Call
 }
 
-// ListActivePeeringConnectionsExecute is a helper method to define mock.On call
-//   - r admin.ListActivePeeringConnectionsApiRequest
-func (_e *StreamsApi_Expecter) ListActivePeeringConnectionsExecute(r any) *StreamsApi_ListActivePeeringConnectionsExecute_Call {
-	return &StreamsApi_ListActivePeeringConnectionsExecute_Call{Call: _e.mock.On("ListActivePeeringConnectionsExecute", r)}
+// GetVpcPeeringConnectionsExecute is a helper method to define mock.On call
+//   - r admin.GetVpcPeeringConnectionsApiRequest
+func (_e *StreamsApi_Expecter) GetVpcPeeringConnectionsExecute(r any) *StreamsApi_GetVpcPeeringConnectionsExecute_Call {
+	return &StreamsApi_GetVpcPeeringConnectionsExecute_Call{Call: _e.mock.On("GetVpcPeeringConnectionsExecute", r)}
 }
 
-func (_c *StreamsApi_ListActivePeeringConnectionsExecute_Call) Run(run func(r admin.ListActivePeeringConnectionsApiRequest)) *StreamsApi_ListActivePeeringConnectionsExecute_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsExecute_Call) Run(run func(r admin.GetVpcPeeringConnectionsApiRequest)) *StreamsApi_GetVpcPeeringConnectionsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListActivePeeringConnectionsApiRequest))
+		run(args[0].(admin.GetVpcPeeringConnectionsApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListActivePeeringConnectionsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_ListActivePeeringConnectionsExecute_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_GetVpcPeeringConnectionsExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_ListActivePeeringConnectionsExecute_Call) RunAndReturn(run func(admin.ListActivePeeringConnectionsApiRequest) (*http.Response, error)) *StreamsApi_ListActivePeeringConnectionsExecute_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsExecute_Call) RunAndReturn(run func(admin.GetVpcPeeringConnectionsApiRequest) (*http.Response, error)) *StreamsApi_GetVpcPeeringConnectionsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListActivePeeringConnectionsWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) ListActivePeeringConnectionsWithParams(ctx context.Context, args *admin.ListActivePeeringConnectionsApiParams) admin.ListActivePeeringConnectionsApiRequest {
+// GetVpcPeeringConnectionsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) GetVpcPeeringConnectionsWithParams(ctx context.Context, args *admin.GetVpcPeeringConnectionsApiParams) admin.GetVpcPeeringConnectionsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListActivePeeringConnectionsWithParams")
+		panic("no return value specified for GetVpcPeeringConnectionsWithParams")
 	}
 
-	var r0 admin.ListActivePeeringConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListActivePeeringConnectionsApiParams) admin.ListActivePeeringConnectionsApiRequest); ok {
+	var r0 admin.GetVpcPeeringConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetVpcPeeringConnectionsApiParams) admin.GetVpcPeeringConnectionsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListActivePeeringConnectionsApiRequest)
+		r0 = ret.Get(0).(admin.GetVpcPeeringConnectionsApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_ListActivePeeringConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListActivePeeringConnectionsWithParams'
-type StreamsApi_ListActivePeeringConnectionsWithParams_Call struct {
+// StreamsApi_GetVpcPeeringConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVpcPeeringConnectionsWithParams'
+type StreamsApi_GetVpcPeeringConnectionsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListActivePeeringConnectionsWithParams is a helper method to define mock.On call
+// GetVpcPeeringConnectionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListActivePeeringConnectionsApiParams
-func (_e *StreamsApi_Expecter) ListActivePeeringConnectionsWithParams(ctx any, args any) *StreamsApi_ListActivePeeringConnectionsWithParams_Call {
-	return &StreamsApi_ListActivePeeringConnectionsWithParams_Call{Call: _e.mock.On("ListActivePeeringConnectionsWithParams", ctx, args)}
+//   - args *admin.GetVpcPeeringConnectionsApiParams
+func (_e *StreamsApi_Expecter) GetVpcPeeringConnectionsWithParams(ctx any, args any) *StreamsApi_GetVpcPeeringConnectionsWithParams_Call {
+	return &StreamsApi_GetVpcPeeringConnectionsWithParams_Call{Call: _e.mock.On("GetVpcPeeringConnectionsWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_ListActivePeeringConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListActivePeeringConnectionsApiParams)) *StreamsApi_ListActivePeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetVpcPeeringConnectionsApiParams)) *StreamsApi_GetVpcPeeringConnectionsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListActivePeeringConnectionsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetVpcPeeringConnectionsApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListActivePeeringConnectionsWithParams_Call) Return(_a0 admin.ListActivePeeringConnectionsApiRequest) *StreamsApi_ListActivePeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsWithParams_Call) Return(_a0 admin.GetVpcPeeringConnectionsApiRequest) *StreamsApi_GetVpcPeeringConnectionsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_ListActivePeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListActivePeeringConnectionsApiParams) admin.ListActivePeeringConnectionsApiRequest) *StreamsApi_ListActivePeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetVpcPeeringConnectionsApiParams) admin.GetVpcPeeringConnectionsApiRequest) *StreamsApi_GetVpcPeeringConnectionsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3208,68 +3360,68 @@ func (_c *StreamsApi_ListStreamConnectionsWithParams_Call) RunAndReturn(run func
 	return _c
 }
 
-// ListStreamWorkspaces provides a mock function with given fields: ctx, groupId
-func (_m *StreamsApi) ListStreamWorkspaces(ctx context.Context, groupId string) admin.ListStreamWorkspacesApiRequest {
+// ListStreamInstances provides a mock function with given fields: ctx, groupId
+func (_m *StreamsApi) ListStreamInstances(ctx context.Context, groupId string) admin.ListStreamInstancesApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListStreamWorkspaces")
+		panic("no return value specified for ListStreamInstances")
 	}
 
-	var r0 admin.ListStreamWorkspacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListStreamWorkspacesApiRequest); ok {
+	var r0 admin.ListStreamInstancesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListStreamInstancesApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.ListStreamWorkspacesApiRequest)
+		r0 = ret.Get(0).(admin.ListStreamInstancesApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_ListStreamWorkspaces_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamWorkspaces'
-type StreamsApi_ListStreamWorkspaces_Call struct {
+// StreamsApi_ListStreamInstances_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamInstances'
+type StreamsApi_ListStreamInstances_Call struct {
 	*mock.Call
 }
 
-// ListStreamWorkspaces is a helper method to define mock.On call
+// ListStreamInstances is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *StreamsApi_Expecter) ListStreamWorkspaces(ctx any, groupId any) *StreamsApi_ListStreamWorkspaces_Call {
-	return &StreamsApi_ListStreamWorkspaces_Call{Call: _e.mock.On("ListStreamWorkspaces", ctx, groupId)}
+func (_e *StreamsApi_Expecter) ListStreamInstances(ctx any, groupId any) *StreamsApi_ListStreamInstances_Call {
+	return &StreamsApi_ListStreamInstances_Call{Call: _e.mock.On("ListStreamInstances", ctx, groupId)}
 }
 
-func (_c *StreamsApi_ListStreamWorkspaces_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_ListStreamWorkspaces_Call {
+func (_c *StreamsApi_ListStreamInstances_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_ListStreamInstances_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListStreamWorkspaces_Call) Return(_a0 admin.ListStreamWorkspacesApiRequest) *StreamsApi_ListStreamWorkspaces_Call {
+func (_c *StreamsApi_ListStreamInstances_Call) Return(_a0 admin.ListStreamInstancesApiRequest) *StreamsApi_ListStreamInstances_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_ListStreamWorkspaces_Call) RunAndReturn(run func(context.Context, string) admin.ListStreamWorkspacesApiRequest) *StreamsApi_ListStreamWorkspaces_Call {
+func (_c *StreamsApi_ListStreamInstances_Call) RunAndReturn(run func(context.Context, string) admin.ListStreamInstancesApiRequest) *StreamsApi_ListStreamInstances_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListStreamWorkspacesExecute provides a mock function with given fields: r
-func (_m *StreamsApi) ListStreamWorkspacesExecute(r admin.ListStreamWorkspacesApiRequest) (*admin.PaginatedApiStreamsTenant, *http.Response, error) {
+// ListStreamInstancesExecute provides a mock function with given fields: r
+func (_m *StreamsApi) ListStreamInstancesExecute(r admin.ListStreamInstancesApiRequest) (*admin.PaginatedApiStreamsTenant, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListStreamWorkspacesExecute")
+		panic("no return value specified for ListStreamInstancesExecute")
 	}
 
 	var r0 *admin.PaginatedApiStreamsTenant
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListStreamWorkspacesApiRequest) (*admin.PaginatedApiStreamsTenant, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListStreamInstancesApiRequest) (*admin.PaginatedApiStreamsTenant, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListStreamWorkspacesApiRequest) *admin.PaginatedApiStreamsTenant); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListStreamInstancesApiRequest) *admin.PaginatedApiStreamsTenant); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -3277,7 +3429,7 @@ func (_m *StreamsApi) ListStreamWorkspacesExecute(r admin.ListStreamWorkspacesAp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListStreamWorkspacesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListStreamInstancesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -3285,7 +3437,7 @@ func (_m *StreamsApi) ListStreamWorkspacesExecute(r admin.ListStreamWorkspacesAp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListStreamWorkspacesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListStreamInstancesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -3294,229 +3446,403 @@ func (_m *StreamsApi) ListStreamWorkspacesExecute(r admin.ListStreamWorkspacesAp
 	return r0, r1, r2
 }
 
-// StreamsApi_ListStreamWorkspacesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamWorkspacesExecute'
-type StreamsApi_ListStreamWorkspacesExecute_Call struct {
+// StreamsApi_ListStreamInstancesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamInstancesExecute'
+type StreamsApi_ListStreamInstancesExecute_Call struct {
 	*mock.Call
 }
 
-// ListStreamWorkspacesExecute is a helper method to define mock.On call
-//   - r admin.ListStreamWorkspacesApiRequest
-func (_e *StreamsApi_Expecter) ListStreamWorkspacesExecute(r any) *StreamsApi_ListStreamWorkspacesExecute_Call {
-	return &StreamsApi_ListStreamWorkspacesExecute_Call{Call: _e.mock.On("ListStreamWorkspacesExecute", r)}
+// ListStreamInstancesExecute is a helper method to define mock.On call
+//   - r admin.ListStreamInstancesApiRequest
+func (_e *StreamsApi_Expecter) ListStreamInstancesExecute(r any) *StreamsApi_ListStreamInstancesExecute_Call {
+	return &StreamsApi_ListStreamInstancesExecute_Call{Call: _e.mock.On("ListStreamInstancesExecute", r)}
 }
 
-func (_c *StreamsApi_ListStreamWorkspacesExecute_Call) Run(run func(r admin.ListStreamWorkspacesApiRequest)) *StreamsApi_ListStreamWorkspacesExecute_Call {
+func (_c *StreamsApi_ListStreamInstancesExecute_Call) Run(run func(r admin.ListStreamInstancesApiRequest)) *StreamsApi_ListStreamInstancesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListStreamWorkspacesApiRequest))
+		run(args[0].(admin.ListStreamInstancesApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListStreamWorkspacesExecute_Call) Return(_a0 *admin.PaginatedApiStreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_ListStreamWorkspacesExecute_Call {
+func (_c *StreamsApi_ListStreamInstancesExecute_Call) Return(_a0 *admin.PaginatedApiStreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_ListStreamInstancesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_ListStreamWorkspacesExecute_Call) RunAndReturn(run func(admin.ListStreamWorkspacesApiRequest) (*admin.PaginatedApiStreamsTenant, *http.Response, error)) *StreamsApi_ListStreamWorkspacesExecute_Call {
+func (_c *StreamsApi_ListStreamInstancesExecute_Call) RunAndReturn(run func(admin.ListStreamInstancesApiRequest) (*admin.PaginatedApiStreamsTenant, *http.Response, error)) *StreamsApi_ListStreamInstancesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListStreamWorkspacesWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) ListStreamWorkspacesWithParams(ctx context.Context, args *admin.ListStreamWorkspacesApiParams) admin.ListStreamWorkspacesApiRequest {
+// ListStreamInstancesWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) ListStreamInstancesWithParams(ctx context.Context, args *admin.ListStreamInstancesApiParams) admin.ListStreamInstancesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListStreamWorkspacesWithParams")
+		panic("no return value specified for ListStreamInstancesWithParams")
 	}
 
-	var r0 admin.ListStreamWorkspacesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListStreamWorkspacesApiParams) admin.ListStreamWorkspacesApiRequest); ok {
+	var r0 admin.ListStreamInstancesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListStreamInstancesApiParams) admin.ListStreamInstancesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListStreamWorkspacesApiRequest)
+		r0 = ret.Get(0).(admin.ListStreamInstancesApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_ListStreamWorkspacesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamWorkspacesWithParams'
-type StreamsApi_ListStreamWorkspacesWithParams_Call struct {
+// StreamsApi_ListStreamInstancesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamInstancesWithParams'
+type StreamsApi_ListStreamInstancesWithParams_Call struct {
 	*mock.Call
 }
 
-// ListStreamWorkspacesWithParams is a helper method to define mock.On call
+// ListStreamInstancesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListStreamWorkspacesApiParams
-func (_e *StreamsApi_Expecter) ListStreamWorkspacesWithParams(ctx any, args any) *StreamsApi_ListStreamWorkspacesWithParams_Call {
-	return &StreamsApi_ListStreamWorkspacesWithParams_Call{Call: _e.mock.On("ListStreamWorkspacesWithParams", ctx, args)}
+//   - args *admin.ListStreamInstancesApiParams
+func (_e *StreamsApi_Expecter) ListStreamInstancesWithParams(ctx any, args any) *StreamsApi_ListStreamInstancesWithParams_Call {
+	return &StreamsApi_ListStreamInstancesWithParams_Call{Call: _e.mock.On("ListStreamInstancesWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_ListStreamWorkspacesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListStreamWorkspacesApiParams)) *StreamsApi_ListStreamWorkspacesWithParams_Call {
+func (_c *StreamsApi_ListStreamInstancesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListStreamInstancesApiParams)) *StreamsApi_ListStreamInstancesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListStreamWorkspacesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListStreamInstancesApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListStreamWorkspacesWithParams_Call) Return(_a0 admin.ListStreamWorkspacesApiRequest) *StreamsApi_ListStreamWorkspacesWithParams_Call {
+func (_c *StreamsApi_ListStreamInstancesWithParams_Call) Return(_a0 admin.ListStreamInstancesApiRequest) *StreamsApi_ListStreamInstancesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_ListStreamWorkspacesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListStreamWorkspacesApiParams) admin.ListStreamWorkspacesApiRequest) *StreamsApi_ListStreamWorkspacesWithParams_Call {
+func (_c *StreamsApi_ListStreamInstancesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListStreamInstancesApiParams) admin.ListStreamInstancesApiRequest) *StreamsApi_ListStreamInstancesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListVpcPeeringConnections provides a mock function with given fields: ctx, groupId
-func (_m *StreamsApi) ListVpcPeeringConnections(ctx context.Context, groupId string) admin.ListVpcPeeringConnectionsApiRequest {
-	ret := _m.Called(ctx, groupId)
+// ListStreamProcessors provides a mock function with given fields: ctx, groupId, tenantName
+func (_m *StreamsApi) ListStreamProcessors(ctx context.Context, groupId string, tenantName string) admin.ListStreamProcessorsApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListVpcPeeringConnections")
+		panic("no return value specified for ListStreamProcessors")
 	}
 
-	var r0 admin.ListVpcPeeringConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListVpcPeeringConnectionsApiRequest); ok {
-		r0 = rf(ctx, groupId)
+	var r0 admin.ListStreamProcessorsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListStreamProcessorsApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName)
 	} else {
-		r0 = ret.Get(0).(admin.ListVpcPeeringConnectionsApiRequest)
+		r0 = ret.Get(0).(admin.ListStreamProcessorsApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_ListVpcPeeringConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListVpcPeeringConnections'
-type StreamsApi_ListVpcPeeringConnections_Call struct {
+// StreamsApi_ListStreamProcessors_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamProcessors'
+type StreamsApi_ListStreamProcessors_Call struct {
 	*mock.Call
 }
 
-// ListVpcPeeringConnections is a helper method to define mock.On call
+// ListStreamProcessors is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *StreamsApi_Expecter) ListVpcPeeringConnections(ctx any, groupId any) *StreamsApi_ListVpcPeeringConnections_Call {
-	return &StreamsApi_ListVpcPeeringConnections_Call{Call: _e.mock.On("ListVpcPeeringConnections", ctx, groupId)}
+//   - tenantName string
+func (_e *StreamsApi_Expecter) ListStreamProcessors(ctx any, groupId any, tenantName any) *StreamsApi_ListStreamProcessors_Call {
+	return &StreamsApi_ListStreamProcessors_Call{Call: _e.mock.On("ListStreamProcessors", ctx, groupId, tenantName)}
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnections_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_ListVpcPeeringConnections_Call {
+func (_c *StreamsApi_ListStreamProcessors_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_ListStreamProcessors_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnections_Call) Return(_a0 admin.ListVpcPeeringConnectionsApiRequest) *StreamsApi_ListVpcPeeringConnections_Call {
+func (_c *StreamsApi_ListStreamProcessors_Call) Return(_a0 admin.ListStreamProcessorsApiRequest) *StreamsApi_ListStreamProcessors_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnections_Call) RunAndReturn(run func(context.Context, string) admin.ListVpcPeeringConnectionsApiRequest) *StreamsApi_ListVpcPeeringConnections_Call {
+func (_c *StreamsApi_ListStreamProcessors_Call) RunAndReturn(run func(context.Context, string, string) admin.ListStreamProcessorsApiRequest) *StreamsApi_ListStreamProcessors_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListVpcPeeringConnectionsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) ListVpcPeeringConnectionsExecute(r admin.ListVpcPeeringConnectionsApiRequest) (*http.Response, error) {
+// ListStreamProcessorsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) ListStreamProcessorsExecute(r admin.ListStreamProcessorsApiRequest) (*admin.PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListVpcPeeringConnectionsExecute")
+		panic("no return value specified for ListStreamProcessorsExecute")
 	}
 
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.ListVpcPeeringConnectionsApiRequest) (*http.Response, error)); ok {
+	var r0 *admin.PaginatedApiStreamsStreamProcessorWithStats
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListStreamProcessorsApiRequest) (*admin.PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListVpcPeeringConnectionsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListStreamProcessorsApiRequest) *admin.PaginatedApiStreamsStreamProcessorWithStats); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
+			r0 = ret.Get(0).(*admin.PaginatedApiStreamsStreamProcessorWithStats)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListVpcPeeringConnectionsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListStreamProcessorsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
-		r1 = ret.Error(1)
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
 	}
 
-	return r0, r1
+	if rf, ok := ret.Get(2).(func(admin.ListStreamProcessorsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
 }
 
-// StreamsApi_ListVpcPeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListVpcPeeringConnectionsExecute'
-type StreamsApi_ListVpcPeeringConnectionsExecute_Call struct {
+// StreamsApi_ListStreamProcessorsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamProcessorsExecute'
+type StreamsApi_ListStreamProcessorsExecute_Call struct {
 	*mock.Call
 }
 
-// ListVpcPeeringConnectionsExecute is a helper method to define mock.On call
-//   - r admin.ListVpcPeeringConnectionsApiRequest
-func (_e *StreamsApi_Expecter) ListVpcPeeringConnectionsExecute(r any) *StreamsApi_ListVpcPeeringConnectionsExecute_Call {
-	return &StreamsApi_ListVpcPeeringConnectionsExecute_Call{Call: _e.mock.On("ListVpcPeeringConnectionsExecute", r)}
+// ListStreamProcessorsExecute is a helper method to define mock.On call
+//   - r admin.ListStreamProcessorsApiRequest
+func (_e *StreamsApi_Expecter) ListStreamProcessorsExecute(r any) *StreamsApi_ListStreamProcessorsExecute_Call {
+	return &StreamsApi_ListStreamProcessorsExecute_Call{Call: _e.mock.On("ListStreamProcessorsExecute", r)}
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnectionsExecute_Call) Run(run func(r admin.ListVpcPeeringConnectionsApiRequest)) *StreamsApi_ListVpcPeeringConnectionsExecute_Call {
+func (_c *StreamsApi_ListStreamProcessorsExecute_Call) Run(run func(r admin.ListStreamProcessorsApiRequest)) *StreamsApi_ListStreamProcessorsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListVpcPeeringConnectionsApiRequest))
+		run(args[0].(admin.ListStreamProcessorsApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnectionsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_ListVpcPeeringConnectionsExecute_Call {
-	_c.Call.Return(_a0, _a1)
+func (_c *StreamsApi_ListStreamProcessorsExecute_Call) Return(_a0 *admin.PaginatedApiStreamsStreamProcessorWithStats, _a1 *http.Response, _a2 error) *StreamsApi_ListStreamProcessorsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnectionsExecute_Call) RunAndReturn(run func(admin.ListVpcPeeringConnectionsApiRequest) (*http.Response, error)) *StreamsApi_ListVpcPeeringConnectionsExecute_Call {
+func (_c *StreamsApi_ListStreamProcessorsExecute_Call) RunAndReturn(run func(admin.ListStreamProcessorsApiRequest) (*admin.PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)) *StreamsApi_ListStreamProcessorsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListVpcPeeringConnectionsWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) ListVpcPeeringConnectionsWithParams(ctx context.Context, args *admin.ListVpcPeeringConnectionsApiParams) admin.ListVpcPeeringConnectionsApiRequest {
+// ListStreamProcessorsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) ListStreamProcessorsWithParams(ctx context.Context, args *admin.ListStreamProcessorsApiParams) admin.ListStreamProcessorsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListVpcPeeringConnectionsWithParams")
+		panic("no return value specified for ListStreamProcessorsWithParams")
 	}
 
-	var r0 admin.ListVpcPeeringConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListVpcPeeringConnectionsApiParams) admin.ListVpcPeeringConnectionsApiRequest); ok {
+	var r0 admin.ListStreamProcessorsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListStreamProcessorsApiParams) admin.ListStreamProcessorsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListVpcPeeringConnectionsApiRequest)
+		r0 = ret.Get(0).(admin.ListStreamProcessorsApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_ListVpcPeeringConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListVpcPeeringConnectionsWithParams'
-type StreamsApi_ListVpcPeeringConnectionsWithParams_Call struct {
+// StreamsApi_ListStreamProcessorsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListStreamProcessorsWithParams'
+type StreamsApi_ListStreamProcessorsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListVpcPeeringConnectionsWithParams is a helper method to define mock.On call
+// ListStreamProcessorsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListVpcPeeringConnectionsApiParams
-func (_e *StreamsApi_Expecter) ListVpcPeeringConnectionsWithParams(ctx any, args any) *StreamsApi_ListVpcPeeringConnectionsWithParams_Call {
-	return &StreamsApi_ListVpcPeeringConnectionsWithParams_Call{Call: _e.mock.On("ListVpcPeeringConnectionsWithParams", ctx, args)}
+//   - args *admin.ListStreamProcessorsApiParams
+func (_e *StreamsApi_Expecter) ListStreamProcessorsWithParams(ctx any, args any) *StreamsApi_ListStreamProcessorsWithParams_Call {
+	return &StreamsApi_ListStreamProcessorsWithParams_Call{Call: _e.mock.On("ListStreamProcessorsWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListVpcPeeringConnectionsApiParams)) *StreamsApi_ListVpcPeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_ListStreamProcessorsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListStreamProcessorsApiParams)) *StreamsApi_ListStreamProcessorsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListVpcPeeringConnectionsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListStreamProcessorsApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnectionsWithParams_Call) Return(_a0 admin.ListVpcPeeringConnectionsApiRequest) *StreamsApi_ListVpcPeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_ListStreamProcessorsWithParams_Call) Return(_a0 admin.ListStreamProcessorsApiRequest) *StreamsApi_ListStreamProcessorsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListVpcPeeringConnectionsApiParams) admin.ListVpcPeeringConnectionsApiRequest) *StreamsApi_ListVpcPeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_ListStreamProcessorsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListStreamProcessorsApiParams) admin.ListStreamProcessorsApiRequest) *StreamsApi_ListStreamProcessorsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ModifyStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor
+func (_m *StreamsApi) ModifyStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ModifyStreamProcessor")
+	}
+
+	var r0 admin.ModifyStreamProcessorApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)
+	} else {
+		r0 = ret.Get(0).(admin.ModifyStreamProcessorApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_ModifyStreamProcessor_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessor'
+type StreamsApi_ModifyStreamProcessor_Call struct {
+	*mock.Call
+}
+
+// ModifyStreamProcessor is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+//   - processorName string
+//   - streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor
+func (_e *StreamsApi_Expecter) ModifyStreamProcessor(ctx any, groupId any, tenantName any, processorName any, streamsModifyStreamProcessor any) *StreamsApi_ModifyStreamProcessor_Call {
+	return &StreamsApi_ModifyStreamProcessor_Call{Call: _e.mock.On("ModifyStreamProcessor", ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)}
+}
+
+func (_c *StreamsApi_ModifyStreamProcessor_Call) Run(run func(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor)) *StreamsApi_ModifyStreamProcessor_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(*admin.StreamsModifyStreamProcessor))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessor_Call) Return(_a0 admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessor_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessor_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessor_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ModifyStreamProcessorExecute provides a mock function with given fields: r
+func (_m *StreamsApi) ModifyStreamProcessorExecute(r admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ModifyStreamProcessorExecute")
+	}
+
+	var r0 *admin.StreamsProcessorWithStats
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ModifyStreamProcessorApiRequest) *admin.StreamsProcessorWithStats); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsProcessorWithStats)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ModifyStreamProcessorApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ModifyStreamProcessorApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_ModifyStreamProcessorExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessorExecute'
+type StreamsApi_ModifyStreamProcessorExecute_Call struct {
+	*mock.Call
+}
+
+// ModifyStreamProcessorExecute is a helper method to define mock.On call
+//   - r admin.ModifyStreamProcessorApiRequest
+func (_e *StreamsApi_Expecter) ModifyStreamProcessorExecute(r any) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	return &StreamsApi_ModifyStreamProcessorExecute_Call{Call: _e.mock.On("ModifyStreamProcessorExecute", r)}
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) Run(run func(r admin.ModifyStreamProcessorApiRequest)) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ModifyStreamProcessorApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) Return(_a0 *admin.StreamsProcessorWithStats, _a1 *http.Response, _a2 error) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) RunAndReturn(run func(admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error)) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ModifyStreamProcessorWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) ModifyStreamProcessorWithParams(ctx context.Context, args *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ModifyStreamProcessorWithParams")
+	}
+
+	var r0 admin.ModifyStreamProcessorApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ModifyStreamProcessorApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_ModifyStreamProcessorWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessorWithParams'
+type StreamsApi_ModifyStreamProcessorWithParams_Call struct {
+	*mock.Call
+}
+
+// ModifyStreamProcessorWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ModifyStreamProcessorApiParams
+func (_e *StreamsApi_Expecter) ModifyStreamProcessorWithParams(ctx any, args any) *StreamsApi_ModifyStreamProcessorWithParams_Call {
+	return &StreamsApi_ModifyStreamProcessorWithParams_Call{Call: _e.mock.On("ModifyStreamProcessorWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) Run(run func(ctx context.Context, args *admin.ModifyStreamProcessorApiParams)) *StreamsApi_ModifyStreamProcessorWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ModifyStreamProcessorApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) Return(_a0 admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessorWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) RunAndReturn(run func(context.Context, *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessorWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -4301,234 +4627,70 @@ func (_c *StreamsApi_UpdateStreamConnectionWithParams_Call) RunAndReturn(run fun
 	return _c
 }
 
-// UpdateStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor
-func (_m *StreamsApi) UpdateStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor) admin.UpdateStreamProcessorApiRequest {
-	ret := _m.Called(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateStreamProcessor")
-	}
-
-	var r0 admin.UpdateStreamProcessorApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.StreamsModifyStreamProcessor) admin.UpdateStreamProcessorApiRequest); ok {
-		r0 = rf(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateStreamProcessorApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_UpdateStreamProcessor_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamProcessor'
-type StreamsApi_UpdateStreamProcessor_Call struct {
-	*mock.Call
-}
-
-// UpdateStreamProcessor is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - tenantName string
-//   - processorName string
-//   - streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor
-func (_e *StreamsApi_Expecter) UpdateStreamProcessor(ctx any, groupId any, tenantName any, processorName any, streamsModifyStreamProcessor any) *StreamsApi_UpdateStreamProcessor_Call {
-	return &StreamsApi_UpdateStreamProcessor_Call{Call: _e.mock.On("UpdateStreamProcessor", ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)}
-}
-
-func (_c *StreamsApi_UpdateStreamProcessor_Call) Run(run func(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor)) *StreamsApi_UpdateStreamProcessor_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(*admin.StreamsModifyStreamProcessor))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_UpdateStreamProcessor_Call) Return(_a0 admin.UpdateStreamProcessorApiRequest) *StreamsApi_UpdateStreamProcessor_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_UpdateStreamProcessor_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.StreamsModifyStreamProcessor) admin.UpdateStreamProcessorApiRequest) *StreamsApi_UpdateStreamProcessor_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateStreamProcessorExecute provides a mock function with given fields: r
-func (_m *StreamsApi) UpdateStreamProcessorExecute(r admin.UpdateStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateStreamProcessorExecute")
-	}
-
-	var r0 *admin.StreamsProcessorWithStats
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateStreamProcessorApiRequest) *admin.StreamsProcessorWithStats); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.StreamsProcessorWithStats)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpdateStreamProcessorApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpdateStreamProcessorApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// StreamsApi_UpdateStreamProcessorExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamProcessorExecute'
-type StreamsApi_UpdateStreamProcessorExecute_Call struct {
-	*mock.Call
-}
-
-// UpdateStreamProcessorExecute is a helper method to define mock.On call
-//   - r admin.UpdateStreamProcessorApiRequest
-func (_e *StreamsApi_Expecter) UpdateStreamProcessorExecute(r any) *StreamsApi_UpdateStreamProcessorExecute_Call {
-	return &StreamsApi_UpdateStreamProcessorExecute_Call{Call: _e.mock.On("UpdateStreamProcessorExecute", r)}
-}
-
-func (_c *StreamsApi_UpdateStreamProcessorExecute_Call) Run(run func(r admin.UpdateStreamProcessorApiRequest)) *StreamsApi_UpdateStreamProcessorExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateStreamProcessorApiRequest))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_UpdateStreamProcessorExecute_Call) Return(_a0 *admin.StreamsProcessorWithStats, _a1 *http.Response, _a2 error) *StreamsApi_UpdateStreamProcessorExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *StreamsApi_UpdateStreamProcessorExecute_Call) RunAndReturn(run func(admin.UpdateStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error)) *StreamsApi_UpdateStreamProcessorExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateStreamProcessorWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) UpdateStreamProcessorWithParams(ctx context.Context, args *admin.UpdateStreamProcessorApiParams) admin.UpdateStreamProcessorApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateStreamProcessorWithParams")
-	}
-
-	var r0 admin.UpdateStreamProcessorApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateStreamProcessorApiParams) admin.UpdateStreamProcessorApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateStreamProcessorApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_UpdateStreamProcessorWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamProcessorWithParams'
-type StreamsApi_UpdateStreamProcessorWithParams_Call struct {
-	*mock.Call
-}
-
-// UpdateStreamProcessorWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.UpdateStreamProcessorApiParams
-func (_e *StreamsApi_Expecter) UpdateStreamProcessorWithParams(ctx any, args any) *StreamsApi_UpdateStreamProcessorWithParams_Call {
-	return &StreamsApi_UpdateStreamProcessorWithParams_Call{Call: _e.mock.On("UpdateStreamProcessorWithParams", ctx, args)}
-}
-
-func (_c *StreamsApi_UpdateStreamProcessorWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateStreamProcessorApiParams)) *StreamsApi_UpdateStreamProcessorWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateStreamProcessorApiParams))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_UpdateStreamProcessorWithParams_Call) Return(_a0 admin.UpdateStreamProcessorApiRequest) *StreamsApi_UpdateStreamProcessorWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_UpdateStreamProcessorWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateStreamProcessorApiParams) admin.UpdateStreamProcessorApiRequest) *StreamsApi_UpdateStreamProcessorWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateStreamWorkspace provides a mock function with given fields: ctx, groupId, tenantName, streamsDataProcessRegion
-func (_m *StreamsApi) UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *admin.StreamsDataProcessRegion) admin.UpdateStreamWorkspaceApiRequest {
+// UpdateStreamInstance provides a mock function with given fields: ctx, groupId, tenantName, streamsDataProcessRegion
+func (_m *StreamsApi) UpdateStreamInstance(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *admin.StreamsDataProcessRegion) admin.UpdateStreamInstanceApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName, streamsDataProcessRegion)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateStreamWorkspace")
+		panic("no return value specified for UpdateStreamInstance")
 	}
 
-	var r0 admin.UpdateStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsDataProcessRegion) admin.UpdateStreamWorkspaceApiRequest); ok {
+	var r0 admin.UpdateStreamInstanceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsDataProcessRegion) admin.UpdateStreamInstanceApiRequest); ok {
 		r0 = rf(ctx, groupId, tenantName, streamsDataProcessRegion)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateStreamWorkspaceApiRequest)
+		r0 = ret.Get(0).(admin.UpdateStreamInstanceApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_UpdateStreamWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamWorkspace'
-type StreamsApi_UpdateStreamWorkspace_Call struct {
+// StreamsApi_UpdateStreamInstance_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamInstance'
+type StreamsApi_UpdateStreamInstance_Call struct {
 	*mock.Call
 }
 
-// UpdateStreamWorkspace is a helper method to define mock.On call
+// UpdateStreamInstance is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
 //   - streamsDataProcessRegion *admin.StreamsDataProcessRegion
-func (_e *StreamsApi_Expecter) UpdateStreamWorkspace(ctx any, groupId any, tenantName any, streamsDataProcessRegion any) *StreamsApi_UpdateStreamWorkspace_Call {
-	return &StreamsApi_UpdateStreamWorkspace_Call{Call: _e.mock.On("UpdateStreamWorkspace", ctx, groupId, tenantName, streamsDataProcessRegion)}
+func (_e *StreamsApi_Expecter) UpdateStreamInstance(ctx any, groupId any, tenantName any, streamsDataProcessRegion any) *StreamsApi_UpdateStreamInstance_Call {
+	return &StreamsApi_UpdateStreamInstance_Call{Call: _e.mock.On("UpdateStreamInstance", ctx, groupId, tenantName, streamsDataProcessRegion)}
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspace_Call) Run(run func(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *admin.StreamsDataProcessRegion)) *StreamsApi_UpdateStreamWorkspace_Call {
+func (_c *StreamsApi_UpdateStreamInstance_Call) Run(run func(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *admin.StreamsDataProcessRegion)) *StreamsApi_UpdateStreamInstance_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.StreamsDataProcessRegion))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspace_Call) Return(_a0 admin.UpdateStreamWorkspaceApiRequest) *StreamsApi_UpdateStreamWorkspace_Call {
+func (_c *StreamsApi_UpdateStreamInstance_Call) Return(_a0 admin.UpdateStreamInstanceApiRequest) *StreamsApi_UpdateStreamInstance_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspace_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsDataProcessRegion) admin.UpdateStreamWorkspaceApiRequest) *StreamsApi_UpdateStreamWorkspace_Call {
+func (_c *StreamsApi_UpdateStreamInstance_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsDataProcessRegion) admin.UpdateStreamInstanceApiRequest) *StreamsApi_UpdateStreamInstance_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateStreamWorkspaceExecute provides a mock function with given fields: r
-func (_m *StreamsApi) UpdateStreamWorkspaceExecute(r admin.UpdateStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error) {
+// UpdateStreamInstanceExecute provides a mock function with given fields: r
+func (_m *StreamsApi) UpdateStreamInstanceExecute(r admin.UpdateStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateStreamWorkspaceExecute")
+		panic("no return value specified for UpdateStreamInstanceExecute")
 	}
 
 	var r0 *admin.StreamsTenant
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateStreamWorkspaceApiRequest) *admin.StreamsTenant); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateStreamInstanceApiRequest) *admin.StreamsTenant); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -4536,7 +4698,7 @@ func (_m *StreamsApi) UpdateStreamWorkspaceExecute(r admin.UpdateStreamWorkspace
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateStreamWorkspaceApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateStreamInstanceApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -4544,7 +4706,7 @@ func (_m *StreamsApi) UpdateStreamWorkspaceExecute(r admin.UpdateStreamWorkspace
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateStreamWorkspaceApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateStreamInstanceApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -4553,239 +4715,77 @@ func (_m *StreamsApi) UpdateStreamWorkspaceExecute(r admin.UpdateStreamWorkspace
 	return r0, r1, r2
 }
 
-// StreamsApi_UpdateStreamWorkspaceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamWorkspaceExecute'
-type StreamsApi_UpdateStreamWorkspaceExecute_Call struct {
+// StreamsApi_UpdateStreamInstanceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamInstanceExecute'
+type StreamsApi_UpdateStreamInstanceExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateStreamWorkspaceExecute is a helper method to define mock.On call
-//   - r admin.UpdateStreamWorkspaceApiRequest
-func (_e *StreamsApi_Expecter) UpdateStreamWorkspaceExecute(r any) *StreamsApi_UpdateStreamWorkspaceExecute_Call {
-	return &StreamsApi_UpdateStreamWorkspaceExecute_Call{Call: _e.mock.On("UpdateStreamWorkspaceExecute", r)}
+// UpdateStreamInstanceExecute is a helper method to define mock.On call
+//   - r admin.UpdateStreamInstanceApiRequest
+func (_e *StreamsApi_Expecter) UpdateStreamInstanceExecute(r any) *StreamsApi_UpdateStreamInstanceExecute_Call {
+	return &StreamsApi_UpdateStreamInstanceExecute_Call{Call: _e.mock.On("UpdateStreamInstanceExecute", r)}
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspaceExecute_Call) Run(run func(r admin.UpdateStreamWorkspaceApiRequest)) *StreamsApi_UpdateStreamWorkspaceExecute_Call {
+func (_c *StreamsApi_UpdateStreamInstanceExecute_Call) Run(run func(r admin.UpdateStreamInstanceApiRequest)) *StreamsApi_UpdateStreamInstanceExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateStreamWorkspaceApiRequest))
+		run(args[0].(admin.UpdateStreamInstanceApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspaceExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_UpdateStreamWorkspaceExecute_Call {
+func (_c *StreamsApi_UpdateStreamInstanceExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_UpdateStreamInstanceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspaceExecute_Call) RunAndReturn(run func(admin.UpdateStreamWorkspaceApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_UpdateStreamWorkspaceExecute_Call {
+func (_c *StreamsApi_UpdateStreamInstanceExecute_Call) RunAndReturn(run func(admin.UpdateStreamInstanceApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_UpdateStreamInstanceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateStreamWorkspaceWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) UpdateStreamWorkspaceWithParams(ctx context.Context, args *admin.UpdateStreamWorkspaceApiParams) admin.UpdateStreamWorkspaceApiRequest {
+// UpdateStreamInstanceWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) UpdateStreamInstanceWithParams(ctx context.Context, args *admin.UpdateStreamInstanceApiParams) admin.UpdateStreamInstanceApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateStreamWorkspaceWithParams")
+		panic("no return value specified for UpdateStreamInstanceWithParams")
 	}
 
-	var r0 admin.UpdateStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateStreamWorkspaceApiParams) admin.UpdateStreamWorkspaceApiRequest); ok {
+	var r0 admin.UpdateStreamInstanceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateStreamInstanceApiParams) admin.UpdateStreamInstanceApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateStreamWorkspaceApiRequest)
+		r0 = ret.Get(0).(admin.UpdateStreamInstanceApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_UpdateStreamWorkspaceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamWorkspaceWithParams'
-type StreamsApi_UpdateStreamWorkspaceWithParams_Call struct {
+// StreamsApi_UpdateStreamInstanceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamInstanceWithParams'
+type StreamsApi_UpdateStreamInstanceWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateStreamWorkspaceWithParams is a helper method to define mock.On call
+// UpdateStreamInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateStreamWorkspaceApiParams
-func (_e *StreamsApi_Expecter) UpdateStreamWorkspaceWithParams(ctx any, args any) *StreamsApi_UpdateStreamWorkspaceWithParams_Call {
-	return &StreamsApi_UpdateStreamWorkspaceWithParams_Call{Call: _e.mock.On("UpdateStreamWorkspaceWithParams", ctx, args)}
+//   - args *admin.UpdateStreamInstanceApiParams
+func (_e *StreamsApi_Expecter) UpdateStreamInstanceWithParams(ctx any, args any) *StreamsApi_UpdateStreamInstanceWithParams_Call {
+	return &StreamsApi_UpdateStreamInstanceWithParams_Call{Call: _e.mock.On("UpdateStreamInstanceWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspaceWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateStreamWorkspaceApiParams)) *StreamsApi_UpdateStreamWorkspaceWithParams_Call {
+func (_c *StreamsApi_UpdateStreamInstanceWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateStreamInstanceApiParams)) *StreamsApi_UpdateStreamInstanceWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateStreamWorkspaceApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateStreamInstanceApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspaceWithParams_Call) Return(_a0 admin.UpdateStreamWorkspaceApiRequest) *StreamsApi_UpdateStreamWorkspaceWithParams_Call {
+func (_c *StreamsApi_UpdateStreamInstanceWithParams_Call) Return(_a0 admin.UpdateStreamInstanceApiRequest) *StreamsApi_UpdateStreamInstanceWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateStreamWorkspaceApiParams) admin.UpdateStreamWorkspaceApiRequest) *StreamsApi_UpdateStreamWorkspaceWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// WithStreamSampleConnections provides a mock function with given fields: ctx, groupId, body
-func (_m *StreamsApi) WithStreamSampleConnections(ctx context.Context, groupId string, body *any) admin.WithStreamSampleConnectionsApiRequest {
-	ret := _m.Called(ctx, groupId, body)
-
-	if len(ret) == 0 {
-		panic("no return value specified for WithStreamSampleConnections")
-	}
-
-	var r0 admin.WithStreamSampleConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *any) admin.WithStreamSampleConnectionsApiRequest); ok {
-		r0 = rf(ctx, groupId, body)
-	} else {
-		r0 = ret.Get(0).(admin.WithStreamSampleConnectionsApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_WithStreamSampleConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'WithStreamSampleConnections'
-type StreamsApi_WithStreamSampleConnections_Call struct {
-	*mock.Call
-}
-
-// WithStreamSampleConnections is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - body *any
-func (_e *StreamsApi_Expecter) WithStreamSampleConnections(ctx any, groupId any, body any) *StreamsApi_WithStreamSampleConnections_Call {
-	return &StreamsApi_WithStreamSampleConnections_Call{Call: _e.mock.On("WithStreamSampleConnections", ctx, groupId, body)}
-}
-
-func (_c *StreamsApi_WithStreamSampleConnections_Call) Run(run func(ctx context.Context, groupId string, body *any)) *StreamsApi_WithStreamSampleConnections_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*any))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_WithStreamSampleConnections_Call) Return(_a0 admin.WithStreamSampleConnectionsApiRequest) *StreamsApi_WithStreamSampleConnections_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_WithStreamSampleConnections_Call) RunAndReturn(run func(context.Context, string, *any) admin.WithStreamSampleConnectionsApiRequest) *StreamsApi_WithStreamSampleConnections_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// WithStreamSampleConnectionsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) WithStreamSampleConnectionsExecute(r admin.WithStreamSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for WithStreamSampleConnectionsExecute")
-	}
-
-	var r0 *admin.StreamsTenant
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.WithStreamSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.WithStreamSampleConnectionsApiRequest) *admin.StreamsTenant); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.StreamsTenant)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.WithStreamSampleConnectionsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.WithStreamSampleConnectionsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// StreamsApi_WithStreamSampleConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'WithStreamSampleConnectionsExecute'
-type StreamsApi_WithStreamSampleConnectionsExecute_Call struct {
-	*mock.Call
-}
-
-// WithStreamSampleConnectionsExecute is a helper method to define mock.On call
-//   - r admin.WithStreamSampleConnectionsApiRequest
-func (_e *StreamsApi_Expecter) WithStreamSampleConnectionsExecute(r any) *StreamsApi_WithStreamSampleConnectionsExecute_Call {
-	return &StreamsApi_WithStreamSampleConnectionsExecute_Call{Call: _e.mock.On("WithStreamSampleConnectionsExecute", r)}
-}
-
-func (_c *StreamsApi_WithStreamSampleConnectionsExecute_Call) Run(run func(r admin.WithStreamSampleConnectionsApiRequest)) *StreamsApi_WithStreamSampleConnectionsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.WithStreamSampleConnectionsApiRequest))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_WithStreamSampleConnectionsExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_WithStreamSampleConnectionsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *StreamsApi_WithStreamSampleConnectionsExecute_Call) RunAndReturn(run func(admin.WithStreamSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_WithStreamSampleConnectionsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// WithStreamSampleConnectionsWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) WithStreamSampleConnectionsWithParams(ctx context.Context, args *admin.WithStreamSampleConnectionsApiParams) admin.WithStreamSampleConnectionsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for WithStreamSampleConnectionsWithParams")
-	}
-
-	var r0 admin.WithStreamSampleConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.WithStreamSampleConnectionsApiParams) admin.WithStreamSampleConnectionsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.WithStreamSampleConnectionsApiRequest)
-	}
-
-	return r0
-}
-
-// StreamsApi_WithStreamSampleConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'WithStreamSampleConnectionsWithParams'
-type StreamsApi_WithStreamSampleConnectionsWithParams_Call struct {
-	*mock.Call
-}
-
-// WithStreamSampleConnectionsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.WithStreamSampleConnectionsApiParams
-func (_e *StreamsApi_Expecter) WithStreamSampleConnectionsWithParams(ctx any, args any) *StreamsApi_WithStreamSampleConnectionsWithParams_Call {
-	return &StreamsApi_WithStreamSampleConnectionsWithParams_Call{Call: _e.mock.On("WithStreamSampleConnectionsWithParams", ctx, args)}
-}
-
-func (_c *StreamsApi_WithStreamSampleConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.WithStreamSampleConnectionsApiParams)) *StreamsApi_WithStreamSampleConnectionsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.WithStreamSampleConnectionsApiParams))
-	})
-	return _c
-}
-
-func (_c *StreamsApi_WithStreamSampleConnectionsWithParams_Call) Return(_a0 admin.WithStreamSampleConnectionsApiRequest) *StreamsApi_WithStreamSampleConnectionsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *StreamsApi_WithStreamSampleConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.WithStreamSampleConnectionsApiParams) admin.WithStreamSampleConnectionsApiRequest) *StreamsApi_WithStreamSampleConnectionsWithParams_Call {
+func (_c *StreamsApi_UpdateStreamInstanceWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateStreamInstanceApiParams) admin.UpdateStreamInstanceApiRequest) *StreamsApi_UpdateStreamInstanceWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

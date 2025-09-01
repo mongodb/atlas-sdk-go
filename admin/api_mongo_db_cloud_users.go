@@ -13,62 +13,7 @@ import (
 type MongoDBCloudUsersApi interface {
 
 	/*
-			AddGroupUserRole Add One Project Role to One MongoDB Cloud User
-
-			Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-		**Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
-			@param addOrRemoveGroupRole Project-level role to assign to the MongoDB Cloud user.
-			@return AddGroupUserRoleApiRequest
-	*/
-	AddGroupUserRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) AddGroupUserRoleApiRequest
-	/*
-		AddGroupUserRole Add One Project Role to One MongoDB Cloud User
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param AddGroupUserRoleApiParams - Parameters for the request
-		@return AddGroupUserRoleApiRequest
-	*/
-	AddGroupUserRoleWithParams(ctx context.Context, args *AddGroupUserRoleApiParams) AddGroupUserRoleApiRequest
-
-	// Method available only for mocking purposes
-	AddGroupUserRoleExecute(r AddGroupUserRoleApiRequest) (*GroupUserResponse, *http.Response, error)
-
-	/*
-			AddGroupUsers Add One MongoDB Cloud User to One Project
-
-			Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-		- If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
-		- If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
-		- If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
-
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param groupUserRequest The active or pending MongoDB Cloud user that you want to add to the specified project.
-			@return AddGroupUsersApiRequest
-	*/
-	AddGroupUsers(ctx context.Context, groupId string, groupUserRequest *GroupUserRequest) AddGroupUsersApiRequest
-	/*
-		AddGroupUsers Add One MongoDB Cloud User to One Project
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param AddGroupUsersApiParams - Parameters for the request
-		@return AddGroupUsersApiRequest
-	*/
-	AddGroupUsersWithParams(ctx context.Context, args *AddGroupUsersApiParams) AddGroupUsersApiRequest
-
-	// Method available only for mocking purposes
-	AddGroupUsersExecute(r AddGroupUsersApiRequest) (*GroupUserResponse, *http.Response, error)
-
-	/*
-			AddOrgRole Add One Organization Role to One MongoDB Cloud User
+			AddOrganizationRole Add One Organization Role to One MongoDB Cloud User
 
 			Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -80,24 +25,79 @@ type MongoDBCloudUsersApi interface {
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
 			@param addOrRemoveOrgRole Organization-level role to assign to the MongoDB Cloud user.
-			@return AddOrgRoleApiRequest
+			@return AddOrganizationRoleApiRequest
 	*/
-	AddOrgRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) AddOrgRoleApiRequest
+	AddOrganizationRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) AddOrganizationRoleApiRequest
 	/*
-		AddOrgRole Add One Organization Role to One MongoDB Cloud User
+		AddOrganizationRole Add One Organization Role to One MongoDB Cloud User
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param AddOrgRoleApiParams - Parameters for the request
-		@return AddOrgRoleApiRequest
+		@param AddOrganizationRoleApiParams - Parameters for the request
+		@return AddOrganizationRoleApiRequest
 	*/
-	AddOrgRoleWithParams(ctx context.Context, args *AddOrgRoleApiParams) AddOrgRoleApiRequest
+	AddOrganizationRoleWithParams(ctx context.Context, args *AddOrganizationRoleApiParams) AddOrganizationRoleApiRequest
 
 	// Method available only for mocking purposes
-	AddOrgRoleExecute(r AddOrgRoleApiRequest) (*OrgUserResponse, *http.Response, error)
+	AddOrganizationRoleExecute(r AddOrganizationRoleApiRequest) (*OrgUserResponse, *http.Response, error)
 
 	/*
-			AddOrgTeamUser Add One MongoDB Cloud User to One Team
+			AddProjectRole Add One Project Role to One MongoDB Cloud User
+
+			Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+		**Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
+			@param addOrRemoveGroupRole Project-level role to assign to the MongoDB Cloud user.
+			@return AddProjectRoleApiRequest
+	*/
+	AddProjectRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) AddProjectRoleApiRequest
+	/*
+		AddProjectRole Add One Project Role to One MongoDB Cloud User
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param AddProjectRoleApiParams - Parameters for the request
+		@return AddProjectRoleApiRequest
+	*/
+	AddProjectRoleWithParams(ctx context.Context, args *AddProjectRoleApiParams) AddProjectRoleApiRequest
+
+	// Method available only for mocking purposes
+	AddProjectRoleExecute(r AddProjectRoleApiRequest) (*GroupUserResponse, *http.Response, error)
+
+	/*
+			AddProjectUser Add One MongoDB Cloud User to One Project
+
+			Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+		- If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
+		- If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
+		- If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
+
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param groupUserRequest The active or pending MongoDB Cloud user that you want to add to the specified project.
+			@return AddProjectUserApiRequest
+	*/
+	AddProjectUser(ctx context.Context, groupId string, groupUserRequest *GroupUserRequest) AddProjectUserApiRequest
+	/*
+		AddProjectUser Add One MongoDB Cloud User to One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param AddProjectUserApiParams - Parameters for the request
+		@return AddProjectUserApiRequest
+	*/
+	AddProjectUserWithParams(ctx context.Context, args *AddProjectUserApiParams) AddProjectUserApiRequest
+
+	// Method available only for mocking purposes
+	AddProjectUserExecute(r AddProjectUserApiRequest) (*GroupUserResponse, *http.Response, error)
+
+	/*
+			AddUserToTeam Add One MongoDB Cloud User to One Team
 
 			Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -107,24 +107,24 @@ type MongoDBCloudUsersApi interface {
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param teamId Unique 24-hexadecimal digit string that identifies the team to add the MongoDB Cloud user to.
 			@param addOrRemoveUserFromTeam The active or pending MongoDB Cloud user that you want to add to the specified team.
-			@return AddOrgTeamUserApiRequest
+			@return AddUserToTeamApiRequest
 	*/
-	AddOrgTeamUser(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) AddOrgTeamUserApiRequest
+	AddUserToTeam(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) AddUserToTeamApiRequest
 	/*
-		AddOrgTeamUser Add One MongoDB Cloud User to One Team
+		AddUserToTeam Add One MongoDB Cloud User to One Team
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param AddOrgTeamUserApiParams - Parameters for the request
-		@return AddOrgTeamUserApiRequest
+		@param AddUserToTeamApiParams - Parameters for the request
+		@return AddUserToTeamApiRequest
 	*/
-	AddOrgTeamUserWithParams(ctx context.Context, args *AddOrgTeamUserApiParams) AddOrgTeamUserApiRequest
+	AddUserToTeamWithParams(ctx context.Context, args *AddUserToTeamApiParams) AddUserToTeamApiRequest
 
 	// Method available only for mocking purposes
-	AddOrgTeamUserExecute(r AddOrgTeamUserApiRequest) (*OrgUserResponse, *http.Response, error)
+	AddUserToTeamExecute(r AddUserToTeamApiRequest) (*OrgUserResponse, *http.Response, error)
 
 	/*
-			CreateOrgUser Add One MongoDB Cloud User to One Organization
+			CreateOrganizationUser Add One MongoDB Cloud User to One Organization
 
 			Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -133,21 +133,21 @@ type MongoDBCloudUsersApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param orgUserRequest Represents the MongoDB Cloud user to be created within the organization.
-			@return CreateOrgUserApiRequest
+			@return CreateOrganizationUserApiRequest
 	*/
-	CreateOrgUser(ctx context.Context, orgId string, orgUserRequest *OrgUserRequest) CreateOrgUserApiRequest
+	CreateOrganizationUser(ctx context.Context, orgId string, orgUserRequest *OrgUserRequest) CreateOrganizationUserApiRequest
 	/*
-		CreateOrgUser Add One MongoDB Cloud User to One Organization
+		CreateOrganizationUser Add One MongoDB Cloud User to One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateOrgUserApiParams - Parameters for the request
-		@return CreateOrgUserApiRequest
+		@param CreateOrganizationUserApiParams - Parameters for the request
+		@return CreateOrganizationUserApiRequest
 	*/
-	CreateOrgUserWithParams(ctx context.Context, args *CreateOrgUserApiParams) CreateOrgUserApiRequest
+	CreateOrganizationUserWithParams(ctx context.Context, args *CreateOrganizationUserApiParams) CreateOrganizationUserApiRequest
 
 	// Method available only for mocking purposes
-	CreateOrgUserExecute(r CreateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error)
+	CreateOrganizationUserExecute(r CreateOrganizationUserApiRequest) (*OrgUserResponse, *http.Response, error)
 
 	/*
 			CreateUser Create One MongoDB Cloud User
@@ -181,35 +181,7 @@ type MongoDBCloudUsersApi interface {
 	CreateUserExecute(r CreateUserApiRequest) (*CloudAppUser, *http.Response, error)
 
 	/*
-			GetGroupUser Return One MongoDB Cloud User in One Project
-
-			Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-		**Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
-
-		**Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
-			@return GetGroupUserApiRequest
-	*/
-	GetGroupUser(ctx context.Context, groupId string, userId string) GetGroupUserApiRequest
-	/*
-		GetGroupUser Return One MongoDB Cloud User in One Project
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetGroupUserApiParams - Parameters for the request
-		@return GetGroupUserApiRequest
-	*/
-	GetGroupUserWithParams(ctx context.Context, args *GetGroupUserApiParams) GetGroupUserApiRequest
-
-	// Method available only for mocking purposes
-	GetGroupUserExecute(r GetGroupUserApiRequest) (*GroupUserResponse, *http.Response, error)
-
-	/*
-			GetOrgUser Return One MongoDB Cloud User in One Organization
+			GetOrganizationUser Return One MongoDB Cloud User in One Organization
 
 			Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
@@ -220,21 +192,49 @@ type MongoDBCloudUsersApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
-			@return GetOrgUserApiRequest
+			@return GetOrganizationUserApiRequest
 	*/
-	GetOrgUser(ctx context.Context, orgId string, userId string) GetOrgUserApiRequest
+	GetOrganizationUser(ctx context.Context, orgId string, userId string) GetOrganizationUserApiRequest
 	/*
-		GetOrgUser Return One MongoDB Cloud User in One Organization
+		GetOrganizationUser Return One MongoDB Cloud User in One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetOrgUserApiParams - Parameters for the request
-		@return GetOrgUserApiRequest
+		@param GetOrganizationUserApiParams - Parameters for the request
+		@return GetOrganizationUserApiRequest
 	*/
-	GetOrgUserWithParams(ctx context.Context, args *GetOrgUserApiParams) GetOrgUserApiRequest
+	GetOrganizationUserWithParams(ctx context.Context, args *GetOrganizationUserApiParams) GetOrganizationUserApiRequest
 
 	// Method available only for mocking purposes
-	GetOrgUserExecute(r GetOrgUserApiRequest) (*OrgUserResponse, *http.Response, error)
+	GetOrganizationUserExecute(r GetOrganizationUserApiRequest) (*OrgUserResponse, *http.Response, error)
+
+	/*
+			GetProjectUser Return One MongoDB Cloud User in One Project
+
+			Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+		**Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+
+		**Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
+			@return GetProjectUserApiRequest
+	*/
+	GetProjectUser(ctx context.Context, groupId string, userId string) GetProjectUserApiRequest
+	/*
+		GetProjectUser Return One MongoDB Cloud User in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetProjectUserApiParams - Parameters for the request
+		@return GetProjectUserApiRequest
+	*/
+	GetProjectUserWithParams(ctx context.Context, args *GetProjectUserApiParams) GetProjectUserApiRequest
+
+	// Method available only for mocking purposes
+	GetProjectUserExecute(r GetProjectUserApiRequest) (*GroupUserResponse, *http.Response, error)
 
 	/*
 		GetUser Return One MongoDB Cloud User by ID
@@ -264,61 +264,34 @@ type MongoDBCloudUsersApi interface {
 	GetUserExecute(r GetUserApiRequest) (*CloudAppUser, *http.Response, error)
 
 	/*
-		GetUserByName Return One MongoDB Cloud User by Username
+		GetUserByUsername Return One MongoDB Cloud User by Username
 
 		Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. To use this resource, the requesting Service Account or API Key can have any role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
-		@return GetUserByNameApiRequest
+		@return GetUserByUsernameApiRequest
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersApi
 	*/
-	GetUserByName(ctx context.Context, userName string) GetUserByNameApiRequest
+	GetUserByUsername(ctx context.Context, userName string) GetUserByUsernameApiRequest
 	/*
-		GetUserByName Return One MongoDB Cloud User by Username
+		GetUserByUsername Return One MongoDB Cloud User by Username
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetUserByNameApiParams - Parameters for the request
-		@return GetUserByNameApiRequest
+		@param GetUserByUsernameApiParams - Parameters for the request
+		@return GetUserByUsernameApiRequest
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersApi
 	*/
-	GetUserByNameWithParams(ctx context.Context, args *GetUserByNameApiParams) GetUserByNameApiRequest
+	GetUserByUsernameWithParams(ctx context.Context, args *GetUserByUsernameApiParams) GetUserByUsernameApiRequest
 
 	// Method available only for mocking purposes
-	GetUserByNameExecute(r GetUserByNameApiRequest) (*CloudAppUser, *http.Response, error)
+	GetUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudAppUser, *http.Response, error)
 
 	/*
-			ListGroupUsers Return All MongoDB Cloud Users in One Project
-
-			Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
-
-		**Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@return ListGroupUsersApiRequest
-	*/
-	ListGroupUsers(ctx context.Context, groupId string) ListGroupUsersApiRequest
-	/*
-		ListGroupUsers Return All MongoDB Cloud Users in One Project
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListGroupUsersApiParams - Parameters for the request
-		@return ListGroupUsersApiRequest
-	*/
-	ListGroupUsersWithParams(ctx context.Context, args *ListGroupUsersApiParams) ListGroupUsersApiRequest
-
-	// Method available only for mocking purposes
-	ListGroupUsersExecute(r ListGroupUsersApiRequest) (*PaginatedGroupUser, *http.Response, error)
-
-	/*
-			ListOrgUsers Return All MongoDB Cloud Users in One Organization
+			ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
 
 			Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
@@ -328,21 +301,48 @@ type MongoDBCloudUsersApi interface {
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-			@return ListOrgUsersApiRequest
+			@return ListOrganizationUsersApiRequest
 	*/
-	ListOrgUsers(ctx context.Context, orgId string) ListOrgUsersApiRequest
+	ListOrganizationUsers(ctx context.Context, orgId string) ListOrganizationUsersApiRequest
 	/*
-		ListOrgUsers Return All MongoDB Cloud Users in One Organization
+		ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListOrgUsersApiParams - Parameters for the request
-		@return ListOrgUsersApiRequest
+		@param ListOrganizationUsersApiParams - Parameters for the request
+		@return ListOrganizationUsersApiRequest
 	*/
-	ListOrgUsersWithParams(ctx context.Context, args *ListOrgUsersApiParams) ListOrgUsersApiRequest
+	ListOrganizationUsersWithParams(ctx context.Context, args *ListOrganizationUsersApiParams) ListOrganizationUsersApiRequest
 
 	// Method available only for mocking purposes
-	ListOrgUsersExecute(r ListOrgUsersApiRequest) (*PaginatedOrgUser, *http.Response, error)
+	ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedOrgUser, *http.Response, error)
+
+	/*
+			ListProjectUsers Return All MongoDB Cloud Users in One Project
+
+			Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+
+		**Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListProjectUsersApiRequest
+	*/
+	ListProjectUsers(ctx context.Context, groupId string) ListProjectUsersApiRequest
+	/*
+		ListProjectUsers Return All MongoDB Cloud Users in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListProjectUsersApiParams - Parameters for the request
+		@return ListProjectUsersApiRequest
+	*/
+	ListProjectUsersWithParams(ctx context.Context, args *ListProjectUsersApiParams) ListProjectUsersApiRequest
+
+	// Method available only for mocking purposes
+	ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedGroupUser, *http.Response, error)
 
 	/*
 			ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
@@ -373,62 +373,7 @@ type MongoDBCloudUsersApi interface {
 	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedOrgUser, *http.Response, error)
 
 	/*
-			RemoveGroupUser Remove One MongoDB Cloud User from One Project
-
-			Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-		**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-		**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Project](#tag/MongoDB-Cloud-Users/operation/listProjectUsers) resource and filter by username.
-			@return RemoveGroupUserApiRequest
-	*/
-	RemoveGroupUser(ctx context.Context, groupId string, userId string) RemoveGroupUserApiRequest
-	/*
-		RemoveGroupUser Remove One MongoDB Cloud User from One Project
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RemoveGroupUserApiParams - Parameters for the request
-		@return RemoveGroupUserApiRequest
-	*/
-	RemoveGroupUserWithParams(ctx context.Context, args *RemoveGroupUserApiParams) RemoveGroupUserApiRequest
-
-	// Method available only for mocking purposes
-	RemoveGroupUserExecute(r RemoveGroupUserApiRequest) (*http.Response, error)
-
-	/*
-			RemoveGroupUserRole Remove One Project Role from One MongoDB Cloud User
-
-			Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-		**Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
-			@param addOrRemoveGroupRole Project-level role to remove from the MongoDB Cloud user.
-			@return RemoveGroupUserRoleApiRequest
-	*/
-	RemoveGroupUserRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) RemoveGroupUserRoleApiRequest
-	/*
-		RemoveGroupUserRole Remove One Project Role from One MongoDB Cloud User
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RemoveGroupUserRoleApiParams - Parameters for the request
-		@return RemoveGroupUserRoleApiRequest
-	*/
-	RemoveGroupUserRoleWithParams(ctx context.Context, args *RemoveGroupUserRoleApiParams) RemoveGroupUserRoleApiRequest
-
-	// Method available only for mocking purposes
-	RemoveGroupUserRoleExecute(r RemoveGroupUserRoleApiRequest) (*GroupUserResponse, *http.Response, error)
-
-	/*
-			RemoveOrgRole Remove One Organization Role from One MongoDB Cloud User
+			RemoveOrganizationRole Remove One Organization Role from One MongoDB Cloud User
 
 			Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -440,51 +385,24 @@ type MongoDBCloudUsersApi interface {
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
 			@param addOrRemoveOrgRole Organization-level role to remove from the MongoDB Cloud user.
-			@return RemoveOrgRoleApiRequest
+			@return RemoveOrganizationRoleApiRequest
 	*/
-	RemoveOrgRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) RemoveOrgRoleApiRequest
+	RemoveOrganizationRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) RemoveOrganizationRoleApiRequest
 	/*
-		RemoveOrgRole Remove One Organization Role from One MongoDB Cloud User
+		RemoveOrganizationRole Remove One Organization Role from One MongoDB Cloud User
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RemoveOrgRoleApiParams - Parameters for the request
-		@return RemoveOrgRoleApiRequest
+		@param RemoveOrganizationRoleApiParams - Parameters for the request
+		@return RemoveOrganizationRoleApiRequest
 	*/
-	RemoveOrgRoleWithParams(ctx context.Context, args *RemoveOrgRoleApiParams) RemoveOrgRoleApiRequest
+	RemoveOrganizationRoleWithParams(ctx context.Context, args *RemoveOrganizationRoleApiParams) RemoveOrganizationRoleApiRequest
 
 	// Method available only for mocking purposes
-	RemoveOrgRoleExecute(r RemoveOrgRoleApiRequest) (*OrgUserResponse, *http.Response, error)
+	RemoveOrganizationRoleExecute(r RemoveOrganizationRoleApiRequest) (*OrgUserResponse, *http.Response, error)
 
 	/*
-			RemoveOrgTeamUser Remove One MongoDB Cloud User from One Team
-
-			Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
-
-		**Note**: This resource cannot be used to remove a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-			@param teamId Unique 24-hexadecimal digit string that identifies the team to remove the MongoDB user from.
-			@param addOrRemoveUserFromTeam The id of the active or pending MongoDB Cloud user that you want to remove from the specified team.
-			@return RemoveOrgTeamUserApiRequest
-	*/
-	RemoveOrgTeamUser(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) RemoveOrgTeamUserApiRequest
-	/*
-		RemoveOrgTeamUser Remove One MongoDB Cloud User from One Team
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RemoveOrgTeamUserApiParams - Parameters for the request
-		@return RemoveOrgTeamUserApiRequest
-	*/
-	RemoveOrgTeamUserWithParams(ctx context.Context, args *RemoveOrgTeamUserApiParams) RemoveOrgTeamUserApiRequest
-
-	// Method available only for mocking purposes
-	RemoveOrgTeamUserExecute(r RemoveOrgTeamUserApiRequest) (*OrgUserResponse, *http.Response, error)
-
-	/*
-			RemoveOrgUser Remove One MongoDB Cloud User from One Organization
+			RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
 			Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -495,24 +413,106 @@ type MongoDBCloudUsersApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Organization](#tag/MongoDB-Cloud-Users/operation/listOrganizationUsers) resource and filter by username.
-			@return RemoveOrgUserApiRequest
+			@return RemoveOrganizationUserApiRequest
 	*/
-	RemoveOrgUser(ctx context.Context, orgId string, userId string) RemoveOrgUserApiRequest
+	RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest
 	/*
-		RemoveOrgUser Remove One MongoDB Cloud User from One Organization
+		RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RemoveOrgUserApiParams - Parameters for the request
-		@return RemoveOrgUserApiRequest
+		@param RemoveOrganizationUserApiParams - Parameters for the request
+		@return RemoveOrganizationUserApiRequest
 	*/
-	RemoveOrgUserWithParams(ctx context.Context, args *RemoveOrgUserApiParams) RemoveOrgUserApiRequest
+	RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest
 
 	// Method available only for mocking purposes
-	RemoveOrgUserExecute(r RemoveOrgUserApiRequest) (*http.Response, error)
+	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (*http.Response, error)
 
 	/*
-			UpdateOrgUser Update One MongoDB Cloud User in One Organization
+			RemoveProjectRole Remove One Project Role from One MongoDB Cloud User
+
+			Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+		**Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
+			@param addOrRemoveGroupRole Project-level role to remove from the MongoDB Cloud user.
+			@return RemoveProjectRoleApiRequest
+	*/
+	RemoveProjectRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) RemoveProjectRoleApiRequest
+	/*
+		RemoveProjectRole Remove One Project Role from One MongoDB Cloud User
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RemoveProjectRoleApiParams - Parameters for the request
+		@return RemoveProjectRoleApiRequest
+	*/
+	RemoveProjectRoleWithParams(ctx context.Context, args *RemoveProjectRoleApiParams) RemoveProjectRoleApiRequest
+
+	// Method available only for mocking purposes
+	RemoveProjectRoleExecute(r RemoveProjectRoleApiRequest) (*GroupUserResponse, *http.Response, error)
+
+	/*
+			RemoveProjectUser Remove One MongoDB Cloud User from One Project
+
+			Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+		**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+		**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Project](#tag/MongoDB-Cloud-Users/operation/listProjectUsers) resource and filter by username.
+			@return RemoveProjectUserApiRequest
+	*/
+	RemoveProjectUser(ctx context.Context, groupId string, userId string) RemoveProjectUserApiRequest
+	/*
+		RemoveProjectUser Remove One MongoDB Cloud User from One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RemoveProjectUserApiParams - Parameters for the request
+		@return RemoveProjectUserApiRequest
+	*/
+	RemoveProjectUserWithParams(ctx context.Context, args *RemoveProjectUserApiParams) RemoveProjectUserApiRequest
+
+	// Method available only for mocking purposes
+	RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error)
+
+	/*
+			RemoveUserFromTeam Remove One MongoDB Cloud User from One Team
+
+			Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+
+		**Note**: This resource cannot be used to remove a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param teamId Unique 24-hexadecimal digit string that identifies the team to remove the MongoDB user from.
+			@param addOrRemoveUserFromTeam The id of the active or pending MongoDB Cloud user that you want to remove from the specified team.
+			@return RemoveUserFromTeamApiRequest
+	*/
+	RemoveUserFromTeam(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) RemoveUserFromTeamApiRequest
+	/*
+		RemoveUserFromTeam Remove One MongoDB Cloud User from One Team
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RemoveUserFromTeamApiParams - Parameters for the request
+		@return RemoveUserFromTeamApiRequest
+	*/
+	RemoveUserFromTeamWithParams(ctx context.Context, args *RemoveUserFromTeamApiParams) RemoveUserFromTeamApiRequest
+
+	// Method available only for mocking purposes
+	RemoveUserFromTeamExecute(r RemoveUserFromTeamApiRequest) (*OrgUserResponse, *http.Response, error)
+
+	/*
+			UpdateOrganizationUser Update One MongoDB Cloud User in One Organization
 
 			Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -524,287 +524,27 @@ type MongoDBCloudUsersApi interface {
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
 			@param orgUserUpdateRequest Represents the roles and teams to assign the MongoDB Cloud user.
-			@return UpdateOrgUserApiRequest
+			@return UpdateOrganizationUserApiRequest
 	*/
-	UpdateOrgUser(ctx context.Context, orgId string, userId string, orgUserUpdateRequest *OrgUserUpdateRequest) UpdateOrgUserApiRequest
+	UpdateOrganizationUser(ctx context.Context, orgId string, userId string, orgUserUpdateRequest *OrgUserUpdateRequest) UpdateOrganizationUserApiRequest
 	/*
-		UpdateOrgUser Update One MongoDB Cloud User in One Organization
+		UpdateOrganizationUser Update One MongoDB Cloud User in One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param UpdateOrgUserApiParams - Parameters for the request
-		@return UpdateOrgUserApiRequest
+		@param UpdateOrganizationUserApiParams - Parameters for the request
+		@return UpdateOrganizationUserApiRequest
 	*/
-	UpdateOrgUserWithParams(ctx context.Context, args *UpdateOrgUserApiParams) UpdateOrgUserApiRequest
+	UpdateOrganizationUserWithParams(ctx context.Context, args *UpdateOrganizationUserApiParams) UpdateOrganizationUserApiRequest
 
 	// Method available only for mocking purposes
-	UpdateOrgUserExecute(r UpdateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error)
+	UpdateOrganizationUserExecute(r UpdateOrganizationUserApiRequest) (*OrgUserResponse, *http.Response, error)
 }
 
 // MongoDBCloudUsersApiService MongoDBCloudUsersApi service
 type MongoDBCloudUsersApiService service
 
-type AddGroupUserRoleApiRequest struct {
-	ctx                  context.Context
-	ApiService           MongoDBCloudUsersApi
-	groupId              string
-	userId               string
-	addOrRemoveGroupRole *AddOrRemoveGroupRole
-}
-
-type AddGroupUserRoleApiParams struct {
-	GroupId              string
-	UserId               string
-	AddOrRemoveGroupRole *AddOrRemoveGroupRole
-}
-
-func (a *MongoDBCloudUsersApiService) AddGroupUserRoleWithParams(ctx context.Context, args *AddGroupUserRoleApiParams) AddGroupUserRoleApiRequest {
-	return AddGroupUserRoleApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              args.GroupId,
-		userId:               args.UserId,
-		addOrRemoveGroupRole: args.AddOrRemoveGroupRole,
-	}
-}
-
-func (r AddGroupUserRoleApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
-	return r.ApiService.AddGroupUserRoleExecute(r)
-}
-
-/*
-AddGroupUserRole Add One Project Role to One MongoDB Cloud User
-
-Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-**Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
-	@return AddGroupUserRoleApiRequest
-*/
-func (a *MongoDBCloudUsersApiService) AddGroupUserRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) AddGroupUserRoleApiRequest {
-	return AddGroupUserRoleApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              groupId,
-		userId:               userId,
-		addOrRemoveGroupRole: addOrRemoveGroupRole,
-	}
-}
-
-// AddGroupUserRoleExecute executes the request
-//
-//	@return GroupUserResponse
-func (a *MongoDBCloudUsersApiService) AddGroupUserRoleExecute(r AddGroupUserRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *GroupUserResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddGroupUserRole")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}:addRole"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.userId == "" {
-		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.addOrRemoveGroupRole == nil {
-		return localVarReturnValue, nil, reportError("addOrRemoveGroupRole is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.addOrRemoveGroupRole
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AddGroupUsersApiRequest struct {
-	ctx              context.Context
-	ApiService       MongoDBCloudUsersApi
-	groupId          string
-	groupUserRequest *GroupUserRequest
-}
-
-type AddGroupUsersApiParams struct {
-	GroupId          string
-	GroupUserRequest *GroupUserRequest
-}
-
-func (a *MongoDBCloudUsersApiService) AddGroupUsersWithParams(ctx context.Context, args *AddGroupUsersApiParams) AddGroupUsersApiRequest {
-	return AddGroupUsersApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          args.GroupId,
-		groupUserRequest: args.GroupUserRequest,
-	}
-}
-
-func (r AddGroupUsersApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
-	return r.ApiService.AddGroupUsersExecute(r)
-}
-
-/*
-AddGroupUsers Add One MongoDB Cloud User to One Project
-
-Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-- If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
-- If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
-- If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return AddGroupUsersApiRequest
-*/
-func (a *MongoDBCloudUsersApiService) AddGroupUsers(ctx context.Context, groupId string, groupUserRequest *GroupUserRequest) AddGroupUsersApiRequest {
-	return AddGroupUsersApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          groupId,
-		groupUserRequest: groupUserRequest,
-	}
-}
-
-// AddGroupUsersExecute executes the request
-//
-//	@return GroupUserResponse
-func (a *MongoDBCloudUsersApiService) AddGroupUsersExecute(r AddGroupUsersApiRequest) (*GroupUserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *GroupUserResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddGroupUsers")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.groupUserRequest == nil {
-		return localVarReturnValue, nil, reportError("groupUserRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.groupUserRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AddOrgRoleApiRequest struct {
+type AddOrganizationRoleApiRequest struct {
 	ctx                context.Context
 	ApiService         MongoDBCloudUsersApi
 	orgId              string
@@ -812,14 +552,14 @@ type AddOrgRoleApiRequest struct {
 	addOrRemoveOrgRole *AddOrRemoveOrgRole
 }
 
-type AddOrgRoleApiParams struct {
+type AddOrganizationRoleApiParams struct {
 	OrgId              string
 	UserId             string
 	AddOrRemoveOrgRole *AddOrRemoveOrgRole
 }
 
-func (a *MongoDBCloudUsersApiService) AddOrgRoleWithParams(ctx context.Context, args *AddOrgRoleApiParams) AddOrgRoleApiRequest {
-	return AddOrgRoleApiRequest{
+func (a *MongoDBCloudUsersApiService) AddOrganizationRoleWithParams(ctx context.Context, args *AddOrganizationRoleApiParams) AddOrganizationRoleApiRequest {
+	return AddOrganizationRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
 		orgId:              args.OrgId,
@@ -828,12 +568,12 @@ func (a *MongoDBCloudUsersApiService) AddOrgRoleWithParams(ctx context.Context, 
 	}
 }
 
-func (r AddOrgRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
-	return r.ApiService.AddOrgRoleExecute(r)
+func (r AddOrganizationRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+	return r.ApiService.AddOrganizationRoleExecute(r)
 }
 
 /*
-AddOrgRole Add One Organization Role to One MongoDB Cloud User
+AddOrganizationRole Add One Organization Role to One MongoDB Cloud User
 
 Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -844,10 +584,10 @@ Adds one organization-level role to the MongoDB Cloud user. You can add a role t
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
-	@return AddOrgRoleApiRequest
+	@return AddOrganizationRoleApiRequest
 */
-func (a *MongoDBCloudUsersApiService) AddOrgRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) AddOrgRoleApiRequest {
-	return AddOrgRoleApiRequest{
+func (a *MongoDBCloudUsersApiService) AddOrganizationRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) AddOrganizationRoleApiRequest {
+	return AddOrganizationRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
 		orgId:              orgId,
@@ -856,10 +596,10 @@ func (a *MongoDBCloudUsersApiService) AddOrgRole(ctx context.Context, orgId stri
 	}
 }
 
-// AddOrgRoleExecute executes the request
+// AddOrganizationRoleExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) AddOrgRoleExecute(r AddOrgRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) AddOrganizationRoleExecute(r AddOrganizationRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -867,7 +607,7 @@ func (a *MongoDBCloudUsersApiService) AddOrgRoleExecute(r AddOrgRoleApiRequest) 
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddOrgRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddOrganizationRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -940,7 +680,267 @@ func (a *MongoDBCloudUsersApiService) AddOrgRoleExecute(r AddOrgRoleApiRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AddOrgTeamUserApiRequest struct {
+type AddProjectRoleApiRequest struct {
+	ctx                  context.Context
+	ApiService           MongoDBCloudUsersApi
+	groupId              string
+	userId               string
+	addOrRemoveGroupRole *AddOrRemoveGroupRole
+}
+
+type AddProjectRoleApiParams struct {
+	GroupId              string
+	UserId               string
+	AddOrRemoveGroupRole *AddOrRemoveGroupRole
+}
+
+func (a *MongoDBCloudUsersApiService) AddProjectRoleWithParams(ctx context.Context, args *AddProjectRoleApiParams) AddProjectRoleApiRequest {
+	return AddProjectRoleApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		userId:               args.UserId,
+		addOrRemoveGroupRole: args.AddOrRemoveGroupRole,
+	}
+}
+
+func (r AddProjectRoleApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
+	return r.ApiService.AddProjectRoleExecute(r)
+}
+
+/*
+AddProjectRole Add One Project Role to One MongoDB Cloud User
+
+Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+**Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
+	@return AddProjectRoleApiRequest
+*/
+func (a *MongoDBCloudUsersApiService) AddProjectRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) AddProjectRoleApiRequest {
+	return AddProjectRoleApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              groupId,
+		userId:               userId,
+		addOrRemoveGroupRole: addOrRemoveGroupRole,
+	}
+}
+
+// AddProjectRoleExecute executes the request
+//
+//	@return GroupUserResponse
+func (a *MongoDBCloudUsersApiService) AddProjectRoleExecute(r AddProjectRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *GroupUserResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddProjectRole")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}:addRole"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.addOrRemoveGroupRole == nil {
+		return localVarReturnValue, nil, reportError("addOrRemoveGroupRole is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.addOrRemoveGroupRole
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AddProjectUserApiRequest struct {
+	ctx              context.Context
+	ApiService       MongoDBCloudUsersApi
+	groupId          string
+	groupUserRequest *GroupUserRequest
+}
+
+type AddProjectUserApiParams struct {
+	GroupId          string
+	GroupUserRequest *GroupUserRequest
+}
+
+func (a *MongoDBCloudUsersApiService) AddProjectUserWithParams(ctx context.Context, args *AddProjectUserApiParams) AddProjectUserApiRequest {
+	return AddProjectUserApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          args.GroupId,
+		groupUserRequest: args.GroupUserRequest,
+	}
+}
+
+func (r AddProjectUserApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
+	return r.ApiService.AddProjectUserExecute(r)
+}
+
+/*
+AddProjectUser Add One MongoDB Cloud User to One Project
+
+Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+- If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
+- If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
+- If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return AddProjectUserApiRequest
+*/
+func (a *MongoDBCloudUsersApiService) AddProjectUser(ctx context.Context, groupId string, groupUserRequest *GroupUserRequest) AddProjectUserApiRequest {
+	return AddProjectUserApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          groupId,
+		groupUserRequest: groupUserRequest,
+	}
+}
+
+// AddProjectUserExecute executes the request
+//
+//	@return GroupUserResponse
+func (a *MongoDBCloudUsersApiService) AddProjectUserExecute(r AddProjectUserApiRequest) (*GroupUserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *GroupUserResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddProjectUser")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.groupUserRequest == nil {
+		return localVarReturnValue, nil, reportError("groupUserRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupUserRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AddUserToTeamApiRequest struct {
 	ctx                     context.Context
 	ApiService              MongoDBCloudUsersApi
 	orgId                   string
@@ -948,14 +948,14 @@ type AddOrgTeamUserApiRequest struct {
 	addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam
 }
 
-type AddOrgTeamUserApiParams struct {
+type AddUserToTeamApiParams struct {
 	OrgId                   string
 	TeamId                  string
 	AddOrRemoveUserFromTeam *AddOrRemoveUserFromTeam
 }
 
-func (a *MongoDBCloudUsersApiService) AddOrgTeamUserWithParams(ctx context.Context, args *AddOrgTeamUserApiParams) AddOrgTeamUserApiRequest {
-	return AddOrgTeamUserApiRequest{
+func (a *MongoDBCloudUsersApiService) AddUserToTeamWithParams(ctx context.Context, args *AddUserToTeamApiParams) AddUserToTeamApiRequest {
+	return AddUserToTeamApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
 		orgId:                   args.OrgId,
@@ -964,12 +964,12 @@ func (a *MongoDBCloudUsersApiService) AddOrgTeamUserWithParams(ctx context.Conte
 	}
 }
 
-func (r AddOrgTeamUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
-	return r.ApiService.AddOrgTeamUserExecute(r)
+func (r AddUserToTeamApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+	return r.ApiService.AddUserToTeamExecute(r)
 }
 
 /*
-AddOrgTeamUser Add One MongoDB Cloud User to One Team
+AddUserToTeam Add One MongoDB Cloud User to One Team
 
 Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -978,10 +978,10 @@ Adds one MongoDB Cloud user to one team. You can add an active user or a user th
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param teamId Unique 24-hexadecimal digit string that identifies the team to add the MongoDB Cloud user to.
-	@return AddOrgTeamUserApiRequest
+	@return AddUserToTeamApiRequest
 */
-func (a *MongoDBCloudUsersApiService) AddOrgTeamUser(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) AddOrgTeamUserApiRequest {
-	return AddOrgTeamUserApiRequest{
+func (a *MongoDBCloudUsersApiService) AddUserToTeam(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) AddUserToTeamApiRequest {
+	return AddUserToTeamApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
 		orgId:                   orgId,
@@ -990,10 +990,10 @@ func (a *MongoDBCloudUsersApiService) AddOrgTeamUser(ctx context.Context, orgId 
 	}
 }
 
-// AddOrgTeamUserExecute executes the request
+// AddUserToTeamExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) AddOrgTeamUserExecute(r AddOrgTeamUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) AddUserToTeamExecute(r AddUserToTeamApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1001,7 +1001,7 @@ func (a *MongoDBCloudUsersApiService) AddOrgTeamUserExecute(r AddOrgTeamUserApiR
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddOrgTeamUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddUserToTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1074,20 +1074,20 @@ func (a *MongoDBCloudUsersApiService) AddOrgTeamUserExecute(r AddOrgTeamUserApiR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CreateOrgUserApiRequest struct {
+type CreateOrganizationUserApiRequest struct {
 	ctx            context.Context
 	ApiService     MongoDBCloudUsersApi
 	orgId          string
 	orgUserRequest *OrgUserRequest
 }
 
-type CreateOrgUserApiParams struct {
+type CreateOrganizationUserApiParams struct {
 	OrgId          string
 	OrgUserRequest *OrgUserRequest
 }
 
-func (a *MongoDBCloudUsersApiService) CreateOrgUserWithParams(ctx context.Context, args *CreateOrgUserApiParams) CreateOrgUserApiRequest {
-	return CreateOrgUserApiRequest{
+func (a *MongoDBCloudUsersApiService) CreateOrganizationUserWithParams(ctx context.Context, args *CreateOrganizationUserApiParams) CreateOrganizationUserApiRequest {
+	return CreateOrganizationUserApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		orgId:          args.OrgId,
@@ -1095,12 +1095,12 @@ func (a *MongoDBCloudUsersApiService) CreateOrgUserWithParams(ctx context.Contex
 	}
 }
 
-func (r CreateOrgUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
-	return r.ApiService.CreateOrgUserExecute(r)
+func (r CreateOrganizationUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+	return r.ApiService.CreateOrganizationUserExecute(r)
 }
 
 /*
-CreateOrgUser Add One MongoDB Cloud User to One Organization
+CreateOrganizationUser Add One MongoDB Cloud User to One Organization
 
 Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -1108,10 +1108,10 @@ Invites one new or existing MongoDB Cloud user to join the organization. The inv
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return CreateOrgUserApiRequest
+	@return CreateOrganizationUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) CreateOrgUser(ctx context.Context, orgId string, orgUserRequest *OrgUserRequest) CreateOrgUserApiRequest {
-	return CreateOrgUserApiRequest{
+func (a *MongoDBCloudUsersApiService) CreateOrganizationUser(ctx context.Context, orgId string, orgUserRequest *OrgUserRequest) CreateOrganizationUserApiRequest {
+	return CreateOrganizationUserApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		orgId:          orgId,
@@ -1119,10 +1119,10 @@ func (a *MongoDBCloudUsersApiService) CreateOrgUser(ctx context.Context, orgId s
 	}
 }
 
-// CreateOrgUserExecute executes the request
+// CreateOrganizationUserExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) CreateOrgUserExecute(r CreateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) CreateOrganizationUserExecute(r CreateOrganizationUserApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1130,7 +1130,7 @@ func (a *MongoDBCloudUsersApiService) CreateOrgUserExecute(r CreateOrgUserApiReq
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.CreateOrgUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.CreateOrganizationUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1321,75 +1321,75 @@ func (a *MongoDBCloudUsersApiService) CreateUserExecute(r CreateUserApiRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetGroupUserApiRequest struct {
+type GetOrganizationUserApiRequest struct {
 	ctx        context.Context
 	ApiService MongoDBCloudUsersApi
-	groupId    string
+	orgId      string
 	userId     string
 }
 
-type GetGroupUserApiParams struct {
-	GroupId string
-	UserId  string
+type GetOrganizationUserApiParams struct {
+	OrgId  string
+	UserId string
 }
 
-func (a *MongoDBCloudUsersApiService) GetGroupUserWithParams(ctx context.Context, args *GetGroupUserApiParams) GetGroupUserApiRequest {
-	return GetGroupUserApiRequest{
+func (a *MongoDBCloudUsersApiService) GetOrganizationUserWithParams(ctx context.Context, args *GetOrganizationUserApiParams) GetOrganizationUserApiRequest {
+	return GetOrganizationUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
-		groupId:    args.GroupId,
+		orgId:      args.OrgId,
 		userId:     args.UserId,
 	}
 }
 
-func (r GetGroupUserApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
-	return r.ApiService.GetGroupUserExecute(r)
+func (r GetOrganizationUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+	return r.ApiService.GetOrganizationUserExecute(r)
 }
 
 /*
-GetGroupUser Return One MongoDB Cloud User in One Project
+GetOrganizationUser Return One MongoDB Cloud User in One Organization
 
-Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
-**Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+**Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
 **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
-	@return GetGroupUserApiRequest
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
+	@return GetOrganizationUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) GetGroupUser(ctx context.Context, groupId string, userId string) GetGroupUserApiRequest {
-	return GetGroupUserApiRequest{
+func (a *MongoDBCloudUsersApiService) GetOrganizationUser(ctx context.Context, orgId string, userId string) GetOrganizationUserApiRequest {
+	return GetOrganizationUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
-		groupId:    groupId,
+		orgId:      orgId,
 		userId:     userId,
 	}
 }
 
-// GetGroupUserExecute executes the request
+// GetOrganizationUserExecute executes the request
 //
-//	@return GroupUserResponse
-func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiRequest) (*GroupUserResponse, *http.Response, error) {
+//	@return OrgUserResponse
+func (a *MongoDBCloudUsersApiService) GetOrganizationUserExecute(r GetOrganizationUserApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *GroupUserResponse
+		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetGroupUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetOrganizationUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
 	}
@@ -1448,75 +1448,75 @@ func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetOrgUserApiRequest struct {
+type GetProjectUserApiRequest struct {
 	ctx        context.Context
 	ApiService MongoDBCloudUsersApi
-	orgId      string
+	groupId    string
 	userId     string
 }
 
-type GetOrgUserApiParams struct {
-	OrgId  string
-	UserId string
+type GetProjectUserApiParams struct {
+	GroupId string
+	UserId  string
 }
 
-func (a *MongoDBCloudUsersApiService) GetOrgUserWithParams(ctx context.Context, args *GetOrgUserApiParams) GetOrgUserApiRequest {
-	return GetOrgUserApiRequest{
+func (a *MongoDBCloudUsersApiService) GetProjectUserWithParams(ctx context.Context, args *GetProjectUserApiParams) GetProjectUserApiRequest {
+	return GetProjectUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
-		orgId:      args.OrgId,
+		groupId:    args.GroupId,
 		userId:     args.UserId,
 	}
 }
 
-func (r GetOrgUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
-	return r.ApiService.GetOrgUserExecute(r)
+func (r GetProjectUserApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
+	return r.ApiService.GetProjectUserExecute(r)
 }
 
 /*
-GetOrgUser Return One MongoDB Cloud User in One Organization
+GetProjectUser Return One MongoDB Cloud User in One Project
 
-Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-**Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+**Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
 **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
-	@return GetOrgUserApiRequest
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
+	@return GetProjectUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) GetOrgUser(ctx context.Context, orgId string, userId string) GetOrgUserApiRequest {
-	return GetOrgUserApiRequest{
+func (a *MongoDBCloudUsersApiService) GetProjectUser(ctx context.Context, groupId string, userId string) GetProjectUserApiRequest {
+	return GetProjectUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
-		orgId:      orgId,
+		groupId:    groupId,
 		userId:     userId,
 	}
 }
 
-// GetOrgUserExecute executes the request
+// GetProjectUserExecute executes the request
 //
-//	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) GetOrgUserExecute(r GetOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+//	@return GroupUserResponse
+func (a *MongoDBCloudUsersApiService) GetProjectUserExecute(r GetProjectUserApiRequest) (*GroupUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *OrgUserResponse
+		localVarReturnValue *GroupUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetOrgUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetProjectUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
-	if r.orgId == "" {
-		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
 	}
@@ -1693,53 +1693,53 @@ func (a *MongoDBCloudUsersApiService) GetUserExecute(r GetUserApiRequest) (*Clou
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetUserByNameApiRequest struct {
+type GetUserByUsernameApiRequest struct {
 	ctx        context.Context
 	ApiService MongoDBCloudUsersApi
 	userName   string
 }
 
-type GetUserByNameApiParams struct {
+type GetUserByUsernameApiParams struct {
 	UserName string
 }
 
-func (a *MongoDBCloudUsersApiService) GetUserByNameWithParams(ctx context.Context, args *GetUserByNameApiParams) GetUserByNameApiRequest {
-	return GetUserByNameApiRequest{
+func (a *MongoDBCloudUsersApiService) GetUserByUsernameWithParams(ctx context.Context, args *GetUserByUsernameApiParams) GetUserByUsernameApiRequest {
+	return GetUserByUsernameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		userName:   args.UserName,
 	}
 }
 
-func (r GetUserByNameApiRequest) Execute() (*CloudAppUser, *http.Response, error) {
-	return r.ApiService.GetUserByNameExecute(r)
+func (r GetUserByUsernameApiRequest) Execute() (*CloudAppUser, *http.Response, error) {
+	return r.ApiService.GetUserByUsernameExecute(r)
 }
 
 /*
-GetUserByName Return One MongoDB Cloud User by Username
+GetUserByUsername Return One MongoDB Cloud User by Username
 
 Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. To use this resource, the requesting Service Account or API Key can have any role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
-	@return GetUserByNameApiRequest
+	@return GetUserByUsernameApiRequest
 
 Deprecated
 */
-func (a *MongoDBCloudUsersApiService) GetUserByName(ctx context.Context, userName string) GetUserByNameApiRequest {
-	return GetUserByNameApiRequest{
+func (a *MongoDBCloudUsersApiService) GetUserByUsername(ctx context.Context, userName string) GetUserByUsernameApiRequest {
+	return GetUserByUsernameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		userName:   userName,
 	}
 }
 
-// GetUserByNameExecute executes the request
+// GetUserByUsernameExecute executes the request
 //
 //	@return CloudAppUser
 //
 // Deprecated
-func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiRequest) (*CloudAppUser, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) GetUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1747,7 +1747,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiReq
 		localVarReturnValue *CloudAppUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetUserByName")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetUserByUsername")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1811,7 +1811,197 @@ func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListGroupUsersApiRequest struct {
+type ListOrganizationUsersApiRequest struct {
+	ctx                 context.Context
+	ApiService          MongoDBCloudUsersApi
+	orgId               string
+	includeCount        *bool
+	itemsPerPage        *int
+	pageNum             *int
+	username            *string
+	orgMembershipStatus *string
+}
+
+type ListOrganizationUsersApiParams struct {
+	OrgId               string
+	IncludeCount        *bool
+	ItemsPerPage        *int
+	PageNum             *int
+	Username            *string
+	OrgMembershipStatus *string
+}
+
+func (a *MongoDBCloudUsersApiService) ListOrganizationUsersWithParams(ctx context.Context, args *ListOrganizationUsersApiParams) ListOrganizationUsersApiRequest {
+	return ListOrganizationUsersApiRequest{
+		ApiService:          a,
+		ctx:                 ctx,
+		orgId:               args.OrgId,
+		includeCount:        args.IncludeCount,
+		itemsPerPage:        args.ItemsPerPage,
+		pageNum:             args.PageNum,
+		username:            args.Username,
+		orgMembershipStatus: args.OrgMembershipStatus,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListOrganizationUsersApiRequest) IncludeCount(includeCount bool) ListOrganizationUsersApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListOrganizationUsersApiRequest) ItemsPerPage(itemsPerPage int) ListOrganizationUsersApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListOrganizationUsersApiRequest) PageNum(pageNum int) ListOrganizationUsersApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+// Email address to filter users by. Not supported in deprecated versions.
+func (r ListOrganizationUsersApiRequest) Username(username string) ListOrganizationUsersApiRequest {
+	r.username = &username
+	return r
+}
+
+// Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+func (r ListOrganizationUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListOrganizationUsersApiRequest {
+	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+func (r ListOrganizationUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, error) {
+	return r.ApiService.ListOrganizationUsersExecute(r)
+}
+
+/*
+ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
+
+Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+
+**Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListOrganizationUsersApiRequest
+*/
+func (a *MongoDBCloudUsersApiService) ListOrganizationUsers(ctx context.Context, orgId string) ListOrganizationUsersApiRequest {
+	return ListOrganizationUsersApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// ListOrganizationUsersExecute executes the request
+//
+//	@return PaginatedOrgUser
+func (a *MongoDBCloudUsersApiService) ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedOrgUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.ListOrganizationUsers")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.username != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
+	}
+	if r.orgMembershipStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListProjectUsersApiRequest struct {
 	ctx                 context.Context
 	ApiService          MongoDBCloudUsersApi
 	groupId             string
@@ -1824,7 +2014,7 @@ type ListGroupUsersApiRequest struct {
 	username            *string
 }
 
-type ListGroupUsersApiParams struct {
+type ListProjectUsersApiParams struct {
 	GroupId             string
 	IncludeCount        *bool
 	ItemsPerPage        *int
@@ -1835,8 +2025,8 @@ type ListGroupUsersApiParams struct {
 	Username            *string
 }
 
-func (a *MongoDBCloudUsersApiService) ListGroupUsersWithParams(ctx context.Context, args *ListGroupUsersApiParams) ListGroupUsersApiRequest {
-	return ListGroupUsersApiRequest{
+func (a *MongoDBCloudUsersApiService) ListProjectUsersWithParams(ctx context.Context, args *ListProjectUsersApiParams) ListProjectUsersApiRequest {
+	return ListProjectUsersApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
 		groupId:             args.GroupId,
@@ -1851,53 +2041,53 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersWithParams(ctx context.Conte
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListGroupUsersApiRequest) IncludeCount(includeCount bool) ListGroupUsersApiRequest {
+func (r ListProjectUsersApiRequest) IncludeCount(includeCount bool) ListProjectUsersApiRequest {
 	r.includeCount = &includeCount
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r ListGroupUsersApiRequest) ItemsPerPage(itemsPerPage int) ListGroupUsersApiRequest {
+func (r ListProjectUsersApiRequest) ItemsPerPage(itemsPerPage int) ListProjectUsersApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListGroupUsersApiRequest) PageNum(pageNum int) ListGroupUsersApiRequest {
+func (r ListProjectUsersApiRequest) PageNum(pageNum int) ListProjectUsersApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
 // Flag that indicates whether the returned list should include users who belong to a team with a role in this project. You might not have assigned the individual users a role in this project. If &#x60;\&quot;flattenTeams\&quot; : false&#x60;, this resource returns only users with a role in the project.  If &#x60;\&quot;flattenTeams\&quot; : true&#x60;, this resource returns both users with roles in the project and users who belong to teams with roles in the project.
-func (r ListGroupUsersApiRequest) FlattenTeams(flattenTeams bool) ListGroupUsersApiRequest {
+func (r ListProjectUsersApiRequest) FlattenTeams(flattenTeams bool) ListProjectUsersApiRequest {
 	r.flattenTeams = &flattenTeams
 	return r
 }
 
 // Flag that indicates whether the returned list should include users with implicit access to the project, the Organization Owner or Organization Read Only role. You might not have assigned the individual users a role in this project. If &#x60;\&quot;includeOrgUsers\&quot;: false&#x60;, this resource returns only users with a role in the project. If &#x60;\&quot;includeOrgUsers\&quot;: true&#x60;, this resource returns both users with roles in the project and users who have implicit access to the project through their organization role.
-func (r ListGroupUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListGroupUsersApiRequest {
+func (r ListProjectUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListProjectUsersApiRequest {
 	r.includeOrgUsers = &includeOrgUsers
 	return r
 }
 
 // Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
-func (r ListGroupUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListGroupUsersApiRequest {
+func (r ListProjectUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListProjectUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
 	return r
 }
 
 // Email address to filter users by. Not supported in deprecated versions.
-func (r ListGroupUsersApiRequest) Username(username string) ListGroupUsersApiRequest {
+func (r ListProjectUsersApiRequest) Username(username string) ListProjectUsersApiRequest {
 	r.username = &username
 	return r
 }
 
-func (r ListGroupUsersApiRequest) Execute() (*PaginatedGroupUser, *http.Response, error) {
-	return r.ApiService.ListGroupUsersExecute(r)
+func (r ListProjectUsersApiRequest) Execute() (*PaginatedGroupUser, *http.Response, error) {
+	return r.ApiService.ListProjectUsersExecute(r)
 }
 
 /*
-ListGroupUsers Return All MongoDB Cloud Users in One Project
+ListProjectUsers Return All MongoDB Cloud Users in One Project
 
 Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1907,20 +2097,20 @@ Returns details about the pending and active MongoDB Cloud users associated with
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListGroupUsersApiRequest
+	@return ListProjectUsersApiRequest
 */
-func (a *MongoDBCloudUsersApiService) ListGroupUsers(ctx context.Context, groupId string) ListGroupUsersApiRequest {
-	return ListGroupUsersApiRequest{
+func (a *MongoDBCloudUsersApiService) ListProjectUsers(ctx context.Context, groupId string) ListProjectUsersApiRequest {
+	return ListProjectUsersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// ListGroupUsersExecute executes the request
+// ListProjectUsersExecute executes the request
 //
 //	@return PaginatedGroupUser
-func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiRequest) (*PaginatedGroupUser, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedGroupUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1928,7 +2118,7 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 		localVarReturnValue *PaginatedGroupUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.ListGroupUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.ListProjectUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1983,196 +2173,6 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 	}
 	if r.username != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ListOrgUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	orgId               string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	username            *string
-	orgMembershipStatus *string
-}
-
-type ListOrgUsersApiParams struct {
-	OrgId               string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	Username            *string
-	OrgMembershipStatus *string
-}
-
-func (a *MongoDBCloudUsersApiService) ListOrgUsersWithParams(ctx context.Context, args *ListOrgUsersApiParams) ListOrgUsersApiRequest {
-	return ListOrgUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		orgId:               args.OrgId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		username:            args.Username,
-		orgMembershipStatus: args.OrgMembershipStatus,
-	}
-}
-
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListOrgUsersApiRequest) IncludeCount(includeCount bool) ListOrgUsersApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
-
-// Number of items that the response returns per page.
-func (r ListOrgUsersApiRequest) ItemsPerPage(itemsPerPage int) ListOrgUsersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOrgUsersApiRequest) PageNum(pageNum int) ListOrgUsersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-// Email address to filter users by. Not supported in deprecated versions.
-func (r ListOrgUsersApiRequest) Username(username string) ListOrgUsersApiRequest {
-	r.username = &username
-	return r
-}
-
-// Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
-func (r ListOrgUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListOrgUsersApiRequest {
-	r.orgMembershipStatus = &orgMembershipStatus
-	return r
-}
-
-func (r ListOrgUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, error) {
-	return r.ApiService.ListOrgUsersExecute(r)
-}
-
-/*
-ListOrgUsers Return All MongoDB Cloud Users in One Organization
-
-Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
-
-**Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return ListOrgUsersApiRequest
-*/
-func (a *MongoDBCloudUsersApiService) ListOrgUsers(ctx context.Context, orgId string) ListOrgUsersApiRequest {
-	return ListOrgUsersApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-	}
-}
-
-// ListOrgUsersExecute executes the request
-//
-//	@return PaginatedOrgUser
-func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedOrgUser
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.ListOrgUsers")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users"
-	if r.orgId == "" {
-		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.includeCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	} else {
-		var defaultValue bool = true
-		r.includeCount = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	}
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	if r.username != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
-	}
-	if r.orgMembershipStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2418,251 +2418,7 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RemoveGroupUserApiRequest struct {
-	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
-	groupId    string
-	userId     string
-}
-
-type RemoveGroupUserApiParams struct {
-	GroupId string
-	UserId  string
-}
-
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserWithParams(ctx context.Context, args *RemoveGroupUserApiParams) RemoveGroupUserApiRequest {
-	return RemoveGroupUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		userId:     args.UserId,
-	}
-}
-
-func (r RemoveGroupUserApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RemoveGroupUserExecute(r)
-}
-
-/*
-RemoveGroupUser Remove One MongoDB Cloud User from One Project
-
-Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Project](#tag/MongoDB-Cloud-Users/operation/listProjectUsers) resource and filter by username.
-	@return RemoveGroupUserApiRequest
-*/
-func (a *MongoDBCloudUsersApiService) RemoveGroupUser(ctx context.Context, groupId string, userId string) RemoveGroupUserApiRequest {
-	return RemoveGroupUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		userId:     userId,
-	}
-}
-
-// RemoveGroupUserExecute executes the request
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserExecute(r RemoveGroupUserApiRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   any
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveGroupUser")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
-	if r.groupId == "" {
-		return nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.userId == "" {
-		return nil, reportError("userId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RemoveGroupUserRoleApiRequest struct {
-	ctx                  context.Context
-	ApiService           MongoDBCloudUsersApi
-	groupId              string
-	userId               string
-	addOrRemoveGroupRole *AddOrRemoveGroupRole
-}
-
-type RemoveGroupUserRoleApiParams struct {
-	GroupId              string
-	UserId               string
-	AddOrRemoveGroupRole *AddOrRemoveGroupRole
-}
-
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserRoleWithParams(ctx context.Context, args *RemoveGroupUserRoleApiParams) RemoveGroupUserRoleApiRequest {
-	return RemoveGroupUserRoleApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              args.GroupId,
-		userId:               args.UserId,
-		addOrRemoveGroupRole: args.AddOrRemoveGroupRole,
-	}
-}
-
-func (r RemoveGroupUserRoleApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
-	return r.ApiService.RemoveGroupUserRoleExecute(r)
-}
-
-/*
-RemoveGroupUserRole Remove One Project Role from One MongoDB Cloud User
-
-Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
-
-**Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
-	@return RemoveGroupUserRoleApiRequest
-*/
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) RemoveGroupUserRoleApiRequest {
-	return RemoveGroupUserRoleApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              groupId,
-		userId:               userId,
-		addOrRemoveGroupRole: addOrRemoveGroupRole,
-	}
-}
-
-// RemoveGroupUserRoleExecute executes the request
-//
-//	@return GroupUserResponse
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserRoleExecute(r RemoveGroupUserRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *GroupUserResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveGroupUserRole")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}:removeRole"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-	if r.userId == "" {
-		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.addOrRemoveGroupRole == nil {
-		return localVarReturnValue, nil, reportError("addOrRemoveGroupRole is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.addOrRemoveGroupRole
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RemoveOrgRoleApiRequest struct {
+type RemoveOrganizationRoleApiRequest struct {
 	ctx                context.Context
 	ApiService         MongoDBCloudUsersApi
 	orgId              string
@@ -2670,14 +2426,14 @@ type RemoveOrgRoleApiRequest struct {
 	addOrRemoveOrgRole *AddOrRemoveOrgRole
 }
 
-type RemoveOrgRoleApiParams struct {
+type RemoveOrganizationRoleApiParams struct {
 	OrgId              string
 	UserId             string
 	AddOrRemoveOrgRole *AddOrRemoveOrgRole
 }
 
-func (a *MongoDBCloudUsersApiService) RemoveOrgRoleWithParams(ctx context.Context, args *RemoveOrgRoleApiParams) RemoveOrgRoleApiRequest {
-	return RemoveOrgRoleApiRequest{
+func (a *MongoDBCloudUsersApiService) RemoveOrganizationRoleWithParams(ctx context.Context, args *RemoveOrganizationRoleApiParams) RemoveOrganizationRoleApiRequest {
+	return RemoveOrganizationRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
 		orgId:              args.OrgId,
@@ -2686,12 +2442,12 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgRoleWithParams(ctx context.Contex
 	}
 }
 
-func (r RemoveOrgRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
-	return r.ApiService.RemoveOrgRoleExecute(r)
+func (r RemoveOrganizationRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+	return r.ApiService.RemoveOrganizationRoleExecute(r)
 }
 
 /*
-RemoveOrgRole Remove One Organization Role from One MongoDB Cloud User
+RemoveOrganizationRole Remove One Organization Role from One MongoDB Cloud User
 
 Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -2702,10 +2458,10 @@ Removes one organization-level role from the MongoDB Cloud user. You can remove 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
-	@return RemoveOrgRoleApiRequest
+	@return RemoveOrganizationRoleApiRequest
 */
-func (a *MongoDBCloudUsersApiService) RemoveOrgRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) RemoveOrgRoleApiRequest {
-	return RemoveOrgRoleApiRequest{
+func (a *MongoDBCloudUsersApiService) RemoveOrganizationRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) RemoveOrganizationRoleApiRequest {
+	return RemoveOrganizationRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
 		orgId:              orgId,
@@ -2714,10 +2470,10 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgRole(ctx context.Context, orgId s
 	}
 }
 
-// RemoveOrgRoleExecute executes the request
+// RemoveOrganizationRoleExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) RemoveOrgRoleExecute(r RemoveOrgRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) RemoveOrganizationRoleExecute(r RemoveOrganizationRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2725,7 +2481,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgRoleExecute(r RemoveOrgRoleApiReq
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrgRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrganizationRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2798,7 +2554,361 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgRoleExecute(r RemoveOrgRoleApiReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RemoveOrgTeamUserApiRequest struct {
+type RemoveOrganizationUserApiRequest struct {
+	ctx        context.Context
+	ApiService MongoDBCloudUsersApi
+	orgId      string
+	userId     string
+}
+
+type RemoveOrganizationUserApiParams struct {
+	OrgId  string
+	UserId string
+}
+
+func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest {
+	return RemoveOrganizationUserApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+		userId:     args.UserId,
+	}
+}
+
+func (r RemoveOrganizationUserApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RemoveOrganizationUserExecute(r)
+}
+
+/*
+RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
+
+Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+
+**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Organization](#tag/MongoDB-Cloud-Users/operation/listOrganizationUsers) resource and filter by username.
+	@return RemoveOrganizationUserApiRequest
+*/
+func (a *MongoDBCloudUsersApiService) RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest {
+	return RemoveOrganizationUserApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		userId:     userId,
+	}
+}
+
+// RemoveOrganizationUserExecute executes the request
+func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrganizationUser")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.userId == "" {
+		return nil, reportError("userId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RemoveProjectRoleApiRequest struct {
+	ctx                  context.Context
+	ApiService           MongoDBCloudUsersApi
+	groupId              string
+	userId               string
+	addOrRemoveGroupRole *AddOrRemoveGroupRole
+}
+
+type RemoveProjectRoleApiParams struct {
+	GroupId              string
+	UserId               string
+	AddOrRemoveGroupRole *AddOrRemoveGroupRole
+}
+
+func (a *MongoDBCloudUsersApiService) RemoveProjectRoleWithParams(ctx context.Context, args *RemoveProjectRoleApiParams) RemoveProjectRoleApiRequest {
+	return RemoveProjectRoleApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		userId:               args.UserId,
+		addOrRemoveGroupRole: args.AddOrRemoveGroupRole,
+	}
+}
+
+func (r RemoveProjectRoleApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
+	return r.ApiService.RemoveProjectRoleExecute(r)
+}
+
+/*
+RemoveProjectRole Remove One Project Role from One MongoDB Cloud User
+
+Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+**Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by username.
+	@return RemoveProjectRoleApiRequest
+*/
+func (a *MongoDBCloudUsersApiService) RemoveProjectRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) RemoveProjectRoleApiRequest {
+	return RemoveProjectRoleApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              groupId,
+		userId:               userId,
+		addOrRemoveGroupRole: addOrRemoveGroupRole,
+	}
+}
+
+// RemoveProjectRoleExecute executes the request
+//
+//	@return GroupUserResponse
+func (a *MongoDBCloudUsersApiService) RemoveProjectRoleExecute(r RemoveProjectRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *GroupUserResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveProjectRole")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}:removeRole"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.addOrRemoveGroupRole == nil {
+		return localVarReturnValue, nil, reportError("addOrRemoveGroupRole is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.addOrRemoveGroupRole
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RemoveProjectUserApiRequest struct {
+	ctx        context.Context
+	ApiService MongoDBCloudUsersApi
+	groupId    string
+	userId     string
+}
+
+type RemoveProjectUserApiParams struct {
+	GroupId string
+	UserId  string
+}
+
+func (a *MongoDBCloudUsersApiService) RemoveProjectUserWithParams(ctx context.Context, args *RemoveProjectUserApiParams) RemoveProjectUserApiRequest {
+	return RemoveProjectUserApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		userId:     args.UserId,
+	}
+}
+
+func (r RemoveProjectUserApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RemoveProjectUserExecute(r)
+}
+
+/*
+RemoveProjectUser Remove One MongoDB Cloud User from One Project
+
+Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+
+**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's userId or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Project](#tag/MongoDB-Cloud-Users/operation/listProjectUsers) resource and filter by username.
+	@return RemoveProjectUserApiRequest
+*/
+func (a *MongoDBCloudUsersApiService) RemoveProjectUser(ctx context.Context, groupId string, userId string) RemoveProjectUserApiRequest {
+	return RemoveProjectUserApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		userId:     userId,
+	}
+}
+
+// RemoveProjectUserExecute executes the request
+func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveProjectUser")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.userId == "" {
+		return nil, reportError("userId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RemoveUserFromTeamApiRequest struct {
 	ctx                     context.Context
 	ApiService              MongoDBCloudUsersApi
 	orgId                   string
@@ -2806,14 +2916,14 @@ type RemoveOrgTeamUserApiRequest struct {
 	addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam
 }
 
-type RemoveOrgTeamUserApiParams struct {
+type RemoveUserFromTeamApiParams struct {
 	OrgId                   string
 	TeamId                  string
 	AddOrRemoveUserFromTeam *AddOrRemoveUserFromTeam
 }
 
-func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserWithParams(ctx context.Context, args *RemoveOrgTeamUserApiParams) RemoveOrgTeamUserApiRequest {
-	return RemoveOrgTeamUserApiRequest{
+func (a *MongoDBCloudUsersApiService) RemoveUserFromTeamWithParams(ctx context.Context, args *RemoveUserFromTeamApiParams) RemoveUserFromTeamApiRequest {
+	return RemoveUserFromTeamApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
 		orgId:                   args.OrgId,
@@ -2822,12 +2932,12 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserWithParams(ctx context.Co
 	}
 }
 
-func (r RemoveOrgTeamUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
-	return r.ApiService.RemoveOrgTeamUserExecute(r)
+func (r RemoveUserFromTeamApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+	return r.ApiService.RemoveUserFromTeamExecute(r)
 }
 
 /*
-RemoveOrgTeamUser Remove One MongoDB Cloud User from One Team
+RemoveUserFromTeam Remove One MongoDB Cloud User from One Team
 
 Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -2836,10 +2946,10 @@ Removes one MongoDB Cloud user from one team. You can remove an active user or a
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param teamId Unique 24-hexadecimal digit string that identifies the team to remove the MongoDB user from.
-	@return RemoveOrgTeamUserApiRequest
+	@return RemoveUserFromTeamApiRequest
 */
-func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUser(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) RemoveOrgTeamUserApiRequest {
-	return RemoveOrgTeamUserApiRequest{
+func (a *MongoDBCloudUsersApiService) RemoveUserFromTeam(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) RemoveUserFromTeamApiRequest {
+	return RemoveUserFromTeamApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
 		orgId:                   orgId,
@@ -2848,10 +2958,10 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUser(ctx context.Context, org
 	}
 }
 
-// RemoveOrgTeamUserExecute executes the request
+// RemoveUserFromTeamExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserExecute(r RemoveOrgTeamUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) RemoveUserFromTeamExecute(r RemoveUserFromTeamApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2859,7 +2969,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserExecute(r RemoveOrgTeamUs
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrgTeamUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveUserFromTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2932,117 +3042,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserExecute(r RemoveOrgTeamUs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RemoveOrgUserApiRequest struct {
-	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
-	orgId      string
-	userId     string
-}
-
-type RemoveOrgUserApiParams struct {
-	OrgId  string
-	UserId string
-}
-
-func (a *MongoDBCloudUsersApiService) RemoveOrgUserWithParams(ctx context.Context, args *RemoveOrgUserApiParams) RemoveOrgUserApiRequest {
-	return RemoveOrgUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      args.OrgId,
-		userId:     args.UserId,
-	}
-}
-
-func (r RemoveOrgUserApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RemoveOrgUserExecute(r)
-}
-
-/*
-RemoveOrgUser Remove One MongoDB Cloud User from One Organization
-
-Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
-
-**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
-
-**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Organization](#tag/MongoDB-Cloud-Users/operation/listOrganizationUsers) resource and filter by username.
-	@return RemoveOrgUserApiRequest
-*/
-func (a *MongoDBCloudUsersApiService) RemoveOrgUser(ctx context.Context, orgId string, userId string) RemoveOrgUserApiRequest {
-	return RemoveOrgUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		userId:     userId,
-	}
-}
-
-// RemoveOrgUserExecute executes the request
-func (a *MongoDBCloudUsersApiService) RemoveOrgUserExecute(r RemoveOrgUserApiRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   any
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrgUser")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
-	if r.orgId == "" {
-		return nil, reportError("orgId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
-	if r.userId == "" {
-		return nil, reportError("userId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-02-19+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type UpdateOrgUserApiRequest struct {
+type UpdateOrganizationUserApiRequest struct {
 	ctx                  context.Context
 	ApiService           MongoDBCloudUsersApi
 	orgId                string
@@ -3050,14 +3050,14 @@ type UpdateOrgUserApiRequest struct {
 	orgUserUpdateRequest *OrgUserUpdateRequest
 }
 
-type UpdateOrgUserApiParams struct {
+type UpdateOrganizationUserApiParams struct {
 	OrgId                string
 	UserId               string
 	OrgUserUpdateRequest *OrgUserUpdateRequest
 }
 
-func (a *MongoDBCloudUsersApiService) UpdateOrgUserWithParams(ctx context.Context, args *UpdateOrgUserApiParams) UpdateOrgUserApiRequest {
-	return UpdateOrgUserApiRequest{
+func (a *MongoDBCloudUsersApiService) UpdateOrganizationUserWithParams(ctx context.Context, args *UpdateOrganizationUserApiParams) UpdateOrganizationUserApiRequest {
+	return UpdateOrganizationUserApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		orgId:                args.OrgId,
@@ -3066,12 +3066,12 @@ func (a *MongoDBCloudUsersApiService) UpdateOrgUserWithParams(ctx context.Contex
 	}
 }
 
-func (r UpdateOrgUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
-	return r.ApiService.UpdateOrgUserExecute(r)
+func (r UpdateOrganizationUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
+	return r.ApiService.UpdateOrganizationUserExecute(r)
 }
 
 /*
-UpdateOrgUser Update One MongoDB Cloud User in One Organization
+UpdateOrganizationUser Update One MongoDB Cloud User in One Organization
 
 Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -3082,10 +3082,10 @@ Updates one MongoDB Cloud user in the specified organization. You can update an 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's userId or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by username.
-	@return UpdateOrgUserApiRequest
+	@return UpdateOrganizationUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) UpdateOrgUser(ctx context.Context, orgId string, userId string, orgUserUpdateRequest *OrgUserUpdateRequest) UpdateOrgUserApiRequest {
-	return UpdateOrgUserApiRequest{
+func (a *MongoDBCloudUsersApiService) UpdateOrganizationUser(ctx context.Context, orgId string, userId string, orgUserUpdateRequest *OrgUserUpdateRequest) UpdateOrganizationUserApiRequest {
+	return UpdateOrganizationUserApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		orgId:                orgId,
@@ -3094,10 +3094,10 @@ func (a *MongoDBCloudUsersApiService) UpdateOrgUser(ctx context.Context, orgId s
 	}
 }
 
-// UpdateOrgUserExecute executes the request
+// UpdateOrganizationUserExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) UpdateOrgUserExecute(r UpdateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) UpdateOrganizationUserExecute(r UpdateOrganizationUserApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3105,7 +3105,7 @@ func (a *MongoDBCloudUsersApiService) UpdateOrgUserExecute(r UpdateOrgUserApiReq
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.UpdateOrgUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.UpdateOrganizationUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

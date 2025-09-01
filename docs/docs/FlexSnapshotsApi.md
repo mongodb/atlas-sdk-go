@@ -5,8 +5,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DownloadFlexBackup**](FlexSnapshotsApi.md#DownloadFlexBackup) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download | Download One Flex Cluster Snapshot
-[**GetFlexBackupSnapshot**](FlexSnapshotsApi.md#GetFlexBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot of One Flex Cluster
-[**ListFlexBackupSnapshots**](FlexSnapshotsApi.md#ListFlexBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots of One Flex Cluster
+[**GetFlexBackup**](FlexSnapshotsApi.md#GetFlexBackup) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot of One Flex Cluster
+[**ListFlexBackups**](FlexSnapshotsApi.md#ListFlexBackups) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots of One Flex Cluster
 
 
 
@@ -27,7 +27,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetFlexBackupSnapshot
+## GetFlexBackup
 
-> FlexBackupSnapshot20241113 GetFlexBackupSnapshot(ctx, groupId, name, snapshotId).Execute()
+> FlexBackupSnapshot20241113 GetFlexBackup(ctx, groupId, name, snapshotId).Execute()
 
 Return One Snapshot of One Flex Cluster
 
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -129,17 +129,17 @@ func main() {
     name := "name_example" // string | 
     snapshotId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.FlexSnapshotsApi.GetFlexBackupSnapshot(context.Background(), groupId, name, snapshotId).Execute()
+    resp, r, err := sdk.FlexSnapshotsApi.GetFlexBackup(context.Background(), groupId, name, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsApi.GetFlexBackupSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsApi.GetFlexBackup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetFlexBackupSnapshot`: FlexBackupSnapshot20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsApi.GetFlexBackupSnapshot`: %v (%v)\n", resp, r)
+    // response from `GetFlexBackup`: FlexBackupSnapshot20241113
+    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsApi.GetFlexBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetFlexBackupSnapshotRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetFlexBackupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -181,9 +181,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListFlexBackupSnapshots
+## ListFlexBackups
 
-> PaginatedApiAtlasFlexBackupSnapshot20241113 ListFlexBackupSnapshots(ctx, groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiAtlasFlexBackupSnapshot20241113 ListFlexBackups(ctx, groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Snapshots of One Flex Cluster
 
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312006/admin"
 )
 
 func main() {
@@ -217,17 +217,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.FlexSnapshotsApi.ListFlexBackupSnapshots(context.Background(), groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.FlexSnapshotsApi.ListFlexBackups(context.Background(), groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsApi.ListFlexBackupSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsApi.ListFlexBackups`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListFlexBackupSnapshots`: PaginatedApiAtlasFlexBackupSnapshot20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsApi.ListFlexBackupSnapshots`: %v (%v)\n", resp, r)
+    // response from `ListFlexBackups`: PaginatedApiAtlasFlexBackupSnapshot20241113
+    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsApi.ListFlexBackups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListFlexBackupSnapshotsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListFlexBackupsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
