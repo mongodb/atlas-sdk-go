@@ -4,17 +4,17 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomDatabaseRole**](CustomDatabaseRolesApi.md#CreateCustomDatabaseRole) | **Post** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Create One Custom Role
-[**DeleteCustomDatabaseRole**](CustomDatabaseRolesApi.md#DeleteCustomDatabaseRole) | **Delete** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Remove One Custom Role from One Project
-[**GetCustomDatabaseRole**](CustomDatabaseRolesApi.md#GetCustomDatabaseRole) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Return One Custom Role in One Project
-[**ListCustomDatabaseRoles**](CustomDatabaseRolesApi.md#ListCustomDatabaseRoles) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Return All Custom Roles in One Project
-[**UpdateCustomDatabaseRole**](CustomDatabaseRolesApi.md#UpdateCustomDatabaseRole) | **Patch** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Update One Custom Role in One Project
+[**CreateCustomDbRole**](CustomDatabaseRolesApi.md#CreateCustomDbRole) | **Post** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Create One Custom Role
+[**DeleteCustomDbRole**](CustomDatabaseRolesApi.md#DeleteCustomDbRole) | **Delete** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Remove One Custom Role from One Project
+[**GetCustomDbRole**](CustomDatabaseRolesApi.md#GetCustomDbRole) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Return One Custom Role in One Project
+[**ListCustomDbRoles**](CustomDatabaseRolesApi.md#ListCustomDbRoles) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Return All Custom Roles in One Project
+[**UpdateCustomDbRole**](CustomDatabaseRolesApi.md#UpdateCustomDbRole) | **Patch** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Update One Custom Role in One Project
 
 
 
-## CreateCustomDatabaseRole
+## CreateCustomDbRole
 
-> UserCustomDBRole CreateCustomDatabaseRole(ctx, groupId, userCustomDBRole UserCustomDBRole).Execute()
+> UserCustomDBRole CreateCustomDbRole(ctx, groupId, userCustomDBRole UserCustomDBRole).Execute()
 
 Create One Custom Role
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -45,17 +45,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userCustomDBRole := *openapiclient.NewUserCustomDBRole("RoleName_example") // UserCustomDBRole | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDatabaseRole(context.Background(), groupId, &userCustomDBRole).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDbRole(context.Background(), groupId, &userCustomDBRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.CreateCustomDatabaseRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.CreateCustomDbRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateCustomDatabaseRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.CreateCustomDatabaseRole`: %v (%v)\n", resp, r)
+    // response from `CreateCustomDbRole`: UserCustomDBRole
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.CreateCustomDbRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateCustomDatabaseRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateCustomDbRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -94,9 +94,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteCustomDatabaseRole
+## DeleteCustomDbRole
 
-> DeleteCustomDatabaseRole(ctx, groupId, roleName).Execute()
+> DeleteCustomDbRole(ctx, groupId, roleName).Execute()
 
 Remove One Custom Role from One Project
 
@@ -111,7 +111,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -127,9 +127,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleName := "roleName_example" // string | 
 
-    r, err := sdk.CustomDatabaseRolesApi.DeleteCustomDatabaseRole(context.Background(), groupId, roleName).Execute()
+    r, err := sdk.CustomDatabaseRolesApi.DeleteCustomDbRole(context.Background(), groupId, roleName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.DeleteCustomDatabaseRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.DeleteCustomDbRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteCustomDatabaseRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteCustomDbRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -175,9 +175,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCustomDatabaseRole
+## GetCustomDbRole
 
-> UserCustomDBRole GetCustomDatabaseRole(ctx, groupId, roleName).Execute()
+> UserCustomDBRole GetCustomDbRole(ctx, groupId, roleName).Execute()
 
 Return One Custom Role in One Project
 
@@ -192,7 +192,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -208,17 +208,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleName := "roleName_example" // string | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.GetCustomDatabaseRole(context.Background(), groupId, roleName).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesApi.GetCustomDbRole(context.Background(), groupId, roleName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.GetCustomDatabaseRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.GetCustomDbRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetCustomDatabaseRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.GetCustomDatabaseRole`: %v (%v)\n", resp, r)
+    // response from `GetCustomDbRole`: UserCustomDBRole
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.GetCustomDbRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetCustomDatabaseRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCustomDbRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -258,9 +258,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListCustomDatabaseRoles
+## ListCustomDbRoles
 
-> []UserCustomDBRole ListCustomDatabaseRoles(ctx, groupId).Execute()
+> []UserCustomDBRole ListCustomDbRoles(ctx, groupId).Execute()
 
 Return All Custom Roles in One Project
 
@@ -275,7 +275,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -290,17 +290,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.ListCustomDatabaseRoles(context.Background(), groupId).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesApi.ListCustomDbRoles(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.ListCustomDatabaseRoles`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.ListCustomDbRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListCustomDatabaseRoles`: []UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.ListCustomDatabaseRoles`: %v (%v)\n", resp, r)
+    // response from `ListCustomDbRoles`: []UserCustomDBRole
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.ListCustomDbRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListCustomDatabaseRolesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListCustomDbRolesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -338,9 +338,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateCustomDatabaseRole
+## UpdateCustomDbRole
 
-> UserCustomDBRole UpdateCustomDatabaseRole(ctx, groupId, roleName, updateCustomDBRole UpdateCustomDBRole).Execute()
+> UserCustomDBRole UpdateCustomDbRole(ctx, groupId, roleName, updateCustomDBRole UpdateCustomDBRole).Execute()
 
 Update One Custom Role in One Project
 
@@ -355,7 +355,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -372,17 +372,17 @@ func main() {
     roleName := "roleName_example" // string | 
     updateCustomDBRole := *openapiclient.NewUpdateCustomDBRole() // UpdateCustomDBRole | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.UpdateCustomDatabaseRole(context.Background(), groupId, roleName, &updateCustomDBRole).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesApi.UpdateCustomDbRole(context.Background(), groupId, roleName, &updateCustomDBRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.UpdateCustomDatabaseRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.UpdateCustomDbRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateCustomDatabaseRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.UpdateCustomDatabaseRole`: %v (%v)\n", resp, r)
+    // response from `UpdateCustomDbRole`: UserCustomDBRole
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.UpdateCustomDbRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateCustomDatabaseRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateCustomDbRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

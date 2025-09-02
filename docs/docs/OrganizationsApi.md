@@ -4,27 +4,27 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOrganization**](OrganizationsApi.md#CreateOrganization) | **Post** /api/atlas/v2/orgs | Create One Organization
-[**CreateOrganizationInvitation**](OrganizationsApi.md#CreateOrganizationInvitation) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Invite One MongoDB Cloud User to One Atlas Organization
-[**DeleteOrganization**](OrganizationsApi.md#DeleteOrganization) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
-[**DeleteOrganizationInvitation**](OrganizationsApi.md#DeleteOrganizationInvitation) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Organization Invitation
-[**GetOrganization**](OrganizationsApi.md#GetOrganization) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
-[**GetOrganizationInvitation**](OrganizationsApi.md#GetOrganizationInvitation) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Organization Invitation
-[**GetOrganizationSettings**](OrganizationsApi.md#GetOrganizationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
-[**ListOrganizationInvitations**](OrganizationsApi.md#ListOrganizationInvitations) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Organization Invitations
-[**ListOrganizationProjects**](OrganizationsApi.md#ListOrganizationProjects) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
-[**ListOrganizations**](OrganizationsApi.md#ListOrganizations) | **Get** /api/atlas/v2/orgs | Return All Organizations
-[**UpdateOrganization**](OrganizationsApi.md#UpdateOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
-[**UpdateOrganizationInvitation**](OrganizationsApi.md#UpdateOrganizationInvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
-[**UpdateOrganizationInvitationById**](OrganizationsApi.md#UpdateOrganizationInvitationById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID
-[**UpdateOrganizationRoles**](OrganizationsApi.md#UpdateOrganizationRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
-[**UpdateOrganizationSettings**](OrganizationsApi.md#UpdateOrganizationSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
+[**CreateOrg**](OrganizationsApi.md#CreateOrg) | **Post** /api/atlas/v2/orgs | Create One Organization
+[**CreateOrgInvite**](OrganizationsApi.md#CreateOrgInvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Invite One MongoDB Cloud User to One Atlas Organization
+[**DeleteOrg**](OrganizationsApi.md#DeleteOrg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
+[**DeleteOrgInvite**](OrganizationsApi.md#DeleteOrgInvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Organization Invitation
+[**GetOrg**](OrganizationsApi.md#GetOrg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
+[**GetOrgGroups**](OrganizationsApi.md#GetOrgGroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
+[**GetOrgInvite**](OrganizationsApi.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Organization Invitation
+[**GetOrgSettings**](OrganizationsApi.md#GetOrgSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
+[**ListOrgInvites**](OrganizationsApi.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Organization Invitations
+[**ListOrgs**](OrganizationsApi.md#ListOrgs) | **Get** /api/atlas/v2/orgs | Return All Organizations
+[**UpdateOrg**](OrganizationsApi.md#UpdateOrg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
+[**UpdateOrgInviteById**](OrganizationsApi.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID
+[**UpdateOrgInvites**](OrganizationsApi.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
+[**UpdateOrgSettings**](OrganizationsApi.md#UpdateOrgSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
+[**UpdateOrgUserRoles**](OrganizationsApi.md#UpdateOrgUserRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
 
 
 
-## CreateOrganization
+## CreateOrg
 
-> CreateOrganizationResponse CreateOrganization(ctx, createOrganizationRequest CreateOrganizationRequest).Execute()
+> CreateOrganizationResponse CreateOrg(ctx, createOrganizationRequest CreateOrganizationRequest).Execute()
 
 Create One Organization
 
@@ -39,7 +39,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -54,17 +54,17 @@ func main() {
 
     createOrganizationRequest := *openapiclient.NewCreateOrganizationRequest("Name_example") // CreateOrganizationRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.CreateOrganization(context.Background(), &createOrganizationRequest).Execute()
+    resp, r, err := sdk.OrganizationsApi.CreateOrg(context.Background(), &createOrganizationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganization`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateOrganization`: CreateOrganizationResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrganization`: %v (%v)\n", resp, r)
+    // response from `CreateOrg`: CreateOrganizationResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrg`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -74,7 +74,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateOrgRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -98,9 +98,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateOrganizationInvitation
+## CreateOrgInvite
 
-> OrganizationInvitation CreateOrganizationInvitation(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
+> OrganizationInvitation CreateOrgInvite(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
 
 Invite One MongoDB Cloud User to One Atlas Organization
 
@@ -115,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -131,17 +131,17 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.CreateOrganizationInvitation(context.Background(), orgId, &organizationInvitationRequest).Execute()
+    resp, r, err := sdk.OrganizationsApi.CreateOrgInvite(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganizationInvitation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrgInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateOrganizationInvitation`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrganizationInvitation`: %v (%v)\n", resp, r)
+    // response from `CreateOrgInvite`: OrganizationInvitation
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrgInvite`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateOrganizationInvitationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateOrgInviteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -180,9 +180,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteOrganization
+## DeleteOrg
 
-> DeleteOrganization(ctx, orgId).Execute()
+> DeleteOrg(ctx, orgId).Execute()
 
 Remove One Organization
 
@@ -197,7 +197,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -212,9 +212,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.OrganizationsApi.DeleteOrganization(context.Background(), orgId).Execute()
+    r, err := sdk.OrganizationsApi.DeleteOrg(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganization`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteOrgRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -258,9 +258,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteOrganizationInvitation
+## DeleteOrgInvite
 
-> DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
+> DeleteOrgInvite(ctx, orgId, invitationId).Execute()
 
 Remove One Organization Invitation
 
@@ -275,7 +275,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -291,9 +291,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
 
-    r, err := sdk.OrganizationsApi.DeleteOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
+    r, err := sdk.OrganizationsApi.DeleteOrgInvite(context.Background(), orgId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganizationInvitation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrgInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteOrganizationInvitationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteOrgInviteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -339,9 +339,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOrganization
+## GetOrg
 
-> AtlasOrganization GetOrganization(ctx, orgId).Execute()
+> AtlasOrganization GetOrg(ctx, orgId).Execute()
 
 Return One Organization
 
@@ -356,7 +356,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -371,17 +371,17 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.OrganizationsApi.GetOrganization(context.Background(), orgId).Execute()
+    resp, r, err := sdk.OrganizationsApi.GetOrg(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganization`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetOrganization`: AtlasOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganization`: %v (%v)\n", resp, r)
+    // response from `GetOrg`: AtlasOrganization
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrg`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -395,7 +395,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOrgRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -419,254 +419,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOrganizationInvitation
+## GetOrgGroups
 
-> OrganizationInvitation GetOrganizationInvitation(ctx, orgId, invitationId).Execute()
-
-Return One Organization Invitation
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    invitationId := "invitationId_example" // string | 
-
-    resp, r, err := sdk.OrganizationsApi.GetOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganizationInvitation`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetOrganizationInvitation`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganizationInvitation`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-**invitationId** | **string** | Unique 24-hexadecimal digit string that identifies the invitation. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetOrganizationInvitationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**OrganizationInvitation**](OrganizationInvitation.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetOrganizationSettings
-
-> OrganizationSettings GetOrganizationSettings(ctx, orgId).Execute()
-
-Return Settings for One Organization
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-
-    resp, r, err := sdk.OrganizationsApi.GetOrganizationSettings(context.Background(), orgId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganizationSettings`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetOrganizationSettings`: OrganizationSettings
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganizationSettings`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetOrganizationSettingsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**OrganizationSettings**](OrganizationSettings.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListOrganizationInvitations
-
-> []OrganizationInvitation ListOrganizationInvitations(ctx, orgId).Username(username).Execute()
-
-Return All Organization Invitations
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    username := "username_example" // string |  (optional)
-
-    resp, r, err := sdk.OrganizationsApi.ListOrganizationInvitations(context.Background(), orgId).Username(username).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationInvitations`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListOrganizationInvitations`: []OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationInvitations`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListOrganizationInvitationsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **username** | **string** | Email address of the user account invited to this organization. If you exclude this parameter, this resource returns all pending invitations. | 
-
-### Return type
-
-[**[]OrganizationInvitation**](OrganizationInvitation.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListOrganizationProjects
-
-> PaginatedAtlasGroup ListOrganizationProjects(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
+> PaginatedAtlasGroup GetOrgGroups(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
 
 Return All Projects in One Organization
 
@@ -681,7 +436,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -700,17 +455,17 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     name := "name_example" // string |  (optional)
 
-    resp, r, err := sdk.OrganizationsApi.ListOrganizationProjects(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
+    resp, r, err := sdk.OrganizationsApi.GetOrgGroups(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationProjects`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrgGroups`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListOrganizationProjects`: PaginatedAtlasGroup
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationProjects`: %v (%v)\n", resp, r)
+    // response from `GetOrgGroups`: PaginatedAtlasGroup
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrgGroups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -724,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListOrganizationProjectsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOrgGroupsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -752,9 +507,254 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListOrganizations
+## GetOrgInvite
 
-> PaginatedOrganization ListOrganizations(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
+> OrganizationInvitation GetOrgInvite(ctx, orgId, invitationId).Execute()
+
+Return One Organization Invitation
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    invitationId := "invitationId_example" // string | 
+
+    resp, r, err := sdk.OrganizationsApi.GetOrgInvite(context.Background(), orgId, invitationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrgInvite`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetOrgInvite`: OrganizationInvitation
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrgInvite`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**invitationId** | **string** | Unique 24-hexadecimal digit string that identifies the invitation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgInviteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationInvitation**](OrganizationInvitation.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrgSettings
+
+> OrganizationSettings GetOrgSettings(ctx, orgId).Execute()
+
+Return Settings for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.OrganizationsApi.GetOrgSettings(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrgSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetOrgSettings`: OrganizationSettings
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrgSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OrganizationSettings**](OrganizationSettings.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOrgInvites
+
+> []OrganizationInvitation ListOrgInvites(ctx, orgId).Username(username).Execute()
+
+Return All Organization Invitations
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    username := "username_example" // string |  (optional)
+
+    resp, r, err := sdk.OrganizationsApi.ListOrgInvites(context.Background(), orgId).Username(username).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrgInvites`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListOrgInvites`: []OrganizationInvitation
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrgInvites`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOrgInvitesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **username** | **string** | Email address of the user account invited to this organization. If you exclude this parameter, this resource returns all pending invitations. | 
+
+### Return type
+
+[**[]OrganizationInvitation**](OrganizationInvitation.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOrgs
+
+> PaginatedOrganization ListOrgs(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
 
 Return All Organizations
 
@@ -769,7 +769,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -787,17 +787,17 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     name := "name_example" // string |  (optional)
 
-    resp, r, err := sdk.OrganizationsApi.ListOrganizations(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
+    resp, r, err := sdk.OrganizationsApi.ListOrgs(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizations`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrgs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListOrganizations`: PaginatedOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizations`: %v (%v)\n", resp, r)
+    // response from `ListOrgs`: PaginatedOrganization
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrgs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -807,7 +807,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListOrganizationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListOrgsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -834,9 +834,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateOrganization
+## UpdateOrg
 
-> AtlasOrganization UpdateOrganization(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
+> AtlasOrganization UpdateOrg(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
 
 Update One Organization
 
@@ -851,7 +851,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -867,17 +867,17 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     atlasOrganization := *openapiclient.NewAtlasOrganization("Name_example") // AtlasOrganization | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrganization(context.Background(), orgId, &atlasOrganization).Execute()
+    resp, r, err := sdk.OrganizationsApi.UpdateOrg(context.Background(), orgId, &atlasOrganization).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganization`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateOrganization`: AtlasOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganization`: %v (%v)\n", resp, r)
+    // response from `UpdateOrg`: AtlasOrganization
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrg`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -891,7 +891,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOrgRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -916,91 +916,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateOrganizationInvitation
+## UpdateOrgInviteById
 
-> OrganizationInvitation UpdateOrganizationInvitation(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
-
-Update One Organization Invitation
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
-
-    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationInvitation(context.Background(), orgId, &organizationInvitationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitation`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `UpdateOrganizationInvitation`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationInvitation`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateOrganizationInvitationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **organizationInvitationRequest** | [**OrganizationInvitationRequest**](OrganizationInvitationRequest.md) | Updates the details of one pending invitation to the specified organization. | 
-
-### Return type
-
-[**OrganizationInvitation**](OrganizationInvitation.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateOrganizationInvitationById
-
-> OrganizationInvitation UpdateOrganizationInvitationById(ctx, orgId, invitationId, organizationInvitationUpdateRequest OrganizationInvitationUpdateRequest).Execute()
+> OrganizationInvitation UpdateOrgInviteById(ctx, orgId, invitationId, organizationInvitationUpdateRequest OrganizationInvitationUpdateRequest).Execute()
 
 Update One Organization Invitation by Invitation ID
 
@@ -1015,7 +933,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -1032,17 +950,17 @@ func main() {
     invitationId := "invitationId_example" // string | 
     organizationInvitationUpdateRequest := *openapiclient.NewOrganizationInvitationUpdateRequest() // OrganizationInvitationUpdateRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationInvitationById(context.Background(), orgId, invitationId, &organizationInvitationUpdateRequest).Execute()
+    resp, r, err := sdk.OrganizationsApi.UpdateOrgInviteById(context.Background(), orgId, invitationId, &organizationInvitationUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitationById`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgInviteById`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateOrganizationInvitationById`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationInvitationById`: %v (%v)\n", resp, r)
+    // response from `UpdateOrgInviteById`: OrganizationInvitation
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgInviteById`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1057,7 +975,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateOrganizationInvitationByIdRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOrgInviteByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1083,9 +1001,173 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateOrganizationRoles
+## UpdateOrgInvites
 
-> UpdateOrgRolesForUser UpdateOrganizationRoles(ctx, orgId, userId, updateOrgRolesForUser UpdateOrgRolesForUser).Execute()
+> OrganizationInvitation UpdateOrgInvites(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
+
+Update One Organization Invitation
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
+
+    resp, r, err := sdk.OrganizationsApi.UpdateOrgInvites(context.Background(), orgId, &organizationInvitationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgInvites`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateOrgInvites`: OrganizationInvitation
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgInvites`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrgInvitesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **organizationInvitationRequest** | [**OrganizationInvitationRequest**](OrganizationInvitationRequest.md) | Updates the details of one pending invitation to the specified organization. | 
+
+### Return type
+
+[**OrganizationInvitation**](OrganizationInvitation.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrgSettings
+
+> OrganizationSettings UpdateOrgSettings(ctx, orgId, organizationSettings OrganizationSettings).Execute()
+
+Update Settings for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    organizationSettings := *openapiclient.NewOrganizationSettings() // OrganizationSettings | 
+
+    resp, r, err := sdk.OrganizationsApi.UpdateOrgSettings(context.Background(), orgId, &organizationSettings).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateOrgSettings`: OrganizationSettings
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrgSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **organizationSettings** | [**OrganizationSettings**](OrganizationSettings.md) | Details to update on the specified organization&#39;s settings. | 
+
+### Return type
+
+[**OrganizationSettings**](OrganizationSettings.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrgUserRoles
+
+> UpdateOrgRolesForUser UpdateOrgUserRoles(ctx, orgId, userId, updateOrgRolesForUser UpdateOrgRolesForUser).Execute()
 
 Update Organization Roles for One MongoDB Cloud User
 
@@ -1100,7 +1182,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -1117,17 +1199,17 @@ func main() {
     userId := "userId_example" // string | 
     updateOrgRolesForUser := *openapiclient.NewUpdateOrgRolesForUser() // UpdateOrgRolesForUser | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationRoles(context.Background(), orgId, userId, &updateOrgRolesForUser).Execute()
+    resp, r, err := sdk.OrganizationsApi.UpdateOrgUserRoles(context.Background(), orgId, userId, &updateOrgRolesForUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationRoles`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgUserRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateOrganizationRoles`: UpdateOrgRolesForUser
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationRoles`: %v (%v)\n", resp, r)
+    // response from `UpdateOrgUserRoles`: UpdateOrgRolesForUser
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgUserRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1142,7 +1224,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateOrganizationRolesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOrgUserRolesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1154,88 +1236,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateOrgRolesForUser**](UpdateOrgRolesForUser.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateOrganizationSettings
-
-> OrganizationSettings UpdateOrganizationSettings(ctx, orgId, organizationSettings OrganizationSettings).Execute()
-
-Update Settings for One Organization
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    organizationSettings := *openapiclient.NewOrganizationSettings() // OrganizationSettings | 
-
-    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationSettings(context.Background(), orgId, &organizationSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationSettings`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `UpdateOrganizationSettings`: OrganizationSettings
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationSettings`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateOrganizationSettingsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **organizationSettings** | [**OrganizationSettings**](OrganizationSettings.md) | Details to update on the specified organization&#39;s settings. | 
-
-### Return type
-
-[**OrganizationSettings**](OrganizationSettings.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

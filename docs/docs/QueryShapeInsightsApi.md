@@ -4,14 +4,14 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetGroupClusterQueryShapeInsightDetails**](QueryShapeInsightsApi.md#GetGroupClusterQueryShapeInsightDetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details
-[**GetGroupClusterQueryShapeInsightSummaries**](QueryShapeInsightsApi.md#GetGroupClusterQueryShapeInsightSummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries
+[**GetQueryShapeDetails**](QueryShapeInsightsApi.md#GetQueryShapeDetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details
+[**ListQueryShapeSummaries**](QueryShapeInsightsApi.md#ListQueryShapeSummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries
 
 
 
-## GetGroupClusterQueryShapeInsightDetails
+## GetQueryShapeDetails
 
-> QueryStatsDetailsResponse GetGroupClusterQueryShapeInsightDetails(ctx, groupId, clusterName, queryShapeHash).Since(since).Until(until).ProcessIds(processIds).Execute()
+> QueryStatsDetailsResponse GetQueryShapeDetails(ctx, groupId, clusterName, queryShapeHash).Since(since).Until(until).ProcessIds(processIds).Execute()
 
 Return Query Shape Details
 
@@ -26,7 +26,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -46,17 +46,17 @@ func main() {
     until := int64(789) // int64 |  (optional)
     processIds := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.QueryShapeInsightsApi.GetGroupClusterQueryShapeInsightDetails(context.Background(), groupId, clusterName, queryShapeHash).Since(since).Until(until).ProcessIds(processIds).Execute()
+    resp, r, err := sdk.QueryShapeInsightsApi.GetQueryShapeDetails(context.Background(), groupId, clusterName, queryShapeHash).Since(since).Until(until).ProcessIds(processIds).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.GetGroupClusterQueryShapeInsightDetails`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.GetQueryShapeDetails`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetGroupClusterQueryShapeInsightDetails`: QueryStatsDetailsResponse
-    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.GetGroupClusterQueryShapeInsightDetails`: %v (%v)\n", resp, r)
+    // response from `GetQueryShapeDetails`: QueryStatsDetailsResponse
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.GetQueryShapeDetails`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetGroupClusterQueryShapeInsightDetailsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetQueryShapeDetailsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -101,9 +101,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetGroupClusterQueryShapeInsightSummaries
+## ListQueryShapeSummaries
 
-> QueryStatsSummaryListResponse GetGroupClusterQueryShapeInsightSummaries(ctx, groupId, clusterName).Since(since).Until(until).ProcessIds(processIds).Namespaces(namespaces).Commands(commands).NSummaries(nSummaries).Series(series).QueryShapeHashes(queryShapeHashes).Execute()
+> QueryStatsSummaryListResponse ListQueryShapeSummaries(ctx, groupId, clusterName).Since(since).Until(until).ProcessIds(processIds).Namespaces(namespaces).Commands(commands).NSummaries(nSummaries).Series(series).QueryShapeHashes(queryShapeHashes).Execute()
 
 Return Query Statistic Summaries
 
@@ -118,7 +118,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -142,17 +142,17 @@ func main() {
     series := []string{"Inner_example"} // []string |  (optional)
     queryShapeHashes := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.QueryShapeInsightsApi.GetGroupClusterQueryShapeInsightSummaries(context.Background(), groupId, clusterName).Since(since).Until(until).ProcessIds(processIds).Namespaces(namespaces).Commands(commands).NSummaries(nSummaries).Series(series).QueryShapeHashes(queryShapeHashes).Execute()
+    resp, r, err := sdk.QueryShapeInsightsApi.ListQueryShapeSummaries(context.Background(), groupId, clusterName).Since(since).Until(until).ProcessIds(processIds).Namespaces(namespaces).Commands(commands).NSummaries(nSummaries).Series(series).QueryShapeHashes(queryShapeHashes).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.GetGroupClusterQueryShapeInsightSummaries`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.ListQueryShapeSummaries`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetGroupClusterQueryShapeInsightSummaries`: QueryStatsSummaryListResponse
-    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.GetGroupClusterQueryShapeInsightSummaries`: %v (%v)\n", resp, r)
+    // response from `ListQueryShapeSummaries`: QueryStatsSummaryListResponse
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.ListQueryShapeSummaries`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetGroupClusterQueryShapeInsightSummariesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListQueryShapeSummariesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

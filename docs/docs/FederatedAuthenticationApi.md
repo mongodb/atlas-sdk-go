@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateIdentityProvider**](FederatedAuthenticationApi.md#CreateIdentityProvider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create One Identity Provider
 [**CreateRoleMapping**](FederatedAuthenticationApi.md#CreateRoleMapping) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Create One Role Mapping in One Organization Configuration
-[**DeleteFederationApp**](FederatedAuthenticationApi.md#DeleteFederationApp) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete One Federation Settings Instance
+[**DeleteFederationSetting**](FederatedAuthenticationApi.md#DeleteFederationSetting) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete One Federation Settings Instance
 [**DeleteIdentityProvider**](FederatedAuthenticationApi.md#DeleteIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Delete One Identity Provider
 [**DeleteRoleMapping**](FederatedAuthenticationApi.md#DeleteRoleMapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization
 [**GetConnectedOrgConfig**](FederatedAuthenticationApi.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Organization Configuration from One Federation
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**ListIdentityProviders**](FederatedAuthenticationApi.md#ListIdentityProviders) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Return All Identity Providers in One Federation
 [**ListRoleMappings**](FederatedAuthenticationApi.md#ListRoleMappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization
 [**RemoveConnectedOrgConfig**](FederatedAuthenticationApi.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Organization Configuration from One Federation
-[**RevokeJwksFromIdentityProvider**](FederatedAuthenticationApi.md#RevokeJwksFromIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke JWKS from One OIDC Identity Provider
+[**RevokeIdentityProviderJwks**](FederatedAuthenticationApi.md#RevokeIdentityProviderJwks) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke JWKS from One OIDC Identity Provider
 [**UpdateConnectedOrgConfig**](FederatedAuthenticationApi.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Organization Configuration in One Federation
 [**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update One Identity Provider
 [**UpdateRoleMapping**](FederatedAuthenticationApi.md#UpdateRoleMapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization
@@ -42,7 +42,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -124,7 +124,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -192,9 +192,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteFederationApp
+## DeleteFederationSetting
 
-> DeleteFederationApp(ctx, federationSettingsId).Execute()
+> DeleteFederationSetting(ctx, federationSettingsId).Execute()
 
 Delete One Federation Settings Instance
 
@@ -209,7 +209,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -224,9 +224,9 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
 
-    r, err := sdk.FederatedAuthenticationApi.DeleteFederationApp(context.Background(), federationSettingsId).Execute()
+    r, err := sdk.FederatedAuthenticationApi.DeleteFederationSetting(context.Background(), federationSettingsId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteFederationApp`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteFederationSetting`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteFederationAppRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteFederationSettingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -287,7 +287,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -368,7 +368,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -452,7 +452,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -535,7 +535,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -615,7 +615,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -698,7 +698,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -781,7 +781,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -867,7 +867,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -951,7 +951,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -1039,7 +1039,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -1122,7 +1122,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -1186,9 +1186,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RevokeJwksFromIdentityProvider
+## RevokeIdentityProviderJwks
 
-> RevokeJwksFromIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
+> RevokeIdentityProviderJwks(ctx, federationSettingsId, identityProviderId).Execute()
 
 Revoke JWKS from One OIDC Identity Provider
 
@@ -1203,7 +1203,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -1219,9 +1219,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.FederatedAuthenticationApi.RevokeJwksFromIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
+    r, err := sdk.FederatedAuthenticationApi.RevokeIdentityProviderJwks(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RevokeJwksFromIdentityProvider`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RevokeIdentityProviderJwks`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1242,7 +1242,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRevokeJwksFromIdentityProviderRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRevokeIdentityProviderJwksRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1284,7 +1284,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -1369,7 +1369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -1454,7 +1454,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {

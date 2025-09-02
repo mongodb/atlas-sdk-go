@@ -4,19 +4,19 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCostExplorerQueryProcess**](InvoicesApi.md#CreateCostExplorerQueryProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
-[**DownloadInvoiceCsv**](InvoicesApi.md#DownloadInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
-[**GetCostExplorerQueryProcess**](InvoicesApi.md#GetCostExplorerQueryProcess) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+[**CreateCostExplorerProcess**](InvoicesApi.md#CreateCostExplorerProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
+[**GetCostExplorerUsage**](InvoicesApi.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet.
 [**GetInvoice**](InvoicesApi.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
+[**GetInvoiceCsv**](InvoicesApi.md#GetInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
+[**ListInvoicePending**](InvoicesApi.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
 [**ListInvoices**](InvoicesApi.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
-[**ListPendingInvoices**](InvoicesApi.md#ListPendingInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
-[**QueryLineItemsFromSingleInvoice**](InvoicesApi.md#QueryLineItemsFromSingleInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
+[**SearchInvoiceLineItems**](InvoicesApi.md#SearchInvoiceLineItems) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
 
 
 
-## CreateCostExplorerQueryProcess
+## CreateCostExplorerProcess
 
-> CostExplorerFilterResponse CreateCostExplorerQueryProcess(ctx, orgId, costExplorerFilterRequestBody CostExplorerFilterRequestBody).Execute()
+> CostExplorerFilterResponse CreateCostExplorerProcess(ctx, orgId, costExplorerFilterRequestBody CostExplorerFilterRequestBody).Execute()
 
 Create One Cost Explorer Query Process
 
@@ -31,7 +31,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -47,17 +47,17 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     costExplorerFilterRequestBody := *openapiclient.NewCostExplorerFilterRequestBody(time.Now(), time.Now()) // CostExplorerFilterRequestBody | 
 
-    resp, r, err := sdk.InvoicesApi.CreateCostExplorerQueryProcess(context.Background(), orgId, &costExplorerFilterRequestBody).Execute()
+    resp, r, err := sdk.InvoicesApi.CreateCostExplorerProcess(context.Background(), orgId, &costExplorerFilterRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerQueryProcess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerProcess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateCostExplorerQueryProcess`: CostExplorerFilterResponse
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerQueryProcess`: %v (%v)\n", resp, r)
+    // response from `CreateCostExplorerProcess`: CostExplorerFilterResponse
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerProcess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateCostExplorerQueryProcessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateCostExplorerProcessRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -96,92 +96,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DownloadInvoiceCsv
+## GetCostExplorerUsage
 
-> string DownloadInvoiceCsv(ctx, orgId, invoiceId).Execute()
-
-Return One Invoice as CSV for One Organization
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    invoiceId := "invoiceId_example" // string | 
-
-    resp, r, err := sdk.InvoicesApi.DownloadInvoiceCsv(context.Background(), orgId, invoiceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.DownloadInvoiceCsv`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `DownloadInvoiceCsv`: string
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.DownloadInvoiceCsv`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-**invoiceId** | **string** | Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDownloadInvoiceCsvRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-**string**
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+csv
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetCostExplorerQueryProcess
-
-> any GetCostExplorerQueryProcess(ctx, orgId, token).Execute()
+> any GetCostExplorerUsage(ctx, orgId, token).Execute()
 
 Return results from a given Cost Explorer query, or notify that the results are not ready yet.
 
@@ -196,7 +113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -212,17 +129,17 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     token := "4ABBE973862346D40F3AE859D4BE96E0F895764EB14EAB039E7B82F9D638C05C" // string | 
 
-    resp, r, err := sdk.InvoicesApi.GetCostExplorerQueryProcess(context.Background(), orgId, token).Execute()
+    resp, r, err := sdk.InvoicesApi.GetCostExplorerUsage(context.Background(), orgId, token).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetCostExplorerQueryProcess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetCostExplorerUsage`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetCostExplorerQueryProcess`: any
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetCostExplorerQueryProcess`: %v (%v)\n", resp, r)
+    // response from `GetCostExplorerUsage`: any
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetCostExplorerUsage`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -237,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetCostExplorerQueryProcessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCostExplorerUsageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -279,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -345,6 +262,169 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetInvoiceCsv
+
+> string GetInvoiceCsv(ctx, orgId, invoiceId).Execute()
+
+Return One Invoice as CSV for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    invoiceId := "invoiceId_example" // string | 
+
+    resp, r, err := sdk.InvoicesApi.GetInvoiceCsv(context.Background(), orgId, invoiceId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetInvoiceCsv`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetInvoiceCsv`: string
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetInvoiceCsv`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**invoiceId** | **string** | Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInvoiceCsvRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**string**
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+csv
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListInvoicePending
+
+> PaginatedApiInvoice ListInvoicePending(ctx, orgId).Execute()
+
+Return All Pending Invoices for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.InvoicesApi.ListInvoicePending(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListInvoicePending`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListInvoicePending`: PaginatedApiInvoice
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListInvoicePending`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListInvoicePendingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**PaginatedApiInvoice**](PaginatedApiInvoice.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListInvoices
 
 > PaginatedApiInvoiceMetadata ListInvoices(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ViewLinkedInvoices(viewLinkedInvoices).StatusNames(statusNames).FromDate(fromDate).ToDate(toDate).SortBy(sortBy).OrderBy(orderBy).Execute()
@@ -362,7 +442,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -443,89 +523,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListPendingInvoices
+## SearchInvoiceLineItems
 
-> PaginatedApiInvoice ListPendingInvoices(ctx, orgId).Execute()
-
-Return All Pending Invoices for One Organization
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-
-    resp, r, err := sdk.InvoicesApi.ListPendingInvoices(context.Background(), orgId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListPendingInvoices`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListPendingInvoices`: PaginatedApiInvoice
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListPendingInvoices`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListPendingInvoicesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**PaginatedApiInvoice**](PaginatedApiInvoice.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## QueryLineItemsFromSingleInvoice
-
-> PaginatedPublicApiUsageDetailsLineItem QueryLineItemsFromSingleInvoice(ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest ApiPublicUsageDetailsQueryRequest).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedPublicApiUsageDetailsLineItem SearchInvoiceLineItems(ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest ApiPublicUsageDetailsQueryRequest).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Line Items for One Invoice by Invoice ID
 
@@ -540,7 +540,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -559,17 +559,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.InvoicesApi.QueryLineItemsFromSingleInvoice(context.Background(), orgId, invoiceId, &apiPublicUsageDetailsQueryRequest).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.InvoicesApi.SearchInvoiceLineItems(context.Background(), orgId, invoiceId, &apiPublicUsageDetailsQueryRequest).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.QueryLineItemsFromSingleInvoice`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.SearchInvoiceLineItems`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `QueryLineItemsFromSingleInvoice`: PaginatedPublicApiUsageDetailsLineItem
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.QueryLineItemsFromSingleInvoice`: %v (%v)\n", resp, r)
+    // response from `SearchInvoiceLineItems`: PaginatedPublicApiUsageDetailsLineItem
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.SearchInvoiceLineItems`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -584,7 +584,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiQueryLineItemsFromSingleInvoiceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSearchInvoiceLineItemsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

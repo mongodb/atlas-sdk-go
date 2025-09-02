@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312007/admin"
 
 	http "net/http"
 
@@ -25,68 +25,68 @@ func (_m *PushBasedLogExportApi) EXPECT() *PushBasedLogExportApi_Expecter {
 	return &PushBasedLogExportApi_Expecter{mock: &_m.Mock}
 }
 
-// CreatePushBasedLogConfiguration provides a mock function with given fields: ctx, groupId, createPushBasedLogExportProjectRequest
-func (_m *PushBasedLogExportApi) CreatePushBasedLogConfiguration(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest) admin.CreatePushBasedLogConfigurationApiRequest {
+// CreateLogExport provides a mock function with given fields: ctx, groupId, createPushBasedLogExportProjectRequest
+func (_m *PushBasedLogExportApi) CreateLogExport(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest) admin.CreateLogExportApiRequest {
 	ret := _m.Called(ctx, groupId, createPushBasedLogExportProjectRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreatePushBasedLogConfiguration")
+		panic("no return value specified for CreateLogExport")
 	}
 
-	var r0 admin.CreatePushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CreatePushBasedLogExportProjectRequest) admin.CreatePushBasedLogConfigurationApiRequest); ok {
+	var r0 admin.CreateLogExportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CreatePushBasedLogExportProjectRequest) admin.CreateLogExportApiRequest); ok {
 		r0 = rf(ctx, groupId, createPushBasedLogExportProjectRequest)
 	} else {
-		r0 = ret.Get(0).(admin.CreatePushBasedLogConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.CreateLogExportApiRequest)
 	}
 
 	return r0
 }
 
-// PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePushBasedLogConfiguration'
-type PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call struct {
+// PushBasedLogExportApi_CreateLogExport_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateLogExport'
+type PushBasedLogExportApi_CreateLogExport_Call struct {
 	*mock.Call
 }
 
-// CreatePushBasedLogConfiguration is a helper method to define mock.On call
+// CreateLogExport is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest
-func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfiguration(ctx any, groupId any, createPushBasedLogExportProjectRequest any) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
-	return &PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call{Call: _e.mock.On("CreatePushBasedLogConfiguration", ctx, groupId, createPushBasedLogExportProjectRequest)}
+func (_e *PushBasedLogExportApi_Expecter) CreateLogExport(ctx any, groupId any, createPushBasedLogExportProjectRequest any) *PushBasedLogExportApi_CreateLogExport_Call {
+	return &PushBasedLogExportApi_CreateLogExport_Call{Call: _e.mock.On("CreateLogExport", ctx, groupId, createPushBasedLogExportProjectRequest)}
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call) Run(run func(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest)) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_CreateLogExport_Call) Run(run func(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest)) *PushBasedLogExportApi_CreateLogExport_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CreatePushBasedLogExportProjectRequest))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call) Return(_a0 admin.CreatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_CreateLogExport_Call) Return(_a0 admin.CreateLogExportApiRequest) *PushBasedLogExportApi_CreateLogExport_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call) RunAndReturn(run func(context.Context, string, *admin.CreatePushBasedLogExportProjectRequest) admin.CreatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_CreateLogExport_Call) RunAndReturn(run func(context.Context, string, *admin.CreatePushBasedLogExportProjectRequest) admin.CreateLogExportApiRequest) *PushBasedLogExportApi_CreateLogExport_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreatePushBasedLogConfigurationExecute provides a mock function with given fields: r
-func (_m *PushBasedLogExportApi) CreatePushBasedLogConfigurationExecute(r admin.CreatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
+// CreateLogExportExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) CreateLogExportExecute(r admin.CreateLogExportApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreatePushBasedLogConfigurationExecute")
+		panic("no return value specified for CreateLogExportExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.CreatePushBasedLogConfigurationApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateLogExportApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreatePushBasedLogConfigurationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateLogExportApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -94,7 +94,7 @@ func (_m *PushBasedLogExportApi) CreatePushBasedLogConfigurationExecute(r admin.
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreatePushBasedLogConfigurationApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateLogExportApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -103,142 +103,142 @@ func (_m *PushBasedLogExportApi) CreatePushBasedLogConfigurationExecute(r admin.
 	return r0, r1
 }
 
-// PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePushBasedLogConfigurationExecute'
-type PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call struct {
+// PushBasedLogExportApi_CreateLogExportExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateLogExportExecute'
+type PushBasedLogExportApi_CreateLogExportExecute_Call struct {
 	*mock.Call
 }
 
-// CreatePushBasedLogConfigurationExecute is a helper method to define mock.On call
-//   - r admin.CreatePushBasedLogConfigurationApiRequest
-func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfigurationExecute(r any) *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call {
-	return &PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call{Call: _e.mock.On("CreatePushBasedLogConfigurationExecute", r)}
+// CreateLogExportExecute is a helper method to define mock.On call
+//   - r admin.CreateLogExportApiRequest
+func (_e *PushBasedLogExportApi_Expecter) CreateLogExportExecute(r any) *PushBasedLogExportApi_CreateLogExportExecute_Call {
+	return &PushBasedLogExportApi_CreateLogExportExecute_Call{Call: _e.mock.On("CreateLogExportExecute", r)}
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call) Run(run func(r admin.CreatePushBasedLogConfigurationApiRequest)) *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_CreateLogExportExecute_Call) Run(run func(r admin.CreateLogExportApiRequest)) *PushBasedLogExportApi_CreateLogExportExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreatePushBasedLogConfigurationApiRequest))
+		run(args[0].(admin.CreateLogExportApiRequest))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call) Return(_a0 *http.Response, _a1 error) *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_CreateLogExportExecute_Call) Return(_a0 *http.Response, _a1 error) *PushBasedLogExportApi_CreateLogExportExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call) RunAndReturn(run func(admin.CreatePushBasedLogConfigurationApiRequest) (*http.Response, error)) *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_CreateLogExportExecute_Call) RunAndReturn(run func(admin.CreateLogExportApiRequest) (*http.Response, error)) *PushBasedLogExportApi_CreateLogExportExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreatePushBasedLogConfigurationWithParams provides a mock function with given fields: ctx, args
-func (_m *PushBasedLogExportApi) CreatePushBasedLogConfigurationWithParams(ctx context.Context, args *admin.CreatePushBasedLogConfigurationApiParams) admin.CreatePushBasedLogConfigurationApiRequest {
+// CreateLogExportWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) CreateLogExportWithParams(ctx context.Context, args *admin.CreateLogExportApiParams) admin.CreateLogExportApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreatePushBasedLogConfigurationWithParams")
+		panic("no return value specified for CreateLogExportWithParams")
 	}
 
-	var r0 admin.CreatePushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreatePushBasedLogConfigurationApiParams) admin.CreatePushBasedLogConfigurationApiRequest); ok {
+	var r0 admin.CreateLogExportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateLogExportApiParams) admin.CreateLogExportApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreatePushBasedLogConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.CreateLogExportApiRequest)
 	}
 
 	return r0
 }
 
-// PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePushBasedLogConfigurationWithParams'
-type PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call struct {
+// PushBasedLogExportApi_CreateLogExportWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateLogExportWithParams'
+type PushBasedLogExportApi_CreateLogExportWithParams_Call struct {
 	*mock.Call
 }
 
-// CreatePushBasedLogConfigurationWithParams is a helper method to define mock.On call
+// CreateLogExportWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreatePushBasedLogConfigurationApiParams
-func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfigurationWithParams(ctx any, args any) *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call {
-	return &PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call{Call: _e.mock.On("CreatePushBasedLogConfigurationWithParams", ctx, args)}
+//   - args *admin.CreateLogExportApiParams
+func (_e *PushBasedLogExportApi_Expecter) CreateLogExportWithParams(ctx any, args any) *PushBasedLogExportApi_CreateLogExportWithParams_Call {
+	return &PushBasedLogExportApi_CreateLogExportWithParams_Call{Call: _e.mock.On("CreateLogExportWithParams", ctx, args)}
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.CreatePushBasedLogConfigurationApiParams)) *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_CreateLogExportWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateLogExportApiParams)) *PushBasedLogExportApi_CreateLogExportWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreatePushBasedLogConfigurationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateLogExportApiParams))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call) Return(_a0 admin.CreatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_CreateLogExportWithParams_Call) Return(_a0 admin.CreateLogExportApiRequest) *PushBasedLogExportApi_CreateLogExportWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreatePushBasedLogConfigurationApiParams) admin.CreatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_CreateLogExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateLogExportApiParams) admin.CreateLogExportApiRequest) *PushBasedLogExportApi_CreateLogExportWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePushBasedLogConfiguration provides a mock function with given fields: ctx, groupId
-func (_m *PushBasedLogExportApi) DeletePushBasedLogConfiguration(ctx context.Context, groupId string) admin.DeletePushBasedLogConfigurationApiRequest {
+// DeleteLogExport provides a mock function with given fields: ctx, groupId
+func (_m *PushBasedLogExportApi) DeleteLogExport(ctx context.Context, groupId string) admin.DeleteLogExportApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePushBasedLogConfiguration")
+		panic("no return value specified for DeleteLogExport")
 	}
 
-	var r0 admin.DeletePushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeletePushBasedLogConfigurationApiRequest); ok {
+	var r0 admin.DeleteLogExportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteLogExportApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.DeletePushBasedLogConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.DeleteLogExportApiRequest)
 	}
 
 	return r0
 }
 
-// PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePushBasedLogConfiguration'
-type PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call struct {
+// PushBasedLogExportApi_DeleteLogExport_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLogExport'
+type PushBasedLogExportApi_DeleteLogExport_Call struct {
 	*mock.Call
 }
 
-// DeletePushBasedLogConfiguration is a helper method to define mock.On call
+// DeleteLogExport is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfiguration(ctx any, groupId any) *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call {
-	return &PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call{Call: _e.mock.On("DeletePushBasedLogConfiguration", ctx, groupId)}
+func (_e *PushBasedLogExportApi_Expecter) DeleteLogExport(ctx any, groupId any) *PushBasedLogExportApi_DeleteLogExport_Call {
+	return &PushBasedLogExportApi_DeleteLogExport_Call{Call: _e.mock.On("DeleteLogExport", ctx, groupId)}
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call) Run(run func(ctx context.Context, groupId string)) *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExport_Call) Run(run func(ctx context.Context, groupId string)) *PushBasedLogExportApi_DeleteLogExport_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call) Return(_a0 admin.DeletePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExport_Call) Return(_a0 admin.DeleteLogExportApiRequest) *PushBasedLogExportApi_DeleteLogExport_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call) RunAndReturn(run func(context.Context, string) admin.DeletePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExport_Call) RunAndReturn(run func(context.Context, string) admin.DeleteLogExportApiRequest) *PushBasedLogExportApi_DeleteLogExport_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePushBasedLogConfigurationExecute provides a mock function with given fields: r
-func (_m *PushBasedLogExportApi) DeletePushBasedLogConfigurationExecute(r admin.DeletePushBasedLogConfigurationApiRequest) (*http.Response, error) {
+// DeleteLogExportExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) DeleteLogExportExecute(r admin.DeleteLogExportApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePushBasedLogConfigurationExecute")
+		panic("no return value specified for DeleteLogExportExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePushBasedLogConfigurationApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLogExportApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePushBasedLogConfigurationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLogExportApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -246,7 +246,7 @@ func (_m *PushBasedLogExportApi) DeletePushBasedLogConfigurationExecute(r admin.
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeletePushBasedLogConfigurationApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteLogExportApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -255,143 +255,143 @@ func (_m *PushBasedLogExportApi) DeletePushBasedLogConfigurationExecute(r admin.
 	return r0, r1
 }
 
-// PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePushBasedLogConfigurationExecute'
-type PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call struct {
+// PushBasedLogExportApi_DeleteLogExportExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLogExportExecute'
+type PushBasedLogExportApi_DeleteLogExportExecute_Call struct {
 	*mock.Call
 }
 
-// DeletePushBasedLogConfigurationExecute is a helper method to define mock.On call
-//   - r admin.DeletePushBasedLogConfigurationApiRequest
-func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfigurationExecute(r any) *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call {
-	return &PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call{Call: _e.mock.On("DeletePushBasedLogConfigurationExecute", r)}
+// DeleteLogExportExecute is a helper method to define mock.On call
+//   - r admin.DeleteLogExportApiRequest
+func (_e *PushBasedLogExportApi_Expecter) DeleteLogExportExecute(r any) *PushBasedLogExportApi_DeleteLogExportExecute_Call {
+	return &PushBasedLogExportApi_DeleteLogExportExecute_Call{Call: _e.mock.On("DeleteLogExportExecute", r)}
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call) Run(run func(r admin.DeletePushBasedLogConfigurationApiRequest)) *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExportExecute_Call) Run(run func(r admin.DeleteLogExportApiRequest)) *PushBasedLogExportApi_DeleteLogExportExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeletePushBasedLogConfigurationApiRequest))
+		run(args[0].(admin.DeleteLogExportApiRequest))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call) Return(_a0 *http.Response, _a1 error) *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExportExecute_Call) Return(_a0 *http.Response, _a1 error) *PushBasedLogExportApi_DeleteLogExportExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call) RunAndReturn(run func(admin.DeletePushBasedLogConfigurationApiRequest) (*http.Response, error)) *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExportExecute_Call) RunAndReturn(run func(admin.DeleteLogExportApiRequest) (*http.Response, error)) *PushBasedLogExportApi_DeleteLogExportExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeletePushBasedLogConfigurationWithParams provides a mock function with given fields: ctx, args
-func (_m *PushBasedLogExportApi) DeletePushBasedLogConfigurationWithParams(ctx context.Context, args *admin.DeletePushBasedLogConfigurationApiParams) admin.DeletePushBasedLogConfigurationApiRequest {
+// DeleteLogExportWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) DeleteLogExportWithParams(ctx context.Context, args *admin.DeleteLogExportApiParams) admin.DeleteLogExportApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeletePushBasedLogConfigurationWithParams")
+		panic("no return value specified for DeleteLogExportWithParams")
 	}
 
-	var r0 admin.DeletePushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeletePushBasedLogConfigurationApiParams) admin.DeletePushBasedLogConfigurationApiRequest); ok {
+	var r0 admin.DeleteLogExportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteLogExportApiParams) admin.DeleteLogExportApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeletePushBasedLogConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.DeleteLogExportApiRequest)
 	}
 
 	return r0
 }
 
-// PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePushBasedLogConfigurationWithParams'
-type PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call struct {
+// PushBasedLogExportApi_DeleteLogExportWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteLogExportWithParams'
+type PushBasedLogExportApi_DeleteLogExportWithParams_Call struct {
 	*mock.Call
 }
 
-// DeletePushBasedLogConfigurationWithParams is a helper method to define mock.On call
+// DeleteLogExportWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeletePushBasedLogConfigurationApiParams
-func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfigurationWithParams(ctx any, args any) *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call {
-	return &PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call{Call: _e.mock.On("DeletePushBasedLogConfigurationWithParams", ctx, args)}
+//   - args *admin.DeleteLogExportApiParams
+func (_e *PushBasedLogExportApi_Expecter) DeleteLogExportWithParams(ctx any, args any) *PushBasedLogExportApi_DeleteLogExportWithParams_Call {
+	return &PushBasedLogExportApi_DeleteLogExportWithParams_Call{Call: _e.mock.On("DeleteLogExportWithParams", ctx, args)}
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.DeletePushBasedLogConfigurationApiParams)) *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExportWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteLogExportApiParams)) *PushBasedLogExportApi_DeleteLogExportWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeletePushBasedLogConfigurationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteLogExportApiParams))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call) Return(_a0 admin.DeletePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExportWithParams_Call) Return(_a0 admin.DeleteLogExportApiRequest) *PushBasedLogExportApi_DeleteLogExportWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeletePushBasedLogConfigurationApiParams) admin.DeletePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_DeleteLogExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteLogExportApiParams) admin.DeleteLogExportApiRequest) *PushBasedLogExportApi_DeleteLogExportWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetPushBasedLogConfiguration provides a mock function with given fields: ctx, groupId
-func (_m *PushBasedLogExportApi) GetPushBasedLogConfiguration(ctx context.Context, groupId string) admin.GetPushBasedLogConfigurationApiRequest {
+// GetLogExport provides a mock function with given fields: ctx, groupId
+func (_m *PushBasedLogExportApi) GetLogExport(ctx context.Context, groupId string) admin.GetLogExportApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPushBasedLogConfiguration")
+		panic("no return value specified for GetLogExport")
 	}
 
-	var r0 admin.GetPushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetPushBasedLogConfigurationApiRequest); ok {
+	var r0 admin.GetLogExportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetLogExportApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetPushBasedLogConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.GetLogExportApiRequest)
 	}
 
 	return r0
 }
 
-// PushBasedLogExportApi_GetPushBasedLogConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPushBasedLogConfiguration'
-type PushBasedLogExportApi_GetPushBasedLogConfiguration_Call struct {
+// PushBasedLogExportApi_GetLogExport_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLogExport'
+type PushBasedLogExportApi_GetLogExport_Call struct {
 	*mock.Call
 }
 
-// GetPushBasedLogConfiguration is a helper method to define mock.On call
+// GetLogExport is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfiguration(ctx any, groupId any) *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call {
-	return &PushBasedLogExportApi_GetPushBasedLogConfiguration_Call{Call: _e.mock.On("GetPushBasedLogConfiguration", ctx, groupId)}
+func (_e *PushBasedLogExportApi_Expecter) GetLogExport(ctx any, groupId any) *PushBasedLogExportApi_GetLogExport_Call {
+	return &PushBasedLogExportApi_GetLogExport_Call{Call: _e.mock.On("GetLogExport", ctx, groupId)}
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call) Run(run func(ctx context.Context, groupId string)) *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_GetLogExport_Call) Run(run func(ctx context.Context, groupId string)) *PushBasedLogExportApi_GetLogExport_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call) Return(_a0 admin.GetPushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_GetLogExport_Call) Return(_a0 admin.GetLogExportApiRequest) *PushBasedLogExportApi_GetLogExport_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call) RunAndReturn(run func(context.Context, string) admin.GetPushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_GetLogExport_Call) RunAndReturn(run func(context.Context, string) admin.GetLogExportApiRequest) *PushBasedLogExportApi_GetLogExport_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetPushBasedLogConfigurationExecute provides a mock function with given fields: r
-func (_m *PushBasedLogExportApi) GetPushBasedLogConfigurationExecute(r admin.GetPushBasedLogConfigurationApiRequest) (*admin.PushBasedLogExportProject, *http.Response, error) {
+// GetLogExportExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) GetLogExportExecute(r admin.GetLogExportApiRequest) (*admin.PushBasedLogExportProject, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPushBasedLogConfigurationExecute")
+		panic("no return value specified for GetLogExportExecute")
 	}
 
 	var r0 *admin.PushBasedLogExportProject
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetPushBasedLogConfigurationApiRequest) (*admin.PushBasedLogExportProject, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetLogExportApiRequest) (*admin.PushBasedLogExportProject, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetPushBasedLogConfigurationApiRequest) *admin.PushBasedLogExportProject); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetLogExportApiRequest) *admin.PushBasedLogExportProject); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -399,7 +399,7 @@ func (_m *PushBasedLogExportApi) GetPushBasedLogConfigurationExecute(r admin.Get
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetPushBasedLogConfigurationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetLogExportApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -407,7 +407,7 @@ func (_m *PushBasedLogExportApi) GetPushBasedLogConfigurationExecute(r admin.Get
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetPushBasedLogConfigurationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetLogExportApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -416,143 +416,143 @@ func (_m *PushBasedLogExportApi) GetPushBasedLogConfigurationExecute(r admin.Get
 	return r0, r1, r2
 }
 
-// PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPushBasedLogConfigurationExecute'
-type PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call struct {
+// PushBasedLogExportApi_GetLogExportExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLogExportExecute'
+type PushBasedLogExportApi_GetLogExportExecute_Call struct {
 	*mock.Call
 }
 
-// GetPushBasedLogConfigurationExecute is a helper method to define mock.On call
-//   - r admin.GetPushBasedLogConfigurationApiRequest
-func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfigurationExecute(r any) *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call {
-	return &PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call{Call: _e.mock.On("GetPushBasedLogConfigurationExecute", r)}
+// GetLogExportExecute is a helper method to define mock.On call
+//   - r admin.GetLogExportApiRequest
+func (_e *PushBasedLogExportApi_Expecter) GetLogExportExecute(r any) *PushBasedLogExportApi_GetLogExportExecute_Call {
+	return &PushBasedLogExportApi_GetLogExportExecute_Call{Call: _e.mock.On("GetLogExportExecute", r)}
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call) Run(run func(r admin.GetPushBasedLogConfigurationApiRequest)) *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_GetLogExportExecute_Call) Run(run func(r admin.GetLogExportApiRequest)) *PushBasedLogExportApi_GetLogExportExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetPushBasedLogConfigurationApiRequest))
+		run(args[0].(admin.GetLogExportApiRequest))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call) Return(_a0 *admin.PushBasedLogExportProject, _a1 *http.Response, _a2 error) *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_GetLogExportExecute_Call) Return(_a0 *admin.PushBasedLogExportProject, _a1 *http.Response, _a2 error) *PushBasedLogExportApi_GetLogExportExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call) RunAndReturn(run func(admin.GetPushBasedLogConfigurationApiRequest) (*admin.PushBasedLogExportProject, *http.Response, error)) *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_GetLogExportExecute_Call) RunAndReturn(run func(admin.GetLogExportApiRequest) (*admin.PushBasedLogExportProject, *http.Response, error)) *PushBasedLogExportApi_GetLogExportExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetPushBasedLogConfigurationWithParams provides a mock function with given fields: ctx, args
-func (_m *PushBasedLogExportApi) GetPushBasedLogConfigurationWithParams(ctx context.Context, args *admin.GetPushBasedLogConfigurationApiParams) admin.GetPushBasedLogConfigurationApiRequest {
+// GetLogExportWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) GetLogExportWithParams(ctx context.Context, args *admin.GetLogExportApiParams) admin.GetLogExportApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetPushBasedLogConfigurationWithParams")
+		panic("no return value specified for GetLogExportWithParams")
 	}
 
-	var r0 admin.GetPushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetPushBasedLogConfigurationApiParams) admin.GetPushBasedLogConfigurationApiRequest); ok {
+	var r0 admin.GetLogExportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetLogExportApiParams) admin.GetLogExportApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetPushBasedLogConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.GetLogExportApiRequest)
 	}
 
 	return r0
 }
 
-// PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPushBasedLogConfigurationWithParams'
-type PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call struct {
+// PushBasedLogExportApi_GetLogExportWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetLogExportWithParams'
+type PushBasedLogExportApi_GetLogExportWithParams_Call struct {
 	*mock.Call
 }
 
-// GetPushBasedLogConfigurationWithParams is a helper method to define mock.On call
+// GetLogExportWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetPushBasedLogConfigurationApiParams
-func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfigurationWithParams(ctx any, args any) *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call {
-	return &PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call{Call: _e.mock.On("GetPushBasedLogConfigurationWithParams", ctx, args)}
+//   - args *admin.GetLogExportApiParams
+func (_e *PushBasedLogExportApi_Expecter) GetLogExportWithParams(ctx any, args any) *PushBasedLogExportApi_GetLogExportWithParams_Call {
+	return &PushBasedLogExportApi_GetLogExportWithParams_Call{Call: _e.mock.On("GetLogExportWithParams", ctx, args)}
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetPushBasedLogConfigurationApiParams)) *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_GetLogExportWithParams_Call) Run(run func(ctx context.Context, args *admin.GetLogExportApiParams)) *PushBasedLogExportApi_GetLogExportWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetPushBasedLogConfigurationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetLogExportApiParams))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call) Return(_a0 admin.GetPushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_GetLogExportWithParams_Call) Return(_a0 admin.GetLogExportApiRequest) *PushBasedLogExportApi_GetLogExportWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetPushBasedLogConfigurationApiParams) admin.GetPushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_GetLogExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetLogExportApiParams) admin.GetLogExportApiRequest) *PushBasedLogExportApi_GetLogExportWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdatePushBasedLogConfiguration provides a mock function with given fields: ctx, groupId, pushBasedLogExportProject
-func (_m *PushBasedLogExportApi) UpdatePushBasedLogConfiguration(ctx context.Context, groupId string, pushBasedLogExportProject *admin.PushBasedLogExportProject) admin.UpdatePushBasedLogConfigurationApiRequest {
+// UpdateLogExport provides a mock function with given fields: ctx, groupId, pushBasedLogExportProject
+func (_m *PushBasedLogExportApi) UpdateLogExport(ctx context.Context, groupId string, pushBasedLogExportProject *admin.PushBasedLogExportProject) admin.UpdateLogExportApiRequest {
 	ret := _m.Called(ctx, groupId, pushBasedLogExportProject)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdatePushBasedLogConfiguration")
+		panic("no return value specified for UpdateLogExport")
 	}
 
-	var r0 admin.UpdatePushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.PushBasedLogExportProject) admin.UpdatePushBasedLogConfigurationApiRequest); ok {
+	var r0 admin.UpdateLogExportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.PushBasedLogExportProject) admin.UpdateLogExportApiRequest); ok {
 		r0 = rf(ctx, groupId, pushBasedLogExportProject)
 	} else {
-		r0 = ret.Get(0).(admin.UpdatePushBasedLogConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.UpdateLogExportApiRequest)
 	}
 
 	return r0
 }
 
-// PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePushBasedLogConfiguration'
-type PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call struct {
+// PushBasedLogExportApi_UpdateLogExport_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateLogExport'
+type PushBasedLogExportApi_UpdateLogExport_Call struct {
 	*mock.Call
 }
 
-// UpdatePushBasedLogConfiguration is a helper method to define mock.On call
+// UpdateLogExport is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - pushBasedLogExportProject *admin.PushBasedLogExportProject
-func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfiguration(ctx any, groupId any, pushBasedLogExportProject any) *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call {
-	return &PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call{Call: _e.mock.On("UpdatePushBasedLogConfiguration", ctx, groupId, pushBasedLogExportProject)}
+func (_e *PushBasedLogExportApi_Expecter) UpdateLogExport(ctx any, groupId any, pushBasedLogExportProject any) *PushBasedLogExportApi_UpdateLogExport_Call {
+	return &PushBasedLogExportApi_UpdateLogExport_Call{Call: _e.mock.On("UpdateLogExport", ctx, groupId, pushBasedLogExportProject)}
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call) Run(run func(ctx context.Context, groupId string, pushBasedLogExportProject *admin.PushBasedLogExportProject)) *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExport_Call) Run(run func(ctx context.Context, groupId string, pushBasedLogExportProject *admin.PushBasedLogExportProject)) *PushBasedLogExportApi_UpdateLogExport_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.PushBasedLogExportProject))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call) Return(_a0 admin.UpdatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExport_Call) Return(_a0 admin.UpdateLogExportApiRequest) *PushBasedLogExportApi_UpdateLogExport_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call) RunAndReturn(run func(context.Context, string, *admin.PushBasedLogExportProject) admin.UpdatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExport_Call) RunAndReturn(run func(context.Context, string, *admin.PushBasedLogExportProject) admin.UpdateLogExportApiRequest) *PushBasedLogExportApi_UpdateLogExport_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdatePushBasedLogConfigurationExecute provides a mock function with given fields: r
-func (_m *PushBasedLogExportApi) UpdatePushBasedLogConfigurationExecute(r admin.UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
+// UpdateLogExportExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) UpdateLogExportExecute(r admin.UpdateLogExportApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdatePushBasedLogConfigurationExecute")
+		panic("no return value specified for UpdateLogExportExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateLogExportApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdatePushBasedLogConfigurationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateLogExportApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -560,7 +560,7 @@ func (_m *PushBasedLogExportApi) UpdatePushBasedLogConfigurationExecute(r admin.
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdatePushBasedLogConfigurationApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateLogExportApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -569,77 +569,77 @@ func (_m *PushBasedLogExportApi) UpdatePushBasedLogConfigurationExecute(r admin.
 	return r0, r1
 }
 
-// PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePushBasedLogConfigurationExecute'
-type PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call struct {
+// PushBasedLogExportApi_UpdateLogExportExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateLogExportExecute'
+type PushBasedLogExportApi_UpdateLogExportExecute_Call struct {
 	*mock.Call
 }
 
-// UpdatePushBasedLogConfigurationExecute is a helper method to define mock.On call
-//   - r admin.UpdatePushBasedLogConfigurationApiRequest
-func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfigurationExecute(r any) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call {
-	return &PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call{Call: _e.mock.On("UpdatePushBasedLogConfigurationExecute", r)}
+// UpdateLogExportExecute is a helper method to define mock.On call
+//   - r admin.UpdateLogExportApiRequest
+func (_e *PushBasedLogExportApi_Expecter) UpdateLogExportExecute(r any) *PushBasedLogExportApi_UpdateLogExportExecute_Call {
+	return &PushBasedLogExportApi_UpdateLogExportExecute_Call{Call: _e.mock.On("UpdateLogExportExecute", r)}
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call) Run(run func(r admin.UpdatePushBasedLogConfigurationApiRequest)) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExportExecute_Call) Run(run func(r admin.UpdateLogExportApiRequest)) *PushBasedLogExportApi_UpdateLogExportExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdatePushBasedLogConfigurationApiRequest))
+		run(args[0].(admin.UpdateLogExportApiRequest))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call) Return(_a0 *http.Response, _a1 error) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExportExecute_Call) Return(_a0 *http.Response, _a1 error) *PushBasedLogExportApi_UpdateLogExportExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call) RunAndReturn(run func(admin.UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error)) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExportExecute_Call) RunAndReturn(run func(admin.UpdateLogExportApiRequest) (*http.Response, error)) *PushBasedLogExportApi_UpdateLogExportExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdatePushBasedLogConfigurationWithParams provides a mock function with given fields: ctx, args
-func (_m *PushBasedLogExportApi) UpdatePushBasedLogConfigurationWithParams(ctx context.Context, args *admin.UpdatePushBasedLogConfigurationApiParams) admin.UpdatePushBasedLogConfigurationApiRequest {
+// UpdateLogExportWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) UpdateLogExportWithParams(ctx context.Context, args *admin.UpdateLogExportApiParams) admin.UpdateLogExportApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdatePushBasedLogConfigurationWithParams")
+		panic("no return value specified for UpdateLogExportWithParams")
 	}
 
-	var r0 admin.UpdatePushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdatePushBasedLogConfigurationApiParams) admin.UpdatePushBasedLogConfigurationApiRequest); ok {
+	var r0 admin.UpdateLogExportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateLogExportApiParams) admin.UpdateLogExportApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdatePushBasedLogConfigurationApiRequest)
+		r0 = ret.Get(0).(admin.UpdateLogExportApiRequest)
 	}
 
 	return r0
 }
 
-// PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePushBasedLogConfigurationWithParams'
-type PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call struct {
+// PushBasedLogExportApi_UpdateLogExportWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateLogExportWithParams'
+type PushBasedLogExportApi_UpdateLogExportWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdatePushBasedLogConfigurationWithParams is a helper method to define mock.On call
+// UpdateLogExportWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdatePushBasedLogConfigurationApiParams
-func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfigurationWithParams(ctx any, args any) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call {
-	return &PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call{Call: _e.mock.On("UpdatePushBasedLogConfigurationWithParams", ctx, args)}
+//   - args *admin.UpdateLogExportApiParams
+func (_e *PushBasedLogExportApi_Expecter) UpdateLogExportWithParams(ctx any, args any) *PushBasedLogExportApi_UpdateLogExportWithParams_Call {
+	return &PushBasedLogExportApi_UpdateLogExportWithParams_Call{Call: _e.mock.On("UpdateLogExportWithParams", ctx, args)}
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdatePushBasedLogConfigurationApiParams)) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExportWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateLogExportApiParams)) *PushBasedLogExportApi_UpdateLogExportWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdatePushBasedLogConfigurationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateLogExportApiParams))
 	})
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call) Return(_a0 admin.UpdatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExportWithParams_Call) Return(_a0 admin.UpdateLogExportApiRequest) *PushBasedLogExportApi_UpdateLogExportWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdatePushBasedLogConfigurationApiParams) admin.UpdatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call {
+func (_c *PushBasedLogExportApi_UpdateLogExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateLogExportApiParams) admin.UpdateLogExportApiRequest) *PushBasedLogExportApi_UpdateLogExportWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

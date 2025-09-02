@@ -10,8 +10,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312006/admin"
-	"go.mongodb.org/atlas-sdk/v20250312006/examples"
+	"go.mongodb.org/atlas-sdk/v20250312007/admin"
+	"go.mongodb.org/atlas-sdk/v20250312007/examples"
 )
 
 /*
@@ -38,9 +38,9 @@ func main() {
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
+	request := sdk.ProjectsApi.ListGroupsWithParams(ctx,
 		// 2. We passing struct with all parameters to the request
-		&admin.ListProjectsApiParams{
+		&admin.ListGroupsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),
 			PageNum:      admin.PtrInt(1),
@@ -74,7 +74,7 @@ func main() {
 	ipAddressEntry := []admin.NetworkPermissionEntry{{IpAddress: &ipAddress}}
 	// -- 4. Enable IP access
 	_, resp, err = sdk.ProjectIPAccessListApi.
-		CreateProjectIpAccessList(context.Background(), projectId, &ipAddressEntry).
+		CreateAccessListEntry(context.Background(), projectId, &ipAddressEntry).
 		Execute()
 	examples.HandleErr(err, resp)
 

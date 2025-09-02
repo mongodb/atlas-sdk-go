@@ -6,11 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateOrgResourcePolicy**](ResourcePoliciesApi.md#CreateOrgResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy
 [**DeleteOrgResourcePolicy**](ResourcePoliciesApi.md#DeleteOrgResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy
+[**GetNonCompliantResources**](ResourcePoliciesApi.md#GetNonCompliantResources) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources
 [**GetOrgResourcePolicy**](ResourcePoliciesApi.md#GetOrgResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return One Atlas Resource Policy
-[**GetResourcesNonCompliant**](ResourcePoliciesApi.md#GetResourcesNonCompliant) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources
 [**ListOrgResourcePolicies**](ResourcePoliciesApi.md#ListOrgResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return All Atlas Resource Policies
 [**UpdateOrgResourcePolicy**](ResourcePoliciesApi.md#UpdateOrgResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update One Atlas Resource Policy
-[**ValidateAtlasResourcePolicy**](ResourcePoliciesApi.md#ValidateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate One Atlas Resource Policy
+[**ValidateResourcePolicies**](ResourcePoliciesApi.md#ValidateResourcePolicies) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate One Atlas Resource Policy
 
 
 
@@ -31,7 +31,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -120,7 +120,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -184,6 +184,86 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetNonCompliantResources
+
+> []ApiAtlasNonCompliantResource GetNonCompliantResources(ctx, orgId).Execute()
+
+Return All Non-Compliant Resources
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.ResourcePoliciesApi.GetNonCompliantResources(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.GetNonCompliantResources`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetNonCompliantResources`: []ApiAtlasNonCompliantResource
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.GetNonCompliantResources`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNonCompliantResourcesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]ApiAtlasNonCompliantResource**](ApiAtlasNonCompliantResource.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetOrgResourcePolicy
 
 > ApiAtlasResourcePolicy GetOrgResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
@@ -201,7 +281,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -267,86 +347,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetResourcesNonCompliant
-
-> []ApiAtlasNonCompliantResource GetResourcesNonCompliant(ctx, orgId).Execute()
-
-Return All Non-Compliant Resources
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-
-    resp, r, err := sdk.ResourcePoliciesApi.GetResourcesNonCompliant(context.Background(), orgId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.GetResourcesNonCompliant`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetResourcesNonCompliant`: []ApiAtlasNonCompliantResource
-    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.GetResourcesNonCompliant`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetResourcesNonCompliantRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]ApiAtlasNonCompliantResource**](ApiAtlasNonCompliantResource.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2024-08-05+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListOrgResourcePolicies
 
 > []ApiAtlasResourcePolicy ListOrgResourcePolicies(ctx, orgId).Execute()
@@ -364,7 +364,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -444,7 +444,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -512,9 +512,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ValidateAtlasResourcePolicy
+## ValidateResourcePolicies
 
-> ApiAtlasResourcePolicy ValidateAtlasResourcePolicy(ctx, orgId, apiAtlasResourcePolicyCreate ApiAtlasResourcePolicyCreate).Execute()
+> ApiAtlasResourcePolicy ValidateResourcePolicies(ctx, orgId, apiAtlasResourcePolicyCreate ApiAtlasResourcePolicyCreate).Execute()
 
 Validate One Atlas Resource Policy
 
@@ -529,7 +529,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -552,17 +552,17 @@ func main() {
   };
 ")}) // ApiAtlasResourcePolicyCreate | 
 
-    resp, r, err := sdk.ResourcePoliciesApi.ValidateAtlasResourcePolicy(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.ValidateResourcePolicies(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.ValidateAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.ValidateResourcePolicies`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ValidateAtlasResourcePolicy`: ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.ValidateAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    // response from `ValidateResourcePolicies`: ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.ValidateResourcePolicies`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiValidateAtlasResourcePolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiValidateResourcePoliciesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

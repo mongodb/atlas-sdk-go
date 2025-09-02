@@ -10,9 +10,9 @@ Method | HTTP request | Description
 [**DeletePrivateEndpointService**](PrivateEndpointServicesApi.md#DeletePrivateEndpointService) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Remove One Private Endpoint Service for One Provider
 [**GetPrivateEndpoint**](PrivateEndpointServicesApi.md#GetPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Return One Private Endpoint for One Provider
 [**GetPrivateEndpointService**](PrivateEndpointServicesApi.md#GetPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Return One Private Endpoint Service for One Provider
-[**GetRegionalizedPrivateEndpointSetting**](PrivateEndpointServicesApi.md#GetRegionalizedPrivateEndpointSetting) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Return Regionalized Private Endpoint Status
-[**ListPrivateEndpointServices**](PrivateEndpointServicesApi.md#ListPrivateEndpointServices) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService | Return All Private Endpoint Services for One Provider
-[**ToggleRegionalizedPrivateEndpointSetting**](PrivateEndpointServicesApi.md#ToggleRegionalizedPrivateEndpointSetting) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Toggle Regionalized Private Endpoint Status
+[**GetRegionalEndpointMode**](PrivateEndpointServicesApi.md#GetRegionalEndpointMode) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Return Regionalized Private Endpoint Status
+[**ListPrivateEndpointService**](PrivateEndpointServicesApi.md#ListPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService | Return All Private Endpoint Services for One Provider
+[**ToggleRegionalEndpointMode**](PrivateEndpointServicesApi.md#ToggleRegionalEndpointMode) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Toggle Regionalized Private Endpoint Status
 
 
 
@@ -33,7 +33,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -121,7 +121,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -203,7 +203,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -290,7 +290,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -374,7 +374,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -463,7 +463,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -532,9 +532,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetRegionalizedPrivateEndpointSetting
+## GetRegionalEndpointMode
 
-> ProjectSettingItem GetRegionalizedPrivateEndpointSetting(ctx, groupId).Execute()
+> ProjectSettingItem GetRegionalEndpointMode(ctx, groupId).Execute()
 
 Return Regionalized Private Endpoint Status
 
@@ -549,7 +549,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -564,17 +564,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.GetRegionalizedPrivateEndpointSetting(context.Background(), groupId).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.GetRegionalEndpointMode(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.GetRegionalizedPrivateEndpointSetting`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.GetRegionalEndpointMode`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetRegionalizedPrivateEndpointSetting`: ProjectSettingItem
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.GetRegionalizedPrivateEndpointSetting`: %v (%v)\n", resp, r)
+    // response from `GetRegionalEndpointMode`: ProjectSettingItem
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.GetRegionalEndpointMode`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -588,7 +588,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetRegionalizedPrivateEndpointSettingRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetRegionalEndpointModeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -612,9 +612,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListPrivateEndpointServices
+## ListPrivateEndpointService
 
-> []EndpointService ListPrivateEndpointServices(ctx, groupId, cloudProvider).Execute()
+> []EndpointService ListPrivateEndpointService(ctx, groupId, cloudProvider).Execute()
 
 Return All Private Endpoint Services for One Provider
 
@@ -629,7 +629,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -645,17 +645,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.ListPrivateEndpointServices(context.Background(), groupId, cloudProvider).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.ListPrivateEndpointService(context.Background(), groupId, cloudProvider).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.ListPrivateEndpointServices`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.ListPrivateEndpointService`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListPrivateEndpointServices`: []EndpointService
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.ListPrivateEndpointServices`: %v (%v)\n", resp, r)
+    // response from `ListPrivateEndpointService`: []EndpointService
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.ListPrivateEndpointService`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -670,7 +670,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListPrivateEndpointServicesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListPrivateEndpointServiceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -695,9 +695,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ToggleRegionalizedPrivateEndpointSetting
+## ToggleRegionalEndpointMode
 
-> ProjectSettingItem ToggleRegionalizedPrivateEndpointSetting(ctx, groupId, projectSettingItem ProjectSettingItem).Execute()
+> ProjectSettingItem ToggleRegionalEndpointMode(ctx, groupId, projectSettingItem ProjectSettingItem).Execute()
 
 Toggle Regionalized Private Endpoint Status
 
@@ -712,7 +712,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -728,17 +728,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     projectSettingItem := *openapiclient.NewProjectSettingItem(false) // ProjectSettingItem | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting(context.Background(), groupId, &projectSettingItem).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.ToggleRegionalEndpointMode(context.Background(), groupId, &projectSettingItem).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.ToggleRegionalEndpointMode`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ToggleRegionalizedPrivateEndpointSetting`: ProjectSettingItem
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting`: %v (%v)\n", resp, r)
+    // response from `ToggleRegionalEndpointMode`: ProjectSettingItem
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.ToggleRegionalEndpointMode`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -752,7 +752,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiToggleRegionalizedPrivateEndpointSettingRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiToggleRegionalEndpointModeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateOnlineArchive**](OnlineArchiveApi.md#CreateOnlineArchive) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Create One Online Archive
 [**DeleteOnlineArchive**](OnlineArchiveApi.md#DeleteOnlineArchive) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Remove One Online Archive
-[**DownloadOnlineArchiveQueryLogs**](OnlineArchiveApi.md#DownloadOnlineArchiveQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz | Download Online Archive Query Logs
+[**DownloadQueryLogs**](OnlineArchiveApi.md#DownloadQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz | Download Online Archive Query Logs
 [**GetOnlineArchive**](OnlineArchiveApi.md#GetOnlineArchive) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Return One Online Archive
 [**ListOnlineArchives**](OnlineArchiveApi.md#ListOnlineArchives) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Return All Online Archives for One Cluster
 [**UpdateOnlineArchive**](OnlineArchiveApi.md#UpdateOnlineArchive) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Update One Online Archive
@@ -30,7 +30,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -115,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -182,9 +182,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DownloadOnlineArchiveQueryLogs
+## DownloadQueryLogs
 
-> io.ReadCloser DownloadOnlineArchiveQueryLogs(ctx, groupId, clusterName).StartDate(startDate).EndDate(endDate).ArchiveOnly(archiveOnly).Execute()
+> io.ReadCloser DownloadQueryLogs(ctx, groupId, clusterName).StartDate(startDate).EndDate(endDate).ArchiveOnly(archiveOnly).Execute()
 
 Download Online Archive Query Logs
 
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -218,17 +218,17 @@ func main() {
     endDate := int64(1636481348) // int64 |  (optional)
     archiveOnly := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.OnlineArchiveApi.DownloadOnlineArchiveQueryLogs(context.Background(), groupId, clusterName).StartDate(startDate).EndDate(endDate).ArchiveOnly(archiveOnly).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.DownloadQueryLogs(context.Background(), groupId, clusterName).StartDate(startDate).EndDate(endDate).ArchiveOnly(archiveOnly).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.DownloadOnlineArchiveQueryLogs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.DownloadQueryLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `DownloadOnlineArchiveQueryLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.DownloadOnlineArchiveQueryLogs`: %v (%v)\n", resp, r)
+    // response from `DownloadQueryLogs`: io.ReadCloser
+    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.DownloadQueryLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDownloadOnlineArchiveQueryLogsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDownloadQueryLogsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -288,7 +288,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -374,7 +374,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -463,7 +463,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {

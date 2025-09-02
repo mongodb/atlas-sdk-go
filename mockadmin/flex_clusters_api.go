@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312007/admin"
 
 	http "net/http"
 
@@ -663,6 +663,168 @@ func (_c *FlexClustersApi_ListFlexClustersWithParams_Call) RunAndReturn(run func
 	return _c
 }
 
+// TenantUpgrade provides a mock function with given fields: ctx, groupId, atlasTenantClusterUpgradeRequest20240805
+func (_m *FlexClustersApi) TenantUpgrade(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805) admin.TenantUpgradeApiRequest {
+	ret := _m.Called(ctx, groupId, atlasTenantClusterUpgradeRequest20240805)
+
+	if len(ret) == 0 {
+		panic("no return value specified for TenantUpgrade")
+	}
+
+	var r0 admin.TenantUpgradeApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AtlasTenantClusterUpgradeRequest20240805) admin.TenantUpgradeApiRequest); ok {
+		r0 = rf(ctx, groupId, atlasTenantClusterUpgradeRequest20240805)
+	} else {
+		r0 = ret.Get(0).(admin.TenantUpgradeApiRequest)
+	}
+
+	return r0
+}
+
+// FlexClustersApi_TenantUpgrade_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TenantUpgrade'
+type FlexClustersApi_TenantUpgrade_Call struct {
+	*mock.Call
+}
+
+// TenantUpgrade is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805
+func (_e *FlexClustersApi_Expecter) TenantUpgrade(ctx any, groupId any, atlasTenantClusterUpgradeRequest20240805 any) *FlexClustersApi_TenantUpgrade_Call {
+	return &FlexClustersApi_TenantUpgrade_Call{Call: _e.mock.On("TenantUpgrade", ctx, groupId, atlasTenantClusterUpgradeRequest20240805)}
+}
+
+func (_c *FlexClustersApi_TenantUpgrade_Call) Run(run func(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805)) *FlexClustersApi_TenantUpgrade_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.AtlasTenantClusterUpgradeRequest20240805))
+	})
+	return _c
+}
+
+func (_c *FlexClustersApi_TenantUpgrade_Call) Return(_a0 admin.TenantUpgradeApiRequest) *FlexClustersApi_TenantUpgrade_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *FlexClustersApi_TenantUpgrade_Call) RunAndReturn(run func(context.Context, string, *admin.AtlasTenantClusterUpgradeRequest20240805) admin.TenantUpgradeApiRequest) *FlexClustersApi_TenantUpgrade_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// TenantUpgradeExecute provides a mock function with given fields: r
+func (_m *FlexClustersApi) TenantUpgradeExecute(r admin.TenantUpgradeApiRequest) (*admin.FlexClusterDescription20241113, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for TenantUpgradeExecute")
+	}
+
+	var r0 *admin.FlexClusterDescription20241113
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.TenantUpgradeApiRequest) (*admin.FlexClusterDescription20241113, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.TenantUpgradeApiRequest) *admin.FlexClusterDescription20241113); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.FlexClusterDescription20241113)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.TenantUpgradeApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.TenantUpgradeApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// FlexClustersApi_TenantUpgradeExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TenantUpgradeExecute'
+type FlexClustersApi_TenantUpgradeExecute_Call struct {
+	*mock.Call
+}
+
+// TenantUpgradeExecute is a helper method to define mock.On call
+//   - r admin.TenantUpgradeApiRequest
+func (_e *FlexClustersApi_Expecter) TenantUpgradeExecute(r any) *FlexClustersApi_TenantUpgradeExecute_Call {
+	return &FlexClustersApi_TenantUpgradeExecute_Call{Call: _e.mock.On("TenantUpgradeExecute", r)}
+}
+
+func (_c *FlexClustersApi_TenantUpgradeExecute_Call) Run(run func(r admin.TenantUpgradeApiRequest)) *FlexClustersApi_TenantUpgradeExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.TenantUpgradeApiRequest))
+	})
+	return _c
+}
+
+func (_c *FlexClustersApi_TenantUpgradeExecute_Call) Return(_a0 *admin.FlexClusterDescription20241113, _a1 *http.Response, _a2 error) *FlexClustersApi_TenantUpgradeExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *FlexClustersApi_TenantUpgradeExecute_Call) RunAndReturn(run func(admin.TenantUpgradeApiRequest) (*admin.FlexClusterDescription20241113, *http.Response, error)) *FlexClustersApi_TenantUpgradeExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// TenantUpgradeWithParams provides a mock function with given fields: ctx, args
+func (_m *FlexClustersApi) TenantUpgradeWithParams(ctx context.Context, args *admin.TenantUpgradeApiParams) admin.TenantUpgradeApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for TenantUpgradeWithParams")
+	}
+
+	var r0 admin.TenantUpgradeApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.TenantUpgradeApiParams) admin.TenantUpgradeApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.TenantUpgradeApiRequest)
+	}
+
+	return r0
+}
+
+// FlexClustersApi_TenantUpgradeWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'TenantUpgradeWithParams'
+type FlexClustersApi_TenantUpgradeWithParams_Call struct {
+	*mock.Call
+}
+
+// TenantUpgradeWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.TenantUpgradeApiParams
+func (_e *FlexClustersApi_Expecter) TenantUpgradeWithParams(ctx any, args any) *FlexClustersApi_TenantUpgradeWithParams_Call {
+	return &FlexClustersApi_TenantUpgradeWithParams_Call{Call: _e.mock.On("TenantUpgradeWithParams", ctx, args)}
+}
+
+func (_c *FlexClustersApi_TenantUpgradeWithParams_Call) Run(run func(ctx context.Context, args *admin.TenantUpgradeApiParams)) *FlexClustersApi_TenantUpgradeWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.TenantUpgradeApiParams))
+	})
+	return _c
+}
+
+func (_c *FlexClustersApi_TenantUpgradeWithParams_Call) Return(_a0 admin.TenantUpgradeApiRequest) *FlexClustersApi_TenantUpgradeWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *FlexClustersApi_TenantUpgradeWithParams_Call) RunAndReturn(run func(context.Context, *admin.TenantUpgradeApiParams) admin.TenantUpgradeApiRequest) *FlexClustersApi_TenantUpgradeWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpdateFlexCluster provides a mock function with given fields: ctx, groupId, name, flexClusterDescriptionUpdate20241113
 func (_m *FlexClustersApi) UpdateFlexCluster(ctx context.Context, groupId string, name string, flexClusterDescriptionUpdate20241113 *admin.FlexClusterDescriptionUpdate20241113) admin.UpdateFlexClusterApiRequest {
 	ret := _m.Called(ctx, groupId, name, flexClusterDescriptionUpdate20241113)
@@ -822,168 +984,6 @@ func (_c *FlexClustersApi_UpdateFlexClusterWithParams_Call) Return(_a0 admin.Upd
 }
 
 func (_c *FlexClustersApi_UpdateFlexClusterWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateFlexClusterApiParams) admin.UpdateFlexClusterApiRequest) *FlexClustersApi_UpdateFlexClusterWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpgradeFlexCluster provides a mock function with given fields: ctx, groupId, atlasTenantClusterUpgradeRequest20240805
-func (_m *FlexClustersApi) UpgradeFlexCluster(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805) admin.UpgradeFlexClusterApiRequest {
-	ret := _m.Called(ctx, groupId, atlasTenantClusterUpgradeRequest20240805)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpgradeFlexCluster")
-	}
-
-	var r0 admin.UpgradeFlexClusterApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AtlasTenantClusterUpgradeRequest20240805) admin.UpgradeFlexClusterApiRequest); ok {
-		r0 = rf(ctx, groupId, atlasTenantClusterUpgradeRequest20240805)
-	} else {
-		r0 = ret.Get(0).(admin.UpgradeFlexClusterApiRequest)
-	}
-
-	return r0
-}
-
-// FlexClustersApi_UpgradeFlexCluster_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpgradeFlexCluster'
-type FlexClustersApi_UpgradeFlexCluster_Call struct {
-	*mock.Call
-}
-
-// UpgradeFlexCluster is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805
-func (_e *FlexClustersApi_Expecter) UpgradeFlexCluster(ctx any, groupId any, atlasTenantClusterUpgradeRequest20240805 any) *FlexClustersApi_UpgradeFlexCluster_Call {
-	return &FlexClustersApi_UpgradeFlexCluster_Call{Call: _e.mock.On("UpgradeFlexCluster", ctx, groupId, atlasTenantClusterUpgradeRequest20240805)}
-}
-
-func (_c *FlexClustersApi_UpgradeFlexCluster_Call) Run(run func(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805)) *FlexClustersApi_UpgradeFlexCluster_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.AtlasTenantClusterUpgradeRequest20240805))
-	})
-	return _c
-}
-
-func (_c *FlexClustersApi_UpgradeFlexCluster_Call) Return(_a0 admin.UpgradeFlexClusterApiRequest) *FlexClustersApi_UpgradeFlexCluster_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *FlexClustersApi_UpgradeFlexCluster_Call) RunAndReturn(run func(context.Context, string, *admin.AtlasTenantClusterUpgradeRequest20240805) admin.UpgradeFlexClusterApiRequest) *FlexClustersApi_UpgradeFlexCluster_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpgradeFlexClusterExecute provides a mock function with given fields: r
-func (_m *FlexClustersApi) UpgradeFlexClusterExecute(r admin.UpgradeFlexClusterApiRequest) (*admin.FlexClusterDescription20241113, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpgradeFlexClusterExecute")
-	}
-
-	var r0 *admin.FlexClusterDescription20241113
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpgradeFlexClusterApiRequest) (*admin.FlexClusterDescription20241113, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpgradeFlexClusterApiRequest) *admin.FlexClusterDescription20241113); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.FlexClusterDescription20241113)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpgradeFlexClusterApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpgradeFlexClusterApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// FlexClustersApi_UpgradeFlexClusterExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpgradeFlexClusterExecute'
-type FlexClustersApi_UpgradeFlexClusterExecute_Call struct {
-	*mock.Call
-}
-
-// UpgradeFlexClusterExecute is a helper method to define mock.On call
-//   - r admin.UpgradeFlexClusterApiRequest
-func (_e *FlexClustersApi_Expecter) UpgradeFlexClusterExecute(r any) *FlexClustersApi_UpgradeFlexClusterExecute_Call {
-	return &FlexClustersApi_UpgradeFlexClusterExecute_Call{Call: _e.mock.On("UpgradeFlexClusterExecute", r)}
-}
-
-func (_c *FlexClustersApi_UpgradeFlexClusterExecute_Call) Run(run func(r admin.UpgradeFlexClusterApiRequest)) *FlexClustersApi_UpgradeFlexClusterExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpgradeFlexClusterApiRequest))
-	})
-	return _c
-}
-
-func (_c *FlexClustersApi_UpgradeFlexClusterExecute_Call) Return(_a0 *admin.FlexClusterDescription20241113, _a1 *http.Response, _a2 error) *FlexClustersApi_UpgradeFlexClusterExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *FlexClustersApi_UpgradeFlexClusterExecute_Call) RunAndReturn(run func(admin.UpgradeFlexClusterApiRequest) (*admin.FlexClusterDescription20241113, *http.Response, error)) *FlexClustersApi_UpgradeFlexClusterExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpgradeFlexClusterWithParams provides a mock function with given fields: ctx, args
-func (_m *FlexClustersApi) UpgradeFlexClusterWithParams(ctx context.Context, args *admin.UpgradeFlexClusterApiParams) admin.UpgradeFlexClusterApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpgradeFlexClusterWithParams")
-	}
-
-	var r0 admin.UpgradeFlexClusterApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpgradeFlexClusterApiParams) admin.UpgradeFlexClusterApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.UpgradeFlexClusterApiRequest)
-	}
-
-	return r0
-}
-
-// FlexClustersApi_UpgradeFlexClusterWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpgradeFlexClusterWithParams'
-type FlexClustersApi_UpgradeFlexClusterWithParams_Call struct {
-	*mock.Call
-}
-
-// UpgradeFlexClusterWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.UpgradeFlexClusterApiParams
-func (_e *FlexClustersApi_Expecter) UpgradeFlexClusterWithParams(ctx any, args any) *FlexClustersApi_UpgradeFlexClusterWithParams_Call {
-	return &FlexClustersApi_UpgradeFlexClusterWithParams_Call{Call: _e.mock.On("UpgradeFlexClusterWithParams", ctx, args)}
-}
-
-func (_c *FlexClustersApi_UpgradeFlexClusterWithParams_Call) Run(run func(ctx context.Context, args *admin.UpgradeFlexClusterApiParams)) *FlexClustersApi_UpgradeFlexClusterWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpgradeFlexClusterApiParams))
-	})
-	return _c
-}
-
-func (_c *FlexClustersApi_UpgradeFlexClusterWithParams_Call) Return(_a0 admin.UpgradeFlexClusterApiRequest) *FlexClustersApi_UpgradeFlexClusterWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *FlexClustersApi_UpgradeFlexClusterWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpgradeFlexClusterApiParams) admin.UpgradeFlexClusterApiRequest) *FlexClustersApi_UpgradeFlexClusterWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

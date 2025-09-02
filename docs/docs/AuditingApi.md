@@ -4,14 +4,14 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAuditingConfiguration**](AuditingApi.md#GetAuditingConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return Auditing Configuration for One Project
-[**UpdateAuditingConfiguration**](AuditingApi.md#UpdateAuditingConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project
+[**GetGroupAuditLog**](AuditingApi.md#GetGroupAuditLog) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return Auditing Configuration for One Project
+[**UpdateAuditLog**](AuditingApi.md#UpdateAuditLog) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project
 
 
 
-## GetAuditingConfiguration
+## GetGroupAuditLog
 
-> AuditLog GetAuditingConfiguration(ctx, groupId).Execute()
+> AuditLog GetGroupAuditLog(ctx, groupId).Execute()
 
 Return Auditing Configuration for One Project
 
@@ -26,7 +26,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -41,17 +41,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.AuditingApi.GetAuditingConfiguration(context.Background(), groupId).Execute()
+    resp, r, err := sdk.AuditingApi.GetGroupAuditLog(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.GetAuditingConfiguration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.GetGroupAuditLog`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetAuditingConfiguration`: AuditLog
-    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.GetAuditingConfiguration`: %v (%v)\n", resp, r)
+    // response from `GetGroupAuditLog`: AuditLog
+    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.GetGroupAuditLog`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAuditingConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetGroupAuditLogRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -89,9 +89,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAuditingConfiguration
+## UpdateAuditLog
 
-> AuditLog UpdateAuditingConfiguration(ctx, groupId, auditLog AuditLog).Execute()
+> AuditLog UpdateAuditLog(ctx, groupId, auditLog AuditLog).Execute()
 
 Update Auditing Configuration for One Project
 
@@ -106,7 +106,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -122,17 +122,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     auditLog := *openapiclient.NewAuditLog() // AuditLog | 
 
-    resp, r, err := sdk.AuditingApi.UpdateAuditingConfiguration(context.Background(), groupId, &auditLog).Execute()
+    resp, r, err := sdk.AuditingApi.UpdateAuditLog(context.Background(), groupId, &auditLog).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.UpdateAuditingConfiguration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.UpdateAuditLog`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateAuditingConfiguration`: AuditLog
-    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.UpdateAuditingConfiguration`: %v (%v)\n", resp, r)
+    // response from `UpdateAuditLog`: AuditLog
+    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.UpdateAuditLog`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAuditingConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateAuditLogRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

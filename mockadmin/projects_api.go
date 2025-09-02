@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312007/admin"
 
 	http "net/http"
 
@@ -25,69 +25,69 @@ func (_m *ProjectsApi) EXPECT() *ProjectsApi_Expecter {
 	return &ProjectsApi_Expecter{mock: &_m.Mock}
 }
 
-// AddUserToProject provides a mock function with given fields: ctx, groupId, groupInvitationRequest
-func (_m *ProjectsApi) AddUserToProject(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest) admin.AddUserToProjectApiRequest {
+// AddGroupUser provides a mock function with given fields: ctx, groupId, groupInvitationRequest
+func (_m *ProjectsApi) AddGroupUser(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest) admin.AddGroupUserApiRequest {
 	ret := _m.Called(ctx, groupId, groupInvitationRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddUserToProject")
+		panic("no return value specified for AddGroupUser")
 	}
 
-	var r0 admin.AddUserToProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupInvitationRequest) admin.AddUserToProjectApiRequest); ok {
+	var r0 admin.AddGroupUserApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupInvitationRequest) admin.AddGroupUserApiRequest); ok {
 		r0 = rf(ctx, groupId, groupInvitationRequest)
 	} else {
-		r0 = ret.Get(0).(admin.AddUserToProjectApiRequest)
+		r0 = ret.Get(0).(admin.AddGroupUserApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_AddUserToProject_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddUserToProject'
-type ProjectsApi_AddUserToProject_Call struct {
+// ProjectsApi_AddGroupUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupUser'
+type ProjectsApi_AddGroupUser_Call struct {
 	*mock.Call
 }
 
-// AddUserToProject is a helper method to define mock.On call
+// AddGroupUser is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - groupInvitationRequest *admin.GroupInvitationRequest
-func (_e *ProjectsApi_Expecter) AddUserToProject(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_AddUserToProject_Call {
-	return &ProjectsApi_AddUserToProject_Call{Call: _e.mock.On("AddUserToProject", ctx, groupId, groupInvitationRequest)}
+func (_e *ProjectsApi_Expecter) AddGroupUser(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_AddGroupUser_Call {
+	return &ProjectsApi_AddGroupUser_Call{Call: _e.mock.On("AddGroupUser", ctx, groupId, groupInvitationRequest)}
 }
 
-func (_c *ProjectsApi_AddUserToProject_Call) Run(run func(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest)) *ProjectsApi_AddUserToProject_Call {
+func (_c *ProjectsApi_AddGroupUser_Call) Run(run func(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest)) *ProjectsApi_AddGroupUser_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupInvitationRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_AddUserToProject_Call) Return(_a0 admin.AddUserToProjectApiRequest) *ProjectsApi_AddUserToProject_Call {
+func (_c *ProjectsApi_AddGroupUser_Call) Return(_a0 admin.AddGroupUserApiRequest) *ProjectsApi_AddGroupUser_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_AddUserToProject_Call) RunAndReturn(run func(context.Context, string, *admin.GroupInvitationRequest) admin.AddUserToProjectApiRequest) *ProjectsApi_AddUserToProject_Call {
+func (_c *ProjectsApi_AddGroupUser_Call) RunAndReturn(run func(context.Context, string, *admin.GroupInvitationRequest) admin.AddGroupUserApiRequest) *ProjectsApi_AddGroupUser_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddUserToProjectExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) AddUserToProjectExecute(r admin.AddUserToProjectApiRequest) (*admin.OrganizationInvitation, *http.Response, error) {
+// AddGroupUserExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) AddGroupUserExecute(r admin.AddGroupUserApiRequest) (*admin.OrganizationInvitation, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddUserToProjectExecute")
+		panic("no return value specified for AddGroupUserExecute")
 	}
 
 	var r0 *admin.OrganizationInvitation
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AddUserToProjectApiRequest) (*admin.OrganizationInvitation, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddGroupUserApiRequest) (*admin.OrganizationInvitation, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AddUserToProjectApiRequest) *admin.OrganizationInvitation); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddGroupUserApiRequest) *admin.OrganizationInvitation); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -95,7 +95,7 @@ func (_m *ProjectsApi) AddUserToProjectExecute(r admin.AddUserToProjectApiReques
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.AddUserToProjectApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.AddGroupUserApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -103,7 +103,7 @@ func (_m *ProjectsApi) AddUserToProjectExecute(r admin.AddUserToProjectApiReques
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.AddUserToProjectApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.AddGroupUserApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -112,143 +112,143 @@ func (_m *ProjectsApi) AddUserToProjectExecute(r admin.AddUserToProjectApiReques
 	return r0, r1, r2
 }
 
-// ProjectsApi_AddUserToProjectExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddUserToProjectExecute'
-type ProjectsApi_AddUserToProjectExecute_Call struct {
+// ProjectsApi_AddGroupUserExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupUserExecute'
+type ProjectsApi_AddGroupUserExecute_Call struct {
 	*mock.Call
 }
 
-// AddUserToProjectExecute is a helper method to define mock.On call
-//   - r admin.AddUserToProjectApiRequest
-func (_e *ProjectsApi_Expecter) AddUserToProjectExecute(r any) *ProjectsApi_AddUserToProjectExecute_Call {
-	return &ProjectsApi_AddUserToProjectExecute_Call{Call: _e.mock.On("AddUserToProjectExecute", r)}
+// AddGroupUserExecute is a helper method to define mock.On call
+//   - r admin.AddGroupUserApiRequest
+func (_e *ProjectsApi_Expecter) AddGroupUserExecute(r any) *ProjectsApi_AddGroupUserExecute_Call {
+	return &ProjectsApi_AddGroupUserExecute_Call{Call: _e.mock.On("AddGroupUserExecute", r)}
 }
 
-func (_c *ProjectsApi_AddUserToProjectExecute_Call) Run(run func(r admin.AddUserToProjectApiRequest)) *ProjectsApi_AddUserToProjectExecute_Call {
+func (_c *ProjectsApi_AddGroupUserExecute_Call) Run(run func(r admin.AddGroupUserApiRequest)) *ProjectsApi_AddGroupUserExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.AddUserToProjectApiRequest))
+		run(args[0].(admin.AddGroupUserApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_AddUserToProjectExecute_Call) Return(_a0 *admin.OrganizationInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_AddUserToProjectExecute_Call {
+func (_c *ProjectsApi_AddGroupUserExecute_Call) Return(_a0 *admin.OrganizationInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_AddGroupUserExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_AddUserToProjectExecute_Call) RunAndReturn(run func(admin.AddUserToProjectApiRequest) (*admin.OrganizationInvitation, *http.Response, error)) *ProjectsApi_AddUserToProjectExecute_Call {
+func (_c *ProjectsApi_AddGroupUserExecute_Call) RunAndReturn(run func(admin.AddGroupUserApiRequest) (*admin.OrganizationInvitation, *http.Response, error)) *ProjectsApi_AddGroupUserExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddUserToProjectWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) AddUserToProjectWithParams(ctx context.Context, args *admin.AddUserToProjectApiParams) admin.AddUserToProjectApiRequest {
+// AddGroupUserWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) AddGroupUserWithParams(ctx context.Context, args *admin.AddGroupUserApiParams) admin.AddGroupUserApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddUserToProjectWithParams")
+		panic("no return value specified for AddGroupUserWithParams")
 	}
 
-	var r0 admin.AddUserToProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddUserToProjectApiParams) admin.AddUserToProjectApiRequest); ok {
+	var r0 admin.AddGroupUserApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddGroupUserApiParams) admin.AddGroupUserApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.AddUserToProjectApiRequest)
+		r0 = ret.Get(0).(admin.AddGroupUserApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_AddUserToProjectWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddUserToProjectWithParams'
-type ProjectsApi_AddUserToProjectWithParams_Call struct {
+// ProjectsApi_AddGroupUserWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupUserWithParams'
+type ProjectsApi_AddGroupUserWithParams_Call struct {
 	*mock.Call
 }
 
-// AddUserToProjectWithParams is a helper method to define mock.On call
+// AddGroupUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.AddUserToProjectApiParams
-func (_e *ProjectsApi_Expecter) AddUserToProjectWithParams(ctx any, args any) *ProjectsApi_AddUserToProjectWithParams_Call {
-	return &ProjectsApi_AddUserToProjectWithParams_Call{Call: _e.mock.On("AddUserToProjectWithParams", ctx, args)}
+//   - args *admin.AddGroupUserApiParams
+func (_e *ProjectsApi_Expecter) AddGroupUserWithParams(ctx any, args any) *ProjectsApi_AddGroupUserWithParams_Call {
+	return &ProjectsApi_AddGroupUserWithParams_Call{Call: _e.mock.On("AddGroupUserWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_AddUserToProjectWithParams_Call) Run(run func(ctx context.Context, args *admin.AddUserToProjectApiParams)) *ProjectsApi_AddUserToProjectWithParams_Call {
+func (_c *ProjectsApi_AddGroupUserWithParams_Call) Run(run func(ctx context.Context, args *admin.AddGroupUserApiParams)) *ProjectsApi_AddGroupUserWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.AddUserToProjectApiParams))
+		run(args[0].(context.Context), args[1].(*admin.AddGroupUserApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_AddUserToProjectWithParams_Call) Return(_a0 admin.AddUserToProjectApiRequest) *ProjectsApi_AddUserToProjectWithParams_Call {
+func (_c *ProjectsApi_AddGroupUserWithParams_Call) Return(_a0 admin.AddGroupUserApiRequest) *ProjectsApi_AddGroupUserWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_AddUserToProjectWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddUserToProjectApiParams) admin.AddUserToProjectApiRequest) *ProjectsApi_AddUserToProjectWithParams_Call {
+func (_c *ProjectsApi_AddGroupUserWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddGroupUserApiParams) admin.AddGroupUserApiRequest) *ProjectsApi_AddGroupUserWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateProject provides a mock function with given fields: ctx, group
-func (_m *ProjectsApi) CreateProject(ctx context.Context, group *admin.Group) admin.CreateProjectApiRequest {
+// CreateGroup provides a mock function with given fields: ctx, group
+func (_m *ProjectsApi) CreateGroup(ctx context.Context, group *admin.Group) admin.CreateGroupApiRequest {
 	ret := _m.Called(ctx, group)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateProject")
+		panic("no return value specified for CreateGroup")
 	}
 
-	var r0 admin.CreateProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.Group) admin.CreateProjectApiRequest); ok {
+	var r0 admin.CreateGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.Group) admin.CreateGroupApiRequest); ok {
 		r0 = rf(ctx, group)
 	} else {
-		r0 = ret.Get(0).(admin.CreateProjectApiRequest)
+		r0 = ret.Get(0).(admin.CreateGroupApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_CreateProject_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProject'
-type ProjectsApi_CreateProject_Call struct {
+// ProjectsApi_CreateGroup_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroup'
+type ProjectsApi_CreateGroup_Call struct {
 	*mock.Call
 }
 
-// CreateProject is a helper method to define mock.On call
+// CreateGroup is a helper method to define mock.On call
 //   - ctx context.Context
 //   - group *admin.Group
-func (_e *ProjectsApi_Expecter) CreateProject(ctx any, group any) *ProjectsApi_CreateProject_Call {
-	return &ProjectsApi_CreateProject_Call{Call: _e.mock.On("CreateProject", ctx, group)}
+func (_e *ProjectsApi_Expecter) CreateGroup(ctx any, group any) *ProjectsApi_CreateGroup_Call {
+	return &ProjectsApi_CreateGroup_Call{Call: _e.mock.On("CreateGroup", ctx, group)}
 }
 
-func (_c *ProjectsApi_CreateProject_Call) Run(run func(ctx context.Context, group *admin.Group)) *ProjectsApi_CreateProject_Call {
+func (_c *ProjectsApi_CreateGroup_Call) Run(run func(ctx context.Context, group *admin.Group)) *ProjectsApi_CreateGroup_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(*admin.Group))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProject_Call) Return(_a0 admin.CreateProjectApiRequest) *ProjectsApi_CreateProject_Call {
+func (_c *ProjectsApi_CreateGroup_Call) Return(_a0 admin.CreateGroupApiRequest) *ProjectsApi_CreateGroup_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProject_Call) RunAndReturn(run func(context.Context, *admin.Group) admin.CreateProjectApiRequest) *ProjectsApi_CreateProject_Call {
+func (_c *ProjectsApi_CreateGroup_Call) RunAndReturn(run func(context.Context, *admin.Group) admin.CreateGroupApiRequest) *ProjectsApi_CreateGroup_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateProjectExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) CreateProjectExecute(r admin.CreateProjectApiRequest) (*admin.Group, *http.Response, error) {
+// CreateGroupExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) CreateGroupExecute(r admin.CreateGroupApiRequest) (*admin.Group, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateProjectExecute")
+		panic("no return value specified for CreateGroupExecute")
 	}
 
 	var r0 *admin.Group
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateProjectApiRequest) (*admin.Group, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupApiRequest) (*admin.Group, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateProjectApiRequest) *admin.Group); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupApiRequest) *admin.Group); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -256,7 +256,7 @@ func (_m *ProjectsApi) CreateProjectExecute(r admin.CreateProjectApiRequest) (*a
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateProjectApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateGroupApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -264,7 +264,7 @@ func (_m *ProjectsApi) CreateProjectExecute(r admin.CreateProjectApiRequest) (*a
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateProjectApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateGroupApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -273,97 +273,97 @@ func (_m *ProjectsApi) CreateProjectExecute(r admin.CreateProjectApiRequest) (*a
 	return r0, r1, r2
 }
 
-// ProjectsApi_CreateProjectExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectExecute'
-type ProjectsApi_CreateProjectExecute_Call struct {
+// ProjectsApi_CreateGroupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupExecute'
+type ProjectsApi_CreateGroupExecute_Call struct {
 	*mock.Call
 }
 
-// CreateProjectExecute is a helper method to define mock.On call
-//   - r admin.CreateProjectApiRequest
-func (_e *ProjectsApi_Expecter) CreateProjectExecute(r any) *ProjectsApi_CreateProjectExecute_Call {
-	return &ProjectsApi_CreateProjectExecute_Call{Call: _e.mock.On("CreateProjectExecute", r)}
+// CreateGroupExecute is a helper method to define mock.On call
+//   - r admin.CreateGroupApiRequest
+func (_e *ProjectsApi_Expecter) CreateGroupExecute(r any) *ProjectsApi_CreateGroupExecute_Call {
+	return &ProjectsApi_CreateGroupExecute_Call{Call: _e.mock.On("CreateGroupExecute", r)}
 }
 
-func (_c *ProjectsApi_CreateProjectExecute_Call) Run(run func(r admin.CreateProjectApiRequest)) *ProjectsApi_CreateProjectExecute_Call {
+func (_c *ProjectsApi_CreateGroupExecute_Call) Run(run func(r admin.CreateGroupApiRequest)) *ProjectsApi_CreateGroupExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateProjectApiRequest))
+		run(args[0].(admin.CreateGroupApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_CreateProjectExecute_Call {
+func (_c *ProjectsApi_CreateGroupExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_CreateGroupExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectExecute_Call) RunAndReturn(run func(admin.CreateProjectApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_CreateProjectExecute_Call {
+func (_c *ProjectsApi_CreateGroupExecute_Call) RunAndReturn(run func(admin.CreateGroupApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_CreateGroupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateProjectInvitation provides a mock function with given fields: ctx, groupId, groupInvitationRequest
-func (_m *ProjectsApi) CreateProjectInvitation(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest) admin.CreateProjectInvitationApiRequest {
+// CreateGroupInvite provides a mock function with given fields: ctx, groupId, groupInvitationRequest
+func (_m *ProjectsApi) CreateGroupInvite(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest) admin.CreateGroupInviteApiRequest {
 	ret := _m.Called(ctx, groupId, groupInvitationRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateProjectInvitation")
+		panic("no return value specified for CreateGroupInvite")
 	}
 
-	var r0 admin.CreateProjectInvitationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupInvitationRequest) admin.CreateProjectInvitationApiRequest); ok {
+	var r0 admin.CreateGroupInviteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupInvitationRequest) admin.CreateGroupInviteApiRequest); ok {
 		r0 = rf(ctx, groupId, groupInvitationRequest)
 	} else {
-		r0 = ret.Get(0).(admin.CreateProjectInvitationApiRequest)
+		r0 = ret.Get(0).(admin.CreateGroupInviteApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_CreateProjectInvitation_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectInvitation'
-type ProjectsApi_CreateProjectInvitation_Call struct {
+// ProjectsApi_CreateGroupInvite_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupInvite'
+type ProjectsApi_CreateGroupInvite_Call struct {
 	*mock.Call
 }
 
-// CreateProjectInvitation is a helper method to define mock.On call
+// CreateGroupInvite is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - groupInvitationRequest *admin.GroupInvitationRequest
-func (_e *ProjectsApi_Expecter) CreateProjectInvitation(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_CreateProjectInvitation_Call {
-	return &ProjectsApi_CreateProjectInvitation_Call{Call: _e.mock.On("CreateProjectInvitation", ctx, groupId, groupInvitationRequest)}
+func (_e *ProjectsApi_Expecter) CreateGroupInvite(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_CreateGroupInvite_Call {
+	return &ProjectsApi_CreateGroupInvite_Call{Call: _e.mock.On("CreateGroupInvite", ctx, groupId, groupInvitationRequest)}
 }
 
-func (_c *ProjectsApi_CreateProjectInvitation_Call) Run(run func(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest)) *ProjectsApi_CreateProjectInvitation_Call {
+func (_c *ProjectsApi_CreateGroupInvite_Call) Run(run func(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest)) *ProjectsApi_CreateGroupInvite_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupInvitationRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectInvitation_Call) Return(_a0 admin.CreateProjectInvitationApiRequest) *ProjectsApi_CreateProjectInvitation_Call {
+func (_c *ProjectsApi_CreateGroupInvite_Call) Return(_a0 admin.CreateGroupInviteApiRequest) *ProjectsApi_CreateGroupInvite_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectInvitation_Call) RunAndReturn(run func(context.Context, string, *admin.GroupInvitationRequest) admin.CreateProjectInvitationApiRequest) *ProjectsApi_CreateProjectInvitation_Call {
+func (_c *ProjectsApi_CreateGroupInvite_Call) RunAndReturn(run func(context.Context, string, *admin.GroupInvitationRequest) admin.CreateGroupInviteApiRequest) *ProjectsApi_CreateGroupInvite_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateProjectInvitationExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) CreateProjectInvitationExecute(r admin.CreateProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error) {
+// CreateGroupInviteExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) CreateGroupInviteExecute(r admin.CreateGroupInviteApiRequest) (*admin.GroupInvitation, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateProjectInvitationExecute")
+		panic("no return value specified for CreateGroupInviteExecute")
 	}
 
 	var r0 *admin.GroupInvitation
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupInviteApiRequest) (*admin.GroupInvitation, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateProjectInvitationApiRequest) *admin.GroupInvitation); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupInviteApiRequest) *admin.GroupInvitation); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -371,7 +371,7 @@ func (_m *ProjectsApi) CreateProjectInvitationExecute(r admin.CreateProjectInvit
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateProjectInvitationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateGroupInviteApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -379,7 +379,7 @@ func (_m *ProjectsApi) CreateProjectInvitationExecute(r admin.CreateProjectInvit
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateProjectInvitationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateGroupInviteApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -388,189 +388,189 @@ func (_m *ProjectsApi) CreateProjectInvitationExecute(r admin.CreateProjectInvit
 	return r0, r1, r2
 }
 
-// ProjectsApi_CreateProjectInvitationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectInvitationExecute'
-type ProjectsApi_CreateProjectInvitationExecute_Call struct {
+// ProjectsApi_CreateGroupInviteExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupInviteExecute'
+type ProjectsApi_CreateGroupInviteExecute_Call struct {
 	*mock.Call
 }
 
-// CreateProjectInvitationExecute is a helper method to define mock.On call
-//   - r admin.CreateProjectInvitationApiRequest
-func (_e *ProjectsApi_Expecter) CreateProjectInvitationExecute(r any) *ProjectsApi_CreateProjectInvitationExecute_Call {
-	return &ProjectsApi_CreateProjectInvitationExecute_Call{Call: _e.mock.On("CreateProjectInvitationExecute", r)}
+// CreateGroupInviteExecute is a helper method to define mock.On call
+//   - r admin.CreateGroupInviteApiRequest
+func (_e *ProjectsApi_Expecter) CreateGroupInviteExecute(r any) *ProjectsApi_CreateGroupInviteExecute_Call {
+	return &ProjectsApi_CreateGroupInviteExecute_Call{Call: _e.mock.On("CreateGroupInviteExecute", r)}
 }
 
-func (_c *ProjectsApi_CreateProjectInvitationExecute_Call) Run(run func(r admin.CreateProjectInvitationApiRequest)) *ProjectsApi_CreateProjectInvitationExecute_Call {
+func (_c *ProjectsApi_CreateGroupInviteExecute_Call) Run(run func(r admin.CreateGroupInviteApiRequest)) *ProjectsApi_CreateGroupInviteExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateProjectInvitationApiRequest))
+		run(args[0].(admin.CreateGroupInviteApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectInvitationExecute_Call) Return(_a0 *admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_CreateProjectInvitationExecute_Call {
+func (_c *ProjectsApi_CreateGroupInviteExecute_Call) Return(_a0 *admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_CreateGroupInviteExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectInvitationExecute_Call) RunAndReturn(run func(admin.CreateProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error)) *ProjectsApi_CreateProjectInvitationExecute_Call {
+func (_c *ProjectsApi_CreateGroupInviteExecute_Call) RunAndReturn(run func(admin.CreateGroupInviteApiRequest) (*admin.GroupInvitation, *http.Response, error)) *ProjectsApi_CreateGroupInviteExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateProjectInvitationWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) CreateProjectInvitationWithParams(ctx context.Context, args *admin.CreateProjectInvitationApiParams) admin.CreateProjectInvitationApiRequest {
+// CreateGroupInviteWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) CreateGroupInviteWithParams(ctx context.Context, args *admin.CreateGroupInviteApiParams) admin.CreateGroupInviteApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateProjectInvitationWithParams")
+		panic("no return value specified for CreateGroupInviteWithParams")
 	}
 
-	var r0 admin.CreateProjectInvitationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateProjectInvitationApiParams) admin.CreateProjectInvitationApiRequest); ok {
+	var r0 admin.CreateGroupInviteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupInviteApiParams) admin.CreateGroupInviteApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateProjectInvitationApiRequest)
+		r0 = ret.Get(0).(admin.CreateGroupInviteApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_CreateProjectInvitationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectInvitationWithParams'
-type ProjectsApi_CreateProjectInvitationWithParams_Call struct {
+// ProjectsApi_CreateGroupInviteWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupInviteWithParams'
+type ProjectsApi_CreateGroupInviteWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateProjectInvitationWithParams is a helper method to define mock.On call
+// CreateGroupInviteWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateProjectInvitationApiParams
-func (_e *ProjectsApi_Expecter) CreateProjectInvitationWithParams(ctx any, args any) *ProjectsApi_CreateProjectInvitationWithParams_Call {
-	return &ProjectsApi_CreateProjectInvitationWithParams_Call{Call: _e.mock.On("CreateProjectInvitationWithParams", ctx, args)}
+//   - args *admin.CreateGroupInviteApiParams
+func (_e *ProjectsApi_Expecter) CreateGroupInviteWithParams(ctx any, args any) *ProjectsApi_CreateGroupInviteWithParams_Call {
+	return &ProjectsApi_CreateGroupInviteWithParams_Call{Call: _e.mock.On("CreateGroupInviteWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_CreateProjectInvitationWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateProjectInvitationApiParams)) *ProjectsApi_CreateProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_CreateGroupInviteWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupInviteApiParams)) *ProjectsApi_CreateGroupInviteWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateProjectInvitationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateGroupInviteApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectInvitationWithParams_Call) Return(_a0 admin.CreateProjectInvitationApiRequest) *ProjectsApi_CreateProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_CreateGroupInviteWithParams_Call) Return(_a0 admin.CreateGroupInviteApiRequest) *ProjectsApi_CreateGroupInviteWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectInvitationWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateProjectInvitationApiParams) admin.CreateProjectInvitationApiRequest) *ProjectsApi_CreateProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_CreateGroupInviteWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupInviteApiParams) admin.CreateGroupInviteApiRequest) *ProjectsApi_CreateGroupInviteWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateProjectWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) CreateProjectWithParams(ctx context.Context, args *admin.CreateProjectApiParams) admin.CreateProjectApiRequest {
+// CreateGroupWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) CreateGroupWithParams(ctx context.Context, args *admin.CreateGroupApiParams) admin.CreateGroupApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateProjectWithParams")
+		panic("no return value specified for CreateGroupWithParams")
 	}
 
-	var r0 admin.CreateProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateProjectApiParams) admin.CreateProjectApiRequest); ok {
+	var r0 admin.CreateGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupApiParams) admin.CreateGroupApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateProjectApiRequest)
+		r0 = ret.Get(0).(admin.CreateGroupApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_CreateProjectWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProjectWithParams'
-type ProjectsApi_CreateProjectWithParams_Call struct {
+// ProjectsApi_CreateGroupWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupWithParams'
+type ProjectsApi_CreateGroupWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateProjectWithParams is a helper method to define mock.On call
+// CreateGroupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateProjectApiParams
-func (_e *ProjectsApi_Expecter) CreateProjectWithParams(ctx any, args any) *ProjectsApi_CreateProjectWithParams_Call {
-	return &ProjectsApi_CreateProjectWithParams_Call{Call: _e.mock.On("CreateProjectWithParams", ctx, args)}
+//   - args *admin.CreateGroupApiParams
+func (_e *ProjectsApi_Expecter) CreateGroupWithParams(ctx any, args any) *ProjectsApi_CreateGroupWithParams_Call {
+	return &ProjectsApi_CreateGroupWithParams_Call{Call: _e.mock.On("CreateGroupWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_CreateProjectWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateProjectApiParams)) *ProjectsApi_CreateProjectWithParams_Call {
+func (_c *ProjectsApi_CreateGroupWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupApiParams)) *ProjectsApi_CreateGroupWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateProjectApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateGroupApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectWithParams_Call) Return(_a0 admin.CreateProjectApiRequest) *ProjectsApi_CreateProjectWithParams_Call {
+func (_c *ProjectsApi_CreateGroupWithParams_Call) Return(_a0 admin.CreateGroupApiRequest) *ProjectsApi_CreateGroupWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_CreateProjectWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateProjectApiParams) admin.CreateProjectApiRequest) *ProjectsApi_CreateProjectWithParams_Call {
+func (_c *ProjectsApi_CreateGroupWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupApiParams) admin.CreateGroupApiRequest) *ProjectsApi_CreateGroupWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProject provides a mock function with given fields: ctx, groupId
-func (_m *ProjectsApi) DeleteProject(ctx context.Context, groupId string) admin.DeleteProjectApiRequest {
+// DeleteGroup provides a mock function with given fields: ctx, groupId
+func (_m *ProjectsApi) DeleteGroup(ctx context.Context, groupId string) admin.DeleteGroupApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProject")
+		panic("no return value specified for DeleteGroup")
 	}
 
-	var r0 admin.DeleteProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteProjectApiRequest); ok {
+	var r0 admin.DeleteGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.DeleteGroupApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteProjectApiRequest)
+		r0 = ret.Get(0).(admin.DeleteGroupApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_DeleteProject_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProject'
-type ProjectsApi_DeleteProject_Call struct {
+// ProjectsApi_DeleteGroup_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroup'
+type ProjectsApi_DeleteGroup_Call struct {
 	*mock.Call
 }
 
-// DeleteProject is a helper method to define mock.On call
+// DeleteGroup is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) DeleteProject(ctx any, groupId any) *ProjectsApi_DeleteProject_Call {
-	return &ProjectsApi_DeleteProject_Call{Call: _e.mock.On("DeleteProject", ctx, groupId)}
+func (_e *ProjectsApi_Expecter) DeleteGroup(ctx any, groupId any) *ProjectsApi_DeleteGroup_Call {
+	return &ProjectsApi_DeleteGroup_Call{Call: _e.mock.On("DeleteGroup", ctx, groupId)}
 }
 
-func (_c *ProjectsApi_DeleteProject_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_DeleteProject_Call {
+func (_c *ProjectsApi_DeleteGroup_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_DeleteGroup_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProject_Call) Return(_a0 admin.DeleteProjectApiRequest) *ProjectsApi_DeleteProject_Call {
+func (_c *ProjectsApi_DeleteGroup_Call) Return(_a0 admin.DeleteGroupApiRequest) *ProjectsApi_DeleteGroup_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProject_Call) RunAndReturn(run func(context.Context, string) admin.DeleteProjectApiRequest) *ProjectsApi_DeleteProject_Call {
+func (_c *ProjectsApi_DeleteGroup_Call) RunAndReturn(run func(context.Context, string) admin.DeleteGroupApiRequest) *ProjectsApi_DeleteGroup_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProjectExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (*http.Response, error) {
+// DeleteGroupExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) DeleteGroupExecute(r admin.DeleteGroupApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProjectExecute")
+		panic("no return value specified for DeleteGroupExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -578,7 +578,7 @@ func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (*h
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteProjectApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteGroupApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -587,96 +587,96 @@ func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (*h
 	return r0, r1
 }
 
-// ProjectsApi_DeleteProjectExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectExecute'
-type ProjectsApi_DeleteProjectExecute_Call struct {
+// ProjectsApi_DeleteGroupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupExecute'
+type ProjectsApi_DeleteGroupExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteProjectExecute is a helper method to define mock.On call
-//   - r admin.DeleteProjectApiRequest
-func (_e *ProjectsApi_Expecter) DeleteProjectExecute(r any) *ProjectsApi_DeleteProjectExecute_Call {
-	return &ProjectsApi_DeleteProjectExecute_Call{Call: _e.mock.On("DeleteProjectExecute", r)}
+// DeleteGroupExecute is a helper method to define mock.On call
+//   - r admin.DeleteGroupApiRequest
+func (_e *ProjectsApi_Expecter) DeleteGroupExecute(r any) *ProjectsApi_DeleteGroupExecute_Call {
+	return &ProjectsApi_DeleteGroupExecute_Call{Call: _e.mock.On("DeleteGroupExecute", r)}
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) Run(run func(r admin.DeleteProjectApiRequest)) *ProjectsApi_DeleteProjectExecute_Call {
+func (_c *ProjectsApi_DeleteGroupExecute_Call) Run(run func(r admin.DeleteGroupApiRequest)) *ProjectsApi_DeleteGroupExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteProjectApiRequest))
+		run(args[0].(admin.DeleteGroupApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteProjectExecute_Call {
+func (_c *ProjectsApi_DeleteGroupExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteGroupExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) RunAndReturn(run func(admin.DeleteProjectApiRequest) (*http.Response, error)) *ProjectsApi_DeleteProjectExecute_Call {
+func (_c *ProjectsApi_DeleteGroupExecute_Call) RunAndReturn(run func(admin.DeleteGroupApiRequest) (*http.Response, error)) *ProjectsApi_DeleteGroupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProjectInvitation provides a mock function with given fields: ctx, groupId, invitationId
-func (_m *ProjectsApi) DeleteProjectInvitation(ctx context.Context, groupId string, invitationId string) admin.DeleteProjectInvitationApiRequest {
+// DeleteGroupInvite provides a mock function with given fields: ctx, groupId, invitationId
+func (_m *ProjectsApi) DeleteGroupInvite(ctx context.Context, groupId string, invitationId string) admin.DeleteGroupInviteApiRequest {
 	ret := _m.Called(ctx, groupId, invitationId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProjectInvitation")
+		panic("no return value specified for DeleteGroupInvite")
 	}
 
-	var r0 admin.DeleteProjectInvitationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteProjectInvitationApiRequest); ok {
+	var r0 admin.DeleteGroupInviteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteGroupInviteApiRequest); ok {
 		r0 = rf(ctx, groupId, invitationId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteProjectInvitationApiRequest)
+		r0 = ret.Get(0).(admin.DeleteGroupInviteApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_DeleteProjectInvitation_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectInvitation'
-type ProjectsApi_DeleteProjectInvitation_Call struct {
+// ProjectsApi_DeleteGroupInvite_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupInvite'
+type ProjectsApi_DeleteGroupInvite_Call struct {
 	*mock.Call
 }
 
-// DeleteProjectInvitation is a helper method to define mock.On call
+// DeleteGroupInvite is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - invitationId string
-func (_e *ProjectsApi_Expecter) DeleteProjectInvitation(ctx any, groupId any, invitationId any) *ProjectsApi_DeleteProjectInvitation_Call {
-	return &ProjectsApi_DeleteProjectInvitation_Call{Call: _e.mock.On("DeleteProjectInvitation", ctx, groupId, invitationId)}
+func (_e *ProjectsApi_Expecter) DeleteGroupInvite(ctx any, groupId any, invitationId any) *ProjectsApi_DeleteGroupInvite_Call {
+	return &ProjectsApi_DeleteGroupInvite_Call{Call: _e.mock.On("DeleteGroupInvite", ctx, groupId, invitationId)}
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitation_Call) Run(run func(ctx context.Context, groupId string, invitationId string)) *ProjectsApi_DeleteProjectInvitation_Call {
+func (_c *ProjectsApi_DeleteGroupInvite_Call) Run(run func(ctx context.Context, groupId string, invitationId string)) *ProjectsApi_DeleteGroupInvite_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitation_Call) Return(_a0 admin.DeleteProjectInvitationApiRequest) *ProjectsApi_DeleteProjectInvitation_Call {
+func (_c *ProjectsApi_DeleteGroupInvite_Call) Return(_a0 admin.DeleteGroupInviteApiRequest) *ProjectsApi_DeleteGroupInvite_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitation_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteProjectInvitationApiRequest) *ProjectsApi_DeleteProjectInvitation_Call {
+func (_c *ProjectsApi_DeleteGroupInvite_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteGroupInviteApiRequest) *ProjectsApi_DeleteGroupInvite_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProjectInvitationExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvitationApiRequest) (*http.Response, error) {
+// DeleteGroupInviteExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) DeleteGroupInviteExecute(r admin.DeleteGroupInviteApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProjectInvitationExecute")
+		panic("no return value specified for DeleteGroupInviteExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupInviteApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupInviteApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -684,7 +684,7 @@ func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvit
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteProjectInvitationApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteGroupInviteApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -693,143 +693,143 @@ func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvit
 	return r0, r1
 }
 
-// ProjectsApi_DeleteProjectInvitationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectInvitationExecute'
-type ProjectsApi_DeleteProjectInvitationExecute_Call struct {
+// ProjectsApi_DeleteGroupInviteExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupInviteExecute'
+type ProjectsApi_DeleteGroupInviteExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteProjectInvitationExecute is a helper method to define mock.On call
-//   - r admin.DeleteProjectInvitationApiRequest
-func (_e *ProjectsApi_Expecter) DeleteProjectInvitationExecute(r any) *ProjectsApi_DeleteProjectInvitationExecute_Call {
-	return &ProjectsApi_DeleteProjectInvitationExecute_Call{Call: _e.mock.On("DeleteProjectInvitationExecute", r)}
+// DeleteGroupInviteExecute is a helper method to define mock.On call
+//   - r admin.DeleteGroupInviteApiRequest
+func (_e *ProjectsApi_Expecter) DeleteGroupInviteExecute(r any) *ProjectsApi_DeleteGroupInviteExecute_Call {
+	return &ProjectsApi_DeleteGroupInviteExecute_Call{Call: _e.mock.On("DeleteGroupInviteExecute", r)}
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Run(run func(r admin.DeleteProjectInvitationApiRequest)) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_c *ProjectsApi_DeleteGroupInviteExecute_Call) Run(run func(r admin.DeleteGroupInviteApiRequest)) *ProjectsApi_DeleteGroupInviteExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteProjectInvitationApiRequest))
+		run(args[0].(admin.DeleteGroupInviteApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_c *ProjectsApi_DeleteGroupInviteExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteGroupInviteExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) RunAndReturn(run func(admin.DeleteProjectInvitationApiRequest) (*http.Response, error)) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_c *ProjectsApi_DeleteGroupInviteExecute_Call) RunAndReturn(run func(admin.DeleteGroupInviteApiRequest) (*http.Response, error)) *ProjectsApi_DeleteGroupInviteExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProjectInvitationWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) DeleteProjectInvitationWithParams(ctx context.Context, args *admin.DeleteProjectInvitationApiParams) admin.DeleteProjectInvitationApiRequest {
+// DeleteGroupInviteWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) DeleteGroupInviteWithParams(ctx context.Context, args *admin.DeleteGroupInviteApiParams) admin.DeleteGroupInviteApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProjectInvitationWithParams")
+		panic("no return value specified for DeleteGroupInviteWithParams")
 	}
 
-	var r0 admin.DeleteProjectInvitationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteProjectInvitationApiParams) admin.DeleteProjectInvitationApiRequest); ok {
+	var r0 admin.DeleteGroupInviteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupInviteApiParams) admin.DeleteGroupInviteApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteProjectInvitationApiRequest)
+		r0 = ret.Get(0).(admin.DeleteGroupInviteApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_DeleteProjectInvitationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectInvitationWithParams'
-type ProjectsApi_DeleteProjectInvitationWithParams_Call struct {
+// ProjectsApi_DeleteGroupInviteWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupInviteWithParams'
+type ProjectsApi_DeleteGroupInviteWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteProjectInvitationWithParams is a helper method to define mock.On call
+// DeleteGroupInviteWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteProjectInvitationApiParams
-func (_e *ProjectsApi_Expecter) DeleteProjectInvitationWithParams(ctx any, args any) *ProjectsApi_DeleteProjectInvitationWithParams_Call {
-	return &ProjectsApi_DeleteProjectInvitationWithParams_Call{Call: _e.mock.On("DeleteProjectInvitationWithParams", ctx, args)}
+//   - args *admin.DeleteGroupInviteApiParams
+func (_e *ProjectsApi_Expecter) DeleteGroupInviteWithParams(ctx any, args any) *ProjectsApi_DeleteGroupInviteWithParams_Call {
+	return &ProjectsApi_DeleteGroupInviteWithParams_Call{Call: _e.mock.On("DeleteGroupInviteWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteProjectInvitationApiParams)) *ProjectsApi_DeleteProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupInviteWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupInviteApiParams)) *ProjectsApi_DeleteGroupInviteWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteProjectInvitationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteGroupInviteApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationWithParams_Call) Return(_a0 admin.DeleteProjectInvitationApiRequest) *ProjectsApi_DeleteProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupInviteWithParams_Call) Return(_a0 admin.DeleteGroupInviteApiRequest) *ProjectsApi_DeleteGroupInviteWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteProjectInvitationApiParams) admin.DeleteProjectInvitationApiRequest) *ProjectsApi_DeleteProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupInviteWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupInviteApiParams) admin.DeleteGroupInviteApiRequest) *ProjectsApi_DeleteGroupInviteWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProjectLimit provides a mock function with given fields: ctx, limitName, groupId
-func (_m *ProjectsApi) DeleteProjectLimit(ctx context.Context, limitName string, groupId string) admin.DeleteProjectLimitApiRequest {
+// DeleteGroupLimit provides a mock function with given fields: ctx, limitName, groupId
+func (_m *ProjectsApi) DeleteGroupLimit(ctx context.Context, limitName string, groupId string) admin.DeleteGroupLimitApiRequest {
 	ret := _m.Called(ctx, limitName, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProjectLimit")
+		panic("no return value specified for DeleteGroupLimit")
 	}
 
-	var r0 admin.DeleteProjectLimitApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteProjectLimitApiRequest); ok {
+	var r0 admin.DeleteGroupLimitApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteGroupLimitApiRequest); ok {
 		r0 = rf(ctx, limitName, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteProjectLimitApiRequest)
+		r0 = ret.Get(0).(admin.DeleteGroupLimitApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_DeleteProjectLimit_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectLimit'
-type ProjectsApi_DeleteProjectLimit_Call struct {
+// ProjectsApi_DeleteGroupLimit_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupLimit'
+type ProjectsApi_DeleteGroupLimit_Call struct {
 	*mock.Call
 }
 
-// DeleteProjectLimit is a helper method to define mock.On call
+// DeleteGroupLimit is a helper method to define mock.On call
 //   - ctx context.Context
 //   - limitName string
 //   - groupId string
-func (_e *ProjectsApi_Expecter) DeleteProjectLimit(ctx any, limitName any, groupId any) *ProjectsApi_DeleteProjectLimit_Call {
-	return &ProjectsApi_DeleteProjectLimit_Call{Call: _e.mock.On("DeleteProjectLimit", ctx, limitName, groupId)}
+func (_e *ProjectsApi_Expecter) DeleteGroupLimit(ctx any, limitName any, groupId any) *ProjectsApi_DeleteGroupLimit_Call {
+	return &ProjectsApi_DeleteGroupLimit_Call{Call: _e.mock.On("DeleteGroupLimit", ctx, limitName, groupId)}
 }
 
-func (_c *ProjectsApi_DeleteProjectLimit_Call) Run(run func(ctx context.Context, limitName string, groupId string)) *ProjectsApi_DeleteProjectLimit_Call {
+func (_c *ProjectsApi_DeleteGroupLimit_Call) Run(run func(ctx context.Context, limitName string, groupId string)) *ProjectsApi_DeleteGroupLimit_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimit_Call) Return(_a0 admin.DeleteProjectLimitApiRequest) *ProjectsApi_DeleteProjectLimit_Call {
+func (_c *ProjectsApi_DeleteGroupLimit_Call) Return(_a0 admin.DeleteGroupLimitApiRequest) *ProjectsApi_DeleteGroupLimit_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimit_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteProjectLimitApiRequest) *ProjectsApi_DeleteProjectLimit_Call {
+func (_c *ProjectsApi_DeleteGroupLimit_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteGroupLimitApiRequest) *ProjectsApi_DeleteGroupLimit_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProjectLimitExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRequest) (*http.Response, error) {
+// DeleteGroupLimitExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) DeleteGroupLimitExecute(r admin.DeleteGroupLimitApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProjectLimitExecute")
+		panic("no return value specified for DeleteGroupLimitExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupLimitApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupLimitApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -837,7 +837,7 @@ func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRe
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteProjectLimitApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteGroupLimitApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -846,237 +846,237 @@ func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRe
 	return r0, r1
 }
 
-// ProjectsApi_DeleteProjectLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectLimitExecute'
-type ProjectsApi_DeleteProjectLimitExecute_Call struct {
+// ProjectsApi_DeleteGroupLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupLimitExecute'
+type ProjectsApi_DeleteGroupLimitExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteProjectLimitExecute is a helper method to define mock.On call
-//   - r admin.DeleteProjectLimitApiRequest
-func (_e *ProjectsApi_Expecter) DeleteProjectLimitExecute(r any) *ProjectsApi_DeleteProjectLimitExecute_Call {
-	return &ProjectsApi_DeleteProjectLimitExecute_Call{Call: _e.mock.On("DeleteProjectLimitExecute", r)}
+// DeleteGroupLimitExecute is a helper method to define mock.On call
+//   - r admin.DeleteGroupLimitApiRequest
+func (_e *ProjectsApi_Expecter) DeleteGroupLimitExecute(r any) *ProjectsApi_DeleteGroupLimitExecute_Call {
+	return &ProjectsApi_DeleteGroupLimitExecute_Call{Call: _e.mock.On("DeleteGroupLimitExecute", r)}
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Run(run func(r admin.DeleteProjectLimitApiRequest)) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_c *ProjectsApi_DeleteGroupLimitExecute_Call) Run(run func(r admin.DeleteGroupLimitApiRequest)) *ProjectsApi_DeleteGroupLimitExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteProjectLimitApiRequest))
+		run(args[0].(admin.DeleteGroupLimitApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_c *ProjectsApi_DeleteGroupLimitExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteGroupLimitExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) RunAndReturn(run func(admin.DeleteProjectLimitApiRequest) (*http.Response, error)) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_c *ProjectsApi_DeleteGroupLimitExecute_Call) RunAndReturn(run func(admin.DeleteGroupLimitApiRequest) (*http.Response, error)) *ProjectsApi_DeleteGroupLimitExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProjectLimitWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) DeleteProjectLimitWithParams(ctx context.Context, args *admin.DeleteProjectLimitApiParams) admin.DeleteProjectLimitApiRequest {
+// DeleteGroupLimitWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) DeleteGroupLimitWithParams(ctx context.Context, args *admin.DeleteGroupLimitApiParams) admin.DeleteGroupLimitApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProjectLimitWithParams")
+		panic("no return value specified for DeleteGroupLimitWithParams")
 	}
 
-	var r0 admin.DeleteProjectLimitApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteProjectLimitApiParams) admin.DeleteProjectLimitApiRequest); ok {
+	var r0 admin.DeleteGroupLimitApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupLimitApiParams) admin.DeleteGroupLimitApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteProjectLimitApiRequest)
+		r0 = ret.Get(0).(admin.DeleteGroupLimitApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_DeleteProjectLimitWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectLimitWithParams'
-type ProjectsApi_DeleteProjectLimitWithParams_Call struct {
+// ProjectsApi_DeleteGroupLimitWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupLimitWithParams'
+type ProjectsApi_DeleteGroupLimitWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteProjectLimitWithParams is a helper method to define mock.On call
+// DeleteGroupLimitWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteProjectLimitApiParams
-func (_e *ProjectsApi_Expecter) DeleteProjectLimitWithParams(ctx any, args any) *ProjectsApi_DeleteProjectLimitWithParams_Call {
-	return &ProjectsApi_DeleteProjectLimitWithParams_Call{Call: _e.mock.On("DeleteProjectLimitWithParams", ctx, args)}
+//   - args *admin.DeleteGroupLimitApiParams
+func (_e *ProjectsApi_Expecter) DeleteGroupLimitWithParams(ctx any, args any) *ProjectsApi_DeleteGroupLimitWithParams_Call {
+	return &ProjectsApi_DeleteGroupLimitWithParams_Call{Call: _e.mock.On("DeleteGroupLimitWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteProjectLimitApiParams)) *ProjectsApi_DeleteProjectLimitWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupLimitWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupLimitApiParams)) *ProjectsApi_DeleteGroupLimitWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteProjectLimitApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteGroupLimitApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitWithParams_Call) Return(_a0 admin.DeleteProjectLimitApiRequest) *ProjectsApi_DeleteProjectLimitWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupLimitWithParams_Call) Return(_a0 admin.DeleteGroupLimitApiRequest) *ProjectsApi_DeleteGroupLimitWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteProjectLimitApiParams) admin.DeleteProjectLimitApiRequest) *ProjectsApi_DeleteProjectLimitWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupLimitWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupLimitApiParams) admin.DeleteGroupLimitApiRequest) *ProjectsApi_DeleteGroupLimitWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteProjectWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) DeleteProjectWithParams(ctx context.Context, args *admin.DeleteProjectApiParams) admin.DeleteProjectApiRequest {
+// DeleteGroupWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) DeleteGroupWithParams(ctx context.Context, args *admin.DeleteGroupApiParams) admin.DeleteGroupApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteProjectWithParams")
+		panic("no return value specified for DeleteGroupWithParams")
 	}
 
-	var r0 admin.DeleteProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteProjectApiParams) admin.DeleteProjectApiRequest); ok {
+	var r0 admin.DeleteGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupApiParams) admin.DeleteGroupApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteProjectApiRequest)
+		r0 = ret.Get(0).(admin.DeleteGroupApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_DeleteProjectWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectWithParams'
-type ProjectsApi_DeleteProjectWithParams_Call struct {
+// ProjectsApi_DeleteGroupWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupWithParams'
+type ProjectsApi_DeleteGroupWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteProjectWithParams is a helper method to define mock.On call
+// DeleteGroupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteProjectApiParams
-func (_e *ProjectsApi_Expecter) DeleteProjectWithParams(ctx any, args any) *ProjectsApi_DeleteProjectWithParams_Call {
-	return &ProjectsApi_DeleteProjectWithParams_Call{Call: _e.mock.On("DeleteProjectWithParams", ctx, args)}
+//   - args *admin.DeleteGroupApiParams
+func (_e *ProjectsApi_Expecter) DeleteGroupWithParams(ctx any, args any) *ProjectsApi_DeleteGroupWithParams_Call {
+	return &ProjectsApi_DeleteGroupWithParams_Call{Call: _e.mock.On("DeleteGroupWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_DeleteProjectWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteProjectApiParams)) *ProjectsApi_DeleteProjectWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupApiParams)) *ProjectsApi_DeleteGroupWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteProjectApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteGroupApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectWithParams_Call) Return(_a0 admin.DeleteProjectApiRequest) *ProjectsApi_DeleteProjectWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupWithParams_Call) Return(_a0 admin.DeleteGroupApiRequest) *ProjectsApi_DeleteGroupWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteProjectApiParams) admin.DeleteProjectApiRequest) *ProjectsApi_DeleteProjectWithParams_Call {
+func (_c *ProjectsApi_DeleteGroupWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupApiParams) admin.DeleteGroupApiRequest) *ProjectsApi_DeleteGroupWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProject provides a mock function with given fields: ctx, groupId
-func (_m *ProjectsApi) GetProject(ctx context.Context, groupId string) admin.GetProjectApiRequest {
+// GetGroup provides a mock function with given fields: ctx, groupId
+func (_m *ProjectsApi) GetGroup(ctx context.Context, groupId string) admin.GetGroupApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProject")
+		panic("no return value specified for GetGroup")
 	}
 
-	var r0 admin.GetProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetProjectApiRequest); ok {
+	var r0 admin.GetGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetGroupApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetProjectApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_GetProject_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProject'
-type ProjectsApi_GetProject_Call struct {
+// ProjectsApi_GetGroup_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroup'
+type ProjectsApi_GetGroup_Call struct {
 	*mock.Call
 }
 
-// GetProject is a helper method to define mock.On call
+// GetGroup is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) GetProject(ctx any, groupId any) *ProjectsApi_GetProject_Call {
-	return &ProjectsApi_GetProject_Call{Call: _e.mock.On("GetProject", ctx, groupId)}
+func (_e *ProjectsApi_Expecter) GetGroup(ctx any, groupId any) *ProjectsApi_GetGroup_Call {
+	return &ProjectsApi_GetGroup_Call{Call: _e.mock.On("GetGroup", ctx, groupId)}
 }
 
-func (_c *ProjectsApi_GetProject_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_GetProject_Call {
+func (_c *ProjectsApi_GetGroup_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_GetGroup_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProject_Call) Return(_a0 admin.GetProjectApiRequest) *ProjectsApi_GetProject_Call {
+func (_c *ProjectsApi_GetGroup_Call) Return(_a0 admin.GetGroupApiRequest) *ProjectsApi_GetGroup_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProject_Call) RunAndReturn(run func(context.Context, string) admin.GetProjectApiRequest) *ProjectsApi_GetProject_Call {
+func (_c *ProjectsApi_GetGroup_Call) RunAndReturn(run func(context.Context, string) admin.GetGroupApiRequest) *ProjectsApi_GetGroup_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectByName provides a mock function with given fields: ctx, groupName
-func (_m *ProjectsApi) GetProjectByName(ctx context.Context, groupName string) admin.GetProjectByNameApiRequest {
+// GetGroupByName provides a mock function with given fields: ctx, groupName
+func (_m *ProjectsApi) GetGroupByName(ctx context.Context, groupName string) admin.GetGroupByNameApiRequest {
 	ret := _m.Called(ctx, groupName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectByName")
+		panic("no return value specified for GetGroupByName")
 	}
 
-	var r0 admin.GetProjectByNameApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetProjectByNameApiRequest); ok {
+	var r0 admin.GetGroupByNameApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetGroupByNameApiRequest); ok {
 		r0 = rf(ctx, groupName)
 	} else {
-		r0 = ret.Get(0).(admin.GetProjectByNameApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupByNameApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_GetProjectByName_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectByName'
-type ProjectsApi_GetProjectByName_Call struct {
+// ProjectsApi_GetGroupByName_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupByName'
+type ProjectsApi_GetGroupByName_Call struct {
 	*mock.Call
 }
 
-// GetProjectByName is a helper method to define mock.On call
+// GetGroupByName is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupName string
-func (_e *ProjectsApi_Expecter) GetProjectByName(ctx any, groupName any) *ProjectsApi_GetProjectByName_Call {
-	return &ProjectsApi_GetProjectByName_Call{Call: _e.mock.On("GetProjectByName", ctx, groupName)}
+func (_e *ProjectsApi_Expecter) GetGroupByName(ctx any, groupName any) *ProjectsApi_GetGroupByName_Call {
+	return &ProjectsApi_GetGroupByName_Call{Call: _e.mock.On("GetGroupByName", ctx, groupName)}
 }
 
-func (_c *ProjectsApi_GetProjectByName_Call) Run(run func(ctx context.Context, groupName string)) *ProjectsApi_GetProjectByName_Call {
+func (_c *ProjectsApi_GetGroupByName_Call) Run(run func(ctx context.Context, groupName string)) *ProjectsApi_GetGroupByName_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectByName_Call) Return(_a0 admin.GetProjectByNameApiRequest) *ProjectsApi_GetProjectByName_Call {
+func (_c *ProjectsApi_GetGroupByName_Call) Return(_a0 admin.GetGroupByNameApiRequest) *ProjectsApi_GetGroupByName_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectByName_Call) RunAndReturn(run func(context.Context, string) admin.GetProjectByNameApiRequest) *ProjectsApi_GetProjectByName_Call {
+func (_c *ProjectsApi_GetGroupByName_Call) RunAndReturn(run func(context.Context, string) admin.GetGroupByNameApiRequest) *ProjectsApi_GetGroupByName_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectByNameExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) GetProjectByNameExecute(r admin.GetProjectByNameApiRequest) (*admin.Group, *http.Response, error) {
+// GetGroupByNameExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) GetGroupByNameExecute(r admin.GetGroupByNameApiRequest) (*admin.Group, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectByNameExecute")
+		panic("no return value specified for GetGroupByNameExecute")
 	}
 
 	var r0 *admin.Group
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetProjectByNameApiRequest) (*admin.Group, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupByNameApiRequest) (*admin.Group, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetProjectByNameApiRequest) *admin.Group); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupByNameApiRequest) *admin.Group); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1084,7 +1084,7 @@ func (_m *ProjectsApi) GetProjectByNameExecute(r admin.GetProjectByNameApiReques
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetProjectByNameApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupByNameApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1092,7 +1092,7 @@ func (_m *ProjectsApi) GetProjectByNameExecute(r admin.GetProjectByNameApiReques
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetProjectByNameApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupByNameApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1101,96 +1101,96 @@ func (_m *ProjectsApi) GetProjectByNameExecute(r admin.GetProjectByNameApiReques
 	return r0, r1, r2
 }
 
-// ProjectsApi_GetProjectByNameExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectByNameExecute'
-type ProjectsApi_GetProjectByNameExecute_Call struct {
+// ProjectsApi_GetGroupByNameExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupByNameExecute'
+type ProjectsApi_GetGroupByNameExecute_Call struct {
 	*mock.Call
 }
 
-// GetProjectByNameExecute is a helper method to define mock.On call
-//   - r admin.GetProjectByNameApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectByNameExecute(r any) *ProjectsApi_GetProjectByNameExecute_Call {
-	return &ProjectsApi_GetProjectByNameExecute_Call{Call: _e.mock.On("GetProjectByNameExecute", r)}
+// GetGroupByNameExecute is a helper method to define mock.On call
+//   - r admin.GetGroupByNameApiRequest
+func (_e *ProjectsApi_Expecter) GetGroupByNameExecute(r any) *ProjectsApi_GetGroupByNameExecute_Call {
+	return &ProjectsApi_GetGroupByNameExecute_Call{Call: _e.mock.On("GetGroupByNameExecute", r)}
 }
 
-func (_c *ProjectsApi_GetProjectByNameExecute_Call) Run(run func(r admin.GetProjectByNameApiRequest)) *ProjectsApi_GetProjectByNameExecute_Call {
+func (_c *ProjectsApi_GetGroupByNameExecute_Call) Run(run func(r admin.GetGroupByNameApiRequest)) *ProjectsApi_GetGroupByNameExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetProjectByNameApiRequest))
+		run(args[0].(admin.GetGroupByNameApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectByNameExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_GetProjectByNameExecute_Call {
+func (_c *ProjectsApi_GetGroupByNameExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_GetGroupByNameExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectByNameExecute_Call) RunAndReturn(run func(admin.GetProjectByNameApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_GetProjectByNameExecute_Call {
+func (_c *ProjectsApi_GetGroupByNameExecute_Call) RunAndReturn(run func(admin.GetGroupByNameApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_GetGroupByNameExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectByNameWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) GetProjectByNameWithParams(ctx context.Context, args *admin.GetProjectByNameApiParams) admin.GetProjectByNameApiRequest {
+// GetGroupByNameWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) GetGroupByNameWithParams(ctx context.Context, args *admin.GetGroupByNameApiParams) admin.GetGroupByNameApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectByNameWithParams")
+		panic("no return value specified for GetGroupByNameWithParams")
 	}
 
-	var r0 admin.GetProjectByNameApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectByNameApiParams) admin.GetProjectByNameApiRequest); ok {
+	var r0 admin.GetGroupByNameApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupByNameApiParams) admin.GetGroupByNameApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetProjectByNameApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupByNameApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_GetProjectByNameWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectByNameWithParams'
-type ProjectsApi_GetProjectByNameWithParams_Call struct {
+// ProjectsApi_GetGroupByNameWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupByNameWithParams'
+type ProjectsApi_GetGroupByNameWithParams_Call struct {
 	*mock.Call
 }
 
-// GetProjectByNameWithParams is a helper method to define mock.On call
+// GetGroupByNameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetProjectByNameApiParams
-func (_e *ProjectsApi_Expecter) GetProjectByNameWithParams(ctx any, args any) *ProjectsApi_GetProjectByNameWithParams_Call {
-	return &ProjectsApi_GetProjectByNameWithParams_Call{Call: _e.mock.On("GetProjectByNameWithParams", ctx, args)}
+//   - args *admin.GetGroupByNameApiParams
+func (_e *ProjectsApi_Expecter) GetGroupByNameWithParams(ctx any, args any) *ProjectsApi_GetGroupByNameWithParams_Call {
+	return &ProjectsApi_GetGroupByNameWithParams_Call{Call: _e.mock.On("GetGroupByNameWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_GetProjectByNameWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectByNameApiParams)) *ProjectsApi_GetProjectByNameWithParams_Call {
+func (_c *ProjectsApi_GetGroupByNameWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupByNameApiParams)) *ProjectsApi_GetGroupByNameWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetProjectByNameApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupByNameApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectByNameWithParams_Call) Return(_a0 admin.GetProjectByNameApiRequest) *ProjectsApi_GetProjectByNameWithParams_Call {
+func (_c *ProjectsApi_GetGroupByNameWithParams_Call) Return(_a0 admin.GetGroupByNameApiRequest) *ProjectsApi_GetGroupByNameWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectByNameWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectByNameApiParams) admin.GetProjectByNameApiRequest) *ProjectsApi_GetProjectByNameWithParams_Call {
+func (_c *ProjectsApi_GetGroupByNameWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupByNameApiParams) admin.GetGroupByNameApiRequest) *ProjectsApi_GetGroupByNameWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) GetProjectExecute(r admin.GetProjectApiRequest) (*admin.Group, *http.Response, error) {
+// GetGroupExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) GetGroupExecute(r admin.GetGroupApiRequest) (*admin.Group, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectExecute")
+		panic("no return value specified for GetGroupExecute")
 	}
 
 	var r0 *admin.Group
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetProjectApiRequest) (*admin.Group, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupApiRequest) (*admin.Group, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetProjectApiRequest) *admin.Group); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupApiRequest) *admin.Group); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1198,7 +1198,7 @@ func (_m *ProjectsApi) GetProjectExecute(r admin.GetProjectApiRequest) (*admin.G
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetProjectApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1206,7 +1206,7 @@ func (_m *ProjectsApi) GetProjectExecute(r admin.GetProjectApiRequest) (*admin.G
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetProjectApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1215,97 +1215,97 @@ func (_m *ProjectsApi) GetProjectExecute(r admin.GetProjectApiRequest) (*admin.G
 	return r0, r1, r2
 }
 
-// ProjectsApi_GetProjectExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectExecute'
-type ProjectsApi_GetProjectExecute_Call struct {
+// ProjectsApi_GetGroupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupExecute'
+type ProjectsApi_GetGroupExecute_Call struct {
 	*mock.Call
 }
 
-// GetProjectExecute is a helper method to define mock.On call
-//   - r admin.GetProjectApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectExecute(r any) *ProjectsApi_GetProjectExecute_Call {
-	return &ProjectsApi_GetProjectExecute_Call{Call: _e.mock.On("GetProjectExecute", r)}
+// GetGroupExecute is a helper method to define mock.On call
+//   - r admin.GetGroupApiRequest
+func (_e *ProjectsApi_Expecter) GetGroupExecute(r any) *ProjectsApi_GetGroupExecute_Call {
+	return &ProjectsApi_GetGroupExecute_Call{Call: _e.mock.On("GetGroupExecute", r)}
 }
 
-func (_c *ProjectsApi_GetProjectExecute_Call) Run(run func(r admin.GetProjectApiRequest)) *ProjectsApi_GetProjectExecute_Call {
+func (_c *ProjectsApi_GetGroupExecute_Call) Run(run func(r admin.GetGroupApiRequest)) *ProjectsApi_GetGroupExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetProjectApiRequest))
+		run(args[0].(admin.GetGroupApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_GetProjectExecute_Call {
+func (_c *ProjectsApi_GetGroupExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_GetGroupExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectExecute_Call) RunAndReturn(run func(admin.GetProjectApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_GetProjectExecute_Call {
+func (_c *ProjectsApi_GetGroupExecute_Call) RunAndReturn(run func(admin.GetGroupApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_GetGroupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectInvitation provides a mock function with given fields: ctx, groupId, invitationId
-func (_m *ProjectsApi) GetProjectInvitation(ctx context.Context, groupId string, invitationId string) admin.GetProjectInvitationApiRequest {
+// GetGroupInvite provides a mock function with given fields: ctx, groupId, invitationId
+func (_m *ProjectsApi) GetGroupInvite(ctx context.Context, groupId string, invitationId string) admin.GetGroupInviteApiRequest {
 	ret := _m.Called(ctx, groupId, invitationId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectInvitation")
+		panic("no return value specified for GetGroupInvite")
 	}
 
-	var r0 admin.GetProjectInvitationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetProjectInvitationApiRequest); ok {
+	var r0 admin.GetGroupInviteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupInviteApiRequest); ok {
 		r0 = rf(ctx, groupId, invitationId)
 	} else {
-		r0 = ret.Get(0).(admin.GetProjectInvitationApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupInviteApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_GetProjectInvitation_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectInvitation'
-type ProjectsApi_GetProjectInvitation_Call struct {
+// ProjectsApi_GetGroupInvite_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupInvite'
+type ProjectsApi_GetGroupInvite_Call struct {
 	*mock.Call
 }
 
-// GetProjectInvitation is a helper method to define mock.On call
+// GetGroupInvite is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - invitationId string
-func (_e *ProjectsApi_Expecter) GetProjectInvitation(ctx any, groupId any, invitationId any) *ProjectsApi_GetProjectInvitation_Call {
-	return &ProjectsApi_GetProjectInvitation_Call{Call: _e.mock.On("GetProjectInvitation", ctx, groupId, invitationId)}
+func (_e *ProjectsApi_Expecter) GetGroupInvite(ctx any, groupId any, invitationId any) *ProjectsApi_GetGroupInvite_Call {
+	return &ProjectsApi_GetGroupInvite_Call{Call: _e.mock.On("GetGroupInvite", ctx, groupId, invitationId)}
 }
 
-func (_c *ProjectsApi_GetProjectInvitation_Call) Run(run func(ctx context.Context, groupId string, invitationId string)) *ProjectsApi_GetProjectInvitation_Call {
+func (_c *ProjectsApi_GetGroupInvite_Call) Run(run func(ctx context.Context, groupId string, invitationId string)) *ProjectsApi_GetGroupInvite_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectInvitation_Call) Return(_a0 admin.GetProjectInvitationApiRequest) *ProjectsApi_GetProjectInvitation_Call {
+func (_c *ProjectsApi_GetGroupInvite_Call) Return(_a0 admin.GetGroupInviteApiRequest) *ProjectsApi_GetGroupInvite_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectInvitation_Call) RunAndReturn(run func(context.Context, string, string) admin.GetProjectInvitationApiRequest) *ProjectsApi_GetProjectInvitation_Call {
+func (_c *ProjectsApi_GetGroupInvite_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupInviteApiRequest) *ProjectsApi_GetGroupInvite_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectInvitationExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) GetProjectInvitationExecute(r admin.GetProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error) {
+// GetGroupInviteExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) GetGroupInviteExecute(r admin.GetGroupInviteApiRequest) (*admin.GroupInvitation, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectInvitationExecute")
+		panic("no return value specified for GetGroupInviteExecute")
 	}
 
 	var r0 *admin.GroupInvitation
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupInviteApiRequest) (*admin.GroupInvitation, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetProjectInvitationApiRequest) *admin.GroupInvitation); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupInviteApiRequest) *admin.GroupInvitation); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1313,7 +1313,7 @@ func (_m *ProjectsApi) GetProjectInvitationExecute(r admin.GetProjectInvitationA
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetProjectInvitationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupInviteApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1321,7 +1321,7 @@ func (_m *ProjectsApi) GetProjectInvitationExecute(r admin.GetProjectInvitationA
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetProjectInvitationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupInviteApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1330,1318 +1330,143 @@ func (_m *ProjectsApi) GetProjectInvitationExecute(r admin.GetProjectInvitationA
 	return r0, r1, r2
 }
 
-// ProjectsApi_GetProjectInvitationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectInvitationExecute'
-type ProjectsApi_GetProjectInvitationExecute_Call struct {
+// ProjectsApi_GetGroupInviteExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupInviteExecute'
+type ProjectsApi_GetGroupInviteExecute_Call struct {
 	*mock.Call
 }
 
-// GetProjectInvitationExecute is a helper method to define mock.On call
-//   - r admin.GetProjectInvitationApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectInvitationExecute(r any) *ProjectsApi_GetProjectInvitationExecute_Call {
-	return &ProjectsApi_GetProjectInvitationExecute_Call{Call: _e.mock.On("GetProjectInvitationExecute", r)}
+// GetGroupInviteExecute is a helper method to define mock.On call
+//   - r admin.GetGroupInviteApiRequest
+func (_e *ProjectsApi_Expecter) GetGroupInviteExecute(r any) *ProjectsApi_GetGroupInviteExecute_Call {
+	return &ProjectsApi_GetGroupInviteExecute_Call{Call: _e.mock.On("GetGroupInviteExecute", r)}
 }
 
-func (_c *ProjectsApi_GetProjectInvitationExecute_Call) Run(run func(r admin.GetProjectInvitationApiRequest)) *ProjectsApi_GetProjectInvitationExecute_Call {
+func (_c *ProjectsApi_GetGroupInviteExecute_Call) Run(run func(r admin.GetGroupInviteApiRequest)) *ProjectsApi_GetGroupInviteExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetProjectInvitationApiRequest))
+		run(args[0].(admin.GetGroupInviteApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectInvitationExecute_Call) Return(_a0 *admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_GetProjectInvitationExecute_Call {
+func (_c *ProjectsApi_GetGroupInviteExecute_Call) Return(_a0 *admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_GetGroupInviteExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectInvitationExecute_Call) RunAndReturn(run func(admin.GetProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error)) *ProjectsApi_GetProjectInvitationExecute_Call {
+func (_c *ProjectsApi_GetGroupInviteExecute_Call) RunAndReturn(run func(admin.GetGroupInviteApiRequest) (*admin.GroupInvitation, *http.Response, error)) *ProjectsApi_GetGroupInviteExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectInvitationWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) GetProjectInvitationWithParams(ctx context.Context, args *admin.GetProjectInvitationApiParams) admin.GetProjectInvitationApiRequest {
+// GetGroupInviteWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) GetGroupInviteWithParams(ctx context.Context, args *admin.GetGroupInviteApiParams) admin.GetGroupInviteApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectInvitationWithParams")
+		panic("no return value specified for GetGroupInviteWithParams")
 	}
 
-	var r0 admin.GetProjectInvitationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectInvitationApiParams) admin.GetProjectInvitationApiRequest); ok {
+	var r0 admin.GetGroupInviteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupInviteApiParams) admin.GetGroupInviteApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetProjectInvitationApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupInviteApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_GetProjectInvitationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectInvitationWithParams'
-type ProjectsApi_GetProjectInvitationWithParams_Call struct {
+// ProjectsApi_GetGroupInviteWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupInviteWithParams'
+type ProjectsApi_GetGroupInviteWithParams_Call struct {
 	*mock.Call
 }
 
-// GetProjectInvitationWithParams is a helper method to define mock.On call
+// GetGroupInviteWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetProjectInvitationApiParams
-func (_e *ProjectsApi_Expecter) GetProjectInvitationWithParams(ctx any, args any) *ProjectsApi_GetProjectInvitationWithParams_Call {
-	return &ProjectsApi_GetProjectInvitationWithParams_Call{Call: _e.mock.On("GetProjectInvitationWithParams", ctx, args)}
+//   - args *admin.GetGroupInviteApiParams
+func (_e *ProjectsApi_Expecter) GetGroupInviteWithParams(ctx any, args any) *ProjectsApi_GetGroupInviteWithParams_Call {
+	return &ProjectsApi_GetGroupInviteWithParams_Call{Call: _e.mock.On("GetGroupInviteWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_GetProjectInvitationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectInvitationApiParams)) *ProjectsApi_GetProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_GetGroupInviteWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupInviteApiParams)) *ProjectsApi_GetGroupInviteWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetProjectInvitationApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupInviteApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectInvitationWithParams_Call) Return(_a0 admin.GetProjectInvitationApiRequest) *ProjectsApi_GetProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_GetGroupInviteWithParams_Call) Return(_a0 admin.GetGroupInviteApiRequest) *ProjectsApi_GetGroupInviteWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectInvitationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectInvitationApiParams) admin.GetProjectInvitationApiRequest) *ProjectsApi_GetProjectInvitationWithParams_Call {
+func (_c *ProjectsApi_GetGroupInviteWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupInviteApiParams) admin.GetGroupInviteApiRequest) *ProjectsApi_GetGroupInviteWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectLimit provides a mock function with given fields: ctx, limitName, groupId
-func (_m *ProjectsApi) GetProjectLimit(ctx context.Context, limitName string, groupId string) admin.GetProjectLimitApiRequest {
-	ret := _m.Called(ctx, limitName, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProjectLimit")
-	}
-
-	var r0 admin.GetProjectLimitApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetProjectLimitApiRequest); ok {
-		r0 = rf(ctx, limitName, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.GetProjectLimitApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_GetProjectLimit_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLimit'
-type ProjectsApi_GetProjectLimit_Call struct {
-	*mock.Call
-}
-
-// GetProjectLimit is a helper method to define mock.On call
-//   - ctx context.Context
-//   - limitName string
-//   - groupId string
-func (_e *ProjectsApi_Expecter) GetProjectLimit(ctx any, limitName any, groupId any) *ProjectsApi_GetProjectLimit_Call {
-	return &ProjectsApi_GetProjectLimit_Call{Call: _e.mock.On("GetProjectLimit", ctx, limitName, groupId)}
-}
-
-func (_c *ProjectsApi_GetProjectLimit_Call) Run(run func(ctx context.Context, limitName string, groupId string)) *ProjectsApi_GetProjectLimit_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLimit_Call) Return(_a0 admin.GetProjectLimitApiRequest) *ProjectsApi_GetProjectLimit_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLimit_Call) RunAndReturn(run func(context.Context, string, string) admin.GetProjectLimitApiRequest) *ProjectsApi_GetProjectLimit_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProjectLimitExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) GetProjectLimitExecute(r admin.GetProjectLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProjectLimitExecute")
-	}
-
-	var r0 *admin.DataFederationLimit
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetProjectLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetProjectLimitApiRequest) *admin.DataFederationLimit); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DataFederationLimit)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetProjectLimitApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetProjectLimitApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_GetProjectLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLimitExecute'
-type ProjectsApi_GetProjectLimitExecute_Call struct {
-	*mock.Call
-}
-
-// GetProjectLimitExecute is a helper method to define mock.On call
-//   - r admin.GetProjectLimitApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectLimitExecute(r any) *ProjectsApi_GetProjectLimitExecute_Call {
-	return &ProjectsApi_GetProjectLimitExecute_Call{Call: _e.mock.On("GetProjectLimitExecute", r)}
-}
-
-func (_c *ProjectsApi_GetProjectLimitExecute_Call) Run(run func(r admin.GetProjectLimitApiRequest)) *ProjectsApi_GetProjectLimitExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetProjectLimitApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLimitExecute_Call) Return(_a0 *admin.DataFederationLimit, _a1 *http.Response, _a2 error) *ProjectsApi_GetProjectLimitExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLimitExecute_Call) RunAndReturn(run func(admin.GetProjectLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error)) *ProjectsApi_GetProjectLimitExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProjectLimitWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) GetProjectLimitWithParams(ctx context.Context, args *admin.GetProjectLimitApiParams) admin.GetProjectLimitApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProjectLimitWithParams")
-	}
-
-	var r0 admin.GetProjectLimitApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectLimitApiParams) admin.GetProjectLimitApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetProjectLimitApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_GetProjectLimitWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLimitWithParams'
-type ProjectsApi_GetProjectLimitWithParams_Call struct {
-	*mock.Call
-}
-
-// GetProjectLimitWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetProjectLimitApiParams
-func (_e *ProjectsApi_Expecter) GetProjectLimitWithParams(ctx any, args any) *ProjectsApi_GetProjectLimitWithParams_Call {
-	return &ProjectsApi_GetProjectLimitWithParams_Call{Call: _e.mock.On("GetProjectLimitWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_GetProjectLimitWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectLimitApiParams)) *ProjectsApi_GetProjectLimitWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetProjectLimitApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLimitWithParams_Call) Return(_a0 admin.GetProjectLimitApiRequest) *ProjectsApi_GetProjectLimitWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLimitWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectLimitApiParams) admin.GetProjectLimitApiRequest) *ProjectsApi_GetProjectLimitWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProjectLtsVersions provides a mock function with given fields: ctx, groupId
-func (_m *ProjectsApi) GetProjectLtsVersions(ctx context.Context, groupId string) admin.GetProjectLtsVersionsApiRequest {
+// GetGroupIpAddresses provides a mock function with given fields: ctx, groupId
+func (_m *ProjectsApi) GetGroupIpAddresses(ctx context.Context, groupId string) admin.GetGroupIpAddressesApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectLtsVersions")
+		panic("no return value specified for GetGroupIpAddresses")
 	}
 
-	var r0 admin.GetProjectLtsVersionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetProjectLtsVersionsApiRequest); ok {
+	var r0 admin.GetGroupIpAddressesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetGroupIpAddressesApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetProjectLtsVersionsApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupIpAddressesApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_GetProjectLtsVersions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLtsVersions'
-type ProjectsApi_GetProjectLtsVersions_Call struct {
+// ProjectsApi_GetGroupIpAddresses_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupIpAddresses'
+type ProjectsApi_GetGroupIpAddresses_Call struct {
 	*mock.Call
 }
 
-// GetProjectLtsVersions is a helper method to define mock.On call
+// GetGroupIpAddresses is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) GetProjectLtsVersions(ctx any, groupId any) *ProjectsApi_GetProjectLtsVersions_Call {
-	return &ProjectsApi_GetProjectLtsVersions_Call{Call: _e.mock.On("GetProjectLtsVersions", ctx, groupId)}
+func (_e *ProjectsApi_Expecter) GetGroupIpAddresses(ctx any, groupId any) *ProjectsApi_GetGroupIpAddresses_Call {
+	return &ProjectsApi_GetGroupIpAddresses_Call{Call: _e.mock.On("GetGroupIpAddresses", ctx, groupId)}
 }
 
-func (_c *ProjectsApi_GetProjectLtsVersions_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_GetProjectLtsVersions_Call {
+func (_c *ProjectsApi_GetGroupIpAddresses_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_GetGroupIpAddresses_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectLtsVersions_Call) Return(_a0 admin.GetProjectLtsVersionsApiRequest) *ProjectsApi_GetProjectLtsVersions_Call {
+func (_c *ProjectsApi_GetGroupIpAddresses_Call) Return(_a0 admin.GetGroupIpAddressesApiRequest) *ProjectsApi_GetGroupIpAddresses_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_GetProjectLtsVersions_Call) RunAndReturn(run func(context.Context, string) admin.GetProjectLtsVersionsApiRequest) *ProjectsApi_GetProjectLtsVersions_Call {
+func (_c *ProjectsApi_GetGroupIpAddresses_Call) RunAndReturn(run func(context.Context, string) admin.GetGroupIpAddressesApiRequest) *ProjectsApi_GetGroupIpAddresses_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectLtsVersionsExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) GetProjectLtsVersionsExecute(r admin.GetProjectLtsVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error) {
+// GetGroupIpAddressesExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) GetGroupIpAddressesExecute(r admin.GetGroupIpAddressesApiRequest) (*admin.GroupIPAddresses, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectLtsVersionsExecute")
-	}
-
-	var r0 *admin.PaginatedAvailableVersion
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetProjectLtsVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetProjectLtsVersionsApiRequest) *admin.PaginatedAvailableVersion); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedAvailableVersion)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetProjectLtsVersionsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetProjectLtsVersionsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_GetProjectLtsVersionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLtsVersionsExecute'
-type ProjectsApi_GetProjectLtsVersionsExecute_Call struct {
-	*mock.Call
-}
-
-// GetProjectLtsVersionsExecute is a helper method to define mock.On call
-//   - r admin.GetProjectLtsVersionsApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectLtsVersionsExecute(r any) *ProjectsApi_GetProjectLtsVersionsExecute_Call {
-	return &ProjectsApi_GetProjectLtsVersionsExecute_Call{Call: _e.mock.On("GetProjectLtsVersionsExecute", r)}
-}
-
-func (_c *ProjectsApi_GetProjectLtsVersionsExecute_Call) Run(run func(r admin.GetProjectLtsVersionsApiRequest)) *ProjectsApi_GetProjectLtsVersionsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetProjectLtsVersionsApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLtsVersionsExecute_Call) Return(_a0 *admin.PaginatedAvailableVersion, _a1 *http.Response, _a2 error) *ProjectsApi_GetProjectLtsVersionsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLtsVersionsExecute_Call) RunAndReturn(run func(admin.GetProjectLtsVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error)) *ProjectsApi_GetProjectLtsVersionsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProjectLtsVersionsWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) GetProjectLtsVersionsWithParams(ctx context.Context, args *admin.GetProjectLtsVersionsApiParams) admin.GetProjectLtsVersionsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProjectLtsVersionsWithParams")
-	}
-
-	var r0 admin.GetProjectLtsVersionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectLtsVersionsApiParams) admin.GetProjectLtsVersionsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetProjectLtsVersionsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_GetProjectLtsVersionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLtsVersionsWithParams'
-type ProjectsApi_GetProjectLtsVersionsWithParams_Call struct {
-	*mock.Call
-}
-
-// GetProjectLtsVersionsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetProjectLtsVersionsApiParams
-func (_e *ProjectsApi_Expecter) GetProjectLtsVersionsWithParams(ctx any, args any) *ProjectsApi_GetProjectLtsVersionsWithParams_Call {
-	return &ProjectsApi_GetProjectLtsVersionsWithParams_Call{Call: _e.mock.On("GetProjectLtsVersionsWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_GetProjectLtsVersionsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectLtsVersionsApiParams)) *ProjectsApi_GetProjectLtsVersionsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetProjectLtsVersionsApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLtsVersionsWithParams_Call) Return(_a0 admin.GetProjectLtsVersionsApiRequest) *ProjectsApi_GetProjectLtsVersionsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectLtsVersionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectLtsVersionsApiParams) admin.GetProjectLtsVersionsApiRequest) *ProjectsApi_GetProjectLtsVersionsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProjectSettings provides a mock function with given fields: ctx, groupId
-func (_m *ProjectsApi) GetProjectSettings(ctx context.Context, groupId string) admin.GetProjectSettingsApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProjectSettings")
-	}
-
-	var r0 admin.GetProjectSettingsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetProjectSettingsApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.GetProjectSettingsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_GetProjectSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectSettings'
-type ProjectsApi_GetProjectSettings_Call struct {
-	*mock.Call
-}
-
-// GetProjectSettings is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *ProjectsApi_Expecter) GetProjectSettings(ctx any, groupId any) *ProjectsApi_GetProjectSettings_Call {
-	return &ProjectsApi_GetProjectSettings_Call{Call: _e.mock.On("GetProjectSettings", ctx, groupId)}
-}
-
-func (_c *ProjectsApi_GetProjectSettings_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_GetProjectSettings_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectSettings_Call) Return(_a0 admin.GetProjectSettingsApiRequest) *ProjectsApi_GetProjectSettings_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectSettings_Call) RunAndReturn(run func(context.Context, string) admin.GetProjectSettingsApiRequest) *ProjectsApi_GetProjectSettings_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProjectSettingsExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) GetProjectSettingsExecute(r admin.GetProjectSettingsApiRequest) (*admin.GroupSettings, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProjectSettingsExecute")
-	}
-
-	var r0 *admin.GroupSettings
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetProjectSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.GetProjectSettingsApiRequest) *admin.GroupSettings); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GroupSettings)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.GetProjectSettingsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.GetProjectSettingsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_GetProjectSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectSettingsExecute'
-type ProjectsApi_GetProjectSettingsExecute_Call struct {
-	*mock.Call
-}
-
-// GetProjectSettingsExecute is a helper method to define mock.On call
-//   - r admin.GetProjectSettingsApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectSettingsExecute(r any) *ProjectsApi_GetProjectSettingsExecute_Call {
-	return &ProjectsApi_GetProjectSettingsExecute_Call{Call: _e.mock.On("GetProjectSettingsExecute", r)}
-}
-
-func (_c *ProjectsApi_GetProjectSettingsExecute_Call) Run(run func(r admin.GetProjectSettingsApiRequest)) *ProjectsApi_GetProjectSettingsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetProjectSettingsApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectSettingsExecute_Call) Return(_a0 *admin.GroupSettings, _a1 *http.Response, _a2 error) *ProjectsApi_GetProjectSettingsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectSettingsExecute_Call) RunAndReturn(run func(admin.GetProjectSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)) *ProjectsApi_GetProjectSettingsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProjectSettingsWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) GetProjectSettingsWithParams(ctx context.Context, args *admin.GetProjectSettingsApiParams) admin.GetProjectSettingsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProjectSettingsWithParams")
-	}
-
-	var r0 admin.GetProjectSettingsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectSettingsApiParams) admin.GetProjectSettingsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetProjectSettingsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_GetProjectSettingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectSettingsWithParams'
-type ProjectsApi_GetProjectSettingsWithParams_Call struct {
-	*mock.Call
-}
-
-// GetProjectSettingsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetProjectSettingsApiParams
-func (_e *ProjectsApi_Expecter) GetProjectSettingsWithParams(ctx any, args any) *ProjectsApi_GetProjectSettingsWithParams_Call {
-	return &ProjectsApi_GetProjectSettingsWithParams_Call{Call: _e.mock.On("GetProjectSettingsWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_GetProjectSettingsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectSettingsApiParams)) *ProjectsApi_GetProjectSettingsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetProjectSettingsApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectSettingsWithParams_Call) Return(_a0 admin.GetProjectSettingsApiRequest) *ProjectsApi_GetProjectSettingsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectSettingsApiParams) admin.GetProjectSettingsApiRequest) *ProjectsApi_GetProjectSettingsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetProjectWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) GetProjectWithParams(ctx context.Context, args *admin.GetProjectApiParams) admin.GetProjectApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for GetProjectWithParams")
-	}
-
-	var r0 admin.GetProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectApiParams) admin.GetProjectApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.GetProjectApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_GetProjectWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectWithParams'
-type ProjectsApi_GetProjectWithParams_Call struct {
-	*mock.Call
-}
-
-// GetProjectWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.GetProjectApiParams
-func (_e *ProjectsApi_Expecter) GetProjectWithParams(ctx any, args any) *ProjectsApi_GetProjectWithParams_Call {
-	return &ProjectsApi_GetProjectWithParams_Call{Call: _e.mock.On("GetProjectWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_GetProjectWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectApiParams)) *ProjectsApi_GetProjectWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetProjectApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectWithParams_Call) Return(_a0 admin.GetProjectApiRequest) *ProjectsApi_GetProjectWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_GetProjectWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectApiParams) admin.GetProjectApiRequest) *ProjectsApi_GetProjectWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectInvitations provides a mock function with given fields: ctx, groupId
-func (_m *ProjectsApi) ListProjectInvitations(ctx context.Context, groupId string) admin.ListProjectInvitationsApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectInvitations")
-	}
-
-	var r0 admin.ListProjectInvitationsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListProjectInvitationsApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ListProjectInvitationsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_ListProjectInvitations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectInvitations'
-type ProjectsApi_ListProjectInvitations_Call struct {
-	*mock.Call
-}
-
-// ListProjectInvitations is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *ProjectsApi_Expecter) ListProjectInvitations(ctx any, groupId any) *ProjectsApi_ListProjectInvitations_Call {
-	return &ProjectsApi_ListProjectInvitations_Call{Call: _e.mock.On("ListProjectInvitations", ctx, groupId)}
-}
-
-func (_c *ProjectsApi_ListProjectInvitations_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_ListProjectInvitations_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectInvitations_Call) Return(_a0 admin.ListProjectInvitationsApiRequest) *ProjectsApi_ListProjectInvitations_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectInvitations_Call) RunAndReturn(run func(context.Context, string) admin.ListProjectInvitationsApiRequest) *ProjectsApi_ListProjectInvitations_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectInvitationsExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) ListProjectInvitationsExecute(r admin.ListProjectInvitationsApiRequest) ([]admin.GroupInvitation, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectInvitationsExecute")
-	}
-
-	var r0 []admin.GroupInvitation
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListProjectInvitationsApiRequest) ([]admin.GroupInvitation, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListProjectInvitationsApiRequest) []admin.GroupInvitation); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]admin.GroupInvitation)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListProjectInvitationsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListProjectInvitationsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_ListProjectInvitationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectInvitationsExecute'
-type ProjectsApi_ListProjectInvitationsExecute_Call struct {
-	*mock.Call
-}
-
-// ListProjectInvitationsExecute is a helper method to define mock.On call
-//   - r admin.ListProjectInvitationsApiRequest
-func (_e *ProjectsApi_Expecter) ListProjectInvitationsExecute(r any) *ProjectsApi_ListProjectInvitationsExecute_Call {
-	return &ProjectsApi_ListProjectInvitationsExecute_Call{Call: _e.mock.On("ListProjectInvitationsExecute", r)}
-}
-
-func (_c *ProjectsApi_ListProjectInvitationsExecute_Call) Run(run func(r admin.ListProjectInvitationsApiRequest)) *ProjectsApi_ListProjectInvitationsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListProjectInvitationsApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectInvitationsExecute_Call) Return(_a0 []admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_ListProjectInvitationsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectInvitationsExecute_Call) RunAndReturn(run func(admin.ListProjectInvitationsApiRequest) ([]admin.GroupInvitation, *http.Response, error)) *ProjectsApi_ListProjectInvitationsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectInvitationsWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) ListProjectInvitationsWithParams(ctx context.Context, args *admin.ListProjectInvitationsApiParams) admin.ListProjectInvitationsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectInvitationsWithParams")
-	}
-
-	var r0 admin.ListProjectInvitationsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProjectInvitationsApiParams) admin.ListProjectInvitationsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListProjectInvitationsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_ListProjectInvitationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectInvitationsWithParams'
-type ProjectsApi_ListProjectInvitationsWithParams_Call struct {
-	*mock.Call
-}
-
-// ListProjectInvitationsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListProjectInvitationsApiParams
-func (_e *ProjectsApi_Expecter) ListProjectInvitationsWithParams(ctx any, args any) *ProjectsApi_ListProjectInvitationsWithParams_Call {
-	return &ProjectsApi_ListProjectInvitationsWithParams_Call{Call: _e.mock.On("ListProjectInvitationsWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_ListProjectInvitationsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProjectInvitationsApiParams)) *ProjectsApi_ListProjectInvitationsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListProjectInvitationsApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectInvitationsWithParams_Call) Return(_a0 admin.ListProjectInvitationsApiRequest) *ProjectsApi_ListProjectInvitationsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectInvitationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectInvitationsApiParams) admin.ListProjectInvitationsApiRequest) *ProjectsApi_ListProjectInvitationsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectLimits provides a mock function with given fields: ctx, groupId
-func (_m *ProjectsApi) ListProjectLimits(ctx context.Context, groupId string) admin.ListProjectLimitsApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectLimits")
-	}
-
-	var r0 admin.ListProjectLimitsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListProjectLimitsApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ListProjectLimitsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_ListProjectLimits_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectLimits'
-type ProjectsApi_ListProjectLimits_Call struct {
-	*mock.Call
-}
-
-// ListProjectLimits is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *ProjectsApi_Expecter) ListProjectLimits(ctx any, groupId any) *ProjectsApi_ListProjectLimits_Call {
-	return &ProjectsApi_ListProjectLimits_Call{Call: _e.mock.On("ListProjectLimits", ctx, groupId)}
-}
-
-func (_c *ProjectsApi_ListProjectLimits_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_ListProjectLimits_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectLimits_Call) Return(_a0 admin.ListProjectLimitsApiRequest) *ProjectsApi_ListProjectLimits_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectLimits_Call) RunAndReturn(run func(context.Context, string) admin.ListProjectLimitsApiRequest) *ProjectsApi_ListProjectLimits_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectLimitsExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) ListProjectLimitsExecute(r admin.ListProjectLimitsApiRequest) ([]admin.DataFederationLimit, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectLimitsExecute")
-	}
-
-	var r0 []admin.DataFederationLimit
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListProjectLimitsApiRequest) ([]admin.DataFederationLimit, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListProjectLimitsApiRequest) []admin.DataFederationLimit); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]admin.DataFederationLimit)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListProjectLimitsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListProjectLimitsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_ListProjectLimitsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectLimitsExecute'
-type ProjectsApi_ListProjectLimitsExecute_Call struct {
-	*mock.Call
-}
-
-// ListProjectLimitsExecute is a helper method to define mock.On call
-//   - r admin.ListProjectLimitsApiRequest
-func (_e *ProjectsApi_Expecter) ListProjectLimitsExecute(r any) *ProjectsApi_ListProjectLimitsExecute_Call {
-	return &ProjectsApi_ListProjectLimitsExecute_Call{Call: _e.mock.On("ListProjectLimitsExecute", r)}
-}
-
-func (_c *ProjectsApi_ListProjectLimitsExecute_Call) Run(run func(r admin.ListProjectLimitsApiRequest)) *ProjectsApi_ListProjectLimitsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListProjectLimitsApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectLimitsExecute_Call) Return(_a0 []admin.DataFederationLimit, _a1 *http.Response, _a2 error) *ProjectsApi_ListProjectLimitsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectLimitsExecute_Call) RunAndReturn(run func(admin.ListProjectLimitsApiRequest) ([]admin.DataFederationLimit, *http.Response, error)) *ProjectsApi_ListProjectLimitsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectLimitsWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) ListProjectLimitsWithParams(ctx context.Context, args *admin.ListProjectLimitsApiParams) admin.ListProjectLimitsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectLimitsWithParams")
-	}
-
-	var r0 admin.ListProjectLimitsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProjectLimitsApiParams) admin.ListProjectLimitsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListProjectLimitsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_ListProjectLimitsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectLimitsWithParams'
-type ProjectsApi_ListProjectLimitsWithParams_Call struct {
-	*mock.Call
-}
-
-// ListProjectLimitsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListProjectLimitsApiParams
-func (_e *ProjectsApi_Expecter) ListProjectLimitsWithParams(ctx any, args any) *ProjectsApi_ListProjectLimitsWithParams_Call {
-	return &ProjectsApi_ListProjectLimitsWithParams_Call{Call: _e.mock.On("ListProjectLimitsWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_ListProjectLimitsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProjectLimitsApiParams)) *ProjectsApi_ListProjectLimitsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListProjectLimitsApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectLimitsWithParams_Call) Return(_a0 admin.ListProjectLimitsApiRequest) *ProjectsApi_ListProjectLimitsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectLimitsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectLimitsApiParams) admin.ListProjectLimitsApiRequest) *ProjectsApi_ListProjectLimitsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjects provides a mock function with given fields: ctx
-func (_m *ProjectsApi) ListProjects(ctx context.Context) admin.ListProjectsApiRequest {
-	ret := _m.Called(ctx)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjects")
-	}
-
-	var r0 admin.ListProjectsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context) admin.ListProjectsApiRequest); ok {
-		r0 = rf(ctx)
-	} else {
-		r0 = ret.Get(0).(admin.ListProjectsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_ListProjects_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjects'
-type ProjectsApi_ListProjects_Call struct {
-	*mock.Call
-}
-
-// ListProjects is a helper method to define mock.On call
-//   - ctx context.Context
-func (_e *ProjectsApi_Expecter) ListProjects(ctx any) *ProjectsApi_ListProjects_Call {
-	return &ProjectsApi_ListProjects_Call{Call: _e.mock.On("ListProjects", ctx)}
-}
-
-func (_c *ProjectsApi_ListProjects_Call) Run(run func(ctx context.Context)) *ProjectsApi_ListProjects_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjects_Call) Return(_a0 admin.ListProjectsApiRequest) *ProjectsApi_ListProjects_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjects_Call) RunAndReturn(run func(context.Context) admin.ListProjectsApiRequest) *ProjectsApi_ListProjects_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectsExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) ListProjectsExecute(r admin.ListProjectsApiRequest) (*admin.PaginatedAtlasGroup, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectsExecute")
-	}
-
-	var r0 *admin.PaginatedAtlasGroup
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListProjectsApiRequest) (*admin.PaginatedAtlasGroup, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListProjectsApiRequest) *admin.PaginatedAtlasGroup); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedAtlasGroup)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListProjectsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListProjectsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_ListProjectsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectsExecute'
-type ProjectsApi_ListProjectsExecute_Call struct {
-	*mock.Call
-}
-
-// ListProjectsExecute is a helper method to define mock.On call
-//   - r admin.ListProjectsApiRequest
-func (_e *ProjectsApi_Expecter) ListProjectsExecute(r any) *ProjectsApi_ListProjectsExecute_Call {
-	return &ProjectsApi_ListProjectsExecute_Call{Call: _e.mock.On("ListProjectsExecute", r)}
-}
-
-func (_c *ProjectsApi_ListProjectsExecute_Call) Run(run func(r admin.ListProjectsApiRequest)) *ProjectsApi_ListProjectsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListProjectsApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectsExecute_Call) Return(_a0 *admin.PaginatedAtlasGroup, _a1 *http.Response, _a2 error) *ProjectsApi_ListProjectsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectsExecute_Call) RunAndReturn(run func(admin.ListProjectsApiRequest) (*admin.PaginatedAtlasGroup, *http.Response, error)) *ProjectsApi_ListProjectsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectsWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) ListProjectsWithParams(ctx context.Context, args *admin.ListProjectsApiParams) admin.ListProjectsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectsWithParams")
-	}
-
-	var r0 admin.ListProjectsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProjectsApiParams) admin.ListProjectsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListProjectsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_ListProjectsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectsWithParams'
-type ProjectsApi_ListProjectsWithParams_Call struct {
-	*mock.Call
-}
-
-// ListProjectsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListProjectsApiParams
-func (_e *ProjectsApi_Expecter) ListProjectsWithParams(ctx any, args any) *ProjectsApi_ListProjectsWithParams_Call {
-	return &ProjectsApi_ListProjectsWithParams_Call{Call: _e.mock.On("ListProjectsWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_ListProjectsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProjectsApiParams)) *ProjectsApi_ListProjectsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListProjectsApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectsWithParams_Call) Return(_a0 admin.ListProjectsApiRequest) *ProjectsApi_ListProjectsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_ListProjectsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectsApiParams) admin.ListProjectsApiRequest) *ProjectsApi_ListProjectsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// MigrateProjectToAnotherOrg provides a mock function with given fields: ctx, groupId, groupMigrationRequest
-func (_m *ProjectsApi) MigrateProjectToAnotherOrg(ctx context.Context, groupId string, groupMigrationRequest *admin.GroupMigrationRequest) admin.MigrateProjectToAnotherOrgApiRequest {
-	ret := _m.Called(ctx, groupId, groupMigrationRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for MigrateProjectToAnotherOrg")
-	}
-
-	var r0 admin.MigrateProjectToAnotherOrgApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupMigrationRequest) admin.MigrateProjectToAnotherOrgApiRequest); ok {
-		r0 = rf(ctx, groupId, groupMigrationRequest)
-	} else {
-		r0 = ret.Get(0).(admin.MigrateProjectToAnotherOrgApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_MigrateProjectToAnotherOrg_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateProjectToAnotherOrg'
-type ProjectsApi_MigrateProjectToAnotherOrg_Call struct {
-	*mock.Call
-}
-
-// MigrateProjectToAnotherOrg is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - groupMigrationRequest *admin.GroupMigrationRequest
-func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrg(ctx any, groupId any, groupMigrationRequest any) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
-	return &ProjectsApi_MigrateProjectToAnotherOrg_Call{Call: _e.mock.On("MigrateProjectToAnotherOrg", ctx, groupId, groupMigrationRequest)}
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrg_Call) Run(run func(ctx context.Context, groupId string, groupMigrationRequest *admin.GroupMigrationRequest)) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupMigrationRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrg_Call) Return(_a0 admin.MigrateProjectToAnotherOrgApiRequest) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrg_Call) RunAndReturn(run func(context.Context, string, *admin.GroupMigrationRequest) admin.MigrateProjectToAnotherOrgApiRequest) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// MigrateProjectToAnotherOrgExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) MigrateProjectToAnotherOrgExecute(r admin.MigrateProjectToAnotherOrgApiRequest) (*admin.Group, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for MigrateProjectToAnotherOrgExecute")
-	}
-
-	var r0 *admin.Group
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.MigrateProjectToAnotherOrgApiRequest) (*admin.Group, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.MigrateProjectToAnotherOrgApiRequest) *admin.Group); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.Group)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.MigrateProjectToAnotherOrgApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.MigrateProjectToAnotherOrgApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_MigrateProjectToAnotherOrgExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateProjectToAnotherOrgExecute'
-type ProjectsApi_MigrateProjectToAnotherOrgExecute_Call struct {
-	*mock.Call
-}
-
-// MigrateProjectToAnotherOrgExecute is a helper method to define mock.On call
-//   - r admin.MigrateProjectToAnotherOrgApiRequest
-func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrgExecute(r any) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
-	return &ProjectsApi_MigrateProjectToAnotherOrgExecute_Call{Call: _e.mock.On("MigrateProjectToAnotherOrgExecute", r)}
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call) Run(run func(r admin.MigrateProjectToAnotherOrgApiRequest)) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.MigrateProjectToAnotherOrgApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call) RunAndReturn(run func(admin.MigrateProjectToAnotherOrgApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// MigrateProjectToAnotherOrgWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) MigrateProjectToAnotherOrgWithParams(ctx context.Context, args *admin.MigrateProjectToAnotherOrgApiParams) admin.MigrateProjectToAnotherOrgApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for MigrateProjectToAnotherOrgWithParams")
-	}
-
-	var r0 admin.MigrateProjectToAnotherOrgApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.MigrateProjectToAnotherOrgApiParams) admin.MigrateProjectToAnotherOrgApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.MigrateProjectToAnotherOrgApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateProjectToAnotherOrgWithParams'
-type ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call struct {
-	*mock.Call
-}
-
-// MigrateProjectToAnotherOrgWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.MigrateProjectToAnotherOrgApiParams
-func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrgWithParams(ctx any, args any) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
-	return &ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call{Call: _e.mock.On("MigrateProjectToAnotherOrgWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call) Run(run func(ctx context.Context, args *admin.MigrateProjectToAnotherOrgApiParams)) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.MigrateProjectToAnotherOrgApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call) Return(_a0 admin.MigrateProjectToAnotherOrgApiRequest) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call) RunAndReturn(run func(context.Context, *admin.MigrateProjectToAnotherOrgApiParams) admin.MigrateProjectToAnotherOrgApiRequest) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ReturnAllIpAddresses provides a mock function with given fields: ctx, groupId
-func (_m *ProjectsApi) ReturnAllIpAddresses(ctx context.Context, groupId string) admin.ReturnAllIpAddressesApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ReturnAllIpAddresses")
-	}
-
-	var r0 admin.ReturnAllIpAddressesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ReturnAllIpAddressesApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ReturnAllIpAddressesApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_ReturnAllIpAddresses_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ReturnAllIpAddresses'
-type ProjectsApi_ReturnAllIpAddresses_Call struct {
-	*mock.Call
-}
-
-// ReturnAllIpAddresses is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *ProjectsApi_Expecter) ReturnAllIpAddresses(ctx any, groupId any) *ProjectsApi_ReturnAllIpAddresses_Call {
-	return &ProjectsApi_ReturnAllIpAddresses_Call{Call: _e.mock.On("ReturnAllIpAddresses", ctx, groupId)}
-}
-
-func (_c *ProjectsApi_ReturnAllIpAddresses_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_ReturnAllIpAddresses_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_ReturnAllIpAddresses_Call) Return(_a0 admin.ReturnAllIpAddressesApiRequest) *ProjectsApi_ReturnAllIpAddresses_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_ReturnAllIpAddresses_Call) RunAndReturn(run func(context.Context, string) admin.ReturnAllIpAddressesApiRequest) *ProjectsApi_ReturnAllIpAddresses_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ReturnAllIpAddressesExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) ReturnAllIpAddressesExecute(r admin.ReturnAllIpAddressesApiRequest) (*admin.GroupIPAddresses, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ReturnAllIpAddressesExecute")
+		panic("no return value specified for GetGroupIpAddressesExecute")
 	}
 
 	var r0 *admin.GroupIPAddresses
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ReturnAllIpAddressesApiRequest) (*admin.GroupIPAddresses, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupIpAddressesApiRequest) (*admin.GroupIPAddresses, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ReturnAllIpAddressesApiRequest) *admin.GroupIPAddresses); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupIpAddressesApiRequest) *admin.GroupIPAddresses); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2649,7 +1474,7 @@ func (_m *ProjectsApi) ReturnAllIpAddressesExecute(r admin.ReturnAllIpAddressesA
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ReturnAllIpAddressesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupIpAddressesApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2657,7 +1482,7 @@ func (_m *ProjectsApi) ReturnAllIpAddressesExecute(r admin.ReturnAllIpAddressesA
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ReturnAllIpAddressesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupIpAddressesApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2666,145 +1491,144 @@ func (_m *ProjectsApi) ReturnAllIpAddressesExecute(r admin.ReturnAllIpAddressesA
 	return r0, r1, r2
 }
 
-// ProjectsApi_ReturnAllIpAddressesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ReturnAllIpAddressesExecute'
-type ProjectsApi_ReturnAllIpAddressesExecute_Call struct {
+// ProjectsApi_GetGroupIpAddressesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupIpAddressesExecute'
+type ProjectsApi_GetGroupIpAddressesExecute_Call struct {
 	*mock.Call
 }
 
-// ReturnAllIpAddressesExecute is a helper method to define mock.On call
-//   - r admin.ReturnAllIpAddressesApiRequest
-func (_e *ProjectsApi_Expecter) ReturnAllIpAddressesExecute(r any) *ProjectsApi_ReturnAllIpAddressesExecute_Call {
-	return &ProjectsApi_ReturnAllIpAddressesExecute_Call{Call: _e.mock.On("ReturnAllIpAddressesExecute", r)}
+// GetGroupIpAddressesExecute is a helper method to define mock.On call
+//   - r admin.GetGroupIpAddressesApiRequest
+func (_e *ProjectsApi_Expecter) GetGroupIpAddressesExecute(r any) *ProjectsApi_GetGroupIpAddressesExecute_Call {
+	return &ProjectsApi_GetGroupIpAddressesExecute_Call{Call: _e.mock.On("GetGroupIpAddressesExecute", r)}
 }
 
-func (_c *ProjectsApi_ReturnAllIpAddressesExecute_Call) Run(run func(r admin.ReturnAllIpAddressesApiRequest)) *ProjectsApi_ReturnAllIpAddressesExecute_Call {
+func (_c *ProjectsApi_GetGroupIpAddressesExecute_Call) Run(run func(r admin.GetGroupIpAddressesApiRequest)) *ProjectsApi_GetGroupIpAddressesExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ReturnAllIpAddressesApiRequest))
+		run(args[0].(admin.GetGroupIpAddressesApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_ReturnAllIpAddressesExecute_Call) Return(_a0 *admin.GroupIPAddresses, _a1 *http.Response, _a2 error) *ProjectsApi_ReturnAllIpAddressesExecute_Call {
+func (_c *ProjectsApi_GetGroupIpAddressesExecute_Call) Return(_a0 *admin.GroupIPAddresses, _a1 *http.Response, _a2 error) *ProjectsApi_GetGroupIpAddressesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_ReturnAllIpAddressesExecute_Call) RunAndReturn(run func(admin.ReturnAllIpAddressesApiRequest) (*admin.GroupIPAddresses, *http.Response, error)) *ProjectsApi_ReturnAllIpAddressesExecute_Call {
+func (_c *ProjectsApi_GetGroupIpAddressesExecute_Call) RunAndReturn(run func(admin.GetGroupIpAddressesApiRequest) (*admin.GroupIPAddresses, *http.Response, error)) *ProjectsApi_GetGroupIpAddressesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ReturnAllIpAddressesWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) ReturnAllIpAddressesWithParams(ctx context.Context, args *admin.ReturnAllIpAddressesApiParams) admin.ReturnAllIpAddressesApiRequest {
+// GetGroupIpAddressesWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) GetGroupIpAddressesWithParams(ctx context.Context, args *admin.GetGroupIpAddressesApiParams) admin.GetGroupIpAddressesApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ReturnAllIpAddressesWithParams")
+		panic("no return value specified for GetGroupIpAddressesWithParams")
 	}
 
-	var r0 admin.ReturnAllIpAddressesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ReturnAllIpAddressesApiParams) admin.ReturnAllIpAddressesApiRequest); ok {
+	var r0 admin.GetGroupIpAddressesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupIpAddressesApiParams) admin.GetGroupIpAddressesApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ReturnAllIpAddressesApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupIpAddressesApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_ReturnAllIpAddressesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ReturnAllIpAddressesWithParams'
-type ProjectsApi_ReturnAllIpAddressesWithParams_Call struct {
+// ProjectsApi_GetGroupIpAddressesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupIpAddressesWithParams'
+type ProjectsApi_GetGroupIpAddressesWithParams_Call struct {
 	*mock.Call
 }
 
-// ReturnAllIpAddressesWithParams is a helper method to define mock.On call
+// GetGroupIpAddressesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ReturnAllIpAddressesApiParams
-func (_e *ProjectsApi_Expecter) ReturnAllIpAddressesWithParams(ctx any, args any) *ProjectsApi_ReturnAllIpAddressesWithParams_Call {
-	return &ProjectsApi_ReturnAllIpAddressesWithParams_Call{Call: _e.mock.On("ReturnAllIpAddressesWithParams", ctx, args)}
+//   - args *admin.GetGroupIpAddressesApiParams
+func (_e *ProjectsApi_Expecter) GetGroupIpAddressesWithParams(ctx any, args any) *ProjectsApi_GetGroupIpAddressesWithParams_Call {
+	return &ProjectsApi_GetGroupIpAddressesWithParams_Call{Call: _e.mock.On("GetGroupIpAddressesWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_ReturnAllIpAddressesWithParams_Call) Run(run func(ctx context.Context, args *admin.ReturnAllIpAddressesApiParams)) *ProjectsApi_ReturnAllIpAddressesWithParams_Call {
+func (_c *ProjectsApi_GetGroupIpAddressesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupIpAddressesApiParams)) *ProjectsApi_GetGroupIpAddressesWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ReturnAllIpAddressesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupIpAddressesApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_ReturnAllIpAddressesWithParams_Call) Return(_a0 admin.ReturnAllIpAddressesApiRequest) *ProjectsApi_ReturnAllIpAddressesWithParams_Call {
+func (_c *ProjectsApi_GetGroupIpAddressesWithParams_Call) Return(_a0 admin.GetGroupIpAddressesApiRequest) *ProjectsApi_GetGroupIpAddressesWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_ReturnAllIpAddressesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ReturnAllIpAddressesApiParams) admin.ReturnAllIpAddressesApiRequest) *ProjectsApi_ReturnAllIpAddressesWithParams_Call {
+func (_c *ProjectsApi_GetGroupIpAddressesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupIpAddressesApiParams) admin.GetGroupIpAddressesApiRequest) *ProjectsApi_GetGroupIpAddressesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// SetProjectLimit provides a mock function with given fields: ctx, limitName, groupId, dataFederationLimit
-func (_m *ProjectsApi) SetProjectLimit(ctx context.Context, limitName string, groupId string, dataFederationLimit *admin.DataFederationLimit) admin.SetProjectLimitApiRequest {
-	ret := _m.Called(ctx, limitName, groupId, dataFederationLimit)
+// GetGroupLimit provides a mock function with given fields: ctx, limitName, groupId
+func (_m *ProjectsApi) GetGroupLimit(ctx context.Context, limitName string, groupId string) admin.GetGroupLimitApiRequest {
+	ret := _m.Called(ctx, limitName, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for SetProjectLimit")
+		panic("no return value specified for GetGroupLimit")
 	}
 
-	var r0 admin.SetProjectLimitApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.DataFederationLimit) admin.SetProjectLimitApiRequest); ok {
-		r0 = rf(ctx, limitName, groupId, dataFederationLimit)
+	var r0 admin.GetGroupLimitApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupLimitApiRequest); ok {
+		r0 = rf(ctx, limitName, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.SetProjectLimitApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupLimitApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_SetProjectLimit_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetProjectLimit'
-type ProjectsApi_SetProjectLimit_Call struct {
+// ProjectsApi_GetGroupLimit_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLimit'
+type ProjectsApi_GetGroupLimit_Call struct {
 	*mock.Call
 }
 
-// SetProjectLimit is a helper method to define mock.On call
+// GetGroupLimit is a helper method to define mock.On call
 //   - ctx context.Context
 //   - limitName string
 //   - groupId string
-//   - dataFederationLimit *admin.DataFederationLimit
-func (_e *ProjectsApi_Expecter) SetProjectLimit(ctx any, limitName any, groupId any, dataFederationLimit any) *ProjectsApi_SetProjectLimit_Call {
-	return &ProjectsApi_SetProjectLimit_Call{Call: _e.mock.On("SetProjectLimit", ctx, limitName, groupId, dataFederationLimit)}
+func (_e *ProjectsApi_Expecter) GetGroupLimit(ctx any, limitName any, groupId any) *ProjectsApi_GetGroupLimit_Call {
+	return &ProjectsApi_GetGroupLimit_Call{Call: _e.mock.On("GetGroupLimit", ctx, limitName, groupId)}
 }
 
-func (_c *ProjectsApi_SetProjectLimit_Call) Run(run func(ctx context.Context, limitName string, groupId string, dataFederationLimit *admin.DataFederationLimit)) *ProjectsApi_SetProjectLimit_Call {
+func (_c *ProjectsApi_GetGroupLimit_Call) Run(run func(ctx context.Context, limitName string, groupId string)) *ProjectsApi_GetGroupLimit_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.DataFederationLimit))
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_SetProjectLimit_Call) Return(_a0 admin.SetProjectLimitApiRequest) *ProjectsApi_SetProjectLimit_Call {
+func (_c *ProjectsApi_GetGroupLimit_Call) Return(_a0 admin.GetGroupLimitApiRequest) *ProjectsApi_GetGroupLimit_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_SetProjectLimit_Call) RunAndReturn(run func(context.Context, string, string, *admin.DataFederationLimit) admin.SetProjectLimitApiRequest) *ProjectsApi_SetProjectLimit_Call {
+func (_c *ProjectsApi_GetGroupLimit_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupLimitApiRequest) *ProjectsApi_GetGroupLimit_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// SetProjectLimitExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) SetProjectLimitExecute(r admin.SetProjectLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error) {
+// GetGroupLimitExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) GetGroupLimitExecute(r admin.GetGroupLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for SetProjectLimitExecute")
+		panic("no return value specified for GetGroupLimitExecute")
 	}
 
 	var r0 *admin.DataFederationLimit
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.SetProjectLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.SetProjectLimitApiRequest) *admin.DataFederationLimit); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupLimitApiRequest) *admin.DataFederationLimit); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2812,7 +1636,7 @@ func (_m *ProjectsApi) SetProjectLimitExecute(r admin.SetProjectLimitApiRequest)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.SetProjectLimitApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupLimitApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2820,7 +1644,7 @@ func (_m *ProjectsApi) SetProjectLimitExecute(r admin.SetProjectLimitApiRequest)
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.SetProjectLimitApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupLimitApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2829,747 +1653,143 @@ func (_m *ProjectsApi) SetProjectLimitExecute(r admin.SetProjectLimitApiRequest)
 	return r0, r1, r2
 }
 
-// ProjectsApi_SetProjectLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetProjectLimitExecute'
-type ProjectsApi_SetProjectLimitExecute_Call struct {
+// ProjectsApi_GetGroupLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLimitExecute'
+type ProjectsApi_GetGroupLimitExecute_Call struct {
 	*mock.Call
 }
 
-// SetProjectLimitExecute is a helper method to define mock.On call
-//   - r admin.SetProjectLimitApiRequest
-func (_e *ProjectsApi_Expecter) SetProjectLimitExecute(r any) *ProjectsApi_SetProjectLimitExecute_Call {
-	return &ProjectsApi_SetProjectLimitExecute_Call{Call: _e.mock.On("SetProjectLimitExecute", r)}
+// GetGroupLimitExecute is a helper method to define mock.On call
+//   - r admin.GetGroupLimitApiRequest
+func (_e *ProjectsApi_Expecter) GetGroupLimitExecute(r any) *ProjectsApi_GetGroupLimitExecute_Call {
+	return &ProjectsApi_GetGroupLimitExecute_Call{Call: _e.mock.On("GetGroupLimitExecute", r)}
 }
 
-func (_c *ProjectsApi_SetProjectLimitExecute_Call) Run(run func(r admin.SetProjectLimitApiRequest)) *ProjectsApi_SetProjectLimitExecute_Call {
+func (_c *ProjectsApi_GetGroupLimitExecute_Call) Run(run func(r admin.GetGroupLimitApiRequest)) *ProjectsApi_GetGroupLimitExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.SetProjectLimitApiRequest))
+		run(args[0].(admin.GetGroupLimitApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_SetProjectLimitExecute_Call) Return(_a0 *admin.DataFederationLimit, _a1 *http.Response, _a2 error) *ProjectsApi_SetProjectLimitExecute_Call {
+func (_c *ProjectsApi_GetGroupLimitExecute_Call) Return(_a0 *admin.DataFederationLimit, _a1 *http.Response, _a2 error) *ProjectsApi_GetGroupLimitExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_SetProjectLimitExecute_Call) RunAndReturn(run func(admin.SetProjectLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error)) *ProjectsApi_SetProjectLimitExecute_Call {
+func (_c *ProjectsApi_GetGroupLimitExecute_Call) RunAndReturn(run func(admin.GetGroupLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error)) *ProjectsApi_GetGroupLimitExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// SetProjectLimitWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) SetProjectLimitWithParams(ctx context.Context, args *admin.SetProjectLimitApiParams) admin.SetProjectLimitApiRequest {
+// GetGroupLimitWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) GetGroupLimitWithParams(ctx context.Context, args *admin.GetGroupLimitApiParams) admin.GetGroupLimitApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for SetProjectLimitWithParams")
+		panic("no return value specified for GetGroupLimitWithParams")
 	}
 
-	var r0 admin.SetProjectLimitApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.SetProjectLimitApiParams) admin.SetProjectLimitApiRequest); ok {
+	var r0 admin.GetGroupLimitApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupLimitApiParams) admin.GetGroupLimitApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.SetProjectLimitApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupLimitApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_SetProjectLimitWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetProjectLimitWithParams'
-type ProjectsApi_SetProjectLimitWithParams_Call struct {
+// ProjectsApi_GetGroupLimitWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLimitWithParams'
+type ProjectsApi_GetGroupLimitWithParams_Call struct {
 	*mock.Call
 }
 
-// SetProjectLimitWithParams is a helper method to define mock.On call
+// GetGroupLimitWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.SetProjectLimitApiParams
-func (_e *ProjectsApi_Expecter) SetProjectLimitWithParams(ctx any, args any) *ProjectsApi_SetProjectLimitWithParams_Call {
-	return &ProjectsApi_SetProjectLimitWithParams_Call{Call: _e.mock.On("SetProjectLimitWithParams", ctx, args)}
+//   - args *admin.GetGroupLimitApiParams
+func (_e *ProjectsApi_Expecter) GetGroupLimitWithParams(ctx any, args any) *ProjectsApi_GetGroupLimitWithParams_Call {
+	return &ProjectsApi_GetGroupLimitWithParams_Call{Call: _e.mock.On("GetGroupLimitWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_SetProjectLimitWithParams_Call) Run(run func(ctx context.Context, args *admin.SetProjectLimitApiParams)) *ProjectsApi_SetProjectLimitWithParams_Call {
+func (_c *ProjectsApi_GetGroupLimitWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupLimitApiParams)) *ProjectsApi_GetGroupLimitWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.SetProjectLimitApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupLimitApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_SetProjectLimitWithParams_Call) Return(_a0 admin.SetProjectLimitApiRequest) *ProjectsApi_SetProjectLimitWithParams_Call {
+func (_c *ProjectsApi_GetGroupLimitWithParams_Call) Return(_a0 admin.GetGroupLimitApiRequest) *ProjectsApi_GetGroupLimitWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_SetProjectLimitWithParams_Call) RunAndReturn(run func(context.Context, *admin.SetProjectLimitApiParams) admin.SetProjectLimitApiRequest) *ProjectsApi_SetProjectLimitWithParams_Call {
+func (_c *ProjectsApi_GetGroupLimitWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupLimitApiParams) admin.GetGroupLimitApiRequest) *ProjectsApi_GetGroupLimitWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateProject provides a mock function with given fields: ctx, groupId, groupUpdate
-func (_m *ProjectsApi) UpdateProject(ctx context.Context, groupId string, groupUpdate *admin.GroupUpdate) admin.UpdateProjectApiRequest {
-	ret := _m.Called(ctx, groupId, groupUpdate)
+// GetGroupSettings provides a mock function with given fields: ctx, groupId
+func (_m *ProjectsApi) GetGroupSettings(ctx context.Context, groupId string) admin.GetGroupSettingsApiRequest {
+	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateProject")
+		panic("no return value specified for GetGroupSettings")
 	}
 
-	var r0 admin.UpdateProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupUpdate) admin.UpdateProjectApiRequest); ok {
-		r0 = rf(ctx, groupId, groupUpdate)
+	var r0 admin.GetGroupSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetGroupSettingsApiRequest); ok {
+		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupSettingsApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_UpdateProject_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProject'
-type ProjectsApi_UpdateProject_Call struct {
+// ProjectsApi_GetGroupSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupSettings'
+type ProjectsApi_GetGroupSettings_Call struct {
 	*mock.Call
 }
 
-// UpdateProject is a helper method to define mock.On call
+// GetGroupSettings is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - groupUpdate *admin.GroupUpdate
-func (_e *ProjectsApi_Expecter) UpdateProject(ctx any, groupId any, groupUpdate any) *ProjectsApi_UpdateProject_Call {
-	return &ProjectsApi_UpdateProject_Call{Call: _e.mock.On("UpdateProject", ctx, groupId, groupUpdate)}
+func (_e *ProjectsApi_Expecter) GetGroupSettings(ctx any, groupId any) *ProjectsApi_GetGroupSettings_Call {
+	return &ProjectsApi_GetGroupSettings_Call{Call: _e.mock.On("GetGroupSettings", ctx, groupId)}
 }
 
-func (_c *ProjectsApi_UpdateProject_Call) Run(run func(ctx context.Context, groupId string, groupUpdate *admin.GroupUpdate)) *ProjectsApi_UpdateProject_Call {
+func (_c *ProjectsApi_GetGroupSettings_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_GetGroupSettings_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupUpdate))
+		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_UpdateProject_Call) Return(_a0 admin.UpdateProjectApiRequest) *ProjectsApi_UpdateProject_Call {
+func (_c *ProjectsApi_GetGroupSettings_Call) Return(_a0 admin.GetGroupSettingsApiRequest) *ProjectsApi_GetGroupSettings_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_UpdateProject_Call) RunAndReturn(run func(context.Context, string, *admin.GroupUpdate) admin.UpdateProjectApiRequest) *ProjectsApi_UpdateProject_Call {
+func (_c *ProjectsApi_GetGroupSettings_Call) RunAndReturn(run func(context.Context, string) admin.GetGroupSettingsApiRequest) *ProjectsApi_GetGroupSettings_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateProjectExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) UpdateProjectExecute(r admin.UpdateProjectApiRequest) (*admin.Group, *http.Response, error) {
+// GetGroupSettingsExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) GetGroupSettingsExecute(r admin.GetGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectExecute")
-	}
-
-	var r0 *admin.Group
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectApiRequest) (*admin.Group, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectApiRequest) *admin.Group); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.Group)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpdateProjectApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpdateProjectApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_UpdateProjectExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectExecute'
-type ProjectsApi_UpdateProjectExecute_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectExecute is a helper method to define mock.On call
-//   - r admin.UpdateProjectApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectExecute(r any) *ProjectsApi_UpdateProjectExecute_Call {
-	return &ProjectsApi_UpdateProjectExecute_Call{Call: _e.mock.On("UpdateProjectExecute", r)}
-}
-
-func (_c *ProjectsApi_UpdateProjectExecute_Call) Run(run func(r admin.UpdateProjectApiRequest)) *ProjectsApi_UpdateProjectExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateProjectApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateProjectExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectExecute_Call) RunAndReturn(run func(admin.UpdateProjectApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_UpdateProjectExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectInvitation provides a mock function with given fields: ctx, groupId, groupInvitationRequest
-func (_m *ProjectsApi) UpdateProjectInvitation(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest) admin.UpdateProjectInvitationApiRequest {
-	ret := _m.Called(ctx, groupId, groupInvitationRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectInvitation")
-	}
-
-	var r0 admin.UpdateProjectInvitationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupInvitationRequest) admin.UpdateProjectInvitationApiRequest); ok {
-		r0 = rf(ctx, groupId, groupInvitationRequest)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectInvitationApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_UpdateProjectInvitation_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectInvitation'
-type ProjectsApi_UpdateProjectInvitation_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectInvitation is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - groupInvitationRequest *admin.GroupInvitationRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitation(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_UpdateProjectInvitation_Call {
-	return &ProjectsApi_UpdateProjectInvitation_Call{Call: _e.mock.On("UpdateProjectInvitation", ctx, groupId, groupInvitationRequest)}
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitation_Call) Run(run func(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest)) *ProjectsApi_UpdateProjectInvitation_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupInvitationRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitation_Call) Return(_a0 admin.UpdateProjectInvitationApiRequest) *ProjectsApi_UpdateProjectInvitation_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitation_Call) RunAndReturn(run func(context.Context, string, *admin.GroupInvitationRequest) admin.UpdateProjectInvitationApiRequest) *ProjectsApi_UpdateProjectInvitation_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectInvitationById provides a mock function with given fields: ctx, groupId, invitationId, groupInvitationUpdateRequest
-func (_m *ProjectsApi) UpdateProjectInvitationById(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *admin.GroupInvitationUpdateRequest) admin.UpdateProjectInvitationByIdApiRequest {
-	ret := _m.Called(ctx, groupId, invitationId, groupInvitationUpdateRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectInvitationById")
-	}
-
-	var r0 admin.UpdateProjectInvitationByIdApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.GroupInvitationUpdateRequest) admin.UpdateProjectInvitationByIdApiRequest); ok {
-		r0 = rf(ctx, groupId, invitationId, groupInvitationUpdateRequest)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectInvitationByIdApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_UpdateProjectInvitationById_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectInvitationById'
-type ProjectsApi_UpdateProjectInvitationById_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectInvitationById is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - invitationId string
-//   - groupInvitationUpdateRequest *admin.GroupInvitationUpdateRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationById(ctx any, groupId any, invitationId any, groupInvitationUpdateRequest any) *ProjectsApi_UpdateProjectInvitationById_Call {
-	return &ProjectsApi_UpdateProjectInvitationById_Call{Call: _e.mock.On("UpdateProjectInvitationById", ctx, groupId, invitationId, groupInvitationUpdateRequest)}
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationById_Call) Run(run func(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *admin.GroupInvitationUpdateRequest)) *ProjectsApi_UpdateProjectInvitationById_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.GroupInvitationUpdateRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationById_Call) Return(_a0 admin.UpdateProjectInvitationByIdApiRequest) *ProjectsApi_UpdateProjectInvitationById_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationById_Call) RunAndReturn(run func(context.Context, string, string, *admin.GroupInvitationUpdateRequest) admin.UpdateProjectInvitationByIdApiRequest) *ProjectsApi_UpdateProjectInvitationById_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectInvitationByIdExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) UpdateProjectInvitationByIdExecute(r admin.UpdateProjectInvitationByIdApiRequest) (*admin.GroupInvitation, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectInvitationByIdExecute")
-	}
-
-	var r0 *admin.GroupInvitation
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectInvitationByIdApiRequest) (*admin.GroupInvitation, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectInvitationByIdApiRequest) *admin.GroupInvitation); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GroupInvitation)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpdateProjectInvitationByIdApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpdateProjectInvitationByIdApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_UpdateProjectInvitationByIdExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectInvitationByIdExecute'
-type ProjectsApi_UpdateProjectInvitationByIdExecute_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectInvitationByIdExecute is a helper method to define mock.On call
-//   - r admin.UpdateProjectInvitationByIdApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationByIdExecute(r any) *ProjectsApi_UpdateProjectInvitationByIdExecute_Call {
-	return &ProjectsApi_UpdateProjectInvitationByIdExecute_Call{Call: _e.mock.On("UpdateProjectInvitationByIdExecute", r)}
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationByIdExecute_Call) Run(run func(r admin.UpdateProjectInvitationByIdApiRequest)) *ProjectsApi_UpdateProjectInvitationByIdExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateProjectInvitationByIdApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationByIdExecute_Call) Return(_a0 *admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateProjectInvitationByIdExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationByIdExecute_Call) RunAndReturn(run func(admin.UpdateProjectInvitationByIdApiRequest) (*admin.GroupInvitation, *http.Response, error)) *ProjectsApi_UpdateProjectInvitationByIdExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectInvitationByIdWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) UpdateProjectInvitationByIdWithParams(ctx context.Context, args *admin.UpdateProjectInvitationByIdApiParams) admin.UpdateProjectInvitationByIdApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectInvitationByIdWithParams")
-	}
-
-	var r0 admin.UpdateProjectInvitationByIdApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateProjectInvitationByIdApiParams) admin.UpdateProjectInvitationByIdApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectInvitationByIdApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_UpdateProjectInvitationByIdWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectInvitationByIdWithParams'
-type ProjectsApi_UpdateProjectInvitationByIdWithParams_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectInvitationByIdWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.UpdateProjectInvitationByIdApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationByIdWithParams(ctx any, args any) *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call {
-	return &ProjectsApi_UpdateProjectInvitationByIdWithParams_Call{Call: _e.mock.On("UpdateProjectInvitationByIdWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateProjectInvitationByIdApiParams)) *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateProjectInvitationByIdApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call) Return(_a0 admin.UpdateProjectInvitationByIdApiRequest) *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateProjectInvitationByIdApiParams) admin.UpdateProjectInvitationByIdApiRequest) *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectInvitationExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) UpdateProjectInvitationExecute(r admin.UpdateProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectInvitationExecute")
-	}
-
-	var r0 *admin.GroupInvitation
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectInvitationApiRequest) *admin.GroupInvitation); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GroupInvitation)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpdateProjectInvitationApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpdateProjectInvitationApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_UpdateProjectInvitationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectInvitationExecute'
-type ProjectsApi_UpdateProjectInvitationExecute_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectInvitationExecute is a helper method to define mock.On call
-//   - r admin.UpdateProjectInvitationApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationExecute(r any) *ProjectsApi_UpdateProjectInvitationExecute_Call {
-	return &ProjectsApi_UpdateProjectInvitationExecute_Call{Call: _e.mock.On("UpdateProjectInvitationExecute", r)}
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationExecute_Call) Run(run func(r admin.UpdateProjectInvitationApiRequest)) *ProjectsApi_UpdateProjectInvitationExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateProjectInvitationApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationExecute_Call) Return(_a0 *admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateProjectInvitationExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationExecute_Call) RunAndReturn(run func(admin.UpdateProjectInvitationApiRequest) (*admin.GroupInvitation, *http.Response, error)) *ProjectsApi_UpdateProjectInvitationExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectInvitationWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) UpdateProjectInvitationWithParams(ctx context.Context, args *admin.UpdateProjectInvitationApiParams) admin.UpdateProjectInvitationApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectInvitationWithParams")
-	}
-
-	var r0 admin.UpdateProjectInvitationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateProjectInvitationApiParams) admin.UpdateProjectInvitationApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectInvitationApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_UpdateProjectInvitationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectInvitationWithParams'
-type ProjectsApi_UpdateProjectInvitationWithParams_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectInvitationWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.UpdateProjectInvitationApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationWithParams(ctx any, args any) *ProjectsApi_UpdateProjectInvitationWithParams_Call {
-	return &ProjectsApi_UpdateProjectInvitationWithParams_Call{Call: _e.mock.On("UpdateProjectInvitationWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateProjectInvitationApiParams)) *ProjectsApi_UpdateProjectInvitationWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateProjectInvitationApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationWithParams_Call) Return(_a0 admin.UpdateProjectInvitationApiRequest) *ProjectsApi_UpdateProjectInvitationWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectInvitationWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateProjectInvitationApiParams) admin.UpdateProjectInvitationApiRequest) *ProjectsApi_UpdateProjectInvitationWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectRoles provides a mock function with given fields: ctx, groupId, userId, updateGroupRolesForUser
-func (_m *ProjectsApi) UpdateProjectRoles(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *admin.UpdateGroupRolesForUser) admin.UpdateProjectRolesApiRequest {
-	ret := _m.Called(ctx, groupId, userId, updateGroupRolesForUser)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectRoles")
-	}
-
-	var r0 admin.UpdateProjectRolesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UpdateGroupRolesForUser) admin.UpdateProjectRolesApiRequest); ok {
-		r0 = rf(ctx, groupId, userId, updateGroupRolesForUser)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectRolesApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_UpdateProjectRoles_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectRoles'
-type ProjectsApi_UpdateProjectRoles_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectRoles is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - userId string
-//   - updateGroupRolesForUser *admin.UpdateGroupRolesForUser
-func (_e *ProjectsApi_Expecter) UpdateProjectRoles(ctx any, groupId any, userId any, updateGroupRolesForUser any) *ProjectsApi_UpdateProjectRoles_Call {
-	return &ProjectsApi_UpdateProjectRoles_Call{Call: _e.mock.On("UpdateProjectRoles", ctx, groupId, userId, updateGroupRolesForUser)}
-}
-
-func (_c *ProjectsApi_UpdateProjectRoles_Call) Run(run func(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *admin.UpdateGroupRolesForUser)) *ProjectsApi_UpdateProjectRoles_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.UpdateGroupRolesForUser))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectRoles_Call) Return(_a0 admin.UpdateProjectRolesApiRequest) *ProjectsApi_UpdateProjectRoles_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectRoles_Call) RunAndReturn(run func(context.Context, string, string, *admin.UpdateGroupRolesForUser) admin.UpdateProjectRolesApiRequest) *ProjectsApi_UpdateProjectRoles_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectRolesExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) UpdateProjectRolesExecute(r admin.UpdateProjectRolesApiRequest) (*admin.UpdateGroupRolesForUser, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectRolesExecute")
-	}
-
-	var r0 *admin.UpdateGroupRolesForUser
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectRolesApiRequest) (*admin.UpdateGroupRolesForUser, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectRolesApiRequest) *admin.UpdateGroupRolesForUser); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.UpdateGroupRolesForUser)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.UpdateProjectRolesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.UpdateProjectRolesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// ProjectsApi_UpdateProjectRolesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectRolesExecute'
-type ProjectsApi_UpdateProjectRolesExecute_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectRolesExecute is a helper method to define mock.On call
-//   - r admin.UpdateProjectRolesApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectRolesExecute(r any) *ProjectsApi_UpdateProjectRolesExecute_Call {
-	return &ProjectsApi_UpdateProjectRolesExecute_Call{Call: _e.mock.On("UpdateProjectRolesExecute", r)}
-}
-
-func (_c *ProjectsApi_UpdateProjectRolesExecute_Call) Run(run func(r admin.UpdateProjectRolesApiRequest)) *ProjectsApi_UpdateProjectRolesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateProjectRolesApiRequest))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectRolesExecute_Call) Return(_a0 *admin.UpdateGroupRolesForUser, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateProjectRolesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectRolesExecute_Call) RunAndReturn(run func(admin.UpdateProjectRolesApiRequest) (*admin.UpdateGroupRolesForUser, *http.Response, error)) *ProjectsApi_UpdateProjectRolesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectRolesWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) UpdateProjectRolesWithParams(ctx context.Context, args *admin.UpdateProjectRolesApiParams) admin.UpdateProjectRolesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectRolesWithParams")
-	}
-
-	var r0 admin.UpdateProjectRolesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateProjectRolesApiParams) admin.UpdateProjectRolesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectRolesApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_UpdateProjectRolesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectRolesWithParams'
-type ProjectsApi_UpdateProjectRolesWithParams_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectRolesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.UpdateProjectRolesApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectRolesWithParams(ctx any, args any) *ProjectsApi_UpdateProjectRolesWithParams_Call {
-	return &ProjectsApi_UpdateProjectRolesWithParams_Call{Call: _e.mock.On("UpdateProjectRolesWithParams", ctx, args)}
-}
-
-func (_c *ProjectsApi_UpdateProjectRolesWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateProjectRolesApiParams)) *ProjectsApi_UpdateProjectRolesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateProjectRolesApiParams))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectRolesWithParams_Call) Return(_a0 admin.UpdateProjectRolesApiRequest) *ProjectsApi_UpdateProjectRolesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectRolesWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateProjectRolesApiParams) admin.UpdateProjectRolesApiRequest) *ProjectsApi_UpdateProjectRolesWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectSettings provides a mock function with given fields: ctx, groupId, groupSettings
-func (_m *ProjectsApi) UpdateProjectSettings(ctx context.Context, groupId string, groupSettings *admin.GroupSettings) admin.UpdateProjectSettingsApiRequest {
-	ret := _m.Called(ctx, groupId, groupSettings)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectSettings")
-	}
-
-	var r0 admin.UpdateProjectSettingsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupSettings) admin.UpdateProjectSettingsApiRequest); ok {
-		r0 = rf(ctx, groupId, groupSettings)
-	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectSettingsApiRequest)
-	}
-
-	return r0
-}
-
-// ProjectsApi_UpdateProjectSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectSettings'
-type ProjectsApi_UpdateProjectSettings_Call struct {
-	*mock.Call
-}
-
-// UpdateProjectSettings is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - groupSettings *admin.GroupSettings
-func (_e *ProjectsApi_Expecter) UpdateProjectSettings(ctx any, groupId any, groupSettings any) *ProjectsApi_UpdateProjectSettings_Call {
-	return &ProjectsApi_UpdateProjectSettings_Call{Call: _e.mock.On("UpdateProjectSettings", ctx, groupId, groupSettings)}
-}
-
-func (_c *ProjectsApi_UpdateProjectSettings_Call) Run(run func(ctx context.Context, groupId string, groupSettings *admin.GroupSettings)) *ProjectsApi_UpdateProjectSettings_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupSettings))
-	})
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectSettings_Call) Return(_a0 admin.UpdateProjectSettingsApiRequest) *ProjectsApi_UpdateProjectSettings_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *ProjectsApi_UpdateProjectSettings_Call) RunAndReturn(run func(context.Context, string, *admin.GroupSettings) admin.UpdateProjectSettingsApiRequest) *ProjectsApi_UpdateProjectSettings_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// UpdateProjectSettingsExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) UpdateProjectSettingsExecute(r admin.UpdateProjectSettingsApiRequest) (*admin.GroupSettings, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectSettingsExecute")
+		panic("no return value specified for GetGroupSettingsExecute")
 	}
 
 	var r0 *admin.GroupSettings
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateProjectSettingsApiRequest) *admin.GroupSettings); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupSettingsApiRequest) *admin.GroupSettings); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -3577,7 +1797,7 @@ func (_m *ProjectsApi) UpdateProjectSettingsExecute(r admin.UpdateProjectSetting
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateProjectSettingsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupSettingsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -3585,7 +1805,7 @@ func (_m *ProjectsApi) UpdateProjectSettingsExecute(r admin.UpdateProjectSetting
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateProjectSettingsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupSettingsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -3594,124 +1814,1904 @@ func (_m *ProjectsApi) UpdateProjectSettingsExecute(r admin.UpdateProjectSetting
 	return r0, r1, r2
 }
 
-// ProjectsApi_UpdateProjectSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectSettingsExecute'
-type ProjectsApi_UpdateProjectSettingsExecute_Call struct {
+// ProjectsApi_GetGroupSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupSettingsExecute'
+type ProjectsApi_GetGroupSettingsExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateProjectSettingsExecute is a helper method to define mock.On call
-//   - r admin.UpdateProjectSettingsApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectSettingsExecute(r any) *ProjectsApi_UpdateProjectSettingsExecute_Call {
-	return &ProjectsApi_UpdateProjectSettingsExecute_Call{Call: _e.mock.On("UpdateProjectSettingsExecute", r)}
+// GetGroupSettingsExecute is a helper method to define mock.On call
+//   - r admin.GetGroupSettingsApiRequest
+func (_e *ProjectsApi_Expecter) GetGroupSettingsExecute(r any) *ProjectsApi_GetGroupSettingsExecute_Call {
+	return &ProjectsApi_GetGroupSettingsExecute_Call{Call: _e.mock.On("GetGroupSettingsExecute", r)}
 }
 
-func (_c *ProjectsApi_UpdateProjectSettingsExecute_Call) Run(run func(r admin.UpdateProjectSettingsApiRequest)) *ProjectsApi_UpdateProjectSettingsExecute_Call {
+func (_c *ProjectsApi_GetGroupSettingsExecute_Call) Run(run func(r admin.GetGroupSettingsApiRequest)) *ProjectsApi_GetGroupSettingsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateProjectSettingsApiRequest))
+		run(args[0].(admin.GetGroupSettingsApiRequest))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_UpdateProjectSettingsExecute_Call) Return(_a0 *admin.GroupSettings, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateProjectSettingsExecute_Call {
+func (_c *ProjectsApi_GetGroupSettingsExecute_Call) Return(_a0 *admin.GroupSettings, _a1 *http.Response, _a2 error) *ProjectsApi_GetGroupSettingsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_UpdateProjectSettingsExecute_Call) RunAndReturn(run func(admin.UpdateProjectSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)) *ProjectsApi_UpdateProjectSettingsExecute_Call {
+func (_c *ProjectsApi_GetGroupSettingsExecute_Call) RunAndReturn(run func(admin.GetGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)) *ProjectsApi_GetGroupSettingsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateProjectSettingsWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) UpdateProjectSettingsWithParams(ctx context.Context, args *admin.UpdateProjectSettingsApiParams) admin.UpdateProjectSettingsApiRequest {
+// GetGroupSettingsWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) GetGroupSettingsWithParams(ctx context.Context, args *admin.GetGroupSettingsApiParams) admin.GetGroupSettingsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectSettingsWithParams")
+		panic("no return value specified for GetGroupSettingsWithParams")
 	}
 
-	var r0 admin.UpdateProjectSettingsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateProjectSettingsApiParams) admin.UpdateProjectSettingsApiRequest); ok {
+	var r0 admin.GetGroupSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupSettingsApiParams) admin.GetGroupSettingsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectSettingsApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupSettingsApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_UpdateProjectSettingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectSettingsWithParams'
-type ProjectsApi_UpdateProjectSettingsWithParams_Call struct {
+// ProjectsApi_GetGroupSettingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupSettingsWithParams'
+type ProjectsApi_GetGroupSettingsWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateProjectSettingsWithParams is a helper method to define mock.On call
+// GetGroupSettingsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateProjectSettingsApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectSettingsWithParams(ctx any, args any) *ProjectsApi_UpdateProjectSettingsWithParams_Call {
-	return &ProjectsApi_UpdateProjectSettingsWithParams_Call{Call: _e.mock.On("UpdateProjectSettingsWithParams", ctx, args)}
+//   - args *admin.GetGroupSettingsApiParams
+func (_e *ProjectsApi_Expecter) GetGroupSettingsWithParams(ctx any, args any) *ProjectsApi_GetGroupSettingsWithParams_Call {
+	return &ProjectsApi_GetGroupSettingsWithParams_Call{Call: _e.mock.On("GetGroupSettingsWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_UpdateProjectSettingsWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateProjectSettingsApiParams)) *ProjectsApi_UpdateProjectSettingsWithParams_Call {
+func (_c *ProjectsApi_GetGroupSettingsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupSettingsApiParams)) *ProjectsApi_GetGroupSettingsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateProjectSettingsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupSettingsApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_UpdateProjectSettingsWithParams_Call) Return(_a0 admin.UpdateProjectSettingsApiRequest) *ProjectsApi_UpdateProjectSettingsWithParams_Call {
+func (_c *ProjectsApi_GetGroupSettingsWithParams_Call) Return(_a0 admin.GetGroupSettingsApiRequest) *ProjectsApi_GetGroupSettingsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_UpdateProjectSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateProjectSettingsApiParams) admin.UpdateProjectSettingsApiRequest) *ProjectsApi_UpdateProjectSettingsWithParams_Call {
+func (_c *ProjectsApi_GetGroupSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupSettingsApiParams) admin.GetGroupSettingsApiRequest) *ProjectsApi_GetGroupSettingsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateProjectWithParams provides a mock function with given fields: ctx, args
-func (_m *ProjectsApi) UpdateProjectWithParams(ctx context.Context, args *admin.UpdateProjectApiParams) admin.UpdateProjectApiRequest {
+// GetGroupWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) GetGroupWithParams(ctx context.Context, args *admin.GetGroupApiParams) admin.GetGroupApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateProjectWithParams")
+		panic("no return value specified for GetGroupWithParams")
 	}
 
-	var r0 admin.UpdateProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateProjectApiParams) admin.UpdateProjectApiRequest); ok {
+	var r0 admin.GetGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupApiParams) admin.GetGroupApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateProjectApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupApiRequest)
 	}
 
 	return r0
 }
 
-// ProjectsApi_UpdateProjectWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProjectWithParams'
-type ProjectsApi_UpdateProjectWithParams_Call struct {
+// ProjectsApi_GetGroupWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupWithParams'
+type ProjectsApi_GetGroupWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateProjectWithParams is a helper method to define mock.On call
+// GetGroupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateProjectApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectWithParams(ctx any, args any) *ProjectsApi_UpdateProjectWithParams_Call {
-	return &ProjectsApi_UpdateProjectWithParams_Call{Call: _e.mock.On("UpdateProjectWithParams", ctx, args)}
+//   - args *admin.GetGroupApiParams
+func (_e *ProjectsApi_Expecter) GetGroupWithParams(ctx any, args any) *ProjectsApi_GetGroupWithParams_Call {
+	return &ProjectsApi_GetGroupWithParams_Call{Call: _e.mock.On("GetGroupWithParams", ctx, args)}
 }
 
-func (_c *ProjectsApi_UpdateProjectWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateProjectApiParams)) *ProjectsApi_UpdateProjectWithParams_Call {
+func (_c *ProjectsApi_GetGroupWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupApiParams)) *ProjectsApi_GetGroupWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateProjectApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupApiParams))
 	})
 	return _c
 }
 
-func (_c *ProjectsApi_UpdateProjectWithParams_Call) Return(_a0 admin.UpdateProjectApiRequest) *ProjectsApi_UpdateProjectWithParams_Call {
+func (_c *ProjectsApi_GetGroupWithParams_Call) Return(_a0 admin.GetGroupApiRequest) *ProjectsApi_GetGroupWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *ProjectsApi_UpdateProjectWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateProjectApiParams) admin.UpdateProjectApiRequest) *ProjectsApi_UpdateProjectWithParams_Call {
+func (_c *ProjectsApi_GetGroupWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupApiParams) admin.GetGroupApiRequest) *ProjectsApi_GetGroupWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetMongoDbVersions provides a mock function with given fields: ctx, groupId
+func (_m *ProjectsApi) GetMongoDbVersions(ctx context.Context, groupId string) admin.GetMongoDbVersionsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetMongoDbVersions")
+	}
+
+	var r0 admin.GetMongoDbVersionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetMongoDbVersionsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.GetMongoDbVersionsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_GetMongoDbVersions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMongoDbVersions'
+type ProjectsApi_GetMongoDbVersions_Call struct {
+	*mock.Call
+}
+
+// GetMongoDbVersions is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *ProjectsApi_Expecter) GetMongoDbVersions(ctx any, groupId any) *ProjectsApi_GetMongoDbVersions_Call {
+	return &ProjectsApi_GetMongoDbVersions_Call{Call: _e.mock.On("GetMongoDbVersions", ctx, groupId)}
+}
+
+func (_c *ProjectsApi_GetMongoDbVersions_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_GetMongoDbVersions_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_GetMongoDbVersions_Call) Return(_a0 admin.GetMongoDbVersionsApiRequest) *ProjectsApi_GetMongoDbVersions_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_GetMongoDbVersions_Call) RunAndReturn(run func(context.Context, string) admin.GetMongoDbVersionsApiRequest) *ProjectsApi_GetMongoDbVersions_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetMongoDbVersionsExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) GetMongoDbVersionsExecute(r admin.GetMongoDbVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetMongoDbVersionsExecute")
+	}
+
+	var r0 *admin.PaginatedAvailableVersion
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetMongoDbVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetMongoDbVersionsApiRequest) *admin.PaginatedAvailableVersion); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedAvailableVersion)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetMongoDbVersionsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetMongoDbVersionsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_GetMongoDbVersionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMongoDbVersionsExecute'
+type ProjectsApi_GetMongoDbVersionsExecute_Call struct {
+	*mock.Call
+}
+
+// GetMongoDbVersionsExecute is a helper method to define mock.On call
+//   - r admin.GetMongoDbVersionsApiRequest
+func (_e *ProjectsApi_Expecter) GetMongoDbVersionsExecute(r any) *ProjectsApi_GetMongoDbVersionsExecute_Call {
+	return &ProjectsApi_GetMongoDbVersionsExecute_Call{Call: _e.mock.On("GetMongoDbVersionsExecute", r)}
+}
+
+func (_c *ProjectsApi_GetMongoDbVersionsExecute_Call) Run(run func(r admin.GetMongoDbVersionsApiRequest)) *ProjectsApi_GetMongoDbVersionsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetMongoDbVersionsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_GetMongoDbVersionsExecute_Call) Return(_a0 *admin.PaginatedAvailableVersion, _a1 *http.Response, _a2 error) *ProjectsApi_GetMongoDbVersionsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_GetMongoDbVersionsExecute_Call) RunAndReturn(run func(admin.GetMongoDbVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error)) *ProjectsApi_GetMongoDbVersionsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetMongoDbVersionsWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) GetMongoDbVersionsWithParams(ctx context.Context, args *admin.GetMongoDbVersionsApiParams) admin.GetMongoDbVersionsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetMongoDbVersionsWithParams")
+	}
+
+	var r0 admin.GetMongoDbVersionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetMongoDbVersionsApiParams) admin.GetMongoDbVersionsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetMongoDbVersionsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_GetMongoDbVersionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMongoDbVersionsWithParams'
+type ProjectsApi_GetMongoDbVersionsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetMongoDbVersionsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetMongoDbVersionsApiParams
+func (_e *ProjectsApi_Expecter) GetMongoDbVersionsWithParams(ctx any, args any) *ProjectsApi_GetMongoDbVersionsWithParams_Call {
+	return &ProjectsApi_GetMongoDbVersionsWithParams_Call{Call: _e.mock.On("GetMongoDbVersionsWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_GetMongoDbVersionsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetMongoDbVersionsApiParams)) *ProjectsApi_GetMongoDbVersionsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetMongoDbVersionsApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_GetMongoDbVersionsWithParams_Call) Return(_a0 admin.GetMongoDbVersionsApiRequest) *ProjectsApi_GetMongoDbVersionsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_GetMongoDbVersionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetMongoDbVersionsApiParams) admin.GetMongoDbVersionsApiRequest) *ProjectsApi_GetMongoDbVersionsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupInvites provides a mock function with given fields: ctx, groupId
+func (_m *ProjectsApi) ListGroupInvites(ctx context.Context, groupId string) admin.ListGroupInvitesApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupInvites")
+	}
+
+	var r0 admin.ListGroupInvitesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupInvitesApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupInvitesApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_ListGroupInvites_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupInvites'
+type ProjectsApi_ListGroupInvites_Call struct {
+	*mock.Call
+}
+
+// ListGroupInvites is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *ProjectsApi_Expecter) ListGroupInvites(ctx any, groupId any) *ProjectsApi_ListGroupInvites_Call {
+	return &ProjectsApi_ListGroupInvites_Call{Call: _e.mock.On("ListGroupInvites", ctx, groupId)}
+}
+
+func (_c *ProjectsApi_ListGroupInvites_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_ListGroupInvites_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupInvites_Call) Return(_a0 admin.ListGroupInvitesApiRequest) *ProjectsApi_ListGroupInvites_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupInvites_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupInvitesApiRequest) *ProjectsApi_ListGroupInvites_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupInvitesExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) ListGroupInvitesExecute(r admin.ListGroupInvitesApiRequest) ([]admin.GroupInvitation, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupInvitesExecute")
+	}
+
+	var r0 []admin.GroupInvitation
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListGroupInvitesApiRequest) ([]admin.GroupInvitation, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListGroupInvitesApiRequest) []admin.GroupInvitation); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]admin.GroupInvitation)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListGroupInvitesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListGroupInvitesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_ListGroupInvitesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupInvitesExecute'
+type ProjectsApi_ListGroupInvitesExecute_Call struct {
+	*mock.Call
+}
+
+// ListGroupInvitesExecute is a helper method to define mock.On call
+//   - r admin.ListGroupInvitesApiRequest
+func (_e *ProjectsApi_Expecter) ListGroupInvitesExecute(r any) *ProjectsApi_ListGroupInvitesExecute_Call {
+	return &ProjectsApi_ListGroupInvitesExecute_Call{Call: _e.mock.On("ListGroupInvitesExecute", r)}
+}
+
+func (_c *ProjectsApi_ListGroupInvitesExecute_Call) Run(run func(r admin.ListGroupInvitesApiRequest)) *ProjectsApi_ListGroupInvitesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListGroupInvitesApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupInvitesExecute_Call) Return(_a0 []admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_ListGroupInvitesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupInvitesExecute_Call) RunAndReturn(run func(admin.ListGroupInvitesApiRequest) ([]admin.GroupInvitation, *http.Response, error)) *ProjectsApi_ListGroupInvitesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupInvitesWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) ListGroupInvitesWithParams(ctx context.Context, args *admin.ListGroupInvitesApiParams) admin.ListGroupInvitesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupInvitesWithParams")
+	}
+
+	var r0 admin.ListGroupInvitesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupInvitesApiParams) admin.ListGroupInvitesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupInvitesApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_ListGroupInvitesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupInvitesWithParams'
+type ProjectsApi_ListGroupInvitesWithParams_Call struct {
+	*mock.Call
+}
+
+// ListGroupInvitesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListGroupInvitesApiParams
+func (_e *ProjectsApi_Expecter) ListGroupInvitesWithParams(ctx any, args any) *ProjectsApi_ListGroupInvitesWithParams_Call {
+	return &ProjectsApi_ListGroupInvitesWithParams_Call{Call: _e.mock.On("ListGroupInvitesWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_ListGroupInvitesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupInvitesApiParams)) *ProjectsApi_ListGroupInvitesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListGroupInvitesApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupInvitesWithParams_Call) Return(_a0 admin.ListGroupInvitesApiRequest) *ProjectsApi_ListGroupInvitesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupInvitesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupInvitesApiParams) admin.ListGroupInvitesApiRequest) *ProjectsApi_ListGroupInvitesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupLimits provides a mock function with given fields: ctx, groupId
+func (_m *ProjectsApi) ListGroupLimits(ctx context.Context, groupId string) admin.ListGroupLimitsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupLimits")
+	}
+
+	var r0 admin.ListGroupLimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupLimitsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupLimitsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_ListGroupLimits_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupLimits'
+type ProjectsApi_ListGroupLimits_Call struct {
+	*mock.Call
+}
+
+// ListGroupLimits is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *ProjectsApi_Expecter) ListGroupLimits(ctx any, groupId any) *ProjectsApi_ListGroupLimits_Call {
+	return &ProjectsApi_ListGroupLimits_Call{Call: _e.mock.On("ListGroupLimits", ctx, groupId)}
+}
+
+func (_c *ProjectsApi_ListGroupLimits_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_ListGroupLimits_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupLimits_Call) Return(_a0 admin.ListGroupLimitsApiRequest) *ProjectsApi_ListGroupLimits_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupLimits_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupLimitsApiRequest) *ProjectsApi_ListGroupLimits_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupLimitsExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) ListGroupLimitsExecute(r admin.ListGroupLimitsApiRequest) ([]admin.DataFederationLimit, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupLimitsExecute")
+	}
+
+	var r0 []admin.DataFederationLimit
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListGroupLimitsApiRequest) ([]admin.DataFederationLimit, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListGroupLimitsApiRequest) []admin.DataFederationLimit); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]admin.DataFederationLimit)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListGroupLimitsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListGroupLimitsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_ListGroupLimitsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupLimitsExecute'
+type ProjectsApi_ListGroupLimitsExecute_Call struct {
+	*mock.Call
+}
+
+// ListGroupLimitsExecute is a helper method to define mock.On call
+//   - r admin.ListGroupLimitsApiRequest
+func (_e *ProjectsApi_Expecter) ListGroupLimitsExecute(r any) *ProjectsApi_ListGroupLimitsExecute_Call {
+	return &ProjectsApi_ListGroupLimitsExecute_Call{Call: _e.mock.On("ListGroupLimitsExecute", r)}
+}
+
+func (_c *ProjectsApi_ListGroupLimitsExecute_Call) Run(run func(r admin.ListGroupLimitsApiRequest)) *ProjectsApi_ListGroupLimitsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListGroupLimitsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupLimitsExecute_Call) Return(_a0 []admin.DataFederationLimit, _a1 *http.Response, _a2 error) *ProjectsApi_ListGroupLimitsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupLimitsExecute_Call) RunAndReturn(run func(admin.ListGroupLimitsApiRequest) ([]admin.DataFederationLimit, *http.Response, error)) *ProjectsApi_ListGroupLimitsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupLimitsWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) ListGroupLimitsWithParams(ctx context.Context, args *admin.ListGroupLimitsApiParams) admin.ListGroupLimitsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupLimitsWithParams")
+	}
+
+	var r0 admin.ListGroupLimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupLimitsApiParams) admin.ListGroupLimitsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupLimitsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_ListGroupLimitsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupLimitsWithParams'
+type ProjectsApi_ListGroupLimitsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListGroupLimitsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListGroupLimitsApiParams
+func (_e *ProjectsApi_Expecter) ListGroupLimitsWithParams(ctx any, args any) *ProjectsApi_ListGroupLimitsWithParams_Call {
+	return &ProjectsApi_ListGroupLimitsWithParams_Call{Call: _e.mock.On("ListGroupLimitsWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_ListGroupLimitsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupLimitsApiParams)) *ProjectsApi_ListGroupLimitsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListGroupLimitsApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupLimitsWithParams_Call) Return(_a0 admin.ListGroupLimitsApiRequest) *ProjectsApi_ListGroupLimitsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupLimitsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupLimitsApiParams) admin.ListGroupLimitsApiRequest) *ProjectsApi_ListGroupLimitsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroups provides a mock function with given fields: ctx
+func (_m *ProjectsApi) ListGroups(ctx context.Context) admin.ListGroupsApiRequest {
+	ret := _m.Called(ctx)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroups")
+	}
+
+	var r0 admin.ListGroupsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context) admin.ListGroupsApiRequest); ok {
+		r0 = rf(ctx)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_ListGroups_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroups'
+type ProjectsApi_ListGroups_Call struct {
+	*mock.Call
+}
+
+// ListGroups is a helper method to define mock.On call
+//   - ctx context.Context
+func (_e *ProjectsApi_Expecter) ListGroups(ctx any) *ProjectsApi_ListGroups_Call {
+	return &ProjectsApi_ListGroups_Call{Call: _e.mock.On("ListGroups", ctx)}
+}
+
+func (_c *ProjectsApi_ListGroups_Call) Run(run func(ctx context.Context)) *ProjectsApi_ListGroups_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroups_Call) Return(_a0 admin.ListGroupsApiRequest) *ProjectsApi_ListGroups_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroups_Call) RunAndReturn(run func(context.Context) admin.ListGroupsApiRequest) *ProjectsApi_ListGroups_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupsExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) ListGroupsExecute(r admin.ListGroupsApiRequest) (*admin.PaginatedAtlasGroup, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupsExecute")
+	}
+
+	var r0 *admin.PaginatedAtlasGroup
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListGroupsApiRequest) (*admin.PaginatedAtlasGroup, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListGroupsApiRequest) *admin.PaginatedAtlasGroup); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedAtlasGroup)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListGroupsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListGroupsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_ListGroupsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupsExecute'
+type ProjectsApi_ListGroupsExecute_Call struct {
+	*mock.Call
+}
+
+// ListGroupsExecute is a helper method to define mock.On call
+//   - r admin.ListGroupsApiRequest
+func (_e *ProjectsApi_Expecter) ListGroupsExecute(r any) *ProjectsApi_ListGroupsExecute_Call {
+	return &ProjectsApi_ListGroupsExecute_Call{Call: _e.mock.On("ListGroupsExecute", r)}
+}
+
+func (_c *ProjectsApi_ListGroupsExecute_Call) Run(run func(r admin.ListGroupsApiRequest)) *ProjectsApi_ListGroupsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListGroupsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupsExecute_Call) Return(_a0 *admin.PaginatedAtlasGroup, _a1 *http.Response, _a2 error) *ProjectsApi_ListGroupsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupsExecute_Call) RunAndReturn(run func(admin.ListGroupsApiRequest) (*admin.PaginatedAtlasGroup, *http.Response, error)) *ProjectsApi_ListGroupsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupsWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) ListGroupsWithParams(ctx context.Context, args *admin.ListGroupsApiParams) admin.ListGroupsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupsWithParams")
+	}
+
+	var r0 admin.ListGroupsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupsApiParams) admin.ListGroupsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_ListGroupsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupsWithParams'
+type ProjectsApi_ListGroupsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListGroupsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListGroupsApiParams
+func (_e *ProjectsApi_Expecter) ListGroupsWithParams(ctx any, args any) *ProjectsApi_ListGroupsWithParams_Call {
+	return &ProjectsApi_ListGroupsWithParams_Call{Call: _e.mock.On("ListGroupsWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_ListGroupsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupsApiParams)) *ProjectsApi_ListGroupsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListGroupsApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupsWithParams_Call) Return(_a0 admin.ListGroupsApiRequest) *ProjectsApi_ListGroupsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_ListGroupsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupsApiParams) admin.ListGroupsApiRequest) *ProjectsApi_ListGroupsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// MigrateGroup provides a mock function with given fields: ctx, groupId, groupMigrationRequest
+func (_m *ProjectsApi) MigrateGroup(ctx context.Context, groupId string, groupMigrationRequest *admin.GroupMigrationRequest) admin.MigrateGroupApiRequest {
+	ret := _m.Called(ctx, groupId, groupMigrationRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for MigrateGroup")
+	}
+
+	var r0 admin.MigrateGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupMigrationRequest) admin.MigrateGroupApiRequest); ok {
+		r0 = rf(ctx, groupId, groupMigrationRequest)
+	} else {
+		r0 = ret.Get(0).(admin.MigrateGroupApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_MigrateGroup_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateGroup'
+type ProjectsApi_MigrateGroup_Call struct {
+	*mock.Call
+}
+
+// MigrateGroup is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - groupMigrationRequest *admin.GroupMigrationRequest
+func (_e *ProjectsApi_Expecter) MigrateGroup(ctx any, groupId any, groupMigrationRequest any) *ProjectsApi_MigrateGroup_Call {
+	return &ProjectsApi_MigrateGroup_Call{Call: _e.mock.On("MigrateGroup", ctx, groupId, groupMigrationRequest)}
+}
+
+func (_c *ProjectsApi_MigrateGroup_Call) Run(run func(ctx context.Context, groupId string, groupMigrationRequest *admin.GroupMigrationRequest)) *ProjectsApi_MigrateGroup_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupMigrationRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateGroup_Call) Return(_a0 admin.MigrateGroupApiRequest) *ProjectsApi_MigrateGroup_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateGroup_Call) RunAndReturn(run func(context.Context, string, *admin.GroupMigrationRequest) admin.MigrateGroupApiRequest) *ProjectsApi_MigrateGroup_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// MigrateGroupExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) MigrateGroupExecute(r admin.MigrateGroupApiRequest) (*admin.Group, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for MigrateGroupExecute")
+	}
+
+	var r0 *admin.Group
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.MigrateGroupApiRequest) (*admin.Group, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.MigrateGroupApiRequest) *admin.Group); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.Group)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.MigrateGroupApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.MigrateGroupApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_MigrateGroupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateGroupExecute'
+type ProjectsApi_MigrateGroupExecute_Call struct {
+	*mock.Call
+}
+
+// MigrateGroupExecute is a helper method to define mock.On call
+//   - r admin.MigrateGroupApiRequest
+func (_e *ProjectsApi_Expecter) MigrateGroupExecute(r any) *ProjectsApi_MigrateGroupExecute_Call {
+	return &ProjectsApi_MigrateGroupExecute_Call{Call: _e.mock.On("MigrateGroupExecute", r)}
+}
+
+func (_c *ProjectsApi_MigrateGroupExecute_Call) Run(run func(r admin.MigrateGroupApiRequest)) *ProjectsApi_MigrateGroupExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.MigrateGroupApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateGroupExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_MigrateGroupExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateGroupExecute_Call) RunAndReturn(run func(admin.MigrateGroupApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_MigrateGroupExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// MigrateGroupWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) MigrateGroupWithParams(ctx context.Context, args *admin.MigrateGroupApiParams) admin.MigrateGroupApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for MigrateGroupWithParams")
+	}
+
+	var r0 admin.MigrateGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.MigrateGroupApiParams) admin.MigrateGroupApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.MigrateGroupApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_MigrateGroupWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateGroupWithParams'
+type ProjectsApi_MigrateGroupWithParams_Call struct {
+	*mock.Call
+}
+
+// MigrateGroupWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.MigrateGroupApiParams
+func (_e *ProjectsApi_Expecter) MigrateGroupWithParams(ctx any, args any) *ProjectsApi_MigrateGroupWithParams_Call {
+	return &ProjectsApi_MigrateGroupWithParams_Call{Call: _e.mock.On("MigrateGroupWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_MigrateGroupWithParams_Call) Run(run func(ctx context.Context, args *admin.MigrateGroupApiParams)) *ProjectsApi_MigrateGroupWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.MigrateGroupApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateGroupWithParams_Call) Return(_a0 admin.MigrateGroupApiRequest) *ProjectsApi_MigrateGroupWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateGroupWithParams_Call) RunAndReturn(run func(context.Context, *admin.MigrateGroupApiParams) admin.MigrateGroupApiRequest) *ProjectsApi_MigrateGroupWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// SetGroupLimit provides a mock function with given fields: ctx, limitName, groupId, dataFederationLimit
+func (_m *ProjectsApi) SetGroupLimit(ctx context.Context, limitName string, groupId string, dataFederationLimit *admin.DataFederationLimit) admin.SetGroupLimitApiRequest {
+	ret := _m.Called(ctx, limitName, groupId, dataFederationLimit)
+
+	if len(ret) == 0 {
+		panic("no return value specified for SetGroupLimit")
+	}
+
+	var r0 admin.SetGroupLimitApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.DataFederationLimit) admin.SetGroupLimitApiRequest); ok {
+		r0 = rf(ctx, limitName, groupId, dataFederationLimit)
+	} else {
+		r0 = ret.Get(0).(admin.SetGroupLimitApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_SetGroupLimit_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetGroupLimit'
+type ProjectsApi_SetGroupLimit_Call struct {
+	*mock.Call
+}
+
+// SetGroupLimit is a helper method to define mock.On call
+//   - ctx context.Context
+//   - limitName string
+//   - groupId string
+//   - dataFederationLimit *admin.DataFederationLimit
+func (_e *ProjectsApi_Expecter) SetGroupLimit(ctx any, limitName any, groupId any, dataFederationLimit any) *ProjectsApi_SetGroupLimit_Call {
+	return &ProjectsApi_SetGroupLimit_Call{Call: _e.mock.On("SetGroupLimit", ctx, limitName, groupId, dataFederationLimit)}
+}
+
+func (_c *ProjectsApi_SetGroupLimit_Call) Run(run func(ctx context.Context, limitName string, groupId string, dataFederationLimit *admin.DataFederationLimit)) *ProjectsApi_SetGroupLimit_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.DataFederationLimit))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_SetGroupLimit_Call) Return(_a0 admin.SetGroupLimitApiRequest) *ProjectsApi_SetGroupLimit_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_SetGroupLimit_Call) RunAndReturn(run func(context.Context, string, string, *admin.DataFederationLimit) admin.SetGroupLimitApiRequest) *ProjectsApi_SetGroupLimit_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// SetGroupLimitExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) SetGroupLimitExecute(r admin.SetGroupLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for SetGroupLimitExecute")
+	}
+
+	var r0 *admin.DataFederationLimit
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.SetGroupLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.SetGroupLimitApiRequest) *admin.DataFederationLimit); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.DataFederationLimit)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.SetGroupLimitApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.SetGroupLimitApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_SetGroupLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetGroupLimitExecute'
+type ProjectsApi_SetGroupLimitExecute_Call struct {
+	*mock.Call
+}
+
+// SetGroupLimitExecute is a helper method to define mock.On call
+//   - r admin.SetGroupLimitApiRequest
+func (_e *ProjectsApi_Expecter) SetGroupLimitExecute(r any) *ProjectsApi_SetGroupLimitExecute_Call {
+	return &ProjectsApi_SetGroupLimitExecute_Call{Call: _e.mock.On("SetGroupLimitExecute", r)}
+}
+
+func (_c *ProjectsApi_SetGroupLimitExecute_Call) Run(run func(r admin.SetGroupLimitApiRequest)) *ProjectsApi_SetGroupLimitExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.SetGroupLimitApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_SetGroupLimitExecute_Call) Return(_a0 *admin.DataFederationLimit, _a1 *http.Response, _a2 error) *ProjectsApi_SetGroupLimitExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_SetGroupLimitExecute_Call) RunAndReturn(run func(admin.SetGroupLimitApiRequest) (*admin.DataFederationLimit, *http.Response, error)) *ProjectsApi_SetGroupLimitExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// SetGroupLimitWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) SetGroupLimitWithParams(ctx context.Context, args *admin.SetGroupLimitApiParams) admin.SetGroupLimitApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for SetGroupLimitWithParams")
+	}
+
+	var r0 admin.SetGroupLimitApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.SetGroupLimitApiParams) admin.SetGroupLimitApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.SetGroupLimitApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_SetGroupLimitWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetGroupLimitWithParams'
+type ProjectsApi_SetGroupLimitWithParams_Call struct {
+	*mock.Call
+}
+
+// SetGroupLimitWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.SetGroupLimitApiParams
+func (_e *ProjectsApi_Expecter) SetGroupLimitWithParams(ctx any, args any) *ProjectsApi_SetGroupLimitWithParams_Call {
+	return &ProjectsApi_SetGroupLimitWithParams_Call{Call: _e.mock.On("SetGroupLimitWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_SetGroupLimitWithParams_Call) Run(run func(ctx context.Context, args *admin.SetGroupLimitApiParams)) *ProjectsApi_SetGroupLimitWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.SetGroupLimitApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_SetGroupLimitWithParams_Call) Return(_a0 admin.SetGroupLimitApiRequest) *ProjectsApi_SetGroupLimitWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_SetGroupLimitWithParams_Call) RunAndReturn(run func(context.Context, *admin.SetGroupLimitApiParams) admin.SetGroupLimitApiRequest) *ProjectsApi_SetGroupLimitWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroup provides a mock function with given fields: ctx, groupId, groupUpdate
+func (_m *ProjectsApi) UpdateGroup(ctx context.Context, groupId string, groupUpdate *admin.GroupUpdate) admin.UpdateGroupApiRequest {
+	ret := _m.Called(ctx, groupId, groupUpdate)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroup")
+	}
+
+	var r0 admin.UpdateGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupUpdate) admin.UpdateGroupApiRequest); ok {
+		r0 = rf(ctx, groupId, groupUpdate)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateGroup_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroup'
+type ProjectsApi_UpdateGroup_Call struct {
+	*mock.Call
+}
+
+// UpdateGroup is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - groupUpdate *admin.GroupUpdate
+func (_e *ProjectsApi_Expecter) UpdateGroup(ctx any, groupId any, groupUpdate any) *ProjectsApi_UpdateGroup_Call {
+	return &ProjectsApi_UpdateGroup_Call{Call: _e.mock.On("UpdateGroup", ctx, groupId, groupUpdate)}
+}
+
+func (_c *ProjectsApi_UpdateGroup_Call) Run(run func(ctx context.Context, groupId string, groupUpdate *admin.GroupUpdate)) *ProjectsApi_UpdateGroup_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupUpdate))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroup_Call) Return(_a0 admin.UpdateGroupApiRequest) *ProjectsApi_UpdateGroup_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroup_Call) RunAndReturn(run func(context.Context, string, *admin.GroupUpdate) admin.UpdateGroupApiRequest) *ProjectsApi_UpdateGroup_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) UpdateGroupExecute(r admin.UpdateGroupApiRequest) (*admin.Group, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupExecute")
+	}
+
+	var r0 *admin.Group
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupApiRequest) (*admin.Group, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupApiRequest) *admin.Group); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.Group)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateGroupApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateGroupApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_UpdateGroupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupExecute'
+type ProjectsApi_UpdateGroupExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupExecute is a helper method to define mock.On call
+//   - r admin.UpdateGroupApiRequest
+func (_e *ProjectsApi_Expecter) UpdateGroupExecute(r any) *ProjectsApi_UpdateGroupExecute_Call {
+	return &ProjectsApi_UpdateGroupExecute_Call{Call: _e.mock.On("UpdateGroupExecute", r)}
+}
+
+func (_c *ProjectsApi_UpdateGroupExecute_Call) Run(run func(r admin.UpdateGroupApiRequest)) *ProjectsApi_UpdateGroupExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateGroupApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateGroupExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupExecute_Call) RunAndReturn(run func(admin.UpdateGroupApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_UpdateGroupExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupInvites provides a mock function with given fields: ctx, groupId, groupInvitationRequest
+func (_m *ProjectsApi) UpdateGroupInvites(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest) admin.UpdateGroupInvitesApiRequest {
+	ret := _m.Called(ctx, groupId, groupInvitationRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupInvites")
+	}
+
+	var r0 admin.UpdateGroupInvitesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupInvitationRequest) admin.UpdateGroupInvitesApiRequest); ok {
+		r0 = rf(ctx, groupId, groupInvitationRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupInvitesApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateGroupInvites_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupInvites'
+type ProjectsApi_UpdateGroupInvites_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupInvites is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - groupInvitationRequest *admin.GroupInvitationRequest
+func (_e *ProjectsApi_Expecter) UpdateGroupInvites(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_UpdateGroupInvites_Call {
+	return &ProjectsApi_UpdateGroupInvites_Call{Call: _e.mock.On("UpdateGroupInvites", ctx, groupId, groupInvitationRequest)}
+}
+
+func (_c *ProjectsApi_UpdateGroupInvites_Call) Run(run func(ctx context.Context, groupId string, groupInvitationRequest *admin.GroupInvitationRequest)) *ProjectsApi_UpdateGroupInvites_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupInvitationRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupInvites_Call) Return(_a0 admin.UpdateGroupInvitesApiRequest) *ProjectsApi_UpdateGroupInvites_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupInvites_Call) RunAndReturn(run func(context.Context, string, *admin.GroupInvitationRequest) admin.UpdateGroupInvitesApiRequest) *ProjectsApi_UpdateGroupInvites_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupInvitesExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) UpdateGroupInvitesExecute(r admin.UpdateGroupInvitesApiRequest) (*admin.GroupInvitation, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupInvitesExecute")
+	}
+
+	var r0 *admin.GroupInvitation
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupInvitesApiRequest) (*admin.GroupInvitation, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupInvitesApiRequest) *admin.GroupInvitation); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.GroupInvitation)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateGroupInvitesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateGroupInvitesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_UpdateGroupInvitesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupInvitesExecute'
+type ProjectsApi_UpdateGroupInvitesExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupInvitesExecute is a helper method to define mock.On call
+//   - r admin.UpdateGroupInvitesApiRequest
+func (_e *ProjectsApi_Expecter) UpdateGroupInvitesExecute(r any) *ProjectsApi_UpdateGroupInvitesExecute_Call {
+	return &ProjectsApi_UpdateGroupInvitesExecute_Call{Call: _e.mock.On("UpdateGroupInvitesExecute", r)}
+}
+
+func (_c *ProjectsApi_UpdateGroupInvitesExecute_Call) Run(run func(r admin.UpdateGroupInvitesApiRequest)) *ProjectsApi_UpdateGroupInvitesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateGroupInvitesApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupInvitesExecute_Call) Return(_a0 *admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateGroupInvitesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupInvitesExecute_Call) RunAndReturn(run func(admin.UpdateGroupInvitesApiRequest) (*admin.GroupInvitation, *http.Response, error)) *ProjectsApi_UpdateGroupInvitesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupInvitesWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) UpdateGroupInvitesWithParams(ctx context.Context, args *admin.UpdateGroupInvitesApiParams) admin.UpdateGroupInvitesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupInvitesWithParams")
+	}
+
+	var r0 admin.UpdateGroupInvitesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupInvitesApiParams) admin.UpdateGroupInvitesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupInvitesApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateGroupInvitesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupInvitesWithParams'
+type ProjectsApi_UpdateGroupInvitesWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupInvitesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateGroupInvitesApiParams
+func (_e *ProjectsApi_Expecter) UpdateGroupInvitesWithParams(ctx any, args any) *ProjectsApi_UpdateGroupInvitesWithParams_Call {
+	return &ProjectsApi_UpdateGroupInvitesWithParams_Call{Call: _e.mock.On("UpdateGroupInvitesWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_UpdateGroupInvitesWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupInvitesApiParams)) *ProjectsApi_UpdateGroupInvitesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateGroupInvitesApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupInvitesWithParams_Call) Return(_a0 admin.UpdateGroupInvitesApiRequest) *ProjectsApi_UpdateGroupInvitesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupInvitesWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupInvitesApiParams) admin.UpdateGroupInvitesApiRequest) *ProjectsApi_UpdateGroupInvitesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupSettings provides a mock function with given fields: ctx, groupId, groupSettings
+func (_m *ProjectsApi) UpdateGroupSettings(ctx context.Context, groupId string, groupSettings *admin.GroupSettings) admin.UpdateGroupSettingsApiRequest {
+	ret := _m.Called(ctx, groupId, groupSettings)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupSettings")
+	}
+
+	var r0 admin.UpdateGroupSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupSettings) admin.UpdateGroupSettingsApiRequest); ok {
+		r0 = rf(ctx, groupId, groupSettings)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateGroupSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupSettings'
+type ProjectsApi_UpdateGroupSettings_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupSettings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - groupSettings *admin.GroupSettings
+func (_e *ProjectsApi_Expecter) UpdateGroupSettings(ctx any, groupId any, groupSettings any) *ProjectsApi_UpdateGroupSettings_Call {
+	return &ProjectsApi_UpdateGroupSettings_Call{Call: _e.mock.On("UpdateGroupSettings", ctx, groupId, groupSettings)}
+}
+
+func (_c *ProjectsApi_UpdateGroupSettings_Call) Run(run func(ctx context.Context, groupId string, groupSettings *admin.GroupSettings)) *ProjectsApi_UpdateGroupSettings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupSettings))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupSettings_Call) Return(_a0 admin.UpdateGroupSettingsApiRequest) *ProjectsApi_UpdateGroupSettings_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupSettings_Call) RunAndReturn(run func(context.Context, string, *admin.GroupSettings) admin.UpdateGroupSettingsApiRequest) *ProjectsApi_UpdateGroupSettings_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupSettingsExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) UpdateGroupSettingsExecute(r admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupSettingsExecute")
+	}
+
+	var r0 *admin.GroupSettings
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupSettingsApiRequest) *admin.GroupSettings); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.GroupSettings)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateGroupSettingsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateGroupSettingsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_UpdateGroupSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupSettingsExecute'
+type ProjectsApi_UpdateGroupSettingsExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupSettingsExecute is a helper method to define mock.On call
+//   - r admin.UpdateGroupSettingsApiRequest
+func (_e *ProjectsApi_Expecter) UpdateGroupSettingsExecute(r any) *ProjectsApi_UpdateGroupSettingsExecute_Call {
+	return &ProjectsApi_UpdateGroupSettingsExecute_Call{Call: _e.mock.On("UpdateGroupSettingsExecute", r)}
+}
+
+func (_c *ProjectsApi_UpdateGroupSettingsExecute_Call) Run(run func(r admin.UpdateGroupSettingsApiRequest)) *ProjectsApi_UpdateGroupSettingsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateGroupSettingsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupSettingsExecute_Call) Return(_a0 *admin.GroupSettings, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateGroupSettingsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupSettingsExecute_Call) RunAndReturn(run func(admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)) *ProjectsApi_UpdateGroupSettingsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupSettingsWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) UpdateGroupSettingsWithParams(ctx context.Context, args *admin.UpdateGroupSettingsApiParams) admin.UpdateGroupSettingsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupSettingsWithParams")
+	}
+
+	var r0 admin.UpdateGroupSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupSettingsApiParams) admin.UpdateGroupSettingsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateGroupSettingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupSettingsWithParams'
+type ProjectsApi_UpdateGroupSettingsWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupSettingsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateGroupSettingsApiParams
+func (_e *ProjectsApi_Expecter) UpdateGroupSettingsWithParams(ctx any, args any) *ProjectsApi_UpdateGroupSettingsWithParams_Call {
+	return &ProjectsApi_UpdateGroupSettingsWithParams_Call{Call: _e.mock.On("UpdateGroupSettingsWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_UpdateGroupSettingsWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupSettingsApiParams)) *ProjectsApi_UpdateGroupSettingsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateGroupSettingsApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupSettingsWithParams_Call) Return(_a0 admin.UpdateGroupSettingsApiRequest) *ProjectsApi_UpdateGroupSettingsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupSettingsApiParams) admin.UpdateGroupSettingsApiRequest) *ProjectsApi_UpdateGroupSettingsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupUserRoles provides a mock function with given fields: ctx, groupId, userId, updateGroupRolesForUser
+func (_m *ProjectsApi) UpdateGroupUserRoles(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *admin.UpdateGroupRolesForUser) admin.UpdateGroupUserRolesApiRequest {
+	ret := _m.Called(ctx, groupId, userId, updateGroupRolesForUser)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupUserRoles")
+	}
+
+	var r0 admin.UpdateGroupUserRolesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UpdateGroupRolesForUser) admin.UpdateGroupUserRolesApiRequest); ok {
+		r0 = rf(ctx, groupId, userId, updateGroupRolesForUser)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupUserRolesApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateGroupUserRoles_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupUserRoles'
+type ProjectsApi_UpdateGroupUserRoles_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupUserRoles is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - userId string
+//   - updateGroupRolesForUser *admin.UpdateGroupRolesForUser
+func (_e *ProjectsApi_Expecter) UpdateGroupUserRoles(ctx any, groupId any, userId any, updateGroupRolesForUser any) *ProjectsApi_UpdateGroupUserRoles_Call {
+	return &ProjectsApi_UpdateGroupUserRoles_Call{Call: _e.mock.On("UpdateGroupUserRoles", ctx, groupId, userId, updateGroupRolesForUser)}
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRoles_Call) Run(run func(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *admin.UpdateGroupRolesForUser)) *ProjectsApi_UpdateGroupUserRoles_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.UpdateGroupRolesForUser))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRoles_Call) Return(_a0 admin.UpdateGroupUserRolesApiRequest) *ProjectsApi_UpdateGroupUserRoles_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRoles_Call) RunAndReturn(run func(context.Context, string, string, *admin.UpdateGroupRolesForUser) admin.UpdateGroupUserRolesApiRequest) *ProjectsApi_UpdateGroupUserRoles_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupUserRolesExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) UpdateGroupUserRolesExecute(r admin.UpdateGroupUserRolesApiRequest) (*admin.UpdateGroupRolesForUser, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupUserRolesExecute")
+	}
+
+	var r0 *admin.UpdateGroupRolesForUser
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupUserRolesApiRequest) (*admin.UpdateGroupRolesForUser, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupUserRolesApiRequest) *admin.UpdateGroupRolesForUser); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.UpdateGroupRolesForUser)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateGroupUserRolesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateGroupUserRolesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_UpdateGroupUserRolesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupUserRolesExecute'
+type ProjectsApi_UpdateGroupUserRolesExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupUserRolesExecute is a helper method to define mock.On call
+//   - r admin.UpdateGroupUserRolesApiRequest
+func (_e *ProjectsApi_Expecter) UpdateGroupUserRolesExecute(r any) *ProjectsApi_UpdateGroupUserRolesExecute_Call {
+	return &ProjectsApi_UpdateGroupUserRolesExecute_Call{Call: _e.mock.On("UpdateGroupUserRolesExecute", r)}
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRolesExecute_Call) Run(run func(r admin.UpdateGroupUserRolesApiRequest)) *ProjectsApi_UpdateGroupUserRolesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateGroupUserRolesApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRolesExecute_Call) Return(_a0 *admin.UpdateGroupRolesForUser, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateGroupUserRolesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRolesExecute_Call) RunAndReturn(run func(admin.UpdateGroupUserRolesApiRequest) (*admin.UpdateGroupRolesForUser, *http.Response, error)) *ProjectsApi_UpdateGroupUserRolesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupUserRolesWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) UpdateGroupUserRolesWithParams(ctx context.Context, args *admin.UpdateGroupUserRolesApiParams) admin.UpdateGroupUserRolesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupUserRolesWithParams")
+	}
+
+	var r0 admin.UpdateGroupUserRolesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupUserRolesApiParams) admin.UpdateGroupUserRolesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupUserRolesApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateGroupUserRolesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupUserRolesWithParams'
+type ProjectsApi_UpdateGroupUserRolesWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupUserRolesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateGroupUserRolesApiParams
+func (_e *ProjectsApi_Expecter) UpdateGroupUserRolesWithParams(ctx any, args any) *ProjectsApi_UpdateGroupUserRolesWithParams_Call {
+	return &ProjectsApi_UpdateGroupUserRolesWithParams_Call{Call: _e.mock.On("UpdateGroupUserRolesWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRolesWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupUserRolesApiParams)) *ProjectsApi_UpdateGroupUserRolesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateGroupUserRolesApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRolesWithParams_Call) Return(_a0 admin.UpdateGroupUserRolesApiRequest) *ProjectsApi_UpdateGroupUserRolesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupUserRolesWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupUserRolesApiParams) admin.UpdateGroupUserRolesApiRequest) *ProjectsApi_UpdateGroupUserRolesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) UpdateGroupWithParams(ctx context.Context, args *admin.UpdateGroupApiParams) admin.UpdateGroupApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupWithParams")
+	}
+
+	var r0 admin.UpdateGroupApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupApiParams) admin.UpdateGroupApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateGroupWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupWithParams'
+type ProjectsApi_UpdateGroupWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateGroupApiParams
+func (_e *ProjectsApi_Expecter) UpdateGroupWithParams(ctx any, args any) *ProjectsApi_UpdateGroupWithParams_Call {
+	return &ProjectsApi_UpdateGroupWithParams_Call{Call: _e.mock.On("UpdateGroupWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_UpdateGroupWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupApiParams)) *ProjectsApi_UpdateGroupWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateGroupApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupWithParams_Call) Return(_a0 admin.UpdateGroupApiRequest) *ProjectsApi_UpdateGroupWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateGroupWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupApiParams) admin.UpdateGroupApiRequest) *ProjectsApi_UpdateGroupWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateInviteById provides a mock function with given fields: ctx, groupId, invitationId, groupInvitationUpdateRequest
+func (_m *ProjectsApi) UpdateInviteById(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *admin.GroupInvitationUpdateRequest) admin.UpdateInviteByIdApiRequest {
+	ret := _m.Called(ctx, groupId, invitationId, groupInvitationUpdateRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateInviteById")
+	}
+
+	var r0 admin.UpdateInviteByIdApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.GroupInvitationUpdateRequest) admin.UpdateInviteByIdApiRequest); ok {
+		r0 = rf(ctx, groupId, invitationId, groupInvitationUpdateRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateInviteByIdApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateInviteById_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateInviteById'
+type ProjectsApi_UpdateInviteById_Call struct {
+	*mock.Call
+}
+
+// UpdateInviteById is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - invitationId string
+//   - groupInvitationUpdateRequest *admin.GroupInvitationUpdateRequest
+func (_e *ProjectsApi_Expecter) UpdateInviteById(ctx any, groupId any, invitationId any, groupInvitationUpdateRequest any) *ProjectsApi_UpdateInviteById_Call {
+	return &ProjectsApi_UpdateInviteById_Call{Call: _e.mock.On("UpdateInviteById", ctx, groupId, invitationId, groupInvitationUpdateRequest)}
+}
+
+func (_c *ProjectsApi_UpdateInviteById_Call) Run(run func(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *admin.GroupInvitationUpdateRequest)) *ProjectsApi_UpdateInviteById_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.GroupInvitationUpdateRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateInviteById_Call) Return(_a0 admin.UpdateInviteByIdApiRequest) *ProjectsApi_UpdateInviteById_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateInviteById_Call) RunAndReturn(run func(context.Context, string, string, *admin.GroupInvitationUpdateRequest) admin.UpdateInviteByIdApiRequest) *ProjectsApi_UpdateInviteById_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateInviteByIdExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) UpdateInviteByIdExecute(r admin.UpdateInviteByIdApiRequest) (*admin.GroupInvitation, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateInviteByIdExecute")
+	}
+
+	var r0 *admin.GroupInvitation
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateInviteByIdApiRequest) (*admin.GroupInvitation, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateInviteByIdApiRequest) *admin.GroupInvitation); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.GroupInvitation)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateInviteByIdApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateInviteByIdApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_UpdateInviteByIdExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateInviteByIdExecute'
+type ProjectsApi_UpdateInviteByIdExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateInviteByIdExecute is a helper method to define mock.On call
+//   - r admin.UpdateInviteByIdApiRequest
+func (_e *ProjectsApi_Expecter) UpdateInviteByIdExecute(r any) *ProjectsApi_UpdateInviteByIdExecute_Call {
+	return &ProjectsApi_UpdateInviteByIdExecute_Call{Call: _e.mock.On("UpdateInviteByIdExecute", r)}
+}
+
+func (_c *ProjectsApi_UpdateInviteByIdExecute_Call) Run(run func(r admin.UpdateInviteByIdApiRequest)) *ProjectsApi_UpdateInviteByIdExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateInviteByIdApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateInviteByIdExecute_Call) Return(_a0 *admin.GroupInvitation, _a1 *http.Response, _a2 error) *ProjectsApi_UpdateInviteByIdExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateInviteByIdExecute_Call) RunAndReturn(run func(admin.UpdateInviteByIdApiRequest) (*admin.GroupInvitation, *http.Response, error)) *ProjectsApi_UpdateInviteByIdExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateInviteByIdWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) UpdateInviteByIdWithParams(ctx context.Context, args *admin.UpdateInviteByIdApiParams) admin.UpdateInviteByIdApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateInviteByIdWithParams")
+	}
+
+	var r0 admin.UpdateInviteByIdApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateInviteByIdApiParams) admin.UpdateInviteByIdApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateInviteByIdApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_UpdateInviteByIdWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateInviteByIdWithParams'
+type ProjectsApi_UpdateInviteByIdWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateInviteByIdWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateInviteByIdApiParams
+func (_e *ProjectsApi_Expecter) UpdateInviteByIdWithParams(ctx any, args any) *ProjectsApi_UpdateInviteByIdWithParams_Call {
+	return &ProjectsApi_UpdateInviteByIdWithParams_Call{Call: _e.mock.On("UpdateInviteByIdWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_UpdateInviteByIdWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateInviteByIdApiParams)) *ProjectsApi_UpdateInviteByIdWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateInviteByIdApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateInviteByIdWithParams_Call) Return(_a0 admin.UpdateInviteByIdApiRequest) *ProjectsApi_UpdateInviteByIdWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_UpdateInviteByIdWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateInviteByIdApiParams) admin.UpdateInviteByIdApiRequest) *ProjectsApi_UpdateInviteByIdWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

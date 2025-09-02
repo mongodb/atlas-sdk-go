@@ -4,15 +4,15 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSharedClusterBackupRestoreJob**](SharedTierRestoreJobsApi.md#CreateSharedClusterBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore | Create One Restore Job for One M2 or M5 Cluster
-[**GetSharedClusterBackupRestoreJob**](SharedTierRestoreJobsApi.md#GetSharedClusterBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId} | Return One Restore Job for One M2 or M5 Cluster
-[**ListSharedClusterBackupRestoreJobs**](SharedTierRestoreJobsApi.md#ListSharedClusterBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores | Return All Restore Jobs for One M2 or M5 Cluster
+[**CreateBackupTenantRestore**](SharedTierRestoreJobsApi.md#CreateBackupTenantRestore) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore | Create One Restore Job for One M2 or M5 Cluster
+[**GetBackupTenantRestore**](SharedTierRestoreJobsApi.md#GetBackupTenantRestore) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId} | Return One Restore Job for One M2 or M5 Cluster
+[**ListBackupTenantRestores**](SharedTierRestoreJobsApi.md#ListBackupTenantRestores) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores | Return All Restore Jobs for One M2 or M5 Cluster
 
 
 
-## CreateSharedClusterBackupRestoreJob
+## CreateBackupTenantRestore
 
-> TenantRestore CreateSharedClusterBackupRestoreJob(ctx, clusterName, groupId, tenantRestore TenantRestore).Execute()
+> TenantRestore CreateBackupTenantRestore(ctx, clusterName, groupId, tenantRestore TenantRestore).Execute()
 
 Create One Restore Job for One M2 or M5 Cluster
 
@@ -27,7 +27,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -44,17 +44,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantRestore := *openapiclient.NewTenantRestore("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // TenantRestore | 
 
-    resp, r, err := sdk.SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob(context.Background(), clusterName, groupId, &tenantRestore).Execute()
+    resp, r, err := sdk.SharedTierRestoreJobsApi.CreateBackupTenantRestore(context.Background(), clusterName, groupId, &tenantRestore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.CreateBackupTenantRestore`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateSharedClusterBackupRestoreJob`: TenantRestore
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob`: %v (%v)\n", resp, r)
+    // response from `CreateBackupTenantRestore`: TenantRestore
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.CreateBackupTenantRestore`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateSharedClusterBackupRestoreJobRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateBackupTenantRestoreRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSharedClusterBackupRestoreJob
+## GetBackupTenantRestore
 
-> TenantRestore GetSharedClusterBackupRestoreJob(ctx, clusterName, groupId, restoreId).Execute()
+> TenantRestore GetBackupTenantRestore(ctx, clusterName, groupId, restoreId).Execute()
 
 Return One Restore Job for One M2 or M5 Cluster
 
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -129,17 +129,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     restoreId := "restoreId_example" // string | 
 
-    resp, r, err := sdk.SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob(context.Background(), clusterName, groupId, restoreId).Execute()
+    resp, r, err := sdk.SharedTierRestoreJobsApi.GetBackupTenantRestore(context.Background(), clusterName, groupId, restoreId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.GetBackupTenantRestore`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetSharedClusterBackupRestoreJob`: TenantRestore
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob`: %v (%v)\n", resp, r)
+    // response from `GetBackupTenantRestore`: TenantRestore
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.GetBackupTenantRestore`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetSharedClusterBackupRestoreJobRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetBackupTenantRestoreRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -181,9 +181,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSharedClusterBackupRestoreJobs
+## ListBackupTenantRestores
 
-> PaginatedTenantRestore ListSharedClusterBackupRestoreJobs(ctx, clusterName, groupId).Execute()
+> PaginatedTenantRestore ListBackupTenantRestores(ctx, clusterName, groupId).Execute()
 
 Return All Restore Jobs for One M2 or M5 Cluster
 
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -214,17 +214,17 @@ func main() {
     clusterName := "clusterName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs(context.Background(), clusterName, groupId).Execute()
+    resp, r, err := sdk.SharedTierRestoreJobsApi.ListBackupTenantRestores(context.Background(), clusterName, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.ListBackupTenantRestores`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListSharedClusterBackupRestoreJobs`: PaginatedTenantRestore
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs`: %v (%v)\n", resp, r)
+    // response from `ListBackupTenantRestores`: PaginatedTenantRestore
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.ListBackupTenantRestores`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListSharedClusterBackupRestoreJobsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListBackupTenantRestoresRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -4,16 +4,16 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePushBasedLogConfiguration**](PushBasedLogExportApi.md#CreatePushBasedLogConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Enable Push-Based Log Export for One Project
-[**DeletePushBasedLogConfiguration**](PushBasedLogExportApi.md#DeletePushBasedLogConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
-[**GetPushBasedLogConfiguration**](PushBasedLogExportApi.md#GetPushBasedLogConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return Push-Based Log Export Configuration for One Project
-[**UpdatePushBasedLogConfiguration**](PushBasedLogExportApi.md#UpdatePushBasedLogConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update Push-Based Log Export for One Project
+[**CreateLogExport**](PushBasedLogExportApi.md#CreateLogExport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Enable Push-Based Log Export for One Project
+[**DeleteLogExport**](PushBasedLogExportApi.md#DeleteLogExport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
+[**GetLogExport**](PushBasedLogExportApi.md#GetLogExport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return Push-Based Log Export Configuration for One Project
+[**UpdateLogExport**](PushBasedLogExportApi.md#UpdateLogExport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update Push-Based Log Export for One Project
 
 
 
-## CreatePushBasedLogConfiguration
+## CreateLogExport
 
-> CreatePushBasedLogConfiguration(ctx, groupId, createPushBasedLogExportProjectRequest CreatePushBasedLogExportProjectRequest).Execute()
+> CreateLogExport(ctx, groupId, createPushBasedLogExportProjectRequest CreatePushBasedLogExportProjectRequest).Execute()
 
 Enable Push-Based Log Export for One Project
 
@@ -28,7 +28,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -44,9 +44,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     createPushBasedLogExportProjectRequest := *openapiclient.NewCreatePushBasedLogExportProjectRequest("BucketName_example", "32b6e34b3d91647abb20e7b8", "PrefixPath_example") // CreatePushBasedLogExportProjectRequest | 
 
-    r, err := sdk.PushBasedLogExportApi.CreatePushBasedLogConfiguration(context.Background(), groupId, &createPushBasedLogExportProjectRequest).Execute()
+    r, err := sdk.PushBasedLogExportApi.CreateLogExport(context.Background(), groupId, &createPushBasedLogExportProjectRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.CreatePushBasedLogConfiguration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.CreateLogExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreatePushBasedLogConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateLogExportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -91,9 +91,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeletePushBasedLogConfiguration
+## DeleteLogExport
 
-> DeletePushBasedLogConfiguration(ctx, groupId).Execute()
+> DeleteLogExport(ctx, groupId).Execute()
 
 Disable Push-Based Log Export for One Project
 
@@ -108,7 +108,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -123,9 +123,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.PushBasedLogExportApi.DeletePushBasedLogConfiguration(context.Background(), groupId).Execute()
+    r, err := sdk.PushBasedLogExportApi.DeleteLogExport(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.DeletePushBasedLogConfiguration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.DeleteLogExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeletePushBasedLogConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteLogExportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -169,9 +169,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPushBasedLogConfiguration
+## GetLogExport
 
-> PushBasedLogExportProject GetPushBasedLogConfiguration(ctx, groupId).Execute()
+> PushBasedLogExportProject GetLogExport(ctx, groupId).Execute()
 
 Return Push-Based Log Export Configuration for One Project
 
@@ -186,7 +186,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -201,17 +201,17 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.PushBasedLogExportApi.GetPushBasedLogConfiguration(context.Background(), groupId).Execute()
+    resp, r, err := sdk.PushBasedLogExportApi.GetLogExport(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.GetPushBasedLogConfiguration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.GetLogExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetPushBasedLogConfiguration`: PushBasedLogExportProject
-    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.GetPushBasedLogConfiguration`: %v (%v)\n", resp, r)
+    // response from `GetLogExport`: PushBasedLogExportProject
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.GetLogExport`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetPushBasedLogConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLogExportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -249,9 +249,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdatePushBasedLogConfiguration
+## UpdateLogExport
 
-> UpdatePushBasedLogConfiguration(ctx, groupId, pushBasedLogExportProject PushBasedLogExportProject).Execute()
+> UpdateLogExport(ctx, groupId, pushBasedLogExportProject PushBasedLogExportProject).Execute()
 
 Update Push-Based Log Export for One Project
 
@@ -266,7 +266,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312006/admin"
+    "go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -282,9 +282,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pushBasedLogExportProject := *openapiclient.NewPushBasedLogExportProject() // PushBasedLogExportProject | 
 
-    r, err := sdk.PushBasedLogExportApi.UpdatePushBasedLogConfiguration(context.Background(), groupId, &pushBasedLogExportProject).Execute()
+    r, err := sdk.PushBasedLogExportApi.UpdateLogExport(context.Background(), groupId, &pushBasedLogExportProject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.UpdatePushBasedLogConfiguration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.UpdateLogExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdatePushBasedLogConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateLogExportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

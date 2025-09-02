@@ -13,6 +13,36 @@ import (
 type CloudMigrationServiceApi interface {
 
 	/*
+			CreateGroupLiveMigration Migrate One Local Managed Cluster to MongoDB Atlas
+
+			Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
+
+		 Please make sure to validate your migration before initiating it.
+
+		 You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
+
+		 **NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param liveMigrationRequest20240530 One migration to be created.
+			@return CreateGroupLiveMigrationApiRequest
+	*/
+	CreateGroupLiveMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) CreateGroupLiveMigrationApiRequest
+	/*
+		CreateGroupLiveMigration Migrate One Local Managed Cluster to MongoDB Atlas
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateGroupLiveMigrationApiParams - Parameters for the request
+		@return CreateGroupLiveMigrationApiRequest
+	*/
+	CreateGroupLiveMigrationWithParams(ctx context.Context, args *CreateGroupLiveMigrationApiParams) CreateGroupLiveMigrationApiRequest
+
+	// Method available only for mocking purposes
+	CreateGroupLiveMigrationExecute(r CreateGroupLiveMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
+
+	/*
 		CreateLinkToken Create One Link-Token
 
 		Create one link-token that contains all the information required to complete the link. MongoDB Atlas uses the link-token for push live migrations only. Live migration (push) allows you to securely push data from Cloud Manager or Ops Manager into MongoDB Atlas. Your API Key must have the Organization Owner role to successfully call this resource.
@@ -35,36 +65,6 @@ type CloudMigrationServiceApi interface {
 
 	// Method available only for mocking purposes
 	CreateLinkTokenExecute(r CreateLinkTokenApiRequest) (*TargetOrg, *http.Response, error)
-
-	/*
-			CreatePushMigration Migrate One Local Managed Cluster to MongoDB Atlas
-
-			Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
-
-		 Please make sure to validate your migration before initiating it.
-
-		 You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
-
-		 **NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster. Deprecated versions: v2-{2023-01-01}
-
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param liveMigrationRequest20240530 One migration to be created.
-			@return CreatePushMigrationApiRequest
-	*/
-	CreatePushMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) CreatePushMigrationApiRequest
-	/*
-		CreatePushMigration Migrate One Local Managed Cluster to MongoDB Atlas
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreatePushMigrationApiParams - Parameters for the request
-		@return CreatePushMigrationApiRequest
-	*/
-	CreatePushMigrationWithParams(ctx context.Context, args *CreatePushMigrationApiParams) CreatePushMigrationApiRequest
-
-	// Method available only for mocking purposes
-	CreatePushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
 
 	/*
 		CutoverMigration Cut Over One Migrated Cluster
@@ -91,126 +91,255 @@ type CloudMigrationServiceApi interface {
 	CutoverMigrationExecute(r CutoverMigrationApiRequest) (*http.Response, error)
 
 	/*
-		DeleteLinkToken Remove One Link-Token
+		DeleteLinkTokens Remove One Link-Token
 
 		Remove one organization link and its associated public API key. MongoDB Atlas uses the link-token for push live migrations only. Live migrations (push) let you securely push data from Cloud Manager or Ops Manager into MongoDB Atlas. Your API Key must have the Organization Owner role to successfully call this resource.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return DeleteLinkTokenApiRequest
+		@return DeleteLinkTokensApiRequest
 	*/
-	DeleteLinkToken(ctx context.Context, orgId string) DeleteLinkTokenApiRequest
+	DeleteLinkTokens(ctx context.Context, orgId string) DeleteLinkTokensApiRequest
 	/*
-		DeleteLinkToken Remove One Link-Token
+		DeleteLinkTokens Remove One Link-Token
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteLinkTokenApiParams - Parameters for the request
-		@return DeleteLinkTokenApiRequest
+		@param DeleteLinkTokensApiParams - Parameters for the request
+		@return DeleteLinkTokensApiRequest
 	*/
-	DeleteLinkTokenWithParams(ctx context.Context, args *DeleteLinkTokenApiParams) DeleteLinkTokenApiRequest
+	DeleteLinkTokensWithParams(ctx context.Context, args *DeleteLinkTokensApiParams) DeleteLinkTokensApiRequest
 
 	// Method available only for mocking purposes
-	DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (*http.Response, error)
+	DeleteLinkTokensExecute(r DeleteLinkTokensApiRequest) (*http.Response, error)
 
 	/*
-		GetPushMigration Return One Migration Job
+		GetGroupLiveMigration Return One Migration Job
 
 		Return details of one cluster migration job. Each push live migration job uses one migration host. Your API Key must have the Organization Member role to successfully call this resource.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param liveMigrationId Unique 24-hexadecimal digit string that identifies the migration.
-		@return GetPushMigrationApiRequest
+		@return GetGroupLiveMigrationApiRequest
 	*/
-	GetPushMigration(ctx context.Context, groupId string, liveMigrationId string) GetPushMigrationApiRequest
+	GetGroupLiveMigration(ctx context.Context, groupId string, liveMigrationId string) GetGroupLiveMigrationApiRequest
 	/*
-		GetPushMigration Return One Migration Job
+		GetGroupLiveMigration Return One Migration Job
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetPushMigrationApiParams - Parameters for the request
-		@return GetPushMigrationApiRequest
+		@param GetGroupLiveMigrationApiParams - Parameters for the request
+		@return GetGroupLiveMigrationApiRequest
 	*/
-	GetPushMigrationWithParams(ctx context.Context, args *GetPushMigrationApiParams) GetPushMigrationApiRequest
+	GetGroupLiveMigrationWithParams(ctx context.Context, args *GetGroupLiveMigrationApiParams) GetGroupLiveMigrationApiRequest
 
 	// Method available only for mocking purposes
-	GetPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
+	GetGroupLiveMigrationExecute(r GetGroupLiveMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
 
 	/*
-		GetValidationStatus Return One Migration Validation Job
+		GetMigrationValidateStatus Return One Migration Validation Job
 
 		Return the status of one migration validation job. Your API Key must have the Organization Owner role to successfully call this resource.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param validationId Unique 24-hexadecimal digit string that identifies the validation job.
-		@return GetValidationStatusApiRequest
+		@return GetMigrationValidateStatusApiRequest
 	*/
-	GetValidationStatus(ctx context.Context, groupId string, validationId string) GetValidationStatusApiRequest
+	GetMigrationValidateStatus(ctx context.Context, groupId string, validationId string) GetMigrationValidateStatusApiRequest
 	/*
-		GetValidationStatus Return One Migration Validation Job
+		GetMigrationValidateStatus Return One Migration Validation Job
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetValidationStatusApiParams - Parameters for the request
-		@return GetValidationStatusApiRequest
+		@param GetMigrationValidateStatusApiParams - Parameters for the request
+		@return GetMigrationValidateStatusApiRequest
 	*/
-	GetValidationStatusWithParams(ctx context.Context, args *GetValidationStatusApiParams) GetValidationStatusApiRequest
+	GetMigrationValidateStatusWithParams(ctx context.Context, args *GetMigrationValidateStatusApiParams) GetMigrationValidateStatusApiRequest
 
 	// Method available only for mocking purposes
-	GetValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error)
+	GetMigrationValidateStatusExecute(r GetMigrationValidateStatusApiRequest) (*LiveImportValidation, *http.Response, error)
 
 	/*
-		ListSourceProjects Return All Projects Available for Migration
+		ListAvailableProjects Return All Projects Available for Migration
 
 		Return all projects that you can migrate to the specified organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return ListSourceProjectsApiRequest
+		@return ListAvailableProjectsApiRequest
 	*/
-	ListSourceProjects(ctx context.Context, orgId string) ListSourceProjectsApiRequest
+	ListAvailableProjects(ctx context.Context, orgId string) ListAvailableProjectsApiRequest
 	/*
-		ListSourceProjects Return All Projects Available for Migration
+		ListAvailableProjects Return All Projects Available for Migration
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListSourceProjectsApiParams - Parameters for the request
-		@return ListSourceProjectsApiRequest
+		@param ListAvailableProjectsApiParams - Parameters for the request
+		@return ListAvailableProjectsApiRequest
 	*/
-	ListSourceProjectsWithParams(ctx context.Context, args *ListSourceProjectsApiParams) ListSourceProjectsApiRequest
+	ListAvailableProjectsWithParams(ctx context.Context, args *ListAvailableProjectsApiParams) ListAvailableProjectsApiRequest
 
 	// Method available only for mocking purposes
-	ListSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error)
+	ListAvailableProjectsExecute(r ListAvailableProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error)
 
 	/*
-		ValidateMigration Validate One Migration Request
+		ValidateLiveMigrations Validate One Migration Request
 
 		Verifies whether the provided credentials, available disk space, MongoDB versions, and so on meet the requirements of the migration request. If the check passes, the migration can proceed. Your API Key must have the Organization Owner role to successfully call this resource. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param liveMigrationRequest20240530 One migration to be validated.
-		@return ValidateMigrationApiRequest
+		@return ValidateLiveMigrationsApiRequest
 	*/
-	ValidateMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) ValidateMigrationApiRequest
+	ValidateLiveMigrations(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) ValidateLiveMigrationsApiRequest
 	/*
-		ValidateMigration Validate One Migration Request
+		ValidateLiveMigrations Validate One Migration Request
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ValidateMigrationApiParams - Parameters for the request
-		@return ValidateMigrationApiRequest
+		@param ValidateLiveMigrationsApiParams - Parameters for the request
+		@return ValidateLiveMigrationsApiRequest
 	*/
-	ValidateMigrationWithParams(ctx context.Context, args *ValidateMigrationApiParams) ValidateMigrationApiRequest
+	ValidateLiveMigrationsWithParams(ctx context.Context, args *ValidateLiveMigrationsApiParams) ValidateLiveMigrationsApiRequest
 
 	// Method available only for mocking purposes
-	ValidateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error)
+	ValidateLiveMigrationsExecute(r ValidateLiveMigrationsApiRequest) (*LiveImportValidation, *http.Response, error)
 }
 
 // CloudMigrationServiceApiService CloudMigrationServiceApi service
 type CloudMigrationServiceApiService service
+
+type CreateGroupLiveMigrationApiRequest struct {
+	ctx                          context.Context
+	ApiService                   CloudMigrationServiceApi
+	groupId                      string
+	liveMigrationRequest20240530 *LiveMigrationRequest20240530
+}
+
+type CreateGroupLiveMigrationApiParams struct {
+	GroupId                      string
+	LiveMigrationRequest20240530 *LiveMigrationRequest20240530
+}
+
+func (a *CloudMigrationServiceApiService) CreateGroupLiveMigrationWithParams(ctx context.Context, args *CreateGroupLiveMigrationApiParams) CreateGroupLiveMigrationApiRequest {
+	return CreateGroupLiveMigrationApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      args.GroupId,
+		liveMigrationRequest20240530: args.LiveMigrationRequest20240530,
+	}
+}
+
+func (r CreateGroupLiveMigrationApiRequest) Execute() (*LiveMigrationResponse, *http.Response, error) {
+	return r.ApiService.CreateGroupLiveMigrationExecute(r)
+}
+
+/*
+CreateGroupLiveMigration Migrate One Local Managed Cluster to MongoDB Atlas
+
+Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
+
+	Please make sure to validate your migration before initiating it.
+
+	You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
+
+	**NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster. Deprecated versions: v2-{2023-01-01}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateGroupLiveMigrationApiRequest
+*/
+func (a *CloudMigrationServiceApiService) CreateGroupLiveMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) CreateGroupLiveMigrationApiRequest {
+	return CreateGroupLiveMigrationApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      groupId,
+		liveMigrationRequest20240530: liveMigrationRequest20240530,
+	}
+}
+
+// CreateGroupLiveMigrationExecute executes the request
+//
+//	@return LiveMigrationResponse
+func (a *CloudMigrationServiceApiService) CreateGroupLiveMigrationExecute(r CreateGroupLiveMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *LiveMigrationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.CreateGroupLiveMigration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.liveMigrationRequest20240530 == nil {
+		return localVarReturnValue, nil, reportError("liveMigrationRequest20240530 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.liveMigrationRequest20240530
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type CreateLinkTokenApiRequest struct {
 	ctx              context.Context
@@ -303,135 +432,6 @@ func (a *CloudMigrationServiceApiService) CreateLinkTokenExecute(r CreateLinkTok
 	}
 	// body params
 	localVarPostBody = r.targetOrgRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type CreatePushMigrationApiRequest struct {
-	ctx                          context.Context
-	ApiService                   CloudMigrationServiceApi
-	groupId                      string
-	liveMigrationRequest20240530 *LiveMigrationRequest20240530
-}
-
-type CreatePushMigrationApiParams struct {
-	GroupId                      string
-	LiveMigrationRequest20240530 *LiveMigrationRequest20240530
-}
-
-func (a *CloudMigrationServiceApiService) CreatePushMigrationWithParams(ctx context.Context, args *CreatePushMigrationApiParams) CreatePushMigrationApiRequest {
-	return CreatePushMigrationApiRequest{
-		ApiService:                   a,
-		ctx:                          ctx,
-		groupId:                      args.GroupId,
-		liveMigrationRequest20240530: args.LiveMigrationRequest20240530,
-	}
-}
-
-func (r CreatePushMigrationApiRequest) Execute() (*LiveMigrationResponse, *http.Response, error) {
-	return r.ApiService.CreatePushMigrationExecute(r)
-}
-
-/*
-CreatePushMigration Migrate One Local Managed Cluster to MongoDB Atlas
-
-Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
-
-	Please make sure to validate your migration before initiating it.
-
-	You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
-
-	**NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster. Deprecated versions: v2-{2023-01-01}
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreatePushMigrationApiRequest
-*/
-func (a *CloudMigrationServiceApiService) CreatePushMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) CreatePushMigrationApiRequest {
-	return CreatePushMigrationApiRequest{
-		ApiService:                   a,
-		ctx:                          ctx,
-		groupId:                      groupId,
-		liveMigrationRequest20240530: liveMigrationRequest20240530,
-	}
-}
-
-// CreatePushMigrationExecute executes the request
-//
-//	@return LiveMigrationResponse
-func (a *CloudMigrationServiceApiService) CreatePushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *LiveMigrationResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.CreatePushMigration")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations"
-	if r.groupId == "" {
-		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
-	}
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.liveMigrationRequest20240530 == nil {
-		return localVarReturnValue, nil, reportError("liveMigrationRequest20240530 is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.liveMigrationRequest20240530
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -570,54 +570,54 @@ func (a *CloudMigrationServiceApiService) CutoverMigrationExecute(r CutoverMigra
 	return localVarHTTPResponse, nil
 }
 
-type DeleteLinkTokenApiRequest struct {
+type DeleteLinkTokensApiRequest struct {
 	ctx        context.Context
 	ApiService CloudMigrationServiceApi
 	orgId      string
 }
 
-type DeleteLinkTokenApiParams struct {
+type DeleteLinkTokensApiParams struct {
 	OrgId string
 }
 
-func (a *CloudMigrationServiceApiService) DeleteLinkTokenWithParams(ctx context.Context, args *DeleteLinkTokenApiParams) DeleteLinkTokenApiRequest {
-	return DeleteLinkTokenApiRequest{
+func (a *CloudMigrationServiceApiService) DeleteLinkTokensWithParams(ctx context.Context, args *DeleteLinkTokensApiParams) DeleteLinkTokensApiRequest {
+	return DeleteLinkTokensApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
 	}
 }
 
-func (r DeleteLinkTokenApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteLinkTokenExecute(r)
+func (r DeleteLinkTokensApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteLinkTokensExecute(r)
 }
 
 /*
-DeleteLinkToken Remove One Link-Token
+DeleteLinkTokens Remove One Link-Token
 
 Remove one organization link and its associated public API key. MongoDB Atlas uses the link-token for push live migrations only. Live migrations (push) let you securely push data from Cloud Manager or Ops Manager into MongoDB Atlas. Your API Key must have the Organization Owner role to successfully call this resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return DeleteLinkTokenApiRequest
+	@return DeleteLinkTokensApiRequest
 */
-func (a *CloudMigrationServiceApiService) DeleteLinkToken(ctx context.Context, orgId string) DeleteLinkTokenApiRequest {
-	return DeleteLinkTokenApiRequest{
+func (a *CloudMigrationServiceApiService) DeleteLinkTokens(ctx context.Context, orgId string) DeleteLinkTokensApiRequest {
+	return DeleteLinkTokensApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
 	}
 }
 
-// DeleteLinkTokenExecute executes the request
-func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (*http.Response, error) {
+// DeleteLinkTokensExecute executes the request
+func (a *CloudMigrationServiceApiService) DeleteLinkTokensExecute(r DeleteLinkTokensApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.DeleteLinkToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.DeleteLinkTokens")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -667,20 +667,20 @@ func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTok
 	return localVarHTTPResponse, nil
 }
 
-type GetPushMigrationApiRequest struct {
+type GetGroupLiveMigrationApiRequest struct {
 	ctx             context.Context
 	ApiService      CloudMigrationServiceApi
 	groupId         string
 	liveMigrationId string
 }
 
-type GetPushMigrationApiParams struct {
+type GetGroupLiveMigrationApiParams struct {
 	GroupId         string
 	LiveMigrationId string
 }
 
-func (a *CloudMigrationServiceApiService) GetPushMigrationWithParams(ctx context.Context, args *GetPushMigrationApiParams) GetPushMigrationApiRequest {
-	return GetPushMigrationApiRequest{
+func (a *CloudMigrationServiceApiService) GetGroupLiveMigrationWithParams(ctx context.Context, args *GetGroupLiveMigrationApiParams) GetGroupLiveMigrationApiRequest {
+	return GetGroupLiveMigrationApiRequest{
 		ApiService:      a,
 		ctx:             ctx,
 		groupId:         args.GroupId,
@@ -688,22 +688,22 @@ func (a *CloudMigrationServiceApiService) GetPushMigrationWithParams(ctx context
 	}
 }
 
-func (r GetPushMigrationApiRequest) Execute() (*LiveMigrationResponse, *http.Response, error) {
-	return r.ApiService.GetPushMigrationExecute(r)
+func (r GetGroupLiveMigrationApiRequest) Execute() (*LiveMigrationResponse, *http.Response, error) {
+	return r.ApiService.GetGroupLiveMigrationExecute(r)
 }
 
 /*
-GetPushMigration Return One Migration Job
+GetGroupLiveMigration Return One Migration Job
 
 Return details of one cluster migration job. Each push live migration job uses one migration host. Your API Key must have the Organization Member role to successfully call this resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param liveMigrationId Unique 24-hexadecimal digit string that identifies the migration.
-	@return GetPushMigrationApiRequest
+	@return GetGroupLiveMigrationApiRequest
 */
-func (a *CloudMigrationServiceApiService) GetPushMigration(ctx context.Context, groupId string, liveMigrationId string) GetPushMigrationApiRequest {
-	return GetPushMigrationApiRequest{
+func (a *CloudMigrationServiceApiService) GetGroupLiveMigration(ctx context.Context, groupId string, liveMigrationId string) GetGroupLiveMigrationApiRequest {
+	return GetGroupLiveMigrationApiRequest{
 		ApiService:      a,
 		ctx:             ctx,
 		groupId:         groupId,
@@ -711,10 +711,10 @@ func (a *CloudMigrationServiceApiService) GetPushMigration(ctx context.Context, 
 	}
 }
 
-// GetPushMigrationExecute executes the request
+// GetGroupLiveMigrationExecute executes the request
 //
 //	@return LiveMigrationResponse
-func (a *CloudMigrationServiceApiService) GetPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) GetGroupLiveMigrationExecute(r GetGroupLiveMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -722,7 +722,7 @@ func (a *CloudMigrationServiceApiService) GetPushMigrationExecute(r GetPushMigra
 		localVarReturnValue *LiveMigrationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.GetPushMigration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.GetGroupLiveMigration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -790,20 +790,20 @@ func (a *CloudMigrationServiceApiService) GetPushMigrationExecute(r GetPushMigra
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetValidationStatusApiRequest struct {
+type GetMigrationValidateStatusApiRequest struct {
 	ctx          context.Context
 	ApiService   CloudMigrationServiceApi
 	groupId      string
 	validationId string
 }
 
-type GetValidationStatusApiParams struct {
+type GetMigrationValidateStatusApiParams struct {
 	GroupId      string
 	ValidationId string
 }
 
-func (a *CloudMigrationServiceApiService) GetValidationStatusWithParams(ctx context.Context, args *GetValidationStatusApiParams) GetValidationStatusApiRequest {
-	return GetValidationStatusApiRequest{
+func (a *CloudMigrationServiceApiService) GetMigrationValidateStatusWithParams(ctx context.Context, args *GetMigrationValidateStatusApiParams) GetMigrationValidateStatusApiRequest {
+	return GetMigrationValidateStatusApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
@@ -811,22 +811,22 @@ func (a *CloudMigrationServiceApiService) GetValidationStatusWithParams(ctx cont
 	}
 }
 
-func (r GetValidationStatusApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
-	return r.ApiService.GetValidationStatusExecute(r)
+func (r GetMigrationValidateStatusApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
+	return r.ApiService.GetMigrationValidateStatusExecute(r)
 }
 
 /*
-GetValidationStatus Return One Migration Validation Job
+GetMigrationValidateStatus Return One Migration Validation Job
 
 Return the status of one migration validation job. Your API Key must have the Organization Owner role to successfully call this resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param validationId Unique 24-hexadecimal digit string that identifies the validation job.
-	@return GetValidationStatusApiRequest
+	@return GetMigrationValidateStatusApiRequest
 */
-func (a *CloudMigrationServiceApiService) GetValidationStatus(ctx context.Context, groupId string, validationId string) GetValidationStatusApiRequest {
-	return GetValidationStatusApiRequest{
+func (a *CloudMigrationServiceApiService) GetMigrationValidateStatus(ctx context.Context, groupId string, validationId string) GetMigrationValidateStatusApiRequest {
+	return GetMigrationValidateStatusApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      groupId,
@@ -834,10 +834,10 @@ func (a *CloudMigrationServiceApiService) GetValidationStatus(ctx context.Contex
 	}
 }
 
-// GetValidationStatusExecute executes the request
+// GetMigrationValidateStatusExecute executes the request
 //
 //	@return LiveImportValidation
-func (a *CloudMigrationServiceApiService) GetValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) GetMigrationValidateStatusExecute(r GetMigrationValidateStatusApiRequest) (*LiveImportValidation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -845,7 +845,7 @@ func (a *CloudMigrationServiceApiService) GetValidationStatusExecute(r GetValida
 		localVarReturnValue *LiveImportValidation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.GetValidationStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.GetMigrationValidateStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -913,49 +913,49 @@ func (a *CloudMigrationServiceApiService) GetValidationStatusExecute(r GetValida
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListSourceProjectsApiRequest struct {
+type ListAvailableProjectsApiRequest struct {
 	ctx        context.Context
 	ApiService CloudMigrationServiceApi
 	orgId      string
 }
 
-type ListSourceProjectsApiParams struct {
+type ListAvailableProjectsApiParams struct {
 	OrgId string
 }
 
-func (a *CloudMigrationServiceApiService) ListSourceProjectsWithParams(ctx context.Context, args *ListSourceProjectsApiParams) ListSourceProjectsApiRequest {
-	return ListSourceProjectsApiRequest{
+func (a *CloudMigrationServiceApiService) ListAvailableProjectsWithParams(ctx context.Context, args *ListAvailableProjectsApiParams) ListAvailableProjectsApiRequest {
+	return ListAvailableProjectsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
 	}
 }
 
-func (r ListSourceProjectsApiRequest) Execute() ([]LiveImportAvailableProject, *http.Response, error) {
-	return r.ApiService.ListSourceProjectsExecute(r)
+func (r ListAvailableProjectsApiRequest) Execute() ([]LiveImportAvailableProject, *http.Response, error) {
+	return r.ApiService.ListAvailableProjectsExecute(r)
 }
 
 /*
-ListSourceProjects Return All Projects Available for Migration
+ListAvailableProjects Return All Projects Available for Migration
 
 Return all projects that you can migrate to the specified organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return ListSourceProjectsApiRequest
+	@return ListAvailableProjectsApiRequest
 */
-func (a *CloudMigrationServiceApiService) ListSourceProjects(ctx context.Context, orgId string) ListSourceProjectsApiRequest {
-	return ListSourceProjectsApiRequest{
+func (a *CloudMigrationServiceApiService) ListAvailableProjects(ctx context.Context, orgId string) ListAvailableProjectsApiRequest {
+	return ListAvailableProjectsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
 	}
 }
 
-// ListSourceProjectsExecute executes the request
+// ListAvailableProjectsExecute executes the request
 //
 //	@return []LiveImportAvailableProject
-func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) ListAvailableProjectsExecute(r ListAvailableProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -963,7 +963,7 @@ func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSource
 		localVarReturnValue []LiveImportAvailableProject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.ListSourceProjects")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.ListAvailableProjects")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1027,20 +1027,20 @@ func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSource
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ValidateMigrationApiRequest struct {
+type ValidateLiveMigrationsApiRequest struct {
 	ctx                          context.Context
 	ApiService                   CloudMigrationServiceApi
 	groupId                      string
 	liveMigrationRequest20240530 *LiveMigrationRequest20240530
 }
 
-type ValidateMigrationApiParams struct {
+type ValidateLiveMigrationsApiParams struct {
 	GroupId                      string
 	LiveMigrationRequest20240530 *LiveMigrationRequest20240530
 }
 
-func (a *CloudMigrationServiceApiService) ValidateMigrationWithParams(ctx context.Context, args *ValidateMigrationApiParams) ValidateMigrationApiRequest {
-	return ValidateMigrationApiRequest{
+func (a *CloudMigrationServiceApiService) ValidateLiveMigrationsWithParams(ctx context.Context, args *ValidateLiveMigrationsApiParams) ValidateLiveMigrationsApiRequest {
+	return ValidateLiveMigrationsApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
 		groupId:                      args.GroupId,
@@ -1048,21 +1048,21 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationWithParams(ctx contex
 	}
 }
 
-func (r ValidateMigrationApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
-	return r.ApiService.ValidateMigrationExecute(r)
+func (r ValidateLiveMigrationsApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
+	return r.ApiService.ValidateLiveMigrationsExecute(r)
 }
 
 /*
-ValidateMigration Validate One Migration Request
+ValidateLiveMigrations Validate One Migration Request
 
 Verifies whether the provided credentials, available disk space, MongoDB versions, and so on meet the requirements of the migration request. If the check passes, the migration can proceed. Your API Key must have the Organization Owner role to successfully call this resource. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ValidateMigrationApiRequest
+	@return ValidateLiveMigrationsApiRequest
 */
-func (a *CloudMigrationServiceApiService) ValidateMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) ValidateMigrationApiRequest {
-	return ValidateMigrationApiRequest{
+func (a *CloudMigrationServiceApiService) ValidateLiveMigrations(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) ValidateLiveMigrationsApiRequest {
+	return ValidateLiveMigrationsApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
 		groupId:                      groupId,
@@ -1070,10 +1070,10 @@ func (a *CloudMigrationServiceApiService) ValidateMigration(ctx context.Context,
 	}
 }
 
-// ValidateMigrationExecute executes the request
+// ValidateLiveMigrationsExecute executes the request
 //
 //	@return LiveImportValidation
-func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) ValidateLiveMigrationsExecute(r ValidateLiveMigrationsApiRequest) (*LiveImportValidation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1081,7 +1081,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMig
 		localVarReturnValue *LiveImportValidation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.ValidateMigration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.ValidateLiveMigrations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

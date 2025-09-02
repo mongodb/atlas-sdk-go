@@ -7,8 +7,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312006/admin"
-	"go.mongodb.org/atlas-sdk/v20250312006/examples"
+	"go.mongodb.org/atlas-sdk/v20250312007/admin"
+	"go.mongodb.org/atlas-sdk/v20250312007/examples"
 )
 
 /*
@@ -29,8 +29,8 @@ func main() {
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	projects, response, err := sdk.ProjectsApi.ListProjectsWithParams(ctx,
-		&admin.ListProjectsApiParams{
+	projects, response, err := sdk.ProjectsApi.ListGroupsWithParams(ctx,
+		&admin.ListGroupsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),
 			PageNum:      admin.PtrInt(1),
@@ -43,19 +43,19 @@ func main() {
 	projectId := projects.GetResults()[0].GetId()
 
 	// -- 2. Get first Process
-	hosts, response, err := sdk.MonitoringAndLogsApi.ListAtlasProcesses(ctx, projectId).Execute()
+	hosts, response, err := sdk.MonitoringAndLogsApi.ListGroupProcesses(ctx, projectId).Execute()
 	examples.HandleErr(err, response)
 	if len(hosts.GetResults()) == 0 {
 		log.Fatal("your cluster should have at least single host. Are you running Atlas M0?")
 	}
 	host := hosts.GetResults()[0].GetHostname()
-	params := &admin.GetHostLogsApiParams{
+	params := &admin.DownloadClusterLogApiParams{
 		GroupId:  projectId,
 		HostName: host,
 		LogName:  "mongos",
 	}
 
-	logs, response, err := sdk.MonitoringAndLogsApi.GetHostLogsWithParams(ctx, params).Execute()
+	logs, response, err := sdk.MonitoringAndLogsApi.DownloadClusterLogWithParams(ctx, params).Execute()
 	examples.HandleErr(err, response)
 	defer func() {
 		_ = logs.Close()
