@@ -4,15 +4,15 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFlexBackupRestoreJob**](FlexRestoreJobsApi.md#CreateFlexBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Restore One Snapshot of One Flex Cluster
-[**GetFlexBackupRestoreJob**](FlexRestoreJobsApi.md#GetFlexBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster
-[**ListFlexBackupRestoreJobs**](FlexRestoreJobsApi.md#ListFlexBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster
+[**CreateFlexRestoreJob**](FlexRestoreJobsApi.md#CreateFlexRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Restore One Snapshot of One Flex Cluster
+[**GetFlexRestoreJob**](FlexRestoreJobsApi.md#GetFlexRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster
+[**ListFlexRestoreJobs**](FlexRestoreJobsApi.md#ListFlexRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster
 
 
 
-## CreateFlexBackupRestoreJob
+## CreateFlexRestoreJob
 
-> FlexBackupRestoreJob20241113 CreateFlexBackupRestoreJob(ctx, groupId, name, flexBackupRestoreJobCreate20241113 FlexBackupRestoreJobCreate20241113).Execute()
+> FlexBackupRestoreJob20241113 CreateFlexRestoreJob(ctx, groupId, name, flexBackupRestoreJobCreate20241113 FlexBackupRestoreJobCreate20241113).Execute()
 
 Restore One Snapshot of One Flex Cluster
 
@@ -44,17 +44,17 @@ func main() {
     name := "name_example" // string | 
     flexBackupRestoreJobCreate20241113 := *openapiclient.NewFlexBackupRestoreJobCreate20241113("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // FlexBackupRestoreJobCreate20241113 | 
 
-    resp, r, err := sdk.FlexRestoreJobsApi.CreateFlexBackupRestoreJob(context.Background(), groupId, name, &flexBackupRestoreJobCreate20241113).Execute()
+    resp, r, err := sdk.FlexRestoreJobsApi.CreateFlexRestoreJob(context.Background(), groupId, name, &flexBackupRestoreJobCreate20241113).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.CreateFlexBackupRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.CreateFlexRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateFlexBackupRestoreJob`: FlexBackupRestoreJob20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.CreateFlexBackupRestoreJob`: %v (%v)\n", resp, r)
+    // response from `CreateFlexRestoreJob`: FlexBackupRestoreJob20241113
+    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.CreateFlexRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateFlexBackupRestoreJobRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateFlexRestoreJobRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetFlexBackupRestoreJob
+## GetFlexRestoreJob
 
-> FlexBackupRestoreJob20241113 GetFlexBackupRestoreJob(ctx, groupId, name, restoreJobId).Execute()
+> FlexBackupRestoreJob20241113 GetFlexRestoreJob(ctx, groupId, name, restoreJobId).Execute()
 
 Return One Restore Job for One Flex Cluster
 
@@ -129,17 +129,17 @@ func main() {
     name := "name_example" // string | 
     restoreJobId := "restoreJobId_example" // string | 
 
-    resp, r, err := sdk.FlexRestoreJobsApi.GetFlexBackupRestoreJob(context.Background(), groupId, name, restoreJobId).Execute()
+    resp, r, err := sdk.FlexRestoreJobsApi.GetFlexRestoreJob(context.Background(), groupId, name, restoreJobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.GetFlexBackupRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.GetFlexRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetFlexBackupRestoreJob`: FlexBackupRestoreJob20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.GetFlexBackupRestoreJob`: %v (%v)\n", resp, r)
+    // response from `GetFlexRestoreJob`: FlexBackupRestoreJob20241113
+    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.GetFlexRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetFlexBackupRestoreJobRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetFlexRestoreJobRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -181,9 +181,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListFlexBackupRestoreJobs
+## ListFlexRestoreJobs
 
-> PaginatedApiAtlasFlexBackupRestoreJob20241113 ListFlexBackupRestoreJobs(ctx, groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiAtlasFlexBackupRestoreJob20241113 ListFlexRestoreJobs(ctx, groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Restore Jobs for One Flex Cluster
 
@@ -217,17 +217,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.FlexRestoreJobsApi.ListFlexBackupRestoreJobs(context.Background(), groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.FlexRestoreJobsApi.ListFlexRestoreJobs(context.Background(), groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.ListFlexBackupRestoreJobs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.ListFlexRestoreJobs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListFlexBackupRestoreJobs`: PaginatedApiAtlasFlexBackupRestoreJob20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.ListFlexBackupRestoreJobs`: %v (%v)\n", resp, r)
+    // response from `ListFlexRestoreJobs`: PaginatedApiAtlasFlexBackupRestoreJob20241113
+    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.ListFlexRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListFlexBackupRestoreJobsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListFlexRestoreJobsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

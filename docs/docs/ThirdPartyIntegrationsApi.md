@@ -4,17 +4,17 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateThirdPartyIntegration**](ThirdPartyIntegrationsApi.md#CreateThirdPartyIntegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Configure One Third-Party Service Integration
-[**DeleteThirdPartyIntegration**](ThirdPartyIntegrationsApi.md#DeleteThirdPartyIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration
-[**GetThirdPartyIntegration**](ThirdPartyIntegrationsApi.md#GetThirdPartyIntegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration
-[**ListThirdPartyIntegrations**](ThirdPartyIntegrationsApi.md#ListThirdPartyIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/integrations | Return All Active Third-Party Service Integrations
-[**UpdateThirdPartyIntegration**](ThirdPartyIntegrationsApi.md#UpdateThirdPartyIntegration) | **Put** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Update One Third-Party Service Integration
+[**CreateGroupIntegration**](ThirdPartyIntegrationsApi.md#CreateGroupIntegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Configure One Third-Party Service Integration
+[**DeleteGroupIntegration**](ThirdPartyIntegrationsApi.md#DeleteGroupIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration
+[**GetGroupIntegration**](ThirdPartyIntegrationsApi.md#GetGroupIntegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration
+[**ListGroupIntegrations**](ThirdPartyIntegrationsApi.md#ListGroupIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/integrations | Return All Active Third-Party Service Integrations
+[**UpdateGroupIntegration**](ThirdPartyIntegrationsApi.md#UpdateGroupIntegration) | **Put** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Update One Third-Party Service Integration
 
 
 
-## CreateThirdPartyIntegration
+## CreateGroupIntegration
 
-> PaginatedIntegration CreateThirdPartyIntegration(ctx, integrationType, groupId, thirdPartyIntegration ThirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedIntegration CreateGroupIntegration(ctx, integrationType, groupId, thirdPartyIntegration ThirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Configure One Third-Party Service Integration
 
@@ -49,17 +49,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateThirdPartyIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateGroupIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.CreateGroupIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `CreateThirdPartyIntegration`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration`: %v (%v)\n", resp, r)
+    // response from `CreateGroupIntegration`: PaginatedIntegration
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.CreateGroupIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateThirdPartyIntegrationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateGroupIntegrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -103,9 +103,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteThirdPartyIntegration
+## DeleteGroupIntegration
 
-> DeleteThirdPartyIntegration(ctx, integrationType, groupId).Execute()
+> DeleteGroupIntegration(ctx, integrationType, groupId).Execute()
 
 Remove One Third-Party Service Integration
 
@@ -136,9 +136,9 @@ func main() {
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration(context.Background(), integrationType, groupId).Execute()
+    r, err := sdk.ThirdPartyIntegrationsApi.DeleteGroupIntegration(context.Background(), integrationType, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.DeleteGroupIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteThirdPartyIntegrationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteGroupIntegrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -184,9 +184,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetThirdPartyIntegration
+## GetGroupIntegration
 
-> ThirdPartyIntegration GetThirdPartyIntegration(ctx, groupId, integrationType).Execute()
+> ThirdPartyIntegration GetGroupIntegration(ctx, groupId, integrationType).Execute()
 
 Return One Third-Party Service Integration
 
@@ -217,17 +217,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     integrationType := "integrationType_example" // string | 
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.GetThirdPartyIntegration(context.Background(), groupId, integrationType).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsApi.GetGroupIntegration(context.Background(), groupId, integrationType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.GetThirdPartyIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.GetGroupIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GetThirdPartyIntegration`: ThirdPartyIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.GetThirdPartyIntegration`: %v (%v)\n", resp, r)
+    // response from `GetGroupIntegration`: ThirdPartyIntegration
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.GetGroupIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetThirdPartyIntegrationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetGroupIntegrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -267,9 +267,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListThirdPartyIntegrations
+## ListGroupIntegrations
 
-> PaginatedIntegration ListThirdPartyIntegrations(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedIntegration ListGroupIntegrations(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Active Third-Party Service Integrations
 
@@ -302,17 +302,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.ListThirdPartyIntegrations(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsApi.ListGroupIntegrations(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.ListThirdPartyIntegrations`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.ListGroupIntegrations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ListThirdPartyIntegrations`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.ListThirdPartyIntegrations`: %v (%v)\n", resp, r)
+    // response from `ListGroupIntegrations`: PaginatedIntegration
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.ListGroupIntegrations`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListThirdPartyIntegrationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListGroupIntegrationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -353,9 +353,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateThirdPartyIntegration
+## UpdateGroupIntegration
 
-> PaginatedIntegration UpdateThirdPartyIntegration(ctx, integrationType, groupId, thirdPartyIntegration ThirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedIntegration UpdateGroupIntegration(ctx, integrationType, groupId, thirdPartyIntegration ThirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Update One Third-Party Service Integration
 
@@ -390,17 +390,17 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateGroupIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.UpdateGroupIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `UpdateThirdPartyIntegration`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration`: %v (%v)\n", resp, r)
+    // response from `UpdateGroupIntegration`: PaginatedIntegration
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.UpdateGroupIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateThirdPartyIntegrationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateGroupIntegrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

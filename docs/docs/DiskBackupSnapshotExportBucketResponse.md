@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
 **Region** | Pointer to **string** | AWS region for the export bucket. This is set by Atlas and is never user-supplied. | [optional] [readonly] 
+**RequirePrivateNetworking** | Pointer to **bool** | Indicates whether to use privatelink. User supplied. | [optional] 
 **RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket. | [optional] 
 **ServiceUrl** | Pointer to **string** | URL of the Azure Storage Account to export to. Only standard endpoints (with \&quot;blob.core.windows.net\&quot;) are supported. | [optional] 
 **TenantId** | Pointer to **string** | UUID that identifies the Azure Active Directory Tenant ID used during exports. | [optional] 
@@ -162,6 +163,30 @@ SetRegion sets Region field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+### GetRequirePrivateNetworking
+
+`func (o *DiskBackupSnapshotExportBucketResponse) GetRequirePrivateNetworking() bool`
+
+GetRequirePrivateNetworking returns the RequirePrivateNetworking field if non-nil, zero value otherwise.
+
+### GetRequirePrivateNetworkingOk
+
+`func (o *DiskBackupSnapshotExportBucketResponse) GetRequirePrivateNetworkingOk() (*bool, bool)`
+
+GetRequirePrivateNetworkingOk returns a tuple with the RequirePrivateNetworking field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequirePrivateNetworking
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetRequirePrivateNetworking(v bool)`
+
+SetRequirePrivateNetworking sets RequirePrivateNetworking field to given value.
+
+### HasRequirePrivateNetworking
+
+`func (o *DiskBackupSnapshotExportBucketResponse) HasRequirePrivateNetworking() bool`
+
+HasRequirePrivateNetworking returns a boolean if a field has been set.
 ### GetRoleId
 
 `func (o *DiskBackupSnapshotExportBucketResponse) GetRoleId() string`
