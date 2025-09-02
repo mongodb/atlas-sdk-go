@@ -1,12 +1,11 @@
 name: Autorelease
 on:
   workflow_dispatch: {} # workflow can be run manually
-  # TODO: temporarily removing auto-release on main to safely revert changes
-  # push:
-  #   branches:
-  #     - main
-  #   paths: 
-  #     - "internal/core/version.go"
+  push:
+    branches:
+      - main
+    paths: 
+      - "internal/core/version.go"
   
 jobs:
   release:
