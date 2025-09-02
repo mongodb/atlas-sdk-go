@@ -18,7 +18,7 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/atlas-sdk/v20250312006/admin"
+	"go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {
@@ -62,7 +62,7 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/atlas-sdk/v20250312006/admin"
+	"go.mongodb.org/atlas-sdk/v20250312007/admin"
 )
 
 func main() {

@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312007/admin"
 
 	http "net/http"
 
@@ -25,69 +25,69 @@ func (_m *TeamsApi) EXPECT() *TeamsApi_Expecter {
 	return &TeamsApi_Expecter{mock: &_m.Mock}
 }
 
-// AddAllTeamsToProject provides a mock function with given fields: ctx, groupId, teamRole
-func (_m *TeamsApi) AddAllTeamsToProject(ctx context.Context, groupId string, teamRole *[]admin.TeamRole) admin.AddAllTeamsToProjectApiRequest {
+// AddGroupTeams provides a mock function with given fields: ctx, groupId, teamRole
+func (_m *TeamsApi) AddGroupTeams(ctx context.Context, groupId string, teamRole *[]admin.TeamRole) admin.AddGroupTeamsApiRequest {
 	ret := _m.Called(ctx, groupId, teamRole)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddAllTeamsToProject")
+		panic("no return value specified for AddGroupTeams")
 	}
 
-	var r0 admin.AddAllTeamsToProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *[]admin.TeamRole) admin.AddAllTeamsToProjectApiRequest); ok {
+	var r0 admin.AddGroupTeamsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *[]admin.TeamRole) admin.AddGroupTeamsApiRequest); ok {
 		r0 = rf(ctx, groupId, teamRole)
 	} else {
-		r0 = ret.Get(0).(admin.AddAllTeamsToProjectApiRequest)
+		r0 = ret.Get(0).(admin.AddGroupTeamsApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_AddAllTeamsToProject_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddAllTeamsToProject'
-type TeamsApi_AddAllTeamsToProject_Call struct {
+// TeamsApi_AddGroupTeams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupTeams'
+type TeamsApi_AddGroupTeams_Call struct {
 	*mock.Call
 }
 
-// AddAllTeamsToProject is a helper method to define mock.On call
+// AddGroupTeams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - teamRole *[]admin.TeamRole
-func (_e *TeamsApi_Expecter) AddAllTeamsToProject(ctx any, groupId any, teamRole any) *TeamsApi_AddAllTeamsToProject_Call {
-	return &TeamsApi_AddAllTeamsToProject_Call{Call: _e.mock.On("AddAllTeamsToProject", ctx, groupId, teamRole)}
+func (_e *TeamsApi_Expecter) AddGroupTeams(ctx any, groupId any, teamRole any) *TeamsApi_AddGroupTeams_Call {
+	return &TeamsApi_AddGroupTeams_Call{Call: _e.mock.On("AddGroupTeams", ctx, groupId, teamRole)}
 }
 
-func (_c *TeamsApi_AddAllTeamsToProject_Call) Run(run func(ctx context.Context, groupId string, teamRole *[]admin.TeamRole)) *TeamsApi_AddAllTeamsToProject_Call {
+func (_c *TeamsApi_AddGroupTeams_Call) Run(run func(ctx context.Context, groupId string, teamRole *[]admin.TeamRole)) *TeamsApi_AddGroupTeams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*[]admin.TeamRole))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_AddAllTeamsToProject_Call) Return(_a0 admin.AddAllTeamsToProjectApiRequest) *TeamsApi_AddAllTeamsToProject_Call {
+func (_c *TeamsApi_AddGroupTeams_Call) Return(_a0 admin.AddGroupTeamsApiRequest) *TeamsApi_AddGroupTeams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_AddAllTeamsToProject_Call) RunAndReturn(run func(context.Context, string, *[]admin.TeamRole) admin.AddAllTeamsToProjectApiRequest) *TeamsApi_AddAllTeamsToProject_Call {
+func (_c *TeamsApi_AddGroupTeams_Call) RunAndReturn(run func(context.Context, string, *[]admin.TeamRole) admin.AddGroupTeamsApiRequest) *TeamsApi_AddGroupTeams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddAllTeamsToProjectExecute provides a mock function with given fields: r
-func (_m *TeamsApi) AddAllTeamsToProjectExecute(r admin.AddAllTeamsToProjectApiRequest) (*admin.PaginatedTeamRole, *http.Response, error) {
+// AddGroupTeamsExecute provides a mock function with given fields: r
+func (_m *TeamsApi) AddGroupTeamsExecute(r admin.AddGroupTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddAllTeamsToProjectExecute")
+		panic("no return value specified for AddGroupTeamsExecute")
 	}
 
 	var r0 *admin.PaginatedTeamRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AddAllTeamsToProjectApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddGroupTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AddAllTeamsToProjectApiRequest) *admin.PaginatedTeamRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddGroupTeamsApiRequest) *admin.PaginatedTeamRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -95,7 +95,7 @@ func (_m *TeamsApi) AddAllTeamsToProjectExecute(r admin.AddAllTeamsToProjectApiR
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.AddAllTeamsToProjectApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.AddGroupTeamsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -103,7 +103,7 @@ func (_m *TeamsApi) AddAllTeamsToProjectExecute(r admin.AddAllTeamsToProjectApiR
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.AddAllTeamsToProjectApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.AddGroupTeamsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -112,145 +112,145 @@ func (_m *TeamsApi) AddAllTeamsToProjectExecute(r admin.AddAllTeamsToProjectApiR
 	return r0, r1, r2
 }
 
-// TeamsApi_AddAllTeamsToProjectExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddAllTeamsToProjectExecute'
-type TeamsApi_AddAllTeamsToProjectExecute_Call struct {
+// TeamsApi_AddGroupTeamsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupTeamsExecute'
+type TeamsApi_AddGroupTeamsExecute_Call struct {
 	*mock.Call
 }
 
-// AddAllTeamsToProjectExecute is a helper method to define mock.On call
-//   - r admin.AddAllTeamsToProjectApiRequest
-func (_e *TeamsApi_Expecter) AddAllTeamsToProjectExecute(r any) *TeamsApi_AddAllTeamsToProjectExecute_Call {
-	return &TeamsApi_AddAllTeamsToProjectExecute_Call{Call: _e.mock.On("AddAllTeamsToProjectExecute", r)}
+// AddGroupTeamsExecute is a helper method to define mock.On call
+//   - r admin.AddGroupTeamsApiRequest
+func (_e *TeamsApi_Expecter) AddGroupTeamsExecute(r any) *TeamsApi_AddGroupTeamsExecute_Call {
+	return &TeamsApi_AddGroupTeamsExecute_Call{Call: _e.mock.On("AddGroupTeamsExecute", r)}
 }
 
-func (_c *TeamsApi_AddAllTeamsToProjectExecute_Call) Run(run func(r admin.AddAllTeamsToProjectApiRequest)) *TeamsApi_AddAllTeamsToProjectExecute_Call {
+func (_c *TeamsApi_AddGroupTeamsExecute_Call) Run(run func(r admin.AddGroupTeamsApiRequest)) *TeamsApi_AddGroupTeamsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.AddAllTeamsToProjectApiRequest))
+		run(args[0].(admin.AddGroupTeamsApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_AddAllTeamsToProjectExecute_Call) Return(_a0 *admin.PaginatedTeamRole, _a1 *http.Response, _a2 error) *TeamsApi_AddAllTeamsToProjectExecute_Call {
+func (_c *TeamsApi_AddGroupTeamsExecute_Call) Return(_a0 *admin.PaginatedTeamRole, _a1 *http.Response, _a2 error) *TeamsApi_AddGroupTeamsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_AddAllTeamsToProjectExecute_Call) RunAndReturn(run func(admin.AddAllTeamsToProjectApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)) *TeamsApi_AddAllTeamsToProjectExecute_Call {
+func (_c *TeamsApi_AddGroupTeamsExecute_Call) RunAndReturn(run func(admin.AddGroupTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)) *TeamsApi_AddGroupTeamsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddAllTeamsToProjectWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) AddAllTeamsToProjectWithParams(ctx context.Context, args *admin.AddAllTeamsToProjectApiParams) admin.AddAllTeamsToProjectApiRequest {
+// AddGroupTeamsWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) AddGroupTeamsWithParams(ctx context.Context, args *admin.AddGroupTeamsApiParams) admin.AddGroupTeamsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddAllTeamsToProjectWithParams")
+		panic("no return value specified for AddGroupTeamsWithParams")
 	}
 
-	var r0 admin.AddAllTeamsToProjectApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddAllTeamsToProjectApiParams) admin.AddAllTeamsToProjectApiRequest); ok {
+	var r0 admin.AddGroupTeamsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddGroupTeamsApiParams) admin.AddGroupTeamsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.AddAllTeamsToProjectApiRequest)
+		r0 = ret.Get(0).(admin.AddGroupTeamsApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_AddAllTeamsToProjectWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddAllTeamsToProjectWithParams'
-type TeamsApi_AddAllTeamsToProjectWithParams_Call struct {
+// TeamsApi_AddGroupTeamsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddGroupTeamsWithParams'
+type TeamsApi_AddGroupTeamsWithParams_Call struct {
 	*mock.Call
 }
 
-// AddAllTeamsToProjectWithParams is a helper method to define mock.On call
+// AddGroupTeamsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.AddAllTeamsToProjectApiParams
-func (_e *TeamsApi_Expecter) AddAllTeamsToProjectWithParams(ctx any, args any) *TeamsApi_AddAllTeamsToProjectWithParams_Call {
-	return &TeamsApi_AddAllTeamsToProjectWithParams_Call{Call: _e.mock.On("AddAllTeamsToProjectWithParams", ctx, args)}
+//   - args *admin.AddGroupTeamsApiParams
+func (_e *TeamsApi_Expecter) AddGroupTeamsWithParams(ctx any, args any) *TeamsApi_AddGroupTeamsWithParams_Call {
+	return &TeamsApi_AddGroupTeamsWithParams_Call{Call: _e.mock.On("AddGroupTeamsWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_AddAllTeamsToProjectWithParams_Call) Run(run func(ctx context.Context, args *admin.AddAllTeamsToProjectApiParams)) *TeamsApi_AddAllTeamsToProjectWithParams_Call {
+func (_c *TeamsApi_AddGroupTeamsWithParams_Call) Run(run func(ctx context.Context, args *admin.AddGroupTeamsApiParams)) *TeamsApi_AddGroupTeamsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.AddAllTeamsToProjectApiParams))
+		run(args[0].(context.Context), args[1].(*admin.AddGroupTeamsApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_AddAllTeamsToProjectWithParams_Call) Return(_a0 admin.AddAllTeamsToProjectApiRequest) *TeamsApi_AddAllTeamsToProjectWithParams_Call {
+func (_c *TeamsApi_AddGroupTeamsWithParams_Call) Return(_a0 admin.AddGroupTeamsApiRequest) *TeamsApi_AddGroupTeamsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_AddAllTeamsToProjectWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddAllTeamsToProjectApiParams) admin.AddAllTeamsToProjectApiRequest) *TeamsApi_AddAllTeamsToProjectWithParams_Call {
+func (_c *TeamsApi_AddGroupTeamsWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddGroupTeamsApiParams) admin.AddGroupTeamsApiRequest) *TeamsApi_AddGroupTeamsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddTeamUser provides a mock function with given fields: ctx, orgId, teamId, addUserToTeam
-func (_m *TeamsApi) AddTeamUser(ctx context.Context, orgId string, teamId string, addUserToTeam *[]admin.AddUserToTeam) admin.AddTeamUserApiRequest {
+// AddTeamUsers provides a mock function with given fields: ctx, orgId, teamId, addUserToTeam
+func (_m *TeamsApi) AddTeamUsers(ctx context.Context, orgId string, teamId string, addUserToTeam *[]admin.AddUserToTeam) admin.AddTeamUsersApiRequest {
 	ret := _m.Called(ctx, orgId, teamId, addUserToTeam)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddTeamUser")
+		panic("no return value specified for AddTeamUsers")
 	}
 
-	var r0 admin.AddTeamUserApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.AddUserToTeam) admin.AddTeamUserApiRequest); ok {
+	var r0 admin.AddTeamUsersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.AddUserToTeam) admin.AddTeamUsersApiRequest); ok {
 		r0 = rf(ctx, orgId, teamId, addUserToTeam)
 	} else {
-		r0 = ret.Get(0).(admin.AddTeamUserApiRequest)
+		r0 = ret.Get(0).(admin.AddTeamUsersApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_AddTeamUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddTeamUser'
-type TeamsApi_AddTeamUser_Call struct {
+// TeamsApi_AddTeamUsers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddTeamUsers'
+type TeamsApi_AddTeamUsers_Call struct {
 	*mock.Call
 }
 
-// AddTeamUser is a helper method to define mock.On call
+// AddTeamUsers is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - teamId string
 //   - addUserToTeam *[]admin.AddUserToTeam
-func (_e *TeamsApi_Expecter) AddTeamUser(ctx any, orgId any, teamId any, addUserToTeam any) *TeamsApi_AddTeamUser_Call {
-	return &TeamsApi_AddTeamUser_Call{Call: _e.mock.On("AddTeamUser", ctx, orgId, teamId, addUserToTeam)}
+func (_e *TeamsApi_Expecter) AddTeamUsers(ctx any, orgId any, teamId any, addUserToTeam any) *TeamsApi_AddTeamUsers_Call {
+	return &TeamsApi_AddTeamUsers_Call{Call: _e.mock.On("AddTeamUsers", ctx, orgId, teamId, addUserToTeam)}
 }
 
-func (_c *TeamsApi_AddTeamUser_Call) Run(run func(ctx context.Context, orgId string, teamId string, addUserToTeam *[]admin.AddUserToTeam)) *TeamsApi_AddTeamUser_Call {
+func (_c *TeamsApi_AddTeamUsers_Call) Run(run func(ctx context.Context, orgId string, teamId string, addUserToTeam *[]admin.AddUserToTeam)) *TeamsApi_AddTeamUsers_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*[]admin.AddUserToTeam))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_AddTeamUser_Call) Return(_a0 admin.AddTeamUserApiRequest) *TeamsApi_AddTeamUser_Call {
+func (_c *TeamsApi_AddTeamUsers_Call) Return(_a0 admin.AddTeamUsersApiRequest) *TeamsApi_AddTeamUsers_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_AddTeamUser_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.AddUserToTeam) admin.AddTeamUserApiRequest) *TeamsApi_AddTeamUser_Call {
+func (_c *TeamsApi_AddTeamUsers_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.AddUserToTeam) admin.AddTeamUsersApiRequest) *TeamsApi_AddTeamUsers_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddTeamUserExecute provides a mock function with given fields: r
-func (_m *TeamsApi) AddTeamUserExecute(r admin.AddTeamUserApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error) {
+// AddTeamUsersExecute provides a mock function with given fields: r
+func (_m *TeamsApi) AddTeamUsersExecute(r admin.AddTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddTeamUserExecute")
+		panic("no return value specified for AddTeamUsersExecute")
 	}
 
 	var r0 *admin.PaginatedApiAppUser
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AddTeamUserApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AddTeamUserApiRequest) *admin.PaginatedApiAppUser); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddTeamUsersApiRequest) *admin.PaginatedApiAppUser); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -258,7 +258,7 @@ func (_m *TeamsApi) AddTeamUserExecute(r admin.AddTeamUserApiRequest) (*admin.Pa
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.AddTeamUserApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.AddTeamUsersApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -266,7 +266,7 @@ func (_m *TeamsApi) AddTeamUserExecute(r admin.AddTeamUserApiRequest) (*admin.Pa
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.AddTeamUserApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.AddTeamUsersApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -275,144 +275,144 @@ func (_m *TeamsApi) AddTeamUserExecute(r admin.AddTeamUserApiRequest) (*admin.Pa
 	return r0, r1, r2
 }
 
-// TeamsApi_AddTeamUserExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddTeamUserExecute'
-type TeamsApi_AddTeamUserExecute_Call struct {
+// TeamsApi_AddTeamUsersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddTeamUsersExecute'
+type TeamsApi_AddTeamUsersExecute_Call struct {
 	*mock.Call
 }
 
-// AddTeamUserExecute is a helper method to define mock.On call
-//   - r admin.AddTeamUserApiRequest
-func (_e *TeamsApi_Expecter) AddTeamUserExecute(r any) *TeamsApi_AddTeamUserExecute_Call {
-	return &TeamsApi_AddTeamUserExecute_Call{Call: _e.mock.On("AddTeamUserExecute", r)}
+// AddTeamUsersExecute is a helper method to define mock.On call
+//   - r admin.AddTeamUsersApiRequest
+func (_e *TeamsApi_Expecter) AddTeamUsersExecute(r any) *TeamsApi_AddTeamUsersExecute_Call {
+	return &TeamsApi_AddTeamUsersExecute_Call{Call: _e.mock.On("AddTeamUsersExecute", r)}
 }
 
-func (_c *TeamsApi_AddTeamUserExecute_Call) Run(run func(r admin.AddTeamUserApiRequest)) *TeamsApi_AddTeamUserExecute_Call {
+func (_c *TeamsApi_AddTeamUsersExecute_Call) Run(run func(r admin.AddTeamUsersApiRequest)) *TeamsApi_AddTeamUsersExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.AddTeamUserApiRequest))
+		run(args[0].(admin.AddTeamUsersApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_AddTeamUserExecute_Call) Return(_a0 *admin.PaginatedApiAppUser, _a1 *http.Response, _a2 error) *TeamsApi_AddTeamUserExecute_Call {
+func (_c *TeamsApi_AddTeamUsersExecute_Call) Return(_a0 *admin.PaginatedApiAppUser, _a1 *http.Response, _a2 error) *TeamsApi_AddTeamUsersExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_AddTeamUserExecute_Call) RunAndReturn(run func(admin.AddTeamUserApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error)) *TeamsApi_AddTeamUserExecute_Call {
+func (_c *TeamsApi_AddTeamUsersExecute_Call) RunAndReturn(run func(admin.AddTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error)) *TeamsApi_AddTeamUsersExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AddTeamUserWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) AddTeamUserWithParams(ctx context.Context, args *admin.AddTeamUserApiParams) admin.AddTeamUserApiRequest {
+// AddTeamUsersWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) AddTeamUsersWithParams(ctx context.Context, args *admin.AddTeamUsersApiParams) admin.AddTeamUsersApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AddTeamUserWithParams")
+		panic("no return value specified for AddTeamUsersWithParams")
 	}
 
-	var r0 admin.AddTeamUserApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddTeamUserApiParams) admin.AddTeamUserApiRequest); ok {
+	var r0 admin.AddTeamUsersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AddTeamUsersApiParams) admin.AddTeamUsersApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.AddTeamUserApiRequest)
+		r0 = ret.Get(0).(admin.AddTeamUsersApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_AddTeamUserWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddTeamUserWithParams'
-type TeamsApi_AddTeamUserWithParams_Call struct {
+// TeamsApi_AddTeamUsersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddTeamUsersWithParams'
+type TeamsApi_AddTeamUsersWithParams_Call struct {
 	*mock.Call
 }
 
-// AddTeamUserWithParams is a helper method to define mock.On call
+// AddTeamUsersWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.AddTeamUserApiParams
-func (_e *TeamsApi_Expecter) AddTeamUserWithParams(ctx any, args any) *TeamsApi_AddTeamUserWithParams_Call {
-	return &TeamsApi_AddTeamUserWithParams_Call{Call: _e.mock.On("AddTeamUserWithParams", ctx, args)}
+//   - args *admin.AddTeamUsersApiParams
+func (_e *TeamsApi_Expecter) AddTeamUsersWithParams(ctx any, args any) *TeamsApi_AddTeamUsersWithParams_Call {
+	return &TeamsApi_AddTeamUsersWithParams_Call{Call: _e.mock.On("AddTeamUsersWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_AddTeamUserWithParams_Call) Run(run func(ctx context.Context, args *admin.AddTeamUserApiParams)) *TeamsApi_AddTeamUserWithParams_Call {
+func (_c *TeamsApi_AddTeamUsersWithParams_Call) Run(run func(ctx context.Context, args *admin.AddTeamUsersApiParams)) *TeamsApi_AddTeamUsersWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.AddTeamUserApiParams))
+		run(args[0].(context.Context), args[1].(*admin.AddTeamUsersApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_AddTeamUserWithParams_Call) Return(_a0 admin.AddTeamUserApiRequest) *TeamsApi_AddTeamUserWithParams_Call {
+func (_c *TeamsApi_AddTeamUsersWithParams_Call) Return(_a0 admin.AddTeamUsersApiRequest) *TeamsApi_AddTeamUsersWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_AddTeamUserWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddTeamUserApiParams) admin.AddTeamUserApiRequest) *TeamsApi_AddTeamUserWithParams_Call {
+func (_c *TeamsApi_AddTeamUsersWithParams_Call) RunAndReturn(run func(context.Context, *admin.AddTeamUsersApiParams) admin.AddTeamUsersApiRequest) *TeamsApi_AddTeamUsersWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateTeam provides a mock function with given fields: ctx, orgId, team
-func (_m *TeamsApi) CreateTeam(ctx context.Context, orgId string, team *admin.Team) admin.CreateTeamApiRequest {
+// CreateOrgTeam provides a mock function with given fields: ctx, orgId, team
+func (_m *TeamsApi) CreateOrgTeam(ctx context.Context, orgId string, team *admin.Team) admin.CreateOrgTeamApiRequest {
 	ret := _m.Called(ctx, orgId, team)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateTeam")
+		panic("no return value specified for CreateOrgTeam")
 	}
 
-	var r0 admin.CreateTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.Team) admin.CreateTeamApiRequest); ok {
+	var r0 admin.CreateOrgTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.Team) admin.CreateOrgTeamApiRequest); ok {
 		r0 = rf(ctx, orgId, team)
 	} else {
-		r0 = ret.Get(0).(admin.CreateTeamApiRequest)
+		r0 = ret.Get(0).(admin.CreateOrgTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_CreateTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTeam'
-type TeamsApi_CreateTeam_Call struct {
+// TeamsApi_CreateOrgTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgTeam'
+type TeamsApi_CreateOrgTeam_Call struct {
 	*mock.Call
 }
 
-// CreateTeam is a helper method to define mock.On call
+// CreateOrgTeam is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - team *admin.Team
-func (_e *TeamsApi_Expecter) CreateTeam(ctx any, orgId any, team any) *TeamsApi_CreateTeam_Call {
-	return &TeamsApi_CreateTeam_Call{Call: _e.mock.On("CreateTeam", ctx, orgId, team)}
+func (_e *TeamsApi_Expecter) CreateOrgTeam(ctx any, orgId any, team any) *TeamsApi_CreateOrgTeam_Call {
+	return &TeamsApi_CreateOrgTeam_Call{Call: _e.mock.On("CreateOrgTeam", ctx, orgId, team)}
 }
 
-func (_c *TeamsApi_CreateTeam_Call) Run(run func(ctx context.Context, orgId string, team *admin.Team)) *TeamsApi_CreateTeam_Call {
+func (_c *TeamsApi_CreateOrgTeam_Call) Run(run func(ctx context.Context, orgId string, team *admin.Team)) *TeamsApi_CreateOrgTeam_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.Team))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_CreateTeam_Call) Return(_a0 admin.CreateTeamApiRequest) *TeamsApi_CreateTeam_Call {
+func (_c *TeamsApi_CreateOrgTeam_Call) Return(_a0 admin.CreateOrgTeamApiRequest) *TeamsApi_CreateOrgTeam_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_CreateTeam_Call) RunAndReturn(run func(context.Context, string, *admin.Team) admin.CreateTeamApiRequest) *TeamsApi_CreateTeam_Call {
+func (_c *TeamsApi_CreateOrgTeam_Call) RunAndReturn(run func(context.Context, string, *admin.Team) admin.CreateOrgTeamApiRequest) *TeamsApi_CreateOrgTeam_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateTeamExecute provides a mock function with given fields: r
-func (_m *TeamsApi) CreateTeamExecute(r admin.CreateTeamApiRequest) (*admin.Team, *http.Response, error) {
+// CreateOrgTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) CreateOrgTeamExecute(r admin.CreateOrgTeamApiRequest) (*admin.Team, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateTeamExecute")
+		panic("no return value specified for CreateOrgTeamExecute")
 	}
 
 	var r0 *admin.Team
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateTeamApiRequest) (*admin.Team, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateOrgTeamApiRequest) (*admin.Team, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateTeamApiRequest) *admin.Team); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateOrgTeamApiRequest) *admin.Team); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -420,7 +420,7 @@ func (_m *TeamsApi) CreateTeamExecute(r admin.CreateTeamApiRequest) (*admin.Team
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateTeamApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateOrgTeamApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -428,7 +428,7 @@ func (_m *TeamsApi) CreateTeamExecute(r admin.CreateTeamApiRequest) (*admin.Team
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateTeamApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateOrgTeamApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -437,143 +437,143 @@ func (_m *TeamsApi) CreateTeamExecute(r admin.CreateTeamApiRequest) (*admin.Team
 	return r0, r1, r2
 }
 
-// TeamsApi_CreateTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTeamExecute'
-type TeamsApi_CreateTeamExecute_Call struct {
+// TeamsApi_CreateOrgTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgTeamExecute'
+type TeamsApi_CreateOrgTeamExecute_Call struct {
 	*mock.Call
 }
 
-// CreateTeamExecute is a helper method to define mock.On call
-//   - r admin.CreateTeamApiRequest
-func (_e *TeamsApi_Expecter) CreateTeamExecute(r any) *TeamsApi_CreateTeamExecute_Call {
-	return &TeamsApi_CreateTeamExecute_Call{Call: _e.mock.On("CreateTeamExecute", r)}
+// CreateOrgTeamExecute is a helper method to define mock.On call
+//   - r admin.CreateOrgTeamApiRequest
+func (_e *TeamsApi_Expecter) CreateOrgTeamExecute(r any) *TeamsApi_CreateOrgTeamExecute_Call {
+	return &TeamsApi_CreateOrgTeamExecute_Call{Call: _e.mock.On("CreateOrgTeamExecute", r)}
 }
 
-func (_c *TeamsApi_CreateTeamExecute_Call) Run(run func(r admin.CreateTeamApiRequest)) *TeamsApi_CreateTeamExecute_Call {
+func (_c *TeamsApi_CreateOrgTeamExecute_Call) Run(run func(r admin.CreateOrgTeamApiRequest)) *TeamsApi_CreateOrgTeamExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateTeamApiRequest))
+		run(args[0].(admin.CreateOrgTeamApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_CreateTeamExecute_Call) Return(_a0 *admin.Team, _a1 *http.Response, _a2 error) *TeamsApi_CreateTeamExecute_Call {
+func (_c *TeamsApi_CreateOrgTeamExecute_Call) Return(_a0 *admin.Team, _a1 *http.Response, _a2 error) *TeamsApi_CreateOrgTeamExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_CreateTeamExecute_Call) RunAndReturn(run func(admin.CreateTeamApiRequest) (*admin.Team, *http.Response, error)) *TeamsApi_CreateTeamExecute_Call {
+func (_c *TeamsApi_CreateOrgTeamExecute_Call) RunAndReturn(run func(admin.CreateOrgTeamApiRequest) (*admin.Team, *http.Response, error)) *TeamsApi_CreateOrgTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateTeamWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) CreateTeamWithParams(ctx context.Context, args *admin.CreateTeamApiParams) admin.CreateTeamApiRequest {
+// CreateOrgTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) CreateOrgTeamWithParams(ctx context.Context, args *admin.CreateOrgTeamApiParams) admin.CreateOrgTeamApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateTeamWithParams")
+		panic("no return value specified for CreateOrgTeamWithParams")
 	}
 
-	var r0 admin.CreateTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateTeamApiParams) admin.CreateTeamApiRequest); ok {
+	var r0 admin.CreateOrgTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateOrgTeamApiParams) admin.CreateOrgTeamApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateTeamApiRequest)
+		r0 = ret.Get(0).(admin.CreateOrgTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_CreateTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTeamWithParams'
-type TeamsApi_CreateTeamWithParams_Call struct {
+// TeamsApi_CreateOrgTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgTeamWithParams'
+type TeamsApi_CreateOrgTeamWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateTeamWithParams is a helper method to define mock.On call
+// CreateOrgTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateTeamApiParams
-func (_e *TeamsApi_Expecter) CreateTeamWithParams(ctx any, args any) *TeamsApi_CreateTeamWithParams_Call {
-	return &TeamsApi_CreateTeamWithParams_Call{Call: _e.mock.On("CreateTeamWithParams", ctx, args)}
+//   - args *admin.CreateOrgTeamApiParams
+func (_e *TeamsApi_Expecter) CreateOrgTeamWithParams(ctx any, args any) *TeamsApi_CreateOrgTeamWithParams_Call {
+	return &TeamsApi_CreateOrgTeamWithParams_Call{Call: _e.mock.On("CreateOrgTeamWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_CreateTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateTeamApiParams)) *TeamsApi_CreateTeamWithParams_Call {
+func (_c *TeamsApi_CreateOrgTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateOrgTeamApiParams)) *TeamsApi_CreateOrgTeamWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateTeamApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateOrgTeamApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_CreateTeamWithParams_Call) Return(_a0 admin.CreateTeamApiRequest) *TeamsApi_CreateTeamWithParams_Call {
+func (_c *TeamsApi_CreateOrgTeamWithParams_Call) Return(_a0 admin.CreateOrgTeamApiRequest) *TeamsApi_CreateOrgTeamWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_CreateTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateTeamApiParams) admin.CreateTeamApiRequest) *TeamsApi_CreateTeamWithParams_Call {
+func (_c *TeamsApi_CreateOrgTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgTeamApiParams) admin.CreateOrgTeamApiRequest) *TeamsApi_CreateOrgTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteTeam provides a mock function with given fields: ctx, orgId, teamId
-func (_m *TeamsApi) DeleteTeam(ctx context.Context, orgId string, teamId string) admin.DeleteTeamApiRequest {
+// DeleteOrgTeam provides a mock function with given fields: ctx, orgId, teamId
+func (_m *TeamsApi) DeleteOrgTeam(ctx context.Context, orgId string, teamId string) admin.DeleteOrgTeamApiRequest {
 	ret := _m.Called(ctx, orgId, teamId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteTeam")
+		panic("no return value specified for DeleteOrgTeam")
 	}
 
-	var r0 admin.DeleteTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteTeamApiRequest); ok {
+	var r0 admin.DeleteOrgTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteOrgTeamApiRequest); ok {
 		r0 = rf(ctx, orgId, teamId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteTeamApiRequest)
+		r0 = ret.Get(0).(admin.DeleteOrgTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_DeleteTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTeam'
-type TeamsApi_DeleteTeam_Call struct {
+// TeamsApi_DeleteOrgTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgTeam'
+type TeamsApi_DeleteOrgTeam_Call struct {
 	*mock.Call
 }
 
-// DeleteTeam is a helper method to define mock.On call
+// DeleteOrgTeam is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - teamId string
-func (_e *TeamsApi_Expecter) DeleteTeam(ctx any, orgId any, teamId any) *TeamsApi_DeleteTeam_Call {
-	return &TeamsApi_DeleteTeam_Call{Call: _e.mock.On("DeleteTeam", ctx, orgId, teamId)}
+func (_e *TeamsApi_Expecter) DeleteOrgTeam(ctx any, orgId any, teamId any) *TeamsApi_DeleteOrgTeam_Call {
+	return &TeamsApi_DeleteOrgTeam_Call{Call: _e.mock.On("DeleteOrgTeam", ctx, orgId, teamId)}
 }
 
-func (_c *TeamsApi_DeleteTeam_Call) Run(run func(ctx context.Context, orgId string, teamId string)) *TeamsApi_DeleteTeam_Call {
+func (_c *TeamsApi_DeleteOrgTeam_Call) Run(run func(ctx context.Context, orgId string, teamId string)) *TeamsApi_DeleteOrgTeam_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeam_Call) Return(_a0 admin.DeleteTeamApiRequest) *TeamsApi_DeleteTeam_Call {
+func (_c *TeamsApi_DeleteOrgTeam_Call) Return(_a0 admin.DeleteOrgTeamApiRequest) *TeamsApi_DeleteOrgTeam_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeam_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteTeamApiRequest) *TeamsApi_DeleteTeam_Call {
+func (_c *TeamsApi_DeleteOrgTeam_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteOrgTeamApiRequest) *TeamsApi_DeleteOrgTeam_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteTeamExecute provides a mock function with given fields: r
-func (_m *TeamsApi) DeleteTeamExecute(r admin.DeleteTeamApiRequest) (*http.Response, error) {
+// DeleteOrgTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) DeleteOrgTeamExecute(r admin.DeleteOrgTeamApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteTeamExecute")
+		panic("no return value specified for DeleteOrgTeamExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrgTeamApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrgTeamApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -581,7 +581,7 @@ func (_m *TeamsApi) DeleteTeamExecute(r admin.DeleteTeamApiRequest) (*http.Respo
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteTeamApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteOrgTeamApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -590,144 +590,144 @@ func (_m *TeamsApi) DeleteTeamExecute(r admin.DeleteTeamApiRequest) (*http.Respo
 	return r0, r1
 }
 
-// TeamsApi_DeleteTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTeamExecute'
-type TeamsApi_DeleteTeamExecute_Call struct {
+// TeamsApi_DeleteOrgTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgTeamExecute'
+type TeamsApi_DeleteOrgTeamExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteTeamExecute is a helper method to define mock.On call
-//   - r admin.DeleteTeamApiRequest
-func (_e *TeamsApi_Expecter) DeleteTeamExecute(r any) *TeamsApi_DeleteTeamExecute_Call {
-	return &TeamsApi_DeleteTeamExecute_Call{Call: _e.mock.On("DeleteTeamExecute", r)}
+// DeleteOrgTeamExecute is a helper method to define mock.On call
+//   - r admin.DeleteOrgTeamApiRequest
+func (_e *TeamsApi_Expecter) DeleteOrgTeamExecute(r any) *TeamsApi_DeleteOrgTeamExecute_Call {
+	return &TeamsApi_DeleteOrgTeamExecute_Call{Call: _e.mock.On("DeleteOrgTeamExecute", r)}
 }
 
-func (_c *TeamsApi_DeleteTeamExecute_Call) Run(run func(r admin.DeleteTeamApiRequest)) *TeamsApi_DeleteTeamExecute_Call {
+func (_c *TeamsApi_DeleteOrgTeamExecute_Call) Run(run func(r admin.DeleteOrgTeamApiRequest)) *TeamsApi_DeleteOrgTeamExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteTeamApiRequest))
+		run(args[0].(admin.DeleteOrgTeamApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeamExecute_Call) Return(_a0 *http.Response, _a1 error) *TeamsApi_DeleteTeamExecute_Call {
+func (_c *TeamsApi_DeleteOrgTeamExecute_Call) Return(_a0 *http.Response, _a1 error) *TeamsApi_DeleteOrgTeamExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeamExecute_Call) RunAndReturn(run func(admin.DeleteTeamApiRequest) (*http.Response, error)) *TeamsApi_DeleteTeamExecute_Call {
+func (_c *TeamsApi_DeleteOrgTeamExecute_Call) RunAndReturn(run func(admin.DeleteOrgTeamApiRequest) (*http.Response, error)) *TeamsApi_DeleteOrgTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteTeamWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) DeleteTeamWithParams(ctx context.Context, args *admin.DeleteTeamApiParams) admin.DeleteTeamApiRequest {
+// DeleteOrgTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) DeleteOrgTeamWithParams(ctx context.Context, args *admin.DeleteOrgTeamApiParams) admin.DeleteOrgTeamApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteTeamWithParams")
+		panic("no return value specified for DeleteOrgTeamWithParams")
 	}
 
-	var r0 admin.DeleteTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteTeamApiParams) admin.DeleteTeamApiRequest); ok {
+	var r0 admin.DeleteOrgTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteOrgTeamApiParams) admin.DeleteOrgTeamApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteTeamApiRequest)
+		r0 = ret.Get(0).(admin.DeleteOrgTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_DeleteTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTeamWithParams'
-type TeamsApi_DeleteTeamWithParams_Call struct {
+// TeamsApi_DeleteOrgTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgTeamWithParams'
+type TeamsApi_DeleteOrgTeamWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteTeamWithParams is a helper method to define mock.On call
+// DeleteOrgTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteTeamApiParams
-func (_e *TeamsApi_Expecter) DeleteTeamWithParams(ctx any, args any) *TeamsApi_DeleteTeamWithParams_Call {
-	return &TeamsApi_DeleteTeamWithParams_Call{Call: _e.mock.On("DeleteTeamWithParams", ctx, args)}
+//   - args *admin.DeleteOrgTeamApiParams
+func (_e *TeamsApi_Expecter) DeleteOrgTeamWithParams(ctx any, args any) *TeamsApi_DeleteOrgTeamWithParams_Call {
+	return &TeamsApi_DeleteOrgTeamWithParams_Call{Call: _e.mock.On("DeleteOrgTeamWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_DeleteTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteTeamApiParams)) *TeamsApi_DeleteTeamWithParams_Call {
+func (_c *TeamsApi_DeleteOrgTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteOrgTeamApiParams)) *TeamsApi_DeleteOrgTeamWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteTeamApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteOrgTeamApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeamWithParams_Call) Return(_a0 admin.DeleteTeamApiRequest) *TeamsApi_DeleteTeamWithParams_Call {
+func (_c *TeamsApi_DeleteOrgTeamWithParams_Call) Return(_a0 admin.DeleteOrgTeamApiRequest) *TeamsApi_DeleteOrgTeamWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteTeamApiParams) admin.DeleteTeamApiRequest) *TeamsApi_DeleteTeamWithParams_Call {
+func (_c *TeamsApi_DeleteOrgTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteOrgTeamApiParams) admin.DeleteOrgTeamApiRequest) *TeamsApi_DeleteOrgTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectTeam provides a mock function with given fields: ctx, groupId, teamId
-func (_m *TeamsApi) GetProjectTeam(ctx context.Context, groupId string, teamId string) admin.GetProjectTeamApiRequest {
+// GetGroupTeam provides a mock function with given fields: ctx, groupId, teamId
+func (_m *TeamsApi) GetGroupTeam(ctx context.Context, groupId string, teamId string) admin.GetGroupTeamApiRequest {
 	ret := _m.Called(ctx, groupId, teamId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectTeam")
+		panic("no return value specified for GetGroupTeam")
 	}
 
-	var r0 admin.GetProjectTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetProjectTeamApiRequest); ok {
+	var r0 admin.GetGroupTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupTeamApiRequest); ok {
 		r0 = rf(ctx, groupId, teamId)
 	} else {
-		r0 = ret.Get(0).(admin.GetProjectTeamApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_GetProjectTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectTeam'
-type TeamsApi_GetProjectTeam_Call struct {
+// TeamsApi_GetGroupTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupTeam'
+type TeamsApi_GetGroupTeam_Call struct {
 	*mock.Call
 }
 
-// GetProjectTeam is a helper method to define mock.On call
+// GetGroupTeam is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - teamId string
-func (_e *TeamsApi_Expecter) GetProjectTeam(ctx any, groupId any, teamId any) *TeamsApi_GetProjectTeam_Call {
-	return &TeamsApi_GetProjectTeam_Call{Call: _e.mock.On("GetProjectTeam", ctx, groupId, teamId)}
+func (_e *TeamsApi_Expecter) GetGroupTeam(ctx any, groupId any, teamId any) *TeamsApi_GetGroupTeam_Call {
+	return &TeamsApi_GetGroupTeam_Call{Call: _e.mock.On("GetGroupTeam", ctx, groupId, teamId)}
 }
 
-func (_c *TeamsApi_GetProjectTeam_Call) Run(run func(ctx context.Context, groupId string, teamId string)) *TeamsApi_GetProjectTeam_Call {
+func (_c *TeamsApi_GetGroupTeam_Call) Run(run func(ctx context.Context, groupId string, teamId string)) *TeamsApi_GetGroupTeam_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_GetProjectTeam_Call) Return(_a0 admin.GetProjectTeamApiRequest) *TeamsApi_GetProjectTeam_Call {
+func (_c *TeamsApi_GetGroupTeam_Call) Return(_a0 admin.GetGroupTeamApiRequest) *TeamsApi_GetGroupTeam_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_GetProjectTeam_Call) RunAndReturn(run func(context.Context, string, string) admin.GetProjectTeamApiRequest) *TeamsApi_GetProjectTeam_Call {
+func (_c *TeamsApi_GetGroupTeam_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupTeamApiRequest) *TeamsApi_GetGroupTeam_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectTeamExecute provides a mock function with given fields: r
-func (_m *TeamsApi) GetProjectTeamExecute(r admin.GetProjectTeamApiRequest) (*admin.TeamRole, *http.Response, error) {
+// GetGroupTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) GetGroupTeamExecute(r admin.GetGroupTeamApiRequest) (*admin.TeamRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectTeamExecute")
+		panic("no return value specified for GetGroupTeamExecute")
 	}
 
 	var r0 *admin.TeamRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetProjectTeamApiRequest) (*admin.TeamRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupTeamApiRequest) (*admin.TeamRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetProjectTeamApiRequest) *admin.TeamRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupTeamApiRequest) *admin.TeamRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -735,7 +735,7 @@ func (_m *TeamsApi) GetProjectTeamExecute(r admin.GetProjectTeamApiRequest) (*ad
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetProjectTeamApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetGroupTeamApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -743,7 +743,7 @@ func (_m *TeamsApi) GetProjectTeamExecute(r admin.GetProjectTeamApiRequest) (*ad
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetProjectTeamApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetGroupTeamApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -752,144 +752,144 @@ func (_m *TeamsApi) GetProjectTeamExecute(r admin.GetProjectTeamApiRequest) (*ad
 	return r0, r1, r2
 }
 
-// TeamsApi_GetProjectTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectTeamExecute'
-type TeamsApi_GetProjectTeamExecute_Call struct {
+// TeamsApi_GetGroupTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupTeamExecute'
+type TeamsApi_GetGroupTeamExecute_Call struct {
 	*mock.Call
 }
 
-// GetProjectTeamExecute is a helper method to define mock.On call
-//   - r admin.GetProjectTeamApiRequest
-func (_e *TeamsApi_Expecter) GetProjectTeamExecute(r any) *TeamsApi_GetProjectTeamExecute_Call {
-	return &TeamsApi_GetProjectTeamExecute_Call{Call: _e.mock.On("GetProjectTeamExecute", r)}
+// GetGroupTeamExecute is a helper method to define mock.On call
+//   - r admin.GetGroupTeamApiRequest
+func (_e *TeamsApi_Expecter) GetGroupTeamExecute(r any) *TeamsApi_GetGroupTeamExecute_Call {
+	return &TeamsApi_GetGroupTeamExecute_Call{Call: _e.mock.On("GetGroupTeamExecute", r)}
 }
 
-func (_c *TeamsApi_GetProjectTeamExecute_Call) Run(run func(r admin.GetProjectTeamApiRequest)) *TeamsApi_GetProjectTeamExecute_Call {
+func (_c *TeamsApi_GetGroupTeamExecute_Call) Run(run func(r admin.GetGroupTeamApiRequest)) *TeamsApi_GetGroupTeamExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetProjectTeamApiRequest))
+		run(args[0].(admin.GetGroupTeamApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_GetProjectTeamExecute_Call) Return(_a0 *admin.TeamRole, _a1 *http.Response, _a2 error) *TeamsApi_GetProjectTeamExecute_Call {
+func (_c *TeamsApi_GetGroupTeamExecute_Call) Return(_a0 *admin.TeamRole, _a1 *http.Response, _a2 error) *TeamsApi_GetGroupTeamExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_GetProjectTeamExecute_Call) RunAndReturn(run func(admin.GetProjectTeamApiRequest) (*admin.TeamRole, *http.Response, error)) *TeamsApi_GetProjectTeamExecute_Call {
+func (_c *TeamsApi_GetGroupTeamExecute_Call) RunAndReturn(run func(admin.GetGroupTeamApiRequest) (*admin.TeamRole, *http.Response, error)) *TeamsApi_GetGroupTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetProjectTeamWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) GetProjectTeamWithParams(ctx context.Context, args *admin.GetProjectTeamApiParams) admin.GetProjectTeamApiRequest {
+// GetGroupTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) GetGroupTeamWithParams(ctx context.Context, args *admin.GetGroupTeamApiParams) admin.GetGroupTeamApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetProjectTeamWithParams")
+		panic("no return value specified for GetGroupTeamWithParams")
 	}
 
-	var r0 admin.GetProjectTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectTeamApiParams) admin.GetProjectTeamApiRequest); ok {
+	var r0 admin.GetGroupTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupTeamApiParams) admin.GetGroupTeamApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetProjectTeamApiRequest)
+		r0 = ret.Get(0).(admin.GetGroupTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_GetProjectTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectTeamWithParams'
-type TeamsApi_GetProjectTeamWithParams_Call struct {
+// TeamsApi_GetGroupTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupTeamWithParams'
+type TeamsApi_GetGroupTeamWithParams_Call struct {
 	*mock.Call
 }
 
-// GetProjectTeamWithParams is a helper method to define mock.On call
+// GetGroupTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetProjectTeamApiParams
-func (_e *TeamsApi_Expecter) GetProjectTeamWithParams(ctx any, args any) *TeamsApi_GetProjectTeamWithParams_Call {
-	return &TeamsApi_GetProjectTeamWithParams_Call{Call: _e.mock.On("GetProjectTeamWithParams", ctx, args)}
+//   - args *admin.GetGroupTeamApiParams
+func (_e *TeamsApi_Expecter) GetGroupTeamWithParams(ctx any, args any) *TeamsApi_GetGroupTeamWithParams_Call {
+	return &TeamsApi_GetGroupTeamWithParams_Call{Call: _e.mock.On("GetGroupTeamWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_GetProjectTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectTeamApiParams)) *TeamsApi_GetProjectTeamWithParams_Call {
+func (_c *TeamsApi_GetGroupTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupTeamApiParams)) *TeamsApi_GetGroupTeamWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetProjectTeamApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetGroupTeamApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_GetProjectTeamWithParams_Call) Return(_a0 admin.GetProjectTeamApiRequest) *TeamsApi_GetProjectTeamWithParams_Call {
+func (_c *TeamsApi_GetGroupTeamWithParams_Call) Return(_a0 admin.GetGroupTeamApiRequest) *TeamsApi_GetGroupTeamWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_GetProjectTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectTeamApiParams) admin.GetProjectTeamApiRequest) *TeamsApi_GetProjectTeamWithParams_Call {
+func (_c *TeamsApi_GetGroupTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupTeamApiParams) admin.GetGroupTeamApiRequest) *TeamsApi_GetGroupTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetTeamById provides a mock function with given fields: ctx, orgId, teamId
-func (_m *TeamsApi) GetTeamById(ctx context.Context, orgId string, teamId string) admin.GetTeamByIdApiRequest {
+// GetOrgTeam provides a mock function with given fields: ctx, orgId, teamId
+func (_m *TeamsApi) GetOrgTeam(ctx context.Context, orgId string, teamId string) admin.GetOrgTeamApiRequest {
 	ret := _m.Called(ctx, orgId, teamId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetTeamById")
+		panic("no return value specified for GetOrgTeam")
 	}
 
-	var r0 admin.GetTeamByIdApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetTeamByIdApiRequest); ok {
+	var r0 admin.GetOrgTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetOrgTeamApiRequest); ok {
 		r0 = rf(ctx, orgId, teamId)
 	} else {
-		r0 = ret.Get(0).(admin.GetTeamByIdApiRequest)
+		r0 = ret.Get(0).(admin.GetOrgTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_GetTeamById_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTeamById'
-type TeamsApi_GetTeamById_Call struct {
+// TeamsApi_GetOrgTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgTeam'
+type TeamsApi_GetOrgTeam_Call struct {
 	*mock.Call
 }
 
-// GetTeamById is a helper method to define mock.On call
+// GetOrgTeam is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - teamId string
-func (_e *TeamsApi_Expecter) GetTeamById(ctx any, orgId any, teamId any) *TeamsApi_GetTeamById_Call {
-	return &TeamsApi_GetTeamById_Call{Call: _e.mock.On("GetTeamById", ctx, orgId, teamId)}
+func (_e *TeamsApi_Expecter) GetOrgTeam(ctx any, orgId any, teamId any) *TeamsApi_GetOrgTeam_Call {
+	return &TeamsApi_GetOrgTeam_Call{Call: _e.mock.On("GetOrgTeam", ctx, orgId, teamId)}
 }
 
-func (_c *TeamsApi_GetTeamById_Call) Run(run func(ctx context.Context, orgId string, teamId string)) *TeamsApi_GetTeamById_Call {
+func (_c *TeamsApi_GetOrgTeam_Call) Run(run func(ctx context.Context, orgId string, teamId string)) *TeamsApi_GetOrgTeam_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_GetTeamById_Call) Return(_a0 admin.GetTeamByIdApiRequest) *TeamsApi_GetTeamById_Call {
+func (_c *TeamsApi_GetOrgTeam_Call) Return(_a0 admin.GetOrgTeamApiRequest) *TeamsApi_GetOrgTeam_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_GetTeamById_Call) RunAndReturn(run func(context.Context, string, string) admin.GetTeamByIdApiRequest) *TeamsApi_GetTeamById_Call {
+func (_c *TeamsApi_GetOrgTeam_Call) RunAndReturn(run func(context.Context, string, string) admin.GetOrgTeamApiRequest) *TeamsApi_GetOrgTeam_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetTeamByIdExecute provides a mock function with given fields: r
-func (_m *TeamsApi) GetTeamByIdExecute(r admin.GetTeamByIdApiRequest) (*admin.TeamResponse, *http.Response, error) {
+// GetOrgTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) GetOrgTeamExecute(r admin.GetOrgTeamApiRequest) (*admin.TeamResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetTeamByIdExecute")
+		panic("no return value specified for GetOrgTeamExecute")
 	}
 
 	var r0 *admin.TeamResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetTeamByIdApiRequest) (*admin.TeamResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetOrgTeamApiRequest) (*admin.TeamResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetTeamByIdApiRequest) *admin.TeamResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetOrgTeamApiRequest) *admin.TeamResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -897,7 +897,7 @@ func (_m *TeamsApi) GetTeamByIdExecute(r admin.GetTeamByIdApiRequest) (*admin.Te
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetTeamByIdApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetOrgTeamApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -905,7 +905,7 @@ func (_m *TeamsApi) GetTeamByIdExecute(r admin.GetTeamByIdApiRequest) (*admin.Te
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetTeamByIdApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetOrgTeamApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -914,77 +914,77 @@ func (_m *TeamsApi) GetTeamByIdExecute(r admin.GetTeamByIdApiRequest) (*admin.Te
 	return r0, r1, r2
 }
 
-// TeamsApi_GetTeamByIdExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTeamByIdExecute'
-type TeamsApi_GetTeamByIdExecute_Call struct {
+// TeamsApi_GetOrgTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgTeamExecute'
+type TeamsApi_GetOrgTeamExecute_Call struct {
 	*mock.Call
 }
 
-// GetTeamByIdExecute is a helper method to define mock.On call
-//   - r admin.GetTeamByIdApiRequest
-func (_e *TeamsApi_Expecter) GetTeamByIdExecute(r any) *TeamsApi_GetTeamByIdExecute_Call {
-	return &TeamsApi_GetTeamByIdExecute_Call{Call: _e.mock.On("GetTeamByIdExecute", r)}
+// GetOrgTeamExecute is a helper method to define mock.On call
+//   - r admin.GetOrgTeamApiRequest
+func (_e *TeamsApi_Expecter) GetOrgTeamExecute(r any) *TeamsApi_GetOrgTeamExecute_Call {
+	return &TeamsApi_GetOrgTeamExecute_Call{Call: _e.mock.On("GetOrgTeamExecute", r)}
 }
 
-func (_c *TeamsApi_GetTeamByIdExecute_Call) Run(run func(r admin.GetTeamByIdApiRequest)) *TeamsApi_GetTeamByIdExecute_Call {
+func (_c *TeamsApi_GetOrgTeamExecute_Call) Run(run func(r admin.GetOrgTeamApiRequest)) *TeamsApi_GetOrgTeamExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetTeamByIdApiRequest))
+		run(args[0].(admin.GetOrgTeamApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_GetTeamByIdExecute_Call) Return(_a0 *admin.TeamResponse, _a1 *http.Response, _a2 error) *TeamsApi_GetTeamByIdExecute_Call {
+func (_c *TeamsApi_GetOrgTeamExecute_Call) Return(_a0 *admin.TeamResponse, _a1 *http.Response, _a2 error) *TeamsApi_GetOrgTeamExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_GetTeamByIdExecute_Call) RunAndReturn(run func(admin.GetTeamByIdApiRequest) (*admin.TeamResponse, *http.Response, error)) *TeamsApi_GetTeamByIdExecute_Call {
+func (_c *TeamsApi_GetOrgTeamExecute_Call) RunAndReturn(run func(admin.GetOrgTeamApiRequest) (*admin.TeamResponse, *http.Response, error)) *TeamsApi_GetOrgTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetTeamByIdWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) GetTeamByIdWithParams(ctx context.Context, args *admin.GetTeamByIdApiParams) admin.GetTeamByIdApiRequest {
+// GetOrgTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) GetOrgTeamWithParams(ctx context.Context, args *admin.GetOrgTeamApiParams) admin.GetOrgTeamApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetTeamByIdWithParams")
+		panic("no return value specified for GetOrgTeamWithParams")
 	}
 
-	var r0 admin.GetTeamByIdApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetTeamByIdApiParams) admin.GetTeamByIdApiRequest); ok {
+	var r0 admin.GetOrgTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetOrgTeamApiParams) admin.GetOrgTeamApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetTeamByIdApiRequest)
+		r0 = ret.Get(0).(admin.GetOrgTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_GetTeamByIdWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTeamByIdWithParams'
-type TeamsApi_GetTeamByIdWithParams_Call struct {
+// TeamsApi_GetOrgTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgTeamWithParams'
+type TeamsApi_GetOrgTeamWithParams_Call struct {
 	*mock.Call
 }
 
-// GetTeamByIdWithParams is a helper method to define mock.On call
+// GetOrgTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetTeamByIdApiParams
-func (_e *TeamsApi_Expecter) GetTeamByIdWithParams(ctx any, args any) *TeamsApi_GetTeamByIdWithParams_Call {
-	return &TeamsApi_GetTeamByIdWithParams_Call{Call: _e.mock.On("GetTeamByIdWithParams", ctx, args)}
+//   - args *admin.GetOrgTeamApiParams
+func (_e *TeamsApi_Expecter) GetOrgTeamWithParams(ctx any, args any) *TeamsApi_GetOrgTeamWithParams_Call {
+	return &TeamsApi_GetOrgTeamWithParams_Call{Call: _e.mock.On("GetOrgTeamWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_GetTeamByIdWithParams_Call) Run(run func(ctx context.Context, args *admin.GetTeamByIdApiParams)) *TeamsApi_GetTeamByIdWithParams_Call {
+func (_c *TeamsApi_GetOrgTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.GetOrgTeamApiParams)) *TeamsApi_GetOrgTeamWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetTeamByIdApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetOrgTeamApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_GetTeamByIdWithParams_Call) Return(_a0 admin.GetTeamByIdApiRequest) *TeamsApi_GetTeamByIdWithParams_Call {
+func (_c *TeamsApi_GetOrgTeamWithParams_Call) Return(_a0 admin.GetOrgTeamApiRequest) *TeamsApi_GetOrgTeamWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_GetTeamByIdWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetTeamByIdApiParams) admin.GetTeamByIdApiRequest) *TeamsApi_GetTeamByIdWithParams_Call {
+func (_c *TeamsApi_GetOrgTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetOrgTeamApiParams) admin.GetOrgTeamApiRequest) *TeamsApi_GetOrgTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1151,68 +1151,229 @@ func (_c *TeamsApi_GetTeamByNameWithParams_Call) RunAndReturn(run func(context.C
 	return _c
 }
 
-// ListOrganizationTeams provides a mock function with given fields: ctx, orgId
-func (_m *TeamsApi) ListOrganizationTeams(ctx context.Context, orgId string) admin.ListOrganizationTeamsApiRequest {
-	ret := _m.Called(ctx, orgId)
+// ListGroupTeams provides a mock function with given fields: ctx, groupId
+func (_m *TeamsApi) ListGroupTeams(ctx context.Context, groupId string) admin.ListGroupTeamsApiRequest {
+	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrganizationTeams")
+		panic("no return value specified for ListGroupTeams")
 	}
 
-	var r0 admin.ListOrganizationTeamsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListOrganizationTeamsApiRequest); ok {
-		r0 = rf(ctx, orgId)
+	var r0 admin.ListGroupTeamsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupTeamsApiRequest); ok {
+		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrganizationTeamsApiRequest)
+		r0 = ret.Get(0).(admin.ListGroupTeamsApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_ListOrganizationTeams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationTeams'
-type TeamsApi_ListOrganizationTeams_Call struct {
+// TeamsApi_ListGroupTeams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupTeams'
+type TeamsApi_ListGroupTeams_Call struct {
 	*mock.Call
 }
 
-// ListOrganizationTeams is a helper method to define mock.On call
+// ListGroupTeams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - orgId string
-func (_e *TeamsApi_Expecter) ListOrganizationTeams(ctx any, orgId any) *TeamsApi_ListOrganizationTeams_Call {
-	return &TeamsApi_ListOrganizationTeams_Call{Call: _e.mock.On("ListOrganizationTeams", ctx, orgId)}
+//   - groupId string
+func (_e *TeamsApi_Expecter) ListGroupTeams(ctx any, groupId any) *TeamsApi_ListGroupTeams_Call {
+	return &TeamsApi_ListGroupTeams_Call{Call: _e.mock.On("ListGroupTeams", ctx, groupId)}
 }
 
-func (_c *TeamsApi_ListOrganizationTeams_Call) Run(run func(ctx context.Context, orgId string)) *TeamsApi_ListOrganizationTeams_Call {
+func (_c *TeamsApi_ListGroupTeams_Call) Run(run func(ctx context.Context, groupId string)) *TeamsApi_ListGroupTeams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_ListOrganizationTeams_Call) Return(_a0 admin.ListOrganizationTeamsApiRequest) *TeamsApi_ListOrganizationTeams_Call {
+func (_c *TeamsApi_ListGroupTeams_Call) Return(_a0 admin.ListGroupTeamsApiRequest) *TeamsApi_ListGroupTeams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_ListOrganizationTeams_Call) RunAndReturn(run func(context.Context, string) admin.ListOrganizationTeamsApiRequest) *TeamsApi_ListOrganizationTeams_Call {
+func (_c *TeamsApi_ListGroupTeams_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupTeamsApiRequest) *TeamsApi_ListGroupTeams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrganizationTeamsExecute provides a mock function with given fields: r
-func (_m *TeamsApi) ListOrganizationTeamsExecute(r admin.ListOrganizationTeamsApiRequest) (*admin.PaginatedTeam, *http.Response, error) {
+// ListGroupTeamsExecute provides a mock function with given fields: r
+func (_m *TeamsApi) ListGroupTeamsExecute(r admin.ListGroupTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrganizationTeamsExecute")
+		panic("no return value specified for ListGroupTeamsExecute")
+	}
+
+	var r0 *admin.PaginatedTeamRole
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListGroupTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListGroupTeamsApiRequest) *admin.PaginatedTeamRole); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedTeamRole)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListGroupTeamsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListGroupTeamsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// TeamsApi_ListGroupTeamsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupTeamsExecute'
+type TeamsApi_ListGroupTeamsExecute_Call struct {
+	*mock.Call
+}
+
+// ListGroupTeamsExecute is a helper method to define mock.On call
+//   - r admin.ListGroupTeamsApiRequest
+func (_e *TeamsApi_Expecter) ListGroupTeamsExecute(r any) *TeamsApi_ListGroupTeamsExecute_Call {
+	return &TeamsApi_ListGroupTeamsExecute_Call{Call: _e.mock.On("ListGroupTeamsExecute", r)}
+}
+
+func (_c *TeamsApi_ListGroupTeamsExecute_Call) Run(run func(r admin.ListGroupTeamsApiRequest)) *TeamsApi_ListGroupTeamsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListGroupTeamsApiRequest))
+	})
+	return _c
+}
+
+func (_c *TeamsApi_ListGroupTeamsExecute_Call) Return(_a0 *admin.PaginatedTeamRole, _a1 *http.Response, _a2 error) *TeamsApi_ListGroupTeamsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *TeamsApi_ListGroupTeamsExecute_Call) RunAndReturn(run func(admin.ListGroupTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)) *TeamsApi_ListGroupTeamsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupTeamsWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) ListGroupTeamsWithParams(ctx context.Context, args *admin.ListGroupTeamsApiParams) admin.ListGroupTeamsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupTeamsWithParams")
+	}
+
+	var r0 admin.ListGroupTeamsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupTeamsApiParams) admin.ListGroupTeamsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupTeamsApiRequest)
+	}
+
+	return r0
+}
+
+// TeamsApi_ListGroupTeamsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupTeamsWithParams'
+type TeamsApi_ListGroupTeamsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListGroupTeamsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListGroupTeamsApiParams
+func (_e *TeamsApi_Expecter) ListGroupTeamsWithParams(ctx any, args any) *TeamsApi_ListGroupTeamsWithParams_Call {
+	return &TeamsApi_ListGroupTeamsWithParams_Call{Call: _e.mock.On("ListGroupTeamsWithParams", ctx, args)}
+}
+
+func (_c *TeamsApi_ListGroupTeamsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupTeamsApiParams)) *TeamsApi_ListGroupTeamsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListGroupTeamsApiParams))
+	})
+	return _c
+}
+
+func (_c *TeamsApi_ListGroupTeamsWithParams_Call) Return(_a0 admin.ListGroupTeamsApiRequest) *TeamsApi_ListGroupTeamsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *TeamsApi_ListGroupTeamsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupTeamsApiParams) admin.ListGroupTeamsApiRequest) *TeamsApi_ListGroupTeamsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListOrgTeams provides a mock function with given fields: ctx, orgId
+func (_m *TeamsApi) ListOrgTeams(ctx context.Context, orgId string) admin.ListOrgTeamsApiRequest {
+	ret := _m.Called(ctx, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListOrgTeams")
+	}
+
+	var r0 admin.ListOrgTeamsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListOrgTeamsApiRequest); ok {
+		r0 = rf(ctx, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.ListOrgTeamsApiRequest)
+	}
+
+	return r0
+}
+
+// TeamsApi_ListOrgTeams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgTeams'
+type TeamsApi_ListOrgTeams_Call struct {
+	*mock.Call
+}
+
+// ListOrgTeams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+func (_e *TeamsApi_Expecter) ListOrgTeams(ctx any, orgId any) *TeamsApi_ListOrgTeams_Call {
+	return &TeamsApi_ListOrgTeams_Call{Call: _e.mock.On("ListOrgTeams", ctx, orgId)}
+}
+
+func (_c *TeamsApi_ListOrgTeams_Call) Run(run func(ctx context.Context, orgId string)) *TeamsApi_ListOrgTeams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *TeamsApi_ListOrgTeams_Call) Return(_a0 admin.ListOrgTeamsApiRequest) *TeamsApi_ListOrgTeams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *TeamsApi_ListOrgTeams_Call) RunAndReturn(run func(context.Context, string) admin.ListOrgTeamsApiRequest) *TeamsApi_ListOrgTeams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListOrgTeamsExecute provides a mock function with given fields: r
+func (_m *TeamsApi) ListOrgTeamsExecute(r admin.ListOrgTeamsApiRequest) (*admin.PaginatedTeam, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListOrgTeamsExecute")
 	}
 
 	var r0 *admin.PaginatedTeam
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListOrganizationTeamsApiRequest) (*admin.PaginatedTeam, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListOrgTeamsApiRequest) (*admin.PaginatedTeam, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListOrganizationTeamsApiRequest) *admin.PaginatedTeam); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListOrgTeamsApiRequest) *admin.PaginatedTeam); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1220,7 +1381,7 @@ func (_m *TeamsApi) ListOrganizationTeamsExecute(r admin.ListOrganizationTeamsAp
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListOrganizationTeamsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListOrgTeamsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1228,7 +1389,7 @@ func (_m *TeamsApi) ListOrganizationTeamsExecute(r admin.ListOrganizationTeamsAp
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListOrganizationTeamsApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListOrgTeamsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1237,304 +1398,143 @@ func (_m *TeamsApi) ListOrganizationTeamsExecute(r admin.ListOrganizationTeamsAp
 	return r0, r1, r2
 }
 
-// TeamsApi_ListOrganizationTeamsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationTeamsExecute'
-type TeamsApi_ListOrganizationTeamsExecute_Call struct {
+// TeamsApi_ListOrgTeamsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgTeamsExecute'
+type TeamsApi_ListOrgTeamsExecute_Call struct {
 	*mock.Call
 }
 
-// ListOrganizationTeamsExecute is a helper method to define mock.On call
-//   - r admin.ListOrganizationTeamsApiRequest
-func (_e *TeamsApi_Expecter) ListOrganizationTeamsExecute(r any) *TeamsApi_ListOrganizationTeamsExecute_Call {
-	return &TeamsApi_ListOrganizationTeamsExecute_Call{Call: _e.mock.On("ListOrganizationTeamsExecute", r)}
+// ListOrgTeamsExecute is a helper method to define mock.On call
+//   - r admin.ListOrgTeamsApiRequest
+func (_e *TeamsApi_Expecter) ListOrgTeamsExecute(r any) *TeamsApi_ListOrgTeamsExecute_Call {
+	return &TeamsApi_ListOrgTeamsExecute_Call{Call: _e.mock.On("ListOrgTeamsExecute", r)}
 }
 
-func (_c *TeamsApi_ListOrganizationTeamsExecute_Call) Run(run func(r admin.ListOrganizationTeamsApiRequest)) *TeamsApi_ListOrganizationTeamsExecute_Call {
+func (_c *TeamsApi_ListOrgTeamsExecute_Call) Run(run func(r admin.ListOrgTeamsApiRequest)) *TeamsApi_ListOrgTeamsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListOrganizationTeamsApiRequest))
+		run(args[0].(admin.ListOrgTeamsApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_ListOrganizationTeamsExecute_Call) Return(_a0 *admin.PaginatedTeam, _a1 *http.Response, _a2 error) *TeamsApi_ListOrganizationTeamsExecute_Call {
+func (_c *TeamsApi_ListOrgTeamsExecute_Call) Return(_a0 *admin.PaginatedTeam, _a1 *http.Response, _a2 error) *TeamsApi_ListOrgTeamsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_ListOrganizationTeamsExecute_Call) RunAndReturn(run func(admin.ListOrganizationTeamsApiRequest) (*admin.PaginatedTeam, *http.Response, error)) *TeamsApi_ListOrganizationTeamsExecute_Call {
+func (_c *TeamsApi_ListOrgTeamsExecute_Call) RunAndReturn(run func(admin.ListOrgTeamsApiRequest) (*admin.PaginatedTeam, *http.Response, error)) *TeamsApi_ListOrgTeamsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListOrganizationTeamsWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) ListOrganizationTeamsWithParams(ctx context.Context, args *admin.ListOrganizationTeamsApiParams) admin.ListOrganizationTeamsApiRequest {
+// ListOrgTeamsWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) ListOrgTeamsWithParams(ctx context.Context, args *admin.ListOrgTeamsApiParams) admin.ListOrgTeamsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOrganizationTeamsWithParams")
+		panic("no return value specified for ListOrgTeamsWithParams")
 	}
 
-	var r0 admin.ListOrganizationTeamsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrganizationTeamsApiParams) admin.ListOrganizationTeamsApiRequest); ok {
+	var r0 admin.ListOrgTeamsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrgTeamsApiParams) admin.ListOrgTeamsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListOrganizationTeamsApiRequest)
+		r0 = ret.Get(0).(admin.ListOrgTeamsApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_ListOrganizationTeamsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationTeamsWithParams'
-type TeamsApi_ListOrganizationTeamsWithParams_Call struct {
+// TeamsApi_ListOrgTeamsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgTeamsWithParams'
+type TeamsApi_ListOrgTeamsWithParams_Call struct {
 	*mock.Call
 }
 
-// ListOrganizationTeamsWithParams is a helper method to define mock.On call
+// ListOrgTeamsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListOrganizationTeamsApiParams
-func (_e *TeamsApi_Expecter) ListOrganizationTeamsWithParams(ctx any, args any) *TeamsApi_ListOrganizationTeamsWithParams_Call {
-	return &TeamsApi_ListOrganizationTeamsWithParams_Call{Call: _e.mock.On("ListOrganizationTeamsWithParams", ctx, args)}
+//   - args *admin.ListOrgTeamsApiParams
+func (_e *TeamsApi_Expecter) ListOrgTeamsWithParams(ctx any, args any) *TeamsApi_ListOrgTeamsWithParams_Call {
+	return &TeamsApi_ListOrgTeamsWithParams_Call{Call: _e.mock.On("ListOrgTeamsWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_ListOrganizationTeamsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrganizationTeamsApiParams)) *TeamsApi_ListOrganizationTeamsWithParams_Call {
+func (_c *TeamsApi_ListOrgTeamsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrgTeamsApiParams)) *TeamsApi_ListOrgTeamsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListOrganizationTeamsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListOrgTeamsApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_ListOrganizationTeamsWithParams_Call) Return(_a0 admin.ListOrganizationTeamsApiRequest) *TeamsApi_ListOrganizationTeamsWithParams_Call {
+func (_c *TeamsApi_ListOrgTeamsWithParams_Call) Return(_a0 admin.ListOrgTeamsApiRequest) *TeamsApi_ListOrgTeamsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_ListOrganizationTeamsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrganizationTeamsApiParams) admin.ListOrganizationTeamsApiRequest) *TeamsApi_ListOrganizationTeamsWithParams_Call {
+func (_c *TeamsApi_ListOrgTeamsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrgTeamsApiParams) admin.ListOrgTeamsApiRequest) *TeamsApi_ListOrgTeamsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListProjectTeams provides a mock function with given fields: ctx, groupId
-func (_m *TeamsApi) ListProjectTeams(ctx context.Context, groupId string) admin.ListProjectTeamsApiRequest {
-	ret := _m.Called(ctx, groupId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectTeams")
-	}
-
-	var r0 admin.ListProjectTeamsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListProjectTeamsApiRequest); ok {
-		r0 = rf(ctx, groupId)
-	} else {
-		r0 = ret.Get(0).(admin.ListProjectTeamsApiRequest)
-	}
-
-	return r0
-}
-
-// TeamsApi_ListProjectTeams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectTeams'
-type TeamsApi_ListProjectTeams_Call struct {
-	*mock.Call
-}
-
-// ListProjectTeams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-func (_e *TeamsApi_Expecter) ListProjectTeams(ctx any, groupId any) *TeamsApi_ListProjectTeams_Call {
-	return &TeamsApi_ListProjectTeams_Call{Call: _e.mock.On("ListProjectTeams", ctx, groupId)}
-}
-
-func (_c *TeamsApi_ListProjectTeams_Call) Run(run func(ctx context.Context, groupId string)) *TeamsApi_ListProjectTeams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *TeamsApi_ListProjectTeams_Call) Return(_a0 admin.ListProjectTeamsApiRequest) *TeamsApi_ListProjectTeams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *TeamsApi_ListProjectTeams_Call) RunAndReturn(run func(context.Context, string) admin.ListProjectTeamsApiRequest) *TeamsApi_ListProjectTeams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectTeamsExecute provides a mock function with given fields: r
-func (_m *TeamsApi) ListProjectTeamsExecute(r admin.ListProjectTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectTeamsExecute")
-	}
-
-	var r0 *admin.PaginatedTeamRole
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListProjectTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListProjectTeamsApiRequest) *admin.PaginatedTeamRole); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedTeamRole)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListProjectTeamsApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListProjectTeamsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// TeamsApi_ListProjectTeamsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectTeamsExecute'
-type TeamsApi_ListProjectTeamsExecute_Call struct {
-	*mock.Call
-}
-
-// ListProjectTeamsExecute is a helper method to define mock.On call
-//   - r admin.ListProjectTeamsApiRequest
-func (_e *TeamsApi_Expecter) ListProjectTeamsExecute(r any) *TeamsApi_ListProjectTeamsExecute_Call {
-	return &TeamsApi_ListProjectTeamsExecute_Call{Call: _e.mock.On("ListProjectTeamsExecute", r)}
-}
-
-func (_c *TeamsApi_ListProjectTeamsExecute_Call) Run(run func(r admin.ListProjectTeamsApiRequest)) *TeamsApi_ListProjectTeamsExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListProjectTeamsApiRequest))
-	})
-	return _c
-}
-
-func (_c *TeamsApi_ListProjectTeamsExecute_Call) Return(_a0 *admin.PaginatedTeamRole, _a1 *http.Response, _a2 error) *TeamsApi_ListProjectTeamsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *TeamsApi_ListProjectTeamsExecute_Call) RunAndReturn(run func(admin.ListProjectTeamsApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)) *TeamsApi_ListProjectTeamsExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListProjectTeamsWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) ListProjectTeamsWithParams(ctx context.Context, args *admin.ListProjectTeamsApiParams) admin.ListProjectTeamsApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListProjectTeamsWithParams")
-	}
-
-	var r0 admin.ListProjectTeamsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProjectTeamsApiParams) admin.ListProjectTeamsApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListProjectTeamsApiRequest)
-	}
-
-	return r0
-}
-
-// TeamsApi_ListProjectTeamsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectTeamsWithParams'
-type TeamsApi_ListProjectTeamsWithParams_Call struct {
-	*mock.Call
-}
-
-// ListProjectTeamsWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListProjectTeamsApiParams
-func (_e *TeamsApi_Expecter) ListProjectTeamsWithParams(ctx any, args any) *TeamsApi_ListProjectTeamsWithParams_Call {
-	return &TeamsApi_ListProjectTeamsWithParams_Call{Call: _e.mock.On("ListProjectTeamsWithParams", ctx, args)}
-}
-
-func (_c *TeamsApi_ListProjectTeamsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProjectTeamsApiParams)) *TeamsApi_ListProjectTeamsWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListProjectTeamsApiParams))
-	})
-	return _c
-}
-
-func (_c *TeamsApi_ListProjectTeamsWithParams_Call) Return(_a0 admin.ListProjectTeamsApiRequest) *TeamsApi_ListProjectTeamsWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *TeamsApi_ListProjectTeamsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectTeamsApiParams) admin.ListProjectTeamsApiRequest) *TeamsApi_ListProjectTeamsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// RemoveProjectTeam provides a mock function with given fields: ctx, groupId, teamId
-func (_m *TeamsApi) RemoveProjectTeam(ctx context.Context, groupId string, teamId string) admin.RemoveProjectTeamApiRequest {
+// RemoveGroupTeam provides a mock function with given fields: ctx, groupId, teamId
+func (_m *TeamsApi) RemoveGroupTeam(ctx context.Context, groupId string, teamId string) admin.RemoveGroupTeamApiRequest {
 	ret := _m.Called(ctx, groupId, teamId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveProjectTeam")
+		panic("no return value specified for RemoveGroupTeam")
 	}
 
-	var r0 admin.RemoveProjectTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RemoveProjectTeamApiRequest); ok {
+	var r0 admin.RemoveGroupTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RemoveGroupTeamApiRequest); ok {
 		r0 = rf(ctx, groupId, teamId)
 	} else {
-		r0 = ret.Get(0).(admin.RemoveProjectTeamApiRequest)
+		r0 = ret.Get(0).(admin.RemoveGroupTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_RemoveProjectTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectTeam'
-type TeamsApi_RemoveProjectTeam_Call struct {
+// TeamsApi_RemoveGroupTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveGroupTeam'
+type TeamsApi_RemoveGroupTeam_Call struct {
 	*mock.Call
 }
 
-// RemoveProjectTeam is a helper method to define mock.On call
+// RemoveGroupTeam is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - teamId string
-func (_e *TeamsApi_Expecter) RemoveProjectTeam(ctx any, groupId any, teamId any) *TeamsApi_RemoveProjectTeam_Call {
-	return &TeamsApi_RemoveProjectTeam_Call{Call: _e.mock.On("RemoveProjectTeam", ctx, groupId, teamId)}
+func (_e *TeamsApi_Expecter) RemoveGroupTeam(ctx any, groupId any, teamId any) *TeamsApi_RemoveGroupTeam_Call {
+	return &TeamsApi_RemoveGroupTeam_Call{Call: _e.mock.On("RemoveGroupTeam", ctx, groupId, teamId)}
 }
 
-func (_c *TeamsApi_RemoveProjectTeam_Call) Run(run func(ctx context.Context, groupId string, teamId string)) *TeamsApi_RemoveProjectTeam_Call {
+func (_c *TeamsApi_RemoveGroupTeam_Call) Run(run func(ctx context.Context, groupId string, teamId string)) *TeamsApi_RemoveGroupTeam_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RemoveProjectTeam_Call) Return(_a0 admin.RemoveProjectTeamApiRequest) *TeamsApi_RemoveProjectTeam_Call {
+func (_c *TeamsApi_RemoveGroupTeam_Call) Return(_a0 admin.RemoveGroupTeamApiRequest) *TeamsApi_RemoveGroupTeam_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_RemoveProjectTeam_Call) RunAndReturn(run func(context.Context, string, string) admin.RemoveProjectTeamApiRequest) *TeamsApi_RemoveProjectTeam_Call {
+func (_c *TeamsApi_RemoveGroupTeam_Call) RunAndReturn(run func(context.Context, string, string) admin.RemoveGroupTeamApiRequest) *TeamsApi_RemoveGroupTeam_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RemoveProjectTeamExecute provides a mock function with given fields: r
-func (_m *TeamsApi) RemoveProjectTeamExecute(r admin.RemoveProjectTeamApiRequest) (*http.Response, error) {
+// RemoveGroupTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) RemoveGroupTeamExecute(r admin.RemoveGroupTeamApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveProjectTeamExecute")
+		panic("no return value specified for RemoveGroupTeamExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveProjectTeamApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveGroupTeamApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveProjectTeamApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveGroupTeamApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1542,7 +1542,7 @@ func (_m *TeamsApi) RemoveProjectTeamExecute(r admin.RemoveProjectTeamApiRequest
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RemoveProjectTeamApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.RemoveGroupTeamApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -1551,144 +1551,144 @@ func (_m *TeamsApi) RemoveProjectTeamExecute(r admin.RemoveProjectTeamApiRequest
 	return r0, r1
 }
 
-// TeamsApi_RemoveProjectTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectTeamExecute'
-type TeamsApi_RemoveProjectTeamExecute_Call struct {
+// TeamsApi_RemoveGroupTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveGroupTeamExecute'
+type TeamsApi_RemoveGroupTeamExecute_Call struct {
 	*mock.Call
 }
 
-// RemoveProjectTeamExecute is a helper method to define mock.On call
-//   - r admin.RemoveProjectTeamApiRequest
-func (_e *TeamsApi_Expecter) RemoveProjectTeamExecute(r any) *TeamsApi_RemoveProjectTeamExecute_Call {
-	return &TeamsApi_RemoveProjectTeamExecute_Call{Call: _e.mock.On("RemoveProjectTeamExecute", r)}
+// RemoveGroupTeamExecute is a helper method to define mock.On call
+//   - r admin.RemoveGroupTeamApiRequest
+func (_e *TeamsApi_Expecter) RemoveGroupTeamExecute(r any) *TeamsApi_RemoveGroupTeamExecute_Call {
+	return &TeamsApi_RemoveGroupTeamExecute_Call{Call: _e.mock.On("RemoveGroupTeamExecute", r)}
 }
 
-func (_c *TeamsApi_RemoveProjectTeamExecute_Call) Run(run func(r admin.RemoveProjectTeamApiRequest)) *TeamsApi_RemoveProjectTeamExecute_Call {
+func (_c *TeamsApi_RemoveGroupTeamExecute_Call) Run(run func(r admin.RemoveGroupTeamApiRequest)) *TeamsApi_RemoveGroupTeamExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RemoveProjectTeamApiRequest))
+		run(args[0].(admin.RemoveGroupTeamApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RemoveProjectTeamExecute_Call) Return(_a0 *http.Response, _a1 error) *TeamsApi_RemoveProjectTeamExecute_Call {
+func (_c *TeamsApi_RemoveGroupTeamExecute_Call) Return(_a0 *http.Response, _a1 error) *TeamsApi_RemoveGroupTeamExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *TeamsApi_RemoveProjectTeamExecute_Call) RunAndReturn(run func(admin.RemoveProjectTeamApiRequest) (*http.Response, error)) *TeamsApi_RemoveProjectTeamExecute_Call {
+func (_c *TeamsApi_RemoveGroupTeamExecute_Call) RunAndReturn(run func(admin.RemoveGroupTeamApiRequest) (*http.Response, error)) *TeamsApi_RemoveGroupTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RemoveProjectTeamWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) RemoveProjectTeamWithParams(ctx context.Context, args *admin.RemoveProjectTeamApiParams) admin.RemoveProjectTeamApiRequest {
+// RemoveGroupTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) RemoveGroupTeamWithParams(ctx context.Context, args *admin.RemoveGroupTeamApiParams) admin.RemoveGroupTeamApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveProjectTeamWithParams")
+		panic("no return value specified for RemoveGroupTeamWithParams")
 	}
 
-	var r0 admin.RemoveProjectTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveProjectTeamApiParams) admin.RemoveProjectTeamApiRequest); ok {
+	var r0 admin.RemoveGroupTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveGroupTeamApiParams) admin.RemoveGroupTeamApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.RemoveProjectTeamApiRequest)
+		r0 = ret.Get(0).(admin.RemoveGroupTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_RemoveProjectTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectTeamWithParams'
-type TeamsApi_RemoveProjectTeamWithParams_Call struct {
+// TeamsApi_RemoveGroupTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveGroupTeamWithParams'
+type TeamsApi_RemoveGroupTeamWithParams_Call struct {
 	*mock.Call
 }
 
-// RemoveProjectTeamWithParams is a helper method to define mock.On call
+// RemoveGroupTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.RemoveProjectTeamApiParams
-func (_e *TeamsApi_Expecter) RemoveProjectTeamWithParams(ctx any, args any) *TeamsApi_RemoveProjectTeamWithParams_Call {
-	return &TeamsApi_RemoveProjectTeamWithParams_Call{Call: _e.mock.On("RemoveProjectTeamWithParams", ctx, args)}
+//   - args *admin.RemoveGroupTeamApiParams
+func (_e *TeamsApi_Expecter) RemoveGroupTeamWithParams(ctx any, args any) *TeamsApi_RemoveGroupTeamWithParams_Call {
+	return &TeamsApi_RemoveGroupTeamWithParams_Call{Call: _e.mock.On("RemoveGroupTeamWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_RemoveProjectTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveProjectTeamApiParams)) *TeamsApi_RemoveProjectTeamWithParams_Call {
+func (_c *TeamsApi_RemoveGroupTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveGroupTeamApiParams)) *TeamsApi_RemoveGroupTeamWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RemoveProjectTeamApiParams))
+		run(args[0].(context.Context), args[1].(*admin.RemoveGroupTeamApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RemoveProjectTeamWithParams_Call) Return(_a0 admin.RemoveProjectTeamApiRequest) *TeamsApi_RemoveProjectTeamWithParams_Call {
+func (_c *TeamsApi_RemoveGroupTeamWithParams_Call) Return(_a0 admin.RemoveGroupTeamApiRequest) *TeamsApi_RemoveGroupTeamWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_RemoveProjectTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveProjectTeamApiParams) admin.RemoveProjectTeamApiRequest) *TeamsApi_RemoveProjectTeamWithParams_Call {
+func (_c *TeamsApi_RemoveGroupTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveGroupTeamApiParams) admin.RemoveGroupTeamApiRequest) *TeamsApi_RemoveGroupTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RemoveTeamUser provides a mock function with given fields: ctx, orgId, teamId, userId
-func (_m *TeamsApi) RemoveTeamUser(ctx context.Context, orgId string, teamId string, userId string) admin.RemoveTeamUserApiRequest {
+// RemoveUserFromTeam provides a mock function with given fields: ctx, orgId, teamId, userId
+func (_m *TeamsApi) RemoveUserFromTeam(ctx context.Context, orgId string, teamId string, userId string) admin.RemoveUserFromTeamApiRequest {
 	ret := _m.Called(ctx, orgId, teamId, userId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveTeamUser")
+		panic("no return value specified for RemoveUserFromTeam")
 	}
 
-	var r0 admin.RemoveTeamUserApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.RemoveTeamUserApiRequest); ok {
+	var r0 admin.RemoveUserFromTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.RemoveUserFromTeamApiRequest); ok {
 		r0 = rf(ctx, orgId, teamId, userId)
 	} else {
-		r0 = ret.Get(0).(admin.RemoveTeamUserApiRequest)
+		r0 = ret.Get(0).(admin.RemoveUserFromTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_RemoveTeamUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveTeamUser'
-type TeamsApi_RemoveTeamUser_Call struct {
+// TeamsApi_RemoveUserFromTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveUserFromTeam'
+type TeamsApi_RemoveUserFromTeam_Call struct {
 	*mock.Call
 }
 
-// RemoveTeamUser is a helper method to define mock.On call
+// RemoveUserFromTeam is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - teamId string
 //   - userId string
-func (_e *TeamsApi_Expecter) RemoveTeamUser(ctx any, orgId any, teamId any, userId any) *TeamsApi_RemoveTeamUser_Call {
-	return &TeamsApi_RemoveTeamUser_Call{Call: _e.mock.On("RemoveTeamUser", ctx, orgId, teamId, userId)}
+func (_e *TeamsApi_Expecter) RemoveUserFromTeam(ctx any, orgId any, teamId any, userId any) *TeamsApi_RemoveUserFromTeam_Call {
+	return &TeamsApi_RemoveUserFromTeam_Call{Call: _e.mock.On("RemoveUserFromTeam", ctx, orgId, teamId, userId)}
 }
 
-func (_c *TeamsApi_RemoveTeamUser_Call) Run(run func(ctx context.Context, orgId string, teamId string, userId string)) *TeamsApi_RemoveTeamUser_Call {
+func (_c *TeamsApi_RemoveUserFromTeam_Call) Run(run func(ctx context.Context, orgId string, teamId string, userId string)) *TeamsApi_RemoveUserFromTeam_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RemoveTeamUser_Call) Return(_a0 admin.RemoveTeamUserApiRequest) *TeamsApi_RemoveTeamUser_Call {
+func (_c *TeamsApi_RemoveUserFromTeam_Call) Return(_a0 admin.RemoveUserFromTeamApiRequest) *TeamsApi_RemoveUserFromTeam_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_RemoveTeamUser_Call) RunAndReturn(run func(context.Context, string, string, string) admin.RemoveTeamUserApiRequest) *TeamsApi_RemoveTeamUser_Call {
+func (_c *TeamsApi_RemoveUserFromTeam_Call) RunAndReturn(run func(context.Context, string, string, string) admin.RemoveUserFromTeamApiRequest) *TeamsApi_RemoveUserFromTeam_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RemoveTeamUserExecute provides a mock function with given fields: r
-func (_m *TeamsApi) RemoveTeamUserExecute(r admin.RemoveTeamUserApiRequest) (*http.Response, error) {
+// RemoveUserFromTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) RemoveUserFromTeamExecute(r admin.RemoveUserFromTeamApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveTeamUserExecute")
+		panic("no return value specified for RemoveUserFromTeamExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveTeamUserApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveUserFromTeamApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveTeamUserApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveUserFromTeamApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1696,7 +1696,7 @@ func (_m *TeamsApi) RemoveTeamUserExecute(r admin.RemoveTeamUserApiRequest) (*ht
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RemoveTeamUserApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.RemoveUserFromTeamApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -1705,145 +1705,145 @@ func (_m *TeamsApi) RemoveTeamUserExecute(r admin.RemoveTeamUserApiRequest) (*ht
 	return r0, r1
 }
 
-// TeamsApi_RemoveTeamUserExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveTeamUserExecute'
-type TeamsApi_RemoveTeamUserExecute_Call struct {
+// TeamsApi_RemoveUserFromTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveUserFromTeamExecute'
+type TeamsApi_RemoveUserFromTeamExecute_Call struct {
 	*mock.Call
 }
 
-// RemoveTeamUserExecute is a helper method to define mock.On call
-//   - r admin.RemoveTeamUserApiRequest
-func (_e *TeamsApi_Expecter) RemoveTeamUserExecute(r any) *TeamsApi_RemoveTeamUserExecute_Call {
-	return &TeamsApi_RemoveTeamUserExecute_Call{Call: _e.mock.On("RemoveTeamUserExecute", r)}
+// RemoveUserFromTeamExecute is a helper method to define mock.On call
+//   - r admin.RemoveUserFromTeamApiRequest
+func (_e *TeamsApi_Expecter) RemoveUserFromTeamExecute(r any) *TeamsApi_RemoveUserFromTeamExecute_Call {
+	return &TeamsApi_RemoveUserFromTeamExecute_Call{Call: _e.mock.On("RemoveUserFromTeamExecute", r)}
 }
 
-func (_c *TeamsApi_RemoveTeamUserExecute_Call) Run(run func(r admin.RemoveTeamUserApiRequest)) *TeamsApi_RemoveTeamUserExecute_Call {
+func (_c *TeamsApi_RemoveUserFromTeamExecute_Call) Run(run func(r admin.RemoveUserFromTeamApiRequest)) *TeamsApi_RemoveUserFromTeamExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RemoveTeamUserApiRequest))
+		run(args[0].(admin.RemoveUserFromTeamApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RemoveTeamUserExecute_Call) Return(_a0 *http.Response, _a1 error) *TeamsApi_RemoveTeamUserExecute_Call {
+func (_c *TeamsApi_RemoveUserFromTeamExecute_Call) Return(_a0 *http.Response, _a1 error) *TeamsApi_RemoveUserFromTeamExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *TeamsApi_RemoveTeamUserExecute_Call) RunAndReturn(run func(admin.RemoveTeamUserApiRequest) (*http.Response, error)) *TeamsApi_RemoveTeamUserExecute_Call {
+func (_c *TeamsApi_RemoveUserFromTeamExecute_Call) RunAndReturn(run func(admin.RemoveUserFromTeamApiRequest) (*http.Response, error)) *TeamsApi_RemoveUserFromTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RemoveTeamUserWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) RemoveTeamUserWithParams(ctx context.Context, args *admin.RemoveTeamUserApiParams) admin.RemoveTeamUserApiRequest {
+// RemoveUserFromTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) RemoveUserFromTeamWithParams(ctx context.Context, args *admin.RemoveUserFromTeamApiParams) admin.RemoveUserFromTeamApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RemoveTeamUserWithParams")
+		panic("no return value specified for RemoveUserFromTeamWithParams")
 	}
 
-	var r0 admin.RemoveTeamUserApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveTeamUserApiParams) admin.RemoveTeamUserApiRequest); ok {
+	var r0 admin.RemoveUserFromTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveUserFromTeamApiParams) admin.RemoveUserFromTeamApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.RemoveTeamUserApiRequest)
+		r0 = ret.Get(0).(admin.RemoveUserFromTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_RemoveTeamUserWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveTeamUserWithParams'
-type TeamsApi_RemoveTeamUserWithParams_Call struct {
+// TeamsApi_RemoveUserFromTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveUserFromTeamWithParams'
+type TeamsApi_RemoveUserFromTeamWithParams_Call struct {
 	*mock.Call
 }
 
-// RemoveTeamUserWithParams is a helper method to define mock.On call
+// RemoveUserFromTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.RemoveTeamUserApiParams
-func (_e *TeamsApi_Expecter) RemoveTeamUserWithParams(ctx any, args any) *TeamsApi_RemoveTeamUserWithParams_Call {
-	return &TeamsApi_RemoveTeamUserWithParams_Call{Call: _e.mock.On("RemoveTeamUserWithParams", ctx, args)}
+//   - args *admin.RemoveUserFromTeamApiParams
+func (_e *TeamsApi_Expecter) RemoveUserFromTeamWithParams(ctx any, args any) *TeamsApi_RemoveUserFromTeamWithParams_Call {
+	return &TeamsApi_RemoveUserFromTeamWithParams_Call{Call: _e.mock.On("RemoveUserFromTeamWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_RemoveTeamUserWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveTeamUserApiParams)) *TeamsApi_RemoveTeamUserWithParams_Call {
+func (_c *TeamsApi_RemoveUserFromTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveUserFromTeamApiParams)) *TeamsApi_RemoveUserFromTeamWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RemoveTeamUserApiParams))
+		run(args[0].(context.Context), args[1].(*admin.RemoveUserFromTeamApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RemoveTeamUserWithParams_Call) Return(_a0 admin.RemoveTeamUserApiRequest) *TeamsApi_RemoveTeamUserWithParams_Call {
+func (_c *TeamsApi_RemoveUserFromTeamWithParams_Call) Return(_a0 admin.RemoveUserFromTeamApiRequest) *TeamsApi_RemoveUserFromTeamWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_RemoveTeamUserWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveTeamUserApiParams) admin.RemoveTeamUserApiRequest) *TeamsApi_RemoveTeamUserWithParams_Call {
+func (_c *TeamsApi_RemoveUserFromTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveUserFromTeamApiParams) admin.RemoveUserFromTeamApiRequest) *TeamsApi_RemoveUserFromTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RenameTeam provides a mock function with given fields: ctx, orgId, teamId, teamUpdate
-func (_m *TeamsApi) RenameTeam(ctx context.Context, orgId string, teamId string, teamUpdate *admin.TeamUpdate) admin.RenameTeamApiRequest {
+// RenameOrgTeam provides a mock function with given fields: ctx, orgId, teamId, teamUpdate
+func (_m *TeamsApi) RenameOrgTeam(ctx context.Context, orgId string, teamId string, teamUpdate *admin.TeamUpdate) admin.RenameOrgTeamApiRequest {
 	ret := _m.Called(ctx, orgId, teamId, teamUpdate)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RenameTeam")
+		panic("no return value specified for RenameOrgTeam")
 	}
 
-	var r0 admin.RenameTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.TeamUpdate) admin.RenameTeamApiRequest); ok {
+	var r0 admin.RenameOrgTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.TeamUpdate) admin.RenameOrgTeamApiRequest); ok {
 		r0 = rf(ctx, orgId, teamId, teamUpdate)
 	} else {
-		r0 = ret.Get(0).(admin.RenameTeamApiRequest)
+		r0 = ret.Get(0).(admin.RenameOrgTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_RenameTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameTeam'
-type TeamsApi_RenameTeam_Call struct {
+// TeamsApi_RenameOrgTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameOrgTeam'
+type TeamsApi_RenameOrgTeam_Call struct {
 	*mock.Call
 }
 
-// RenameTeam is a helper method to define mock.On call
+// RenameOrgTeam is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - teamId string
 //   - teamUpdate *admin.TeamUpdate
-func (_e *TeamsApi_Expecter) RenameTeam(ctx any, orgId any, teamId any, teamUpdate any) *TeamsApi_RenameTeam_Call {
-	return &TeamsApi_RenameTeam_Call{Call: _e.mock.On("RenameTeam", ctx, orgId, teamId, teamUpdate)}
+func (_e *TeamsApi_Expecter) RenameOrgTeam(ctx any, orgId any, teamId any, teamUpdate any) *TeamsApi_RenameOrgTeam_Call {
+	return &TeamsApi_RenameOrgTeam_Call{Call: _e.mock.On("RenameOrgTeam", ctx, orgId, teamId, teamUpdate)}
 }
 
-func (_c *TeamsApi_RenameTeam_Call) Run(run func(ctx context.Context, orgId string, teamId string, teamUpdate *admin.TeamUpdate)) *TeamsApi_RenameTeam_Call {
+func (_c *TeamsApi_RenameOrgTeam_Call) Run(run func(ctx context.Context, orgId string, teamId string, teamUpdate *admin.TeamUpdate)) *TeamsApi_RenameOrgTeam_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.TeamUpdate))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RenameTeam_Call) Return(_a0 admin.RenameTeamApiRequest) *TeamsApi_RenameTeam_Call {
+func (_c *TeamsApi_RenameOrgTeam_Call) Return(_a0 admin.RenameOrgTeamApiRequest) *TeamsApi_RenameOrgTeam_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_RenameTeam_Call) RunAndReturn(run func(context.Context, string, string, *admin.TeamUpdate) admin.RenameTeamApiRequest) *TeamsApi_RenameTeam_Call {
+func (_c *TeamsApi_RenameOrgTeam_Call) RunAndReturn(run func(context.Context, string, string, *admin.TeamUpdate) admin.RenameOrgTeamApiRequest) *TeamsApi_RenameOrgTeam_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RenameTeamExecute provides a mock function with given fields: r
-func (_m *TeamsApi) RenameTeamExecute(r admin.RenameTeamApiRequest) (*admin.TeamResponse, *http.Response, error) {
+// RenameOrgTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) RenameOrgTeamExecute(r admin.RenameOrgTeamApiRequest) (*admin.TeamResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RenameTeamExecute")
+		panic("no return value specified for RenameOrgTeamExecute")
 	}
 
 	var r0 *admin.TeamResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RenameTeamApiRequest) (*admin.TeamResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RenameOrgTeamApiRequest) (*admin.TeamResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RenameTeamApiRequest) *admin.TeamResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.RenameOrgTeamApiRequest) *admin.TeamResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1851,7 +1851,7 @@ func (_m *TeamsApi) RenameTeamExecute(r admin.RenameTeamApiRequest) (*admin.Team
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RenameTeamApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.RenameOrgTeamApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1859,7 +1859,7 @@ func (_m *TeamsApi) RenameTeamExecute(r admin.RenameTeamApiRequest) (*admin.Team
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.RenameTeamApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.RenameOrgTeamApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1868,145 +1868,145 @@ func (_m *TeamsApi) RenameTeamExecute(r admin.RenameTeamApiRequest) (*admin.Team
 	return r0, r1, r2
 }
 
-// TeamsApi_RenameTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameTeamExecute'
-type TeamsApi_RenameTeamExecute_Call struct {
+// TeamsApi_RenameOrgTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameOrgTeamExecute'
+type TeamsApi_RenameOrgTeamExecute_Call struct {
 	*mock.Call
 }
 
-// RenameTeamExecute is a helper method to define mock.On call
-//   - r admin.RenameTeamApiRequest
-func (_e *TeamsApi_Expecter) RenameTeamExecute(r any) *TeamsApi_RenameTeamExecute_Call {
-	return &TeamsApi_RenameTeamExecute_Call{Call: _e.mock.On("RenameTeamExecute", r)}
+// RenameOrgTeamExecute is a helper method to define mock.On call
+//   - r admin.RenameOrgTeamApiRequest
+func (_e *TeamsApi_Expecter) RenameOrgTeamExecute(r any) *TeamsApi_RenameOrgTeamExecute_Call {
+	return &TeamsApi_RenameOrgTeamExecute_Call{Call: _e.mock.On("RenameOrgTeamExecute", r)}
 }
 
-func (_c *TeamsApi_RenameTeamExecute_Call) Run(run func(r admin.RenameTeamApiRequest)) *TeamsApi_RenameTeamExecute_Call {
+func (_c *TeamsApi_RenameOrgTeamExecute_Call) Run(run func(r admin.RenameOrgTeamApiRequest)) *TeamsApi_RenameOrgTeamExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RenameTeamApiRequest))
+		run(args[0].(admin.RenameOrgTeamApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RenameTeamExecute_Call) Return(_a0 *admin.TeamResponse, _a1 *http.Response, _a2 error) *TeamsApi_RenameTeamExecute_Call {
+func (_c *TeamsApi_RenameOrgTeamExecute_Call) Return(_a0 *admin.TeamResponse, _a1 *http.Response, _a2 error) *TeamsApi_RenameOrgTeamExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_RenameTeamExecute_Call) RunAndReturn(run func(admin.RenameTeamApiRequest) (*admin.TeamResponse, *http.Response, error)) *TeamsApi_RenameTeamExecute_Call {
+func (_c *TeamsApi_RenameOrgTeamExecute_Call) RunAndReturn(run func(admin.RenameOrgTeamApiRequest) (*admin.TeamResponse, *http.Response, error)) *TeamsApi_RenameOrgTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RenameTeamWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) RenameTeamWithParams(ctx context.Context, args *admin.RenameTeamApiParams) admin.RenameTeamApiRequest {
+// RenameOrgTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) RenameOrgTeamWithParams(ctx context.Context, args *admin.RenameOrgTeamApiParams) admin.RenameOrgTeamApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RenameTeamWithParams")
+		panic("no return value specified for RenameOrgTeamWithParams")
 	}
 
-	var r0 admin.RenameTeamApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RenameTeamApiParams) admin.RenameTeamApiRequest); ok {
+	var r0 admin.RenameOrgTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RenameOrgTeamApiParams) admin.RenameOrgTeamApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.RenameTeamApiRequest)
+		r0 = ret.Get(0).(admin.RenameOrgTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_RenameTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameTeamWithParams'
-type TeamsApi_RenameTeamWithParams_Call struct {
+// TeamsApi_RenameOrgTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameOrgTeamWithParams'
+type TeamsApi_RenameOrgTeamWithParams_Call struct {
 	*mock.Call
 }
 
-// RenameTeamWithParams is a helper method to define mock.On call
+// RenameOrgTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.RenameTeamApiParams
-func (_e *TeamsApi_Expecter) RenameTeamWithParams(ctx any, args any) *TeamsApi_RenameTeamWithParams_Call {
-	return &TeamsApi_RenameTeamWithParams_Call{Call: _e.mock.On("RenameTeamWithParams", ctx, args)}
+//   - args *admin.RenameOrgTeamApiParams
+func (_e *TeamsApi_Expecter) RenameOrgTeamWithParams(ctx any, args any) *TeamsApi_RenameOrgTeamWithParams_Call {
+	return &TeamsApi_RenameOrgTeamWithParams_Call{Call: _e.mock.On("RenameOrgTeamWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_RenameTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.RenameTeamApiParams)) *TeamsApi_RenameTeamWithParams_Call {
+func (_c *TeamsApi_RenameOrgTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.RenameOrgTeamApiParams)) *TeamsApi_RenameOrgTeamWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RenameTeamApiParams))
+		run(args[0].(context.Context), args[1].(*admin.RenameOrgTeamApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_RenameTeamWithParams_Call) Return(_a0 admin.RenameTeamApiRequest) *TeamsApi_RenameTeamWithParams_Call {
+func (_c *TeamsApi_RenameOrgTeamWithParams_Call) Return(_a0 admin.RenameOrgTeamApiRequest) *TeamsApi_RenameOrgTeamWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_RenameTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.RenameTeamApiParams) admin.RenameTeamApiRequest) *TeamsApi_RenameTeamWithParams_Call {
+func (_c *TeamsApi_RenameOrgTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.RenameOrgTeamApiParams) admin.RenameOrgTeamApiRequest) *TeamsApi_RenameOrgTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateTeamRoles provides a mock function with given fields: ctx, groupId, teamId, teamRole
-func (_m *TeamsApi) UpdateTeamRoles(ctx context.Context, groupId string, teamId string, teamRole *admin.TeamRole) admin.UpdateTeamRolesApiRequest {
+// UpdateGroupTeam provides a mock function with given fields: ctx, groupId, teamId, teamRole
+func (_m *TeamsApi) UpdateGroupTeam(ctx context.Context, groupId string, teamId string, teamRole *admin.TeamRole) admin.UpdateGroupTeamApiRequest {
 	ret := _m.Called(ctx, groupId, teamId, teamRole)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateTeamRoles")
+		panic("no return value specified for UpdateGroupTeam")
 	}
 
-	var r0 admin.UpdateTeamRolesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.TeamRole) admin.UpdateTeamRolesApiRequest); ok {
+	var r0 admin.UpdateGroupTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.TeamRole) admin.UpdateGroupTeamApiRequest); ok {
 		r0 = rf(ctx, groupId, teamId, teamRole)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateTeamRolesApiRequest)
+		r0 = ret.Get(0).(admin.UpdateGroupTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_UpdateTeamRoles_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateTeamRoles'
-type TeamsApi_UpdateTeamRoles_Call struct {
+// TeamsApi_UpdateGroupTeam_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupTeam'
+type TeamsApi_UpdateGroupTeam_Call struct {
 	*mock.Call
 }
 
-// UpdateTeamRoles is a helper method to define mock.On call
+// UpdateGroupTeam is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - teamId string
 //   - teamRole *admin.TeamRole
-func (_e *TeamsApi_Expecter) UpdateTeamRoles(ctx any, groupId any, teamId any, teamRole any) *TeamsApi_UpdateTeamRoles_Call {
-	return &TeamsApi_UpdateTeamRoles_Call{Call: _e.mock.On("UpdateTeamRoles", ctx, groupId, teamId, teamRole)}
+func (_e *TeamsApi_Expecter) UpdateGroupTeam(ctx any, groupId any, teamId any, teamRole any) *TeamsApi_UpdateGroupTeam_Call {
+	return &TeamsApi_UpdateGroupTeam_Call{Call: _e.mock.On("UpdateGroupTeam", ctx, groupId, teamId, teamRole)}
 }
 
-func (_c *TeamsApi_UpdateTeamRoles_Call) Run(run func(ctx context.Context, groupId string, teamId string, teamRole *admin.TeamRole)) *TeamsApi_UpdateTeamRoles_Call {
+func (_c *TeamsApi_UpdateGroupTeam_Call) Run(run func(ctx context.Context, groupId string, teamId string, teamRole *admin.TeamRole)) *TeamsApi_UpdateGroupTeam_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.TeamRole))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_UpdateTeamRoles_Call) Return(_a0 admin.UpdateTeamRolesApiRequest) *TeamsApi_UpdateTeamRoles_Call {
+func (_c *TeamsApi_UpdateGroupTeam_Call) Return(_a0 admin.UpdateGroupTeamApiRequest) *TeamsApi_UpdateGroupTeam_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_UpdateTeamRoles_Call) RunAndReturn(run func(context.Context, string, string, *admin.TeamRole) admin.UpdateTeamRolesApiRequest) *TeamsApi_UpdateTeamRoles_Call {
+func (_c *TeamsApi_UpdateGroupTeam_Call) RunAndReturn(run func(context.Context, string, string, *admin.TeamRole) admin.UpdateGroupTeamApiRequest) *TeamsApi_UpdateGroupTeam_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateTeamRolesExecute provides a mock function with given fields: r
-func (_m *TeamsApi) UpdateTeamRolesExecute(r admin.UpdateTeamRolesApiRequest) (*admin.PaginatedTeamRole, *http.Response, error) {
+// UpdateGroupTeamExecute provides a mock function with given fields: r
+func (_m *TeamsApi) UpdateGroupTeamExecute(r admin.UpdateGroupTeamApiRequest) (*admin.PaginatedTeamRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateTeamRolesExecute")
+		panic("no return value specified for UpdateGroupTeamExecute")
 	}
 
 	var r0 *admin.PaginatedTeamRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateTeamRolesApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupTeamApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateTeamRolesApiRequest) *admin.PaginatedTeamRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupTeamApiRequest) *admin.PaginatedTeamRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2014,7 +2014,7 @@ func (_m *TeamsApi) UpdateTeamRolesExecute(r admin.UpdateTeamRolesApiRequest) (*
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateTeamRolesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateGroupTeamApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2022,7 +2022,7 @@ func (_m *TeamsApi) UpdateTeamRolesExecute(r admin.UpdateTeamRolesApiRequest) (*
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateTeamRolesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateGroupTeamApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2031,77 +2031,77 @@ func (_m *TeamsApi) UpdateTeamRolesExecute(r admin.UpdateTeamRolesApiRequest) (*
 	return r0, r1, r2
 }
 
-// TeamsApi_UpdateTeamRolesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateTeamRolesExecute'
-type TeamsApi_UpdateTeamRolesExecute_Call struct {
+// TeamsApi_UpdateGroupTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupTeamExecute'
+type TeamsApi_UpdateGroupTeamExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateTeamRolesExecute is a helper method to define mock.On call
-//   - r admin.UpdateTeamRolesApiRequest
-func (_e *TeamsApi_Expecter) UpdateTeamRolesExecute(r any) *TeamsApi_UpdateTeamRolesExecute_Call {
-	return &TeamsApi_UpdateTeamRolesExecute_Call{Call: _e.mock.On("UpdateTeamRolesExecute", r)}
+// UpdateGroupTeamExecute is a helper method to define mock.On call
+//   - r admin.UpdateGroupTeamApiRequest
+func (_e *TeamsApi_Expecter) UpdateGroupTeamExecute(r any) *TeamsApi_UpdateGroupTeamExecute_Call {
+	return &TeamsApi_UpdateGroupTeamExecute_Call{Call: _e.mock.On("UpdateGroupTeamExecute", r)}
 }
 
-func (_c *TeamsApi_UpdateTeamRolesExecute_Call) Run(run func(r admin.UpdateTeamRolesApiRequest)) *TeamsApi_UpdateTeamRolesExecute_Call {
+func (_c *TeamsApi_UpdateGroupTeamExecute_Call) Run(run func(r admin.UpdateGroupTeamApiRequest)) *TeamsApi_UpdateGroupTeamExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateTeamRolesApiRequest))
+		run(args[0].(admin.UpdateGroupTeamApiRequest))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_UpdateTeamRolesExecute_Call) Return(_a0 *admin.PaginatedTeamRole, _a1 *http.Response, _a2 error) *TeamsApi_UpdateTeamRolesExecute_Call {
+func (_c *TeamsApi_UpdateGroupTeamExecute_Call) Return(_a0 *admin.PaginatedTeamRole, _a1 *http.Response, _a2 error) *TeamsApi_UpdateGroupTeamExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_UpdateTeamRolesExecute_Call) RunAndReturn(run func(admin.UpdateTeamRolesApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)) *TeamsApi_UpdateTeamRolesExecute_Call {
+func (_c *TeamsApi_UpdateGroupTeamExecute_Call) RunAndReturn(run func(admin.UpdateGroupTeamApiRequest) (*admin.PaginatedTeamRole, *http.Response, error)) *TeamsApi_UpdateGroupTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateTeamRolesWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) UpdateTeamRolesWithParams(ctx context.Context, args *admin.UpdateTeamRolesApiParams) admin.UpdateTeamRolesApiRequest {
+// UpdateGroupTeamWithParams provides a mock function with given fields: ctx, args
+func (_m *TeamsApi) UpdateGroupTeamWithParams(ctx context.Context, args *admin.UpdateGroupTeamApiParams) admin.UpdateGroupTeamApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateTeamRolesWithParams")
+		panic("no return value specified for UpdateGroupTeamWithParams")
 	}
 
-	var r0 admin.UpdateTeamRolesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateTeamRolesApiParams) admin.UpdateTeamRolesApiRequest); ok {
+	var r0 admin.UpdateGroupTeamApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupTeamApiParams) admin.UpdateGroupTeamApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateTeamRolesApiRequest)
+		r0 = ret.Get(0).(admin.UpdateGroupTeamApiRequest)
 	}
 
 	return r0
 }
 
-// TeamsApi_UpdateTeamRolesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateTeamRolesWithParams'
-type TeamsApi_UpdateTeamRolesWithParams_Call struct {
+// TeamsApi_UpdateGroupTeamWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupTeamWithParams'
+type TeamsApi_UpdateGroupTeamWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateTeamRolesWithParams is a helper method to define mock.On call
+// UpdateGroupTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateTeamRolesApiParams
-func (_e *TeamsApi_Expecter) UpdateTeamRolesWithParams(ctx any, args any) *TeamsApi_UpdateTeamRolesWithParams_Call {
-	return &TeamsApi_UpdateTeamRolesWithParams_Call{Call: _e.mock.On("UpdateTeamRolesWithParams", ctx, args)}
+//   - args *admin.UpdateGroupTeamApiParams
+func (_e *TeamsApi_Expecter) UpdateGroupTeamWithParams(ctx any, args any) *TeamsApi_UpdateGroupTeamWithParams_Call {
+	return &TeamsApi_UpdateGroupTeamWithParams_Call{Call: _e.mock.On("UpdateGroupTeamWithParams", ctx, args)}
 }
 
-func (_c *TeamsApi_UpdateTeamRolesWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateTeamRolesApiParams)) *TeamsApi_UpdateTeamRolesWithParams_Call {
+func (_c *TeamsApi_UpdateGroupTeamWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupTeamApiParams)) *TeamsApi_UpdateGroupTeamWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateTeamRolesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateGroupTeamApiParams))
 	})
 	return _c
 }
 
-func (_c *TeamsApi_UpdateTeamRolesWithParams_Call) Return(_a0 admin.UpdateTeamRolesApiRequest) *TeamsApi_UpdateTeamRolesWithParams_Call {
+func (_c *TeamsApi_UpdateGroupTeamWithParams_Call) Return(_a0 admin.UpdateGroupTeamApiRequest) *TeamsApi_UpdateGroupTeamWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *TeamsApi_UpdateTeamRolesWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateTeamRolesApiParams) admin.UpdateTeamRolesApiRequest) *TeamsApi_UpdateTeamRolesWithParams_Call {
+func (_c *TeamsApi_UpdateGroupTeamWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupTeamApiParams) admin.UpdateGroupTeamApiRequest) *TeamsApi_UpdateGroupTeamWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

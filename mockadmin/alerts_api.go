@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312007/admin"
 
 	http "net/http"
 
@@ -236,6 +236,168 @@ func (_c *AlertsApi_GetAlert_Call) RunAndReturn(run func(context.Context, string
 	return _c
 }
 
+// GetAlertConfigAlerts provides a mock function with given fields: ctx, groupId, alertConfigId
+func (_m *AlertsApi) GetAlertConfigAlerts(ctx context.Context, groupId string, alertConfigId string) admin.GetAlertConfigAlertsApiRequest {
+	ret := _m.Called(ctx, groupId, alertConfigId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAlertConfigAlerts")
+	}
+
+	var r0 admin.GetAlertConfigAlertsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetAlertConfigAlertsApiRequest); ok {
+		r0 = rf(ctx, groupId, alertConfigId)
+	} else {
+		r0 = ret.Get(0).(admin.GetAlertConfigAlertsApiRequest)
+	}
+
+	return r0
+}
+
+// AlertsApi_GetAlertConfigAlerts_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAlertConfigAlerts'
+type AlertsApi_GetAlertConfigAlerts_Call struct {
+	*mock.Call
+}
+
+// GetAlertConfigAlerts is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - alertConfigId string
+func (_e *AlertsApi_Expecter) GetAlertConfigAlerts(ctx any, groupId any, alertConfigId any) *AlertsApi_GetAlertConfigAlerts_Call {
+	return &AlertsApi_GetAlertConfigAlerts_Call{Call: _e.mock.On("GetAlertConfigAlerts", ctx, groupId, alertConfigId)}
+}
+
+func (_c *AlertsApi_GetAlertConfigAlerts_Call) Run(run func(ctx context.Context, groupId string, alertConfigId string)) *AlertsApi_GetAlertConfigAlerts_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *AlertsApi_GetAlertConfigAlerts_Call) Return(_a0 admin.GetAlertConfigAlertsApiRequest) *AlertsApi_GetAlertConfigAlerts_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *AlertsApi_GetAlertConfigAlerts_Call) RunAndReturn(run func(context.Context, string, string) admin.GetAlertConfigAlertsApiRequest) *AlertsApi_GetAlertConfigAlerts_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAlertConfigAlertsExecute provides a mock function with given fields: r
+func (_m *AlertsApi) GetAlertConfigAlertsExecute(r admin.GetAlertConfigAlertsApiRequest) (*admin.PaginatedAlert, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAlertConfigAlertsExecute")
+	}
+
+	var r0 *admin.PaginatedAlert
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetAlertConfigAlertsApiRequest) (*admin.PaginatedAlert, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetAlertConfigAlertsApiRequest) *admin.PaginatedAlert); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedAlert)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetAlertConfigAlertsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetAlertConfigAlertsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// AlertsApi_GetAlertConfigAlertsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAlertConfigAlertsExecute'
+type AlertsApi_GetAlertConfigAlertsExecute_Call struct {
+	*mock.Call
+}
+
+// GetAlertConfigAlertsExecute is a helper method to define mock.On call
+//   - r admin.GetAlertConfigAlertsApiRequest
+func (_e *AlertsApi_Expecter) GetAlertConfigAlertsExecute(r any) *AlertsApi_GetAlertConfigAlertsExecute_Call {
+	return &AlertsApi_GetAlertConfigAlertsExecute_Call{Call: _e.mock.On("GetAlertConfigAlertsExecute", r)}
+}
+
+func (_c *AlertsApi_GetAlertConfigAlertsExecute_Call) Run(run func(r admin.GetAlertConfigAlertsApiRequest)) *AlertsApi_GetAlertConfigAlertsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetAlertConfigAlertsApiRequest))
+	})
+	return _c
+}
+
+func (_c *AlertsApi_GetAlertConfigAlertsExecute_Call) Return(_a0 *admin.PaginatedAlert, _a1 *http.Response, _a2 error) *AlertsApi_GetAlertConfigAlertsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *AlertsApi_GetAlertConfigAlertsExecute_Call) RunAndReturn(run func(admin.GetAlertConfigAlertsApiRequest) (*admin.PaginatedAlert, *http.Response, error)) *AlertsApi_GetAlertConfigAlertsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAlertConfigAlertsWithParams provides a mock function with given fields: ctx, args
+func (_m *AlertsApi) GetAlertConfigAlertsWithParams(ctx context.Context, args *admin.GetAlertConfigAlertsApiParams) admin.GetAlertConfigAlertsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAlertConfigAlertsWithParams")
+	}
+
+	var r0 admin.GetAlertConfigAlertsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAlertConfigAlertsApiParams) admin.GetAlertConfigAlertsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetAlertConfigAlertsApiRequest)
+	}
+
+	return r0
+}
+
+// AlertsApi_GetAlertConfigAlertsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAlertConfigAlertsWithParams'
+type AlertsApi_GetAlertConfigAlertsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetAlertConfigAlertsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetAlertConfigAlertsApiParams
+func (_e *AlertsApi_Expecter) GetAlertConfigAlertsWithParams(ctx any, args any) *AlertsApi_GetAlertConfigAlertsWithParams_Call {
+	return &AlertsApi_GetAlertConfigAlertsWithParams_Call{Call: _e.mock.On("GetAlertConfigAlertsWithParams", ctx, args)}
+}
+
+func (_c *AlertsApi_GetAlertConfigAlertsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAlertConfigAlertsApiParams)) *AlertsApi_GetAlertConfigAlertsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetAlertConfigAlertsApiParams))
+	})
+	return _c
+}
+
+func (_c *AlertsApi_GetAlertConfigAlertsWithParams_Call) Return(_a0 admin.GetAlertConfigAlertsApiRequest) *AlertsApi_GetAlertConfigAlertsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *AlertsApi_GetAlertConfigAlertsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAlertConfigAlertsApiParams) admin.GetAlertConfigAlertsApiRequest) *AlertsApi_GetAlertConfigAlertsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetAlertExecute provides a mock function with given fields: r
 func (_m *AlertsApi) GetAlertExecute(r admin.GetAlertApiRequest) (*admin.AlertViewForNdsGroup, *http.Response, error) {
 	ret := _m.Called(r)
@@ -393,168 +555,6 @@ func (_c *AlertsApi_ListAlerts_Call) Return(_a0 admin.ListAlertsApiRequest) *Ale
 }
 
 func (_c *AlertsApi_ListAlerts_Call) RunAndReturn(run func(context.Context, string) admin.ListAlertsApiRequest) *AlertsApi_ListAlerts_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListAlertsByAlertConfigurationId provides a mock function with given fields: ctx, groupId, alertConfigId
-func (_m *AlertsApi) ListAlertsByAlertConfigurationId(ctx context.Context, groupId string, alertConfigId string) admin.ListAlertsByAlertConfigurationIdApiRequest {
-	ret := _m.Called(ctx, groupId, alertConfigId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListAlertsByAlertConfigurationId")
-	}
-
-	var r0 admin.ListAlertsByAlertConfigurationIdApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListAlertsByAlertConfigurationIdApiRequest); ok {
-		r0 = rf(ctx, groupId, alertConfigId)
-	} else {
-		r0 = ret.Get(0).(admin.ListAlertsByAlertConfigurationIdApiRequest)
-	}
-
-	return r0
-}
-
-// AlertsApi_ListAlertsByAlertConfigurationId_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAlertsByAlertConfigurationId'
-type AlertsApi_ListAlertsByAlertConfigurationId_Call struct {
-	*mock.Call
-}
-
-// ListAlertsByAlertConfigurationId is a helper method to define mock.On call
-//   - ctx context.Context
-//   - groupId string
-//   - alertConfigId string
-func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationId(ctx any, groupId any, alertConfigId any) *AlertsApi_ListAlertsByAlertConfigurationId_Call {
-	return &AlertsApi_ListAlertsByAlertConfigurationId_Call{Call: _e.mock.On("ListAlertsByAlertConfigurationId", ctx, groupId, alertConfigId)}
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationId_Call) Run(run func(ctx context.Context, groupId string, alertConfigId string)) *AlertsApi_ListAlertsByAlertConfigurationId_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationId_Call) Return(_a0 admin.ListAlertsByAlertConfigurationIdApiRequest) *AlertsApi_ListAlertsByAlertConfigurationId_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationId_Call) RunAndReturn(run func(context.Context, string, string) admin.ListAlertsByAlertConfigurationIdApiRequest) *AlertsApi_ListAlertsByAlertConfigurationId_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListAlertsByAlertConfigurationIdExecute provides a mock function with given fields: r
-func (_m *AlertsApi) ListAlertsByAlertConfigurationIdExecute(r admin.ListAlertsByAlertConfigurationIdApiRequest) (*admin.PaginatedAlert, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListAlertsByAlertConfigurationIdExecute")
-	}
-
-	var r0 *admin.PaginatedAlert
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListAlertsByAlertConfigurationIdApiRequest) (*admin.PaginatedAlert, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListAlertsByAlertConfigurationIdApiRequest) *admin.PaginatedAlert); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedAlert)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListAlertsByAlertConfigurationIdApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListAlertsByAlertConfigurationIdApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAlertsByAlertConfigurationIdExecute'
-type AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call struct {
-	*mock.Call
-}
-
-// ListAlertsByAlertConfigurationIdExecute is a helper method to define mock.On call
-//   - r admin.ListAlertsByAlertConfigurationIdApiRequest
-func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationIdExecute(r any) *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call {
-	return &AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call{Call: _e.mock.On("ListAlertsByAlertConfigurationIdExecute", r)}
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call) Run(run func(r admin.ListAlertsByAlertConfigurationIdApiRequest)) *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListAlertsByAlertConfigurationIdApiRequest))
-	})
-	return _c
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call) Return(_a0 *admin.PaginatedAlert, _a1 *http.Response, _a2 error) *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call) RunAndReturn(run func(admin.ListAlertsByAlertConfigurationIdApiRequest) (*admin.PaginatedAlert, *http.Response, error)) *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListAlertsByAlertConfigurationIdWithParams provides a mock function with given fields: ctx, args
-func (_m *AlertsApi) ListAlertsByAlertConfigurationIdWithParams(ctx context.Context, args *admin.ListAlertsByAlertConfigurationIdApiParams) admin.ListAlertsByAlertConfigurationIdApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListAlertsByAlertConfigurationIdWithParams")
-	}
-
-	var r0 admin.ListAlertsByAlertConfigurationIdApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListAlertsByAlertConfigurationIdApiParams) admin.ListAlertsByAlertConfigurationIdApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListAlertsByAlertConfigurationIdApiRequest)
-	}
-
-	return r0
-}
-
-// AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAlertsByAlertConfigurationIdWithParams'
-type AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call struct {
-	*mock.Call
-}
-
-// ListAlertsByAlertConfigurationIdWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListAlertsByAlertConfigurationIdApiParams
-func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationIdWithParams(ctx any, args any) *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call {
-	return &AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call{Call: _e.mock.On("ListAlertsByAlertConfigurationIdWithParams", ctx, args)}
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call) Run(run func(ctx context.Context, args *admin.ListAlertsByAlertConfigurationIdApiParams)) *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListAlertsByAlertConfigurationIdApiParams))
-	})
-	return _c
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call) Return(_a0 admin.ListAlertsByAlertConfigurationIdApiRequest) *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListAlertsByAlertConfigurationIdApiParams) admin.ListAlertsByAlertConfigurationIdApiRequest) *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

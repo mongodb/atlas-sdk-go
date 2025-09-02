@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312007/admin"
 
 	http "net/http"
 
@@ -25,69 +25,69 @@ func (_m *AccessTrackingApi) EXPECT() *AccessTrackingApi_Expecter {
 	return &AccessTrackingApi_Expecter{mock: &_m.Mock}
 }
 
-// ListAccessLogsByClusterName provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *AccessTrackingApi) ListAccessLogsByClusterName(ctx context.Context, groupId string, clusterName string) admin.ListAccessLogsByClusterNameApiRequest {
+// GetAccessHistoryCluster provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *AccessTrackingApi) GetAccessHistoryCluster(ctx context.Context, groupId string, clusterName string) admin.GetAccessHistoryClusterApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessLogsByClusterName")
+		panic("no return value specified for GetAccessHistoryCluster")
 	}
 
-	var r0 admin.ListAccessLogsByClusterNameApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListAccessLogsByClusterNameApiRequest); ok {
+	var r0 admin.GetAccessHistoryClusterApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetAccessHistoryClusterApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName)
 	} else {
-		r0 = ret.Get(0).(admin.ListAccessLogsByClusterNameApiRequest)
+		r0 = ret.Get(0).(admin.GetAccessHistoryClusterApiRequest)
 	}
 
 	return r0
 }
 
-// AccessTrackingApi_ListAccessLogsByClusterName_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessLogsByClusterName'
-type AccessTrackingApi_ListAccessLogsByClusterName_Call struct {
+// AccessTrackingApi_GetAccessHistoryCluster_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAccessHistoryCluster'
+type AccessTrackingApi_GetAccessHistoryCluster_Call struct {
 	*mock.Call
 }
 
-// ListAccessLogsByClusterName is a helper method to define mock.On call
+// GetAccessHistoryCluster is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterName(ctx any, groupId any, clusterName any) *AccessTrackingApi_ListAccessLogsByClusterName_Call {
-	return &AccessTrackingApi_ListAccessLogsByClusterName_Call{Call: _e.mock.On("ListAccessLogsByClusterName", ctx, groupId, clusterName)}
+func (_e *AccessTrackingApi_Expecter) GetAccessHistoryCluster(ctx any, groupId any, clusterName any) *AccessTrackingApi_GetAccessHistoryCluster_Call {
+	return &AccessTrackingApi_GetAccessHistoryCluster_Call{Call: _e.mock.On("GetAccessHistoryCluster", ctx, groupId, clusterName)}
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterName_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *AccessTrackingApi_ListAccessLogsByClusterName_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryCluster_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *AccessTrackingApi_GetAccessHistoryCluster_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterName_Call) Return(_a0 admin.ListAccessLogsByClusterNameApiRequest) *AccessTrackingApi_ListAccessLogsByClusterName_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryCluster_Call) Return(_a0 admin.GetAccessHistoryClusterApiRequest) *AccessTrackingApi_GetAccessHistoryCluster_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterName_Call) RunAndReturn(run func(context.Context, string, string) admin.ListAccessLogsByClusterNameApiRequest) *AccessTrackingApi_ListAccessLogsByClusterName_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryCluster_Call) RunAndReturn(run func(context.Context, string, string) admin.GetAccessHistoryClusterApiRequest) *AccessTrackingApi_GetAccessHistoryCluster_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAccessLogsByClusterNameExecute provides a mock function with given fields: r
-func (_m *AccessTrackingApi) ListAccessLogsByClusterNameExecute(r admin.ListAccessLogsByClusterNameApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error) {
+// GetAccessHistoryClusterExecute provides a mock function with given fields: r
+func (_m *AccessTrackingApi) GetAccessHistoryClusterExecute(r admin.GetAccessHistoryClusterApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessLogsByClusterNameExecute")
+		panic("no return value specified for GetAccessHistoryClusterExecute")
 	}
 
 	var r0 *admin.MongoDBAccessLogsList
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListAccessLogsByClusterNameApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAccessHistoryClusterApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListAccessLogsByClusterNameApiRequest) *admin.MongoDBAccessLogsList); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAccessHistoryClusterApiRequest) *admin.MongoDBAccessLogsList); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -95,7 +95,7 @@ func (_m *AccessTrackingApi) ListAccessLogsByClusterNameExecute(r admin.ListAcce
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListAccessLogsByClusterNameApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetAccessHistoryClusterApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -103,7 +103,7 @@ func (_m *AccessTrackingApi) ListAccessLogsByClusterNameExecute(r admin.ListAcce
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListAccessLogsByClusterNameApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetAccessHistoryClusterApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -112,144 +112,144 @@ func (_m *AccessTrackingApi) ListAccessLogsByClusterNameExecute(r admin.ListAcce
 	return r0, r1, r2
 }
 
-// AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessLogsByClusterNameExecute'
-type AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call struct {
+// AccessTrackingApi_GetAccessHistoryClusterExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAccessHistoryClusterExecute'
+type AccessTrackingApi_GetAccessHistoryClusterExecute_Call struct {
 	*mock.Call
 }
 
-// ListAccessLogsByClusterNameExecute is a helper method to define mock.On call
-//   - r admin.ListAccessLogsByClusterNameApiRequest
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterNameExecute(r any) *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call {
-	return &AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call{Call: _e.mock.On("ListAccessLogsByClusterNameExecute", r)}
+// GetAccessHistoryClusterExecute is a helper method to define mock.On call
+//   - r admin.GetAccessHistoryClusterApiRequest
+func (_e *AccessTrackingApi_Expecter) GetAccessHistoryClusterExecute(r any) *AccessTrackingApi_GetAccessHistoryClusterExecute_Call {
+	return &AccessTrackingApi_GetAccessHistoryClusterExecute_Call{Call: _e.mock.On("GetAccessHistoryClusterExecute", r)}
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call) Run(run func(r admin.ListAccessLogsByClusterNameApiRequest)) *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryClusterExecute_Call) Run(run func(r admin.GetAccessHistoryClusterApiRequest)) *AccessTrackingApi_GetAccessHistoryClusterExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListAccessLogsByClusterNameApiRequest))
+		run(args[0].(admin.GetAccessHistoryClusterApiRequest))
 	})
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call) Return(_a0 *admin.MongoDBAccessLogsList, _a1 *http.Response, _a2 error) *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryClusterExecute_Call) Return(_a0 *admin.MongoDBAccessLogsList, _a1 *http.Response, _a2 error) *AccessTrackingApi_GetAccessHistoryClusterExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call) RunAndReturn(run func(admin.ListAccessLogsByClusterNameApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error)) *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryClusterExecute_Call) RunAndReturn(run func(admin.GetAccessHistoryClusterApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error)) *AccessTrackingApi_GetAccessHistoryClusterExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAccessLogsByClusterNameWithParams provides a mock function with given fields: ctx, args
-func (_m *AccessTrackingApi) ListAccessLogsByClusterNameWithParams(ctx context.Context, args *admin.ListAccessLogsByClusterNameApiParams) admin.ListAccessLogsByClusterNameApiRequest {
+// GetAccessHistoryClusterWithParams provides a mock function with given fields: ctx, args
+func (_m *AccessTrackingApi) GetAccessHistoryClusterWithParams(ctx context.Context, args *admin.GetAccessHistoryClusterApiParams) admin.GetAccessHistoryClusterApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessLogsByClusterNameWithParams")
+		panic("no return value specified for GetAccessHistoryClusterWithParams")
 	}
 
-	var r0 admin.ListAccessLogsByClusterNameApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListAccessLogsByClusterNameApiParams) admin.ListAccessLogsByClusterNameApiRequest); ok {
+	var r0 admin.GetAccessHistoryClusterApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAccessHistoryClusterApiParams) admin.GetAccessHistoryClusterApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListAccessLogsByClusterNameApiRequest)
+		r0 = ret.Get(0).(admin.GetAccessHistoryClusterApiRequest)
 	}
 
 	return r0
 }
 
-// AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessLogsByClusterNameWithParams'
-type AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call struct {
+// AccessTrackingApi_GetAccessHistoryClusterWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAccessHistoryClusterWithParams'
+type AccessTrackingApi_GetAccessHistoryClusterWithParams_Call struct {
 	*mock.Call
 }
 
-// ListAccessLogsByClusterNameWithParams is a helper method to define mock.On call
+// GetAccessHistoryClusterWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListAccessLogsByClusterNameApiParams
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterNameWithParams(ctx any, args any) *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call {
-	return &AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call{Call: _e.mock.On("ListAccessLogsByClusterNameWithParams", ctx, args)}
+//   - args *admin.GetAccessHistoryClusterApiParams
+func (_e *AccessTrackingApi_Expecter) GetAccessHistoryClusterWithParams(ctx any, args any) *AccessTrackingApi_GetAccessHistoryClusterWithParams_Call {
+	return &AccessTrackingApi_GetAccessHistoryClusterWithParams_Call{Call: _e.mock.On("GetAccessHistoryClusterWithParams", ctx, args)}
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call) Run(run func(ctx context.Context, args *admin.ListAccessLogsByClusterNameApiParams)) *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryClusterWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAccessHistoryClusterApiParams)) *AccessTrackingApi_GetAccessHistoryClusterWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListAccessLogsByClusterNameApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetAccessHistoryClusterApiParams))
 	})
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call) Return(_a0 admin.ListAccessLogsByClusterNameApiRequest) *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryClusterWithParams_Call) Return(_a0 admin.GetAccessHistoryClusterApiRequest) *AccessTrackingApi_GetAccessHistoryClusterWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListAccessLogsByClusterNameApiParams) admin.ListAccessLogsByClusterNameApiRequest) *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryClusterWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAccessHistoryClusterApiParams) admin.GetAccessHistoryClusterApiRequest) *AccessTrackingApi_GetAccessHistoryClusterWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAccessLogsByHostname provides a mock function with given fields: ctx, groupId, hostname
-func (_m *AccessTrackingApi) ListAccessLogsByHostname(ctx context.Context, groupId string, hostname string) admin.ListAccessLogsByHostnameApiRequest {
+// GetAccessHistoryProcess provides a mock function with given fields: ctx, groupId, hostname
+func (_m *AccessTrackingApi) GetAccessHistoryProcess(ctx context.Context, groupId string, hostname string) admin.GetAccessHistoryProcessApiRequest {
 	ret := _m.Called(ctx, groupId, hostname)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessLogsByHostname")
+		panic("no return value specified for GetAccessHistoryProcess")
 	}
 
-	var r0 admin.ListAccessLogsByHostnameApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListAccessLogsByHostnameApiRequest); ok {
+	var r0 admin.GetAccessHistoryProcessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetAccessHistoryProcessApiRequest); ok {
 		r0 = rf(ctx, groupId, hostname)
 	} else {
-		r0 = ret.Get(0).(admin.ListAccessLogsByHostnameApiRequest)
+		r0 = ret.Get(0).(admin.GetAccessHistoryProcessApiRequest)
 	}
 
 	return r0
 }
 
-// AccessTrackingApi_ListAccessLogsByHostname_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessLogsByHostname'
-type AccessTrackingApi_ListAccessLogsByHostname_Call struct {
+// AccessTrackingApi_GetAccessHistoryProcess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAccessHistoryProcess'
+type AccessTrackingApi_GetAccessHistoryProcess_Call struct {
 	*mock.Call
 }
 
-// ListAccessLogsByHostname is a helper method to define mock.On call
+// GetAccessHistoryProcess is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - hostname string
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostname(ctx any, groupId any, hostname any) *AccessTrackingApi_ListAccessLogsByHostname_Call {
-	return &AccessTrackingApi_ListAccessLogsByHostname_Call{Call: _e.mock.On("ListAccessLogsByHostname", ctx, groupId, hostname)}
+func (_e *AccessTrackingApi_Expecter) GetAccessHistoryProcess(ctx any, groupId any, hostname any) *AccessTrackingApi_GetAccessHistoryProcess_Call {
+	return &AccessTrackingApi_GetAccessHistoryProcess_Call{Call: _e.mock.On("GetAccessHistoryProcess", ctx, groupId, hostname)}
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostname_Call) Run(run func(ctx context.Context, groupId string, hostname string)) *AccessTrackingApi_ListAccessLogsByHostname_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcess_Call) Run(run func(ctx context.Context, groupId string, hostname string)) *AccessTrackingApi_GetAccessHistoryProcess_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostname_Call) Return(_a0 admin.ListAccessLogsByHostnameApiRequest) *AccessTrackingApi_ListAccessLogsByHostname_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcess_Call) Return(_a0 admin.GetAccessHistoryProcessApiRequest) *AccessTrackingApi_GetAccessHistoryProcess_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostname_Call) RunAndReturn(run func(context.Context, string, string) admin.ListAccessLogsByHostnameApiRequest) *AccessTrackingApi_ListAccessLogsByHostname_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcess_Call) RunAndReturn(run func(context.Context, string, string) admin.GetAccessHistoryProcessApiRequest) *AccessTrackingApi_GetAccessHistoryProcess_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAccessLogsByHostnameExecute provides a mock function with given fields: r
-func (_m *AccessTrackingApi) ListAccessLogsByHostnameExecute(r admin.ListAccessLogsByHostnameApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error) {
+// GetAccessHistoryProcessExecute provides a mock function with given fields: r
+func (_m *AccessTrackingApi) GetAccessHistoryProcessExecute(r admin.GetAccessHistoryProcessApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessLogsByHostnameExecute")
+		panic("no return value specified for GetAccessHistoryProcessExecute")
 	}
 
 	var r0 *admin.MongoDBAccessLogsList
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListAccessLogsByHostnameApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAccessHistoryProcessApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListAccessLogsByHostnameApiRequest) *admin.MongoDBAccessLogsList); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAccessHistoryProcessApiRequest) *admin.MongoDBAccessLogsList); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -257,7 +257,7 @@ func (_m *AccessTrackingApi) ListAccessLogsByHostnameExecute(r admin.ListAccessL
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListAccessLogsByHostnameApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetAccessHistoryProcessApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -265,7 +265,7 @@ func (_m *AccessTrackingApi) ListAccessLogsByHostnameExecute(r admin.ListAccessL
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListAccessLogsByHostnameApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetAccessHistoryProcessApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -274,77 +274,77 @@ func (_m *AccessTrackingApi) ListAccessLogsByHostnameExecute(r admin.ListAccessL
 	return r0, r1, r2
 }
 
-// AccessTrackingApi_ListAccessLogsByHostnameExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessLogsByHostnameExecute'
-type AccessTrackingApi_ListAccessLogsByHostnameExecute_Call struct {
+// AccessTrackingApi_GetAccessHistoryProcessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAccessHistoryProcessExecute'
+type AccessTrackingApi_GetAccessHistoryProcessExecute_Call struct {
 	*mock.Call
 }
 
-// ListAccessLogsByHostnameExecute is a helper method to define mock.On call
-//   - r admin.ListAccessLogsByHostnameApiRequest
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostnameExecute(r any) *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call {
-	return &AccessTrackingApi_ListAccessLogsByHostnameExecute_Call{Call: _e.mock.On("ListAccessLogsByHostnameExecute", r)}
+// GetAccessHistoryProcessExecute is a helper method to define mock.On call
+//   - r admin.GetAccessHistoryProcessApiRequest
+func (_e *AccessTrackingApi_Expecter) GetAccessHistoryProcessExecute(r any) *AccessTrackingApi_GetAccessHistoryProcessExecute_Call {
+	return &AccessTrackingApi_GetAccessHistoryProcessExecute_Call{Call: _e.mock.On("GetAccessHistoryProcessExecute", r)}
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call) Run(run func(r admin.ListAccessLogsByHostnameApiRequest)) *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcessExecute_Call) Run(run func(r admin.GetAccessHistoryProcessApiRequest)) *AccessTrackingApi_GetAccessHistoryProcessExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListAccessLogsByHostnameApiRequest))
+		run(args[0].(admin.GetAccessHistoryProcessApiRequest))
 	})
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call) Return(_a0 *admin.MongoDBAccessLogsList, _a1 *http.Response, _a2 error) *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcessExecute_Call) Return(_a0 *admin.MongoDBAccessLogsList, _a1 *http.Response, _a2 error) *AccessTrackingApi_GetAccessHistoryProcessExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call) RunAndReturn(run func(admin.ListAccessLogsByHostnameApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error)) *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcessExecute_Call) RunAndReturn(run func(admin.GetAccessHistoryProcessApiRequest) (*admin.MongoDBAccessLogsList, *http.Response, error)) *AccessTrackingApi_GetAccessHistoryProcessExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAccessLogsByHostnameWithParams provides a mock function with given fields: ctx, args
-func (_m *AccessTrackingApi) ListAccessLogsByHostnameWithParams(ctx context.Context, args *admin.ListAccessLogsByHostnameApiParams) admin.ListAccessLogsByHostnameApiRequest {
+// GetAccessHistoryProcessWithParams provides a mock function with given fields: ctx, args
+func (_m *AccessTrackingApi) GetAccessHistoryProcessWithParams(ctx context.Context, args *admin.GetAccessHistoryProcessApiParams) admin.GetAccessHistoryProcessApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAccessLogsByHostnameWithParams")
+		panic("no return value specified for GetAccessHistoryProcessWithParams")
 	}
 
-	var r0 admin.ListAccessLogsByHostnameApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListAccessLogsByHostnameApiParams) admin.ListAccessLogsByHostnameApiRequest); ok {
+	var r0 admin.GetAccessHistoryProcessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAccessHistoryProcessApiParams) admin.GetAccessHistoryProcessApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListAccessLogsByHostnameApiRequest)
+		r0 = ret.Get(0).(admin.GetAccessHistoryProcessApiRequest)
 	}
 
 	return r0
 }
 
-// AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAccessLogsByHostnameWithParams'
-type AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call struct {
+// AccessTrackingApi_GetAccessHistoryProcessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAccessHistoryProcessWithParams'
+type AccessTrackingApi_GetAccessHistoryProcessWithParams_Call struct {
 	*mock.Call
 }
 
-// ListAccessLogsByHostnameWithParams is a helper method to define mock.On call
+// GetAccessHistoryProcessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListAccessLogsByHostnameApiParams
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostnameWithParams(ctx any, args any) *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call {
-	return &AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call{Call: _e.mock.On("ListAccessLogsByHostnameWithParams", ctx, args)}
+//   - args *admin.GetAccessHistoryProcessApiParams
+func (_e *AccessTrackingApi_Expecter) GetAccessHistoryProcessWithParams(ctx any, args any) *AccessTrackingApi_GetAccessHistoryProcessWithParams_Call {
+	return &AccessTrackingApi_GetAccessHistoryProcessWithParams_Call{Call: _e.mock.On("GetAccessHistoryProcessWithParams", ctx, args)}
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call) Run(run func(ctx context.Context, args *admin.ListAccessLogsByHostnameApiParams)) *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcessWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAccessHistoryProcessApiParams)) *AccessTrackingApi_GetAccessHistoryProcessWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListAccessLogsByHostnameApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetAccessHistoryProcessApiParams))
 	})
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call) Return(_a0 admin.ListAccessLogsByHostnameApiRequest) *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcessWithParams_Call) Return(_a0 admin.GetAccessHistoryProcessApiRequest) *AccessTrackingApi_GetAccessHistoryProcessWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListAccessLogsByHostnameApiParams) admin.ListAccessLogsByHostnameApiRequest) *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call {
+func (_c *AccessTrackingApi_GetAccessHistoryProcessWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAccessHistoryProcessApiParams) admin.GetAccessHistoryProcessApiRequest) *AccessTrackingApi_GetAccessHistoryProcessWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

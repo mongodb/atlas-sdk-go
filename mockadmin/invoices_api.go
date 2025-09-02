@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312007/admin"
 
 	http "net/http"
 
@@ -25,69 +25,69 @@ func (_m *InvoicesApi) EXPECT() *InvoicesApi_Expecter {
 	return &InvoicesApi_Expecter{mock: &_m.Mock}
 }
 
-// CreateCostExplorerQueryProcess provides a mock function with given fields: ctx, orgId, costExplorerFilterRequestBody
-func (_m *InvoicesApi) CreateCostExplorerQueryProcess(ctx context.Context, orgId string, costExplorerFilterRequestBody *admin.CostExplorerFilterRequestBody) admin.CreateCostExplorerQueryProcessApiRequest {
+// CreateCostExplorerProcess provides a mock function with given fields: ctx, orgId, costExplorerFilterRequestBody
+func (_m *InvoicesApi) CreateCostExplorerProcess(ctx context.Context, orgId string, costExplorerFilterRequestBody *admin.CostExplorerFilterRequestBody) admin.CreateCostExplorerProcessApiRequest {
 	ret := _m.Called(ctx, orgId, costExplorerFilterRequestBody)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCostExplorerQueryProcess")
+		panic("no return value specified for CreateCostExplorerProcess")
 	}
 
-	var r0 admin.CreateCostExplorerQueryProcessApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CostExplorerFilterRequestBody) admin.CreateCostExplorerQueryProcessApiRequest); ok {
+	var r0 admin.CreateCostExplorerProcessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CostExplorerFilterRequestBody) admin.CreateCostExplorerProcessApiRequest); ok {
 		r0 = rf(ctx, orgId, costExplorerFilterRequestBody)
 	} else {
-		r0 = ret.Get(0).(admin.CreateCostExplorerQueryProcessApiRequest)
+		r0 = ret.Get(0).(admin.CreateCostExplorerProcessApiRequest)
 	}
 
 	return r0
 }
 
-// InvoicesApi_CreateCostExplorerQueryProcess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCostExplorerQueryProcess'
-type InvoicesApi_CreateCostExplorerQueryProcess_Call struct {
+// InvoicesApi_CreateCostExplorerProcess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCostExplorerProcess'
+type InvoicesApi_CreateCostExplorerProcess_Call struct {
 	*mock.Call
 }
 
-// CreateCostExplorerQueryProcess is a helper method to define mock.On call
+// CreateCostExplorerProcess is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - costExplorerFilterRequestBody *admin.CostExplorerFilterRequestBody
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess(ctx any, orgId any, costExplorerFilterRequestBody any) *InvoicesApi_CreateCostExplorerQueryProcess_Call {
-	return &InvoicesApi_CreateCostExplorerQueryProcess_Call{Call: _e.mock.On("CreateCostExplorerQueryProcess", ctx, orgId, costExplorerFilterRequestBody)}
+func (_e *InvoicesApi_Expecter) CreateCostExplorerProcess(ctx any, orgId any, costExplorerFilterRequestBody any) *InvoicesApi_CreateCostExplorerProcess_Call {
+	return &InvoicesApi_CreateCostExplorerProcess_Call{Call: _e.mock.On("CreateCostExplorerProcess", ctx, orgId, costExplorerFilterRequestBody)}
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcess_Call) Run(run func(ctx context.Context, orgId string, costExplorerFilterRequestBody *admin.CostExplorerFilterRequestBody)) *InvoicesApi_CreateCostExplorerQueryProcess_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcess_Call) Run(run func(ctx context.Context, orgId string, costExplorerFilterRequestBody *admin.CostExplorerFilterRequestBody)) *InvoicesApi_CreateCostExplorerProcess_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CostExplorerFilterRequestBody))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcess_Call) Return(_a0 admin.CreateCostExplorerQueryProcessApiRequest) *InvoicesApi_CreateCostExplorerQueryProcess_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcess_Call) Return(_a0 admin.CreateCostExplorerProcessApiRequest) *InvoicesApi_CreateCostExplorerProcess_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcess_Call) RunAndReturn(run func(context.Context, string, *admin.CostExplorerFilterRequestBody) admin.CreateCostExplorerQueryProcessApiRequest) *InvoicesApi_CreateCostExplorerQueryProcess_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcess_Call) RunAndReturn(run func(context.Context, string, *admin.CostExplorerFilterRequestBody) admin.CreateCostExplorerProcessApiRequest) *InvoicesApi_CreateCostExplorerProcess_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateCostExplorerQueryProcessExecute provides a mock function with given fields: r
-func (_m *InvoicesApi) CreateCostExplorerQueryProcessExecute(r admin.CreateCostExplorerQueryProcessApiRequest) (*admin.CostExplorerFilterResponse, *http.Response, error) {
+// CreateCostExplorerProcessExecute provides a mock function with given fields: r
+func (_m *InvoicesApi) CreateCostExplorerProcessExecute(r admin.CreateCostExplorerProcessApiRequest) (*admin.CostExplorerFilterResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCostExplorerQueryProcessExecute")
+		panic("no return value specified for CreateCostExplorerProcessExecute")
 	}
 
 	var r0 *admin.CostExplorerFilterResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateCostExplorerQueryProcessApiRequest) (*admin.CostExplorerFilterResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCostExplorerProcessApiRequest) (*admin.CostExplorerFilterResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateCostExplorerQueryProcessApiRequest) *admin.CostExplorerFilterResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCostExplorerProcessApiRequest) *admin.CostExplorerFilterResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -95,7 +95,7 @@ func (_m *InvoicesApi) CreateCostExplorerQueryProcessExecute(r admin.CreateCostE
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateCostExplorerQueryProcessApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateCostExplorerProcessApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -103,7 +103,7 @@ func (_m *InvoicesApi) CreateCostExplorerQueryProcessExecute(r admin.CreateCostE
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateCostExplorerQueryProcessApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateCostExplorerProcessApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -112,304 +112,144 @@ func (_m *InvoicesApi) CreateCostExplorerQueryProcessExecute(r admin.CreateCostE
 	return r0, r1, r2
 }
 
-// InvoicesApi_CreateCostExplorerQueryProcessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCostExplorerQueryProcessExecute'
-type InvoicesApi_CreateCostExplorerQueryProcessExecute_Call struct {
+// InvoicesApi_CreateCostExplorerProcessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCostExplorerProcessExecute'
+type InvoicesApi_CreateCostExplorerProcessExecute_Call struct {
 	*mock.Call
 }
 
-// CreateCostExplorerQueryProcessExecute is a helper method to define mock.On call
-//   - r admin.CreateCostExplorerQueryProcessApiRequest
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcessExecute(r any) *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call {
-	return &InvoicesApi_CreateCostExplorerQueryProcessExecute_Call{Call: _e.mock.On("CreateCostExplorerQueryProcessExecute", r)}
+// CreateCostExplorerProcessExecute is a helper method to define mock.On call
+//   - r admin.CreateCostExplorerProcessApiRequest
+func (_e *InvoicesApi_Expecter) CreateCostExplorerProcessExecute(r any) *InvoicesApi_CreateCostExplorerProcessExecute_Call {
+	return &InvoicesApi_CreateCostExplorerProcessExecute_Call{Call: _e.mock.On("CreateCostExplorerProcessExecute", r)}
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call) Run(run func(r admin.CreateCostExplorerQueryProcessApiRequest)) *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcessExecute_Call) Run(run func(r admin.CreateCostExplorerProcessApiRequest)) *InvoicesApi_CreateCostExplorerProcessExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateCostExplorerQueryProcessApiRequest))
+		run(args[0].(admin.CreateCostExplorerProcessApiRequest))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call) Return(_a0 *admin.CostExplorerFilterResponse, _a1 *http.Response, _a2 error) *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcessExecute_Call) Return(_a0 *admin.CostExplorerFilterResponse, _a1 *http.Response, _a2 error) *InvoicesApi_CreateCostExplorerProcessExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call) RunAndReturn(run func(admin.CreateCostExplorerQueryProcessApiRequest) (*admin.CostExplorerFilterResponse, *http.Response, error)) *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcessExecute_Call) RunAndReturn(run func(admin.CreateCostExplorerProcessApiRequest) (*admin.CostExplorerFilterResponse, *http.Response, error)) *InvoicesApi_CreateCostExplorerProcessExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateCostExplorerQueryProcessWithParams provides a mock function with given fields: ctx, args
-func (_m *InvoicesApi) CreateCostExplorerQueryProcessWithParams(ctx context.Context, args *admin.CreateCostExplorerQueryProcessApiParams) admin.CreateCostExplorerQueryProcessApiRequest {
+// CreateCostExplorerProcessWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesApi) CreateCostExplorerProcessWithParams(ctx context.Context, args *admin.CreateCostExplorerProcessApiParams) admin.CreateCostExplorerProcessApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCostExplorerQueryProcessWithParams")
+		panic("no return value specified for CreateCostExplorerProcessWithParams")
 	}
 
-	var r0 admin.CreateCostExplorerQueryProcessApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateCostExplorerQueryProcessApiParams) admin.CreateCostExplorerQueryProcessApiRequest); ok {
+	var r0 admin.CreateCostExplorerProcessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateCostExplorerProcessApiParams) admin.CreateCostExplorerProcessApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateCostExplorerQueryProcessApiRequest)
+		r0 = ret.Get(0).(admin.CreateCostExplorerProcessApiRequest)
 	}
 
 	return r0
 }
 
-// InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCostExplorerQueryProcessWithParams'
-type InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call struct {
+// InvoicesApi_CreateCostExplorerProcessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCostExplorerProcessWithParams'
+type InvoicesApi_CreateCostExplorerProcessWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateCostExplorerQueryProcessWithParams is a helper method to define mock.On call
+// CreateCostExplorerProcessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateCostExplorerQueryProcessApiParams
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcessWithParams(ctx any, args any) *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call {
-	return &InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call{Call: _e.mock.On("CreateCostExplorerQueryProcessWithParams", ctx, args)}
+//   - args *admin.CreateCostExplorerProcessApiParams
+func (_e *InvoicesApi_Expecter) CreateCostExplorerProcessWithParams(ctx any, args any) *InvoicesApi_CreateCostExplorerProcessWithParams_Call {
+	return &InvoicesApi_CreateCostExplorerProcessWithParams_Call{Call: _e.mock.On("CreateCostExplorerProcessWithParams", ctx, args)}
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateCostExplorerQueryProcessApiParams)) *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcessWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateCostExplorerProcessApiParams)) *InvoicesApi_CreateCostExplorerProcessWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateCostExplorerQueryProcessApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateCostExplorerProcessApiParams))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call) Return(_a0 admin.CreateCostExplorerQueryProcessApiRequest) *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcessWithParams_Call) Return(_a0 admin.CreateCostExplorerProcessApiRequest) *InvoicesApi_CreateCostExplorerProcessWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateCostExplorerQueryProcessApiParams) admin.CreateCostExplorerQueryProcessApiRequest) *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call {
+func (_c *InvoicesApi_CreateCostExplorerProcessWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateCostExplorerProcessApiParams) admin.CreateCostExplorerProcessApiRequest) *InvoicesApi_CreateCostExplorerProcessWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DownloadInvoiceCsv provides a mock function with given fields: ctx, orgId, invoiceId
-func (_m *InvoicesApi) DownloadInvoiceCsv(ctx context.Context, orgId string, invoiceId string) admin.DownloadInvoiceCsvApiRequest {
-	ret := _m.Called(ctx, orgId, invoiceId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DownloadInvoiceCsv")
-	}
-
-	var r0 admin.DownloadInvoiceCsvApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DownloadInvoiceCsvApiRequest); ok {
-		r0 = rf(ctx, orgId, invoiceId)
-	} else {
-		r0 = ret.Get(0).(admin.DownloadInvoiceCsvApiRequest)
-	}
-
-	return r0
-}
-
-// InvoicesApi_DownloadInvoiceCsv_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadInvoiceCsv'
-type InvoicesApi_DownloadInvoiceCsv_Call struct {
-	*mock.Call
-}
-
-// DownloadInvoiceCsv is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - invoiceId string
-func (_e *InvoicesApi_Expecter) DownloadInvoiceCsv(ctx any, orgId any, invoiceId any) *InvoicesApi_DownloadInvoiceCsv_Call {
-	return &InvoicesApi_DownloadInvoiceCsv_Call{Call: _e.mock.On("DownloadInvoiceCsv", ctx, orgId, invoiceId)}
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsv_Call) Run(run func(ctx context.Context, orgId string, invoiceId string)) *InvoicesApi_DownloadInvoiceCsv_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsv_Call) Return(_a0 admin.DownloadInvoiceCsvApiRequest) *InvoicesApi_DownloadInvoiceCsv_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsv_Call) RunAndReturn(run func(context.Context, string, string) admin.DownloadInvoiceCsvApiRequest) *InvoicesApi_DownloadInvoiceCsv_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DownloadInvoiceCsvExecute provides a mock function with given fields: r
-func (_m *InvoicesApi) DownloadInvoiceCsvExecute(r admin.DownloadInvoiceCsvApiRequest) (string, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DownloadInvoiceCsvExecute")
-	}
-
-	var r0 string
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DownloadInvoiceCsvApiRequest) (string, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.DownloadInvoiceCsvApiRequest) string); ok {
-		r0 = rf(r)
-	} else {
-		r0 = ret.Get(0).(string)
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.DownloadInvoiceCsvApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.DownloadInvoiceCsvApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// InvoicesApi_DownloadInvoiceCsvExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadInvoiceCsvExecute'
-type InvoicesApi_DownloadInvoiceCsvExecute_Call struct {
-	*mock.Call
-}
-
-// DownloadInvoiceCsvExecute is a helper method to define mock.On call
-//   - r admin.DownloadInvoiceCsvApiRequest
-func (_e *InvoicesApi_Expecter) DownloadInvoiceCsvExecute(r any) *InvoicesApi_DownloadInvoiceCsvExecute_Call {
-	return &InvoicesApi_DownloadInvoiceCsvExecute_Call{Call: _e.mock.On("DownloadInvoiceCsvExecute", r)}
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsvExecute_Call) Run(run func(r admin.DownloadInvoiceCsvApiRequest)) *InvoicesApi_DownloadInvoiceCsvExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DownloadInvoiceCsvApiRequest))
-	})
-	return _c
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsvExecute_Call) Return(_a0 string, _a1 *http.Response, _a2 error) *InvoicesApi_DownloadInvoiceCsvExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsvExecute_Call) RunAndReturn(run func(admin.DownloadInvoiceCsvApiRequest) (string, *http.Response, error)) *InvoicesApi_DownloadInvoiceCsvExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// DownloadInvoiceCsvWithParams provides a mock function with given fields: ctx, args
-func (_m *InvoicesApi) DownloadInvoiceCsvWithParams(ctx context.Context, args *admin.DownloadInvoiceCsvApiParams) admin.DownloadInvoiceCsvApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for DownloadInvoiceCsvWithParams")
-	}
-
-	var r0 admin.DownloadInvoiceCsvApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadInvoiceCsvApiParams) admin.DownloadInvoiceCsvApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.DownloadInvoiceCsvApiRequest)
-	}
-
-	return r0
-}
-
-// InvoicesApi_DownloadInvoiceCsvWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadInvoiceCsvWithParams'
-type InvoicesApi_DownloadInvoiceCsvWithParams_Call struct {
-	*mock.Call
-}
-
-// DownloadInvoiceCsvWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.DownloadInvoiceCsvApiParams
-func (_e *InvoicesApi_Expecter) DownloadInvoiceCsvWithParams(ctx any, args any) *InvoicesApi_DownloadInvoiceCsvWithParams_Call {
-	return &InvoicesApi_DownloadInvoiceCsvWithParams_Call{Call: _e.mock.On("DownloadInvoiceCsvWithParams", ctx, args)}
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsvWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadInvoiceCsvApiParams)) *InvoicesApi_DownloadInvoiceCsvWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DownloadInvoiceCsvApiParams))
-	})
-	return _c
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsvWithParams_Call) Return(_a0 admin.DownloadInvoiceCsvApiRequest) *InvoicesApi_DownloadInvoiceCsvWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *InvoicesApi_DownloadInvoiceCsvWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadInvoiceCsvApiParams) admin.DownloadInvoiceCsvApiRequest) *InvoicesApi_DownloadInvoiceCsvWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// GetCostExplorerQueryProcess provides a mock function with given fields: ctx, orgId, token
-func (_m *InvoicesApi) GetCostExplorerQueryProcess(ctx context.Context, orgId string, token string) admin.GetCostExplorerQueryProcessApiRequest {
+// GetCostExplorerUsage provides a mock function with given fields: ctx, orgId, token
+func (_m *InvoicesApi) GetCostExplorerUsage(ctx context.Context, orgId string, token string) admin.GetCostExplorerUsageApiRequest {
 	ret := _m.Called(ctx, orgId, token)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCostExplorerQueryProcess")
+		panic("no return value specified for GetCostExplorerUsage")
 	}
 
-	var r0 admin.GetCostExplorerQueryProcessApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetCostExplorerQueryProcessApiRequest); ok {
+	var r0 admin.GetCostExplorerUsageApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetCostExplorerUsageApiRequest); ok {
 		r0 = rf(ctx, orgId, token)
 	} else {
-		r0 = ret.Get(0).(admin.GetCostExplorerQueryProcessApiRequest)
+		r0 = ret.Get(0).(admin.GetCostExplorerUsageApiRequest)
 	}
 
 	return r0
 }
 
-// InvoicesApi_GetCostExplorerQueryProcess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCostExplorerQueryProcess'
-type InvoicesApi_GetCostExplorerQueryProcess_Call struct {
+// InvoicesApi_GetCostExplorerUsage_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCostExplorerUsage'
+type InvoicesApi_GetCostExplorerUsage_Call struct {
 	*mock.Call
 }
 
-// GetCostExplorerQueryProcess is a helper method to define mock.On call
+// GetCostExplorerUsage is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - token string
-func (_e *InvoicesApi_Expecter) GetCostExplorerQueryProcess(ctx any, orgId any, token any) *InvoicesApi_GetCostExplorerQueryProcess_Call {
-	return &InvoicesApi_GetCostExplorerQueryProcess_Call{Call: _e.mock.On("GetCostExplorerQueryProcess", ctx, orgId, token)}
+func (_e *InvoicesApi_Expecter) GetCostExplorerUsage(ctx any, orgId any, token any) *InvoicesApi_GetCostExplorerUsage_Call {
+	return &InvoicesApi_GetCostExplorerUsage_Call{Call: _e.mock.On("GetCostExplorerUsage", ctx, orgId, token)}
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcess_Call) Run(run func(ctx context.Context, orgId string, token string)) *InvoicesApi_GetCostExplorerQueryProcess_Call {
+func (_c *InvoicesApi_GetCostExplorerUsage_Call) Run(run func(ctx context.Context, orgId string, token string)) *InvoicesApi_GetCostExplorerUsage_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcess_Call) Return(_a0 admin.GetCostExplorerQueryProcessApiRequest) *InvoicesApi_GetCostExplorerQueryProcess_Call {
+func (_c *InvoicesApi_GetCostExplorerUsage_Call) Return(_a0 admin.GetCostExplorerUsageApiRequest) *InvoicesApi_GetCostExplorerUsage_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcess_Call) RunAndReturn(run func(context.Context, string, string) admin.GetCostExplorerQueryProcessApiRequest) *InvoicesApi_GetCostExplorerQueryProcess_Call {
+func (_c *InvoicesApi_GetCostExplorerUsage_Call) RunAndReturn(run func(context.Context, string, string) admin.GetCostExplorerUsageApiRequest) *InvoicesApi_GetCostExplorerUsage_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCostExplorerQueryProcessExecute provides a mock function with given fields: r
-func (_m *InvoicesApi) GetCostExplorerQueryProcessExecute(r admin.GetCostExplorerQueryProcessApiRequest) (any, *http.Response, error) {
+// GetCostExplorerUsageExecute provides a mock function with given fields: r
+func (_m *InvoicesApi) GetCostExplorerUsageExecute(r admin.GetCostExplorerUsageApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCostExplorerQueryProcessExecute")
+		panic("no return value specified for GetCostExplorerUsageExecute")
 	}
 
 	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetCostExplorerQueryProcessApiRequest) (any, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCostExplorerUsageApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetCostExplorerQueryProcessApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCostExplorerUsageApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -417,7 +257,7 @@ func (_m *InvoicesApi) GetCostExplorerQueryProcessExecute(r admin.GetCostExplore
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetCostExplorerQueryProcessApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetCostExplorerUsageApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -425,7 +265,7 @@ func (_m *InvoicesApi) GetCostExplorerQueryProcessExecute(r admin.GetCostExplore
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetCostExplorerQueryProcessApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetCostExplorerUsageApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -434,77 +274,77 @@ func (_m *InvoicesApi) GetCostExplorerQueryProcessExecute(r admin.GetCostExplore
 	return r0, r1, r2
 }
 
-// InvoicesApi_GetCostExplorerQueryProcessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCostExplorerQueryProcessExecute'
-type InvoicesApi_GetCostExplorerQueryProcessExecute_Call struct {
+// InvoicesApi_GetCostExplorerUsageExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCostExplorerUsageExecute'
+type InvoicesApi_GetCostExplorerUsageExecute_Call struct {
 	*mock.Call
 }
 
-// GetCostExplorerQueryProcessExecute is a helper method to define mock.On call
-//   - r admin.GetCostExplorerQueryProcessApiRequest
-func (_e *InvoicesApi_Expecter) GetCostExplorerQueryProcessExecute(r any) *InvoicesApi_GetCostExplorerQueryProcessExecute_Call {
-	return &InvoicesApi_GetCostExplorerQueryProcessExecute_Call{Call: _e.mock.On("GetCostExplorerQueryProcessExecute", r)}
+// GetCostExplorerUsageExecute is a helper method to define mock.On call
+//   - r admin.GetCostExplorerUsageApiRequest
+func (_e *InvoicesApi_Expecter) GetCostExplorerUsageExecute(r any) *InvoicesApi_GetCostExplorerUsageExecute_Call {
+	return &InvoicesApi_GetCostExplorerUsageExecute_Call{Call: _e.mock.On("GetCostExplorerUsageExecute", r)}
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcessExecute_Call) Run(run func(r admin.GetCostExplorerQueryProcessApiRequest)) *InvoicesApi_GetCostExplorerQueryProcessExecute_Call {
+func (_c *InvoicesApi_GetCostExplorerUsageExecute_Call) Run(run func(r admin.GetCostExplorerUsageApiRequest)) *InvoicesApi_GetCostExplorerUsageExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetCostExplorerQueryProcessApiRequest))
+		run(args[0].(admin.GetCostExplorerUsageApiRequest))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcessExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *InvoicesApi_GetCostExplorerQueryProcessExecute_Call {
+func (_c *InvoicesApi_GetCostExplorerUsageExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *InvoicesApi_GetCostExplorerUsageExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcessExecute_Call) RunAndReturn(run func(admin.GetCostExplorerQueryProcessApiRequest) (any, *http.Response, error)) *InvoicesApi_GetCostExplorerQueryProcessExecute_Call {
+func (_c *InvoicesApi_GetCostExplorerUsageExecute_Call) RunAndReturn(run func(admin.GetCostExplorerUsageApiRequest) (any, *http.Response, error)) *InvoicesApi_GetCostExplorerUsageExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCostExplorerQueryProcessWithParams provides a mock function with given fields: ctx, args
-func (_m *InvoicesApi) GetCostExplorerQueryProcessWithParams(ctx context.Context, args *admin.GetCostExplorerQueryProcessApiParams) admin.GetCostExplorerQueryProcessApiRequest {
+// GetCostExplorerUsageWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesApi) GetCostExplorerUsageWithParams(ctx context.Context, args *admin.GetCostExplorerUsageApiParams) admin.GetCostExplorerUsageApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCostExplorerQueryProcessWithParams")
+		panic("no return value specified for GetCostExplorerUsageWithParams")
 	}
 
-	var r0 admin.GetCostExplorerQueryProcessApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCostExplorerQueryProcessApiParams) admin.GetCostExplorerQueryProcessApiRequest); ok {
+	var r0 admin.GetCostExplorerUsageApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCostExplorerUsageApiParams) admin.GetCostExplorerUsageApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetCostExplorerQueryProcessApiRequest)
+		r0 = ret.Get(0).(admin.GetCostExplorerUsageApiRequest)
 	}
 
 	return r0
 }
 
-// InvoicesApi_GetCostExplorerQueryProcessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCostExplorerQueryProcessWithParams'
-type InvoicesApi_GetCostExplorerQueryProcessWithParams_Call struct {
+// InvoicesApi_GetCostExplorerUsageWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCostExplorerUsageWithParams'
+type InvoicesApi_GetCostExplorerUsageWithParams_Call struct {
 	*mock.Call
 }
 
-// GetCostExplorerQueryProcessWithParams is a helper method to define mock.On call
+// GetCostExplorerUsageWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetCostExplorerQueryProcessApiParams
-func (_e *InvoicesApi_Expecter) GetCostExplorerQueryProcessWithParams(ctx any, args any) *InvoicesApi_GetCostExplorerQueryProcessWithParams_Call {
-	return &InvoicesApi_GetCostExplorerQueryProcessWithParams_Call{Call: _e.mock.On("GetCostExplorerQueryProcessWithParams", ctx, args)}
+//   - args *admin.GetCostExplorerUsageApiParams
+func (_e *InvoicesApi_Expecter) GetCostExplorerUsageWithParams(ctx any, args any) *InvoicesApi_GetCostExplorerUsageWithParams_Call {
+	return &InvoicesApi_GetCostExplorerUsageWithParams_Call{Call: _e.mock.On("GetCostExplorerUsageWithParams", ctx, args)}
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcessWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCostExplorerQueryProcessApiParams)) *InvoicesApi_GetCostExplorerQueryProcessWithParams_Call {
+func (_c *InvoicesApi_GetCostExplorerUsageWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCostExplorerUsageApiParams)) *InvoicesApi_GetCostExplorerUsageWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetCostExplorerQueryProcessApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetCostExplorerUsageApiParams))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcessWithParams_Call) Return(_a0 admin.GetCostExplorerQueryProcessApiRequest) *InvoicesApi_GetCostExplorerQueryProcessWithParams_Call {
+func (_c *InvoicesApi_GetCostExplorerUsageWithParams_Call) Return(_a0 admin.GetCostExplorerUsageApiRequest) *InvoicesApi_GetCostExplorerUsageWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *InvoicesApi_GetCostExplorerQueryProcessWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCostExplorerQueryProcessApiParams) admin.GetCostExplorerQueryProcessApiRequest) *InvoicesApi_GetCostExplorerQueryProcessWithParams_Call {
+func (_c *InvoicesApi_GetCostExplorerUsageWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCostExplorerUsageApiParams) admin.GetCostExplorerUsageApiRequest) *InvoicesApi_GetCostExplorerUsageWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -553,6 +393,166 @@ func (_c *InvoicesApi_GetInvoice_Call) Return(_a0 admin.GetInvoiceApiRequest) *I
 }
 
 func (_c *InvoicesApi_GetInvoice_Call) RunAndReturn(run func(context.Context, string, string) admin.GetInvoiceApiRequest) *InvoicesApi_GetInvoice_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetInvoiceCsv provides a mock function with given fields: ctx, orgId, invoiceId
+func (_m *InvoicesApi) GetInvoiceCsv(ctx context.Context, orgId string, invoiceId string) admin.GetInvoiceCsvApiRequest {
+	ret := _m.Called(ctx, orgId, invoiceId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetInvoiceCsv")
+	}
+
+	var r0 admin.GetInvoiceCsvApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetInvoiceCsvApiRequest); ok {
+		r0 = rf(ctx, orgId, invoiceId)
+	} else {
+		r0 = ret.Get(0).(admin.GetInvoiceCsvApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_GetInvoiceCsv_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetInvoiceCsv'
+type InvoicesApi_GetInvoiceCsv_Call struct {
+	*mock.Call
+}
+
+// GetInvoiceCsv is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - invoiceId string
+func (_e *InvoicesApi_Expecter) GetInvoiceCsv(ctx any, orgId any, invoiceId any) *InvoicesApi_GetInvoiceCsv_Call {
+	return &InvoicesApi_GetInvoiceCsv_Call{Call: _e.mock.On("GetInvoiceCsv", ctx, orgId, invoiceId)}
+}
+
+func (_c *InvoicesApi_GetInvoiceCsv_Call) Run(run func(ctx context.Context, orgId string, invoiceId string)) *InvoicesApi_GetInvoiceCsv_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_GetInvoiceCsv_Call) Return(_a0 admin.GetInvoiceCsvApiRequest) *InvoicesApi_GetInvoiceCsv_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_GetInvoiceCsv_Call) RunAndReturn(run func(context.Context, string, string) admin.GetInvoiceCsvApiRequest) *InvoicesApi_GetInvoiceCsv_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetInvoiceCsvExecute provides a mock function with given fields: r
+func (_m *InvoicesApi) GetInvoiceCsvExecute(r admin.GetInvoiceCsvApiRequest) (string, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetInvoiceCsvExecute")
+	}
+
+	var r0 string
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetInvoiceCsvApiRequest) (string, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetInvoiceCsvApiRequest) string); ok {
+		r0 = rf(r)
+	} else {
+		r0 = ret.Get(0).(string)
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetInvoiceCsvApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetInvoiceCsvApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// InvoicesApi_GetInvoiceCsvExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetInvoiceCsvExecute'
+type InvoicesApi_GetInvoiceCsvExecute_Call struct {
+	*mock.Call
+}
+
+// GetInvoiceCsvExecute is a helper method to define mock.On call
+//   - r admin.GetInvoiceCsvApiRequest
+func (_e *InvoicesApi_Expecter) GetInvoiceCsvExecute(r any) *InvoicesApi_GetInvoiceCsvExecute_Call {
+	return &InvoicesApi_GetInvoiceCsvExecute_Call{Call: _e.mock.On("GetInvoiceCsvExecute", r)}
+}
+
+func (_c *InvoicesApi_GetInvoiceCsvExecute_Call) Run(run func(r admin.GetInvoiceCsvApiRequest)) *InvoicesApi_GetInvoiceCsvExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetInvoiceCsvApiRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_GetInvoiceCsvExecute_Call) Return(_a0 string, _a1 *http.Response, _a2 error) *InvoicesApi_GetInvoiceCsvExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *InvoicesApi_GetInvoiceCsvExecute_Call) RunAndReturn(run func(admin.GetInvoiceCsvApiRequest) (string, *http.Response, error)) *InvoicesApi_GetInvoiceCsvExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetInvoiceCsvWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesApi) GetInvoiceCsvWithParams(ctx context.Context, args *admin.GetInvoiceCsvApiParams) admin.GetInvoiceCsvApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetInvoiceCsvWithParams")
+	}
+
+	var r0 admin.GetInvoiceCsvApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetInvoiceCsvApiParams) admin.GetInvoiceCsvApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetInvoiceCsvApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_GetInvoiceCsvWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetInvoiceCsvWithParams'
+type InvoicesApi_GetInvoiceCsvWithParams_Call struct {
+	*mock.Call
+}
+
+// GetInvoiceCsvWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetInvoiceCsvApiParams
+func (_e *InvoicesApi_Expecter) GetInvoiceCsvWithParams(ctx any, args any) *InvoicesApi_GetInvoiceCsvWithParams_Call {
+	return &InvoicesApi_GetInvoiceCsvWithParams_Call{Call: _e.mock.On("GetInvoiceCsvWithParams", ctx, args)}
+}
+
+func (_c *InvoicesApi_GetInvoiceCsvWithParams_Call) Run(run func(ctx context.Context, args *admin.GetInvoiceCsvApiParams)) *InvoicesApi_GetInvoiceCsvWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetInvoiceCsvApiParams))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_GetInvoiceCsvWithParams_Call) Return(_a0 admin.GetInvoiceCsvApiRequest) *InvoicesApi_GetInvoiceCsvWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_GetInvoiceCsvWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetInvoiceCsvApiParams) admin.GetInvoiceCsvApiRequest) *InvoicesApi_GetInvoiceCsvWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -667,6 +667,167 @@ func (_c *InvoicesApi_GetInvoiceWithParams_Call) Return(_a0 admin.GetInvoiceApiR
 }
 
 func (_c *InvoicesApi_GetInvoiceWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetInvoiceApiParams) admin.GetInvoiceApiRequest) *InvoicesApi_GetInvoiceWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListInvoicePending provides a mock function with given fields: ctx, orgId
+func (_m *InvoicesApi) ListInvoicePending(ctx context.Context, orgId string) admin.ListInvoicePendingApiRequest {
+	ret := _m.Called(ctx, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListInvoicePending")
+	}
+
+	var r0 admin.ListInvoicePendingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListInvoicePendingApiRequest); ok {
+		r0 = rf(ctx, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.ListInvoicePendingApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_ListInvoicePending_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListInvoicePending'
+type InvoicesApi_ListInvoicePending_Call struct {
+	*mock.Call
+}
+
+// ListInvoicePending is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+func (_e *InvoicesApi_Expecter) ListInvoicePending(ctx any, orgId any) *InvoicesApi_ListInvoicePending_Call {
+	return &InvoicesApi_ListInvoicePending_Call{Call: _e.mock.On("ListInvoicePending", ctx, orgId)}
+}
+
+func (_c *InvoicesApi_ListInvoicePending_Call) Run(run func(ctx context.Context, orgId string)) *InvoicesApi_ListInvoicePending_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_ListInvoicePending_Call) Return(_a0 admin.ListInvoicePendingApiRequest) *InvoicesApi_ListInvoicePending_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_ListInvoicePending_Call) RunAndReturn(run func(context.Context, string) admin.ListInvoicePendingApiRequest) *InvoicesApi_ListInvoicePending_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListInvoicePendingExecute provides a mock function with given fields: r
+func (_m *InvoicesApi) ListInvoicePendingExecute(r admin.ListInvoicePendingApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListInvoicePendingExecute")
+	}
+
+	var r0 *admin.PaginatedApiInvoice
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListInvoicePendingApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListInvoicePendingApiRequest) *admin.PaginatedApiInvoice); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiInvoice)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListInvoicePendingApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListInvoicePendingApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// InvoicesApi_ListInvoicePendingExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListInvoicePendingExecute'
+type InvoicesApi_ListInvoicePendingExecute_Call struct {
+	*mock.Call
+}
+
+// ListInvoicePendingExecute is a helper method to define mock.On call
+//   - r admin.ListInvoicePendingApiRequest
+func (_e *InvoicesApi_Expecter) ListInvoicePendingExecute(r any) *InvoicesApi_ListInvoicePendingExecute_Call {
+	return &InvoicesApi_ListInvoicePendingExecute_Call{Call: _e.mock.On("ListInvoicePendingExecute", r)}
+}
+
+func (_c *InvoicesApi_ListInvoicePendingExecute_Call) Run(run func(r admin.ListInvoicePendingApiRequest)) *InvoicesApi_ListInvoicePendingExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListInvoicePendingApiRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_ListInvoicePendingExecute_Call) Return(_a0 *admin.PaginatedApiInvoice, _a1 *http.Response, _a2 error) *InvoicesApi_ListInvoicePendingExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *InvoicesApi_ListInvoicePendingExecute_Call) RunAndReturn(run func(admin.ListInvoicePendingApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error)) *InvoicesApi_ListInvoicePendingExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListInvoicePendingWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesApi) ListInvoicePendingWithParams(ctx context.Context, args *admin.ListInvoicePendingApiParams) admin.ListInvoicePendingApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListInvoicePendingWithParams")
+	}
+
+	var r0 admin.ListInvoicePendingApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListInvoicePendingApiParams) admin.ListInvoicePendingApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListInvoicePendingApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_ListInvoicePendingWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListInvoicePendingWithParams'
+type InvoicesApi_ListInvoicePendingWithParams_Call struct {
+	*mock.Call
+}
+
+// ListInvoicePendingWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListInvoicePendingApiParams
+func (_e *InvoicesApi_Expecter) ListInvoicePendingWithParams(ctx any, args any) *InvoicesApi_ListInvoicePendingWithParams_Call {
+	return &InvoicesApi_ListInvoicePendingWithParams_Call{Call: _e.mock.On("ListInvoicePendingWithParams", ctx, args)}
+}
+
+func (_c *InvoicesApi_ListInvoicePendingWithParams_Call) Run(run func(ctx context.Context, args *admin.ListInvoicePendingApiParams)) *InvoicesApi_ListInvoicePendingWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListInvoicePendingApiParams))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_ListInvoicePendingWithParams_Call) Return(_a0 admin.ListInvoicePendingApiRequest) *InvoicesApi_ListInvoicePendingWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_ListInvoicePendingWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListInvoicePendingApiParams) admin.ListInvoicePendingApiRequest) *InvoicesApi_ListInvoicePendingWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -832,231 +993,70 @@ func (_c *InvoicesApi_ListInvoicesWithParams_Call) RunAndReturn(run func(context
 	return _c
 }
 
-// ListPendingInvoices provides a mock function with given fields: ctx, orgId
-func (_m *InvoicesApi) ListPendingInvoices(ctx context.Context, orgId string) admin.ListPendingInvoicesApiRequest {
-	ret := _m.Called(ctx, orgId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPendingInvoices")
-	}
-
-	var r0 admin.ListPendingInvoicesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListPendingInvoicesApiRequest); ok {
-		r0 = rf(ctx, orgId)
-	} else {
-		r0 = ret.Get(0).(admin.ListPendingInvoicesApiRequest)
-	}
-
-	return r0
-}
-
-// InvoicesApi_ListPendingInvoices_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPendingInvoices'
-type InvoicesApi_ListPendingInvoices_Call struct {
-	*mock.Call
-}
-
-// ListPendingInvoices is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-func (_e *InvoicesApi_Expecter) ListPendingInvoices(ctx any, orgId any) *InvoicesApi_ListPendingInvoices_Call {
-	return &InvoicesApi_ListPendingInvoices_Call{Call: _e.mock.On("ListPendingInvoices", ctx, orgId)}
-}
-
-func (_c *InvoicesApi_ListPendingInvoices_Call) Run(run func(ctx context.Context, orgId string)) *InvoicesApi_ListPendingInvoices_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *InvoicesApi_ListPendingInvoices_Call) Return(_a0 admin.ListPendingInvoicesApiRequest) *InvoicesApi_ListPendingInvoices_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *InvoicesApi_ListPendingInvoices_Call) RunAndReturn(run func(context.Context, string) admin.ListPendingInvoicesApiRequest) *InvoicesApi_ListPendingInvoices_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPendingInvoicesExecute provides a mock function with given fields: r
-func (_m *InvoicesApi) ListPendingInvoicesExecute(r admin.ListPendingInvoicesApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPendingInvoicesExecute")
-	}
-
-	var r0 *admin.PaginatedApiInvoice
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListPendingInvoicesApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListPendingInvoicesApiRequest) *admin.PaginatedApiInvoice); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedApiInvoice)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListPendingInvoicesApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListPendingInvoicesApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// InvoicesApi_ListPendingInvoicesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPendingInvoicesExecute'
-type InvoicesApi_ListPendingInvoicesExecute_Call struct {
-	*mock.Call
-}
-
-// ListPendingInvoicesExecute is a helper method to define mock.On call
-//   - r admin.ListPendingInvoicesApiRequest
-func (_e *InvoicesApi_Expecter) ListPendingInvoicesExecute(r any) *InvoicesApi_ListPendingInvoicesExecute_Call {
-	return &InvoicesApi_ListPendingInvoicesExecute_Call{Call: _e.mock.On("ListPendingInvoicesExecute", r)}
-}
-
-func (_c *InvoicesApi_ListPendingInvoicesExecute_Call) Run(run func(r admin.ListPendingInvoicesApiRequest)) *InvoicesApi_ListPendingInvoicesExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListPendingInvoicesApiRequest))
-	})
-	return _c
-}
-
-func (_c *InvoicesApi_ListPendingInvoicesExecute_Call) Return(_a0 *admin.PaginatedApiInvoice, _a1 *http.Response, _a2 error) *InvoicesApi_ListPendingInvoicesExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *InvoicesApi_ListPendingInvoicesExecute_Call) RunAndReturn(run func(admin.ListPendingInvoicesApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error)) *InvoicesApi_ListPendingInvoicesExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPendingInvoicesWithParams provides a mock function with given fields: ctx, args
-func (_m *InvoicesApi) ListPendingInvoicesWithParams(ctx context.Context, args *admin.ListPendingInvoicesApiParams) admin.ListPendingInvoicesApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPendingInvoicesWithParams")
-	}
-
-	var r0 admin.ListPendingInvoicesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPendingInvoicesApiParams) admin.ListPendingInvoicesApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListPendingInvoicesApiRequest)
-	}
-
-	return r0
-}
-
-// InvoicesApi_ListPendingInvoicesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPendingInvoicesWithParams'
-type InvoicesApi_ListPendingInvoicesWithParams_Call struct {
-	*mock.Call
-}
-
-// ListPendingInvoicesWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListPendingInvoicesApiParams
-func (_e *InvoicesApi_Expecter) ListPendingInvoicesWithParams(ctx any, args any) *InvoicesApi_ListPendingInvoicesWithParams_Call {
-	return &InvoicesApi_ListPendingInvoicesWithParams_Call{Call: _e.mock.On("ListPendingInvoicesWithParams", ctx, args)}
-}
-
-func (_c *InvoicesApi_ListPendingInvoicesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPendingInvoicesApiParams)) *InvoicesApi_ListPendingInvoicesWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListPendingInvoicesApiParams))
-	})
-	return _c
-}
-
-func (_c *InvoicesApi_ListPendingInvoicesWithParams_Call) Return(_a0 admin.ListPendingInvoicesApiRequest) *InvoicesApi_ListPendingInvoicesWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *InvoicesApi_ListPendingInvoicesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPendingInvoicesApiParams) admin.ListPendingInvoicesApiRequest) *InvoicesApi_ListPendingInvoicesWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// QueryLineItemsFromSingleInvoice provides a mock function with given fields: ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest
-func (_m *InvoicesApi) QueryLineItemsFromSingleInvoice(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest) admin.QueryLineItemsFromSingleInvoiceApiRequest {
+// SearchInvoiceLineItems provides a mock function with given fields: ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest
+func (_m *InvoicesApi) SearchInvoiceLineItems(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest) admin.SearchInvoiceLineItemsApiRequest {
 	ret := _m.Called(ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for QueryLineItemsFromSingleInvoice")
+		panic("no return value specified for SearchInvoiceLineItems")
 	}
 
-	var r0 admin.QueryLineItemsFromSingleInvoiceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ApiPublicUsageDetailsQueryRequest) admin.QueryLineItemsFromSingleInvoiceApiRequest); ok {
+	var r0 admin.SearchInvoiceLineItemsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ApiPublicUsageDetailsQueryRequest) admin.SearchInvoiceLineItemsApiRequest); ok {
 		r0 = rf(ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest)
 	} else {
-		r0 = ret.Get(0).(admin.QueryLineItemsFromSingleInvoiceApiRequest)
+		r0 = ret.Get(0).(admin.SearchInvoiceLineItemsApiRequest)
 	}
 
 	return r0
 }
 
-// InvoicesApi_QueryLineItemsFromSingleInvoice_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'QueryLineItemsFromSingleInvoice'
-type InvoicesApi_QueryLineItemsFromSingleInvoice_Call struct {
+// InvoicesApi_SearchInvoiceLineItems_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SearchInvoiceLineItems'
+type InvoicesApi_SearchInvoiceLineItems_Call struct {
 	*mock.Call
 }
 
-// QueryLineItemsFromSingleInvoice is a helper method to define mock.On call
+// SearchInvoiceLineItems is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - invoiceId string
 //   - apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest
-func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoice(ctx any, orgId any, invoiceId any, apiPublicUsageDetailsQueryRequest any) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
-	return &InvoicesApi_QueryLineItemsFromSingleInvoice_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoice", ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest)}
+func (_e *InvoicesApi_Expecter) SearchInvoiceLineItems(ctx any, orgId any, invoiceId any, apiPublicUsageDetailsQueryRequest any) *InvoicesApi_SearchInvoiceLineItems_Call {
+	return &InvoicesApi_SearchInvoiceLineItems_Call{Call: _e.mock.On("SearchInvoiceLineItems", ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest)}
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoice_Call) Run(run func(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest)) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItems_Call) Run(run func(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest)) *InvoicesApi_SearchInvoiceLineItems_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ApiPublicUsageDetailsQueryRequest))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoice_Call) Return(_a0 admin.QueryLineItemsFromSingleInvoiceApiRequest) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItems_Call) Return(_a0 admin.SearchInvoiceLineItemsApiRequest) *InvoicesApi_SearchInvoiceLineItems_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoice_Call) RunAndReturn(run func(context.Context, string, string, *admin.ApiPublicUsageDetailsQueryRequest) admin.QueryLineItemsFromSingleInvoiceApiRequest) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItems_Call) RunAndReturn(run func(context.Context, string, string, *admin.ApiPublicUsageDetailsQueryRequest) admin.SearchInvoiceLineItemsApiRequest) *InvoicesApi_SearchInvoiceLineItems_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// QueryLineItemsFromSingleInvoiceExecute provides a mock function with given fields: r
-func (_m *InvoicesApi) QueryLineItemsFromSingleInvoiceExecute(r admin.QueryLineItemsFromSingleInvoiceApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error) {
+// SearchInvoiceLineItemsExecute provides a mock function with given fields: r
+func (_m *InvoicesApi) SearchInvoiceLineItemsExecute(r admin.SearchInvoiceLineItemsApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for QueryLineItemsFromSingleInvoiceExecute")
+		panic("no return value specified for SearchInvoiceLineItemsExecute")
 	}
 
 	var r0 *admin.PaginatedPublicApiUsageDetailsLineItem
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.QueryLineItemsFromSingleInvoiceApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.SearchInvoiceLineItemsApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.QueryLineItemsFromSingleInvoiceApiRequest) *admin.PaginatedPublicApiUsageDetailsLineItem); ok {
+	if rf, ok := ret.Get(0).(func(admin.SearchInvoiceLineItemsApiRequest) *admin.PaginatedPublicApiUsageDetailsLineItem); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1064,7 +1064,7 @@ func (_m *InvoicesApi) QueryLineItemsFromSingleInvoiceExecute(r admin.QueryLineI
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.QueryLineItemsFromSingleInvoiceApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.SearchInvoiceLineItemsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1072,7 +1072,7 @@ func (_m *InvoicesApi) QueryLineItemsFromSingleInvoiceExecute(r admin.QueryLineI
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.QueryLineItemsFromSingleInvoiceApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.SearchInvoiceLineItemsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1081,77 +1081,77 @@ func (_m *InvoicesApi) QueryLineItemsFromSingleInvoiceExecute(r admin.QueryLineI
 	return r0, r1, r2
 }
 
-// InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'QueryLineItemsFromSingleInvoiceExecute'
-type InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call struct {
+// InvoicesApi_SearchInvoiceLineItemsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SearchInvoiceLineItemsExecute'
+type InvoicesApi_SearchInvoiceLineItemsExecute_Call struct {
 	*mock.Call
 }
 
-// QueryLineItemsFromSingleInvoiceExecute is a helper method to define mock.On call
-//   - r admin.QueryLineItemsFromSingleInvoiceApiRequest
-func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoiceExecute(r any) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
-	return &InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoiceExecute", r)}
+// SearchInvoiceLineItemsExecute is a helper method to define mock.On call
+//   - r admin.SearchInvoiceLineItemsApiRequest
+func (_e *InvoicesApi_Expecter) SearchInvoiceLineItemsExecute(r any) *InvoicesApi_SearchInvoiceLineItemsExecute_Call {
+	return &InvoicesApi_SearchInvoiceLineItemsExecute_Call{Call: _e.mock.On("SearchInvoiceLineItemsExecute", r)}
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call) Run(run func(r admin.QueryLineItemsFromSingleInvoiceApiRequest)) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItemsExecute_Call) Run(run func(r admin.SearchInvoiceLineItemsApiRequest)) *InvoicesApi_SearchInvoiceLineItemsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.QueryLineItemsFromSingleInvoiceApiRequest))
+		run(args[0].(admin.SearchInvoiceLineItemsApiRequest))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call) Return(_a0 *admin.PaginatedPublicApiUsageDetailsLineItem, _a1 *http.Response, _a2 error) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItemsExecute_Call) Return(_a0 *admin.PaginatedPublicApiUsageDetailsLineItem, _a1 *http.Response, _a2 error) *InvoicesApi_SearchInvoiceLineItemsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call) RunAndReturn(run func(admin.QueryLineItemsFromSingleInvoiceApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error)) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItemsExecute_Call) RunAndReturn(run func(admin.SearchInvoiceLineItemsApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error)) *InvoicesApi_SearchInvoiceLineItemsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// QueryLineItemsFromSingleInvoiceWithParams provides a mock function with given fields: ctx, args
-func (_m *InvoicesApi) QueryLineItemsFromSingleInvoiceWithParams(ctx context.Context, args *admin.QueryLineItemsFromSingleInvoiceApiParams) admin.QueryLineItemsFromSingleInvoiceApiRequest {
+// SearchInvoiceLineItemsWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesApi) SearchInvoiceLineItemsWithParams(ctx context.Context, args *admin.SearchInvoiceLineItemsApiParams) admin.SearchInvoiceLineItemsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for QueryLineItemsFromSingleInvoiceWithParams")
+		panic("no return value specified for SearchInvoiceLineItemsWithParams")
 	}
 
-	var r0 admin.QueryLineItemsFromSingleInvoiceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.QueryLineItemsFromSingleInvoiceApiParams) admin.QueryLineItemsFromSingleInvoiceApiRequest); ok {
+	var r0 admin.SearchInvoiceLineItemsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.SearchInvoiceLineItemsApiParams) admin.SearchInvoiceLineItemsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.QueryLineItemsFromSingleInvoiceApiRequest)
+		r0 = ret.Get(0).(admin.SearchInvoiceLineItemsApiRequest)
 	}
 
 	return r0
 }
 
-// InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'QueryLineItemsFromSingleInvoiceWithParams'
-type InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call struct {
+// InvoicesApi_SearchInvoiceLineItemsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SearchInvoiceLineItemsWithParams'
+type InvoicesApi_SearchInvoiceLineItemsWithParams_Call struct {
 	*mock.Call
 }
 
-// QueryLineItemsFromSingleInvoiceWithParams is a helper method to define mock.On call
+// SearchInvoiceLineItemsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.QueryLineItemsFromSingleInvoiceApiParams
-func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoiceWithParams(ctx any, args any) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
-	return &InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoiceWithParams", ctx, args)}
+//   - args *admin.SearchInvoiceLineItemsApiParams
+func (_e *InvoicesApi_Expecter) SearchInvoiceLineItemsWithParams(ctx any, args any) *InvoicesApi_SearchInvoiceLineItemsWithParams_Call {
+	return &InvoicesApi_SearchInvoiceLineItemsWithParams_Call{Call: _e.mock.On("SearchInvoiceLineItemsWithParams", ctx, args)}
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call) Run(run func(ctx context.Context, args *admin.QueryLineItemsFromSingleInvoiceApiParams)) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItemsWithParams_Call) Run(run func(ctx context.Context, args *admin.SearchInvoiceLineItemsApiParams)) *InvoicesApi_SearchInvoiceLineItemsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.QueryLineItemsFromSingleInvoiceApiParams))
+		run(args[0].(context.Context), args[1].(*admin.SearchInvoiceLineItemsApiParams))
 	})
 	return _c
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call) Return(_a0 admin.QueryLineItemsFromSingleInvoiceApiRequest) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItemsWithParams_Call) Return(_a0 admin.SearchInvoiceLineItemsApiRequest) *InvoicesApi_SearchInvoiceLineItemsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call) RunAndReturn(run func(context.Context, *admin.QueryLineItemsFromSingleInvoiceApiParams) admin.QueryLineItemsFromSingleInvoiceApiRequest) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
+func (_c *InvoicesApi_SearchInvoiceLineItemsWithParams_Call) RunAndReturn(run func(context.Context, *admin.SearchInvoiceLineItemsApiParams) admin.SearchInvoiceLineItemsApiRequest) *InvoicesApi_SearchInvoiceLineItemsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

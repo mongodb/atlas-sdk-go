@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312006/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312007/admin"
 
 	http "net/http"
 
@@ -25,70 +25,70 @@ func (_m *CloudProviderAccessApi) EXPECT() *CloudProviderAccessApi_Expecter {
 	return &CloudProviderAccessApi_Expecter{mock: &_m.Mock}
 }
 
-// AuthorizeCloudProviderAccessRole provides a mock function with given fields: ctx, groupId, roleId, cloudProviderAccessRoleRequestUpdate
-func (_m *CloudProviderAccessApi) AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *admin.CloudProviderAccessRoleRequestUpdate) admin.AuthorizeCloudProviderAccessRoleApiRequest {
+// AuthorizeProviderAccessRole provides a mock function with given fields: ctx, groupId, roleId, cloudProviderAccessRoleRequestUpdate
+func (_m *CloudProviderAccessApi) AuthorizeProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *admin.CloudProviderAccessRoleRequestUpdate) admin.AuthorizeProviderAccessRoleApiRequest {
 	ret := _m.Called(ctx, groupId, roleId, cloudProviderAccessRoleRequestUpdate)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AuthorizeCloudProviderAccessRole")
+		panic("no return value specified for AuthorizeProviderAccessRole")
 	}
 
-	var r0 admin.AuthorizeCloudProviderAccessRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.CloudProviderAccessRoleRequestUpdate) admin.AuthorizeCloudProviderAccessRoleApiRequest); ok {
+	var r0 admin.AuthorizeProviderAccessRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.CloudProviderAccessRoleRequestUpdate) admin.AuthorizeProviderAccessRoleApiRequest); ok {
 		r0 = rf(ctx, groupId, roleId, cloudProviderAccessRoleRequestUpdate)
 	} else {
-		r0 = ret.Get(0).(admin.AuthorizeCloudProviderAccessRoleApiRequest)
+		r0 = ret.Get(0).(admin.AuthorizeProviderAccessRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AuthorizeCloudProviderAccessRole'
-type CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call struct {
+// CloudProviderAccessApi_AuthorizeProviderAccessRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AuthorizeProviderAccessRole'
+type CloudProviderAccessApi_AuthorizeProviderAccessRole_Call struct {
 	*mock.Call
 }
 
-// AuthorizeCloudProviderAccessRole is a helper method to define mock.On call
+// AuthorizeProviderAccessRole is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - roleId string
 //   - cloudProviderAccessRoleRequestUpdate *admin.CloudProviderAccessRoleRequestUpdate
-func (_e *CloudProviderAccessApi_Expecter) AuthorizeCloudProviderAccessRole(ctx any, groupId any, roleId any, cloudProviderAccessRoleRequestUpdate any) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call {
-	return &CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call{Call: _e.mock.On("AuthorizeCloudProviderAccessRole", ctx, groupId, roleId, cloudProviderAccessRoleRequestUpdate)}
+func (_e *CloudProviderAccessApi_Expecter) AuthorizeProviderAccessRole(ctx any, groupId any, roleId any, cloudProviderAccessRoleRequestUpdate any) *CloudProviderAccessApi_AuthorizeProviderAccessRole_Call {
+	return &CloudProviderAccessApi_AuthorizeProviderAccessRole_Call{Call: _e.mock.On("AuthorizeProviderAccessRole", ctx, groupId, roleId, cloudProviderAccessRoleRequestUpdate)}
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call) Run(run func(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *admin.CloudProviderAccessRoleRequestUpdate)) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRole_Call) Run(run func(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *admin.CloudProviderAccessRoleRequestUpdate)) *CloudProviderAccessApi_AuthorizeProviderAccessRole_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.CloudProviderAccessRoleRequestUpdate))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call) Return(_a0 admin.AuthorizeCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRole_Call) Return(_a0 admin.AuthorizeProviderAccessRoleApiRequest) *CloudProviderAccessApi_AuthorizeProviderAccessRole_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call) RunAndReturn(run func(context.Context, string, string, *admin.CloudProviderAccessRoleRequestUpdate) admin.AuthorizeCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRole_Call) RunAndReturn(run func(context.Context, string, string, *admin.CloudProviderAccessRoleRequestUpdate) admin.AuthorizeProviderAccessRoleApiRequest) *CloudProviderAccessApi_AuthorizeProviderAccessRole_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AuthorizeCloudProviderAccessRoleExecute provides a mock function with given fields: r
-func (_m *CloudProviderAccessApi) AuthorizeCloudProviderAccessRoleExecute(r admin.AuthorizeCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error) {
+// AuthorizeProviderAccessRoleExecute provides a mock function with given fields: r
+func (_m *CloudProviderAccessApi) AuthorizeProviderAccessRoleExecute(r admin.AuthorizeProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AuthorizeCloudProviderAccessRoleExecute")
+		panic("no return value specified for AuthorizeProviderAccessRoleExecute")
 	}
 
 	var r0 *admin.CloudProviderAccessRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AuthorizeCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AuthorizeProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AuthorizeCloudProviderAccessRoleApiRequest) *admin.CloudProviderAccessRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.AuthorizeProviderAccessRoleApiRequest) *admin.CloudProviderAccessRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -96,7 +96,7 @@ func (_m *CloudProviderAccessApi) AuthorizeCloudProviderAccessRoleExecute(r admi
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.AuthorizeCloudProviderAccessRoleApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.AuthorizeProviderAccessRoleApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -104,7 +104,7 @@ func (_m *CloudProviderAccessApi) AuthorizeCloudProviderAccessRoleExecute(r admi
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.AuthorizeCloudProviderAccessRoleApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.AuthorizeProviderAccessRoleApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -113,144 +113,144 @@ func (_m *CloudProviderAccessApi) AuthorizeCloudProviderAccessRoleExecute(r admi
 	return r0, r1, r2
 }
 
-// CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AuthorizeCloudProviderAccessRoleExecute'
-type CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call struct {
+// CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AuthorizeProviderAccessRoleExecute'
+type CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call struct {
 	*mock.Call
 }
 
-// AuthorizeCloudProviderAccessRoleExecute is a helper method to define mock.On call
-//   - r admin.AuthorizeCloudProviderAccessRoleApiRequest
-func (_e *CloudProviderAccessApi_Expecter) AuthorizeCloudProviderAccessRoleExecute(r any) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call {
-	return &CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call{Call: _e.mock.On("AuthorizeCloudProviderAccessRoleExecute", r)}
+// AuthorizeProviderAccessRoleExecute is a helper method to define mock.On call
+//   - r admin.AuthorizeProviderAccessRoleApiRequest
+func (_e *CloudProviderAccessApi_Expecter) AuthorizeProviderAccessRoleExecute(r any) *CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call {
+	return &CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call{Call: _e.mock.On("AuthorizeProviderAccessRoleExecute", r)}
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call) Run(run func(r admin.AuthorizeCloudProviderAccessRoleApiRequest)) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call) Run(run func(r admin.AuthorizeProviderAccessRoleApiRequest)) *CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.AuthorizeCloudProviderAccessRoleApiRequest))
+		run(args[0].(admin.AuthorizeProviderAccessRoleApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call) Return(_a0 *admin.CloudProviderAccessRole, _a1 *http.Response, _a2 error) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call) Return(_a0 *admin.CloudProviderAccessRole, _a1 *http.Response, _a2 error) *CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call) RunAndReturn(run func(admin.AuthorizeCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call) RunAndReturn(run func(admin.AuthorizeProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)) *CloudProviderAccessApi_AuthorizeProviderAccessRoleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AuthorizeCloudProviderAccessRoleWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudProviderAccessApi) AuthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *admin.AuthorizeCloudProviderAccessRoleApiParams) admin.AuthorizeCloudProviderAccessRoleApiRequest {
+// AuthorizeProviderAccessRoleWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudProviderAccessApi) AuthorizeProviderAccessRoleWithParams(ctx context.Context, args *admin.AuthorizeProviderAccessRoleApiParams) admin.AuthorizeProviderAccessRoleApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AuthorizeCloudProviderAccessRoleWithParams")
+		panic("no return value specified for AuthorizeProviderAccessRoleWithParams")
 	}
 
-	var r0 admin.AuthorizeCloudProviderAccessRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.AuthorizeCloudProviderAccessRoleApiParams) admin.AuthorizeCloudProviderAccessRoleApiRequest); ok {
+	var r0 admin.AuthorizeProviderAccessRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AuthorizeProviderAccessRoleApiParams) admin.AuthorizeProviderAccessRoleApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.AuthorizeCloudProviderAccessRoleApiRequest)
+		r0 = ret.Get(0).(admin.AuthorizeProviderAccessRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AuthorizeCloudProviderAccessRoleWithParams'
-type CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call struct {
+// CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AuthorizeProviderAccessRoleWithParams'
+type CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call struct {
 	*mock.Call
 }
 
-// AuthorizeCloudProviderAccessRoleWithParams is a helper method to define mock.On call
+// AuthorizeProviderAccessRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.AuthorizeCloudProviderAccessRoleApiParams
-func (_e *CloudProviderAccessApi_Expecter) AuthorizeCloudProviderAccessRoleWithParams(ctx any, args any) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call {
-	return &CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call{Call: _e.mock.On("AuthorizeCloudProviderAccessRoleWithParams", ctx, args)}
+//   - args *admin.AuthorizeProviderAccessRoleApiParams
+func (_e *CloudProviderAccessApi_Expecter) AuthorizeProviderAccessRoleWithParams(ctx any, args any) *CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call {
+	return &CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call{Call: _e.mock.On("AuthorizeProviderAccessRoleWithParams", ctx, args)}
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.AuthorizeCloudProviderAccessRoleApiParams)) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.AuthorizeProviderAccessRoleApiParams)) *CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.AuthorizeCloudProviderAccessRoleApiParams))
+		run(args[0].(context.Context), args[1].(*admin.AuthorizeProviderAccessRoleApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call) Return(_a0 admin.AuthorizeCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call) Return(_a0 admin.AuthorizeProviderAccessRoleApiRequest) *CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.AuthorizeCloudProviderAccessRoleApiParams) admin.AuthorizeCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_AuthorizeCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.AuthorizeProviderAccessRoleApiParams) admin.AuthorizeProviderAccessRoleApiRequest) *CloudProviderAccessApi_AuthorizeProviderAccessRoleWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateCloudProviderAccessRole provides a mock function with given fields: ctx, groupId, cloudProviderAccessRoleRequest
-func (_m *CloudProviderAccessApi) CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *admin.CloudProviderAccessRoleRequest) admin.CreateCloudProviderAccessRoleApiRequest {
+// CreateCloudProviderAccess provides a mock function with given fields: ctx, groupId, cloudProviderAccessRoleRequest
+func (_m *CloudProviderAccessApi) CreateCloudProviderAccess(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *admin.CloudProviderAccessRoleRequest) admin.CreateCloudProviderAccessApiRequest {
 	ret := _m.Called(ctx, groupId, cloudProviderAccessRoleRequest)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCloudProviderAccessRole")
+		panic("no return value specified for CreateCloudProviderAccess")
 	}
 
-	var r0 admin.CreateCloudProviderAccessRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CloudProviderAccessRoleRequest) admin.CreateCloudProviderAccessRoleApiRequest); ok {
+	var r0 admin.CreateCloudProviderAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CloudProviderAccessRoleRequest) admin.CreateCloudProviderAccessApiRequest); ok {
 		r0 = rf(ctx, groupId, cloudProviderAccessRoleRequest)
 	} else {
-		r0 = ret.Get(0).(admin.CreateCloudProviderAccessRoleApiRequest)
+		r0 = ret.Get(0).(admin.CreateCloudProviderAccessApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_CreateCloudProviderAccessRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCloudProviderAccessRole'
-type CloudProviderAccessApi_CreateCloudProviderAccessRole_Call struct {
+// CloudProviderAccessApi_CreateCloudProviderAccess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCloudProviderAccess'
+type CloudProviderAccessApi_CreateCloudProviderAccess_Call struct {
 	*mock.Call
 }
 
-// CreateCloudProviderAccessRole is a helper method to define mock.On call
+// CreateCloudProviderAccess is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProviderAccessRoleRequest *admin.CloudProviderAccessRoleRequest
-func (_e *CloudProviderAccessApi_Expecter) CreateCloudProviderAccessRole(ctx any, groupId any, cloudProviderAccessRoleRequest any) *CloudProviderAccessApi_CreateCloudProviderAccessRole_Call {
-	return &CloudProviderAccessApi_CreateCloudProviderAccessRole_Call{Call: _e.mock.On("CreateCloudProviderAccessRole", ctx, groupId, cloudProviderAccessRoleRequest)}
+func (_e *CloudProviderAccessApi_Expecter) CreateCloudProviderAccess(ctx any, groupId any, cloudProviderAccessRoleRequest any) *CloudProviderAccessApi_CreateCloudProviderAccess_Call {
+	return &CloudProviderAccessApi_CreateCloudProviderAccess_Call{Call: _e.mock.On("CreateCloudProviderAccess", ctx, groupId, cloudProviderAccessRoleRequest)}
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRole_Call) Run(run func(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *admin.CloudProviderAccessRoleRequest)) *CloudProviderAccessApi_CreateCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccess_Call) Run(run func(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *admin.CloudProviderAccessRoleRequest)) *CloudProviderAccessApi_CreateCloudProviderAccess_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CloudProviderAccessRoleRequest))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRole_Call) Return(_a0 admin.CreateCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_CreateCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccess_Call) Return(_a0 admin.CreateCloudProviderAccessApiRequest) *CloudProviderAccessApi_CreateCloudProviderAccess_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRole_Call) RunAndReturn(run func(context.Context, string, *admin.CloudProviderAccessRoleRequest) admin.CreateCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_CreateCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccess_Call) RunAndReturn(run func(context.Context, string, *admin.CloudProviderAccessRoleRequest) admin.CreateCloudProviderAccessApiRequest) *CloudProviderAccessApi_CreateCloudProviderAccess_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateCloudProviderAccessRoleExecute provides a mock function with given fields: r
-func (_m *CloudProviderAccessApi) CreateCloudProviderAccessRoleExecute(r admin.CreateCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error) {
+// CreateCloudProviderAccessExecute provides a mock function with given fields: r
+func (_m *CloudProviderAccessApi) CreateCloudProviderAccessExecute(r admin.CreateCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCloudProviderAccessRoleExecute")
+		panic("no return value specified for CreateCloudProviderAccessExecute")
 	}
 
 	var r0 *admin.CloudProviderAccessRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateCloudProviderAccessRoleApiRequest) *admin.CloudProviderAccessRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCloudProviderAccessApiRequest) *admin.CloudProviderAccessRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -258,7 +258,7 @@ func (_m *CloudProviderAccessApi) CreateCloudProviderAccessRoleExecute(r admin.C
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateCloudProviderAccessRoleApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateCloudProviderAccessApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -266,7 +266,7 @@ func (_m *CloudProviderAccessApi) CreateCloudProviderAccessRoleExecute(r admin.C
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateCloudProviderAccessRoleApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateCloudProviderAccessApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -275,144 +275,144 @@ func (_m *CloudProviderAccessApi) CreateCloudProviderAccessRoleExecute(r admin.C
 	return r0, r1, r2
 }
 
-// CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCloudProviderAccessRoleExecute'
-type CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call struct {
+// CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCloudProviderAccessExecute'
+type CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call struct {
 	*mock.Call
 }
 
-// CreateCloudProviderAccessRoleExecute is a helper method to define mock.On call
-//   - r admin.CreateCloudProviderAccessRoleApiRequest
-func (_e *CloudProviderAccessApi_Expecter) CreateCloudProviderAccessRoleExecute(r any) *CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call {
-	return &CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call{Call: _e.mock.On("CreateCloudProviderAccessRoleExecute", r)}
+// CreateCloudProviderAccessExecute is a helper method to define mock.On call
+//   - r admin.CreateCloudProviderAccessApiRequest
+func (_e *CloudProviderAccessApi_Expecter) CreateCloudProviderAccessExecute(r any) *CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call {
+	return &CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call{Call: _e.mock.On("CreateCloudProviderAccessExecute", r)}
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call) Run(run func(r admin.CreateCloudProviderAccessRoleApiRequest)) *CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call) Run(run func(r admin.CreateCloudProviderAccessApiRequest)) *CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateCloudProviderAccessRoleApiRequest))
+		run(args[0].(admin.CreateCloudProviderAccessApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call) Return(_a0 *admin.CloudProviderAccessRole, _a1 *http.Response, _a2 error) *CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call) Return(_a0 *admin.CloudProviderAccessRole, _a1 *http.Response, _a2 error) *CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call) RunAndReturn(run func(admin.CreateCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)) *CloudProviderAccessApi_CreateCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call) RunAndReturn(run func(admin.CreateCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)) *CloudProviderAccessApi_CreateCloudProviderAccessExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateCloudProviderAccessRoleWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudProviderAccessApi) CreateCloudProviderAccessRoleWithParams(ctx context.Context, args *admin.CreateCloudProviderAccessRoleApiParams) admin.CreateCloudProviderAccessRoleApiRequest {
+// CreateCloudProviderAccessWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudProviderAccessApi) CreateCloudProviderAccessWithParams(ctx context.Context, args *admin.CreateCloudProviderAccessApiParams) admin.CreateCloudProviderAccessApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateCloudProviderAccessRoleWithParams")
+		panic("no return value specified for CreateCloudProviderAccessWithParams")
 	}
 
-	var r0 admin.CreateCloudProviderAccessRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateCloudProviderAccessRoleApiParams) admin.CreateCloudProviderAccessRoleApiRequest); ok {
+	var r0 admin.CreateCloudProviderAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateCloudProviderAccessApiParams) admin.CreateCloudProviderAccessApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateCloudProviderAccessRoleApiRequest)
+		r0 = ret.Get(0).(admin.CreateCloudProviderAccessApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCloudProviderAccessRoleWithParams'
-type CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call struct {
+// CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCloudProviderAccessWithParams'
+type CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateCloudProviderAccessRoleWithParams is a helper method to define mock.On call
+// CreateCloudProviderAccessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateCloudProviderAccessRoleApiParams
-func (_e *CloudProviderAccessApi_Expecter) CreateCloudProviderAccessRoleWithParams(ctx any, args any) *CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call {
-	return &CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call{Call: _e.mock.On("CreateCloudProviderAccessRoleWithParams", ctx, args)}
+//   - args *admin.CreateCloudProviderAccessApiParams
+func (_e *CloudProviderAccessApi_Expecter) CreateCloudProviderAccessWithParams(ctx any, args any) *CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call {
+	return &CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call{Call: _e.mock.On("CreateCloudProviderAccessWithParams", ctx, args)}
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateCloudProviderAccessRoleApiParams)) *CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateCloudProviderAccessApiParams)) *CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateCloudProviderAccessRoleApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateCloudProviderAccessApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call) Return(_a0 admin.CreateCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call) Return(_a0 admin.CreateCloudProviderAccessApiRequest) *CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateCloudProviderAccessRoleApiParams) admin.CreateCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_CreateCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateCloudProviderAccessApiParams) admin.CreateCloudProviderAccessApiRequest) *CloudProviderAccessApi_CreateCloudProviderAccessWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeauthorizeCloudProviderAccessRole provides a mock function with given fields: ctx, groupId, cloudProvider, roleId
-func (_m *CloudProviderAccessApi) DeauthorizeCloudProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) admin.DeauthorizeCloudProviderAccessRoleApiRequest {
+// DeauthorizeProviderAccessRole provides a mock function with given fields: ctx, groupId, cloudProvider, roleId
+func (_m *CloudProviderAccessApi) DeauthorizeProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) admin.DeauthorizeProviderAccessRoleApiRequest {
 	ret := _m.Called(ctx, groupId, cloudProvider, roleId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeauthorizeCloudProviderAccessRole")
+		panic("no return value specified for DeauthorizeProviderAccessRole")
 	}
 
-	var r0 admin.DeauthorizeCloudProviderAccessRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeauthorizeCloudProviderAccessRoleApiRequest); ok {
+	var r0 admin.DeauthorizeProviderAccessRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeauthorizeProviderAccessRoleApiRequest); ok {
 		r0 = rf(ctx, groupId, cloudProvider, roleId)
 	} else {
-		r0 = ret.Get(0).(admin.DeauthorizeCloudProviderAccessRoleApiRequest)
+		r0 = ret.Get(0).(admin.DeauthorizeProviderAccessRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeauthorizeCloudProviderAccessRole'
-type CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call struct {
+// CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeauthorizeProviderAccessRole'
+type CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call struct {
 	*mock.Call
 }
 
-// DeauthorizeCloudProviderAccessRole is a helper method to define mock.On call
+// DeauthorizeProviderAccessRole is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProvider string
 //   - roleId string
-func (_e *CloudProviderAccessApi_Expecter) DeauthorizeCloudProviderAccessRole(ctx any, groupId any, cloudProvider any, roleId any) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call {
-	return &CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call{Call: _e.mock.On("DeauthorizeCloudProviderAccessRole", ctx, groupId, cloudProvider, roleId)}
+func (_e *CloudProviderAccessApi_Expecter) DeauthorizeProviderAccessRole(ctx any, groupId any, cloudProvider any, roleId any) *CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call {
+	return &CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call{Call: _e.mock.On("DeauthorizeProviderAccessRole", ctx, groupId, cloudProvider, roleId)}
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, roleId string)) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, roleId string)) *CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call) Return(_a0 admin.DeauthorizeCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call) Return(_a0 admin.DeauthorizeProviderAccessRoleApiRequest) *CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeauthorizeCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeauthorizeProviderAccessRoleApiRequest) *CloudProviderAccessApi_DeauthorizeProviderAccessRole_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeauthorizeCloudProviderAccessRoleExecute provides a mock function with given fields: r
-func (_m *CloudProviderAccessApi) DeauthorizeCloudProviderAccessRoleExecute(r admin.DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error) {
+// DeauthorizeProviderAccessRoleExecute provides a mock function with given fields: r
+func (_m *CloudProviderAccessApi) DeauthorizeProviderAccessRoleExecute(r admin.DeauthorizeProviderAccessRoleApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeauthorizeCloudProviderAccessRoleExecute")
+		panic("no return value specified for DeauthorizeProviderAccessRoleExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeauthorizeProviderAccessRoleApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeauthorizeCloudProviderAccessRoleApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeauthorizeProviderAccessRoleApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -420,7 +420,7 @@ func (_m *CloudProviderAccessApi) DeauthorizeCloudProviderAccessRoleExecute(r ad
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeauthorizeCloudProviderAccessRoleApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeauthorizeProviderAccessRoleApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -429,144 +429,144 @@ func (_m *CloudProviderAccessApi) DeauthorizeCloudProviderAccessRoleExecute(r ad
 	return r0, r1
 }
 
-// CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeauthorizeCloudProviderAccessRoleExecute'
-type CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call struct {
+// CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeauthorizeProviderAccessRoleExecute'
+type CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call struct {
 	*mock.Call
 }
 
-// DeauthorizeCloudProviderAccessRoleExecute is a helper method to define mock.On call
-//   - r admin.DeauthorizeCloudProviderAccessRoleApiRequest
-func (_e *CloudProviderAccessApi_Expecter) DeauthorizeCloudProviderAccessRoleExecute(r any) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call {
-	return &CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call{Call: _e.mock.On("DeauthorizeCloudProviderAccessRoleExecute", r)}
+// DeauthorizeProviderAccessRoleExecute is a helper method to define mock.On call
+//   - r admin.DeauthorizeProviderAccessRoleApiRequest
+func (_e *CloudProviderAccessApi_Expecter) DeauthorizeProviderAccessRoleExecute(r any) *CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call {
+	return &CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call{Call: _e.mock.On("DeauthorizeProviderAccessRoleExecute", r)}
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call) Run(run func(r admin.DeauthorizeCloudProviderAccessRoleApiRequest)) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call) Run(run func(r admin.DeauthorizeProviderAccessRoleApiRequest)) *CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeauthorizeCloudProviderAccessRoleApiRequest))
+		run(args[0].(admin.DeauthorizeProviderAccessRoleApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call) RunAndReturn(run func(admin.DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error)) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call) RunAndReturn(run func(admin.DeauthorizeProviderAccessRoleApiRequest) (*http.Response, error)) *CloudProviderAccessApi_DeauthorizeProviderAccessRoleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeauthorizeCloudProviderAccessRoleWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudProviderAccessApi) DeauthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *admin.DeauthorizeCloudProviderAccessRoleApiParams) admin.DeauthorizeCloudProviderAccessRoleApiRequest {
+// DeauthorizeProviderAccessRoleWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudProviderAccessApi) DeauthorizeProviderAccessRoleWithParams(ctx context.Context, args *admin.DeauthorizeProviderAccessRoleApiParams) admin.DeauthorizeProviderAccessRoleApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeauthorizeCloudProviderAccessRoleWithParams")
+		panic("no return value specified for DeauthorizeProviderAccessRoleWithParams")
 	}
 
-	var r0 admin.DeauthorizeCloudProviderAccessRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeauthorizeCloudProviderAccessRoleApiParams) admin.DeauthorizeCloudProviderAccessRoleApiRequest); ok {
+	var r0 admin.DeauthorizeProviderAccessRoleApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeauthorizeProviderAccessRoleApiParams) admin.DeauthorizeProviderAccessRoleApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeauthorizeCloudProviderAccessRoleApiRequest)
+		r0 = ret.Get(0).(admin.DeauthorizeProviderAccessRoleApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeauthorizeCloudProviderAccessRoleWithParams'
-type CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call struct {
+// CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeauthorizeProviderAccessRoleWithParams'
+type CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call struct {
 	*mock.Call
 }
 
-// DeauthorizeCloudProviderAccessRoleWithParams is a helper method to define mock.On call
+// DeauthorizeProviderAccessRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeauthorizeCloudProviderAccessRoleApiParams
-func (_e *CloudProviderAccessApi_Expecter) DeauthorizeCloudProviderAccessRoleWithParams(ctx any, args any) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call {
-	return &CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call{Call: _e.mock.On("DeauthorizeCloudProviderAccessRoleWithParams", ctx, args)}
+//   - args *admin.DeauthorizeProviderAccessRoleApiParams
+func (_e *CloudProviderAccessApi_Expecter) DeauthorizeProviderAccessRoleWithParams(ctx any, args any) *CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call {
+	return &CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call{Call: _e.mock.On("DeauthorizeProviderAccessRoleWithParams", ctx, args)}
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.DeauthorizeCloudProviderAccessRoleApiParams)) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.DeauthorizeProviderAccessRoleApiParams)) *CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeauthorizeCloudProviderAccessRoleApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeauthorizeProviderAccessRoleApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call) Return(_a0 admin.DeauthorizeCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call) Return(_a0 admin.DeauthorizeProviderAccessRoleApiRequest) *CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeauthorizeCloudProviderAccessRoleApiParams) admin.DeauthorizeCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_DeauthorizeCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeauthorizeProviderAccessRoleApiParams) admin.DeauthorizeProviderAccessRoleApiRequest) *CloudProviderAccessApi_DeauthorizeProviderAccessRoleWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCloudProviderAccessRole provides a mock function with given fields: ctx, groupId, roleId
-func (_m *CloudProviderAccessApi) GetCloudProviderAccessRole(ctx context.Context, groupId string, roleId string) admin.GetCloudProviderAccessRoleApiRequest {
+// GetCloudProviderAccess provides a mock function with given fields: ctx, groupId, roleId
+func (_m *CloudProviderAccessApi) GetCloudProviderAccess(ctx context.Context, groupId string, roleId string) admin.GetCloudProviderAccessApiRequest {
 	ret := _m.Called(ctx, groupId, roleId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCloudProviderAccessRole")
+		panic("no return value specified for GetCloudProviderAccess")
 	}
 
-	var r0 admin.GetCloudProviderAccessRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetCloudProviderAccessRoleApiRequest); ok {
+	var r0 admin.GetCloudProviderAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetCloudProviderAccessApiRequest); ok {
 		r0 = rf(ctx, groupId, roleId)
 	} else {
-		r0 = ret.Get(0).(admin.GetCloudProviderAccessRoleApiRequest)
+		r0 = ret.Get(0).(admin.GetCloudProviderAccessApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_GetCloudProviderAccessRole_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCloudProviderAccessRole'
-type CloudProviderAccessApi_GetCloudProviderAccessRole_Call struct {
+// CloudProviderAccessApi_GetCloudProviderAccess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCloudProviderAccess'
+type CloudProviderAccessApi_GetCloudProviderAccess_Call struct {
 	*mock.Call
 }
 
-// GetCloudProviderAccessRole is a helper method to define mock.On call
+// GetCloudProviderAccess is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - roleId string
-func (_e *CloudProviderAccessApi_Expecter) GetCloudProviderAccessRole(ctx any, groupId any, roleId any) *CloudProviderAccessApi_GetCloudProviderAccessRole_Call {
-	return &CloudProviderAccessApi_GetCloudProviderAccessRole_Call{Call: _e.mock.On("GetCloudProviderAccessRole", ctx, groupId, roleId)}
+func (_e *CloudProviderAccessApi_Expecter) GetCloudProviderAccess(ctx any, groupId any, roleId any) *CloudProviderAccessApi_GetCloudProviderAccess_Call {
+	return &CloudProviderAccessApi_GetCloudProviderAccess_Call{Call: _e.mock.On("GetCloudProviderAccess", ctx, groupId, roleId)}
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRole_Call) Run(run func(ctx context.Context, groupId string, roleId string)) *CloudProviderAccessApi_GetCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccess_Call) Run(run func(ctx context.Context, groupId string, roleId string)) *CloudProviderAccessApi_GetCloudProviderAccess_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRole_Call) Return(_a0 admin.GetCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_GetCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccess_Call) Return(_a0 admin.GetCloudProviderAccessApiRequest) *CloudProviderAccessApi_GetCloudProviderAccess_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRole_Call) RunAndReturn(run func(context.Context, string, string) admin.GetCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_GetCloudProviderAccessRole_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccess_Call) RunAndReturn(run func(context.Context, string, string) admin.GetCloudProviderAccessApiRequest) *CloudProviderAccessApi_GetCloudProviderAccess_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCloudProviderAccessRoleExecute provides a mock function with given fields: r
-func (_m *CloudProviderAccessApi) GetCloudProviderAccessRoleExecute(r admin.GetCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error) {
+// GetCloudProviderAccessExecute provides a mock function with given fields: r
+func (_m *CloudProviderAccessApi) GetCloudProviderAccessExecute(r admin.GetCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCloudProviderAccessRoleExecute")
+		panic("no return value specified for GetCloudProviderAccessExecute")
 	}
 
 	var r0 *admin.CloudProviderAccessRole
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetCloudProviderAccessRoleApiRequest) *admin.CloudProviderAccessRole); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCloudProviderAccessApiRequest) *admin.CloudProviderAccessRole); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -574,7 +574,7 @@ func (_m *CloudProviderAccessApi) GetCloudProviderAccessRoleExecute(r admin.GetC
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetCloudProviderAccessRoleApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetCloudProviderAccessApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -582,7 +582,7 @@ func (_m *CloudProviderAccessApi) GetCloudProviderAccessRoleExecute(r admin.GetC
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetCloudProviderAccessRoleApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetCloudProviderAccessApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -591,143 +591,143 @@ func (_m *CloudProviderAccessApi) GetCloudProviderAccessRoleExecute(r admin.GetC
 	return r0, r1, r2
 }
 
-// CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCloudProviderAccessRoleExecute'
-type CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call struct {
+// CloudProviderAccessApi_GetCloudProviderAccessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCloudProviderAccessExecute'
+type CloudProviderAccessApi_GetCloudProviderAccessExecute_Call struct {
 	*mock.Call
 }
 
-// GetCloudProviderAccessRoleExecute is a helper method to define mock.On call
-//   - r admin.GetCloudProviderAccessRoleApiRequest
-func (_e *CloudProviderAccessApi_Expecter) GetCloudProviderAccessRoleExecute(r any) *CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call {
-	return &CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call{Call: _e.mock.On("GetCloudProviderAccessRoleExecute", r)}
+// GetCloudProviderAccessExecute is a helper method to define mock.On call
+//   - r admin.GetCloudProviderAccessApiRequest
+func (_e *CloudProviderAccessApi_Expecter) GetCloudProviderAccessExecute(r any) *CloudProviderAccessApi_GetCloudProviderAccessExecute_Call {
+	return &CloudProviderAccessApi_GetCloudProviderAccessExecute_Call{Call: _e.mock.On("GetCloudProviderAccessExecute", r)}
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call) Run(run func(r admin.GetCloudProviderAccessRoleApiRequest)) *CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccessExecute_Call) Run(run func(r admin.GetCloudProviderAccessApiRequest)) *CloudProviderAccessApi_GetCloudProviderAccessExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetCloudProviderAccessRoleApiRequest))
+		run(args[0].(admin.GetCloudProviderAccessApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call) Return(_a0 *admin.CloudProviderAccessRole, _a1 *http.Response, _a2 error) *CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccessExecute_Call) Return(_a0 *admin.CloudProviderAccessRole, _a1 *http.Response, _a2 error) *CloudProviderAccessApi_GetCloudProviderAccessExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call) RunAndReturn(run func(admin.GetCloudProviderAccessRoleApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)) *CloudProviderAccessApi_GetCloudProviderAccessRoleExecute_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccessExecute_Call) RunAndReturn(run func(admin.GetCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRole, *http.Response, error)) *CloudProviderAccessApi_GetCloudProviderAccessExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetCloudProviderAccessRoleWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudProviderAccessApi) GetCloudProviderAccessRoleWithParams(ctx context.Context, args *admin.GetCloudProviderAccessRoleApiParams) admin.GetCloudProviderAccessRoleApiRequest {
+// GetCloudProviderAccessWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudProviderAccessApi) GetCloudProviderAccessWithParams(ctx context.Context, args *admin.GetCloudProviderAccessApiParams) admin.GetCloudProviderAccessApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetCloudProviderAccessRoleWithParams")
+		panic("no return value specified for GetCloudProviderAccessWithParams")
 	}
 
-	var r0 admin.GetCloudProviderAccessRoleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCloudProviderAccessRoleApiParams) admin.GetCloudProviderAccessRoleApiRequest); ok {
+	var r0 admin.GetCloudProviderAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetCloudProviderAccessApiParams) admin.GetCloudProviderAccessApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetCloudProviderAccessRoleApiRequest)
+		r0 = ret.Get(0).(admin.GetCloudProviderAccessApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCloudProviderAccessRoleWithParams'
-type CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call struct {
+// CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCloudProviderAccessWithParams'
+type CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call struct {
 	*mock.Call
 }
 
-// GetCloudProviderAccessRoleWithParams is a helper method to define mock.On call
+// GetCloudProviderAccessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetCloudProviderAccessRoleApiParams
-func (_e *CloudProviderAccessApi_Expecter) GetCloudProviderAccessRoleWithParams(ctx any, args any) *CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call {
-	return &CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call{Call: _e.mock.On("GetCloudProviderAccessRoleWithParams", ctx, args)}
+//   - args *admin.GetCloudProviderAccessApiParams
+func (_e *CloudProviderAccessApi_Expecter) GetCloudProviderAccessWithParams(ctx any, args any) *CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call {
+	return &CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call{Call: _e.mock.On("GetCloudProviderAccessWithParams", ctx, args)}
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCloudProviderAccessRoleApiParams)) *CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call) Run(run func(ctx context.Context, args *admin.GetCloudProviderAccessApiParams)) *CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetCloudProviderAccessRoleApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetCloudProviderAccessApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call) Return(_a0 admin.GetCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call) Return(_a0 admin.GetCloudProviderAccessApiRequest) *CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCloudProviderAccessRoleApiParams) admin.GetCloudProviderAccessRoleApiRequest) *CloudProviderAccessApi_GetCloudProviderAccessRoleWithParams_Call {
+func (_c *CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetCloudProviderAccessApiParams) admin.GetCloudProviderAccessApiRequest) *CloudProviderAccessApi_GetCloudProviderAccessWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCloudProviderAccessRoles provides a mock function with given fields: ctx, groupId
-func (_m *CloudProviderAccessApi) ListCloudProviderAccessRoles(ctx context.Context, groupId string) admin.ListCloudProviderAccessRolesApiRequest {
+// ListCloudProviderAccess provides a mock function with given fields: ctx, groupId
+func (_m *CloudProviderAccessApi) ListCloudProviderAccess(ctx context.Context, groupId string) admin.ListCloudProviderAccessApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCloudProviderAccessRoles")
+		panic("no return value specified for ListCloudProviderAccess")
 	}
 
-	var r0 admin.ListCloudProviderAccessRolesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListCloudProviderAccessRolesApiRequest); ok {
+	var r0 admin.ListCloudProviderAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListCloudProviderAccessApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.ListCloudProviderAccessRolesApiRequest)
+		r0 = ret.Get(0).(admin.ListCloudProviderAccessApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_ListCloudProviderAccessRoles_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCloudProviderAccessRoles'
-type CloudProviderAccessApi_ListCloudProviderAccessRoles_Call struct {
+// CloudProviderAccessApi_ListCloudProviderAccess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCloudProviderAccess'
+type CloudProviderAccessApi_ListCloudProviderAccess_Call struct {
 	*mock.Call
 }
 
-// ListCloudProviderAccessRoles is a helper method to define mock.On call
+// ListCloudProviderAccess is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *CloudProviderAccessApi_Expecter) ListCloudProviderAccessRoles(ctx any, groupId any) *CloudProviderAccessApi_ListCloudProviderAccessRoles_Call {
-	return &CloudProviderAccessApi_ListCloudProviderAccessRoles_Call{Call: _e.mock.On("ListCloudProviderAccessRoles", ctx, groupId)}
+func (_e *CloudProviderAccessApi_Expecter) ListCloudProviderAccess(ctx any, groupId any) *CloudProviderAccessApi_ListCloudProviderAccess_Call {
+	return &CloudProviderAccessApi_ListCloudProviderAccess_Call{Call: _e.mock.On("ListCloudProviderAccess", ctx, groupId)}
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRoles_Call) Run(run func(ctx context.Context, groupId string)) *CloudProviderAccessApi_ListCloudProviderAccessRoles_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccess_Call) Run(run func(ctx context.Context, groupId string)) *CloudProviderAccessApi_ListCloudProviderAccess_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRoles_Call) Return(_a0 admin.ListCloudProviderAccessRolesApiRequest) *CloudProviderAccessApi_ListCloudProviderAccessRoles_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccess_Call) Return(_a0 admin.ListCloudProviderAccessApiRequest) *CloudProviderAccessApi_ListCloudProviderAccess_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRoles_Call) RunAndReturn(run func(context.Context, string) admin.ListCloudProviderAccessRolesApiRequest) *CloudProviderAccessApi_ListCloudProviderAccessRoles_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccess_Call) RunAndReturn(run func(context.Context, string) admin.ListCloudProviderAccessApiRequest) *CloudProviderAccessApi_ListCloudProviderAccess_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCloudProviderAccessRolesExecute provides a mock function with given fields: r
-func (_m *CloudProviderAccessApi) ListCloudProviderAccessRolesExecute(r admin.ListCloudProviderAccessRolesApiRequest) (*admin.CloudProviderAccessRoles, *http.Response, error) {
+// ListCloudProviderAccessExecute provides a mock function with given fields: r
+func (_m *CloudProviderAccessApi) ListCloudProviderAccessExecute(r admin.ListCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRoles, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCloudProviderAccessRolesExecute")
+		panic("no return value specified for ListCloudProviderAccessExecute")
 	}
 
 	var r0 *admin.CloudProviderAccessRoles
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListCloudProviderAccessRolesApiRequest) (*admin.CloudProviderAccessRoles, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRoles, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListCloudProviderAccessRolesApiRequest) *admin.CloudProviderAccessRoles); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListCloudProviderAccessApiRequest) *admin.CloudProviderAccessRoles); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -735,7 +735,7 @@ func (_m *CloudProviderAccessApi) ListCloudProviderAccessRolesExecute(r admin.Li
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListCloudProviderAccessRolesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListCloudProviderAccessApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -743,7 +743,7 @@ func (_m *CloudProviderAccessApi) ListCloudProviderAccessRolesExecute(r admin.Li
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListCloudProviderAccessRolesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListCloudProviderAccessApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -752,77 +752,77 @@ func (_m *CloudProviderAccessApi) ListCloudProviderAccessRolesExecute(r admin.Li
 	return r0, r1, r2
 }
 
-// CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCloudProviderAccessRolesExecute'
-type CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call struct {
+// CloudProviderAccessApi_ListCloudProviderAccessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCloudProviderAccessExecute'
+type CloudProviderAccessApi_ListCloudProviderAccessExecute_Call struct {
 	*mock.Call
 }
 
-// ListCloudProviderAccessRolesExecute is a helper method to define mock.On call
-//   - r admin.ListCloudProviderAccessRolesApiRequest
-func (_e *CloudProviderAccessApi_Expecter) ListCloudProviderAccessRolesExecute(r any) *CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call {
-	return &CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call{Call: _e.mock.On("ListCloudProviderAccessRolesExecute", r)}
+// ListCloudProviderAccessExecute is a helper method to define mock.On call
+//   - r admin.ListCloudProviderAccessApiRequest
+func (_e *CloudProviderAccessApi_Expecter) ListCloudProviderAccessExecute(r any) *CloudProviderAccessApi_ListCloudProviderAccessExecute_Call {
+	return &CloudProviderAccessApi_ListCloudProviderAccessExecute_Call{Call: _e.mock.On("ListCloudProviderAccessExecute", r)}
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call) Run(run func(r admin.ListCloudProviderAccessRolesApiRequest)) *CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccessExecute_Call) Run(run func(r admin.ListCloudProviderAccessApiRequest)) *CloudProviderAccessApi_ListCloudProviderAccessExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListCloudProviderAccessRolesApiRequest))
+		run(args[0].(admin.ListCloudProviderAccessApiRequest))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call) Return(_a0 *admin.CloudProviderAccessRoles, _a1 *http.Response, _a2 error) *CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccessExecute_Call) Return(_a0 *admin.CloudProviderAccessRoles, _a1 *http.Response, _a2 error) *CloudProviderAccessApi_ListCloudProviderAccessExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call) RunAndReturn(run func(admin.ListCloudProviderAccessRolesApiRequest) (*admin.CloudProviderAccessRoles, *http.Response, error)) *CloudProviderAccessApi_ListCloudProviderAccessRolesExecute_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccessExecute_Call) RunAndReturn(run func(admin.ListCloudProviderAccessApiRequest) (*admin.CloudProviderAccessRoles, *http.Response, error)) *CloudProviderAccessApi_ListCloudProviderAccessExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListCloudProviderAccessRolesWithParams provides a mock function with given fields: ctx, args
-func (_m *CloudProviderAccessApi) ListCloudProviderAccessRolesWithParams(ctx context.Context, args *admin.ListCloudProviderAccessRolesApiParams) admin.ListCloudProviderAccessRolesApiRequest {
+// ListCloudProviderAccessWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudProviderAccessApi) ListCloudProviderAccessWithParams(ctx context.Context, args *admin.ListCloudProviderAccessApiParams) admin.ListCloudProviderAccessApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListCloudProviderAccessRolesWithParams")
+		panic("no return value specified for ListCloudProviderAccessWithParams")
 	}
 
-	var r0 admin.ListCloudProviderAccessRolesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListCloudProviderAccessRolesApiParams) admin.ListCloudProviderAccessRolesApiRequest); ok {
+	var r0 admin.ListCloudProviderAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListCloudProviderAccessApiParams) admin.ListCloudProviderAccessApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListCloudProviderAccessRolesApiRequest)
+		r0 = ret.Get(0).(admin.ListCloudProviderAccessApiRequest)
 	}
 
 	return r0
 }
 
-// CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCloudProviderAccessRolesWithParams'
-type CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call struct {
+// CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCloudProviderAccessWithParams'
+type CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call struct {
 	*mock.Call
 }
 
-// ListCloudProviderAccessRolesWithParams is a helper method to define mock.On call
+// ListCloudProviderAccessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListCloudProviderAccessRolesApiParams
-func (_e *CloudProviderAccessApi_Expecter) ListCloudProviderAccessRolesWithParams(ctx any, args any) *CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call {
-	return &CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call{Call: _e.mock.On("ListCloudProviderAccessRolesWithParams", ctx, args)}
+//   - args *admin.ListCloudProviderAccessApiParams
+func (_e *CloudProviderAccessApi_Expecter) ListCloudProviderAccessWithParams(ctx any, args any) *CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call {
+	return &CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call{Call: _e.mock.On("ListCloudProviderAccessWithParams", ctx, args)}
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListCloudProviderAccessRolesApiParams)) *CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call) Run(run func(ctx context.Context, args *admin.ListCloudProviderAccessApiParams)) *CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListCloudProviderAccessRolesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListCloudProviderAccessApiParams))
 	})
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call) Return(_a0 admin.ListCloudProviderAccessRolesApiRequest) *CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call) Return(_a0 admin.ListCloudProviderAccessApiRequest) *CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListCloudProviderAccessRolesApiParams) admin.ListCloudProviderAccessRolesApiRequest) *CloudProviderAccessApi_ListCloudProviderAccessRolesWithParams_Call {
+func (_c *CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListCloudProviderAccessApiParams) admin.ListCloudProviderAccessApiRequest) *CloudProviderAccessApi_ListCloudProviderAccessWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
