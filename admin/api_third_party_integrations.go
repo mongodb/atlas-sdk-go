@@ -13,7 +13,7 @@ import (
 type ThirdPartyIntegrationsApi interface {
 
 	/*
-		CreateGroupIntegration Configure One Third-Party Service Integration
+		CreateGroupIntegration Create One Third-Party Service Integration
 
 		Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
@@ -25,7 +25,7 @@ type ThirdPartyIntegrationsApi interface {
 	*/
 	CreateGroupIntegration(ctx context.Context, integrationType string, groupId string, thirdPartyIntegration *ThirdPartyIntegration) CreateGroupIntegrationApiRequest
 	/*
-		CreateGroupIntegration Configure One Third-Party Service Integration
+		CreateGroupIntegration Create One Third-Party Service Integration
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -193,7 +193,7 @@ func (r CreateGroupIntegrationApiRequest) Execute() (*PaginatedIntegration, *htt
 }
 
 /*
-CreateGroupIntegration Configure One Third-Party Service Integration
+CreateGroupIntegration Create One Third-Party Service Integration
 
 Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
