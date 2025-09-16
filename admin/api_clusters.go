@@ -649,11 +649,13 @@ type CreateClusterApiRequest struct {
 	ApiService                 ClustersApi
 	groupId                    string
 	clusterDescription20240805 *ClusterDescription20240805
+	xENABLEEFFECTIVEFIELDS     *bool
 }
 
 type CreateClusterApiParams struct {
 	GroupId                    string
 	ClusterDescription20240805 *ClusterDescription20240805
+	XENABLEEFFECTIVEFIELDS     *bool
 }
 
 func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest {
@@ -662,7 +664,14 @@ func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *
 		ctx:                        ctx,
 		groupId:                    args.GroupId,
 		clusterDescription20240805: args.ClusterDescription20240805,
+		xENABLEEFFECTIVEFIELDS:     args.XENABLEEFFECTIVEFIELDS,
 	}
+}
+
+// Flag that indicates whether to enable effective fields functionality. Set to true to enable or false to disable.
+func (r CreateClusterApiRequest) XENABLEEFFECTIVEFIELDS(xENABLEEFFECTIVEFIELDS bool) CreateClusterApiRequest {
+	r.xENABLEEFFECTIVEFIELDS = &xENABLEEFFECTIVEFIELDS
+	return r
 }
 
 func (r CreateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
@@ -734,6 +743,9 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xENABLEEFFECTIVEFIELDS != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-ENABLE-EFFECTIVE-FIELDS", r.xENABLEEFFECTIVEFIELDS, "")
 	}
 	// body params
 	localVarPostBody = r.clusterDescription20240805
