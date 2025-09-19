@@ -30,6 +30,14 @@ components:
       schema:
         default: false
         type: boolean
+    xEnableEffectiveFields:
+      description: Flag that indicates whether to enable effective fields functionality. Set to true to enable or false to disable.
+      in: header
+      name: X-ENABLE-EFFECTIVE-FIELDS
+      required: false
+      schema:
+        default: false
+        type: boolean
     federationSettingsId:
       description: Unique 24-hexadecimal digit string that identifies your federation.
       in: path
@@ -21856,6 +21864,7 @@ paths:
       operationId: createCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/xEnableEffectiveFields"
       requestBody:
         content:
           application/vnd.atlas.2024-10-23+json:
