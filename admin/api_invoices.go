@@ -38,7 +38,7 @@ type InvoicesApi interface {
 	CreateCostExplorerProcessExecute(r CreateCostExplorerProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error)
 
 	/*
-		GetCostExplorerUsage Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+		GetCostExplorerUsage Return Usage Details for One Cost Explorer Query
 
 		Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response willindicate that another request should be sent later to view the data.
 
@@ -49,7 +49,7 @@ type InvoicesApi interface {
 	*/
 	GetCostExplorerUsage(ctx context.Context, orgId string, token string) GetCostExplorerUsageApiRequest
 	/*
-		GetCostExplorerUsage Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+		GetCostExplorerUsage Return Usage Details for One Cost Explorer Query
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -336,7 +336,7 @@ func (r GetCostExplorerUsageApiRequest) Execute() (any, *http.Response, error) {
 }
 
 /*
-GetCostExplorerUsage Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+GetCostExplorerUsage Return Usage Details for One Cost Explorer Query
 
 Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response willindicate that another request should be sent later to view the data.
 
