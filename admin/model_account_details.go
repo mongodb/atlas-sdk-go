@@ -19,6 +19,10 @@ type AccountDetails struct {
 	AzureSubscriptionId *string `json:"azureSubscriptionId,omitempty"`
 	// The name of the virtual network.
 	VirtualNetworkName *string `json:"virtualNetworkName,omitempty"`
+	// The GCP Project ID.
+	GcpProjectId *string `json:"gcpProjectId,omitempty"`
+	// The name of the VPC network.
+	VpcNetworkName *string `json:"vpcNetworkName,omitempty"`
 }
 
 // NewAccountDetails instantiates a new AccountDetails object
@@ -267,4 +271,70 @@ func (o *AccountDetails) HasVirtualNetworkName() bool {
 // SetVirtualNetworkName gets a reference to the given string and assigns it to the VirtualNetworkName field.
 func (o *AccountDetails) SetVirtualNetworkName(v string) {
 	o.VirtualNetworkName = &v
+}
+
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise
+func (o *AccountDetails) GetGcpProjectId() string {
+	if o == nil || IsNil(o.GcpProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProjectId
+}
+
+// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountDetails) GetGcpProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpProjectId) {
+		return nil, false
+	}
+
+	return o.GcpProjectId, true
+}
+
+// HasGcpProjectId returns a boolean if a field has been set.
+func (o *AccountDetails) HasGcpProjectId() bool {
+	if o != nil && !IsNil(o.GcpProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
+func (o *AccountDetails) SetGcpProjectId(v string) {
+	o.GcpProjectId = &v
+}
+
+// GetVpcNetworkName returns the VpcNetworkName field value if set, zero value otherwise
+func (o *AccountDetails) GetVpcNetworkName() string {
+	if o == nil || IsNil(o.VpcNetworkName) {
+		var ret string
+		return ret
+	}
+	return *o.VpcNetworkName
+}
+
+// GetVpcNetworkNameOk returns a tuple with the VpcNetworkName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountDetails) GetVpcNetworkNameOk() (*string, bool) {
+	if o == nil || IsNil(o.VpcNetworkName) {
+		return nil, false
+	}
+
+	return o.VpcNetworkName, true
+}
+
+// HasVpcNetworkName returns a boolean if a field has been set.
+func (o *AccountDetails) HasVpcNetworkName() bool {
+	if o != nil && !IsNil(o.VpcNetworkName) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcNetworkName gets a reference to the given string and assigns it to the VpcNetworkName field.
+func (o *AccountDetails) SetVpcNetworkName(v string) {
+	o.VpcNetworkName = &v
 }

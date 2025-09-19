@@ -17,6 +17,8 @@ type SearchIndexUpdateRequestDefinition struct {
 	StoredSource any `json:"storedSource,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
+	// Type sets for the index.
+	TypeSets *[]SearchTypeSets `json:"typeSets,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
 	Fields *[]any `json:"fields,omitempty"`
 }
@@ -280,6 +282,39 @@ func (o *SearchIndexUpdateRequestDefinition) HasSynonyms() bool {
 // SetSynonyms gets a reference to the given []SearchSynonymMappingDefinition and assigns it to the Synonyms field.
 func (o *SearchIndexUpdateRequestDefinition) SetSynonyms(v []SearchSynonymMappingDefinition) {
 	o.Synonyms = &v
+}
+
+// GetTypeSets returns the TypeSets field value if set, zero value otherwise
+func (o *SearchIndexUpdateRequestDefinition) GetTypeSets() []SearchTypeSets {
+	if o == nil || IsNil(o.TypeSets) {
+		var ret []SearchTypeSets
+		return ret
+	}
+	return *o.TypeSets
+}
+
+// GetTypeSetsOk returns a tuple with the TypeSets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchIndexUpdateRequestDefinition) GetTypeSetsOk() (*[]SearchTypeSets, bool) {
+	if o == nil || IsNil(o.TypeSets) {
+		return nil, false
+	}
+
+	return o.TypeSets, true
+}
+
+// HasTypeSets returns a boolean if a field has been set.
+func (o *SearchIndexUpdateRequestDefinition) HasTypeSets() bool {
+	if o != nil && !IsNil(o.TypeSets) {
+		return true
+	}
+
+	return false
+}
+
+// SetTypeSets gets a reference to the given []SearchTypeSets and assigns it to the TypeSets field.
+func (o *SearchIndexUpdateRequestDefinition) SetTypeSets(v []SearchTypeSets) {
+	o.TypeSets = &v
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise

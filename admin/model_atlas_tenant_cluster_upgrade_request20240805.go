@@ -43,6 +43,9 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
+	// Internal classification of the cluster's role. Possible values: NONE (regular user cluster), SYSTEM_CLUSTER (system cluster for backup), INTERNAL_SHADOW_CLUSTER (internal use shadow cluster for testing).
+	// Read only field.
+	InternalClusterRole *string `json:"internalClusterRole,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
@@ -76,6 +79,8 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
+	// Flag that indicates whether AWS time-based snapshot copies will be used instead of slower standard snapshot copies during fast Atlas cross-region initial syncs. This flag is only relevant for clusters containing AWS nodes.
+	UseAwsTimeBasedSnapshotCopyForFastInitialSync *bool `json:"useAwsTimeBasedSnapshotCopyForFastInitialSync,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
 	VersionReleaseSystem *string `json:"versionReleaseSystem,omitempty"`
 }
@@ -99,6 +104,8 @@ func NewAtlasTenantClusterUpgradeRequest20240805(name string) *AtlasTenantCluste
 	this.RootCertType = &rootCertType
 	var terminationProtectionEnabled bool = false
 	this.TerminationProtectionEnabled = &terminationProtectionEnabled
+	var useAwsTimeBasedSnapshotCopyForFastInitialSync bool = false
+	this.UseAwsTimeBasedSnapshotCopyForFastInitialSync = &useAwsTimeBasedSnapshotCopyForFastInitialSync
 	var versionReleaseSystem string = "LTS"
 	this.VersionReleaseSystem = &versionReleaseSystem
 	return &this
@@ -121,6 +128,8 @@ func NewAtlasTenantClusterUpgradeRequest20240805WithDefaults() *AtlasTenantClust
 	this.RootCertType = &rootCertType
 	var terminationProtectionEnabled bool = false
 	this.TerminationProtectionEnabled = &terminationProtectionEnabled
+	var useAwsTimeBasedSnapshotCopyForFastInitialSync bool = false
+	this.UseAwsTimeBasedSnapshotCopyForFastInitialSync = &useAwsTimeBasedSnapshotCopyForFastInitialSync
 	var versionReleaseSystem string = "LTS"
 	this.VersionReleaseSystem = &versionReleaseSystem
 	return &this
@@ -654,6 +663,39 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) SetId(v string) {
 	o.Id = &v
 }
 
+// GetInternalClusterRole returns the InternalClusterRole field value if set, zero value otherwise
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetInternalClusterRole() string {
+	if o == nil || IsNil(o.InternalClusterRole) {
+		var ret string
+		return ret
+	}
+	return *o.InternalClusterRole
+}
+
+// GetInternalClusterRoleOk returns a tuple with the InternalClusterRole field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetInternalClusterRoleOk() (*string, bool) {
+	if o == nil || IsNil(o.InternalClusterRole) {
+		return nil, false
+	}
+
+	return o.InternalClusterRole, true
+}
+
+// HasInternalClusterRole returns a boolean if a field has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasInternalClusterRole() bool {
+	if o != nil && !IsNil(o.InternalClusterRole) {
+		return true
+	}
+
+	return false
+}
+
+// SetInternalClusterRole gets a reference to the given string and assigns it to the InternalClusterRole field.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetInternalClusterRole(v string) {
+	o.InternalClusterRole = &v
+}
+
 // GetLabels returns the Labels field value if set, zero value otherwise
 // Deprecated
 func (o *AtlasTenantClusterUpgradeRequest20240805) GetLabels() []ComponentLabel {
@@ -1141,6 +1183,39 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) HasTerminationProtectionEnabl
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *AtlasTenantClusterUpgradeRequest20240805) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
+}
+
+// GetUseAwsTimeBasedSnapshotCopyForFastInitialSync returns the UseAwsTimeBasedSnapshotCopyForFastInitialSync field value if set, zero value otherwise
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetUseAwsTimeBasedSnapshotCopyForFastInitialSync() bool {
+	if o == nil || IsNil(o.UseAwsTimeBasedSnapshotCopyForFastInitialSync) {
+		var ret bool
+		return ret
+	}
+	return *o.UseAwsTimeBasedSnapshotCopyForFastInitialSync
+}
+
+// GetUseAwsTimeBasedSnapshotCopyForFastInitialSyncOk returns a tuple with the UseAwsTimeBasedSnapshotCopyForFastInitialSync field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetUseAwsTimeBasedSnapshotCopyForFastInitialSyncOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseAwsTimeBasedSnapshotCopyForFastInitialSync) {
+		return nil, false
+	}
+
+	return o.UseAwsTimeBasedSnapshotCopyForFastInitialSync, true
+}
+
+// HasUseAwsTimeBasedSnapshotCopyForFastInitialSync returns a boolean if a field has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasUseAwsTimeBasedSnapshotCopyForFastInitialSync() bool {
+	if o != nil && !IsNil(o.UseAwsTimeBasedSnapshotCopyForFastInitialSync) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseAwsTimeBasedSnapshotCopyForFastInitialSync gets a reference to the given bool and assigns it to the UseAwsTimeBasedSnapshotCopyForFastInitialSync field.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetUseAwsTimeBasedSnapshotCopyForFastInitialSync(v bool) {
+	o.UseAwsTimeBasedSnapshotCopyForFastInitialSync = &v
 }
 
 // GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise

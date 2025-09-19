@@ -16,6 +16,8 @@ type StreamsKafkaAuthentication struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Style of authentication. Can be one of PLAIN, SCRAM-256, SCRAM-512, or OAUTHBEARER.
 	Mechanism *string `json:"mechanism,omitempty"`
+	// SASL OAUTHBEARER authentication method. Can only be OIDC currently.
+	Method *string `json:"method,omitempty"`
 	// Password of the account to connect to the Kafka cluster.
 	// Write only field.
 	Password *string `json:"password,omitempty"`
@@ -217,6 +219,39 @@ func (o *StreamsKafkaAuthentication) HasMechanism() bool {
 // SetMechanism gets a reference to the given string and assigns it to the Mechanism field.
 func (o *StreamsKafkaAuthentication) SetMechanism(v string) {
 	o.Mechanism = &v
+}
+
+// GetMethod returns the Method field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetMethod() string {
+	if o == nil || IsNil(o.Method) {
+		var ret string
+		return ret
+	}
+	return *o.Method
+}
+
+// GetMethodOk returns a tuple with the Method field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetMethodOk() (*string, bool) {
+	if o == nil || IsNil(o.Method) {
+		return nil, false
+	}
+
+	return o.Method, true
+}
+
+// HasMethod returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasMethod() bool {
+	if o != nil && !IsNil(o.Method) {
+		return true
+	}
+
+	return false
+}
+
+// SetMethod gets a reference to the given string and assigns it to the Method field.
+func (o *StreamsKafkaAuthentication) SetMethod(v string) {
+	o.Method = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise
