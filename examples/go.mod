@@ -2,8 +2,6 @@ module go.mongodb.org/atlas-sdk/v20250312007/examples
 
 go 1.24.0
 
-toolchain go1.24.1
-
 replace go.mongodb.org/atlas-sdk/v20250312007 => ../
 
 require (
