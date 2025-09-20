@@ -5,7 +5,8 @@ package admin
 // OrganizationSettings Collection of settings that configures the organization.
 type OrganizationSettings struct {
 	// Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization.
-	ApiAccessListRequired *bool `json:"apiAccessListRequired,omitempty"`
+	ApiAccessListRequired *bool                  `json:"apiAccessListRequired,omitempty"`
+	CustomSessionTimeouts *CustomSessionTimeouts `json:"customSessionTimeouts,omitempty"`
 	// Flag that indicates whether this organization has access to generative AI features. This setting only applies to Atlas Commercial and is enabled by default. Once this setting is turned on, Project Owners may be able to enable or disable individual AI features at the project level.
 	GenAIFeaturesEnabled *bool `json:"genAIFeaturesEnabled,omitempty"`
 	// Number that represents the maximum period before expiry in hours for new Atlas Admin API Service Account secrets within the specified organization.
@@ -72,6 +73,39 @@ func (o *OrganizationSettings) HasApiAccessListRequired() bool {
 // SetApiAccessListRequired gets a reference to the given bool and assigns it to the ApiAccessListRequired field.
 func (o *OrganizationSettings) SetApiAccessListRequired(v bool) {
 	o.ApiAccessListRequired = &v
+}
+
+// GetCustomSessionTimeouts returns the CustomSessionTimeouts field value if set, zero value otherwise
+func (o *OrganizationSettings) GetCustomSessionTimeouts() CustomSessionTimeouts {
+	if o == nil || IsNil(o.CustomSessionTimeouts) {
+		var ret CustomSessionTimeouts
+		return ret
+	}
+	return *o.CustomSessionTimeouts
+}
+
+// GetCustomSessionTimeoutsOk returns a tuple with the CustomSessionTimeouts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationSettings) GetCustomSessionTimeoutsOk() (*CustomSessionTimeouts, bool) {
+	if o == nil || IsNil(o.CustomSessionTimeouts) {
+		return nil, false
+	}
+
+	return o.CustomSessionTimeouts, true
+}
+
+// HasCustomSessionTimeouts returns a boolean if a field has been set.
+func (o *OrganizationSettings) HasCustomSessionTimeouts() bool {
+	if o != nil && !IsNil(o.CustomSessionTimeouts) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomSessionTimeouts gets a reference to the given CustomSessionTimeouts and assigns it to the CustomSessionTimeouts field.
+func (o *OrganizationSettings) SetCustomSessionTimeouts(v CustomSessionTimeouts) {
+	o.CustomSessionTimeouts = &v
 }
 
 // GetGenAIFeaturesEnabled returns the GenAIFeaturesEnabled field value if set, zero value otherwise

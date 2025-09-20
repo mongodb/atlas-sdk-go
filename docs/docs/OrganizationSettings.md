@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiAccessListRequired** | Pointer to **bool** | Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization. | [optional] 
+**CustomSessionTimeouts** | Pointer to [**CustomSessionTimeouts**](CustomSessionTimeouts.md) |  | [optional] 
 **GenAIFeaturesEnabled** | Pointer to **bool** | Flag that indicates whether this organization has access to generative AI features. This setting only applies to Atlas Commercial and is enabled by default. Once this setting is turned on, Project Owners may be able to enable or disable individual AI features at the project level. | [optional] [default to true]
 **MaxServiceAccountSecretValidityInHours** | Pointer to **int** | Number that represents the maximum period before expiry in hours for new Atlas Admin API Service Account secrets within the specified organization. | [optional] 
 **MultiFactorAuthRequired** | Pointer to **bool** | Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/. | [optional] 
@@ -55,6 +56,30 @@ SetApiAccessListRequired sets ApiAccessListRequired field to given value.
 `func (o *OrganizationSettings) HasApiAccessListRequired() bool`
 
 HasApiAccessListRequired returns a boolean if a field has been set.
+### GetCustomSessionTimeouts
+
+`func (o *OrganizationSettings) GetCustomSessionTimeouts() CustomSessionTimeouts`
+
+GetCustomSessionTimeouts returns the CustomSessionTimeouts field if non-nil, zero value otherwise.
+
+### GetCustomSessionTimeoutsOk
+
+`func (o *OrganizationSettings) GetCustomSessionTimeoutsOk() (*CustomSessionTimeouts, bool)`
+
+GetCustomSessionTimeoutsOk returns a tuple with the CustomSessionTimeouts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomSessionTimeouts
+
+`func (o *OrganizationSettings) SetCustomSessionTimeouts(v CustomSessionTimeouts)`
+
+SetCustomSessionTimeouts sets CustomSessionTimeouts field to given value.
+
+### HasCustomSessionTimeouts
+
+`func (o *OrganizationSettings) HasCustomSessionTimeouts() bool`
+
+HasCustomSessionTimeouts returns a boolean if a field has been set.
 ### GetGenAIFeaturesEnabled
 
 `func (o *OrganizationSettings) GetGenAIFeaturesEnabled() bool`

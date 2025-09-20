@@ -15,7 +15,7 @@ import (
 type CollectionLevelMetricsApi interface {
 
 	/*
-		GetClusterNamespaces Return Ranked Namespaces from a Cluster
+		GetClusterNamespaces Return Ranked Namespaces from One Cluster
 
 		Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
 
@@ -27,7 +27,7 @@ type CollectionLevelMetricsApi interface {
 	*/
 	GetClusterNamespaces(ctx context.Context, groupId string, clusterName string, clusterView string) GetClusterNamespacesApiRequest
 	/*
-		GetClusterNamespaces Return Ranked Namespaces from a Cluster
+		GetClusterNamespaces Return Ranked Namespaces from One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -40,7 +40,7 @@ type CollectionLevelMetricsApi interface {
 	GetClusterNamespacesExecute(r GetClusterNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error)
 
 	/*
-		GetProcessNamespaces Return Ranked Namespaces from a Host
+		GetProcessNamespaces Return Ranked Namespaces from One Host
 
 		Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
 
@@ -51,7 +51,7 @@ type CollectionLevelMetricsApi interface {
 	*/
 	GetProcessNamespaces(ctx context.Context, groupId string, processId string) GetProcessNamespacesApiRequest
 	/*
-		GetProcessNamespaces Return Ranked Namespaces from a Host
+		GetProcessNamespaces Return Ranked Namespaces from One Host
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -91,7 +91,7 @@ type CollectionLevelMetricsApi interface {
 	ListCollStatMeasurementsExecute(r ListCollStatMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error)
 
 	/*
-		ListCollStatMetrics Return all metric names
+		ListCollStatMetrics Return All Metric Names
 
 		Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
 
@@ -101,7 +101,7 @@ type CollectionLevelMetricsApi interface {
 	*/
 	ListCollStatMetrics(ctx context.Context, groupId string) ListCollStatMetricsApiRequest
 	/*
-		ListCollStatMetrics Return all metric names
+		ListCollStatMetrics Return All Metric Names
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -189,7 +189,7 @@ type CollectionLevelMetricsApi interface {
 	PinNamespacesExecute(r PinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error)
 
 	/*
-		UnpinNamespaces Unpin namespaces
+		UnpinNamespaces Unpin Namespaces
 
 		Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster.
 
@@ -201,7 +201,7 @@ type CollectionLevelMetricsApi interface {
 	*/
 	UnpinNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) UnpinNamespacesApiRequest
 	/*
-		UnpinNamespaces Unpin namespaces
+		UnpinNamespaces Unpin Namespaces
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -298,7 +298,7 @@ func (r GetClusterNamespacesApiRequest) Execute() (*CollStatsRankedNamespaces, *
 }
 
 /*
-GetClusterNamespaces Return Ranked Namespaces from a Cluster
+GetClusterNamespaces Return Ranked Namespaces from One Cluster
 
 Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
 
@@ -463,7 +463,7 @@ func (r GetProcessNamespacesApiRequest) Execute() (*CollStatsRankedNamespaces, *
 }
 
 /*
-GetProcessNamespaces Return Ranked Namespaces from a Host
+GetProcessNamespaces Return Ranked Namespaces from One Host
 
 Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
 
@@ -794,7 +794,7 @@ func (r ListCollStatMetricsApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-ListCollStatMetrics Return all metric names
+ListCollStatMetrics Return All Metric Names
 
 Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
 
@@ -1345,7 +1345,7 @@ func (r UnpinNamespacesApiRequest) Execute() (*PinnedNamespaces, *http.Response,
 }
 
 /*
-UnpinNamespaces Unpin namespaces
+UnpinNamespaces Unpin Namespaces
 
 Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster.
 
