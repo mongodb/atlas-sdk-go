@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IncludePartialMatches** | Pointer to **bool** | Flag to control whether usage that matches the filter criteria, but does not have values for all filter criteria is included in response. Default is false, which excludes the partially matching data. | [optional] 
 **Organizations** | Pointer to **[]string** | The list of organizations to be included in the Cost Explorer Query. | [optional] 
 **Projects** | Pointer to **[]string** | The list of projects to be included in the Cost Explorer Query. | [optional] 
-**Services** | Pointer to **[]string** | The list of projects to be included in the Cost Explorer Query. | [optional] 
+**Services** | Pointer to **[]string** | The list of SKU services to be included in the Cost Explorer Query. | [optional] 
 **StartDate** | **string** | The inclusive starting date for the Cost Explorer query. The date must be the start of a month. | 
 
 ## Methods

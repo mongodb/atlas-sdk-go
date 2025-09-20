@@ -4,12 +4,12 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementApi.md#CreateRestPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Create One Private Endpoint in a Specified Region for Encryption at Rest Using Customer Key Management
-[**GetEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetEncryptionAtRest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project
-[**GetRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetRestPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Return One Private Endpoint for Encryption at Rest Using Customer Key Management
-[**ListRestPrivateEndpoints**](EncryptionAtRestUsingCustomerKeyManagementApi.md#ListRestPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Return Private Endpoints of a Cloud Provider for Encryption at Rest Using Customer Key Management for One Project
-[**RequestPrivateEndpointDeletion**](EncryptionAtRestUsingCustomerKeyManagementApi.md#RequestPrivateEndpointDeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Private Endpoint for Encryption at Rest Using Customer Key Management
-[**UpdateEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#UpdateEncryptionAtRest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Encryption at Rest Configuration for One Project
+[**CreateRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementApi.md#CreateRestPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**GetEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetEncryptionAtRest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest Using Customer-Managed Keys for One Project
+[**GetRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetRestPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Return One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**ListRestPrivateEndpoints**](EncryptionAtRestUsingCustomerKeyManagementApi.md#ListRestPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Return Private Endpoints for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**RequestPrivateEndpointDeletion**](EncryptionAtRestUsingCustomerKeyManagementApi.md#RequestPrivateEndpointDeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider from One Project
+[**UpdateEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#UpdateEncryptionAtRest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Encryption at Rest Configuration in One Project
 
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > EARPrivateEndpoint CreateRestPrivateEndpoint(ctx, groupId, cloudProvider, eARPrivateEndpoint EARPrivateEndpoint).Execute()
 
-Create One Private Endpoint in a Specified Region for Encryption at Rest Using Customer Key Management
+Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
 
 
 ### Example
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 > EncryptionAtRest GetEncryptionAtRest(ctx, groupId).Execute()
 
-Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project
+Return One Configuration for Encryption at Rest Using Customer-Managed Keys for One Project
 
 
 ### Example
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 > EARPrivateEndpoint GetRestPrivateEndpoint(ctx, groupId, cloudProvider, endpointId).Execute()
 
-Return One Private Endpoint for Encryption at Rest Using Customer Key Management
+Return One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
 
 
 ### Example
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 > PaginatedApiAtlasEARPrivateEndpoint ListRestPrivateEndpoints(ctx, groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return Private Endpoints of a Cloud Provider for Encryption at Rest Using Customer Key Management for One Project
+Return Private Endpoints for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
 
 
 ### Example
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 
 > RequestPrivateEndpointDeletion(ctx, groupId, cloudProvider, endpointId).Execute()
 
-Delete One Private Endpoint for Encryption at Rest Using Customer Key Management
+Delete One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider from One Project
 
 
 ### Example
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 > EncryptionAtRest UpdateEncryptionAtRest(ctx, groupId, encryptionAtRest EncryptionAtRest).Execute()
 
-Update Encryption at Rest Configuration for One Project
+Update Encryption at Rest Configuration in One Project
 
 
 ### Example

@@ -43,6 +43,9 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
+	// Internal classification of the cluster's role. Possible values: NONE (regular user cluster), SYSTEM_CLUSTER (system cluster for backup), INTERNAL_SHADOW_CLUSTER (internal use shadow cluster for testing).
+	// Read only field.
+	InternalClusterRole *string `json:"internalClusterRole,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
@@ -652,6 +655,39 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AtlasTenantClusterUpgradeRequest20240805) SetId(v string) {
 	o.Id = &v
+}
+
+// GetInternalClusterRole returns the InternalClusterRole field value if set, zero value otherwise
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetInternalClusterRole() string {
+	if o == nil || IsNil(o.InternalClusterRole) {
+		var ret string
+		return ret
+	}
+	return *o.InternalClusterRole
+}
+
+// GetInternalClusterRoleOk returns a tuple with the InternalClusterRole field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetInternalClusterRoleOk() (*string, bool) {
+	if o == nil || IsNil(o.InternalClusterRole) {
+		return nil, false
+	}
+
+	return o.InternalClusterRole, true
+}
+
+// HasInternalClusterRole returns a boolean if a field has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasInternalClusterRole() bool {
+	if o != nil && !IsNil(o.InternalClusterRole) {
+		return true
+	}
+
+	return false
+}
+
+// SetInternalClusterRole gets a reference to the given string and assigns it to the InternalClusterRole field.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetInternalClusterRole(v string) {
+	o.InternalClusterRole = &v
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise

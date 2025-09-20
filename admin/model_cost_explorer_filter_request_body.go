@@ -16,7 +16,7 @@ type CostExplorerFilterRequestBody struct {
 	Organizations *[]string `json:"organizations,omitempty"`
 	// The list of projects to be included in the Cost Explorer Query.
 	Projects *[]string `json:"projects,omitempty"`
-	// The list of projects to be included in the Cost Explorer Query.
+	// The list of SKU services to be included in the Cost Explorer Query.
 	Services *[]string `json:"services,omitempty"`
 	// The inclusive starting date for the Cost Explorer query. The date must be the start of a month.
 	StartDate string `json:"startDate"`

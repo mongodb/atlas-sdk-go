@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **GlobalClusterSelfManagedSharding** | Pointer to **bool** | Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster. | [optional] [readonly] 
+**InternalClusterRole** | Pointer to **string** | Internal classification of the cluster&#39;s role. Possible values: NONE (regular user cluster), SYSTEM_CLUSTER (system cluster for backup), INTERNAL_SHADOW_CLUSTER (internal use shadow cluster for testing). | [optional] [readonly] 
 **Labels** | Pointer to [**[]ComponentLabel**](ComponentLabel.md) | Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn&#39;t display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **MongoDBEmployeeAccessGrant** | Pointer to [**EmployeeAccessGrant**](EmployeeAccessGrant.md) |  | [optional] 
@@ -440,6 +441,30 @@ SetId sets Id field to given value.
 `func (o *AtlasTenantClusterUpgradeRequest20240805) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+### GetInternalClusterRole
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) GetInternalClusterRole() string`
+
+GetInternalClusterRole returns the InternalClusterRole field if non-nil, zero value otherwise.
+
+### GetInternalClusterRoleOk
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) GetInternalClusterRoleOk() (*string, bool)`
+
+GetInternalClusterRoleOk returns a tuple with the InternalClusterRole field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInternalClusterRole
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) SetInternalClusterRole(v string)`
+
+SetInternalClusterRole sets InternalClusterRole field to given value.
+
+### HasInternalClusterRole
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) HasInternalClusterRole() bool`
+
+HasInternalClusterRole returns a boolean if a field has been set.
 ### GetLabels
 
 `func (o *AtlasTenantClusterUpgradeRequest20240805) GetLabels() []ComponentLabel`
