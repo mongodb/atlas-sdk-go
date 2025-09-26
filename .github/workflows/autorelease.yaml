@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - main
-    paths: 
+    paths:
       - "internal/core/version.go"
-  
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
         id: set_tag
         working-directory: ./tools
         run: ./releaser/scripts/setghenv.sh
-      - name: Create Release 
+      - name: Create Release
         uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8
         with:
           body: ${{ env.RELEASE_NOTES }}
@@ -40,7 +40,7 @@ jobs:
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
-            ref: ${{ env.RELEASE_TAG }}
+          ref: ${{ env.RELEASE_TAG }}
       - name: Generate PURLs and SBOM
         run: make gen-purls gen-sbom
       - name: Upload SBOM to Kondukto
@@ -64,7 +64,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
-      - uses: ./.github/templates/run-script-and-commit
+      - uses: mongodb/terraform-provider-mongodbatlas/.github/templates/run-script-and-commit@master
         with:
           script_call: |
             TAG="${{ env.RELEASE_TAG }}"
@@ -72,7 +72,7 @@ jobs:
             AUTHOR="${{ github.actor }}"
             export AUTHOR VERSION
             ./scripts/compliance/gen-ssdlc-report.sh
-          file_to_commit: 'compliance/v*/ssdlc-compliance-*.md'
+          file_to_commit: "compliance/v*/ssdlc-compliance-*.md"
           commit_message: "chore: Update SSDLC report for ${{ env.RELEASE_TAG }}"
           apix_bot_pat: ${{ secrets.APIX_BOT_PAT }}
           remote: https://svc-apix-bot:${{ secrets.APIX_BOT_PAT }}@github.com/${{ github.repository }}
