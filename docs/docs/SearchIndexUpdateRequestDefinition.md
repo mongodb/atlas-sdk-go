@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
 **StoredSource** | Pointer to [**any**](interface{}.md) | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields. | [optional] 
 **Synonyms** | Pointer to [**[]SearchSynonymMappingDefinition**](SearchSynonymMappingDefinition.md) | Rule sets that map words to their synonyms in this index. | [optional] 
+**TypeSets** | Pointer to [**[]SearchTypeSets**](SearchTypeSets.md) | Type sets for the index. | [optional] 
 **Fields** | Pointer to [**[]any**](any.md) | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
 
 ## Methods
@@ -200,6 +201,30 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *SearchIndexUpdateRequestDefinition) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
+### GetTypeSets
+
+`func (o *SearchIndexUpdateRequestDefinition) GetTypeSets() []SearchTypeSets`
+
+GetTypeSets returns the TypeSets field if non-nil, zero value otherwise.
+
+### GetTypeSetsOk
+
+`func (o *SearchIndexUpdateRequestDefinition) GetTypeSetsOk() (*[]SearchTypeSets, bool)`
+
+GetTypeSetsOk returns a tuple with the TypeSets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTypeSets
+
+`func (o *SearchIndexUpdateRequestDefinition) SetTypeSets(v []SearchTypeSets)`
+
+SetTypeSets sets TypeSets field to given value.
+
+### HasTypeSets
+
+`func (o *SearchIndexUpdateRequestDefinition) HasTypeSets() bool`
+
+HasTypeSets returns a boolean if a field has been set.
 ### GetFields
 
 `func (o *SearchIndexUpdateRequestDefinition) GetFields() []any`

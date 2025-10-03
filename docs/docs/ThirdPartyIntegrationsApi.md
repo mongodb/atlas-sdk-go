@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupIntegration**](ThirdPartyIntegrationsApi.md#CreateGroupIntegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Configure One Third-Party Service Integration
+[**CreateGroupIntegration**](ThirdPartyIntegrationsApi.md#CreateGroupIntegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Create One Third-Party Service Integration
 [**DeleteGroupIntegration**](ThirdPartyIntegrationsApi.md#DeleteGroupIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration
 [**GetGroupIntegration**](ThirdPartyIntegrationsApi.md#GetGroupIntegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration
 [**ListGroupIntegrations**](ThirdPartyIntegrationsApi.md#ListGroupIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/integrations | Return All Active Third-Party Service Integrations
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > PaginatedIntegration CreateGroupIntegration(ctx, integrationType, groupId, thirdPartyIntegration ThirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Configure One Third-Party Service Integration
+Create One Third-Party Service Integration
 
 
 ### Example
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -120,7 +120,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -201,7 +201,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -284,7 +284,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -370,7 +370,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {

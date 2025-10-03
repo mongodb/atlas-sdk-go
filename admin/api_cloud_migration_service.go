@@ -13,7 +13,7 @@ import (
 type CloudMigrationServiceApi interface {
 
 	/*
-			CreateGroupLiveMigration Migrate One Local Managed Cluster to MongoDB Atlas
+			CreateGroupLiveMigration Create One Migration for One Local Managed Cluster to MongoDB Atlas
 
 			Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
 
@@ -30,7 +30,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	CreateGroupLiveMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) CreateGroupLiveMigrationApiRequest
 	/*
-		CreateGroupLiveMigration Migrate One Local Managed Cluster to MongoDB Atlas
+		CreateGroupLiveMigration Create One Migration for One Local Managed Cluster to MongoDB Atlas
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -238,7 +238,7 @@ func (r CreateGroupLiveMigrationApiRequest) Execute() (*LiveMigrationResponse, *
 }
 
 /*
-CreateGroupLiveMigration Migrate One Local Managed Cluster to MongoDB Atlas
+CreateGroupLiveMigration Create One Migration for One Local Managed Cluster to MongoDB Atlas
 
 Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
 

@@ -64,7 +64,7 @@ type ProjectsApi interface {
 	CreateGroupExecute(r CreateGroupApiRequest) (*Group, *http.Response, error)
 
 	/*
-		CreateGroupInvite Invite One MongoDB Cloud User to One Project
+		CreateGroupInvite Create Invitation for One MongoDB Cloud User in One Project
 
 		Invites one MongoDB Cloud user to join the specified project. The MongoDB Cloud user must accept the invitation to access information within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -77,7 +77,7 @@ type ProjectsApi interface {
 	*/
 	CreateGroupInvite(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) CreateGroupInviteApiRequest
 	/*
-		CreateGroupInvite Invite One MongoDB Cloud User to One Project
+		CreateGroupInvite Create Invitation for One MongoDB Cloud User in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -115,7 +115,7 @@ type ProjectsApi interface {
 	DeleteGroupExecute(r DeleteGroupApiRequest) (*http.Response, error)
 
 	/*
-		DeleteGroupInvite Remove One Project Invitation
+		DeleteGroupInvite Remove One Invitation from One Project
 
 		Cancels one pending invitation sent to the specified MongoDB Cloud user to join a project. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -128,7 +128,7 @@ type ProjectsApi interface {
 	*/
 	DeleteGroupInvite(ctx context.Context, groupId string, invitationId string) DeleteGroupInviteApiRequest
 	/*
-		DeleteGroupInvite Remove One Project Invitation
+		DeleteGroupInvite Remove One Invitation from One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -213,7 +213,7 @@ type ProjectsApi interface {
 	GetGroupByNameExecute(r GetGroupByNameApiRequest) (*Group, *http.Response, error)
 
 	/*
-		GetGroupInvite Return One Project Invitation
+		GetGroupInvite Return One Invitation in One Project by Invitation ID
 
 		Returns the details of one pending invitation to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -226,7 +226,7 @@ type ProjectsApi interface {
 	*/
 	GetGroupInvite(ctx context.Context, groupId string, invitationId string) GetGroupInviteApiRequest
 	/*
-		GetGroupInvite Return One Project Invitation
+		GetGroupInvite Return One Invitation in One Project by Invitation ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -334,7 +334,7 @@ type ProjectsApi interface {
 	GetMongoDbVersionsExecute(r GetMongoDbVersionsApiRequest) (*PaginatedAvailableVersion, *http.Response, error)
 
 	/*
-		ListGroupInvites Return All Project Invitations
+		ListGroupInvites Return All Invitations in One Project
 
 		Returns all pending invitations to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -346,7 +346,7 @@ type ProjectsApi interface {
 	*/
 	ListGroupInvites(ctx context.Context, groupId string) ListGroupInvitesApiRequest
 	/*
-		ListGroupInvites Return All Project Invitations
+		ListGroupInvites Return All Invitations in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -481,7 +481,7 @@ type ProjectsApi interface {
 	UpdateGroupExecute(r UpdateGroupApiRequest) (*Group, *http.Response, error)
 
 	/*
-		UpdateGroupInvites Update One Project Invitation
+		UpdateGroupInvites Update One Invitation in One Project
 
 		Updates the details of one pending invitation to the specified project. To specify which invitation to update, provide the username of the invited user. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -494,7 +494,7 @@ type ProjectsApi interface {
 	*/
 	UpdateGroupInvites(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) UpdateGroupInvitesApiRequest
 	/*
-		UpdateGroupInvites Update One Project Invitation
+		UpdateGroupInvites Update One Invitation in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -562,7 +562,7 @@ type ProjectsApi interface {
 	UpdateGroupUserRolesExecute(r UpdateGroupUserRolesApiRequest) (*UpdateGroupRolesForUser, *http.Response, error)
 
 	/*
-		UpdateInviteById Update One Project Invitation by Invitation ID
+		UpdateInviteById Update One Invitation in One Project by Invitation ID
 
 		Updates the details of one pending invitation to the specified project. To specify which invitation to update, provide the unique identification string for that invitation. Use the Return All Project Invitations endpoint to retrieve IDs for all pending project invitations. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -576,7 +576,7 @@ type ProjectsApi interface {
 	*/
 	UpdateInviteById(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *GroupInvitationUpdateRequest) UpdateInviteByIdApiRequest
 	/*
-		UpdateInviteById Update One Project Invitation by Invitation ID
+		UpdateInviteById Update One Invitation in One Project by Invitation ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -873,7 +873,7 @@ func (r CreateGroupInviteApiRequest) Execute() (*GroupInvitation, *http.Response
 }
 
 /*
-CreateGroupInvite Invite One MongoDB Cloud User to One Project
+CreateGroupInvite Create Invitation for One MongoDB Cloud User in One Project
 
 Invites one MongoDB Cloud user to join the specified project. The MongoDB Cloud user must accept the invitation to access information within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -1097,7 +1097,7 @@ func (r DeleteGroupInviteApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteGroupInvite Remove One Project Invitation
+DeleteGroupInvite Remove One Invitation from One Project
 
 Cancels one pending invitation sent to the specified MongoDB Cloud user to join a project. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -1540,7 +1540,7 @@ func (r GetGroupInviteApiRequest) Execute() (*GroupInvitation, *http.Response, e
 }
 
 /*
-GetGroupInvite Return One Project Invitation
+GetGroupInvite Return One Invitation in One Project by Invitation ID
 
 Returns the details of one pending invitation to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -2206,7 +2206,7 @@ func (r ListGroupInvitesApiRequest) Execute() ([]GroupInvitation, *http.Response
 }
 
 /*
-ListGroupInvites Return All Project Invitations
+ListGroupInvites Return All Invitations in One Project
 
 Returns all pending invitations to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -2977,7 +2977,7 @@ func (r UpdateGroupInvitesApiRequest) Execute() (*GroupInvitation, *http.Respons
 }
 
 /*
-UpdateGroupInvites Update One Project Invitation
+UpdateGroupInvites Update One Invitation in One Project
 
 Updates the details of one pending invitation to the specified project. To specify which invitation to update, provide the username of the invited user. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -3366,7 +3366,7 @@ func (r UpdateInviteByIdApiRequest) Execute() (*GroupInvitation, *http.Response,
 }
 
 /*
-UpdateInviteById Update One Project Invitation by Invitation ID
+UpdateInviteById Update One Invitation in One Project by Invitation ID
 
 Updates the details of one pending invitation to the specified project. To specify which invitation to update, provide the unique identification string for that invitation. Use the Return All Project Invitations endpoint to retrieve IDs for all pending project invitations. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 

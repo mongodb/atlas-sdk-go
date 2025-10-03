@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFlexRestoreJob**](FlexRestoreJobsApi.md#CreateFlexRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Restore One Snapshot of One Flex Cluster
+[**CreateFlexRestoreJob**](FlexRestoreJobsApi.md#CreateFlexRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Create One Restore Job for One Flex Cluster
 [**GetFlexRestoreJob**](FlexRestoreJobsApi.md#GetFlexRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster
 [**ListFlexRestoreJobs**](FlexRestoreJobsApi.md#ListFlexRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > FlexBackupRestoreJob20241113 CreateFlexRestoreJob(ctx, groupId, name, flexBackupRestoreJobCreate20241113 FlexBackupRestoreJobCreate20241113).Execute()
 
-Restore One Snapshot of One Flex Cluster
+Create One Restore Job for One Flex Cluster
 
 
 ### Example
@@ -27,7 +27,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {

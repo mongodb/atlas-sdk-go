@@ -44,9 +44,9 @@ Class        | Method        | HTTP request  | Description   |
 *AuditingApi* | [UpdateAuditLog](./docs/AuditingApi.md#updateauditlog) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project |
 *CloudBackupsApi* | [CancelBackupRestoreJob](./docs/CloudBackupsApi.md#cancelbackuprestorejob) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Cancel One Restore Job for One Cluster |
 *CloudBackupsApi* | [CreateBackupExport](./docs/CloudBackupsApi.md#createbackupexport) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Create One Snapshot Export Job |
-*CloudBackupsApi* | [CreateBackupRestoreJob](./docs/CloudBackupsApi.md#createbackuprestorejob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Restore One Snapshot of One Cluster |
+*CloudBackupsApi* | [CreateBackupRestoreJob](./docs/CloudBackupsApi.md#createbackuprestorejob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Create One Restore Job of One Cluster |
 *CloudBackupsApi* | [CreateExportBucket](./docs/CloudBackupsApi.md#createexportbucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Create One Snapshot Export Bucket |
-*CloudBackupsApi* | [CreateServerlessRestoreJob](./docs/CloudBackupsApi.md#createserverlessrestorejob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Restore One Snapshot of One Serverless Instance |
+*CloudBackupsApi* | [CreateServerlessRestoreJob](./docs/CloudBackupsApi.md#createserverlessrestorejob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Create One Restore Job for One Serverless Instance |
 *CloudBackupsApi* | [DeleteBackupShardedCluster](./docs/CloudBackupsApi.md#deletebackupshardedcluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Remove One Sharded Cluster Cloud Backup |
 *CloudBackupsApi* | [DeleteClusterBackupSchedule](./docs/CloudBackupsApi.md#deleteclusterbackupschedule) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Remove All Cloud Backup Schedules |
 *CloudBackupsApi* | [DeleteClusterBackupSnapshot](./docs/CloudBackupsApi.md#deleteclusterbackupsnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Remove One Replica Set Cloud Backup |
@@ -72,7 +72,7 @@ Class        | Method        | HTTP request  | Description   |
 *CloudBackupsApi* | [UpdateBackupSchedule](./docs/CloudBackupsApi.md#updatebackupschedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Update Cloud Backup Schedule for One Cluster |
 *CloudBackupsApi* | [UpdateBackupSnapshot](./docs/CloudBackupsApi.md#updatebackupsnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Update Expiration Date for One Cloud Backup |
 *CloudBackupsApi* | [UpdateCompliancePolicy](./docs/CloudBackupsApi.md#updatecompliancepolicy) | **Put** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Update Backup Compliance Policy Settings |
-*CloudMigrationServiceApi* | [CreateGroupLiveMigration](./docs/CloudMigrationServiceApi.md#creategrouplivemigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Migrate One Local Managed Cluster to MongoDB Atlas |
+*CloudMigrationServiceApi* | [CreateGroupLiveMigration](./docs/CloudMigrationServiceApi.md#creategrouplivemigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Create One Migration for One Local Managed Cluster to MongoDB Atlas |
 *CloudMigrationServiceApi* | [CreateLinkToken](./docs/CloudMigrationServiceApi.md#createlinktoken) | **Post** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Create One Link-Token |
 *CloudMigrationServiceApi* | [CutoverMigration](./docs/CloudMigrationServiceApi.md#cutovermigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over One Migrated Cluster |
 *CloudMigrationServiceApi* | [DeleteLinkTokens](./docs/CloudMigrationServiceApi.md#deletelinktokens) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token |
@@ -108,14 +108,14 @@ Class        | Method        | HTTP request  | Description   |
 *ClustersApi* | [UpdateProcessArgs](./docs/ClustersApi.md#updateprocessargs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster |
 *ClustersApi* | [UpgradeClusterToServerless](./docs/ClustersApi.md#upgradeclustertoserverless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance |
 *ClustersApi* | [UpgradeTenantUpgrade](./docs/ClustersApi.md#upgradetenantupgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster |
-*CollectionLevelMetricsApi* | [GetClusterNamespaces](./docs/CollectionLevelMetricsApi.md#getclusternamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from a Cluster |
-*CollectionLevelMetricsApi* | [GetProcessNamespaces](./docs/CollectionLevelMetricsApi.md#getprocessnamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from a Host |
+*CollectionLevelMetricsApi* | [GetClusterNamespaces](./docs/CollectionLevelMetricsApi.md#getclusternamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from One Cluster |
+*CollectionLevelMetricsApi* | [GetProcessNamespaces](./docs/CollectionLevelMetricsApi.md#getprocessnamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from One Host |
 *CollectionLevelMetricsApi* | [ListCollStatMeasurements](./docs/CollectionLevelMetricsApi.md#listcollstatmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements | Return Cluster-Level Query Latency |
-*CollectionLevelMetricsApi* | [ListCollStatMetrics](./docs/CollectionLevelMetricsApi.md#listcollstatmetrics) | **Get** /api/atlas/v2/groups/{groupId}/collStats/metrics | Return all metric names |
+*CollectionLevelMetricsApi* | [ListCollStatMetrics](./docs/CollectionLevelMetricsApi.md#listcollstatmetrics) | **Get** /api/atlas/v2/groups/{groupId}/collStats/metrics | Return All Metric Names |
 *CollectionLevelMetricsApi* | [ListPinnedNamespaces](./docs/CollectionLevelMetricsApi.md#listpinnednamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Return Pinned Namespaces |
 *CollectionLevelMetricsApi* | [ListProcessMeasurements](./docs/CollectionLevelMetricsApi.md#listprocessmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements | Return Host-Level Query Latency |
 *CollectionLevelMetricsApi* | [PinNamespaces](./docs/CollectionLevelMetricsApi.md#pinnamespaces) | **Put** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Pin Namespaces |
-*CollectionLevelMetricsApi* | [UnpinNamespaces](./docs/CollectionLevelMetricsApi.md#unpinnamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin | Unpin namespaces |
+*CollectionLevelMetricsApi* | [UnpinNamespaces](./docs/CollectionLevelMetricsApi.md#unpinnamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin | Unpin Namespaces |
 *CollectionLevelMetricsApi* | [UpdatePinnedNamespaces](./docs/CollectionLevelMetricsApi.md#updatepinnednamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Add Pinned Namespaces |
 *CustomDatabaseRolesApi* | [CreateCustomDbRole](./docs/CustomDatabaseRolesApi.md#createcustomdbrole) | **Post** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Create One Custom Role |
 *CustomDatabaseRolesApi* | [DeleteCustomDbRole](./docs/CustomDatabaseRolesApi.md#deletecustomdbrole) | **Delete** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Remove One Custom Role from One Project |
@@ -154,12 +154,12 @@ Class        | Method        | HTTP request  | Description   |
 *DatabaseUsersApi* | [GetDatabaseUser](./docs/DatabaseUsersApi.md#getdatabaseuser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project |
 *DatabaseUsersApi* | [ListDatabaseUsers](./docs/DatabaseUsersApi.md#listdatabaseusers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users in One Project |
 *DatabaseUsersApi* | [UpdateDatabaseUser](./docs/DatabaseUsersApi.md#updatedatabaseuser) | **Patch** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Update One Database User in One Project |
-*EncryptionAtRestUsingCustomerKeyManagementApi* | [CreateRestPrivateEndpoint](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#createrestprivateendpoint) | **Post** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Create One Private Endpoint in a Specified Region for Encryption at Rest Using Customer Key Management |
-*EncryptionAtRestUsingCustomerKeyManagementApi* | [GetEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#getencryptionatrest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project |
-*EncryptionAtRestUsingCustomerKeyManagementApi* | [GetRestPrivateEndpoint](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#getrestprivateendpoint) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Return One Private Endpoint for Encryption at Rest Using Customer Key Management |
-*EncryptionAtRestUsingCustomerKeyManagementApi* | [ListRestPrivateEndpoints](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#listrestprivateendpoints) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Return Private Endpoints of a Cloud Provider for Encryption at Rest Using Customer Key Management for One Project |
-*EncryptionAtRestUsingCustomerKeyManagementApi* | [RequestPrivateEndpointDeletion](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#requestprivateendpointdeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Private Endpoint for Encryption at Rest Using Customer Key Management |
-*EncryptionAtRestUsingCustomerKeyManagementApi* | [UpdateEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#updateencryptionatrest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Encryption at Rest Configuration for One Project |
+*EncryptionAtRestUsingCustomerKeyManagementApi* | [CreateRestPrivateEndpoint](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#createrestprivateendpoint) | **Post** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project |
+*EncryptionAtRestUsingCustomerKeyManagementApi* | [GetEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#getencryptionatrest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest Using Customer-Managed Keys for One Project |
+*EncryptionAtRestUsingCustomerKeyManagementApi* | [GetRestPrivateEndpoint](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#getrestprivateendpoint) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Return One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project |
+*EncryptionAtRestUsingCustomerKeyManagementApi* | [ListRestPrivateEndpoints](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#listrestprivateendpoints) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Return Private Endpoints for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project |
+*EncryptionAtRestUsingCustomerKeyManagementApi* | [RequestPrivateEndpointDeletion](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#requestprivateendpointdeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider from One Project |
+*EncryptionAtRestUsingCustomerKeyManagementApi* | [UpdateEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#updateencryptionatrest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Encryption at Rest Configuration in One Project |
 *EventsApi* | [GetGroupEvent](./docs/EventsApi.md#getgroupevent) | **Get** /api/atlas/v2/groups/{groupId}/events/{eventId} | Return One Event from One Project |
 *EventsApi* | [GetOrgEvent](./docs/EventsApi.md#getorgevent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization |
 *EventsApi* | [ListEventTypes](./docs/EventsApi.md#listeventtypes) | **Get** /api/atlas/v2/eventTypes | Return All Event Types |
@@ -189,19 +189,19 @@ Class        | Method        | HTTP request  | Description   |
 *FlexClustersApi* | [ListFlexClusters](./docs/FlexClustersApi.md#listflexclusters) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters | Return All Flex Clusters from One Project |
 *FlexClustersApi* | [TenantUpgrade](./docs/FlexClustersApi.md#tenantupgrade) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade | Upgrade One Flex Cluster |
 *FlexClustersApi* | [UpdateFlexCluster](./docs/FlexClustersApi.md#updateflexcluster) | **Patch** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Update One Flex Cluster in One Project |
-*FlexRestoreJobsApi* | [CreateFlexRestoreJob](./docs/FlexRestoreJobsApi.md#createflexrestorejob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Restore One Snapshot of One Flex Cluster |
+*FlexRestoreJobsApi* | [CreateFlexRestoreJob](./docs/FlexRestoreJobsApi.md#createflexrestorejob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Create One Restore Job for One Flex Cluster |
 *FlexRestoreJobsApi* | [GetFlexRestoreJob](./docs/FlexRestoreJobsApi.md#getflexrestorejob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster |
 *FlexRestoreJobsApi* | [ListFlexRestoreJobs](./docs/FlexRestoreJobsApi.md#listflexrestorejobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster |
 *FlexSnapshotsApi* | [DownloadFlexBackup](./docs/FlexSnapshotsApi.md#downloadflexbackup) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download | Download One Flex Cluster Snapshot |
-*FlexSnapshotsApi* | [GetFlexBackupSnapshot](./docs/FlexSnapshotsApi.md#getflexbackupsnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot of One Flex Cluster |
-*FlexSnapshotsApi* | [ListFlexBackupSnapshots](./docs/FlexSnapshotsApi.md#listflexbackupsnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots of One Flex Cluster |
+*FlexSnapshotsApi* | [GetFlexBackupSnapshot](./docs/FlexSnapshotsApi.md#getflexbackupsnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot for One Flex Cluster |
+*FlexSnapshotsApi* | [ListFlexBackupSnapshots](./docs/FlexSnapshotsApi.md#listflexbackupsnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots for One Flex Cluster |
 *GlobalClustersApi* | [CreateCustomZoneMapping](./docs/GlobalClustersApi.md#createcustomzonemapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Custom Zone Mapping to One Global Cluster |
 *GlobalClustersApi* | [CreateManagedNamespace](./docs/GlobalClustersApi.md#createmanagednamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Cluster |
 *GlobalClustersApi* | [DeleteCustomZoneMapping](./docs/GlobalClustersApi.md#deletecustomzonemapping) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster |
 *GlobalClustersApi* | [DeleteManagedNamespaces](./docs/GlobalClustersApi.md#deletemanagednamespaces) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster |
 *GlobalClustersApi* | [GetClusterGlobalWrites](./docs/GlobalClustersApi.md#getclusterglobalwrites) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Cluster |
 *InvoicesApi* | [CreateCostExplorerProcess](./docs/InvoicesApi.md#createcostexplorerprocess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process |
-*InvoicesApi* | [GetCostExplorerUsage](./docs/InvoicesApi.md#getcostexplorerusage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet. |
+*InvoicesApi* | [GetCostExplorerUsage](./docs/InvoicesApi.md#getcostexplorerusage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query |
 *InvoicesApi* | [GetInvoice](./docs/InvoicesApi.md#getinvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization |
 *InvoicesApi* | [GetInvoiceCsv](./docs/InvoicesApi.md#getinvoicecsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization |
 *InvoicesApi* | [ListInvoicePending](./docs/InvoicesApi.md#listinvoicepending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization |
@@ -281,18 +281,18 @@ Class        | Method        | HTTP request  | Description   |
 *OnlineArchiveApi* | [ListOnlineArchives](./docs/OnlineArchiveApi.md#listonlinearchives) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Return All Online Archives for One Cluster |
 *OnlineArchiveApi* | [UpdateOnlineArchive](./docs/OnlineArchiveApi.md#updateonlinearchive) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Update One Online Archive |
 *OrganizationsApi* | [CreateOrg](./docs/OrganizationsApi.md#createorg) | **Post** /api/atlas/v2/orgs | Create One Organization |
-*OrganizationsApi* | [CreateOrgInvite](./docs/OrganizationsApi.md#createorginvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Invite One MongoDB Cloud User to One Atlas Organization |
+*OrganizationsApi* | [CreateOrgInvite](./docs/OrganizationsApi.md#createorginvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Create Invitation for One MongoDB Cloud User in One Organization |
 *OrganizationsApi* | [DeleteOrg](./docs/OrganizationsApi.md#deleteorg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization |
-*OrganizationsApi* | [DeleteOrgInvite](./docs/OrganizationsApi.md#deleteorginvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Organization Invitation |
+*OrganizationsApi* | [DeleteOrgInvite](./docs/OrganizationsApi.md#deleteorginvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Invitation from One Organization |
 *OrganizationsApi* | [GetOrg](./docs/OrganizationsApi.md#getorg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization |
 *OrganizationsApi* | [GetOrgGroups](./docs/OrganizationsApi.md#getorggroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization |
-*OrganizationsApi* | [GetOrgInvite](./docs/OrganizationsApi.md#getorginvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Organization Invitation |
+*OrganizationsApi* | [GetOrgInvite](./docs/OrganizationsApi.md#getorginvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID |
 *OrganizationsApi* | [GetOrgSettings](./docs/OrganizationsApi.md#getorgsettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization |
-*OrganizationsApi* | [ListOrgInvites](./docs/OrganizationsApi.md#listorginvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Organization Invitations |
+*OrganizationsApi* | [ListOrgInvites](./docs/OrganizationsApi.md#listorginvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization |
 *OrganizationsApi* | [ListOrgs](./docs/OrganizationsApi.md#listorgs) | **Get** /api/atlas/v2/orgs | Return All Organizations |
 *OrganizationsApi* | [UpdateOrg](./docs/OrganizationsApi.md#updateorg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization |
-*OrganizationsApi* | [UpdateOrgInviteById](./docs/OrganizationsApi.md#updateorginvitebyid) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID |
-*OrganizationsApi* | [UpdateOrgInvites](./docs/OrganizationsApi.md#updateorginvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation |
+*OrganizationsApi* | [UpdateOrgInviteById](./docs/OrganizationsApi.md#updateorginvitebyid) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID |
+*OrganizationsApi* | [UpdateOrgInvites](./docs/OrganizationsApi.md#updateorginvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization |
 *OrganizationsApi* | [UpdateOrgSettings](./docs/OrganizationsApi.md#updateorgsettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization |
 *OrganizationsApi* | [UpdateOrgUserRoles](./docs/OrganizationsApi.md#updateorguserroles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User |
 *PerformanceAdvisorApi* | [DisableManagedSlowMs](./docs/PerformanceAdvisorApi.md#disablemanagedslowms) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold |
@@ -336,31 +336,31 @@ Class        | Method        | HTTP request  | Description   |
 *ProjectIPAccessListApi* | [ListAccessListEntries](./docs/ProjectIPAccessListApi.md#listaccesslistentries) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return All Project IP Access List Entries |
 *ProjectsApi* | [AddGroupUser](./docs/ProjectsApi.md#addgroupuser) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project |
 *ProjectsApi* | [CreateGroup](./docs/ProjectsApi.md#creategroup) | **Post** /api/atlas/v2/groups | Create One Project |
-*ProjectsApi* | [CreateGroupInvite](./docs/ProjectsApi.md#creategroupinvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Invite One MongoDB Cloud User to One Project |
+*ProjectsApi* | [CreateGroupInvite](./docs/ProjectsApi.md#creategroupinvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Create Invitation for One MongoDB Cloud User in One Project |
 *ProjectsApi* | [DeleteGroup](./docs/ProjectsApi.md#deletegroup) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project |
-*ProjectsApi* | [DeleteGroupInvite](./docs/ProjectsApi.md#deletegroupinvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Project Invitation |
+*ProjectsApi* | [DeleteGroupInvite](./docs/ProjectsApi.md#deletegroupinvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Invitation from One Project |
 *ProjectsApi* | [DeleteGroupLimit](./docs/ProjectsApi.md#deletegrouplimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit |
 *ProjectsApi* | [GetGroup](./docs/ProjectsApi.md#getgroup) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project |
 *ProjectsApi* | [GetGroupByName](./docs/ProjectsApi.md#getgroupbyname) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name |
-*ProjectsApi* | [GetGroupInvite](./docs/ProjectsApi.md#getgroupinvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Project Invitation |
+*ProjectsApi* | [GetGroupInvite](./docs/ProjectsApi.md#getgroupinvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Invitation in One Project by Invitation ID |
 *ProjectsApi* | [GetGroupIpAddresses](./docs/ProjectsApi.md#getgroupipaddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project |
 *ProjectsApi* | [GetGroupLimit](./docs/ProjectsApi.md#getgrouplimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project |
 *ProjectsApi* | [GetGroupSettings](./docs/ProjectsApi.md#getgroupsettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings |
 *ProjectsApi* | [GetMongoDbVersions](./docs/ProjectsApi.md#getmongodbversions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project |
-*ProjectsApi* | [ListGroupInvites](./docs/ProjectsApi.md#listgroupinvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations |
+*ProjectsApi* | [ListGroupInvites](./docs/ProjectsApi.md#listgroupinvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Invitations in One Project |
 *ProjectsApi* | [ListGroupLimits](./docs/ProjectsApi.md#listgrouplimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project |
 *ProjectsApi* | [ListGroups](./docs/ProjectsApi.md#listgroups) | **Get** /api/atlas/v2/groups | Return All Projects |
 *ProjectsApi* | [MigrateGroup](./docs/ProjectsApi.md#migrategroup) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization |
 *ProjectsApi* | [SetGroupLimit](./docs/ProjectsApi.md#setgrouplimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit |
 *ProjectsApi* | [UpdateGroup](./docs/ProjectsApi.md#updategroup) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project |
-*ProjectsApi* | [UpdateGroupInvites](./docs/ProjectsApi.md#updategroupinvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation |
+*ProjectsApi* | [UpdateGroupInvites](./docs/ProjectsApi.md#updategroupinvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Invitation in One Project |
 *ProjectsApi* | [UpdateGroupSettings](./docs/ProjectsApi.md#updategroupsettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings |
 *ProjectsApi* | [UpdateGroupUserRoles](./docs/ProjectsApi.md#updategroupuserroles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User |
-*ProjectsApi* | [UpdateInviteById](./docs/ProjectsApi.md#updateinvitebyid) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID |
-*PushBasedLogExportApi* | [CreateLogExport](./docs/PushBasedLogExportApi.md#createlogexport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Enable Push-Based Log Export for One Project |
+*ProjectsApi* | [UpdateInviteById](./docs/ProjectsApi.md#updateinvitebyid) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Invitation in One Project by Invitation ID |
+*PushBasedLogExportApi* | [CreateLogExport](./docs/PushBasedLogExportApi.md#createlogexport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project |
 *PushBasedLogExportApi* | [DeleteLogExport](./docs/PushBasedLogExportApi.md#deletelogexport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project |
-*PushBasedLogExportApi* | [GetLogExport](./docs/PushBasedLogExportApi.md#getlogexport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return Push-Based Log Export Configuration for One Project |
-*PushBasedLogExportApi* | [UpdateLogExport](./docs/PushBasedLogExportApi.md#updatelogexport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update Push-Based Log Export for One Project |
+*PushBasedLogExportApi* | [GetLogExport](./docs/PushBasedLogExportApi.md#getlogexport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project |
+*PushBasedLogExportApi* | [UpdateLogExport](./docs/PushBasedLogExportApi.md#updatelogexport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project |
 *QueryShapeInsightsApi* | [GetQueryShapeDetails](./docs/QueryShapeInsightsApi.md#getqueryshapedetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details |
 *QueryShapeInsightsApi* | [ListQueryShapeSummaries](./docs/QueryShapeInsightsApi.md#listqueryshapesummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries |
 *ResourcePoliciesApi* | [CreateOrgResourcePolicy](./docs/ResourcePoliciesApi.md#createorgresourcepolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy |
@@ -371,7 +371,7 @@ Class        | Method        | HTTP request  | Description   |
 *ResourcePoliciesApi* | [UpdateOrgResourcePolicy](./docs/ResourcePoliciesApi.md#updateorgresourcepolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update One Atlas Resource Policy |
 *ResourcePoliciesApi* | [ValidateResourcePolicies](./docs/ResourcePoliciesApi.md#validateresourcepolicies) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate One Atlas Resource Policy |
 *RollingIndexApi* | [CreateRollingIndex](./docs/RollingIndexApi.md#createrollingindex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index |
-*RootApi* | [GetSystemStatus](./docs/RootApi.md#getsystemstatus) | **Get** /api/atlas/v2 | Return the status of this MongoDB application |
+*RootApi* | [GetSystemStatus](./docs/RootApi.md#getsystemstatus) | **Get** /api/atlas/v2 | Return the Status of This MongoDB Application |
 *RootApi* | [ListControlPlaneAddresses](./docs/RootApi.md#listcontrolplaneaddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses |
 *ServerlessInstancesApi* | [CreateServerlessInstance](./docs/ServerlessInstancesApi.md#createserverlessinstance) | **Post** /api/atlas/v2/groups/{groupId}/serverless | Create One Serverless Instance in One Project |
 *ServerlessInstancesApi* | [DeleteServerlessInstance](./docs/ServerlessInstancesApi.md#deleteserverlessinstance) | **Delete** /api/atlas/v2/groups/{groupId}/serverless/{name} | Remove One Serverless Instance from One Project |
@@ -454,7 +454,7 @@ Class        | Method        | HTTP request  | Description   |
 *TeamsApi* | [RemoveUserFromTeam](./docs/TeamsApi.md#removeuserfromteam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId} | Remove One MongoDB Cloud User from One Team |
 *TeamsApi* | [RenameOrgTeam](./docs/TeamsApi.md#renameorgteam) | **Patch** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Rename One Team |
 *TeamsApi* | [UpdateGroupTeam](./docs/TeamsApi.md#updategroupteam) | **Patch** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Update Team Roles in One Project |
-*ThirdPartyIntegrationsApi* | [CreateGroupIntegration](./docs/ThirdPartyIntegrationsApi.md#creategroupintegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Configure One Third-Party Service Integration |
+*ThirdPartyIntegrationsApi* | [CreateGroupIntegration](./docs/ThirdPartyIntegrationsApi.md#creategroupintegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Create One Third-Party Service Integration |
 *ThirdPartyIntegrationsApi* | [DeleteGroupIntegration](./docs/ThirdPartyIntegrationsApi.md#deletegroupintegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration |
 *ThirdPartyIntegrationsApi* | [GetGroupIntegration](./docs/ThirdPartyIntegrationsApi.md#getgroupintegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration |
 *ThirdPartyIntegrationsApi* | [ListGroupIntegrations](./docs/ThirdPartyIntegrationsApi.md#listgroupintegrations) | **Get** /api/atlas/v2/groups/{groupId}/integrations | Return All Active Third-Party Service Integrations |
@@ -595,6 +595,7 @@ Class        | Method        | HTTP request  | Description   |
  - [CreateOrganizationResponse](./docs/CreateOrganizationResponse.md)
  - [CreatePushBasedLogExportProjectRequest](./docs/CreatePushBasedLogExportProjectRequest.md)
  - [Criteria](./docs/Criteria.md)
+ - [CustomSessionTimeouts](./docs/CustomSessionTimeouts.md)
  - [CustomZoneMappings](./docs/CustomZoneMappings.md)
  - [DBRoleToExecute](./docs/DBRoleToExecute.md)
  - [DBUserTLSX509Settings](./docs/DBUserTLSX509Settings.md)
@@ -861,6 +862,7 @@ Class        | Method        | HTTP request  | Description   |
  - [SearchIndexUpdateRequestDefinition](./docs/SearchIndexUpdateRequestDefinition.md)
  - [SearchMappings](./docs/SearchMappings.md)
  - [SearchSynonymMappingDefinition](./docs/SearchSynonymMappingDefinition.md)
+ - [SearchTypeSets](./docs/SearchTypeSets.md)
  - [ServerlessBackupRestoreJob](./docs/ServerlessBackupRestoreJob.md)
  - [ServerlessBackupSnapshot](./docs/ServerlessBackupSnapshot.md)
  - [ServerlessConnectionStringsPrivateEndpointItem](./docs/ServerlessConnectionStringsPrivateEndpointItem.md)

@@ -13,7 +13,7 @@ import (
 type FlexRestoreJobsApi interface {
 
 	/*
-		CreateFlexRestoreJob Restore One Snapshot of One Flex Cluster
+		CreateFlexRestoreJob Create One Restore Job for One Flex Cluster
 
 		Restores one snapshot of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -25,7 +25,7 @@ type FlexRestoreJobsApi interface {
 	*/
 	CreateFlexRestoreJob(ctx context.Context, groupId string, name string, flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113) CreateFlexRestoreJobApiRequest
 	/*
-		CreateFlexRestoreJob Restore One Snapshot of One Flex Cluster
+		CreateFlexRestoreJob Create One Restore Job for One Flex Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -119,7 +119,7 @@ func (r CreateFlexRestoreJobApiRequest) Execute() (*FlexBackupRestoreJob20241113
 }
 
 /*
-CreateFlexRestoreJob Restore One Snapshot of One Flex Cluster
+CreateFlexRestoreJob Create One Restore Job for One Flex Cluster
 
 Restores one snapshot of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 

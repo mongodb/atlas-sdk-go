@@ -18,6 +18,8 @@ type StreamsPrivateLinkConnection struct {
 	// Error message if the state is FAILED.
 	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
+	// Service Attachment URIs of each availability zone for the GCP Confluent cluster.
+	GcpServiceAttachmentUris *[]string `json:"gcpServiceAttachmentUris,omitempty"`
 	// Interface endpoint ID that is created from the service endpoint ID provided.
 	// Read only field.
 	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
@@ -257,6 +259,39 @@ func (o *StreamsPrivateLinkConnection) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *StreamsPrivateLinkConnection) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+}
+
+// GetGcpServiceAttachmentUris returns the GcpServiceAttachmentUris field value if set, zero value otherwise
+func (o *StreamsPrivateLinkConnection) GetGcpServiceAttachmentUris() []string {
+	if o == nil || IsNil(o.GcpServiceAttachmentUris) {
+		var ret []string
+		return ret
+	}
+	return *o.GcpServiceAttachmentUris
+}
+
+// GetGcpServiceAttachmentUrisOk returns a tuple with the GcpServiceAttachmentUris field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsPrivateLinkConnection) GetGcpServiceAttachmentUrisOk() (*[]string, bool) {
+	if o == nil || IsNil(o.GcpServiceAttachmentUris) {
+		return nil, false
+	}
+
+	return o.GcpServiceAttachmentUris, true
+}
+
+// HasGcpServiceAttachmentUris returns a boolean if a field has been set.
+func (o *StreamsPrivateLinkConnection) HasGcpServiceAttachmentUris() bool {
+	if o != nil && !IsNil(o.GcpServiceAttachmentUris) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAttachmentUris gets a reference to the given []string and assigns it to the GcpServiceAttachmentUris field.
+func (o *StreamsPrivateLinkConnection) SetGcpServiceAttachmentUris(v []string) {
+	o.GcpServiceAttachmentUris = &v
 }
 
 // GetInterfaceEndpointId returns the InterfaceEndpointId field value if set, zero value otherwise

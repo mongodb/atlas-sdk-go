@@ -36,7 +36,7 @@ type OrganizationsApi interface {
 	CreateOrgExecute(r CreateOrgApiRequest) (*CreateOrganizationResponse, *http.Response, error)
 
 	/*
-			CreateOrgInvite Invite One MongoDB Cloud User to One Atlas Organization
+			CreateOrgInvite Create Invitation for One MongoDB Cloud User in One Organization
 
 			Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -51,7 +51,7 @@ type OrganizationsApi interface {
 	*/
 	CreateOrgInvite(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrgInviteApiRequest
 	/*
-		CreateOrgInvite Invite One MongoDB Cloud User to One Atlas Organization
+		CreateOrgInvite Create Invitation for One MongoDB Cloud User in One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -93,7 +93,7 @@ type OrganizationsApi interface {
 	DeleteOrgExecute(r DeleteOrgApiRequest) (*http.Response, error)
 
 	/*
-			DeleteOrgInvite Remove One Organization Invitation
+			DeleteOrgInvite Remove One Invitation from One Organization
 
 			Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -108,7 +108,7 @@ type OrganizationsApi interface {
 	*/
 	DeleteOrgInvite(ctx context.Context, orgId string, invitationId string) DeleteOrgInviteApiRequest
 	/*
-		DeleteOrgInvite Remove One Organization Invitation
+		DeleteOrgInvite Remove One Invitation from One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -176,7 +176,7 @@ type OrganizationsApi interface {
 	GetOrgGroupsExecute(r GetOrgGroupsApiRequest) (*PaginatedAtlasGroup, *http.Response, error)
 
 	/*
-			GetOrgInvite Return One Organization Invitation
+			GetOrgInvite Return One Invitation in One Organization by Invitation ID
 
 			Returns the details of one pending invitation to the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -191,7 +191,7 @@ type OrganizationsApi interface {
 	*/
 	GetOrgInvite(ctx context.Context, orgId string, invitationId string) GetOrgInviteApiRequest
 	/*
-		GetOrgInvite Return One Organization Invitation
+		GetOrgInvite Return One Invitation in One Organization by Invitation ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -229,7 +229,7 @@ type OrganizationsApi interface {
 	GetOrgSettingsExecute(r GetOrgSettingsApiRequest) (*OrganizationSettings, *http.Response, error)
 
 	/*
-			ListOrgInvites Return All Organization Invitations
+			ListOrgInvites Return All Invitations in One Organization
 
 			Returns all pending invitations to the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -243,7 +243,7 @@ type OrganizationsApi interface {
 	*/
 	ListOrgInvites(ctx context.Context, orgId string) ListOrgInvitesApiRequest
 	/*
-		ListOrgInvites Return All Organization Invitations
+		ListOrgInvites Return All Invitations in One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -304,7 +304,7 @@ type OrganizationsApi interface {
 	UpdateOrgExecute(r UpdateOrgApiRequest) (*AtlasOrganization, *http.Response, error)
 
 	/*
-			UpdateOrgInviteById Update One Organization Invitation by Invitation ID
+			UpdateOrgInviteById Update One Invitation in One Organization by Invitation ID
 
 			Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -320,7 +320,7 @@ type OrganizationsApi interface {
 	*/
 	UpdateOrgInviteById(ctx context.Context, orgId string, invitationId string, organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrgInviteByIdApiRequest
 	/*
-		UpdateOrgInviteById Update One Organization Invitation by Invitation ID
+		UpdateOrgInviteById Update One Invitation in One Organization by Invitation ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -335,7 +335,7 @@ type OrganizationsApi interface {
 	UpdateOrgInviteByIdExecute(r UpdateOrgInviteByIdApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
-			UpdateOrgInvites Update One Organization Invitation
+			UpdateOrgInvites Update One Invitation in One Organization
 
 			Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -350,7 +350,7 @@ type OrganizationsApi interface {
 	*/
 	UpdateOrgInvites(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrgInvitesApiRequest
 	/*
-		UpdateOrgInvites Update One Organization Invitation
+		UpdateOrgInvites Update One Invitation in One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -561,7 +561,7 @@ func (r CreateOrgInviteApiRequest) Execute() (*OrganizationInvitation, *http.Res
 }
 
 /*
-CreateOrgInvite Invite One MongoDB Cloud User to One Atlas Organization
+CreateOrgInvite Create Invitation for One MongoDB Cloud User in One Organization
 
 Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -792,7 +792,7 @@ func (r DeleteOrgInviteApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteOrgInvite Remove One Organization Invitation
+DeleteOrgInvite Remove One Invitation from One Organization
 
 Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -1198,7 +1198,7 @@ func (r GetOrgInviteApiRequest) Execute() (*OrganizationInvitation, *http.Respon
 }
 
 /*
-GetOrgInvite Return One Organization Invitation
+GetOrgInvite Return One Invitation in One Organization by Invitation ID
 
 Returns the details of one pending invitation to the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -1447,7 +1447,7 @@ func (r ListOrgInvitesApiRequest) Execute() ([]OrganizationInvitation, *http.Res
 }
 
 /*
-ListOrgInvites Return All Organization Invitations
+ListOrgInvites Return All Invitations in One Organization
 
 Returns all pending invitations to the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -1864,7 +1864,7 @@ func (r UpdateOrgInviteByIdApiRequest) Execute() (*OrganizationInvitation, *http
 }
 
 /*
-UpdateOrgInviteById Update One Organization Invitation by Invitation ID
+UpdateOrgInviteById Update One Invitation in One Organization by Invitation ID
 
 Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -1999,7 +1999,7 @@ func (r UpdateOrgInvitesApiRequest) Execute() (*OrganizationInvitation, *http.Re
 }
 
 /*
-UpdateOrgInvites Update One Organization Invitation
+UpdateOrgInvites Update One Invitation in One Organization
 
 Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 

@@ -7,6 +7,8 @@ type StreamConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// Max tier size for the Stream Instance. Configures Memory / VCPU allowances. This field is not supported yet.
+	MaxTierSize *string `json:"maxTierSize,omitempty"`
 	// Selected tier for the Stream Instance. Configures Memory / VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
 }
@@ -59,6 +61,39 @@ func (o *StreamConfig) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamConfig) SetLinks(v []Link) {
 	o.Links = &v
+}
+
+// GetMaxTierSize returns the MaxTierSize field value if set, zero value otherwise
+func (o *StreamConfig) GetMaxTierSize() string {
+	if o == nil || IsNil(o.MaxTierSize) {
+		var ret string
+		return ret
+	}
+	return *o.MaxTierSize
+}
+
+// GetMaxTierSizeOk returns a tuple with the MaxTierSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamConfig) GetMaxTierSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.MaxTierSize) {
+		return nil, false
+	}
+
+	return o.MaxTierSize, true
+}
+
+// HasMaxTierSize returns a boolean if a field has been set.
+func (o *StreamConfig) HasMaxTierSize() bool {
+	if o != nil && !IsNil(o.MaxTierSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxTierSize gets a reference to the given string and assigns it to the MaxTierSize field.
+func (o *StreamConfig) SetMaxTierSize(v string) {
+	o.MaxTierSize = &v
 }
 
 // GetTier returns the Tier field value if set, zero value otherwise

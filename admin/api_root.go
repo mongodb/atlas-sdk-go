@@ -12,7 +12,7 @@ import (
 type RootApi interface {
 
 	/*
-		GetSystemStatus Return the status of this MongoDB application
+		GetSystemStatus Return the Status of This MongoDB Application
 
 		This resource returns information about the MongoDB application along with API key meta data.
 
@@ -21,7 +21,7 @@ type RootApi interface {
 	*/
 	GetSystemStatus(ctx context.Context) GetSystemStatusApiRequest
 	/*
-		GetSystemStatus Return the status of this MongoDB application
+		GetSystemStatus Return the Status of This MongoDB Application
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -79,7 +79,7 @@ func (r GetSystemStatusApiRequest) Execute() (*SystemStatus, *http.Response, err
 }
 
 /*
-GetSystemStatus Return the status of this MongoDB application
+GetSystemStatus Return the Status of This MongoDB Application
 
 This resource returns information about the MongoDB application along with API key meta data.
 

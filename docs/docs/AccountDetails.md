@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **VpcId** | Pointer to **string** | The VPC ID. | [optional] 
 **AzureSubscriptionId** | Pointer to **string** | The Azure Subscription ID. | [optional] 
 **VirtualNetworkName** | Pointer to **string** | The name of the virtual network. | [optional] 
+**GcpProjectId** | Pointer to **string** | The GCP Project ID. | [optional] 
+**VpcNetworkName** | Pointer to **string** | The name of the VPC network. | [optional] 
 
 ## Methods
 
@@ -199,6 +201,54 @@ SetVirtualNetworkName sets VirtualNetworkName field to given value.
 `func (o *AccountDetails) HasVirtualNetworkName() bool`
 
 HasVirtualNetworkName returns a boolean if a field has been set.
+### GetGcpProjectId
+
+`func (o *AccountDetails) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *AccountDetails) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *AccountDetails) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *AccountDetails) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
+### GetVpcNetworkName
+
+`func (o *AccountDetails) GetVpcNetworkName() string`
+
+GetVpcNetworkName returns the VpcNetworkName field if non-nil, zero value otherwise.
+
+### GetVpcNetworkNameOk
+
+`func (o *AccountDetails) GetVpcNetworkNameOk() (*string, bool)`
+
+GetVpcNetworkNameOk returns a tuple with the VpcNetworkName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVpcNetworkName
+
+`func (o *AccountDetails) SetVpcNetworkName(v string)`
+
+SetVpcNetworkName sets VpcNetworkName field to given value.
+
+### HasVpcNetworkName
+
+`func (o *AccountDetails) HasVpcNetworkName() bool`
+
+HasVpcNetworkName returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

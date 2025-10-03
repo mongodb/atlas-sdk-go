@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dynamic** | Pointer to **bool** | Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted. | [optional] 
+**Dynamic** | Pointer to [**any**](interface{}.md) | Indicates whether the index uses static, default dynamic, or configurable dynamic mappings. Set to **true** to enable dynamic mapping with default type set or define object to specify the name of the configured type sets for dynamic mapping. If you specify configurable dynamic mappings, you must define the referred type sets in the **typeSets** field. Set to **false** to use only static mappings through **mappings.fields**. | [optional] 
 **Fields** | Pointer to [**map[string]any**](interface{}.md) | One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDynamic
 
-`func (o *SearchMappings) GetDynamic() bool`
+`func (o *SearchMappings) GetDynamic() any`
 
 GetDynamic returns the Dynamic field if non-nil, zero value otherwise.
 
 ### GetDynamicOk
 
-`func (o *SearchMappings) GetDynamicOk() (*bool, bool)`
+`func (o *SearchMappings) GetDynamicOk() (*any, bool)`
 
 GetDynamicOk returns a tuple with the Dynamic field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDynamic
 
-`func (o *SearchMappings) SetDynamic(v bool)`
+`func (o *SearchMappings) SetDynamic(v any)`
 
 SetDynamic sets Dynamic field to given value.
 

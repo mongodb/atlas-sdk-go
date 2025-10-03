@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetSystemStatus**](RootApi.md#GetSystemStatus) | **Get** /api/atlas/v2 | Return the status of this MongoDB application
+[**GetSystemStatus**](RootApi.md#GetSystemStatus) | **Get** /api/atlas/v2 | Return the Status of This MongoDB Application
 [**ListControlPlaneAddresses**](RootApi.md#ListControlPlaneAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > SystemStatus GetSystemStatus(ctx).Execute()
 
-Return the status of this MongoDB application
+Return the Status of This MongoDB Application
 
 
 ### Example
@@ -26,7 +26,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -97,7 +97,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {

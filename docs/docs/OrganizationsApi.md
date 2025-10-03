@@ -5,18 +5,18 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateOrg**](OrganizationsApi.md#CreateOrg) | **Post** /api/atlas/v2/orgs | Create One Organization
-[**CreateOrgInvite**](OrganizationsApi.md#CreateOrgInvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Invite One MongoDB Cloud User to One Atlas Organization
+[**CreateOrgInvite**](OrganizationsApi.md#CreateOrgInvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Create Invitation for One MongoDB Cloud User in One Organization
 [**DeleteOrg**](OrganizationsApi.md#DeleteOrg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
-[**DeleteOrgInvite**](OrganizationsApi.md#DeleteOrgInvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Organization Invitation
+[**DeleteOrgInvite**](OrganizationsApi.md#DeleteOrgInvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Invitation from One Organization
 [**GetOrg**](OrganizationsApi.md#GetOrg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
 [**GetOrgGroups**](OrganizationsApi.md#GetOrgGroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
-[**GetOrgInvite**](OrganizationsApi.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Organization Invitation
+[**GetOrgInvite**](OrganizationsApi.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID
 [**GetOrgSettings**](OrganizationsApi.md#GetOrgSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
-[**ListOrgInvites**](OrganizationsApi.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Organization Invitations
+[**ListOrgInvites**](OrganizationsApi.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization
 [**ListOrgs**](OrganizationsApi.md#ListOrgs) | **Get** /api/atlas/v2/orgs | Return All Organizations
 [**UpdateOrg**](OrganizationsApi.md#UpdateOrg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
-[**UpdateOrgInviteById**](OrganizationsApi.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID
-[**UpdateOrgInvites**](OrganizationsApi.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
+[**UpdateOrgInviteById**](OrganizationsApi.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID
+[**UpdateOrgInvites**](OrganizationsApi.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization
 [**UpdateOrgSettings**](OrganizationsApi.md#UpdateOrgSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
 [**UpdateOrgUserRoles**](OrganizationsApi.md#UpdateOrgUserRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
 
@@ -39,7 +39,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 > OrganizationInvitation CreateOrgInvite(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
 
-Invite One MongoDB Cloud User to One Atlas Organization
+Create Invitation for One MongoDB Cloud User in One Organization
 
 
 ### Example
@@ -115,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -197,7 +197,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 > DeleteOrgInvite(ctx, orgId, invitationId).Execute()
 
-Remove One Organization Invitation
+Remove One Invitation from One Organization
 
 
 ### Example
@@ -275,7 +275,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -356,7 +356,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -436,7 +436,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 
 > OrganizationInvitation GetOrgInvite(ctx, orgId, invitationId).Execute()
 
-Return One Organization Invitation
+Return One Invitation in One Organization by Invitation ID
 
 
 ### Example
@@ -524,7 +524,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -607,7 +607,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -674,7 +674,7 @@ Name | Type | Description  | Notes
 
 > []OrganizationInvitation ListOrgInvites(ctx, orgId).Username(username).Execute()
 
-Return All Organization Invitations
+Return All Invitations in One Organization
 
 
 ### Example
@@ -687,7 +687,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -769,7 +769,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -851,7 +851,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -920,7 +920,7 @@ Name | Type | Description  | Notes
 
 > OrganizationInvitation UpdateOrgInviteById(ctx, orgId, invitationId, organizationInvitationUpdateRequest OrganizationInvitationUpdateRequest).Execute()
 
-Update One Organization Invitation by Invitation ID
+Update One Invitation in One Organization by Invitation ID
 
 
 ### Example
@@ -933,7 +933,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -1005,7 +1005,7 @@ Name | Type | Description  | Notes
 
 > OrganizationInvitation UpdateOrgInvites(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
 
-Update One Organization Invitation
+Update One Invitation in One Organization
 
 
 ### Example
@@ -1018,7 +1018,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -1100,7 +1100,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -1182,7 +1182,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {

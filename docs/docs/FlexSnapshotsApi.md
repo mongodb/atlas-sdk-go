@@ -5,8 +5,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DownloadFlexBackup**](FlexSnapshotsApi.md#DownloadFlexBackup) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download | Download One Flex Cluster Snapshot
-[**GetFlexBackupSnapshot**](FlexSnapshotsApi.md#GetFlexBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot of One Flex Cluster
-[**ListFlexBackupSnapshots**](FlexSnapshotsApi.md#ListFlexBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots of One Flex Cluster
+[**GetFlexBackupSnapshot**](FlexSnapshotsApi.md#GetFlexBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot for One Flex Cluster
+[**ListFlexBackupSnapshots**](FlexSnapshotsApi.md#ListFlexBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots for One Flex Cluster
 
 
 
@@ -27,7 +27,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 > FlexBackupSnapshot20241113 GetFlexBackupSnapshot(ctx, groupId, name, snapshotId).Execute()
 
-Return One Snapshot of One Flex Cluster
+Return One Snapshot for One Flex Cluster
 
 
 ### Example
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 
 > PaginatedApiAtlasFlexBackupSnapshot20241113 ListFlexBackupSnapshots(ctx, groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Snapshots of One Flex Cluster
+Return All Snapshots for One Flex Cluster
 
 
 ### Example
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {

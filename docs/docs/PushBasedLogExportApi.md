@@ -4,10 +4,10 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateLogExport**](PushBasedLogExportApi.md#CreateLogExport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Enable Push-Based Log Export for One Project
+[**CreateLogExport**](PushBasedLogExportApi.md#CreateLogExport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project
 [**DeleteLogExport**](PushBasedLogExportApi.md#DeleteLogExport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
-[**GetLogExport**](PushBasedLogExportApi.md#GetLogExport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return Push-Based Log Export Configuration for One Project
-[**UpdateLogExport**](PushBasedLogExportApi.md#UpdateLogExport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update Push-Based Log Export for One Project
+[**GetLogExport**](PushBasedLogExportApi.md#GetLogExport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project
+[**UpdateLogExport**](PushBasedLogExportApi.md#UpdateLogExport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > CreateLogExport(ctx, groupId, createPushBasedLogExportProjectRequest CreatePushBasedLogExportProjectRequest).Execute()
 
-Enable Push-Based Log Export for One Project
+Create One Push-Based Log Export Configuration in One Project
 
 
 ### Example
@@ -28,7 +28,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -108,7 +108,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 > PushBasedLogExportProject GetLogExport(ctx, groupId).Execute()
 
-Return Push-Based Log Export Configuration for One Project
+Return One Push-Based Log Export Configuration in One Project
 
 
 ### Example
@@ -186,7 +186,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 > UpdateLogExport(ctx, groupId, pushBasedLogExportProject PushBasedLogExportProject).Execute()
 
-Update Push-Based Log Export for One Project
+Update One Push-Based Log Export Configuration in One Project
 
 
 ### Example
@@ -266,7 +266,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312007/admin"
+    "go.mongodb.org/atlas-sdk/v20250312008/admin"
 )
 
 func main() {

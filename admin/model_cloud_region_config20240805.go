@@ -10,11 +10,14 @@ type CloudRegionConfig20240805 struct {
 	// Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
 	ProviderName *string `json:"providerName,omitempty"`
 	// Physical location of your MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. The region name is only returned in the response for single-region clusters. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. It assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To limit a new VPC peering connection to one Classless Inter-Domain Routing (CIDR) block and region, create the connection first. Deploy the cluster after the connection starts. GCP Clusters and Multi-region clusters require one VPC peering connection for each region. MongoDB nodes can use only the peering connection that resides in the same region as the nodes to communicate with the peered VPC.
-	RegionName           *string                        `json:"regionName,omitempty"`
-	AnalyticsAutoScaling *AdvancedAutoScalingSettings   `json:"analyticsAutoScaling,omitempty"`
-	AnalyticsSpecs       *DedicatedHardwareSpec20240805 `json:"analyticsSpecs,omitempty"`
-	AutoScaling          *AdvancedAutoScalingSettings   `json:"autoScaling,omitempty"`
-	ReadOnlySpecs        *DedicatedHardwareSpec20240805 `json:"readOnlySpecs,omitempty"`
+	RegionName              *string                        `json:"regionName,omitempty"`
+	AnalyticsAutoScaling    *AdvancedAutoScalingSettings   `json:"analyticsAutoScaling,omitempty"`
+	AnalyticsSpecs          *DedicatedHardwareSpec20240805 `json:"analyticsSpecs,omitempty"`
+	AutoScaling             *AdvancedAutoScalingSettings   `json:"autoScaling,omitempty"`
+	EffectiveAnalyticsSpecs *DedicatedHardwareSpec20240805 `json:"effectiveAnalyticsSpecs,omitempty"`
+	EffectiveElectableSpecs *DedicatedHardwareSpec20240805 `json:"effectiveElectableSpecs,omitempty"`
+	EffectiveReadOnlySpecs  *DedicatedHardwareSpec20240805 `json:"effectiveReadOnlySpecs,omitempty"`
+	ReadOnlySpecs           *DedicatedHardwareSpec20240805 `json:"readOnlySpecs,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerName** is `TENANT` and **electableSpecs.instanceSize** is `M0`, `M2` or `M5`.   Please note that  using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
 }
@@ -265,6 +268,105 @@ func (o *CloudRegionConfig20240805) HasAutoScaling() bool {
 // SetAutoScaling gets a reference to the given AdvancedAutoScalingSettings and assigns it to the AutoScaling field.
 func (o *CloudRegionConfig20240805) SetAutoScaling(v AdvancedAutoScalingSettings) {
 	o.AutoScaling = &v
+}
+
+// GetEffectiveAnalyticsSpecs returns the EffectiveAnalyticsSpecs field value if set, zero value otherwise
+func (o *CloudRegionConfig20240805) GetEffectiveAnalyticsSpecs() DedicatedHardwareSpec20240805 {
+	if o == nil || IsNil(o.EffectiveAnalyticsSpecs) {
+		var ret DedicatedHardwareSpec20240805
+		return ret
+	}
+	return *o.EffectiveAnalyticsSpecs
+}
+
+// GetEffectiveAnalyticsSpecsOk returns a tuple with the EffectiveAnalyticsSpecs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRegionConfig20240805) GetEffectiveAnalyticsSpecsOk() (*DedicatedHardwareSpec20240805, bool) {
+	if o == nil || IsNil(o.EffectiveAnalyticsSpecs) {
+		return nil, false
+	}
+
+	return o.EffectiveAnalyticsSpecs, true
+}
+
+// HasEffectiveAnalyticsSpecs returns a boolean if a field has been set.
+func (o *CloudRegionConfig20240805) HasEffectiveAnalyticsSpecs() bool {
+	if o != nil && !IsNil(o.EffectiveAnalyticsSpecs) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveAnalyticsSpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the EffectiveAnalyticsSpecs field.
+func (o *CloudRegionConfig20240805) SetEffectiveAnalyticsSpecs(v DedicatedHardwareSpec20240805) {
+	o.EffectiveAnalyticsSpecs = &v
+}
+
+// GetEffectiveElectableSpecs returns the EffectiveElectableSpecs field value if set, zero value otherwise
+func (o *CloudRegionConfig20240805) GetEffectiveElectableSpecs() DedicatedHardwareSpec20240805 {
+	if o == nil || IsNil(o.EffectiveElectableSpecs) {
+		var ret DedicatedHardwareSpec20240805
+		return ret
+	}
+	return *o.EffectiveElectableSpecs
+}
+
+// GetEffectiveElectableSpecsOk returns a tuple with the EffectiveElectableSpecs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRegionConfig20240805) GetEffectiveElectableSpecsOk() (*DedicatedHardwareSpec20240805, bool) {
+	if o == nil || IsNil(o.EffectiveElectableSpecs) {
+		return nil, false
+	}
+
+	return o.EffectiveElectableSpecs, true
+}
+
+// HasEffectiveElectableSpecs returns a boolean if a field has been set.
+func (o *CloudRegionConfig20240805) HasEffectiveElectableSpecs() bool {
+	if o != nil && !IsNil(o.EffectiveElectableSpecs) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveElectableSpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the EffectiveElectableSpecs field.
+func (o *CloudRegionConfig20240805) SetEffectiveElectableSpecs(v DedicatedHardwareSpec20240805) {
+	o.EffectiveElectableSpecs = &v
+}
+
+// GetEffectiveReadOnlySpecs returns the EffectiveReadOnlySpecs field value if set, zero value otherwise
+func (o *CloudRegionConfig20240805) GetEffectiveReadOnlySpecs() DedicatedHardwareSpec20240805 {
+	if o == nil || IsNil(o.EffectiveReadOnlySpecs) {
+		var ret DedicatedHardwareSpec20240805
+		return ret
+	}
+	return *o.EffectiveReadOnlySpecs
+}
+
+// GetEffectiveReadOnlySpecsOk returns a tuple with the EffectiveReadOnlySpecs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRegionConfig20240805) GetEffectiveReadOnlySpecsOk() (*DedicatedHardwareSpec20240805, bool) {
+	if o == nil || IsNil(o.EffectiveReadOnlySpecs) {
+		return nil, false
+	}
+
+	return o.EffectiveReadOnlySpecs, true
+}
+
+// HasEffectiveReadOnlySpecs returns a boolean if a field has been set.
+func (o *CloudRegionConfig20240805) HasEffectiveReadOnlySpecs() bool {
+	if o != nil && !IsNil(o.EffectiveReadOnlySpecs) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveReadOnlySpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the EffectiveReadOnlySpecs field.
+func (o *CloudRegionConfig20240805) SetEffectiveReadOnlySpecs(v DedicatedHardwareSpec20240805) {
+	o.EffectiveReadOnlySpecs = &v
 }
 
 // GetReadOnlySpecs returns the ReadOnlySpecs field value if set, zero value otherwise
