@@ -21,7 +21,10 @@ type DiskBackupSnapshotSchedule20240805 struct {
 	// List that contains a document for each deleted copy setting whose backup copies you want to delete.
 	// Write only field.
 	DeleteCopiedBackups *[]DeleteCopiedBackups20240805 `json:"deleteCopiedBackups,omitempty"`
-	Export              *AutoExportPolicy              `json:"export,omitempty"`
+	// Flag that indicates whether to delete Snapshots that MongoDB Cloud took previously when deleting the associated backup policy.
+	// Write only field.
+	DeleteSnapshots *bool             `json:"deleteSnapshots,omitempty"`
+	Export          *AutoExportPolicy `json:"export,omitempty"`
 	// List that contains a document for each extra retention setting item in the desired backup policy.
 	ExtraRetentionSettings *[]ExtraRetentionSetting `json:"extraRetentionSettings,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -225,6 +228,39 @@ func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopiedBackups() bool {
 // SetDeleteCopiedBackups gets a reference to the given []DeleteCopiedBackups20240805 and assigns it to the DeleteCopiedBackups field.
 func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopiedBackups(v []DeleteCopiedBackups20240805) {
 	o.DeleteCopiedBackups = &v
+}
+
+// GetDeleteSnapshots returns the DeleteSnapshots field value if set, zero value otherwise
+func (o *DiskBackupSnapshotSchedule20240805) GetDeleteSnapshots() bool {
+	if o == nil || IsNil(o.DeleteSnapshots) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteSnapshots
+}
+
+// GetDeleteSnapshotsOk returns a tuple with the DeleteSnapshots field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshotSchedule20240805) GetDeleteSnapshotsOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteSnapshots) {
+		return nil, false
+	}
+
+	return o.DeleteSnapshots, true
+}
+
+// HasDeleteSnapshots returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotSchedule20240805) HasDeleteSnapshots() bool {
+	if o != nil && !IsNil(o.DeleteSnapshots) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteSnapshots gets a reference to the given bool and assigns it to the DeleteSnapshots field.
+func (o *DiskBackupSnapshotSchedule20240805) SetDeleteSnapshots(v bool) {
+	o.DeleteSnapshots = &v
 }
 
 // GetExport returns the Export field value if set, zero value otherwise

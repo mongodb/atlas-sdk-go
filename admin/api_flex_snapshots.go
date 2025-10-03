@@ -38,7 +38,7 @@ type FlexSnapshotsApi interface {
 	DownloadFlexBackupExecute(r DownloadFlexBackupApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error)
 
 	/*
-		GetFlexBackupSnapshot Return One Snapshot of One Flex Cluster
+		GetFlexBackupSnapshot Return One Snapshot for One Flex Cluster
 
 		Returns one snapshot of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -50,7 +50,7 @@ type FlexSnapshotsApi interface {
 	*/
 	GetFlexBackupSnapshot(ctx context.Context, groupId string, name string, snapshotId string) GetFlexBackupSnapshotApiRequest
 	/*
-		GetFlexBackupSnapshot Return One Snapshot of One Flex Cluster
+		GetFlexBackupSnapshot Return One Snapshot for One Flex Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -63,7 +63,7 @@ type FlexSnapshotsApi interface {
 	GetFlexBackupSnapshotExecute(r GetFlexBackupSnapshotApiRequest) (*FlexBackupSnapshot20241113, *http.Response, error)
 
 	/*
-		ListFlexBackupSnapshots Return All Snapshots of One Flex Cluster
+		ListFlexBackupSnapshots Return All Snapshots for One Flex Cluster
 
 		Returns all snapshots of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -74,7 +74,7 @@ type FlexSnapshotsApi interface {
 	*/
 	ListFlexBackupSnapshots(ctx context.Context, groupId string, name string) ListFlexBackupSnapshotsApiRequest
 	/*
-		ListFlexBackupSnapshots Return All Snapshots of One Flex Cluster
+		ListFlexBackupSnapshots Return All Snapshots for One Flex Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -251,7 +251,7 @@ func (r GetFlexBackupSnapshotApiRequest) Execute() (*FlexBackupSnapshot20241113,
 }
 
 /*
-GetFlexBackupSnapshot Return One Snapshot of One Flex Cluster
+GetFlexBackupSnapshot Return One Snapshot for One Flex Cluster
 
 Returns one snapshot of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -407,7 +407,7 @@ func (r ListFlexBackupSnapshotsApiRequest) Execute() (*PaginatedApiAtlasFlexBack
 }
 
 /*
-ListFlexBackupSnapshots Return All Snapshots of One Flex Cluster
+ListFlexBackupSnapshots Return All Snapshots for One Flex Cluster
 
 Returns all snapshots of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 

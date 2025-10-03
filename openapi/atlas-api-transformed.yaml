@@ -60,7 +60,7 @@ components:
         pattern: ^([a-f0-9]{24})$
         type: string
       x-xgen-IPA-exception:
-        xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+        xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
     identityProviderId:
       description: Legacy 20-hexadecimal digit string that identifies the identity provider. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
       in: path
@@ -113,7 +113,7 @@ components:
         pattern: ^([a-f0-9]{24})$
         type: string
       x-xgen-IPA-exception:
-        xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+        xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
     pageNum:
       description: Number of the page that displays the current set of the total objects that the response returns.
       in: query
@@ -147,6 +147,15 @@ components:
       schema:
         example: my.host.name.com:27017
         pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+        type: string
+    sandboxConfigId:
+      description: Unique 24-hexadecimal digit string that identifies the sandbox configuration.
+      in: path
+      name: sandboxConfigId
+      required: true
+      schema:
+        example: 507f1f77bcf86cd799439011
+        pattern: ^([a-f0-9]{24})$
         type: string
     start:
       description: Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
@@ -343,6 +352,12 @@ components:
           type: string
         virtualNetworkName:
           description: The name of the virtual network.
+          type: string
+        gcpProjectId:
+          description: The GCP Project ID.
+          type: string
+        vpcNetworkName:
+          description: The name of the VPC network.
           type: string
     AcknowledgeAlert:
       description: Acknowledging an alert prevents successive notifications. Specify the acknowledgeUntil date and optional comment or unacknowledgeAlert boolean.
@@ -1260,6 +1275,10 @@ components:
           pattern: ^([a-f0-9]{24})$
           readOnly: true
           type: string
+        internalClusterRole:
+          description: "Internal classification of the cluster's role. Possible values: NONE (regular user cluster), SYSTEM_CLUSTER (system cluster for backup), INTERNAL_SHADOW_CLUSTER (internal use shadow cluster for testing)."
+          readOnly: true
+          type: string
         labels:
           deprecated: true
           description: |-
@@ -1370,6 +1389,10 @@ components:
         terminationProtectionEnabled:
           default: false
           description: Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
+          type: boolean
+        useAwsTimeBasedSnapshotCopyForFastInitialSync:
+          default: false
+          description: Flag that indicates whether AWS time-based snapshot copies will be used instead of slower standard snapshot copies during fast Atlas cross-region initial syncs. This flag is only relevant for clusters containing AWS nodes.
           type: boolean
         versionReleaseSystem:
           default: LTS
@@ -1754,6 +1777,7 @@ components:
           type: string
         dbName:
           description: Human-readable label of the database that contains the collection that contains the online archive.
+          maxLength: 64
           type: string
           writeOnly: true
         groupId:
@@ -3473,6 +3497,12 @@ components:
           $ref: "#/components/schemas/DedicatedHardwareSpec20240805"
         autoScaling:
           $ref: "#/components/schemas/AdvancedAutoScalingSettings"
+        effectiveAnalyticsSpecs:
+          $ref: "#/components/schemas/DedicatedHardwareSpec20240805"
+        effectiveElectableSpecs:
+          $ref: "#/components/schemas/DedicatedHardwareSpec20240805"
+        effectiveReadOnlySpecs:
+          $ref: "#/components/schemas/DedicatedHardwareSpec20240805"
         readOnlySpecs:
           $ref: "#/components/schemas/DedicatedHardwareSpec20240805"
         backingProviderName:
@@ -3749,6 +3779,10 @@ components:
           pattern: ^([a-f0-9]{24})$
           readOnly: true
           type: string
+        internalClusterRole:
+          description: "Internal classification of the cluster's role. Possible values: NONE (regular user cluster), SYSTEM_CLUSTER (system cluster for backup), INTERNAL_SHADOW_CLUSTER (internal use shadow cluster for testing)."
+          readOnly: true
+          type: string
         labels:
           deprecated: true
           description: |-
@@ -3859,6 +3893,10 @@ components:
         terminationProtectionEnabled:
           default: false
           description: Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
+          type: boolean
+        useAwsTimeBasedSnapshotCopyForFastInitialSync:
+          default: false
+          description: Flag that indicates whether AWS time-based snapshot copies will be used instead of slower standard snapshot copies during fast Atlas cross-region initial syncs. This flag is only relevant for clusters containing AWS nodes.
           type: boolean
         versionReleaseSystem:
           default: LTS
@@ -4470,7 +4508,7 @@ components:
             type: string
           type: array
         services:
-          description: The list of projects to be included in the Cost Explorer Query.
+          description: The list of SKU services to be included in the Cost Explorer Query.
           items:
             type: string
           type: array
@@ -4638,6 +4676,18 @@ components:
         - bucketName
         - iamRoleId
         - prefixPath
+      type: object
+    CustomSessionTimeouts:
+      description: Defines the session timeout settings for managing user sessions at the organization level. When set to null, the field's value is unset, and the default timeout settings are applied.
+      properties:
+        absoluteSessionTimeoutInSeconds:
+          description: Specifies the absolute session timeout duration in seconds. When set to null, the field's value is unset, and the default value of 43,200 seconds (12 hours) is applied. Accepted values range between a minimum of 3,600 seconds (1 hour) and a maximum of 43,200 seconds (12 hours).
+          format: int32
+          type: integer
+        idleSessionTimeoutInSeconds:
+          description: "Specifies the idle session timeout duration in seconds. When set to null, the field's value is unset, and the default behavior depends on the context: no timeout for Atlas Commercial, and 600 seconds (10 minutes) for Atlas for Government. Accepted values start at a minimum of 300 seconds (5 minutes). For Atlas Commercial, the maximum value cannot exceed the configured absolute session timeout. For Atlas for Government, the maximum value is capped at 600 seconds (10 minutes)."
+          format: int32
+          type: integer
       type: object
     CustomZoneMappings:
       properties:
@@ -5390,7 +5440,7 @@ components:
       title: Dataset Retention Policy
       type: object
     DedicatedHardwareSpec20240805:
-      description: Hardware specifications for read-only nodes in the region. Read-only nodes can never become the primary member, but can enable local reads. If you don't specify this parameter, no read-only nodes are deployed to the region.
+      description: The current hardware specifications for read only nodes in the region.
       properties:
         diskSizeGB:
           description: |-
@@ -5444,6 +5494,7 @@ components:
           description: Hardware specification for the instance sizes in this region in this shard. Each instance size has a default storage and memory capacity. Electable nodes and read-only nodes (known as "base nodes") within a single shard must use the same instance size. Analytics nodes can scale independently from base nodes within a shard. Both base nodes and analytics nodes can scale independently from their equivalents in other shards.
           title: GCP Instance Sizes
           type: string
+      readOnly: true
       type: object
     DeleteCopiedBackups20240805:
       description: Deleted copy setting whose backup copies need to also be deleted.
@@ -6265,6 +6316,10 @@ components:
             $ref: "#/components/schemas/DeleteCopiedBackups20240805"
           type: array
           writeOnly: true
+        deleteSnapshots:
+          description: Flag that indicates whether to delete Snapshots that MongoDB Cloud took previously when deleting the associated backup policy.
+          type: boolean
+          writeOnly: true
         export:
           $ref: "#/components/schemas/AutoExportPolicy"
         extraRetentionSettings:
@@ -6333,7 +6388,7 @@ components:
             description: One index key paired with its sort order. A value of `1` indicates an ascending sort order. A value of `-1` indicates a descending sort order. Keys in indexes with multiple keys appear in the same order that they appear in the index.
             type: object
             x-xgen-IPA-exception:
-              xgen-IPA-117-objects-must-be-well-defined: Schema predates IPA validation
+              xgen-IPA-117-objects-must-be-well-defined: Schema predates IPA validation.
           type: array
         name:
           description: Name of index.
@@ -10781,6 +10836,8 @@ components:
         apiAccessListRequired:
           description: Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization.
           type: boolean
+        customSessionTimeouts:
+          $ref: "#/components/schemas/CustomSessionTimeouts"
         genAIFeaturesEnabled:
           default: true
           description: Flag that indicates whether this organization has access to generative AI features. This setting only applies to Atlas Commercial and is enabled by default. Once this setting is turned on, Project Owners may be able to enable or disable individual AI features at the project level.
@@ -11572,6 +11629,9 @@ components:
         queryShapeHash:
           description: A hexadecimal string that represents the hash of a MongoDB query shape.
           type: string
+        systemQuery:
+          description: Indicates whether this query shape represents a system-initiated query.
+          type: boolean
         totalTimeToResponseMicros:
           description: Time in microseconds spent from the beginning of query processing to the first server response.
           format: double
@@ -11924,6 +11984,12 @@ components:
               items:
                 $ref: "#/components/schemas/SearchSynonymMappingDefinition"
               type: array
+            typeSets:
+              description: Type sets for the index.
+              items:
+                $ref: "#/components/schemas/SearchTypeSets"
+              maxItems: 100
+              type: array
             fields:
               description: Settings that configure the fields, one per object, to index. You must define at least one "vector" type field. You can optionally define "filter" type fields also.
               externalDocs:
@@ -11940,11 +12006,13 @@ components:
       description: Index specifications for the collection's fields.
       properties:
         dynamic:
-          description: Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
+          description: Indicates whether the index uses static, default dynamic, or configurable dynamic mappings. Set to **true** to enable dynamic mapping with default type set or define object to specify the name of the configured type sets for dynamic mapping. If you specify configurable dynamic mappings, you must define the referred type sets in the **typeSets** field. Set to **false** to use only static mappings through **mappings.fields**.
+          example:
+            typeSet: typeSet1
           externalDocs:
-            description: Dynamic or Static Mappings
+            description: Static, Dynamic or Configurable Dynamic Mappings
             url: https://dochub.mongodb.org/core/field-mapping-definition-fts#static-and-dynamic-mappings
-          type: boolean
+          type: object
         fields:
           additionalProperties:
             $ref: "#/components/schemas/Fields"
@@ -11972,6 +12040,25 @@ components:
         - name
         - source
       title: Synonym Mapping Definition
+      type: object
+    SearchTypeSets:
+      description: Type sets for an Atlas Search index definition.
+      externalDocs:
+        description: Type Sets
+        url: https://dochub.mongodb.org/core/atlas-search-configure-dynamic-indexing
+      properties:
+        name:
+          description: Label that identifies the type set name. Each **typeSets.name** must be unique within the same index definition.
+          type: string
+        types:
+          description: List of types associated with the type set. Each type definition must include a "type" field specifying the search field type ("autocomplete", "boolean", "date", "geo", "number", "objectId", "string", "token", or "uuid") and may include additional configuration properties specific to that type.
+          items:
+            $ref: "#/components/schemas/BasicDBObject"
+          maxItems: 100
+          type: array
+      required:
+        - name
+      title: TypeSets
       type: object
     ServerlessBackupRestoreJob:
       properties:
@@ -12604,6 +12691,10 @@ components:
             $ref: "#/components/schemas/Link"
           readOnly: true
           type: array
+        maxTierSize:
+          description: Max tier size for the Stream Instance. Configures Memory / VCPU allowances. This field is not supported yet.
+          title: Stream Instance Max Tier Size
+          type: string
         tier:
           description: Selected tier for the Stream Instance. Configures Memory / VCPU allowances.
           title: Stream Instance Tier
@@ -12767,9 +12858,6 @@ components:
           format: password
           type: string
           writeOnly: true
-        httpsCaPem:
-          description: HTTPS CA certificate in PEM format for SSL/TLS verification.
-          type: string
         links:
           description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
           externalDocs:
@@ -12781,6 +12869,9 @@ components:
           type: array
         mechanism:
           description: Style of authentication. Can be one of PLAIN, SCRAM-256, SCRAM-512, or OAUTHBEARER.
+          type: string
+        method:
+          description: SASL OAUTHBEARER authentication method. Can only be OIDC currently.
           type: string
         password:
           description: Password of the account to connect to the Kafka cluster.
@@ -12990,6 +13081,13 @@ components:
           description: Error message if the state is FAILED.
           readOnly: true
           type: string
+        gcpServiceAttachmentUris:
+          description: Service Attachment URIs of each availability zone for the GCP Confluent cluster.
+          items:
+            type: string
+          maxItems: 3
+          type: array
+          uniqueItems: true
         interfaceEndpointId:
           description: Interface endpoint ID that is created from the service endpoint ID provided.
           readOnly: true
@@ -13458,6 +13556,44 @@ components:
         type:
           description: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
           type: string
+        region:
+          default: US
+          description: Two-letter code that indicates which regional URL MongoDB uses to access the Opsgenie API.
+          type: string
+        serviceKey:
+          description: |-
+            Service key associated with your PagerDuty account.
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+            * View or edit the alert through the Atlas UI.
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "****************************7890"
+          type: string
+        apiToken:
+          description: |-
+            Key that allows MongoDB Cloud to access your Slack account.
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+            * View or edit the alert through the Atlas UI.
+
+            * Query the alert for the notification through the Atlas Administration API.
+
+            **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
+          example: "**********************************************************************abcd"
+          type: string
+        channelName:
+          description: Name of the Slack channel to which MongoDB Cloud sends alert notifications.
+          example: alerts
+          maxLength: 80
+          minLength: 1
+          type: string
+        teamName:
+          description: Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
+          example: MongoDB
+          type: string
         apiKey:
           description: |-
             Key that allows MongoDB Cloud to access your VictorOps account.
@@ -13468,9 +13604,6 @@ components:
 
             * Query the alert for the notification through the Atlas Administration API.
           example: "********************************9abc"
-          type: string
-        region:
-          description: PagerDuty region that indicates the API Uniform Resource Locator (URL) to use.
           type: string
         sendCollectionLatencyMetrics:
           default: false
@@ -13488,13 +13621,6 @@ components:
           default: false
           description: Toggle sending user provided group and cluster resource tags with the datadog metrics.
           type: boolean
-        microsoftTeamsWebhookUrl:
-          description: |-
-            Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.
-
-            **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
-          example: https://webhook.com/****
-          type: string
         accountId:
           description: Unique 40-hexadecimal digit string that identifies your New Relic account.
           example: bcc3c81b344a6030a3935c2527e2216535af7718
@@ -13520,16 +13646,23 @@ components:
           description: Insert key associated with your New Relic account.
           example: a67b10e5cd7f8fb6a34b501136c409f373edc218
           type: string
-        serviceKey:
+        routingKey:
+          description: Routing key associated with your Splunk On-Call account.
+          example: test routing
+          type: string
+        secret:
           description: |-
-            Service key associated with your PagerDuty account.
+            An optional field returned if your webhook is configured with a secret.
 
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+            **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+          format: password
+          type: string
+        url:
+          description: |-
+            Endpoint web address to which MongoDB Cloud sends notifications.
 
-            * View or edit the alert through the Atlas UI.
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "****************************7890"
+            **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
+          example: https://webhook.com/****
           type: string
         enabled:
           description: Flag that indicates whether someone has activated the Prometheus integration.
@@ -13549,45 +13682,11 @@ components:
           description: Human-readable label that identifies your Prometheus incoming webhook.
           example: prom_user_618d48e05277a606ed2496fe
           type: string
-        apiToken:
+        microsoftTeamsWebhookUrl:
           description: |-
-            Key that allows MongoDB Cloud to access your Slack account.
+            Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.
 
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-            * View or edit the alert through the Atlas UI.
-
-            * Query the alert for the notification through the Atlas Administration API.
-
-            **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
-          example: "**********************************************************************abcd"
-          type: string
-        channelName:
-          description: Name of the Slack channel to which MongoDB Cloud sends alert notifications.
-          example: alerts
-          maxLength: 80
-          minLength: 1
-          type: string
-        teamName:
-          description: Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
-          example: MongoDB
-          type: string
-        routingKey:
-          description: Routing key associated with your Splunk On-Call account.
-          example: test routing
-          type: string
-        secret:
-          description: |-
-            An optional field returned if your webhook is configured with a secret.
-
-            **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
-          format: password
-          type: string
-        url:
-          description: |-
-            Endpoint web address to which MongoDB Cloud sends notifications.
-
-            **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
+            **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
           example: https://webhook.com/****
           type: string
       title: Third-Party Integration
@@ -14161,6 +14260,12 @@ components:
           items:
             $ref: "#/components/schemas/SearchSynonymMappingDefinition"
           type: array
+        typeSets:
+          description: Type sets for the index.
+          items:
+            $ref: "#/components/schemas/SearchTypeSets"
+          maxItems: 100
+          type: array
         fields:
           description: Settings that configure the fields, one per object, to index. You must define at least one "vector" type field. You can optionally define "filter" type fields also.
           externalDocs:
@@ -14224,6 +14329,12 @@ components:
             url: https://dochub.mongodb.org/core/fts-synonym-mappings
           items:
             $ref: "#/components/schemas/SearchSynonymMappingDefinition"
+          type: array
+        typeSets:
+          description: Type sets for the index.
+          items:
+            $ref: "#/components/schemas/SearchTypeSets"
+          maxItems: 100
           type: array
         fields:
           description: Settings that configure the fields, one per object, to index. You must define at least one "vector" type field. You can optionally define "filter" type fields also.
@@ -16216,8 +16327,8 @@ components:
             readOnly: true
             type: object
             x-xgen-IPA-exception:
-              xgen-IPA-117-objects-must-be-well-defined: Schema predates IPA validation
-              xgen-IPA-124-array-max-items: Schema predates IPA validation
+              xgen-IPA-117-objects-must-be-well-defined: Schema predates IPA validation.
+              xgen-IPA-124-array-max-items: Schema predates IPA validation.
           readOnly: true
           type: array
         stats:
@@ -16403,7 +16514,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 785596be591001f102b53495261cde62663ce7fd
+  x-xgen-sha: 66be7c90474eeed9de9cf2be16ecc9dc984f082c
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -16425,7 +16536,7 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return the status of this MongoDB application
+      summary: Return the Status of This MongoDB Application
       tags:
         - Root
       x-codeSamples:
@@ -16473,6 +16584,9 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Root/operation/getSystemStatus
+      x-xgen-method-verb-override:
+        customMethod: false
+        verb: getSystemStatus
   /api/atlas/v2/alertConfigs/matchers/fieldNames:
     get:
       description: Get all field names that the `matchers.fieldName` parameter accepts when you create or update an Alert Configuration. You can successfully call this endpoint with any assigned role.
@@ -16487,7 +16601,7 @@ paths:
                   $ref: "#/components/schemas/MatcherField"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -16615,7 +16729,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/clusters?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/listClusterDetails
       x-xgen-method-verb-override:
-        customMethod: "false"
+        customMethod: false
         verb: listDetails
   /api/atlas/v2/eventTypes:
     get:
@@ -16932,7 +17046,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ConnectedOrgConfig"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -17348,7 +17462,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AuthFederationRoleMapping"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -17531,7 +17645,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedFederationIdentityProvider"
               x-xgen-IPA-exception:
-                xgen-IPA-105-list-method-response-is-get-method-response: API predates IPA validation
+                xgen-IPA-105-list-method-response-is-get-method-response: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -17779,7 +17893,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/FederationIdentityProvider"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-11-15
           description: OK
         "400":
@@ -18092,7 +18206,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Federated-Authentication/operation/getFederationSettingIdentityProviderMetadata
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
   /api/atlas/v2/groups:
     get:
@@ -18341,7 +18455,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Group"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -18654,7 +18768,7 @@ paths:
         2025-05-08: Corrects an issue where the endpoint would include Atlas internal entries.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Project-IP-Access-List/operation/listGroupAccessListEntries
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: listEntries
     post:
       description: Adds one or more access list entries to the specified project. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. Write each entry as either one IP address or one CIDR-notated block of IP addresses. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations. This endpoint doesn't support concurrent `POST` requests. You must submit multiple `POST` requests synchronously.
@@ -18747,7 +18861,7 @@ paths:
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Project-IP-Access-List/operation/createGroupAccessListEntry
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: createEntry
   /api/atlas/v2/groups/{groupId}/accessList/{entryValue}:
     delete:
@@ -18834,7 +18948,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/accessList/{entryValue}"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Project-IP-Access-List/operation/deleteGroupAccessListEntry
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: deleteEntry
     get:
       description: Returns one access list entry from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. This endpoint (`/groups/{GROUP-ID}/accessList`) manages the Project IP Access List. It doesn't manage the access list for MongoDB Cloud organizations. TheProgrammatic API Keys endpoint (`/orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist`) manages those access lists.
@@ -18859,7 +18973,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/NetworkPermissionEntry"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -18919,7 +19033,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/accessList/{entryValue}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Project-IP-Access-List/operation/getGroupAccessListEntry
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: getEntry
   /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status:
     get:
@@ -18942,7 +19056,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/NetworkPermissionEntryStatus"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -19272,7 +19386,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GroupAlertsConfig"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -19558,8 +19672,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedAlert"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -19727,7 +19841,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AlertViewForNdsGroup"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -19913,8 +20027,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedAlertConfig"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -20410,7 +20524,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AuditLog"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -20564,7 +20678,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AWSCustomDNSEnabled"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -21193,7 +21307,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/DataProtectionSettings20231001"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-10-01
           description: OK
         "401":
@@ -21354,9 +21468,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/CloudProviderAccessRoles"
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -21604,7 +21718,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/CloudProviderAccessRole"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -22136,7 +22250,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ClusterDescription20240805"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -22430,7 +22544,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return Ranked Namespaces from a Cluster
+      summary: Return Ranked Namespaces from One Cluster
       tags:
         - Collection Level Metrics
       x-codeSamples:
@@ -22479,7 +22593,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Collection-Level-Metrics/operation/getGroupClusterCollStatNamespaces
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration:
     get:
@@ -22502,7 +22616,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ClusterDescriptionAutoScalingModeConfiguration"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -22943,7 +23057,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Restore One Snapshot of One Cluster
+      summary: Create One Restore Job of One Cluster
       tags:
         - Cloud Backups
       x-codeSamples:
@@ -23704,7 +23818,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/DiskBackupReplicaSet"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -23969,7 +24083,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/DiskBackupShardedClusterSnapshot"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -24782,7 +24896,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiAtlasCheckpoint"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -25161,7 +25275,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Unpin namespaces
+      summary: Unpin Namespaces
       tags:
         - Collection Level Metrics
       x-codeSamples:
@@ -25351,7 +25465,7 @@ paths:
                   $ref: "#/components/schemas/ClusterSearchIndex"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -25439,7 +25553,7 @@ paths:
             pattern: ^([a-f0-9]{24})$
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "204":
           content:
@@ -25529,7 +25643,7 @@ paths:
             pattern: ^([a-f0-9]{24})$
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "200":
           content:
@@ -25619,7 +25733,7 @@ paths:
             pattern: ^([a-f0-9]{24})$
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -25723,7 +25837,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GeoSharding20240805"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -26299,9 +26413,11 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index" \
               -d '{ <Payload> }'
+      x-xgen-changelog:
+        2025-05-08: Corrects an issue where the endpoint would allow a rolling index build to be initiated while there was already an index build in progress. The endpoint now returns 400 if an index build is already in progress.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Rolling-Index/operation/createGroupClusterIndexRollingIndex
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: createRollingIndex
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives:
     get:
@@ -26596,7 +26712,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/BackupOnlineArchive"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -26776,7 +26892,7 @@ paths:
             minimum: 1199145600
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
         - description: Date and time that specifies the end point for the range of log messages to return. This resource expresses this value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
           in: query
           name: endDate
@@ -26786,7 +26902,7 @@ paths:
             minimum: 1199145600
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
         - description: Human-readable label that identifies the cluster that contains the collection for which you want to return the query logs from one online archive.
           in: path
           name: clusterName
@@ -27044,7 +27160,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cluster-Outage-Simulation/operation/getGroupClusterOutageSimulation
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
     post:
       description: Starts a cluster outage simulation.
@@ -27345,7 +27461,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
         - description: |-
             Date and time up until which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
 
@@ -27358,7 +27474,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "200":
           content:
@@ -27450,7 +27566,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ClusterDescriptionProcessArgs20240805"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "400":
@@ -27629,7 +27745,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
         - description: |-
             Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
 
@@ -27642,7 +27758,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
         - description: ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (`&`) between each processId.
           in: query
           name: processIds
@@ -27753,7 +27869,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
         - description: |-
             Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
 
@@ -27766,7 +27882,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
         - description: ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (`&`) between each processId.
           in: query
           name: processIds
@@ -28198,8 +28314,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/BackupRestoreJob"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-response-has-no-input-fields: API predates IPA validation
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-response-has-no-input-fields: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -28420,7 +28536,7 @@ paths:
         2025-03-12: Updates the return of the API when no nodes exist, the endpoint returns 200 with an empty JSON ({}) instead of 400.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/getGroupClusterSearchDeployment
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
     patch:
       description: "Updates the Search Nodes for the specified cluster. Deprecated versions: v2-{2023-01-01}"
@@ -28629,7 +28745,7 @@ paths:
                   $ref: "#/components/schemas/SearchIndexResponse"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-version: 2024-05-30
           description: OK
         "400":
@@ -28827,7 +28943,7 @@ paths:
                   $ref: "#/components/schemas/SearchIndexResponse"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-version: 2024-05-30
           description: OK
         "400":
@@ -28894,6 +29010,9 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/listGroupClusterSearchIndex
+      x-xgen-method-verb-override:
+        customMethod: false
+        verb: list
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}:
     delete:
       description: Removes one Atlas Search index that you identified with its database, collection, and name. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role. This deletion is eventually consistent.
@@ -29236,7 +29355,7 @@ paths:
             pattern: ^([a-f0-9]{24})$
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "204":
           content:
@@ -29324,7 +29443,7 @@ paths:
             pattern: ^([a-f0-9]{24})$
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "200":
           content:
@@ -29420,7 +29539,7 @@ paths:
             pattern: ^([a-f0-9]{24})$
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -29527,7 +29646,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiAtlasSnapshotSchedule"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -29890,7 +30009,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/BackupSnapshot"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -30067,7 +30186,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ClusterStatus"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -30887,7 +31006,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return all metric names
+      summary: Return All Metric Names
       tags:
         - Collection Level Metrics
       x-codeSamples:
@@ -30952,7 +31071,7 @@ paths:
             default: AWS
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
+            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation.
       responses:
         "200":
           content:
@@ -31201,7 +31320,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/CloudProviderContainer"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -31443,7 +31562,7 @@ paths:
                   $ref: "#/components/schemas/UserCustomDBRole"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -31850,11 +31969,11 @@ paths:
                   $ref: "#/components/schemas/DataLakeTenant"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -32093,8 +32212,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/DataLakeTenant"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-response-has-no-input-fields: Content predates IPA validation
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-response-has-no-input-fields: Content predates IPA validation.
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -32270,11 +32389,11 @@ paths:
                   $ref: "#/components/schemas/DataFederationTenantQueryLimit"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -32455,7 +32574,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/DataFederationTenantQueryLimit"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -33006,9 +33125,9 @@ paths:
             example: "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName"
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-must-not-use-html: Description predates IPA validation
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
-            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation
+            xgen-IPA-117-description-must-not-use-html: Description predates IPA validation.
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
       responses:
         "204":
           content:
@@ -33103,9 +33222,9 @@ paths:
             example: "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName"
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-must-not-use-html: Description predates IPA validation
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
-            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation
+            xgen-IPA-117-description-must-not-use-html: Description predates IPA validation.
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
       responses:
         "200":
           content:
@@ -33202,9 +33321,9 @@ paths:
             example: "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName"
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-must-not-use-html: Description predates IPA validation
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
-            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation
+            xgen-IPA-117-description-must-not-use-html: Description predates IPA validation.
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -33709,8 +33828,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/EncryptionAtRest"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-response-has-no-input-fields: Content predates IPA validation
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-response-has-no-input-fields: Content predates IPA validation.
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -33721,7 +33840,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project
+      summary: Return One Configuration for Encryption at Rest Using Customer-Managed Keys for One Project
       tags:
         - Encryption at Rest using Customer Key Management
       x-codeSamples:
@@ -33813,7 +33932,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Update Encryption at Rest Configuration for One Project
+      summary: Update Encryption at Rest Configuration in One Project
       tags:
         - Encryption at Rest using Customer Key Management
       x-codeSamples:
@@ -33896,7 +34015,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return Private Endpoints of a Cloud Provider for Encryption at Rest Using Customer Key Management for One Project
+      summary: Return Private Endpoints for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
       tags:
         - Encryption at Rest using Customer Key Management
       x-codeSamples:
@@ -33978,7 +34097,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Create One Private Endpoint in a Specified Region for Encryption at Rest Using Customer Key Management
+      summary: Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
       tags:
         - Encryption at Rest using Customer Key Management
       x-codeSamples:
@@ -34063,7 +34182,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Delete One Private Endpoint for Encryption at Rest Using Customer Key Management
+      summary: Delete One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider from One Project
       tags:
         - Encryption at Rest using Customer Key Management
       x-codeSamples:
@@ -34139,7 +34258,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/EARPrivateEndpoint"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -34150,7 +34269,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return One Private Endpoint for Encryption at Rest Using Customer Key Management
+      summary: Return One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
       tags:
         - Encryption at Rest using Customer Key Management
       x-codeSamples:
@@ -34270,7 +34389,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GroupPaginatedEvent"
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -34365,7 +34484,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/EventViewForNdsGroup"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -34683,7 +34802,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/FlexClusterDescription20241113"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-11-13
           description: OK
         "400":
@@ -35052,7 +35171,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Restore One Snapshot of One Flex Cluster
+      summary: Create One Restore Job for One Flex Cluster
       tags:
         - Flex Restore Jobs
       x-codeSamples:
@@ -35224,7 +35343,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return All Snapshots of One Flex Cluster
+      summary: Return All Snapshots for One Flex Cluster
       tags:
         - Flex Snapshots
       x-codeSamples:
@@ -35311,7 +35430,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return One Snapshot of One Flex Cluster
+      summary: Return One Snapshot for One Flex Cluster
       tags:
         - Flex Snapshots
       x-codeSamples:
@@ -35554,7 +35673,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/MeasurementsIndexes"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -35649,7 +35768,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/MeasurementsIndexes"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -35712,6 +35831,9 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Monitoring-and-Logs/operation/listGroupHostFtsMetricIndexMeasurements
+      x-xgen-method-verb-override:
+        customMethod: false
+        verb: list
   /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements:
     get:
       description: Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
@@ -35974,7 +36096,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/ThirdPartyIntegration"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-response-has-no-input-fields: Subclass ApiPrometheusView has a write-only field.
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -36077,7 +36200,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Configure One Third-Party Service Integration
+      summary: Create One Third-Party Service Integration
       tags:
         - Third-Party Integrations
       x-codeSamples:
@@ -36158,7 +36281,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedIntegration"
               x-xgen-IPA-exception:
-                xgen-IPA-107-update-method-response-is-get-method-response: Content predates IPA validation
+                xgen-IPA-107-update-method-response-is-get-method-response: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -36245,11 +36368,11 @@ paths:
                   $ref: "#/components/schemas/GroupInvitation"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -36260,7 +36383,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return All Project Invitations
+      summary: Return All Invitations in One Project
       tags:
         - Projects
       x-codeSamples:
@@ -36340,7 +36463,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Update One Project Invitation
+      summary: Update One Invitation in One Project
       tags:
         - Projects
       x-codeSamples:
@@ -36422,7 +36545,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Invite One MongoDB Cloud User to One Project
+      summary: Create Invitation for One MongoDB Cloud User in One Project
       tags:
         - Projects
       x-codeSamples:
@@ -36503,7 +36626,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Remove One Project Invitation
+      summary: Remove One Invitation from One Project
       tags:
         - Projects
       x-codeSamples:
@@ -36572,7 +36695,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GroupInvitation"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -36583,7 +36706,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return One Project Invitation
+      summary: Return One Invitation in One Project by Invitation ID
       tags:
         - Projects
       x-codeSamples:
@@ -36670,7 +36793,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Update One Project Invitation by Invitation ID
+      summary: Update One Invitation in One Project by Invitation ID
       tags:
         - Projects
       x-codeSamples:
@@ -36724,7 +36847,7 @@ paths:
       x-sunset: 2026-07-31
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/updateGroupInviteById
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: updateById
   /api/atlas/v2/groups/{groupId}/ipAddresses:
     get:
@@ -36739,7 +36862,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GroupIPAddresses"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -36813,11 +36936,11 @@ paths:
                   $ref: "#/components/schemas/DataFederationLimit"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -37008,7 +37131,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/DataFederationLimit"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -37225,7 +37348,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Migrate One Local Managed Cluster to MongoDB Atlas
+      summary: Create One Migration for One Local Managed Cluster to MongoDB Atlas
       tags:
         - Cloud Migration Service
       x-codeSamples:
@@ -37679,7 +37802,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GroupMaintenanceWindow"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -37984,7 +38107,7 @@ paths:
               schema:
                 type: boolean
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -38232,8 +38355,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedAvailableVersion"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -38312,7 +38435,7 @@ paths:
             default: AWS
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
+            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation.
       responses:
         "200":
           content:
@@ -38564,7 +38687,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -38732,11 +38855,11 @@ paths:
                   $ref: "#/components/schemas/DataLakeIngestionPipeline"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -38796,7 +38919,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines?pretty=true"
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/listGroupPipelines
     post:
       deprecated: true
@@ -38883,7 +39006,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines" \
               -d '{ <Payload> }'
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/createGroupPipeline
   /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}:
     delete:
@@ -38960,7 +39083,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/deleteGroupPipeline
     get:
       deprecated: true
@@ -38982,7 +39105,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/DataLakeIngestionPipeline"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -39042,7 +39165,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}?pretty=true"
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/getGroupPipeline
     patch:
       deprecated: true
@@ -39135,7 +39258,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}" \
               -d '{ <Payload> }'
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/updateGroupPipeline
   /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules:
     get:
@@ -39160,10 +39283,10 @@ paths:
                   $ref: "#/components/schemas/DiskBackupApiPolicyItem"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -39223,7 +39346,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules?pretty=true"
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/getGroupPipelineAvailableSchedules
   /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots:
     get:
@@ -39255,8 +39378,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedBackupSnapshot"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -39316,7 +39439,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots?pretty=true"
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/getGroupPipelineAvailableSnapshots
   /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause:
     post:
@@ -39401,7 +39524,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause" \
               -d '{ <Payload> }'
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/pauseGroupPipeline
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -39488,7 +39611,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume" \
               -d '{ <Payload> }'
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/resumeGroupPipeline
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -39509,7 +39632,7 @@ paths:
             format: date-time
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-121-date-time-fields-mention-iso-8601: Schema predates IPA validation
+            xgen-IPA-121-date-time-fields-mention-iso-8601: Schema predates IPA validation.
         - description: Human-readable label that identifies the Data Lake Pipeline.
           in: path
           name: pipelineName
@@ -39582,7 +39705,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs?pretty=true"
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/listGroupPipelineRuns
   /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}:
     delete:
@@ -39671,7 +39794,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}"
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/deleteGroupPipelineRun
     get:
       deprecated: true
@@ -39701,7 +39824,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/IngestionPipelineRun"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -39761,7 +39884,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}?pretty=true"
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/getGroupPipelineRun
   /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger:
     post:
@@ -39853,7 +39976,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger" \
               -d '{ <Payload> }'
-      x-sunset: 2025-09-09
+      x-sunset: 2025-09-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/triggerGroupPipeline
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -39871,7 +39994,7 @@ paths:
             default: AWS
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
+            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation.
       responses:
         "200":
           content:
@@ -39881,11 +40004,11 @@ paths:
                   $ref: "#/components/schemas/EndpointService"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -39960,7 +40083,7 @@ paths:
             default: AWS
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
+            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation.
         - description: Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete.
           in: path
           name: endpointServiceId
@@ -40045,7 +40168,7 @@ paths:
             default: AWS
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
+            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation.
         - description: Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to return.
           in: path
           name: endpointServiceId
@@ -40060,7 +40183,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/EndpointService"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -40135,7 +40258,7 @@ paths:
             default: AWS
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
+            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation.
         - description: Unique 24-hexadecimal digit string that identifies the private endpoint service for which you want to create a private endpoint.
           in: path
           name: endpointServiceId
@@ -40238,7 +40361,7 @@ paths:
             default: AWS
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
+            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation.
         - description: Unique string that identifies the private endpoint you want to delete. The format of the **endpointId** parameter differs for AWS and Azure. You must URL encode the **endpointId** for Azure private endpoints.
           in: path
           name: endpointId
@@ -40330,7 +40453,7 @@ paths:
             default: AWS
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
+            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation.
         - description: Unique string that identifies the private endpoint you want to return. The format of the **endpointId** parameter differs for AWS and Azure. You must URL encode the **endpointId** for Azure private endpoints.
           in: path
           name: endpointId
@@ -40352,7 +40475,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/PrivateLinkEndpoint"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -40570,7 +40693,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Private-Endpoint-Services/operation/getGroupPrivateEndpointRegionalMode
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
     patch:
       description: Enables or disables the ability to create multiple private endpoints per region in all cloud service providers in one project. The cloud service provider manages the private endpoints for the project. Connection strings to existing multi-region and global sharded clusters change when you enable this setting. You must update your applications to use the new connection strings. This might cause downtime. To use this resource, the requesting Service Account or API Key must have the Project Owner role and all clusters in the deployment must be sharded clusters. Once enabled, you cannot create replica sets.
@@ -40682,11 +40805,11 @@ paths:
                   $ref: "#/components/schemas/ServerlessTenantEndpoint"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -40960,7 +41083,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerlessTenantEndpoint"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -41137,7 +41260,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/PrivateIPMode"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -41711,7 +41834,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiHostView_Atlas"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -41883,7 +42006,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return Ranked Namespaces from a Host
+      summary: Return Ranked Namespaces from One Host
       tags:
         - Collection Level Metrics
       x-codeSamples:
@@ -41932,7 +42055,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Collection-Level-Metrics/operation/getGroupProcessCollStatNamespaces
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
   /api/atlas/v2/groups/{groupId}/processes/{processId}/databases:
     get:
@@ -42045,7 +42168,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/MesurementsDatabase"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -42147,7 +42270,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -42314,7 +42437,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/MeasurementDiskPartition"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -42423,7 +42546,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -42527,7 +42650,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -42621,7 +42744,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "200":
           content:
@@ -42740,7 +42863,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
         - description: Whether or not to include metrics extracted from the slow query log as separate fields.
           in: query
           name: includeMetrics
@@ -42884,7 +43007,7 @@ paths:
             minimum: 1199145600000
             type: integer
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "200":
           content:
@@ -43045,7 +43168,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return Push-Based Log Export Configuration for One Project
+      summary: Return One Push-Based Log Export Configuration in One Project
       tags:
         - Push-Based Log Export
       x-codeSamples:
@@ -43094,7 +43217,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pushBasedLogExport?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/getGroupPushBasedLogExport
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
     patch:
       description: Updates the project level settings for the push-based log export feature.
@@ -43125,7 +43248,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Update Push-Based Log Export for One Project
+      summary: Update One Push-Based Log Export Configuration in One Project
       tags:
         - Push-Based Log Export
       x-codeSamples:
@@ -43206,7 +43329,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Enable Push-Based Log Export for One Project
+      summary: Create One Push-Based Log Export Configuration in One Project
       tags:
         - Push-Based Log Export
       x-codeSamples:
@@ -43366,7 +43489,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/SampleDatasetStatus"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -43507,7 +43630,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/listGroupServerlessInstances
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: listInstances
     post:
       description: |-
@@ -43602,7 +43725,7 @@ paths:
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createGroupServerlessInstance
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: createInstance
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs:
     get:
@@ -43737,7 +43860,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Restore One Snapshot of One Serverless Instance
+      summary: Create One Restore Job for One Serverless Instance
       tags:
         - Cloud Backups
       x-codeSamples:
@@ -43822,7 +43945,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerlessBackupRestoreJob"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -44005,7 +44128,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerlessBackupSnapshot"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -44149,7 +44272,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Performance-Advisor/operation/getGroupServerlessPerformanceAdvisorAutoIndexing
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
     post:
       description: Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
@@ -44331,7 +44454,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{name}"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/deleteGroupServerlessInstance
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: deleteInstance
     get:
       description: |-
@@ -44358,7 +44481,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerlessInstanceDescription"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -44422,7 +44545,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{name}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/getGroupServerlessInstance
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: getInstance
     patch:
       description: |-
@@ -44522,7 +44645,7 @@ paths:
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/updateGroupServerlessInstance
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: updateInstance
   /api/atlas/v2/groups/{groupId}/serviceAccounts:
     get:
@@ -44776,7 +44899,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GroupServiceAccount"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -45192,7 +45315,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/deleteGroupServiceAccountAccessListEntry
       x-xgen-method-verb-override:
-        customMethod: "false"
+        customMethod: false
         verb: deleteEntry
   /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets:
     post:
@@ -45470,7 +45593,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GroupSettings"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -45684,7 +45807,7 @@ paths:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/listGroupStreamWorkspaces
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: listWorkspaces
     post:
       description: Creates one stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
@@ -45771,7 +45894,7 @@ paths:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/createGroupStreamWorkspace
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: createWorkspace
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}:
     delete:
@@ -45850,7 +45973,7 @@ paths:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamWorkspace
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: deleteWorkspace
     get:
       description: Returns the details of one stream instance within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
@@ -45875,7 +45998,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/StreamsTenant"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-02-01
           description: OK
         "400":
@@ -45939,7 +46062,7 @@ paths:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamWorkspace
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: getWorkspace
     patch:
       description: Update one stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
@@ -46031,6 +46154,9 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/updateGroupStreamWorkspace
+      x-xgen-method-verb-override:
+        customMethod: false
+        verb: updateWorkspace
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs:
     get:
       description: 'Downloads the audit logs for the specified Atlas Streams Processing instance. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".'
@@ -46414,7 +46540,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/StreamsConnection"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-02-01
           description: OK
         "401":
@@ -46768,7 +46894,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/StreamsProcessorWithStats"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-05-30
           description: OK
         "400":
@@ -47204,8 +47330,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedApiStreamsStreamProcessorWithStats"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2024-05-30
           description: OK
         "400":
@@ -47349,7 +47475,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/accountDetails?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamAccountDetails
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
   /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections:
     get:
@@ -48397,7 +48523,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/TeamRole"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: Content predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -48487,7 +48613,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedTeamRole"
               x-xgen-IPA-exception:
-                xgen-IPA-107-update-method-response-is-get-method-response: Content predates IPA validation
+                xgen-IPA-107-update-method-response-is-get-method-response: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -48565,8 +48691,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/UserSecurity"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-response-has-no-input-fields: Content predates IPA validation
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-response-has-no-input-fields: Content predates IPA validation.
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -49019,7 +49145,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/LDAP-Configuration/operation/getGroupUserSecurityLdapVerify
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: get
   /api/atlas/v2/groups/{groupId}/users:
     get:
@@ -49239,7 +49365,7 @@ paths:
             pattern: ^([a-f0-9]{24})$
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "204":
           content:
@@ -49940,7 +50066,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/CreateOrganizationResponse"
               x-xgen-IPA-exception:
-                xgen-IPA-106-create-method-response-is-get-method-response: Content predates IPA validation
+                xgen-IPA-106-create-method-response-is-get-method-response: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: Created
         "400":
@@ -50098,7 +50224,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AtlasOrganization"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -50504,7 +50630,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiKeyUserDetails"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -50738,6 +50864,9 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Programmatic-API-Keys/operation/listOrgApiKeyAccessListEntries
+      x-xgen-method-verb-override:
+        customMethod: false
+        verb: listEntries
     post:
       description: Creates the access list entries for the specified organization API key. Resources require all API requests originate from IP addresses on the API access list. To use this resource, the requesting Service Account or API Key must have the Read Write role.
       operationId: createOrgAccessEntry
@@ -50835,7 +50964,7 @@ paths:
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Programmatic-API-Keys/operation/createOrgApiKeyAccessListEntry
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: createEntry
   /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}:
     delete:
@@ -51016,7 +51145,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Programmatic-API-Keys/operation/getOrgApiKeyAccessListEntry
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: getEntry
   /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage:
     post:
@@ -51102,7 +51231,7 @@ paths:
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/createOrgBillingCostExplorerUsageProcess
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: createProcess
   /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}:
     get:
@@ -51153,7 +51282,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+      summary: Return Usage Details for One Cost Explorer Query
       tags:
         - Invoices
       x-codeSamples:
@@ -51254,7 +51383,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/OrgPaginatedEvent"
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -51347,7 +51476,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/EventViewForOrg"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -51419,7 +51548,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/OrgFederationSettings"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -51509,8 +51638,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedAtlasGroup"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -51599,11 +51728,11 @@ paths:
                   $ref: "#/components/schemas/OrganizationInvitation"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -51616,7 +51745,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return All Organization Invitations
+      summary: Return All Invitations in One Organization
       tags:
         - Organizations
       x-codeSamples:
@@ -51702,7 +51831,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Update One Organization Invitation
+      summary: Update One Invitation in One Organization
       tags:
         - Organizations
       x-codeSamples:
@@ -51792,7 +51921,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Invite One MongoDB Cloud User to One Atlas Organization
+      summary: Create Invitation for One MongoDB Cloud User in One Organization
       tags:
         - Organizations
       x-codeSamples:
@@ -51880,7 +52009,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Remove One Organization Invitation
+      summary: Remove One Invitation from One Organization
       tags:
         - Organizations
       x-codeSamples:
@@ -51955,7 +52084,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/OrganizationInvitation"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -51968,7 +52097,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return One Organization Invitation
+      summary: Return One Invitation in One Organization by Invitation ID
       tags:
         - Organizations
       x-codeSamples:
@@ -52061,7 +52190,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Update One Organization Invitation by Invitation ID
+      summary: Update One Invitation in One Organization by Invitation ID
       tags:
         - Organizations
       x-codeSamples:
@@ -52115,7 +52244,7 @@ paths:
       x-sunset: 2026-07-31
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrgInviteById
       x-xgen-method-verb-override:
-        customMethod: "False"
+        customMethod: false
         verb: updateById
   /api/atlas/v2/orgs/{orgId}/invoices:
     get:
@@ -52176,7 +52305,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedApiInvoiceMetadata"
               x-xgen-IPA-exception:
-                xgen-IPA-105-list-method-response-is-get-method-response: API predates IPA validation
+                xgen-IPA-105-list-method-response-is-get-method-response: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -52257,7 +52386,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/BillingInvoice"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
             application/vnd.atlas.2023-01-01+csv:
               example: |
@@ -52586,7 +52715,7 @@ paths:
                   $ref: "#/components/schemas/LiveImportAvailableProject"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -52817,10 +52946,10 @@ paths:
                   $ref: "#/components/schemas/ApiAtlasNonCompliantResource"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "400":
@@ -52899,11 +53028,11 @@ paths:
                   $ref: "#/components/schemas/ApiAtlasResourcePolicy"
                 type: array
                 x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
+                  xgen-IPA-124-array-max-items: Schema predates IPA validation.
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "400":
@@ -53163,7 +53292,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiAtlasResourcePolicy"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "400":
@@ -53667,7 +53796,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/OrgServiceAccount"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -54108,8 +54237,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/PaginatedServiceAccountGroup"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
-                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation.
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -54354,7 +54483,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/OrganizationSettings"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -55705,7 +55834,7 @@ paths:
             pattern: ^([a-f0-9]{24})$
             type: string
           x-xgen-IPA-exception:
-            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs
+            xgen-IPA-117-description-should-not-use-inline-links: Parameters don't support externalDocs.
       responses:
         "204":
           content:
@@ -56253,9 +56382,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/ControlPlaneIPAddresses"
               x-xgen-IPA-exception:
-                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
-                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
-                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
+                xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation.
+                xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation.
+                xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation.
               x-xgen-version: 2023-11-15
           description: OK
         "500":
@@ -56419,7 +56548,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/CloudAppUser"
               x-xgen-IPA-exception:
-                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation.
               x-xgen-version: 2023-01-01
           description: OK
         "401":

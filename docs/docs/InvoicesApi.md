@@ -5,7 +5,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCostExplorerProcess**](InvoicesApi.md#CreateCostExplorerProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
-[**GetCostExplorerUsage**](InvoicesApi.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+[**GetCostExplorerUsage**](InvoicesApi.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query
 [**GetInvoice**](InvoicesApi.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
 [**GetInvoiceCsv**](InvoicesApi.md#GetInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
 [**ListInvoicePending**](InvoicesApi.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 > any GetCostExplorerUsage(ctx, orgId, token).Execute()
 
-Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+Return Usage Details for One Cost Explorer Query
 
 
 ### Example

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster with the Snapshot you want to return. | [optional] [readonly] 
 **CopySettings** | Pointer to [**[]DiskBackupCopySetting20240805**](DiskBackupCopySetting20240805.md) | List that contains a document for each copy setting item in the desired backup policy. | [optional] 
 **DeleteCopiedBackups** | Pointer to [**[]DeleteCopiedBackups20240805**](DeleteCopiedBackups20240805.md) | List that contains a document for each deleted copy setting whose backup copies you want to delete. | [optional] 
+**DeleteSnapshots** | Pointer to **bool** | Flag that indicates whether to delete Snapshots that MongoDB Cloud took previously when deleting the associated backup policy. | [optional] 
 **Export** | Pointer to [**AutoExportPolicy**](AutoExportPolicy.md) |  | [optional] 
 **ExtraRetentionSettings** | Pointer to [**[]ExtraRetentionSetting**](ExtraRetentionSetting.md) | List that contains a document for each extra retention setting item in the desired backup policy. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -159,6 +160,30 @@ SetDeleteCopiedBackups sets DeleteCopiedBackups field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopiedBackups() bool`
 
 HasDeleteCopiedBackups returns a boolean if a field has been set.
+### GetDeleteSnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetDeleteSnapshots() bool`
+
+GetDeleteSnapshots returns the DeleteSnapshots field if non-nil, zero value otherwise.
+
+### GetDeleteSnapshotsOk
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetDeleteSnapshotsOk() (*bool, bool)`
+
+GetDeleteSnapshotsOk returns a tuple with the DeleteSnapshots field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteSnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetDeleteSnapshots(v bool)`
+
+SetDeleteSnapshots sets DeleteSnapshots field to given value.
+
+### HasDeleteSnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) HasDeleteSnapshots() bool`
+
+HasDeleteSnapshots returns a boolean if a field has been set.
 ### GetExport
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetExport() AutoExportPolicy`

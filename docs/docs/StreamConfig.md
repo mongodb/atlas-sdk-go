@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
+**MaxTierSize** | Pointer to **string** | Max tier size for the Stream Instance. Configures Memory / VCPU allowances. This field is not supported yet. | [optional] 
 **Tier** | Pointer to **string** | Selected tier for the Stream Instance. Configures Memory / VCPU allowances. | [optional] 
 
 ## Methods
@@ -50,6 +51,30 @@ SetLinks sets Links field to given value.
 `func (o *StreamConfig) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+### GetMaxTierSize
+
+`func (o *StreamConfig) GetMaxTierSize() string`
+
+GetMaxTierSize returns the MaxTierSize field if non-nil, zero value otherwise.
+
+### GetMaxTierSizeOk
+
+`func (o *StreamConfig) GetMaxTierSizeOk() (*string, bool)`
+
+GetMaxTierSizeOk returns a tuple with the MaxTierSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxTierSize
+
+`func (o *StreamConfig) SetMaxTierSize(v string)`
+
+SetMaxTierSize sets MaxTierSize field to given value.
+
+### HasMaxTierSize
+
+`func (o *StreamConfig) HasMaxTierSize() bool`
+
+HasMaxTierSize returns a boolean if a field has been set.
 ### GetTier
 
 `func (o *StreamConfig) GetTier() string`

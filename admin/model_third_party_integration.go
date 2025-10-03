@@ -8,10 +8,18 @@ type ThirdPartyIntegration struct {
 	Id *string `json:"id,omitempty"`
 	// Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
 	Type *string `json:"type,omitempty"`
+	// Two-letter code that indicates which regional URL MongoDB uses to access the Opsgenie API.
+	Region *string `json:"region,omitempty"`
+	// Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	ServiceKey *string `json:"serviceKey,omitempty"`
+	// Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
+	ApiToken *string `json:"apiToken,omitempty"`
+	// Name of the Slack channel to which MongoDB Cloud sends alert notifications.
+	ChannelName *string `json:"channelName,omitempty"`
+	// Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
+	TeamName *string `json:"teamName,omitempty"`
 	// Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	ApiKey *string `json:"apiKey,omitempty"`
-	// PagerDuty region that indicates the API Uniform Resource Locator (URL) to use.
-	Region *string `json:"region,omitempty"`
 	// Toggle sending collection latency metrics that includes database names and collection namesand latency metrics on reads, writes, commands, and transactions.
 	SendCollectionLatencyMetrics *bool `json:"sendCollectionLatencyMetrics,omitempty"`
 	// Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size.
@@ -20,8 +28,6 @@ type ThirdPartyIntegration struct {
 	SendQueryStatsMetrics *bool `json:"sendQueryStatsMetrics,omitempty"`
 	// Toggle sending user provided group and cluster resource tags with the datadog metrics.
 	SendUserProvidedResourceTags *bool `json:"sendUserProvidedResourceTags,omitempty"`
-	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
-	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
 	// Unique 40-hexadecimal digit string that identifies your New Relic account.
 	AccountId *string `json:"accountId,omitempty"`
 	// Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
@@ -30,8 +36,12 @@ type ThirdPartyIntegration struct {
 	ReadToken *string `json:"readToken,omitempty"`
 	// Insert key associated with your New Relic account.
 	WriteToken *string `json:"writeToken,omitempty"`
-	// Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
-	ServiceKey *string `json:"serviceKey,omitempty"`
+	// Routing key associated with your Splunk On-Call account.
+	RoutingKey *string `json:"routingKey,omitempty"`
+	// An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+	Secret *string `json:"secret,omitempty"`
+	// Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
+	Url *string `json:"url,omitempty"`
 	// Flag that indicates whether someone has activated the Prometheus integration.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Password needed to allow MongoDB Cloud to access your Prometheus account.
@@ -43,18 +53,8 @@ type ThirdPartyIntegration struct {
 	ServiceDiscovery *string `json:"serviceDiscovery,omitempty"`
 	// Human-readable label that identifies your Prometheus incoming webhook.
 	Username *string `json:"username,omitempty"`
-	// Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
-	ApiToken *string `json:"apiToken,omitempty"`
-	// Name of the Slack channel to which MongoDB Cloud sends alert notifications.
-	ChannelName *string `json:"channelName,omitempty"`
-	// Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
-	TeamName *string `json:"teamName,omitempty"`
-	// Routing key associated with your Splunk On-Call account.
-	RoutingKey *string `json:"routingKey,omitempty"`
-	// An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
-	Secret *string `json:"secret,omitempty"`
-	// Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
-	Url *string `json:"url,omitempty"`
+	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
+	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
 }
 
 // NewThirdPartyIntegration instantiates a new ThirdPartyIntegration object
@@ -63,6 +63,8 @@ type ThirdPartyIntegration struct {
 // will change when the set of required properties is changed
 func NewThirdPartyIntegration() *ThirdPartyIntegration {
 	this := ThirdPartyIntegration{}
+	var region string = "US"
+	this.Region = &region
 	var sendCollectionLatencyMetrics bool = false
 	this.SendCollectionLatencyMetrics = &sendCollectionLatencyMetrics
 	var sendDatabaseMetrics bool = false
@@ -81,6 +83,8 @@ func NewThirdPartyIntegration() *ThirdPartyIntegration {
 // but it doesn't guarantee that properties required by API are set
 func NewThirdPartyIntegrationWithDefaults() *ThirdPartyIntegration {
 	this := ThirdPartyIntegration{}
+	var region string = "US"
+	this.Region = &region
 	var sendCollectionLatencyMetrics bool = false
 	this.SendCollectionLatencyMetrics = &sendCollectionLatencyMetrics
 	var sendDatabaseMetrics bool = false
@@ -160,39 +164,6 @@ func (o *ThirdPartyIntegration) SetType(v string) {
 	o.Type = &v
 }
 
-// GetApiKey returns the ApiKey field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetApiKey() string {
-	if o == nil || IsNil(o.ApiKey) {
-		var ret string
-		return ret
-	}
-	return *o.ApiKey
-}
-
-// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetApiKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.ApiKey) {
-		return nil, false
-	}
-
-	return o.ApiKey, true
-}
-
-// HasApiKey returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasApiKey() bool {
-	if o != nil && !IsNil(o.ApiKey) {
-		return true
-	}
-
-	return false
-}
-
-// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
-func (o *ThirdPartyIntegration) SetApiKey(v string) {
-	o.ApiKey = &v
-}
-
 // GetRegion returns the Region field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
@@ -224,6 +195,171 @@ func (o *ThirdPartyIntegration) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *ThirdPartyIntegration) SetRegion(v string) {
 	o.Region = &v
+}
+
+// GetServiceKey returns the ServiceKey field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetServiceKey() string {
+	if o == nil || IsNil(o.ServiceKey) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceKey
+}
+
+// GetServiceKeyOk returns a tuple with the ServiceKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetServiceKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceKey) {
+		return nil, false
+	}
+
+	return o.ServiceKey, true
+}
+
+// HasServiceKey returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasServiceKey() bool {
+	if o != nil && !IsNil(o.ServiceKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
+func (o *ThirdPartyIntegration) SetServiceKey(v string) {
+	o.ServiceKey = &v
+}
+
+// GetApiToken returns the ApiToken field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetApiToken() string {
+	if o == nil || IsNil(o.ApiToken) {
+		var ret string
+		return ret
+	}
+	return *o.ApiToken
+}
+
+// GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetApiTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiToken) {
+		return nil, false
+	}
+
+	return o.ApiToken, true
+}
+
+// HasApiToken returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasApiToken() bool {
+	if o != nil && !IsNil(o.ApiToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
+func (o *ThirdPartyIntegration) SetApiToken(v string) {
+	o.ApiToken = &v
+}
+
+// GetChannelName returns the ChannelName field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetChannelName() string {
+	if o == nil || IsNil(o.ChannelName) {
+		var ret string
+		return ret
+	}
+	return *o.ChannelName
+}
+
+// GetChannelNameOk returns a tuple with the ChannelName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetChannelNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ChannelName) {
+		return nil, false
+	}
+
+	return o.ChannelName, true
+}
+
+// HasChannelName returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasChannelName() bool {
+	if o != nil && !IsNil(o.ChannelName) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
+func (o *ThirdPartyIntegration) SetChannelName(v string) {
+	o.ChannelName = &v
+}
+
+// GetTeamName returns the TeamName field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetTeamName() string {
+	if o == nil || IsNil(o.TeamName) {
+		var ret string
+		return ret
+	}
+	return *o.TeamName
+}
+
+// GetTeamNameOk returns a tuple with the TeamName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetTeamNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TeamName) {
+		return nil, false
+	}
+
+	return o.TeamName, true
+}
+
+// HasTeamName returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasTeamName() bool {
+	if o != nil && !IsNil(o.TeamName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTeamName gets a reference to the given string and assigns it to the TeamName field.
+func (o *ThirdPartyIntegration) SetTeamName(v string) {
+	o.TeamName = &v
+}
+
+// GetApiKey returns the ApiKey field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetApiKey() string {
+	if o == nil || IsNil(o.ApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.ApiKey
+}
+
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiKey) {
+		return nil, false
+	}
+
+	return o.ApiKey, true
+}
+
+// HasApiKey returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasApiKey() bool {
+	if o != nil && !IsNil(o.ApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
+func (o *ThirdPartyIntegration) SetApiKey(v string) {
+	o.ApiKey = &v
 }
 
 // GetSendCollectionLatencyMetrics returns the SendCollectionLatencyMetrics field value if set, zero value otherwise
@@ -358,39 +494,6 @@ func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTags(v bool) {
 	o.SendUserProvidedResourceTags = &v
 }
 
-// GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrl() string {
-	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
-		var ret string
-		return ret
-	}
-	return *o.MicrosoftTeamsWebhookUrl
-}
-
-// GetMicrosoftTeamsWebhookUrlOk returns a tuple with the MicrosoftTeamsWebhookUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
-		return nil, false
-	}
-
-	return o.MicrosoftTeamsWebhookUrl, true
-}
-
-// HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool {
-	if o != nil && !IsNil(o.MicrosoftTeamsWebhookUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
-func (o *ThirdPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string) {
-	o.MicrosoftTeamsWebhookUrl = &v
-}
-
 // GetAccountId returns the AccountId field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetAccountId() string {
 	if o == nil || IsNil(o.AccountId) {
@@ -523,37 +626,103 @@ func (o *ThirdPartyIntegration) SetWriteToken(v string) {
 	o.WriteToken = &v
 }
 
-// GetServiceKey returns the ServiceKey field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetServiceKey() string {
-	if o == nil || IsNil(o.ServiceKey) {
+// GetRoutingKey returns the RoutingKey field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetRoutingKey() string {
+	if o == nil || IsNil(o.RoutingKey) {
 		var ret string
 		return ret
 	}
-	return *o.ServiceKey
+	return *o.RoutingKey
 }
 
-// GetServiceKeyOk returns a tuple with the ServiceKey field value if set, nil otherwise
+// GetRoutingKeyOk returns a tuple with the RoutingKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetServiceKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.ServiceKey) {
+func (o *ThirdPartyIntegration) GetRoutingKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.RoutingKey) {
 		return nil, false
 	}
 
-	return o.ServiceKey, true
+	return o.RoutingKey, true
 }
 
-// HasServiceKey returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasServiceKey() bool {
-	if o != nil && !IsNil(o.ServiceKey) {
+// HasRoutingKey returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasRoutingKey() bool {
+	if o != nil && !IsNil(o.RoutingKey) {
 		return true
 	}
 
 	return false
 }
 
-// SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
-func (o *ThirdPartyIntegration) SetServiceKey(v string) {
-	o.ServiceKey = &v
+// SetRoutingKey gets a reference to the given string and assigns it to the RoutingKey field.
+func (o *ThirdPartyIntegration) SetRoutingKey(v string) {
+	o.RoutingKey = &v
+}
+
+// GetSecret returns the Secret field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetSecret() string {
+	if o == nil || IsNil(o.Secret) {
+		var ret string
+		return ret
+	}
+	return *o.Secret
+}
+
+// GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.Secret) {
+		return nil, false
+	}
+
+	return o.Secret, true
+}
+
+// HasSecret returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasSecret() bool {
+	if o != nil && !IsNil(o.Secret) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecret gets a reference to the given string and assigns it to the Secret field.
+func (o *ThirdPartyIntegration) SetSecret(v string) {
+	o.Secret = &v
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetUrl() string {
+	if o == nil || IsNil(o.Url) {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.Url) {
+		return nil, false
+	}
+
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *ThirdPartyIntegration) SetUrl(v string) {
+	o.Url = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise
@@ -721,200 +890,35 @@ func (o *ThirdPartyIntegration) SetUsername(v string) {
 	o.Username = &v
 }
 
-// GetApiToken returns the ApiToken field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetApiToken() string {
-	if o == nil || IsNil(o.ApiToken) {
+// GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrl() string {
+	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
 		var ret string
 		return ret
 	}
-	return *o.ApiToken
+	return *o.MicrosoftTeamsWebhookUrl
 }
 
-// GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
+// GetMicrosoftTeamsWebhookUrlOk returns a tuple with the MicrosoftTeamsWebhookUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetApiTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.ApiToken) {
+func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
 		return nil, false
 	}
 
-	return o.ApiToken, true
+	return o.MicrosoftTeamsWebhookUrl, true
 }
 
-// HasApiToken returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasApiToken() bool {
-	if o != nil && !IsNil(o.ApiToken) {
+// HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool {
+	if o != nil && !IsNil(o.MicrosoftTeamsWebhookUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
-func (o *ThirdPartyIntegration) SetApiToken(v string) {
-	o.ApiToken = &v
-}
-
-// GetChannelName returns the ChannelName field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetChannelName() string {
-	if o == nil || IsNil(o.ChannelName) {
-		var ret string
-		return ret
-	}
-	return *o.ChannelName
-}
-
-// GetChannelNameOk returns a tuple with the ChannelName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetChannelNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ChannelName) {
-		return nil, false
-	}
-
-	return o.ChannelName, true
-}
-
-// HasChannelName returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasChannelName() bool {
-	if o != nil && !IsNil(o.ChannelName) {
-		return true
-	}
-
-	return false
-}
-
-// SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
-func (o *ThirdPartyIntegration) SetChannelName(v string) {
-	o.ChannelName = &v
-}
-
-// GetTeamName returns the TeamName field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetTeamName() string {
-	if o == nil || IsNil(o.TeamName) {
-		var ret string
-		return ret
-	}
-	return *o.TeamName
-}
-
-// GetTeamNameOk returns a tuple with the TeamName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetTeamNameOk() (*string, bool) {
-	if o == nil || IsNil(o.TeamName) {
-		return nil, false
-	}
-
-	return o.TeamName, true
-}
-
-// HasTeamName returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasTeamName() bool {
-	if o != nil && !IsNil(o.TeamName) {
-		return true
-	}
-
-	return false
-}
-
-// SetTeamName gets a reference to the given string and assigns it to the TeamName field.
-func (o *ThirdPartyIntegration) SetTeamName(v string) {
-	o.TeamName = &v
-}
-
-// GetRoutingKey returns the RoutingKey field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetRoutingKey() string {
-	if o == nil || IsNil(o.RoutingKey) {
-		var ret string
-		return ret
-	}
-	return *o.RoutingKey
-}
-
-// GetRoutingKeyOk returns a tuple with the RoutingKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetRoutingKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.RoutingKey) {
-		return nil, false
-	}
-
-	return o.RoutingKey, true
-}
-
-// HasRoutingKey returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasRoutingKey() bool {
-	if o != nil && !IsNil(o.RoutingKey) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoutingKey gets a reference to the given string and assigns it to the RoutingKey field.
-func (o *ThirdPartyIntegration) SetRoutingKey(v string) {
-	o.RoutingKey = &v
-}
-
-// GetSecret returns the Secret field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetSecret() string {
-	if o == nil || IsNil(o.Secret) {
-		var ret string
-		return ret
-	}
-	return *o.Secret
-}
-
-// GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetSecretOk() (*string, bool) {
-	if o == nil || IsNil(o.Secret) {
-		return nil, false
-	}
-
-	return o.Secret, true
-}
-
-// HasSecret returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasSecret() bool {
-	if o != nil && !IsNil(o.Secret) {
-		return true
-	}
-
-	return false
-}
-
-// SetSecret gets a reference to the given string and assigns it to the Secret field.
-func (o *ThirdPartyIntegration) SetSecret(v string) {
-	o.Secret = &v
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
-		var ret string
-		return ret
-	}
-	return *o.Url
-}
-
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
-		return nil, false
-	}
-
-	return o.Url, true
-}
-
-// HasUrl returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *ThirdPartyIntegration) SetUrl(v string) {
-	o.Url = &v
+// SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
+func (o *ThirdPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string) {
+	o.MicrosoftTeamsWebhookUrl = &v
 }

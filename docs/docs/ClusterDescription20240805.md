@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **GlobalClusterSelfManagedSharding** | Pointer to **bool** | Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster. | [optional] [readonly] 
+**InternalClusterRole** | Pointer to **string** | Internal classification of the cluster&#39;s role. Possible values: NONE (regular user cluster), SYSTEM_CLUSTER (system cluster for backup), INTERNAL_SHADOW_CLUSTER (internal use shadow cluster for testing). | [optional] [readonly] 
 **Labels** | Pointer to [**[]ComponentLabel**](ComponentLabel.md) | Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn&#39;t display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **MongoDBEmployeeAccessGrant** | Pointer to [**EmployeeAccessGrant**](EmployeeAccessGrant.md) |  | [optional] 
@@ -35,6 +36,7 @@ Name | Type | Description | Notes
 **StateName** | Pointer to **string** | Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.   - &#x60;IDLE&#x60;: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.  - &#x60;CREATING&#x60;: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.  - &#x60;UPDATING&#x60;: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.  - &#x60;DELETING&#x60;: The cluster is in the process of deletion and will soon be deleted.  - &#x60;REPAIRING&#x60;: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal. | [optional] [readonly] 
 **Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. | [optional] 
 **TerminationProtectionEnabled** | Pointer to **bool** | Flag that indicates whether termination protection is enabled on the cluster. If set to &#x60;true&#x60;, MongoDB Cloud won&#39;t delete the cluster. If set to &#x60;false&#x60;, MongoDB Cloud will delete the cluster. | [optional] [default to false]
+**UseAwsTimeBasedSnapshotCopyForFastInitialSync** | Pointer to **bool** | Flag that indicates whether AWS time-based snapshot copies will be used instead of slower standard snapshot copies during fast Atlas cross-region initial syncs. This flag is only relevant for clusters containing AWS nodes. | [optional] [default to false]
 **VersionReleaseSystem** | Pointer to **string** | Method by which the cluster maintains the MongoDB versions. If value is &#x60;CONTINUOUS&#x60;, you must not specify **mongoDBMajorVersion**. | [optional] [default to "LTS"]
 
 ## Methods
@@ -440,6 +442,30 @@ SetId sets Id field to given value.
 `func (o *ClusterDescription20240805) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+### GetInternalClusterRole
+
+`func (o *ClusterDescription20240805) GetInternalClusterRole() string`
+
+GetInternalClusterRole returns the InternalClusterRole field if non-nil, zero value otherwise.
+
+### GetInternalClusterRoleOk
+
+`func (o *ClusterDescription20240805) GetInternalClusterRoleOk() (*string, bool)`
+
+GetInternalClusterRoleOk returns a tuple with the InternalClusterRole field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInternalClusterRole
+
+`func (o *ClusterDescription20240805) SetInternalClusterRole(v string)`
+
+SetInternalClusterRole sets InternalClusterRole field to given value.
+
+### HasInternalClusterRole
+
+`func (o *ClusterDescription20240805) HasInternalClusterRole() bool`
+
+HasInternalClusterRole returns a boolean if a field has been set.
 ### GetLabels
 
 `func (o *ClusterDescription20240805) GetLabels() []ComponentLabel`
@@ -800,6 +826,30 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *ClusterDescription20240805) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
+### GetUseAwsTimeBasedSnapshotCopyForFastInitialSync
+
+`func (o *ClusterDescription20240805) GetUseAwsTimeBasedSnapshotCopyForFastInitialSync() bool`
+
+GetUseAwsTimeBasedSnapshotCopyForFastInitialSync returns the UseAwsTimeBasedSnapshotCopyForFastInitialSync field if non-nil, zero value otherwise.
+
+### GetUseAwsTimeBasedSnapshotCopyForFastInitialSyncOk
+
+`func (o *ClusterDescription20240805) GetUseAwsTimeBasedSnapshotCopyForFastInitialSyncOk() (*bool, bool)`
+
+GetUseAwsTimeBasedSnapshotCopyForFastInitialSyncOk returns a tuple with the UseAwsTimeBasedSnapshotCopyForFastInitialSync field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseAwsTimeBasedSnapshotCopyForFastInitialSync
+
+`func (o *ClusterDescription20240805) SetUseAwsTimeBasedSnapshotCopyForFastInitialSync(v bool)`
+
+SetUseAwsTimeBasedSnapshotCopyForFastInitialSync sets UseAwsTimeBasedSnapshotCopyForFastInitialSync field to given value.
+
+### HasUseAwsTimeBasedSnapshotCopyForFastInitialSync
+
+`func (o *ClusterDescription20240805) HasUseAwsTimeBasedSnapshotCopyForFastInitialSync() bool`
+
+HasUseAwsTimeBasedSnapshotCopyForFastInitialSync returns a boolean if a field has been set.
 ### GetVersionReleaseSystem
 
 `func (o *ClusterDescription20240805) GetVersionReleaseSystem() string`

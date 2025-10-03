@@ -6,27 +6,27 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddGroupUser**](ProjectsApi.md#AddGroupUser) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project
 [**CreateGroup**](ProjectsApi.md#CreateGroup) | **Post** /api/atlas/v2/groups | Create One Project
-[**CreateGroupInvite**](ProjectsApi.md#CreateGroupInvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Invite One MongoDB Cloud User to One Project
+[**CreateGroupInvite**](ProjectsApi.md#CreateGroupInvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Create Invitation for One MongoDB Cloud User in One Project
 [**DeleteGroup**](ProjectsApi.md#DeleteGroup) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project
-[**DeleteGroupInvite**](ProjectsApi.md#DeleteGroupInvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Project Invitation
+[**DeleteGroupInvite**](ProjectsApi.md#DeleteGroupInvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Invitation from One Project
 [**DeleteGroupLimit**](ProjectsApi.md#DeleteGroupLimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit
 [**GetGroup**](ProjectsApi.md#GetGroup) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
 [**GetGroupByName**](ProjectsApi.md#GetGroupByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name
-[**GetGroupInvite**](ProjectsApi.md#GetGroupInvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Project Invitation
+[**GetGroupInvite**](ProjectsApi.md#GetGroupInvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Invitation in One Project by Invitation ID
 [**GetGroupIpAddresses**](ProjectsApi.md#GetGroupIpAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
 [**GetGroupLimit**](ProjectsApi.md#GetGroupLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
 [**GetGroupSettings**](ProjectsApi.md#GetGroupSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings
 [**GetMongoDbVersions**](ProjectsApi.md#GetMongoDbVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project
-[**ListGroupInvites**](ProjectsApi.md#ListGroupInvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations
+[**ListGroupInvites**](ProjectsApi.md#ListGroupInvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Invitations in One Project
 [**ListGroupLimits**](ProjectsApi.md#ListGroupLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
 [**ListGroups**](ProjectsApi.md#ListGroups) | **Get** /api/atlas/v2/groups | Return All Projects
 [**MigrateGroup**](ProjectsApi.md#MigrateGroup) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization
 [**SetGroupLimit**](ProjectsApi.md#SetGroupLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
 [**UpdateGroup**](ProjectsApi.md#UpdateGroup) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project
-[**UpdateGroupInvites**](ProjectsApi.md#UpdateGroupInvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation
+[**UpdateGroupInvites**](ProjectsApi.md#UpdateGroupInvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Invitation in One Project
 [**UpdateGroupSettings**](ProjectsApi.md#UpdateGroupSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings
 [**UpdateGroupUserRoles**](ProjectsApi.md#UpdateGroupUserRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
-[**UpdateInviteById**](ProjectsApi.md#UpdateInviteById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID
+[**UpdateInviteById**](ProjectsApi.md#UpdateInviteById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Invitation in One Project by Invitation ID
 
 
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 > GroupInvitation CreateGroupInvite(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
 
-Invite One MongoDB Cloud User to One Project
+Create Invitation for One MongoDB Cloud User in One Project
 
 
 ### Example
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 > DeleteGroupInvite(ctx, groupId, invitationId).Execute()
 
-Remove One Project Invitation
+Remove One Invitation from One Project
 
 
 ### Example
@@ -676,7 +676,7 @@ Name | Type | Description  | Notes
 
 > GroupInvitation GetGroupInvite(ctx, groupId, invitationId).Execute()
 
-Return One Project Invitation
+Return One Invitation in One Project by Invitation ID
 
 
 ### Example
@@ -1092,7 +1092,7 @@ Name | Type | Description  | Notes
 
 > []GroupInvitation ListGroupInvites(ctx, groupId).Username(username).Execute()
 
-Return All Project Invitations
+Return All Invitations in One Project
 
 
 ### Example
@@ -1583,7 +1583,7 @@ Name | Type | Description  | Notes
 
 > GroupInvitation UpdateGroupInvites(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
 
-Update One Project Invitation
+Update One Invitation in One Project
 
 
 ### Example
@@ -1832,7 +1832,7 @@ Name | Type | Description  | Notes
 
 > GroupInvitation UpdateInviteById(ctx, groupId, invitationId, groupInvitationUpdateRequest GroupInvitationUpdateRequest).Execute()
 
-Update One Project Invitation by Invitation ID
+Update One Invitation in One Project by Invitation ID
 
 
 ### Example

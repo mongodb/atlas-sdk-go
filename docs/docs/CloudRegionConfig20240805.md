@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **AnalyticsAutoScaling** | Pointer to [**AdvancedAutoScalingSettings**](AdvancedAutoScalingSettings.md) |  | [optional] 
 **AnalyticsSpecs** | Pointer to [**DedicatedHardwareSpec20240805**](DedicatedHardwareSpec20240805.md) |  | [optional] 
 **AutoScaling** | Pointer to [**AdvancedAutoScalingSettings**](AdvancedAutoScalingSettings.md) |  | [optional] 
+**EffectiveAnalyticsSpecs** | Pointer to [**DedicatedHardwareSpec20240805**](DedicatedHardwareSpec20240805.md) |  | [optional] 
+**EffectiveElectableSpecs** | Pointer to [**DedicatedHardwareSpec20240805**](DedicatedHardwareSpec20240805.md) |  | [optional] 
+**EffectiveReadOnlySpecs** | Pointer to [**DedicatedHardwareSpec20240805**](DedicatedHardwareSpec20240805.md) |  | [optional] 
 **ReadOnlySpecs** | Pointer to [**DedicatedHardwareSpec20240805**](DedicatedHardwareSpec20240805.md) |  | [optional] 
 **BackingProviderName** | Pointer to **string** | Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerName** is &#x60;TENANT&#x60; and **electableSpecs.instanceSize** is &#x60;M0&#x60;, &#x60;M2&#x60; or &#x60;M5&#x60;.   Please note that  using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward. | [optional] 
 
@@ -201,6 +204,78 @@ SetAutoScaling sets AutoScaling field to given value.
 `func (o *CloudRegionConfig20240805) HasAutoScaling() bool`
 
 HasAutoScaling returns a boolean if a field has been set.
+### GetEffectiveAnalyticsSpecs
+
+`func (o *CloudRegionConfig20240805) GetEffectiveAnalyticsSpecs() DedicatedHardwareSpec20240805`
+
+GetEffectiveAnalyticsSpecs returns the EffectiveAnalyticsSpecs field if non-nil, zero value otherwise.
+
+### GetEffectiveAnalyticsSpecsOk
+
+`func (o *CloudRegionConfig20240805) GetEffectiveAnalyticsSpecsOk() (*DedicatedHardwareSpec20240805, bool)`
+
+GetEffectiveAnalyticsSpecsOk returns a tuple with the EffectiveAnalyticsSpecs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveAnalyticsSpecs
+
+`func (o *CloudRegionConfig20240805) SetEffectiveAnalyticsSpecs(v DedicatedHardwareSpec20240805)`
+
+SetEffectiveAnalyticsSpecs sets EffectiveAnalyticsSpecs field to given value.
+
+### HasEffectiveAnalyticsSpecs
+
+`func (o *CloudRegionConfig20240805) HasEffectiveAnalyticsSpecs() bool`
+
+HasEffectiveAnalyticsSpecs returns a boolean if a field has been set.
+### GetEffectiveElectableSpecs
+
+`func (o *CloudRegionConfig20240805) GetEffectiveElectableSpecs() DedicatedHardwareSpec20240805`
+
+GetEffectiveElectableSpecs returns the EffectiveElectableSpecs field if non-nil, zero value otherwise.
+
+### GetEffectiveElectableSpecsOk
+
+`func (o *CloudRegionConfig20240805) GetEffectiveElectableSpecsOk() (*DedicatedHardwareSpec20240805, bool)`
+
+GetEffectiveElectableSpecsOk returns a tuple with the EffectiveElectableSpecs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveElectableSpecs
+
+`func (o *CloudRegionConfig20240805) SetEffectiveElectableSpecs(v DedicatedHardwareSpec20240805)`
+
+SetEffectiveElectableSpecs sets EffectiveElectableSpecs field to given value.
+
+### HasEffectiveElectableSpecs
+
+`func (o *CloudRegionConfig20240805) HasEffectiveElectableSpecs() bool`
+
+HasEffectiveElectableSpecs returns a boolean if a field has been set.
+### GetEffectiveReadOnlySpecs
+
+`func (o *CloudRegionConfig20240805) GetEffectiveReadOnlySpecs() DedicatedHardwareSpec20240805`
+
+GetEffectiveReadOnlySpecs returns the EffectiveReadOnlySpecs field if non-nil, zero value otherwise.
+
+### GetEffectiveReadOnlySpecsOk
+
+`func (o *CloudRegionConfig20240805) GetEffectiveReadOnlySpecsOk() (*DedicatedHardwareSpec20240805, bool)`
+
+GetEffectiveReadOnlySpecsOk returns a tuple with the EffectiveReadOnlySpecs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveReadOnlySpecs
+
+`func (o *CloudRegionConfig20240805) SetEffectiveReadOnlySpecs(v DedicatedHardwareSpec20240805)`
+
+SetEffectiveReadOnlySpecs sets EffectiveReadOnlySpecs field to given value.
+
+### HasEffectiveReadOnlySpecs
+
+`func (o *CloudRegionConfig20240805) HasEffectiveReadOnlySpecs() bool`
+
+HasEffectiveReadOnlySpecs returns a boolean if a field has been set.
 ### GetReadOnlySpecs
 
 `func (o *CloudRegionConfig20240805) GetReadOnlySpecs() DedicatedHardwareSpec20240805`

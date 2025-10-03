@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **P99ExecMicros** | Pointer to **float64** | The 99th percentile value of execution time in microseconds. | [optional] 
 **QueryShape** | Pointer to **string** | A query shape is a set of specifications that group similar queries together. Specifications can include filters, sorts, projections, aggregation pipeline stages, a namespace, and others. Queries that have similar specifications have the same query shape. | [optional] 
 **QueryShapeHash** | Pointer to **string** | A hexadecimal string that represents the hash of a MongoDB query shape. | [optional] 
+**SystemQuery** | Pointer to **bool** | Indicates whether this query shape represents a system-initiated query. | [optional] 
 **TotalTimeToResponseMicros** | Pointer to **float64** | Time in microseconds spent from the beginning of query processing to the first server response. | [optional] 
 **TotalWorkingMillis** | Pointer to **float64** | Total time in milliseconds spent running queries with the given query shape. If the query resulted in &#x60;getMore&#x60; commands, this metric includes the time spent processing the &#x60;getMore&#x60; requests. This metric does not include time spent waiting for the client. | [optional] 
 
@@ -426,6 +427,30 @@ SetQueryShapeHash sets QueryShapeHash field to given value.
 `func (o *QueryStatsSummary) HasQueryShapeHash() bool`
 
 HasQueryShapeHash returns a boolean if a field has been set.
+### GetSystemQuery
+
+`func (o *QueryStatsSummary) GetSystemQuery() bool`
+
+GetSystemQuery returns the SystemQuery field if non-nil, zero value otherwise.
+
+### GetSystemQueryOk
+
+`func (o *QueryStatsSummary) GetSystemQueryOk() (*bool, bool)`
+
+GetSystemQueryOk returns a tuple with the SystemQuery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSystemQuery
+
+`func (o *QueryStatsSummary) SetSystemQuery(v bool)`
+
+SetSystemQuery sets SystemQuery field to given value.
+
+### HasSystemQuery
+
+`func (o *QueryStatsSummary) HasSystemQuery() bool`
+
+HasSystemQuery returns a boolean if a field has been set.
 ### GetTotalTimeToResponseMicros
 
 `func (o *QueryStatsSummary) GetTotalTimeToResponseMicros() float64`

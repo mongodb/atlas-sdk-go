@@ -63,7 +63,7 @@ type CloudBackupsApi interface {
 	CreateBackupExportExecute(r CreateBackupExportApiRequest) (*DiskBackupExportJob, *http.Response, error)
 
 	/*
-			CreateBackupRestoreJob Restore One Snapshot of One Cluster
+			CreateBackupRestoreJob Create One Restore Job of One Cluster
 
 			Restores one snapshot of one cluster from the specified project. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of **queued** or **inProgress** exists, before taking another snapshot, wait until Atlas completes completes processing the previously taken on-demand snapshot.
 
@@ -77,7 +77,7 @@ type CloudBackupsApi interface {
 	*/
 	CreateBackupRestoreJob(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotRestoreJob *DiskBackupSnapshotRestoreJob) CreateBackupRestoreJobApiRequest
 	/*
-		CreateBackupRestoreJob Restore One Snapshot of One Cluster
+		CreateBackupRestoreJob Create One Restore Job of One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -114,7 +114,7 @@ type CloudBackupsApi interface {
 	CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotExportBucketResponse, *http.Response, error)
 
 	/*
-			CreateServerlessRestoreJob Restore One Snapshot of One Serverless Instance
+			CreateServerlessRestoreJob Create One Restore Job for One Serverless Instance
 
 			Restores one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -128,7 +128,7 @@ type CloudBackupsApi interface {
 	*/
 	CreateServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, serverlessBackupRestoreJob *ServerlessBackupRestoreJob) CreateServerlessRestoreJobApiRequest
 	/*
-		CreateServerlessRestoreJob Restore One Snapshot of One Serverless Instance
+		CreateServerlessRestoreJob Create One Restore Job for One Serverless Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1039,7 +1039,7 @@ func (r CreateBackupRestoreJobApiRequest) Execute() (*DiskBackupSnapshotRestoreJ
 }
 
 /*
-CreateBackupRestoreJob Restore One Snapshot of One Cluster
+CreateBackupRestoreJob Create One Restore Job of One Cluster
 
 Restores one snapshot of one cluster from the specified project. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of **queued** or **inProgress** exists, before taking another snapshot, wait until Atlas completes completes processing the previously taken on-demand snapshot.
 
@@ -1296,7 +1296,7 @@ func (r CreateServerlessRestoreJobApiRequest) Execute() (*ServerlessBackupRestor
 }
 
 /*
-CreateServerlessRestoreJob Restore One Snapshot of One Serverless Instance
+CreateServerlessRestoreJob Create One Restore Job for One Serverless Instance
 
 Restores one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | Pointer to **string** | OIDC client identifier for authentication to the Kafka cluster. | [optional] 
 **ClientSecret** | Pointer to **string** | OIDC client secret for authentication to the Kafka cluster. | [optional] 
-**HttpsCaPem** | Pointer to **string** | HTTPS CA certificate in PEM format for SSL/TLS verification. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Mechanism** | Pointer to **string** | Style of authentication. Can be one of PLAIN, SCRAM-256, SCRAM-512, or OAUTHBEARER. | [optional] 
+**Method** | Pointer to **string** | SASL OAUTHBEARER authentication method. Can only be OIDC currently. | [optional] 
 **Password** | Pointer to **string** | Password of the account to connect to the Kafka cluster. | [optional] 
 **SaslOauthbearerExtensions** | Pointer to **string** | SASL OAUTHBEARER extensions parameter for additional OAuth2 configuration. | [optional] 
 **Scope** | Pointer to **string** | OIDC scope parameter defining the access permissions requested. | [optional] 
@@ -85,30 +85,6 @@ SetClientSecret sets ClientSecret field to given value.
 `func (o *StreamsKafkaAuthentication) HasClientSecret() bool`
 
 HasClientSecret returns a boolean if a field has been set.
-### GetHttpsCaPem
-
-`func (o *StreamsKafkaAuthentication) GetHttpsCaPem() string`
-
-GetHttpsCaPem returns the HttpsCaPem field if non-nil, zero value otherwise.
-
-### GetHttpsCaPemOk
-
-`func (o *StreamsKafkaAuthentication) GetHttpsCaPemOk() (*string, bool)`
-
-GetHttpsCaPemOk returns a tuple with the HttpsCaPem field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHttpsCaPem
-
-`func (o *StreamsKafkaAuthentication) SetHttpsCaPem(v string)`
-
-SetHttpsCaPem sets HttpsCaPem field to given value.
-
-### HasHttpsCaPem
-
-`func (o *StreamsKafkaAuthentication) HasHttpsCaPem() bool`
-
-HasHttpsCaPem returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsKafkaAuthentication) GetLinks() []Link`
@@ -157,6 +133,30 @@ SetMechanism sets Mechanism field to given value.
 `func (o *StreamsKafkaAuthentication) HasMechanism() bool`
 
 HasMechanism returns a boolean if a field has been set.
+### GetMethod
+
+`func (o *StreamsKafkaAuthentication) GetMethod() string`
+
+GetMethod returns the Method field if non-nil, zero value otherwise.
+
+### GetMethodOk
+
+`func (o *StreamsKafkaAuthentication) GetMethodOk() (*string, bool)`
+
+GetMethodOk returns a tuple with the Method field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMethod
+
+`func (o *StreamsKafkaAuthentication) SetMethod(v string)`
+
+SetMethod sets Method field to given value.
+
+### HasMethod
+
+`func (o *StreamsKafkaAuthentication) HasMethod() bool`
+
+HasMethod returns a boolean if a field has been set.
 ### GetPassword
 
 `func (o *StreamsKafkaAuthentication) GetPassword() string`

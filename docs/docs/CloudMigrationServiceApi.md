@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupLiveMigration**](CloudMigrationServiceApi.md#CreateGroupLiveMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Migrate One Local Managed Cluster to MongoDB Atlas
+[**CreateGroupLiveMigration**](CloudMigrationServiceApi.md#CreateGroupLiveMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Create One Migration for One Local Managed Cluster to MongoDB Atlas
 [**CreateLinkToken**](CloudMigrationServiceApi.md#CreateLinkToken) | **Post** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Create One Link-Token
 [**CutoverMigration**](CloudMigrationServiceApi.md#CutoverMigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over One Migrated Cluster
 [**DeleteLinkTokens**](CloudMigrationServiceApi.md#DeleteLinkTokens) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > LiveMigrationResponse CreateGroupLiveMigration(ctx, groupId, liveMigrationRequest20240530 LiveMigrationRequest20240530).Execute()
 
-Migrate One Local Managed Cluster to MongoDB Atlas
+Create One Migration for One Local Managed Cluster to MongoDB Atlas
 
 
 ### Example

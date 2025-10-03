@@ -36,6 +36,8 @@ type QueryStatsSummary struct {
 	QueryShape *string `json:"queryShape,omitempty"`
 	// A hexadecimal string that represents the hash of a MongoDB query shape.
 	QueryShapeHash *string `json:"queryShapeHash,omitempty"`
+	// Indicates whether this query shape represents a system-initiated query.
+	SystemQuery *bool `json:"systemQuery,omitempty"`
 	// Time in microseconds spent from the beginning of query processing to the first server response.
 	TotalTimeToResponseMicros *float64 `json:"totalTimeToResponseMicros,omitempty"`
 	// Total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
@@ -585,6 +587,39 @@ func (o *QueryStatsSummary) HasQueryShapeHash() bool {
 // SetQueryShapeHash gets a reference to the given string and assigns it to the QueryShapeHash field.
 func (o *QueryStatsSummary) SetQueryShapeHash(v string) {
 	o.QueryShapeHash = &v
+}
+
+// GetSystemQuery returns the SystemQuery field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetSystemQuery() bool {
+	if o == nil || IsNil(o.SystemQuery) {
+		var ret bool
+		return ret
+	}
+	return *o.SystemQuery
+}
+
+// GetSystemQueryOk returns a tuple with the SystemQuery field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetSystemQueryOk() (*bool, bool) {
+	if o == nil || IsNil(o.SystemQuery) {
+		return nil, false
+	}
+
+	return o.SystemQuery, true
+}
+
+// HasSystemQuery returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasSystemQuery() bool {
+	if o != nil && !IsNil(o.SystemQuery) {
+		return true
+	}
+
+	return false
+}
+
+// SetSystemQuery gets a reference to the given bool and assigns it to the SystemQuery field.
+func (o *QueryStatsSummary) SetSystemQuery(v bool) {
+	o.SystemQuery = &v
 }
 
 // GetTotalTimeToResponseMicros returns the TotalTimeToResponseMicros field value if set, zero value otherwise
