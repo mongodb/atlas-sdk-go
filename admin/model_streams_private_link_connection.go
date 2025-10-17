@@ -18,6 +18,8 @@ type StreamsPrivateLinkConnection struct {
 	// Error message if the state is FAILED.
 	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
+	// List of GCP Private Service Connect connection IDs.
+	GcpConnectionIds *[]string `json:"gcpConnectionIds,omitempty"`
 	// Service Attachment URIs of each availability zone for the GCP Confluent cluster.
 	GcpServiceAttachmentUris *[]string `json:"gcpServiceAttachmentUris,omitempty"`
 	// Interface endpoint ID that is created from the service endpoint ID provided.
@@ -259,6 +261,39 @@ func (o *StreamsPrivateLinkConnection) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *StreamsPrivateLinkConnection) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+}
+
+// GetGcpConnectionIds returns the GcpConnectionIds field value if set, zero value otherwise
+func (o *StreamsPrivateLinkConnection) GetGcpConnectionIds() []string {
+	if o == nil || IsNil(o.GcpConnectionIds) {
+		var ret []string
+		return ret
+	}
+	return *o.GcpConnectionIds
+}
+
+// GetGcpConnectionIdsOk returns a tuple with the GcpConnectionIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsPrivateLinkConnection) GetGcpConnectionIdsOk() (*[]string, bool) {
+	if o == nil || IsNil(o.GcpConnectionIds) {
+		return nil, false
+	}
+
+	return o.GcpConnectionIds, true
+}
+
+// HasGcpConnectionIds returns a boolean if a field has been set.
+func (o *StreamsPrivateLinkConnection) HasGcpConnectionIds() bool {
+	if o != nil && !IsNil(o.GcpConnectionIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpConnectionIds gets a reference to the given []string and assigns it to the GcpConnectionIds field.
+func (o *StreamsPrivateLinkConnection) SetGcpConnectionIds(v []string) {
+	o.GcpConnectionIds = &v
 }
 
 // GetGcpServiceAttachmentUris returns the GcpServiceAttachmentUris field value if set, zero value otherwise

@@ -448,13 +448,6 @@ components:
           $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
         minInstanceSize:
           $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
-        predictiveEnabled:
-          description: |-
-            Flag that indicates whether predictive instance size auto-scaling is enabled.
-
-            - Set to `true` to enable predictive instance size auto-scaling. MongoDB Cloud requires **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** to be `true` in order to enable this feature.
-            - Set to `false` to disable predictive instance size auto-scaling.
-          type: boolean
         scaleDownEnabled:
           description: Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** is `true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
           type: boolean
@@ -1099,6 +1092,12 @@ components:
           type: string
         sortOrder:
           description: Specify the sort order (ascending / descending) used to specify how to sort query results. Defaults to descending.
+          type: string
+      type: object
+    ApiVersion:
+      properties:
+        version:
+          description: Object representing a version of the Atlas Admin API.
           type: string
       type: object
     AtlasClusterOutageSimulationOutageFilter:
@@ -3598,14 +3597,6 @@ components:
 
             - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize**.
             - Set to `false` to disable instance size reactive auto-scaling.
-          type: boolean
-        predictiveEnabled:
-          default: false
-          description: |-
-            Flag that indicates whether predictive instance size auto-scaling is enabled.
-
-            - Set to `true` to enable predictive instance size auto-scaling. MongoDB Cloud requires **autoScaling.compute.enabled** is `true` in order to enable this feature.
-            - Set to `false` to disable predictive instance size auto-scaling.
           type: boolean
         scaleDownEnabled:
           default: false
@@ -8704,6 +8695,28 @@ components:
           type: object
       type: object
       writeOnly: true
+    Info:
+      description: Information about the MongoDB Atlas Administration API OpenAPI Specification.
+      properties:
+        description:
+          description: Description of the MongoDB Atlas Administration API.
+          example: The MongoDB Atlas Administration API allows developers to manage all components in MongoDB Atlas.
+          type: string
+        license:
+          $ref: "#/components/schemas/License"
+        termsOfService:
+          description: Terms of Service URL.
+          example: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
+          type: string
+        title:
+          description: Title of the MongoDB Atlas Administration API.
+          example: MongoDB Atlas Administration API.
+          type: string
+        version:
+          description: Version of the MongoDB Atlas Administration API.
+          example: "2.0"
+          type: string
+      type: object
     IngestionPipelineRun:
       description: Run details of a Data Lake Pipeline.
       properties:
@@ -9660,6 +9673,18 @@ components:
           description: Human-readable label that identifies the zone in a Global Cluster. Provide this value only if **clusterType** is `GEOSHARDED`.
           type: string
       type: object
+    License:
+      description: License information of the MongoDB Atlas Administration API.
+      properties:
+        name:
+          description: Name of the license.
+          example: CC BY-NC-SA 3.0 US
+          type: string
+        url:
+          description: URL of the license.
+          example: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
+          type: string
+      type: object
     Link:
       properties:
         href:
@@ -10399,6 +10424,11 @@ components:
         - type
       title: Online Archive Schedule
       type: object
+    OpenApiInfo:
+      properties:
+        info:
+          $ref: "#/components/schemas/Info"
+      type: object
     OrgFederationSettings:
       description: Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
       properties:
@@ -10905,6 +10935,30 @@ components:
           type: object
       readOnly: true
       title: Outbound Control Plane IP Addresses By Cloud Provider
+      type: object
+    PaginatedApiVersions:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/ApiVersion"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
       type: object
     PaginatedClusterDescription20240805:
       properties:
@@ -13081,6 +13135,13 @@ components:
           description: Error message if the state is FAILED.
           readOnly: true
           type: string
+        gcpConnectionIds:
+          description: List of GCP Private Service Connect connection IDs.
+          items:
+            type: string
+          maxItems: 3
+          type: array
+          uniqueItems: true
         gcpServiceAttachmentUris:
           description: Service Attachment URIs of each availability zone for the GCP Confluent cluster.
           items:
@@ -16514,7 +16575,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 66be7c90474eeed9de9cf2be16ecc9dc984f082c
+  x-xgen-sha: f529db14b6976ddec38dbacb82c8d2dd1831e4ed
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -18684,7 +18745,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/access" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/addGroupAccessUser
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -21895,6 +21956,12 @@ paths:
           schema:
             default: false
             type: boolean
+        - description: Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
+          in: header
+          name: Use-Effective-Instance-Fields
+          schema:
+            default: false
+            type: boolean
       responses:
         "200":
           content:
@@ -21970,6 +22037,12 @@ paths:
       operationId: createCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
+        - description: Controls how hardware specification fields are returned in the response after cluster creation. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
+          in: header
+          name: Use-Effective-Instance-Fields
+          schema:
+            default: false
+            type: boolean
       requestBody:
         content:
           application/vnd.atlas.2024-10-23+json:
@@ -22243,6 +22316,12 @@ paths:
           schema:
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
             type: string
+        - description: Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
+          in: header
+          name: Use-Effective-Instance-Fields
+          schema:
+            default: false
+            type: boolean
       responses:
         "200":
           content:
@@ -22323,6 +22402,12 @@ paths:
           schema:
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
             type: string
+        - description: "Controls how hardware specification fields are returned in the response after cluster updates. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Note: When using this header with autoscaling enabled, MongoDB ignores replicationSpecs changes during updates. To intentionally override the replicationSpecs, disable this header."
+          in: header
+          name: Use-Effective-Instance-Fields
+          schema:
+            default: false
+            type: boolean
       requestBody:
         content:
           application/vnd.atlas.2024-10-23+json:
@@ -36002,7 +36087,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/listGroupIntegrations
   /api/atlas/v2/groups/{groupId}/integrations/{integrationType}:
     delete:
-      description: Removes the settings that permit configuring one third-party service integration. These settings apply to all databases managed in one MongoDB Cloud project. If you delete an integration from a project, you remove that integration configuration only for that project. This action doesn't affect any other project or organization's configured `{INTEGRATION-TYPE}` integrations. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
+      description: Removes the settings that permit configuring one third-party service integration. These settings apply to all databases managed in one MongoDB Cloud project. If you delete an integration from a project, you remove that integration configuration only for that project. This action doesn't affect any other project or organization's configured `{INTEGRATION-TYPE}` integrations. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Deleting log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
       operationId: deleteGroupIntegration
       parameters:
         - description: Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -36078,7 +36163,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/deleteGroupIntegration
     get:
-      description: Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
+      description: Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Viewing log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
       operationId: getGroupIntegration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -36159,7 +36244,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/integrations/{integrationType}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/getGroupIntegration
     post:
-      description: Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
+      description: Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Enabling log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
       operationId: createGroupIntegration
       parameters:
         - description: Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -36253,7 +36338,7 @@ paths:
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/createGroupIntegration
     put:
-      description: Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
+      description: Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Enabling log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
       operationId: updateGroupIntegration
       parameters:
         - description: Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -36430,7 +36515,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/invites?pretty=true"
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/listGroupInvites
     patch:
       deprecated: true
@@ -36514,7 +36599,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/invites" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/updateGroupInvites
     post:
       deprecated: true
@@ -36596,12 +36681,12 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/invites" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/createGroupInvite
   /api/atlas/v2/groups/{groupId}/invites/{invitationId}:
     delete:
       deprecated: true
-      description: Cancels one pending invitation sent to the specified MongoDB Cloud user to join a project. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+      description: "Cancels one pending invitation sent to the specified MongoDB Cloud user to join a project. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Note: deleting a project invitation does not delete an organization invitation even if they were created together."
       operationId: deleteGroupInvite
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -36673,7 +36758,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/invites/{invitationId}"
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/deleteGroupInvite
     get:
       deprecated: true
@@ -36753,7 +36838,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/invites/{invitationId}?pretty=true"
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/getGroupInvite
     patch:
       deprecated: true
@@ -36844,7 +36929,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/invites/{invitationId}" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/updateGroupInviteById
       x-xgen-method-verb-override:
         customMethod: false
@@ -49604,7 +49689,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PUT "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/users/{userId}/roles" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/updateGroupUserRoles
   /api/atlas/v2/groups/{groupId}/users/{userId}:addRole:
     post:
@@ -49964,6 +50049,75 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/byName/{groupName}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/getGroupByName
+  /api/atlas/v2/openapi/info:
+    get:
+      description: "This resource returns general information about the MongoDB Atlas Administration API OpenAPI Specification. Deprecated versions: v2-{2024-05-30}"
+      operationId: getOpenapiInfo
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OpenApiInfo"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return General Information on MongoDB Atlas Administration API OpenAPI Specification
+      tags:
+        - OpenAPI
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api openApi getOpenapiInfo --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOpenapiInfoApiParams{}
+            	sdkResp, httpResp, err := client.OpenAPIApi.
+            		GetOpenapiInfoWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/openapi/info?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/openapi/info?pretty=true"
+      x-xgen-method-verb-override:
+        customMethod: "False"
+        verb: get
   /api/atlas/v2/orgs:
     get:
       description: Returns all organizations to which the requesting Service Account or API Key has access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
@@ -51792,7 +51946,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/invites?pretty=true"
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/listOrgInvites
     patch:
       deprecated: true
@@ -51882,7 +52036,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/invites" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrgInvites
     post:
       deprecated: true
@@ -51972,7 +52126,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/invites" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/createOrgInvite
   /api/atlas/v2/orgs/{orgId}/invites/{invitationId}:
     delete:
@@ -52056,7 +52210,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/invites/{invitationId}"
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/deleteOrgInvite
     get:
       deprecated: true
@@ -52144,7 +52298,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/invites/{invitationId}?pretty=true"
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/getOrgInvite
     patch:
       deprecated: true
@@ -52241,7 +52395,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/invites/{invitationId}" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrgInviteById
       x-xgen-method-verb-override:
         customMethod: false
@@ -55257,7 +55411,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Teams/operation/addOrgTeamUsers
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -55352,7 +55506,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}"
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Teams/operation/removeOrgTeamUserFromTeam
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -56170,7 +56324,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PUT "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/users/{userId}/roles" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrgUserRoles
   /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole:
     post:
@@ -56438,6 +56592,79 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/controlPlaneIPAddresses?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Root/operation/listControlPlaneIpAddresses
+  /api/atlas/v2/unauth/openapi/versions:
+    get:
+      description: API that provides a list of available versionsfor a given environment.
+      operationId: listOpenapiVersions
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: The environment to get the versions from. If not provided, it returnsthe versions for the given MongoDB URL. (E.g. prod for cloud.mongodb.com).
+          in: query
+          name: env
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+            application/vnd.atlas.2024-08-05+yaml:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Versions for One Environment
+      tags:
+        - OpenAPI
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api openApi listOpenapiVersions --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListOpenapiVersionsApiParams{}
+            	sdkResp, httpResp, err := client.OpenAPIApi.
+            		ListOpenapiVersionsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/openapi/versions?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/openapi/versions?pretty=true"
   /api/atlas/v2/users:
     post:
       deprecated: true
@@ -56523,7 +56750,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/users" \
               -d '{ <Payload> }'
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/MongoDB-Cloud-Users/operation/createUser
   /api/atlas/v2/users/{userId}:
     get:
@@ -56606,6 +56833,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/users/{userId}?pretty=true"
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/MongoDB-Cloud-Users/operation/getUser
   /api/atlas/v2/users/byName/{userName}:
     get:
@@ -56686,7 +56914,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/users/byName/{userName}?pretty=true"
-      x-sunset: 2026-07-31
+      x-sunset: 2026-09-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/MongoDB-Cloud-Users/operation/getUserByName
 security:
   - ServiceAccounts: []
@@ -56763,6 +56991,8 @@ tags:
     name: Network Peering
   - description: Returns, adds, edits, or removes an online archive.
     name: Online Archive
+  - description: Returns information about the MongoDB Atlas Specification.
+    name: OpenAPI
   - description: Returns, adds, and edits organizational units in MongoDB Cloud.
     name: Organizations
   - description: Returns suggested indexes and slow query data for a database deployment. Also enables or disables MongoDB Cloud-managed slow operation thresholds. To view field values in a sample query, you must have the Project Data Access Read Only role or higher. Otherwise, MongoDB Cloud returns redacted data rather than the field values.
