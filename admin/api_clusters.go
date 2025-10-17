@@ -649,11 +649,13 @@ type CreateClusterApiRequest struct {
 	ApiService                 ClustersApi
 	groupId                    string
 	clusterDescription20240805 *ClusterDescription20240805
+	useEffectiveInstanceFields *bool
 }
 
 type CreateClusterApiParams struct {
 	GroupId                    string
 	ClusterDescription20240805 *ClusterDescription20240805
+	UseEffectiveInstanceFields *bool
 }
 
 func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest {
@@ -662,7 +664,14 @@ func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *
 		ctx:                        ctx,
 		groupId:                    args.GroupId,
 		clusterDescription20240805: args.ClusterDescription20240805,
+		useEffectiveInstanceFields: args.UseEffectiveInstanceFields,
 	}
+}
+
+// Controls how hardware specification fields are returned in the response after cluster creation. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
+func (r CreateClusterApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) CreateClusterApiRequest {
+	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
+	return r
 }
 
 func (r CreateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
@@ -734,6 +743,9 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.useEffectiveInstanceFields != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
 	}
 	// body params
 	localVarPostBody = r.clusterDescription20240805
@@ -890,24 +902,33 @@ func (a *ClustersApiService) DeleteClusterExecute(r DeleteClusterApiRequest) (*h
 }
 
 type GetClusterApiRequest struct {
-	ctx         context.Context
-	ApiService  ClustersApi
-	groupId     string
-	clusterName string
+	ctx                        context.Context
+	ApiService                 ClustersApi
+	groupId                    string
+	clusterName                string
+	useEffectiveInstanceFields *bool
 }
 
 type GetClusterApiParams struct {
-	GroupId     string
-	ClusterName string
+	GroupId                    string
+	ClusterName                string
+	UseEffectiveInstanceFields *bool
 }
 
 func (a *ClustersApiService) GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest {
 	return GetClusterApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		clusterName:                args.ClusterName,
+		useEffectiveInstanceFields: args.UseEffectiveInstanceFields,
 	}
+}
+
+// Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
+func (r GetClusterApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) GetClusterApiRequest {
+	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
+	return r
 }
 
 func (r GetClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
@@ -981,6 +1002,9 @@ func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*Cluster
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.useEffectiveInstanceFields != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1849,6 +1873,7 @@ type ListClustersApiRequest struct {
 	itemsPerPage                      *int
 	pageNum                           *int
 	includeDeletedWithRetainedBackups *bool
+	useEffectiveInstanceFields        *bool
 }
 
 type ListClustersApiParams struct {
@@ -1857,6 +1882,7 @@ type ListClustersApiParams struct {
 	ItemsPerPage                      *int
 	PageNum                           *int
 	IncludeDeletedWithRetainedBackups *bool
+	UseEffectiveInstanceFields        *bool
 }
 
 func (a *ClustersApiService) ListClustersWithParams(ctx context.Context, args *ListClustersApiParams) ListClustersApiRequest {
@@ -1868,6 +1894,7 @@ func (a *ClustersApiService) ListClustersWithParams(ctx context.Context, args *L
 		itemsPerPage:                      args.ItemsPerPage,
 		pageNum:                           args.PageNum,
 		includeDeletedWithRetainedBackups: args.IncludeDeletedWithRetainedBackups,
+		useEffectiveInstanceFields:        args.UseEffectiveInstanceFields,
 	}
 }
 
@@ -1892,6 +1919,12 @@ func (r ListClustersApiRequest) PageNum(pageNum int) ListClustersApiRequest {
 // Flag that indicates whether to return Clusters with retain backups.
 func (r ListClustersApiRequest) IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups bool) ListClustersApiRequest {
 	r.includeDeletedWithRetainedBackups = &includeDeletedWithRetainedBackups
+	return r
+}
+
+// Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
+func (r ListClustersApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) ListClustersApiRequest {
+	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
 	return r
 }
 
@@ -1988,6 +2021,9 @@ func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*Pag
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.useEffectiveInstanceFields != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -2580,12 +2616,14 @@ type UpdateClusterApiRequest struct {
 	groupId                    string
 	clusterName                string
 	clusterDescription20240805 *ClusterDescription20240805
+	useEffectiveInstanceFields *bool
 }
 
 type UpdateClusterApiParams struct {
 	GroupId                    string
 	ClusterName                string
 	ClusterDescription20240805 *ClusterDescription20240805
+	UseEffectiveInstanceFields *bool
 }
 
 func (a *ClustersApiService) UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest {
@@ -2595,7 +2633,14 @@ func (a *ClustersApiService) UpdateClusterWithParams(ctx context.Context, args *
 		groupId:                    args.GroupId,
 		clusterName:                args.ClusterName,
 		clusterDescription20240805: args.ClusterDescription20240805,
+		useEffectiveInstanceFields: args.UseEffectiveInstanceFields,
 	}
+}
+
+// Controls how hardware specification fields are returned in the response after cluster updates. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Note: When using this header with autoscaling enabled, MongoDB ignores replicationSpecs changes during updates. To intentionally override the replicationSpecs, disable this header.
+func (r UpdateClusterApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) UpdateClusterApiRequest {
+	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
+	return r
 }
 
 func (r UpdateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
@@ -2671,6 +2716,9 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.useEffectiveInstanceFields != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
 	}
 	// body params
 	localVarPostBody = r.clusterDescription20240805
