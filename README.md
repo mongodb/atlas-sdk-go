@@ -33,7 +33,7 @@ func example() {
 	if err != nil {
 		log.Fatalf("Error when instantiating new client: %v", err)
 	}
-	projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
+	projects, response, err := sdk.ProjectsApi.ListGroups(ctx).Execute()
 	if err != nil {
 		log.Fatalf("Could not fetch projects: %v", err)
 	}
