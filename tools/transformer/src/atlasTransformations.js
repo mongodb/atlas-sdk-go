@@ -21,7 +21,7 @@ const ignoredModelNames = require("./name.ignore.json").ignoreModels;
 /**
  * Function specifies list of transformations to run
  */
-function applyFlatteningTransformations(openapi) {
+function runFlatteningTransformations(openapi) {
   // Flattening transformations
   openapi = searchAPIIssuesTransformation(openapi);
   openapi = applyDiscriminatorTransformations(openapi);
@@ -50,8 +50,8 @@ function applyFlatteningTransformations(openapi) {
   return openapi;
 }
 
-module.exports = function runTransformations(openapi) {
-  openapi = applyFlatteningTransformations(openapi);
+function runSDKTransformations(openapi) {
+  openapi = runFlatteningTransformations(openapi);
 
   // SDK specific transformations
   openapi = applyRemoveEnumsTransformations(openapi);
@@ -86,7 +86,10 @@ module.exports = function runTransformations(openapi) {
   return openapi;
 };
 
-module.exports.applyFlatteningTransformations = applyFlatteningTransformations;
+module.exports = {
+  runFlatteningTransformations: runFlatteningTransformations,
+  runSDKTransformations: runSDKTransformations,
+};
 
 // Temporary transformation until new search version is introduced.
 function searchAPIIssuesTransformation(openapi) {

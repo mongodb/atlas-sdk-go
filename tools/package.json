@@ -4,9 +4,13 @@
   "version": "0.1.0",
   "private": "true",
   "main": "transformer/src/index.js",
+  "bin": {
+    "atlas-openapi-transformer": "./transformer/src/cli.js"
+  },
   "dependencies": {
     "simple-node-logger": "^21.8.12",
-    "yaml": "2.8.1"
+    "yaml": "2.8.1",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "2.24.0",
@@ -15,7 +19,8 @@
     "prettier": "3.6.2"
   },
   "scripts": {
-    "sdk:transform": "node ./transformer/src/transform",
+    "sdk:transform": "node ./transformer/src/cli.js transform",
+    "sdk:flatten": "node ./transformer/src/cli.js flatten",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "jest **/__tests__/**.test.js",

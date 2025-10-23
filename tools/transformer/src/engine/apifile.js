@@ -32,4 +32,24 @@ function saveAPI(doc, apiFileLocation) {
   writeFileSync(apiFileLocation, stringify(doc, { lineWidth: 9999 })); // default is 80 and would add newlines, we want to stay close to the original that uses long lines.
 }
 
-module.exports = { getAPI, saveAPI };
+function readFromStdin() {
+  return new Promise((resolve, reject) => {
+    let data = "";
+    process.stdin.setEncoding("utf8");
+    process.stdin.on("data", (chunk) => (data += chunk));
+    process.stdin.on("end", () => {
+      try {
+        resolve(parse(data));
+      } catch (e) {
+        reject(e);
+      }
+    });
+    process.stdin.on("error", reject);
+  });
+}
+
+function writeToStdout(doc) {
+  process.stdout.write(stringify(doc, { lineWidth: 9999 }));
+}
+
+module.exports = { getAPI, saveAPI, readFromStdin, writeToStdout };
