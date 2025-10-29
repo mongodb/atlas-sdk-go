@@ -347,7 +347,7 @@ func (c *APIClient) prepareRequest(
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// Handle request ID from context (OPTIONAL - only if present)
     if requestID, ok := ctx.Value("X-Request-ID").(string); ok && requestID != "" {
         if headerParams == nil {
@@ -613,4 +613,8 @@ func (u *UntypedClient) CallAPI(request *http.Request) (*http.Response, error) {
 
 func (u *UntypedClient) MakeApiError(res *http.Response, httpMethod, httpPath string) error {
 	return u.client.makeApiError(res, httpMethod, httpPath)
+}
+
+func WithRequestID(ctx context.Context, requestID string) context.Context {
+return context.WithValue(ctx, "X-Request-ID", requestID)
 }
