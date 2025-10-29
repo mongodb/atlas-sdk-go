@@ -616,5 +616,5 @@ func (u *UntypedClient) MakeApiError(res *http.Response, httpMethod, httpPath st
 }
 
 func WithRequestID(ctx context.Context, requestID string) context.Context {
-return context.WithValue(ctx, "X-Request-ID", requestID)
+	return context.WithValue(ctx, "X-Request-ID", requestID)
 }
