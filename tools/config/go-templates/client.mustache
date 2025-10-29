@@ -349,12 +349,12 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Handle request ID from context (OPTIONAL - only if present)
-    if requestID, ok := ctx.Value("X-Request-ID").(string); ok && requestID != "" {
-        if headerParams == nil {
-            headerParams = make(map[string]string)
-        }
-        headerParams["X-Request-ID"] = requestID
-    }
+	if requestID, ok := ctx.Value("X-Request-ID").(string); ok && requestID != "" {
+		if headerParams == nil {
+			headerParams = make(map[string]string)
+		}
+		headerParams["X-Request-ID"] = requestID
+	}
 
 	// add header parameters, if any
 	if len(headerParams) > 0 {
