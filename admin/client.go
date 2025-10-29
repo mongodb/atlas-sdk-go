@@ -480,6 +480,14 @@ func (c *APIClient) prepareRequest(
 		return nil, err
 	}
 
+    // Handle request ID from context (OPTIONAL - only if present)
+	if requestID, ok := ctx.Value("X-Request-ID").(string); ok && requestID != "" {
+		if headerParams == nil {
+			headerParams = make(map[string]string)
+		}
+		headerParams["X-Request-ID"] = requestID
+	}
+
 	// add header parameters, if any
 	if len(headerParams) > 0 {
 		headers := http.Header{}
@@ -718,4 +726,8 @@ func (u *UntypedClient) CallAPI(request *http.Request) (*http.Response, error) {
 
 func (u *UntypedClient) MakeApiError(res *http.Response, httpMethod, httpPath string) error {
 	return u.client.makeApiError(res, httpMethod, httpPath)
+}
+
+func WithRequestID(ctx context.Context, requestID string) context.Context {
+    return context.WithValue(ctx, "X-Request-ID", requestID)
 }
