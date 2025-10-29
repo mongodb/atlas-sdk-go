@@ -1,7 +1,9 @@
 import (
-"context"
 "encoding/json"
-"fmt"
+{{#vendorExtensions.x-is-api-error}}
+    "context"
+    "fmt"
+{{/vendorExtensions.x-is-api-error}}
 {{#imports}}
     "{{import}}"
 {{/imports}}
