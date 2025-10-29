@@ -1,3 +1,11 @@
+import (
+"context"
+"encoding/json"
+"fmt"
+{{#imports}}
+    "{{import}}"
+{{/imports}}
+)
 
 // {{classname}} {{{description}}}{{^description}}struct for {{{classname}}}{{/description}}
 type {{classname}} struct {
