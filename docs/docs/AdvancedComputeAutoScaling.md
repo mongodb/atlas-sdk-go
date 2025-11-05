@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to &#x60;true&#x60; to enable instance size reactive auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to &#x60;false&#x60; to disable instance size reactive auto-scaling. | [optional] 
 **MaxInstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] [readonly] 
 **MinInstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] [readonly] 
-**PredictiveEnabled** | Pointer to **bool** | Flag that indicates whether predictive instance size auto-scaling is enabled.  - Set to &#x60;true&#x60; to enable predictive instance size auto-scaling. MongoDB Cloud requires **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** to be &#x60;true&#x60; in order to enable this feature. - Set to &#x60;false&#x60; to disable predictive instance size auto-scaling. | [optional] 
 **ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** is &#x60;true&#x60;. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**. | [optional] 
 
 ## Methods
@@ -101,30 +100,6 @@ SetMinInstanceSize sets MinInstanceSize field to given value.
 `func (o *AdvancedComputeAutoScaling) HasMinInstanceSize() bool`
 
 HasMinInstanceSize returns a boolean if a field has been set.
-### GetPredictiveEnabled
-
-`func (o *AdvancedComputeAutoScaling) GetPredictiveEnabled() bool`
-
-GetPredictiveEnabled returns the PredictiveEnabled field if non-nil, zero value otherwise.
-
-### GetPredictiveEnabledOk
-
-`func (o *AdvancedComputeAutoScaling) GetPredictiveEnabledOk() (*bool, bool)`
-
-GetPredictiveEnabledOk returns a tuple with the PredictiveEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPredictiveEnabled
-
-`func (o *AdvancedComputeAutoScaling) SetPredictiveEnabled(v bool)`
-
-SetPredictiveEnabled sets PredictiveEnabled field to given value.
-
-### HasPredictiveEnabled
-
-`func (o *AdvancedComputeAutoScaling) HasPredictiveEnabled() bool`
-
-HasPredictiveEnabled returns a boolean if a field has been set.
 ### GetScaleDownEnabled
 
 `func (o *AdvancedComputeAutoScaling) GetScaleDownEnabled() bool`

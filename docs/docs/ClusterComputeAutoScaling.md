@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** | Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to &#x60;true&#x60; to enable instance size reactive auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize**. - Set to &#x60;false&#x60; to disable instance size reactive auto-scaling. | [optional] [default to false]
-**PredictiveEnabled** | Pointer to **bool** | Flag that indicates whether predictive instance size auto-scaling is enabled.  - Set to &#x60;true&#x60; to enable predictive instance size auto-scaling. MongoDB Cloud requires **autoScaling.compute.enabled** is &#x60;true&#x60; in order to enable this feature. - Set to &#x60;false&#x60; to disable predictive instance size auto-scaling. | [optional] [default to false]
 **ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if **autoScaling.compute.enabled** is &#x60;true&#x60;. If you enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**. | [optional] [default to false]
 
 ## Methods
@@ -51,30 +50,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *ClusterComputeAutoScaling) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-### GetPredictiveEnabled
-
-`func (o *ClusterComputeAutoScaling) GetPredictiveEnabled() bool`
-
-GetPredictiveEnabled returns the PredictiveEnabled field if non-nil, zero value otherwise.
-
-### GetPredictiveEnabledOk
-
-`func (o *ClusterComputeAutoScaling) GetPredictiveEnabledOk() (*bool, bool)`
-
-GetPredictiveEnabledOk returns a tuple with the PredictiveEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPredictiveEnabled
-
-`func (o *ClusterComputeAutoScaling) SetPredictiveEnabled(v bool)`
-
-SetPredictiveEnabled sets PredictiveEnabled field to given value.
-
-### HasPredictiveEnabled
-
-`func (o *ClusterComputeAutoScaling) HasPredictiveEnabled() bool`
-
-HasPredictiveEnabled returns a boolean if a field has been set.
 ### GetScaleDownEnabled
 
 `func (o *ClusterComputeAutoScaling) GetScaleDownEnabled() bool`

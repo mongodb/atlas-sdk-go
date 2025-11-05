@@ -8,23 +8,23 @@ Method | HTTP request | Description
 [**CreatePrivateLinkConnection**](StreamsApi.md#CreatePrivateLinkConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection
 [**CreateStreamConnection**](StreamsApi.md#CreateStreamConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection
 [**CreateStreamProcessor**](StreamsApi.md#CreateStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor
-[**CreateStreamWorkspace**](StreamsApi.md#CreateStreamWorkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance
+[**CreateStreamWorkspace**](StreamsApi.md#CreateStreamWorkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Workspace
 [**DeletePrivateLinkConnection**](StreamsApi.md#DeletePrivateLinkConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Delete One Private Link Connection
 [**DeleteStreamConnection**](StreamsApi.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
 [**DeleteStreamProcessor**](StreamsApi.md#DeleteStreamProcessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor
-[**DeleteStreamWorkspace**](StreamsApi.md#DeleteStreamWorkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance
+[**DeleteStreamWorkspace**](StreamsApi.md#DeleteStreamWorkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace
 [**DeleteVpcPeeringConnection**](StreamsApi.md#DeleteVpcPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection
-[**DownloadAuditLogs**](StreamsApi.md#DownloadAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance
+[**DownloadAuditLogs**](StreamsApi.md#DownloadAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Workspace
 [**GetAccountDetails**](StreamsApi.md#GetAccountDetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region
 [**GetPrivateLinkConnection**](StreamsApi.md#GetPrivateLinkConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection
 [**GetStreamConnection**](StreamsApi.md#GetStreamConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection
 [**GetStreamProcessor**](StreamsApi.md#GetStreamProcessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Return One Stream Processor
-[**GetStreamProcessors**](StreamsApi.md#GetStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Instance
-[**GetStreamWorkspace**](StreamsApi.md#GetStreamWorkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance
+[**GetStreamProcessors**](StreamsApi.md#GetStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Workspace
+[**GetStreamWorkspace**](StreamsApi.md#GetStreamWorkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Workspace
 [**ListActivePeeringConnections**](StreamsApi.md#ListActivePeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections
 [**ListPrivateLinkConnections**](StreamsApi.md#ListPrivateLinkConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link Connections
-[**ListStreamConnections**](StreamsApi.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Instances
-[**ListStreamWorkspaces**](StreamsApi.md#ListStreamWorkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Instances in One Project
+[**ListStreamConnections**](StreamsApi.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Workspaces
+[**ListStreamWorkspaces**](StreamsApi.md#ListStreamWorkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Workspaces in One Project
 [**ListVpcPeeringConnections**](StreamsApi.md#ListVpcPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections
 [**RejectVpcPeeringConnection**](StreamsApi.md#RejectVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Reject One Incoming VPC Peering Connection
 [**StartStreamProcessor**](StreamsApi.md#StartStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor
@@ -32,8 +32,8 @@ Method | HTTP request | Description
 [**StopStreamProcessor**](StreamsApi.md#StopStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor
 [**UpdateStreamConnection**](StreamsApi.md#UpdateStreamConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection
 [**UpdateStreamProcessor**](StreamsApi.md#UpdateStreamProcessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor
-[**UpdateStreamWorkspace**](StreamsApi.md#UpdateStreamWorkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Instance
-[**WithStreamSampleConnections**](StreamsApi.md#WithStreamSampleConnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Instance with Sample Connections
+[**UpdateStreamWorkspace**](StreamsApi.md#UpdateStreamWorkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Workspace
+[**WithStreamSampleConnections**](StreamsApi.md#WithStreamSampleConnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Workspace with Sample Connections
 
 
 
@@ -54,7 +54,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -137,7 +137,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -219,7 +219,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
 
 ### Other Parameters
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **streamsConnection** | [**StreamsConnection**](StreamsConnection.md) | Details to create one connection for a streams instance in the specified project. | 
+ **streamsConnection** | [**StreamsConnection**](StreamsConnection.md) | Details to create one connection for a streams workspace in the specified project. | 
 
 ### Return type
 
@@ -304,7 +304,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
 
 ### Other Parameters
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 > StreamsTenant CreateStreamWorkspace(ctx, groupId, streamsTenant StreamsTenant).Execute()
 
-Create One Stream Instance
+Create One Stream Workspace
 
 
 ### Example
@@ -389,7 +389,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -435,7 +435,7 @@ Other parameters are passed through a pointer to a apiCreateStreamWorkspaceReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **streamsTenant** | [**StreamsTenant**](StreamsTenant.md) | Details to create one streams instance in the specified project. | 
+ **streamsTenant** | [**StreamsTenant**](StreamsTenant.md) | Details to create one streams workspace in the specified project. | 
 
 ### Return type
 
@@ -471,7 +471,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -552,7 +552,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -588,8 +588,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**connectionName** | **string** | Human-readable label that identifies the stream connection. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**connectionName** | **string** | Label that identifies the stream connection. | 
 
 ### Other Parameters
 
@@ -636,7 +636,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -672,8 +672,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**processorName** | **string** | Human-readable label that identifies the stream processor. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**processorName** | **string** | Label that identifies the stream processor. | 
 
 ### Other Parameters
 
@@ -707,7 +707,7 @@ Name | Type | Description  | Notes
 
 > DeleteStreamWorkspace(ctx, groupId, tenantName).Execute()
 
-Delete One Stream Instance
+Delete One Stream Workspace
 
 
 ### Example
@@ -720,7 +720,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -755,7 +755,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance to delete. | 
+**tenantName** | **string** | Label that identifies the stream workspace to delete. | 
 
 ### Other Parameters
 
@@ -801,7 +801,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -869,7 +869,7 @@ Name | Type | Description  | Notes
 
 > io.ReadCloser DownloadAuditLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
 
-Download Audit Logs for One Atlas Stream Processing Instance
+Download Audit Logs for One Atlas Stream Processing Workspace
 
 
 ### Example
@@ -882,7 +882,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -921,7 +921,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
 
 ### Other Parameters
 
@@ -969,7 +969,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1053,7 +1053,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1136,7 +1136,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1174,8 +1174,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance to return. | 
-**connectionName** | **string** | Human-readable label that identifies the stream connection to return. | 
+**tenantName** | **string** | Label that identifies the stream workspace to return. | 
+**connectionName** | **string** | Label that identifies the stream connection to return. | 
 
 ### Other Parameters
 
@@ -1222,7 +1222,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1260,8 +1260,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**processorName** | **string** | Human-readable label that identifies the stream processor. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**processorName** | **string** | Label that identifies the stream processor. | 
 
 ### Other Parameters
 
@@ -1295,7 +1295,7 @@ Name | Type | Description  | Notes
 
 > PaginatedApiStreamsStreamProcessorWithStats GetStreamProcessors(ctx, groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeCount(includeCount).Execute()
 
-Return All Stream Processors in One Stream Instance
+Return All Stream Processors in One Stream Workspace
 
 
 ### Example
@@ -1308,7 +1308,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1348,7 +1348,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
 
 ### Other Parameters
 
@@ -1384,7 +1384,7 @@ Name | Type | Description  | Notes
 
 > StreamsTenant GetStreamWorkspace(ctx, groupId, tenantName).IncludeConnections(includeConnections).Execute()
 
-Return One Stream Instance
+Return One Stream Workspace
 
 
 ### Example
@@ -1397,7 +1397,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1435,7 +1435,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance to return. | 
+**tenantName** | **string** | Label that identifies the stream workspace to return. | 
 
 ### Other Parameters
 
@@ -1446,7 +1446,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **includeConnections** | **bool** | Flag to indicate whether connections information should be included in the stream instance. | 
+ **includeConnections** | **bool** | Flag to indicate whether connections information should be included in the stream workspace. | 
 
 ### Return type
 
@@ -1482,7 +1482,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1564,7 +1564,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1635,7 +1635,7 @@ Name | Type | Description  | Notes
 
 > PaginatedApiStreamsConnection ListStreamConnections(ctx, groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Connections of the Stream Instances
+Return All Connections of the Stream Workspaces
 
 
 ### Example
@@ -1648,7 +1648,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1687,7 +1687,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
 
 ### Other Parameters
 
@@ -1722,7 +1722,7 @@ Name | Type | Description  | Notes
 
 > PaginatedApiStreamsTenant ListStreamWorkspaces(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Stream Instances in One Project
+Return All Stream Workspaces in One Project
 
 
 ### Example
@@ -1735,7 +1735,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1819,7 +1819,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1903,7 +1903,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -1984,7 +1984,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -2020,8 +2020,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**processorName** | **string** | Human-readable label that identifies the stream processor. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**processorName** | **string** | Label that identifies the stream processor. | 
 
 ### Other Parameters
 
@@ -2068,7 +2068,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -2105,8 +2105,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**processorName** | **string** | Human-readable label that identifies the stream processor. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**processorName** | **string** | Label that identifies the stream processor. | 
 
 ### Other Parameters
 
@@ -2154,7 +2154,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -2190,8 +2190,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**processorName** | **string** | Human-readable label that identifies the stream processor. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**processorName** | **string** | Label that identifies the stream processor. | 
 
 ### Other Parameters
 
@@ -2238,7 +2238,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -2277,8 +2277,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**connectionName** | **string** | Human-readable label that identifies the stream connection. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**connectionName** | **string** | Label that identifies the stream connection. | 
 
 ### Other Parameters
 
@@ -2290,7 +2290,7 @@ Name | Type | Description  | Notes
 
 
 
- **streamsConnection** | [**StreamsConnection**](StreamsConnection.md) | Details to update one connection for a streams instance in the specified project. | 
+ **streamsConnection** | [**StreamsConnection**](StreamsConnection.md) | Details to update one connection for a streams workspace in the specified project. | 
 
 ### Return type
 
@@ -2326,7 +2326,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -2365,8 +2365,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
-**processorName** | **string** | Human-readable label that identifies the stream processor. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**processorName** | **string** | Label that identifies the stream processor. | 
 
 ### Other Parameters
 
@@ -2401,7 +2401,7 @@ Name | Type | Description  | Notes
 
 > StreamsTenant UpdateStreamWorkspace(ctx, groupId, tenantName, streamsDataProcessRegion StreamsDataProcessRegion).Execute()
 
-Update One Stream Instance
+Update One Stream Workspace
 
 
 ### Example
@@ -2414,7 +2414,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -2452,7 +2452,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**tenantName** | **string** | Human-readable label that identifies the stream instance to update. | 
+**tenantName** | **string** | Label that identifies the stream workspace to update. | 
 
 ### Other Parameters
 
@@ -2463,7 +2463,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **streamsDataProcessRegion** | [**StreamsDataProcessRegion**](StreamsDataProcessRegion.md) | Details of the new data process region to update in the streams instance. | 
+ **streamsDataProcessRegion** | [**StreamsDataProcessRegion**](StreamsDataProcessRegion.md) | Details of the new data process region to update in the streams workspace. | 
 
 ### Return type
 
@@ -2486,7 +2486,7 @@ Name | Type | Description  | Notes
 
 > StreamsTenant WithStreamSampleConnections(ctx, groupId, body any).Execute()
 
-Create One Stream Instance with Sample Connections
+Create One Stream Workspace with Sample Connections
 
 
 ### Example
@@ -2499,7 +2499,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312008/admin"
+    "go.mongodb.org/atlas-sdk/v20250312009/admin"
 )
 
 func main() {
@@ -2545,7 +2545,7 @@ Other parameters are passed through a pointer to a apiWithStreamSampleConnection
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **any** | Details to create one streams instance in the specified project. | 
+ **body** | **any** | Details to create one streams workspace in the specified project. | 
 
 ### Return type
 

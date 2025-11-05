@@ -64,12 +64,12 @@ type StreamsApi interface {
 	/*
 		CreateStreamConnection Create One Stream Connection
 
-		Creates one connection for a stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
+		Creates one connection for a stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param streamsConnection Details to create one connection for a streams instance in the specified project.
+		@param tenantName Label that identifies the stream workspace.
+		@param streamsConnection Details to create one connection for a streams workspace in the specified project.
 		@return CreateStreamConnectionApiRequest
 	*/
 	CreateStreamConnection(ctx context.Context, groupId string, tenantName string, streamsConnection *StreamsConnection) CreateStreamConnectionApiRequest
@@ -89,11 +89,11 @@ type StreamsApi interface {
 	/*
 		CreateStreamProcessor Create One Stream Processor
 
-		Create one Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Create one Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
+		@param tenantName Label that identifies the stream workspace.
 		@param streamsProcessor Details to create an Atlas Streams Processor.
 		@return CreateStreamProcessorApiRequest
 	*/
@@ -112,18 +112,18 @@ type StreamsApi interface {
 	CreateStreamProcessorExecute(r CreateStreamProcessorApiRequest) (*StreamsProcessor, *http.Response, error)
 
 	/*
-		CreateStreamWorkspace Create One Stream Instance
+		CreateStreamWorkspace Create One Stream Workspace
 
-		Creates one stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+		Creates one stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param streamsTenant Details to create one streams instance in the specified project.
+		@param streamsTenant Details to create one streams workspace in the specified project.
 		@return CreateStreamWorkspaceApiRequest
 	*/
 	CreateStreamWorkspace(ctx context.Context, groupId string, streamsTenant *StreamsTenant) CreateStreamWorkspaceApiRequest
 	/*
-		CreateStreamWorkspace Create One Stream Instance
+		CreateStreamWorkspace Create One Stream Workspace
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -162,12 +162,12 @@ type StreamsApi interface {
 	/*
 		DeleteStreamConnection Delete One Stream Connection
 
-		Delete one connection of the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Delete one connection of the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param connectionName Human-readable label that identifies the stream connection.
+		@param tenantName Label that identifies the stream workspace.
+		@param connectionName Label that identifies the stream connection.
 		@return DeleteStreamConnectionApiRequest
 	*/
 	DeleteStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) DeleteStreamConnectionApiRequest
@@ -187,12 +187,12 @@ type StreamsApi interface {
 	/*
 		DeleteStreamProcessor Delete One Stream Processor
 
-		Delete a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Delete a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param processorName Human-readable label that identifies the stream processor.
+		@param tenantName Label that identifies the stream workspace.
+		@param processorName Label that identifies the stream processor.
 		@return DeleteStreamProcessorApiRequest
 	*/
 	DeleteStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) DeleteStreamProcessorApiRequest
@@ -210,18 +210,18 @@ type StreamsApi interface {
 	DeleteStreamProcessorExecute(r DeleteStreamProcessorApiRequest) (*http.Response, error)
 
 	/*
-		DeleteStreamWorkspace Delete One Stream Instance
+		DeleteStreamWorkspace Delete One Stream Workspace
 
-		Delete one stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+		Delete one stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance to delete.
+		@param tenantName Label that identifies the stream workspace to delete.
 		@return DeleteStreamWorkspaceApiRequest
 	*/
 	DeleteStreamWorkspace(ctx context.Context, groupId string, tenantName string) DeleteStreamWorkspaceApiRequest
 	/*
-		DeleteStreamWorkspace Delete One Stream Instance
+		DeleteStreamWorkspace Delete One Stream Workspace
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -258,18 +258,18 @@ type StreamsApi interface {
 	DeleteVpcPeeringConnectionExecute(r DeleteVpcPeeringConnectionApiRequest) (*http.Response, error)
 
 	/*
-		DownloadAuditLogs Download Audit Logs for One Atlas Stream Processing Instance
+		DownloadAuditLogs Download Audit Logs for One Atlas Stream Processing Workspace
 
-		Downloads the audit logs for the specified Atlas Streams Processing instance. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".
+		Downloads the audit logs for the specified Atlas Streams Processing workspace. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
+		@param tenantName Label that identifies the stream workspace.
 		@return DownloadAuditLogsApiRequest
 	*/
 	DownloadAuditLogs(ctx context.Context, groupId string, tenantName string) DownloadAuditLogsApiRequest
 	/*
-		DownloadAuditLogs Download Audit Logs for One Atlas Stream Processing Instance
+		DownloadAuditLogs Download Audit Logs for One Atlas Stream Processing Workspace
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -331,12 +331,12 @@ type StreamsApi interface {
 	/*
 		GetStreamConnection Return One Stream Connection
 
-		Returns the details of one stream connection within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns the details of one stream connection within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance to return.
-		@param connectionName Human-readable label that identifies the stream connection to return.
+		@param tenantName Label that identifies the stream workspace to return.
+		@param connectionName Label that identifies the stream connection to return.
 		@return GetStreamConnectionApiRequest
 	*/
 	GetStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) GetStreamConnectionApiRequest
@@ -356,12 +356,12 @@ type StreamsApi interface {
 	/*
 		GetStreamProcessor Return One Stream Processor
 
-		Get one Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Get one Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param processorName Human-readable label that identifies the stream processor.
+		@param tenantName Label that identifies the stream workspace.
+		@param processorName Label that identifies the stream processor.
 		@return GetStreamProcessorApiRequest
 	*/
 	GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) GetStreamProcessorApiRequest
@@ -379,18 +379,18 @@ type StreamsApi interface {
 	GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
 
 	/*
-		GetStreamProcessors Return All Stream Processors in One Stream Instance
+		GetStreamProcessors Return All Stream Processors in One Stream Workspace
 
-		Returns all Stream Processors within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Returns all Stream Processors within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
+		@param tenantName Label that identifies the stream workspace.
 		@return GetStreamProcessorsApiRequest
 	*/
 	GetStreamProcessors(ctx context.Context, groupId string, tenantName string) GetStreamProcessorsApiRequest
 	/*
-		GetStreamProcessors Return All Stream Processors in One Stream Instance
+		GetStreamProcessors Return All Stream Processors in One Stream Workspace
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -403,18 +403,18 @@ type StreamsApi interface {
 	GetStreamProcessorsExecute(r GetStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)
 
 	/*
-		GetStreamWorkspace Return One Stream Instance
+		GetStreamWorkspace Return One Stream Workspace
 
-		Returns the details of one stream instance within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
+		Returns the details of one stream workspace within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance to return.
+		@param tenantName Label that identifies the stream workspace to return.
 		@return GetStreamWorkspaceApiRequest
 	*/
 	GetStreamWorkspace(ctx context.Context, groupId string, tenantName string) GetStreamWorkspaceApiRequest
 	/*
-		GetStreamWorkspace Return One Stream Instance
+		GetStreamWorkspace Return One Stream Workspace
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -473,18 +473,18 @@ type StreamsApi interface {
 	ListPrivateLinkConnectionsExecute(r ListPrivateLinkConnectionsApiRequest) (*PaginatedApiStreamsPrivateLink, *http.Response, error)
 
 	/*
-		ListStreamConnections Return All Connections of the Stream Instances
+		ListStreamConnections Return All Connections of the Stream Workspaces
 
-		Returns all connections of the stream instance for the specified project.To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
+		Returns all connections of the stream workspace for the specified project.To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
+		@param tenantName Label that identifies the stream workspace.
 		@return ListStreamConnectionsApiRequest
 	*/
 	ListStreamConnections(ctx context.Context, groupId string, tenantName string) ListStreamConnectionsApiRequest
 	/*
-		ListStreamConnections Return All Connections of the Stream Instances
+		ListStreamConnections Return All Connections of the Stream Workspaces
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -497,9 +497,9 @@ type StreamsApi interface {
 	ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error)
 
 	/*
-		ListStreamWorkspaces Return All Stream Instances in One Project
+		ListStreamWorkspaces Return All Stream Workspaces in One Project
 
-		Returns all stream instances for the specified project.
+		Returns all stream workspaces for the specified project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -507,7 +507,7 @@ type StreamsApi interface {
 	*/
 	ListStreamWorkspaces(ctx context.Context, groupId string) ListStreamWorkspacesApiRequest
 	/*
-		ListStreamWorkspaces Return All Stream Instances in One Project
+		ListStreamWorkspaces Return All Stream Workspaces in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -569,12 +569,12 @@ type StreamsApi interface {
 	/*
 		StartStreamProcessor Start One Stream Processor
 
-		Start a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Start a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param processorName Human-readable label that identifies the stream processor.
+		@param tenantName Label that identifies the stream workspace.
+		@param processorName Label that identifies the stream processor.
 		@return StartStreamProcessorApiRequest
 	*/
 	StartStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) StartStreamProcessorApiRequest
@@ -594,12 +594,12 @@ type StreamsApi interface {
 	/*
 		StartStreamProcessorWith Start One Stream Processor With Options
 
-		Start a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Start a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param processorName Human-readable label that identifies the stream processor.
+		@param tenantName Label that identifies the stream workspace.
+		@param processorName Label that identifies the stream processor.
 		@param streamsStartStreamProcessorWith Options for starting a stream processor.
 		@return StartStreamProcessorWithApiRequest
 	*/
@@ -620,12 +620,12 @@ type StreamsApi interface {
 	/*
 		StopStreamProcessor Stop One Stream Processor
 
-		Stop a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Stop a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param processorName Human-readable label that identifies the stream processor.
+		@param tenantName Label that identifies the stream workspace.
+		@param processorName Label that identifies the stream processor.
 		@return StopStreamProcessorApiRequest
 	*/
 	StopStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) StopStreamProcessorApiRequest
@@ -645,13 +645,13 @@ type StreamsApi interface {
 	/*
 		UpdateStreamConnection Update One Stream Connection
 
-		Update one connection for the specified stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Update one connection for the specified stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param connectionName Human-readable label that identifies the stream connection.
-		@param streamsConnection Details to update one connection for a streams instance in the specified project.
+		@param tenantName Label that identifies the stream workspace.
+		@param connectionName Label that identifies the stream connection.
+		@param streamsConnection Details to update one connection for a streams workspace in the specified project.
 		@return UpdateStreamConnectionApiRequest
 	*/
 	UpdateStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) UpdateStreamConnectionApiRequest
@@ -671,12 +671,12 @@ type StreamsApi interface {
 	/*
 		UpdateStreamProcessor Update One Stream Processor
 
-		Modify one existing Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+		Modify one existing Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance.
-		@param processorName Human-readable label that identifies the stream processor.
+		@param tenantName Label that identifies the stream workspace.
+		@param processorName Label that identifies the stream processor.
 		@param streamsModifyStreamProcessor Modifications to apply to the stream processor.
 		@return UpdateStreamProcessorApiRequest
 	*/
@@ -695,19 +695,19 @@ type StreamsApi interface {
 	UpdateStreamProcessorExecute(r UpdateStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
 
 	/*
-		UpdateStreamWorkspace Update One Stream Instance
+		UpdateStreamWorkspace Update One Stream Workspace
 
-		Update one stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+		Update one stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Human-readable label that identifies the stream instance to update.
-		@param streamsDataProcessRegion Details of the new data process region to update in the streams instance.
+		@param tenantName Label that identifies the stream workspace to update.
+		@param streamsDataProcessRegion Details of the new data process region to update in the streams workspace.
 		@return UpdateStreamWorkspaceApiRequest
 	*/
 	UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *StreamsDataProcessRegion) UpdateStreamWorkspaceApiRequest
 	/*
-		UpdateStreamWorkspace Update One Stream Instance
+		UpdateStreamWorkspace Update One Stream Workspace
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -720,18 +720,18 @@ type StreamsApi interface {
 	UpdateStreamWorkspaceExecute(r UpdateStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
-		WithStreamSampleConnections Create One Stream Instance with Sample Connections
+		WithStreamSampleConnections Create One Stream Workspace with Sample Connections
 
-		Creates one stream instance in the specified project with sample connections. To use this resource the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+		Creates one stream workspace in the specified project with sample connections. To use this resource the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param body Details to create one streams instance in the specified project.
+		@param body Details to create one streams workspace in the specified project.
 		@return WithStreamSampleConnectionsApiRequest
 	*/
 	WithStreamSampleConnections(ctx context.Context, groupId string, body *any) WithStreamSampleConnectionsApiRequest
 	/*
-		WithStreamSampleConnections Create One Stream Instance with Sample Connections
+		WithStreamSampleConnections Create One Stream Workspace with Sample Connections
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1016,11 +1016,11 @@ func (r CreateStreamConnectionApiRequest) Execute() (*StreamsConnection, *http.R
 /*
 CreateStreamConnection Create One Stream Connection
 
-Creates one connection for a stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
+Creates one connection for a stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
+	@param tenantName Label that identifies the stream workspace.
 	@return CreateStreamConnectionApiRequest
 */
 func (a *StreamsApiService) CreateStreamConnection(ctx context.Context, groupId string, tenantName string, streamsConnection *StreamsConnection) CreateStreamConnectionApiRequest {
@@ -1148,11 +1148,11 @@ func (r CreateStreamProcessorApiRequest) Execute() (*StreamsProcessor, *http.Res
 /*
 CreateStreamProcessor Create One Stream Processor
 
-Create one Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Create one Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
+	@param tenantName Label that identifies the stream workspace.
 	@return CreateStreamProcessorApiRequest
 */
 func (a *StreamsApiService) CreateStreamProcessor(ctx context.Context, groupId string, tenantName string, streamsProcessor *StreamsProcessor) CreateStreamProcessorApiRequest {
@@ -1275,9 +1275,9 @@ func (r CreateStreamWorkspaceApiRequest) Execute() (*StreamsTenant, *http.Respon
 }
 
 /*
-CreateStreamWorkspace Create One Stream Instance
+CreateStreamWorkspace Create One Stream Workspace
 
-Creates one stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+Creates one stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1509,12 +1509,12 @@ func (r DeleteStreamConnectionApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteStreamConnection Delete One Stream Connection
 
-Delete one connection of the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Delete one connection of the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
-	@param connectionName Human-readable label that identifies the stream connection.
+	@param tenantName Label that identifies the stream workspace.
+	@param connectionName Label that identifies the stream connection.
 	@return DeleteStreamConnectionApiRequest
 */
 func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) DeleteStreamConnectionApiRequest {
@@ -1624,12 +1624,12 @@ func (r DeleteStreamProcessorApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteStreamProcessor Delete One Stream Processor
 
-Delete a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Delete a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
-	@param processorName Human-readable label that identifies the stream processor.
+	@param tenantName Label that identifies the stream workspace.
+	@param processorName Label that identifies the stream processor.
 	@return DeleteStreamProcessorApiRequest
 */
 func (a *StreamsApiService) DeleteStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) DeleteStreamProcessorApiRequest {
@@ -1734,13 +1734,13 @@ func (r DeleteStreamWorkspaceApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteStreamWorkspace Delete One Stream Instance
+DeleteStreamWorkspace Delete One Stream Workspace
 
-Delete one stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+Delete one stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance to delete.
+	@param tenantName Label that identifies the stream workspace to delete.
 	@return DeleteStreamWorkspaceApiRequest
 */
 func (a *StreamsApiService) DeleteStreamWorkspace(ctx context.Context, groupId string, tenantName string) DeleteStreamWorkspaceApiRequest {
@@ -1964,13 +1964,13 @@ func (r DownloadAuditLogsApiRequest) Execute() (io.ReadCloser, *http.Response, e
 }
 
 /*
-DownloadAuditLogs Download Audit Logs for One Atlas Stream Processing Instance
+DownloadAuditLogs Download Audit Logs for One Atlas Stream Processing Workspace
 
-Downloads the audit logs for the specified Atlas Streams Processing instance. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".
+Downloads the audit logs for the specified Atlas Streams Processing workspace. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
+	@param tenantName Label that identifies the stream workspace.
 	@return DownloadAuditLogsApiRequest
 */
 func (a *StreamsApiService) DownloadAuditLogs(ctx context.Context, groupId string, tenantName string) DownloadAuditLogsApiRequest {
@@ -2361,12 +2361,12 @@ func (r GetStreamConnectionApiRequest) Execute() (*StreamsConnection, *http.Resp
 /*
 GetStreamConnection Return One Stream Connection
 
-Returns the details of one stream connection within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns the details of one stream connection within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance to return.
-	@param connectionName Human-readable label that identifies the stream connection to return.
+	@param tenantName Label that identifies the stream workspace to return.
+	@param connectionName Label that identifies the stream connection to return.
 	@return GetStreamConnectionApiRequest
 */
 func (a *StreamsApiService) GetStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) GetStreamConnectionApiRequest {
@@ -2493,12 +2493,12 @@ func (r GetStreamProcessorApiRequest) Execute() (*StreamsProcessorWithStats, *ht
 /*
 GetStreamProcessor Return One Stream Processor
 
-Get one Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Get one Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
-	@param processorName Human-readable label that identifies the stream processor.
+	@param tenantName Label that identifies the stream workspace.
+	@param processorName Label that identifies the stream processor.
 	@return GetStreamProcessorApiRequest
 */
 func (a *StreamsApiService) GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) GetStreamProcessorApiRequest {
@@ -2647,13 +2647,13 @@ func (r GetStreamProcessorsApiRequest) Execute() (*PaginatedApiStreamsStreamProc
 }
 
 /*
-GetStreamProcessors Return All Stream Processors in One Stream Instance
+GetStreamProcessors Return All Stream Processors in One Stream Workspace
 
-Returns all Stream Processors within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Returns all Stream Processors within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
+	@param tenantName Label that identifies the stream workspace.
 	@return GetStreamProcessorsApiRequest
 */
 func (a *StreamsApiService) GetStreamProcessors(ctx context.Context, groupId string, tenantName string) GetStreamProcessorsApiRequest {
@@ -2789,7 +2789,7 @@ func (a *StreamsApiService) GetStreamWorkspaceWithParams(ctx context.Context, ar
 	}
 }
 
-// Flag to indicate whether connections information should be included in the stream instance.
+// Flag to indicate whether connections information should be included in the stream workspace.
 func (r GetStreamWorkspaceApiRequest) IncludeConnections(includeConnections bool) GetStreamWorkspaceApiRequest {
 	r.includeConnections = &includeConnections
 	return r
@@ -2800,13 +2800,13 @@ func (r GetStreamWorkspaceApiRequest) Execute() (*StreamsTenant, *http.Response,
 }
 
 /*
-GetStreamWorkspace Return One Stream Instance
+GetStreamWorkspace Return One Stream Workspace
 
-Returns the details of one stream instance within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
+Returns the details of one stream workspace within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance to return.
+	@param tenantName Label that identifies the stream workspace to return.
 	@return GetStreamWorkspaceApiRequest
 */
 func (a *StreamsApiService) GetStreamWorkspace(ctx context.Context, groupId string, tenantName string) GetStreamWorkspaceApiRequest {
@@ -3219,13 +3219,13 @@ func (r ListStreamConnectionsApiRequest) Execute() (*PaginatedApiStreamsConnecti
 }
 
 /*
-ListStreamConnections Return All Connections of the Stream Instances
+ListStreamConnections Return All Connections of the Stream Workspaces
 
-Returns all connections of the stream instance for the specified project.To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
+Returns all connections of the stream workspace for the specified project.To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
+	@param tenantName Label that identifies the stream workspace.
 	@return ListStreamConnectionsApiRequest
 */
 func (a *StreamsApiService) ListStreamConnections(ctx context.Context, groupId string, tenantName string) ListStreamConnectionsApiRequest {
@@ -3371,9 +3371,9 @@ func (r ListStreamWorkspacesApiRequest) Execute() (*PaginatedApiStreamsTenant, *
 }
 
 /*
-ListStreamWorkspaces Return All Stream Instances in One Project
+ListStreamWorkspaces Return All Stream Workspaces in One Project
 
-Returns all stream instances for the specified project.
+Returns all stream workspaces for the specified project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3755,12 +3755,12 @@ func (r StartStreamProcessorApiRequest) Execute() (*http.Response, error) {
 /*
 StartStreamProcessor Start One Stream Processor
 
-Start a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Start a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
-	@param processorName Human-readable label that identifies the stream processor.
+	@param tenantName Label that identifies the stream workspace.
+	@param processorName Label that identifies the stream processor.
 	@return StartStreamProcessorApiRequest
 */
 func (a *StreamsApiService) StartStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) StartStreamProcessorApiRequest {
@@ -3873,12 +3873,12 @@ func (r StartStreamProcessorWithApiRequest) Execute() (*http.Response, error) {
 /*
 StartStreamProcessorWith Start One Stream Processor With Options
 
-Start a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Start a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
-	@param processorName Human-readable label that identifies the stream processor.
+	@param tenantName Label that identifies the stream workspace.
+	@param processorName Label that identifies the stream processor.
 	@return StartStreamProcessorWithApiRequest
 */
 func (a *StreamsApiService) StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith) StartStreamProcessorWithApiRequest {
@@ -3991,12 +3991,12 @@ func (r StopStreamProcessorApiRequest) Execute() (*http.Response, error) {
 /*
 StopStreamProcessor Stop One Stream Processor
 
-Stop a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Stop a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
-	@param processorName Human-readable label that identifies the stream processor.
+	@param tenantName Label that identifies the stream workspace.
+	@param processorName Label that identifies the stream processor.
 	@return StopStreamProcessorApiRequest
 */
 func (a *StreamsApiService) StopStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) StopStreamProcessorApiRequest {
@@ -4109,12 +4109,12 @@ func (r UpdateStreamConnectionApiRequest) Execute() (*StreamsConnection, *http.R
 /*
 UpdateStreamConnection Update One Stream Connection
 
-Update one connection for the specified stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Update one connection for the specified stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
-	@param connectionName Human-readable label that identifies the stream connection.
+	@param tenantName Label that identifies the stream workspace.
+	@param connectionName Label that identifies the stream connection.
 	@return UpdateStreamConnectionApiRequest
 */
 func (a *StreamsApiService) UpdateStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) UpdateStreamConnectionApiRequest {
@@ -4250,12 +4250,12 @@ func (r UpdateStreamProcessorApiRequest) Execute() (*StreamsProcessorWithStats, 
 /*
 UpdateStreamProcessor Update One Stream Processor
 
-Modify one existing Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+Modify one existing Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance.
-	@param processorName Human-readable label that identifies the stream processor.
+	@param tenantName Label that identifies the stream workspace.
+	@param processorName Label that identifies the stream processor.
 	@return UpdateStreamProcessorApiRequest
 */
 func (a *StreamsApiService) UpdateStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *StreamsModifyStreamProcessor) UpdateStreamProcessorApiRequest {
@@ -4386,13 +4386,13 @@ func (r UpdateStreamWorkspaceApiRequest) Execute() (*StreamsTenant, *http.Respon
 }
 
 /*
-UpdateStreamWorkspace Update One Stream Instance
+UpdateStreamWorkspace Update One Stream Workspace
 
-Update one stream instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+Update one stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param tenantName Human-readable label that identifies the stream instance to update.
+	@param tenantName Label that identifies the stream workspace to update.
 	@return UpdateStreamWorkspaceApiRequest
 */
 func (a *StreamsApiService) UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *StreamsDataProcessRegion) UpdateStreamWorkspaceApiRequest {
@@ -4515,9 +4515,9 @@ func (r WithStreamSampleConnectionsApiRequest) Execute() (*StreamsTenant, *http.
 }
 
 /*
-WithStreamSampleConnections Create One Stream Instance with Sample Connections
+WithStreamSampleConnections Create One Stream Workspace with Sample Connections
 
-Creates one stream instance in the specified project with sample connections. To use this resource the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+Creates one stream workspace in the specified project with sample connections. To use this resource the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

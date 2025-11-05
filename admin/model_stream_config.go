@@ -2,14 +2,14 @@
 
 package admin
 
-// StreamConfig Configuration options for an Atlas Stream Processing Instance.
+// StreamConfig Configuration options for an Atlas Stream Processing Workspace.
 type StreamConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Max tier size for the Stream Instance. Configures Memory / VCPU allowances. This field is not supported yet.
+	// Max tier size for the Stream Workspace. Configures Memory / VCPU allowances.
 	MaxTierSize *string `json:"maxTierSize,omitempty"`
-	// Selected tier for the Stream Instance. Configures Memory / VCPU allowances.
+	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
 }
 

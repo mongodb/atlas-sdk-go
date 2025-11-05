@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**MaxTierSize** | Pointer to **string** | Max tier size for the Stream Instance. Configures Memory / VCPU allowances. This field is not supported yet. | [optional] 
-**Tier** | Pointer to **string** | Selected tier for the Stream Instance. Configures Memory / VCPU allowances. | [optional] 
+**MaxTierSize** | Pointer to **string** | Max tier size for the Stream Workspace. Configures Memory / VCPU allowances. | [optional] 
+**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. | [optional] 
 
 ## Methods
 

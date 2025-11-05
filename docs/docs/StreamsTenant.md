@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
-**Connections** | Pointer to [**[]StreamsConnection**](StreamsConnection.md) | List of connections configured in the stream instance. | [optional] [readonly] 
+**Connections** | Pointer to [**[]StreamsConnection**](StreamsConnection.md) | List of connections configured in the stream workspace. | [optional] [readonly] 
 **DataProcessRegion** | Pointer to [**StreamsDataProcessRegion**](StreamsDataProcessRegion.md) |  | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
-**Hostnames** | Pointer to **[]string** | List that contains the hostnames assigned to the stream instance. | [optional] [readonly] 
+**Hostnames** | Pointer to **[]string** | List that contains the hostnames assigned to the stream workspace. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Name** | Pointer to **string** | Human-readable label that identifies the stream instance. | [optional] 
+**Name** | Pointer to **string** | Label that identifies the stream workspace. | [optional] 
 **SampleConnections** | Pointer to [**StreamsSampleConnections**](StreamsSampleConnections.md) |  | [optional] 
 **StreamConfig** | Pointer to [**StreamConfig**](StreamConfig.md) |  | [optional] 
 

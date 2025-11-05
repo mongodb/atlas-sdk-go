@@ -415,23 +415,23 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [CreatePrivateLinkConnection](./docs/StreamsApi.md#createprivatelinkconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection |
 *StreamsApi* | [CreateStreamConnection](./docs/StreamsApi.md#createstreamconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection |
 *StreamsApi* | [CreateStreamProcessor](./docs/StreamsApi.md#createstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor |
-*StreamsApi* | [CreateStreamWorkspace](./docs/StreamsApi.md#createstreamworkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance |
+*StreamsApi* | [CreateStreamWorkspace](./docs/StreamsApi.md#createstreamworkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Workspace |
 *StreamsApi* | [DeletePrivateLinkConnection](./docs/StreamsApi.md#deleteprivatelinkconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Delete One Private Link Connection |
 *StreamsApi* | [DeleteStreamConnection](./docs/StreamsApi.md#deletestreamconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection |
 *StreamsApi* | [DeleteStreamProcessor](./docs/StreamsApi.md#deletestreamprocessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor |
-*StreamsApi* | [DeleteStreamWorkspace](./docs/StreamsApi.md#deletestreamworkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance |
+*StreamsApi* | [DeleteStreamWorkspace](./docs/StreamsApi.md#deletestreamworkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace |
 *StreamsApi* | [DeleteVpcPeeringConnection](./docs/StreamsApi.md#deletevpcpeeringconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection |
-*StreamsApi* | [DownloadAuditLogs](./docs/StreamsApi.md#downloadauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance |
+*StreamsApi* | [DownloadAuditLogs](./docs/StreamsApi.md#downloadauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Workspace |
 *StreamsApi* | [GetAccountDetails](./docs/StreamsApi.md#getaccountdetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region |
 *StreamsApi* | [GetPrivateLinkConnection](./docs/StreamsApi.md#getprivatelinkconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection |
 *StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection |
 *StreamsApi* | [GetStreamProcessor](./docs/StreamsApi.md#getstreamprocessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Return One Stream Processor |
-*StreamsApi* | [GetStreamProcessors](./docs/StreamsApi.md#getstreamprocessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Instance |
-*StreamsApi* | [GetStreamWorkspace](./docs/StreamsApi.md#getstreamworkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance |
+*StreamsApi* | [GetStreamProcessors](./docs/StreamsApi.md#getstreamprocessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Workspace |
+*StreamsApi* | [GetStreamWorkspace](./docs/StreamsApi.md#getstreamworkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Workspace |
 *StreamsApi* | [ListActivePeeringConnections](./docs/StreamsApi.md#listactivepeeringconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections |
 *StreamsApi* | [ListPrivateLinkConnections](./docs/StreamsApi.md#listprivatelinkconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link Connections |
-*StreamsApi* | [ListStreamConnections](./docs/StreamsApi.md#liststreamconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Instances |
-*StreamsApi* | [ListStreamWorkspaces](./docs/StreamsApi.md#liststreamworkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Instances in One Project |
+*StreamsApi* | [ListStreamConnections](./docs/StreamsApi.md#liststreamconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Workspaces |
+*StreamsApi* | [ListStreamWorkspaces](./docs/StreamsApi.md#liststreamworkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Workspaces in One Project |
 *StreamsApi* | [ListVpcPeeringConnections](./docs/StreamsApi.md#listvpcpeeringconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections |
 *StreamsApi* | [RejectVpcPeeringConnection](./docs/StreamsApi.md#rejectvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Reject One Incoming VPC Peering Connection |
 *StreamsApi* | [StartStreamProcessor](./docs/StreamsApi.md#startstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor |
@@ -439,8 +439,8 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [StopStreamProcessor](./docs/StreamsApi.md#stopstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor |
 *StreamsApi* | [UpdateStreamConnection](./docs/StreamsApi.md#updatestreamconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection |
 *StreamsApi* | [UpdateStreamProcessor](./docs/StreamsApi.md#updatestreamprocessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor |
-*StreamsApi* | [UpdateStreamWorkspace](./docs/StreamsApi.md#updatestreamworkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Instance |
-*StreamsApi* | [WithStreamSampleConnections](./docs/StreamsApi.md#withstreamsampleconnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Instance with Sample Connections |
+*StreamsApi* | [UpdateStreamWorkspace](./docs/StreamsApi.md#updatestreamworkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Workspace |
+*StreamsApi* | [WithStreamSampleConnections](./docs/StreamsApi.md#withstreamsampleconnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Workspace with Sample Connections |
 *TeamsApi* | [AddGroupTeams](./docs/TeamsApi.md#addgroupteams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add One Team to One Project |
 *TeamsApi* | [AddTeamUsers](./docs/TeamsApi.md#addteamusers) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users in One Organization to One Team |
 *TeamsApi* | [CreateOrgTeam](./docs/TeamsApi.md#createorgteam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization |

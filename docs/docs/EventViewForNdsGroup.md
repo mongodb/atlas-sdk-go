@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **TargetUsername** | Pointer to **string** | Email address for the console user that this event targets. The resource returns this parameter when &#x60;\&quot;eventTypeName\&quot; : \&quot;USER\&quot;&#x60;. | [optional] [readonly] 
 **ResourceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the resource associated with the event. | [optional] [readonly] 
 **ResourceType** | Pointer to **string** | Unique identifier of resource type. | [optional] 
-**InstanceName** | Pointer to **string** | Name of the stream processing instance associated with the event. | [optional] [readonly] 
+**InstanceName** | Pointer to **string** | Name of the stream processing workspace associated with the event. | [optional] [readonly] 
 **ProcessorErrorMsg** | Pointer to **string** | Error message linked to the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorName** | Pointer to **string** | Name of the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorState** | Pointer to **string** | State of the stream processor associated with the event. | [optional] [readonly] 

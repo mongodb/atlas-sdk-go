@@ -67,7 +67,7 @@ type AlertViewForNdsGroup struct {
 	// Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters.
 	// Read only field.
 	ParentClusterId *string `json:"parentClusterId,omitempty"`
-	// The name of the Stream Processing Instance to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processing Instances.
+	// The name of the Stream Processing Workspace to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processing Workspaces.
 	// Read only field.
 	InstanceName *string `json:"instanceName,omitempty"`
 	// The error message associated with the Stream Processor to which this alert applies.
