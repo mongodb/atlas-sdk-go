@@ -113,7 +113,7 @@ type EventViewForNdsGroup struct {
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Unique identifier of resource type.
 	ResourceType *string `json:"resourceType,omitempty"`
-	// Name of the stream processing instance associated with the event.
+	// Name of the stream processing workspace associated with the event.
 	// Read only field.
 	InstanceName *string `json:"instanceName,omitempty"`
 	// Error message linked to the stream processor associated with the event.

@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ## CreateCluster
 
-> ClusterDescription20240805 CreateCluster(ctx, groupId, clusterDescription20240805 ClusterDescription20240805).Execute()
+> ClusterDescription20240805 CreateCluster(ctx, groupId, clusterDescription20240805 ClusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
 
 Create One Cluster in One Project
 
@@ -142,8 +142,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterDescription20240805 := *openapiclient.NewClusterDescription20240805() // ClusterDescription20240805 | 
+    useEffectiveInstanceFields := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.CreateCluster(context.Background(), groupId, &clusterDescription20240805).Execute()
+    resp, r, err := sdk.ClustersApi.CreateCluster(context.Background(), groupId, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.CreateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -174,6 +175,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **clusterDescription20240805** | [**ClusterDescription20240805**](ClusterDescription20240805.md) | Cluster to create in this project. | 
+ **useEffectiveInstanceFields** | **bool** | Controls how hardware specification fields are returned in the response after cluster creation. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility. | [default to false]
 
 ### Return type
 
@@ -277,7 +279,7 @@ Name | Type | Description  | Notes
 
 ## GetCluster
 
-> ClusterDescription20240805 GetCluster(ctx, groupId, clusterName).Execute()
+> ClusterDescription20240805 GetCluster(ctx, groupId, clusterName).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
 
 Return One Cluster from One Project
 
@@ -307,8 +309,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
+    useEffectiveInstanceFields := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.GetCluster(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.ClustersApi.GetCluster(context.Background(), groupId, clusterName).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -340,6 +343,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **useEffectiveInstanceFields** | **bool** | Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility. | [default to false]
 
 ### Return type
 
@@ -862,7 +866,7 @@ Name | Type | Description  | Notes
 
 ## ListClusters
 
-> PaginatedClusterDescription20240805 ListClusters(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).Execute()
+> PaginatedClusterDescription20240805 ListClusters(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
 
 Return All Clusters in One Project
 
@@ -895,8 +899,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
     includeDeletedWithRetainedBackups := true // bool |  (optional) (default to false)
+    useEffectiveInstanceFields := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.ListClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).Execute()
+    resp, r, err := sdk.ClustersApi.ListClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListClusters`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -930,6 +935,7 @@ Name | Type | Description  | Notes
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **includeDeletedWithRetainedBackups** | **bool** | Flag that indicates whether to return Clusters with retain backups. | [default to false]
+ **useEffectiveInstanceFields** | **bool** | Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility. | [default to false]
 
 ### Return type
 
@@ -1359,7 +1365,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCluster
 
-> ClusterDescription20240805 UpdateCluster(ctx, groupId, clusterName, clusterDescription20240805 ClusterDescription20240805).Execute()
+> ClusterDescription20240805 UpdateCluster(ctx, groupId, clusterName, clusterDescription20240805 ClusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
 
 Update One Cluster in One Project
 
@@ -1390,8 +1396,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     clusterDescription20240805 := *openapiclient.NewClusterDescription20240805() // ClusterDescription20240805 | 
+    useEffectiveInstanceFields := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescription20240805).Execute()
+    resp, r, err := sdk.ClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1424,6 +1431,7 @@ Name | Type | Description  | Notes
 
 
  **clusterDescription20240805** | [**ClusterDescription20240805**](ClusterDescription20240805.md) | Cluster to update in the specified project. | 
+ **useEffectiveInstanceFields** | **bool** | Controls how hardware specification fields are returned in the response after cluster updates. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Note: When using this header with autoscaling enabled, MongoDB ignores replicationSpecs changes during updates. To intentionally override the replicationSpecs, disable this header. | [default to false]
 
 ### Return type
 

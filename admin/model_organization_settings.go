@@ -17,7 +17,7 @@ type OrganizationSettings struct {
 	RestrictEmployeeAccess *bool `json:"restrictEmployeeAccess,omitempty"`
 	// String that specifies a single email address for the specified organization to receive security-related notifications. Specifying a security contact does not grant them authorization or access to Atlas for security decisions or approvals. An empty string is valid and clears the existing security contact (if any).
 	SecurityContact *string `json:"securityContact,omitempty"`
-	// Flag that indicates whether a group's Atlas Stream Processing instances in this organization can create connections to other group's clusters in the same organization.
+	// Flag that indicates whether a group's Atlas Stream Processing workspaces in this organization can create connections to other group's clusters in the same organization.
 	StreamsCrossGroupEnabled *bool `json:"streamsCrossGroupEnabled,omitempty"`
 }
 

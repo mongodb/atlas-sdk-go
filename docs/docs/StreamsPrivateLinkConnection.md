@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DnsDomain** | Pointer to **string** | The domain hostname. Required for the following provider and vendor combinations: - AWS provider with CONFLUENT vendor. - AZURE provider with EVENTHUB or CONFLUENT vendor. | [optional] 
 **DnsSubDomain** | Pointer to **[]string** | Sub-Domain name of Confluent cluster. These are typically your availability zones. Required for AWS Provider and CONFLUENT vendor, if your AWS CONFLUENT cluster doesn&#39;t use subdomains, you must set this to the empty array []. | [optional] 
 **ErrorMessage** | Pointer to **string** | Error message if the state is FAILED. | [optional] [readonly] 
+**GcpConnectionIds** | Pointer to **[]string** | List of GCP Private Service Connect connection IDs. | [optional] 
 **GcpServiceAttachmentUris** | Pointer to **[]string** | Service Attachment URIs of each availability zone for the GCP Confluent cluster. | [optional] 
 **InterfaceEndpointId** | Pointer to **string** | Interface endpoint ID that is created from the service endpoint ID provided. | [optional] [readonly] 
 **InterfaceEndpointName** | Pointer to **string** | Interface endpoint name that is created from the service endpoint ID provided. | [optional] [readonly] 
@@ -184,6 +185,30 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *StreamsPrivateLinkConnection) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+### GetGcpConnectionIds
+
+`func (o *StreamsPrivateLinkConnection) GetGcpConnectionIds() []string`
+
+GetGcpConnectionIds returns the GcpConnectionIds field if non-nil, zero value otherwise.
+
+### GetGcpConnectionIdsOk
+
+`func (o *StreamsPrivateLinkConnection) GetGcpConnectionIdsOk() (*[]string, bool)`
+
+GetGcpConnectionIdsOk returns a tuple with the GcpConnectionIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpConnectionIds
+
+`func (o *StreamsPrivateLinkConnection) SetGcpConnectionIds(v []string)`
+
+SetGcpConnectionIds sets GcpConnectionIds field to given value.
+
+### HasGcpConnectionIds
+
+`func (o *StreamsPrivateLinkConnection) HasGcpConnectionIds() bool`
+
+HasGcpConnectionIds returns a boolean if a field has been set.
 ### GetGcpServiceAttachmentUris
 
 `func (o *StreamsPrivateLinkConnection) GetGcpServiceAttachmentUris() []string`

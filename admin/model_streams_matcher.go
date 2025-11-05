@@ -2,7 +2,7 @@
 
 package admin
 
-// StreamsMatcher Rules to apply when comparing a stream processing instance or stream processor against this alert configuration.
+// StreamsMatcher Rules to apply when comparing a stream processing workspace or stream processor against this alert configuration.
 type StreamsMatcher struct {
 	// Name of the parameter in the target object that MongoDB Cloud checks. The parameter must match all rules for MongoDB Cloud to check for alert configurations.
 	FieldName string `json:"fieldName"`
