@@ -1,6 +1,6 @@
 {
   "name": "atlas-openapi-transformer",
-  "description": "Expose CLI for Atlas OpenAPI transformations (flatten, transform)",
+  "description": "Expose CLI for Atlas OpenAPI transformations (flatten, transform). Root level package enables npx usage referencing github repository.",
   "bin": {
     "atlas-openapi-transformer": "tools/transformer/src/cli.js"
   },
