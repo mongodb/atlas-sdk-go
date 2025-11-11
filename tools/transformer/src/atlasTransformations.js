@@ -54,7 +54,7 @@ function runFlatteningTransformations(openapi) {
   return openapi;
 }
 
-function runSDKTransformations(openapi) {
+function runAllTransformations(openapi) {
   openapi = runFlatteningTransformations(openapi);
 
   // SDK specific transformations
@@ -92,7 +92,7 @@ function runSDKTransformations(openapi) {
 
 module.exports = {
   runFlatteningTransformations: runFlatteningTransformations,
-  runSDKTransformations: runSDKTransformations,
+  runAllTransformations: runAllTransformations,
 };
 
 // Temporary transformation until new search version is introduced.
