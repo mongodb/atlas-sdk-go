@@ -21,17 +21,47 @@ const ignoredModelNames = require("./name.ignore.json").ignoreModels;
 /**
  * Function specifies list of transformations to run
  */
-module.exports = function runTransformations(openapi) {
+function runFlatteningTransformations(openapi) {
+  // Handles complex polymorphic type from search API
   openapi = searchAPIIssuesTransformation(openapi);
+
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAnyOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);
+
+  // Makes specified fields optional in their respective schemas (relevant for alert configuration schema)
+  openapi = applyFieldTransformations(openapi);
+
+  // Fixes invalid schema for search API
+  if (openapi.components.schemas.ApiAtlasFTSAnalyzersViewManual) {
+    filtersObj = openapi.components.schemas.ApiAtlasFTSAnalyzersViewManual;
+    if (filtersObj.properties.tokenFilters) {
+      filtersObj.properties.tokenFilters.items = {};
+    }
+    if (filtersObj.properties.charFilters) {
+      filtersObj.properties.charFilters.items = {};
+    }
+  }
+  
+  // Removing unused schemas after flattening polymorphic types
+  let hasSchemaChanges = true;
+  while (hasSchemaChanges) {
+    console.info("Checking for unused schemas");
+    hasSchemaChanges = removeUnusedSchemas(openapi);
+  }
+
+  return openapi;
+}
+
+function runSDKTransformations(openapi) {
+  openapi = runFlatteningTransformations(openapi);
+
+  // SDK specific transformations
   openapi = applyRemoveEnumsTransformations(openapi);
   openapi = applyRemoveNullableTransformations(openapi);
   openapi = applyRemoveObjectAdditionalProperties(openapi);
   openapi = reorderResponseBodies(openapi);
-  openapi = applyFieldTransformations(openapi);
 
   openapi = applyModelNameTransformations(
     openapi,
@@ -46,23 +76,6 @@ module.exports = function runTransformations(openapi) {
     ignoredModelNames,
   );
 
-  if (openapi.components.schemas.ApiAtlasFTSAnalyzers) {
-    filtersObj = openapi.components.schemas.ApiAtlasFTSAnalyzers;
-    if (filtersObj.properties.tokenFilters) {
-      filtersObj.properties.tokenFilters.items = {};
-    }
-    if (filtersObj.properties.charFilters) {
-      filtersObj.properties.charFilters.items = {};
-    }
-  }
-
-  let hasSchemaChanges = true;
-  // Remove referencing objects that become unused
-  while (hasSchemaChanges) {
-    console.info("Checking for unused schemas");
-    hasSchemaChanges = removeUnusedSchemas(openapi);
-  }
-
   if (openapi.components.schemas.ApiError) {
     openapi.components.schemas.ApiError.properties.parameters.items = {};
   }
@@ -75,6 +88,11 @@ module.exports = function runTransformations(openapi) {
   openapi = applyOperationIdOverrides(openapi);
 
   return openapi;
+};
+
+module.exports = {
+  runFlatteningTransformations: runFlatteningTransformations,
+  runSDKTransformations: runSDKTransformations,
 };
 
 // Temporary transformation until new search version is introduced.
