@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 const { getAPI, saveAPI } = require("./engine/apifile");
-const log = require("simple-node-logger").createSimpleLogger();
 const {
   runFlatteningTransformations,
   runAllTransformations,
 } = require("./atlasTransformations");
 
+const log = require("simple-node-logger").createSimpleLogger();
 // Override default logger
 global.console = log;
-log.setLevel(process.env.XGEN_LOGGING_LEVEL || "warn");
+log.setLevel("debug");
 
 function printUsageAndExit() {
   console.error(
@@ -24,7 +24,13 @@ if (args.length !== 3) {
 
 const [command, inputFile, outputFile] = args;
 
-let { doc } = getAPI([inputFile]);
+let doc;
+try {
+  ({ doc } = getAPI([inputFile]));
+} catch (err) {
+  console.error(`Failed to read or parse input file "${inputFile}": ${err.message}`);
+  process.exit(1);
+}
 
 switch (command) {
   case "flatten":
@@ -38,8 +44,11 @@ switch (command) {
     printUsageAndExit();
 }
 
-saveAPI(doc, outputFile);
+try {
+  saveAPI(doc, outputFile);
+} catch (err) {
+  console.error(`Failed to write output file "${outputFile}": ${err.message}`);
+  process.exit(1);
+}
 
 process.exit(0);
-
-
