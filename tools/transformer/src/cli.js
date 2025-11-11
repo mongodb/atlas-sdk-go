@@ -1,54 +1,77 @@
 #!/usr/bin/env node
+const yargs = require("yargs/yargs");
+const { hideBin } = require("yargs/helpers");
 const { getAPI, saveAPI } = require("./engine/apifile");
+const simpleLogger = require("simple-node-logger");
 const {
   runFlatteningTransformations,
   runAllTransformations,
 } = require("./atlasTransformations");
 
-const log = require("simple-node-logger").createSimpleLogger();
-// Override default logger
-global.console = log;
-log.setLevel("debug");
-
-function printUsageAndExit() {
-  console.error(
-    "Usage: atlas-openapi-transformer <flatten|transform> <inputFile> <outputFile>",
-  );
-  process.exit(1);
+function readInput({ input }) {
+  if (!input) {
+    throw new Error("Missing --input");
+  }
+  return getAPI([input]).doc;
 }
 
-const args = process.argv.slice(2);
-if (args.length !== 3) {
-  printUsageAndExit();
+function writeOutput({ doc, output }) {
+  if (!output) {
+    throw new Error("Missing --output");
+  }
+  saveAPI(doc, output);
 }
 
-const [command, inputFile, outputFile] = args;
-
-let doc;
-try {
-  ({ doc } = getAPI([inputFile]));
-} catch (err) {
-  console.error(`Failed to read or parse input file "${inputFile}": ${err.message}`);
-  process.exit(1);
+function configureLogger(level) {
+  const log = simpleLogger.createSimpleLogger();
+  log.setLevel(level || "warn");
+  return log;
 }
 
-switch (command) {
-  case "flatten":
-    doc = runFlatteningTransformations(doc);
-    break;
-  case "transform":
-    doc = runAllTransformations(doc);
-    break;
-  default:
-    console.error(`Unknown command: ${command}`);
-    printUsageAndExit();
-}
-
-try {
-  saveAPI(doc, outputFile);
-} catch (err) {
-  console.error(`Failed to write output file "${outputFile}": ${err.message}`);
-  process.exit(1);
-}
-
-process.exit(0);
+yargs(hideBin(process.argv))
+  .command(
+    "flatten",
+    "Apply flattening transformations",
+    (y) =>
+      y
+        .option("input", { alias: "i", type: "string", demandOption: true })
+        .option("output", { alias: "o", type: "string", demandOption: true })
+        .option("log-level", { type: "string" }),
+    async (args) => {
+      const log = configureLogger(args["log-level"]);
+      const originalConsole = global.console;
+      global.console = log;
+      try {
+        const doc = readInput(args);
+        const out = runFlatteningTransformations(doc);
+        writeOutput({ doc: out, output: args.output });
+      } finally {
+        global.console = originalConsole;
+      }
+    },
+  )
+  .command(
+    "transform",
+    "Apply full transformations",
+    (y) =>
+      y
+        .option("input", { alias: "i", type: "string", demandOption: true })
+        .option("output", { alias: "o", type: "string", demandOption: true })
+        .option("log-level", { type: "string" }),
+    async (args) => {
+      const log = configureLogger(args["log-level"]);
+      const originalConsole = global.console;
+      global.console = log;
+      try {
+        const doc = readInput(args);
+        const out = runAllTransformations(doc);
+        writeOutput({ doc: out, output: args.output });
+      } finally {
+        global.console = originalConsole;
+      }
+    },
+  )
+  .demandCommand(1)
+  .strict()
+  .help()
+  .parse();
