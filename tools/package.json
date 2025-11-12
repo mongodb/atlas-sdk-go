@@ -5,6 +5,7 @@
   "private": "true",
   "main": "transformer/src/index.js",
   "dependencies": {
+    "yargs": "^17.7.2",
     "simple-node-logger": "^21.8.12",
     "yaml": "2.8.1"
   },
@@ -15,7 +16,6 @@
     "prettier": "3.6.2"
   },
   "scripts": {
-    "sdk:transform": "node ./transformer/src/transform",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "jest **/__tests__/**.test.js",
