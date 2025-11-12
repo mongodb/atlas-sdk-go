@@ -43,7 +43,7 @@ function runFlatteningTransformations(openapi) {
       filtersObj.properties.charFilters.items = {};
     }
   }
-  
+
   // Removing unused schemas after flattening polymorphic types
   let hasSchemaChanges = true;
   while (hasSchemaChanges) {
@@ -88,7 +88,7 @@ function runAllTransformations(openapi) {
   openapi = applyOperationIdOverrides(openapi);
 
   return openapi;
-};
+}
 
 module.exports = {
   runFlatteningTransformations: runFlatteningTransformations,
