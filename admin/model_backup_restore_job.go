@@ -24,6 +24,9 @@ type BackupRestoreJob struct {
 	// Read only field.
 	Created  *time.Time               `json:"created,omitempty"`
 	Delivery BackupRestoreJobDelivery `json:"delivery"`
+	// Unique 24-hexadecimal digit string that identifies the an imported deployment job. This parameter exists when restoring from an imported snapshot/clustershot.
+	// Read only field.
+	DeploymentJobId *string `json:"deploymentJobId,omitempty"`
 	// Flag that indicates whether someone encrypted the data in the restored snapshot.
 	// Read only field.
 	EncryptionEnabled *bool `json:"encryptionEnabled,omitempty"`
@@ -264,6 +267,39 @@ func (o *BackupRestoreJob) GetDeliveryOk() (*BackupRestoreJobDelivery, bool) {
 // SetDelivery sets field value
 func (o *BackupRestoreJob) SetDelivery(v BackupRestoreJobDelivery) {
 	o.Delivery = v
+}
+
+// GetDeploymentJobId returns the DeploymentJobId field value if set, zero value otherwise
+func (o *BackupRestoreJob) GetDeploymentJobId() string {
+	if o == nil || IsNil(o.DeploymentJobId) {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentJobId
+}
+
+// GetDeploymentJobIdOk returns a tuple with the DeploymentJobId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupRestoreJob) GetDeploymentJobIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DeploymentJobId) {
+		return nil, false
+	}
+
+	return o.DeploymentJobId, true
+}
+
+// HasDeploymentJobId returns a boolean if a field has been set.
+func (o *BackupRestoreJob) HasDeploymentJobId() bool {
+	if o != nil && !IsNil(o.DeploymentJobId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentJobId gets a reference to the given string and assigns it to the DeploymentJobId field.
+func (o *BackupRestoreJob) SetDeploymentJobId(v string) {
+	o.DeploymentJobId = &v
 }
 
 // GetEncryptionEnabled returns the EncryptionEnabled field value if set, zero value otherwise
