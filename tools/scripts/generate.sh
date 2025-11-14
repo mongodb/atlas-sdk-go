@@ -22,7 +22,7 @@ echo "# Running transformation based on $OPENAPI_FILE_NAME to the $transformed_f
 cp "$OPENAPI_FOLDER/$OPENAPI_FILE_NAME" "$openapiFileLocation"
 
 npm install
-npm run sdk:transform -- "$openapiFileLocation"
+npm exec --prefix .. atlas-openapi-transformer -- transform --input "$openapiFileLocation" --output "$openapiFileLocation"
 
 echo "# Running OpenAPI generator validation"
 npm exec openapi-generator-cli -- validate -i "$openapiFileLocation"

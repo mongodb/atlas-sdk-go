@@ -1,0 +1,17 @@
+{
+  "name": "atlas-openapi-transformer",
+  "description": "Expose CLI for Atlas OpenAPI transformations (flatten, transform). Root level package enables npx usage referencing github repository.",
+  "bin": {
+    "atlas-openapi-transformer": "tools/transformer/src/cli.js"
+  },
+  "dependencies": {
+    "simple-node-logger": "^21.8.12",
+    "yaml": "2.8.1",
+    "yargs": "^17.7.2"
+  },
+  "engines": {
+    "node": ">= 16",
+    "npm": ">= 8"
+  }
+}
+

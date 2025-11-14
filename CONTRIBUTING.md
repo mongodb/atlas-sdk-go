@@ -111,8 +111,8 @@ VSCode developers might use following debugging configuration for transformer an
             "env": {
                 "OPENAPI_FILE_NAME": "./openapi/atlas-api.yaml"
             },
-            "args": ["./openapi/atlas-api.yaml"],
-            "program": "${workspaceFolder}/tools/transformer/src/transform"
+            "args": ["transform", "--input", "./openapi/atlas-api.yaml", "--output", "./openapi/atlas-api-transformed.yaml"],
+            "program": "${workspaceFolder}/tools/transformer/src/cli.js"
         }
     ]
 }
