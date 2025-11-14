@@ -10,6 +10,8 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
 	// The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
 	CustomOpensslCipherConfigTls12 *[]string `json:"customOpensslCipherConfigTls12,omitempty"`
+	// The custom OpenSSL cipher suite list for TLS 1.3. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+	CustomOpensslCipherConfigTls13 *[]string `json:"customOpensslCipherConfigTls13,omitempty"`
 	// Default time limit in milliseconds for individual read operations to complete.
 	DefaultMaxTimeMS *int `json:"defaultMaxTimeMS,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver.
@@ -158,6 +160,39 @@ func (o *ClusterDescriptionProcessArgs20240805) HasCustomOpensslCipherConfigTls1
 // SetCustomOpensslCipherConfigTls12 gets a reference to the given []string and assigns it to the CustomOpensslCipherConfigTls12 field.
 func (o *ClusterDescriptionProcessArgs20240805) SetCustomOpensslCipherConfigTls12(v []string) {
 	o.CustomOpensslCipherConfigTls12 = &v
+}
+
+// GetCustomOpensslCipherConfigTls13 returns the CustomOpensslCipherConfigTls13 field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls13() []string {
+	if o == nil || IsNil(o.CustomOpensslCipherConfigTls13) {
+		var ret []string
+		return ret
+	}
+	return *o.CustomOpensslCipherConfigTls13
+}
+
+// GetCustomOpensslCipherConfigTls13Ok returns a tuple with the CustomOpensslCipherConfigTls13 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls13Ok() (*[]string, bool) {
+	if o == nil || IsNil(o.CustomOpensslCipherConfigTls13) {
+		return nil, false
+	}
+
+	return o.CustomOpensslCipherConfigTls13, true
+}
+
+// HasCustomOpensslCipherConfigTls13 returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs20240805) HasCustomOpensslCipherConfigTls13() bool {
+	if o != nil && !IsNil(o.CustomOpensslCipherConfigTls13) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomOpensslCipherConfigTls13 gets a reference to the given []string and assigns it to the CustomOpensslCipherConfigTls13 field.
+func (o *ClusterDescriptionProcessArgs20240805) SetCustomOpensslCipherConfigTls13(v []string) {
+	o.CustomOpensslCipherConfigTls13 = &v
 }
 
 // GetDefaultMaxTimeMS returns the DefaultMaxTimeMS field value if set, zero value otherwise

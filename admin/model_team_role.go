@@ -8,17 +8,19 @@ type TeamRole struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// One or more project-level roles to assign to the team.
-	RoleNames *[]string `json:"roleNames,omitempty"`
+	RoleNames []string `json:"roleNames"`
 	// Unique 24-hexadecimal character string that identifies the team.
-	TeamId *string `json:"teamId,omitempty"`
+	TeamId string `json:"teamId"`
 }
 
 // NewTeamRole instantiates a new TeamRole object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTeamRole() *TeamRole {
+func NewTeamRole(roleNames []string, teamId string) *TeamRole {
 	this := TeamRole{}
+	this.RoleNames = roleNames
+	this.TeamId = teamId
 	return &this
 }
 
@@ -63,68 +65,50 @@ func (o *TeamRole) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-// GetRoleNames returns the RoleNames field value if set, zero value otherwise
+// GetRoleNames returns the RoleNames field value
 func (o *TeamRole) GetRoleNames() []string {
-	if o == nil || IsNil(o.RoleNames) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.RoleNames
+
+	return o.RoleNames
 }
 
-// GetRoleNamesOk returns a tuple with the RoleNames field value if set, nil otherwise
+// GetRoleNamesOk returns a tuple with the RoleNames field value
 // and a boolean to check if the value has been set.
 func (o *TeamRole) GetRoleNamesOk() (*[]string, bool) {
-	if o == nil || IsNil(o.RoleNames) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.RoleNames, true
+	return &o.RoleNames, true
 }
 
-// HasRoleNames returns a boolean if a field has been set.
-func (o *TeamRole) HasRoleNames() bool {
-	if o != nil && !IsNil(o.RoleNames) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoleNames gets a reference to the given []string and assigns it to the RoleNames field.
+// SetRoleNames sets field value
 func (o *TeamRole) SetRoleNames(v []string) {
-	o.RoleNames = &v
+	o.RoleNames = v
 }
 
-// GetTeamId returns the TeamId field value if set, zero value otherwise
+// GetTeamId returns the TeamId field value
 func (o *TeamRole) GetTeamId() string {
-	if o == nil || IsNil(o.TeamId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TeamId
+
+	return o.TeamId
 }
 
-// GetTeamIdOk returns a tuple with the TeamId field value if set, nil otherwise
+// GetTeamIdOk returns a tuple with the TeamId field value
 // and a boolean to check if the value has been set.
 func (o *TeamRole) GetTeamIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TeamId) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.TeamId, true
+	return &o.TeamId, true
 }
 
-// HasTeamId returns a boolean if a field has been set.
-func (o *TeamRole) HasTeamId() bool {
-	if o != nil && !IsNil(o.TeamId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTeamId gets a reference to the given string and assigns it to the TeamId field.
+// SetTeamId sets field value
 func (o *TeamRole) SetTeamId(v string) {
-	o.TeamId = &v
+	o.TeamId = v
 }

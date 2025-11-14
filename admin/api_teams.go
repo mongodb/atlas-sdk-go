@@ -13,18 +13,18 @@ import (
 type TeamsApi interface {
 
 	/*
-		AddGroupTeams Add One Team to One Project
+		AddGroupTeams Add Multiple Teams to One Project
 
-		Adds one team to the specified project. All members of the team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+		Adds multiple teams to the specified project. All members of a team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param teamRole Team to add to the specified project.
+		@param teamRole Teams and their roles to be added to the specified project.
 		@return AddGroupTeamsApiRequest
 	*/
 	AddGroupTeams(ctx context.Context, groupId string, teamRole *[]TeamRole) AddGroupTeamsApiRequest
 	/*
-		AddGroupTeams Add One Team to One Project
+		AddGroupTeams Add Multiple Teams to One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -368,9 +368,9 @@ func (r AddGroupTeamsApiRequest) Execute() (*PaginatedTeamRole, *http.Response, 
 }
 
 /*
-AddGroupTeams Add One Team to One Project
+AddGroupTeams Add Multiple Teams to One Project
 
-Adds one team to the specified project. All members of the team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Adds multiple teams to the specified project. All members of a team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
