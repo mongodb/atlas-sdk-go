@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Pipeline** | [**[]any**](any.md) | Stream aggregation pipeline you want to apply to your streaming data. | [readonly] 
 **State** | **string** | The state of the stream processor. Commonly occurring states are &#39;CREATED&#39;, &#39;STARTED&#39;, &#39;STOPPED&#39; and &#39;FAILED&#39;. | [readonly] 
 **Stats** | Pointer to [**any**](interface{}.md) | The stats associated with the stream processor. | [optional] [readonly] 
+**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. | [optional] 
 
 ## Methods
 
@@ -179,6 +180,30 @@ SetStats sets Stats field to given value.
 `func (o *StreamsProcessorWithStats) HasStats() bool`
 
 HasStats returns a boolean if a field has been set.
+### GetTier
+
+`func (o *StreamsProcessorWithStats) GetTier() string`
+
+GetTier returns the Tier field if non-nil, zero value otherwise.
+
+### GetTierOk
+
+`func (o *StreamsProcessorWithStats) GetTierOk() (*string, bool)`
+
+GetTierOk returns a tuple with the Tier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTier
+
+`func (o *StreamsProcessorWithStats) SetTier(v string)`
+
+SetTier sets Tier field to given value.
+
+### HasTier
+
+`func (o *StreamsProcessorWithStats) HasTier() bool`
+
+HasTier returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
