@@ -6,6 +6,8 @@ package admin
 type ApiAtlasClusterAdvancedConfiguration struct {
 	// The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
 	CustomOpensslCipherConfigTls12 *[]string `json:"customOpensslCipherConfigTls12,omitempty"`
+	// The custom OpenSSL cipher suite list for TLS 1.3. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+	CustomOpensslCipherConfigTls13 *[]string `json:"customOpensslCipherConfigTls13,omitempty"`
 	// Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version.
 	MinimumEnabledTlsProtocol *string `json:"minimumEnabledTlsProtocol,omitempty"`
 	// The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
@@ -60,6 +62,39 @@ func (o *ApiAtlasClusterAdvancedConfiguration) HasCustomOpensslCipherConfigTls12
 // SetCustomOpensslCipherConfigTls12 gets a reference to the given []string and assigns it to the CustomOpensslCipherConfigTls12 field.
 func (o *ApiAtlasClusterAdvancedConfiguration) SetCustomOpensslCipherConfigTls12(v []string) {
 	o.CustomOpensslCipherConfigTls12 = &v
+}
+
+// GetCustomOpensslCipherConfigTls13 returns the CustomOpensslCipherConfigTls13 field value if set, zero value otherwise
+func (o *ApiAtlasClusterAdvancedConfiguration) GetCustomOpensslCipherConfigTls13() []string {
+	if o == nil || IsNil(o.CustomOpensslCipherConfigTls13) {
+		var ret []string
+		return ret
+	}
+	return *o.CustomOpensslCipherConfigTls13
+}
+
+// GetCustomOpensslCipherConfigTls13Ok returns a tuple with the CustomOpensslCipherConfigTls13 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiAtlasClusterAdvancedConfiguration) GetCustomOpensslCipherConfigTls13Ok() (*[]string, bool) {
+	if o == nil || IsNil(o.CustomOpensslCipherConfigTls13) {
+		return nil, false
+	}
+
+	return o.CustomOpensslCipherConfigTls13, true
+}
+
+// HasCustomOpensslCipherConfigTls13 returns a boolean if a field has been set.
+func (o *ApiAtlasClusterAdvancedConfiguration) HasCustomOpensslCipherConfigTls13() bool {
+	if o != nil && !IsNil(o.CustomOpensslCipherConfigTls13) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomOpensslCipherConfigTls13 gets a reference to the given []string and assigns it to the CustomOpensslCipherConfigTls13 field.
+func (o *ApiAtlasClusterAdvancedConfiguration) SetCustomOpensslCipherConfigTls13(v []string) {
+	o.CustomOpensslCipherConfigTls13 = &v
 }
 
 // GetMinimumEnabledTlsProtocol returns the MinimumEnabledTlsProtocol field value if set, zero value otherwise

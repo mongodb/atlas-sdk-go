@@ -11,6 +11,9 @@ type ClusterOutageSimulation struct {
 	// Human-readable label that identifies the cluster that undergoes outage simulation.
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
+	// Date and time when MongoDB Cloud expires the outage simulation. This parameter expresses its value in the ISO 8601 timestamp format in UTC. If not provided, defaults to 3 days from the start date.
+	// Read only field.
+	ExpirationDate *time.Time `json:"expirationDate,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project that contains the cluster to undergo outage simulation.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
@@ -75,6 +78,39 @@ func (o *ClusterOutageSimulation) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *ClusterOutageSimulation) SetClusterName(v string) {
 	o.ClusterName = &v
+}
+
+// GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise
+func (o *ClusterOutageSimulation) GetExpirationDate() time.Time {
+	if o == nil || IsNil(o.ExpirationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ExpirationDate
+}
+
+// GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterOutageSimulation) GetExpirationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.ExpirationDate) {
+		return nil, false
+	}
+
+	return o.ExpirationDate, true
+}
+
+// HasExpirationDate returns a boolean if a field has been set.
+func (o *ClusterOutageSimulation) HasExpirationDate() bool {
+	if o != nil && !IsNil(o.ExpirationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationDate gets a reference to the given time.Time and assigns it to the ExpirationDate field.
+func (o *ClusterOutageSimulation) SetExpirationDate(v time.Time) {
+	o.ExpirationDate = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
