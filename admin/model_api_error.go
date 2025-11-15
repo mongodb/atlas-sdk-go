@@ -219,3 +219,14 @@ func (o *ApiError) HasReason() bool {
 func (o *ApiError) SetReason(v string) {
 	o.Reason = &v
 }
+
+func (a *ApiError) GetContextualError(ctx context.Context) string {
+    baseError := a.Error()
+
+    // Check if context has request ID
+    if requestID, ok := ctx.Value("X-Request-ID").(string); ok && requestID != "" {
+        return fmt.Sprintf("%s (RequestID: %s)", baseError, requestID)
+    }
+
+    return baseError
+}
