@@ -13204,6 +13204,10 @@ components:
             url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
           readOnly: true
           type: object
+        tier:
+          description: Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
+          title: Stream Workspace Tier
+          type: string
       required:
         - _id
         - name
@@ -13245,6 +13249,10 @@ components:
             description: ISO 8601
             url: https://en.wikipedia.org/wiki/ISO_8601
           format: date-time
+          type: string
+        tier:
+          description: Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
+          title: Stream Workspace Tier
           type: string
       type: object
     StreamsTenant:
@@ -16506,7 +16514,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 7e672413250f29eaf2a8344dfdfd3b464e630ef8
+  x-xgen-sha: 1750cc29d671948cce0fab7f75119ebf77340b09
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -47180,6 +47188,8 @@ paths:
             application/vnd.atlas.2025-03-12+json:
               x-xgen-version: 2025-03-12
           description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
         "403":
