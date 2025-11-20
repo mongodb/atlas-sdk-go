@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds** | Pointer to **int** | The minimum pre- and post-image retention time in seconds. | [optional] [default to -1]
 **ChunkMigrationConcurrency** | Pointer to **int** | Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster. | [optional] 
 **CustomOpensslCipherConfigTls12** | Pointer to **[]string** | The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when &#x60;tlsCipherConfigMode&#x60; is set to &#x60;CUSTOM&#x60;. | [optional] 
+**CustomOpensslCipherConfigTls13** | Pointer to **[]string** | The custom OpenSSL cipher suite list for TLS 1.3. This field is only valid when &#x60;tlsCipherConfigMode&#x60; is set to &#x60;CUSTOM&#x60;. | [optional] 
 **DefaultMaxTimeMS** | Pointer to **int** | Default time limit in milliseconds for individual read operations to complete. | [optional] 
 **DefaultWriteConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver. | [optional] 
 **JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. When using 8.0+, we recommend disabling server-side JavaScript and using operators of aggregation pipeline as more performant alternative. | [optional] 
@@ -111,6 +112,30 @@ SetCustomOpensslCipherConfigTls12 sets CustomOpensslCipherConfigTls12 field to g
 `func (o *ClusterDescriptionProcessArgs20240805) HasCustomOpensslCipherConfigTls12() bool`
 
 HasCustomOpensslCipherConfigTls12 returns a boolean if a field has been set.
+### GetCustomOpensslCipherConfigTls13
+
+`func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls13() []string`
+
+GetCustomOpensslCipherConfigTls13 returns the CustomOpensslCipherConfigTls13 field if non-nil, zero value otherwise.
+
+### GetCustomOpensslCipherConfigTls13Ok
+
+`func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls13Ok() (*[]string, bool)`
+
+GetCustomOpensslCipherConfigTls13Ok returns a tuple with the CustomOpensslCipherConfigTls13 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomOpensslCipherConfigTls13
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetCustomOpensslCipherConfigTls13(v []string)`
+
+SetCustomOpensslCipherConfigTls13 sets CustomOpensslCipherConfigTls13 field to given value.
+
+### HasCustomOpensslCipherConfigTls13
+
+`func (o *ClusterDescriptionProcessArgs20240805) HasCustomOpensslCipherConfigTls13() bool`
+
+HasCustomOpensslCipherConfigTls13 returns a boolean if a field has been set.
 ### GetDefaultMaxTimeMS
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetDefaultMaxTimeMS() int`

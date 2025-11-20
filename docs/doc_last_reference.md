@@ -441,7 +441,7 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [UpdateStreamProcessor](./docs/StreamsApi.md#updatestreamprocessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor |
 *StreamsApi* | [UpdateStreamWorkspace](./docs/StreamsApi.md#updatestreamworkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Workspace |
 *StreamsApi* | [WithStreamSampleConnections](./docs/StreamsApi.md#withstreamsampleconnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Workspace with Sample Connections |
-*TeamsApi* | [AddGroupTeams](./docs/TeamsApi.md#addgroupteams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add One Team to One Project |
+*TeamsApi* | [AddGroupTeams](./docs/TeamsApi.md#addgroupteams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add Multiple Teams to One Project |
 *TeamsApi* | [AddTeamUsers](./docs/TeamsApi.md#addteamusers) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users in One Organization to One Team |
 *TeamsApi* | [CreateOrgTeam](./docs/TeamsApi.md#createorgteam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization |
 *TeamsApi* | [DeleteOrgTeam](./docs/TeamsApi.md#deleteorgteam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Remove One Team from One Organization |

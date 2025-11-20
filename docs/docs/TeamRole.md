@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**RoleNames** | Pointer to **[]string** | One or more project-level roles to assign to the team. | [optional] 
-**TeamId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the team. | [optional] 
+**RoleNames** | **[]string** | One or more project-level roles to assign to the team. | 
+**TeamId** | **string** | Unique 24-hexadecimal character string that identifies the team. | 
 
 ## Methods
 
 ### NewTeamRole
 
-`func NewTeamRole() *TeamRole`
+`func NewTeamRole(roleNames []string, teamId string, ) *TeamRole`
 
 NewTeamRole instantiates a new TeamRole object
 This constructor will assign default values to properties that have it defined,
@@ -70,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetRoleNames sets RoleNames field to given value.
 
-### HasRoleNames
-
-`func (o *TeamRole) HasRoleNames() bool`
-
-HasRoleNames returns a boolean if a field has been set.
 ### GetTeamId
 
 `func (o *TeamRole) GetTeamId() string`
@@ -94,11 +89,6 @@ and a boolean to check if the value has been set.
 
 SetTeamId sets TeamId field to given value.
 
-### HasTeamId
-
-`func (o *TeamRole) HasTeamId() bool`
-
-HasTeamId returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

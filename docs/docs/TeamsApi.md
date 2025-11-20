@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupTeams**](TeamsApi.md#AddGroupTeams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add One Team to One Project
+[**AddGroupTeams**](TeamsApi.md#AddGroupTeams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add Multiple Teams to One Project
 [**AddTeamUsers**](TeamsApi.md#AddTeamUsers) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users in One Organization to One Team
 [**CreateOrgTeam**](TeamsApi.md#CreateOrgTeam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization
 [**DeleteOrgTeam**](TeamsApi.md#DeleteOrgTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Remove One Team from One Organization
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 > PaginatedTeamRole AddGroupTeams(ctx, groupId, teamRole []TeamRole).Execute()
 
-Add One Team to One Project
+Add Multiple Teams to One Project
 
 
 ### Example
@@ -51,7 +51,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    teamRole := []openapiclient.TeamRole{*openapiclient.NewTeamRole()} // []TeamRole | 
+    teamRole := []openapiclient.TeamRole{*openapiclient.NewTeamRole([]string{"RoleNames_example"}, "32b6e34b3d91647abb20e7b8")} // []TeamRole | 
 
     resp, r, err := sdk.TeamsApi.AddGroupTeams(context.Background(), groupId, &teamRole).Execute()
     if err != nil {
@@ -83,7 +83,7 @@ Other parameters are passed through a pointer to a apiAddGroupTeamsRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **teamRole** | [**[]TeamRole**](TeamRole.md) | Team to add to the specified project. | 
+ **teamRole** | [**[]TeamRole**](TeamRole.md) | Teams and their roles to be added to the specified project. | 
 
 ### Return type
 
@@ -1053,7 +1053,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamId := "teamId_example" // string | 
-    teamRole := *openapiclient.NewTeamRole() // TeamRole | 
+    teamRole := *openapiclient.NewTeamRole([]string{"RoleNames_example"}, "32b6e34b3d91647abb20e7b8") // TeamRole | 
 
     resp, r, err := sdk.TeamsApi.UpdateGroupTeam(context.Background(), groupId, teamId, &teamRole).Execute()
     if err != nil {

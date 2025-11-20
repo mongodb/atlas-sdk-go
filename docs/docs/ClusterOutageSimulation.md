@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster that undergoes outage simulation. | [optional] [readonly] 
+**ExpirationDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud expires the outage simulation. This parameter expresses its value in the ISO 8601 timestamp format in UTC. If not provided, defaults to 3 days from the start date. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project that contains the cluster to undergo outage simulation. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the outage simulation. | [optional] [readonly] 
 **OutageFilters** | Pointer to [**[]AtlasClusterOutageSimulationOutageFilter**](AtlasClusterOutageSimulationOutageFilter.md) | List of settings that specify the type of cluster outage simulation. | [optional] 
@@ -54,6 +55,30 @@ SetClusterName sets ClusterName field to given value.
 `func (o *ClusterOutageSimulation) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+### GetExpirationDate
+
+`func (o *ClusterOutageSimulation) GetExpirationDate() time.Time`
+
+GetExpirationDate returns the ExpirationDate field if non-nil, zero value otherwise.
+
+### GetExpirationDateOk
+
+`func (o *ClusterOutageSimulation) GetExpirationDateOk() (*time.Time, bool)`
+
+GetExpirationDateOk returns a tuple with the ExpirationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationDate
+
+`func (o *ClusterOutageSimulation) SetExpirationDate(v time.Time)`
+
+SetExpirationDate sets ExpirationDate field to given value.
+
+### HasExpirationDate
+
+`func (o *ClusterOutageSimulation) HasExpirationDate() bool`
+
+HasExpirationDate returns a boolean if a field has been set.
 ### GetGroupId
 
 `func (o *ClusterOutageSimulation) GetGroupId() string`
