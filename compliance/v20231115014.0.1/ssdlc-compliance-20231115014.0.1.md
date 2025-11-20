@@ -2,12 +2,12 @@ SSDLC Compliance Report: MongoDB Atlas CLI Plugin Terraform 20231115014.0.1
 =================================================================
 
 - Release Creator: oarbusi
-- Created On: 2025-11-18
+- Created On: 2025-11-20
 
 Overview:
 
 - **Product and Release Name**
-	- MongoDB Atlas CLI Plugin Terraform 20231115014.0.1, 2025-11-18.
+	- MongoDB Atlas CLI Plugin Terraform 20231115014.0.1, 2025-11-20.
 
 - **Process Document**
 	- https://www.mongodb.com/blog/post/how-mongodb-protects-against-supply-chain-vulnerabilities
