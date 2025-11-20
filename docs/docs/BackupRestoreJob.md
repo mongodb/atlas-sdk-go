@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster containing the snapshots you want to retrieve. | [optional] [readonly] 
 **Created** | Pointer to **time.Time** | Date and time when someone requested this restore job. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Delivery** | [**BackupRestoreJobDelivery**](BackupRestoreJobDelivery.md) |  | 
+**DeploymentJobId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the an imported deployment job. This parameter exists when restoring from an imported snapshot/clustershot. | [optional] [readonly] 
 **EncryptionEnabled** | Pointer to **bool** | Flag that indicates whether someone encrypted the data in the restored snapshot. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that owns the snapshots. | [optional] [readonly] 
 **Hashes** | Pointer to [**[]RestoreJobFileHash**](RestoreJobFileHash.md) | List that contains documents mapping each restore file to a hashed checksum. This parameter applies after you download the corresponding **delivery.url**. If &#x60;\&quot;methodName\&quot; : \&quot;HTTP\&quot;&#x60;, this list contains one object that represents the hash of the **.tar.gz** file. | [optional] [readonly] 
@@ -181,6 +182,30 @@ and a boolean to check if the value has been set.
 
 SetDelivery sets Delivery field to given value.
 
+### GetDeploymentJobId
+
+`func (o *BackupRestoreJob) GetDeploymentJobId() string`
+
+GetDeploymentJobId returns the DeploymentJobId field if non-nil, zero value otherwise.
+
+### GetDeploymentJobIdOk
+
+`func (o *BackupRestoreJob) GetDeploymentJobIdOk() (*string, bool)`
+
+GetDeploymentJobIdOk returns a tuple with the DeploymentJobId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentJobId
+
+`func (o *BackupRestoreJob) SetDeploymentJobId(v string)`
+
+SetDeploymentJobId sets DeploymentJobId field to given value.
+
+### HasDeploymentJobId
+
+`func (o *BackupRestoreJob) HasDeploymentJobId() bool`
+
+HasDeploymentJobId returns a boolean if a field has been set.
 ### GetEncryptionEnabled
 
 `func (o *BackupRestoreJob) GetEncryptionEnabled() bool`
