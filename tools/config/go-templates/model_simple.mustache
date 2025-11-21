@@ -1,3 +1,13 @@
+import (
+"encoding/json"
+{{#vendorExtensions.x-is-api-error}}
+    "context"
+    "fmt"
+{{/vendorExtensions.x-is-api-error}}
+{{#imports}}
+    "{{import}}"
+{{/imports}}
+)
 
 // {{classname}} {{{description}}}{{^description}}struct for {{{classname}}}{{/description}}
 type {{classname}} struct {
@@ -178,3 +188,13 @@ func (o *{{{classname}}}) UnmarshalJSON(bytes []byte) (err error) {
 }
 
 {{/isArray}}
+{{#vendorExtensions.x-is-api-error}}
+// GetContextualError returns the error message with request ID context if available
+func (o *{{classname}}) GetContextualError(ctx context.Context) string {
+	baseError := o.Error()
+	if requestID, ok := ctx.Value("X-Request-ID").(string); ok && requestID != "" {
+		return fmt.Sprintf("%s (RequestID: %s)", baseError, requestID)
+	}
+	return baseError
+}
+{{/vendorExtensions.x-is-api-error}}
