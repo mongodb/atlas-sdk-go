@@ -14,6 +14,31 @@ import (
 type QueryShapeInsightsApi interface {
 
 	/*
+		GetClusterQueryShape Return One Query Shape
+
+		Returns the details for a single query shape. This endpoint only returns query shapes with REJECTED status. If the specified query shape hash does not correspond to a rejected query shape, a 404 Not Found error is returned.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+		@return GetClusterQueryShapeApiRequest
+	*/
+	GetClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetClusterQueryShapeApiRequest
+	/*
+		GetClusterQueryShape Return One Query Shape
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetClusterQueryShapeApiParams - Parameters for the request
+		@return GetClusterQueryShapeApiRequest
+	*/
+	GetClusterQueryShapeWithParams(ctx context.Context, args *GetClusterQueryShapeApiParams) GetClusterQueryShapeApiRequest
+
+	// Method available only for mocking purposes
+	GetClusterQueryShapeExecute(r GetClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error)
+
+	/*
 		GetQueryShapeDetails Return Query Shape Details
 
 		Returns the metadata and statistics summary for a given query shape hash.
@@ -39,6 +64,30 @@ type QueryShapeInsightsApi interface {
 	GetQueryShapeDetailsExecute(r GetQueryShapeDetailsApiRequest) (*QueryStatsDetailsResponse, *http.Response, error)
 
 	/*
+		ListClusterQueryShapes Return All Query Shapes
+
+		Returns a list of query shapes for one cluster. Query shapes may be filtered by their status; at present, this endpoint supports only the REJECTED status.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@return ListClusterQueryShapesApiRequest
+	*/
+	ListClusterQueryShapes(ctx context.Context, groupId string, clusterName string) ListClusterQueryShapesApiRequest
+	/*
+		ListClusterQueryShapes Return All Query Shapes
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListClusterQueryShapesApiParams - Parameters for the request
+		@return ListClusterQueryShapesApiRequest
+	*/
+	ListClusterQueryShapesWithParams(ctx context.Context, args *ListClusterQueryShapesApiParams) ListClusterQueryShapesApiRequest
+
+	// Method available only for mocking purposes
+	ListClusterQueryShapesExecute(r ListClusterQueryShapesApiRequest) (*PaginatedQueryShapes, *http.Response, error)
+
+	/*
 		ListQueryShapeSummaries Return Query Statistic Summaries
 
 		Returns a list of query shape statistics summaries for a given cluster. Query shape statistics provide performance insights about MongoDB queries, helping users identify problematic query patterns and potential optimizations.
@@ -61,10 +110,168 @@ type QueryShapeInsightsApi interface {
 
 	// Method available only for mocking purposes
 	ListQueryShapeSummariesExecute(r ListQueryShapeSummariesApiRequest) (*QueryStatsSummaryListResponse, *http.Response, error)
+
+	/*
+		UpdateClusterQueryShape Update Query Shape Rejection Status
+
+		Updates the rejection status of a query shape. Use this endpoint to reject a query shape (preventing it from executing on the cluster) or to unreject a previously rejected query shape (allowing it to execute again). This operation is idempotent: rejecting an already rejected query shape or unrejecting an already unrejected query shape will return 200 OK.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+		@param queryShapeUpdateRequest The desired rejection status for the query shape. Provide REJECTED to block the query shape from executing, or UNREJECTED to allow it to execute.
+		@return UpdateClusterQueryShapeApiRequest
+	*/
+	UpdateClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string, queryShapeUpdateRequest *QueryShapeUpdateRequest) UpdateClusterQueryShapeApiRequest
+	/*
+		UpdateClusterQueryShape Update Query Shape Rejection Status
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateClusterQueryShapeApiParams - Parameters for the request
+		@return UpdateClusterQueryShapeApiRequest
+	*/
+	UpdateClusterQueryShapeWithParams(ctx context.Context, args *UpdateClusterQueryShapeApiParams) UpdateClusterQueryShapeApiRequest
+
+	// Method available only for mocking purposes
+	UpdateClusterQueryShapeExecute(r UpdateClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error)
 }
 
 // QueryShapeInsightsApiService QueryShapeInsightsApi service
 type QueryShapeInsightsApiService service
+
+type GetClusterQueryShapeApiRequest struct {
+	ctx            context.Context
+	ApiService     QueryShapeInsightsApi
+	groupId        string
+	clusterName    string
+	queryShapeHash string
+}
+
+type GetClusterQueryShapeApiParams struct {
+	GroupId        string
+	ClusterName    string
+	QueryShapeHash string
+}
+
+func (a *QueryShapeInsightsApiService) GetClusterQueryShapeWithParams(ctx context.Context, args *GetClusterQueryShapeApiParams) GetClusterQueryShapeApiRequest {
+	return GetClusterQueryShapeApiRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        args.GroupId,
+		clusterName:    args.ClusterName,
+		queryShapeHash: args.QueryShapeHash,
+	}
+}
+
+func (r GetClusterQueryShapeApiRequest) Execute() (*QueryShapeResponse, *http.Response, error) {
+	return r.ApiService.GetClusterQueryShapeExecute(r)
+}
+
+/*
+GetClusterQueryShape Return One Query Shape
+
+Returns the details for a single query shape. This endpoint only returns query shapes with REJECTED status. If the specified query shape hash does not correspond to a rejected query shape, a 404 Not Found error is returned.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+	@return GetClusterQueryShapeApiRequest
+*/
+func (a *QueryShapeInsightsApiService) GetClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetClusterQueryShapeApiRequest {
+	return GetClusterQueryShapeApiRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        groupId,
+		clusterName:    clusterName,
+		queryShapeHash: queryShapeHash,
+	}
+}
+
+// GetClusterQueryShapeExecute executes the request
+//
+//	@return QueryShapeResponse
+func (a *QueryShapeInsightsApiService) GetClusterQueryShapeExecute(r GetClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *QueryShapeResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsApiService.GetClusterQueryShape")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.queryShapeHash == "" {
+		return localVarReturnValue, nil, reportError("queryShapeHash is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"queryShapeHash"+"}", url.PathEscape(r.queryShapeHash), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type GetQueryShapeDetailsApiRequest struct {
 	ctx            context.Context
@@ -188,6 +395,193 @@ func (a *QueryShapeInsightsApiService) GetQueryShapeDetailsExecute(r GetQuerySha
 		_ = reflect.Append
 		parameterAddToHeaderOrQuery(localVarQueryParams, "processIds", t, "multi")
 
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListClusterQueryShapesApiRequest struct {
+	ctx          context.Context
+	ApiService   QueryShapeInsightsApi
+	groupId      string
+	clusterName  string
+	status       *string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListClusterQueryShapesApiParams struct {
+	GroupId      string
+	ClusterName  string
+	Status       *string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *QueryShapeInsightsApiService) ListClusterQueryShapesWithParams(ctx context.Context, args *ListClusterQueryShapesApiParams) ListClusterQueryShapesApiRequest {
+	return ListClusterQueryShapesApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		clusterName:  args.ClusterName,
+		status:       args.Status,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// The status of query shapes to retrieve. Only REJECTED status is supported. If omitted, defaults to REJECTED.
+func (r ListClusterQueryShapesApiRequest) Status(status string) ListClusterQueryShapesApiRequest {
+	r.status = &status
+	return r
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListClusterQueryShapesApiRequest) IncludeCount(includeCount bool) ListClusterQueryShapesApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListClusterQueryShapesApiRequest) ItemsPerPage(itemsPerPage int) ListClusterQueryShapesApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListClusterQueryShapesApiRequest) PageNum(pageNum int) ListClusterQueryShapesApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListClusterQueryShapesApiRequest) Execute() (*PaginatedQueryShapes, *http.Response, error) {
+	return r.ApiService.ListClusterQueryShapesExecute(r)
+}
+
+/*
+ListClusterQueryShapes Return All Query Shapes
+
+Returns a list of query shapes for one cluster. Query shapes may be filtered by their status; at present, this endpoint supports only the REJECTED status.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return ListClusterQueryShapesApiRequest
+*/
+func (a *QueryShapeInsightsApiService) ListClusterQueryShapes(ctx context.Context, groupId string, clusterName string) ListClusterQueryShapesApiRequest {
+	return ListClusterQueryShapesApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// ListClusterQueryShapesExecute executes the request
+//
+//	@return PaginatedQueryShapes
+func (a *QueryShapeInsightsApiService) ListClusterQueryShapesExecute(r ListClusterQueryShapesApiRequest) (*PaginatedQueryShapes, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedQueryShapes
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsApiService.ListClusterQueryShapes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+	} else {
+		var defaultValue string = "REJECTED"
+		r.status = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+	}
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -449,6 +843,147 @@ func (a *QueryShapeInsightsApiService) ListQueryShapeSummariesExecute(r ListQuer
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateClusterQueryShapeApiRequest struct {
+	ctx                     context.Context
+	ApiService              QueryShapeInsightsApi
+	groupId                 string
+	clusterName             string
+	queryShapeHash          string
+	queryShapeUpdateRequest *QueryShapeUpdateRequest
+}
+
+type UpdateClusterQueryShapeApiParams struct {
+	GroupId                 string
+	ClusterName             string
+	QueryShapeHash          string
+	QueryShapeUpdateRequest *QueryShapeUpdateRequest
+}
+
+func (a *QueryShapeInsightsApiService) UpdateClusterQueryShapeWithParams(ctx context.Context, args *UpdateClusterQueryShapeApiParams) UpdateClusterQueryShapeApiRequest {
+	return UpdateClusterQueryShapeApiRequest{
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 args.GroupId,
+		clusterName:             args.ClusterName,
+		queryShapeHash:          args.QueryShapeHash,
+		queryShapeUpdateRequest: args.QueryShapeUpdateRequest,
+	}
+}
+
+func (r UpdateClusterQueryShapeApiRequest) Execute() (*QueryShapeResponse, *http.Response, error) {
+	return r.ApiService.UpdateClusterQueryShapeExecute(r)
+}
+
+/*
+UpdateClusterQueryShape Update Query Shape Rejection Status
+
+Updates the rejection status of a query shape. Use this endpoint to reject a query shape (preventing it from executing on the cluster) or to unreject a previously rejected query shape (allowing it to execute again). This operation is idempotent: rejecting an already rejected query shape or unrejecting an already unrejected query shape will return 200 OK.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+	@return UpdateClusterQueryShapeApiRequest
+*/
+func (a *QueryShapeInsightsApiService) UpdateClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string, queryShapeUpdateRequest *QueryShapeUpdateRequest) UpdateClusterQueryShapeApiRequest {
+	return UpdateClusterQueryShapeApiRequest{
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 groupId,
+		clusterName:             clusterName,
+		queryShapeHash:          queryShapeHash,
+		queryShapeUpdateRequest: queryShapeUpdateRequest,
+	}
+}
+
+// UpdateClusterQueryShapeExecute executes the request
+//
+//	@return QueryShapeResponse
+func (a *QueryShapeInsightsApiService) UpdateClusterQueryShapeExecute(r UpdateClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *QueryShapeResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsApiService.UpdateClusterQueryShape")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.queryShapeHash == "" {
+		return localVarReturnValue, nil, reportError("queryShapeHash is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"queryShapeHash"+"}", url.PathEscape(r.queryShapeHash), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.queryShapeUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("queryShapeUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.queryShapeUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
