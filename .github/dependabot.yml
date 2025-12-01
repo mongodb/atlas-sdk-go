@@ -4,20 +4,21 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
-      day: tuesday
+      day: sunday
   - package-ecosystem: gomod
     directory: "/examples"
     schedule:
       interval: monthly
+      day: sunday
     ignore:
       - dependency-name: "*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: monthly
-      day: tuesday
+      day: sunday
   - package-ecosystem: npm
     directory: "/tools"
     schedule:
       interval: weekly
-      day: tuesday
+      day: sunday
