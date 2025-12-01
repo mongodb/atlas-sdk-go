@@ -42,7 +42,7 @@ jobs:
         run: make generate_mocks  
       - name: Fix import order issues
         run: goimports -l -w .
-      - uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e
+      - uses: peter-evans/create-pull-request@84ae59a2cdc2258d6fa0732dd66352dddae2a412
         if: env.FILES_CHANGED == 'true'
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
