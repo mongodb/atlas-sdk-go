@@ -13,7 +13,7 @@
     "@openapitools/openapi-generator-cli": "2.25.2",
     "jest": "30.2.0",
     "replace-in-file": "^8.3.0",
-    "prettier": "3.6.2"
+    "prettier": "3.7.3"
   },
   "scripts": {
     "format": "prettier --write .",
