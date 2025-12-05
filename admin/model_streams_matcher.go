@@ -6,7 +6,7 @@ package admin
 type StreamsMatcher struct {
 	// Name of the parameter in the target object that MongoDB Cloud checks. The parameter must match all rules for MongoDB Cloud to check for alert configurations.
 	FieldName string `json:"fieldName"`
-	// Comparison operator to apply when checking the current metric value against **matcher[n].value**.
+	// Comparison operator to apply when checking the current metric value against **matcher[n].value**. The `REGEX` operator only supports inclusive matches. Use the `NOT_CONTAINS` operator to exclude values.
 	Operator string `json:"operator"`
 	// Value to match or exceed using the specified **matchers.operator**.
 	Value string `json:"value"`

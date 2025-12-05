@@ -26,6 +26,8 @@ type ServerlessPrivateEndpointsApi interface {
 			@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
 			@param serverlessTenantCreateRequest Information about the Private Endpoint to create for the Serverless Instance.
 			@return CreateServerlessPrivateEndpointApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest
 	/*
@@ -35,6 +37,8 @@ type ServerlessPrivateEndpointsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateServerlessPrivateEndpointApiParams - Parameters for the request
 		@return CreateServerlessPrivateEndpointApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest
 
@@ -53,6 +57,8 @@ type ServerlessPrivateEndpointsApi interface {
 			@param instanceName Human-readable label that identifies the serverless instance from which the tenant endpoint will be removed.
 			@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be removed.
 			@return DeleteServerlessPrivateEndpointApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest
 	/*
@@ -62,6 +68,8 @@ type ServerlessPrivateEndpointsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DeleteServerlessPrivateEndpointApiParams - Parameters for the request
 		@return DeleteServerlessPrivateEndpointApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest
 
@@ -80,6 +88,8 @@ type ServerlessPrivateEndpointsApi interface {
 			@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
 			@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint.
 			@return GetServerlessPrivateEndpointApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest
 	/*
@@ -89,6 +99,8 @@ type ServerlessPrivateEndpointsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetServerlessPrivateEndpointApiParams - Parameters for the request
 		@return GetServerlessPrivateEndpointApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest
 
@@ -106,6 +118,8 @@ type ServerlessPrivateEndpointsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
 			@return ListServerlessPrivateEndpointApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	ListServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointApiRequest
 	/*
@@ -115,6 +129,8 @@ type ServerlessPrivateEndpointsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListServerlessPrivateEndpointApiParams - Parameters for the request
 		@return ListServerlessPrivateEndpointApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	ListServerlessPrivateEndpointWithParams(ctx context.Context, args *ListServerlessPrivateEndpointApiParams) ListServerlessPrivateEndpointApiRequest
 
@@ -134,6 +150,8 @@ type ServerlessPrivateEndpointsApi interface {
 			@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be updated.
 			@param serverlessTenantEndpointUpdate Object used for update.
 			@return UpdateServerlessPrivateEndpointApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest
 	/*
@@ -143,6 +161,8 @@ type ServerlessPrivateEndpointsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateServerlessPrivateEndpointApiParams - Parameters for the request
 		@return UpdateServerlessPrivateEndpointApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest
 
@@ -194,6 +214,8 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
 	@return CreateServerlessPrivateEndpointApiRequest
+
+Deprecated
 */
 func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
@@ -208,6 +230,8 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(c
 // CreateServerlessPrivateEndpointExecute executes the request
 //
 //	@return ServerlessTenantEndpoint
+//
+// Deprecated
 func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -329,6 +353,8 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 	@param instanceName Human-readable label that identifies the serverless instance from which the tenant endpoint will be removed.
 	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be removed.
 	@return DeleteServerlessPrivateEndpointApiRequest
+
+Deprecated
 */
 func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest {
 	return DeleteServerlessPrivateEndpointApiRequest{
@@ -341,6 +367,7 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(c
 }
 
 // DeleteServerlessPrivateEndpointExecute executes the request
+// Deprecated
 func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -446,6 +473,8 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
 	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint.
 	@return GetServerlessPrivateEndpointApiRequest
+
+Deprecated
 */
 func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest {
 	return GetServerlessPrivateEndpointApiRequest{
@@ -460,6 +489,8 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx 
 // GetServerlessPrivateEndpointExecute executes the request
 //
 //	@return ServerlessTenantEndpoint
+//
+// Deprecated
 func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -576,6 +607,8 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
 	@return ListServerlessPrivateEndpointApiRequest
+
+Deprecated
 */
 func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointApiRequest {
 	return ListServerlessPrivateEndpointApiRequest{
@@ -589,6 +622,8 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoint(ctx
 // ListServerlessPrivateEndpointExecute executes the request
 //
 //	@return []ServerlessTenantEndpoint
+//
+// Deprecated
 func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointExecute(r ListServerlessPrivateEndpointApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -708,6 +743,8 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint that will be updated.
 	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be updated.
 	@return UpdateServerlessPrivateEndpointApiRequest
+
+Deprecated
 */
 func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest {
 	return UpdateServerlessPrivateEndpointApiRequest{
@@ -723,6 +760,8 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(c
 // UpdateServerlessPrivateEndpointExecute executes the request
 //
 //	@return ServerlessTenantEndpoint
+//
+// Deprecated
 func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
