@@ -18,6 +18,8 @@ type ClusterSearchIndex struct {
 	// Condition of the search index when you made this request.  - `IN_PROGRESS`: Atlas is building or re-building the index after an edit. - `STEADY`: You can use this search index. - `FAILED`: Atlas could not build the index. - `MIGRATING`: Atlas is upgrading the underlying cluster tier and migrating indexes. - `PAUSED`: The cluster is paused.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see documentation.
+	StoredSource any `json:"storedSource,omitempty"`
 	// Type of the index. Default type is search.
 	Type *string `json:"type,omitempty"`
 	// Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index.
@@ -27,8 +29,6 @@ type ClusterSearchIndex struct {
 	Mappings  *ApiAtlasFTSMappings    `json:"mappings,omitempty"`
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
-	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see documentation.
-	StoredSource any `json:"storedSource,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
@@ -238,6 +238,40 @@ func (o *ClusterSearchIndex) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetStoredSource returns the StoredSource field value if set, zero value otherwise
+func (o *ClusterSearchIndex) GetStoredSource() any {
+	if o == nil || IsNil(o.StoredSource) {
+		var ret any
+		return ret
+	}
+	return o.StoredSource
+}
+
+// GetStoredSourceOk returns a tuple with the StoredSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterSearchIndex) GetStoredSourceOk() (any, bool) {
+	if o == nil || IsNil(o.StoredSource) {
+		var ret any
+		return ret, false
+	}
+
+	return o.StoredSource, true
+}
+
+// HasStoredSource returns a boolean if a field has been set.
+func (o *ClusterSearchIndex) HasStoredSource() bool {
+	if o != nil && !IsNil(o.StoredSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
+func (o *ClusterSearchIndex) SetStoredSource(v any) {
+	o.StoredSource = v
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -401,40 +435,6 @@ func (o *ClusterSearchIndex) HasSearchAnalyzer() bool {
 // SetSearchAnalyzer gets a reference to the given string and assigns it to the SearchAnalyzer field.
 func (o *ClusterSearchIndex) SetSearchAnalyzer(v string) {
 	o.SearchAnalyzer = &v
-}
-
-// GetStoredSource returns the StoredSource field value if set, zero value otherwise
-func (o *ClusterSearchIndex) GetStoredSource() any {
-	if o == nil || IsNil(o.StoredSource) {
-		var ret any
-		return ret
-	}
-	return o.StoredSource
-}
-
-// GetStoredSourceOk returns a tuple with the StoredSource field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetStoredSourceOk() (any, bool) {
-	if o == nil || IsNil(o.StoredSource) {
-		var ret any
-		return ret, false
-	}
-
-	return o.StoredSource, true
-}
-
-// HasStoredSource returns a boolean if a field has been set.
-func (o *ClusterSearchIndex) HasStoredSource() bool {
-	if o != nil && !IsNil(o.StoredSource) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
-func (o *ClusterSearchIndex) SetStoredSource(v any) {
-	o.StoredSource = v
 }
 
 // GetSynonyms returns the Synonyms field value if set, zero value otherwise

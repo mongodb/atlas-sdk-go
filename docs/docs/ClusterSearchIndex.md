@@ -10,12 +10,12 @@ Name | Type | Description | Notes
 **Name** | **string** | Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique. | 
 **NumPartitions** | Pointer to **int** | Number of index partitions. Allowed values are [1, 2, 4]. | [optional] [default to 1]
 **Status** | Pointer to **string** | Condition of the search index when you made this request.  - &#x60;IN_PROGRESS&#x60;: Atlas is building or re-building the index after an edit. - &#x60;STEADY&#x60;: You can use this search index. - &#x60;FAILED&#x60;: Atlas could not build the index. - &#x60;MIGRATING&#x60;: Atlas is upgrading the underlying cluster tier and migrating indexes. - &#x60;PAUSED&#x60;: The cluster is paused. | [optional] [readonly] 
+**StoredSource** | Pointer to [**any**](interface{}.md) | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see documentation. | [optional] 
 **Type** | Pointer to **string** | Type of the index. Default type is search. | [optional] 
 **Analyzer** | Pointer to **string** | Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index. | [optional] [default to "lucene.standard"]
 **Analyzers** | Pointer to [**[]ApiAtlasFTSAnalyzers**](ApiAtlasFTSAnalyzers.md) | List of user-defined methods to convert database field text into searchable words. | [optional] 
 **Mappings** | Pointer to [**ApiAtlasFTSMappings**](ApiAtlasFTSMappings.md) |  | [optional] 
 **SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
-**StoredSource** | Pointer to [**any**](interface{}.md) | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see documentation. | [optional] 
 **Synonyms** | Pointer to [**[]SearchSynonymMappingDefinition**](SearchSynonymMappingDefinition.md) | Rule sets that map words to their synonyms in this index. | [optional] 
 **Fields** | Pointer to [**[]any**](any.md) | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
 
@@ -167,6 +167,30 @@ SetStatus sets Status field to given value.
 `func (o *ClusterSearchIndex) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+### GetStoredSource
+
+`func (o *ClusterSearchIndex) GetStoredSource() any`
+
+GetStoredSource returns the StoredSource field if non-nil, zero value otherwise.
+
+### GetStoredSourceOk
+
+`func (o *ClusterSearchIndex) GetStoredSourceOk() (*any, bool)`
+
+GetStoredSourceOk returns a tuple with the StoredSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoredSource
+
+`func (o *ClusterSearchIndex) SetStoredSource(v any)`
+
+SetStoredSource sets StoredSource field to given value.
+
+### HasStoredSource
+
+`func (o *ClusterSearchIndex) HasStoredSource() bool`
+
+HasStoredSource returns a boolean if a field has been set.
 ### GetType
 
 `func (o *ClusterSearchIndex) GetType() string`
@@ -287,30 +311,6 @@ SetSearchAnalyzer sets SearchAnalyzer field to given value.
 `func (o *ClusterSearchIndex) HasSearchAnalyzer() bool`
 
 HasSearchAnalyzer returns a boolean if a field has been set.
-### GetStoredSource
-
-`func (o *ClusterSearchIndex) GetStoredSource() any`
-
-GetStoredSource returns the StoredSource field if non-nil, zero value otherwise.
-
-### GetStoredSourceOk
-
-`func (o *ClusterSearchIndex) GetStoredSourceOk() (*any, bool)`
-
-GetStoredSourceOk returns a tuple with the StoredSource field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoredSource
-
-`func (o *ClusterSearchIndex) SetStoredSource(v any)`
-
-SetStoredSource sets StoredSource field to given value.
-
-### HasStoredSource
-
-`func (o *ClusterSearchIndex) HasStoredSource() bool`
-
-HasStoredSource returns a boolean if a field has been set.
 ### GetSynonyms
 
 `func (o *ClusterSearchIndex) GetSynonyms() []SearchSynonymMappingDefinition`

@@ -23,6 +23,8 @@ type ServerlessInstancesApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param serverlessInstanceDescriptionCreate Create One Serverless Instance in One Project.
 			@return CreateServerlessInstanceApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	CreateServerlessInstance(ctx context.Context, groupId string, serverlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate) CreateServerlessInstanceApiRequest
 	/*
@@ -32,6 +34,8 @@ type ServerlessInstancesApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateServerlessInstanceApiParams - Parameters for the request
 		@return CreateServerlessInstanceApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	CreateServerlessInstanceWithParams(ctx context.Context, args *CreateServerlessInstanceApiParams) CreateServerlessInstanceApiRequest
 
@@ -49,6 +53,8 @@ type ServerlessInstancesApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param name Human-readable label that identifies the serverless instance.
 			@return DeleteServerlessInstanceApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	DeleteServerlessInstance(ctx context.Context, groupId string, name string) DeleteServerlessInstanceApiRequest
 	/*
@@ -58,6 +64,8 @@ type ServerlessInstancesApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DeleteServerlessInstanceApiParams - Parameters for the request
 		@return DeleteServerlessInstanceApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest
 
@@ -75,6 +83,8 @@ type ServerlessInstancesApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param name Human-readable label that identifies the serverless instance.
 			@return GetServerlessInstanceApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest
 	/*
@@ -84,6 +94,8 @@ type ServerlessInstancesApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetServerlessInstanceApiParams - Parameters for the request
 		@return GetServerlessInstanceApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest
 
@@ -100,6 +112,8 @@ type ServerlessInstancesApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@return ListServerlessInstancesApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest
 	/*
@@ -109,6 +123,8 @@ type ServerlessInstancesApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListServerlessInstancesApiParams - Parameters for the request
 		@return ListServerlessInstancesApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest
 
@@ -127,6 +143,8 @@ type ServerlessInstancesApi interface {
 			@param name Human-readable label that identifies the serverless instance.
 			@param serverlessInstanceDescriptionUpdate Update One Serverless Instance in One Project.
 			@return UpdateServerlessInstanceApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	UpdateServerlessInstance(ctx context.Context, groupId string, name string, serverlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate) UpdateServerlessInstanceApiRequest
 	/*
@@ -136,6 +154,8 @@ type ServerlessInstancesApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateServerlessInstanceApiParams - Parameters for the request
 		@return UpdateServerlessInstanceApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	UpdateServerlessInstanceWithParams(ctx context.Context, args *UpdateServerlessInstanceApiParams) UpdateServerlessInstanceApiRequest
 
@@ -181,6 +201,8 @@ Creates one serverless instance in the specified project. To use this resource, 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateServerlessInstanceApiRequest
+
+Deprecated
 */
 func (a *ServerlessInstancesApiService) CreateServerlessInstance(ctx context.Context, groupId string, serverlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate) CreateServerlessInstanceApiRequest {
 	return CreateServerlessInstanceApiRequest{
@@ -194,6 +216,8 @@ func (a *ServerlessInstancesApiService) CreateServerlessInstance(ctx context.Con
 // CreateServerlessInstanceExecute executes the request
 //
 //	@return ServerlessInstanceDescription
+//
+// Deprecated
 func (a *ServerlessInstancesApiService) CreateServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -307,6 +331,8 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param name Human-readable label that identifies the serverless instance.
 	@return DeleteServerlessInstanceApiRequest
+
+Deprecated
 */
 func (a *ServerlessInstancesApiService) DeleteServerlessInstance(ctx context.Context, groupId string, name string) DeleteServerlessInstanceApiRequest {
 	return DeleteServerlessInstanceApiRequest{
@@ -320,6 +346,8 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstance(ctx context.Con
 // DeleteServerlessInstanceExecute executes the request
 //
 //	@return any
+//
+// Deprecated
 func (a *ServerlessInstancesApiService) DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -432,6 +460,8 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param name Human-readable label that identifies the serverless instance.
 	@return GetServerlessInstanceApiRequest
+
+Deprecated
 */
 func (a *ServerlessInstancesApiService) GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest {
 	return GetServerlessInstanceApiRequest{
@@ -445,6 +475,8 @@ func (a *ServerlessInstancesApiService) GetServerlessInstance(ctx context.Contex
 // GetServerlessInstanceExecute executes the request
 //
 //	@return ServerlessInstanceDescription
+//
+// Deprecated
 func (a *ServerlessInstancesApiService) GetServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -580,6 +612,8 @@ This endpoint also lists Flex clusters that were created using the [createServer
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListServerlessInstancesApiRequest
+
+Deprecated
 */
 func (a *ServerlessInstancesApiService) ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest {
 	return ListServerlessInstancesApiRequest{
@@ -592,6 +626,8 @@ func (a *ServerlessInstancesApiService) ListServerlessInstances(ctx context.Cont
 // ListServerlessInstancesExecute executes the request
 //
 //	@return PaginatedServerlessInstanceDescription
+//
+// Deprecated
 func (a *ServerlessInstancesApiService) ListServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -724,6 +760,8 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param name Human-readable label that identifies the serverless instance.
 	@return UpdateServerlessInstanceApiRequest
+
+Deprecated
 */
 func (a *ServerlessInstancesApiService) UpdateServerlessInstance(ctx context.Context, groupId string, name string, serverlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate) UpdateServerlessInstanceApiRequest {
 	return UpdateServerlessInstanceApiRequest{
@@ -738,6 +776,8 @@ func (a *ServerlessInstancesApiService) UpdateServerlessInstance(ctx context.Con
 // UpdateServerlessInstanceExecute executes the request
 //
 //	@return ServerlessInstanceDescription
+//
+// Deprecated
 func (a *ServerlessInstancesApiService) UpdateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

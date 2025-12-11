@@ -357,12 +357,20 @@ Class        | Method        | HTTP request  | Description   |
 *ProjectsApi* | [UpdateGroupSettings](./docs/ProjectsApi.md#updategroupsettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings |
 *ProjectsApi* | [UpdateGroupUserRoles](./docs/ProjectsApi.md#updategroupuserroles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User |
 *ProjectsApi* | [UpdateInviteById](./docs/ProjectsApi.md#updateinvitebyid) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Invitation in One Project by Invitation ID |
+*PushBasedLogExportApi* | [CreateGroupLogIntegration](./docs/PushBasedLogExportApi.md#creategrouplogintegration) | **Post** /api/atlas/v2/groups/{groupId}/logIntegrations | Create One Log Integration |
 *PushBasedLogExportApi* | [CreateLogExport](./docs/PushBasedLogExportApi.md#createlogexport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project |
+*PushBasedLogExportApi* | [DeleteGroupLogIntegration](./docs/PushBasedLogExportApi.md#deletegrouplogintegration) | **Delete** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Remove One Log Integration |
 *PushBasedLogExportApi* | [DeleteLogExport](./docs/PushBasedLogExportApi.md#deletelogexport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project |
+*PushBasedLogExportApi* | [GetGroupLogIntegration](./docs/PushBasedLogExportApi.md#getgrouplogintegration) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Return One Log Integration |
 *PushBasedLogExportApi* | [GetLogExport](./docs/PushBasedLogExportApi.md#getlogexport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project |
+*PushBasedLogExportApi* | [ListGroupLogIntegrations](./docs/PushBasedLogExportApi.md#listgrouplogintegrations) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations | Return All Active Log Integrations |
+*PushBasedLogExportApi* | [UpdateGroupLogIntegration](./docs/PushBasedLogExportApi.md#updategrouplogintegration) | **Put** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Update One Log Integration |
 *PushBasedLogExportApi* | [UpdateLogExport](./docs/PushBasedLogExportApi.md#updatelogexport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project |
+*QueryShapeInsightsApi* | [GetClusterQueryShape](./docs/QueryShapeInsightsApi.md#getclusterqueryshape) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Return One Query Shape |
 *QueryShapeInsightsApi* | [GetQueryShapeDetails](./docs/QueryShapeInsightsApi.md#getqueryshapedetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details |
+*QueryShapeInsightsApi* | [ListClusterQueryShapes](./docs/QueryShapeInsightsApi.md#listclusterqueryshapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes |
 *QueryShapeInsightsApi* | [ListQueryShapeSummaries](./docs/QueryShapeInsightsApi.md#listqueryshapesummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries |
+*QueryShapeInsightsApi* | [UpdateClusterQueryShape](./docs/QueryShapeInsightsApi.md#updateclusterqueryshape) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Update Query Shape Rejection Status |
 *ResourcePoliciesApi* | [CreateOrgResourcePolicy](./docs/ResourcePoliciesApi.md#createorgresourcepolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy |
 *ResourcePoliciesApi* | [DeleteOrgResourcePolicy](./docs/ResourcePoliciesApi.md#deleteorgresourcepolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy |
 *ResourcePoliciesApi* | [GetNonCompliantResources](./docs/ResourcePoliciesApi.md#getnoncompliantresources) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources |
@@ -721,6 +729,8 @@ Class        | Method        | HTTP request  | Description   |
  - [LiveImportValidation](./docs/LiveImportValidation.md)
  - [LiveMigrationRequest20240530](./docs/LiveMigrationRequest20240530.md)
  - [LiveMigrationResponse](./docs/LiveMigrationResponse.md)
+ - [LogIntegrationRequest](./docs/LogIntegrationRequest.md)
+ - [LogIntegrationResponse](./docs/LogIntegrationResponse.md)
  - [ManagedNamespaces](./docs/ManagedNamespaces.md)
  - [MdbAvailableVersion](./docs/MdbAvailableVersion.md)
  - [MeasurementDiskPartition](./docs/MeasurementDiskPartition.md)
@@ -799,6 +809,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedGroupUser](./docs/PaginatedGroupUser.md)
  - [PaginatedHostViewAtlas](./docs/PaginatedHostViewAtlas.md)
  - [PaginatedIntegration](./docs/PaginatedIntegration.md)
+ - [PaginatedLogIntegrationResponse](./docs/PaginatedLogIntegrationResponse.md)
  - [PaginatedNetworkAccess](./docs/PaginatedNetworkAccess.md)
  - [PaginatedOnlineArchive](./docs/PaginatedOnlineArchive.md)
  - [PaginatedOrgGroup](./docs/PaginatedOrgGroup.md)
@@ -808,6 +819,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedPipelineRun](./docs/PaginatedPipelineRun.md)
  - [PaginatedPrivateNetworkEndpointIdEntry](./docs/PaginatedPrivateNetworkEndpointIdEntry.md)
  - [PaginatedPublicApiUsageDetailsLineItem](./docs/PaginatedPublicApiUsageDetailsLineItem.md)
+ - [PaginatedQueryShapes](./docs/PaginatedQueryShapes.md)
  - [PaginatedRestoreJob](./docs/PaginatedRestoreJob.md)
  - [PaginatedRoleMapping](./docs/PaginatedRoleMapping.md)
  - [PaginatedServerlessInstanceDescription](./docs/PaginatedServerlessInstanceDescription.md)
@@ -841,7 +853,9 @@ Class        | Method        | HTTP request  | Description   |
  - [ProtectedHours](./docs/ProtectedHours.md)
  - [PublicApiUsageDetailsLineItem](./docs/PublicApiUsageDetailsLineItem.md)
  - [PushBasedLogExportProject](./docs/PushBasedLogExportProject.md)
+ - [QueryShapeResponse](./docs/QueryShapeResponse.md)
  - [QueryShapeSeenMetadata](./docs/QueryShapeSeenMetadata.md)
+ - [QueryShapeUpdateRequest](./docs/QueryShapeUpdateRequest.md)
  - [QueryStatsDetailsResponse](./docs/QueryStatsDetailsResponse.md)
  - [QueryStatsSummary](./docs/QueryStatsSummary.md)
  - [QueryStatsSummaryListResponse](./docs/QueryStatsSummaryListResponse.md)
@@ -850,6 +864,8 @@ Class        | Method        | HTTP request  | Description   |
  - [ReplicationSpec20240805](./docs/ReplicationSpec20240805.md)
  - [ResourceTag](./docs/ResourceTag.md)
  - [RestoreJobFileHash](./docs/RestoreJobFileHash.md)
+ - [S3LogIntegrationRequest](./docs/S3LogIntegrationRequest.md)
+ - [S3LogIntegrationRequestAllOf](./docs/S3LogIntegrationRequestAllOf.md)
  - [SampleDatasetStatus](./docs/SampleDatasetStatus.md)
  - [SchemaAdvisorItemRecommendation](./docs/SchemaAdvisorItemRecommendation.md)
  - [SchemaAdvisorNamespaceTriggers](./docs/SchemaAdvisorNamespaceTriggers.md)
