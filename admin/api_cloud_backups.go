@@ -125,6 +125,8 @@ type CloudBackupsApi interface {
 			@param clusterName Human-readable label that identifies the serverless instance whose snapshot you want to restore.
 			@param serverlessBackupRestoreJob Restores one snapshot of one serverless instance from the specified project.
 			@return CreateServerlessRestoreJobApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	CreateServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, serverlessBackupRestoreJob *ServerlessBackupRestoreJob) CreateServerlessRestoreJobApiRequest
 	/*
@@ -134,6 +136,8 @@ type CloudBackupsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateServerlessRestoreJobApiParams - Parameters for the request
 		@return CreateServerlessRestoreJobApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	CreateServerlessRestoreJobWithParams(ctx context.Context, args *CreateServerlessRestoreJobApiParams) CreateServerlessRestoreJobApiRequest
 
@@ -444,6 +448,8 @@ type CloudBackupsApi interface {
 			@param clusterName Human-readable label that identifies the serverless instance.
 			@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
 			@return GetServerlessBackupSnapshotApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	GetServerlessBackupSnapshot(ctx context.Context, groupId string, clusterName string, snapshotId string) GetServerlessBackupSnapshotApiRequest
 	/*
@@ -453,6 +459,8 @@ type CloudBackupsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetServerlessBackupSnapshotApiParams - Parameters for the request
 		@return GetServerlessBackupSnapshotApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	GetServerlessBackupSnapshotWithParams(ctx context.Context, args *GetServerlessBackupSnapshotApiParams) GetServerlessBackupSnapshotApiRequest
 
@@ -471,6 +479,8 @@ type CloudBackupsApi interface {
 			@param clusterName Human-readable label that identifies the serverless instance.
 			@param restoreJobId Unique 24-hexadecimal digit string that identifies the restore job to return.
 			@return GetServerlessRestoreJobApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	GetServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJobId string) GetServerlessRestoreJobApiRequest
 	/*
@@ -480,6 +490,8 @@ type CloudBackupsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetServerlessRestoreJobApiParams - Parameters for the request
 		@return GetServerlessRestoreJobApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	GetServerlessRestoreJobWithParams(ctx context.Context, args *GetServerlessRestoreJobApiParams) GetServerlessRestoreJobApiRequest
 
@@ -616,6 +628,8 @@ type CloudBackupsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param clusterName Human-readable label that identifies the serverless instance.
 			@return ListServerlessBackupSnapshotsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	ListServerlessBackupSnapshots(ctx context.Context, groupId string, clusterName string) ListServerlessBackupSnapshotsApiRequest
 	/*
@@ -625,6 +639,8 @@ type CloudBackupsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListServerlessBackupSnapshotsApiParams - Parameters for the request
 		@return ListServerlessBackupSnapshotsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	ListServerlessBackupSnapshotsWithParams(ctx context.Context, args *ListServerlessBackupSnapshotsApiParams) ListServerlessBackupSnapshotsApiRequest
 
@@ -642,6 +658,8 @@ type CloudBackupsApi interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param clusterName Human-readable label that identifies the serverless instance.
 			@return ListServerlessRestoreJobsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	ListServerlessRestoreJobs(ctx context.Context, groupId string, clusterName string) ListServerlessRestoreJobsApiRequest
 	/*
@@ -651,6 +669,8 @@ type CloudBackupsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListServerlessRestoreJobsApiParams - Parameters for the request
 		@return ListServerlessRestoreJobsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for CloudBackupsApi
 	*/
 	ListServerlessRestoreJobsWithParams(ctx context.Context, args *ListServerlessRestoreJobsApiParams) ListServerlessRestoreJobsApiRequest
 
@@ -1306,6 +1326,8 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the serverless instance whose snapshot you want to restore.
 	@return CreateServerlessRestoreJobApiRequest
+
+Deprecated
 */
 func (a *CloudBackupsApiService) CreateServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, serverlessBackupRestoreJob *ServerlessBackupRestoreJob) CreateServerlessRestoreJobApiRequest {
 	return CreateServerlessRestoreJobApiRequest{
@@ -1320,6 +1342,8 @@ func (a *CloudBackupsApiService) CreateServerlessRestoreJob(ctx context.Context,
 // CreateServerlessRestoreJobExecute executes the request
 //
 //	@return ServerlessBackupRestoreJob
+//
+// Deprecated
 func (a *CloudBackupsApiService) CreateServerlessRestoreJobExecute(r CreateServerlessRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2885,6 +2909,8 @@ This endpoint can also be used on Flex clusters that were created with the [crea
 	@param clusterName Human-readable label that identifies the serverless instance.
 	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
 	@return GetServerlessBackupSnapshotApiRequest
+
+Deprecated
 */
 func (a *CloudBackupsApiService) GetServerlessBackupSnapshot(ctx context.Context, groupId string, clusterName string, snapshotId string) GetServerlessBackupSnapshotApiRequest {
 	return GetServerlessBackupSnapshotApiRequest{
@@ -2899,6 +2925,8 @@ func (a *CloudBackupsApiService) GetServerlessBackupSnapshot(ctx context.Context
 // GetServerlessBackupSnapshotExecute executes the request
 //
 //	@return ServerlessBackupSnapshot
+//
+// Deprecated
 func (a *CloudBackupsApiService) GetServerlessBackupSnapshotExecute(r GetServerlessBackupSnapshotApiRequest) (*ServerlessBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3019,6 +3047,8 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param clusterName Human-readable label that identifies the serverless instance.
 	@param restoreJobId Unique 24-hexadecimal digit string that identifies the restore job to return.
 	@return GetServerlessRestoreJobApiRequest
+
+Deprecated
 */
 func (a *CloudBackupsApiService) GetServerlessRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJobId string) GetServerlessRestoreJobApiRequest {
 	return GetServerlessRestoreJobApiRequest{
@@ -3033,6 +3063,8 @@ func (a *CloudBackupsApiService) GetServerlessRestoreJob(ctx context.Context, gr
 // GetServerlessRestoreJobExecute executes the request
 //
 //	@return ServerlessBackupRestoreJob
+//
+// Deprecated
 func (a *CloudBackupsApiService) GetServerlessRestoreJobExecute(r GetServerlessRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3974,6 +4006,8 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the serverless instance.
 	@return ListServerlessBackupSnapshotsApiRequest
+
+Deprecated
 */
 func (a *CloudBackupsApiService) ListServerlessBackupSnapshots(ctx context.Context, groupId string, clusterName string) ListServerlessBackupSnapshotsApiRequest {
 	return ListServerlessBackupSnapshotsApiRequest{
@@ -3987,6 +4021,8 @@ func (a *CloudBackupsApiService) ListServerlessBackupSnapshots(ctx context.Conte
 // ListServerlessBackupSnapshotsExecute executes the request
 //
 //	@return PaginatedApiAtlasServerlessBackupSnapshot
+//
+// Deprecated
 func (a *CloudBackupsApiService) ListServerlessBackupSnapshotsExecute(r ListServerlessBackupSnapshotsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4147,6 +4183,8 @@ This API can also be used on Flex clusters that were created with the [createSer
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the serverless instance.
 	@return ListServerlessRestoreJobsApiRequest
+
+Deprecated
 */
 func (a *CloudBackupsApiService) ListServerlessRestoreJobs(ctx context.Context, groupId string, clusterName string) ListServerlessRestoreJobsApiRequest {
 	return ListServerlessRestoreJobsApiRequest{
@@ -4160,6 +4198,8 @@ func (a *CloudBackupsApiService) ListServerlessRestoreJobs(ctx context.Context, 
 // ListServerlessRestoreJobsExecute executes the request
 //
 //	@return PaginatedApiAtlasServerlessBackupRestoreJob
+//
+// Deprecated
 func (a *CloudBackupsApiService) ListServerlessRestoreJobsExecute(r ListServerlessRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

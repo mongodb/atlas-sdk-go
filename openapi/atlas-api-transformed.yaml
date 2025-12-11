@@ -817,7 +817,7 @@ components:
 
             Atlas returns this value if you set `"notifications.[n].typeName" :"WEBHOOK"` and either:
             * You set `notification.[n].webhookSecret` to a non-empty string
-            * You set a default webhookSecret either on the Integrations page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)
+            * You set a default webhookSecret either on the Integrations page, or with the Integrations API
 
             **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
           externalDocs:
@@ -831,10 +831,13 @@ components:
 
             Atlas returns this value if you set `"notifications.[n].typeName" :"WEBHOOK"` and either:
             * You set `notification.[n].webhookURL` to a non-empty string
-            * You set a default webhookUrl either on the [Integrations](https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations) page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)
+            * You set a default webhookUrl either on the Integrations page, or with the Integrations API
 
             **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
           example: https://webhook.com/****
+          externalDocs:
+            description: Integrations page
+            url: https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations
           type: string
     AlertsToggle:
       description: Enables or disables the specified alert configuration in the specified project.
@@ -1554,6 +1557,11 @@ components:
           type: boolean
         resourceGroupName:
           description: Name of the Azure resource group that contains your Azure Key Vault. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault.
+          type: string
+        roleId:
+          description: Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Key Vault.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           type: string
         secret:
           description: Private data that you need secured and that belongs to the specified Azure Key Vault (AKV) tenant (**azureKeyVault.tenantID**). This data can include any type of sensitive data such as passwords, database connection strings, API keys, and the like. AKV stores this information as encrypted binary data.
@@ -4227,6 +4235,16 @@ components:
             - `PAUSED`: The cluster is paused.
           readOnly: true
           type: string
+        storedSource:
+          description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see documentation.
+          example:
+            include | exclude:
+              - field1
+              - field2
+          externalDocs:
+            description: Stored Source Fields
+            url: https://dochub.mongodb.org/core/atlas-search-stored-source
+          type: object
         type:
           description: Type of the index. Default type is search.
           type: string
@@ -4261,16 +4279,6 @@ components:
           default: lucene.standard
           description: Method applied to identify words when searching this index.
           type: string
-        storedSource:
-          description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see documentation.
-          example:
-            include | exclude:
-              - field1
-              - field2
-          externalDocs:
-            description: Stored Source Fields
-            url: https://dochub.mongodb.org/core/atlas-search-stored-source
-          type: object
         synonyms:
           description: Rule sets that map words to their synonyms in this index.
           externalDocs:
@@ -9830,6 +9838,88 @@ components:
           readOnly: true
           type: string
       type: object
+    LogIntegrationRequest:
+      description: Request schema for creating or updating a log integration.
+      properties:
+        type:
+          description: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type.
+          type: string
+        bucketName:
+          description: Human-readable label that identifies the S3 bucket name for storing log files.
+          example: my-log-bucket
+          type: string
+        iamRoleId:
+          description: Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket.
+          example: 507f1f77bcf86cd799439011
+          type: string
+        kmsKey:
+          description: AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
+          example: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+          type: string
+        logTypes:
+          description: "Array of log types to export to S3. Valid values: MONGOD, MONGOS, MONGOD_AUDIT, MONGOS_AUDIT."
+          example:
+            - MONGOD
+            - MONGOS
+            - MONGOD_AUDIT
+            - MONGOS_AUDIT
+          items:
+            type: string
+          maxItems: 4
+          minItems: 1
+          type: array
+          uniqueItems: true
+        prefixPath:
+          description: S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type.
+          example: mongo-logs/
+          type: string
+      required:
+        - type
+      title: Log Export Integration Request
+      type: object
+    LogIntegrationResponse:
+      description: Response schema for log integration operations.
+      properties:
+        id:
+          description: Unique 24-character hexadecimal digit string that identifies the log integration configuration.
+          example: 507f1f77bcf86cd799439011
+          type: string
+        type:
+          description: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type.
+          type: string
+        bucketName:
+          description: Human-readable label that identifies the S3 bucket name for storing log files.
+          example: my-log-bucket
+          type: string
+        iamRoleId:
+          description: Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket.
+          example: 507f1f77bcf86cd799439011
+          type: string
+        kmsKey:
+          description: AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
+          example: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+          type: string
+        logTypes:
+          description: "Array of log types to export to S3. Valid values: MONGOD, MONGOS, MONGOD_AUDIT, MONGOS_AUDIT."
+          example:
+            - MONGOD
+            - MONGOS
+            - MONGOD_AUDIT
+            - MONGOS_AUDIT
+          items:
+            type: string
+          maxItems: 4
+          type: array
+          uniqueItems: true
+        prefixPath:
+          description: S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type.
+          example: mongo-logs/
+          type: string
+      required:
+        - id
+        - type
+      title: Log Integration Response
+      type: object
     ManagedNamespaces:
       properties:
         collection:
@@ -11054,6 +11144,30 @@ components:
           readOnly: true
           type: integer
       type: object
+    PaginatedLogIntegrationResponse:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/LogIntegrationResponse"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      type: object
     PaginatedOrgServiceAccounts:
       description: A list of Organization Service Accounts.
       properties:
@@ -11070,6 +11184,31 @@ components:
           description: List of returned documents that MongoDB Cloud provides when completing this request.
           items:
             $ref: "#/components/schemas/OrgServiceAccount"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      type: object
+    PaginatedQueryShapes:
+      description: Paginated collection of query shapes. This endpoint returns a maximum of 100 results.
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/QueryShapeResponse"
           readOnly: true
           type: array
         totalCount:
@@ -11542,6 +11681,32 @@ components:
           readOnly: true
           type: string
       type: object
+    QueryShapeResponse:
+      description: Response containing the details and status of a query shape. The query shape field may be null if the user lacks PII view access.
+      properties:
+        command:
+          description: The MongoDB command type issued for a query shape.
+          readOnly: true
+          type: string
+        namespace:
+          description: Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
+          readOnly: true
+          type: string
+        queryShape:
+          description: A query shape is a set of specifications that group similar queries together. Specifications can include filters, sorts, projections, aggregation pipeline stages, a namespace, and others. Queries that have similar specifications have the same query shape. This field may be null if the user lacks PII view access.
+          readOnly: true
+          type: string
+        queryShapeHash:
+          description: A hexadecimal string that represents the hash of a MongoDB query shape.
+          readOnly: true
+          type: string
+        status:
+          description: The rejection status of a query shape. Use REJECTED to prevent the query shape from executing on the cluster, or UNREJECTED to allow it to execute.
+          type: string
+      required:
+        - queryShapeHash
+        - status
+      type: object
     QueryShapeSeenMetadata:
       description: Metadata about when a query shape was seen.
       properties:
@@ -11558,6 +11723,15 @@ components:
           description: Unix epoch milliseconds of the time.
           format: int64
           type: integer
+      type: object
+    QueryShapeUpdateRequest:
+      description: Request body for modifying the rejection status of a query shape.
+      properties:
+        status:
+          description: The rejection status of a query shape. Use REJECTED to prevent the query shape from executing on the cluster, or UNREJECTED to allow it to execute.
+          type: string
+      required:
+        - status
       type: object
     QueryStatsDetailsResponse:
       description: Metadata and summary statistics for a given query shape.
@@ -11757,6 +11931,85 @@ components:
           type: string
       readOnly: true
       type: object
+    S3LogIntegrationRequest:
+      allOf:
+        - $ref: "#/components/schemas/LogIntegrationRequest"
+        - properties:
+            bucketName:
+              description: Human-readable label that identifies the S3 bucket name for storing log files.
+              example: my-log-bucket
+              type: string
+            iamRoleId:
+              description: Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket.
+              example: 507f1f77bcf86cd799439011
+              type: string
+            kmsKey:
+              description: AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
+              example: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+              type: string
+            logTypes:
+              description: "Array of log types to export to S3. Valid values: MONGOD, MONGOS, MONGOD_AUDIT, MONGOS_AUDIT."
+              example:
+                - MONGOD
+                - MONGOS
+                - MONGOD_AUDIT
+                - MONGOS_AUDIT
+              items:
+                type: string
+              maxItems: 4
+              minItems: 1
+              type: array
+              uniqueItems: true
+            prefixPath:
+              description: S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type.
+              example: mongo-logs/
+              type: string
+            type:
+              description: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type.
+              type: string
+          type: object
+      description: Request schema for creating or updating an S3 log export integration.
+      required:
+        - bucketName
+        - iamRoleId
+        - logTypes
+        - prefixPath
+        - type
+      title: S3 Log Export Integration Request
+      type: object
+      properties:
+        bucketName:
+          description: Human-readable label that identifies the S3 bucket name for storing log files.
+          example: my-log-bucket
+          type: string
+        iamRoleId:
+          description: Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket.
+          example: 507f1f77bcf86cd799439011
+          type: string
+        kmsKey:
+          description: AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
+          example: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+          type: string
+        logTypes:
+          description: "Array of log types to export to S3. Valid values: MONGOD, MONGOS, MONGOD_AUDIT, MONGOS_AUDIT."
+          example:
+            - MONGOD
+            - MONGOS
+            - MONGOD_AUDIT
+            - MONGOS_AUDIT
+          items:
+            type: string
+          maxItems: 4
+          minItems: 1
+          type: array
+          uniqueItems: true
+        prefixPath:
+          description: S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type.
+          example: mongo-logs/
+          type: string
+        type:
+          description: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type.
+          type: string
     SampleDatasetStatus:
       properties:
         _id:
@@ -11970,7 +12223,7 @@ components:
               description: Method applied to identify words when searching this index.
               type: string
             storedSource:
-              description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields.
+              description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
               example:
                 include | exclude:
                   - field1
@@ -12706,6 +12959,9 @@ components:
     StreamProcessorEventTypeViewAlertableWithThreshold:
       description: Event type that triggers an alert.
       example: OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
+      externalDocs:
+        description: Atlas Alert Event Types
+        url: https://www.mongodb.com/docs/atlas/reference/atlas-alert-event-types/
       title: Stream Processor Event Types
       type: string
     StreamProcessorMetricThreshold:
@@ -12975,7 +13231,7 @@ components:
         fieldName:
           $ref: "#/components/schemas/StreamsMatcherField"
         operator:
-          description: Comparison operator to apply when checking the current metric value against **matcher[n].value**.
+          description: Comparison operator to apply when checking the current metric value against **matcher[n].value**. The `REGEX` operator only supports inclusive matches. Use the `NOT_CONTAINS` operator to exclude values.
           type: string
         value:
           description: Value to match or exceed using the specified **matchers.operator**.
@@ -14125,6 +14381,16 @@ components:
           description: Number of index partitions. Allowed values are [1, 2, 4].
           format: int32
           type: integer
+        storedSource:
+          description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
+          example:
+            include | exclude:
+              - field1
+              - field2
+          externalDocs:
+            description: Stored Source Fields
+            url: https://dochub.mongodb.org/core/atlas-search-stored-source
+          type: object
       title: Vector Search Index Definition
       type: object
     VectorSearchIndexStatusDetail:
@@ -14291,7 +14557,7 @@ components:
           description: Method applied to identify words when searching this index.
           type: string
         storedSource:
-          description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields.
+          description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
           example:
             include | exclude:
               - field1
@@ -14361,7 +14627,7 @@ components:
           description: Method applied to identify words when searching this index.
           type: string
         storedSource:
-          description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields.
+          description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
           example:
             include | exclude:
               - field1
@@ -16571,7 +16837,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: e4219471118c0a8a188bd428e61c78b629902817
+  x-xgen-sha: 734a12a6faed4338d5ab4dce35689f5f56f9be9b
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -28094,6 +28360,285 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Query-Shape-Insights/operation/listGroupClusterQueryShapeInsightSummaries
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes:
+    get:
+      description: Returns a list of query shapes for one cluster. Query shapes may be filtered by their status; at present, this endpoint supports only the REJECTED status.
+      operationId: listClusterQueryShapes
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: The status of query shapes to retrieve. Only REJECTED status is supported. If omitted, defaults to REJECTED.
+          in: query
+          name: status
+          schema:
+            default: REJECTED
+            type: string
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedQueryShapes"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Query Shapes
+      tags:
+        - Query Shape Insights
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api queryShapeInsights listClusterQueryShapes --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupClusterQueryShapesApiParams{}
+            	sdkResp, httpResp, err := client.QueryShapeInsightsApi.
+            		ListGroupClusterQueryShapesWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Query-Shape-Insights/operation/listGroupClusterQueryShapes
+      x-xgen-version: 2025-03-12
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}:
+    get:
+      description: Returns the details for a single query shape. This endpoint only returns query shapes with REJECTED status. If the specified query shape hash does not correspond to a rejected query shape, a 404 Not Found error is returned.
+      operationId: getClusterQueryShape
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+          in: path
+          name: queryShapeHash
+          required: true
+          schema:
+            pattern: ^([a-fA-F0-9]{64})$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/QueryShapeResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Query Shape
+      tags:
+        - Query Shape Insights
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api queryShapeInsights getClusterQueryShape --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupClusterQueryShapeApiParams{}
+            	sdkResp, httpResp, err := client.QueryShapeInsightsApi.
+            		GetGroupClusterQueryShapeWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Query-Shape-Insights/operation/getGroupClusterQueryShape
+      x-xgen-version: 2025-03-12
+    patch:
+      description: "Updates the rejection status of a query shape. Use this endpoint to reject a query shape (preventing it from executing on the cluster) or to unreject a previously rejected query shape (allowing it to execute again). This operation is idempotent: rejecting an already rejected query shape or unrejecting an already unrejected query shape will return 200 OK."
+      operationId: updateClusterQueryShape
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+          in: path
+          name: queryShapeHash
+          required: true
+          schema:
+            pattern: ^([a-fA-F0-9]{64})$
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/QueryShapeUpdateRequest"
+        description: The desired rejection status for the query shape. Provide REJECTED to block the query shape from executing, or UNREJECTED to allow it to execute.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/QueryShapeResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update Query Shape Rejection Status
+      tags:
+        - Query Shape Insights
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api queryShapeInsights updateClusterQueryShape --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateGroupClusterQueryShapeApiParams{}
+            	sdkResp, httpResp, err := client.QueryShapeInsightsApi.
+            		UpdateGroupClusterQueryShapeWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}" \
+              -d '{ <Payload> }'
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Query-Shape-Insights/operation/updateGroupClusterQueryShape
+      x-xgen-version: 2025-03-12
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries:
     post:
       description: "Starts a failover test for the specified cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. A failover test checks how MongoDB Cloud handles the failure of the cluster's primary node. During the test, MongoDB Cloud shuts down the primary node and elects a new primary. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Deprecated versions: v2-{2023-01-01}"
@@ -37802,6 +38347,409 @@ paths:
       x-xgen-method-verb-override:
         customMethod: true
         verb: getStatus
+  /api/atlas/v2/groups/{groupId}/logIntegrations:
+    get:
+      description: Returns all log integration configurations for the project. Optionally filter by integration type. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      operationId: listGroupLogIntegrations
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Optional filter by integration type (e.g., 'S3_LOG_EXPORT').
+          in: query
+          name: integrationType
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedLogIntegrationResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Active Log Integrations
+      tags:
+        - Push-Based Log Export
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api pushBasedLogExport listGroupLogIntegrations --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupLogIntegrationsApiParams{}
+            	sdkResp, httpResp, err := client.Push - BasedLogExportApi.
+            		ListGroupLogIntegrationsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/listGroupLogIntegrations
+    post:
+      description: Creates a new log integration configuration identified by a unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      operationId: createGroupLogIntegration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/S3LogIntegrationRequest"
+        description: Log integration configuration to create.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/LogIntegrationResponse"
+              x-xgen-version: 2025-03-12
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Log Integration
+      tags:
+        - Push-Based Log Export
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api pushBasedLogExport createGroupLogIntegration --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateGroupLogIntegrationApiParams{}
+            	sdkResp, httpResp, err := client.Push - BasedLogExportApi.
+            		CreateGroupLogIntegrationWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations" \
+              -d '{ <Payload> }'
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/createGroupLogIntegration
+  /api/atlas/v2/groups/{groupId}/logIntegrations/{id}:
+    delete:
+      description: Removes the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      operationId: deleteGroupLogIntegration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the log integration configuration.
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              x-xgen-version: 2025-03-12
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Log Integration
+      tags:
+        - Push-Based Log Export
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api pushBasedLogExport deleteGroupLogIntegration --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.DeleteGroupLogIntegrationApiParams{}
+            	httpResp, err := client.Push - BasedLogExportApi.
+            		DeleteGroupLogIntegrationWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations/{id}"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations/{id}"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/deleteGroupLogIntegration
+    get:
+      description: Returns the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      operationId: getGroupLogIntegration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the log integration configuration.
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/LogIntegrationResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Log Integration
+      tags:
+        - Push-Based Log Export
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api pushBasedLogExport getGroupLogIntegration --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupLogIntegrationApiParams{}
+            	sdkResp, httpResp, err := client.Push - BasedLogExportApi.
+            		GetGroupLogIntegrationWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations/{id}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations/{id}?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/getGroupLogIntegration
+    put:
+      description: Updates the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      operationId: updateGroupLogIntegration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the log integration configuration.
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/LogIntegrationRequest"
+        description: Updated log integration configuration.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/LogIntegrationResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update One Log Integration
+      tags:
+        - Push-Based Log Export
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api pushBasedLogExport updateGroupLogIntegration --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateGroupLogIntegrationApiParams{}
+            	sdkResp, httpResp, err := client.Push - BasedLogExportApi.
+            		UpdateGroupLogIntegrationWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PUT "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations/{id}" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PUT "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations/{id}" \
+              -d '{ <Payload> }'
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/updateGroupLogIntegration
   /api/atlas/v2/groups/{groupId}/maintenanceWindow:
     delete:
       description: Resets the maintenance window for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
@@ -40867,6 +41815,7 @@ paths:
         verb: toggle
   /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint:
     get:
+      deprecated: true
       description: |-
         Returns all private endpoints for one serverless instance. You must have at least the Project Read Only role for the project to successfully call this resource.
 
@@ -40954,8 +41903,10 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/listGroupPrivateEndpointServerlessInstanceEndpoint
     post:
+      deprecated: true
       description: |-
         Creates one private endpoint for one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -41051,9 +42002,11 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint" \
               -d '{ <Payload> }'
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/createGroupPrivateEndpointServerlessInstanceEndpoint
   /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}:
     delete:
+      deprecated: true
       description: |-
         Remove one private endpoint from one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -41138,8 +42091,10 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/deleteGroupPrivateEndpointServerlessInstanceEndpoint
     get:
+      deprecated: true
       description: |-
         Return one private endpoint for one serverless instance. Identify this endpoint using its unique ID. You must have at least the Project Read Only role for the project to successfully call this resource.
 
@@ -41228,8 +42183,10 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/getGroupPrivateEndpointServerlessInstanceEndpoint
     patch:
+      deprecated: true
       description: |-
         Updates one private endpoint for one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -41327,6 +42284,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}" \
               -d '{ <Payload> }'
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/updateGroupPrivateEndpointServerlessInstanceEndpoint
   /api/atlas/v2/groups/{groupId}/privateIpMode:
     get:
@@ -43635,6 +44593,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/getGroupSampleDatasetLoad
   /api/atlas/v2/groups/{groupId}/serverless:
     get:
+      deprecated: true
       description: |-
         Returns details for all serverless instances in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -43713,11 +44672,13 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/listGroupServerlessInstances
       x-xgen-method-verb-override:
         customMethod: false
         verb: listInstances
     post:
+      deprecated: true
       description: |-
         Update as of Feb 2025: This endpoint now creates a Flex cluster instead. This endpoint will no longer be supported starting January 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect. Please use the createFlexCluster endpoint instead.
 
@@ -43808,12 +44769,14 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless" \
               -d '{ <Payload> }'
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createGroupServerlessInstance
       x-xgen-method-verb-override:
         customMethod: false
         verb: createInstance
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs:
     get:
+      deprecated: true
       description: |-
         Returns all restore jobs for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -43899,8 +44862,10 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupServerlessBackupRestoreJobs
     post:
+      deprecated: true
       description: |-
         Restores one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -43996,9 +44961,11 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs" \
               -d '{ <Payload> }'
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/createGroupServerlessBackupRestoreJob
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId}:
     get:
+      deprecated: true
       description: |-
         Returns one restore job for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -44090,9 +45057,11 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId}?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupServerlessBackupRestoreJob
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots:
     get:
+      deprecated: true
       description: |-
         Returns all snapshots of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -44178,9 +45147,11 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupServerlessBackupSnapshots
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId}:
     get:
+      deprecated: true
       description: |-
         Returns one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -44273,9 +45244,11 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId}?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupServerlessBackupSnapshot
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing:
     get:
+      deprecated: true
       description: Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
       externalDocs:
         description: createServerlessInstance
@@ -44355,11 +45328,13 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Performance-Advisor/operation/getGroupServerlessPerformanceAdvisorAutoIndexing
       x-xgen-method-verb-override:
         customMethod: false
         verb: get
     post:
+      deprecated: true
       description: Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
       externalDocs:
         description: createServerlessInstance
@@ -44447,12 +45422,14 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing" \
               -d '{ <Payload> }'
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Performance-Advisor/operation/setGroupServerlessPerformanceAdvisorAutoIndexing
       x-xgen-method-verb-override:
         customMethod: "True"
         verb: set
   /api/atlas/v2/groups/{groupId}/serverless/{name}:
     delete:
+      deprecated: true
       description: |-
         Removes one serverless instance from the specified project. The serverless instance must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -44537,11 +45514,13 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{name}"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/deleteGroupServerlessInstance
       x-xgen-method-verb-override:
         customMethod: false
         verb: deleteInstance
     get:
+      deprecated: true
       description: |-
         Returns details for one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -44628,11 +45607,13 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{name}?pretty=true"
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/getGroupServerlessInstance
       x-xgen-method-verb-override:
         customMethod: false
         verb: getInstance
     patch:
+      deprecated: true
       description: |-
         Updates one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -44728,6 +45709,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{name}" \
               -d '{ <Payload> }'
+      x-sunset: 2026-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/updateGroupServerlessInstance
       x-xgen-method-verb-override:
         customMethod: false
@@ -56863,7 +57845,7 @@ tags:
     name: Project IP Access List
   - description: Returns, adds, and edits collections of clusters and users in MongoDB Cloud.
     name: Projects
-  - description: You can continually push logs from mongod, mongos, and audit logs to an AWS S3 bucket. Atlas exports logs every 5 minutes.
+  - description: You can continually export mongod, mongos, and audit logs to an AWS S3 bucket. The new `/logIntegrations` API provides 1-minute log export. The existing `/pushBasedLogExport` API provides 5-minute log export and will be deprecated in the future. The log export integrations are managed at the project level.
     name: Push-Based Log Export
   - description: Configure and manage Atlas Resource Policies within your organization.
     name: Resource Policies

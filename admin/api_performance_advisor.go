@@ -91,6 +91,8 @@ type PerformanceAdvisorApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
 		@return GetServerlessAutoIndexingApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorApi
 	*/
 	GetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) GetServerlessAutoIndexingApiRequest
 	/*
@@ -100,6 +102,8 @@ type PerformanceAdvisorApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetServerlessAutoIndexingApiParams - Parameters for the request
 		@return GetServerlessAutoIndexingApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorApi
 	*/
 	GetServerlessAutoIndexingWithParams(ctx context.Context, args *GetServerlessAutoIndexingApiParams) GetServerlessAutoIndexingApiRequest
 
@@ -259,6 +263,8 @@ type PerformanceAdvisorApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
 		@return SetServerlessAutoIndexingApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorApi
 	*/
 	SetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) SetServerlessAutoIndexingApiRequest
 	/*
@@ -268,6 +274,8 @@ type PerformanceAdvisorApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param SetServerlessAutoIndexingApiParams - Parameters for the request
 		@return SetServerlessAutoIndexingApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorApi
 	*/
 	SetServerlessAutoIndexingWithParams(ctx context.Context, args *SetServerlessAutoIndexingApiParams) SetServerlessAutoIndexingApiRequest
 
@@ -620,6 +628,8 @@ Get whether the Serverless Auto Indexing feature is enabled. This endpoint retur
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return GetServerlessAutoIndexingApiRequest
+
+Deprecated
 */
 func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) GetServerlessAutoIndexingApiRequest {
 	return GetServerlessAutoIndexingApiRequest{
@@ -633,6 +643,8 @@ func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexing(ctx context.Con
 // GetServerlessAutoIndexingExecute executes the request
 //
 //	@return bool
+//
+// Deprecated
 func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingExecute(r GetServerlessAutoIndexingApiRequest) (bool, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1790,6 +1802,8 @@ Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return SetServerlessAutoIndexingApiRequest
+
+Deprecated
 */
 func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) SetServerlessAutoIndexingApiRequest {
 	return SetServerlessAutoIndexingApiRequest{
@@ -1801,6 +1815,7 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexing(ctx context.Con
 }
 
 // SetServerlessAutoIndexingExecute executes the request
+// Deprecated
 func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost

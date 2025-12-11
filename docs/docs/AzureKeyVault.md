@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **KeyVaultName** | Pointer to **string** | Unique string that identifies the Azure Key Vault that contains your key. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault. | [optional] 
 **RequirePrivateNetworking** | Pointer to **bool** | Enable connection to your Azure Key Vault over private networking. | [optional] 
 **ResourceGroupName** | Pointer to **string** | Name of the Azure resource group that contains your Azure Key Vault. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault. | [optional] 
+**RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Key Vault. | [optional] 
 **Secret** | Pointer to **string** | Private data that you need secured and that belongs to the specified Azure Key Vault (AKV) tenant (**azureKeyVault.tenantID**). This data can include any type of sensitive data such as passwords, database connection strings, API keys, and the like. AKV stores this information as encrypted binary data. | [optional] 
 **SubscriptionID** | Pointer to **string** | Unique 36-hexadecimal character string that identifies your Azure subscription. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault. | [optional] 
 **TenantID** | Pointer to **string** | Unique 36-hexadecimal character string that identifies the Azure Active Directory tenant within your Azure subscription. | [optional] 
@@ -203,6 +204,30 @@ SetResourceGroupName sets ResourceGroupName field to given value.
 `func (o *AzureKeyVault) HasResourceGroupName() bool`
 
 HasResourceGroupName returns a boolean if a field has been set.
+### GetRoleId
+
+`func (o *AzureKeyVault) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *AzureKeyVault) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *AzureKeyVault) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *AzureKeyVault) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
 ### GetSecret
 
 `func (o *AzureKeyVault) GetSecret() string`

@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312010/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312011/admin"
 
 	http "net/http"
 
@@ -23,6 +23,168 @@ type PushBasedLogExportApi_Expecter struct {
 
 func (_m *PushBasedLogExportApi) EXPECT() *PushBasedLogExportApi_Expecter {
 	return &PushBasedLogExportApi_Expecter{mock: &_m.Mock}
+}
+
+// CreateGroupLogIntegration provides a mock function with given fields: ctx, groupId, s3LogIntegrationRequest
+func (_m *PushBasedLogExportApi) CreateGroupLogIntegration(ctx context.Context, groupId string, s3LogIntegrationRequest *admin.S3LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, groupId, s3LogIntegrationRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateGroupLogIntegration")
+	}
+
+	var r0 admin.CreateGroupLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.S3LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, groupId, s3LogIntegrationRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateGroupLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_CreateGroupLogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupLogIntegration'
+type PushBasedLogExportApi_CreateGroupLogIntegration_Call struct {
+	*mock.Call
+}
+
+// CreateGroupLogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - s3LogIntegrationRequest *admin.S3LogIntegrationRequest
+func (_e *PushBasedLogExportApi_Expecter) CreateGroupLogIntegration(ctx any, groupId any, s3LogIntegrationRequest any) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
+	return &PushBasedLogExportApi_CreateGroupLogIntegration_Call{Call: _e.mock.On("CreateGroupLogIntegration", ctx, groupId, s3LogIntegrationRequest)}
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegration_Call) Run(run func(ctx context.Context, groupId string, s3LogIntegrationRequest *admin.S3LogIntegrationRequest)) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.S3LogIntegrationRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegration_Call) Return(_a0 admin.CreateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegration_Call) RunAndReturn(run func(context.Context, string, *admin.S3LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateGroupLogIntegrationExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) CreateGroupLogIntegrationExecute(r admin.CreateGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateGroupLogIntegrationExecute")
+	}
+
+	var r0 *admin.LogIntegrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateGroupLogIntegrationApiRequest) *admin.LogIntegrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.LogIntegrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateGroupLogIntegrationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateGroupLogIntegrationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupLogIntegrationExecute'
+type PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call struct {
+	*mock.Call
+}
+
+// CreateGroupLogIntegrationExecute is a helper method to define mock.On call
+//   - r admin.CreateGroupLogIntegrationApiRequest
+func (_e *PushBasedLogExportApi_Expecter) CreateGroupLogIntegrationExecute(r any) *PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call {
+	return &PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call{Call: _e.mock.On("CreateGroupLogIntegrationExecute", r)}
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call) Run(run func(r admin.CreateGroupLogIntegrationApiRequest)) *PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateGroupLogIntegrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call) Return(_a0 *admin.LogIntegrationResponse, _a1 *http.Response, _a2 error) *PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call) RunAndReturn(run func(admin.CreateGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error)) *PushBasedLogExportApi_CreateGroupLogIntegrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateGroupLogIntegrationWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) CreateGroupLogIntegrationWithParams(ctx context.Context, args *admin.CreateGroupLogIntegrationApiParams) admin.CreateGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateGroupLogIntegrationWithParams")
+	}
+
+	var r0 admin.CreateGroupLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateGroupLogIntegrationApiParams) admin.CreateGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateGroupLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGroupLogIntegrationWithParams'
+type PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateGroupLogIntegrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateGroupLogIntegrationApiParams
+func (_e *PushBasedLogExportApi_Expecter) CreateGroupLogIntegrationWithParams(ctx any, args any) *PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call {
+	return &PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call{Call: _e.mock.On("CreateGroupLogIntegrationWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateGroupLogIntegrationApiParams)) *PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateGroupLogIntegrationApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call) Return(_a0 admin.CreateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateGroupLogIntegrationApiParams) admin.CreateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_CreateGroupLogIntegrationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // CreateLogExport provides a mock function with given fields: ctx, groupId, createPushBasedLogExportProjectRequest
@@ -178,6 +340,159 @@ func (_c *PushBasedLogExportApi_CreateLogExportWithParams_Call) RunAndReturn(run
 	return _c
 }
 
+// DeleteGroupLogIntegration provides a mock function with given fields: ctx, groupId, id
+func (_m *PushBasedLogExportApi) DeleteGroupLogIntegration(ctx context.Context, groupId string, id string) admin.DeleteGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, groupId, id)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteGroupLogIntegration")
+	}
+
+	var r0 admin.DeleteGroupLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, groupId, id)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteGroupLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_DeleteGroupLogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupLogIntegration'
+type PushBasedLogExportApi_DeleteGroupLogIntegration_Call struct {
+	*mock.Call
+}
+
+// DeleteGroupLogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - id string
+func (_e *PushBasedLogExportApi_Expecter) DeleteGroupLogIntegration(ctx any, groupId any, id any) *PushBasedLogExportApi_DeleteGroupLogIntegration_Call {
+	return &PushBasedLogExportApi_DeleteGroupLogIntegration_Call{Call: _e.mock.On("DeleteGroupLogIntegration", ctx, groupId, id)}
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegration_Call) Run(run func(ctx context.Context, groupId string, id string)) *PushBasedLogExportApi_DeleteGroupLogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegration_Call) Return(_a0 admin.DeleteGroupLogIntegrationApiRequest) *PushBasedLogExportApi_DeleteGroupLogIntegration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegration_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteGroupLogIntegrationApiRequest) *PushBasedLogExportApi_DeleteGroupLogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteGroupLogIntegrationExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) DeleteGroupLogIntegrationExecute(r admin.DeleteGroupLogIntegrationApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteGroupLogIntegrationExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupLogIntegrationApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteGroupLogIntegrationApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteGroupLogIntegrationApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupLogIntegrationExecute'
+type PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteGroupLogIntegrationExecute is a helper method to define mock.On call
+//   - r admin.DeleteGroupLogIntegrationApiRequest
+func (_e *PushBasedLogExportApi_Expecter) DeleteGroupLogIntegrationExecute(r any) *PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call {
+	return &PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call{Call: _e.mock.On("DeleteGroupLogIntegrationExecute", r)}
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call) Run(run func(r admin.DeleteGroupLogIntegrationApiRequest)) *PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteGroupLogIntegrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call) Return(_a0 *http.Response, _a1 error) *PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call) RunAndReturn(run func(admin.DeleteGroupLogIntegrationApiRequest) (*http.Response, error)) *PushBasedLogExportApi_DeleteGroupLogIntegrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteGroupLogIntegrationWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) DeleteGroupLogIntegrationWithParams(ctx context.Context, args *admin.DeleteGroupLogIntegrationApiParams) admin.DeleteGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteGroupLogIntegrationWithParams")
+	}
+
+	var r0 admin.DeleteGroupLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteGroupLogIntegrationApiParams) admin.DeleteGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteGroupLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGroupLogIntegrationWithParams'
+type PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteGroupLogIntegrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteGroupLogIntegrationApiParams
+func (_e *PushBasedLogExportApi_Expecter) DeleteGroupLogIntegrationWithParams(ctx any, args any) *PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call {
+	return &PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call{Call: _e.mock.On("DeleteGroupLogIntegrationWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteGroupLogIntegrationApiParams)) *PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteGroupLogIntegrationApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call) Return(_a0 admin.DeleteGroupLogIntegrationApiRequest) *PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteGroupLogIntegrationApiParams) admin.DeleteGroupLogIntegrationApiRequest) *PushBasedLogExportApi_DeleteGroupLogIntegrationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteLogExport provides a mock function with given fields: ctx, groupId
 func (_m *PushBasedLogExportApi) DeleteLogExport(ctx context.Context, groupId string) admin.DeleteLogExportApiRequest {
 	ret := _m.Called(ctx, groupId)
@@ -326,6 +641,168 @@ func (_c *PushBasedLogExportApi_DeleteLogExportWithParams_Call) Return(_a0 admin
 }
 
 func (_c *PushBasedLogExportApi_DeleteLogExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteLogExportApiParams) admin.DeleteLogExportApiRequest) *PushBasedLogExportApi_DeleteLogExportWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetGroupLogIntegration provides a mock function with given fields: ctx, groupId, id
+func (_m *PushBasedLogExportApi) GetGroupLogIntegration(ctx context.Context, groupId string, id string) admin.GetGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, groupId, id)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGroupLogIntegration")
+	}
+
+	var r0 admin.GetGroupLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, groupId, id)
+	} else {
+		r0 = ret.Get(0).(admin.GetGroupLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_GetGroupLogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLogIntegration'
+type PushBasedLogExportApi_GetGroupLogIntegration_Call struct {
+	*mock.Call
+}
+
+// GetGroupLogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - id string
+func (_e *PushBasedLogExportApi_Expecter) GetGroupLogIntegration(ctx any, groupId any, id any) *PushBasedLogExportApi_GetGroupLogIntegration_Call {
+	return &PushBasedLogExportApi_GetGroupLogIntegration_Call{Call: _e.mock.On("GetGroupLogIntegration", ctx, groupId, id)}
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegration_Call) Run(run func(ctx context.Context, groupId string, id string)) *PushBasedLogExportApi_GetGroupLogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegration_Call) Return(_a0 admin.GetGroupLogIntegrationApiRequest) *PushBasedLogExportApi_GetGroupLogIntegration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegration_Call) RunAndReturn(run func(context.Context, string, string) admin.GetGroupLogIntegrationApiRequest) *PushBasedLogExportApi_GetGroupLogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetGroupLogIntegrationExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) GetGroupLogIntegrationExecute(r admin.GetGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGroupLogIntegrationExecute")
+	}
+
+	var r0 *admin.LogIntegrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetGroupLogIntegrationApiRequest) *admin.LogIntegrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.LogIntegrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetGroupLogIntegrationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetGroupLogIntegrationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLogIntegrationExecute'
+type PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call struct {
+	*mock.Call
+}
+
+// GetGroupLogIntegrationExecute is a helper method to define mock.On call
+//   - r admin.GetGroupLogIntegrationApiRequest
+func (_e *PushBasedLogExportApi_Expecter) GetGroupLogIntegrationExecute(r any) *PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call {
+	return &PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call{Call: _e.mock.On("GetGroupLogIntegrationExecute", r)}
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call) Run(run func(r admin.GetGroupLogIntegrationApiRequest)) *PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetGroupLogIntegrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call) Return(_a0 *admin.LogIntegrationResponse, _a1 *http.Response, _a2 error) *PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call) RunAndReturn(run func(admin.GetGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error)) *PushBasedLogExportApi_GetGroupLogIntegrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetGroupLogIntegrationWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) GetGroupLogIntegrationWithParams(ctx context.Context, args *admin.GetGroupLogIntegrationApiParams) admin.GetGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGroupLogIntegrationWithParams")
+	}
+
+	var r0 admin.GetGroupLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupLogIntegrationApiParams) admin.GetGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetGroupLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupLogIntegrationWithParams'
+type PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call struct {
+	*mock.Call
+}
+
+// GetGroupLogIntegrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetGroupLogIntegrationApiParams
+func (_e *PushBasedLogExportApi_Expecter) GetGroupLogIntegrationWithParams(ctx any, args any) *PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call {
+	return &PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call{Call: _e.mock.On("GetGroupLogIntegrationWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupLogIntegrationApiParams)) *PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetGroupLogIntegrationApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call) Return(_a0 admin.GetGroupLogIntegrationApiRequest) *PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupLogIntegrationApiParams) admin.GetGroupLogIntegrationApiRequest) *PushBasedLogExportApi_GetGroupLogIntegrationWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -487,6 +964,330 @@ func (_c *PushBasedLogExportApi_GetLogExportWithParams_Call) Return(_a0 admin.Ge
 }
 
 func (_c *PushBasedLogExportApi_GetLogExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetLogExportApiParams) admin.GetLogExportApiRequest) *PushBasedLogExportApi_GetLogExportWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupLogIntegrations provides a mock function with given fields: ctx, groupId
+func (_m *PushBasedLogExportApi) ListGroupLogIntegrations(ctx context.Context, groupId string) admin.ListGroupLogIntegrationsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupLogIntegrations")
+	}
+
+	var r0 admin.ListGroupLogIntegrationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListGroupLogIntegrationsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupLogIntegrationsApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_ListGroupLogIntegrations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupLogIntegrations'
+type PushBasedLogExportApi_ListGroupLogIntegrations_Call struct {
+	*mock.Call
+}
+
+// ListGroupLogIntegrations is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *PushBasedLogExportApi_Expecter) ListGroupLogIntegrations(ctx any, groupId any) *PushBasedLogExportApi_ListGroupLogIntegrations_Call {
+	return &PushBasedLogExportApi_ListGroupLogIntegrations_Call{Call: _e.mock.On("ListGroupLogIntegrations", ctx, groupId)}
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrations_Call) Run(run func(ctx context.Context, groupId string)) *PushBasedLogExportApi_ListGroupLogIntegrations_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrations_Call) Return(_a0 admin.ListGroupLogIntegrationsApiRequest) *PushBasedLogExportApi_ListGroupLogIntegrations_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrations_Call) RunAndReturn(run func(context.Context, string) admin.ListGroupLogIntegrationsApiRequest) *PushBasedLogExportApi_ListGroupLogIntegrations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupLogIntegrationsExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) ListGroupLogIntegrationsExecute(r admin.ListGroupLogIntegrationsApiRequest) (*admin.PaginatedLogIntegrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupLogIntegrationsExecute")
+	}
+
+	var r0 *admin.PaginatedLogIntegrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListGroupLogIntegrationsApiRequest) (*admin.PaginatedLogIntegrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListGroupLogIntegrationsApiRequest) *admin.PaginatedLogIntegrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedLogIntegrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListGroupLogIntegrationsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListGroupLogIntegrationsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupLogIntegrationsExecute'
+type PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call struct {
+	*mock.Call
+}
+
+// ListGroupLogIntegrationsExecute is a helper method to define mock.On call
+//   - r admin.ListGroupLogIntegrationsApiRequest
+func (_e *PushBasedLogExportApi_Expecter) ListGroupLogIntegrationsExecute(r any) *PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call {
+	return &PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call{Call: _e.mock.On("ListGroupLogIntegrationsExecute", r)}
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call) Run(run func(r admin.ListGroupLogIntegrationsApiRequest)) *PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListGroupLogIntegrationsApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call) Return(_a0 *admin.PaginatedLogIntegrationResponse, _a1 *http.Response, _a2 error) *PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call) RunAndReturn(run func(admin.ListGroupLogIntegrationsApiRequest) (*admin.PaginatedLogIntegrationResponse, *http.Response, error)) *PushBasedLogExportApi_ListGroupLogIntegrationsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListGroupLogIntegrationsWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) ListGroupLogIntegrationsWithParams(ctx context.Context, args *admin.ListGroupLogIntegrationsApiParams) admin.ListGroupLogIntegrationsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGroupLogIntegrationsWithParams")
+	}
+
+	var r0 admin.ListGroupLogIntegrationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListGroupLogIntegrationsApiParams) admin.ListGroupLogIntegrationsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListGroupLogIntegrationsApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGroupLogIntegrationsWithParams'
+type PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListGroupLogIntegrationsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListGroupLogIntegrationsApiParams
+func (_e *PushBasedLogExportApi_Expecter) ListGroupLogIntegrationsWithParams(ctx any, args any) *PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call {
+	return &PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call{Call: _e.mock.On("ListGroupLogIntegrationsWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListGroupLogIntegrationsApiParams)) *PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListGroupLogIntegrationsApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call) Return(_a0 admin.ListGroupLogIntegrationsApiRequest) *PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupLogIntegrationsApiParams) admin.ListGroupLogIntegrationsApiRequest) *PushBasedLogExportApi_ListGroupLogIntegrationsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupLogIntegration provides a mock function with given fields: ctx, groupId, id, logIntegrationRequest
+func (_m *PushBasedLogExportApi) UpdateGroupLogIntegration(ctx context.Context, groupId string, id string, logIntegrationRequest *admin.LogIntegrationRequest) admin.UpdateGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, groupId, id, logIntegrationRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupLogIntegration")
+	}
+
+	var r0 admin.UpdateGroupLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.LogIntegrationRequest) admin.UpdateGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, groupId, id, logIntegrationRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_UpdateGroupLogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupLogIntegration'
+type PushBasedLogExportApi_UpdateGroupLogIntegration_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupLogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - id string
+//   - logIntegrationRequest *admin.LogIntegrationRequest
+func (_e *PushBasedLogExportApi_Expecter) UpdateGroupLogIntegration(ctx any, groupId any, id any, logIntegrationRequest any) *PushBasedLogExportApi_UpdateGroupLogIntegration_Call {
+	return &PushBasedLogExportApi_UpdateGroupLogIntegration_Call{Call: _e.mock.On("UpdateGroupLogIntegration", ctx, groupId, id, logIntegrationRequest)}
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegration_Call) Run(run func(ctx context.Context, groupId string, id string, logIntegrationRequest *admin.LogIntegrationRequest)) *PushBasedLogExportApi_UpdateGroupLogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.LogIntegrationRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegration_Call) Return(_a0 admin.UpdateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_UpdateGroupLogIntegration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegration_Call) RunAndReturn(run func(context.Context, string, string, *admin.LogIntegrationRequest) admin.UpdateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_UpdateGroupLogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupLogIntegrationExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportApi) UpdateGroupLogIntegrationExecute(r admin.UpdateGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupLogIntegrationExecute")
+	}
+
+	var r0 *admin.LogIntegrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupLogIntegrationApiRequest) *admin.LogIntegrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.LogIntegrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateGroupLogIntegrationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateGroupLogIntegrationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupLogIntegrationExecute'
+type PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupLogIntegrationExecute is a helper method to define mock.On call
+//   - r admin.UpdateGroupLogIntegrationApiRequest
+func (_e *PushBasedLogExportApi_Expecter) UpdateGroupLogIntegrationExecute(r any) *PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call {
+	return &PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call{Call: _e.mock.On("UpdateGroupLogIntegrationExecute", r)}
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call) Run(run func(r admin.UpdateGroupLogIntegrationApiRequest)) *PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateGroupLogIntegrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call) Return(_a0 *admin.LogIntegrationResponse, _a1 *http.Response, _a2 error) *PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call) RunAndReturn(run func(admin.UpdateGroupLogIntegrationApiRequest) (*admin.LogIntegrationResponse, *http.Response, error)) *PushBasedLogExportApi_UpdateGroupLogIntegrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateGroupLogIntegrationWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportApi) UpdateGroupLogIntegrationWithParams(ctx context.Context, args *admin.UpdateGroupLogIntegrationApiParams) admin.UpdateGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateGroupLogIntegrationWithParams")
+	}
+
+	var r0 admin.UpdateGroupLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateGroupLogIntegrationApiParams) admin.UpdateGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateGroupLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateGroupLogIntegrationWithParams'
+type PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateGroupLogIntegrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateGroupLogIntegrationApiParams
+func (_e *PushBasedLogExportApi_Expecter) UpdateGroupLogIntegrationWithParams(ctx any, args any) *PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call {
+	return &PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call{Call: _e.mock.On("UpdateGroupLogIntegrationWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateGroupLogIntegrationApiParams)) *PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateGroupLogIntegrationApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call) Return(_a0 admin.UpdateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateGroupLogIntegrationApiParams) admin.UpdateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_UpdateGroupLogIntegrationWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

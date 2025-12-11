@@ -4,9 +4,98 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetClusterQueryShape**](QueryShapeInsightsApi.md#GetClusterQueryShape) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Return One Query Shape
 [**GetQueryShapeDetails**](QueryShapeInsightsApi.md#GetQueryShapeDetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details
+[**ListClusterQueryShapes**](QueryShapeInsightsApi.md#ListClusterQueryShapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes
 [**ListQueryShapeSummaries**](QueryShapeInsightsApi.md#ListQueryShapeSummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries
+[**UpdateClusterQueryShape**](QueryShapeInsightsApi.md#UpdateClusterQueryShape) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Update Query Shape Rejection Status
 
+
+
+## GetClusterQueryShape
+
+> QueryShapeResponse GetClusterQueryShape(ctx, groupId, clusterName, queryShapeHash).Execute()
+
+Return One Query Shape
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    queryShapeHash := "queryShapeHash_example" // string | 
+
+    resp, r, err := sdk.QueryShapeInsightsApi.GetClusterQueryShape(context.Background(), groupId, clusterName, queryShapeHash).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.GetClusterQueryShape`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetClusterQueryShape`: QueryShapeResponse
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.GetClusterQueryShape`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+**queryShapeHash** | **string** | A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterQueryShapeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**QueryShapeResponse**](QueryShapeResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetQueryShapeDetails
@@ -26,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312010/admin"
+    "go.mongodb.org/atlas-sdk/v20250312011/admin"
 )
 
 func main() {
@@ -101,6 +190,97 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListClusterQueryShapes
+
+> PaginatedQueryShapes ListClusterQueryShapes(ctx, groupId, clusterName).Status(status).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Query Shapes
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    status := "status_example" // string |  (optional) (default to "REJECTED")
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.QueryShapeInsightsApi.ListClusterQueryShapes(context.Background(), groupId, clusterName).Status(status).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.ListClusterQueryShapes`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListClusterQueryShapes`: PaginatedQueryShapes
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.ListClusterQueryShapes`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListClusterQueryShapesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **status** | **string** | The status of query shapes to retrieve. Only REJECTED status is supported. If omitted, defaults to REJECTED. | [default to &quot;REJECTED&quot;]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedQueryShapes**](PaginatedQueryShapes.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListQueryShapeSummaries
 
 > QueryStatsSummaryListResponse ListQueryShapeSummaries(ctx, groupId, clusterName).Since(since).Until(until).ProcessIds(processIds).Namespaces(namespaces).Commands(commands).NSummaries(nSummaries).Series(series).QueryShapeHashes(queryShapeHashes).Execute()
@@ -118,7 +298,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312010/admin"
+    "go.mongodb.org/atlas-sdk/v20250312011/admin"
 )
 
 func main() {
@@ -193,6 +373,94 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateClusterQueryShape
+
+> QueryShapeResponse UpdateClusterQueryShape(ctx, groupId, clusterName, queryShapeHash, queryShapeUpdateRequest QueryShapeUpdateRequest).Execute()
+
+Update Query Shape Rejection Status
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    queryShapeHash := "queryShapeHash_example" // string | 
+    queryShapeUpdateRequest := *openapiclient.NewQueryShapeUpdateRequest("Status_example") // QueryShapeUpdateRequest | 
+
+    resp, r, err := sdk.QueryShapeInsightsApi.UpdateClusterQueryShape(context.Background(), groupId, clusterName, queryShapeHash, &queryShapeUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.UpdateClusterQueryShape`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateClusterQueryShape`: QueryShapeResponse
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.UpdateClusterQueryShape`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+**queryShapeHash** | **string** | A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateClusterQueryShapeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **queryShapeUpdateRequest** | [**QueryShapeUpdateRequest**](QueryShapeUpdateRequest.md) | The desired rejection status for the query shape. Provide REJECTED to block the query shape from executing, or UNREJECTED to allow it to execute. | 
+
+### Return type
+
+[**QueryShapeResponse**](QueryShapeResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
 - **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

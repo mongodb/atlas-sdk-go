@@ -8,6 +8,8 @@ type VectorSearchIndexDefinition struct {
 	Fields *[]any `json:"fields,omitempty"`
 	// Number of index partitions. Allowed values are [1, 2, 4].
 	NumPartitions *int `json:"numPartitions,omitempty"`
+	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
+	StoredSource any `json:"storedSource,omitempty"`
 }
 
 // NewVectorSearchIndexDefinition instantiates a new VectorSearchIndexDefinition object
@@ -95,4 +97,38 @@ func (o *VectorSearchIndexDefinition) HasNumPartitions() bool {
 // SetNumPartitions gets a reference to the given int and assigns it to the NumPartitions field.
 func (o *VectorSearchIndexDefinition) SetNumPartitions(v int) {
 	o.NumPartitions = &v
+}
+
+// GetStoredSource returns the StoredSource field value if set, zero value otherwise
+func (o *VectorSearchIndexDefinition) GetStoredSource() any {
+	if o == nil || IsNil(o.StoredSource) {
+		var ret any
+		return ret
+	}
+	return o.StoredSource
+}
+
+// GetStoredSourceOk returns a tuple with the StoredSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VectorSearchIndexDefinition) GetStoredSourceOk() (any, bool) {
+	if o == nil || IsNil(o.StoredSource) {
+		var ret any
+		return ret, false
+	}
+
+	return o.StoredSource, true
+}
+
+// HasStoredSource returns a boolean if a field has been set.
+func (o *VectorSearchIndexDefinition) HasStoredSource() bool {
+	if o != nil && !IsNil(o.StoredSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
+func (o *VectorSearchIndexDefinition) SetStoredSource(v any) {
+	o.StoredSource = v
 }

@@ -18,6 +18,8 @@ type AzureKeyVault struct {
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
 	// Name of the Azure resource group that contains your Azure Key Vault. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Key Vault.
+	RoleId *string `json:"roleId,omitempty"`
 	// Private data that you need secured and that belongs to the specified Azure Key Vault (AKV) tenant (**azureKeyVault.tenantID**). This data can include any type of sensitive data such as passwords, database connection strings, API keys, and the like. AKV stores this information as encrypted binary data.
 	// Write only field.
 	Secret *string `json:"secret,omitempty"`
@@ -276,6 +278,39 @@ func (o *AzureKeyVault) HasResourceGroupName() bool {
 // SetResourceGroupName gets a reference to the given string and assigns it to the ResourceGroupName field.
 func (o *AzureKeyVault) SetResourceGroupName(v string) {
 	o.ResourceGroupName = &v
+}
+
+// GetRoleId returns the RoleId field value if set, zero value otherwise
+func (o *AzureKeyVault) GetRoleId() string {
+	if o == nil || IsNil(o.RoleId) {
+		var ret string
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureKeyVault) GetRoleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleId) {
+		return nil, false
+	}
+
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *AzureKeyVault) HasRoleId() bool {
+	if o != nil && !IsNil(o.RoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *AzureKeyVault) SetRoleId(v string) {
+	o.RoleId = &v
 }
 
 // GetSecret returns the Secret field value if set, zero value otherwise
