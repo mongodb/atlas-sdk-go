@@ -9,7 +9,6 @@ set -o nounset
 #   CURRENT_REVISION - current revision of the versioned API
 #   OPENAPI_FILE_NAME - openapi file name to use
 #   OPENAPI_FOLDER - folder for saving openapi file
-#   S3_BUCKET - S3 bucket where the spec is hosted
 #########################################################
 
 ## Input variables with defaults
