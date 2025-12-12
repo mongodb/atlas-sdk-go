@@ -11,7 +11,7 @@ type StreamsConnection struct {
 	Name *string `json:"name,omitempty"`
 	// Type of the connection.
 	Type *string `json:"type,omitempty"`
-	// The id of the group that the cluster belongs to.
+	// Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting.
 	ClusterGroupId *string `json:"clusterGroupId,omitempty"`
 	// Name of the cluster configured for this connection.
 	ClusterName     *string                     `json:"clusterName,omitempty"`
