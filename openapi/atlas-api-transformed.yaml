@@ -13089,7 +13089,7 @@ components:
       description: Information about the cloud provider region in which MongoDB Cloud processes the stream.
       properties:
         cloudProvider:
-          description: Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter only supports AWS and AZURE.
+          description: Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter only supports AWS, AZURE, and GCP.
           type: string
         links:
           description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -13575,6 +13575,24 @@ components:
           $ref: "#/components/schemas/StreamsSampleConnections"
         streamConfig:
           $ref: "#/components/schemas/StreamConfig"
+      type: object
+    StreamsTenantUpdateRequest:
+      description: Details to update a stream tenant.
+      properties:
+        cloudProvider:
+          description: Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter only supports AWS, AZURE, and GCP.
+          type: string
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        region:
+          $ref: "#/components/schemas/BaseStreamsRegion"
       type: object
     SynonymMappingStatusDetail:
       description: Contains the status of the index's synonym mappings on each search host. This field (and its subfields) only appear if the index has synonyms defined.
@@ -16837,7 +16855,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 734a12a6faed4338d5ab4dce35689f5f56f9be9b
+  x-xgen-sha: 56bf2d08c0887363c29f9e36e803f66606821dc6
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -47146,8 +47164,8 @@ paths:
         content:
           application/vnd.atlas.2023-02-01+json:
             schema:
-              $ref: "#/components/schemas/StreamsDataProcessRegion"
-        description: Details of the new data process region to update in the streams workspace.
+              $ref: "#/components/schemas/StreamsTenantUpdateRequest"
+        description: Details to update in the streams workspace.
         required: true
       responses:
         "200":
