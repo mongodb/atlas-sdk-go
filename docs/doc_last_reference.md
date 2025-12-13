@@ -920,6 +920,7 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamsSampleConnections](./docs/StreamsSampleConnections.md)
  - [StreamsStartStreamProcessorWith](./docs/StreamsStartStreamProcessorWith.md)
  - [StreamsTenant](./docs/StreamsTenant.md)
+ - [StreamsTenantUpdateRequest](./docs/StreamsTenantUpdateRequest.md)
  - [SynonymMappingStatusDetail](./docs/SynonymMappingStatusDetail.md)
  - [SynonymSource](./docs/SynonymSource.md)
  - [SystemStatus](./docs/SystemStatus.md)
