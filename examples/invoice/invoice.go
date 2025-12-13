@@ -7,8 +7,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312011/admin"
-	"go.mongodb.org/atlas-sdk/v20250312011/examples"
+	"go.mongodb.org/atlas-sdk/v20250312012/admin"
+	"go.mongodb.org/atlas-sdk/v20250312012/examples"
 )
 
 func main() {
