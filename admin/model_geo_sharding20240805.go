@@ -4,7 +4,7 @@ package admin
 
 // GeoSharding20240805 struct for GeoSharding20240805
 type GeoSharding20240805 struct {
-	// List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.   The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.  This parameter returns an empty object if no custom zones exist.
+	// List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.   The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.  This parameter returns an empty object if no custom zones exist.  Example: `{\"US-VA\": \"6716c5a804f4ce77e899bf99\", \"DE\": \"6716c5a804f4ce77e899bf9a\"}`.
 	// Read only field.
 	CustomZoneMapping *map[string]string `json:"customZoneMapping,omitempty"`
 	// List that contains a namespace for a Global Cluster. MongoDB Cloud manages this cluster.
