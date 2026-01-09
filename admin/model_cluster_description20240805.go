@@ -70,6 +70,8 @@ type ClusterDescription20240805 struct {
 	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
 	// List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations.
 	ReplicationSpecs *[]ReplicationSpec20240805 `json:"replicationSpecs,omitempty"`
+	// Flag that indicates whether the cluster retains backups.
+	RetainBackups *bool `json:"retainBackups,omitempty"`
 	// Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.   - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.  - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.  - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.  - `DELETING`: The cluster is in the process of deletion and will soon be deleted.  - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
@@ -99,6 +101,8 @@ func NewClusterDescription20240805() *ClusterDescription20240805 {
 	this.DiskWarmingMode = &diskWarmingMode
 	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
 	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
+	var retainBackups bool = false
+	this.RetainBackups = &retainBackups
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
 	var terminationProtectionEnabled bool = false
@@ -123,6 +127,8 @@ func NewClusterDescription20240805WithDefaults() *ClusterDescription20240805 {
 	this.DiskWarmingMode = &diskWarmingMode
 	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
 	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
+	var retainBackups bool = false
+	this.RetainBackups = &retainBackups
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
 	var terminationProtectionEnabled bool = false
@@ -1059,6 +1065,39 @@ func (o *ClusterDescription20240805) HasReplicationSpecs() bool {
 // SetReplicationSpecs gets a reference to the given []ReplicationSpec20240805 and assigns it to the ReplicationSpecs field.
 func (o *ClusterDescription20240805) SetReplicationSpecs(v []ReplicationSpec20240805) {
 	o.ReplicationSpecs = &v
+}
+
+// GetRetainBackups returns the RetainBackups field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetRetainBackups() bool {
+	if o == nil || IsNil(o.RetainBackups) {
+		var ret bool
+		return ret
+	}
+	return *o.RetainBackups
+}
+
+// GetRetainBackupsOk returns a tuple with the RetainBackups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetRetainBackupsOk() (*bool, bool) {
+	if o == nil || IsNil(o.RetainBackups) {
+		return nil, false
+	}
+
+	return o.RetainBackups, true
+}
+
+// HasRetainBackups returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasRetainBackups() bool {
+	if o != nil && !IsNil(o.RetainBackups) {
+		return true
+	}
+
+	return false
+}
+
+// SetRetainBackups gets a reference to the given bool and assigns it to the RetainBackups field.
+func (o *ClusterDescription20240805) SetRetainBackups(v bool) {
+	o.RetainBackups = &v
 }
 
 // GetRootCertType returns the RootCertType field value if set, zero value otherwise

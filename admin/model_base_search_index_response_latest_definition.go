@@ -13,6 +13,8 @@ type BaseSearchIndexResponseLatestDefinition struct {
 	NumPartitions *int `json:"numPartitions,omitempty"`
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
+	// Sort definition for the index. When defined, the index will be pre-sorted on thespecified fields, which improves query sort performance for those fields. Supports two formats: simple format with field name and direction, or complex format with additional options.The 'order' field is required (1=ascending, -1=descending).The 'noData' field is optional and controls how missing values are sorted(default: \"lowest\").
+	Sort any `json:"sort,omitempty"`
 	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
 	StoredSource any `json:"storedSource,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
@@ -215,6 +217,40 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasSearchAnalyzer() bool {
 // SetSearchAnalyzer gets a reference to the given string and assigns it to the SearchAnalyzer field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetSearchAnalyzer(v string) {
 	o.SearchAnalyzer = &v
+}
+
+// GetSort returns the Sort field value if set, zero value otherwise
+func (o *BaseSearchIndexResponseLatestDefinition) GetSort() any {
+	if o == nil || IsNil(o.Sort) {
+		var ret any
+		return ret
+	}
+	return o.Sort
+}
+
+// GetSortOk returns a tuple with the Sort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseSearchIndexResponseLatestDefinition) GetSortOk() (any, bool) {
+	if o == nil || IsNil(o.Sort) {
+		var ret any
+		return ret, false
+	}
+
+	return o.Sort, true
+}
+
+// HasSort returns a boolean if a field has been set.
+func (o *BaseSearchIndexResponseLatestDefinition) HasSort() bool {
+	if o != nil && !IsNil(o.Sort) {
+		return true
+	}
+
+	return false
+}
+
+// SetSort gets a reference to the given any and assigns it to the Sort field.
+func (o *BaseSearchIndexResponseLatestDefinition) SetSort(v any) {
+	o.Sort = v
 }
 
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
