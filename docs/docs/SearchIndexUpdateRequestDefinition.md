@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Mappings** | Pointer to [**SearchMappings**](SearchMappings.md) |  | [optional] 
 **NumPartitions** | Pointer to **int** | Number of index partitions. Allowed values are [1, 2, 4]. | [optional] [default to 1]
 **SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
+**Sort** | Pointer to [**any**](interface{}.md) | Sort definition for the index. When defined, the index will be pre-sorted on thespecified fields, which improves query sort performance for those fields. Supports two formats: simple format with field name and direction, or complex format with additional options.The &#39;order&#39; field is required (1&#x3D;ascending, -1&#x3D;descending).The &#39;noData&#39; field is optional and controls how missing values are sorted(default: \&quot;lowest\&quot;). | [optional] 
 **StoredSource** | Pointer to [**any**](interface{}.md) | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields. | [optional] 
 **Synonyms** | Pointer to [**[]SearchSynonymMappingDefinition**](SearchSynonymMappingDefinition.md) | Rule sets that map words to their synonyms in this index. | [optional] 
 **TypeSets** | Pointer to [**[]SearchTypeSets**](SearchTypeSets.md) | Type sets for the index. | [optional] 
@@ -153,6 +154,30 @@ SetSearchAnalyzer sets SearchAnalyzer field to given value.
 `func (o *SearchIndexUpdateRequestDefinition) HasSearchAnalyzer() bool`
 
 HasSearchAnalyzer returns a boolean if a field has been set.
+### GetSort
+
+`func (o *SearchIndexUpdateRequestDefinition) GetSort() any`
+
+GetSort returns the Sort field if non-nil, zero value otherwise.
+
+### GetSortOk
+
+`func (o *SearchIndexUpdateRequestDefinition) GetSortOk() (*any, bool)`
+
+GetSortOk returns a tuple with the Sort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSort
+
+`func (o *SearchIndexUpdateRequestDefinition) SetSort(v any)`
+
+SetSort sets Sort field to given value.
+
+### HasSort
+
+`func (o *SearchIndexUpdateRequestDefinition) HasSort() bool`
+
+HasSort returns a boolean if a field has been set.
 ### GetStoredSource
 
 `func (o *SearchIndexUpdateRequestDefinition) GetStoredSource() any`

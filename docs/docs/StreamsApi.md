@@ -54,7 +54,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -137,7 +137,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -219,7 +219,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -304,7 +304,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -389,7 +389,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -471,7 +471,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -552,7 +552,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -636,7 +636,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -720,7 +720,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -801,7 +801,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -882,7 +882,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -969,7 +969,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1053,7 +1053,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1136,7 +1136,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1222,7 +1222,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1308,7 +1308,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1397,7 +1397,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1482,7 +1482,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1564,7 +1564,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1648,7 +1648,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1735,7 +1735,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1819,7 +1819,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1903,7 +1903,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1984,7 +1984,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2068,7 +2068,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2154,7 +2154,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2238,7 +2238,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2326,7 +2326,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2399,7 +2399,7 @@ Name | Type | Description  | Notes
 
 ## UpdateStreamWorkspace
 
-> StreamsTenant UpdateStreamWorkspace(ctx, groupId, tenantName, streamsDataProcessRegion StreamsDataProcessRegion).Execute()
+> StreamsTenant UpdateStreamWorkspace(ctx, groupId, tenantName, streamsTenantUpdateRequest StreamsTenantUpdateRequest).Execute()
 
 Update One Stream Workspace
 
@@ -2414,7 +2414,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2429,9 +2429,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
-    streamsDataProcessRegion := *openapiclient.NewStreamsDataProcessRegion("CloudProvider_example", "Region_example") // StreamsDataProcessRegion | 
+    streamsTenantUpdateRequest := *openapiclient.NewStreamsTenantUpdateRequest() // StreamsTenantUpdateRequest | 
 
-    resp, r, err := sdk.StreamsApi.UpdateStreamWorkspace(context.Background(), groupId, tenantName, &streamsDataProcessRegion).Execute()
+    resp, r, err := sdk.StreamsApi.UpdateStreamWorkspace(context.Background(), groupId, tenantName, &streamsTenantUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamWorkspace`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -2463,7 +2463,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **streamsDataProcessRegion** | [**StreamsDataProcessRegion**](StreamsDataProcessRegion.md) | Details of the new data process region to update in the streams workspace. | 
+ **streamsTenantUpdateRequest** | [**StreamsTenantUpdateRequest**](StreamsTenantUpdateRequest.md) | Details to update in the streams workspace. | 
 
 ### Return type
 
@@ -2499,7 +2499,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | Human-readable label that indicates the stage of the backup process for this snapshot. | [optional] [readonly] 
 **StorageSizeBytes** | Pointer to **int64** | Number of bytes taken to store the backup at time of snapshot. | [optional] [readonly] 
 **Type** | Pointer to **string** | Human-readable label that categorizes the cluster as a replica set or sharded cluster. | [optional] [readonly] 
-**CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
+**CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider. | [optional] [readonly] 
 **CopyRegions** | Pointer to **[]string** | List that identifies the regions to which MongoDB Cloud copies the snapshot. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
 **ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
