@@ -8,7 +8,7 @@ import (
 
 // DiskBackupReplicaSet Details of the replica set snapshot that MongoDB Cloud created.
 type DiskBackupReplicaSet struct {
-	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
+	// Human-readable label that identifies the cloud provider.
 	// Read only field.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List that identifies the regions to which MongoDB Cloud copies the snapshot.

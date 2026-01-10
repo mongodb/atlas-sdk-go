@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | **string** | Human-readable label that identifies the cloud provider that Snapshots are exported to. | 
+**CloudProvider** | **string** | Human-readable label that identifies the cloud provider. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **BucketName** | Pointer to **string** | Human-readable label that identifies the Google Cloud Storage Bucket that the role is authorized to export to. | [optional] 
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 

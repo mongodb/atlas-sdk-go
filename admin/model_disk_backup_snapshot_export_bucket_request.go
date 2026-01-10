@@ -4,7 +4,7 @@ package admin
 
 // DiskBackupSnapshotExportBucketRequest Disk backup snapshot Export Bucket Request.
 type DiskBackupSnapshotExportBucketRequest struct {
-	// Human-readable label that identifies the cloud provider that Snapshots are exported to.
+	// Human-readable label that identifies the cloud provider.
 	CloudProvider string `json:"cloudProvider"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.

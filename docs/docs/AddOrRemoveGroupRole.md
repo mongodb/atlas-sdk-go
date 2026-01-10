@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GroupRole** | **string** | Project-level role. | 
+**GroupRole** | **string** | Project-level role to assign to or remove from the MongoDB Cloud user. | 
 
 ## Methods
 
