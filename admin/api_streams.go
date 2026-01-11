@@ -702,10 +702,10 @@ type StreamsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param tenantName Label that identifies the stream workspace to update.
-		@param streamsDataProcessRegion Details of the new data process region to update in the streams workspace.
+		@param streamsTenantUpdateRequest Details to update in the streams workspace.
 		@return UpdateStreamWorkspaceApiRequest
 	*/
-	UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *StreamsDataProcessRegion) UpdateStreamWorkspaceApiRequest
+	UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsTenantUpdateRequest *StreamsTenantUpdateRequest) UpdateStreamWorkspaceApiRequest
 	/*
 		UpdateStreamWorkspace Update One Stream Workspace
 
@@ -4358,26 +4358,26 @@ func (a *StreamsApiService) UpdateStreamProcessorExecute(r UpdateStreamProcessor
 }
 
 type UpdateStreamWorkspaceApiRequest struct {
-	ctx                      context.Context
-	ApiService               StreamsApi
-	groupId                  string
-	tenantName               string
-	streamsDataProcessRegion *StreamsDataProcessRegion
+	ctx                        context.Context
+	ApiService                 StreamsApi
+	groupId                    string
+	tenantName                 string
+	streamsTenantUpdateRequest *StreamsTenantUpdateRequest
 }
 
 type UpdateStreamWorkspaceApiParams struct {
-	GroupId                  string
-	TenantName               string
-	StreamsDataProcessRegion *StreamsDataProcessRegion
+	GroupId                    string
+	TenantName                 string
+	StreamsTenantUpdateRequest *StreamsTenantUpdateRequest
 }
 
 func (a *StreamsApiService) UpdateStreamWorkspaceWithParams(ctx context.Context, args *UpdateStreamWorkspaceApiParams) UpdateStreamWorkspaceApiRequest {
 	return UpdateStreamWorkspaceApiRequest{
-		ApiService:               a,
-		ctx:                      ctx,
-		groupId:                  args.GroupId,
-		tenantName:               args.TenantName,
-		streamsDataProcessRegion: args.StreamsDataProcessRegion,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		tenantName:                 args.TenantName,
+		streamsTenantUpdateRequest: args.StreamsTenantUpdateRequest,
 	}
 }
 
@@ -4395,13 +4395,13 @@ Update one stream workspace in the specified project. To use this resource, the 
 	@param tenantName Label that identifies the stream workspace to update.
 	@return UpdateStreamWorkspaceApiRequest
 */
-func (a *StreamsApiService) UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *StreamsDataProcessRegion) UpdateStreamWorkspaceApiRequest {
+func (a *StreamsApiService) UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsTenantUpdateRequest *StreamsTenantUpdateRequest) UpdateStreamWorkspaceApiRequest {
 	return UpdateStreamWorkspaceApiRequest{
-		ApiService:               a,
-		ctx:                      ctx,
-		groupId:                  groupId,
-		tenantName:               tenantName,
-		streamsDataProcessRegion: streamsDataProcessRegion,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		tenantName:                 tenantName,
+		streamsTenantUpdateRequest: streamsTenantUpdateRequest,
 	}
 }
 
@@ -4434,8 +4434,8 @@ func (a *StreamsApiService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspace
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.streamsDataProcessRegion == nil {
-		return localVarReturnValue, nil, reportError("streamsDataProcessRegion is required and must be specified")
+	if r.streamsTenantUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("streamsTenantUpdateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4456,7 +4456,7 @@ func (a *StreamsApiService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspace
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.streamsDataProcessRegion
+	localVarPostBody = r.streamsTenantUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -63,6 +63,31 @@ type CloudBackupsApi interface {
 	CreateBackupExportExecute(r CreateBackupExportApiRequest) (*DiskBackupExportJob, *http.Response, error)
 
 	/*
+		CreateBackupPrivateEndpoint Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+
+		Creates a private endpoint in the specified region for secure, private connectivity between Atlas and cloud provider object storage services for backup operations.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param cloudProvider Human-readable label that identifies the cloud provider for the private endpoint to create.
+		@param objectStoragePrivateEndpointRequest Creates a private endpoint in the specified region for object storage backup operations.
+		@return CreateBackupPrivateEndpointApiRequest
+	*/
+	CreateBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, objectStoragePrivateEndpointRequest *ObjectStoragePrivateEndpointRequest) CreateBackupPrivateEndpointApiRequest
+	/*
+		CreateBackupPrivateEndpoint Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateBackupPrivateEndpointApiParams - Parameters for the request
+		@return CreateBackupPrivateEndpointApiRequest
+	*/
+	CreateBackupPrivateEndpointWithParams(ctx context.Context, args *CreateBackupPrivateEndpointApiParams) CreateBackupPrivateEndpointApiRequest
+
+	// Method available only for mocking purposes
+	CreateBackupPrivateEndpointExecute(r CreateBackupPrivateEndpointApiRequest) (*ObjectStoragePrivateEndpointResponse, *http.Response, error)
+
+	/*
 			CreateBackupRestoreJob Create One Restore Job of One Cluster
 
 			Restores one snapshot of one cluster from the specified project. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of **queued** or **inProgress** exists, before taking another snapshot, wait until Atlas completes completes processing the previously taken on-demand snapshot.
@@ -143,6 +168,31 @@ type CloudBackupsApi interface {
 
 	// Method available only for mocking purposes
 	CreateServerlessRestoreJobExecute(r CreateServerlessRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
+
+	/*
+		DeleteBackupPrivateEndpoint Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
+
+		Deletes one private endpoint, identified by its ID, for object storage backup operations.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param cloudProvider Human-readable label that identifies the cloud provider of the private endpoint to delete.
+		@param endpointId Unique 24-hexadecimal digit string that identifies the private endpoint to delete.
+		@return DeleteBackupPrivateEndpointApiRequest
+	*/
+	DeleteBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) DeleteBackupPrivateEndpointApiRequest
+	/*
+		DeleteBackupPrivateEndpoint Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteBackupPrivateEndpointApiParams - Parameters for the request
+		@return DeleteBackupPrivateEndpointApiRequest
+	*/
+	DeleteBackupPrivateEndpointWithParams(ctx context.Context, args *DeleteBackupPrivateEndpointApiParams) DeleteBackupPrivateEndpointApiRequest
+
+	// Method available only for mocking purposes
+	DeleteBackupPrivateEndpointExecute(r DeleteBackupPrivateEndpointApiRequest) (*http.Response, error)
 
 	/*
 		DeleteBackupShardedCluster Remove One Sharded Cluster Cloud Backup
@@ -289,6 +339,31 @@ type CloudBackupsApi interface {
 
 	// Method available only for mocking purposes
 	GetBackupExportExecute(r GetBackupExportApiRequest) (*DiskBackupExportJob, *http.Response, error)
+
+	/*
+		GetBackupPrivateEndpoint Return One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+
+		Returns one private endpoint, identified by its ID, for object storage backup operations.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param cloudProvider Human-readable label that identifies the cloud provider of the private endpoint.
+		@param endpointId Unique 24-hexadecimal digit string that identifies the private endpoint.
+		@return GetBackupPrivateEndpointApiRequest
+	*/
+	GetBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) GetBackupPrivateEndpointApiRequest
+	/*
+		GetBackupPrivateEndpoint Return One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetBackupPrivateEndpointApiParams - Parameters for the request
+		@return GetBackupPrivateEndpointApiRequest
+	*/
+	GetBackupPrivateEndpointWithParams(ctx context.Context, args *GetBackupPrivateEndpointApiParams) GetBackupPrivateEndpointApiRequest
+
+	// Method available only for mocking purposes
+	GetBackupPrivateEndpointExecute(r GetBackupPrivateEndpointApiRequest) (*ObjectStoragePrivateEndpointResponse, *http.Response, error)
 
 	/*
 		GetBackupRestoreJob Return One Restore Job for One Cluster
@@ -523,6 +598,30 @@ type CloudBackupsApi interface {
 	ListBackupExportsExecute(r ListBackupExportsApiRequest) (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error)
 
 	/*
+		ListBackupPrivateEndpoints Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
+
+		Returns the private endpoints of the specified cloud provider for object storage backup operations.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param cloudProvider Human-readable label that identifies the cloud provider for the private endpoints to return.
+		@return ListBackupPrivateEndpointsApiRequest
+	*/
+	ListBackupPrivateEndpoints(ctx context.Context, groupId string, cloudProvider string) ListBackupPrivateEndpointsApiRequest
+	/*
+		ListBackupPrivateEndpoints Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListBackupPrivateEndpointsApiParams - Parameters for the request
+		@return ListBackupPrivateEndpointsApiRequest
+	*/
+	ListBackupPrivateEndpointsWithParams(ctx context.Context, args *ListBackupPrivateEndpointsApiParams) ListBackupPrivateEndpointsApiRequest
+
+	// Method available only for mocking purposes
+	ListBackupPrivateEndpointsExecute(r ListBackupPrivateEndpointsApiRequest) (*PaginatedApiAtlasObjectStoragePrivateEndpointResponse, *http.Response, error)
+
+	/*
 		ListBackupRestoreJobs Return All Restore Jobs for One Cluster
 
 		Returns all cloud backup restore jobs for one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
@@ -703,6 +802,31 @@ type CloudBackupsApi interface {
 
 	// Method available only for mocking purposes
 	TakeSnapshotsExecute(r TakeSnapshotsApiRequest) (*DiskBackupSnapshot, *http.Response, error)
+
+	/*
+		UpdateBackupExportBucket Update One Export Bucket Private Networking Settings
+
+		Updates the private networking settings for one snapshot export bucket in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param exportBucketId Unique 24-hexadecimal character string that identifies the snapshot export bucket.
+		@param updateRequirePrivateNetworkingRequest Updates the private networking requirement for the snapshot export bucket.
+		@return UpdateBackupExportBucketApiRequest
+	*/
+	UpdateBackupExportBucket(ctx context.Context, groupId string, exportBucketId string, updateRequirePrivateNetworkingRequest *UpdateRequirePrivateNetworkingRequest) UpdateBackupExportBucketApiRequest
+	/*
+		UpdateBackupExportBucket Update One Export Bucket Private Networking Settings
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateBackupExportBucketApiParams - Parameters for the request
+		@return UpdateBackupExportBucketApiRequest
+	*/
+	UpdateBackupExportBucketWithParams(ctx context.Context, args *UpdateBackupExportBucketApiParams) UpdateBackupExportBucketApiRequest
+
+	// Method available only for mocking purposes
+	UpdateBackupExportBucketExecute(r UpdateBackupExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error)
 
 	/*
 		UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
@@ -998,6 +1122,138 @@ func (a *CloudBackupsApiService) CreateBackupExportExecute(r CreateBackupExportA
 	}
 	// body params
 	localVarPostBody = r.diskBackupExportJobRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CreateBackupPrivateEndpointApiRequest struct {
+	ctx                                 context.Context
+	ApiService                          CloudBackupsApi
+	groupId                             string
+	cloudProvider                       string
+	objectStoragePrivateEndpointRequest *ObjectStoragePrivateEndpointRequest
+}
+
+type CreateBackupPrivateEndpointApiParams struct {
+	GroupId                             string
+	CloudProvider                       string
+	ObjectStoragePrivateEndpointRequest *ObjectStoragePrivateEndpointRequest
+}
+
+func (a *CloudBackupsApiService) CreateBackupPrivateEndpointWithParams(ctx context.Context, args *CreateBackupPrivateEndpointApiParams) CreateBackupPrivateEndpointApiRequest {
+	return CreateBackupPrivateEndpointApiRequest{
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             args.GroupId,
+		cloudProvider:                       args.CloudProvider,
+		objectStoragePrivateEndpointRequest: args.ObjectStoragePrivateEndpointRequest,
+	}
+}
+
+func (r CreateBackupPrivateEndpointApiRequest) Execute() (*ObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	return r.ApiService.CreateBackupPrivateEndpointExecute(r)
+}
+
+/*
+CreateBackupPrivateEndpoint Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+
+Creates a private endpoint in the specified region for secure, private connectivity between Atlas and cloud provider object storage services for backup operations.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param cloudProvider Human-readable label that identifies the cloud provider for the private endpoint to create.
+	@return CreateBackupPrivateEndpointApiRequest
+*/
+func (a *CloudBackupsApiService) CreateBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, objectStoragePrivateEndpointRequest *ObjectStoragePrivateEndpointRequest) CreateBackupPrivateEndpointApiRequest {
+	return CreateBackupPrivateEndpointApiRequest{
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             groupId,
+		cloudProvider:                       cloudProvider,
+		objectStoragePrivateEndpointRequest: objectStoragePrivateEndpointRequest,
+	}
+}
+
+// CreateBackupPrivateEndpointExecute executes the request
+//
+//	@return ObjectStoragePrivateEndpointResponse
+func (a *CloudBackupsApiService) CreateBackupPrivateEndpointExecute(r CreateBackupPrivateEndpointApiRequest) (*ObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ObjectStoragePrivateEndpointResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.CreateBackupPrivateEndpoint")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.cloudProvider == "" {
+		return localVarReturnValue, nil, reportError("cloudProvider is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectStoragePrivateEndpointRequest == nil {
+		return localVarReturnValue, nil, reportError("objectStoragePrivateEndpointRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-11-13+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-11-13+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectStoragePrivateEndpointRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1423,6 +1679,121 @@ func (a *CloudBackupsApiService) CreateServerlessRestoreJobExecute(r CreateServe
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DeleteBackupPrivateEndpointApiRequest struct {
+	ctx           context.Context
+	ApiService    CloudBackupsApi
+	groupId       string
+	cloudProvider string
+	endpointId    string
+}
+
+type DeleteBackupPrivateEndpointApiParams struct {
+	GroupId       string
+	CloudProvider string
+	EndpointId    string
+}
+
+func (a *CloudBackupsApiService) DeleteBackupPrivateEndpointWithParams(ctx context.Context, args *DeleteBackupPrivateEndpointApiParams) DeleteBackupPrivateEndpointApiRequest {
+	return DeleteBackupPrivateEndpointApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
+		cloudProvider: args.CloudProvider,
+		endpointId:    args.EndpointId,
+	}
+}
+
+func (r DeleteBackupPrivateEndpointApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteBackupPrivateEndpointExecute(r)
+}
+
+/*
+DeleteBackupPrivateEndpoint Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
+
+Deletes one private endpoint, identified by its ID, for object storage backup operations.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param cloudProvider Human-readable label that identifies the cloud provider of the private endpoint to delete.
+	@param endpointId Unique 24-hexadecimal digit string that identifies the private endpoint to delete.
+	@return DeleteBackupPrivateEndpointApiRequest
+*/
+func (a *CloudBackupsApiService) DeleteBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) DeleteBackupPrivateEndpointApiRequest {
+	return DeleteBackupPrivateEndpointApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       groupId,
+		cloudProvider: cloudProvider,
+		endpointId:    endpointId,
+	}
+}
+
+// DeleteBackupPrivateEndpointExecute executes the request
+func (a *CloudBackupsApiService) DeleteBackupPrivateEndpointExecute(r DeleteBackupPrivateEndpointApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DeleteBackupPrivateEndpoint")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.cloudProvider == "" {
+		return nil, reportError("cloudProvider is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
+	if r.endpointId == "" {
+		return nil, reportError("endpointId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-11-13+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type DeleteBackupShardedClusterApiRequest struct {
@@ -2075,6 +2446,138 @@ func (a *CloudBackupsApiService) GetBackupExportExecute(r GetBackupExportApiRequ
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetBackupPrivateEndpointApiRequest struct {
+	ctx           context.Context
+	ApiService    CloudBackupsApi
+	groupId       string
+	cloudProvider string
+	endpointId    string
+}
+
+type GetBackupPrivateEndpointApiParams struct {
+	GroupId       string
+	CloudProvider string
+	EndpointId    string
+}
+
+func (a *CloudBackupsApiService) GetBackupPrivateEndpointWithParams(ctx context.Context, args *GetBackupPrivateEndpointApiParams) GetBackupPrivateEndpointApiRequest {
+	return GetBackupPrivateEndpointApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
+		cloudProvider: args.CloudProvider,
+		endpointId:    args.EndpointId,
+	}
+}
+
+func (r GetBackupPrivateEndpointApiRequest) Execute() (*ObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	return r.ApiService.GetBackupPrivateEndpointExecute(r)
+}
+
+/*
+GetBackupPrivateEndpoint Return One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+
+Returns one private endpoint, identified by its ID, for object storage backup operations.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param cloudProvider Human-readable label that identifies the cloud provider of the private endpoint.
+	@param endpointId Unique 24-hexadecimal digit string that identifies the private endpoint.
+	@return GetBackupPrivateEndpointApiRequest
+*/
+func (a *CloudBackupsApiService) GetBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) GetBackupPrivateEndpointApiRequest {
+	return GetBackupPrivateEndpointApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       groupId,
+		cloudProvider: cloudProvider,
+		endpointId:    endpointId,
+	}
+}
+
+// GetBackupPrivateEndpointExecute executes the request
+//
+//	@return ObjectStoragePrivateEndpointResponse
+func (a *CloudBackupsApiService) GetBackupPrivateEndpointExecute(r GetBackupPrivateEndpointApiRequest) (*ObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ObjectStoragePrivateEndpointResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetBackupPrivateEndpoint")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.cloudProvider == "" {
+		return localVarReturnValue, nil, reportError("cloudProvider is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
+	if r.endpointId == "" {
+		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-11-13+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -3316,6 +3819,177 @@ func (a *CloudBackupsApiService) ListBackupExportsExecute(r ListBackupExportsApi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ListBackupPrivateEndpointsApiRequest struct {
+	ctx           context.Context
+	ApiService    CloudBackupsApi
+	groupId       string
+	cloudProvider string
+	includeCount  *bool
+	itemsPerPage  *int
+	pageNum       *int
+}
+
+type ListBackupPrivateEndpointsApiParams struct {
+	GroupId       string
+	CloudProvider string
+	IncludeCount  *bool
+	ItemsPerPage  *int
+	PageNum       *int
+}
+
+func (a *CloudBackupsApiService) ListBackupPrivateEndpointsWithParams(ctx context.Context, args *ListBackupPrivateEndpointsApiParams) ListBackupPrivateEndpointsApiRequest {
+	return ListBackupPrivateEndpointsApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
+		cloudProvider: args.CloudProvider,
+		includeCount:  args.IncludeCount,
+		itemsPerPage:  args.ItemsPerPage,
+		pageNum:       args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListBackupPrivateEndpointsApiRequest) IncludeCount(includeCount bool) ListBackupPrivateEndpointsApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListBackupPrivateEndpointsApiRequest) ItemsPerPage(itemsPerPage int) ListBackupPrivateEndpointsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListBackupPrivateEndpointsApiRequest) PageNum(pageNum int) ListBackupPrivateEndpointsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListBackupPrivateEndpointsApiRequest) Execute() (*PaginatedApiAtlasObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	return r.ApiService.ListBackupPrivateEndpointsExecute(r)
+}
+
+/*
+ListBackupPrivateEndpoints Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
+
+Returns the private endpoints of the specified cloud provider for object storage backup operations.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param cloudProvider Human-readable label that identifies the cloud provider for the private endpoints to return.
+	@return ListBackupPrivateEndpointsApiRequest
+*/
+func (a *CloudBackupsApiService) ListBackupPrivateEndpoints(ctx context.Context, groupId string, cloudProvider string) ListBackupPrivateEndpointsApiRequest {
+	return ListBackupPrivateEndpointsApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       groupId,
+		cloudProvider: cloudProvider,
+	}
+}
+
+// ListBackupPrivateEndpointsExecute executes the request
+//
+//	@return PaginatedApiAtlasObjectStoragePrivateEndpointResponse
+func (a *CloudBackupsApiService) ListBackupPrivateEndpointsExecute(r ListBackupPrivateEndpointsApiRequest) (*PaginatedApiAtlasObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiAtlasObjectStoragePrivateEndpointResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListBackupPrivateEndpoints")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.cloudProvider == "" {
+		return localVarReturnValue, nil, reportError("cloudProvider is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-11-13+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListBackupRestoreJobsApiRequest struct {
 	ctx          context.Context
 	ApiService   CloudBackupsApi
@@ -4399,6 +5073,138 @@ func (a *CloudBackupsApiService) TakeSnapshotsExecute(r TakeSnapshotsApiRequest)
 	}
 	// body params
 	localVarPostBody = r.diskBackupOnDemandSnapshotRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateBackupExportBucketApiRequest struct {
+	ctx                                   context.Context
+	ApiService                            CloudBackupsApi
+	groupId                               string
+	exportBucketId                        string
+	updateRequirePrivateNetworkingRequest *UpdateRequirePrivateNetworkingRequest
+}
+
+type UpdateBackupExportBucketApiParams struct {
+	GroupId                               string
+	ExportBucketId                        string
+	UpdateRequirePrivateNetworkingRequest *UpdateRequirePrivateNetworkingRequest
+}
+
+func (a *CloudBackupsApiService) UpdateBackupExportBucketWithParams(ctx context.Context, args *UpdateBackupExportBucketApiParams) UpdateBackupExportBucketApiRequest {
+	return UpdateBackupExportBucketApiRequest{
+		ApiService:                            a,
+		ctx:                                   ctx,
+		groupId:                               args.GroupId,
+		exportBucketId:                        args.ExportBucketId,
+		updateRequirePrivateNetworkingRequest: args.UpdateRequirePrivateNetworkingRequest,
+	}
+}
+
+func (r UpdateBackupExportBucketApiRequest) Execute() (*DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error) {
+	return r.ApiService.UpdateBackupExportBucketExecute(r)
+}
+
+/*
+UpdateBackupExportBucket Update One Export Bucket Private Networking Settings
+
+Updates the private networking settings for one snapshot export bucket in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param exportBucketId Unique 24-hexadecimal character string that identifies the snapshot export bucket.
+	@return UpdateBackupExportBucketApiRequest
+*/
+func (a *CloudBackupsApiService) UpdateBackupExportBucket(ctx context.Context, groupId string, exportBucketId string, updateRequirePrivateNetworkingRequest *UpdateRequirePrivateNetworkingRequest) UpdateBackupExportBucketApiRequest {
+	return UpdateBackupExportBucketApiRequest{
+		ApiService:                            a,
+		ctx:                                   ctx,
+		groupId:                               groupId,
+		exportBucketId:                        exportBucketId,
+		updateRequirePrivateNetworkingRequest: updateRequirePrivateNetworkingRequest,
+	}
+}
+
+// UpdateBackupExportBucketExecute executes the request
+//
+//	@return DiskBackupSnapshotAWSExportBucketResponse
+func (a *CloudBackupsApiService) UpdateBackupExportBucketExecute(r UpdateBackupExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *DiskBackupSnapshotAWSExportBucketResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.UpdateBackupExportBucket")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.exportBucketId == "" {
+		return localVarReturnValue, nil, reportError("exportBucketId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"exportBucketId"+"}", url.PathEscape(r.exportBucketId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.updateRequirePrivateNetworkingRequest == nil {
+		return localVarReturnValue, nil, reportError("updateRequirePrivateNetworkingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateRequirePrivateNetworkingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

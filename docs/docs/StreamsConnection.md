@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
 **Type** | Pointer to **string** | Type of the connection. | [optional] 
-**ClusterGroupId** | Pointer to **string** | The id of the group that the cluster belongs to. | [optional] 
+**ClusterGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. | [optional] 
 **ClusterName** | Pointer to **string** | Name of the cluster configured for this connection. | [optional] 
 **DbRoleToExecute** | Pointer to [**DBRoleToExecute**](DBRoleToExecute.md) |  | [optional] 
 **Authentication** | Pointer to [**StreamsKafkaAuthentication**](StreamsKafkaAuthentication.md) |  | [optional] 
@@ -18,6 +18,9 @@ Name | Type | Description | Notes
 **Headers** | Pointer to **map[string]string** | A map of key-value pairs that will be passed as headers for the request. | [optional] 
 **Url** | Pointer to **string** | The url to be used for the request. | [optional] 
 **Aws** | Pointer to [**StreamsAWSConnectionConfig**](StreamsAWSConnectionConfig.md) |  | [optional] 
+**Provider** | Pointer to **string** | The Schema Registry provider. | [optional] 
+**SchemaRegistryAuthentication** | Pointer to [**SchemaRegistryAuthentication**](SchemaRegistryAuthentication.md) |  | [optional] 
+**SchemaRegistryUrls** | Pointer to **[]string** | List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. | [optional] 
 
 ## Methods
 
@@ -374,6 +377,78 @@ SetAws sets Aws field to given value.
 `func (o *StreamsConnection) HasAws() bool`
 
 HasAws returns a boolean if a field has been set.
+### GetProvider
+
+`func (o *StreamsConnection) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *StreamsConnection) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *StreamsConnection) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *StreamsConnection) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
+### GetSchemaRegistryAuthentication
+
+`func (o *StreamsConnection) GetSchemaRegistryAuthentication() SchemaRegistryAuthentication`
+
+GetSchemaRegistryAuthentication returns the SchemaRegistryAuthentication field if non-nil, zero value otherwise.
+
+### GetSchemaRegistryAuthenticationOk
+
+`func (o *StreamsConnection) GetSchemaRegistryAuthenticationOk() (*SchemaRegistryAuthentication, bool)`
+
+GetSchemaRegistryAuthenticationOk returns a tuple with the SchemaRegistryAuthentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchemaRegistryAuthentication
+
+`func (o *StreamsConnection) SetSchemaRegistryAuthentication(v SchemaRegistryAuthentication)`
+
+SetSchemaRegistryAuthentication sets SchemaRegistryAuthentication field to given value.
+
+### HasSchemaRegistryAuthentication
+
+`func (o *StreamsConnection) HasSchemaRegistryAuthentication() bool`
+
+HasSchemaRegistryAuthentication returns a boolean if a field has been set.
+### GetSchemaRegistryUrls
+
+`func (o *StreamsConnection) GetSchemaRegistryUrls() []string`
+
+GetSchemaRegistryUrls returns the SchemaRegistryUrls field if non-nil, zero value otherwise.
+
+### GetSchemaRegistryUrlsOk
+
+`func (o *StreamsConnection) GetSchemaRegistryUrlsOk() (*[]string, bool)`
+
+GetSchemaRegistryUrlsOk returns a tuple with the SchemaRegistryUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchemaRegistryUrls
+
+`func (o *StreamsConnection) SetSchemaRegistryUrls(v []string)`
+
+SetSchemaRegistryUrls sets SchemaRegistryUrls field to given value.
+
+### HasSchemaRegistryUrls
+
+`func (o *StreamsConnection) HasSchemaRegistryUrls() bool`
+
+HasSchemaRegistryUrls returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
