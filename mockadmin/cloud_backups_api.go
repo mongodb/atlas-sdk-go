@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312011/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312012/admin"
 
 	http "net/http"
 
@@ -338,6 +338,169 @@ func (_c *CloudBackupsApi_CreateBackupExportWithParams_Call) Return(_a0 admin.Cr
 }
 
 func (_c *CloudBackupsApi_CreateBackupExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateBackupExportApiParams) admin.CreateBackupExportApiRequest) *CloudBackupsApi_CreateBackupExportWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateBackupPrivateEndpoint provides a mock function with given fields: ctx, groupId, cloudProvider, objectStoragePrivateEndpointRequest
+func (_m *CloudBackupsApi) CreateBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, objectStoragePrivateEndpointRequest *admin.ObjectStoragePrivateEndpointRequest) admin.CreateBackupPrivateEndpointApiRequest {
+	ret := _m.Called(ctx, groupId, cloudProvider, objectStoragePrivateEndpointRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateBackupPrivateEndpoint")
+	}
+
+	var r0 admin.CreateBackupPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ObjectStoragePrivateEndpointRequest) admin.CreateBackupPrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, groupId, cloudProvider, objectStoragePrivateEndpointRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateBackupPrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_CreateBackupPrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateBackupPrivateEndpoint'
+type CloudBackupsApi_CreateBackupPrivateEndpoint_Call struct {
+	*mock.Call
+}
+
+// CreateBackupPrivateEndpoint is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - cloudProvider string
+//   - objectStoragePrivateEndpointRequest *admin.ObjectStoragePrivateEndpointRequest
+func (_e *CloudBackupsApi_Expecter) CreateBackupPrivateEndpoint(ctx any, groupId any, cloudProvider any, objectStoragePrivateEndpointRequest any) *CloudBackupsApi_CreateBackupPrivateEndpoint_Call {
+	return &CloudBackupsApi_CreateBackupPrivateEndpoint_Call{Call: _e.mock.On("CreateBackupPrivateEndpoint", ctx, groupId, cloudProvider, objectStoragePrivateEndpointRequest)}
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, objectStoragePrivateEndpointRequest *admin.ObjectStoragePrivateEndpointRequest)) *CloudBackupsApi_CreateBackupPrivateEndpoint_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ObjectStoragePrivateEndpointRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpoint_Call) Return(_a0 admin.CreateBackupPrivateEndpointApiRequest) *CloudBackupsApi_CreateBackupPrivateEndpoint_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string, *admin.ObjectStoragePrivateEndpointRequest) admin.CreateBackupPrivateEndpointApiRequest) *CloudBackupsApi_CreateBackupPrivateEndpoint_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateBackupPrivateEndpointExecute provides a mock function with given fields: r
+func (_m *CloudBackupsApi) CreateBackupPrivateEndpointExecute(r admin.CreateBackupPrivateEndpointApiRequest) (*admin.ObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateBackupPrivateEndpointExecute")
+	}
+
+	var r0 *admin.ObjectStoragePrivateEndpointResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateBackupPrivateEndpointApiRequest) (*admin.ObjectStoragePrivateEndpointResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateBackupPrivateEndpointApiRequest) *admin.ObjectStoragePrivateEndpointResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ObjectStoragePrivateEndpointResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateBackupPrivateEndpointApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateBackupPrivateEndpointApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateBackupPrivateEndpointExecute'
+type CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call struct {
+	*mock.Call
+}
+
+// CreateBackupPrivateEndpointExecute is a helper method to define mock.On call
+//   - r admin.CreateBackupPrivateEndpointApiRequest
+func (_e *CloudBackupsApi_Expecter) CreateBackupPrivateEndpointExecute(r any) *CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call {
+	return &CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call{Call: _e.mock.On("CreateBackupPrivateEndpointExecute", r)}
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call) Run(run func(r admin.CreateBackupPrivateEndpointApiRequest)) *CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateBackupPrivateEndpointApiRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call) Return(_a0 *admin.ObjectStoragePrivateEndpointResponse, _a1 *http.Response, _a2 error) *CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call) RunAndReturn(run func(admin.CreateBackupPrivateEndpointApiRequest) (*admin.ObjectStoragePrivateEndpointResponse, *http.Response, error)) *CloudBackupsApi_CreateBackupPrivateEndpointExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateBackupPrivateEndpointWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudBackupsApi) CreateBackupPrivateEndpointWithParams(ctx context.Context, args *admin.CreateBackupPrivateEndpointApiParams) admin.CreateBackupPrivateEndpointApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateBackupPrivateEndpointWithParams")
+	}
+
+	var r0 admin.CreateBackupPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateBackupPrivateEndpointApiParams) admin.CreateBackupPrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateBackupPrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateBackupPrivateEndpointWithParams'
+type CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateBackupPrivateEndpointWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateBackupPrivateEndpointApiParams
+func (_e *CloudBackupsApi_Expecter) CreateBackupPrivateEndpointWithParams(ctx any, args any) *CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call {
+	return &CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call{Call: _e.mock.On("CreateBackupPrivateEndpointWithParams", ctx, args)}
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateBackupPrivateEndpointApiParams)) *CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateBackupPrivateEndpointApiParams))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call) Return(_a0 admin.CreateBackupPrivateEndpointApiRequest) *CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateBackupPrivateEndpointApiParams) admin.CreateBackupPrivateEndpointApiRequest) *CloudBackupsApi_CreateBackupPrivateEndpointWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -826,6 +989,160 @@ func (_c *CloudBackupsApi_CreateServerlessRestoreJobWithParams_Call) Return(_a0 
 }
 
 func (_c *CloudBackupsApi_CreateServerlessRestoreJobWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateServerlessRestoreJobApiParams) admin.CreateServerlessRestoreJobApiRequest) *CloudBackupsApi_CreateServerlessRestoreJobWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteBackupPrivateEndpoint provides a mock function with given fields: ctx, groupId, cloudProvider, endpointId
+func (_m *CloudBackupsApi) DeleteBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) admin.DeleteBackupPrivateEndpointApiRequest {
+	ret := _m.Called(ctx, groupId, cloudProvider, endpointId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteBackupPrivateEndpoint")
+	}
+
+	var r0 admin.DeleteBackupPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteBackupPrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, groupId, cloudProvider, endpointId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteBackupPrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_DeleteBackupPrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteBackupPrivateEndpoint'
+type CloudBackupsApi_DeleteBackupPrivateEndpoint_Call struct {
+	*mock.Call
+}
+
+// DeleteBackupPrivateEndpoint is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - cloudProvider string
+//   - endpointId string
+func (_e *CloudBackupsApi_Expecter) DeleteBackupPrivateEndpoint(ctx any, groupId any, cloudProvider any, endpointId any) *CloudBackupsApi_DeleteBackupPrivateEndpoint_Call {
+	return &CloudBackupsApi_DeleteBackupPrivateEndpoint_Call{Call: _e.mock.On("DeleteBackupPrivateEndpoint", ctx, groupId, cloudProvider, endpointId)}
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, endpointId string)) *CloudBackupsApi_DeleteBackupPrivateEndpoint_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpoint_Call) Return(_a0 admin.DeleteBackupPrivateEndpointApiRequest) *CloudBackupsApi_DeleteBackupPrivateEndpoint_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteBackupPrivateEndpointApiRequest) *CloudBackupsApi_DeleteBackupPrivateEndpoint_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteBackupPrivateEndpointExecute provides a mock function with given fields: r
+func (_m *CloudBackupsApi) DeleteBackupPrivateEndpointExecute(r admin.DeleteBackupPrivateEndpointApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteBackupPrivateEndpointExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteBackupPrivateEndpointApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteBackupPrivateEndpointApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteBackupPrivateEndpointApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteBackupPrivateEndpointExecute'
+type CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteBackupPrivateEndpointExecute is a helper method to define mock.On call
+//   - r admin.DeleteBackupPrivateEndpointApiRequest
+func (_e *CloudBackupsApi_Expecter) DeleteBackupPrivateEndpointExecute(r any) *CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call {
+	return &CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call{Call: _e.mock.On("DeleteBackupPrivateEndpointExecute", r)}
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call) Run(run func(r admin.DeleteBackupPrivateEndpointApiRequest)) *CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteBackupPrivateEndpointApiRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteBackupPrivateEndpointApiRequest) (*http.Response, error)) *CloudBackupsApi_DeleteBackupPrivateEndpointExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteBackupPrivateEndpointWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudBackupsApi) DeleteBackupPrivateEndpointWithParams(ctx context.Context, args *admin.DeleteBackupPrivateEndpointApiParams) admin.DeleteBackupPrivateEndpointApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteBackupPrivateEndpointWithParams")
+	}
+
+	var r0 admin.DeleteBackupPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteBackupPrivateEndpointApiParams) admin.DeleteBackupPrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteBackupPrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteBackupPrivateEndpointWithParams'
+type CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteBackupPrivateEndpointWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteBackupPrivateEndpointApiParams
+func (_e *CloudBackupsApi_Expecter) DeleteBackupPrivateEndpointWithParams(ctx any, args any) *CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call {
+	return &CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call{Call: _e.mock.On("DeleteBackupPrivateEndpointWithParams", ctx, args)}
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteBackupPrivateEndpointApiParams)) *CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteBackupPrivateEndpointApiParams))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call) Return(_a0 admin.DeleteBackupPrivateEndpointApiRequest) *CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteBackupPrivateEndpointApiParams) admin.DeleteBackupPrivateEndpointApiRequest) *CloudBackupsApi_DeleteBackupPrivateEndpointWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1764,6 +2081,169 @@ func (_c *CloudBackupsApi_GetBackupExportWithParams_Call) Return(_a0 admin.GetBa
 }
 
 func (_c *CloudBackupsApi_GetBackupExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetBackupExportApiParams) admin.GetBackupExportApiRequest) *CloudBackupsApi_GetBackupExportWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetBackupPrivateEndpoint provides a mock function with given fields: ctx, groupId, cloudProvider, endpointId
+func (_m *CloudBackupsApi) GetBackupPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) admin.GetBackupPrivateEndpointApiRequest {
+	ret := _m.Called(ctx, groupId, cloudProvider, endpointId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetBackupPrivateEndpoint")
+	}
+
+	var r0 admin.GetBackupPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetBackupPrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, groupId, cloudProvider, endpointId)
+	} else {
+		r0 = ret.Get(0).(admin.GetBackupPrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_GetBackupPrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetBackupPrivateEndpoint'
+type CloudBackupsApi_GetBackupPrivateEndpoint_Call struct {
+	*mock.Call
+}
+
+// GetBackupPrivateEndpoint is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - cloudProvider string
+//   - endpointId string
+func (_e *CloudBackupsApi_Expecter) GetBackupPrivateEndpoint(ctx any, groupId any, cloudProvider any, endpointId any) *CloudBackupsApi_GetBackupPrivateEndpoint_Call {
+	return &CloudBackupsApi_GetBackupPrivateEndpoint_Call{Call: _e.mock.On("GetBackupPrivateEndpoint", ctx, groupId, cloudProvider, endpointId)}
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string, endpointId string)) *CloudBackupsApi_GetBackupPrivateEndpoint_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpoint_Call) Return(_a0 admin.GetBackupPrivateEndpointApiRequest) *CloudBackupsApi_GetBackupPrivateEndpoint_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetBackupPrivateEndpointApiRequest) *CloudBackupsApi_GetBackupPrivateEndpoint_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetBackupPrivateEndpointExecute provides a mock function with given fields: r
+func (_m *CloudBackupsApi) GetBackupPrivateEndpointExecute(r admin.GetBackupPrivateEndpointApiRequest) (*admin.ObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetBackupPrivateEndpointExecute")
+	}
+
+	var r0 *admin.ObjectStoragePrivateEndpointResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetBackupPrivateEndpointApiRequest) (*admin.ObjectStoragePrivateEndpointResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetBackupPrivateEndpointApiRequest) *admin.ObjectStoragePrivateEndpointResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ObjectStoragePrivateEndpointResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetBackupPrivateEndpointApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetBackupPrivateEndpointApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CloudBackupsApi_GetBackupPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetBackupPrivateEndpointExecute'
+type CloudBackupsApi_GetBackupPrivateEndpointExecute_Call struct {
+	*mock.Call
+}
+
+// GetBackupPrivateEndpointExecute is a helper method to define mock.On call
+//   - r admin.GetBackupPrivateEndpointApiRequest
+func (_e *CloudBackupsApi_Expecter) GetBackupPrivateEndpointExecute(r any) *CloudBackupsApi_GetBackupPrivateEndpointExecute_Call {
+	return &CloudBackupsApi_GetBackupPrivateEndpointExecute_Call{Call: _e.mock.On("GetBackupPrivateEndpointExecute", r)}
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpointExecute_Call) Run(run func(r admin.GetBackupPrivateEndpointApiRequest)) *CloudBackupsApi_GetBackupPrivateEndpointExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetBackupPrivateEndpointApiRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpointExecute_Call) Return(_a0 *admin.ObjectStoragePrivateEndpointResponse, _a1 *http.Response, _a2 error) *CloudBackupsApi_GetBackupPrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpointExecute_Call) RunAndReturn(run func(admin.GetBackupPrivateEndpointApiRequest) (*admin.ObjectStoragePrivateEndpointResponse, *http.Response, error)) *CloudBackupsApi_GetBackupPrivateEndpointExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetBackupPrivateEndpointWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudBackupsApi) GetBackupPrivateEndpointWithParams(ctx context.Context, args *admin.GetBackupPrivateEndpointApiParams) admin.GetBackupPrivateEndpointApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetBackupPrivateEndpointWithParams")
+	}
+
+	var r0 admin.GetBackupPrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetBackupPrivateEndpointApiParams) admin.GetBackupPrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetBackupPrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetBackupPrivateEndpointWithParams'
+type CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call struct {
+	*mock.Call
+}
+
+// GetBackupPrivateEndpointWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetBackupPrivateEndpointApiParams
+func (_e *CloudBackupsApi_Expecter) GetBackupPrivateEndpointWithParams(ctx any, args any) *CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call {
+	return &CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call{Call: _e.mock.On("GetBackupPrivateEndpointWithParams", ctx, args)}
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.GetBackupPrivateEndpointApiParams)) *CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetBackupPrivateEndpointApiParams))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call) Return(_a0 admin.GetBackupPrivateEndpointApiRequest) *CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetBackupPrivateEndpointApiParams) admin.GetBackupPrivateEndpointApiRequest) *CloudBackupsApi_GetBackupPrivateEndpointWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3230,6 +3710,168 @@ func (_c *CloudBackupsApi_ListBackupExportsWithParams_Call) RunAndReturn(run fun
 	return _c
 }
 
+// ListBackupPrivateEndpoints provides a mock function with given fields: ctx, groupId, cloudProvider
+func (_m *CloudBackupsApi) ListBackupPrivateEndpoints(ctx context.Context, groupId string, cloudProvider string) admin.ListBackupPrivateEndpointsApiRequest {
+	ret := _m.Called(ctx, groupId, cloudProvider)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListBackupPrivateEndpoints")
+	}
+
+	var r0 admin.ListBackupPrivateEndpointsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListBackupPrivateEndpointsApiRequest); ok {
+		r0 = rf(ctx, groupId, cloudProvider)
+	} else {
+		r0 = ret.Get(0).(admin.ListBackupPrivateEndpointsApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_ListBackupPrivateEndpoints_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListBackupPrivateEndpoints'
+type CloudBackupsApi_ListBackupPrivateEndpoints_Call struct {
+	*mock.Call
+}
+
+// ListBackupPrivateEndpoints is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - cloudProvider string
+func (_e *CloudBackupsApi_Expecter) ListBackupPrivateEndpoints(ctx any, groupId any, cloudProvider any) *CloudBackupsApi_ListBackupPrivateEndpoints_Call {
+	return &CloudBackupsApi_ListBackupPrivateEndpoints_Call{Call: _e.mock.On("ListBackupPrivateEndpoints", ctx, groupId, cloudProvider)}
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpoints_Call) Run(run func(ctx context.Context, groupId string, cloudProvider string)) *CloudBackupsApi_ListBackupPrivateEndpoints_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpoints_Call) Return(_a0 admin.ListBackupPrivateEndpointsApiRequest) *CloudBackupsApi_ListBackupPrivateEndpoints_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpoints_Call) RunAndReturn(run func(context.Context, string, string) admin.ListBackupPrivateEndpointsApiRequest) *CloudBackupsApi_ListBackupPrivateEndpoints_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListBackupPrivateEndpointsExecute provides a mock function with given fields: r
+func (_m *CloudBackupsApi) ListBackupPrivateEndpointsExecute(r admin.ListBackupPrivateEndpointsApiRequest) (*admin.PaginatedApiAtlasObjectStoragePrivateEndpointResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListBackupPrivateEndpointsExecute")
+	}
+
+	var r0 *admin.PaginatedApiAtlasObjectStoragePrivateEndpointResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListBackupPrivateEndpointsApiRequest) (*admin.PaginatedApiAtlasObjectStoragePrivateEndpointResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListBackupPrivateEndpointsApiRequest) *admin.PaginatedApiAtlasObjectStoragePrivateEndpointResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiAtlasObjectStoragePrivateEndpointResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListBackupPrivateEndpointsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListBackupPrivateEndpointsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListBackupPrivateEndpointsExecute'
+type CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call struct {
+	*mock.Call
+}
+
+// ListBackupPrivateEndpointsExecute is a helper method to define mock.On call
+//   - r admin.ListBackupPrivateEndpointsApiRequest
+func (_e *CloudBackupsApi_Expecter) ListBackupPrivateEndpointsExecute(r any) *CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call {
+	return &CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call{Call: _e.mock.On("ListBackupPrivateEndpointsExecute", r)}
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call) Run(run func(r admin.ListBackupPrivateEndpointsApiRequest)) *CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListBackupPrivateEndpointsApiRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call) Return(_a0 *admin.PaginatedApiAtlasObjectStoragePrivateEndpointResponse, _a1 *http.Response, _a2 error) *CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call) RunAndReturn(run func(admin.ListBackupPrivateEndpointsApiRequest) (*admin.PaginatedApiAtlasObjectStoragePrivateEndpointResponse, *http.Response, error)) *CloudBackupsApi_ListBackupPrivateEndpointsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListBackupPrivateEndpointsWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudBackupsApi) ListBackupPrivateEndpointsWithParams(ctx context.Context, args *admin.ListBackupPrivateEndpointsApiParams) admin.ListBackupPrivateEndpointsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListBackupPrivateEndpointsWithParams")
+	}
+
+	var r0 admin.ListBackupPrivateEndpointsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListBackupPrivateEndpointsApiParams) admin.ListBackupPrivateEndpointsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListBackupPrivateEndpointsApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListBackupPrivateEndpointsWithParams'
+type CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListBackupPrivateEndpointsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListBackupPrivateEndpointsApiParams
+func (_e *CloudBackupsApi_Expecter) ListBackupPrivateEndpointsWithParams(ctx any, args any) *CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call {
+	return &CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call{Call: _e.mock.On("ListBackupPrivateEndpointsWithParams", ctx, args)}
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListBackupPrivateEndpointsApiParams)) *CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListBackupPrivateEndpointsApiParams))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call) Return(_a0 admin.ListBackupPrivateEndpointsApiRequest) *CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListBackupPrivateEndpointsApiParams) admin.ListBackupPrivateEndpointsApiRequest) *CloudBackupsApi_ListBackupPrivateEndpointsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListBackupRestoreJobs provides a mock function with given fields: ctx, groupId, clusterName
 func (_m *CloudBackupsApi) ListBackupRestoreJobs(ctx context.Context, groupId string, clusterName string) admin.ListBackupRestoreJobsApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
@@ -4360,6 +5002,169 @@ func (_c *CloudBackupsApi_TakeSnapshotsWithParams_Call) Return(_a0 admin.TakeSna
 }
 
 func (_c *CloudBackupsApi_TakeSnapshotsWithParams_Call) RunAndReturn(run func(context.Context, *admin.TakeSnapshotsApiParams) admin.TakeSnapshotsApiRequest) *CloudBackupsApi_TakeSnapshotsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateBackupExportBucket provides a mock function with given fields: ctx, groupId, exportBucketId, updateRequirePrivateNetworkingRequest
+func (_m *CloudBackupsApi) UpdateBackupExportBucket(ctx context.Context, groupId string, exportBucketId string, updateRequirePrivateNetworkingRequest *admin.UpdateRequirePrivateNetworkingRequest) admin.UpdateBackupExportBucketApiRequest {
+	ret := _m.Called(ctx, groupId, exportBucketId, updateRequirePrivateNetworkingRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateBackupExportBucket")
+	}
+
+	var r0 admin.UpdateBackupExportBucketApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.UpdateRequirePrivateNetworkingRequest) admin.UpdateBackupExportBucketApiRequest); ok {
+		r0 = rf(ctx, groupId, exportBucketId, updateRequirePrivateNetworkingRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateBackupExportBucketApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_UpdateBackupExportBucket_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateBackupExportBucket'
+type CloudBackupsApi_UpdateBackupExportBucket_Call struct {
+	*mock.Call
+}
+
+// UpdateBackupExportBucket is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - exportBucketId string
+//   - updateRequirePrivateNetworkingRequest *admin.UpdateRequirePrivateNetworkingRequest
+func (_e *CloudBackupsApi_Expecter) UpdateBackupExportBucket(ctx any, groupId any, exportBucketId any, updateRequirePrivateNetworkingRequest any) *CloudBackupsApi_UpdateBackupExportBucket_Call {
+	return &CloudBackupsApi_UpdateBackupExportBucket_Call{Call: _e.mock.On("UpdateBackupExportBucket", ctx, groupId, exportBucketId, updateRequirePrivateNetworkingRequest)}
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucket_Call) Run(run func(ctx context.Context, groupId string, exportBucketId string, updateRequirePrivateNetworkingRequest *admin.UpdateRequirePrivateNetworkingRequest)) *CloudBackupsApi_UpdateBackupExportBucket_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.UpdateRequirePrivateNetworkingRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucket_Call) Return(_a0 admin.UpdateBackupExportBucketApiRequest) *CloudBackupsApi_UpdateBackupExportBucket_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucket_Call) RunAndReturn(run func(context.Context, string, string, *admin.UpdateRequirePrivateNetworkingRequest) admin.UpdateBackupExportBucketApiRequest) *CloudBackupsApi_UpdateBackupExportBucket_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateBackupExportBucketExecute provides a mock function with given fields: r
+func (_m *CloudBackupsApi) UpdateBackupExportBucketExecute(r admin.UpdateBackupExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateBackupExportBucketExecute")
+	}
+
+	var r0 *admin.DiskBackupSnapshotAWSExportBucketResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateBackupExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateBackupExportBucketApiRequest) *admin.DiskBackupSnapshotAWSExportBucketResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.DiskBackupSnapshotAWSExportBucketResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateBackupExportBucketApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateBackupExportBucketApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CloudBackupsApi_UpdateBackupExportBucketExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateBackupExportBucketExecute'
+type CloudBackupsApi_UpdateBackupExportBucketExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateBackupExportBucketExecute is a helper method to define mock.On call
+//   - r admin.UpdateBackupExportBucketApiRequest
+func (_e *CloudBackupsApi_Expecter) UpdateBackupExportBucketExecute(r any) *CloudBackupsApi_UpdateBackupExportBucketExecute_Call {
+	return &CloudBackupsApi_UpdateBackupExportBucketExecute_Call{Call: _e.mock.On("UpdateBackupExportBucketExecute", r)}
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucketExecute_Call) Run(run func(r admin.UpdateBackupExportBucketApiRequest)) *CloudBackupsApi_UpdateBackupExportBucketExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateBackupExportBucketApiRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotAWSExportBucketResponse, _a1 *http.Response, _a2 error) *CloudBackupsApi_UpdateBackupExportBucketExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucketExecute_Call) RunAndReturn(run func(admin.UpdateBackupExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error)) *CloudBackupsApi_UpdateBackupExportBucketExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateBackupExportBucketWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudBackupsApi) UpdateBackupExportBucketWithParams(ctx context.Context, args *admin.UpdateBackupExportBucketApiParams) admin.UpdateBackupExportBucketApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateBackupExportBucketWithParams")
+	}
+
+	var r0 admin.UpdateBackupExportBucketApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateBackupExportBucketApiParams) admin.UpdateBackupExportBucketApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateBackupExportBucketApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsApi_UpdateBackupExportBucketWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateBackupExportBucketWithParams'
+type CloudBackupsApi_UpdateBackupExportBucketWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateBackupExportBucketWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateBackupExportBucketApiParams
+func (_e *CloudBackupsApi_Expecter) UpdateBackupExportBucketWithParams(ctx any, args any) *CloudBackupsApi_UpdateBackupExportBucketWithParams_Call {
+	return &CloudBackupsApi_UpdateBackupExportBucketWithParams_Call{Call: _e.mock.On("UpdateBackupExportBucketWithParams", ctx, args)}
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucketWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateBackupExportBucketApiParams)) *CloudBackupsApi_UpdateBackupExportBucketWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateBackupExportBucketApiParams))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucketWithParams_Call) Return(_a0 admin.UpdateBackupExportBucketApiRequest) *CloudBackupsApi_UpdateBackupExportBucketWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsApi_UpdateBackupExportBucketWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateBackupExportBucketApiParams) admin.UpdateBackupExportBucketApiRequest) *CloudBackupsApi_UpdateBackupExportBucketWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
