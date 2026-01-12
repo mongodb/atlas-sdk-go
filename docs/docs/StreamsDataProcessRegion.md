@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | **string** | Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter only supports AWS and AZURE. | 
+**CloudProvider** | **string** | Human-readable label that identifies the cloud provider. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Region** | **string** | Name of the cloud provider region hosting Atlas Stream Processing. | 
 

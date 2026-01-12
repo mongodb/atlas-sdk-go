@@ -15,7 +15,7 @@ type ThirdPartyIntegrationsApi interface {
 	/*
 		CreateGroupIntegration Create One Third-Party Service Integration
 
-		Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Enabling log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param integrationType Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -40,7 +40,7 @@ type ThirdPartyIntegrationsApi interface {
 	/*
 		DeleteGroupIntegration Remove One Third-Party Service Integration
 
-		Removes the settings that permit configuring one third-party service integration. These settings apply to all databases managed in one MongoDB Cloud project. If you delete an integration from a project, you remove that integration configuration only for that project. This action doesn't affect any other project or organization's configured `{INTEGRATION-TYPE}` integrations. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Deleting log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Removes the settings that permit configuring one third-party service integration. These settings apply to all databases managed in one MongoDB Cloud project. If you delete an integration from a project, you remove that integration configuration only for that project. This action doesn't affect any other project or organization's configured `{INTEGRATION-TYPE}` integrations. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param integrationType Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -64,7 +64,7 @@ type ThirdPartyIntegrationsApi interface {
 	/*
 		GetGroupIntegration Return One Third-Party Service Integration
 
-		Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Viewing log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -111,7 +111,7 @@ type ThirdPartyIntegrationsApi interface {
 	/*
 		UpdateGroupIntegration Update One Third-Party Service Integration
 
-		Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Enabling log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param integrationType Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -195,7 +195,7 @@ func (r CreateGroupIntegrationApiRequest) Execute() (*PaginatedIntegration, *htt
 /*
 CreateGroupIntegration Create One Third-Party Service Integration
 
-Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Enabling log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param integrationType Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -345,7 +345,7 @@ func (r DeleteGroupIntegrationApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteGroupIntegration Remove One Third-Party Service Integration
 
-Removes the settings that permit configuring one third-party service integration. These settings apply to all databases managed in one MongoDB Cloud project. If you delete an integration from a project, you remove that integration configuration only for that project. This action doesn't affect any other project or organization's configured `{INTEGRATION-TYPE}` integrations. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Deleting log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Removes the settings that permit configuring one third-party service integration. These settings apply to all databases managed in one MongoDB Cloud project. If you delete an integration from a project, you remove that integration configuration only for that project. This action doesn't affect any other project or organization's configured `{INTEGRATION-TYPE}` integrations. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param integrationType Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -451,7 +451,7 @@ func (r GetGroupIntegrationApiRequest) Execute() (*ThirdPartyIntegration, *http.
 /*
 GetGroupIntegration Return One Third-Party Service Integration
 
-Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Viewing log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -766,7 +766,7 @@ func (r UpdateGroupIntegrationApiRequest) Execute() (*PaginatedIntegration, *htt
 /*
 UpdateGroupIntegration Update One Third-Party Service Integration
 
-Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Enabling log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param integrationType Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.

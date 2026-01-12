@@ -4,7 +4,7 @@ package admin
 
 // AddOrRemoveGroupRole struct for AddOrRemoveGroupRole
 type AddOrRemoveGroupRole struct {
-	// Project-level role.
+	// Project-level role to assign to or remove from the MongoDB Cloud user.
 	GroupRole string `json:"groupRole"`
 }
 

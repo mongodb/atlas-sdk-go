@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312011/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312012/admin"
 
 	http "net/http"
 
@@ -4465,17 +4465,17 @@ func (_c *StreamsApi_UpdateStreamProcessorWithParams_Call) RunAndReturn(run func
 	return _c
 }
 
-// UpdateStreamWorkspace provides a mock function with given fields: ctx, groupId, tenantName, streamsDataProcessRegion
-func (_m *StreamsApi) UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *admin.StreamsDataProcessRegion) admin.UpdateStreamWorkspaceApiRequest {
-	ret := _m.Called(ctx, groupId, tenantName, streamsDataProcessRegion)
+// UpdateStreamWorkspace provides a mock function with given fields: ctx, groupId, tenantName, streamsTenantUpdateRequest
+func (_m *StreamsApi) UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsTenantUpdateRequest *admin.StreamsTenantUpdateRequest) admin.UpdateStreamWorkspaceApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, streamsTenantUpdateRequest)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateStreamWorkspace")
 	}
 
 	var r0 admin.UpdateStreamWorkspaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsDataProcessRegion) admin.UpdateStreamWorkspaceApiRequest); ok {
-		r0 = rf(ctx, groupId, tenantName, streamsDataProcessRegion)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsTenantUpdateRequest) admin.UpdateStreamWorkspaceApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, streamsTenantUpdateRequest)
 	} else {
 		r0 = ret.Get(0).(admin.UpdateStreamWorkspaceApiRequest)
 	}
@@ -4492,14 +4492,14 @@ type StreamsApi_UpdateStreamWorkspace_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-//   - streamsDataProcessRegion *admin.StreamsDataProcessRegion
-func (_e *StreamsApi_Expecter) UpdateStreamWorkspace(ctx any, groupId any, tenantName any, streamsDataProcessRegion any) *StreamsApi_UpdateStreamWorkspace_Call {
-	return &StreamsApi_UpdateStreamWorkspace_Call{Call: _e.mock.On("UpdateStreamWorkspace", ctx, groupId, tenantName, streamsDataProcessRegion)}
+//   - streamsTenantUpdateRequest *admin.StreamsTenantUpdateRequest
+func (_e *StreamsApi_Expecter) UpdateStreamWorkspace(ctx any, groupId any, tenantName any, streamsTenantUpdateRequest any) *StreamsApi_UpdateStreamWorkspace_Call {
+	return &StreamsApi_UpdateStreamWorkspace_Call{Call: _e.mock.On("UpdateStreamWorkspace", ctx, groupId, tenantName, streamsTenantUpdateRequest)}
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspace_Call) Run(run func(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *admin.StreamsDataProcessRegion)) *StreamsApi_UpdateStreamWorkspace_Call {
+func (_c *StreamsApi_UpdateStreamWorkspace_Call) Run(run func(ctx context.Context, groupId string, tenantName string, streamsTenantUpdateRequest *admin.StreamsTenantUpdateRequest)) *StreamsApi_UpdateStreamWorkspace_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.StreamsDataProcessRegion))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.StreamsTenantUpdateRequest))
 	})
 	return _c
 }
@@ -4509,7 +4509,7 @@ func (_c *StreamsApi_UpdateStreamWorkspace_Call) Return(_a0 admin.UpdateStreamWo
 	return _c
 }
 
-func (_c *StreamsApi_UpdateStreamWorkspace_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsDataProcessRegion) admin.UpdateStreamWorkspaceApiRequest) *StreamsApi_UpdateStreamWorkspace_Call {
+func (_c *StreamsApi_UpdateStreamWorkspace_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsTenantUpdateRequest) admin.UpdateStreamWorkspaceApiRequest) *StreamsApi_UpdateStreamWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

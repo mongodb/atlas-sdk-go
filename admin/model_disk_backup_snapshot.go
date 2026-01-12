@@ -47,7 +47,7 @@ type DiskBackupSnapshot struct {
 	// Human-readable label that categorizes the cluster as a replica set or sharded cluster.
 	// Read only field.
 	Type *string `json:"type,omitempty"`
-	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
+	// Human-readable label that identifies the cloud provider.
 	// Read only field.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List that identifies the regions to which MongoDB Cloud copies the snapshot.

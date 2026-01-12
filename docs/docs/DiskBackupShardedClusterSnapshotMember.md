@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | **string** | Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [readonly] 
+**CloudProvider** | **string** | Human-readable label that identifies the cloud provider. | [readonly] 
 **Id** | **string** | Unique 24-hexadecimal digit string that identifies the snapshot. | [readonly] 
 **ReplicaSetName** | **string** | Human-readable label that identifies the shard or config host from which MongoDB Cloud took this snapshot. | [readonly] 
 

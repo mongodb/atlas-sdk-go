@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
+**CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider. | [optional] [readonly] 
 **CopyRegions** | Pointer to **[]string** | List that identifies the regions to which MongoDB Cloud copies the snapshot. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Description** | Pointer to **string** | Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when &#x60;\&quot;status\&quot;: \&quot;onDemand\&quot;&#x60;. | [optional] [readonly] 

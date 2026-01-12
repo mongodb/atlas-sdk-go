@@ -391,7 +391,10 @@ components:
     AddOrRemoveGroupRole:
       properties:
         groupRole:
-          description: Project-level role.
+          description: Project-level role to assign to or remove from the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Cloud User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           type: string
       required:
         - groupRole
@@ -5764,7 +5767,7 @@ components:
       description: Details of the replica set snapshot that MongoDB Cloud created.
       properties:
         cloudProvider:
-          description: 'Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `"type": "replicaSet"`.'
+          description: Human-readable label that identifies the cloud provider.
           readOnly: true
           type: string
         copyRegions:
@@ -5962,7 +5965,7 @@ components:
     DiskBackupShardedClusterSnapshotMember:
       properties:
         cloudProvider:
-          description: 'Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `"type": "replicaSet"`.'
+          description: Human-readable label that identifies the cloud provider.
           readOnly: true
           type: string
         id:
@@ -6052,7 +6055,7 @@ components:
           readOnly: true
           type: string
         cloudProvider:
-          description: 'Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `"type": "replicaSet"`.'
+          description: Human-readable label that identifies the cloud provider.
           readOnly: true
           type: string
         copyRegions:
@@ -6086,11 +6089,58 @@ components:
           readOnly: true
           type: array
       type: object
+    DiskBackupSnapshotAWSExportBucketResponse:
+      properties:
+        _id:
+          description: Unique 24-hexadecimal character string that identifies the Export Bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          type: string
+        bucketName:
+          description: The name of the AWS S3 Bucket, Azure Storage Container, or Google Cloud Storage Bucket that Snapshots are exported to.
+          example: export-bucket
+          maxLength: 63
+          minLength: 3
+          type: string
+        cloudProvider:
+          description: Human-readable label that identifies the cloud provider.
+          type: string
+        iamRoleId:
+          description: Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          externalDocs:
+            description: Unified AWS Access role ID
+            url: https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/
+          pattern: ^([a-f0-9]{24})$
+          type: string
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        region:
+          description: AWS region for the export bucket. This is set by Atlas and is never user-supplied.
+          example: us-east-1
+          readOnly: true
+          type: string
+        requirePrivateNetworking:
+          description: Indicates whether to use privatelink. User supplied.
+          type: boolean
+      required:
+        - _id
+        - bucketName
+        - cloudProvider
+        - iamRoleId
+      type: object
     DiskBackupSnapshotExportBucketRequest:
       description: Disk backup snapshot Export Bucket Request.
       properties:
         cloudProvider:
-          description: Human-readable label that identifies the cloud provider that Snapshots are exported to.
+          description: Human-readable label that identifies the cloud provider.
           type: string
         links:
           description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -6152,7 +6202,7 @@ components:
           minLength: 3
           type: string
         cloudProvider:
-          description: Human-readable label that identifies the cloud provider that Snapshots will be exported to.
+          description: Human-readable label that identifies the cloud provider.
           type: string
         links:
           description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -7892,6 +7942,8 @@ components:
                The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.
 
               This parameter returns an empty object if no custom zones exist.
+
+              Example: `{"US-VA": "6716c5a804f4ce77e899bf99", "DE": "6716c5a804f4ce77e899bf9a"}`.
             example: 32b6e34b3d91647abb20e7b8
             pattern: ^([a-f0-9]{24})$
             readOnly: true
@@ -7902,6 +7954,8 @@ components:
              The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.
 
             This parameter returns an empty object if no custom zones exist.
+
+            Example: `{"US-VA": "6716c5a804f4ce77e899bf99", "DE": "6716c5a804f4ce77e899bf9a"}`.
           readOnly: true
           type: object
         managedNamespaces:
@@ -8135,6 +8189,9 @@ components:
           type: array
         roles:
           description: One or more organization or project level roles to assign to the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Cloud User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
             type: string
           type: array
@@ -8149,6 +8206,9 @@ components:
       properties:
         roles:
           description: One or more project level roles to assign to the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Cloud User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
             type: string
           type: array
@@ -8162,6 +8222,9 @@ components:
       properties:
         roles:
           description: One or more project-level roles to assign to the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Cloud User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
             type: string
           type: array
@@ -8254,8 +8317,10 @@ components:
           type: string
         groupRoles:
           description: One or more project-level roles assigned to the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Cloud User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
-            description: Project-level role.
             type: string
           type: array
           uniqueItems: true
@@ -8417,8 +8482,10 @@ components:
       properties:
         roles:
           description: One or more project-level roles to assign the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Cloud User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
-            description: Project-level role.
             type: string
           minItems: 1
           type: array
@@ -8447,8 +8514,10 @@ components:
           type: string
         roles:
           description: One or more project-level roles assigned to the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Cloud User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
-            description: Project-level role.
             type: string
           readOnly: true
           type: array
@@ -10446,6 +10515,42 @@ components:
       example: COUNT
       title: Number Metric Units
       type: string
+    ObjectStoragePrivateEndpointRequest:
+      properties:
+        cloudProvider:
+          description: Human-readable label that identifies the cloud provider.
+          type: string
+        regionName:
+          description: Cloud provider region in which the Object Storage private endpoint is located.
+          type: string
+      type: object
+    ObjectStoragePrivateEndpointResponse:
+      properties:
+        cloudProvider:
+          description: Human-readable label that identifies the cloud provider.
+          type: string
+        errorMessage:
+          description: Error message for failures associated with the Object Storage private endpoint.
+          readOnly: true
+          type: string
+        id:
+          description: Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          type: string
+        privateEndpointConnectionName:
+          description: Connection name of the Private Endpoint.
+          readOnly: true
+          type: string
+        regionName:
+          description: Cloud provider region in which the Object Storage private endpoint is located.
+          type: string
+        status:
+          description: State of the Object Storage private endpoint.
+          readOnly: true
+          type: string
+      type: object
     OnlineArchiveSchedule:
       description: Regular frequency and duration when archiving process occurs.
       properties:
@@ -12092,6 +12197,22 @@ components:
           readOnly: true
           type: string
       type: object
+    SchemaRegistryAuthentication:
+      description: Authentication configuration for Schema Registry.
+      properties:
+        type:
+          description: Authentication type discriminator. Specifies the authentication mechanism for Confluent Schema Registry.
+          type: string
+        password:
+          description: Password or Private Key for authentication.
+          type: string
+          writeOnly: true
+        username:
+          description: Username or Public Key for authentication.
+          type: string
+      required:
+        - type
+      type: object
     SearchIndexCreateRequest:
       properties:
         collectionName:
@@ -12222,6 +12343,14 @@ components:
               default: lucene.standard
               description: Method applied to identify words when searching this index.
               type: string
+            sort:
+              description: "Sort definition for the index. When defined, the index will be pre-sorted on thespecified fields, which improves query sort performance for those fields. Supports two formats: simple format with field name and direction, or complex format with additional options.The 'order' field is required (1=ascending, -1=descending).The 'noData' field is optional and controls how missing values are sorted(default: \"lowest\")."
+              example:
+                anotherField:
+                  noData: highest
+                  order: -1
+                fieldName: 1
+              type: object
             storedSource:
               description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
               example:
@@ -13022,7 +13151,7 @@ components:
           description: Type of the connection.
           type: string
         clusterGroupId:
-          description: The id of the group that the cluster belongs to.
+          description: Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting.
           type: string
         clusterName:
           description: Name of the cluster configured for this connection.
@@ -13059,6 +13188,20 @@ components:
           type: string
         aws:
           $ref: "#/components/schemas/StreamsAWSConnectionConfig"
+        provider:
+          description: The Schema Registry provider.
+          type: string
+        schemaRegistryAuthentication:
+          $ref: "#/components/schemas/SchemaRegistryAuthentication"
+        schemaRegistryUrls:
+          description: List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port.
+          items:
+            description: Schema Registry URL.
+            format: uri
+            type: string
+          maxItems: 10
+          type: array
+          uniqueItems: true
       readOnly: true
       type: object
     StreamsDLQ:
@@ -13089,7 +13232,7 @@ components:
       description: Information about the cloud provider region in which MongoDB Cloud processes the stream.
       properties:
         cloudProvider:
-          description: Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter only supports AWS and AZURE.
+          description: Human-readable label that identifies the cloud provider.
           type: string
         links:
           description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -13576,6 +13719,24 @@ components:
         streamConfig:
           $ref: "#/components/schemas/StreamConfig"
       type: object
+    StreamsTenantUpdateRequest:
+      description: Details to update a stream tenant.
+      properties:
+        cloudProvider:
+          description: Human-readable label that identifies the cloud provider.
+          type: string
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        region:
+          $ref: "#/components/schemas/BaseStreamsRegion"
+      type: object
     SynonymMappingStatusDetail:
       description: Contains the status of the index's synonym mappings on each search host. This field (and its subfields) only appear if the index has synonyms defined.
       properties:
@@ -13965,33 +14126,6 @@ components:
 
             **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
           example: https://webhook.com/****
-          type: string
-        bucketName:
-          description: Human-readable label that identifies the S3 bucket name for storing log files.
-          example: my-log-bucket
-          type: string
-        iamRoleId:
-          description: Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket.
-          example: 507f1f77bcf86cd799439011
-          type: string
-        kmsKey:
-          description: AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
-          example: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
-          type: string
-        logTypes:
-          description: Array of log types to export to S3.
-          example:
-            - MONGOD
-            - MONGOS
-            - MONGOD_AUDIT
-            - MONGOS_AUDIT
-          items:
-            type: string
-          maxItems: 10
-          type: array
-        prefixPath:
-          description: S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type.
-          example: mongo-logs/
           type: string
       title: Third-Party Integration
       type: object
@@ -14556,6 +14690,14 @@ components:
           default: lucene.standard
           description: Method applied to identify words when searching this index.
           type: string
+        sort:
+          description: "Sort definition for the index. When defined, the index will be pre-sorted on thespecified fields, which improves query sort performance for those fields. Supports two formats: simple format with field name and direction, or complex format with additional options.The 'order' field is required (1=ascending, -1=descending).The 'noData' field is optional and controls how missing values are sorted(default: \"lowest\")."
+          example:
+            anotherField:
+              noData: highest
+              order: -1
+            fieldName: 1
+          type: object
         storedSource:
           description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
           example:
@@ -14626,6 +14768,14 @@ components:
           default: lucene.standard
           description: Method applied to identify words when searching this index.
           type: string
+        sort:
+          description: "Sort definition for the index. When defined, the index will be pre-sorted on thespecified fields, which improves query sort performance for those fields. Supports two formats: simple format with field name and direction, or complex format with additional options.The 'order' field is required (1=ascending, -1=descending).The 'noData' field is optional and controls how missing values are sorted(default: \"lowest\")."
+          example:
+            anotherField:
+              noData: highest
+              order: -1
+            fieldName: 1
+          type: object
         storedSource:
           description: Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
           example:
@@ -15596,6 +15746,30 @@ components:
           description: List of returned documents that MongoDB Cloud provides when completing this request.
           items:
             $ref: "#/components/schemas/FlexBackupSnapshot20241113"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      type: object
+    PaginatedApiAtlasObjectStoragePrivateEndpointResponse:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/ObjectStoragePrivateEndpointResponse"
           readOnly: true
           type: array
         totalCount:
@@ -16735,6 +16909,15 @@ components:
           format: date-time
           type: string
       type: object
+    UpdateRequirePrivateNetworkingRequest:
+      description: Request body to toggle the private-networking requirement for an existing export bucket.
+      properties:
+        requirePrivateNetworking:
+          description: True to require private networking; false to disable it.
+          type: boolean
+      required:
+        - requirePrivateNetworking
+      type: object
     ApiAtlasFTSAnalyzers:
       description: Settings that describe one Atlas Search custom analyzer.
       properties:
@@ -16837,7 +17020,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 734a12a6faed4338d5ab4dce35689f5f56f9be9b
+  x-xgen-sha: 25e3a563298c03d05edc5a71274c4b7bb5486f12
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -19274,7 +19457,7 @@ paths:
         customMethod: false
         verb: deleteEntry
     get:
-      description: Returns one access list entry from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. This endpoint (`/groups/{GROUP-ID}/accessList`) manages the Project IP Access List. It doesn't manage the access list for MongoDB Cloud organizations. TheProgrammatic API Keys endpoint (`/orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist`) manages those access lists.
+      description: Returns one access list entry from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. This endpoint (`/groups/{GROUP-ID}/accessList`) manages the Project IP Access List. It doesn't manage the access list for MongoDB Cloud organizations. The Programmatic API Keys endpoint (`/orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist`) manages those access lists.
       externalDocs:
         description: IP access list
         url: https://docs.atlas.mongodb.com/security/ip-access-list/#std-label-access-list
@@ -21144,6 +21327,338 @@ paths:
       x-xgen-method-verb-override:
         customMethod: "True"
         verb: toggle
+  /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints:
+    get:
+      description: Returns the private endpoints of the specified cloud provider for object storage backup operations.
+      operationId: listBackupPrivateEndpoints
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the cloud provider for the private endpoints to return.
+          in: path
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasObjectStoragePrivateEndpointResponse"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups listBackupPrivateEndpoints --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupBackupPrivateEndpointsApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		ListGroupBackupPrivateEndpointsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupBackupPrivateEndpoints
+    post:
+      description: Creates a private endpoint in the specified region for secure, private connectivity between Atlas and cloud provider object storage services for backup operations.
+      operationId: createBackupPrivateEndpoint
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cloud provider for the private endpoint to create.
+          in: path
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/ObjectStoragePrivateEndpointRequest"
+        description: Creates a private endpoint in the specified region for object storage backup operations.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/ObjectStoragePrivateEndpointResponse"
+              x-xgen-version: 2024-11-13
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups createBackupPrivateEndpoint --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateGroupBackupPrivateEndpointApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		CreateGroupBackupPrivateEndpointWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints" \
+              -d '{ <Payload> }'
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/createGroupBackupPrivateEndpoint
+  /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}:
+    delete:
+      description: Deletes one private endpoint, identified by its ID, for object storage backup operations.
+      operationId: deleteBackupPrivateEndpoint
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cloud provider of the private endpoint to delete.
+          in: path
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the private endpoint to delete.
+          in: path
+          name: endpointId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              x-xgen-version: 2024-11-13
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups deleteBackupPrivateEndpoint --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.DeleteGroupBackupPrivateEndpointApiParams{}
+            	httpResp, err := client.CloudBackupsApi.
+            		DeleteGroupBackupPrivateEndpointWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/deleteGroupBackupPrivateEndpoint
+    get:
+      description: Returns one private endpoint, identified by its ID, for object storage backup operations.
+      operationId: getBackupPrivateEndpoint
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cloud provider of the private endpoint.
+          in: path
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the private endpoint.
+          in: path
+          name: endpointId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/ObjectStoragePrivateEndpointResponse"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups getBackupPrivateEndpoint --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupBackupPrivateEndpointApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		GetGroupBackupPrivateEndpointWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupBackupPrivateEndpoint
   /api/atlas/v2/groups/{groupId}/backup/exportBuckets:
     get:
       description: "Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}"
@@ -21546,6 +22061,97 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupBackupExportBucket
+    patch:
+      description: Updates the private networking settings for one snapshot export bucket in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+      operationId: updateBackupExportBucket
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique 24-hexadecimal character string that identifies the snapshot export bucket.
+          in: path
+          name: exportBucketId
+          required: true
+          schema:
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/UpdateRequirePrivateNetworkingRequest"
+            x-xgen-version: 2024-05-30
+        description: Updates the private networking requirement for the snapshot export bucket.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/DiskBackupSnapshotAWSExportBucketResponse"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update One Export Bucket Private Networking Settings
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups updateBackupExportBucket --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateGroupBackupExportBucketApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		UpdateGroupBackupExportBucketWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}" \
+              -d '{ <Payload> }'
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/updateGroupBackupExportBucket
   /api/atlas/v2/groups/{groupId}/backupCompliancePolicy:
     delete:
       description: Disables the Backup Compliance Policy settings with the specified project. As a prerequisite, a support ticket needs to be file first, instructions in https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
@@ -33108,6 +33714,8 @@ paths:
           required: true
           schema:
             type: string
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
       responses:
         "204":
           content:
@@ -33197,6 +33805,8 @@ paths:
           required: true
           schema:
             type: string
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
       responses:
         "200":
           content:
@@ -33288,6 +33898,8 @@ paths:
           required: true
           schema:
             type: string
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -36632,7 +37244,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/listGroupIntegrations
   /api/atlas/v2/groups/{groupId}/integrations/{integrationType}:
     delete:
-      description: Removes the settings that permit configuring one third-party service integration. These settings apply to all databases managed in one MongoDB Cloud project. If you delete an integration from a project, you remove that integration configuration only for that project. This action doesn't affect any other project or organization's configured `{INTEGRATION-TYPE}` integrations. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Deleting log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Removes the settings that permit configuring one third-party service integration. These settings apply to all databases managed in one MongoDB Cloud project. If you delete an integration from a project, you remove that integration configuration only for that project. This action doesn't affect any other project or organization's configured `{INTEGRATION-TYPE}` integrations. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
       operationId: deleteGroupIntegration
       parameters:
         - description: Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -36706,9 +37318,11 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
+      x-xgen-changelog:
+        2026-01-07: Log export to S3, Splunk, and Datadog is not supported by this API.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/deleteGroupIntegration
     get:
-      description: Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Viewing log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
       operationId: getGroupIntegration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -36787,9 +37401,11 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/integrations/{integrationType}?pretty=true"
+      x-xgen-changelog:
+        2026-01-07: Log export to S3, Splunk, and Datadog is not supported by this API.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/getGroupIntegration
     post:
-      description: Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Enabling log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Adds the settings for configuring one third-party service integration. These settings apply to all databases managed in the specified MongoDB Cloud project. Each project can have only one configuration per `{INTEGRATION-TYPE}`. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
       operationId: createGroupIntegration
       parameters:
         - description: Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -36881,9 +37497,11 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/integrations/{integrationType}" \
               -d '{ <Payload> }'
+      x-xgen-changelog:
+        2026-01-07: Log export to S3, Splunk, and Datadog is not supported by this API.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/createGroupIntegration
     put:
-      description: Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. Enabling log export to S3, Splunk, and Datadog is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
       operationId: updateGroupIntegration
       parameters:
         - description: Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -36975,6 +37593,8 @@ paths:
               --header "Content-Type: application/json" \
               -X PUT "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/integrations/{integrationType}" \
               -d '{ <Payload> }'
+      x-xgen-changelog:
+        2026-01-07: Log export to S3, Splunk, and Datadog is not supported by this API.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Third-Party-Integrations/operation/updateGroupIntegration
   /api/atlas/v2/groups/{groupId}/invites:
     get:
@@ -37660,6 +38280,8 @@ paths:
           required: true
           schema:
             type: string
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
         - $ref: "#/components/parameters/groupId"
       responses:
         "204":
@@ -37753,6 +38375,8 @@ paths:
           required: true
           schema:
             type: string
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
         - $ref: "#/components/parameters/groupId"
       responses:
         "200":
@@ -37853,6 +38477,8 @@ paths:
           required: true
           schema:
             type: string
+          x-xgen-IPA-exception:
+            xgen-IPA-117-description-should-not-use-inline-tables: Description predates IPA validation.
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -47146,8 +47772,8 @@ paths:
         content:
           application/vnd.atlas.2023-02-01+json:
             schema:
-              $ref: "#/components/schemas/StreamsDataProcessRegion"
-        description: Details of the new data process region to update in the streams workspace.
+              $ref: "#/components/schemas/StreamsTenantUpdateRequest"
+        description: Details to update in the streams workspace.
         required: true
       responses:
         "200":
@@ -47580,8 +48206,6 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}"
-      x-xgen-changelog:
-        2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamConnection
     get:
       description: Returns the details of one stream connection within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
@@ -51115,7 +51739,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/listOrgs
     post:
-      description: Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation.
+      description: Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if federationSettingsId is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
       externalDocs:
         description: Configure a Paying Organization
         url: https://www.mongodb.com/docs/atlas/billing/#configure-a-paying-organization

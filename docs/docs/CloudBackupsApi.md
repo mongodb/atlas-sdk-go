@@ -6,15 +6,18 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CancelBackupRestoreJob**](CloudBackupsApi.md#CancelBackupRestoreJob) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Cancel One Restore Job for One Cluster
 [**CreateBackupExport**](CloudBackupsApi.md#CreateBackupExport) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Create One Snapshot Export Job
+[**CreateBackupPrivateEndpoint**](CloudBackupsApi.md#CreateBackupPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
 [**CreateBackupRestoreJob**](CloudBackupsApi.md#CreateBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Create One Restore Job of One Cluster
 [**CreateExportBucket**](CloudBackupsApi.md#CreateExportBucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Create One Snapshot Export Bucket
 [**CreateServerlessRestoreJob**](CloudBackupsApi.md#CreateServerlessRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Create One Restore Job for One Serverless Instance
+[**DeleteBackupPrivateEndpoint**](CloudBackupsApi.md#DeleteBackupPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
 [**DeleteBackupShardedCluster**](CloudBackupsApi.md#DeleteBackupShardedCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Remove One Sharded Cluster Cloud Backup
 [**DeleteClusterBackupSchedule**](CloudBackupsApi.md#DeleteClusterBackupSchedule) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Remove All Cloud Backup Schedules
 [**DeleteClusterBackupSnapshot**](CloudBackupsApi.md#DeleteClusterBackupSnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Remove One Replica Set Cloud Backup
 [**DeleteExportBucket**](CloudBackupsApi.md#DeleteExportBucket) | **Delete** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Delete One Snapshot Export Bucket
 [**DisableCompliancePolicy**](CloudBackupsApi.md#DisableCompliancePolicy) | **Delete** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Disable Backup Compliance Policy Settings
 [**GetBackupExport**](CloudBackupsApi.md#GetBackupExport) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId} | Return One Snapshot Export Job
+[**GetBackupPrivateEndpoint**](CloudBackupsApi.md#GetBackupPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Return One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
 [**GetBackupRestoreJob**](CloudBackupsApi.md#GetBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Cluster
 [**GetBackupSchedule**](CloudBackupsApi.md#GetBackupSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Return One Cloud Backup Schedule
 [**GetBackupShardedCluster**](CloudBackupsApi.md#GetBackupShardedCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Return One Sharded Cluster Cloud Backup
@@ -24,6 +27,7 @@ Method | HTTP request | Description
 [**GetServerlessBackupSnapshot**](CloudBackupsApi.md#GetServerlessBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId} | Return One Snapshot of One Serverless Instance
 [**GetServerlessRestoreJob**](CloudBackupsApi.md#GetServerlessRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Serverless Instance
 [**ListBackupExports**](CloudBackupsApi.md#ListBackupExports) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Return All Snapshot Export Jobs
+[**ListBackupPrivateEndpoints**](CloudBackupsApi.md#ListBackupPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
 [**ListBackupRestoreJobs**](CloudBackupsApi.md#ListBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Cluster
 [**ListBackupShardedClusters**](CloudBackupsApi.md#ListBackupShardedClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters | Return All Sharded Cluster Cloud Backups
 [**ListBackupSnapshots**](CloudBackupsApi.md#ListBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Return All Replica Set Cloud Backups
@@ -31,6 +35,7 @@ Method | HTTP request | Description
 [**ListServerlessBackupSnapshots**](CloudBackupsApi.md#ListServerlessBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots | Return All Snapshots of One Serverless Instance
 [**ListServerlessRestoreJobs**](CloudBackupsApi.md#ListServerlessRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Serverless Instance
 [**TakeSnapshots**](CloudBackupsApi.md#TakeSnapshots) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Take One On-Demand Snapshot
+[**UpdateBackupExportBucket**](CloudBackupsApi.md#UpdateBackupExportBucket) | **Patch** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Update One Export Bucket Private Networking Settings
 [**UpdateBackupSchedule**](CloudBackupsApi.md#UpdateBackupSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Update Cloud Backup Schedule for One Cluster
 [**UpdateBackupSnapshot**](CloudBackupsApi.md#UpdateBackupSnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Update Expiration Date for One Cloud Backup
 [**UpdateCompliancePolicy**](CloudBackupsApi.md#UpdateCompliancePolicy) | **Put** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Update Backup Compliance Policy Settings
@@ -54,7 +59,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -138,7 +143,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -206,6 +211,91 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateBackupPrivateEndpoint
+
+> ObjectStoragePrivateEndpointResponse CreateBackupPrivateEndpoint(ctx, groupId, cloudProvider, objectStoragePrivateEndpointRequest ObjectStoragePrivateEndpointRequest).Execute()
+
+Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    objectStoragePrivateEndpointRequest := *openapiclient.NewObjectStoragePrivateEndpointRequest() // ObjectStoragePrivateEndpointRequest | 
+
+    resp, r, err := sdk.CloudBackupsApi.CreateBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, &objectStoragePrivateEndpointRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateBackupPrivateEndpoint`: ObjectStoragePrivateEndpointResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupPrivateEndpoint`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**cloudProvider** | **string** | Human-readable label that identifies the cloud provider for the private endpoint to create. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateBackupPrivateEndpointRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **objectStoragePrivateEndpointRequest** | [**ObjectStoragePrivateEndpointRequest**](ObjectStoragePrivateEndpointRequest.md) | Creates a private endpoint in the specified region for object storage backup operations. | 
+
+### Return type
+
+[**ObjectStoragePrivateEndpointResponse**](ObjectStoragePrivateEndpointResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-11-13+json
+- **Accept**: application/vnd.atlas.2024-11-13+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateBackupRestoreJob
 
 > DiskBackupSnapshotRestoreJob CreateBackupRestoreJob(ctx, groupId, clusterName, diskBackupSnapshotRestoreJob DiskBackupSnapshotRestoreJob).Execute()
@@ -223,7 +313,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -308,7 +398,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -390,7 +480,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -458,6 +548,90 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteBackupPrivateEndpoint
+
+> DeleteBackupPrivateEndpoint(ctx, groupId, cloudProvider, endpointId).Execute()
+
+Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    endpointId := "endpointId_example" // string | 
+
+    r, err := sdk.CloudBackupsApi.DeleteBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteBackupPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**cloudProvider** | **string** | Human-readable label that identifies the cloud provider of the private endpoint to delete. | 
+**endpointId** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint to delete. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteBackupPrivateEndpointRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-11-13+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteBackupShardedCluster
 
 > DeleteBackupShardedCluster(ctx, groupId, clusterName, snapshotId).Execute()
@@ -475,7 +649,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -559,7 +733,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -642,7 +816,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -726,7 +900,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -807,7 +981,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -885,7 +1059,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -954,6 +1128,92 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetBackupPrivateEndpoint
+
+> ObjectStoragePrivateEndpointResponse GetBackupPrivateEndpoint(ctx, groupId, cloudProvider, endpointId).Execute()
+
+Return One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    endpointId := "endpointId_example" // string | 
+
+    resp, r, err := sdk.CloudBackupsApi.GetBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetBackupPrivateEndpoint`: ObjectStoragePrivateEndpointResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupPrivateEndpoint`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**cloudProvider** | **string** | Human-readable label that identifies the cloud provider of the private endpoint. | 
+**endpointId** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBackupPrivateEndpointRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**ObjectStoragePrivateEndpointResponse**](ObjectStoragePrivateEndpointResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-11-13+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetBackupRestoreJob
 
 > DiskBackupSnapshotRestoreJob GetBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
@@ -971,7 +1231,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1057,7 +1317,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1140,7 +1400,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1226,7 +1486,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1312,7 +1572,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1392,7 +1652,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1475,7 +1735,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1561,7 +1821,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1647,7 +1907,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1719,6 +1979,95 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListBackupPrivateEndpoints
+
+> PaginatedApiAtlasObjectStoragePrivateEndpointResponse ListBackupPrivateEndpoints(ctx, groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.CloudBackupsApi.ListBackupPrivateEndpoints(context.Background(), groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupPrivateEndpoints`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListBackupPrivateEndpoints`: PaginatedApiAtlasObjectStoragePrivateEndpointResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupPrivateEndpoints`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**cloudProvider** | **string** | Human-readable label that identifies the cloud provider for the private endpoints to return. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListBackupPrivateEndpointsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedApiAtlasObjectStoragePrivateEndpointResponse**](PaginatedApiAtlasObjectStoragePrivateEndpointResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-11-13+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListBackupRestoreJobs
 
 > PaginatedCloudBackupRestoreJob ListBackupRestoreJobs(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
@@ -1736,7 +2085,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1825,7 +2174,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1908,7 +2257,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -1997,7 +2346,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2083,7 +2432,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2172,7 +2521,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2261,7 +2610,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2329,6 +2678,91 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateBackupExportBucket
+
+> DiskBackupSnapshotAWSExportBucketResponse UpdateBackupExportBucket(ctx, groupId, exportBucketId, updateRequirePrivateNetworkingRequest UpdateRequirePrivateNetworkingRequest).Execute()
+
+Update One Export Bucket Private Networking Settings
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    exportBucketId := "32b6e34b3d91647abb20e7b8" // string | 
+    updateRequirePrivateNetworkingRequest := *openapiclient.NewUpdateRequirePrivateNetworkingRequest(false) // UpdateRequirePrivateNetworkingRequest | 
+
+    resp, r, err := sdk.CloudBackupsApi.UpdateBackupExportBucket(context.Background(), groupId, exportBucketId, &updateRequirePrivateNetworkingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateBackupExportBucket`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateBackupExportBucket`: DiskBackupSnapshotAWSExportBucketResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateBackupExportBucket`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**exportBucketId** | **string** | Unique 24-hexadecimal character string that identifies the snapshot export bucket. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateBackupExportBucketRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **updateRequirePrivateNetworkingRequest** | [**UpdateRequirePrivateNetworkingRequest**](UpdateRequirePrivateNetworkingRequest.md) | Updates the private networking requirement for the snapshot export bucket. | 
+
+### Return type
+
+[**DiskBackupSnapshotAWSExportBucketResponse**](DiskBackupSnapshotAWSExportBucketResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateBackupSchedule
 
 > DiskBackupSnapshotSchedule20240805 UpdateBackupSchedule(ctx, groupId, clusterName, diskBackupSnapshotSchedule20240805 DiskBackupSnapshotSchedule20240805).Execute()
@@ -2346,7 +2780,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2431,7 +2865,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {
@@ -2519,7 +2953,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312011/admin"
+    "go.mongodb.org/atlas-sdk/v20250312012/admin"
 )
 
 func main() {

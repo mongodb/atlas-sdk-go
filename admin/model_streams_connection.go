@@ -11,7 +11,7 @@ type StreamsConnection struct {
 	Name *string `json:"name,omitempty"`
 	// Type of the connection.
 	Type *string `json:"type,omitempty"`
-	// The id of the group that the cluster belongs to.
+	// Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting.
 	ClusterGroupId *string `json:"clusterGroupId,omitempty"`
 	// Name of the cluster configured for this connection.
 	ClusterName     *string                     `json:"clusterName,omitempty"`
@@ -28,6 +28,11 @@ type StreamsConnection struct {
 	// The url to be used for the request.
 	Url *string                     `json:"url,omitempty"`
 	Aws *StreamsAWSConnectionConfig `json:"aws,omitempty"`
+	// The Schema Registry provider.
+	Provider                     *string                       `json:"provider,omitempty"`
+	SchemaRegistryAuthentication *SchemaRegistryAuthentication `json:"schemaRegistryAuthentication,omitempty"`
+	// List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port.
+	SchemaRegistryUrls *[]string `json:"schemaRegistryUrls,omitempty"`
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -507,4 +512,103 @@ func (o *StreamsConnection) HasAws() bool {
 // SetAws gets a reference to the given StreamsAWSConnectionConfig and assigns it to the Aws field.
 func (o *StreamsConnection) SetAws(v StreamsAWSConnectionConfig) {
 	o.Aws = &v
+}
+
+// GetProvider returns the Provider field value if set, zero value otherwise
+func (o *StreamsConnection) GetProvider() string {
+	if o == nil || IsNil(o.Provider) {
+		var ret string
+		return ret
+	}
+	return *o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.Provider) {
+		return nil, false
+	}
+
+	return o.Provider, true
+}
+
+// HasProvider returns a boolean if a field has been set.
+func (o *StreamsConnection) HasProvider() bool {
+	if o != nil && !IsNil(o.Provider) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
+func (o *StreamsConnection) SetProvider(v string) {
+	o.Provider = &v
+}
+
+// GetSchemaRegistryAuthentication returns the SchemaRegistryAuthentication field value if set, zero value otherwise
+func (o *StreamsConnection) GetSchemaRegistryAuthentication() SchemaRegistryAuthentication {
+	if o == nil || IsNil(o.SchemaRegistryAuthentication) {
+		var ret SchemaRegistryAuthentication
+		return ret
+	}
+	return *o.SchemaRegistryAuthentication
+}
+
+// GetSchemaRegistryAuthenticationOk returns a tuple with the SchemaRegistryAuthentication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetSchemaRegistryAuthenticationOk() (*SchemaRegistryAuthentication, bool) {
+	if o == nil || IsNil(o.SchemaRegistryAuthentication) {
+		return nil, false
+	}
+
+	return o.SchemaRegistryAuthentication, true
+}
+
+// HasSchemaRegistryAuthentication returns a boolean if a field has been set.
+func (o *StreamsConnection) HasSchemaRegistryAuthentication() bool {
+	if o != nil && !IsNil(o.SchemaRegistryAuthentication) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchemaRegistryAuthentication gets a reference to the given SchemaRegistryAuthentication and assigns it to the SchemaRegistryAuthentication field.
+func (o *StreamsConnection) SetSchemaRegistryAuthentication(v SchemaRegistryAuthentication) {
+	o.SchemaRegistryAuthentication = &v
+}
+
+// GetSchemaRegistryUrls returns the SchemaRegistryUrls field value if set, zero value otherwise
+func (o *StreamsConnection) GetSchemaRegistryUrls() []string {
+	if o == nil || IsNil(o.SchemaRegistryUrls) {
+		var ret []string
+		return ret
+	}
+	return *o.SchemaRegistryUrls
+}
+
+// GetSchemaRegistryUrlsOk returns a tuple with the SchemaRegistryUrls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetSchemaRegistryUrlsOk() (*[]string, bool) {
+	if o == nil || IsNil(o.SchemaRegistryUrls) {
+		return nil, false
+	}
+
+	return o.SchemaRegistryUrls, true
+}
+
+// HasSchemaRegistryUrls returns a boolean if a field has been set.
+func (o *StreamsConnection) HasSchemaRegistryUrls() bool {
+	if o != nil && !IsNil(o.SchemaRegistryUrls) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchemaRegistryUrls gets a reference to the given []string and assigns it to the SchemaRegistryUrls field.
+func (o *StreamsConnection) SetSchemaRegistryUrls(v []string) {
+	o.SchemaRegistryUrls = &v
 }

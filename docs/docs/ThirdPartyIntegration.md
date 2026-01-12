@@ -29,11 +29,6 @@ Name | Type | Description | Notes
 **ServiceDiscovery** | Pointer to **string** | Desired method to discover the Prometheus service. | [optional] 
 **Username** | Pointer to **string** | Human-readable label that identifies your Prometheus incoming webhook. | [optional] 
 **MicrosoftTeamsWebhookUrl** | Pointer to **string** | Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted. | [optional] 
-**BucketName** | Pointer to **string** | Human-readable label that identifies the S3 bucket name for storing log files. | [optional] 
-**IamRoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket. | [optional] 
-**KmsKey** | Pointer to **string** | AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. | [optional] 
-**LogTypes** | Pointer to **[]string** | Array of log types to export to S3. | [optional] 
-**PrefixPath** | Pointer to **string** | S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type. | [optional] 
 
 ## Methods
 
@@ -654,126 +649,6 @@ SetMicrosoftTeamsWebhookUrl sets MicrosoftTeamsWebhookUrl field to given value.
 `func (o *ThirdPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool`
 
 HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
-### GetBucketName
-
-`func (o *ThirdPartyIntegration) GetBucketName() string`
-
-GetBucketName returns the BucketName field if non-nil, zero value otherwise.
-
-### GetBucketNameOk
-
-`func (o *ThirdPartyIntegration) GetBucketNameOk() (*string, bool)`
-
-GetBucketNameOk returns a tuple with the BucketName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBucketName
-
-`func (o *ThirdPartyIntegration) SetBucketName(v string)`
-
-SetBucketName sets BucketName field to given value.
-
-### HasBucketName
-
-`func (o *ThirdPartyIntegration) HasBucketName() bool`
-
-HasBucketName returns a boolean if a field has been set.
-### GetIamRoleId
-
-`func (o *ThirdPartyIntegration) GetIamRoleId() string`
-
-GetIamRoleId returns the IamRoleId field if non-nil, zero value otherwise.
-
-### GetIamRoleIdOk
-
-`func (o *ThirdPartyIntegration) GetIamRoleIdOk() (*string, bool)`
-
-GetIamRoleIdOk returns a tuple with the IamRoleId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIamRoleId
-
-`func (o *ThirdPartyIntegration) SetIamRoleId(v string)`
-
-SetIamRoleId sets IamRoleId field to given value.
-
-### HasIamRoleId
-
-`func (o *ThirdPartyIntegration) HasIamRoleId() bool`
-
-HasIamRoleId returns a boolean if a field has been set.
-### GetKmsKey
-
-`func (o *ThirdPartyIntegration) GetKmsKey() string`
-
-GetKmsKey returns the KmsKey field if non-nil, zero value otherwise.
-
-### GetKmsKeyOk
-
-`func (o *ThirdPartyIntegration) GetKmsKeyOk() (*string, bool)`
-
-GetKmsKeyOk returns a tuple with the KmsKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKmsKey
-
-`func (o *ThirdPartyIntegration) SetKmsKey(v string)`
-
-SetKmsKey sets KmsKey field to given value.
-
-### HasKmsKey
-
-`func (o *ThirdPartyIntegration) HasKmsKey() bool`
-
-HasKmsKey returns a boolean if a field has been set.
-### GetLogTypes
-
-`func (o *ThirdPartyIntegration) GetLogTypes() []string`
-
-GetLogTypes returns the LogTypes field if non-nil, zero value otherwise.
-
-### GetLogTypesOk
-
-`func (o *ThirdPartyIntegration) GetLogTypesOk() (*[]string, bool)`
-
-GetLogTypesOk returns a tuple with the LogTypes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLogTypes
-
-`func (o *ThirdPartyIntegration) SetLogTypes(v []string)`
-
-SetLogTypes sets LogTypes field to given value.
-
-### HasLogTypes
-
-`func (o *ThirdPartyIntegration) HasLogTypes() bool`
-
-HasLogTypes returns a boolean if a field has been set.
-### GetPrefixPath
-
-`func (o *ThirdPartyIntegration) GetPrefixPath() string`
-
-GetPrefixPath returns the PrefixPath field if non-nil, zero value otherwise.
-
-### GetPrefixPathOk
-
-`func (o *ThirdPartyIntegration) GetPrefixPathOk() (*string, bool)`
-
-GetPrefixPathOk returns a tuple with the PrefixPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrefixPath
-
-`func (o *ThirdPartyIntegration) SetPrefixPath(v string)`
-
-SetPrefixPath sets PrefixPath field to given value.
-
-### HasPrefixPath
-
-`func (o *ThirdPartyIntegration) HasPrefixPath() bool`
-
-HasPrefixPath returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
