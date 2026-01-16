@@ -2990,7 +2990,7 @@ components:
               readOnly: true
               type: string
             atlasAzureAppId:
-              description: Azure Active Directory Application ID of Atlas.
+              description: Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided.
               format: uuid
               type: string
             createdDate:
@@ -3030,7 +3030,7 @@ components:
           readOnly: true
           type: string
         atlasAzureAppId:
-          description: Azure Active Directory Application ID of Atlas.
+          description: Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided.
           format: uuid
           type: string
         createdDate:
@@ -3194,7 +3194,7 @@ components:
           readOnly: true
           type: string
         atlasAzureAppId:
-          description: Azure Active Directory Application ID of Atlas.
+          description: Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided.
           format: uuid
           type: string
         lastUpdatedDate:
@@ -3268,7 +3268,7 @@ components:
           readOnly: true
           type: string
         atlasAzureAppId:
-          description: Azure Active Directory Application ID of Atlas.
+          description: Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided.
           format: uuid
           type: string
         lastUpdatedDate:
@@ -3344,7 +3344,7 @@ components:
           readOnly: true
           type: string
         atlasAzureAppId:
-          description: Azure Active Directory Application ID of Atlas.
+          description: Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided.
           format: uuid
           type: string
         lastUpdatedDate:
@@ -17020,7 +17020,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 25e3a563298c03d05edc5a71274c4b7bb5486f12
+  x-xgen-sha: bf6947d0d9f5e41d995e180dfe672dbd81ed7e2a
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -25275,7 +25275,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download" \
               -d '{ <Payload> }'
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Shared-Tier-Snapshots/operation/downloadGroupClusterBackupTenant
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -25377,7 +25377,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore" \
               -d '{ <Payload> }'
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Shared-Tier-Restore-Jobs/operation/createGroupClusterBackupTenantRestore
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores:
     get:
@@ -25464,7 +25464,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Shared-Tier-Restore-Jobs/operation/listGroupClusterBackupTenantRestores
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId}:
     get:
@@ -25558,7 +25558,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId}?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Shared-Tier-Restore-Jobs/operation/getGroupClusterBackupTenantRestore
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots:
     get:
@@ -25645,7 +25645,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Shared-Tier-Snapshots/operation/listGroupClusterBackupTenantSnapshots
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId}:
     get:
@@ -25739,7 +25739,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId}?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Shared-Tier-Snapshots/operation/getGroupClusterBackupTenantSnapshot
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints:
     get:
@@ -42529,7 +42529,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/listGroupPrivateEndpointServerlessInstanceEndpoint
     post:
       deprecated: true
@@ -42628,7 +42628,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint" \
               -d '{ <Payload> }'
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/createGroupPrivateEndpointServerlessInstanceEndpoint
   /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}:
     delete:
@@ -42717,7 +42717,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/deleteGroupPrivateEndpointServerlessInstanceEndpoint
     get:
       deprecated: true
@@ -42809,7 +42809,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/getGroupPrivateEndpointServerlessInstanceEndpoint
     patch:
       deprecated: true
@@ -42910,7 +42910,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}" \
               -d '{ <Payload> }'
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Private-Endpoints/operation/updateGroupPrivateEndpointServerlessInstanceEndpoint
   /api/atlas/v2/groups/{groupId}/privateIpMode:
     get:
@@ -45223,7 +45223,7 @@ paths:
       description: |-
         Returns details for all serverless instances in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This endpoint also lists Flex clusters that were created using the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or former Serverless instances that have been migrated to Flex clusters, until January 2026 after which this endpoint will be sunset. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the listFlexClusters endpoint instead.
+        This endpoint also lists Flex clusters that were created using the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or former Serverless instances that have been migrated to Flex clusters, until January 2026 after which this endpoint will begin returning an empty list. The endpoint will be removed entirely in January 2027. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the listFlexClusters endpoint instead.
       externalDocs:
         description: listFlexClusters
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Clusters/operation/listFlexClusters
@@ -45298,7 +45298,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2027-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/listGroupServerlessInstances
       x-xgen-method-verb-override:
         customMethod: false
@@ -45395,7 +45395,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless" \
               -d '{ <Payload> }'
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createGroupServerlessInstance
       x-xgen-method-verb-override:
         customMethod: false
@@ -45488,7 +45488,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupServerlessBackupRestoreJobs
     post:
       deprecated: true
@@ -45587,7 +45587,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs" \
               -d '{ <Payload> }'
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/createGroupServerlessBackupRestoreJob
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId}:
     get:
@@ -45683,7 +45683,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId}?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupServerlessBackupRestoreJob
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots:
     get:
@@ -45773,7 +45773,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupServerlessBackupSnapshots
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId}:
     get:
@@ -45870,7 +45870,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId}?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupServerlessBackupSnapshot
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing:
     get:
@@ -45954,7 +45954,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Performance-Advisor/operation/getGroupServerlessPerformanceAdvisorAutoIndexing
       x-xgen-method-verb-override:
         customMethod: false
@@ -46048,7 +46048,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing" \
               -d '{ <Payload> }'
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Performance-Advisor/operation/setGroupServerlessPerformanceAdvisorAutoIndexing
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -46140,7 +46140,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{name}"
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/deleteGroupServerlessInstance
       x-xgen-method-verb-override:
         customMethod: false
@@ -46150,7 +46150,7 @@ paths:
       description: |-
         Returns details for one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. This endpoint will be sunset in January 2026. Please use the getFlexCluster endpoint instead.
+        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. This endpoint will be sunset in January 2027. Please use the getFlexCluster endpoint instead.
       externalDocs:
         description: getFlexCluster
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Clusters/operation/getFlexCluster
@@ -46233,7 +46233,7 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{name}?pretty=true"
-      x-sunset: 2026-01-15
+      x-sunset: 2027-01-15
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/getGroupServerlessInstance
       x-xgen-method-verb-override:
         customMethod: false
@@ -46335,7 +46335,7 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/serverless/{name}" \
               -d '{ <Payload> }'
-      x-sunset: 2026-01-15
+      x-sunset: 2026-01-22
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/updateGroupServerlessInstance
       x-xgen-method-verb-override:
         customMethod: false
