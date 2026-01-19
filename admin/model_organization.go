@@ -2,8 +2,8 @@
 
 package admin
 
-// AtlasOrganization Details that describe the organization.
-type AtlasOrganization struct {
+// Organization Details that describe the organization.
+type Organization struct {
 	// Unique 24-hexadecimal digit string that identifies the organization.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
@@ -19,30 +19,30 @@ type AtlasOrganization struct {
 	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
 }
 
-// NewAtlasOrganization instantiates a new AtlasOrganization object
+// NewOrganization instantiates a new Organization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAtlasOrganization(name string) *AtlasOrganization {
-	this := AtlasOrganization{}
+func NewOrganization(name string) *Organization {
+	this := Organization{}
 	this.Name = name
 	var skipDefaultAlertsSettings bool = false
 	this.SkipDefaultAlertsSettings = &skipDefaultAlertsSettings
 	return &this
 }
 
-// NewAtlasOrganizationWithDefaults instantiates a new AtlasOrganization object
+// NewOrganizationWithDefaults instantiates a new Organization object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAtlasOrganizationWithDefaults() *AtlasOrganization {
-	this := AtlasOrganization{}
+func NewOrganizationWithDefaults() *Organization {
+	this := Organization{}
 	var skipDefaultAlertsSettings bool = false
 	this.SkipDefaultAlertsSettings = &skipDefaultAlertsSettings
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise
-func (o *AtlasOrganization) GetId() string {
+func (o *Organization) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -52,7 +52,7 @@ func (o *AtlasOrganization) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AtlasOrganization) GetIdOk() (*string, bool) {
+func (o *Organization) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *AtlasOrganization) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *AtlasOrganization) HasId() bool {
+func (o *Organization) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *AtlasOrganization) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AtlasOrganization) SetId(v string) {
+func (o *Organization) SetId(v string) {
 	o.Id = &v
 }
 
 // GetIsDeleted returns the IsDeleted field value if set, zero value otherwise
-func (o *AtlasOrganization) GetIsDeleted() bool {
+func (o *Organization) GetIsDeleted() bool {
 	if o == nil || IsNil(o.IsDeleted) {
 		var ret bool
 		return ret
@@ -85,7 +85,7 @@ func (o *AtlasOrganization) GetIsDeleted() bool {
 
 // GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AtlasOrganization) GetIsDeletedOk() (*bool, bool) {
+func (o *Organization) GetIsDeletedOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsDeleted) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *AtlasOrganization) GetIsDeletedOk() (*bool, bool) {
 }
 
 // HasIsDeleted returns a boolean if a field has been set.
-func (o *AtlasOrganization) HasIsDeleted() bool {
+func (o *Organization) HasIsDeleted() bool {
 	if o != nil && !IsNil(o.IsDeleted) {
 		return true
 	}
@@ -103,12 +103,12 @@ func (o *AtlasOrganization) HasIsDeleted() bool {
 }
 
 // SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
-func (o *AtlasOrganization) SetIsDeleted(v bool) {
+func (o *Organization) SetIsDeleted(v bool) {
 	o.IsDeleted = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *AtlasOrganization) GetLinks() []Link {
+func (o *Organization) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -118,7 +118,7 @@ func (o *AtlasOrganization) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AtlasOrganization) GetLinksOk() (*[]Link, bool) {
+func (o *Organization) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -127,7 +127,7 @@ func (o *AtlasOrganization) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *AtlasOrganization) HasLinks() bool {
+func (o *Organization) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -136,12 +136,12 @@ func (o *AtlasOrganization) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *AtlasOrganization) SetLinks(v []Link) {
+func (o *Organization) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetName returns the Name field value
-func (o *AtlasOrganization) GetName() string {
+func (o *Organization) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -152,7 +152,7 @@ func (o *AtlasOrganization) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AtlasOrganization) GetNameOk() (*string, bool) {
+func (o *Organization) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -160,12 +160,12 @@ func (o *AtlasOrganization) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *AtlasOrganization) SetName(v string) {
+func (o *Organization) SetName(v string) {
 	o.Name = v
 }
 
 // GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field value if set, zero value otherwise
-func (o *AtlasOrganization) GetSkipDefaultAlertsSettings() bool {
+func (o *Organization) GetSkipDefaultAlertsSettings() bool {
 	if o == nil || IsNil(o.SkipDefaultAlertsSettings) {
 		var ret bool
 		return ret
@@ -175,7 +175,7 @@ func (o *AtlasOrganization) GetSkipDefaultAlertsSettings() bool {
 
 // GetSkipDefaultAlertsSettingsOk returns a tuple with the SkipDefaultAlertsSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AtlasOrganization) GetSkipDefaultAlertsSettingsOk() (*bool, bool) {
+func (o *Organization) GetSkipDefaultAlertsSettingsOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDefaultAlertsSettings) {
 		return nil, false
 	}
@@ -184,7 +184,7 @@ func (o *AtlasOrganization) GetSkipDefaultAlertsSettingsOk() (*bool, bool) {
 }
 
 // HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
-func (o *AtlasOrganization) HasSkipDefaultAlertsSettings() bool {
+func (o *Organization) HasSkipDefaultAlertsSettings() bool {
 	if o != nil && !IsNil(o.SkipDefaultAlertsSettings) {
 		return true
 	}
@@ -193,6 +193,6 @@ func (o *AtlasOrganization) HasSkipDefaultAlertsSettings() bool {
 }
 
 // SetSkipDefaultAlertsSettings gets a reference to the given bool and assigns it to the SkipDefaultAlertsSettings field.
-func (o *AtlasOrganization) SetSkipDefaultAlertsSettings(v bool) {
+func (o *Organization) SetSkipDefaultAlertsSettings(v bool) {
 	o.SkipDefaultAlertsSettings = &v
 }

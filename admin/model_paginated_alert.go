@@ -9,7 +9,7 @@ type PaginatedAlert struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]AlertViewForNdsGroup `json:"results,omitempty"`
+	Results *[]GroupAlert `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -66,9 +66,9 @@ func (o *PaginatedAlert) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedAlert) GetResults() []AlertViewForNdsGroup {
+func (o *PaginatedAlert) GetResults() []GroupAlert {
 	if o == nil || IsNil(o.Results) {
-		var ret []AlertViewForNdsGroup
+		var ret []GroupAlert
 		return ret
 	}
 	return *o.Results
@@ -76,7 +76,7 @@ func (o *PaginatedAlert) GetResults() []AlertViewForNdsGroup {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedAlert) GetResultsOk() (*[]AlertViewForNdsGroup, bool) {
+func (o *PaginatedAlert) GetResultsOk() (*[]GroupAlert, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *PaginatedAlert) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []AlertViewForNdsGroup and assigns it to the Results field.
-func (o *PaginatedAlert) SetResults(v []AlertViewForNdsGroup) {
+// SetResults gets a reference to the given []GroupAlert and assigns it to the Results field.
+func (o *PaginatedAlert) SetResults(v []GroupAlert) {
 	o.Results = &v
 }
 

@@ -143,7 +143,7 @@ type OrganizationsApi interface {
 	GetOrgWithParams(ctx context.Context, args *GetOrgApiParams) GetOrgApiRequest
 
 	// Method available only for mocking purposes
-	GetOrgExecute(r GetOrgApiRequest) (*AtlasOrganization, *http.Response, error)
+	GetOrgExecute(r GetOrgApiRequest) (*Organization, *http.Response, error)
 
 	/*
 			GetOrgGroups Return All Projects in One Organization
@@ -286,10 +286,10 @@ type OrganizationsApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param atlasOrganization Details to update on the specified organization.
+		@param organization Details to update on the specified organization.
 		@return UpdateOrgApiRequest
 	*/
-	UpdateOrg(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) UpdateOrgApiRequest
+	UpdateOrg(ctx context.Context, orgId string, organization *Organization) UpdateOrgApiRequest
 	/*
 		UpdateOrg Update One Organization
 
@@ -301,7 +301,7 @@ type OrganizationsApi interface {
 	UpdateOrgWithParams(ctx context.Context, args *UpdateOrgApiParams) UpdateOrgApiRequest
 
 	// Method available only for mocking purposes
-	UpdateOrgExecute(r UpdateOrgApiRequest) (*AtlasOrganization, *http.Response, error)
+	UpdateOrgExecute(r UpdateOrgApiRequest) (*Organization, *http.Response, error)
 
 	/*
 			UpdateOrgInviteById Update One Invitation in One Organization by Invitation ID
@@ -895,7 +895,7 @@ func (a *OrganizationsApiService) GetOrgWithParams(ctx context.Context, args *Ge
 	}
 }
 
-func (r GetOrgApiRequest) Execute() (*AtlasOrganization, *http.Response, error) {
+func (r GetOrgApiRequest) Execute() (*Organization, *http.Response, error) {
 	return r.ApiService.GetOrgExecute(r)
 }
 
@@ -918,13 +918,13 @@ func (a *OrganizationsApiService) GetOrg(ctx context.Context, orgId string) GetO
 
 // GetOrgExecute executes the request
 //
-//	@return AtlasOrganization
-func (a *OrganizationsApiService) GetOrgExecute(r GetOrgApiRequest) (*AtlasOrganization, *http.Response, error) {
+//	@return Organization
+func (a *OrganizationsApiService) GetOrgExecute(r GetOrgApiRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *AtlasOrganization
+		localVarReturnValue *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrg")
@@ -1713,27 +1713,27 @@ func (a *OrganizationsApiService) ListOrgsExecute(r ListOrgsApiRequest) (*Pagina
 }
 
 type UpdateOrgApiRequest struct {
-	ctx               context.Context
-	ApiService        OrganizationsApi
-	orgId             string
-	atlasOrganization *AtlasOrganization
+	ctx          context.Context
+	ApiService   OrganizationsApi
+	orgId        string
+	organization *Organization
 }
 
 type UpdateOrgApiParams struct {
-	OrgId             string
-	AtlasOrganization *AtlasOrganization
+	OrgId        string
+	Organization *Organization
 }
 
 func (a *OrganizationsApiService) UpdateOrgWithParams(ctx context.Context, args *UpdateOrgApiParams) UpdateOrgApiRequest {
 	return UpdateOrgApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		orgId:             args.OrgId,
-		atlasOrganization: args.AtlasOrganization,
+		ApiService:   a,
+		ctx:          ctx,
+		orgId:        args.OrgId,
+		organization: args.Organization,
 	}
 }
 
-func (r UpdateOrgApiRequest) Execute() (*AtlasOrganization, *http.Response, error) {
+func (r UpdateOrgApiRequest) Execute() (*Organization, *http.Response, error) {
 	return r.ApiService.UpdateOrgExecute(r)
 }
 
@@ -1746,24 +1746,24 @@ Updates one organization. To use this resource, the requesting Service Account o
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgApiRequest
 */
-func (a *OrganizationsApiService) UpdateOrg(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) UpdateOrgApiRequest {
+func (a *OrganizationsApiService) UpdateOrg(ctx context.Context, orgId string, organization *Organization) UpdateOrgApiRequest {
 	return UpdateOrgApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		orgId:             orgId,
-		atlasOrganization: atlasOrganization,
+		ApiService:   a,
+		ctx:          ctx,
+		orgId:        orgId,
+		organization: organization,
 	}
 }
 
 // UpdateOrgExecute executes the request
 //
-//	@return AtlasOrganization
-func (a *OrganizationsApiService) UpdateOrgExecute(r UpdateOrgApiRequest) (*AtlasOrganization, *http.Response, error) {
+//	@return Organization
+func (a *OrganizationsApiService) UpdateOrgExecute(r UpdateOrgApiRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *AtlasOrganization
+		localVarReturnValue *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrg")
@@ -1780,8 +1780,8 @@ func (a *OrganizationsApiService) UpdateOrgExecute(r UpdateOrgApiRequest) (*Atla
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.atlasOrganization == nil {
-		return localVarReturnValue, nil, reportError("atlasOrganization is required and must be specified")
+	if r.organization == nil {
+		return localVarReturnValue, nil, reportError("organization is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1802,7 +1802,7 @@ func (a *OrganizationsApiService) UpdateOrgExecute(r UpdateOrgApiRequest) (*Atla
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.atlasOrganization
+	localVarPostBody = r.organization
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

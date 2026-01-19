@@ -117,14 +117,14 @@ type CloudBackupsApi interface {
 	/*
 		CreateExportBucket Create One Snapshot Export Bucket
 
-		Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param diskBackupSnapshotExportBucketRequest Specifies the role and AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket that the Export Bucket should reference.
+		@param diskBackupSnapshotAWSExportBucketRequest Specifies the role and AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket that the Export Bucket should reference.
 		@return CreateExportBucketApiRequest
 	*/
-	CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotExportBucketRequest *DiskBackupSnapshotExportBucketRequest) CreateExportBucketApiRequest
+	CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotAWSExportBucketRequest *DiskBackupSnapshotAWSExportBucketRequest) CreateExportBucketApiRequest
 	/*
 		CreateExportBucket Create One Snapshot Export Bucket
 
@@ -222,7 +222,7 @@ type CloudBackupsApi interface {
 	/*
 		DeleteClusterBackupSchedule Remove All Cloud Backup Schedules
 
-		Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role. Deprecated versions: v2-{2023-01-01}
+		Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -393,7 +393,7 @@ type CloudBackupsApi interface {
 	/*
 		GetBackupSchedule Return One Cloud Backup Schedule
 
-		Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+		Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -467,7 +467,7 @@ type CloudBackupsApi interface {
 	/*
 		GetCompliancePolicy Return Backup Compliance Policy Settings
 
-		Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -490,7 +490,7 @@ type CloudBackupsApi interface {
 	/*
 		GetExportBucket Return One Snapshot Export Bucket
 
-		Returns one Export Bucket associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+		Returns one Export Bucket associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -696,7 +696,7 @@ type CloudBackupsApi interface {
 	/*
 		ListExportBuckets Return All Snapshot Export Buckets
 
-		Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+		Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -831,15 +831,15 @@ type CloudBackupsApi interface {
 	/*
 		UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
 
-		Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@param diskBackupSnapshotSchedule20240805 Updates the cloud backup schedule for one cluster within the specified project.  **Note**: In the request body, provide only the fields that you want to update.
+		@param diskBackupSnapshotSchedule Updates the cloud backup schedule for one cluster within the specified project.  **Note**: In the request body, provide only the fields that you want to update.
 		@return UpdateBackupScheduleApiRequest
 	*/
-	UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule20240805 *DiskBackupSnapshotSchedule20240805) UpdateBackupScheduleApiRequest
+	UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule *DiskBackupSnapshotSchedule) UpdateBackupScheduleApiRequest
 	/*
 		UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
 
@@ -882,14 +882,14 @@ type CloudBackupsApi interface {
 	/*
 		UpdateCompliancePolicy Update Backup Compliance Policy Settings
 
-		Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param dataProtectionSettings20231001 The new Backup Compliance Policy settings.
+		@param dataProtectionSettings The new Backup Compliance Policy settings.
 		@return UpdateCompliancePolicyApiRequest
 	*/
-	UpdateCompliancePolicy(ctx context.Context, groupId string, dataProtectionSettings20231001 *DataProtectionSettings20231001) UpdateCompliancePolicyApiRequest
+	UpdateCompliancePolicy(ctx context.Context, groupId string, dataProtectionSettings *DataProtectionSettings) UpdateCompliancePolicyApiRequest
 	/*
 		UpdateCompliancePolicy Update Backup Compliance Policy Settings
 
@@ -1421,23 +1421,23 @@ func (a *CloudBackupsApiService) CreateBackupRestoreJobExecute(r CreateBackupRes
 }
 
 type CreateExportBucketApiRequest struct {
-	ctx                                   context.Context
-	ApiService                            CloudBackupsApi
-	groupId                               string
-	diskBackupSnapshotExportBucketRequest *DiskBackupSnapshotExportBucketRequest
+	ctx                                      context.Context
+	ApiService                               CloudBackupsApi
+	groupId                                  string
+	diskBackupSnapshotAWSExportBucketRequest *DiskBackupSnapshotAWSExportBucketRequest
 }
 
 type CreateExportBucketApiParams struct {
-	GroupId                               string
-	DiskBackupSnapshotExportBucketRequest *DiskBackupSnapshotExportBucketRequest
+	GroupId                                  string
+	DiskBackupSnapshotAWSExportBucketRequest *DiskBackupSnapshotAWSExportBucketRequest
 }
 
 func (a *CloudBackupsApiService) CreateExportBucketWithParams(ctx context.Context, args *CreateExportBucketApiParams) CreateExportBucketApiRequest {
 	return CreateExportBucketApiRequest{
-		ApiService:                            a,
-		ctx:                                   ctx,
-		groupId:                               args.GroupId,
-		diskBackupSnapshotExportBucketRequest: args.DiskBackupSnapshotExportBucketRequest,
+		ApiService:                               a,
+		ctx:                                      ctx,
+		groupId:                                  args.GroupId,
+		diskBackupSnapshotAWSExportBucketRequest: args.DiskBackupSnapshotAWSExportBucketRequest,
 	}
 }
 
@@ -1448,18 +1448,18 @@ func (r CreateExportBucketApiRequest) Execute() (*DiskBackupSnapshotExportBucket
 /*
 CreateExportBucket Create One Snapshot Export Bucket
 
-Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateExportBucketApiRequest
 */
-func (a *CloudBackupsApiService) CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotExportBucketRequest *DiskBackupSnapshotExportBucketRequest) CreateExportBucketApiRequest {
+func (a *CloudBackupsApiService) CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotAWSExportBucketRequest *DiskBackupSnapshotAWSExportBucketRequest) CreateExportBucketApiRequest {
 	return CreateExportBucketApiRequest{
-		ApiService:                            a,
-		ctx:                                   ctx,
-		groupId:                               groupId,
-		diskBackupSnapshotExportBucketRequest: diskBackupSnapshotExportBucketRequest,
+		ApiService:                               a,
+		ctx:                                      ctx,
+		groupId:                                  groupId,
+		diskBackupSnapshotAWSExportBucketRequest: diskBackupSnapshotAWSExportBucketRequest,
 	}
 }
 
@@ -1488,12 +1488,12 @@ func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.diskBackupSnapshotExportBucketRequest == nil {
-		return localVarReturnValue, nil, reportError("diskBackupSnapshotExportBucketRequest is required and must be specified")
+	if r.diskBackupSnapshotAWSExportBucketRequest == nil {
+		return localVarReturnValue, nil, reportError("diskBackupSnapshotAWSExportBucketRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2024-05-30+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1510,7 +1510,7 @@ func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.diskBackupSnapshotExportBucketRequest
+	localVarPostBody = r.diskBackupSnapshotAWSExportBucketRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1939,7 +1939,7 @@ func (r DeleteClusterBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSch
 /*
 DeleteClusterBackupSchedule Remove All Cloud Backup Schedules
 
-Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role. Deprecated versions: v2-{2023-01-01}
+Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2776,7 +2776,7 @@ func (r GetBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule20240
 /*
 GetBackupSchedule Return One Cloud Backup Schedule
 
-Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3160,7 +3160,7 @@ func (r GetCompliancePolicyApiRequest) Execute() (*DataProtectionSettings2023100
 /*
 GetCompliancePolicy Return Backup Compliance Policy Settings
 
-Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3277,7 +3277,7 @@ func (r GetExportBucketApiRequest) Execute() (*DiskBackupSnapshotExportBucketRes
 /*
 GetExportBucket Return One Snapshot Export Bucket
 
-Returns one Export Bucket associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+Returns one Export Bucket associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -4507,7 +4507,7 @@ func (r ListExportBucketsApiRequest) Execute() (*PaginatedBackupSnapshotExportBu
 /*
 ListExportBuckets Return All Snapshot Export Buckets
 
-Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -5238,26 +5238,26 @@ func (a *CloudBackupsApiService) UpdateBackupExportBucketExecute(r UpdateBackupE
 }
 
 type UpdateBackupScheduleApiRequest struct {
-	ctx                                context.Context
-	ApiService                         CloudBackupsApi
-	groupId                            string
-	clusterName                        string
-	diskBackupSnapshotSchedule20240805 *DiskBackupSnapshotSchedule20240805
+	ctx                        context.Context
+	ApiService                 CloudBackupsApi
+	groupId                    string
+	clusterName                string
+	diskBackupSnapshotSchedule *DiskBackupSnapshotSchedule
 }
 
 type UpdateBackupScheduleApiParams struct {
-	GroupId                            string
-	ClusterName                        string
-	DiskBackupSnapshotSchedule20240805 *DiskBackupSnapshotSchedule20240805
+	GroupId                    string
+	ClusterName                string
+	DiskBackupSnapshotSchedule *DiskBackupSnapshotSchedule
 }
 
 func (a *CloudBackupsApiService) UpdateBackupScheduleWithParams(ctx context.Context, args *UpdateBackupScheduleApiParams) UpdateBackupScheduleApiRequest {
 	return UpdateBackupScheduleApiRequest{
-		ApiService:                         a,
-		ctx:                                ctx,
-		groupId:                            args.GroupId,
-		clusterName:                        args.ClusterName,
-		diskBackupSnapshotSchedule20240805: args.DiskBackupSnapshotSchedule20240805,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		clusterName:                args.ClusterName,
+		diskBackupSnapshotSchedule: args.DiskBackupSnapshotSchedule,
 	}
 }
 
@@ -5268,20 +5268,20 @@ func (r UpdateBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule20
 /*
 UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
 
-Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateBackupScheduleApiRequest
 */
-func (a *CloudBackupsApiService) UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule20240805 *DiskBackupSnapshotSchedule20240805) UpdateBackupScheduleApiRequest {
+func (a *CloudBackupsApiService) UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule *DiskBackupSnapshotSchedule) UpdateBackupScheduleApiRequest {
 	return UpdateBackupScheduleApiRequest{
-		ApiService:                         a,
-		ctx:                                ctx,
-		groupId:                            groupId,
-		clusterName:                        clusterName,
-		diskBackupSnapshotSchedule20240805: diskBackupSnapshotSchedule20240805,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		clusterName:                clusterName,
+		diskBackupSnapshotSchedule: diskBackupSnapshotSchedule,
 	}
 }
 
@@ -5314,12 +5314,12 @@ func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupSched
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.diskBackupSnapshotSchedule20240805 == nil {
-		return localVarReturnValue, nil, reportError("diskBackupSnapshotSchedule20240805 is required and must be specified")
+	if r.diskBackupSnapshotSchedule == nil {
+		return localVarReturnValue, nil, reportError("diskBackupSnapshotSchedule is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2024-08-05+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -5336,7 +5336,7 @@ func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupSched
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.diskBackupSnapshotSchedule20240805
+	localVarPostBody = r.diskBackupSnapshotSchedule
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -5511,26 +5511,26 @@ func (a *CloudBackupsApiService) UpdateBackupSnapshotExecute(r UpdateBackupSnaps
 }
 
 type UpdateCompliancePolicyApiRequest struct {
-	ctx                            context.Context
-	ApiService                     CloudBackupsApi
-	groupId                        string
-	dataProtectionSettings20231001 *DataProtectionSettings20231001
-	overwriteBackupPolicies        *bool
+	ctx                     context.Context
+	ApiService              CloudBackupsApi
+	groupId                 string
+	dataProtectionSettings  *DataProtectionSettings
+	overwriteBackupPolicies *bool
 }
 
 type UpdateCompliancePolicyApiParams struct {
-	GroupId                        string
-	DataProtectionSettings20231001 *DataProtectionSettings20231001
-	OverwriteBackupPolicies        *bool
+	GroupId                 string
+	DataProtectionSettings  *DataProtectionSettings
+	OverwriteBackupPolicies *bool
 }
 
 func (a *CloudBackupsApiService) UpdateCompliancePolicyWithParams(ctx context.Context, args *UpdateCompliancePolicyApiParams) UpdateCompliancePolicyApiRequest {
 	return UpdateCompliancePolicyApiRequest{
-		ApiService:                     a,
-		ctx:                            ctx,
-		groupId:                        args.GroupId,
-		dataProtectionSettings20231001: args.DataProtectionSettings20231001,
-		overwriteBackupPolicies:        args.OverwriteBackupPolicies,
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 args.GroupId,
+		dataProtectionSettings:  args.DataProtectionSettings,
+		overwriteBackupPolicies: args.OverwriteBackupPolicies,
 	}
 }
 
@@ -5547,18 +5547,18 @@ func (r UpdateCompliancePolicyApiRequest) Execute() (*DataProtectionSettings2023
 /*
 UpdateCompliancePolicy Update Backup Compliance Policy Settings
 
-Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateCompliancePolicyApiRequest
 */
-func (a *CloudBackupsApiService) UpdateCompliancePolicy(ctx context.Context, groupId string, dataProtectionSettings20231001 *DataProtectionSettings20231001) UpdateCompliancePolicyApiRequest {
+func (a *CloudBackupsApiService) UpdateCompliancePolicy(ctx context.Context, groupId string, dataProtectionSettings *DataProtectionSettings) UpdateCompliancePolicyApiRequest {
 	return UpdateCompliancePolicyApiRequest{
-		ApiService:                     a,
-		ctx:                            ctx,
-		groupId:                        groupId,
-		dataProtectionSettings20231001: dataProtectionSettings20231001,
+		ApiService:             a,
+		ctx:                    ctx,
+		groupId:                groupId,
+		dataProtectionSettings: dataProtectionSettings,
 	}
 }
 
@@ -5587,8 +5587,8 @@ func (a *CloudBackupsApiService) UpdateCompliancePolicyExecute(r UpdateComplianc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.dataProtectionSettings20231001 == nil {
-		return localVarReturnValue, nil, reportError("dataProtectionSettings20231001 is required and must be specified")
+	if r.dataProtectionSettings == nil {
+		return localVarReturnValue, nil, reportError("dataProtectionSettings is required and must be specified")
 	}
 
 	if r.overwriteBackupPolicies != nil {
@@ -5599,7 +5599,7 @@ func (a *CloudBackupsApiService) UpdateCompliancePolicyExecute(r UpdateComplianc
 		parameterAddToHeaderOrQuery(localVarQueryParams, "overwriteBackupPolicies", r.overwriteBackupPolicies, "")
 	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-10-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2023-10-01+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -5616,7 +5616,7 @@ func (a *CloudBackupsApiService) UpdateCompliancePolicyExecute(r UpdateComplianc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.dataProtectionSettings20231001
+	localVarPostBody = r.dataProtectionSettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

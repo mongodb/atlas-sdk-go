@@ -38,7 +38,7 @@ type EventsApi interface {
 	GetGroupEventWithParams(ctx context.Context, args *GetGroupEventApiParams) GetGroupEventApiRequest
 
 	// Method available only for mocking purposes
-	GetGroupEventExecute(r GetGroupEventApiRequest) (*EventViewForNdsGroup, *http.Response, error)
+	GetGroupEventExecute(r GetGroupEventApiRequest) (*GroupEvent, *http.Response, error)
 
 	/*
 			GetOrgEvent Return One Event from One Organization
@@ -172,7 +172,7 @@ func (r GetGroupEventApiRequest) IncludeRaw(includeRaw bool) GetGroupEventApiReq
 	return r
 }
 
-func (r GetGroupEventApiRequest) Execute() (*EventViewForNdsGroup, *http.Response, error) {
+func (r GetGroupEventApiRequest) Execute() (*GroupEvent, *http.Response, error) {
 	return r.ApiService.GetGroupEventExecute(r)
 }
 
@@ -199,13 +199,13 @@ func (a *EventsApiService) GetGroupEvent(ctx context.Context, groupId string, ev
 
 // GetGroupEventExecute executes the request
 //
-//	@return EventViewForNdsGroup
-func (a *EventsApiService) GetGroupEventExecute(r GetGroupEventApiRequest) (*EventViewForNdsGroup, *http.Response, error) {
+//	@return GroupEvent
+func (a *EventsApiService) GetGroupEventExecute(r GetGroupEventApiRequest) (*GroupEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *EventViewForNdsGroup
+		localVarReturnValue *GroupEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.GetGroupEvent")

@@ -9,7 +9,7 @@ type GroupPaginatedEvent struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]EventViewForNdsGroup `json:"results,omitempty"`
+	Results *[]GroupEvent `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -66,9 +66,9 @@ func (o *GroupPaginatedEvent) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *GroupPaginatedEvent) GetResults() []EventViewForNdsGroup {
+func (o *GroupPaginatedEvent) GetResults() []GroupEvent {
 	if o == nil || IsNil(o.Results) {
-		var ret []EventViewForNdsGroup
+		var ret []GroupEvent
 		return ret
 	}
 	return *o.Results
@@ -76,7 +76,7 @@ func (o *GroupPaginatedEvent) GetResults() []EventViewForNdsGroup {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupPaginatedEvent) GetResultsOk() (*[]EventViewForNdsGroup, bool) {
+func (o *GroupPaginatedEvent) GetResultsOk() (*[]GroupEvent, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *GroupPaginatedEvent) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EventViewForNdsGroup and assigns it to the Results field.
-func (o *GroupPaginatedEvent) SetResults(v []EventViewForNdsGroup) {
+// SetResults gets a reference to the given []GroupEvent and assigns it to the Results field.
+func (o *GroupPaginatedEvent) SetResults(v []GroupEvent) {
 	o.Results = &v
 }
 

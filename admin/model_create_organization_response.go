@@ -11,7 +11,7 @@ type CreateOrganizationResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization.
 	// Read only field.
 	OrgOwnerId     *string            `json:"orgOwnerId,omitempty"`
-	Organization   *AtlasOrganization `json:"organization,omitempty"`
+	Organization   *Organization      `json:"organization,omitempty"`
 	ServiceAccount *OrgServiceAccount `json:"serviceAccount,omitempty"`
 	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
 	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
@@ -138,9 +138,9 @@ func (o *CreateOrganizationResponse) SetOrgOwnerId(v string) {
 }
 
 // GetOrganization returns the Organization field value if set, zero value otherwise
-func (o *CreateOrganizationResponse) GetOrganization() AtlasOrganization {
+func (o *CreateOrganizationResponse) GetOrganization() Organization {
 	if o == nil || IsNil(o.Organization) {
-		var ret AtlasOrganization
+		var ret Organization
 		return ret
 	}
 	return *o.Organization
@@ -148,7 +148,7 @@ func (o *CreateOrganizationResponse) GetOrganization() AtlasOrganization {
 
 // GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationResponse) GetOrganizationOk() (*AtlasOrganization, bool) {
+func (o *CreateOrganizationResponse) GetOrganizationOk() (*Organization, bool) {
 	if o == nil || IsNil(o.Organization) {
 		return nil, false
 	}
@@ -165,8 +165,8 @@ func (o *CreateOrganizationResponse) HasOrganization() bool {
 	return false
 }
 
-// SetOrganization gets a reference to the given AtlasOrganization and assigns it to the Organization field.
-func (o *CreateOrganizationResponse) SetOrganization(v AtlasOrganization) {
+// SetOrganization gets a reference to the given Organization and assigns it to the Organization field.
+func (o *CreateOrganizationResponse) SetOrganization(v Organization) {
 	o.Organization = &v
 }
 

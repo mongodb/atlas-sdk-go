@@ -9,7 +9,7 @@ type PaginatedOrganization struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]AtlasOrganization `json:"results,omitempty"`
+	Results *[]Organization `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -66,9 +66,9 @@ func (o *PaginatedOrganization) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedOrganization) GetResults() []AtlasOrganization {
+func (o *PaginatedOrganization) GetResults() []Organization {
 	if o == nil || IsNil(o.Results) {
-		var ret []AtlasOrganization
+		var ret []Organization
 		return ret
 	}
 	return *o.Results
@@ -76,7 +76,7 @@ func (o *PaginatedOrganization) GetResults() []AtlasOrganization {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedOrganization) GetResultsOk() (*[]AtlasOrganization, bool) {
+func (o *PaginatedOrganization) GetResultsOk() (*[]Organization, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *PaginatedOrganization) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []AtlasOrganization and assigns it to the Results field.
-func (o *PaginatedOrganization) SetResults(v []AtlasOrganization) {
+// SetResults gets a reference to the given []Organization and assigns it to the Results field.
+func (o *PaginatedOrganization) SetResults(v []Organization) {
 	o.Results = &v
 }
 

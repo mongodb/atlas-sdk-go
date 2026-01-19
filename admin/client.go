@@ -52,6 +52,8 @@ type APIClient struct {
 
 	AuditingApi AuditingApi
 
+	ChartsDashboardsApi ChartsDashboardsApi
+
 	CloudBackupsApi CloudBackupsApi
 
 	CloudMigrationServiceApi CloudMigrationServiceApi
@@ -118,11 +120,15 @@ type APIClient struct {
 
 	QueryShapeInsightsApi QueryShapeInsightsApi
 
+	RateLimitApi RateLimitApi
+
 	ResourcePoliciesApi ResourcePoliciesApi
 
 	RollingIndexApi RollingIndexApi
 
 	RootApi RootApi
+
+	SandboxApi SandboxApi
 
 	ServerlessInstancesApi ServerlessInstancesApi
 
@@ -134,9 +140,13 @@ type APIClient struct {
 
 	SharedTierSnapshotsApi SharedTierSnapshotsApi
 
+	StandbyLinksApi StandbyLinksApi
+
 	StreamsApi StreamsApi
 
 	TeamsApi TeamsApi
+
+	TestApi TestApi
 
 	ThirdPartyIntegrationsApi ThirdPartyIntegrationsApi
 
@@ -166,6 +176,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AlertsApi = (*AlertsApiService)(&c.common)
 	c.AtlasSearchApi = (*AtlasSearchApiService)(&c.common)
 	c.AuditingApi = (*AuditingApiService)(&c.common)
+	c.ChartsDashboardsApi = (*ChartsDashboardsApiService)(&c.common)
 	c.CloudBackupsApi = (*CloudBackupsApiService)(&c.common)
 	c.CloudMigrationServiceApi = (*CloudMigrationServiceApiService)(&c.common)
 	c.CloudProviderAccessApi = (*CloudProviderAccessApiService)(&c.common)
@@ -199,16 +210,20 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
 	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
 	c.QueryShapeInsightsApi = (*QueryShapeInsightsApiService)(&c.common)
+	c.RateLimitApi = (*RateLimitApiService)(&c.common)
 	c.ResourcePoliciesApi = (*ResourcePoliciesApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
+	c.SandboxApi = (*SandboxApiService)(&c.common)
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)
 	c.ServerlessPrivateEndpointsApi = (*ServerlessPrivateEndpointsApiService)(&c.common)
 	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
 	c.SharedTierRestoreJobsApi = (*SharedTierRestoreJobsApiService)(&c.common)
 	c.SharedTierSnapshotsApi = (*SharedTierSnapshotsApiService)(&c.common)
+	c.StandbyLinksApi = (*StandbyLinksApiService)(&c.common)
 	c.StreamsApi = (*StreamsApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
+	c.TestApi = (*TestApiService)(&c.common)
 	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)
 	c.X509AuthenticationApi = (*X509AuthenticationApiService)(&c.common)
 
