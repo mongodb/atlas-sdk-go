@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project to which these roles belong. | [optional] 
-**Roles** | Pointer to **[]string** | One or more project level roles to assign to the MongoDB Cloud user. | [optional] 
+**Roles** | Pointer to **[]string** | One or more project-level roles to assign to the MongoDB Cloud user. | [optional] 
 
 ## Methods
 

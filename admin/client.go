@@ -44,6 +44,8 @@ type APIClient struct {
 
 	AccessTrackingApi AccessTrackingApi
 
+	ActivityFeedApi ActivityFeedApi
+
 	AlertConfigurationsApi AlertConfigurationsApi
 
 	AlertsApi AlertsApi
@@ -162,6 +164,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AWSClustersDNSApi = (*AWSClustersDNSApiService)(&c.common)
 	c.AccessTrackingApi = (*AccessTrackingApiService)(&c.common)
+	c.ActivityFeedApi = (*ActivityFeedApiService)(&c.common)
 	c.AlertConfigurationsApi = (*AlertConfigurationsApiService)(&c.common)
 	c.AlertsApi = (*AlertsApiService)(&c.common)
 	c.AtlasSearchApi = (*AtlasSearchApiService)(&c.common)

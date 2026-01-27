@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Region** | Pointer to **string** | The region of the Provider’s cluster. See [AZURE](https://www.mongodb.com/docs/atlas/reference/microsoft-azure/#stream-processing-instances) and [AWS](https://www.mongodb.com/docs/atlas/reference/amazon-aws/#stream-processing-instances) supported regions. | [optional] 
 **ServiceEndpointId** | Pointer to **string** | For AZURE EVENTHUB, this is the [namespace endpoint ID](https://learn.microsoft.com/en-us/rest/api/eventhub/namespaces/get). For AWS CONFLUENT cluster, this is the [VPC Endpoint service name](https://docs.confluent.io/cloud/current/networking/private-links/aws-privatelink.html). | [optional] 
 **State** | Pointer to **string** | State the connection is in. | [optional] [readonly] 
-**Vendor** | Pointer to **string** | Vendor that manages the cloud service. The following are the vendor values per provider: - AWS -- MSK for AWS MSK Kafka clusters -- CONFLUENT for Confluent Kafka clusters on AWS -- KINESIS for AWS Kinesis Data Streams (coming soon).  - Azure -- EVENTHUB for Azure EventHub. -- CONFLUENT for the Confluent Kafka clusters on Azure  **NOTE** Omitting the vendor field will default to using the GENERIC vendor. | [optional] 
+**Vendor** | Pointer to **string** | Vendor that manages the cloud service. The list of supported vendor values is: - AWS -- MSK for AWS MSK Kafka clusters -- CONFLUENT for Confluent Kafka clusters on AWS -- KINESIS for AWS Kinesis Data Streams  - Azure -- EVENTHUB for Azure EventHub. -- CONFLUENT for Confluent Kafka clusters on Azure  - GCP -- CONFLUENT for Confluent Kafka clusters on GCP  **NOTE** Omitting the vendor field will default to using the GENERIC vendor. | [optional] 
 
 ## Methods
 

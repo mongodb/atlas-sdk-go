@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GroupRoles** | Pointer to **[]string** | One or more project level roles to assign to the MongoDB Cloud user. | [optional] 
+**GroupRoles** | Pointer to **[]string** | One or more project-level roles to assign to the MongoDB Cloud user. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 
 ## Methods

@@ -112,6 +112,29 @@ type InvoicesApi interface {
 	GetInvoiceCsvExecute(r GetInvoiceCsvApiRequest) (string, *http.Response, error)
 
 	/*
+		GetSku Return One Stock Keeping Unit
+
+		Returns details about a single SKU (Stock Keeping Unit) by its identifier. SKUs represent different products and services offered by MongoDB.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param skuId Unique identifier of the SKU to retrieve.
+		@return GetSkuApiRequest
+	*/
+	GetSku(ctx context.Context, skuId string) GetSkuApiRequest
+	/*
+		GetSku Return One Stock Keeping Unit
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetSkuApiParams - Parameters for the request
+		@return GetSkuApiRequest
+	*/
+	GetSkuWithParams(ctx context.Context, args *GetSkuApiParams) GetSkuApiRequest
+
+	// Method available only for mocking purposes
+	GetSkuExecute(r GetSkuApiRequest) (*SkuResponse, *http.Response, error)
+
+	/*
 		ListInvoicePending Return All Pending Invoices for One Organization
 
 		Returns all invoices accruing charges for the current billing cycle for the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner Role.
@@ -157,6 +180,28 @@ type InvoicesApi interface {
 
 	// Method available only for mocking purposes
 	ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoiceMetadata, *http.Response, error)
+
+	/*
+		ListSkus Return All Stock Keeping Units
+
+		Returns all available SKUs (Stock Keeping Units) that can appear on MongoDB invoices. SKUs represent different products and services offered by MongoDB.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ListSkusApiRequest
+	*/
+	ListSkus(ctx context.Context) ListSkusApiRequest
+	/*
+		ListSkus Return All Stock Keeping Units
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListSkusApiParams - Parameters for the request
+		@return ListSkusApiRequest
+	*/
+	ListSkusWithParams(ctx context.Context, args *ListSkusApiParams) ListSkusApiRequest
+
+	// Method available only for mocking purposes
+	ListSkusExecute(r ListSkusApiRequest) (*PaginatedApiSKU, *http.Response, error)
 
 	/*
 		SearchInvoiceLineItems Return All Line Items for One Invoice by Invoice ID
@@ -682,6 +727,120 @@ func (a *InvoicesApiService) GetInvoiceCsvExecute(r GetInvoiceCsvApiRequest) (st
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetSkuApiRequest struct {
+	ctx        context.Context
+	ApiService InvoicesApi
+	skuId      string
+}
+
+type GetSkuApiParams struct {
+	SkuId string
+}
+
+func (a *InvoicesApiService) GetSkuWithParams(ctx context.Context, args *GetSkuApiParams) GetSkuApiRequest {
+	return GetSkuApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		skuId:      args.SkuId,
+	}
+}
+
+func (r GetSkuApiRequest) Execute() (*SkuResponse, *http.Response, error) {
+	return r.ApiService.GetSkuExecute(r)
+}
+
+/*
+GetSku Return One Stock Keeping Unit
+
+Returns details about a single SKU (Stock Keeping Unit) by its identifier. SKUs represent different products and services offered by MongoDB.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param skuId Unique identifier of the SKU to retrieve.
+	@return GetSkuApiRequest
+*/
+func (a *InvoicesApiService) GetSku(ctx context.Context, skuId string) GetSkuApiRequest {
+	return GetSkuApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		skuId:      skuId,
+	}
+}
+
+// GetSkuExecute executes the request
+//
+//	@return SkuResponse
+func (a *InvoicesApiService) GetSkuExecute(r GetSkuApiRequest) (*SkuResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *SkuResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.GetSku")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/skus/{skuId}"
+	if r.skuId == "" {
+		return localVarReturnValue, nil, reportError("skuId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"skuId"+"}", url.PathEscape(r.skuId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListInvoicePendingApiRequest struct {
 	ctx        context.Context
 	ApiService InvoicesApi
@@ -1009,6 +1168,159 @@ func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListSkusApiRequest struct {
+	ctx          context.Context
+	ApiService   InvoicesApi
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListSkusApiParams struct {
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *InvoicesApiService) ListSkusWithParams(ctx context.Context, args *ListSkusApiParams) ListSkusApiRequest {
+	return ListSkusApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListSkusApiRequest) IncludeCount(includeCount bool) ListSkusApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListSkusApiRequest) ItemsPerPage(itemsPerPage int) ListSkusApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListSkusApiRequest) PageNum(pageNum int) ListSkusApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListSkusApiRequest) Execute() (*PaginatedApiSKU, *http.Response, error) {
+	return r.ApiService.ListSkusExecute(r)
+}
+
+/*
+ListSkus Return All Stock Keeping Units
+
+Returns all available SKUs (Stock Keeping Units) that can appear on MongoDB invoices. SKUs represent different products and services offered by MongoDB.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ListSkusApiRequest
+*/
+func (a *InvoicesApiService) ListSkus(ctx context.Context) ListSkusApiRequest {
+	return ListSkusApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// ListSkusExecute executes the request
+//
+//	@return PaginatedApiSKU
+func (a *InvoicesApiService) ListSkusExecute(r ListSkusApiRequest) (*PaginatedApiSKU, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiSKU
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.ListSkus")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/skus"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

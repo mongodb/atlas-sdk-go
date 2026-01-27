@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **RedactClientLogData** | Pointer to **bool** | Enable or disable log redaction.  This setting configures the &#x60;&#x60;mongod&#x60;&#x60; or &#x60;&#x60;mongos&#x60;&#x60; to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.  Use &#x60;&#x60;redactClientLogData&#x60;&#x60; in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.  *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated. | [optional] 
 **ReplicaSetScalingStrategy** | Pointer to **string** | Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. | [optional] [default to "WORKLOAD_TYPE"]
 **ReplicationSpecs** | Pointer to [**[]ReplicationSpec20240805**](ReplicationSpec20240805.md) | List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. | [optional] 
+**RetainBackups** | Pointer to **bool** | Flag that indicates whether the cluster retains backups. | [optional] [default to false]
 **RootCertType** | Pointer to **string** | Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. | [optional] [default to "ISRGROOTX1"]
 **StateName** | Pointer to **string** | Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.   - &#x60;IDLE&#x60;: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.  - &#x60;CREATING&#x60;: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.  - &#x60;UPDATING&#x60;: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.  - &#x60;DELETING&#x60;: The cluster is in the process of deletion and will soon be deleted.  - &#x60;REPAIRING&#x60;: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal. | [optional] [readonly] 
 **Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. | [optional] 
@@ -725,6 +726,30 @@ SetReplicationSpecs sets ReplicationSpecs field to given value.
 `func (o *AtlasTenantClusterUpgradeRequest20240805) HasReplicationSpecs() bool`
 
 HasReplicationSpecs returns a boolean if a field has been set.
+### GetRetainBackups
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) GetRetainBackups() bool`
+
+GetRetainBackups returns the RetainBackups field if non-nil, zero value otherwise.
+
+### GetRetainBackupsOk
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) GetRetainBackupsOk() (*bool, bool)`
+
+GetRetainBackupsOk returns a tuple with the RetainBackups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRetainBackups
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) SetRetainBackups(v bool)`
+
+SetRetainBackups sets RetainBackups field to given value.
+
+### HasRetainBackups
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) HasRetainBackups() bool`
+
+HasRetainBackups returns a boolean if a field has been set.
 ### GetRootCertType
 
 `func (o *AtlasTenantClusterUpgradeRequest20240805) GetRootCertType() string`

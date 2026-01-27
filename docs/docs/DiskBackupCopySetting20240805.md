@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores the snapshot copy. | [optional] 
-**Frequencies** | Pointer to **[]string** | List that describes which types of snapshots to copy. | [optional] 
+**Frequencies** | Pointer to **[]string** | List that defines which snapshots to copy and their retention. | [optional] 
 **RegionName** | Pointer to **string** | Target region to copy snapshots belonging to zoneId. Please supply the &#39;Atlas Region&#39;. | [optional] 
 **ShouldCopyOplogs** | Pointer to **bool** | Flag that indicates whether to copy the oplogs to the target region. You can use the oplogs to perform point-in-time restores. | [optional] 
 **ZoneId** | **string** | Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the replicationSpecs array. | 
