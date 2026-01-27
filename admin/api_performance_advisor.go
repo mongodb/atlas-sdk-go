@@ -85,7 +85,7 @@ type PerformanceAdvisorApi interface {
 	/*
 		GetServerlessAutoIndexing Return Serverless Auto-Indexing Status
 
-		Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
+		Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset on January 22, 2026.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -257,7 +257,7 @@ type PerformanceAdvisorApi interface {
 	/*
 		SetServerlessAutoIndexing Set Serverless Auto-Indexing Status
 
-		Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
+		Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset on January 22, 2026.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -622,7 +622,7 @@ func (r GetServerlessAutoIndexingApiRequest) Execute() (bool, *http.Response, er
 /*
 GetServerlessAutoIndexing Return Serverless Auto-Indexing Status
 
-Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
+Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset on January 22, 2026.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1796,7 +1796,7 @@ func (r SetServerlessAutoIndexingApiRequest) Execute() (*http.Response, error) {
 /*
 SetServerlessAutoIndexing Set Serverless Auto-Indexing Status
 
-Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
+Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset on January 22, 2026.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
+**State** | Pointer to **string** | The state of the connection. | [optional] [readonly] 
 **Type** | Pointer to **string** | Type of the connection. | [optional] 
 **ClusterGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. | [optional] 
 **ClusterName** | Pointer to **string** | Name of the cluster configured for this connection. | [optional] 
@@ -89,6 +90,30 @@ SetName sets Name field to given value.
 `func (o *StreamsConnection) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+### GetState
+
+`func (o *StreamsConnection) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *StreamsConnection) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *StreamsConnection) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *StreamsConnection) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 ### GetType
 
 `func (o *StreamsConnection) GetType() string`

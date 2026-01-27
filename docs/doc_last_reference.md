@@ -10,6 +10,8 @@ Class        | Method        | HTTP request  | Description   |
 *AWSClustersDNSApi* | [ToggleAwsCustomDns](./docs/AWSClustersDNSApi.md#toggleawscustomdns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Update State of One Custom DNS Configuration for Atlas Clusters on AWS |
 *AccessTrackingApi* | [GetAccessHistoryCluster](./docs/AccessTrackingApi.md#getaccesshistorycluster) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster by Cluster Name |
 *AccessTrackingApi* | [GetAccessHistoryProcess](./docs/AccessTrackingApi.md#getaccesshistoryprocess) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname} | Return Database Access History for One Cluster by Hostname |
+*ActivityFeedApi* | [GetGroupActivityFeed](./docs/ActivityFeedApi.md#getgroupactivityfeed) | **Get** /api/atlas/v2/groups/{groupId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Project |
+*ActivityFeedApi* | [GetOrgActivityFeed](./docs/ActivityFeedApi.md#getorgactivityfeed) | **Get** /api/atlas/v2/orgs/{orgId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Organization |
 *AlertConfigurationsApi* | [CreateAlertConfig](./docs/AlertConfigurationsApi.md#createalertconfig) | **Post** /api/atlas/v2/groups/{groupId}/alertConfigs | Create One Alert Configuration in One Project |
 *AlertConfigurationsApi* | [DeleteAlertConfig](./docs/AlertConfigurationsApi.md#deletealertconfig) | **Delete** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Remove One Alert Configuration from One Project |
 *AlertConfigurationsApi* | [GetAlertConfig](./docs/AlertConfigurationsApi.md#getalertconfig) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Return One Alert Configuration from One Project |
@@ -209,8 +211,10 @@ Class        | Method        | HTTP request  | Description   |
 *InvoicesApi* | [GetCostExplorerUsage](./docs/InvoicesApi.md#getcostexplorerusage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query |
 *InvoicesApi* | [GetInvoice](./docs/InvoicesApi.md#getinvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization |
 *InvoicesApi* | [GetInvoiceCsv](./docs/InvoicesApi.md#getinvoicecsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization |
+*InvoicesApi* | [GetSku](./docs/InvoicesApi.md#getsku) | **Get** /api/atlas/v2/skus/{skuId} | Return One Stock Keeping Unit |
 *InvoicesApi* | [ListInvoicePending](./docs/InvoicesApi.md#listinvoicepending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization |
 *InvoicesApi* | [ListInvoices](./docs/InvoicesApi.md#listinvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization |
+*InvoicesApi* | [ListSkus](./docs/InvoicesApi.md#listskus) | **Get** /api/atlas/v2/skus | Return All Stock Keeping Units |
 *InvoicesApi* | [SearchInvoiceLineItems](./docs/InvoicesApi.md#searchinvoicelineitems) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID |
 *LDAPConfigurationApi* | [DeleteLdapUserMapping](./docs/LDAPConfigurationApi.md#deleteldapusermapping) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove LDAP User to DN Mapping |
 *LDAPConfigurationApi* | [GetUserSecurity](./docs/LDAPConfigurationApi.md#getusersecurity) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return LDAP or X.509 Configuration |
@@ -484,6 +488,7 @@ Class        | Method        | HTTP request  | Description   |
  - [AccessListItem](./docs/AccessListItem.md)
  - [AccountDetails](./docs/AccountDetails.md)
  - [AcknowledgeAlert](./docs/AcknowledgeAlert.md)
+ - [ActivityFeedLinkResponse](./docs/ActivityFeedLinkResponse.md)
  - [AddOrRemoveGroupRole](./docs/AddOrRemoveGroupRole.md)
  - [AddOrRemoveOrgRole](./docs/AddOrRemoveOrgRole.md)
  - [AddOrRemoveUserFromTeam](./docs/AddOrRemoveUserFromTeam.md)
@@ -793,6 +798,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiAtlasServerlessBackupSnapshot](./docs/PaginatedApiAtlasServerlessBackupSnapshot.md)
  - [PaginatedApiInvoice](./docs/PaginatedApiInvoice.md)
  - [PaginatedApiInvoiceMetadata](./docs/PaginatedApiInvoiceMetadata.md)
+ - [PaginatedApiSKU](./docs/PaginatedApiSKU.md)
  - [PaginatedApiStreamsConnection](./docs/PaginatedApiStreamsConnection.md)
  - [PaginatedApiStreamsPrivateLink](./docs/PaginatedApiStreamsPrivateLink.md)
  - [PaginatedApiStreamsStreamProcessorWithStats](./docs/PaginatedApiStreamsStreamProcessorWithStats.md)
@@ -908,6 +914,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ShardEntry](./docs/ShardEntry.md)
  - [ShardKeys](./docs/ShardKeys.md)
  - [ShardingRequest](./docs/ShardingRequest.md)
+ - [SkuResponse](./docs/SkuResponse.md)
  - [Source](./docs/Source.md)
  - [StateReason](./docs/StateReason.md)
  - [StreamConfig](./docs/StreamConfig.md)

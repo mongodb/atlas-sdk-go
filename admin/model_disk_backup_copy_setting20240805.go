@@ -6,7 +6,7 @@ package admin
 type DiskBackupCopySetting20240805 struct {
 	// Human-readable label that identifies the cloud provider that stores the snapshot copy.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
-	// List that describes which types of snapshots to copy.
+	// List that defines which snapshots to copy and their retention.
 	Frequencies *[]string `json:"frequencies,omitempty"`
 	// Target region to copy snapshots belonging to zoneId. Please supply the 'Atlas Region'.
 	RegionName *string `json:"regionName,omitempty"`

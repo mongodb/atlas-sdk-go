@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312012/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312013/admin"
 
 	http "net/http"
 
@@ -671,6 +671,167 @@ func (_c *InvoicesApi_GetInvoiceWithParams_Call) RunAndReturn(run func(context.C
 	return _c
 }
 
+// GetSku provides a mock function with given fields: ctx, skuId
+func (_m *InvoicesApi) GetSku(ctx context.Context, skuId string) admin.GetSkuApiRequest {
+	ret := _m.Called(ctx, skuId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetSku")
+	}
+
+	var r0 admin.GetSkuApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetSkuApiRequest); ok {
+		r0 = rf(ctx, skuId)
+	} else {
+		r0 = ret.Get(0).(admin.GetSkuApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_GetSku_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetSku'
+type InvoicesApi_GetSku_Call struct {
+	*mock.Call
+}
+
+// GetSku is a helper method to define mock.On call
+//   - ctx context.Context
+//   - skuId string
+func (_e *InvoicesApi_Expecter) GetSku(ctx any, skuId any) *InvoicesApi_GetSku_Call {
+	return &InvoicesApi_GetSku_Call{Call: _e.mock.On("GetSku", ctx, skuId)}
+}
+
+func (_c *InvoicesApi_GetSku_Call) Run(run func(ctx context.Context, skuId string)) *InvoicesApi_GetSku_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_GetSku_Call) Return(_a0 admin.GetSkuApiRequest) *InvoicesApi_GetSku_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_GetSku_Call) RunAndReturn(run func(context.Context, string) admin.GetSkuApiRequest) *InvoicesApi_GetSku_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetSkuExecute provides a mock function with given fields: r
+func (_m *InvoicesApi) GetSkuExecute(r admin.GetSkuApiRequest) (*admin.SkuResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetSkuExecute")
+	}
+
+	var r0 *admin.SkuResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetSkuApiRequest) (*admin.SkuResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetSkuApiRequest) *admin.SkuResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.SkuResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetSkuApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetSkuApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// InvoicesApi_GetSkuExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetSkuExecute'
+type InvoicesApi_GetSkuExecute_Call struct {
+	*mock.Call
+}
+
+// GetSkuExecute is a helper method to define mock.On call
+//   - r admin.GetSkuApiRequest
+func (_e *InvoicesApi_Expecter) GetSkuExecute(r any) *InvoicesApi_GetSkuExecute_Call {
+	return &InvoicesApi_GetSkuExecute_Call{Call: _e.mock.On("GetSkuExecute", r)}
+}
+
+func (_c *InvoicesApi_GetSkuExecute_Call) Run(run func(r admin.GetSkuApiRequest)) *InvoicesApi_GetSkuExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetSkuApiRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_GetSkuExecute_Call) Return(_a0 *admin.SkuResponse, _a1 *http.Response, _a2 error) *InvoicesApi_GetSkuExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *InvoicesApi_GetSkuExecute_Call) RunAndReturn(run func(admin.GetSkuApiRequest) (*admin.SkuResponse, *http.Response, error)) *InvoicesApi_GetSkuExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetSkuWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesApi) GetSkuWithParams(ctx context.Context, args *admin.GetSkuApiParams) admin.GetSkuApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetSkuWithParams")
+	}
+
+	var r0 admin.GetSkuApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetSkuApiParams) admin.GetSkuApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetSkuApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_GetSkuWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetSkuWithParams'
+type InvoicesApi_GetSkuWithParams_Call struct {
+	*mock.Call
+}
+
+// GetSkuWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetSkuApiParams
+func (_e *InvoicesApi_Expecter) GetSkuWithParams(ctx any, args any) *InvoicesApi_GetSkuWithParams_Call {
+	return &InvoicesApi_GetSkuWithParams_Call{Call: _e.mock.On("GetSkuWithParams", ctx, args)}
+}
+
+func (_c *InvoicesApi_GetSkuWithParams_Call) Run(run func(ctx context.Context, args *admin.GetSkuApiParams)) *InvoicesApi_GetSkuWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetSkuApiParams))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_GetSkuWithParams_Call) Return(_a0 admin.GetSkuApiRequest) *InvoicesApi_GetSkuWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_GetSkuWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetSkuApiParams) admin.GetSkuApiRequest) *InvoicesApi_GetSkuWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListInvoicePending provides a mock function with given fields: ctx, orgId
 func (_m *InvoicesApi) ListInvoicePending(ctx context.Context, orgId string) admin.ListInvoicePendingApiRequest {
 	ret := _m.Called(ctx, orgId)
@@ -989,6 +1150,166 @@ func (_c *InvoicesApi_ListInvoicesWithParams_Call) Return(_a0 admin.ListInvoices
 }
 
 func (_c *InvoicesApi_ListInvoicesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListInvoicesApiParams) admin.ListInvoicesApiRequest) *InvoicesApi_ListInvoicesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSkus provides a mock function with given fields: ctx
+func (_m *InvoicesApi) ListSkus(ctx context.Context) admin.ListSkusApiRequest {
+	ret := _m.Called(ctx)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSkus")
+	}
+
+	var r0 admin.ListSkusApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context) admin.ListSkusApiRequest); ok {
+		r0 = rf(ctx)
+	} else {
+		r0 = ret.Get(0).(admin.ListSkusApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_ListSkus_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSkus'
+type InvoicesApi_ListSkus_Call struct {
+	*mock.Call
+}
+
+// ListSkus is a helper method to define mock.On call
+//   - ctx context.Context
+func (_e *InvoicesApi_Expecter) ListSkus(ctx any) *InvoicesApi_ListSkus_Call {
+	return &InvoicesApi_ListSkus_Call{Call: _e.mock.On("ListSkus", ctx)}
+}
+
+func (_c *InvoicesApi_ListSkus_Call) Run(run func(ctx context.Context)) *InvoicesApi_ListSkus_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_ListSkus_Call) Return(_a0 admin.ListSkusApiRequest) *InvoicesApi_ListSkus_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_ListSkus_Call) RunAndReturn(run func(context.Context) admin.ListSkusApiRequest) *InvoicesApi_ListSkus_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSkusExecute provides a mock function with given fields: r
+func (_m *InvoicesApi) ListSkusExecute(r admin.ListSkusApiRequest) (*admin.PaginatedApiSKU, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSkusExecute")
+	}
+
+	var r0 *admin.PaginatedApiSKU
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListSkusApiRequest) (*admin.PaginatedApiSKU, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListSkusApiRequest) *admin.PaginatedApiSKU); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiSKU)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListSkusApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListSkusApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// InvoicesApi_ListSkusExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSkusExecute'
+type InvoicesApi_ListSkusExecute_Call struct {
+	*mock.Call
+}
+
+// ListSkusExecute is a helper method to define mock.On call
+//   - r admin.ListSkusApiRequest
+func (_e *InvoicesApi_Expecter) ListSkusExecute(r any) *InvoicesApi_ListSkusExecute_Call {
+	return &InvoicesApi_ListSkusExecute_Call{Call: _e.mock.On("ListSkusExecute", r)}
+}
+
+func (_c *InvoicesApi_ListSkusExecute_Call) Run(run func(r admin.ListSkusApiRequest)) *InvoicesApi_ListSkusExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListSkusApiRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_ListSkusExecute_Call) Return(_a0 *admin.PaginatedApiSKU, _a1 *http.Response, _a2 error) *InvoicesApi_ListSkusExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *InvoicesApi_ListSkusExecute_Call) RunAndReturn(run func(admin.ListSkusApiRequest) (*admin.PaginatedApiSKU, *http.Response, error)) *InvoicesApi_ListSkusExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSkusWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesApi) ListSkusWithParams(ctx context.Context, args *admin.ListSkusApiParams) admin.ListSkusApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSkusWithParams")
+	}
+
+	var r0 admin.ListSkusApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListSkusApiParams) admin.ListSkusApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListSkusApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_ListSkusWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSkusWithParams'
+type InvoicesApi_ListSkusWithParams_Call struct {
+	*mock.Call
+}
+
+// ListSkusWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListSkusApiParams
+func (_e *InvoicesApi_Expecter) ListSkusWithParams(ctx any, args any) *InvoicesApi_ListSkusWithParams_Call {
+	return &InvoicesApi_ListSkusWithParams_Call{Call: _e.mock.On("ListSkusWithParams", ctx, args)}
+}
+
+func (_c *InvoicesApi_ListSkusWithParams_Call) Run(run func(ctx context.Context, args *admin.ListSkusApiParams)) *InvoicesApi_ListSkusWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListSkusApiParams))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_ListSkusWithParams_Call) Return(_a0 admin.ListSkusApiRequest) *InvoicesApi_ListSkusWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_ListSkusWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListSkusApiParams) admin.ListSkusApiRequest) *InvoicesApi_ListSkusWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

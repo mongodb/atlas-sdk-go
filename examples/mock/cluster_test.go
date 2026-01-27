@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"go.mongodb.org/atlas-sdk/v20250312012/admin"
-	"go.mongodb.org/atlas-sdk/v20250312012/mockadmin"
+	"go.mongodb.org/atlas-sdk/v20250312013/admin"
+	"go.mongodb.org/atlas-sdk/v20250312013/mockadmin"
 )
 
 func myFunctionCallingListClusters(clusterAPI admin.ClustersApi) (int, error) {

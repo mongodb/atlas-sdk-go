@@ -388,6 +388,25 @@ components:
           type: boolean
       title: Acknowledge Alert
       type: object
+    ActivityFeedLinkResponse:
+      description: Response containing a shareable activity feed link.
+      properties:
+        link:
+          description: Shareable link to the activity feed with pre-applied filters.
+          example: https://cloud.mongodb.com/redirect/1234567890abcdef12345678
+          type: string
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+      required:
+        - link
+      type: object
     AddOrRemoveGroupRole:
       properties:
         groupRole:
@@ -1362,6 +1381,10 @@ components:
           items:
             $ref: "#/components/schemas/ReplicationSpec20240805"
           type: array
+        retainBackups:
+          default: false
+          description: Flag that indicates whether the cluster retains backups.
+          type: boolean
         rootCertType:
           default: ISRGROOTX1
           description: Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group.
@@ -3867,6 +3890,10 @@ components:
           items:
             $ref: "#/components/schemas/ReplicationSpec20240805"
           type: array
+        retainBackups:
+          default: false
+          description: Flag that indicates whether the cluster retains backups.
+          type: boolean
         rootCertType:
           default: ISRGROOTX1
           description: Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group.
@@ -4476,6 +4503,9 @@ components:
           type: string
         role:
           description: Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include organization- and project-level roles.
+          externalDocs:
+            description: MongoDB Atlas User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           type: string
       type: object
     ControlPlaneIPAddresses:
@@ -5609,9 +5639,10 @@ components:
           description: Human-readable label that identifies the cloud provider that stores the snapshot copy.
           type: string
         frequencies:
-          description: List that describes which types of snapshots to copy.
+          description: List that defines which snapshots to copy and their retention.
           items:
             type: string
+          maxItems: 6
           type: array
         regionName:
           description: Target region to copy snapshots belonging to zoneId. Please supply the 'Atlas Region'.
@@ -8356,8 +8387,10 @@ components:
           type: string
         roles:
           description: A list of Project roles associated with the Service Account.
+          externalDocs:
+            description: Project-level Roles for Service Accounts
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
-            description: Project roles available for Service Accounts.
             type: string
           type: array
           uniqueItems: true
@@ -8384,8 +8417,10 @@ components:
           type: string
         roles:
           description: A list of project-level roles for the Service Account.
+          externalDocs:
+            description: Project-level Roles for Service Accounts
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
-            description: Project roles available for Service Accounts.
             type: string
           minItems: 1
           type: array
@@ -8404,8 +8439,10 @@ components:
       properties:
         roles:
           description: The Project permissions for the Service Account in the specified Project.
+          externalDocs:
+            description: Project-level Roles for Service Accounts
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
-            description: Project roles available for Service Accounts.
             type: string
           minItems: 1
           type: array
@@ -8429,8 +8466,10 @@ components:
           type: string
         roles:
           description: A list of Project roles associated with the Service Account.
+          externalDocs:
+            description: Project-level Roles for Service Accounts
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
-            description: Project roles available for Service Accounts.
             type: string
           type: array
       type: object
@@ -8948,6 +8987,9 @@ components:
           type: number
         sku:
           description: Human-readable description of the service that this line item provided. This Stock Keeping Unit (SKU) could be the instance type, a support charge, advanced security, or another service.
+          externalDocs:
+            description: To see how to list all possible values, click here.
+            url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/listSkus
           readOnly: true
           type: string
         startDate:
@@ -10976,7 +11018,10 @@ components:
           pattern: ^([a-f0-9]{24})$
           type: string
         roles:
-          description: One or more project level roles to assign to the MongoDB Cloud user.
+          description: One or more project-level roles to assign to the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Atlas User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
             type: string
           type: array
@@ -13018,6 +13063,17 @@ components:
         - createSupportingIndexes
       type: object
       writeOnly: true
+    SkuResponse:
+      properties:
+        description:
+          description: Human-readable short summary of what this SKU represents.
+          readOnly: true
+          type: string
+        id:
+          description: Unique string that identifies the SKU.
+          readOnly: true
+          type: string
+      type: object
     Source:
       description: Document that describes the source of the migration.
       properties:
@@ -13146,6 +13202,10 @@ components:
           type: array
         name:
           description: Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
+          type: string
+        state:
+          description: The state of the connection.
+          readOnly: true
           type: string
         type:
           description: Type of the connection.
@@ -13533,15 +13593,18 @@ components:
           type: string
         vendor:
           description: |-
-            Vendor that manages the cloud service. The following are the vendor values per provider:
+            Vendor that manages the cloud service. The list of supported vendor values is:
             - AWS
             -- MSK for AWS MSK Kafka clusters
             -- CONFLUENT for Confluent Kafka clusters on AWS
-            -- KINESIS for AWS Kinesis Data Streams (coming soon).
+            -- KINESIS for AWS Kinesis Data Streams
 
             - Azure
             -- EVENTHUB for Azure EventHub.
-            -- CONFLUENT for the Confluent Kafka clusters on Azure
+            -- CONFLUENT for Confluent Kafka clusters on Azure
+
+            - GCP
+            -- CONFLUENT for Confluent Kafka clusters on GCP
 
             **NOTE** Omitting the vendor field will default to using the GENERIC vendor.
           type: string
@@ -13874,6 +13937,9 @@ components:
           type: array
         roleNames:
           description: One or more project-level roles to assign to the team.
+          externalDocs:
+            description: MongoDB Cloud User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
             type: string
           type: array
@@ -14190,7 +14256,10 @@ components:
     UpdateGroupRolesForUser:
       properties:
         groupRoles:
-          description: One or more project level roles to assign to the MongoDB Cloud user.
+          description: One or more project-level roles to assign to the MongoDB Cloud user.
+          externalDocs:
+            description: MongoDB Atlas User Roles
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
           items:
             type: string
           type: array
@@ -15899,6 +15968,30 @@ components:
           readOnly: true
           type: integer
       type: object
+    PaginatedApiSKU:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/SkuResponse"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      type: object
     PaginatedApiStreamsConnection:
       properties:
         links:
@@ -17020,7 +17113,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: bf6947d0d9f5e41d995e180dfe672dbd81ed7e2a
+  x-xgen-sha: b9839e5190b70bc520e4cd2e7da2cc03823fbc46
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -19623,6 +19716,120 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Project-IP-Access-List/operation/getGroupAccessListStatus
+  /api/atlas/v2/groups/{groupId}/activityFeed:
+    get:
+      description: Returns a pre-filtered activity feed link for the specified project based on the provided date range and event types. The returned link can be shared and opened to view the activity feed with the same filters applied. To use this resource, the requesting Service Account or API Key must have the Project Read Only role or higher.
+      operationId: getGroupActivityFeed
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: |-
+            Category of incident recorded at this moment in time.
+
+            **IMPORTANT**: The complete list of event type values changes frequently.
+          in: query
+          name: eventType
+          schema:
+            description: List of event types to filter the activity feed.
+            externalDocs:
+              description: Event Types
+              url: https://www.mongodb.com/docs/atlas/reference/atlas-event-types/
+            items:
+              $ref: "#/components/schemas/EventTypeForNdsGroup"
+            maxItems: 20
+            type: array
+        - description: End date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
+          in: query
+          name: maxDate
+          schema:
+            externalDocs:
+              description: ISO 8601
+              url: https://en.wikipedia.org/wiki/ISO_8601
+            format: date-time
+            type: string
+        - description: Start date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
+          in: query
+          name: minDate
+          schema:
+            externalDocs:
+              description: ISO 8601
+              url: https://en.wikipedia.org/wiki/ISO_8601
+            format: date-time
+            type: string
+        - description: Human-readable label that identifies the cluster.
+          in: query
+          name: clusterName
+          schema:
+            description: List of cluster names to filter the activity feed.
+            items:
+              type: string
+            maxItems: 20
+            type: array
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ActivityFeedLinkResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Pre-Filtered Activity Feed Link for One Project
+      tags:
+        - Activity Feed
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api activityFeed getGroupActivityFeed --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupActivityFeedApiParams{}
+            	sdkResp, httpResp, err := client.ActivityFeedApi.
+            		GetGroupActivityFeedWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/activityFeed?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/activityFeed?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Activity-Feed/operation/getGroupActivityFeed
   /api/atlas/v2/groups/{groupId}/alertConfigs:
     get:
       description: |-
@@ -25183,7 +25390,7 @@ paths:
       description: |-
         Requests one snapshot for the specified shared cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the downloadFlexBackup endpoint instead.
+        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 22, 2026, after which this endpoint will be sunset. Please use the downloadFlexBackup endpoint instead.
       externalDocs:
         description: downloadFlexBackup
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Snapshots/operation/downloadFlexBackup
@@ -25285,7 +25492,7 @@ paths:
       description: |-
         Restores the specified M2 or M5 cluster. MongoDB Cloud limits which clusters can be the target clusters of a restore. The target cluster can't use encryption at rest, run a major release MongoDB version different than the snapshot, or receive client requests during restores. MongoDB Cloud deletes all existing data on the target cluster prior to the restore operation. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the createFlexBackupRestoreJob endpoint instead.
+        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 22, 2026, after which this endpoint will be sunset. Please use the createFlexBackupRestoreJob endpoint instead.
       externalDocs:
         description: createFlexBackupRestoreJob
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Restore-Jobs/operation/createFlexBackupRestoreJob
@@ -25385,7 +25592,7 @@ paths:
       description: |-
         Returns all restore jobs for the specified M2 or M5 cluster. Restore jobs restore a cluster using a snapshot. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the listFlexBackupRestoreJobs endpoint instead.
+        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 22, 2026, after which this endpoint will be sunset. Please use the listFlexBackupRestoreJobs endpoint instead.
       externalDocs:
         description: listFlexBackupRestoreJobs
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Restore-Jobs/operation/listFlexBackupRestoreJobs
@@ -25472,7 +25679,7 @@ paths:
       description: |-
         Returns the specified restore job for the specified M2 or M5 cluster. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the getFlexBackupRestoreJob endpoint instead.
+        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 22, 2026, after which this endpoint will be sunset. Please use the getFlexBackupRestoreJob endpoint instead.
       externalDocs:
         description: getFlexBackupRestoreJob
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Restore-Jobs/operation/getFlexBackupRestoreJob
@@ -25566,7 +25773,7 @@ paths:
       description: |-
         Returns details for all snapshots for the specified shared cluster. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This API also works for Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters, until January 2026, after which this endpoint will be sunset. Please use the listFlexBackups endpoint instead.
+        This API also works for Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters, until January 22, 2026, after which this endpoint will be sunset. Please use the listFlexBackups endpoint instead.
       externalDocs:
         description: listFlexBackups
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Snapshots/operation/listFlexBackups
@@ -25653,7 +25860,7 @@ paths:
       description: |-
         Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the getFlexBackup endpoint instead.
+        This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 22, 2026, after which this endpoint will be sunset. Please use the getFlexBackup endpoint instead.
       externalDocs:
         description: getFlexBackup
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Snapshots/operation/getFlexBackup
@@ -26789,6 +26996,22 @@ paths:
         "200":
           content:
             application/vnd.atlas.2024-08-05+json:
+              examples:
+                200 Example:
+                  description: 200 Example
+                  value:
+                    customZoneMapping:
+                      DE: 32b6e34b3d91647abb20e7b8
+                      US-VA: 32b6e34b3d91647abb20e7b8
+                    managedNamespaces:
+                      - collection: collectionNameExample
+                        customShardKey: myShardKey
+                        db: DatabaseExample
+                        isCustomShardKeyHashed: false
+                        isShardKeyUnique: false
+                        numInitialChunks: 42
+                        presplitHashedZones: false
+                    selfManagedSharding: true
               schema:
                 $ref: "#/components/schemas/GeoSharding20240805"
               x-xgen-IPA-exception:
@@ -26871,6 +27094,22 @@ paths:
         "200":
           content:
             application/vnd.atlas.2024-08-05+json:
+              examples:
+                200 Example:
+                  description: 200 Example
+                  value:
+                    customZoneMapping:
+                      DE: 32b6e34b3d91647abb20e7b8
+                      US-VA: 32b6e34b3d91647abb20e7b8
+                    managedNamespaces:
+                      - collection: collectionNameExample
+                        customShardKey: myShardKey
+                        db: DatabaseExample
+                        isCustomShardKeyHashed: false
+                        isShardKeyUnique: false
+                        numInitialChunks: 42
+                        presplitHashedZones: false
+                    selfManagedSharding: true
               schema:
                 $ref: "#/components/schemas/GeoSharding20240805"
               x-xgen-version: 2024-08-05
@@ -26958,6 +27197,22 @@ paths:
         "200":
           content:
             application/vnd.atlas.2024-08-05+json:
+              examples:
+                200 Example:
+                  description: 200 Example
+                  value:
+                    customZoneMapping:
+                      DE: 32b6e34b3d91647abb20e7b8
+                      US-VA: 32b6e34b3d91647abb20e7b8
+                    managedNamespaces:
+                      - collection: collectionNameExample
+                        customShardKey: myShardKey
+                        db: DatabaseExample
+                        isCustomShardKeyHashed: false
+                        isShardKeyUnique: false
+                        numInitialChunks: 42
+                        presplitHashedZones: false
+                    selfManagedSharding: true
               schema:
                 $ref: "#/components/schemas/GeoSharding20240805"
               x-xgen-version: 2024-08-05
@@ -27054,6 +27309,22 @@ paths:
         "200":
           content:
             application/vnd.atlas.2024-08-05+json:
+              examples:
+                200 Example:
+                  description: 200 Example
+                  value:
+                    customZoneMapping:
+                      DE: 32b6e34b3d91647abb20e7b8
+                      US-VA: 32b6e34b3d91647abb20e7b8
+                    managedNamespaces:
+                      - collection: collectionNameExample
+                        customShardKey: myShardKey
+                        db: DatabaseExample
+                        isCustomShardKeyHashed: false
+                        isShardKeyUnique: false
+                        numInitialChunks: 42
+                        presplitHashedZones: false
+                    selfManagedSharding: true
               schema:
                 $ref: "#/components/schemas/GeoSharding20240805"
               x-xgen-version: 2024-08-05
@@ -27143,6 +27414,22 @@ paths:
         "200":
           content:
             application/vnd.atlas.2024-08-05+json:
+              examples:
+                200 Example:
+                  description: 200 Example
+                  value:
+                    customZoneMapping:
+                      DE: 32b6e34b3d91647abb20e7b8
+                      US-VA: 32b6e34b3d91647abb20e7b8
+                    managedNamespaces:
+                      - collection: collectionNameExample
+                        customShardKey: myShardKey
+                        db: DatabaseExample
+                        isCustomShardKeyHashed: false
+                        isShardKeyUnique: false
+                        numInitialChunks: 42
+                        presplitHashedZones: false
+                    selfManagedSharding: true
               schema:
                 $ref: "#/components/schemas/GeoSharding20240805"
               x-xgen-version: 2024-08-05
@@ -32031,7 +32318,7 @@ paths:
       description: |-
         Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters. 
 
-        This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
+        This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 22, 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
       externalDocs:
         description: upgradeFlexCluster
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Clusters/operation/upgradeFlexCluster
@@ -42445,7 +42732,7 @@ paths:
       description: |-
         Returns all private endpoints for one serverless instance. You must have at least the Project Read Only role for the project to successfully call this resource.
 
-        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
       operationId: listServerlessPrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -42538,7 +42825,7 @@ paths:
 
          A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
 
-        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
       externalDocs:
         description: Set Up a Private Endpoint for a Serverless Instance Tutorial
         url: https://dochub.mongodb.org/core/serverless-private-endpoint
@@ -42636,7 +42923,7 @@ paths:
       description: |-
         Remove one private endpoint from one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
       operationId: deleteServerlessPrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -42724,7 +43011,7 @@ paths:
       description: |-
         Return one private endpoint for one serverless instance. Identify this endpoint using its unique ID. You must have at least the Project Read Only role for the project to successfully call this resource.
 
-        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
       operationId: getServerlessPrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -42816,7 +43103,7 @@ paths:
       description: |-
         Updates one private endpoint for one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+        This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
       operationId: updateServerlessPrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -45223,7 +45510,7 @@ paths:
       description: |-
         Returns details for all serverless instances in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This endpoint also lists Flex clusters that were created using the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or former Serverless instances that have been migrated to Flex clusters, until January 2026 after which this endpoint will begin returning an empty list. The endpoint will be removed entirely in January 2027. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the listFlexClusters endpoint instead.
+        This endpoint also lists Flex clusters that were created using the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or former Serverless instances that have been migrated to Flex clusters, until January 15, 2026 after which this endpoint will begin returning an empty list. The endpoint will be removed entirely on January 15, 2027. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the listFlexClusters endpoint instead.
       externalDocs:
         description: listFlexClusters
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Clusters/operation/listFlexClusters
@@ -45306,7 +45593,7 @@ paths:
     post:
       deprecated: true
       description: |-
-        Update as of Feb 2025: This endpoint now creates a Flex cluster instead. This endpoint will no longer be supported starting January 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect. Please use the createFlexCluster endpoint instead.
+        Update as of Feb 2025: This endpoint now creates a Flex cluster instead. This endpoint will no longer be supported starting on January 22, 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect. Please use the createFlexCluster endpoint instead.
 
         Creates one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
       externalDocs:
@@ -45406,7 +45693,7 @@ paths:
       description: |-
         Returns all restore jobs for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the listFlexBackupRestoreJobs endpoint instead.
+        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the listFlexBackupRestoreJobs endpoint instead.
       externalDocs:
         description: listFlexBackupRestoreJobs
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Restore-Jobs/operation/listFlexBackupRestoreJobs
@@ -45495,7 +45782,7 @@ paths:
       description: |-
         Restores one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the createFlexBackupRestoreJob endpoint instead.
+        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the createFlexBackupRestoreJob endpoint instead.
       externalDocs:
         description: createFlexBackupRestoreJob
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Restore-Jobs/operation/createFlexBackupRestoreJob
@@ -45595,7 +45882,7 @@ paths:
       description: |-
         Returns one restore job for one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the getFlexBackupRestoreJob endpoint instead.
+        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the getFlexBackupRestoreJob endpoint instead.
       externalDocs:
         description: getFlexBackupRestoreJob
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Restore-Jobs/operation/getFlexBackupRestoreJob
@@ -45691,7 +45978,7 @@ paths:
       description: |-
         Returns all snapshots of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the listFlexBackups endpoint instead.
+        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the listFlexBackups endpoint instead.
       externalDocs:
         description: listFlexBackups
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Snapshots/operation/listFlexBackups
@@ -45781,7 +46068,7 @@ paths:
       description: |-
         Returns one snapshot of one serverless instance from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This endpoint can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) API or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the getFlexBackup endpoint instead.
+        This endpoint can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) API or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the getFlexBackup endpoint instead.
       externalDocs:
         description: getFlexBackup
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Snapshots/operation/getFlexBackup
@@ -45875,7 +46162,7 @@ paths:
   /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing:
     get:
       deprecated: true
-      description: Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
+      description: Get whether the Serverless Auto Indexing feature is enabled. This endpoint returns a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset on January 22, 2026.
       externalDocs:
         description: createServerlessInstance
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance
@@ -45961,7 +46248,7 @@ paths:
         verb: get
     post:
       deprecated: true
-      description: Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset in January 2026.
+      description: Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets a value for Flex clusters that were created with the createServerlessInstance endpoint or Flex clusters that were migrated from Serverless instances. However, the value returned is not indicative of the Auto Indexing state as Auto Indexing is unavailable for Flex clusters. This endpoint will be sunset on January 22, 2026.
       externalDocs:
         description: createServerlessInstance
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance
@@ -46059,7 +46346,7 @@ paths:
       description: |-
         Removes one serverless instance from the specified project. The serverless instance must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Please use the deleteFlexCluster endpoint instead.
+        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the deleteFlexCluster endpoint instead.
       externalDocs:
         description: deleteFlexCluster
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Clusters/operation/deleteFlexCluster
@@ -46150,7 +46437,7 @@ paths:
       description: |-
         Returns details for one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. This endpoint will be sunset in January 2027. Please use the getFlexCluster endpoint instead.
+        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. This endpoint will be sunset on January 15, 2027. Please use the getFlexCluster endpoint instead.
       externalDocs:
         description: getFlexCluster
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Clusters/operation/getFlexCluster
@@ -46243,7 +46530,7 @@ paths:
       description: |-
         Updates one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset in January 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the updateFlexCluster endpoint instead.
+        This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the updateFlexCluster endpoint instead.
       externalDocs:
         description: updateFlexCluster
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Flex-Clusters/operation/updateFlexCluster
@@ -52064,6 +52351,111 @@ paths:
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}" \
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrg
+  /api/atlas/v2/orgs/{orgId}/activityFeed:
+    get:
+      description: Returns a pre-filtered activity feed link for the specified organization based on the provided date range and event types. The returned link can be shared and opened to view the activity feed with the same filters applied. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+      operationId: getOrgActivityFeed
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: |-
+            Category of incident recorded at this moment in time.
+
+            **IMPORTANT**: The complete list of event type values changes frequently.
+          in: query
+          name: eventType
+          schema:
+            description: List of event types to filter the activity feed.
+            externalDocs:
+              description: Event Types
+              url: https://www.mongodb.com/docs/atlas/reference/atlas-event-types/
+            items:
+              $ref: "#/components/schemas/EventTypeForOrg"
+            maxItems: 20
+            type: array
+        - description: End date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
+          in: query
+          name: maxDate
+          schema:
+            externalDocs:
+              description: ISO 8601
+              url: https://en.wikipedia.org/wiki/ISO_8601
+            format: date-time
+            type: string
+        - description: Start date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
+          in: query
+          name: minDate
+          schema:
+            externalDocs:
+              description: ISO 8601
+              url: https://en.wikipedia.org/wiki/ISO_8601
+            format: date-time
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ActivityFeedLinkResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Pre-Filtered Activity Feed Link for One Organization
+      tags:
+        - Activity Feed
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api activityFeed getOrgActivityFeed --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgActivityFeedApiParams{}
+            	sdkResp, httpResp, err := client.ActivityFeedApi.
+            		GetOrgActivityFeedWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/activityFeed?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/activityFeed?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Activity-Feed/operation/getOrgActivityFeed
   /api/atlas/v2/orgs/{orgId}/apiKeys:
     get:
       description: Returns all organization API keys for the specified organization. The organization API keys grant programmatic access to an organization. You can't use the API key to log into MongoDB Cloud through the console. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
@@ -58063,6 +58455,152 @@ paths:
               -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole" \
               -d '{ <Payload> }'
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/MongoDB-Cloud-Users/operation/removeOrgUserRole
+  /api/atlas/v2/skus:
+    get:
+      description: Returns all available SKUs (Stock Keeping Units) that can appear on MongoDB invoices. SKUs represent different products and services offered by MongoDB.
+      operationId: listSkus
+      parameters:
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiSKU"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Stock Keeping Units
+      tags:
+        - Invoices
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api invoices listSkus --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListSkusApiParams{}
+            	sdkResp, httpResp, err := client.InvoicesApi.
+            		ListSkusWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/skus?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/skus?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/listSkus
+  /api/atlas/v2/skus/{skuId}:
+    get:
+      description: Returns details about a single SKU (Stock Keeping Unit) by its identifier. SKUs represent different products and services offered by MongoDB.
+      operationId: getSku
+      parameters:
+        - description: Unique identifier of the SKU to retrieve.
+          example: ATLAS_AWS_INSTANCE_M10
+          in: path
+          name: skuId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/SkuResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Stock Keeping Unit
+      tags:
+        - Invoices
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api invoices getSku --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetSkuApiParams{}
+            	sdkResp, httpResp, err := client.InvoicesApi.
+            		GetSkuWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/skus/{skuId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/skus/{skuId}?pretty=true"
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/getSku
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
       description: Returns all control plane IP addresses.
