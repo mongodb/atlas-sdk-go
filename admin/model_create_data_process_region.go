@@ -4,7 +4,7 @@ package admin
 
 // CreateDataProcessRegion Settings to configure the region where you wish to store your archived data.
 type CreateDataProcessRegion struct {
-	// Human-readable label that identifies the Cloud service provider where you wish to store your archived data. **AZURE** or **GCP** may be selected only if it is the Cloud service provider for the cluster and no archives for any other cloud provider have been created for the cluster.
+	// Human-readable label that identifies the Cloud service provider where you wish to store your archived data. `AZURE` or `GCP` may be selected only if it is the Cloud service provider for the cluster and no archives for any other cloud provider have been created for the cluster.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Human-readable label that identifies the geographic location of the region where you wish to store your archived data.
 	Region *string `json:"region,omitempty"`

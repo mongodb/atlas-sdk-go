@@ -13,7 +13,7 @@ type PerformanceAdvisorSlowQueryMetrics struct {
 	// The number of documents returned by the operation.
 	// Read only field.
 	DocsReturned *int64 `json:"docsReturned,omitempty"`
-	// This boolean will be true when the server can identfiy the query source as non-server. This field is only available for MDB 8.0+.
+	// This boolean will be true when the server can identify the query source as non-server. This field is only available for MDB 8.0+.
 	// Read only field.
 	FromUserConnection *bool `json:"fromUserConnection,omitempty"`
 	// Indicates if the query has index coverage.

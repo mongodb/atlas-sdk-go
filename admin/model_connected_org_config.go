@@ -8,9 +8,9 @@ type ConnectedOrgConfig struct {
 	DataAccessIdentityProviderIds *[]string `json:"dataAccessIdentityProviderIds,omitempty"`
 	// Approved domains that restrict users who can join the organization based on their email address.
 	DomainAllowList *[]string `json:"domainAllowList,omitempty"`
-	// Value that indicates whether domain restriction is enabled for this connected org.
+	// Value that indicates whether domain restriction is enabled for this connected organization.
 	DomainRestrictionEnabled bool `json:"domainRestrictionEnabled"`
-	// Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected org config is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
+	// Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
 	IdentityProviderId *string `json:"identityProviderId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
 	// Read only field.

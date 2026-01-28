@@ -4,7 +4,7 @@ package admin
 
 // FlexClusterMetricThreshold Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
 type FlexClusterMetricThreshold struct {
-	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`.
 	MetricName string `json:"metricName"`
 	// MongoDB Cloud computes the current metric value as an average.
 	Mode *string `json:"mode,omitempty"`

@@ -5,7 +5,7 @@ package admin
 // CloudRegionConfig20240805 Cloud service provider on which MongoDB Cloud provisions the hosts.
 type CloudRegionConfig20240805 struct {
 	ElectableSpecs *HardwareSpec20240805 `json:"electableSpecs,omitempty"`
-	// Precedence is given to this region when a primary election occurs. If your **regionConfigs** has only **readOnlySpecs**, **analyticsSpecs**, or both, set this value to `0`. If you have multiple **regionConfigs** objects (your cluster is multi-region or multi-cloud), they must have priorities in descending order. The highest priority is `7`.  **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
+	// Precedence is given to this region when a primary election occurs. If your `regionConfigs` has only `readOnlySpecs`, `analyticsSpecs`, or both, set this value to `0`. If you have multiple `regionConfigs` objects (your cluster is multi-region or multi-cloud), they must have priorities in descending order. The highest priority is `7`.  **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
 	Priority *int `json:"priority,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
 	ProviderName *string `json:"providerName,omitempty"`
@@ -18,7 +18,7 @@ type CloudRegionConfig20240805 struct {
 	EffectiveElectableSpecs *DedicatedHardwareSpec20240805 `json:"effectiveElectableSpecs,omitempty"`
 	EffectiveReadOnlySpecs  *DedicatedHardwareSpec20240805 `json:"effectiveReadOnlySpecs,omitempty"`
 	ReadOnlySpecs           *DedicatedHardwareSpec20240805 `json:"readOnlySpecs,omitempty"`
-	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerName** is `TENANT` and **electableSpecs.instanceSize** is `M0`, `M2` or `M5`.   Please note that  using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward.
+	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when `providerName` is `TENANT` and `electableSpecs.instanceSize` is `M0`, `M2` or `M5`.   Please note that  using an `instanceSize` of `M2` or `M5` will create a Flex cluster instead. Support for the `instanceSize` of `M2` or `M5` will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
 }
 

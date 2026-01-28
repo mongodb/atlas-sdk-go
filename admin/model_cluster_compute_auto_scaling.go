@@ -4,9 +4,9 @@ package admin
 
 // ClusterComputeAutoScaling Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down. Cluster tier auto-scaling is unavailable for clusters using Low CPU or NVME storage classes.
 type ClusterComputeAutoScaling struct {
-	// Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size reactive auto-scaling.
+	// Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for `providerSettings.autoScaling.compute.maxInstanceSize`. - Set to `false` to disable instance size reactive auto-scaling.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if **autoScaling.compute.enabled** is `true`. If you enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**.
+	// Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if `autoScaling.compute.enabled` is `true`. If you enable this option, specify a value for `providerSettings.autoScaling.compute.minInstanceSize`.
 	ScaleDownEnabled *bool `json:"scaleDownEnabled,omitempty"`
 }
 

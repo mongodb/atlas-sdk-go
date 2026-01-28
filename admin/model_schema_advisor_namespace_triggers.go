@@ -4,7 +4,7 @@ package admin
 
 // SchemaAdvisorNamespaceTriggers struct for SchemaAdvisorNamespaceTriggers
 type SchemaAdvisorNamespaceTriggers struct {
-	// Namespace of the affected collection. Will be null for REDUCE_NUMBER_OF_NAMESPACE recommendation.
+	// Namespace of the affected collection. Will be null for `REDUCE_NUMBER_OF_NAMESPACE` recommendation.
 	// Read only field.
 	Namespace *string `json:"namespace,omitempty"`
 	// List of triggers that specify why the collection activated the recommendation.

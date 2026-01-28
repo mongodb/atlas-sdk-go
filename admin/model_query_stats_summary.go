@@ -4,7 +4,7 @@ package admin
 
 // QueryStatsSummary A summary of execution statistics for a given query shape.
 type QueryStatsSummary struct {
-	// Average total time in milliseconds spent running queries with the given query shape. If the query resulted in getMore commands, this metric includes the time spent processing the getMore requests. This metric does not include time spent waiting for the client.
+	// Average total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
 	AvgWorkingMillis *float64 `json:"avgWorkingMillis,omitempty"`
 	// The number of bytes read by the given query shape from the disk to the cache.
 	BytesRead *float64 `json:"bytesRead,omitempty"`
