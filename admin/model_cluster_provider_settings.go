@@ -11,15 +11,15 @@ type ClusterProviderSettings struct {
 	// Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host's root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled.
 	// Deprecated
 	EncryptEBSVolume *bool `json:"encryptEBSVolume,omitempty"`
-	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to `FLEX` and specify the cloud service provider in **providerSettings.backingProviderName**.
+	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set `providerSettings.providerName` to `FLEX` and specify the cloud service provider in `providerSettings.backingProviderName`.
 	InstanceSizeName *string `json:"instanceSizeName,omitempty"`
 	// Human-readable label that identifies the geographic location of your MongoDB cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
 	RegionName *string `json:"regionName,omitempty"`
-	// Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for abbr title=\"Amazon Web Services\">AWS</abbr>. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED`). You must set this value to (`PROVISIONED`) for NVMe clusters.
+	// Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED`). You must set this value to (`PROVISIONED`) for NVMe clusters.
 	VolumeType *string `json:"volumeType,omitempty"`
-	// Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected **providerSettings.instanceSizeName** applies.
+	// Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected `providerSettings.instanceSizeName` applies.
 	DiskTypeName *string `json:"diskTypeName,omitempty"`
-	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when **providerSettings.providerName** is `FLEX` and **providerSetting.instanceSizeName** is `FLEX`.
+	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when `providerSettings.providerName` is `FLEX` and `providerSetting.instanceSizeName` is `FLEX`.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
 	// The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes.
 	// Read only field.

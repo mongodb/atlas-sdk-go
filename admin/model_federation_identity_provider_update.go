@@ -21,7 +21,7 @@ type FederationIdentityProviderUpdate struct {
 	RequestBinding *string `json:"requestBinding,omitempty"`
 	// Signature algorithm that Federated Authentication uses to encrypt the identity provider signature.
 	ResponseSignatureAlgorithm *string `json:"responseSignatureAlgorithm,omitempty"`
-	// Custom SSO Url for the identity provider.
+	// Custom SSO URL for the identity provider.
 	Slug *string `json:"slug,omitempty"`
 	// Flag that indicates whether the identity provider has SSO debug enabled.
 	SsoDebugEnabled *bool `json:"ssoDebugEnabled,omitempty"`

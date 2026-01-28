@@ -539,7 +539,7 @@ func (a *FlexClustersApiService) ListFlexClustersWithParams(ctx context.Context,
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListFlexClustersApiRequest) IncludeCount(includeCount bool) ListFlexClustersApiRequest {
 	r.includeCount = &includeCount
 	return r

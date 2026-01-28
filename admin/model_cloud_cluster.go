@@ -16,7 +16,7 @@ type CloudCluster struct {
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and Shared Cluster Backups for tenant clusters. If set to `false`, the cluster doesn't use MongoDB Cloud backups.
 	// Read only field.
 	BackupEnabled *bool `json:"backupEnabled,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the cluster. Each ``clusterId`` is used only once across all MongoDB Cloud deployments.
+	// Unique 24-hexadecimal character string that identifies the cluster. Each `clusterId` is used only once across all MongoDB Cloud deployments.
 	// Read only field.
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Total size of the data stored on each node in the cluster. The resource expresses this value in bytes.

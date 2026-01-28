@@ -4,9 +4,9 @@ package admin
 
 // SearchTypeSets Type sets for an Atlas Search index definition.
 type SearchTypeSets struct {
-	// Label that identifies the type set name. Each **typeSets.name** must be unique within the same index definition.
+	// Label that identifies the type set name. Each `typeSets.name` must be unique within the same index definition.
 	Name string `json:"name"`
-	// List of types associated with the type set. Each type definition must include a \"type\" field specifying the search field type (\"autocomplete\", \"boolean\", \"date\", \"geo\", \"number\", \"objectId\", \"string\", \"token\", or \"uuid\") and may include additional configuration properties specific to that type.
+	// List of types associated with the type set. Each type definition must include a `type` field specifying the search field type (`autocomplete`, `boolean`, `date`, `geo`, `number`, `objectId`, `string`, `token`, or `uuid`) and may include additional configuration properties specific to that type.
 	Types *[]any `json:"types,omitempty"`
 }
 

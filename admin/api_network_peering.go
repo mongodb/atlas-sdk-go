@@ -1209,7 +1209,7 @@ func (a *NetworkPeeringApiService) ListGroupContainerAllWithParams(ctx context.C
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListGroupContainerAllApiRequest) IncludeCount(includeCount bool) ListGroupContainerAllApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1380,7 +1380,7 @@ func (r ListGroupContainersApiRequest) ProviderName(providerName string) ListGro
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListGroupContainersApiRequest) IncludeCount(includeCount bool) ListGroupContainersApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1549,7 +1549,7 @@ func (a *NetworkPeeringApiService) ListGroupPeersWithParams(ctx context.Context,
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListGroupPeersApiRequest) IncludeCount(includeCount bool) ListGroupPeersApiRequest {
 	r.includeCount = &includeCount
 	return r
