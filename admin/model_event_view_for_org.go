@@ -8,7 +8,7 @@ import (
 
 // EventViewForOrg struct for EventViewForOrg
 type EventViewForOrg struct {
-	// Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
+	// Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn't return the `userId` parameter.
 	// Read only field.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -16,7 +16,7 @@ type EventViewForOrg struct {
 	Created *time.Time `json:"created,omitempty"`
 	// Unique identifier of event type.
 	EventTypeName *string `json:"eventTypeName,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
+	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the event.
@@ -38,16 +38,16 @@ type EventViewForOrg struct {
 	// IPv4 or IPv6 address from which the user triggered this event.
 	// Read only field.
 	RemoteAddress *string `json:"remoteAddress,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the **apiKeyId** parameter.
+	// Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the `apiKeyId` parameter.
 	// Read only field.
 	UserId *string `json:"userId,omitempty"`
-	// Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the **publicApiKey** parameter.
+	// Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the `publicApiKey` parameter.
 	// Read only field.
 	Username *string `json:"username,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the alert associated with the event.
 	// Read only field.
 	AlertId *string `json:"alertId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the alert configuration associated with the **alertId**.
+	// Unique 24-hexadecimal digit string that identifies the alert configuration associated with the `alertId`.
 	// Read only field.
 	AlertConfigId *string `json:"alertConfigId,omitempty"`
 	// Public part of the API key that this event targets.

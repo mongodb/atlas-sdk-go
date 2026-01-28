@@ -16,6 +16,8 @@ type DiskBackupSnapshotSchedule20240805 struct {
 	// Human-readable label that identifies the cluster with the Snapshot you want to return.
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
+	// Flag that indicates whether copy settings use `copyPolicyItems` instead of `frequencies`. When true, requests must supply `copyPolicyItems` and responses return `copyPolicyItems` only. When false or omitted, requests must supply `frequencies` and responses return `frequencies` only.
+	CopyPolicyItemsEnabled *bool `json:"copyPolicyItemsEnabled,omitempty"`
 	// List that contains a document for each copy setting item in the desired backup policy.
 	CopySettings *[]DiskBackupCopySetting20240805 `json:"copySettings,omitempty"`
 	// List that contains a document for each deleted copy setting whose backup copies you want to delete.
@@ -37,7 +39,7 @@ type DiskBackupSnapshotSchedule20240805 struct {
 	Policies *[]AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies,omitempty"`
 	// Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the Snapshot.
 	ReferenceHourOfDay *int `json:"referenceHourOfDay,omitempty"`
-	// Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the Snapshot.
+	// Minute of the `referenceHourOfDay` that represents when MongoDB Cloud takes the Snapshot.
 	ReferenceMinuteOfHour *int `json:"referenceMinuteOfHour,omitempty"`
 	// Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous Cloud Backups only.
 	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
@@ -162,6 +164,39 @@ func (o *DiskBackupSnapshotSchedule20240805) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *DiskBackupSnapshotSchedule20240805) SetClusterName(v string) {
 	o.ClusterName = &v
+}
+
+// GetCopyPolicyItemsEnabled returns the CopyPolicyItemsEnabled field value if set, zero value otherwise
+func (o *DiskBackupSnapshotSchedule20240805) GetCopyPolicyItemsEnabled() bool {
+	if o == nil || IsNil(o.CopyPolicyItemsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.CopyPolicyItemsEnabled
+}
+
+// GetCopyPolicyItemsEnabledOk returns a tuple with the CopyPolicyItemsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshotSchedule20240805) GetCopyPolicyItemsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.CopyPolicyItemsEnabled) {
+		return nil, false
+	}
+
+	return o.CopyPolicyItemsEnabled, true
+}
+
+// HasCopyPolicyItemsEnabled returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotSchedule20240805) HasCopyPolicyItemsEnabled() bool {
+	if o != nil && !IsNil(o.CopyPolicyItemsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetCopyPolicyItemsEnabled gets a reference to the given bool and assigns it to the CopyPolicyItemsEnabled field.
+func (o *DiskBackupSnapshotSchedule20240805) SetCopyPolicyItemsEnabled(v bool) {
+	o.CopyPolicyItemsEnabled = &v
 }
 
 // GetCopySettings returns the CopySettings field value if set, zero value otherwise

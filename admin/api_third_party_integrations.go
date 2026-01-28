@@ -170,7 +170,7 @@ func (a *ThirdPartyIntegrationsApiService) CreateGroupIntegrationWithParams(ctx 
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r CreateGroupIntegrationApiRequest) IncludeCount(includeCount bool) CreateGroupIntegrationApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -573,7 +573,7 @@ func (a *ThirdPartyIntegrationsApiService) ListGroupIntegrationsWithParams(ctx c
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListGroupIntegrationsApiRequest) IncludeCount(includeCount bool) ListGroupIntegrationsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -741,7 +741,7 @@ func (a *ThirdPartyIntegrationsApiService) UpdateGroupIntegrationWithParams(ctx 
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r UpdateGroupIntegrationApiRequest) IncludeCount(includeCount bool) UpdateGroupIntegrationApiRequest {
 	r.includeCount = &includeCount
 	return r

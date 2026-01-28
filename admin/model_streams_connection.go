@@ -28,7 +28,7 @@ type StreamsConnection struct {
 	Security   *StreamsKafkaSecurity   `json:"security,omitempty"`
 	// A map of key-value pairs that will be passed as headers for the request.
 	Headers *map[string]string `json:"headers,omitempty"`
-	// The url to be used for the request.
+	// The URL to be used for the request.
 	Url *string                     `json:"url,omitempty"`
 	Aws *StreamsAWSConnectionConfig `json:"aws,omitempty"`
 	// The Schema Registry provider.

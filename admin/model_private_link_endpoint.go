@@ -36,6 +36,8 @@ type PrivateLinkEndpoint struct {
 	// List of individual private endpoints that comprise this endpoint group.
 	// Read only field.
 	Endpoints *[]GCPConsumerForwardingRule `json:"endpoints,omitempty"`
+	// Flag that indicates whether the endpoint service for this endpoint group uses PSC port-mapping.
+	PortMappingEnabled *bool `json:"portMappingEnabled,omitempty"`
 }
 
 // NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object
@@ -408,4 +410,37 @@ func (o *PrivateLinkEndpoint) HasEndpoints() bool {
 // SetEndpoints gets a reference to the given []GCPConsumerForwardingRule and assigns it to the Endpoints field.
 func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
 	o.Endpoints = &v
+}
+
+// GetPortMappingEnabled returns the PortMappingEnabled field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetPortMappingEnabled() bool {
+	if o == nil || IsNil(o.PortMappingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PortMappingEnabled
+}
+
+// GetPortMappingEnabledOk returns a tuple with the PortMappingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetPortMappingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PortMappingEnabled) {
+		return nil, false
+	}
+
+	return o.PortMappingEnabled, true
+}
+
+// HasPortMappingEnabled returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasPortMappingEnabled() bool {
+	if o != nil && !IsNil(o.PortMappingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPortMappingEnabled gets a reference to the given bool and assigns it to the PortMappingEnabled field.
+func (o *PrivateLinkEndpoint) SetPortMappingEnabled(v bool) {
+	o.PortMappingEnabled = &v
 }

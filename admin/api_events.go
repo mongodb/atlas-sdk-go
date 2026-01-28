@@ -48,7 +48,7 @@ type EventsApi interface {
 		This resource remains under revision and may change.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return.
 			@return GetOrgEventApiRequest
 	*/
@@ -121,7 +121,7 @@ type EventsApi interface {
 		This resource remains under revision and may change.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@return ListOrgEventsApiRequest
 	*/
 	ListOrgEvents(ctx context.Context, orgId string) ListOrgEventsApiRequest
@@ -325,7 +325,7 @@ Returns one event for the specified organization. Events identify significant da
 This resource remains under revision and may change.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return.
 	@return GetOrgEventApiRequest
 */
@@ -448,7 +448,7 @@ func (a *EventsApiService) ListEventTypesWithParams(ctx context.Context, args *L
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListEventTypesApiRequest) IncludeCount(includeCount bool) ListEventTypesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -622,7 +622,7 @@ func (a *EventsApiService) ListGroupEventsWithParams(ctx context.Context, args *
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListGroupEventsApiRequest) IncludeCount(includeCount bool) ListGroupEventsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -652,7 +652,7 @@ func (r ListGroupEventsApiRequest) EventType(eventType []string) ListGroupEvents
 	return r
 }
 
-// Category of event that you would like to exclude from query results, such as CLUSTER_CREATED  **IMPORTANT**: Event type names change frequently. Verify that you specify the event type correctly by checking the complete list of event types.
+// Category of event that you would like to exclude from query results, such as &#x60;CLUSTER_CREATED&#x60;.  **IMPORTANT**: Event type names change frequently. Verify that you specify the event type correctly by checking the complete list of event types.
 func (r ListGroupEventsApiRequest) ExcludedEventType(excludedEventType []string) ListGroupEventsApiRequest {
 	r.excludedEventType = &excludedEventType
 	return r
@@ -868,7 +868,7 @@ func (a *EventsApiService) ListOrgEventsWithParams(ctx context.Context, args *Li
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListOrgEventsApiRequest) IncludeCount(includeCount bool) ListOrgEventsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -922,7 +922,7 @@ Returns events for the specified organization. Events identify significant datab
 This resource remains under revision and may change.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgEventsApiRequest
 */
 func (a *EventsApiService) ListOrgEvents(ctx context.Context, orgId string) ListOrgEventsApiRequest {
