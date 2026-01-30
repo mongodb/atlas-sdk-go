@@ -4,6 +4,8 @@ package admin
 
 // LogIntegrationRequest Request schema for creating or updating a log integration.
 type LogIntegrationRequest struct {
+	// Array of log types exported by this integration. The specific log types available and maximum number of items depend on the integration type. See the integration-specific schema for details.
+	LogTypes *[]string `json:"logTypes,omitempty"`
 	// Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type.
 	Type string `json:"type"`
 	// Human-readable label that identifies the S3 bucket name for storing log files.
@@ -12,10 +14,12 @@ type LogIntegrationRequest struct {
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
 	KmsKey *string `json:"kmsKey,omitempty"`
-	// Array of log types to export to S3. Valid values: MONGOD, MONGOS, MONGOD_AUDIT, MONGOS_AUDIT.
-	LogTypes *[]string `json:"logTypes,omitempty"`
 	// S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type.
 	PrefixPath *string `json:"prefixPath,omitempty"`
+	// Datadog API key for authentication.
+	ApiKey *string `json:"apiKey,omitempty"`
+	// Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED.
+	Region *string `json:"region,omitempty"`
 }
 
 // NewLogIntegrationRequest instantiates a new LogIntegrationRequest object
@@ -34,6 +38,39 @@ func NewLogIntegrationRequest(type_ string) *LogIntegrationRequest {
 func NewLogIntegrationRequestWithDefaults() *LogIntegrationRequest {
 	this := LogIntegrationRequest{}
 	return &this
+}
+
+// GetLogTypes returns the LogTypes field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetLogTypes() []string {
+	if o == nil || IsNil(o.LogTypes) {
+		var ret []string
+		return ret
+	}
+	return *o.LogTypes
+}
+
+// GetLogTypesOk returns a tuple with the LogTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetLogTypesOk() (*[]string, bool) {
+	if o == nil || IsNil(o.LogTypes) {
+		return nil, false
+	}
+
+	return o.LogTypes, true
+}
+
+// HasLogTypes returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasLogTypes() bool {
+	if o != nil && !IsNil(o.LogTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogTypes gets a reference to the given []string and assigns it to the LogTypes field.
+func (o *LogIntegrationRequest) SetLogTypes(v []string) {
+	o.LogTypes = &v
 }
 
 // GetType returns the Type field value
@@ -159,39 +196,6 @@ func (o *LogIntegrationRequest) SetKmsKey(v string) {
 	o.KmsKey = &v
 }
 
-// GetLogTypes returns the LogTypes field value if set, zero value otherwise
-func (o *LogIntegrationRequest) GetLogTypes() []string {
-	if o == nil || IsNil(o.LogTypes) {
-		var ret []string
-		return ret
-	}
-	return *o.LogTypes
-}
-
-// GetLogTypesOk returns a tuple with the LogTypes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LogIntegrationRequest) GetLogTypesOk() (*[]string, bool) {
-	if o == nil || IsNil(o.LogTypes) {
-		return nil, false
-	}
-
-	return o.LogTypes, true
-}
-
-// HasLogTypes returns a boolean if a field has been set.
-func (o *LogIntegrationRequest) HasLogTypes() bool {
-	if o != nil && !IsNil(o.LogTypes) {
-		return true
-	}
-
-	return false
-}
-
-// SetLogTypes gets a reference to the given []string and assigns it to the LogTypes field.
-func (o *LogIntegrationRequest) SetLogTypes(v []string) {
-	o.LogTypes = &v
-}
-
 // GetPrefixPath returns the PrefixPath field value if set, zero value otherwise
 func (o *LogIntegrationRequest) GetPrefixPath() string {
 	if o == nil || IsNil(o.PrefixPath) {
@@ -223,4 +227,70 @@ func (o *LogIntegrationRequest) HasPrefixPath() bool {
 // SetPrefixPath gets a reference to the given string and assigns it to the PrefixPath field.
 func (o *LogIntegrationRequest) SetPrefixPath(v string) {
 	o.PrefixPath = &v
+}
+
+// GetApiKey returns the ApiKey field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetApiKey() string {
+	if o == nil || IsNil(o.ApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.ApiKey
+}
+
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiKey) {
+		return nil, false
+	}
+
+	return o.ApiKey, true
+}
+
+// HasApiKey returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasApiKey() bool {
+	if o != nil && !IsNil(o.ApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
+func (o *LogIntegrationRequest) SetApiKey(v string) {
+	o.ApiKey = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *LogIntegrationRequest) SetRegion(v string) {
+	o.Region = &v
 }

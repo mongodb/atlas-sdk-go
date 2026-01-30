@@ -409,7 +409,7 @@ func (a *AlertsApiService) GetAlertConfigAlertsWithParams(ctx context.Context, a
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r GetAlertConfigAlertsApiRequest) IncludeCount(includeCount bool) GetAlertConfigAlertsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -582,7 +582,7 @@ func (a *AlertsApiService) ListAlertsWithParams(ctx context.Context, args *ListA
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListAlertsApiRequest) IncludeCount(includeCount bool) ListAlertsApiRequest {
 	r.includeCount = &includeCount
 	return r

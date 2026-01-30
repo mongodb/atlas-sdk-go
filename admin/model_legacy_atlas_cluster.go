@@ -8,7 +8,7 @@ import (
 
 // LegacyAtlasCluster Group of settings that configure a MongoDB cluster.
 type LegacyAtlasCluster struct {
-	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set `acceptDataRisksAndForceReplicaSetReconfig` to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                            `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
 	AdvancedConfiguration                     *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
 	AutoScaling                               *ClusterAutoScalingSettings           `json:"autoScaling,omitempty"`
@@ -17,7 +17,7 @@ type LegacyAtlasCluster struct {
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
 	ClusterType *string `json:"clusterType,omitempty"`
-	// Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+	// Config Server Management Mode for creating or updating a sharded cluster. When configured as `ATLAS_MANAGED`, Atlas may automatically switch the cluster's config server type for optimal performance and savings. When configured as `FIXED_TO_DEDICATED`, the cluster will always use a dedicated config server.
 	ConfigServerManagementMode *string `json:"configServerManagementMode,omitempty"`
 	// Describes a sharded cluster's config server type.
 	// Read only field.
@@ -26,11 +26,16 @@ type LegacyAtlasCluster struct {
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
-	// Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set **replicationSpecs**.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
+	// Number of hours after cluster creation that this cluster will be automatically deleted.  This field is used to derive `deleteAfterDate` relative to `createDate`.  When set to null or zero on cluster creation, the cluster will not be automatically deleted.  When set to a positive value on cluster creation, the cluster will be automatically deleted after the specified number of hours.  When updating this field on an existing (non-deleted) cluster, and this is set to null, then existing values are preserved for this & `deleteAfterDate`.  When updating this field on an existing (non-deleted) cluster, and this is set to zero, then `deleteAfterDate` is reset to null (disable auto deletion) regardless of previous configurations.  When updating this field on an existing (non-deleted) cluster, and this is set to a positive value, then `createDate` + `deleteAfterCreationHours` must be later than now else the field update is ignored and existing values are preserved for this & `deleteAfterDate`.
+	DeleteAfterCreationHours *int `json:"deleteAfterCreationHours,omitempty"`
+	// The date at which this cluster will be automatically deleted.  This parameter expresses its value in the ISO 8601 timestamp format in UTC and is derived based on the `createDate` + `deleteAfterCreationHours`.
+	// Read only field.
+	DeleteAfterDate *time.Time `json:"deleteAfterDate,omitempty"`
+	// Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set `replicationSpecs`.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
-	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
+	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Feature compatibility version of the cluster.
 	// Read only field.
@@ -74,12 +79,12 @@ type LegacyAtlasCluster struct {
 	Paused *bool `json:"paused,omitempty"`
 	// Flag that indicates whether the cluster uses continuous cloud backups.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
-	// Flag that indicates whether the M10 or higher cluster can perform Cloud Backups. If set to `true`, the cluster can perform backups. If this and **backupEnabled** are set to `false`, the cluster doesn't use MongoDB Cloud backups.
+	// Flag that indicates whether the M10 or higher cluster can perform Cloud Backups. If set to `true`, the cluster can perform backups. If this and `backupEnabled` are set to `false`, the cluster doesn't use MongoDB Cloud backups.
 	ProviderBackupEnabled *bool                    `json:"providerBackupEnabled,omitempty"`
 	ProviderSettings      *ClusterProviderSettings `json:"providerSettings,omitempty"`
-	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
 	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
-	// Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use **replicationSpecs** instead.
+	// Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use `replicationSpecs` instead.
 	// Deprecated
 	ReplicationFactor *int `json:"replicationFactor,omitempty"`
 	// Physical location where MongoDB Cloud provisions cluster nodes.
@@ -98,7 +103,7 @@ type LegacyAtlasCluster struct {
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
-	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
+	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`.
 	VersionReleaseSystem *string `json:"versionReleaseSystem,omitempty"`
 }
 
@@ -479,6 +484,72 @@ func (o *LegacyAtlasCluster) HasCreateDate() bool {
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *LegacyAtlasCluster) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
+}
+
+// GetDeleteAfterCreationHours returns the DeleteAfterCreationHours field value if set, zero value otherwise
+func (o *LegacyAtlasCluster) GetDeleteAfterCreationHours() int {
+	if o == nil || IsNil(o.DeleteAfterCreationHours) {
+		var ret int
+		return ret
+	}
+	return *o.DeleteAfterCreationHours
+}
+
+// GetDeleteAfterCreationHoursOk returns a tuple with the DeleteAfterCreationHours field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasCluster) GetDeleteAfterCreationHoursOk() (*int, bool) {
+	if o == nil || IsNil(o.DeleteAfterCreationHours) {
+		return nil, false
+	}
+
+	return o.DeleteAfterCreationHours, true
+}
+
+// HasDeleteAfterCreationHours returns a boolean if a field has been set.
+func (o *LegacyAtlasCluster) HasDeleteAfterCreationHours() bool {
+	if o != nil && !IsNil(o.DeleteAfterCreationHours) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteAfterCreationHours gets a reference to the given int and assigns it to the DeleteAfterCreationHours field.
+func (o *LegacyAtlasCluster) SetDeleteAfterCreationHours(v int) {
+	o.DeleteAfterCreationHours = &v
+}
+
+// GetDeleteAfterDate returns the DeleteAfterDate field value if set, zero value otherwise
+func (o *LegacyAtlasCluster) GetDeleteAfterDate() time.Time {
+	if o == nil || IsNil(o.DeleteAfterDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.DeleteAfterDate
+}
+
+// GetDeleteAfterDateOk returns a tuple with the DeleteAfterDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasCluster) GetDeleteAfterDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.DeleteAfterDate) {
+		return nil, false
+	}
+
+	return o.DeleteAfterDate, true
+}
+
+// HasDeleteAfterDate returns a boolean if a field has been set.
+func (o *LegacyAtlasCluster) HasDeleteAfterDate() bool {
+	if o != nil && !IsNil(o.DeleteAfterDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteAfterDate gets a reference to the given time.Time and assigns it to the DeleteAfterDate field.
+func (o *LegacyAtlasCluster) SetDeleteAfterDate(v time.Time) {
+	o.DeleteAfterDate = &v
 }
 
 // GetDiskSizeGB returns the DiskSizeGB field value if set, zero value otherwise

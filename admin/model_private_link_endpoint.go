@@ -30,12 +30,14 @@ type PrivateLinkEndpoint struct {
 	// State of the Google Cloud network endpoint group when MongoDB Cloud received this request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
-	// Human-readable label that identifies a set of endpoints.
+	// Human-readable label that identifies a set of endpoints. If this private endpoint belongs to a port-mapped endpoint service, this field is the private endpoint name.
 	// Read only field.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
-	// List of individual private endpoints that comprise this endpoint group.
+	// List of individual private endpoints that comprise this endpoint group. If this endpoint belongs to a port-mapped endpoint service, this field will only contain a list of one private endpoint.
 	// Read only field.
 	Endpoints *[]GCPConsumerForwardingRule `json:"endpoints,omitempty"`
+	// Flag that indicates whether the endpoint service for this endpoint group uses PSC port-mapping.
+	PortMappingEnabled *bool `json:"portMappingEnabled,omitempty"`
 }
 
 // NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object
@@ -408,4 +410,37 @@ func (o *PrivateLinkEndpoint) HasEndpoints() bool {
 // SetEndpoints gets a reference to the given []GCPConsumerForwardingRule and assigns it to the Endpoints field.
 func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
 	o.Endpoints = &v
+}
+
+// GetPortMappingEnabled returns the PortMappingEnabled field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetPortMappingEnabled() bool {
+	if o == nil || IsNil(o.PortMappingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PortMappingEnabled
+}
+
+// GetPortMappingEnabledOk returns a tuple with the PortMappingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetPortMappingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PortMappingEnabled) {
+		return nil, false
+	}
+
+	return o.PortMappingEnabled, true
+}
+
+// HasPortMappingEnabled returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasPortMappingEnabled() bool {
+	if o != nil && !IsNil(o.PortMappingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPortMappingEnabled gets a reference to the given bool and assigns it to the PortMappingEnabled field.
+func (o *PrivateLinkEndpoint) SetPortMappingEnabled(v bool) {
+	o.PortMappingEnabled = &v
 }
