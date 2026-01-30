@@ -8,7 +8,7 @@ type ThirdPartyIntegration struct {
 	Id *string `json:"id,omitempty"`
 	// Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
 	Type *string `json:"type,omitempty"`
-	// Two-letter code that indicates which regional URL MongoDB uses to access the Opsgenie API.
+	// Two-letter code that indicates which regional URL MongoDB uses to access the OpsGenie API.
 	Region *string `json:"region,omitempty"`
 	// Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	ServiceKey *string `json:"serviceKey,omitempty"`
@@ -20,13 +20,13 @@ type ThirdPartyIntegration struct {
 	TeamName *string `json:"teamName,omitempty"`
 	// Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	ApiKey *string `json:"apiKey,omitempty"`
-	// Toggle sending collection latency metrics that includes database names and collection namesand latency metrics on reads, writes, commands, and transactions.
+	// Toggle sending collection latency metrics that includes database names and collection names and latency metrics on reads, writes, commands, and transactions.
 	SendCollectionLatencyMetrics *bool `json:"sendCollectionLatencyMetrics,omitempty"`
 	// Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size.
 	SendDatabaseMetrics *bool `json:"sendDatabaseMetrics,omitempty"`
 	// Toggle sending query shape metrics that includes query hash and metrics on latency, execution frequency, documents returned, and timestamps.
 	SendQueryStatsMetrics *bool `json:"sendQueryStatsMetrics,omitempty"`
-	// Toggle sending user provided group and cluster resource tags with the datadog metrics.
+	// Toggle sending user provided group and cluster resource tags with the Datadog metrics.
 	SendUserProvidedResourceTags *bool `json:"sendUserProvidedResourceTags,omitempty"`
 	// Unique 40-hexadecimal digit string that identifies your New Relic account.
 	AccountId *string `json:"accountId,omitempty"`
@@ -47,7 +47,7 @@ type ThirdPartyIntegration struct {
 	// Password needed to allow MongoDB Cloud to access your Prometheus account.
 	// Write only field.
 	Password *string `json:"password,omitempty"`
-	// Toggle sending user provided group and cluster resource tags with the prometheus metrics.
+	// Toggle sending user provided group and cluster resource tags with the Prometheus metrics.
 	SendUserProvidedResourceTagsEnabled *bool `json:"sendUserProvidedResourceTagsEnabled,omitempty"`
 	// Desired method to discover the Prometheus service.
 	ServiceDiscovery *string `json:"serviceDiscovery,omitempty"`

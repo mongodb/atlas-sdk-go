@@ -14,7 +14,7 @@ type Collation struct {
 	CaseLevel *bool `json:"caseLevel,omitempty"`
 	// International Components for Unicode (ICU) code that represents a localized language. To specify simple binary comparison, set `\"locale\" : \"simple\"`.
 	Locale string `json:"locale"`
-	// Field that indicates which characters can be ignored when `\"alternate\" : \"shifted\"`.`\"punct\"` ignores both whitespace and punctuation. `\"space\"` ignores whitespace. Thishas no affect if `\"alternate\" : \"non-ignorable\"`.
+	// Field that indicates which characters can be ignored when `\"alternate\" : \"shifted\"`.`\"punct\"` ignores both whitespace and punctuation. `\"space\"` ignores whitespace. This has no affect if `\"alternate\" : \"non-ignorable\"`.
 	MaxVariable *string `json:"maxVariable,omitempty"`
 	// Flag that indicates whether to check if the text requires normalization and then perform it. Most text doesn't require this normalization processing.  `true` will check if fully normalized and perform normalization to compare text. `false` will not check.
 	Normalization *bool `json:"normalization,omitempty"`

@@ -46,7 +46,7 @@ type ClustersApi interface {
 
 			Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature is not available for serverless clusters.
 
-		Please note that using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+		Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -72,7 +72,7 @@ type ClustersApi interface {
 
 			Removes one cluster from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature is not available for serverless clusters.
 
-		This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the deleteFlexCluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-01-01}
+		This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Delete Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -98,7 +98,7 @@ type ClustersApi interface {
 
 			Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. This feature is not available for serverless clusters.
 
-		This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the getFlexCluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+		This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -266,7 +266,7 @@ type ClustersApi interface {
 
 			Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. This feature is not  available for serverless clusters.
 
-		This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the listFlexClusters endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+		This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the List Flex Clusters endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -289,12 +289,12 @@ type ClustersApi interface {
 	/*
 		PinFeatureCompatibilityVersion Pin Feature Compatibility Version for One Cluster in One Project
 
-		Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not repin the FCV.
+		Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not re-pin the FCV.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies this cluster.
-		@param pinFCV Optional request params for tuning FCV pinning configuration.
+		@param pinFCV Optional request parameters for tuning FCV pinning configuration.
 		@return PinFeatureCompatibilityVersionApiRequest
 	*/
 	PinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string, pinFCV *PinFCV) PinFeatureCompatibilityVersionApiRequest
@@ -460,7 +460,7 @@ type ClustersApi interface {
 	/*
 			UpgradeClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
 
-			This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the upgradeFlexCluster endpoint to upgrade Flex clusters.
+			This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the Upgrade Flex Cluster endpoint to upgrade Flex clusters.
 
 		 Upgrades a shared-tier cluster to a serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role.
 
@@ -492,7 +492,7 @@ type ClustersApi interface {
 
 			Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
 
-		This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 22, 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
+		This endpoint can also be used to upgrade Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using `instanceSizeName` to “M2” or “M5” until January 2026. This functionality will be available until January 22, 2026, after which it will only be available for M0 clusters. Please use the Upgrade Flex Cluster endpoint instead.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -645,32 +645,41 @@ func (a *ClustersApiService) AutoScalingConfigurationExecute(r AutoScalingConfig
 }
 
 type CreateClusterApiRequest struct {
-	ctx                        context.Context
-	ApiService                 ClustersApi
-	groupId                    string
-	clusterDescription20240805 *ClusterDescription20240805
-	useEffectiveInstanceFields *bool
+	ctx                                context.Context
+	ApiService                         ClustersApi
+	groupId                            string
+	clusterDescription20240805         *ClusterDescription20240805
+	useEffectiveInstanceFields         *bool
+	useEffectiveFieldsReplicationSpecs *bool
 }
 
 type CreateClusterApiParams struct {
-	GroupId                    string
-	ClusterDescription20240805 *ClusterDescription20240805
-	UseEffectiveInstanceFields *bool
+	GroupId                            string
+	ClusterDescription20240805         *ClusterDescription20240805
+	UseEffectiveInstanceFields         *bool
+	UseEffectiveFieldsReplicationSpecs *bool
 }
 
 func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    args.GroupId,
-		clusterDescription20240805: args.ClusterDescription20240805,
-		useEffectiveInstanceFields: args.UseEffectiveInstanceFields,
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            args.GroupId,
+		clusterDescription20240805:         args.ClusterDescription20240805,
+		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
+		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
 	}
 }
 
 // Controls how hardware specification fields are returned in the response after cluster creation. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
 func (r CreateClusterApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) CreateClusterApiRequest {
 	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
+	return r
+}
+
+// Controls how &#x60;replicationSpecs&#x60; fields are returned in the response. When set to &#x60;true&#x60;, stores the client&#39;s view of &#x60;replicationSpecs&#x60; and returns it in &#x60;replicationSpecs&#x60;, while the actual cluster state (including auto-scaled hardware and auto-added shards) is returned in &#x60;effectiveReplicationSpecs&#x60;. When &#x60;false&#x60; (default), &#x60;replicationSpecs&#x60; contains the actual cluster state.
+func (r CreateClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs bool) CreateClusterApiRequest {
+	r.useEffectiveFieldsReplicationSpecs = &useEffectiveFieldsReplicationSpecs
 	return r
 }
 
@@ -683,7 +692,7 @@ CreateCluster Create One Cluster in One Project
 
 Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature is not available for serverless clusters.
 
-Please note that using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -746,6 +755,9 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 	}
 	if r.useEffectiveInstanceFields != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
+	}
+	if r.useEffectiveFieldsReplicationSpecs != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
 	}
 	// body params
 	localVarPostBody = r.clusterDescription20240805
@@ -820,7 +832,7 @@ DeleteCluster Remove One Cluster from One Project
 
 Removes one cluster from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature is not available for serverless clusters.
 
-This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the deleteFlexCluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-01-01}
+This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Delete Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -902,32 +914,41 @@ func (a *ClustersApiService) DeleteClusterExecute(r DeleteClusterApiRequest) (*h
 }
 
 type GetClusterApiRequest struct {
-	ctx                        context.Context
-	ApiService                 ClustersApi
-	groupId                    string
-	clusterName                string
-	useEffectiveInstanceFields *bool
+	ctx                                context.Context
+	ApiService                         ClustersApi
+	groupId                            string
+	clusterName                        string
+	useEffectiveInstanceFields         *bool
+	useEffectiveFieldsReplicationSpecs *bool
 }
 
 type GetClusterApiParams struct {
-	GroupId                    string
-	ClusterName                string
-	UseEffectiveInstanceFields *bool
+	GroupId                            string
+	ClusterName                        string
+	UseEffectiveInstanceFields         *bool
+	UseEffectiveFieldsReplicationSpecs *bool
 }
 
 func (a *ClustersApiService) GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest {
 	return GetClusterApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    args.GroupId,
-		clusterName:                args.ClusterName,
-		useEffectiveInstanceFields: args.UseEffectiveInstanceFields,
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            args.GroupId,
+		clusterName:                        args.ClusterName,
+		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
+		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
 	}
 }
 
 // Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
 func (r GetClusterApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) GetClusterApiRequest {
 	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
+	return r
+}
+
+// Controls how &#x60;replicationSpecs&#x60; are returned in the response. When set to &#x60;true&#x60;, returns the client-specified view in &#x60;replicationSpecs&#x60; and the actual cluster state in &#x60;effectiveReplicationSpecs&#x60;. When &#x60;false&#x60; (default), &#x60;replicationSpecs&#x60; contains the actual cluster state.
+func (r GetClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs bool) GetClusterApiRequest {
+	r.useEffectiveFieldsReplicationSpecs = &useEffectiveFieldsReplicationSpecs
 	return r
 }
 
@@ -940,7 +961,7 @@ GetCluster Return One Cluster from One Project
 
 Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. This feature is not available for serverless clusters.
 
-This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the getFlexCluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1005,6 +1026,9 @@ func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*Cluster
 	}
 	if r.useEffectiveInstanceFields != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
+	}
+	if r.useEffectiveFieldsReplicationSpecs != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1546,7 +1570,7 @@ func (a *ClustersApiService) ListClusterDetailsWithParams(ctx context.Context, a
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListClusterDetailsApiRequest) IncludeCount(includeCount bool) ListClusterDetailsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1708,7 +1732,7 @@ func (a *ClustersApiService) ListClusterProviderRegionsWithParams(ctx context.Co
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListClusterProviderRegionsApiRequest) IncludeCount(includeCount bool) ListClusterProviderRegionsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1898,7 +1922,7 @@ func (a *ClustersApiService) ListClustersWithParams(ctx context.Context, args *L
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListClustersApiRequest) IncludeCount(includeCount bool) ListClustersApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1937,7 +1961,7 @@ ListClusters Return All Clusters in One Project
 
 Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. This feature is not  available for serverless clusters.
 
-This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the listFlexClusters endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the List Flex Clusters endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2088,7 +2112,7 @@ func (r PinFeatureCompatibilityVersionApiRequest) Execute() (*http.Response, err
 /*
 PinFeatureCompatibilityVersion Pin Feature Compatibility Version for One Cluster in One Project
 
-Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not repin the FCV.
+Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not re-pin the FCV.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2611,35 +2635,44 @@ func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeat
 }
 
 type UpdateClusterApiRequest struct {
-	ctx                        context.Context
-	ApiService                 ClustersApi
-	groupId                    string
-	clusterName                string
-	clusterDescription20240805 *ClusterDescription20240805
-	useEffectiveInstanceFields *bool
+	ctx                                context.Context
+	ApiService                         ClustersApi
+	groupId                            string
+	clusterName                        string
+	clusterDescription20240805         *ClusterDescription20240805
+	useEffectiveInstanceFields         *bool
+	useEffectiveFieldsReplicationSpecs *bool
 }
 
 type UpdateClusterApiParams struct {
-	GroupId                    string
-	ClusterName                string
-	ClusterDescription20240805 *ClusterDescription20240805
-	UseEffectiveInstanceFields *bool
+	GroupId                            string
+	ClusterName                        string
+	ClusterDescription20240805         *ClusterDescription20240805
+	UseEffectiveInstanceFields         *bool
+	UseEffectiveFieldsReplicationSpecs *bool
 }
 
 func (a *ClustersApiService) UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    args.GroupId,
-		clusterName:                args.ClusterName,
-		clusterDescription20240805: args.ClusterDescription20240805,
-		useEffectiveInstanceFields: args.UseEffectiveInstanceFields,
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            args.GroupId,
+		clusterName:                        args.ClusterName,
+		clusterDescription20240805:         args.ClusterDescription20240805,
+		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
+		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
 	}
 }
 
-// Controls how hardware specification fields are returned in the response after cluster updates. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Note: When using this header with autoscaling enabled, MongoDB ignores replicationSpecs changes during updates. To intentionally override the replicationSpecs, disable this header.
+// Controls how hardware specification fields are returned in the response after cluster updates. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Note: When using this header with autoscaling enabled, MongoDB ignores &#x60;replicationSpecs&#x60; changes during updates. To intentionally override the &#x60;replicationSpecs&#x60;, disable this header.
 func (r UpdateClusterApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) UpdateClusterApiRequest {
 	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
+	return r
+}
+
+// Controls how &#x60;replicationSpecs&#x60; fields are returned in the response. When set to &#x60;true&#x60;, stores the client&#39;s view of &#x60;replicationSpecs&#x60; and returns it in &#x60;replicationSpecs&#x60;, while the actual cluster state (including auto-scaled hardware and auto-added shards) is returned in &#x60;effectiveReplicationSpecs&#x60;. When &#x60;false&#x60; (default), &#x60;replicationSpecs&#x60; contains the actual cluster state.
+func (r UpdateClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs bool) UpdateClusterApiRequest {
+	r.useEffectiveFieldsReplicationSpecs = &useEffectiveFieldsReplicationSpecs
 	return r
 }
 
@@ -2719,6 +2752,9 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 	}
 	if r.useEffectiveInstanceFields != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
+	}
+	if r.useEffectiveFieldsReplicationSpecs != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
 	}
 	// body params
 	localVarPostBody = r.clusterDescription20240805
@@ -2914,7 +2950,7 @@ func (r UpgradeClusterToServerlessApiRequest) Execute() (*ServerlessInstanceDesc
 /*
 UpgradeClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
 
-This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the upgradeFlexCluster endpoint to upgrade Flex clusters.
+This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the Upgrade Flex Cluster endpoint to upgrade Flex clusters.
 
 	Upgrades a shared-tier cluster to a serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role.
 
@@ -3045,7 +3081,7 @@ UpgradeTenantUpgrade Upgrade One Shared-Tier Cluster
 
 Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
 
-This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 22, 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
+This endpoint can also be used to upgrade Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using `instanceSizeName` to “M2” or “M5” until January 2026. This functionality will be available until January 22, 2026, after which it will only be available for M0 clusters. Please use the Upgrade Flex Cluster endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

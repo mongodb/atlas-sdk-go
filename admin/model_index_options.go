@@ -12,9 +12,9 @@ type IndexOptions struct {
 	Bits *int `json:"bits,omitempty"`
 	// Number of units within which to group the location values. You could group in the same bucket those location values within the specified number of units to each other. This option applies to the geoHaystack index type only.  MongoDB 5.0 removed geoHaystack Indexes and the `geoSearch` command.
 	BucketSize *int `json:"bucketSize,omitempty"`
-	// The columnstoreProjection document allows to include or exclude subschemas schema. One cannot combine inclusion and exclusion statements. Accordingly, the <value> can be either of the following: 1 or true to include the field and recursively all fields it is a prefix of in the index 0 or false to exclude the field and recursively all fields it is a prefix of from the index.
+	// The `columnstoreProjection` document allows to include or exclude sub-schemas schema. One cannot combine inclusion and exclusion statements. Accordingly, the <value> can be either of the following: 1 or true to include the field and recursively all fields it is a prefix of in the index 0 or false to exclude the field and recursively all fields it is a prefix of from the index.
 	ColumnstoreProjection *map[string]int `json:"columnstoreProjection,omitempty"`
-	// Human language that determines the list of stop words and the rules for the stemmer and tokenizer. This option accepts the supported languages using its name in lowercase english or the ISO 639-2 code. If you set this parameter to `\"none\"`, then the text search uses simple tokenization with no list of stop words and no stemming. This option applies to the **text** index type only.
+	// Human language that determines the list of stop words and the rules for the stemmer and tokenizer. This option accepts the supported languages using its name in lowercase English or the ISO 639-2 code. If you set this parameter to `\"none\"`, then the text search uses simple tokenization with no list of stop words and no stemming. This option applies to the **text** index type only.
 	DefaultLanguage *string `json:"default_language,omitempty"`
 	// Number of seconds that MongoDB retains documents in a Time To Live (TTL) index.
 	ExpireAfterSeconds *int `json:"expireAfterSeconds,omitempty"`
@@ -28,7 +28,7 @@ type IndexOptions struct {
 	Min *int `json:"min,omitempty"`
 	// Human-readable label that identifies this index. This option applies to all index types.
 	Name *string `json:"name,omitempty"`
-	// Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:  - equality (`\"parameter\" : \"value\"` or using the `$eq` operator) - `\"$exists\": true` , maximum: `$gt`, `$gte`, `$lt`, `$lte` comparisons - `$type` - `$and` (top-level only)  This option applies to all index types.
+	// Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a `partialFilterExpression` option. `partialFilterExpression` can include following expressions:  - equality (`\"parameter\" : \"value\"` or using the `$eq` operator) - `\"$exists\": true` , maximum: `$gt`, `$gte`, `$lt`, `$lte` comparisons - `$type` - `$and` (top-level only)  This option applies to all index types.
 	PartialFilterExpression any `json:"partialFilterExpression,omitempty"`
 	// Flag that indicates whether the index references documents that only have the specified parameter. These indexes use less space but behave differently in some situations like when sorting. The following index types default to sparse and ignore this option: `2dsphere`, `2d`, `geoHaystack`, `text`.  Compound indexes that includes one or more indexes with `2dsphere` keys alongside other key types, only the `2dsphere` index parameters determine which documents the index references. If you run MongoDB 3.2 or later, use partial indexes. This option applies to all index types.
 	Sparse *bool `json:"sparse,omitempty"`
