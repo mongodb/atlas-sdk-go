@@ -17113,7 +17113,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b9839e5190b70bc520e4cd2e7da2cc03823fbc46
+  x-xgen-sha: 1f6e58a6e86ac43e73836fcb78191467b0263351
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -39262,7 +39262,7 @@ paths:
         verb: getStatus
   /api/atlas/v2/groups/{groupId}/logIntegrations:
     get:
-      description: Returns all log integration configurations for the project. Optionally filter by integration type. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Returns all log integration configurations for the project. Optionally filter by integration type. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
       operationId: listGroupLogIntegrations
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -39341,7 +39341,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/listGroupLogIntegrations
     post:
-      description: Creates a new log integration configuration identified by a unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Creates a new log integration configuration identified by a unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
       operationId: createGroupLogIntegration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -39424,7 +39424,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/createGroupLogIntegration
   /api/atlas/v2/groups/{groupId}/logIntegrations/{id}:
     delete:
-      description: Removes the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Removes the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
       operationId: deleteGroupLogIntegration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -39499,7 +39499,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations/{id}"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/deleteGroupLogIntegration
     get:
-      description: Returns the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Returns the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
       operationId: getGroupLogIntegration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -39576,7 +39576,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/logIntegrations/{id}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/getGroupLogIntegration
     put:
-      description: Updates the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+      description: Updates the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
       operationId: updateGroupLogIntegration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -45032,6 +45032,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Performance-Advisor/operation/listGroupProcessPerformanceAdvisorSuggestedIndexes
   /api/atlas/v2/groups/{groupId}/pushBasedLogExport:
     delete:
+      deprecated: true
       description: Disables the push-based log export feature by resetting the project level settings to its default configuration.
       operationId: deleteLogExport
       parameters:
@@ -45099,8 +45100,10 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pushBasedLogExport"
+      x-sunset: 2027-02-04
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/deleteGroupPushBasedLogExport
     get:
+      deprecated: true
       description: Fetches the current project level settings for the push-based log export feature.
       operationId: getLogExport
       parameters:
@@ -45171,11 +45174,13 @@ paths:
               --digest --include \
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pushBasedLogExport?pretty=true"
+      x-sunset: 2027-02-04
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/getGroupPushBasedLogExport
       x-xgen-method-verb-override:
         customMethod: false
         verb: get
     patch:
+      deprecated: true
       description: Updates the project level settings for the push-based log export feature.
       operationId: updateLogExport
       parameters:
@@ -45255,8 +45260,10 @@ paths:
               --header "Content-Type: application/json" \
               -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pushBasedLogExport" \
               -d '{ <Payload> }'
+      x-sunset: 2027-02-04
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/updateGroupPushBasedLogExport
     post:
+      deprecated: true
       description: Configures the project level settings for the push-based log export feature.
       operationId: createLogExport
       parameters:
@@ -45336,6 +45343,7 @@ paths:
               --header "Content-Type: application/json" \
               -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pushBasedLogExport" \
               -d '{ <Payload> }'
+      x-sunset: 2027-02-04
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/createGroupPushBasedLogExport
   /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}:
     post:
