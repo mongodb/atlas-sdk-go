@@ -15,7 +15,7 @@ type PushBasedLogExportApi interface {
 	/*
 		CreateGroupLogIntegration Create One Log Integration
 
-		Creates a new log integration configuration identified by a unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Creates a new log integration configuration identified by a unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -45,6 +45,8 @@ type PushBasedLogExportApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param createPushBasedLogExportProjectRequest The project configuration details. The S3 bucket name, IAM role ID, and prefix path fields are required.
 		@return CreateLogExportApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
 	*/
 	CreateLogExport(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreateLogExportApiRequest
 	/*
@@ -54,6 +56,8 @@ type PushBasedLogExportApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateLogExportApiParams - Parameters for the request
 		@return CreateLogExportApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
 	*/
 	CreateLogExportWithParams(ctx context.Context, args *CreateLogExportApiParams) CreateLogExportApiRequest
 
@@ -63,7 +67,7 @@ type PushBasedLogExportApi interface {
 	/*
 		DeleteGroupLogIntegration Remove One Log Integration
 
-		Removes the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Removes the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -92,6 +96,8 @@ type PushBasedLogExportApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return DeleteLogExportApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
 	*/
 	DeleteLogExport(ctx context.Context, groupId string) DeleteLogExportApiRequest
 	/*
@@ -101,6 +107,8 @@ type PushBasedLogExportApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DeleteLogExportApiParams - Parameters for the request
 		@return DeleteLogExportApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
 	*/
 	DeleteLogExportWithParams(ctx context.Context, args *DeleteLogExportApiParams) DeleteLogExportApiRequest
 
@@ -110,7 +118,7 @@ type PushBasedLogExportApi interface {
 	/*
 		GetGroupLogIntegration Return One Log Integration
 
-		Returns the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Returns the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -139,6 +147,8 @@ type PushBasedLogExportApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return GetLogExportApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
 	*/
 	GetLogExport(ctx context.Context, groupId string) GetLogExportApiRequest
 	/*
@@ -148,6 +158,8 @@ type PushBasedLogExportApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetLogExportApiParams - Parameters for the request
 		@return GetLogExportApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
 	*/
 	GetLogExportWithParams(ctx context.Context, args *GetLogExportApiParams) GetLogExportApiRequest
 
@@ -157,7 +169,7 @@ type PushBasedLogExportApi interface {
 	/*
 		ListGroupLogIntegrations Return All Active Log Integrations
 
-		Returns all log integration configurations for the project. Optionally filter by integration type. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Returns all log integration configurations for the project. Optionally filter by integration type. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -180,7 +192,7 @@ type PushBasedLogExportApi interface {
 	/*
 		UpdateGroupLogIntegration Update One Log Integration
 
-		Updates the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+		Updates the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -211,6 +223,8 @@ type PushBasedLogExportApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param pushBasedLogExportProject The project configuration details. The S3 bucket name, IAM role ID, and prefix path fields are the only fields that may be specified. Fields left unspecified will not be modified.
 		@return UpdateLogExportApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
 	*/
 	UpdateLogExport(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdateLogExportApiRequest
 	/*
@@ -220,6 +234,8 @@ type PushBasedLogExportApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateLogExportApiParams - Parameters for the request
 		@return UpdateLogExportApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
 	*/
 	UpdateLogExportWithParams(ctx context.Context, args *UpdateLogExportApiParams) UpdateLogExportApiRequest
 
@@ -258,7 +274,7 @@ func (r CreateGroupLogIntegrationApiRequest) Execute() (*LogIntegrationResponse,
 /*
 CreateGroupLogIntegration Create One Log Integration
 
-Creates a new log integration configuration identified by a unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Creates a new log integration configuration identified by a unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -386,6 +402,8 @@ Configures the project level settings for the push-based log export feature.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateLogExportApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportApiService) CreateLogExport(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreateLogExportApiRequest {
 	return CreateLogExportApiRequest{
@@ -397,6 +415,7 @@ func (a *PushBasedLogExportApiService) CreateLogExport(ctx context.Context, grou
 }
 
 // CreateLogExportExecute executes the request
+// Deprecated
 func (a *PushBasedLogExportApiService) CreateLogExportExecute(r CreateLogExportApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
@@ -487,7 +506,7 @@ func (r DeleteGroupLogIntegrationApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteGroupLogIntegration Remove One Log Integration
 
-Removes the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Removes the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -595,6 +614,8 @@ Disables the push-based log export feature by resetting the project level settin
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeleteLogExportApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportApiService) DeleteLogExport(ctx context.Context, groupId string) DeleteLogExportApiRequest {
 	return DeleteLogExportApiRequest{
@@ -605,6 +626,7 @@ func (a *PushBasedLogExportApiService) DeleteLogExport(ctx context.Context, grou
 }
 
 // DeleteLogExportExecute executes the request
+// Deprecated
 func (a *PushBasedLogExportApiService) DeleteLogExportExecute(r DeleteLogExportApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -690,7 +712,7 @@ func (r GetGroupLogIntegrationApiRequest) Execute() (*LogIntegrationResponse, *h
 /*
 GetGroupLogIntegration Return One Log Integration
 
-Returns the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Returns the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -815,6 +837,8 @@ Fetches the current project level settings for the push-based log export feature
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetLogExportApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportApiService) GetLogExport(ctx context.Context, groupId string) GetLogExportApiRequest {
 	return GetLogExportApiRequest{
@@ -827,6 +851,8 @@ func (a *PushBasedLogExportApiService) GetLogExport(ctx context.Context, groupId
 // GetLogExportExecute executes the request
 //
 //	@return PushBasedLogExportProject
+//
+// Deprecated
 func (a *PushBasedLogExportApiService) GetLogExportExecute(r GetLogExportApiRequest) (*PushBasedLogExportProject, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -960,7 +986,7 @@ func (r ListGroupLogIntegrationsApiRequest) Execute() (*PaginatedLogIntegrationR
 /*
 ListGroupLogIntegrations Return All Active Log Integrations
 
-Returns all log integration configurations for the project. Optionally filter by integration type. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Returns all log integration configurations for the project. Optionally filter by integration type. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1104,7 +1130,7 @@ func (r UpdateGroupLogIntegrationApiRequest) Execute() (*LogIntegrationResponse,
 /*
 UpdateGroupLogIntegration Update One Log Integration
 
-Updates the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role. This is currently in preview. Please contact your Customer Success Manager (CSM) for access.
+Updates the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1238,6 +1264,8 @@ Updates the project level settings for the push-based log export feature.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateLogExportApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportApiService) UpdateLogExport(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdateLogExportApiRequest {
 	return UpdateLogExportApiRequest{
@@ -1249,6 +1277,7 @@ func (a *PushBasedLogExportApiService) UpdateLogExport(ctx context.Context, grou
 }
 
 // UpdateLogExportExecute executes the request
+// Deprecated
 func (a *PushBasedLogExportApiService) UpdateLogExportExecute(r UpdateLogExportApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPatch
