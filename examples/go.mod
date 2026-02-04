@@ -7,7 +7,7 @@ replace go.mongodb.org/atlas-sdk/v20250312013 => ../
 require (
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/mongodb-forks/digest v1.1.0
-	go.mongodb.org/atlas-sdk/v20250312013 v20250312013.1.0
+	go.mongodb.org/atlas-sdk/v20250312013 v20250312013.2.0
 )
 
 require (

@@ -11,6 +11,8 @@ type StreamsStartStreamProcessorWith struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// When true or not specified, the stream processor resumes from its last checkpoint. When false, the stream processor starts fresh.
+	ResumeFromCheckpoint *bool `json:"resumeFromCheckpoint,omitempty"`
 	// The operation time after which the change stream source should begin reporting. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	StartAtOperationTime *time.Time `json:"startAtOperationTime,omitempty"`
 	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
@@ -65,6 +67,39 @@ func (o *StreamsStartStreamProcessorWith) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsStartStreamProcessorWith) SetLinks(v []Link) {
 	o.Links = &v
+}
+
+// GetResumeFromCheckpoint returns the ResumeFromCheckpoint field value if set, zero value otherwise
+func (o *StreamsStartStreamProcessorWith) GetResumeFromCheckpoint() bool {
+	if o == nil || IsNil(o.ResumeFromCheckpoint) {
+		var ret bool
+		return ret
+	}
+	return *o.ResumeFromCheckpoint
+}
+
+// GetResumeFromCheckpointOk returns a tuple with the ResumeFromCheckpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsStartStreamProcessorWith) GetResumeFromCheckpointOk() (*bool, bool) {
+	if o == nil || IsNil(o.ResumeFromCheckpoint) {
+		return nil, false
+	}
+
+	return o.ResumeFromCheckpoint, true
+}
+
+// HasResumeFromCheckpoint returns a boolean if a field has been set.
+func (o *StreamsStartStreamProcessorWith) HasResumeFromCheckpoint() bool {
+	if o != nil && !IsNil(o.ResumeFromCheckpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetResumeFromCheckpoint gets a reference to the given bool and assigns it to the ResumeFromCheckpoint field.
+func (o *StreamsStartStreamProcessorWith) SetResumeFromCheckpoint(v bool) {
+	o.ResumeFromCheckpoint = &v
 }
 
 // GetStartAtOperationTime returns the StartAtOperationTime field value if set, zero value otherwise
