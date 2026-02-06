@@ -15,7 +15,7 @@ type OrganizationsApi interface {
 	/*
 		CreateOrg Create One Organization
 
-		Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if federationSettingsId is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
+		Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if `federationSettingsId` is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param createOrganizationRequest Organization that you want to create.
@@ -43,7 +43,7 @@ type OrganizationsApi interface {
 		**Note**: Invitation management APIs are deprecated. Use Add One MongoDB Cloud User to One Organization to invite a user.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param organizationInvitationRequest Invites one MongoDB Cloud user to join the specified organization.
 			@return CreateOrgInviteApiRequest
 
@@ -75,7 +75,7 @@ type OrganizationsApi interface {
 		 To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@return DeleteOrgApiRequest
 	*/
 	DeleteOrg(ctx context.Context, orgId string) DeleteOrgApiRequest
@@ -100,7 +100,7 @@ type OrganizationsApi interface {
 		**Note**: Invitation management APIs are deprecated. Use Remove One MongoDB Cloud User From One Organization to remove a pending user.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 			@return DeleteOrgInviteApiRequest
 
@@ -128,7 +128,7 @@ type OrganizationsApi interface {
 		Returns one organization to which the requesting Service Account or API Key has access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return GetOrgApiRequest
 	*/
 	GetOrg(ctx context.Context, orgId string) GetOrgApiRequest
@@ -158,7 +158,7 @@ type OrganizationsApi interface {
 		To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@return GetOrgGroupsApiRequest
 	*/
 	GetOrgGroups(ctx context.Context, orgId string) GetOrgGroupsApiRequest
@@ -183,7 +183,7 @@ type OrganizationsApi interface {
 		**Note**: Invitation management APIs are deprecated. Use Return One MongoDB Cloud User in One Organization to return a pending user.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 			@return GetOrgInviteApiRequest
 
@@ -211,7 +211,7 @@ type OrganizationsApi interface {
 		Returns details about the specified organization's settings. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return GetOrgSettingsApiRequest
 	*/
 	GetOrgSettings(ctx context.Context, orgId string) GetOrgSettingsApiRequest
@@ -236,7 +236,7 @@ type OrganizationsApi interface {
 		**Note**: Invitation management APIs are deprecated. Use Return All MongoDB Cloud Users in One Organization and filter by `orgMembershipStatus` to return all pending users.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@return ListOrgInvitesApiRequest
 
 			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
@@ -285,7 +285,7 @@ type OrganizationsApi interface {
 		Updates one organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param atlasOrganization Details to update on the specified organization.
 		@return UpdateOrgApiRequest
 	*/
@@ -311,7 +311,7 @@ type OrganizationsApi interface {
 		**Note**: Invitation management APIs are deprecated. Use Update One MongoDB Cloud User in One Organization to update a pending user.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 			@param organizationInvitationUpdateRequest Updates the details of one pending invitation to the specified organization.
 			@return UpdateOrgInviteByIdApiRequest
@@ -342,7 +342,7 @@ type OrganizationsApi interface {
 		**Note**:  Invitation management are deprecated. Use Update One MongoDB Cloud User in One Organization to update a pending user.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param organizationInvitationRequest Updates the details of one pending invitation to the specified organization.
 			@return UpdateOrgInvitesApiRequest
 
@@ -370,7 +370,7 @@ type OrganizationsApi interface {
 		Updates the organization's settings. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param organizationSettings Details to update on the specified organization's settings.
 		@return UpdateOrgSettingsApiRequest
 	*/
@@ -394,7 +394,7 @@ type OrganizationsApi interface {
 		Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization User Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
 		@param updateOrgRolesForUser Roles to update for the specified user.
 		@return UpdateOrgUserRolesApiRequest
@@ -446,7 +446,7 @@ func (r CreateOrgApiRequest) Execute() (*CreateOrganizationResponse, *http.Respo
 /*
 CreateOrg Create One Organization
 
-Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if federationSettingsId is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
+Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if `federationSettingsId` is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateOrgApiRequest
@@ -568,7 +568,7 @@ Invites one MongoDB Cloud user to join the specified organization. The user must
 **Note**: Invitation management APIs are deprecated. Use Add One MongoDB Cloud User to One Organization to invite a user.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrgInviteApiRequest
 
 Deprecated
@@ -697,7 +697,7 @@ Removes one specified organization. MongoDB Cloud imposes the following limits o
     To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
     @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-    @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+    @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
     @return DeleteOrgApiRequest
 */
 func (a *OrganizationsApiService) DeleteOrg(ctx context.Context, orgId string) DeleteOrgApiRequest {
@@ -799,7 +799,7 @@ Cancels one pending invitation sent to the specified MongoDB Cloud user to join 
 **Note**: Invitation management APIs are deprecated. Use Remove One MongoDB Cloud User From One Organization to remove a pending user.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return DeleteOrgInviteApiRequest
 
@@ -905,7 +905,7 @@ GetOrg Return One Organization
 Returns one organization to which the requesting Service Account or API Key has access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgApiRequest
 */
 func (a *OrganizationsApiService) GetOrg(ctx context.Context, orgId string) GetOrgApiRequest {
@@ -1021,7 +1021,7 @@ func (a *OrganizationsApiService) GetOrgGroupsWithParams(ctx context.Context, ar
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r GetOrgGroupsApiRequest) IncludeCount(includeCount bool) GetOrgGroupsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1062,7 +1062,7 @@ Returns multiple projects in the specified organization. Each organization can h
 To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgGroupsApiRequest
 */
 func (a *OrganizationsApiService) GetOrgGroups(ctx context.Context, orgId string) GetOrgGroupsApiRequest {
@@ -1205,7 +1205,7 @@ Returns the details of one pending invitation to the specified organization. To 
 **Note**: Invitation management APIs are deprecated. Use Return One MongoDB Cloud User in One Organization to return a pending user.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return GetOrgInviteApiRequest
 
@@ -1329,7 +1329,7 @@ GetOrgSettings Return Settings for One Organization
 Returns details about the specified organization's settings. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgSettingsApiRequest
 */
 func (a *OrganizationsApiService) GetOrgSettings(ctx context.Context, orgId string) GetOrgSettingsApiRequest {
@@ -1454,7 +1454,7 @@ Returns all pending invitations to the specified organization. To use this resou
 **Note**: Invitation management APIs are deprecated. Use Return All MongoDB Cloud Users in One Organization and filter by `orgMembershipStatus` to return all pending users.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgInvitesApiRequest
 
 Deprecated
@@ -1574,7 +1574,7 @@ func (a *OrganizationsApiService) ListOrgsWithParams(ctx context.Context, args *
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListOrgsApiRequest) IncludeCount(includeCount bool) ListOrgsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1743,7 +1743,7 @@ UpdateOrg Update One Organization
 Updates one organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgApiRequest
 */
 func (a *OrganizationsApiService) UpdateOrg(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) UpdateOrgApiRequest {
@@ -1871,7 +1871,7 @@ Updates the details of one pending invitation to the specified organization. To 
 **Note**: Invitation management APIs are deprecated. Use Update One MongoDB Cloud User in One Organization to update a pending user.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return UpdateOrgInviteByIdApiRequest
 
@@ -2006,7 +2006,7 @@ Updates the details of one pending invitation to the specified organization. To 
 **Note**:  Invitation management are deprecated. Use Update One MongoDB Cloud User in One Organization to update a pending user.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgInvitesApiRequest
 
 Deprecated
@@ -2133,7 +2133,7 @@ UpdateOrgSettings Update Settings for One Organization
 Updates the organization's settings. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgSettingsApiRequest
 */
 func (a *OrganizationsApiService) UpdateOrgSettings(ctx context.Context, orgId string, organizationSettings *OrganizationSettings) UpdateOrgSettingsApiRequest {
@@ -2259,7 +2259,7 @@ UpdateOrgUserRoles Update Organization Roles for One MongoDB Cloud User
 Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization User Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
 	@return UpdateOrgUserRolesApiRequest
 

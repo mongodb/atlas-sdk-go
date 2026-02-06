@@ -4,7 +4,7 @@ package admin
 
 // ServerlessConnectionStringsPrivateEndpointList Private endpoint connection string that you can use to connect to this serverless instance through a private endpoint.
 type ServerlessConnectionStringsPrivateEndpointList struct {
-	// List that contains the private endpoints through which you connect to MongoDB Cloud when you use **connectionStrings.privateEndpoint[n].srvConnectionString**.
+	// List that contains the private endpoints through which you connect to MongoDB Cloud when you use `connectionStrings.privateEndpoint[n].srvConnectionString`.
 	// Read only field.
 	Endpoints *[]ServerlessConnectionStringsPrivateEndpointItem `json:"endpoints,omitempty"`
 	// Private endpoint-aware connection string that uses the `mongodb+srv://` protocol to connect to MongoDB Cloud through a private endpoint. The `mongodb+srv` protocol tells the driver to look up the seed list of hosts in the Domain Name System (DNS).

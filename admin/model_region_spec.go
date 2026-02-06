@@ -4,13 +4,13 @@ package admin
 
 // RegionSpec Physical location where MongoDB Cloud provisions cluster nodes.
 type RegionSpec struct {
-	// Number of analytics nodes in the region. Analytics nodes handle analytic data such as reporting queries from MongoDB Connector for Business Intelligence on MongoDB Cloud. Analytics nodes are read-only, and can never become the primary. Use **replicationSpecs[n].{region}.analyticsNodes** instead.
+	// Number of analytics nodes in the region. Analytics nodes handle analytic data such as reporting queries from MongoDB Connector for Business Intelligence on MongoDB Cloud. Analytics nodes are read-only, and can never become the primary. Use `replicationSpecs[n].{region}.analyticsNodes` instead.
 	AnalyticsNodes *int `json:"analyticsNodes,omitempty"`
-	// Number of electable nodes to deploy in the specified region. Electable nodes can become the primary and can facilitate local reads. Use **replicationSpecs[n].{region}.electableNodes** instead.
+	// Number of electable nodes to deploy in the specified region. Electable nodes can become the primary and can facilitate local reads. Use `replicationSpecs[n].{region}.electableNodes` instead.
 	ElectableNodes *int `json:"electableNodes,omitempty"`
 	// Number that indicates the election priority of the region. To identify the Preferred Region of the cluster, set this parameter to `7`. The primary node runs in the **Preferred Region**. To identify a read-only region, set this parameter to `0`.
 	Priority *int `json:"priority,omitempty"`
-	// Number of read-only nodes in the region. Read-only nodes can never become the primary member, but can facilitate local reads. Use **replicationSpecs[n].{region}.readOnlyNodes** instead.
+	// Number of read-only nodes in the region. Read-only nodes can never become the primary member, but can facilitate local reads. Use `replicationSpecs[n].{region}.readOnlyNodes` instead.
 	ReadOnlyNodes *int `json:"readOnlyNodes,omitempty"`
 }
 

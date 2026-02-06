@@ -15,7 +15,7 @@ type ServerlessInstancesApi interface {
 	/*
 			CreateServerlessInstance Create One Serverless Instance in One Project
 
-			Update as of Feb 2025: This endpoint now creates a Flex cluster instead. This endpoint will no longer be supported starting on January 22, 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect. Please use the createFlexCluster endpoint instead.
+			Update as of Feb 2025: This endpoint now creates a Flex cluster instead. This endpoint will no longer be supported starting on January 22, 2026. Continuous backups are not supported and `serverlessContinuousBackupEnabled` will not take effect. Please use the Create Flex Cluster endpoint instead.
 
 		Creates one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -47,7 +47,7 @@ type ServerlessInstancesApi interface {
 
 			Removes one serverless instance from the specified project. The serverless instance must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-		This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the deleteFlexCluster endpoint instead.
+		This API can also be used on Flex clusters that were created with the [Create Serverless Instance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the Delete Flex Cluster endpoint instead.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -77,7 +77,7 @@ type ServerlessInstancesApi interface {
 
 			Returns details for one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-		This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. This endpoint will be sunset on January 15, 2027. Please use the getFlexCluster endpoint instead.
+		This API can also be used on Flex clusters that were created with the [Create Serverless Instance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. Continuous backups are not supported and `serverlessContinuousBackupEnabled` will not take effect on these clusters. This endpoint will be sunset on January 15, 2027. Please use the Get Flex Cluster endpoint instead.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -107,7 +107,7 @@ type ServerlessInstancesApi interface {
 
 			Returns details for all serverless instances in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-		This endpoint also lists Flex clusters that were created using the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or former Serverless instances that have been migrated to Flex clusters, until January 15, 2026 after which this endpoint will begin returning an empty list. The endpoint will be removed entirely on January 15, 2027. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the listFlexClusters endpoint instead.
+		This endpoint also lists Flex clusters that were created using the [Create Serverless Instance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or former Serverless instances that have been migrated to Flex clusters, until January 15, 2026 after which this endpoint will begin returning an empty list. The endpoint will be removed entirely on January 15, 2027. Continuous backups are not supported and `serverlessContinuousBackupEnabled` will not take effect on these clusters. Please use the List Flex Clusters endpoint instead.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -136,7 +136,7 @@ type ServerlessInstancesApi interface {
 
 			Updates one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-		This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the updateFlexCluster endpoint instead.
+		This API can also be used on Flex clusters that were created with the [Create Serverless Instance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Continuous backups are not supported and `serverlessContinuousBackupEnabled` will not take effect on these clusters. Please use the Update Flex Cluster endpoint instead.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -194,7 +194,7 @@ func (r CreateServerlessInstanceApiRequest) Execute() (*ServerlessInstanceDescri
 /*
 CreateServerlessInstance Create One Serverless Instance in One Project
 
-Update as of Feb 2025: This endpoint now creates a Flex cluster instead. This endpoint will no longer be supported starting on January 22, 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect. Please use the createFlexCluster endpoint instead.
+Update as of Feb 2025: This endpoint now creates a Flex cluster instead. This endpoint will no longer be supported starting on January 22, 2026. Continuous backups are not supported and `serverlessContinuousBackupEnabled` will not take effect. Please use the Create Flex Cluster endpoint instead.
 
 Creates one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -325,7 +325,7 @@ DeleteServerlessInstance Remove One Serverless Instance from One Project
 
 Removes one serverless instance from the specified project. The serverless instance must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the deleteFlexCluster endpoint instead.
+This API can also be used on Flex clusters that were created with the [Create Serverless Instance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Please use the Delete Flex Cluster endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -454,7 +454,7 @@ GetServerlessInstance Return One Serverless Instance from One Project
 
 Returns details for one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. This endpoint will be sunset on January 15, 2027. Please use the getFlexCluster endpoint instead.
+This API can also be used on Flex clusters that were created with the [Create Serverless Instance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. Continuous backups are not supported and `serverlessContinuousBackupEnabled` will not take effect on these clusters. This endpoint will be sunset on January 15, 2027. Please use the Get Flex Cluster endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -580,7 +580,7 @@ func (a *ServerlessInstancesApiService) ListServerlessInstancesWithParams(ctx co
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListServerlessInstancesApiRequest) IncludeCount(includeCount bool) ListServerlessInstancesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -607,7 +607,7 @@ ListServerlessInstances Return All Serverless Instances in One Project
 
 Returns details for all serverless instances in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
-This endpoint also lists Flex clusters that were created using the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or former Serverless instances that have been migrated to Flex clusters, until January 15, 2026 after which this endpoint will begin returning an empty list. The endpoint will be removed entirely on January 15, 2027. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the listFlexClusters endpoint instead.
+This endpoint also lists Flex clusters that were created using the [Create Serverless Instance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or former Serverless instances that have been migrated to Flex clusters, until January 15, 2026 after which this endpoint will begin returning an empty list. The endpoint will be removed entirely on January 15, 2027. Continuous backups are not supported and `serverlessContinuousBackupEnabled` will not take effect on these clusters. Please use the List Flex Clusters endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -754,7 +754,7 @@ UpdateServerlessInstance Update One Serverless Instance in One Project
 
 Updates one serverless instance in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
-This API can also be used on Flex clusters that were created with the [createServerlessInstance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Continuous backups are not supported and serverlessContinuousBackupEnabled will not take effect on these clusters. Please use the updateFlexCluster endpoint instead.
+This API can also be used on Flex clusters that were created with the [Create Serverless Instance](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/createServerlessInstance) endpoint or Flex clusters that were migrated from Serverless instances. This endpoint will be sunset on January 22, 2026. Continuous backups are not supported and `serverlessContinuousBackupEnabled` will not take effect on these clusters. Please use the Update Flex Cluster endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

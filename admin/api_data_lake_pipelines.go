@@ -916,7 +916,7 @@ func (a *DataLakePipelinesApiService) GetAvailablePipelineSnapshotsWithParams(ct
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r GetAvailablePipelineSnapshotsApiRequest) IncludeCount(includeCount bool) GetAvailablePipelineSnapshotsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1366,7 +1366,7 @@ func (a *DataLakePipelinesApiService) ListPipelineRunsWithParams(ctx context.Con
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListPipelineRunsApiRequest) IncludeCount(includeCount bool) ListPipelineRunsApiRequest {
 	r.includeCount = &includeCount
 	return r

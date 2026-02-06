@@ -4,9 +4,9 @@ package admin
 
 // CloudAccessRoleAssignment MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. Each role can apply to one organization or one project but not both.
 type CloudAccessRoleAssignment struct {
-	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. You can set a value for this parameter or **orgId** but not both in the same request.
+	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. You can set a value for this parameter or `orgId` but not both in the same request.
 	GroupId *string `json:"groupId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the organization to which this role belongs. You can set a value for this parameter or **groupId** but not both in the same request.
+	// Unique 24-hexadecimal digit string that identifies the organization to which this role belongs. You can set a value for this parameter or `groupId` but not both in the same request.
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include organization- and project-level roles.
 	RoleName *string `json:"roleName,omitempty"`

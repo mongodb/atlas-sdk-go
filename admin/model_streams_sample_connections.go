@@ -7,7 +7,7 @@ type StreamsSampleConnections struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Flag that indicates whether to add a 'sample_stream_solar' connection.
+	// Flag that indicates whether to add a `sample_stream_solar` connection.
 	Solar *bool `json:"solar,omitempty"`
 }
 

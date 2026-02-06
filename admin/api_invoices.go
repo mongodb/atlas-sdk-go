@@ -19,7 +19,7 @@ type InvoicesApi interface {
 		Creates a query process within the Cost Explorer for the given parameters. A token is returned that can be used to poll the status of the query and eventually retrieve the results.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param costExplorerFilterRequestBody Filter parameters for the Cost Explorer query.
 		@return CreateCostExplorerProcessApiRequest
 	*/
@@ -40,10 +40,10 @@ type InvoicesApi interface {
 	/*
 		GetCostExplorerUsage Return Usage Details for One Cost Explorer Query
 
-		Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response willindicate that another request should be sent later to view the data.
+		Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response will indicate that another request should be sent later to view the data.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param token Unique 64 digit string that identifies the Cost Explorer query.
 		@return GetCostExplorerUsageApiRequest
 	*/
@@ -65,10 +65,10 @@ type InvoicesApi interface {
 			GetInvoice Return One Invoice for One Organization
 
 			Returns one invoice that MongoDB issued to the specified organization. A unique 24-hexadecimal digit string identifies the invoice. You can choose to receive this invoice in JSON or CSV format. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner role.
-		To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
+		To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 			@return GetInvoiceApiRequest
 	*/
@@ -90,10 +90,10 @@ type InvoicesApi interface {
 			GetInvoiceCsv Return One Invoice as CSV for One Organization
 
 			Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting Service Account or API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
-		 To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
+		 To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 			@return GetInvoiceCsvApiRequest
 	*/
@@ -140,7 +140,7 @@ type InvoicesApi interface {
 		Returns all invoices accruing charges for the current billing cycle for the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner Role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return ListInvoicePendingApiRequest
 	*/
 	ListInvoicePending(ctx context.Context, orgId string) ListInvoicePendingApiRequest
@@ -161,10 +161,10 @@ type InvoicesApi interface {
 			ListInvoices Return All Invoices for One Organization
 
 			Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner role.
-		To compute the total owed amount of the invoices - sum up total owed of each invoice. It could be computed as a sum of owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
+		To compute the total owed amount of the invoices - sum up total owed of each invoice. It could be computed as a sum of owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@return ListInvoicesApiRequest
 	*/
 	ListInvoices(ctx context.Context, orgId string) ListInvoicesApiRequest
@@ -206,12 +206,12 @@ type InvoicesApi interface {
 	/*
 		SearchInvoiceLineItems Return All Line Items for One Invoice by Invoice ID
 
-		Query the lineItems of the specified invoice and return the result JSON. A unique 24-hexadecimal digit string identifies the invoice.
+		Query the `lineItems` of the specified invoice and return the result JSON. A unique 24-hexadecimal digit string identifies the invoice.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
-		@param apiPublicUsageDetailsQueryRequest Filter parameters for the lineItems query. Send a request with an empty JSON body to retrieve all line items for a given invoiceID without applying any filters.
+		@param apiPublicUsageDetailsQueryRequest Filter parameters for the `lineItems` query. Send a request with an empty JSON body to retrieve all line items for a given `invoiceID` without applying any filters.
 		@return SearchInvoiceLineItemsApiRequest
 	*/
 	SearchInvoiceLineItems(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *ApiPublicUsageDetailsQueryRequest) SearchInvoiceLineItemsApiRequest
@@ -263,7 +263,7 @@ CreateCostExplorerProcess Create One Cost Explorer Query Process
 Creates a query process within the Cost Explorer for the given parameters. A token is returned that can be used to poll the status of the query and eventually retrieve the results.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateCostExplorerProcessApiRequest
 */
 func (a *InvoicesApiService) CreateCostExplorerProcess(ctx context.Context, orgId string, costExplorerFilterRequestBody *CostExplorerFilterRequestBody) CreateCostExplorerProcessApiRequest {
@@ -383,10 +383,10 @@ func (r GetCostExplorerUsageApiRequest) Execute() (any, *http.Response, error) {
 /*
 GetCostExplorerUsage Return Usage Details for One Cost Explorer Query
 
-Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response willindicate that another request should be sent later to view the data.
+Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response will indicate that another request should be sent later to view the data.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param token Unique 64 digit string that identifies the Cost Explorer query.
 	@return GetCostExplorerUsageApiRequest
 */
@@ -507,10 +507,10 @@ func (r GetInvoiceApiRequest) Execute() (*BillingInvoice, *http.Response, error)
 GetInvoice Return One Invoice for One Organization
 
 Returns one invoice that MongoDB issued to the specified organization. A unique 24-hexadecimal digit string identifies the invoice. You can choose to receive this invoice in JSON or CSV format. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner role.
-To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
+To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	@return GetInvoiceApiRequest
 */
@@ -632,10 +632,10 @@ GetInvoiceCsv Return One Invoice as CSV for One Organization
 
 Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting Service Account or API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
 
-	To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
+	To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	@return GetInvoiceCsvApiRequest
 */
@@ -869,7 +869,7 @@ ListInvoicePending Return All Pending Invoices for One Organization
 Returns all invoices accruing charges for the current billing cycle for the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner Role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListInvoicePendingApiRequest
 */
 func (a *InvoicesApiService) ListInvoicePending(ctx context.Context, orgId string) ListInvoicePendingApiRequest {
@@ -1000,7 +1000,7 @@ func (a *InvoicesApiService) ListInvoicesWithParams(ctx context.Context, args *L
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListInvoicesApiRequest) IncludeCount(includeCount bool) ListInvoicesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1018,7 +1018,7 @@ func (r ListInvoicesApiRequest) PageNum(pageNum int) ListInvoicesApiRequest {
 	return r
 }
 
-// Flag that indicates whether to return linked invoices in the linkedInvoices field.
+// Flag that indicates whether to return linked invoices in the &#x60;linkedInvoices&#x60; field.
 func (r ListInvoicesApiRequest) ViewLinkedInvoices(viewLinkedInvoices bool) ListInvoicesApiRequest {
 	r.viewLinkedInvoices = &viewLinkedInvoices
 	return r
@@ -1030,25 +1030,25 @@ func (r ListInvoicesApiRequest) StatusNames(statusNames []string) ListInvoicesAp
 	return r
 }
 
-// Retrieve the invoices the startDates of which are greater than or equal to the fromDate. If omit, the invoices return will go back to earliest startDate.
+// Retrieve the invoices the &#x60;startDates&#x60; of which are greater than or equal to the &#x60;fromDate&#x60;. If omit, the invoices return will go back to earliest &#x60;startDate&#x60;.
 func (r ListInvoicesApiRequest) FromDate(fromDate string) ListInvoicesApiRequest {
 	r.fromDate = &fromDate
 	return r
 }
 
-// Retrieve the invoices the endDates of which are smaller than or equal to the toDate. If omit, the invoices return will go further to latest endDate.
+// Retrieve the invoices the &#x60;endDates&#x60; of which are smaller than or equal to the &#x60;toDate&#x60;. If omit, the invoices return will go further to latest &#x60;endDate&#x60;.
 func (r ListInvoicesApiRequest) ToDate(toDate string) ListInvoicesApiRequest {
 	r.toDate = &toDate
 	return r
 }
 
-// Field used to sort the returned invoices by. Use in combination with orderBy parameter to control the order of the result.
+// Field used to sort the returned invoices by. Use in combination with &#x60;orderBy&#x60; parameter to control the order of the result.
 func (r ListInvoicesApiRequest) SortBy(sortBy string) ListInvoicesApiRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// Field used to order the returned invoices by. Use in combination of sortBy parameter to control the order of the result.
+// Field used to order the returned invoices by. Use in combination of &#x60;sortBy&#x60; parameter to control the order of the result.
 func (r ListInvoicesApiRequest) OrderBy(orderBy string) ListInvoicesApiRequest {
 	r.orderBy = &orderBy
 	return r
@@ -1062,10 +1062,10 @@ func (r ListInvoicesApiRequest) Execute() (*PaginatedApiInvoiceMetadata, *http.R
 ListInvoices Return All Invoices for One Organization
 
 Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner role.
-To compute the total owed amount of the invoices - sum up total owed of each invoice. It could be computed as a sum of owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
+To compute the total owed amount of the invoices - sum up total owed of each invoice. It could be computed as a sum of owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListInvoicesApiRequest
 */
 func (a *InvoicesApiService) ListInvoices(ctx context.Context, orgId string) ListInvoicesApiRequest {
@@ -1230,7 +1230,7 @@ func (a *InvoicesApiService) ListSkusWithParams(ctx context.Context, args *ListS
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListSkusApiRequest) IncludeCount(includeCount bool) ListSkusApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1408,10 +1408,10 @@ func (r SearchInvoiceLineItemsApiRequest) Execute() (*PaginatedPublicApiUsageDet
 /*
 SearchInvoiceLineItems Return All Line Items for One Invoice by Invoice ID
 
-Query the lineItems of the specified invoice and return the result JSON. A unique 24-hexadecimal digit string identifies the invoice.
+Query the `lineItems` of the specified invoice and return the result JSON. A unique 24-hexadecimal digit string identifies the invoice.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	@return SearchInvoiceLineItemsApiRequest
 */
