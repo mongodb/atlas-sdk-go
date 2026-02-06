@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// AcknowledgeAlert Acknowledging an alert prevents successive notifications. Specify the acknowledgeUntil date and optional comment or unacknowledgeAlert boolean.
+// AcknowledgeAlert Acknowledging an alert prevents successive notifications. Specify the `acknowledgeUntil` date and optional comment or `unacknowledgeAlert` boolean.
 type AcknowledgeAlert struct {
 	// Date and time until which this alert has been acknowledged. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.
 	AcknowledgedUntil *time.Time `json:"acknowledgedUntil,omitempty"`
@@ -15,7 +15,7 @@ type AcknowledgeAlert struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Flag that indicates to unacknowledge a previously acknowledged alert. By default this value is set to false. If set to true, it will override the acknowledgedUntil parameter.
+	// Flag that indicates to unacknowledge a previously acknowledged alert. By default this value is set to false. If set to true, it will override the `acknowledgedUntil` parameter.
 	UnacknowledgeAlert *bool `json:"unacknowledgeAlert,omitempty"`
 }
 

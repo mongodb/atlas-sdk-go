@@ -92,7 +92,7 @@ type ServiceAccountsApi interface {
 		Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@param serviceAccountIPAccessListEntry A list of access list entries to add to the access list of the specified Service Account for the organization.
 		@return CreateOrgAccessListApiRequest
@@ -117,7 +117,7 @@ type ServiceAccountsApi interface {
 		Create a secret for the specified Service Account.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@param serviceAccountSecretRequest Details for the new secret.
 		@return CreateOrgSecretApiRequest
@@ -142,7 +142,7 @@ type ServiceAccountsApi interface {
 		Creates one Service Account for the specified Organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param orgServiceAccountRequest Details of the new Service Account.
 		@return CreateOrgServiceAccountApiRequest
 	*/
@@ -240,7 +240,7 @@ type ServiceAccountsApi interface {
 		Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@param ipAddress One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
 		@return DeleteOrgAccessEntryApiRequest
@@ -267,7 +267,7 @@ type ServiceAccountsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
 		@param secretId Unique 24-hexadecimal digit string that identifies the secret.
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return DeleteOrgSecretApiRequest
 	*/
 	DeleteOrgSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteOrgSecretApiRequest
@@ -291,7 +291,7 @@ type ServiceAccountsApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return DeleteOrgServiceAccountApiRequest
 	*/
 	DeleteOrgServiceAccount(ctx context.Context, clientId string, orgId string) DeleteOrgServiceAccountApiRequest
@@ -338,7 +338,7 @@ type ServiceAccountsApi interface {
 		Returns the specified Service Account.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@return GetOrgServiceAccountApiRequest
 	*/
@@ -362,7 +362,7 @@ type ServiceAccountsApi interface {
 		Returns a list of all projects the specified Service Account is a part of.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@return GetServiceAccountGroupsApiRequest
 	*/
@@ -458,7 +458,7 @@ type ServiceAccountsApi interface {
 		Returns all access list entries that you configured for the specified Service Account for the organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param clientId The Client ID of the Service Account.
 		@return ListOrgAccessListApiRequest
 	*/
@@ -482,7 +482,7 @@ type ServiceAccountsApi interface {
 		Returns all Service Accounts for the specified Organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return ListOrgServiceAccountsApiRequest
 	*/
 	ListOrgServiceAccounts(ctx context.Context, orgId string) ListOrgServiceAccountsApiRequest
@@ -531,7 +531,7 @@ type ServiceAccountsApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param orgServiceAccountUpdateRequest The new details for the Service Account.
 		@return UpdateOrgServiceAccountApiRequest
 	*/
@@ -586,7 +586,7 @@ func (a *ServiceAccountsApiService) CreateAccessListWithParams(ctx context.Conte
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r CreateAccessListApiRequest) IncludeCount(includeCount bool) CreateAccessListApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1021,7 +1021,7 @@ func (a *ServiceAccountsApiService) CreateOrgAccessListWithParams(ctx context.Co
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r CreateOrgAccessListApiRequest) IncludeCount(includeCount bool) CreateOrgAccessListApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1049,7 +1049,7 @@ CreateOrgAccessList Add Access List Entries for One Organization Service Account
 Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
 	@return CreateOrgAccessListApiRequest
 */
@@ -1202,7 +1202,7 @@ CreateOrgSecret Create One Organization Service Account Secret
 Create a secret for the specified Service Account.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
 	@return CreateOrgSecretApiRequest
 */
@@ -1331,7 +1331,7 @@ CreateOrgServiceAccount Create One Organization Service Account
 Creates one Service Account for the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrgServiceAccountApiRequest
 */
 func (a *ServiceAccountsApiService) CreateOrgServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *OrgServiceAccountRequest) CreateOrgServiceAccountApiRequest {
@@ -1793,7 +1793,7 @@ DeleteOrgAccessEntry Remove One Access List Entry from One Organization Service 
 Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
 	@param ipAddress One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
 	@return DeleteOrgAccessEntryApiRequest
@@ -1910,7 +1910,7 @@ Deletes the specified Service Account secret.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
 	@param secretId Unique 24-hexadecimal digit string that identifies the secret.
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return DeleteOrgSecretApiRequest
 */
 func (a *ServiceAccountsApiService) DeleteOrgSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteOrgSecretApiRequest {
@@ -2021,7 +2021,7 @@ Deletes the specified Service Account.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return DeleteOrgServiceAccountApiRequest
 */
 func (a *ServiceAccountsApiService) DeleteOrgServiceAccount(ctx context.Context, clientId string, orgId string) DeleteOrgServiceAccountApiRequest {
@@ -2249,7 +2249,7 @@ GetOrgServiceAccount Return One Organization Service Account
 Returns the specified Service Account.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
 	@return GetOrgServiceAccountApiRequest
 */
@@ -2390,7 +2390,7 @@ GetServiceAccountGroups Return All Service Account Project Assignments
 Returns a list of all projects the specified Service Account is a part of.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
 	@return GetServiceAccountGroupsApiRequest
 */
@@ -2658,7 +2658,7 @@ func (a *ServiceAccountsApiService) ListAccessListWithParams(ctx context.Context
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListAccessListApiRequest) IncludeCount(includeCount bool) ListAccessListApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -2975,7 +2975,7 @@ func (a *ServiceAccountsApiService) ListOrgAccessListWithParams(ctx context.Cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListOrgAccessListApiRequest) IncludeCount(includeCount bool) ListOrgAccessListApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -3003,7 +3003,7 @@ ListOrgAccessList Return All Access List Entries for One Organization Service Ac
 Returns all access list entries that you configured for the specified Service Account for the organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param clientId The Client ID of the Service Account.
 	@return ListOrgAccessListApiRequest
 */
@@ -3162,7 +3162,7 @@ ListOrgServiceAccounts Return All Organization Service Accounts
 Returns all Service Accounts for the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgServiceAccountsApiRequest
 */
 func (a *ServiceAccountsApiService) ListOrgServiceAccounts(ctx context.Context, orgId string) ListOrgServiceAccountsApiRequest {
@@ -3429,7 +3429,7 @@ Updates the specified Service Account in the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgServiceAccountApiRequest
 */
 func (a *ServiceAccountsApiService) UpdateOrgServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest) UpdateOrgServiceAccountApiRequest {
