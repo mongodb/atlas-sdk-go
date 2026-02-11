@@ -389,7 +389,8 @@
                 "type": "string",
                 "enum": ["AWS", "GCP", "AZURE"]
               }
-            }
+            },
+            "required": ["backingProviderName"]
           }
         ],
         "title": "Tenant Regional Replication Specifications"

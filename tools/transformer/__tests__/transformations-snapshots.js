@@ -153,4 +153,43 @@ module.exports = {
   },
 }
 `,
+  DiscriminatorExtension: `
+{
+  "mapping": {
+    "AWS": {
+      "properties": [
+        "analyticsAutoScaling",
+        "analyticsSpecs",
+        "autoScaling",
+        "readOnlySpecs",
+      ],
+    },
+    "AZURE": {
+      "properties": [
+        "analyticsAutoScaling",
+        "analyticsSpecs",
+        "autoScaling",
+        "readOnlySpecs",
+      ],
+    },
+    "GCP": {
+      "properties": [
+        "analyticsAutoScaling",
+        "analyticsSpecs",
+        "autoScaling",
+        "readOnlySpecs",
+      ],
+    },
+    "TENANT": {
+      "properties": [
+        "backingProviderName",
+      ],
+      "required": [
+        "backingProviderName",
+      ],
+    },
+  },
+  "propertyName": "providerName",
+}
+`,
 };

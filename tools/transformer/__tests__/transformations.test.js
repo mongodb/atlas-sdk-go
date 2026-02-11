@@ -30,6 +30,21 @@ test("Transform oneOf model", () => {
   ).toMatchInlineSnapshot(cases.PropertiesOneOf);
 });
 
+test("Transform oneOf model with discriminator emits x-xgen-discriminator extension", () => {
+  transformOneOf(".components.schemas.ApiAtlasRegionConfigView", api);
+  const result = api.components.schemas.ApiAtlasRegionConfigView;
+
+  // Extension is present and discriminator/oneOf are removed
+  expect(result["x-xgen-discriminator"]).toBeDefined();
+  expect(result.discriminator).toBeUndefined();
+  expect(result.oneOf).toBeUndefined();
+
+  // Snapshot the full extension
+  expect(result["x-xgen-discriminator"]).toMatchInlineSnapshot(
+    cases.DiscriminatorExtension,
+  );
+});
+
 test("Transform AllOf model", () => {
   transformAllOf(".components.schemas.ApiAtlasRegionConfigView", api);
   expect(api.components.schemas.ApiAtlasRegionConfigView).toMatchInlineSnapshot(
