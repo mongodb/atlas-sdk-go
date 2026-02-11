@@ -130,9 +130,7 @@ function buildDiscriminatorExtension(parentObject, api) {
   }
 
   const propertyName = discriminator.propertyName;
-  const basePropertyNames = new Set(
-    Object.keys(parentObject.properties || {}),
-  );
+  const basePropertyNames = new Set(Object.keys(parentObject.properties || {}));
 
   const mapping = {};
   for (const [discriminatorValue, refString] of Object.entries(
