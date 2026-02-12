@@ -87,7 +87,7 @@ function transformOneOfEnum(parentObject, api) {
 function collectAllProperties(childObject, api) {
   let properties = {};
   if (childObject.properties) {
-    properties = { ...properties, ...childObject.properties };
+    properties = { ...childObject.properties };
   }
   if (childObject.allOf) {
     for (const allOfItem of childObject.allOf) {
@@ -95,7 +95,7 @@ function collectAllProperties(childObject, api) {
         ? getObjectFromReference(allOfItem, api)
         : allOfItem;
       if (resolved && resolved.properties) {
-        properties = { ...properties, ...resolved.properties };
+        Object.assign(properties, resolved.properties);
       }
     }
   }
