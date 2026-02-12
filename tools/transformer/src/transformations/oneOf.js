@@ -82,8 +82,95 @@ function transformOneOfEnum(parentObject, api) {
   delete parentObject.oneOf;
 }
 
+// Collects all properties from a child schema, resolving $ref entries in allOf.
+// This is needed because at the time oneOf runs, children still have their allOf structure.
+function collectAllProperties(childObject, api) {
+  let properties = {};
+  if (childObject.properties) {
+    properties = { ...childObject.properties };
+  }
+  if (childObject.allOf) {
+    for (const allOfItem of childObject.allOf) {
+      const resolved = allOfItem.$ref
+        ? getObjectFromReference(allOfItem, api)
+        : allOfItem;
+      if (resolved && resolved.properties) {
+        Object.assign(properties, resolved.properties);
+      }
+    }
+  }
+  return properties;
+}
+
+// Collects all required arrays from a child schema, resolving $ref entries in allOf.
+function collectAllRequired(childObject, api) {
+  const required = new Set();
+  if (childObject.required) {
+    childObject.required.forEach((r) => required.add(r));
+  }
+  if (childObject.allOf) {
+    for (const allOfItem of childObject.allOf) {
+      const resolved = allOfItem.$ref
+        ? getObjectFromReference(allOfItem, api)
+        : allOfItem;
+      if (resolved && resolved.required) {
+        resolved.required.forEach((r) => required.add(r));
+      }
+    }
+  }
+  return required;
+}
+
+// Builds the x-xgen-discriminator extension object from the parent's discriminator metadata.
+// Returns null if the parent has no discriminator with propertyName and mapping.
+function buildDiscriminatorExtension(parentObject, api) {
+  const discriminator = parentObject.discriminator;
+  if (!discriminator || !discriminator.propertyName || !discriminator.mapping) {
+    return null;
+  }
+
+  const propertyName = discriminator.propertyName;
+  const basePropertyNames = new Set(Object.keys(parentObject.properties || {}));
+
+  const mapping = {};
+  for (const [discriminatorValue, refString] of Object.entries(
+    discriminator.mapping,
+  )) {
+    const childObject = getObjectFromReference({ $ref: refString }, api);
+    if (!childObject) {
+      console.warn(
+        `Warning: could not resolve child reference ${refString} for discriminator value ${discriminatorValue}. Skipping.`,
+      );
+      continue;
+    }
+
+    const allChildProperties = collectAllProperties(childObject, api);
+    // Filter out base properties to find type-specific ones
+    const typeSpecificProperties = Object.keys(allChildProperties).filter(
+      (prop) => !basePropertyNames.has(prop),
+    );
+
+    const allChildRequired = collectAllRequired(childObject, api);
+    const typeSpecificRequired = typeSpecificProperties.filter(
+      (prop) => prop !== propertyName && allChildRequired.has(prop),
+    );
+
+    const entry = { properties: typeSpecificProperties };
+    if (typeSpecificRequired.length > 0) {
+      entry.required = typeSpecificRequired;
+    }
+    mapping[discriminatorValue] = entry;
+  }
+
+  return { propertyName, mapping };
+}
+
 // Moves all the properties of the children into the parent
 function transformOneOfProperties(parentObject, api) {
+  // Capture discriminator metadata before it gets deleted
+  // Enables terraform auto-generation to support plan-phase validations of required and allowed properties associated to each type
+  const discriminatorExtension = buildDiscriminatorExtension(parentObject, api);
+
   const childObjects = parentObject.oneOf.map((childRef) =>
     getObjectFromReference(childRef, api),
   );
@@ -121,6 +208,11 @@ function transformOneOfProperties(parentObject, api) {
       ...parentObject.properties,
       ...childProperties,
     };
+  }
+
+  // Emit discriminator extension before cleanup
+  if (discriminatorExtension) {
+    parentObject["x-xgen-discriminator"] = discriminatorExtension;
   }
 
   // Remove invalid fields
