@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Solar** | Pointer to **bool** | Flag that indicates whether to add a &#39;sample_stream_solar&#39; connection. | [optional] [default to false]
+**Solar** | Pointer to **bool** | Flag that indicates whether to add a &#x60;sample_stream_solar&#x60; connection. | [optional] [default to false]
 
 ## Methods
 

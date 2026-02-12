@@ -384,7 +384,7 @@ func (a *FlexSnapshotsApiService) ListFlexBackupSnapshotsWithParams(ctx context.
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListFlexBackupSnapshotsApiRequest) IncludeCount(includeCount bool) ListFlexBackupSnapshotsApiRequest {
 	r.includeCount = &includeCount
 	return r

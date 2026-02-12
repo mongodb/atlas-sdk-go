@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConnectionId** | Pointer to **string** | Reserved. Will be used by PRIVATE_LINK connection type. | [optional] 
+**ConnectionId** | Pointer to **string** | Reserved. Will be used by &#x60;PRIVATE_LINK&#x60; connection type. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Name** | Pointer to **string** | Reserved. Will be used by PRIVATE_LINK connection type. | [optional] 
-**TgwRouteId** | Pointer to **string** | Reserved. Will be used by TRANSIT_GATEWAY connection type. | [optional] 
-**Type** | Pointer to **string** | Selected networking type. Either PUBLIC, VPC, PRIVATE_LINK, or TRANSIT_GATEWAY. Defaults to PUBLIC. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. TRANSIT_GATEWAY support is coming soon. | [optional] 
+**Name** | Pointer to **string** | Reserved. Will be used by &#x60;PRIVATE_LINK&#x60; connection type. | [optional] 
+**TgwRouteId** | Pointer to **string** | Reserved. Will be used by &#x60;TRANSIT_GATEWAY&#x60; connection type. | [optional] 
+**Type** | Pointer to **string** | Selected networking type. Either &#x60;PUBLIC&#x60;, &#x60;VPC&#x60;, &#x60;PRIVATE_LINK&#x60;, or &#x60;TRANSIT_GATEWAY&#x60;. Defaults to &#x60;PUBLIC&#x60;. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. &#x60;TRANSIT_GATEWAY&#x60; support is coming soon. | [optional] 
 
 ## Methods
 

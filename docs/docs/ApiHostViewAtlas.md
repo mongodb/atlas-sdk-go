@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Port** | Pointer to **int** | Internet Assigned Numbers Authority (IANA) port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label that identifies the replica set that contains this process. This resource returns this parameter if this process belongs to a replica set. | [optional] [readonly] 
 **ShardName** | Pointer to **string** | Human-readable label that identifies the shard that contains this process. This resource returns this value only if this process belongs to a sharded cluster. | [optional] [readonly] 
-**TypeName** | Pointer to **string** | Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud returns new processes as **NO_DATA** until MongoDB Cloud completes deploying the process. | [optional] [readonly] 
+**TypeName** | Pointer to **string** | Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud returns new processes as &#x60;NO_DATA&#x60; until MongoDB Cloud completes deploying the process. | [optional] [readonly] 
 **UserAlias** | Pointer to **string** | Human-readable label that identifies the cluster node. MongoDB Cloud sets this hostname usually to the standard hostname for the cluster node. It appears in the connection string for a cluster instead of the value of the hostname parameter. | [optional] [readonly] 
 **Version** | Pointer to **string** | Version of MongoDB that this process runs. | [optional] [readonly] 
 

@@ -9,6 +9,9 @@ type StreamsConnection struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
 	Name *string `json:"name,omitempty"`
+	// The connection's region.
+	// Read only field.
+	Region *string `json:"region,omitempty"`
 	// The state of the connection.
 	// Read only field.
 	State *string `json:"state,omitempty"`
@@ -28,7 +31,7 @@ type StreamsConnection struct {
 	Security   *StreamsKafkaSecurity   `json:"security,omitempty"`
 	// A map of key-value pairs that will be passed as headers for the request.
 	Headers *map[string]string `json:"headers,omitempty"`
-	// The url to be used for the request.
+	// The URL to be used for the request.
 	Url *string                     `json:"url,omitempty"`
 	Aws *StreamsAWSConnectionConfig `json:"aws,omitempty"`
 	// The Schema Registry provider.
@@ -119,6 +122,39 @@ func (o *StreamsConnection) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *StreamsConnection) SetName(v string) {
 	o.Name = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise
+func (o *StreamsConnection) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *StreamsConnection) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *StreamsConnection) SetRegion(v string) {
+	o.Region = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise

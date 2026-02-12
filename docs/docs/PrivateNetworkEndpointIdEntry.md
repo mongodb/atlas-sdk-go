@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AzureLinkId** | Pointer to **string** | Link ID that identifies the Azure private endpoint connection. | [optional] 
 **Comment** | Pointer to **string** | Human-readable string to associate with this private endpoint. | [optional] 
-**CustomerEndpointDNSName** | Pointer to **string** | Human-readable label to identify customer&#39;s VPC endpoint DNS name. If defined, you must also specify a value for **region**. | [optional] 
+**CustomerEndpointDNSName** | Pointer to **string** | Human-readable label to identify customer&#39;s VPC endpoint DNS name. If defined, you must also specify a value for &#x60;region&#x60;. | [optional] 
 **CustomerEndpointIPAddress** | Pointer to **string** | IP address used to connect to the Azure private endpoint. | [optional] 
 **EndpointId** | **string** | Unique 22-character alphanumeric string that identifies the private endpoint. | 
 **ErrorMessage** | Pointer to **string** | Error message describing a failure approving the private endpoint request. | [optional] 
 **Provider** | Pointer to **string** | Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services only. | [optional] [default to "AWS"]
-**Region** | Pointer to **string** | Human-readable label to identify the region of customer&#39;s VPC endpoint. If defined, you must also specify a value for **customerEndpointDNSName**. | [optional] 
+**Region** | Pointer to **string** | Human-readable label to identify the region of customer&#39;s VPC endpoint. If defined, you must also specify a value for &#x60;customerEndpointDNSName&#x60;. | [optional] 
 **Status** | Pointer to **string** | Status of the private endpoint connection request. | [optional] 
 **Type** | Pointer to **string** | Human-readable label that identifies the resource type associated with this private endpoint. | [optional] [default to "DATA_LAKE"]
 

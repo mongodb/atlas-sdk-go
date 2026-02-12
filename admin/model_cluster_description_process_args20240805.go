@@ -26,7 +26,7 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	OplogMinRetentionHours *float64 `json:"oplogMinRetentionHours,omitempty"`
 	// Storage limit of cluster's oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates.
 	OplogSizeMB *int `json:"oplogSizeMB,omitempty"`
-	// May be set to 1 (disabled) or 3 (enabled). When set to 3, Atlas will include redacted and anonymized $queryStats output in MongoDB logs. $queryStats output does not contain literals or field values. Enabling this setting might impact the performance of your cluster.
+	// May be set to 1 (disabled) or 3 (enabled). When set to 3, Atlas will include redacted and anonymized `$queryStats` output in MongoDB logs. `$queryStats` output does not contain literals or field values. Enabling this setting might impact the performance of your cluster.
 	QueryStatsLogVerbosity *int `json:"queryStatsLogVerbosity,omitempty"`
 	// Interval in seconds at which the mongosqld process re-samples data to create its relational schema.
 	SampleRefreshIntervalBIConnector *int `json:"sampleRefreshIntervalBIConnector,omitempty"`
@@ -34,7 +34,7 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	SampleSizeBIConnector *int `json:"sampleSizeBIConnector,omitempty"`
 	// The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
 	TlsCipherConfigMode *string `json:"tlsCipherConfigMode,omitempty"`
-	// Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process.
+	// Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic clean-up process.
 	TransactionLifetimeLimitSeconds *int64 `json:"transactionLifetimeLimitSeconds,omitempty"`
 }
 

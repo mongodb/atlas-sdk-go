@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **IamAssumedRoleARN** | Pointer to **string** | Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that the data lake assumes when accessing data stores. | [optional] [readonly] 
 **IamUserARN** | Pointer to **string** | Amazon Resource Name (ARN) of the user that the data lake assumes when accessing data stores. | [optional] [readonly] 
 **RoleId** | **string** | Unique identifier of the role that the data lake can use to access the data stores.Required if specifying cloudProviderConfig. | 
-**TestS3Bucket** | **string** | Name of the S3 data bucket that the provided role ID is authorized to access.Required if specifying cloudProviderConfig. | 
+**TestS3Bucket** | **string** | Name of the S3 data bucket that the provided role ID is authorized to access. Required if specifying &#x60;cloudProviderConfig&#x60;. | 
 
 ## Methods
 

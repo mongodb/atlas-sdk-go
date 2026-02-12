@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Analyzer** | **string** | Specific pre-defined method chosen to apply to the synonyms to be searched. | 
-**Name** | **string** | Label that identifies the synonym definition. Each **synonym.name** must be unique within the same index definition. | 
+**Name** | **string** | Label that identifies the synonym definition. Each &#x60;synonym.name&#x60; must be unique within the same index definition. | 
 **Source** | [**SynonymSource**](SynonymSource.md) |  | 
 
 ## Methods

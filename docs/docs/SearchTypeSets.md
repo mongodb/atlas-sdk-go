@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Label that identifies the type set name. Each **typeSets.name** must be unique within the same index definition. | 
-**Types** | Pointer to [**[]any**](any.md) | List of types associated with the type set. Each type definition must include a \&quot;type\&quot; field specifying the search field type (\&quot;autocomplete\&quot;, \&quot;boolean\&quot;, \&quot;date\&quot;, \&quot;geo\&quot;, \&quot;number\&quot;, \&quot;objectId\&quot;, \&quot;string\&quot;, \&quot;token\&quot;, or \&quot;uuid\&quot;) and may include additional configuration properties specific to that type. | [optional] 
+**Name** | **string** | Label that identifies the type set name. Each &#x60;typeSets.name&#x60; must be unique within the same index definition. | 
+**Types** | Pointer to [**[]any**](any.md) | List of types associated with the type set. Each type definition must include a &#x60;type&#x60; field specifying the search field type (&#x60;autocomplete&#x60;, &#x60;boolean&#x60;, &#x60;date&#x60;, &#x60;geo&#x60;, &#x60;number&#x60;, &#x60;objectId&#x60;, &#x60;string&#x60;, &#x60;token&#x60;, or &#x60;uuid&#x60;) and may include additional configuration properties specific to that type. | [optional] 
 
 ## Methods
 

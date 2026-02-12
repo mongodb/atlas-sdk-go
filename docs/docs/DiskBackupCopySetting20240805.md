@@ -5,10 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores the snapshot copy. | [optional] 
-**Frequencies** | Pointer to **[]string** | List that defines which snapshots to copy and their retention. | [optional] 
-**RegionName** | Pointer to **string** | Target region to copy snapshots belonging to zoneId. Please supply the &#39;Atlas Region&#39;. | [optional] 
+**CopyPolicyItems** | Pointer to [**[]DiskBackupCopyPolicyItem**](DiskBackupCopyPolicyItem.md) | List that contains a document for each copy policy item. Allowed only when &#x60;copyPolicyItemsEnabled&#x60; is true. Responses omit this field when &#x60;copyPolicyItemsEnabled&#x60; is false or omitted. | [optional] 
+**Frequencies** | Pointer to **[]string** | Deprecated: use &#x60;copyPolicyItems&#x60;, which defines which snapshots to copy and their retention. Allowed only when &#x60;copyPolicyItemsEnabled&#x60; is false or omitted. Responses omit this field when &#x60;copyPolicyItemsEnabled&#x60; is true. | [optional] 
+**LastNumberOfSnapshots** | Pointer to **int** | Number of most recent snapshots to copy to the target region. If specified, Atlas copies this number of the most recent snapshots rather than using a frequency-based or policy-based copy schedule. This field is mutually exclusive with &#x60;frequencies&#x60; and &#x60;copyPolicyItems&#x60;. | [optional] 
+**RegionName** | Pointer to **string** | Target region to copy snapshots belonging to &#x60;zoneId&#x60;. Please supply the &#39;Atlas Region&#39;. | [optional] 
 **ShouldCopyOplogs** | Pointer to **bool** | Flag that indicates whether to copy the oplogs to the target region. You can use the oplogs to perform point-in-time restores. | [optional] 
-**ZoneId** | **string** | Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the replicationSpecs array. | 
+**ZoneId** | **string** | Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the &#x60;replicationSpecs&#x60; array. | 
 
 ## Methods
 
@@ -53,6 +55,30 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *DiskBackupCopySetting20240805) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+### GetCopyPolicyItems
+
+`func (o *DiskBackupCopySetting20240805) GetCopyPolicyItems() []DiskBackupCopyPolicyItem`
+
+GetCopyPolicyItems returns the CopyPolicyItems field if non-nil, zero value otherwise.
+
+### GetCopyPolicyItemsOk
+
+`func (o *DiskBackupCopySetting20240805) GetCopyPolicyItemsOk() (*[]DiskBackupCopyPolicyItem, bool)`
+
+GetCopyPolicyItemsOk returns a tuple with the CopyPolicyItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCopyPolicyItems
+
+`func (o *DiskBackupCopySetting20240805) SetCopyPolicyItems(v []DiskBackupCopyPolicyItem)`
+
+SetCopyPolicyItems sets CopyPolicyItems field to given value.
+
+### HasCopyPolicyItems
+
+`func (o *DiskBackupCopySetting20240805) HasCopyPolicyItems() bool`
+
+HasCopyPolicyItems returns a boolean if a field has been set.
 ### GetFrequencies
 
 `func (o *DiskBackupCopySetting20240805) GetFrequencies() []string`
@@ -77,6 +103,30 @@ SetFrequencies sets Frequencies field to given value.
 `func (o *DiskBackupCopySetting20240805) HasFrequencies() bool`
 
 HasFrequencies returns a boolean if a field has been set.
+### GetLastNumberOfSnapshots
+
+`func (o *DiskBackupCopySetting20240805) GetLastNumberOfSnapshots() int`
+
+GetLastNumberOfSnapshots returns the LastNumberOfSnapshots field if non-nil, zero value otherwise.
+
+### GetLastNumberOfSnapshotsOk
+
+`func (o *DiskBackupCopySetting20240805) GetLastNumberOfSnapshotsOk() (*int, bool)`
+
+GetLastNumberOfSnapshotsOk returns a tuple with the LastNumberOfSnapshots field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastNumberOfSnapshots
+
+`func (o *DiskBackupCopySetting20240805) SetLastNumberOfSnapshots(v int)`
+
+SetLastNumberOfSnapshots sets LastNumberOfSnapshots field to given value.
+
+### HasLastNumberOfSnapshots
+
+`func (o *DiskBackupCopySetting20240805) HasLastNumberOfSnapshots() bool`
+
+HasLastNumberOfSnapshots returns a boolean if a field has been set.
 ### GetRegionName
 
 `func (o *DiskBackupCopySetting20240805) GetRegionName() string`

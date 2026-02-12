@@ -4,7 +4,7 @@ package admin
 
 // FlexConnectionStrings20241113 Collection of Uniform Resource Locators that point to the MongoDB database.
 type FlexConnectionStrings20241113 struct {
-	// Public connection string that you can use to connect to this cluster. This connection string uses the mongodb:// protocol.
+	// Public connection string that you can use to connect to this cluster. This connection string uses the `mongodb://` protocol.
 	// Read only field.
 	Standard *string `json:"standard,omitempty"`
 	// Public connection string that you can use to connect to this flex cluster. This connection string uses the `mongodb+srv://` protocol.

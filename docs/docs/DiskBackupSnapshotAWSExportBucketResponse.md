@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IamRoleId** | **string** | Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Region** | Pointer to **string** | AWS region for the export bucket. This is set by Atlas and is never user-supplied. | [optional] [readonly] 
-**RequirePrivateNetworking** | Pointer to **bool** | Indicates whether to use privatelink. User supplied. | [optional] 
+**RequirePrivateNetworking** | Pointer to **bool** | Indicates whether to use private link. User supplied. | [optional] 
 
 ## Methods
 

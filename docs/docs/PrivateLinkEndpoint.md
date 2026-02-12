@@ -13,8 +13,10 @@ Name | Type | Description | Notes
 **PrivateEndpointIPAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] 
 **PrivateEndpointResourceId** | Pointer to **string** | Unique string that identifies the Azure private endpoint&#39;s network interface that someone added to this private endpoint service. | [optional] [readonly] 
 **Status** | Pointer to **string** | State of the Google Cloud network endpoint group when MongoDB Cloud received this request. | [optional] [readonly] 
-**EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. | [optional] [readonly] 
-**Endpoints** | Pointer to [**[]GCPConsumerForwardingRule**](GCPConsumerForwardingRule.md) | List of individual private endpoints that comprise this endpoint group. | [optional] [readonly] 
+**EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. If this private endpoint belongs to a port-mapped endpoint service, this field is the private endpoint name. | [optional] [readonly] 
+**Endpoints** | Pointer to [**[]GCPConsumerForwardingRule**](GCPConsumerForwardingRule.md) | List of individual private endpoints that comprise this endpoint group. If this endpoint belongs to a port-mapped endpoint service, this field will only contain a list of one private endpoint. | [optional] [readonly] 
+**GcpProjectId** | Pointer to **string** | Unique string that identifies the Google Cloud project in which you created the endpoints. | [optional] [readonly] 
+**PortMappingEnabled** | Pointer to **bool** | Flag that indicates whether the endpoint service for this endpoint group uses PSC port-mapping. | [optional] 
 
 ## Methods
 
@@ -294,6 +296,54 @@ SetEndpoints sets Endpoints field to given value.
 `func (o *PrivateLinkEndpoint) HasEndpoints() bool`
 
 HasEndpoints returns a boolean if a field has been set.
+### GetGcpProjectId
+
+`func (o *PrivateLinkEndpoint) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *PrivateLinkEndpoint) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *PrivateLinkEndpoint) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *PrivateLinkEndpoint) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
+### GetPortMappingEnabled
+
+`func (o *PrivateLinkEndpoint) GetPortMappingEnabled() bool`
+
+GetPortMappingEnabled returns the PortMappingEnabled field if non-nil, zero value otherwise.
+
+### GetPortMappingEnabledOk
+
+`func (o *PrivateLinkEndpoint) GetPortMappingEnabledOk() (*bool, bool)`
+
+GetPortMappingEnabledOk returns a tuple with the PortMappingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPortMappingEnabled
+
+`func (o *PrivateLinkEndpoint) SetPortMappingEnabled(v bool)`
+
+SetPortMappingEnabled sets PortMappingEnabled field to given value.
+
+### HasPortMappingEnabled
+
+`func (o *PrivateLinkEndpoint) HasPortMappingEnabled() bool`
+
+HasPortMappingEnabled returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

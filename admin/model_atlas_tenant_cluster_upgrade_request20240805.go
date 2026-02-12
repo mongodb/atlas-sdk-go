@@ -8,7 +8,7 @@ import (
 
 // AtlasTenantClusterUpgradeRequest20240805 Request containing target state of tenant cluster to be upgraded.
 type AtlasTenantClusterUpgradeRequest20240805 struct {
-	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set `acceptDataRisksAndForceReplicaSetReconfig` to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                            `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
 	AdvancedConfiguration                     *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
@@ -16,7 +16,7 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
 	ClusterType *string `json:"clusterType,omitempty"`
-	// Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+	// Config Server Management Mode for creating or updating a sharded cluster. When configured as `ATLAS_MANAGED`, Atlas may automatically switch the cluster's config server type for optimal performance and savings. When configured as `FIXED_TO_DEDICATED`, the cluster will always use a dedicated config server.
 	ConfigServerManagementMode *string `json:"configServerManagementMode,omitempty"`
 	// Describes a sharded cluster's config server type.
 	// Read only field.
@@ -27,7 +27,10 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
-	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
+	// List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
+	// Read only field.
+	EffectiveReplicationSpecs *[]ReplicationSpec20240805 `json:"effectiveReplicationSpecs,omitempty"`
+	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Feature compatibility version of the cluster. This will always appear regardless of whether FCV is pinned.
 	// Read only field.
@@ -43,7 +46,7 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// Internal classification of the cluster's role. Possible values: NONE (regular user cluster), SYSTEM_CLUSTER (system cluster for backup), INTERNAL_SHADOW_CLUSTER (internal use shadow cluster for testing).
+	// Internal classification of the cluster's role. Possible values: `NONE` (regular user cluster), `SYSTEM_CLUSTER` (system cluster for backup), `INTERNAL_SHADOW_CLUSTER` (internal use shadow cluster for testing).
 	// Read only field.
 	InternalClusterRole *string `json:"internalClusterRole,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
@@ -66,7 +69,7 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// Enable or disable log redaction.  This setting configures the ``mongod`` or ``mongos`` to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.  Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.  *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated.
 	RedactClientLogData *bool `json:"redactClientLogData,omitempty"`
-	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
 	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
 	// List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations.
 	ReplicationSpecs *[]ReplicationSpec20240805 `json:"replicationSpecs,omitempty"`
@@ -83,7 +86,7 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Flag that indicates whether AWS time-based snapshot copies will be used instead of slower standard snapshot copies during fast Atlas cross-region initial syncs. This flag is only relevant for clusters containing AWS nodes.
 	UseAwsTimeBasedSnapshotCopyForFastInitialSync *bool `json:"useAwsTimeBasedSnapshotCopyForFastInitialSync,omitempty"`
-	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
+	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`.
 	VersionReleaseSystem *string `json:"versionReleaseSystem,omitempty"`
 }
 
@@ -469,6 +472,39 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) HasDiskWarmingMode() bool {
 // SetDiskWarmingMode gets a reference to the given string and assigns it to the DiskWarmingMode field.
 func (o *AtlasTenantClusterUpgradeRequest20240805) SetDiskWarmingMode(v string) {
 	o.DiskWarmingMode = &v
+}
+
+// GetEffectiveReplicationSpecs returns the EffectiveReplicationSpecs field value if set, zero value otherwise
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveReplicationSpecs() []ReplicationSpec20240805 {
+	if o == nil || IsNil(o.EffectiveReplicationSpecs) {
+		var ret []ReplicationSpec20240805
+		return ret
+	}
+	return *o.EffectiveReplicationSpecs
+}
+
+// GetEffectiveReplicationSpecsOk returns a tuple with the EffectiveReplicationSpecs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveReplicationSpecsOk() (*[]ReplicationSpec20240805, bool) {
+	if o == nil || IsNil(o.EffectiveReplicationSpecs) {
+		return nil, false
+	}
+
+	return o.EffectiveReplicationSpecs, true
+}
+
+// HasEffectiveReplicationSpecs returns a boolean if a field has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasEffectiveReplicationSpecs() bool {
+	if o != nil && !IsNil(o.EffectiveReplicationSpecs) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveReplicationSpecs gets a reference to the given []ReplicationSpec20240805 and assigns it to the EffectiveReplicationSpecs field.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetEffectiveReplicationSpecs(v []ReplicationSpec20240805) {
+	o.EffectiveReplicationSpecs = &v
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise

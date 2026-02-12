@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project to which this role belongs. Each element within **roleAssignments** can have a value for **groupId** or **orgId**, but not both. | [optional] 
-**OrgId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization to which this role belongs. Each element within **roleAssignments** can have a value for **orgId** or **groupId**, but not both. | [optional] 
+**GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project to which this role belongs. Each element within &#x60;roleAssignments&#x60; can have a value for &#x60;groupId&#x60; or &#x60;orgId&#x60;, but not both. | [optional] 
+**OrgId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization to which this role belongs. Each element within &#x60;roleAssignments&#x60; can have a value for &#x60;orgId&#x60; or &#x60;groupId&#x60;, but not both. | [optional] 
 **Role** | Pointer to **string** | Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include organization- and project-level roles. | [optional] 
 
 ## Methods

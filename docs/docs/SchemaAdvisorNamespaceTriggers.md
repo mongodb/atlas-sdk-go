@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Namespace** | Pointer to **string** | Namespace of the affected collection. Will be null for REDUCE_NUMBER_OF_NAMESPACE recommendation. | [optional] [readonly] 
+**Namespace** | Pointer to **string** | Namespace of the affected collection. Will be null for &#x60;REDUCE_NUMBER_OF_NAMESPACE&#x60; recommendation. | [optional] [readonly] 
 **Triggers** | Pointer to [**[]SchemaAdvisorTriggerDetails**](SchemaAdvisorTriggerDetails.md) | List of triggers that specify why the collection activated the recommendation. | [optional] [readonly] 
 
 ## Methods

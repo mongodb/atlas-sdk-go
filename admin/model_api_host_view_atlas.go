@@ -35,7 +35,7 @@ type ApiHostViewAtlas struct {
 	// Human-readable label that identifies the shard that contains this process. This resource returns this value only if this process belongs to a sharded cluster.
 	// Read only field.
 	ShardName *string `json:"shardName,omitempty"`
-	// Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud returns new processes as **NO_DATA** until MongoDB Cloud completes deploying the process.
+	// Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud returns new processes as `NO_DATA` until MongoDB Cloud completes deploying the process.
 	// Read only field.
 	TypeName *string `json:"typeName,omitempty"`
 	// Human-readable label that identifies the cluster node. MongoDB Cloud sets this hostname usually to the standard hostname for the cluster node. It appears in the connection string for a cluster instead of the value of the hostname parameter.

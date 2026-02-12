@@ -46,13 +46,13 @@ type InvoiceLineItem struct {
 	// A map of key-value pairs corresponding to the tags associated with the line item resource.
 	// Read only field.
 	Tags *map[string][]string `json:"tags,omitempty"`
-	// Lower bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierLowerBound** appears only if your **lineItems[n].sku** is tiered.
+	// Lower bound for usage amount range in current SKU tier.   **NOTE**: `lineItems[n].tierLowerBound` appears only if your `lineItems[n].sku` is tiered.
 	// Read only field.
 	TierLowerBound *float64 `json:"tierLowerBound,omitempty"`
-	// Upper bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierUpperBound** appears only if your **lineItems[n].sku** is tiered.
+	// Upper bound for usage amount range in current SKU tier.   **NOTE**: `lineItems[n].tierUpperBound` appears only if your `lineItems[n].sku` is tiered.
 	// Read only field.
 	TierUpperBound *float64 `json:"tierUpperBound,omitempty"`
-	// Sum of the cost set for this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar) and calculates this value as **unitPriceDollars** × **quantity** × 100.
+	// Sum of the cost set for this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar) and calculates this value as `unitPriceDollars` * `quantity` * 100.
 	// Read only field.
 	TotalPriceCents *int64 `json:"totalPriceCents,omitempty"`
 	// Element used to express what **quantity** this line item measures. This value can be elements of time, storage capacity, and the like.

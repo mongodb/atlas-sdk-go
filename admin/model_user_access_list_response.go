@@ -10,7 +10,7 @@ import (
 type UserAccessListResponse struct {
 	// Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation in the access list for the API key.
 	CidrBlock *string `json:"cidrBlock,omitempty"`
-	// Total number of requests that have originated from the Internet Protocol (IP) address given as the value of the *lastUsedAddress* parameter.
+	// Total number of requests that have originated from the Internet Protocol (IP) address given as the value of the `lastUsedAddress` parameter.
 	// Read only field.
 	Count *int `json:"count,omitempty"`
 	// Date and time when someone added the network addresses to the specified API access list. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

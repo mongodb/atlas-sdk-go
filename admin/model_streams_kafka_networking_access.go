@@ -4,16 +4,16 @@ package admin
 
 // StreamsKafkaNetworkingAccess Information about networking access.
 type StreamsKafkaNetworkingAccess struct {
-	// Reserved. Will be used by PRIVATE_LINK connection type.
+	// Reserved. Will be used by `PRIVATE_LINK` connection type.
 	ConnectionId *string `json:"connectionId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Reserved. Will be used by PRIVATE_LINK connection type.
+	// Reserved. Will be used by `PRIVATE_LINK` connection type.
 	Name *string `json:"name,omitempty"`
-	// Reserved. Will be used by TRANSIT_GATEWAY connection type.
+	// Reserved. Will be used by `TRANSIT_GATEWAY` connection type.
 	TgwRouteId *string `json:"tgwRouteId,omitempty"`
-	// Selected networking type. Either PUBLIC, VPC, PRIVATE_LINK, or TRANSIT_GATEWAY. Defaults to PUBLIC. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. TRANSIT_GATEWAY support is coming soon.
+	// Selected networking type. Either `PUBLIC`, `VPC`, `PRIVATE_LINK`, or `TRANSIT_GATEWAY`. Defaults to `PUBLIC`. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. `TRANSIT_GATEWAY` support is coming soon.
 	Type *string `json:"type,omitempty"`
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Default** | Pointer to **bool** | Flag that indicates whether the cloud provider sets this region as its default. AWS defaults to US_EAST_1, GCP defaults to CENTRAL_US, and AZURE defaults to US_WEST_2. | [optional] [readonly] 
+**Default** | Pointer to **bool** | Flag that indicates whether the cloud provider sets this region as its default. AWS defaults to &#x60;US_EAST_1&#x60;, GCP defaults to &#x60;CENTRAL_US&#x60;, and AZURE defaults to &#x60;US_WEST_2&#x60;. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the supported region. | [optional] [readonly] 
 
 ## Methods

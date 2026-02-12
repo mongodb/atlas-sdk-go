@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **cloudProvider** | **string** | Cloud service provider that manages this private endpoint. | [default to &quot;AWS&quot;]
-**endpointId** | **string** | Unique string that identifies the private endpoint you want to delete. The format of the **endpointId** parameter differs for AWS and Azure. You must URL encode the **endpointId** for Azure private endpoints. | 
+**endpointId** | **string** | Unique string that identifies the private endpoint you want to delete. The format of the &#x60;endpointId&#x60; parameter differs for AWS and Azure. You must URL encode the &#x60;endpointId&#x60; for Azure private endpoints. | 
 **endpointServiceId** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint service from which you want to delete a private endpoint. | 
 
 ### Other Parameters
@@ -414,7 +414,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **cloudProvider** | **string** | Cloud service provider that manages this private endpoint. | [default to &quot;AWS&quot;]
-**endpointId** | **string** | Unique string that identifies the private endpoint you want to return. The format of the **endpointId** parameter differs for AWS and Azure. You must URL encode the **endpointId** for Azure private endpoints. | 
+**endpointId** | **string** | Unique string that identifies the private endpoint you want to return. The format of the &#x60;endpointId&#x60; parameter differs for AWS and Azure. You must URL encode the &#x60;endpointId&#x60; for Azure private endpoints. | 
 **endpointServiceId** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint service for which you want to return a private endpoint. | 
 
 ### Other Parameters

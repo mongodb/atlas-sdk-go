@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dynamic** | Pointer to [**any**](interface{}.md) | Indicates whether the index uses static, default dynamic, or configurable dynamic mappings. Set to **true** to enable dynamic mapping with default type set or define object to specify the name of the configured type sets for dynamic mapping. If you specify configurable dynamic mappings, you must define the referred type sets in the **typeSets** field. Set to **false** to use only static mappings through **mappings.fields**. | [optional] 
-**Fields** | Pointer to [**map[string]any**](interface{}.md) | One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**. | [optional] 
+**Dynamic** | Pointer to [**any**](interface{}.md) | Indicates whether the index uses static, default dynamic, or configurable dynamic mappings. Set to &#x60;true&#x60; to enable dynamic mapping with default type set or define object to specify the name of the configured type sets for dynamic mapping. If you specify configurable dynamic mappings, you must define the referred type sets in the &#x60;typeSets&#x60; field. Set to &#x60;false&#x60; to use only static mappings through &#x60;mappings.fields&#x60;. | [optional] 
+**Fields** | Pointer to [**map[string]any**](interface{}.md) | One or more field specifications for the Atlas Search index. Required if &#x60;mappings.dynamic&#x60; is omitted or set to &#x60;false&#x60;. | [optional] 
 
 ## Methods
 

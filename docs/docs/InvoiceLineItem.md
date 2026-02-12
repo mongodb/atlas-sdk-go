@@ -17,9 +17,9 @@ Name | Type | Description | Notes
 **StartDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud began charging for this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **StitchAppName** | Pointer to **string** | Human-readable label that identifies the Atlas App Services application associated with this line item. | [optional] [readonly] 
 **Tags** | Pointer to **map[string][]string** | A map of key-value pairs corresponding to the tags associated with the line item resource. | [optional] [readonly] 
-**TierLowerBound** | Pointer to **float64** | Lower bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierLowerBound** appears only if your **lineItems[n].sku** is tiered. | [optional] [readonly] 
-**TierUpperBound** | Pointer to **float64** | Upper bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierUpperBound** appears only if your **lineItems[n].sku** is tiered. | [optional] [readonly] 
-**TotalPriceCents** | Pointer to **int64** | Sum of the cost set for this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar) and calculates this value as **unitPriceDollars** × **quantity** × 100. | [optional] [readonly] 
+**TierLowerBound** | Pointer to **float64** | Lower bound for usage amount range in current SKU tier.   **NOTE**: &#x60;lineItems[n].tierLowerBound&#x60; appears only if your &#x60;lineItems[n].sku&#x60; is tiered. | [optional] [readonly] 
+**TierUpperBound** | Pointer to **float64** | Upper bound for usage amount range in current SKU tier.   **NOTE**: &#x60;lineItems[n].tierUpperBound&#x60; appears only if your &#x60;lineItems[n].sku&#x60; is tiered. | [optional] [readonly] 
+**TotalPriceCents** | Pointer to **int64** | Sum of the cost set for this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar) and calculates this value as &#x60;unitPriceDollars&#x60; * &#x60;quantity&#x60; * 100. | [optional] [readonly] 
 **Unit** | Pointer to **string** | Element used to express what **quantity** this line item measures. This value can be elements of time, storage capacity, and the like. | [optional] [readonly] 
 **UnitPriceDollars** | Pointer to **float64** | Value per **unit** for this line item expressed in US Dollars. | [optional] [readonly] 
 
