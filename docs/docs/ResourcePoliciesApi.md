@@ -45,7 +45,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    apiAtlasResourcePolicyCreate := *openapiclient.NewApiAtlasResourcePolicyCreate("Name_example", []openapiclient.ApiAtlasPolicyCreate{*openapiclient.NewApiAtlasPolicyCreate("  forbid (
+    apiAtlasResourcePolicyCreate := *admin.NewApiAtlasResourcePolicyCreate("Name_example", []admin.ApiAtlasPolicyCreate{*admin.NewApiAtlasPolicyCreate("  forbid (
     principal,
     action == cloud::Action::"cluster.createEdit",
     resource
@@ -459,7 +459,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
-    apiAtlasResourcePolicyEdit := *openapiclient.NewApiAtlasResourcePolicyEdit() // ApiAtlasResourcePolicyEdit | 
+    apiAtlasResourcePolicyEdit := *admin.NewApiAtlasResourcePolicyEdit() // ApiAtlasResourcePolicyEdit | 
 
     resp, r, err := sdk.ResourcePoliciesApi.UpdateOrgResourcePolicy(context.Background(), orgId, resourcePolicyId, &apiAtlasResourcePolicyEdit).Execute()
     if err != nil {
@@ -543,7 +543,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    apiAtlasResourcePolicyCreate := *openapiclient.NewApiAtlasResourcePolicyCreate("Name_example", []openapiclient.ApiAtlasPolicyCreate{*openapiclient.NewApiAtlasPolicyCreate("  forbid (
+    apiAtlasResourcePolicyCreate := *admin.NewApiAtlasResourcePolicyCreate("Name_example", []admin.ApiAtlasPolicyCreate{*admin.NewApiAtlasPolicyCreate("  forbid (
     principal,
     action == cloud::Action::"cluster.createEdit",
     resource

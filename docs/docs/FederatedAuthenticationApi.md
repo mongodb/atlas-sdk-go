@@ -56,7 +56,7 @@ func main() {
     }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
-    federationOidcIdentityProviderUpdate := *openapiclient.NewFederationOidcIdentityProviderUpdate() // FederationOidcIdentityProviderUpdate | 
+    federationOidcIdentityProviderUpdate := *admin.NewFederationOidcIdentityProviderUpdate() // FederationOidcIdentityProviderUpdate | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.CreateIdentityProvider(context.Background(), federationSettingsId, &federationOidcIdentityProviderUpdate).Execute()
     if err != nil {
@@ -139,7 +139,7 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
-    authFederationRoleMapping := *openapiclient.NewAuthFederationRoleMapping("ExternalGroupName_example") // AuthFederationRoleMapping | 
+    authFederationRoleMapping := *admin.NewAuthFederationRoleMapping("ExternalGroupName_example") // AuthFederationRoleMapping | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId, &authFederationRoleMapping).Execute()
     if err != nil {
@@ -1299,7 +1299,7 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
-    connectedOrgConfig := *openapiclient.NewConnectedOrgConfig(false, "32b6e34b3d91647abb20e7b8") // ConnectedOrgConfig | 
+    connectedOrgConfig := *admin.NewConnectedOrgConfig(false, "32b6e34b3d91647abb20e7b8") // ConnectedOrgConfig | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.UpdateConnectedOrgConfig(context.Background(), federationSettingsId, orgId, &connectedOrgConfig).Execute()
     if err != nil {
@@ -1384,7 +1384,7 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
-    federationIdentityProviderUpdate := *openapiclient.NewFederationIdentityProviderUpdate() // FederationIdentityProviderUpdate | 
+    federationIdentityProviderUpdate := *admin.NewFederationIdentityProviderUpdate() // FederationIdentityProviderUpdate | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &federationIdentityProviderUpdate).Execute()
     if err != nil {
@@ -1470,7 +1470,7 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     id := "32b6e34b3d91647abb20e7b8" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
-    authFederationRoleMapping := *openapiclient.NewAuthFederationRoleMapping("ExternalGroupName_example") // AuthFederationRoleMapping | 
+    authFederationRoleMapping := *admin.NewAuthFederationRoleMapping("ExternalGroupName_example") // AuthFederationRoleMapping | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId, &authFederationRoleMapping).Execute()
     if err != nil {

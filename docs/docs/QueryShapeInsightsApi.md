@@ -413,7 +413,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     queryShapeHash := "queryShapeHash_example" // string | 
-    queryShapeUpdateRequest := *openapiclient.NewQueryShapeUpdateRequest("Status_example") // QueryShapeUpdateRequest | 
+    queryShapeUpdateRequest := *admin.NewQueryShapeUpdateRequest("Status_example") // QueryShapeUpdateRequest | 
 
     resp, r, err := sdk.QueryShapeInsightsApi.UpdateClusterQueryShape(context.Background(), groupId, clusterName, queryShapeHash, &queryShapeUpdateRequest).Execute()
     if err != nil {

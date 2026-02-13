@@ -57,7 +57,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
+    clusterSearchIndex := *admin.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
 
     resp, r, err := sdk.AtlasSearchApi.CreateClusterFtsIndex(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
     if err != nil {
@@ -142,7 +142,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest([]openapiclient.ApiSearchDeploymentSpec{*openapiclient.NewApiSearchDeploymentSpec("InstanceSize_example", int(2))}) // ApiSearchDeploymentRequest | 
+    apiSearchDeploymentRequest := *admin.NewApiSearchDeploymentRequest([]admin.ApiSearchDeploymentSpec{*admin.NewApiSearchDeploymentSpec("InstanceSize_example", int(2))}) // ApiSearchDeploymentRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.CreateClusterSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
@@ -227,7 +227,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    searchIndexCreateRequest := *openapiclient.NewSearchIndexCreateRequest("CollectionName_example", "Database_example", "Name_example") // SearchIndexCreateRequest | 
+    searchIndexCreateRequest := *admin.NewSearchIndexCreateRequest("CollectionName_example", "Database_example", "Name_example") // SearchIndexCreateRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.CreateClusterSearchIndex(context.Background(), groupId, clusterName, &searchIndexCreateRequest).Execute()
     if err != nil {
@@ -1260,7 +1260,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
-    clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
+    clusterSearchIndex := *admin.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
 
     resp, r, err := sdk.AtlasSearchApi.UpdateClusterFtsIndex(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
     if err != nil {
@@ -1347,7 +1347,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest([]openapiclient.ApiSearchDeploymentSpec{*openapiclient.NewApiSearchDeploymentSpec("InstanceSize_example", int(2))}) // ApiSearchDeploymentRequest | 
+    apiSearchDeploymentRequest := *admin.NewApiSearchDeploymentRequest([]admin.ApiSearchDeploymentSpec{*admin.NewApiSearchDeploymentSpec("InstanceSize_example", int(2))}) // ApiSearchDeploymentRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.UpdateClusterSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
@@ -1433,7 +1433,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
-    searchIndexUpdateRequest := *openapiclient.NewSearchIndexUpdateRequest(*openapiclient.NewSearchIndexUpdateRequestDefinition()) // SearchIndexUpdateRequest | 
+    searchIndexUpdateRequest := *admin.NewSearchIndexUpdateRequest(*admin.NewSearchIndexUpdateRequestDefinition()) // SearchIndexUpdateRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.UpdateClusterSearchIndex(context.Background(), groupId, clusterName, indexId, &searchIndexUpdateRequest).Execute()
     if err != nil {
@@ -1523,7 +1523,7 @@ func main() {
     collectionName := "collectionName_example" // string | 
     databaseName := "databaseName_example" // string | 
     indexName := "indexName_example" // string | 
-    searchIndexUpdateRequest := *openapiclient.NewSearchIndexUpdateRequest(*openapiclient.NewSearchIndexUpdateRequestDefinition()) // SearchIndexUpdateRequest | 
+    searchIndexUpdateRequest := *admin.NewSearchIndexUpdateRequest(*admin.NewSearchIndexUpdateRequestDefinition()) // SearchIndexUpdateRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.UpdateIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName, &searchIndexUpdateRequest).Execute()
     if err != nil {

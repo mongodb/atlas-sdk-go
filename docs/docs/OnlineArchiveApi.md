@@ -45,7 +45,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    backupOnlineArchiveCreate := *openapiclient.NewBackupOnlineArchiveCreate("CollName_example", *openapiclient.NewCriteria(), "DbName_example") // BackupOnlineArchiveCreate | 
+    backupOnlineArchiveCreate := *admin.NewBackupOnlineArchiveCreate("CollName_example", *admin.NewCriteria(), "DbName_example") // BackupOnlineArchiveCreate | 
 
     resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName, &backupOnlineArchiveCreate).Execute()
     if err != nil {
@@ -479,7 +479,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     archiveId := "archiveId_example" // string | 
     clusterName := "clusterName_example" // string | 
-    backupOnlineArchive := *openapiclient.NewBackupOnlineArchive() // BackupOnlineArchive | 
+    backupOnlineArchive := *admin.NewBackupOnlineArchive() // BackupOnlineArchive | 
 
     resp, r, err := sdk.OnlineArchiveApi.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName, &backupOnlineArchive).Execute()
     if err != nil {

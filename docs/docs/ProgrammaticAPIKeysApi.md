@@ -53,7 +53,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
-    userAccessRoleAssignment := []openapiclient.UserAccessRoleAssignment{*openapiclient.NewUserAccessRoleAssignment()} // []UserAccessRoleAssignment | 
+    userAccessRoleAssignment := []admin.UserAccessRoleAssignment{*admin.NewUserAccessRoleAssignment()} // []UserAccessRoleAssignment | 
 
     r, err := sdk.ProgrammaticAPIKeysApi.AddGroupApiKey(context.Background(), groupId, apiUserId, &userAccessRoleAssignment).Execute()
     if err != nil {
@@ -135,7 +135,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    createAtlasProjectApiKey := *openapiclient.NewCreateAtlasProjectApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasProjectApiKey | 
+    createAtlasProjectApiKey := *admin.NewCreateAtlasProjectApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasProjectApiKey | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateGroupApiKey(context.Background(), groupId, &createAtlasProjectApiKey).Execute()
     if err != nil {
@@ -218,7 +218,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
-    userAccessListRequest := []openapiclient.UserAccessListRequest{*openapiclient.NewUserAccessListRequest()} // []UserAccessListRequest | 
+    userAccessListRequest := []admin.UserAccessListRequest{*admin.NewUserAccessListRequest()} // []UserAccessListRequest | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
@@ -308,7 +308,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    createAtlasOrganizationApiKey := *openapiclient.NewCreateAtlasOrganizationApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasOrganizationApiKey | 
+    createAtlasOrganizationApiKey := *admin.NewCreateAtlasOrganizationApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasOrganizationApiKey | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateOrgApiKey(context.Background(), orgId, &createAtlasOrganizationApiKey).Execute()
     if err != nil {
@@ -1067,7 +1067,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
-    updateAtlasProjectApiKey := *openapiclient.NewUpdateAtlasProjectApiKey() // UpdateAtlasProjectApiKey | 
+    updateAtlasProjectApiKey := *admin.NewUpdateAtlasProjectApiKey() // UpdateAtlasProjectApiKey | 
     pageNum := int(56) // int |  (optional) (default to 1)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
@@ -1158,7 +1158,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
-    updateAtlasOrganizationApiKey := *openapiclient.NewUpdateAtlasOrganizationApiKey() // UpdateAtlasOrganizationApiKey | 
+    updateAtlasOrganizationApiKey := *admin.NewUpdateAtlasOrganizationApiKey() // UpdateAtlasOrganizationApiKey | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateOrgApiKey(context.Background(), orgId, apiUserId, &updateAtlasOrganizationApiKey).Execute()
     if err != nil {

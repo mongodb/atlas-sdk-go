@@ -44,7 +44,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleId := "roleId_example" // string | 
-    cloudProviderAccessRoleRequestUpdate := *openapiclient.NewCloudProviderAccessRoleRequestUpdate("ProviderName_example") // CloudProviderAccessRoleRequestUpdate | 
+    cloudProviderAccessRoleRequestUpdate := *admin.NewCloudProviderAccessRoleRequestUpdate("ProviderName_example") // CloudProviderAccessRoleRequestUpdate | 
 
     resp, r, err := sdk.CloudProviderAccessApi.AuthorizeProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessRoleRequestUpdate).Execute()
     if err != nil {
@@ -128,7 +128,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudProviderAccessRoleRequest := *openapiclient.NewCloudProviderAccessRoleRequest("ProviderName_example") // CloudProviderAccessRoleRequest | 
+    cloudProviderAccessRoleRequest := *admin.NewCloudProviderAccessRoleRequest("ProviderName_example") // CloudProviderAccessRoleRequest | 
 
     resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccess(context.Background(), groupId, &cloudProviderAccessRoleRequest).Execute()
     if err != nil {

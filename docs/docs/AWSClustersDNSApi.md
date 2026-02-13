@@ -120,7 +120,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    aWSCustomDNSEnabled := *openapiclient.NewAWSCustomDNSEnabled(false) // AWSCustomDNSEnabled | 
+    aWSCustomDNSEnabled := *admin.NewAWSCustomDNSEnabled(false) // AWSCustomDNSEnabled | 
 
     resp, r, err := sdk.AWSClustersDNSApi.ToggleAwsCustomDns(context.Background(), groupId, &aWSCustomDNSEnabled).Execute()
     if err != nil {

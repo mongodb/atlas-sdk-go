@@ -45,7 +45,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string | 
-    eARPrivateEndpoint := *openapiclient.NewEARPrivateEndpoint() // EARPrivateEndpoint | 
+    eARPrivateEndpoint := *admin.NewEARPrivateEndpoint() // EARPrivateEndpoint | 
 
     resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.CreateRestPrivateEndpoint(context.Background(), groupId, cloudProvider, &eARPrivateEndpoint).Execute()
     if err != nil {
@@ -468,7 +468,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    encryptionAtRest := *openapiclient.NewEncryptionAtRest() // EncryptionAtRest | 
+    encryptionAtRest := *admin.NewEncryptionAtRest() // EncryptionAtRest | 
 
     resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.UpdateEncryptionAtRest(context.Background(), groupId, &encryptionAtRest).Execute()
     if err != nil {

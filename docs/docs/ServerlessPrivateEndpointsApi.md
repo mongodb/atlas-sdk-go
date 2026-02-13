@@ -44,7 +44,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
-    serverlessTenantCreateRequest := *openapiclient.NewServerlessTenantCreateRequest() // ServerlessTenantCreateRequest | 
+    serverlessTenantCreateRequest := *admin.NewServerlessTenantCreateRequest() // ServerlessTenantCreateRequest | 
 
     resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, &serverlessTenantCreateRequest).Execute()
     if err != nil {
@@ -383,7 +383,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
     endpointId := "endpointId_example" // string | 
-    serverlessTenantEndpointUpdate := *openapiclient.NewServerlessTenantEndpointUpdate("ProviderName_example") // ServerlessTenantEndpointUpdate | 
+    serverlessTenantEndpointUpdate := *admin.NewServerlessTenantEndpointUpdate("ProviderName_example") // ServerlessTenantEndpointUpdate | 
 
     resp, r, err := sdk.ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId, &serverlessTenantEndpointUpdate).Execute()
     if err != nil {

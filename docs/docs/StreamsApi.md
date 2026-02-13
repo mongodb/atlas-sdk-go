@@ -69,7 +69,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
-    vPCPeeringActionChallenge := *openapiclient.NewVPCPeeringActionChallenge() // VPCPeeringActionChallenge | 
+    vPCPeeringActionChallenge := *admin.NewVPCPeeringActionChallenge() // VPCPeeringActionChallenge | 
 
     r, err := sdk.StreamsApi.AcceptVpcPeeringConnection(context.Background(), groupId, id, &vPCPeeringActionChallenge).Execute()
     if err != nil {
@@ -151,7 +151,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    streamsPrivateLinkConnection := *openapiclient.NewStreamsPrivateLinkConnection("Provider_example") // StreamsPrivateLinkConnection | 
+    streamsPrivateLinkConnection := *admin.NewStreamsPrivateLinkConnection("Provider_example") // StreamsPrivateLinkConnection | 
 
     resp, r, err := sdk.StreamsApi.CreatePrivateLinkConnection(context.Background(), groupId, &streamsPrivateLinkConnection).Execute()
     if err != nil {
@@ -234,7 +234,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
-    streamsConnection := *openapiclient.NewStreamsConnection() // StreamsConnection | 
+    streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
 
     resp, r, err := sdk.StreamsApi.CreateStreamConnection(context.Background(), groupId, tenantName, &streamsConnection).Execute()
     if err != nil {
@@ -319,7 +319,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
-    streamsProcessor := *openapiclient.NewStreamsProcessor() // StreamsProcessor | 
+    streamsProcessor := *admin.NewStreamsProcessor() // StreamsProcessor | 
 
     resp, r, err := sdk.StreamsApi.CreateStreamProcessor(context.Background(), groupId, tenantName, &streamsProcessor).Execute()
     if err != nil {
@@ -403,7 +403,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    streamsTenant := *openapiclient.NewStreamsTenant() // StreamsTenant | 
+    streamsTenant := *admin.NewStreamsTenant() // StreamsTenant | 
 
     resp, r, err := sdk.StreamsApi.CreateStreamWorkspace(context.Background(), groupId, &streamsTenant).Execute()
     if err != nil {
@@ -2084,7 +2084,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
     processorName := "processorName_example" // string | 
-    streamsStartStreamProcessorWith := *openapiclient.NewStreamsStartStreamProcessorWith() // StreamsStartStreamProcessorWith |  (optional)
+    streamsStartStreamProcessorWith := *admin.NewStreamsStartStreamProcessorWith() // StreamsStartStreamProcessorWith |  (optional)
 
     r, err := sdk.StreamsApi.StartStreamProcessorWith(context.Background(), groupId, tenantName, processorName, &streamsStartStreamProcessorWith).Execute()
     if err != nil {
@@ -2254,7 +2254,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
     connectionName := "connectionName_example" // string | 
-    streamsConnection := *openapiclient.NewStreamsConnection() // StreamsConnection | 
+    streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
 
     resp, r, err := sdk.StreamsApi.UpdateStreamConnection(context.Background(), groupId, tenantName, connectionName, &streamsConnection).Execute()
     if err != nil {
@@ -2342,7 +2342,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
     processorName := "processorName_example" // string | 
-    streamsModifyStreamProcessor := *openapiclient.NewStreamsModifyStreamProcessor() // StreamsModifyStreamProcessor | 
+    streamsModifyStreamProcessor := *admin.NewStreamsModifyStreamProcessor() // StreamsModifyStreamProcessor | 
 
     resp, r, err := sdk.StreamsApi.UpdateStreamProcessor(context.Background(), groupId, tenantName, processorName, &streamsModifyStreamProcessor).Execute()
     if err != nil {
@@ -2429,7 +2429,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
-    streamsTenantUpdateRequest := *openapiclient.NewStreamsTenantUpdateRequest() // StreamsTenantUpdateRequest | 
+    streamsTenantUpdateRequest := *admin.NewStreamsTenantUpdateRequest() // StreamsTenantUpdateRequest | 
 
     resp, r, err := sdk.StreamsApi.UpdateStreamWorkspace(context.Background(), groupId, tenantName, &streamsTenantUpdateRequest).Execute()
     if err != nil {

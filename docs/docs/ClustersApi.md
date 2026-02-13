@@ -141,7 +141,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clusterDescription20240805 := *openapiclient.NewClusterDescription20240805() // ClusterDescription20240805 | 
+    clusterDescription20240805 := *admin.NewClusterDescription20240805() // ClusterDescription20240805 | 
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
     useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
 
@@ -647,7 +647,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    employeeAccessGrant := *openapiclient.NewEmployeeAccessGrant(time.Now(), "GrantType_example") // EmployeeAccessGrant | 
+    employeeAccessGrant := *admin.NewEmployeeAccessGrant(time.Now(), "GrantType_example") // EmployeeAccessGrant | 
 
     r, err := sdk.ClustersApi.GrantMongoEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
     if err != nil {
@@ -990,7 +990,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    pinFCV := *openapiclient.NewPinFCV() // PinFCV |  (optional)
+    pinFCV := *admin.NewPinFCV() // PinFCV |  (optional)
 
     r, err := sdk.ClustersApi.PinFeatureCompatibilityVersion(context.Background(), groupId, clusterName, &pinFCV).Execute()
     if err != nil {
@@ -1399,7 +1399,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    clusterDescription20240805 := *openapiclient.NewClusterDescription20240805() // ClusterDescription20240805 | 
+    clusterDescription20240805 := *admin.NewClusterDescription20240805() // ClusterDescription20240805 | 
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
     useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
 
@@ -1488,7 +1488,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    clusterDescriptionProcessArgs20240805 := *openapiclient.NewClusterDescriptionProcessArgs20240805() // ClusterDescriptionProcessArgs20240805 | 
+    clusterDescriptionProcessArgs20240805 := *admin.NewClusterDescriptionProcessArgs20240805() // ClusterDescriptionProcessArgs20240805 | 
 
     resp, r, err := sdk.ClustersApi.UpdateProcessArgs(context.Background(), groupId, clusterName, &clusterDescriptionProcessArgs20240805).Execute()
     if err != nil {
@@ -1572,7 +1572,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    serverlessInstanceDescription := *openapiclient.NewServerlessInstanceDescription(*openapiclient.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescription | 
+    serverlessInstanceDescription := *admin.NewServerlessInstanceDescription(*admin.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescription | 
 
     resp, r, err := sdk.ClustersApi.UpgradeClusterToServerless(context.Background(), groupId, &serverlessInstanceDescription).Execute()
     if err != nil {
@@ -1654,7 +1654,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    legacyAtlasTenantClusterUpgradeRequest := *openapiclient.NewLegacyAtlasTenantClusterUpgradeRequest("Name_example") // LegacyAtlasTenantClusterUpgradeRequest | 
+    legacyAtlasTenantClusterUpgradeRequest := *admin.NewLegacyAtlasTenantClusterUpgradeRequest("Name_example") // LegacyAtlasTenantClusterUpgradeRequest | 
 
     resp, r, err := sdk.ClustersApi.UpgradeTenantUpgrade(context.Background(), groupId, &legacyAtlasTenantClusterUpgradeRequest).Execute()
     if err != nil {

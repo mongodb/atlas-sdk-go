@@ -52,7 +52,7 @@ func main() {
         return
     }
 
-    createOrganizationRequest := *openapiclient.NewCreateOrganizationRequest("Name_example") // CreateOrganizationRequest | 
+    createOrganizationRequest := *admin.NewCreateOrganizationRequest("Name_example") // CreateOrganizationRequest | 
 
     resp, r, err := sdk.OrganizationsApi.CreateOrg(context.Background(), &createOrganizationRequest).Execute()
     if err != nil {
@@ -129,7 +129,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
+    organizationInvitationRequest := *admin.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
     resp, r, err := sdk.OrganizationsApi.CreateOrgInvite(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
@@ -865,7 +865,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    atlasOrganization := *openapiclient.NewAtlasOrganization("Name_example") // AtlasOrganization | 
+    atlasOrganization := *admin.NewAtlasOrganization("Name_example") // AtlasOrganization | 
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrg(context.Background(), orgId, &atlasOrganization).Execute()
     if err != nil {
@@ -948,7 +948,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
-    organizationInvitationUpdateRequest := *openapiclient.NewOrganizationInvitationUpdateRequest() // OrganizationInvitationUpdateRequest | 
+    organizationInvitationUpdateRequest := *admin.NewOrganizationInvitationUpdateRequest() // OrganizationInvitationUpdateRequest | 
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrgInviteById(context.Background(), orgId, invitationId, &organizationInvitationUpdateRequest).Execute()
     if err != nil {
@@ -1032,7 +1032,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
+    organizationInvitationRequest := *admin.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrgInvites(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
@@ -1114,7 +1114,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    organizationSettings := *openapiclient.NewOrganizationSettings() // OrganizationSettings | 
+    organizationSettings := *admin.NewOrganizationSettings() // OrganizationSettings | 
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrgSettings(context.Background(), orgId, &organizationSettings).Execute()
     if err != nil {
@@ -1197,7 +1197,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     userId := "userId_example" // string | 
-    updateOrgRolesForUser := *openapiclient.NewUpdateOrgRolesForUser() // UpdateOrgRolesForUser | 
+    updateOrgRolesForUser := *admin.NewUpdateOrgRolesForUser() // UpdateOrgRolesForUser | 
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrgUserRoles(context.Background(), orgId, userId, &updateOrgRolesForUser).Execute()
     if err != nil {

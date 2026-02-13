@@ -42,7 +42,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     username := "username_example" // string | 
-    userCert := *openapiclient.NewUserCert() // UserCert | 
+    userCert := *admin.NewUserCert() // UserCert | 
 
     resp, r, err := sdk.X509AuthenticationApi.CreateDatabaseUserCert(context.Background(), groupId, username, &userCert).Execute()
     if err != nil {

@@ -47,7 +47,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    logIntegrationRequest := *openapiclient.NewLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // LogIntegrationRequest | 
+    logIntegrationRequest := *admin.NewLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // LogIntegrationRequest | 
 
     resp, r, err := sdk.PushBasedLogExportApi.CreateGroupLogIntegration(context.Background(), groupId, &logIntegrationRequest).Execute()
     if err != nil {
@@ -129,7 +129,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    createPushBasedLogExportProjectRequest := *openapiclient.NewCreatePushBasedLogExportProjectRequest("BucketName_example", "32b6e34b3d91647abb20e7b8", "PrefixPath_example") // CreatePushBasedLogExportProjectRequest | 
+    createPushBasedLogExportProjectRequest := *admin.NewCreatePushBasedLogExportProjectRequest("BucketName_example", "32b6e34b3d91647abb20e7b8", "PrefixPath_example") // CreatePushBasedLogExportProjectRequest | 
 
     r, err := sdk.PushBasedLogExportApi.CreateLogExport(context.Background(), groupId, &createPushBasedLogExportProjectRequest).Execute()
     if err != nil {
@@ -620,7 +620,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
-    logIntegrationRequest := *openapiclient.NewLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // LogIntegrationRequest | 
+    logIntegrationRequest := *admin.NewLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // LogIntegrationRequest | 
 
     resp, r, err := sdk.PushBasedLogExportApi.UpdateGroupLogIntegration(context.Background(), groupId, id, &logIntegrationRequest).Execute()
     if err != nil {
@@ -704,7 +704,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    pushBasedLogExportProject := *openapiclient.NewPushBasedLogExportProject() // PushBasedLogExportProject | 
+    pushBasedLogExportProject := *admin.NewPushBasedLogExportProject() // PushBasedLogExportProject | 
 
     r, err := sdk.PushBasedLogExportApi.UpdateLogExport(context.Background(), groupId, &pushBasedLogExportProject).Execute()
     if err != nil {

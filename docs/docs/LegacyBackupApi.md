@@ -50,7 +50,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    backupRestoreJob := *openapiclient.NewBackupRestoreJob(*openapiclient.NewBackupRestoreJobDelivery("MethodName_example")) // BackupRestoreJob | 
+    backupRestoreJob := *admin.NewBackupRestoreJob(*admin.NewBackupRestoreJobDelivery("MethodName_example")) // BackupRestoreJob | 
 
     resp, r, err := sdk.LegacyBackupApi.CreateClusterRestoreJob(context.Background(), groupId, clusterName, &backupRestoreJob).Execute()
     if err != nil {
@@ -832,7 +832,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
-    backupSnapshot := *openapiclient.NewBackupSnapshot() // BackupSnapshot | 
+    backupSnapshot := *admin.NewBackupSnapshot() // BackupSnapshot | 
 
     resp, r, err := sdk.LegacyBackupApi.UpdateClusterSnapshot(context.Background(), groupId, clusterName, snapshotId, &backupSnapshot).Execute()
     if err != nil {
@@ -919,7 +919,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    apiAtlasSnapshotSchedule := *openapiclient.NewApiAtlasSnapshotSchedule(int(123), "32b6e34b3d91647abb20e7b8", int(123), "32b6e34b3d91647abb20e7b8", int(123), int(123), int(123), int(123), int(123)) // ApiAtlasSnapshotSchedule | 
+    apiAtlasSnapshotSchedule := *admin.NewApiAtlasSnapshotSchedule(int(123), "32b6e34b3d91647abb20e7b8", int(123), "32b6e34b3d91647abb20e7b8", int(123), int(123), int(123), int(123), int(123)) // ApiAtlasSnapshotSchedule | 
 
     resp, r, err := sdk.LegacyBackupApi.UpdateClusterSnapshotSchedule(context.Background(), groupId, clusterName, &apiAtlasSnapshotSchedule).Execute()
     if err != nil {

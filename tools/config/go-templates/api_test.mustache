@@ -39,10 +39,10 @@ func Test_{{packageName}}_{{classname}}Service(t *testing.T) {
 		{{#bodyParams}}
 		// TODO: create model
 		{{#isArray}}
-		var {{paramName}} []openapiclient.{{{baseType}}}
+		var {{paramName}} []{{goImportAlias}}.{{{baseType}}}
 		{{/isArray}}
 		{{^isArray}}
-		var {{paramName}} openapiclient.{{{dataType}}} = openapiclient.{{{dataType}}}{}
+		var {{paramName}} {{goImportAlias}}.{{{dataType}}} = {{goImportAlias}}.{{{dataType}}}{}
 		{{/isArray}}
 		{{/bodyParams}}
 

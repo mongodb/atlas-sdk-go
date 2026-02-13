@@ -61,7 +61,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupInvitationRequest := *openapiclient.NewGroupInvitationRequest() // GroupInvitationRequest | 
+    groupInvitationRequest := *admin.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
     resp, r, err := sdk.ProjectsApi.AddGroupUser(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
@@ -142,7 +142,7 @@ func main() {
         return
     }
 
-    group := *openapiclient.NewGroup(int64(123), time.Now(), "Name_example", "32b6e34b3d91647abb20e7b8") // Group | 
+    group := *admin.NewGroup(int64(123), time.Now(), "Name_example", "32b6e34b3d91647abb20e7b8") // Group | 
     projectOwnerId := "projectOwnerId_example" // string |  (optional)
 
     resp, r, err := sdk.ProjectsApi.CreateGroup(context.Background(), &group).ProjectOwnerId(projectOwnerId).Execute()
@@ -221,7 +221,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupInvitationRequest := *openapiclient.NewGroupInvitationRequest() // GroupInvitationRequest | 
+    groupInvitationRequest := *admin.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
     resp, r, err := sdk.ProjectsApi.CreateGroupInvite(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
@@ -1361,7 +1361,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupMigrationRequest := *openapiclient.NewGroupMigrationRequest() // GroupMigrationRequest | 
+    groupMigrationRequest := *admin.NewGroupMigrationRequest() // GroupMigrationRequest | 
 
     resp, r, err := sdk.ProjectsApi.MigrateGroup(context.Background(), groupId, &groupMigrationRequest).Execute()
     if err != nil {
@@ -1444,7 +1444,7 @@ func main() {
 
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    dataFederationLimit := *openapiclient.NewDataFederationLimit("Name_example", int64(123)) // DataFederationLimit | 
+    dataFederationLimit := *admin.NewDataFederationLimit("Name_example", int64(123)) // DataFederationLimit | 
 
     resp, r, err := sdk.ProjectsApi.SetGroupLimit(context.Background(), limitName, groupId, &dataFederationLimit).Execute()
     if err != nil {
@@ -1528,7 +1528,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupUpdate := *openapiclient.NewGroupUpdate() // GroupUpdate | 
+    groupUpdate := *admin.NewGroupUpdate() // GroupUpdate | 
 
     resp, r, err := sdk.ProjectsApi.UpdateGroup(context.Background(), groupId, &groupUpdate).Execute()
     if err != nil {
@@ -1610,7 +1610,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupInvitationRequest := *openapiclient.NewGroupInvitationRequest() // GroupInvitationRequest | 
+    groupInvitationRequest := *admin.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
     resp, r, err := sdk.ProjectsApi.UpdateGroupInvites(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
@@ -1692,7 +1692,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupSettings := *openapiclient.NewGroupSettings() // GroupSettings | 
+    groupSettings := *admin.NewGroupSettings() // GroupSettings | 
 
     resp, r, err := sdk.ProjectsApi.UpdateGroupSettings(context.Background(), groupId, &groupSettings).Execute()
     if err != nil {
@@ -1775,7 +1775,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userId := "userId_example" // string | 
-    updateGroupRolesForUser := *openapiclient.NewUpdateGroupRolesForUser() // UpdateGroupRolesForUser | 
+    updateGroupRolesForUser := *admin.NewUpdateGroupRolesForUser() // UpdateGroupRolesForUser | 
 
     resp, r, err := sdk.ProjectsApi.UpdateGroupUserRoles(context.Background(), groupId, userId, &updateGroupRolesForUser).Execute()
     if err != nil {
@@ -1860,7 +1860,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     invitationId := "invitationId_example" // string | 
-    groupInvitationUpdateRequest := *openapiclient.NewGroupInvitationUpdateRequest() // GroupInvitationUpdateRequest | 
+    groupInvitationUpdateRequest := *admin.NewGroupInvitationUpdateRequest() // GroupInvitationUpdateRequest | 
 
     resp, r, err := sdk.ProjectsApi.UpdateInviteById(context.Background(), groupId, invitationId, &groupInvitationUpdateRequest).Execute()
     if err != nil {

@@ -587,7 +587,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    namespacesRequest := *openapiclient.NewNamespacesRequest() // NamespacesRequest | 
+    namespacesRequest := *admin.NewNamespacesRequest() // NamespacesRequest | 
 
     resp, r, err := sdk.CollectionLevelMetricsApi.PinNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {
@@ -672,7 +672,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    namespacesRequest := *openapiclient.NewNamespacesRequest() // NamespacesRequest | 
+    namespacesRequest := *admin.NewNamespacesRequest() // NamespacesRequest | 
 
     resp, r, err := sdk.CollectionLevelMetricsApi.UnpinNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {
@@ -757,7 +757,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    namespacesRequest := *openapiclient.NewNamespacesRequest() // NamespacesRequest | 
+    namespacesRequest := *admin.NewNamespacesRequest() // NamespacesRequest | 
 
     resp, r, err := sdk.CollectionLevelMetricsApi.UpdatePinnedNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {

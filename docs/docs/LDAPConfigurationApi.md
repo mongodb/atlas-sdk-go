@@ -286,7 +286,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    userSecurity := *openapiclient.NewUserSecurity() // UserSecurity | 
+    userSecurity := *admin.NewUserSecurity() // UserSecurity | 
 
     resp, r, err := sdk.LDAPConfigurationApi.UpdateUserSecurity(context.Background(), groupId, &userSecurity).Execute()
     if err != nil {
@@ -368,7 +368,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    lDAPVerifyConnectivityJobRequestParams := *openapiclient.NewLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // LDAPVerifyConnectivityJobRequestParams | 
+    lDAPVerifyConnectivityJobRequestParams := *admin.NewLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // LDAPVerifyConnectivityJobRequestParams | 
 
     resp, r, err := sdk.LDAPConfigurationApi.VerifyUserSecurityLdap(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
     if err != nil {

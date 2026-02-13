@@ -51,7 +51,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    dataLakeIngestionPipeline := *openapiclient.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
+    dataLakeIngestionPipeline := *admin.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
 
     resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId, &dataLakeIngestionPipeline).Execute()
     if err != nil {
@@ -981,7 +981,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
-    triggerIngestionPipelineRequest := *openapiclient.NewTriggerIngestionPipelineRequest("32b6e34b3d91647abb20e7b8") // TriggerIngestionPipelineRequest | 
+    triggerIngestionPipelineRequest := *admin.NewTriggerIngestionPipelineRequest("32b6e34b3d91647abb20e7b8") // TriggerIngestionPipelineRequest | 
 
     resp, r, err := sdk.DataLakePipelinesApi.TriggerPipeline(context.Background(), groupId, pipelineName, &triggerIngestionPipelineRequest).Execute()
     if err != nil {
@@ -1066,7 +1066,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
-    dataLakeIngestionPipeline := *openapiclient.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
+    dataLakeIngestionPipeline := *admin.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
 
     resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName, &dataLakeIngestionPipeline).Execute()
     if err != nil {

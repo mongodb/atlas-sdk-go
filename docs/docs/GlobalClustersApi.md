@@ -44,7 +44,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    customZoneMappings := *openapiclient.NewCustomZoneMappings() // CustomZoneMappings | 
+    customZoneMappings := *admin.NewCustomZoneMappings() // CustomZoneMappings | 
 
     resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName, &customZoneMappings).Execute()
     if err != nil {
@@ -129,7 +129,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    managedNamespaces := *openapiclient.NewManagedNamespaces("Collection_example", "CustomShardKey_example", "Db_example") // ManagedNamespaces | 
+    managedNamespaces := *admin.NewManagedNamespaces("Collection_example", "CustomShardKey_example", "Db_example") // ManagedNamespaces | 
 
     resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName, &managedNamespaces).Execute()
     if err != nil {

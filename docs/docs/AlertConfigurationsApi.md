@@ -46,7 +46,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupAlertsConfig := *openapiclient.NewGroupAlertsConfig() // GroupAlertsConfig | 
+    groupAlertsConfig := *admin.NewGroupAlertsConfig() // GroupAlertsConfig | 
 
     resp, r, err := sdk.AlertConfigurationsApi.CreateAlertConfig(context.Background(), groupId, &groupAlertsConfig).Execute()
     if err != nil {
@@ -539,7 +539,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
-    alertsToggle := *openapiclient.NewAlertsToggle() // AlertsToggle | 
+    alertsToggle := *admin.NewAlertsToggle() // AlertsToggle | 
 
     resp, r, err := sdk.AlertConfigurationsApi.ToggleAlertConfig(context.Background(), groupId, alertConfigId, &alertsToggle).Execute()
     if err != nil {
@@ -624,7 +624,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupAlertsConfig := *openapiclient.NewGroupAlertsConfig() // GroupAlertsConfig | 
+    groupAlertsConfig := *admin.NewGroupAlertsConfig() // GroupAlertsConfig | 
 
     resp, r, err := sdk.AlertConfigurationsApi.UpdateAlertConfig(context.Background(), groupId, alertConfigId, &groupAlertsConfig).Execute()
     if err != nil {

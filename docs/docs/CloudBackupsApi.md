@@ -158,7 +158,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    diskBackupExportJobRequest := *openapiclient.NewDiskBackupExportJobRequest("32b6e34b3d91647abb20e7b8", "32b6e34b3d91647abb20e7b8") // DiskBackupExportJobRequest | 
+    diskBackupExportJobRequest := *admin.NewDiskBackupExportJobRequest("32b6e34b3d91647abb20e7b8", "32b6e34b3d91647abb20e7b8") // DiskBackupExportJobRequest | 
 
     resp, r, err := sdk.CloudBackupsApi.CreateBackupExport(context.Background(), groupId, clusterName, &diskBackupExportJobRequest).Execute()
     if err != nil {
@@ -243,7 +243,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string | 
-    objectStoragePrivateEndpointRequest := *openapiclient.NewObjectStoragePrivateEndpointRequest() // ObjectStoragePrivateEndpointRequest | 
+    objectStoragePrivateEndpointRequest := *admin.NewObjectStoragePrivateEndpointRequest() // ObjectStoragePrivateEndpointRequest | 
 
     resp, r, err := sdk.CloudBackupsApi.CreateBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, &objectStoragePrivateEndpointRequest).Execute()
     if err != nil {
@@ -328,7 +328,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    diskBackupSnapshotRestoreJob := *openapiclient.NewDiskBackupSnapshotRestoreJob("DeliveryType_example") // DiskBackupSnapshotRestoreJob | 
+    diskBackupSnapshotRestoreJob := *admin.NewDiskBackupSnapshotRestoreJob("DeliveryType_example") // DiskBackupSnapshotRestoreJob | 
 
     resp, r, err := sdk.CloudBackupsApi.CreateBackupRestoreJob(context.Background(), groupId, clusterName, &diskBackupSnapshotRestoreJob).Execute()
     if err != nil {
@@ -412,7 +412,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    diskBackupSnapshotExportBucketRequest := *openapiclient.NewDiskBackupSnapshotExportBucketRequest("CloudProvider_example") // DiskBackupSnapshotExportBucketRequest | 
+    diskBackupSnapshotExportBucketRequest := *admin.NewDiskBackupSnapshotExportBucketRequest("CloudProvider_example") // DiskBackupSnapshotExportBucketRequest | 
 
     resp, r, err := sdk.CloudBackupsApi.CreateExportBucket(context.Background(), groupId, &diskBackupSnapshotExportBucketRequest).Execute()
     if err != nil {
@@ -495,7 +495,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    serverlessBackupRestoreJob := *openapiclient.NewServerlessBackupRestoreJob("DeliveryType_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8") // ServerlessBackupRestoreJob | 
+    serverlessBackupRestoreJob := *admin.NewServerlessBackupRestoreJob("DeliveryType_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8") // ServerlessBackupRestoreJob | 
 
     resp, r, err := sdk.CloudBackupsApi.CreateServerlessRestoreJob(context.Background(), groupId, clusterName, &serverlessBackupRestoreJob).Execute()
     if err != nil {
@@ -2625,7 +2625,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    diskBackupOnDemandSnapshotRequest := *openapiclient.NewDiskBackupOnDemandSnapshotRequest() // DiskBackupOnDemandSnapshotRequest | 
+    diskBackupOnDemandSnapshotRequest := *admin.NewDiskBackupOnDemandSnapshotRequest() // DiskBackupOnDemandSnapshotRequest | 
 
     resp, r, err := sdk.CloudBackupsApi.TakeSnapshots(context.Background(), groupId, clusterName, &diskBackupOnDemandSnapshotRequest).Execute()
     if err != nil {
@@ -2710,7 +2710,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     exportBucketId := "32b6e34b3d91647abb20e7b8" // string | 
-    updateRequirePrivateNetworkingRequest := *openapiclient.NewUpdateRequirePrivateNetworkingRequest(false) // UpdateRequirePrivateNetworkingRequest | 
+    updateRequirePrivateNetworkingRequest := *admin.NewUpdateRequirePrivateNetworkingRequest(false) // UpdateRequirePrivateNetworkingRequest | 
 
     resp, r, err := sdk.CloudBackupsApi.UpdateBackupExportBucket(context.Background(), groupId, exportBucketId, &updateRequirePrivateNetworkingRequest).Execute()
     if err != nil {
@@ -2795,7 +2795,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    diskBackupSnapshotSchedule20240805 := *openapiclient.NewDiskBackupSnapshotSchedule20240805() // DiskBackupSnapshotSchedule20240805 | 
+    diskBackupSnapshotSchedule20240805 := *admin.NewDiskBackupSnapshotSchedule20240805() // DiskBackupSnapshotSchedule20240805 | 
 
     resp, r, err := sdk.CloudBackupsApi.UpdateBackupSchedule(context.Background(), groupId, clusterName, &diskBackupSnapshotSchedule20240805).Execute()
     if err != nil {
@@ -2881,7 +2881,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
-    backupSnapshotRetention := *openapiclient.NewBackupSnapshotRetention("RetentionUnit_example", int(5)) // BackupSnapshotRetention | 
+    backupSnapshotRetention := *admin.NewBackupSnapshotRetention("RetentionUnit_example", int(5)) // BackupSnapshotRetention | 
 
     resp, r, err := sdk.CloudBackupsApi.UpdateBackupSnapshot(context.Background(), groupId, clusterName, snapshotId, &backupSnapshotRetention).Execute()
     if err != nil {
@@ -2967,7 +2967,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    dataProtectionSettings20231001 := *openapiclient.NewDataProtectionSettings20231001("AuthorizedEmail_example", "AuthorizedUserFirstName_example", "AuthorizedUserLastName_example") // DataProtectionSettings20231001 | 
+    dataProtectionSettings20231001 := *admin.NewDataProtectionSettings20231001("AuthorizedEmail_example", "AuthorizedUserFirstName_example", "AuthorizedUserLastName_example") // DataProtectionSettings20231001 | 
     overwriteBackupPolicies := true // bool |  (optional) (default to true)
 
     resp, r, err := sdk.CloudBackupsApi.UpdateCompliancePolicy(context.Background(), groupId, &dataProtectionSettings20231001).OverwriteBackupPolicies(overwriteBackupPolicies).Execute()

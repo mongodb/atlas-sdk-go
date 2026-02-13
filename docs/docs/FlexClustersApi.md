@@ -44,7 +44,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    flexClusterDescriptionCreate20241113 := *openapiclient.NewFlexClusterDescriptionCreate20241113("Name_example", *openapiclient.NewFlexProviderSettingsCreate20241113("BackingProviderName_example", "RegionName_example")) // FlexClusterDescriptionCreate20241113 | 
+    flexClusterDescriptionCreate20241113 := *admin.NewFlexClusterDescriptionCreate20241113("Name_example", *admin.NewFlexProviderSettingsCreate20241113("BackingProviderName_example", "RegionName_example")) // FlexClusterDescriptionCreate20241113 | 
 
     resp, r, err := sdk.FlexClustersApi.CreateFlexCluster(context.Background(), groupId, &flexClusterDescriptionCreate20241113).Execute()
     if err != nil {
@@ -376,7 +376,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    atlasTenantClusterUpgradeRequest20240805 := *openapiclient.NewAtlasTenantClusterUpgradeRequest20240805("Name_example") // AtlasTenantClusterUpgradeRequest20240805 | 
+    atlasTenantClusterUpgradeRequest20240805 := *admin.NewAtlasTenantClusterUpgradeRequest20240805("Name_example") // AtlasTenantClusterUpgradeRequest20240805 | 
 
     resp, r, err := sdk.FlexClustersApi.TenantUpgrade(context.Background(), groupId, &atlasTenantClusterUpgradeRequest20240805).Execute()
     if err != nil {
@@ -459,7 +459,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
-    flexClusterDescriptionUpdate20241113 := *openapiclient.NewFlexClusterDescriptionUpdate20241113() // FlexClusterDescriptionUpdate20241113 | 
+    flexClusterDescriptionUpdate20241113 := *admin.NewFlexClusterDescriptionUpdate20241113() // FlexClusterDescriptionUpdate20241113 | 
 
     resp, r, err := sdk.FlexClustersApi.UpdateFlexCluster(context.Background(), groupId, name, &flexClusterDescriptionUpdate20241113).Execute()
     if err != nil {

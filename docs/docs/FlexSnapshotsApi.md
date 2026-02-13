@@ -42,7 +42,7 @@ func main() {
 
     name := "name_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    flexBackupSnapshotDownloadCreate20241113 := *openapiclient.NewFlexBackupSnapshotDownloadCreate20241113("32b6e34b3d91647abb20e7b8") // FlexBackupSnapshotDownloadCreate20241113 | 
+    flexBackupSnapshotDownloadCreate20241113 := *admin.NewFlexBackupSnapshotDownloadCreate20241113("32b6e34b3d91647abb20e7b8") // FlexBackupSnapshotDownloadCreate20241113 | 
 
     resp, r, err := sdk.FlexSnapshotsApi.DownloadFlexBackup(context.Background(), name, groupId, &flexBackupSnapshotDownloadCreate20241113).Execute()
     if err != nil {
