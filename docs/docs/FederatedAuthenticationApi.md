@@ -42,7 +42,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -124,7 +124,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
 
 ### Other Parameters
 
@@ -209,7 +209,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -287,7 +287,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -368,7 +368,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
 **id** | **string** | Unique 24-hexadecimal digit string that identifies the role mapping that you want to remove. | 
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
 
 ### Other Parameters
 
@@ -452,7 +452,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -535,7 +535,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -570,7 +570,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
 
 ### Other Parameters
 
@@ -615,7 +615,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -698,7 +698,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -781,7 +781,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -820,7 +820,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
 **id** | **string** | Unique 24-hexadecimal digit string that identifies the role mapping that you want to return. | 
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
 
 ### Other Parameters
 
@@ -867,7 +867,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -951,7 +951,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1039,7 +1039,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1076,7 +1076,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
 
 ### Other Parameters
 
@@ -1122,7 +1122,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1203,7 +1203,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1284,7 +1284,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1369,7 +1369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1454,7 +1454,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1494,7 +1494,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
 **id** | **string** | Unique 24-hexadecimal digit string that identifies the role mapping that you want to update. | 
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
 
 ### Other Parameters
 

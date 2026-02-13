@@ -9,7 +9,7 @@ type DBRoleToExecute struct {
 	Links *[]Link `json:"links,omitempty"`
 	// The name of the role to use. Can be a built in role or a custom role.
 	Role *string `json:"role,omitempty"`
-	// Type of the DB role. Can be either BuiltIn or Custom.
+	// Type of the DB role. Can be either Built In or Custom.
 	Type *string `json:"type,omitempty"`
 }
 

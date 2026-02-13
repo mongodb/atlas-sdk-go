@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -111,7 +111,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **databaseName** | **string** | The database against which the database user authenticates. Database users must provide both a username and authentication database to log into MongoDB. If the user authenticates with AWS IAM, x.509, LDAP, or OIDC Workload this value should be &#x60;$external&#x60;. If the user authenticates with SCRAM-SHA or OIDC Workforce, this value should be &#x60;admin&#x60;. | 
-**username** | **string** | Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsIAMType | ROLE | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | AWS IAM | awsIAMType | USER | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC Workforce | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP group name | | OIDC Workload | oidcAuthType | USER | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP user name | | SCRAM-SHA | awsIAMType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |  | 
+**username** | **string** | Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | &#x60;awsIAMType&#x60; | &#x60;ROLE&#x60; | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | AWS IAM | &#x60;awsIAMType&#x60; | &#x60;USER&#x60; | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | x.509 | &#x60;x509Type&#x60; | &#x60;CUSTOMER&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | &#x60;x509Type&#x60; | &#x60;MANAGED&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | &#x60;ldapAuthType&#x60; | &#x60;USER&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | &#x60;ldapAuthType&#x60; | &#x60;GROUP&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC Workforce | &#x60;oidcAuthType&#x60; | &#x60;IDP_GROUP&#x60; | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP group name | | OIDC Workload | &#x60;oidcAuthType&#x60; | &#x60;USER&#x60; | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP user name | | SCRAM-SHA | &#x60;awsIAMType&#x60;, &#x60;x509Type&#x60;, &#x60;ldapAuthType&#x60;, &#x60;oidcAuthType&#x60; | &#x60;NONE&#x60; | Alphanumeric string |  | 
 
 ### Other Parameters
 
@@ -195,7 +195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **databaseName** | **string** | The database against which the database user authenticates. Database users must provide both a username and authentication database to log into MongoDB. If the user authenticates with AWS IAM, x.509, LDAP, or OIDC Workload this value should be &#x60;$external&#x60;. If the user authenticates with SCRAM-SHA or OIDC Workforce, this value should be &#x60;admin&#x60;. | 
-**username** | **string** | Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsIAMType | ROLE | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | AWS IAM | awsIAMType | USER | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC Workforce | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP group name | | OIDC Workload | oidcAuthType | USER | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP user name | | SCRAM-SHA | awsIAMType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |  | 
+**username** | **string** | Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | &#x60;awsIAMType&#x60; | &#x60;ROLE&#x60; | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | AWS IAM | &#x60;awsIAMType&#x60; | &#x60;USER&#x60; | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | x.509 | &#x60;x509Type&#x60; | &#x60;CUSTOMER&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | &#x60;x509Type&#x60; | &#x60;MANAGED&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | &#x60;ldapAuthType&#x60; | &#x60;USER&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | &#x60;ldapAuthType&#x60; | &#x60;GROUP&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC Workforce | &#x60;oidcAuthType&#x60; | &#x60;IDP_GROUP&#x60; | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP group name | | OIDC Workload | &#x60;oidcAuthType&#x60; | &#x60;USER&#x60; | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP user name | | SCRAM-SHA | &#x60;awsIAMType&#x60;, &#x60;x509Type&#x60;, &#x60;ldapAuthType&#x60;, &#x60;oidcAuthType&#x60; | &#x60;NONE&#x60; | Alphanumeric string |  | 
 
 ### Other Parameters
 
@@ -281,7 +281,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -329,7 +329,7 @@ Other parameters are passed through a pointer to a apiListDatabaseUsersRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -367,7 +367,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **databaseName** | **string** | The database against which the database user authenticates. Database users must provide both a username and authentication database to log into MongoDB. If the user authenticates with AWS IAM, x.509, LDAP, or OIDC Workload this value should be &#x60;$external&#x60;. If the user authenticates with SCRAM-SHA or OIDC Workforce, this value should be &#x60;admin&#x60;. | 
-**username** | **string** | Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsIAMType | ROLE | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | AWS IAM | awsIAMType | USER | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC Workforce | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP group name | | OIDC Workload | oidcAuthType | USER | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP user name | | SCRAM-SHA | awsIAMType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |  | 
+**username** | **string** | Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | &#x60;awsIAMType&#x60; | &#x60;ROLE&#x60; | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | AWS IAM | &#x60;awsIAMType&#x60; | &#x60;USER&#x60; | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | x.509 | &#x60;x509Type&#x60; | &#x60;CUSTOMER&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | &#x60;x509Type&#x60; | &#x60;MANAGED&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | &#x60;ldapAuthType&#x60; | &#x60;USER&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | &#x60;ldapAuthType&#x60; | &#x60;GROUP&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC Workforce | &#x60;oidcAuthType&#x60; | &#x60;IDP_GROUP&#x60; | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP group name | | OIDC Workload | &#x60;oidcAuthType&#x60; | &#x60;USER&#x60; | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP user name | | SCRAM-SHA | &#x60;awsIAMType&#x60;, &#x60;x509Type&#x60;, &#x60;ldapAuthType&#x60;, &#x60;oidcAuthType&#x60; | &#x60;NONE&#x60; | Alphanumeric string |  | 
 
 ### Other Parameters
 

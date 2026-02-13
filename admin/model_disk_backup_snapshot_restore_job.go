@@ -38,11 +38,11 @@ type DiskBackupSnapshotRestoreJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Oplog operation number from which you want to restore this snapshot. This number represents the second part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.
+	// Oplog operation number from which you want to restore this snapshot. This number represents the second part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and `oplogTs` exceeds `0`.
 	OplogInc *int `json:"oplogInc,omitempty"`
-	// Date and time from which you want to restore this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. This number represents the first part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.
+	// Date and time from which you want to restore this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. This number represents the first part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and `oplogTs` exceeds `0`.
 	OplogTs *int `json:"oplogTs,omitempty"`
-	// Date and time from which MongoDB Cloud restored this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **pointInTimeUTCSeconds** exceeds `0`.
+	// Date and time from which MongoDB Cloud restored this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and `pointInTimeUTCSeconds` exceeds `0`.
 	PointInTimeUTCSeconds *int `json:"pointInTimeUTCSeconds,omitempty"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download and the corresponding private endpoint(s). MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"` and the download can be performed privately.
 	// Read only field.
@@ -51,9 +51,9 @@ type DiskBackupSnapshotRestoreJob struct {
 	SnapshotId *string `json:"snapshotId,omitempty"`
 	// Human-readable label that identifies the target cluster to which the restore job restores the snapshot. The resource returns this parameter when `\"deliveryType\":` `\"automated\"`. Required for `automated` and `pointInTime` restore types.
 	TargetClusterName *string `json:"targetClusterName,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the target project for the specified **targetClusterName**. Required for `automated` and `pointInTime` restore types.
+	// Unique 24-hexadecimal digit string that identifies the target project for the specified `targetClusterName`. Required for `automated` and `pointInTime` restore types.
 	TargetGroupId *string `json:"targetGroupId,omitempty"`
-	// Date and time when MongoDB Cloud took the snapshot associated with **snapshotId**. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date and time when MongoDB Cloud took the snapshot associated with `snapshotId`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 }

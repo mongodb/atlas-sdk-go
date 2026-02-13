@@ -44,7 +44,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ## CreateCluster
 
-> ClusterDescription20240805 CreateCluster(ctx, groupId, clusterDescription20240805 ClusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
+> ClusterDescription20240805 CreateCluster(ctx, groupId, clusterDescription20240805 ClusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
 
 Create One Cluster in One Project
 
@@ -127,7 +127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -143,8 +143,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterDescription20240805 := *openapiclient.NewClusterDescription20240805() // ClusterDescription20240805 | 
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
+    useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.CreateCluster(context.Background(), groupId, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
+    resp, r, err := sdk.ClustersApi.CreateCluster(context.Background(), groupId, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.CreateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -176,6 +177,7 @@ Name | Type | Description  | Notes
 
  **clusterDescription20240805** | [**ClusterDescription20240805**](ClusterDescription20240805.md) | Cluster to create in this project. | 
  **useEffectiveInstanceFields** | **bool** | Controls how hardware specification fields are returned in the response after cluster creation. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility. | [default to false]
+ **useEffectiveFieldsReplicationSpecs** | **bool** | Controls how &#x60;replicationSpecs&#x60; fields are returned in the response. When set to &#x60;true&#x60;, stores the client&#39;s view of &#x60;replicationSpecs&#x60; and returns it in &#x60;replicationSpecs&#x60;, while the actual cluster state (including auto-scaled hardware and auto-added shards) is returned in &#x60;effectiveReplicationSpecs&#x60;. When &#x60;false&#x60; (default), &#x60;replicationSpecs&#x60; contains the actual cluster state. | [default to false]
 
 ### Return type
 
@@ -211,7 +213,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -279,7 +281,7 @@ Name | Type | Description  | Notes
 
 ## GetCluster
 
-> ClusterDescription20240805 GetCluster(ctx, groupId, clusterName).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
+> ClusterDescription20240805 GetCluster(ctx, groupId, clusterName).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
 
 Return One Cluster from One Project
 
@@ -294,7 +296,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -310,8 +312,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
+    useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.GetCluster(context.Background(), groupId, clusterName).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
+    resp, r, err := sdk.ClustersApi.GetCluster(context.Background(), groupId, clusterName).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -344,6 +347,7 @@ Name | Type | Description  | Notes
 
 
  **useEffectiveInstanceFields** | **bool** | Controls how hardware specification fields are returned in the response. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility. | [default to false]
+ **useEffectiveFieldsReplicationSpecs** | **bool** | Controls how &#x60;replicationSpecs&#x60; are returned in the response. When set to &#x60;true&#x60;, returns the client-specified view in &#x60;replicationSpecs&#x60; and the actual cluster state in &#x60;effectiveReplicationSpecs&#x60;. When &#x60;false&#x60; (default), &#x60;replicationSpecs&#x60; contains the actual cluster state. | [default to false]
 
 ### Return type
 
@@ -379,7 +383,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -462,7 +466,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -545,7 +549,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -628,7 +632,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -711,7 +715,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -753,7 +757,7 @@ Other parameters are passed through a pointer to a apiListClusterDetailsRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -791,7 +795,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -841,7 +845,7 @@ Other parameters are passed through a pointer to a apiListClusterProviderRegions
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **providers** | **[]string** | Cloud providers whose regions to retrieve. When you specify multiple providers, the response can return only tiers and regions that support multi-cloud clusters. | 
@@ -881,7 +885,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -931,7 +935,7 @@ Other parameters are passed through a pointer to a apiListClustersRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **includeDeletedWithRetainedBackups** | **bool** | Flag that indicates whether to return Clusters with retain backups. | [default to false]
@@ -971,7 +975,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1018,7 +1022,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **pinFCV** | [**PinFCV**](PinFCV.md) | Optional request params for tuning FCV pinning configuration. | 
+ **pinFCV** | [**PinFCV**](PinFCV.md) | Optional request parameters for tuning FCV pinning configuration. | 
 
 ### Return type
 
@@ -1054,7 +1058,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1137,7 +1141,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1218,7 +1222,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1299,7 +1303,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1365,7 +1369,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCluster
 
-> ClusterDescription20240805 UpdateCluster(ctx, groupId, clusterName, clusterDescription20240805 ClusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
+> ClusterDescription20240805 UpdateCluster(ctx, groupId, clusterName, clusterDescription20240805 ClusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
 
 Update One Cluster in One Project
 
@@ -1380,7 +1384,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1397,8 +1401,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterDescription20240805 := *openapiclient.NewClusterDescription20240805() // ClusterDescription20240805 | 
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
+    useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
+    resp, r, err := sdk.ClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1431,7 +1436,8 @@ Name | Type | Description  | Notes
 
 
  **clusterDescription20240805** | [**ClusterDescription20240805**](ClusterDescription20240805.md) | Cluster to update in the specified project. | 
- **useEffectiveInstanceFields** | **bool** | Controls how hardware specification fields are returned in the response after cluster updates. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Note: When using this header with autoscaling enabled, MongoDB ignores replicationSpecs changes during updates. To intentionally override the replicationSpecs, disable this header. | [default to false]
+ **useEffectiveInstanceFields** | **bool** | Controls how hardware specification fields are returned in the response after cluster updates. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Note: When using this header with autoscaling enabled, MongoDB ignores &#x60;replicationSpecs&#x60; changes during updates. To intentionally override the &#x60;replicationSpecs&#x60;, disable this header. | [default to false]
+ **useEffectiveFieldsReplicationSpecs** | **bool** | Controls how &#x60;replicationSpecs&#x60; fields are returned in the response. When set to &#x60;true&#x60;, stores the client&#39;s view of &#x60;replicationSpecs&#x60; and returns it in &#x60;replicationSpecs&#x60;, while the actual cluster state (including auto-scaled hardware and auto-added shards) is returned in &#x60;effectiveReplicationSpecs&#x60;. When &#x60;false&#x60; (default), &#x60;replicationSpecs&#x60; contains the actual cluster state. | [default to false]
 
 ### Return type
 
@@ -1467,7 +1473,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1552,7 +1558,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1634,7 +1640,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {

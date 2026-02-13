@@ -30,7 +30,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -115,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -195,7 +195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -281,7 +281,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -370,7 +370,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -454,7 +454,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -500,7 +500,7 @@ Other parameters are passed through a pointer to a apiUpdateEncryptionAtRestRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **encryptionAtRest** | [**EncryptionAtRest**](EncryptionAtRest.md) | Required parameters depend on whether someone has enabled Encryption at Rest using Customer Key Management:  If you have enabled Encryption at Rest using Customer Key Management (CMK), Atlas requires all of the parameters for the desired encryption provider.  - To use AWS Key Management Service (KMS), MongoDB Cloud requires all the fields in the **awsKms** object. - To use Azure Key Vault, MongoDB Cloud requires all the fields in the **azureKeyVault** object. - To use Google Cloud Key Management Service (KMS), MongoDB Cloud requires all the fields in the **googleCloudKms** object For authentication, you must provide either serviceAccountKey (static credentials) or roleId (service-account–based authentication) Once roleId is configured, serviceAccountKey is no longer supported.  If you enabled Encryption at Rest using Customer Key  Management, administrators can pass only the changed fields for the **awsKms**, **azureKeyVault**, or **googleCloudKms** object to update the configuration to this endpoint. | 
+ **encryptionAtRest** | [**EncryptionAtRest**](EncryptionAtRest.md) | Required parameters depend on whether someone has enabled Encryption at Rest using Customer Key Management:  If you have enabled Encryption at Rest using Customer Key Management (CMK), Atlas requires all of the parameters for the desired encryption provider.  - To use AWS Key Management Service (KMS), MongoDB Cloud requires all the fields in the &#x60;awsKms&#x60; object. - To use Azure Key Vault, MongoDB Cloud requires all the fields in the &#x60;azureKeyVault&#x60; object. - To use Google Cloud Key Management Service (KMS), MongoDB Cloud requires all the fields in the &#x60;googleCloudKms&#x60; object For authentication, you must provide either &#x60;serviceAccountKey&#x60; (static credentials) or &#x60;roleId&#x60; (service-account–based authentication) Once &#x60;roleId&#x60; is configured, &#x60;serviceAccountKey&#x60; is no longer supported.  If you enabled Encryption at Rest using Customer Key Management, administrators can pass only the changed fields for the &#x60;awsKms&#x60;, &#x60;azureKeyVault&#x60;, or &#x60;googleCloudKms&#x60; object to update the configuration to this endpoint. | 
 
 ### Return type
 

@@ -38,7 +38,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -122,7 +122,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -204,7 +204,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -285,7 +285,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **tenantName** | **string** | Human-readable label that identifies the federated database instance to which the query limit applies. | 
-**limitName** | **string** | Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |  | 
+**limitName** | **string** | Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | &#x60;bytesProcessed.query&#x60; | Limit on the number of bytes processed during a single data federation query | N/A | | &#x60;bytesProcessed.daily&#x60; | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | &#x60;bytesProcessed.weekly&#x60; | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | &#x60;bytesProcessed.monthly&#x60; | Limit on the number of bytes processed for the data federation instance for the current month | N/A |  | 
 
 ### Other Parameters
 
@@ -369,7 +369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -450,7 +450,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -537,7 +537,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -620,7 +620,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -659,7 +659,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **tenantName** | **string** | Human-readable label that identifies the federated database instance to which the query limit applies. | 
-**limitName** | **string** | Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |  | 
+**limitName** | **string** | Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | &#x60;bytesProcessed.query&#x60; | Limit on the number of bytes processed during a single data federation query | N/A | | &#x60;bytesProcessed.daily&#x60; | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | &#x60;bytesProcessed.weekly&#x60; | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | &#x60;bytesProcessed.monthly&#x60; | Limit on the number of bytes processed for the data federation instance for the current month | N/A |  | 
 
 ### Other Parameters
 
@@ -706,7 +706,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -789,7 +789,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -871,7 +871,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -954,7 +954,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1002,7 +1002,7 @@ Other parameters are passed through a pointer to a apiListPrivateEndpointIdsRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -1040,7 +1040,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -1080,7 +1080,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **tenantName** | **string** | Human-readable label that identifies the federated database instance to which the query limit applies. | 
-**limitName** | **string** | Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |  | 
+**limitName** | **string** | Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | &#x60;bytesProcessed.query&#x60; | Limit on the number of bytes processed during a single data federation query | N/A | | &#x60;bytesProcessed.daily&#x60; | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | &#x60;bytesProcessed.weekly&#x60; | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | &#x60;bytesProcessed.monthly&#x60; | Limit on the number of bytes processed for the data federation instance for the current month | N/A |  | 
 
 ### Other Parameters
 
@@ -1128,7 +1128,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {

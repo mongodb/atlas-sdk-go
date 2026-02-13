@@ -165,7 +165,7 @@ func (a *ProjectIPAccessListApiService) CreateAccessListEntryWithParams(ctx cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r CreateAccessListEntryApiRequest) IncludeCount(includeCount bool) CreateAccessListEntryApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -685,7 +685,7 @@ func (a *ProjectIPAccessListApiService) ListAccessListEntriesWithParams(ctx cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListAccessListEntriesApiRequest) IncludeCount(includeCount bool) ListAccessListEntriesApiRequest {
 	r.includeCount = &includeCount
 	return r

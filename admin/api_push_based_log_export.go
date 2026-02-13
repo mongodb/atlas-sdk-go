@@ -19,10 +19,10 @@ type PushBasedLogExportApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param s3LogIntegrationRequest Log integration configuration to create.
+		@param logIntegrationRequest Log integration configuration to create.
 		@return CreateGroupLogIntegrationApiRequest
 	*/
-	CreateGroupLogIntegration(ctx context.Context, groupId string, s3LogIntegrationRequest *S3LogIntegrationRequest) CreateGroupLogIntegrationApiRequest
+	CreateGroupLogIntegration(ctx context.Context, groupId string, logIntegrationRequest *LogIntegrationRequest) CreateGroupLogIntegrationApiRequest
 	/*
 		CreateGroupLogIntegration Create One Log Integration
 
@@ -247,23 +247,23 @@ type PushBasedLogExportApi interface {
 type PushBasedLogExportApiService service
 
 type CreateGroupLogIntegrationApiRequest struct {
-	ctx                     context.Context
-	ApiService              PushBasedLogExportApi
-	groupId                 string
-	s3LogIntegrationRequest *S3LogIntegrationRequest
+	ctx                   context.Context
+	ApiService            PushBasedLogExportApi
+	groupId               string
+	logIntegrationRequest *LogIntegrationRequest
 }
 
 type CreateGroupLogIntegrationApiParams struct {
-	GroupId                 string
-	S3LogIntegrationRequest *S3LogIntegrationRequest
+	GroupId               string
+	LogIntegrationRequest *LogIntegrationRequest
 }
 
 func (a *PushBasedLogExportApiService) CreateGroupLogIntegrationWithParams(ctx context.Context, args *CreateGroupLogIntegrationApiParams) CreateGroupLogIntegrationApiRequest {
 	return CreateGroupLogIntegrationApiRequest{
-		ApiService:              a,
-		ctx:                     ctx,
-		groupId:                 args.GroupId,
-		s3LogIntegrationRequest: args.S3LogIntegrationRequest,
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               args.GroupId,
+		logIntegrationRequest: args.LogIntegrationRequest,
 	}
 }
 
@@ -280,12 +280,12 @@ Creates a new log integration configuration identified by a unique ID. To use th
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateGroupLogIntegrationApiRequest
 */
-func (a *PushBasedLogExportApiService) CreateGroupLogIntegration(ctx context.Context, groupId string, s3LogIntegrationRequest *S3LogIntegrationRequest) CreateGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportApiService) CreateGroupLogIntegration(ctx context.Context, groupId string, logIntegrationRequest *LogIntegrationRequest) CreateGroupLogIntegrationApiRequest {
 	return CreateGroupLogIntegrationApiRequest{
-		ApiService:              a,
-		ctx:                     ctx,
-		groupId:                 groupId,
-		s3LogIntegrationRequest: s3LogIntegrationRequest,
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               groupId,
+		logIntegrationRequest: logIntegrationRequest,
 	}
 }
 
@@ -314,8 +314,8 @@ func (a *PushBasedLogExportApiService) CreateGroupLogIntegrationExecute(r Create
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.s3LogIntegrationRequest == nil {
-		return localVarReturnValue, nil, reportError("s3LogIntegrationRequest is required and must be specified")
+	if r.logIntegrationRequest == nil {
+		return localVarReturnValue, nil, reportError("logIntegrationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -336,7 +336,7 @@ func (a *PushBasedLogExportApiService) CreateGroupLogIntegrationExecute(r Create
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.s3LogIntegrationRequest
+	localVarPostBody = r.logIntegrationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -955,7 +955,7 @@ func (a *PushBasedLogExportApiService) ListGroupLogIntegrationsWithParams(ctx co
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListGroupLogIntegrationsApiRequest) IncludeCount(includeCount bool) ListGroupLogIntegrationsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -973,7 +973,7 @@ func (r ListGroupLogIntegrationsApiRequest) PageNum(pageNum int) ListGroupLogInt
 	return r
 }
 
-// Optional filter by integration type (e.g., &#39;S3_LOG_EXPORT&#39;).
+// Optional filter by integration type (e.g., &#x60;S3_LOG_EXPORT&#x60;).
 func (r ListGroupLogIntegrationsApiRequest) IntegrationType(integrationType string) ListGroupLogIntegrationsApiRequest {
 	r.integrationType = &integrationType
 	return r

@@ -145,7 +145,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param encryptionAtRest Required parameters depend on whether someone has enabled Encryption at Rest using Customer Key Management:  If you have enabled Encryption at Rest using Customer Key Management (CMK), Atlas requires all of the parameters for the desired encryption provider.  - To use AWS Key Management Service (KMS), MongoDB Cloud requires all the fields in the **awsKms** object. - To use Azure Key Vault, MongoDB Cloud requires all the fields in the **azureKeyVault** object. - To use Google Cloud Key Management Service (KMS), MongoDB Cloud requires all the fields in the **googleCloudKms** object For authentication, you must provide either serviceAccountKey (static credentials) or roleId (service-account–based authentication) Once roleId is configured, serviceAccountKey is no longer supported.  If you enabled Encryption at Rest using Customer Key  Management, administrators can pass only the changed fields for the **awsKms**, **azureKeyVault**, or **googleCloudKms** object to update the configuration to this endpoint.
+			@param encryptionAtRest Required parameters depend on whether someone has enabled Encryption at Rest using Customer Key Management:  If you have enabled Encryption at Rest using Customer Key Management (CMK), Atlas requires all of the parameters for the desired encryption provider.  - To use AWS Key Management Service (KMS), MongoDB Cloud requires all the fields in the `awsKms` object. - To use Azure Key Vault, MongoDB Cloud requires all the fields in the `azureKeyVault` object. - To use Google Cloud Key Management Service (KMS), MongoDB Cloud requires all the fields in the `googleCloudKms` object For authentication, you must provide either `serviceAccountKey` (static credentials) or `roleId` (service-account–based authentication) Once `roleId` is configured, `serviceAccountKey` is no longer supported.  If you enabled Encryption at Rest using Customer Key Management, administrators can pass only the changed fields for the `awsKms`, `azureKeyVault`, or `googleCloudKms` object to update the configuration to this endpoint.
 			@return UpdateEncryptionAtRestApiRequest
 	*/
 	UpdateEncryptionAtRest(ctx context.Context, groupId string, encryptionAtRest *EncryptionAtRest) UpdateEncryptionAtRestApiRequest
@@ -576,7 +576,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) ListRestPrivateEn
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListRestPrivateEndpointsApiRequest) IncludeCount(includeCount bool) ListRestPrivateEndpointsApiRequest {
 	r.includeCount = &includeCount
 	return r

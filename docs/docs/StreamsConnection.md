@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
+**Region** | Pointer to **string** | The connection&#39;s region. | [optional] [readonly] 
 **State** | Pointer to **string** | The state of the connection. | [optional] [readonly] 
 **Type** | Pointer to **string** | Type of the connection. | [optional] 
 **ClusterGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. | [optional] 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 **Networking** | Pointer to [**StreamsKafkaNetworking**](StreamsKafkaNetworking.md) |  | [optional] 
 **Security** | Pointer to [**StreamsKafkaSecurity**](StreamsKafkaSecurity.md) |  | [optional] 
 **Headers** | Pointer to **map[string]string** | A map of key-value pairs that will be passed as headers for the request. | [optional] 
-**Url** | Pointer to **string** | The url to be used for the request. | [optional] 
+**Url** | Pointer to **string** | The URL to be used for the request. | [optional] 
 **Aws** | Pointer to [**StreamsAWSConnectionConfig**](StreamsAWSConnectionConfig.md) |  | [optional] 
 **Provider** | Pointer to **string** | The Schema Registry provider. | [optional] 
 **SchemaRegistryAuthentication** | Pointer to [**SchemaRegistryAuthentication**](SchemaRegistryAuthentication.md) |  | [optional] 
@@ -90,6 +91,30 @@ SetName sets Name field to given value.
 `func (o *StreamsConnection) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+### GetRegion
+
+`func (o *StreamsConnection) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *StreamsConnection) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *StreamsConnection) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *StreamsConnection) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 ### GetState
 
 `func (o *StreamsConnection) GetState() string`

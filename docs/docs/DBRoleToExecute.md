@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Role** | Pointer to **string** | The name of the role to use. Can be a built in role or a custom role. | [optional] 
-**Type** | Pointer to **string** | Type of the DB role. Can be either BuiltIn or Custom. | [optional] 
+**Type** | Pointer to **string** | Type of the DB role. Can be either Built In or Custom. | [optional] 
 
 ## Methods
 

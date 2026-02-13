@@ -4,9 +4,9 @@ package admin
 
 // ConnectedOrgConfigRoleAssignment struct for ConnectedOrgConfigRoleAssignment
 type ConnectedOrgConfigRoleAssignment struct {
-	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. Each element within **roleAssignments** can have a value for **groupId** or **orgId**, but not both.
+	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. Each element within `roleAssignments` can have a value for `groupId` or `orgId`, but not both.
 	GroupId *string `json:"groupId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the organization to which this role belongs. Each element within **roleAssignments** can have a value for **orgId** or **groupId**, but not both.
+	// Unique 24-hexadecimal digit string that identifies the organization to which this role belongs. Each element within `roleAssignments` can have a value for `orgId` or `groupId`, but not both.
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include organization- and project-level roles.
 	Role *string `json:"role,omitempty"`

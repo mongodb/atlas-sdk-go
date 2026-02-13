@@ -4,19 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AcceptDataRisksAndForceReplicaSetReconfig** | Pointer to **time.Time** | If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
+**AcceptDataRisksAndForceReplicaSetReconfig** | Pointer to **time.Time** | If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set &#x60;acceptDataRisksAndForceReplicaSetReconfig&#x60; to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
 **AdvancedConfiguration** | Pointer to [**ApiAtlasClusterAdvancedConfiguration**](ApiAtlasClusterAdvancedConfiguration.md) |  | [optional] 
 **AutoScaling** | Pointer to [**ClusterAutoScalingSettings**](ClusterAutoScalingSettings.md) |  | [optional] 
 **BackupEnabled** | Pointer to **bool** | Flag that indicates whether the cluster can perform backups. If set to &#x60;true&#x60;, the cluster can perform backups. You must set this value to &#x60;true&#x60; for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and Shared Cluster Backups for tenant clusters. If set to &#x60;false&#x60;, the cluster doesn&#39;t use MongoDB Cloud backups. | [optional] 
 **BiConnector** | Pointer to [**BiConnector**](BiConnector.md) |  | [optional] 
 **ClusterType** | Pointer to **string** | Configuration of nodes that comprise the cluster. | [optional] 
-**ConfigServerManagementMode** | Pointer to **string** | Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster&#39;s config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server. | [optional] [default to "ATLAS_MANAGED"]
+**ConfigServerManagementMode** | Pointer to **string** | Config Server Management Mode for creating or updating a sharded cluster. When configured as &#x60;ATLAS_MANAGED&#x60;, Atlas may automatically switch the cluster&#39;s config server type for optimal performance and savings. When configured as &#x60;FIXED_TO_DEDICATED&#x60;, the cluster will always use a dedicated config server. | [optional] [default to "ATLAS_MANAGED"]
 **ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
 **ConnectionStrings** | Pointer to [**ClusterConnectionStrings**](ClusterConnectionStrings.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
-**DiskSizeGB** | Pointer to **float64** | Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set **replicationSpecs**.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. | [optional] 
+**DeleteAfterCreationHours** | Pointer to **int** | Number of hours after cluster creation that this cluster will be automatically deleted.  This field is used to derive &#x60;deleteAfterDate&#x60; relative to &#x60;createDate&#x60;.  When set to null or zero on cluster creation, the cluster will not be automatically deleted.  When set to a positive value on cluster creation, the cluster will be automatically deleted after the specified number of hours.  When updating this field on an existing (non-deleted) cluster, and this is set to null, then existing values are preserved for this &amp; &#x60;deleteAfterDate&#x60;.  When updating this field on an existing (non-deleted) cluster, and this is set to zero, then &#x60;deleteAfterDate&#x60; is reset to null (disable auto deletion) regardless of previous configurations.  When updating this field on an existing (non-deleted) cluster, and this is set to a positive value, then &#x60;createDate&#x60; + &#x60;deleteAfterCreationHours&#x60; must be later than now else the field update is ignored and existing values are preserved for this &amp; &#x60;deleteAfterDate&#x60;. | [optional] 
+**DeleteAfterDate** | Pointer to **time.Time** | The date at which this cluster will be automatically deleted.  This parameter expresses its value in the ISO 8601 timestamp format in UTC and is derived based on the &#x60;createDate&#x60; + &#x60;deleteAfterCreationHours&#x60;. | [optional] [readonly] 
+**DiskSizeGB** | Pointer to **float64** | Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set &#x60;replicationSpecs&#x60;.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. | [optional] 
 **DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
-**EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be &#x60;M10&#x60; or higher and &#x60;\&quot;backupEnabled\&quot; : false&#x60; or omitted entirely. | [optional] 
+**EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster &#x60;replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize&#x60; setting must be &#x60;M10&#x60; or higher and &#x60;\&quot;backupEnabled\&quot; : false&#x60; or omitted entirely. | [optional] 
 **FeatureCompatibilityVersion** | Pointer to **string** | Feature compatibility version of the cluster. | [optional] [readonly] 
 **FeatureCompatibilityVersionExpirationDate** | Pointer to **time.Time** | Feature compatibility version expiration date. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **GlobalClusterSelfManagedSharding** | Pointer to **bool** | Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed. | [optional] 
@@ -34,10 +36,10 @@ Name | Type | Description | Notes
 **NumShards** | Pointer to **int** | Number of shards up to 50 to deploy for a sharded cluster. The resource returns &#x60;1&#x60; to indicate a replica set and values of &#x60;2&#x60; and higher to indicate a sharded cluster. The returned value equals the number of shards in the cluster. | [optional] [default to 1]
 **Paused** | Pointer to **bool** | Flag that indicates whether the cluster is paused. | [optional] 
 **PitEnabled** | Pointer to **bool** | Flag that indicates whether the cluster uses continuous cloud backups. | [optional] 
-**ProviderBackupEnabled** | Pointer to **bool** | Flag that indicates whether the M10 or higher cluster can perform Cloud Backups. If set to &#x60;true&#x60;, the cluster can perform backups. If this and **backupEnabled** are set to &#x60;false&#x60;, the cluster doesn&#39;t use MongoDB Cloud backups. | [optional] 
+**ProviderBackupEnabled** | Pointer to **bool** | Flag that indicates whether the M10 or higher cluster can perform Cloud Backups. If set to &#x60;true&#x60;, the cluster can perform backups. If this and &#x60;backupEnabled&#x60; are set to &#x60;false&#x60;, the cluster doesn&#39;t use MongoDB Cloud backups. | [optional] 
 **ProviderSettings** | Pointer to [**ClusterProviderSettings**](ClusterProviderSettings.md) |  | [optional] 
-**ReplicaSetScalingStrategy** | Pointer to **string** | Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. | [optional] [default to "WORKLOAD_TYPE"]
-**ReplicationFactor** | Pointer to **int** | Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use **replicationSpecs** instead. | [optional] [default to 3]
+**ReplicaSetScalingStrategy** | Pointer to **string** | Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under &#x60;WORKLOAD_TYPE&#x60;. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as &#x60;SEQUENTIAL&#x60;, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as &#x60;NODE_TYPE&#x60;, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. | [optional] [default to "WORKLOAD_TYPE"]
+**ReplicationFactor** | Pointer to **int** | Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use &#x60;replicationSpecs&#x60; instead. | [optional] [default to 3]
 **ReplicationSpec** | Pointer to [**map[string]RegionSpec**](RegionSpec.md) | Physical location where MongoDB Cloud provisions cluster nodes. | [optional] 
 **ReplicationSpecs** | Pointer to [**[]LegacyReplicationSpec**](LegacyReplicationSpec.md) | List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes. | [optional] 
 **RootCertType** | Pointer to **string** | Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. | [optional] [default to "ISRGROOTX1"]
@@ -45,7 +47,7 @@ Name | Type | Description | Notes
 **StateName** | Pointer to **string** | Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.   - &#x60;IDLE&#x60;: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.  - &#x60;CREATING&#x60;: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.  - &#x60;UPDATING&#x60;: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.  - &#x60;DELETING&#x60;: The cluster is in the process of deletion and will soon be deleted.  - &#x60;REPAIRING&#x60;: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal. | [optional] [readonly] 
 **Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. | [optional] 
 **TerminationProtectionEnabled** | Pointer to **bool** | Flag that indicates whether termination protection is enabled on the cluster. If set to &#x60;true&#x60;, MongoDB Cloud won&#39;t delete the cluster. If set to &#x60;false&#x60;, MongoDB Cloud will delete the cluster. | [optional] [default to false]
-**VersionReleaseSystem** | Pointer to **string** | Method by which the cluster maintains the MongoDB versions. If value is &#x60;CONTINUOUS&#x60;, you must not specify **mongoDBMajorVersion**. | [optional] [default to "LTS"]
+**VersionReleaseSystem** | Pointer to **string** | Method by which the cluster maintains the MongoDB versions. If value is &#x60;CONTINUOUS&#x60;, you must not specify &#x60;mongoDBMajorVersion&#x60;. | [optional] [default to "LTS"]
 
 ## Methods
 
@@ -306,6 +308,54 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
+### GetDeleteAfterCreationHours
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDeleteAfterCreationHours() int`
+
+GetDeleteAfterCreationHours returns the DeleteAfterCreationHours field if non-nil, zero value otherwise.
+
+### GetDeleteAfterCreationHoursOk
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDeleteAfterCreationHoursOk() (*int, bool)`
+
+GetDeleteAfterCreationHoursOk returns a tuple with the DeleteAfterCreationHours field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteAfterCreationHours
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDeleteAfterCreationHours(v int)`
+
+SetDeleteAfterCreationHours sets DeleteAfterCreationHours field to given value.
+
+### HasDeleteAfterCreationHours
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDeleteAfterCreationHours() bool`
+
+HasDeleteAfterCreationHours returns a boolean if a field has been set.
+### GetDeleteAfterDate
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDeleteAfterDate() time.Time`
+
+GetDeleteAfterDate returns the DeleteAfterDate field if non-nil, zero value otherwise.
+
+### GetDeleteAfterDateOk
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDeleteAfterDateOk() (*time.Time, bool)`
+
+GetDeleteAfterDateOk returns a tuple with the DeleteAfterDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteAfterDate
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDeleteAfterDate(v time.Time)`
+
+SetDeleteAfterDate sets DeleteAfterDate field to given value.
+
+### HasDeleteAfterDate
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDeleteAfterDate() bool`
+
+HasDeleteAfterDate returns a boolean if a field has been set.
 ### GetDiskSizeGB
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDiskSizeGB() float64`

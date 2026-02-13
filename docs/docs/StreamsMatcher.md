@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FieldName** | **string** | Name of the parameter in the target object that MongoDB Cloud checks. The parameter must match all rules for MongoDB Cloud to check for alert configurations. | 
 **Operator** | **string** | Comparison operator to apply when checking the current metric value against **matcher[n].value**. The &#x60;REGEX&#x60; operator only supports inclusive matches. Use the &#x60;NOT_CONTAINS&#x60; operator to exclude values. | 
-**Value** | **string** | Value to match or exceed using the specified **matchers.operator**. | 
+**Value** | **string** | Value to match or exceed using the specified &#x60;matchers.operator&#x60;. | 
 
 ## Methods
 

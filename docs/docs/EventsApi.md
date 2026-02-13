@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -151,7 +151,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
 **eventId** | **string** | Unique 24-hexadecimal digit string that identifies the event that you want to return. | 
 
 ### Other Parameters
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -241,7 +241,7 @@ Other parameters are passed through a pointer to a apiListEventTypesRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -279,7 +279,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -333,12 +333,12 @@ Other parameters are passed through a pointer to a apiListGroupEventsRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **clusterNames** | **[]string** | Human-readable label that identifies the cluster. | 
  **eventType** | **[]string** | Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently. | 
- **excludedEventType** | **[]string** | Category of event that you would like to exclude from query results, such as CLUSTER_CREATED  **IMPORTANT**: Event type names change frequently. Verify that you specify the event type correctly by checking the complete list of event types. | 
+ **excludedEventType** | **[]string** | Category of event that you would like to exclude from query results, such as &#x60;CLUSTER_CREATED&#x60;.  **IMPORTANT**: Event type names change frequently. Verify that you specify the event type correctly by checking the complete list of event types. | 
  **includeRaw** | **bool** | Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event. | [default to false]
  **maxDate** | **time.Time** | Date and time from when MongoDB Cloud stops returning events. This parameter uses the ISO 8601 timestamp format in UTC. | 
  **minDate** | **time.Time** | Date and time from when MongoDB Cloud starts returning events. This parameter uses the ISO 8601 timestamp format in UTC. | 
@@ -377,7 +377,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -419,7 +419,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
 
 ### Other Parameters
 
@@ -429,7 +429,7 @@ Other parameters are passed through a pointer to a apiListOrgEventsRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **eventType** | **[]string** | Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently. | 

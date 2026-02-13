@@ -7,8 +7,10 @@ Name | Type | Description | Notes
 **AutoExportEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud automatically exports Cloud Backup Snapshots to the Export Bucket. | [optional] 
 **ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster with the Snapshot you want to return. | [optional] [readonly] 
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster with the Snapshot you want to return. | [optional] [readonly] 
+**CopyPolicyItemsEnabled** | Pointer to **bool** | Flag that indicates whether copy settings use &#x60;copyPolicyItems&#x60; instead of &#x60;frequencies&#x60;. When true, requests must supply &#x60;copyPolicyItems&#x60; and responses return &#x60;copyPolicyItems&#x60; only. When false or omitted, requests must supply &#x60;frequencies&#x60; and responses return &#x60;frequencies&#x60; only. | [optional] 
 **CopySettings** | Pointer to [**[]DiskBackupCopySetting20240805**](DiskBackupCopySetting20240805.md) | List that contains a document for each copy setting item in the desired backup policy. | [optional] 
 **DeleteCopiedBackups** | Pointer to [**[]DeleteCopiedBackups20240805**](DeleteCopiedBackups20240805.md) | List that contains a document for each deleted copy setting whose backup copies you want to delete. | [optional] 
+**DeleteCopySnapshots** | Pointer to **bool** | Flag that indicates whether to delete Snapshot copies that MongoDB Cloud took previously when their associated &#x60;copyPolicyItems&#x60; are removed from a &#x60;copySetting&#x60;. This option requires &#x60;copyPolicyItemsEnabled&#x60; to be true. | [optional] 
 **DeleteSnapshots** | Pointer to **bool** | Flag that indicates whether to delete Snapshots that MongoDB Cloud took previously when deleting the associated backup policy. | [optional] 
 **Export** | Pointer to [**AutoExportPolicy**](AutoExportPolicy.md) |  | [optional] 
 **ExtraRetentionSettings** | Pointer to [**[]ExtraRetentionSetting**](ExtraRetentionSetting.md) | List that contains a document for each extra retention setting item in the desired backup policy. | [optional] 
@@ -16,8 +18,9 @@ Name | Type | Description | Notes
 **NextSnapshot** | Pointer to **time.Time** | Date and time when MongoDB Cloud takes the next Snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Policies** | Pointer to [**[]AdvancedDiskBackupSnapshotSchedulePolicy**](AdvancedDiskBackupSnapshotSchedulePolicy.md) | Rules set for this backup schedule. | [optional] 
 **ReferenceHourOfDay** | Pointer to **int** | Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the Snapshot. | [optional] 
-**ReferenceMinuteOfHour** | Pointer to **int** | Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the Snapshot. | [optional] 
+**ReferenceMinuteOfHour** | Pointer to **int** | Minute of the &#x60;referenceHourOfDay&#x60; that represents when MongoDB Cloud takes the Snapshot. | [optional] 
 **RestoreWindowDays** | Pointer to **int** | Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous Cloud Backups only. | [optional] 
+**UpdateCopySnapshots** | Pointer to **bool** | Flag that indicates whether to apply the retention changes for updated copy policy items to Snapshot copies that MongoDB Cloud took previously. | [optional] 
 **UpdateSnapshots** | Pointer to **bool** | Flag that indicates whether to apply the retention changes in the updated backup policy to Snapshots that MongoDB Cloud took previously. | [optional] 
 **UseOrgAndGroupNamesInExportPrefix** | Pointer to **bool** | Flag that indicates whether to use organization and project names instead of organization and project UUIDs in the path to the metadata files that MongoDB Cloud uploads to your Export Bucket. | [optional] 
 
@@ -112,6 +115,30 @@ SetClusterName sets ClusterName field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+### GetCopyPolicyItemsEnabled
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetCopyPolicyItemsEnabled() bool`
+
+GetCopyPolicyItemsEnabled returns the CopyPolicyItemsEnabled field if non-nil, zero value otherwise.
+
+### GetCopyPolicyItemsEnabledOk
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetCopyPolicyItemsEnabledOk() (*bool, bool)`
+
+GetCopyPolicyItemsEnabledOk returns a tuple with the CopyPolicyItemsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCopyPolicyItemsEnabled
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetCopyPolicyItemsEnabled(v bool)`
+
+SetCopyPolicyItemsEnabled sets CopyPolicyItemsEnabled field to given value.
+
+### HasCopyPolicyItemsEnabled
+
+`func (o *DiskBackupSnapshotSchedule20240805) HasCopyPolicyItemsEnabled() bool`
+
+HasCopyPolicyItemsEnabled returns a boolean if a field has been set.
 ### GetCopySettings
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetCopySettings() []DiskBackupCopySetting20240805`
@@ -160,6 +187,30 @@ SetDeleteCopiedBackups sets DeleteCopiedBackups field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopiedBackups() bool`
 
 HasDeleteCopiedBackups returns a boolean if a field has been set.
+### GetDeleteCopySnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetDeleteCopySnapshots() bool`
+
+GetDeleteCopySnapshots returns the DeleteCopySnapshots field if non-nil, zero value otherwise.
+
+### GetDeleteCopySnapshotsOk
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetDeleteCopySnapshotsOk() (*bool, bool)`
+
+GetDeleteCopySnapshotsOk returns a tuple with the DeleteCopySnapshots field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteCopySnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopySnapshots(v bool)`
+
+SetDeleteCopySnapshots sets DeleteCopySnapshots field to given value.
+
+### HasDeleteCopySnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopySnapshots() bool`
+
+HasDeleteCopySnapshots returns a boolean if a field has been set.
 ### GetDeleteSnapshots
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetDeleteSnapshots() bool`
@@ -376,6 +427,30 @@ SetRestoreWindowDays sets RestoreWindowDays field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasRestoreWindowDays() bool`
 
 HasRestoreWindowDays returns a boolean if a field has been set.
+### GetUpdateCopySnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetUpdateCopySnapshots() bool`
+
+GetUpdateCopySnapshots returns the UpdateCopySnapshots field if non-nil, zero value otherwise.
+
+### GetUpdateCopySnapshotsOk
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetUpdateCopySnapshotsOk() (*bool, bool)`
+
+GetUpdateCopySnapshotsOk returns a tuple with the UpdateCopySnapshots field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdateCopySnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetUpdateCopySnapshots(v bool)`
+
+SetUpdateCopySnapshots sets UpdateCopySnapshots field to given value.
+
+### HasUpdateCopySnapshots
+
+`func (o *DiskBackupSnapshotSchedule20240805) HasUpdateCopySnapshots() bool`
+
+HasUpdateCopySnapshots returns a boolean if a field has been set.
 ### GetUpdateSnapshots
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetUpdateSnapshots() bool`

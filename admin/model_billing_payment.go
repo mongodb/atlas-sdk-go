@@ -31,7 +31,7 @@ type BillingPayment struct {
 	// Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	SubtotalCents *int64 `json:"subtotalCents,omitempty"`
-	// The unit price applied to amountBilledCents to compute total payment amount. This value is represented as a decimal string.
+	// The unit price applied to `amountBilledCents` to compute total payment amount. This value is represented as a decimal string.
 	// Read only field.
 	UnitPrice *string `json:"unitPrice,omitempty"`
 	// Date and time when the customer made an update to this payment attempt. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **PemFileInfo** | Pointer to [**PemFileInfo**](PemFileInfo.md) |  | [optional] 
 **RequestBinding** | Pointer to **string** | SAML Authentication Request Protocol HTTP method binding (POST or REDIRECT) that Federated Authentication uses to send the authentication request. | [optional] 
 **ResponseSignatureAlgorithm** | Pointer to **string** | Signature algorithm that Federated Authentication uses to encrypt the identity provider signature. | [optional] 
-**Slug** | Pointer to **string** | Custom SSO Url for the identity provider. | [optional] 
+**Slug** | Pointer to **string** | Custom SSO URL for the identity provider. | [optional] 
 **SsoDebugEnabled** | Pointer to **bool** | Flag that indicates whether the identity provider has SSO debug enabled. | [optional] 
 **SsoUrl** | Pointer to **string** | URL that points to the receiver of the SAML authentication request. | [optional] 
 **Status** | Pointer to **string** | String enum that indicates whether the identity provider is active. | [optional] 

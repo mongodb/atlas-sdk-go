@@ -44,7 +44,7 @@ type TeamsApi interface {
 		**Note**: This endpoint is deprecated. Use [Add One MongoDB Cloud User to One Team](#tag/MongoDB-Cloud-Users/operation/addUserToTeam) to add an active or pending user to a team.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param teamId Unique 24-hexadecimal character string that identifies the team to which you want to add MongoDB Cloud users.
 			@param addUserToTeam One or more MongoDB Cloud users that you want to add to the specified team.
 			@return AddTeamUsersApiRequest
@@ -73,7 +73,7 @@ type TeamsApi interface {
 		Creates one team in the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. MongoDB Cloud limits the number of teams to a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param team Team that you want to create in the specified organization.
 		@return CreateOrgTeamApiRequest
 	*/
@@ -97,7 +97,7 @@ type TeamsApi interface {
 		Removes one team specified using its unique 24-hexadecimal digit identifier from the organization specified using its unique 24-hexadecimal digit identifier. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to delete.
 		@return DeleteOrgTeamApiRequest
 	*/
@@ -145,7 +145,7 @@ type TeamsApi interface {
 		Returns one team that you identified using its unique 24-hexadecimal digit ID. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param teamId Unique 24-hexadecimal digit string that identifies the team whose information you want to return.
 		@return GetOrgTeamApiRequest
 	*/
@@ -169,7 +169,7 @@ type TeamsApi interface {
 		Returns one team that you identified using its human-readable name. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param teamName Name of the team whose information you want to return.
 		@return GetTeamByNameApiRequest
 	*/
@@ -216,7 +216,7 @@ type TeamsApi interface {
 		Returns all teams that belong to the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. MongoDB Cloud only returns teams for which you have access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return ListOrgTeamsApiRequest
 	*/
 	ListOrgTeams(ctx context.Context, orgId string) ListOrgTeamsApiRequest
@@ -265,7 +265,7 @@ type TeamsApi interface {
 		**Note**: This endpoint is deprecated. Use [Remove One MongoDB Cloud User from One Team](#tag/MongoDB-Cloud-Users/operation/removeUserFromTeam) to remove an active or pending user from a team.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param teamId Unique 24-hexadecimal digit string that identifies the team from which you want to remove one database application user.
 			@param userId Unique 24-hexadecimal digit string that identifies MongoDB Cloud user that you want to remove from the specified team.
 			@return RemoveUserFromTeamApiRequest
@@ -294,7 +294,7 @@ type TeamsApi interface {
 		Renames one team in the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to rename.
 		@param teamUpdate Details to update on the specified team.
 		@return RenameOrgTeamApiRequest
@@ -501,7 +501,7 @@ Adds one or more MongoDB Cloud users from the specified organization to the spec
 **Note**: This endpoint is deprecated. Use [Add One MongoDB Cloud User to One Team](#tag/MongoDB-Cloud-Users/operation/addUserToTeam) to add an active or pending user to a team.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param teamId Unique 24-hexadecimal character string that identifies the team to which you want to add MongoDB Cloud users.
 	@return AddTeamUsersApiRequest
 
@@ -634,7 +634,7 @@ CreateOrgTeam Create One Team in One Organization
 Creates one team in the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. MongoDB Cloud limits the number of teams to a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrgTeamApiRequest
 */
 func (a *TeamsApiService) CreateOrgTeam(ctx context.Context, orgId string, team *Team) CreateOrgTeamApiRequest {
@@ -757,7 +757,7 @@ DeleteOrgTeam Remove One Team from One Organization
 Removes one team specified using its unique 24-hexadecimal digit identifier from the organization specified using its unique 24-hexadecimal digit identifier. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to delete.
 	@return DeleteOrgTeamApiRequest
 */
@@ -986,7 +986,7 @@ GetOrgTeam Return One Team by ID
 Returns one team that you identified using its unique 24-hexadecimal digit ID. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param teamId Unique 24-hexadecimal digit string that identifies the team whose information you want to return.
 	@return GetOrgTeamApiRequest
 */
@@ -1109,7 +1109,7 @@ GetTeamByName Return One Team by Name
 Returns one team that you identified using its human-readable name. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param teamName Name of the team whose information you want to return.
 	@return GetTeamByNameApiRequest
 */
@@ -1228,7 +1228,7 @@ func (a *TeamsApiService) ListGroupTeamsWithParams(ctx context.Context, args *Li
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListGroupTeamsApiRequest) IncludeCount(includeCount bool) ListGroupTeamsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1396,7 +1396,7 @@ func (r ListOrgTeamsApiRequest) ItemsPerPage(itemsPerPage int) ListOrgTeamsApiRe
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListOrgTeamsApiRequest) IncludeCount(includeCount bool) ListOrgTeamsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1418,7 +1418,7 @@ ListOrgTeams Return All Teams in One Organization
 Returns all teams that belong to the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. MongoDB Cloud only returns teams for which you have access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgTeamsApiRequest
 */
 func (a *TeamsApiService) ListOrgTeams(ctx context.Context, orgId string) ListOrgTeamsApiRequest {
@@ -1667,7 +1667,7 @@ Removes one MongoDB Cloud user from the specified team. This team belongs to one
 **Note**: This endpoint is deprecated. Use [Remove One MongoDB Cloud User from One Team](#tag/MongoDB-Cloud-Users/operation/removeUserFromTeam) to remove an active or pending user from a team.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param teamId Unique 24-hexadecimal digit string that identifies the team from which you want to remove one database application user.
 	@param userId Unique 24-hexadecimal digit string that identifies MongoDB Cloud user that you want to remove from the specified team.
 	@return RemoveUserFromTeamApiRequest
@@ -1785,7 +1785,7 @@ RenameOrgTeam Rename One Team
 Renames one team in the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to rename.
 	@return RenameOrgTeamApiRequest
 */

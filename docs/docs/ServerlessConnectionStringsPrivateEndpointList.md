@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Endpoints** | Pointer to [**[]ServerlessConnectionStringsPrivateEndpointItem**](ServerlessConnectionStringsPrivateEndpointItem.md) | List that contains the private endpoints through which you connect to MongoDB Cloud when you use **connectionStrings.privateEndpoint[n].srvConnectionString**. | [optional] [readonly] 
+**Endpoints** | Pointer to [**[]ServerlessConnectionStringsPrivateEndpointItem**](ServerlessConnectionStringsPrivateEndpointItem.md) | List that contains the private endpoints through which you connect to MongoDB Cloud when you use &#x60;connectionStrings.privateEndpoint[n].srvConnectionString&#x60;. | [optional] [readonly] 
 **SrvConnectionString** | Pointer to **string** | Private endpoint-aware connection string that uses the &#x60;mongodb+srv://&#x60; protocol to connect to MongoDB Cloud through a private endpoint. The &#x60;mongodb+srv&#x60; protocol tells the driver to look up the seed list of hosts in the Domain Name System (DNS). | [optional] [readonly] 
 **Type** | Pointer to **string** | MongoDB process type to which your application connects. | [optional] [readonly] 
 

@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312013/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312014/admin"
 
 	http "net/http"
 
@@ -25,17 +25,17 @@ func (_m *PushBasedLogExportApi) EXPECT() *PushBasedLogExportApi_Expecter {
 	return &PushBasedLogExportApi_Expecter{mock: &_m.Mock}
 }
 
-// CreateGroupLogIntegration provides a mock function with given fields: ctx, groupId, s3LogIntegrationRequest
-func (_m *PushBasedLogExportApi) CreateGroupLogIntegration(ctx context.Context, groupId string, s3LogIntegrationRequest *admin.S3LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest {
-	ret := _m.Called(ctx, groupId, s3LogIntegrationRequest)
+// CreateGroupLogIntegration provides a mock function with given fields: ctx, groupId, logIntegrationRequest
+func (_m *PushBasedLogExportApi) CreateGroupLogIntegration(ctx context.Context, groupId string, logIntegrationRequest *admin.LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest {
+	ret := _m.Called(ctx, groupId, logIntegrationRequest)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateGroupLogIntegration")
 	}
 
 	var r0 admin.CreateGroupLogIntegrationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.S3LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest); ok {
-		r0 = rf(ctx, groupId, s3LogIntegrationRequest)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, groupId, logIntegrationRequest)
 	} else {
 		r0 = ret.Get(0).(admin.CreateGroupLogIntegrationApiRequest)
 	}
@@ -51,14 +51,14 @@ type PushBasedLogExportApi_CreateGroupLogIntegration_Call struct {
 // CreateGroupLogIntegration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - s3LogIntegrationRequest *admin.S3LogIntegrationRequest
-func (_e *PushBasedLogExportApi_Expecter) CreateGroupLogIntegration(ctx any, groupId any, s3LogIntegrationRequest any) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
-	return &PushBasedLogExportApi_CreateGroupLogIntegration_Call{Call: _e.mock.On("CreateGroupLogIntegration", ctx, groupId, s3LogIntegrationRequest)}
+//   - logIntegrationRequest *admin.LogIntegrationRequest
+func (_e *PushBasedLogExportApi_Expecter) CreateGroupLogIntegration(ctx any, groupId any, logIntegrationRequest any) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
+	return &PushBasedLogExportApi_CreateGroupLogIntegration_Call{Call: _e.mock.On("CreateGroupLogIntegration", ctx, groupId, logIntegrationRequest)}
 }
 
-func (_c *PushBasedLogExportApi_CreateGroupLogIntegration_Call) Run(run func(ctx context.Context, groupId string, s3LogIntegrationRequest *admin.S3LogIntegrationRequest)) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegration_Call) Run(run func(ctx context.Context, groupId string, logIntegrationRequest *admin.LogIntegrationRequest)) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.S3LogIntegrationRequest))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.LogIntegrationRequest))
 	})
 	return _c
 }
@@ -68,7 +68,7 @@ func (_c *PushBasedLogExportApi_CreateGroupLogIntegration_Call) Return(_a0 admin
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_CreateGroupLogIntegration_Call) RunAndReturn(run func(context.Context, string, *admin.S3LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
+func (_c *PushBasedLogExportApi_CreateGroupLogIntegration_Call) RunAndReturn(run func(context.Context, string, *admin.LogIntegrationRequest) admin.CreateGroupLogIntegrationApiRequest) *PushBasedLogExportApi_CreateGroupLogIntegration_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -14,8 +14,9 @@ Name | Type | Description | Notes
 **PrivateEndpoints** | Pointer to **[]string** | List of private endpoints assigned to this Azure Private Link Service. | [optional] [readonly] 
 **PrivateLinkServiceName** | Pointer to **string** | Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages. | [optional] [readonly] 
 **PrivateLinkServiceResourceId** | Pointer to **string** | Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet. | [optional] [readonly] 
-**EndpointGroupNames** | Pointer to **[]string** | List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service. | [optional] 
-**ServiceAttachmentNames** | Pointer to **[]string** | List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network. | [optional] 
+**EndpointGroupNames** | Pointer to **[]string** | List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service. If this endpoint service uses PSC port-mapping, this field will only contain a list of one endpoint. | [optional] 
+**PortMappingEnabled** | Pointer to **bool** | Flag that indicates whether this endpoint service uses PSC port-mapping. | [optional] 
+**ServiceAttachmentNames** | Pointer to **[]string** | List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network. If this endpoint service uses PSC port-mapping, this field will only contain a list of one service attachment. | [optional] 
 
 ## Methods
 
@@ -295,6 +296,30 @@ SetEndpointGroupNames sets EndpointGroupNames field to given value.
 `func (o *EndpointService) HasEndpointGroupNames() bool`
 
 HasEndpointGroupNames returns a boolean if a field has been set.
+### GetPortMappingEnabled
+
+`func (o *EndpointService) GetPortMappingEnabled() bool`
+
+GetPortMappingEnabled returns the PortMappingEnabled field if non-nil, zero value otherwise.
+
+### GetPortMappingEnabledOk
+
+`func (o *EndpointService) GetPortMappingEnabledOk() (*bool, bool)`
+
+GetPortMappingEnabledOk returns a tuple with the PortMappingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPortMappingEnabled
+
+`func (o *EndpointService) SetPortMappingEnabled(v bool)`
+
+SetPortMappingEnabled sets PortMappingEnabled field to given value.
+
+### HasPortMappingEnabled
+
+`func (o *EndpointService) HasPortMappingEnabled() bool`
+
+HasPortMappingEnabled returns a boolean if a field has been set.
 ### GetServiceAttachmentNames
 
 `func (o *EndpointService) GetServiceAttachmentNames() []string`

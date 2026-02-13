@@ -4,9 +4,9 @@ package admin
 
 // ApiAtlasFTSMappings Index specifications for the collection's fields.
 type ApiAtlasFTSMappings struct {
-	// Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
+	// Flag that indicates whether the index uses dynamic or static mappings. Required if `mappings.fields` is omitted.
 	Dynamic *bool `json:"dynamic,omitempty"`
-	// One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**.
+	// One or more field specifications for the Atlas Search index. Required if `mappings.dynamic` is omitted or set to `false`.
 	Fields any `json:"fields,omitempty"`
 }
 

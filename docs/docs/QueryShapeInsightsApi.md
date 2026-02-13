@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **clusterName** | **string** | Human-readable label that identifies the cluster. | 
-**queryShapeHash** | **string** | A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs. | 
+**queryShapeHash** | **string** | A SHA256 hash of a query shape, output by MongoDB commands like &#x60;$queryStats&#x60; and &#x60;$explain&#x60; or slow query logs. | 
 
 ### Other Parameters
 
@@ -115,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **clusterName** | **string** | Human-readable label that identifies the cluster. | 
-**queryShapeHash** | **string** | A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs. | 
+**queryShapeHash** | **string** | A SHA256 hash of a query shape, output by MongoDB commands like &#x60;$queryStats&#x60; and &#x60;$explain&#x60; or slow query logs. | 
 
 ### Other Parameters
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
  **since** | **int64** | Date and time from which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours. | 
  **until** | **int64** | Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you specify the **until** parameter, you must specify the **since** parameter. - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours. | 
- **processIds** | **[]string** | ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each processId. | 
+ **processIds** | **[]string** | Process IDs from which to retrieve query shape statistics. A &#x60;processId&#x60; is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple &#x60;processIds&#x60;, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each &#x60;processId&#x60;. | 
 
 ### Return type
 
@@ -207,7 +207,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 
  **status** | **string** | The status of query shapes to retrieve. Only REJECTED status is supported. If omitted, defaults to REJECTED. | [default to &quot;REJECTED&quot;]
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -298,7 +298,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -356,12 +356,12 @@ Name | Type | Description  | Notes
 
  **since** | **int64** | Date and time from which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours. | 
  **until** | **int64** | Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you specify the **until** parameter, you must specify the **since** parameter. - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours. | 
- **processIds** | **[]string** | ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each processId. | 
+ **processIds** | **[]string** | Process IDs from which to retrieve query shape statistics. A &#x60;processId&#x60; is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple &#x60;processId&#x60;, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each &#x60;processId&#x60;. | 
  **namespaces** | **[]string** | Namespaces from which to retrieve query shape statistics. A namespace consists of one database and one collection resource written as &#x60;.&#x60;: &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each namespace. Omit this parameter to return results for all namespaces. | 
  **commands** | **[]string** | Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each command. The currently supported parameters are find, distinct, and aggregate. Omit this parameter to return results for all supported commands. | 
  **nSummaries** | **int64** | Maximum number of query statistic summaries to return. | [default to 100]
  **series** | **[]string** | Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series. | 
- **queryShapeHashes** | **[]string** | A list of SHA256 hashes of desired query shapes, output by MongoDB commands like $queryStats and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series. | 
+ **queryShapeHashes** | **[]string** | A list of SHA256 hashes of desired query shapes, output by MongoDB commands like &#x60;$queryStats&#x60; and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series. | 
 
 ### Return type
 
@@ -397,7 +397,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312013/admin"
+    "go.mongodb.org/atlas-sdk/v20250312014/admin"
 )
 
 func main() {
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **clusterName** | **string** | Human-readable label that identifies the cluster. | 
-**queryShapeHash** | **string** | A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs. | 
+**queryShapeHash** | **string** | A SHA256 hash of a query shape, output by MongoDB commands like &#x60;$queryStats&#x60; and &#x60;$explain&#x60; or slow query logs. | 
 
 ### Other Parameters
 

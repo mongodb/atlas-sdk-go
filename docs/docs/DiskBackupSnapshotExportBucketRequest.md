@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
 **RequirePrivateNetworking** | Pointer to **bool** | Indicates whether to do exports over PrivateLink as opposed to public IPs. Defaults to False. | [optional] 
 **RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket. | [optional] 
-**ServiceUrl** | Pointer to **string** | URL of the Azure Storage Account to export to. For example: \&quot;https://examplestorageaccount.blob.core.windows.net/exportcontainer\&quot;. Only standard endpoints (with \&quot;blob.core.windows.net\&quot;) are supported. | [optional] 
-**TenantId** | Pointer to **string** | UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the tenantId of the Cloud Provider Access role (from roleId) is used. | [optional] 
+**ServiceUrl** | Pointer to **string** | URL of the Azure Storage Account to export to. For example: &#x60;https://examplestorageaccount.blob.core.windows.net/exportcontainer&#x60;. Only standard endpoints (with &#x60;blob.core.windows.net&#x60;) are supported. | [optional] 
+**TenantId** | Pointer to **string** | UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the &#x60;tenantId&#x60; of the Cloud Provider Access role (from &#x60;roleId&#x60;) is used. | [optional] 
 
 ## Methods
 

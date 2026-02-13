@@ -16,11 +16,16 @@ type DiskBackupSnapshotSchedule20240805 struct {
 	// Human-readable label that identifies the cluster with the Snapshot you want to return.
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
+	// Flag that indicates whether copy settings use `copyPolicyItems` instead of `frequencies`. When true, requests must supply `copyPolicyItems` and responses return `copyPolicyItems` only. When false or omitted, requests must supply `frequencies` and responses return `frequencies` only.
+	CopyPolicyItemsEnabled *bool `json:"copyPolicyItemsEnabled,omitempty"`
 	// List that contains a document for each copy setting item in the desired backup policy.
 	CopySettings *[]DiskBackupCopySetting20240805 `json:"copySettings,omitempty"`
 	// List that contains a document for each deleted copy setting whose backup copies you want to delete.
 	// Write only field.
 	DeleteCopiedBackups *[]DeleteCopiedBackups20240805 `json:"deleteCopiedBackups,omitempty"`
+	// Flag that indicates whether to delete Snapshot copies that MongoDB Cloud took previously when their associated `copyPolicyItems` are removed from a `copySetting`. This option requires `copyPolicyItemsEnabled` to be true.
+	// Write only field.
+	DeleteCopySnapshots *bool `json:"deleteCopySnapshots,omitempty"`
 	// Flag that indicates whether to delete Snapshots that MongoDB Cloud took previously when deleting the associated backup policy.
 	// Write only field.
 	DeleteSnapshots *bool             `json:"deleteSnapshots,omitempty"`
@@ -37,10 +42,13 @@ type DiskBackupSnapshotSchedule20240805 struct {
 	Policies *[]AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies,omitempty"`
 	// Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the Snapshot.
 	ReferenceHourOfDay *int `json:"referenceHourOfDay,omitempty"`
-	// Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the Snapshot.
+	// Minute of the `referenceHourOfDay` that represents when MongoDB Cloud takes the Snapshot.
 	ReferenceMinuteOfHour *int `json:"referenceMinuteOfHour,omitempty"`
 	// Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous Cloud Backups only.
 	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
+	// Flag that indicates whether to apply the retention changes for updated copy policy items to Snapshot copies that MongoDB Cloud took previously.
+	// Write only field.
+	UpdateCopySnapshots *bool `json:"updateCopySnapshots,omitempty"`
 	// Flag that indicates whether to apply the retention changes in the updated backup policy to Snapshots that MongoDB Cloud took previously.
 	// Write only field.
 	UpdateSnapshots *bool `json:"updateSnapshots,omitempty"`
@@ -164,6 +172,39 @@ func (o *DiskBackupSnapshotSchedule20240805) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
+// GetCopyPolicyItemsEnabled returns the CopyPolicyItemsEnabled field value if set, zero value otherwise
+func (o *DiskBackupSnapshotSchedule20240805) GetCopyPolicyItemsEnabled() bool {
+	if o == nil || IsNil(o.CopyPolicyItemsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.CopyPolicyItemsEnabled
+}
+
+// GetCopyPolicyItemsEnabledOk returns a tuple with the CopyPolicyItemsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshotSchedule20240805) GetCopyPolicyItemsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.CopyPolicyItemsEnabled) {
+		return nil, false
+	}
+
+	return o.CopyPolicyItemsEnabled, true
+}
+
+// HasCopyPolicyItemsEnabled returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotSchedule20240805) HasCopyPolicyItemsEnabled() bool {
+	if o != nil && !IsNil(o.CopyPolicyItemsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetCopyPolicyItemsEnabled gets a reference to the given bool and assigns it to the CopyPolicyItemsEnabled field.
+func (o *DiskBackupSnapshotSchedule20240805) SetCopyPolicyItemsEnabled(v bool) {
+	o.CopyPolicyItemsEnabled = &v
+}
+
 // GetCopySettings returns the CopySettings field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetCopySettings() []DiskBackupCopySetting20240805 {
 	if o == nil || IsNil(o.CopySettings) {
@@ -228,6 +269,39 @@ func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopiedBackups() bool {
 // SetDeleteCopiedBackups gets a reference to the given []DeleteCopiedBackups20240805 and assigns it to the DeleteCopiedBackups field.
 func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopiedBackups(v []DeleteCopiedBackups20240805) {
 	o.DeleteCopiedBackups = &v
+}
+
+// GetDeleteCopySnapshots returns the DeleteCopySnapshots field value if set, zero value otherwise
+func (o *DiskBackupSnapshotSchedule20240805) GetDeleteCopySnapshots() bool {
+	if o == nil || IsNil(o.DeleteCopySnapshots) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteCopySnapshots
+}
+
+// GetDeleteCopySnapshotsOk returns a tuple with the DeleteCopySnapshots field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshotSchedule20240805) GetDeleteCopySnapshotsOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteCopySnapshots) {
+		return nil, false
+	}
+
+	return o.DeleteCopySnapshots, true
+}
+
+// HasDeleteCopySnapshots returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopySnapshots() bool {
+	if o != nil && !IsNil(o.DeleteCopySnapshots) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteCopySnapshots gets a reference to the given bool and assigns it to the DeleteCopySnapshots field.
+func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopySnapshots(v bool) {
+	o.DeleteCopySnapshots = &v
 }
 
 // GetDeleteSnapshots returns the DeleteSnapshots field value if set, zero value otherwise
@@ -525,6 +599,39 @@ func (o *DiskBackupSnapshotSchedule20240805) HasRestoreWindowDays() bool {
 // SetRestoreWindowDays gets a reference to the given int and assigns it to the RestoreWindowDays field.
 func (o *DiskBackupSnapshotSchedule20240805) SetRestoreWindowDays(v int) {
 	o.RestoreWindowDays = &v
+}
+
+// GetUpdateCopySnapshots returns the UpdateCopySnapshots field value if set, zero value otherwise
+func (o *DiskBackupSnapshotSchedule20240805) GetUpdateCopySnapshots() bool {
+	if o == nil || IsNil(o.UpdateCopySnapshots) {
+		var ret bool
+		return ret
+	}
+	return *o.UpdateCopySnapshots
+}
+
+// GetUpdateCopySnapshotsOk returns a tuple with the UpdateCopySnapshots field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshotSchedule20240805) GetUpdateCopySnapshotsOk() (*bool, bool) {
+	if o == nil || IsNil(o.UpdateCopySnapshots) {
+		return nil, false
+	}
+
+	return o.UpdateCopySnapshots, true
+}
+
+// HasUpdateCopySnapshots returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotSchedule20240805) HasUpdateCopySnapshots() bool {
+	if o != nil && !IsNil(o.UpdateCopySnapshots) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdateCopySnapshots gets a reference to the given bool and assigns it to the UpdateCopySnapshots field.
+func (o *DiskBackupSnapshotSchedule20240805) SetUpdateCopySnapshots(v bool) {
+	o.UpdateCopySnapshots = &v
 }
 
 // GetUpdateSnapshots returns the UpdateSnapshots field value if set, zero value otherwise
