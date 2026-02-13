@@ -51,7 +51,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    teamRole := []openapiclient.TeamRole{*openapiclient.NewTeamRole([]string{"RoleNames_example"}, "32b6e34b3d91647abb20e7b8")} // []TeamRole | 
+    teamRole := []admin.TeamRole{*admin.NewTeamRole([]string{"RoleNames_example"}, "32b6e34b3d91647abb20e7b8")} // []TeamRole | 
 
     resp, r, err := sdk.TeamsApi.AddGroupTeams(context.Background(), groupId, &teamRole).Execute()
     if err != nil {
@@ -134,7 +134,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
-    addUserToTeam := []openapiclient.AddUserToTeam{*openapiclient.NewAddUserToTeam("32b6e34b3d91647abb20e7b8")} // []AddUserToTeam | 
+    addUserToTeam := []admin.AddUserToTeam{*admin.NewAddUserToTeam("32b6e34b3d91647abb20e7b8")} // []AddUserToTeam | 
 
     resp, r, err := sdk.TeamsApi.AddTeamUsers(context.Background(), orgId, teamId, &addUserToTeam).Execute()
     if err != nil {
@@ -218,7 +218,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    team := *openapiclient.NewTeam("Name_example", []string{"Usernames_example"}) // Team | 
+    team := *admin.NewTeam("Name_example", []string{"Usernames_example"}) // Team | 
 
     resp, r, err := sdk.TeamsApi.CreateOrgTeam(context.Background(), orgId, &team).Execute()
     if err != nil {
@@ -968,7 +968,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
-    teamUpdate := *openapiclient.NewTeamUpdate("Name_example") // TeamUpdate | 
+    teamUpdate := *admin.NewTeamUpdate("Name_example") // TeamUpdate | 
 
     resp, r, err := sdk.TeamsApi.RenameOrgTeam(context.Background(), orgId, teamId, &teamUpdate).Execute()
     if err != nil {
@@ -1053,7 +1053,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamId := "teamId_example" // string | 
-    teamRole := *openapiclient.NewTeamRole([]string{"RoleNames_example"}, "32b6e34b3d91647abb20e7b8") // TeamRole | 
+    teamRole := *admin.NewTeamRole([]string{"RoleNames_example"}, "32b6e34b3d91647abb20e7b8") // TeamRole | 
 
     resp, r, err := sdk.TeamsApi.UpdateGroupTeam(context.Background(), groupId, teamId, &teamRole).Execute()
     if err != nil {

@@ -42,7 +42,7 @@ func main() {
 
     clusterName := "clusterName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    tenantRestore := *openapiclient.NewTenantRestore("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // TenantRestore | 
+    tenantRestore := *admin.NewTenantRestore("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // TenantRestore | 
 
     resp, r, err := sdk.SharedTierSnapshotsApi.DownloadClusterBackupTenant(context.Background(), clusterName, groupId, &tenantRestore).Execute()
     if err != nil {

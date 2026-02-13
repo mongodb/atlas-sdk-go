@@ -120,7 +120,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    auditLog := *openapiclient.NewAuditLog() // AuditLog | 
+    auditLog := *admin.NewAuditLog() // AuditLog | 
 
     resp, r, err := sdk.AuditingApi.UpdateAuditLog(context.Background(), groupId, &auditLog).Execute()
     if err != nil {

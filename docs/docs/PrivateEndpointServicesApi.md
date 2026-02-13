@@ -49,7 +49,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
     endpointServiceId := "endpointServiceId_example" // string | 
-    createEndpointRequest := *openapiclient.NewCreateEndpointRequest() // CreateEndpointRequest | 
+    createEndpointRequest := *admin.NewCreateEndpointRequest() // CreateEndpointRequest | 
 
     resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId, &createEndpointRequest).Execute()
     if err != nil {
@@ -135,7 +135,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudProviderEndpointServiceRequest := *openapiclient.NewCloudProviderEndpointServiceRequest("ProviderName_example", "Region_example") // CloudProviderEndpointServiceRequest | 
+    cloudProviderEndpointServiceRequest := *admin.NewCloudProviderEndpointServiceRequest("ProviderName_example", "Region_example") // CloudProviderEndpointServiceRequest | 
 
     resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpointService(context.Background(), groupId, &cloudProviderEndpointServiceRequest).Execute()
     if err != nil {
@@ -726,7 +726,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    projectSettingItem := *openapiclient.NewProjectSettingItem(false) // ProjectSettingItem | 
+    projectSettingItem := *admin.NewProjectSettingItem(false) // ProjectSettingItem | 
 
     resp, r, err := sdk.PrivateEndpointServicesApi.ToggleRegionalEndpointMode(context.Background(), groupId, &projectSettingItem).Execute()
     if err != nil {

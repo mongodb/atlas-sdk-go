@@ -51,7 +51,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudProviderContainer := *openapiclient.NewCloudProviderContainer() // CloudProviderContainer | 
+    cloudProviderContainer := *admin.NewCloudProviderContainer() // CloudProviderContainer | 
 
     resp, r, err := sdk.NetworkPeeringApi.CreateGroupContainer(context.Background(), groupId, &cloudProviderContainer).Execute()
     if err != nil {
@@ -133,7 +133,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    baseNetworkPeeringConnectionSettings := *openapiclient.NewBaseNetworkPeeringConnectionSettings("32b6e34b3d91647abb20e7b8") // BaseNetworkPeeringConnectionSettings | 
+    baseNetworkPeeringConnectionSettings := *admin.NewBaseNetworkPeeringConnectionSettings("32b6e34b3d91647abb20e7b8") // BaseNetworkPeeringConnectionSettings | 
 
     resp, r, err := sdk.NetworkPeeringApi.CreateGroupPeer(context.Background(), groupId, &baseNetworkPeeringConnectionSettings).Execute()
     if err != nil {
@@ -379,7 +379,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    privateIPMode := *openapiclient.NewPrivateIPMode(false) // PrivateIPMode | 
+    privateIPMode := *admin.NewPrivateIPMode(false) // PrivateIPMode | 
 
     resp, r, err := sdk.NetworkPeeringApi.DisablePeering(context.Background(), groupId, &privateIPMode).Execute()
     if err != nil {
@@ -890,7 +890,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudProviderContainer := *openapiclient.NewCloudProviderContainer() // CloudProviderContainer | 
+    cloudProviderContainer := *admin.NewCloudProviderContainer() // CloudProviderContainer | 
 
     resp, r, err := sdk.NetworkPeeringApi.UpdateGroupContainer(context.Background(), groupId, containerId, &cloudProviderContainer).Execute()
     if err != nil {
@@ -975,7 +975,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     peerId := "peerId_example" // string | 
-    baseNetworkPeeringConnectionSettings := *openapiclient.NewBaseNetworkPeeringConnectionSettings("32b6e34b3d91647abb20e7b8") // BaseNetworkPeeringConnectionSettings | 
+    baseNetworkPeeringConnectionSettings := *admin.NewBaseNetworkPeeringConnectionSettings("32b6e34b3d91647abb20e7b8") // BaseNetworkPeeringConnectionSettings | 
 
     resp, r, err := sdk.NetworkPeeringApi.UpdateGroupPeer(context.Background(), groupId, peerId, &baseNetworkPeeringConnectionSettings).Execute()
     if err != nil {

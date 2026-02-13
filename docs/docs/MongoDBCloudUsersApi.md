@@ -58,7 +58,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userId := "userId_example" // string | 
-    addOrRemoveGroupRole := *openapiclient.NewAddOrRemoveGroupRole("GroupRole_example") // AddOrRemoveGroupRole | 
+    addOrRemoveGroupRole := *admin.NewAddOrRemoveGroupRole("GroupRole_example") // AddOrRemoveGroupRole | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.AddGroupUserRole(context.Background(), groupId, userId, &addOrRemoveGroupRole).Execute()
     if err != nil {
@@ -142,7 +142,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupUserRequest := *openapiclient.NewGroupUserRequest([]string{"Roles_example"}, "Username_example") // GroupUserRequest | 
+    groupUserRequest := *admin.NewGroupUserRequest([]string{"Roles_example"}, "Username_example") // GroupUserRequest | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.AddGroupUsers(context.Background(), groupId, &groupUserRequest).Execute()
     if err != nil {
@@ -225,7 +225,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     userId := "userId_example" // string | 
-    addOrRemoveOrgRole := *openapiclient.NewAddOrRemoveOrgRole("OrgRole_example") // AddOrRemoveOrgRole | 
+    addOrRemoveOrgRole := *admin.NewAddOrRemoveOrgRole("OrgRole_example") // AddOrRemoveOrgRole | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.AddOrgRole(context.Background(), orgId, userId, &addOrRemoveOrgRole).Execute()
     if err != nil {
@@ -310,7 +310,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
-    addOrRemoveUserFromTeam := *openapiclient.NewAddOrRemoveUserFromTeam("32b6e34b3d91647abb20e7b8") // AddOrRemoveUserFromTeam | 
+    addOrRemoveUserFromTeam := *admin.NewAddOrRemoveUserFromTeam("32b6e34b3d91647abb20e7b8") // AddOrRemoveUserFromTeam | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.AddOrgTeamUser(context.Background(), orgId, teamId, &addOrRemoveUserFromTeam).Execute()
     if err != nil {
@@ -394,7 +394,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    orgUserRequest := *openapiclient.NewOrgUserRequest(*openapiclient.NewOrgUserRolesRequest([]string{"OrgRoles_example"}), "Username_example") // OrgUserRequest | 
+    orgUserRequest := *admin.NewOrgUserRequest(*admin.NewOrgUserRolesRequest([]string{"OrgRoles_example"}), "Username_example") // OrgUserRequest | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.CreateOrgUser(context.Background(), orgId, &orgUserRequest).Execute()
     if err != nil {
@@ -475,7 +475,7 @@ func main() {
         return
     }
 
-    cloudAppUser := *openapiclient.NewCloudAppUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", "Username_example") // CloudAppUser | 
+    cloudAppUser := *admin.NewCloudAppUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", "Username_example") // CloudAppUser | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.CreateUser(context.Background(), &cloudAppUser).Execute()
     if err != nil {
@@ -1237,7 +1237,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userId := "userId_example" // string | 
-    addOrRemoveGroupRole := *openapiclient.NewAddOrRemoveGroupRole("GroupRole_example") // AddOrRemoveGroupRole | 
+    addOrRemoveGroupRole := *admin.NewAddOrRemoveGroupRole("GroupRole_example") // AddOrRemoveGroupRole | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.RemoveGroupUserRole(context.Background(), groupId, userId, &addOrRemoveGroupRole).Execute()
     if err != nil {
@@ -1322,7 +1322,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     userId := "userId_example" // string | 
-    addOrRemoveOrgRole := *openapiclient.NewAddOrRemoveOrgRole("OrgRole_example") // AddOrRemoveOrgRole | 
+    addOrRemoveOrgRole := *admin.NewAddOrRemoveOrgRole("OrgRole_example") // AddOrRemoveOrgRole | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.RemoveOrgRole(context.Background(), orgId, userId, &addOrRemoveOrgRole).Execute()
     if err != nil {
@@ -1407,7 +1407,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
-    addOrRemoveUserFromTeam := *openapiclient.NewAddOrRemoveUserFromTeam("32b6e34b3d91647abb20e7b8") // AddOrRemoveUserFromTeam | 
+    addOrRemoveUserFromTeam := *admin.NewAddOrRemoveUserFromTeam("32b6e34b3d91647abb20e7b8") // AddOrRemoveUserFromTeam | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.RemoveOrgTeamUser(context.Background(), orgId, teamId, &addOrRemoveUserFromTeam).Execute()
     if err != nil {
@@ -1573,7 +1573,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     userId := "userId_example" // string | 
-    orgUserUpdateRequest := *openapiclient.NewOrgUserUpdateRequest() // OrgUserUpdateRequest | 
+    orgUserUpdateRequest := *admin.NewOrgUserUpdateRequest() // OrgUserUpdateRequest | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.UpdateOrgUser(context.Background(), orgId, userId, &orgUserUpdateRequest).Execute()
     if err != nil {

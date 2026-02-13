@@ -43,7 +43,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    userCustomDBRole := *openapiclient.NewUserCustomDBRole("RoleName_example") // UserCustomDBRole | 
+    userCustomDBRole := *admin.NewUserCustomDBRole("RoleName_example") // UserCustomDBRole | 
 
     resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDbRole(context.Background(), groupId, &userCustomDBRole).Execute()
     if err != nil {
@@ -370,7 +370,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleName := "roleName_example" // string | 
-    updateCustomDBRole := *openapiclient.NewUpdateCustomDBRole() // UpdateCustomDBRole | 
+    updateCustomDBRole := *admin.NewUpdateCustomDBRole() // UpdateCustomDBRole | 
 
     resp, r, err := sdk.CustomDatabaseRolesApi.UpdateCustomDbRole(context.Background(), groupId, roleName, &updateCustomDBRole).Execute()
     if err != nil {

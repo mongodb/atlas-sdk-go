@@ -43,7 +43,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertId := "alertId_example" // string | 
-    acknowledgeAlert := *openapiclient.NewAcknowledgeAlert() // AcknowledgeAlert | 
+    acknowledgeAlert := *admin.NewAcknowledgeAlert() // AcknowledgeAlert | 
 
     resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId, &acknowledgeAlert).Execute()
     if err != nil {

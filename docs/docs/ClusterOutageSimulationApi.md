@@ -208,7 +208,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    clusterOutageSimulation := *openapiclient.NewClusterOutageSimulation() // ClusterOutageSimulation | 
+    clusterOutageSimulation := *admin.NewClusterOutageSimulation() // ClusterOutageSimulation | 
 
     resp, r, err := sdk.ClusterOutageSimulationApi.StartOutageSimulation(context.Background(), groupId, clusterName, &clusterOutageSimulation).Execute()
     if err != nil {

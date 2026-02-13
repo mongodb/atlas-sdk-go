@@ -61,7 +61,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
-    serviceAccountIPAccessListEntry := []openapiclient.ServiceAccountIPAccessListEntry{*openapiclient.NewServiceAccountIPAccessListEntry()} // []ServiceAccountIPAccessListEntry | 
+    serviceAccountIPAccessListEntry := []admin.ServiceAccountIPAccessListEntry{*admin.NewServiceAccountIPAccessListEntry()} // []ServiceAccountIPAccessListEntry | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
@@ -152,7 +152,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
-    serviceAccountSecretRequest := *openapiclient.NewServiceAccountSecretRequest(int(8)) // ServiceAccountSecretRequest | 
+    serviceAccountSecretRequest := *admin.NewServiceAccountSecretRequest(int(8)) // ServiceAccountSecretRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.CreateGroupSecret(context.Background(), groupId, clientId, &serviceAccountSecretRequest).Execute()
     if err != nil {
@@ -236,7 +236,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupServiceAccountRequest := *openapiclient.NewGroupServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(8)) // GroupServiceAccountRequest | 
+    groupServiceAccountRequest := *admin.NewGroupServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(8)) // GroupServiceAccountRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.CreateGroupServiceAccount(context.Background(), groupId, &groupServiceAccountRequest).Execute()
     if err != nil {
@@ -319,7 +319,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
-    serviceAccountIPAccessListEntry := []openapiclient.ServiceAccountIPAccessListEntry{*openapiclient.NewServiceAccountIPAccessListEntry()} // []ServiceAccountIPAccessListEntry | 
+    serviceAccountIPAccessListEntry := []admin.ServiceAccountIPAccessListEntry{*admin.NewServiceAccountIPAccessListEntry()} // []ServiceAccountIPAccessListEntry | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
@@ -410,7 +410,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
-    serviceAccountSecretRequest := *openapiclient.NewServiceAccountSecretRequest(int(8)) // ServiceAccountSecretRequest | 
+    serviceAccountSecretRequest := *admin.NewServiceAccountSecretRequest(int(8)) // ServiceAccountSecretRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.CreateOrgSecret(context.Background(), orgId, clientId, &serviceAccountSecretRequest).Execute()
     if err != nil {
@@ -494,7 +494,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    orgServiceAccountRequest := *openapiclient.NewOrgServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(8)) // OrgServiceAccountRequest | 
+    orgServiceAccountRequest := *admin.NewOrgServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(8)) // OrgServiceAccountRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.CreateOrgServiceAccount(context.Background(), orgId, &orgServiceAccountRequest).Execute()
     if err != nil {
@@ -1328,7 +1328,7 @@ func main() {
 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupServiceAccountRoleAssignment := *openapiclient.NewGroupServiceAccountRoleAssignment([]string{"Roles_example"}) // GroupServiceAccountRoleAssignment | 
+    groupServiceAccountRoleAssignment := *admin.NewGroupServiceAccountRoleAssignment([]string{"Roles_example"}) // GroupServiceAccountRoleAssignment | 
 
     resp, r, err := sdk.ServiceAccountsApi.InviteGroupServiceAccount(context.Background(), clientId, groupId, &groupServiceAccountRoleAssignment).Execute()
     if err != nil {
@@ -1759,7 +1759,7 @@ func main() {
 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupServiceAccountUpdateRequest := *openapiclient.NewGroupServiceAccountUpdateRequest() // GroupServiceAccountUpdateRequest | 
+    groupServiceAccountUpdateRequest := *admin.NewGroupServiceAccountUpdateRequest() // GroupServiceAccountUpdateRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.UpdateGroupServiceAccount(context.Background(), clientId, groupId, &groupServiceAccountUpdateRequest).Execute()
     if err != nil {
@@ -1844,7 +1844,7 @@ func main() {
 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
-    orgServiceAccountUpdateRequest := *openapiclient.NewOrgServiceAccountUpdateRequest() // OrgServiceAccountUpdateRequest | 
+    orgServiceAccountUpdateRequest := *admin.NewOrgServiceAccountUpdateRequest() // OrgServiceAccountUpdateRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.UpdateOrgServiceAccount(context.Background(), clientId, orgId, &orgServiceAccountUpdateRequest).Execute()
     if err != nil {

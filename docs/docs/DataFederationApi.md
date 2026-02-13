@@ -52,7 +52,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    dataLakeTenant := *openapiclient.NewDataLakeTenant() // DataLakeTenant | 
+    dataLakeTenant := *admin.NewDataLakeTenant() // DataLakeTenant | 
     skipRoleValidation := true // bool |  (optional) (default to false)
 
     resp, r, err := sdk.DataFederationApi.CreateDataFederation(context.Background(), groupId, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
@@ -136,7 +136,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    privateNetworkEndpointIdEntry := *openapiclient.NewPrivateNetworkEndpointIdEntry("vpce-3bf78b0ddee411ba1") // PrivateNetworkEndpointIdEntry | 
+    privateNetworkEndpointIdEntry := *admin.NewPrivateNetworkEndpointIdEntry("vpce-3bf78b0ddee411ba1") // PrivateNetworkEndpointIdEntry | 
 
     resp, r, err := sdk.DataFederationApi.CreatePrivateEndpointId(context.Background(), groupId, &privateNetworkEndpointIdEntry).Execute()
     if err != nil {
@@ -1056,7 +1056,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
     limitName := "limitName_example" // string | 
-    dataFederationTenantQueryLimit := *openapiclient.NewDataFederationTenantQueryLimit("Name_example", int64(123)) // DataFederationTenantQueryLimit | 
+    dataFederationTenantQueryLimit := *admin.NewDataFederationTenantQueryLimit("Name_example", int64(123)) // DataFederationTenantQueryLimit | 
 
     resp, r, err := sdk.DataFederationApi.SetDataFederationLimit(context.Background(), groupId, tenantName, limitName, &dataFederationTenantQueryLimit).Execute()
     if err != nil {
@@ -1144,7 +1144,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
     skipRoleValidation := true // bool | 
-    dataLakeTenant := *openapiclient.NewDataLakeTenant() // DataLakeTenant | 
+    dataLakeTenant := *admin.NewDataLakeTenant() // DataLakeTenant | 
 
     resp, r, err := sdk.DataFederationApi.UpdateDataFederation(context.Background(), groupId, tenantName, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
     if err != nil {

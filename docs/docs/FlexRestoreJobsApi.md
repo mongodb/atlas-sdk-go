@@ -42,7 +42,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
-    flexBackupRestoreJobCreate20241113 := *openapiclient.NewFlexBackupRestoreJobCreate20241113("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // FlexBackupRestoreJobCreate20241113 | 
+    flexBackupRestoreJobCreate20241113 := *admin.NewFlexBackupRestoreJobCreate20241113("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // FlexBackupRestoreJobCreate20241113 | 
 
     resp, r, err := sdk.FlexRestoreJobsApi.CreateFlexRestoreJob(context.Background(), groupId, name, &flexBackupRestoreJobCreate20241113).Execute()
     if err != nil {

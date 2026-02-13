@@ -43,7 +43,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    serverlessInstanceDescriptionCreate := *openapiclient.NewServerlessInstanceDescriptionCreate("Name_example", *openapiclient.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescriptionCreate | 
+    serverlessInstanceDescriptionCreate := *admin.NewServerlessInstanceDescriptionCreate("Name_example", *admin.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescriptionCreate | 
 
     resp, r, err := sdk.ServerlessInstancesApi.CreateServerlessInstance(context.Background(), groupId, &serverlessInstanceDescriptionCreate).Execute()
     if err != nil {
@@ -378,7 +378,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
-    serverlessInstanceDescriptionUpdate := *openapiclient.NewServerlessInstanceDescriptionUpdate() // ServerlessInstanceDescriptionUpdate | 
+    serverlessInstanceDescriptionUpdate := *admin.NewServerlessInstanceDescriptionUpdate() // ServerlessInstanceDescriptionUpdate | 
 
     resp, r, err := sdk.ServerlessInstancesApi.UpdateServerlessInstance(context.Background(), groupId, name, &serverlessInstanceDescriptionUpdate).Execute()
     if err != nil {
