@@ -13,18 +13,19 @@ type DatabaseRollingIndexRequest struct {
 	Db string `json:"db"`
 	// List that contains one or more objects that describe the parameters that you want to index.
 	// Write only field.
-	Keys    *[]map[string]string `json:"keys,omitempty"`
-	Options *IndexOptions        `json:"options,omitempty"`
+	Keys    []map[string]string `json:"keys"`
+	Options *IndexOptions       `json:"options,omitempty"`
 }
 
 // NewDatabaseRollingIndexRequest instantiates a new DatabaseRollingIndexRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatabaseRollingIndexRequest(collection string, db string) *DatabaseRollingIndexRequest {
+func NewDatabaseRollingIndexRequest(collection string, db string, keys []map[string]string) *DatabaseRollingIndexRequest {
 	this := DatabaseRollingIndexRequest{}
 	this.Collection = collection
 	this.Db = db
+	this.Keys = keys
 	return &this
 }
 
@@ -117,37 +118,28 @@ func (o *DatabaseRollingIndexRequest) SetDb(v string) {
 	o.Db = v
 }
 
-// GetKeys returns the Keys field value if set, zero value otherwise
+// GetKeys returns the Keys field value
 func (o *DatabaseRollingIndexRequest) GetKeys() []map[string]string {
-	if o == nil || IsNil(o.Keys) {
+	if o == nil {
 		var ret []map[string]string
 		return ret
 	}
-	return *o.Keys
+
+	return o.Keys
 }
 
-// GetKeysOk returns a tuple with the Keys field value if set, nil otherwise
+// GetKeysOk returns a tuple with the Keys field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseRollingIndexRequest) GetKeysOk() (*[]map[string]string, bool) {
-	if o == nil || IsNil(o.Keys) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Keys, true
+	return &o.Keys, true
 }
 
-// HasKeys returns a boolean if a field has been set.
-func (o *DatabaseRollingIndexRequest) HasKeys() bool {
-	if o != nil && !IsNil(o.Keys) {
-		return true
-	}
-
-	return false
-}
-
-// SetKeys gets a reference to the given []map[string]string and assigns it to the Keys field.
+// SetKeys sets field value
 func (o *DatabaseRollingIndexRequest) SetKeys(v []map[string]string) {
-	o.Keys = &v
+	o.Keys = v
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise

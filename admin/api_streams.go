@@ -260,7 +260,7 @@ type StreamsApi interface {
 	/*
 		DownloadAuditLogs Download Audit Logs for One Atlas Stream Processing Workspace
 
-		Downloads the audit logs for the specified Atlas Streams Processing workspace. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
+		Downloads the audit logs for the specified Atlas Streams Processing workspace or stream processor. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -280,6 +280,30 @@ type StreamsApi interface {
 
 	// Method available only for mocking purposes
 	DownloadAuditLogsExecute(r DownloadAuditLogsApiRequest) (io.ReadCloser, *http.Response, error)
+
+	/*
+		DownloadOperationalLogs Download Operational Logs for One Atlas Stream Processing Workspace
+
+		Downloads the operational logs for the specified Atlas Streams Processing workspace or stream processor. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.2025-03-12+gzip".
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Label that identifies the stream workspace.
+		@return DownloadOperationalLogsApiRequest
+	*/
+	DownloadOperationalLogs(ctx context.Context, groupId string, tenantName string) DownloadOperationalLogsApiRequest
+	/*
+		DownloadOperationalLogs Download Operational Logs for One Atlas Stream Processing Workspace
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DownloadOperationalLogsApiParams - Parameters for the request
+		@return DownloadOperationalLogsApiRequest
+	*/
+	DownloadOperationalLogsWithParams(ctx context.Context, args *DownloadOperationalLogsApiParams) DownloadOperationalLogsApiRequest
+
+	// Method available only for mocking purposes
+	DownloadOperationalLogsExecute(r DownloadOperationalLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
 		GetAccountDetails Return Account ID and VPC ID for One Project and Region
@@ -1927,6 +1951,7 @@ type DownloadAuditLogsApiRequest struct {
 	tenantName string
 	endDate    *int64
 	startDate  *int64
+	spName     *string
 }
 
 type DownloadAuditLogsApiParams struct {
@@ -1934,6 +1959,7 @@ type DownloadAuditLogsApiParams struct {
 	TenantName string
 	EndDate    *int64
 	StartDate  *int64
+	SpName     *string
 }
 
 func (a *StreamsApiService) DownloadAuditLogsWithParams(ctx context.Context, args *DownloadAuditLogsApiParams) DownloadAuditLogsApiRequest {
@@ -1944,6 +1970,7 @@ func (a *StreamsApiService) DownloadAuditLogsWithParams(ctx context.Context, arg
 		tenantName: args.TenantName,
 		endDate:    args.EndDate,
 		startDate:  args.StartDate,
+		spName:     args.SpName,
 	}
 }
 
@@ -1959,6 +1986,12 @@ func (r DownloadAuditLogsApiRequest) StartDate(startDate int64) DownloadAuditLog
 	return r
 }
 
+// Name of the stream processor to download logs for. An empty string will download logs for all stream processors in the workspace.
+func (r DownloadAuditLogsApiRequest) SpName(spName string) DownloadAuditLogsApiRequest {
+	r.spName = &spName
+	return r
+}
+
 func (r DownloadAuditLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
 	return r.ApiService.DownloadAuditLogsExecute(r)
 }
@@ -1966,7 +1999,7 @@ func (r DownloadAuditLogsApiRequest) Execute() (io.ReadCloser, *http.Response, e
 /*
 DownloadAuditLogs Download Audit Logs for One Atlas Stream Processing Workspace
 
-Downloads the audit logs for the specified Atlas Streams Processing workspace. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
+Downloads the audit logs for the specified Atlas Streams Processing workspace or stream processor. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2018,6 +2051,9 @@ func (a *StreamsApiService) DownloadAuditLogsExecute(r DownloadAuditLogsApiReque
 	if r.startDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
 	}
+	if r.spName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "spName", r.spName, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2029,6 +2065,165 @@ func (a *StreamsApiService) DownloadAuditLogsExecute(r DownloadAuditLogsApiReque
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+gzip"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DownloadOperationalLogsApiRequest struct {
+	ctx        context.Context
+	ApiService StreamsApi
+	groupId    string
+	tenantName string
+	endDate    *int64
+	startDate  *int64
+	spName     *string
+}
+
+type DownloadOperationalLogsApiParams struct {
+	GroupId    string
+	TenantName string
+	EndDate    *int64
+	StartDate  *int64
+	SpName     *string
+}
+
+func (a *StreamsApiService) DownloadOperationalLogsWithParams(ctx context.Context, args *DownloadOperationalLogsApiParams) DownloadOperationalLogsApiRequest {
+	return DownloadOperationalLogsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		tenantName: args.TenantName,
+		endDate:    args.EndDate,
+		startDate:  args.StartDate,
+		spName:     args.SpName,
+	}
+}
+
+// Timestamp that specifies the end point for the range of log messages to download.  MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch.
+func (r DownloadOperationalLogsApiRequest) EndDate(endDate int64) DownloadOperationalLogsApiRequest {
+	r.endDate = &endDate
+	return r
+}
+
+// Timestamp that specifies the starting point for the range of log messages to download. MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch.
+func (r DownloadOperationalLogsApiRequest) StartDate(startDate int64) DownloadOperationalLogsApiRequest {
+	r.startDate = &startDate
+	return r
+}
+
+// Name of the stream processor to download logs for. An empty string will download logs for all stream processors in the workspace.
+func (r DownloadOperationalLogsApiRequest) SpName(spName string) DownloadOperationalLogsApiRequest {
+	r.spName = &spName
+	return r
+}
+
+func (r DownloadOperationalLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
+	return r.ApiService.DownloadOperationalLogsExecute(r)
+}
+
+/*
+DownloadOperationalLogs Download Operational Logs for One Atlas Stream Processing Workspace
+
+Downloads the operational logs for the specified Atlas Streams Processing workspace or stream processor. By default, logs cover periods of 30 days. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.2025-03-12+gzip".
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Label that identifies the stream workspace.
+	@return DownloadOperationalLogsApiRequest
+*/
+func (a *StreamsApiService) DownloadOperationalLogs(ctx context.Context, groupId string, tenantName string) DownloadOperationalLogsApiRequest {
+	return DownloadOperationalLogsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		tenantName: tenantName,
+	}
+}
+
+// DownloadOperationalLogsExecute executes the request
+//
+//	@return io.ReadCloser
+func (a *StreamsApiService) DownloadOperationalLogsExecute(r DownloadOperationalLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue io.ReadCloser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DownloadOperationalLogs")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.endDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
+	}
+	if r.startDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
+	}
+	if r.spName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "spName", r.spName, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+gzip"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
