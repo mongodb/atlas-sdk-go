@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cluster** | **bool** | Flag that indicates whether to grant the action on the cluster resource. If &#x60;true&#x60;, MongoDB Cloud ignores the **actions.resources.collection** and **actions.resources.db** parameters. | 
-**Collection** | **string** | Human-readable label that identifies the collection on which you grant the action to one MongoDB user. If you don&#39;t set this parameter, you grant the action to all collections in the database specified in the **actions.resources.db** parameter. If you set &#x60;\&quot;actions.resources.cluster\&quot; : true&#x60;, MongoDB Cloud ignores this parameter. | 
+**Cluster** | **bool** | Flag that indicates whether to grant the action on the cluster resource. If &#x60;true&#x60;, MongoDB Cloud ignores the &#x60;actions.resources.collection&#x60; and &#x60;actions.resources.db&#x60; parameters. | 
+**Collection** | **string** | Human-readable label that identifies the collection on which you grant the action to one MongoDB user. If you don&#39;t set this parameter, you grant the action to all collections in the database specified in the &#x60;actions.resources.db&#x60; parameter. If you set &#x60;\&quot;actions.resources.cluster\&quot; : true&#x60;, MongoDB Cloud ignores this parameter. | 
 **Db** | **string** | Human-readable label that identifies the database on which you grant the action to one MongoDB user. If you set &#x60;\&quot;actions.resources.cluster\&quot; : true&#x60;, MongoDB Cloud ignores this parameter. | 
 
 ## Methods

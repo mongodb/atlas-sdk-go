@@ -14,7 +14,7 @@ type AlertsNotificationRootForGroup struct {
 	IntegrationId *string `json:"integrationId,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
 	IntervalMin *int `json:"intervalMin,omitempty"`
-	// The notifierId is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials.
+	// The `notifierId` is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials.
 	NotifierId *string `json:"notifierId,omitempty"`
 	// Human-readable label that displays the alert notification type.
 	TypeName *string `json:"typeName,omitempty"`
@@ -32,9 +32,9 @@ type AlertsNotificationRootForGroup struct {
 	RoomName *string `json:"roomName,omitempty"`
 	// Microsoft Teams Webhook Uniform Resource Locator (URL) that MongoDB Cloud needs to send this notification via Microsoft Teams. The resource requires this parameter when `\"notifications.[n].typeName\" : \"MICROSOFT_TEAMS\"`. If the URL later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
 	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
-	// API Key that MongoDB Cloud needs to send this notification via Opsgenie. The resource requires this parameter when `\"notifications.[n].typeName\" : \"OPS_GENIE\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	// API Key that MongoDB Cloud needs to send this notification via OpsGenie. The resource requires this parameter when `\"notifications.[n].typeName\" : \"OPS_GENIE\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	OpsGenieApiKey *string `json:"opsGenieApiKey,omitempty"`
-	// Opsgenie region that indicates which API Uniform Resource Locator (URL) to use.
+	// OpsGenie region that indicates which API Uniform Resource Locator (URL) to use.
 	OpsGenieRegion *string `json:"opsGenieRegion,omitempty"`
 	// PagerDuty region that indicates which API Uniform Resource Locator (URL) to use.
 	Region *string `json:"region,omitempty"`
@@ -56,9 +56,9 @@ type AlertsNotificationRootForGroup struct {
 	VictorOpsApiKey *string `json:"victorOpsApiKey,omitempty"`
 	// Routing key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `\"notifications.[n].typeName\" : \"VICTOR_OPS\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.
 	VictorOpsRoutingKey *string `json:"victorOpsRoutingKey,omitempty"`
-	// Authentication secret for a webhook-based alert.  Atlas returns this value if you set `\"notifications.[n].typeName\" :\"WEBHOOK\"` and either: * You set `notification.[n].webhookSecret` to a non-empty string * You set a default webhookSecret either on the Integrations page, or with the Integrations API  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+	// Authentication secret for a webhook-based alert.  Atlas returns this value if you set `notifications.[n].typeName` :`WEBHOOK` and either: * You set `notification.[n].webhookSecret` to a non-empty string * You set a default webhook secret either on the Integrations page, or with the Integrations API  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
 	WebhookSecret *string `json:"webhookSecret,omitempty"`
-	// Target URL for a webhook-based alert.  Atlas returns this value if you set `\"notifications.[n].typeName\" :\"WEBHOOK\"` and either: * You set `notification.[n].webhookURL` to a non-empty string * You set a default webhookUrl either on the Integrations page, or with the Integrations API  **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
+	// Target URL for a webhook-based alert.  Atlas returns this value if you set `\"notifications.[n].typeName\" :\"WEBHOOK\"` and either: * You set `notification.[n].webhookURL` to a non-empty string * You set a default webhook URL either on the Integrations page, or with the Integrations API  **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
 	WebhookUrl *string `json:"webhookUrl,omitempty"`
 }
 

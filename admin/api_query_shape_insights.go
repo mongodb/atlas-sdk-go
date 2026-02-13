@@ -21,7 +21,7 @@ type QueryShapeInsightsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+		@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 		@return GetClusterQueryShapeApiRequest
 	*/
 	GetClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetClusterQueryShapeApiRequest
@@ -46,7 +46,7 @@ type QueryShapeInsightsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+		@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 		@return GetQueryShapeDetailsApiRequest
 	*/
 	GetQueryShapeDetails(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetQueryShapeDetailsApiRequest
@@ -119,7 +119,7 @@ type QueryShapeInsightsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+		@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 		@param queryShapeUpdateRequest The desired rejection status for the query shape. Provide REJECTED to block the query shape from executing, or UNREJECTED to allow it to execute.
 		@return UpdateClusterQueryShapeApiRequest
 	*/
@@ -177,7 +177,7 @@ Returns the details for a single query shape. This endpoint only returns query s
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
-	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 	@return GetClusterQueryShapeApiRequest
 */
 func (a *QueryShapeInsightsApiService) GetClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetClusterQueryShapeApiRequest {
@@ -318,7 +318,7 @@ func (r GetQueryShapeDetailsApiRequest) Until(until int64) GetQueryShapeDetailsA
 	return r
 }
 
-// ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each processId.
+// Process IDs from which to retrieve query shape statistics. A &#x60;processId&#x60; is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple &#x60;processIds&#x60;, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each &#x60;processId&#x60;.
 func (r GetQueryShapeDetailsApiRequest) ProcessIds(processIds []string) GetQueryShapeDetailsApiRequest {
 	r.processIds = &processIds
 	return r
@@ -336,7 +336,7 @@ Returns the metadata and statistics summary for a given query shape hash.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
-	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 	@return GetQueryShapeDetailsApiRequest
 */
 func (a *QueryShapeInsightsApiService) GetQueryShapeDetails(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetQueryShapeDetailsApiRequest {
@@ -484,7 +484,7 @@ func (r ListClusterQueryShapesApiRequest) Status(status string) ListClusterQuery
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListClusterQueryShapesApiRequest) IncludeCount(includeCount bool) ListClusterQueryShapesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -689,7 +689,7 @@ func (r ListQueryShapeSummariesApiRequest) Until(until int64) ListQueryShapeSumm
 	return r
 }
 
-// ProcessIds from which to retrieve query shape statistics. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each processId.
+// Process IDs from which to retrieve query shape statistics. A &#x60;processId&#x60; is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple &#x60;processId&#x60;, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each &#x60;processId&#x60;.
 func (r ListQueryShapeSummariesApiRequest) ProcessIds(processIds []string) ListQueryShapeSummariesApiRequest {
 	r.processIds = &processIds
 	return r
@@ -719,7 +719,7 @@ func (r ListQueryShapeSummariesApiRequest) Series(series []string) ListQueryShap
 	return r
 }
 
-// A list of SHA256 hashes of desired query shapes, output by MongoDB commands like $queryStats and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series.
+// A list of SHA256 hashes of desired query shapes, output by MongoDB commands like &#x60;$queryStats&#x60; and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series.
 func (r ListQueryShapeSummariesApiRequest) QueryShapeHashes(queryShapeHashes []string) ListQueryShapeSummariesApiRequest {
 	r.queryShapeHashes = &queryShapeHashes
 	return r
@@ -914,7 +914,7 @@ Updates the rejection status of a query shape. Use this endpoint to reject a que
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
-	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like $queryStats and $explain or slow query logs.
+	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 	@return UpdateClusterQueryShapeApiRequest
 */
 func (a *QueryShapeInsightsApiService) UpdateClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string, queryShapeUpdateRequest *QueryShapeUpdateRequest) UpdateClusterQueryShapeApiRequest {

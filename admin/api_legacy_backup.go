@@ -1163,7 +1163,7 @@ func (a *LegacyBackupApiService) ListClusterBackupCheckpointsWithParams(ctx cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListClusterBackupCheckpointsApiRequest) IncludeCount(includeCount bool) ListClusterBackupCheckpointsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1341,7 +1341,7 @@ func (a *LegacyBackupApiService) ListClusterRestoreJobsWithParams(ctx context.Co
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListClusterRestoreJobsApiRequest) IncludeCount(includeCount bool) ListClusterRestoreJobsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1530,7 +1530,7 @@ func (a *LegacyBackupApiService) ListClusterSnapshotsWithParams(ctx context.Cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListClusterSnapshotsApiRequest) IncludeCount(includeCount bool) ListClusterSnapshotsApiRequest {
 	r.includeCount = &includeCount
 	return r

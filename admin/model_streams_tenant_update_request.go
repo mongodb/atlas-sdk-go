@@ -10,7 +10,8 @@ type StreamsTenantUpdateRequest struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Name of the cloud provider region hosting Atlas Stream Processing.
-	Region *string `json:"region,omitempty"`
+	Region       *string       `json:"region,omitempty"`
+	StreamConfig *StreamConfig `json:"streamConfig,omitempty"`
 }
 
 // NewStreamsTenantUpdateRequest instantiates a new StreamsTenantUpdateRequest object
@@ -127,4 +128,37 @@ func (o *StreamsTenantUpdateRequest) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *StreamsTenantUpdateRequest) SetRegion(v string) {
 	o.Region = &v
+}
+
+// GetStreamConfig returns the StreamConfig field value if set, zero value otherwise
+func (o *StreamsTenantUpdateRequest) GetStreamConfig() StreamConfig {
+	if o == nil || IsNil(o.StreamConfig) {
+		var ret StreamConfig
+		return ret
+	}
+	return *o.StreamConfig
+}
+
+// GetStreamConfigOk returns a tuple with the StreamConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsTenantUpdateRequest) GetStreamConfigOk() (*StreamConfig, bool) {
+	if o == nil || IsNil(o.StreamConfig) {
+		return nil, false
+	}
+
+	return o.StreamConfig, true
+}
+
+// HasStreamConfig returns a boolean if a field has been set.
+func (o *StreamsTenantUpdateRequest) HasStreamConfig() bool {
+	if o != nil && !IsNil(o.StreamConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetStreamConfig gets a reference to the given StreamConfig and assigns it to the StreamConfig field.
+func (o *StreamsTenantUpdateRequest) SetStreamConfig(v StreamConfig) {
+	o.StreamConfig = &v
 }

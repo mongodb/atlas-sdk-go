@@ -2,9 +2,9 @@
 
 package admin
 
-// NumberMetricValue Measurement of the **metricName** recorded at the time of the event.
+// NumberMetricValue Measurement of the `metricName` recorded at the time of the event.
 type NumberMetricValue struct {
-	// Amount of the **metricName** recorded at the time of the event. This value triggered the alert.
+	// Amount of the `metricName` recorded at the time of the event. This value triggered the alert.
 	// Read only field.
 	Number *float64 `json:"number,omitempty"`
 	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider for the deleted copy setting whose backup copies you want to delete. | [optional] 
 **RegionName** | Pointer to **string** | Target region for the deleted copy setting whose backup copies you want to delete. Please supply the &#39;Atlas Region&#39;. | [optional] 
-**ZoneId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the replicationSpecs array. | [optional] 
+**ZoneId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the &#x60;replicationSpecs&#x60; array. | [optional] 
 
 ## Methods
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**PortMappingEnabled** | Pointer to **bool** | Flag that indicates whether this endpoint service uses PSC port-mapping. This is only applicable for GCP Private Endpoint Services. | [optional] [default to false]
 **ProviderName** | **string** | Human-readable label that identifies the cloud service provider for which you want to create the private endpoint service. | 
 **Region** | **string** | Cloud provider region in which you want to create the private endpoint service. Regions accepted as values differ for [Amazon Web Services](https://docs.atlas.mongodb.com/reference/amazon-aws/), [Google Cloud Platform](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Microsoft Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/). | 
 
@@ -26,6 +27,30 @@ NewCloudProviderEndpointServiceRequestWithDefaults instantiates a new CloudProvi
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetPortMappingEnabled
+
+`func (o *CloudProviderEndpointServiceRequest) GetPortMappingEnabled() bool`
+
+GetPortMappingEnabled returns the PortMappingEnabled field if non-nil, zero value otherwise.
+
+### GetPortMappingEnabledOk
+
+`func (o *CloudProviderEndpointServiceRequest) GetPortMappingEnabledOk() (*bool, bool)`
+
+GetPortMappingEnabledOk returns a tuple with the PortMappingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPortMappingEnabled
+
+`func (o *CloudProviderEndpointServiceRequest) SetPortMappingEnabled(v bool)`
+
+SetPortMappingEnabled sets PortMappingEnabled field to given value.
+
+### HasPortMappingEnabled
+
+`func (o *CloudProviderEndpointServiceRequest) HasPortMappingEnabled() bool`
+
+HasPortMappingEnabled returns a boolean if a field has been set.
 ### GetProviderName
 
 `func (o *CloudProviderEndpointServiceRequest) GetProviderName() string`

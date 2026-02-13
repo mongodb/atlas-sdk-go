@@ -4,6 +4,9 @@ package admin
 
 // CloudProviderEndpointServiceRequest struct for CloudProviderEndpointServiceRequest
 type CloudProviderEndpointServiceRequest struct {
+	// Flag that indicates whether this endpoint service uses PSC port-mapping. This is only applicable for GCP Private Endpoint Services.
+	// Write only field.
+	PortMappingEnabled *bool `json:"portMappingEnabled,omitempty"`
 	// Human-readable label that identifies the cloud service provider for which you want to create the private endpoint service.
 	// Write only field.
 	ProviderName string `json:"providerName"`
@@ -18,6 +21,8 @@ type CloudProviderEndpointServiceRequest struct {
 // will change when the set of required properties is changed
 func NewCloudProviderEndpointServiceRequest(providerName string, region string) *CloudProviderEndpointServiceRequest {
 	this := CloudProviderEndpointServiceRequest{}
+	var portMappingEnabled bool = false
+	this.PortMappingEnabled = &portMappingEnabled
 	this.ProviderName = providerName
 	this.Region = region
 	return &this
@@ -28,7 +33,42 @@ func NewCloudProviderEndpointServiceRequest(providerName string, region string) 
 // but it doesn't guarantee that properties required by API are set
 func NewCloudProviderEndpointServiceRequestWithDefaults() *CloudProviderEndpointServiceRequest {
 	this := CloudProviderEndpointServiceRequest{}
+	var portMappingEnabled bool = false
+	this.PortMappingEnabled = &portMappingEnabled
 	return &this
+}
+
+// GetPortMappingEnabled returns the PortMappingEnabled field value if set, zero value otherwise
+func (o *CloudProviderEndpointServiceRequest) GetPortMappingEnabled() bool {
+	if o == nil || IsNil(o.PortMappingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PortMappingEnabled
+}
+
+// GetPortMappingEnabledOk returns a tuple with the PortMappingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderEndpointServiceRequest) GetPortMappingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PortMappingEnabled) {
+		return nil, false
+	}
+
+	return o.PortMappingEnabled, true
+}
+
+// HasPortMappingEnabled returns a boolean if a field has been set.
+func (o *CloudProviderEndpointServiceRequest) HasPortMappingEnabled() bool {
+	if o != nil && !IsNil(o.PortMappingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPortMappingEnabled gets a reference to the given bool and assigns it to the PortMappingEnabled field.
+func (o *CloudProviderEndpointServiceRequest) SetPortMappingEnabled(v bool) {
+	o.PortMappingEnabled = &v
 }
 
 // GetProviderName returns the ProviderName field value

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AvgWorkingMillis** | Pointer to **float64** | Average total time in milliseconds spent running queries with the given query shape. If the query resulted in getMore commands, this metric includes the time spent processing the getMore requests. This metric does not include time spent waiting for the client. | [optional] 
+**AvgWorkingMillis** | Pointer to **float64** | Average total time in milliseconds spent running queries with the given query shape. If the query resulted in &#x60;getMore&#x60; commands, this metric includes the time spent processing the &#x60;getMore&#x60; requests. This metric does not include time spent waiting for the client. | [optional] 
 **BytesRead** | Pointer to **float64** | The number of bytes read by the given query shape from the disk to the cache. | [optional] 
 **Command** | Pointer to **string** | The MongoDB command issued for this query shape. | [optional] 
 **DocsExamined** | Pointer to **float64** | Total number of documents examined by queries with the given query shape. | [optional] 

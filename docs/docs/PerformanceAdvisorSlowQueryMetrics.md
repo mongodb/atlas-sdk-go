@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **DocsExamined** | Pointer to **int64** | The number of documents in the collection that MongoDB scanned in order to carry out the operation. | [optional] [readonly] 
 **DocsExaminedReturnedRatio** | Pointer to **float64** | Ratio of documents examined to documents returned. | [optional] [readonly] 
 **DocsReturned** | Pointer to **int64** | The number of documents returned by the operation. | [optional] [readonly] 
-**FromUserConnection** | Pointer to **bool** | This boolean will be true when the server can identfiy the query source as non-server. This field is only available for MDB 8.0+. | [optional] [readonly] 
+**FromUserConnection** | Pointer to **bool** | This boolean will be true when the server can identify the query source as non-server. This field is only available for MDB 8.0+. | [optional] [readonly] 
 **HasIndexCoverage** | Pointer to **bool** | Indicates if the query has index coverage. | [optional] [readonly] 
 **HasSort** | Pointer to **bool** | This boolean will be true when a query cannot use the ordering in the index to return the requested sorted results; i.e. MongoDB must sort the documents after it receives the documents from a cursor. | [optional] [readonly] 
 **KeysExamined** | Pointer to **int64** | The number of index keys that MongoDB scanned in order to carry out the operation. | [optional] [readonly] 

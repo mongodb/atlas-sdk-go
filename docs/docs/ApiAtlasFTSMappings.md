@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dynamic** | Pointer to **bool** | Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted. | [optional] [default to false]
-**Fields** | Pointer to [**any**](interface{}.md) | One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**. | [optional] 
+**Dynamic** | Pointer to **bool** | Flag that indicates whether the index uses dynamic or static mappings. Required if &#x60;mappings.fields&#x60; is omitted. | [optional] [default to false]
+**Fields** | Pointer to [**any**](interface{}.md) | One or more field specifications for the Atlas Search index. Required if &#x60;mappings.dynamic&#x60; is omitted or set to &#x60;false&#x60;. | [optional] 
 
 ## Methods
 

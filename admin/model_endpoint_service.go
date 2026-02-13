@@ -34,9 +34,11 @@ type EndpointService struct {
 	// Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet.
 	// Read only field.
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`
-	// List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service.
+	// List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service. If this endpoint service uses PSC port-mapping, this field will only contain a list of one endpoint.
 	EndpointGroupNames *[]string `json:"endpointGroupNames,omitempty"`
-	// List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network.
+	// Flag that indicates whether this endpoint service uses PSC port-mapping.
+	PortMappingEnabled *bool `json:"portMappingEnabled,omitempty"`
+	// List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network. If this endpoint service uses PSC port-mapping, this field will only contain a list of one service attachment.
 	ServiceAttachmentNames *[]string `json:"serviceAttachmentNames,omitempty"`
 }
 
@@ -410,6 +412,39 @@ func (o *EndpointService) HasEndpointGroupNames() bool {
 // SetEndpointGroupNames gets a reference to the given []string and assigns it to the EndpointGroupNames field.
 func (o *EndpointService) SetEndpointGroupNames(v []string) {
 	o.EndpointGroupNames = &v
+}
+
+// GetPortMappingEnabled returns the PortMappingEnabled field value if set, zero value otherwise
+func (o *EndpointService) GetPortMappingEnabled() bool {
+	if o == nil || IsNil(o.PortMappingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PortMappingEnabled
+}
+
+// GetPortMappingEnabledOk returns a tuple with the PortMappingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetPortMappingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PortMappingEnabled) {
+		return nil, false
+	}
+
+	return o.PortMappingEnabled, true
+}
+
+// HasPortMappingEnabled returns a boolean if a field has been set.
+func (o *EndpointService) HasPortMappingEnabled() bool {
+	if o != nil && !IsNil(o.PortMappingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPortMappingEnabled gets a reference to the given bool and assigns it to the PortMappingEnabled field.
+func (o *EndpointService) SetPortMappingEnabled(v bool) {
+	o.PortMappingEnabled = &v
 }
 
 // GetServiceAttachmentNames returns the ServiceAttachmentNames field value if set, zero value otherwise

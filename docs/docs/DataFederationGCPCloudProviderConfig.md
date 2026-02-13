@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GcpServiceAccount** | Pointer to **string** | The email address of the Google Cloud Platform (GCP) service account created by Atlas which should be authorized to allow Atlas to access Google Cloud Storage. | [optional] [readonly] 
-**RoleId** | **string** | Unique identifier of the role that Data Federation can use to access the data stores. Required if specifying cloudProviderConfig. | 
+**RoleId** | **string** | Unique identifier of the role that Data Federation can use to access the data stores. Required if specifying &#x60;cloudProviderConfig&#x60;. | 
 
 ## Methods
 

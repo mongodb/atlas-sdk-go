@@ -8,7 +8,7 @@ type PrivateNetworkEndpointIdEntry struct {
 	AzureLinkId *string `json:"azureLinkId,omitempty"`
 	// Human-readable string to associate with this private endpoint.
 	Comment *string `json:"comment,omitempty"`
-	// Human-readable label to identify customer's VPC endpoint DNS name. If defined, you must also specify a value for **region**.
+	// Human-readable label to identify customer's VPC endpoint DNS name. If defined, you must also specify a value for `region`.
 	CustomerEndpointDNSName *string `json:"customerEndpointDNSName,omitempty"`
 	// IP address used to connect to the Azure private endpoint.
 	CustomerEndpointIPAddress *string `json:"customerEndpointIPAddress,omitempty"`
@@ -18,7 +18,7 @@ type PrivateNetworkEndpointIdEntry struct {
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services only.
 	Provider *string `json:"provider,omitempty"`
-	// Human-readable label to identify the region of customer's VPC endpoint. If defined, you must also specify a value for **customerEndpointDNSName**.
+	// Human-readable label to identify the region of customer's VPC endpoint. If defined, you must also specify a value for `customerEndpointDNSName`.
 	Region *string `json:"region,omitempty"`
 	// Status of the private endpoint connection request.
 	Status *string `json:"status,omitempty"`

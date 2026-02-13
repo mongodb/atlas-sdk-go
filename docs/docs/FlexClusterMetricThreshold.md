@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MetricName** | **string** | Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**. | 
+**MetricName** | **string** | Human-readable label that identifies the metric against which MongoDB Cloud checks the configured &#x60;metricThreshold.threshold&#x60;. | 
 **Mode** | Pointer to **string** | MongoDB Cloud computes the current metric value as an average. | [optional] 
 **Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **float64** | Value of metric that, when exceeded, triggers an alert. | [optional] 

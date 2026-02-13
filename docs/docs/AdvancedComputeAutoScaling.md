@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to &#x60;true&#x60; to enable instance size reactive auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to &#x60;false&#x60; to disable instance size reactive auto-scaling. | [optional] 
+**Enabled** | Pointer to **bool** | Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to &#x60;true&#x60; to enable instance size reactive auto-scaling. If enabled, you must specify a value for &#x60;replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize&#x60;. - Set to &#x60;false&#x60; to disable instance size reactive auto-scaling. | [optional] 
 **MaxInstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] [readonly] 
 **MinInstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] [readonly] 
-**ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** is &#x60;true&#x60;. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**. | [optional] 
+**ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if &#x60;replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled&#x60; is &#x60;true&#x60;. If you enable this option, specify a value for &#x60;replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize&#x60;. | [optional] 
 
 ## Methods
 

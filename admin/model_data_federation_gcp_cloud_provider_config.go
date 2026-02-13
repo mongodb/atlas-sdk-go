@@ -7,7 +7,7 @@ type DataFederationGCPCloudProviderConfig struct {
 	// The email address of the Google Cloud Platform (GCP) service account created by Atlas which should be authorized to allow Atlas to access Google Cloud Storage.
 	// Read only field.
 	GcpServiceAccount *string `json:"gcpServiceAccount,omitempty"`
-	// Unique identifier of the role that Data Federation can use to access the data stores. Required if specifying cloudProviderConfig.
+	// Unique identifier of the role that Data Federation can use to access the data stores. Required if specifying `cloudProviderConfig`.
 	RoleId string `json:"roleId"`
 }
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExternalGroupName** | **string** | Unique human-readable label that identifies the identity provider group to which this role mapping applies. | 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this role mapping. | [optional] [readonly] 
-**RoleAssignments** | Pointer to [**[]ConnectedOrgConfigRoleAssignment**](ConnectedOrgConfigRoleAssignment.md) | Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective **orgId**. Each element in the array can have a value for **orgId** or **groupId**, but not both. | [optional] 
+**RoleAssignments** | Pointer to [**[]ConnectedOrgConfigRoleAssignment**](ConnectedOrgConfigRoleAssignment.md) | Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective &#x60;orgId&#x60;. Each element in the array can have a value for &#x60;orgId&#x60; or &#x60;groupId&#x60;, but not both. | [optional] 
 
 ## Methods
 

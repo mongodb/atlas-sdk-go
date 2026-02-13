@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to &#x60;true&#x60; to enable instance size reactive auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize**. - Set to &#x60;false&#x60; to disable instance size reactive auto-scaling. | [optional] [default to false]
-**ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if **autoScaling.compute.enabled** is &#x60;true&#x60;. If you enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**. | [optional] [default to false]
+**Enabled** | Pointer to **bool** | Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to &#x60;true&#x60; to enable instance size reactive auto-scaling. If enabled, you must specify a value for &#x60;providerSettings.autoScaling.compute.maxInstanceSize&#x60;. - Set to &#x60;false&#x60; to disable instance size reactive auto-scaling. | [optional] [default to false]
+**ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if &#x60;autoScaling.compute.enabled&#x60; is &#x60;true&#x60;. If you enable this option, specify a value for &#x60;providerSettings.autoScaling.compute.minInstanceSize&#x60;. | [optional] [default to false]
 
 ## Methods
 

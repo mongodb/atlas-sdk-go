@@ -6,6 +6,8 @@ package admin
 type LogIntegrationResponse struct {
 	// Unique 24-character hexadecimal digit string that identifies the log integration configuration.
 	Id string `json:"id"`
+	// Array of log types exported by this integration. The specific log types available and maximum number of items depend on the integration type. See the integration-specific schema for details.
+	LogTypes *[]string `json:"logTypes,omitempty"`
 	// Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type.
 	Type string `json:"type"`
 	// Human-readable label that identifies the S3 bucket name for storing log files.
@@ -14,8 +16,6 @@ type LogIntegrationResponse struct {
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
 	KmsKey *string `json:"kmsKey,omitempty"`
-	// Array of log types to export to S3. Valid values: MONGOD, MONGOS, MONGOD_AUDIT, MONGOS_AUDIT.
-	LogTypes *[]string `json:"logTypes,omitempty"`
 	// S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type.
 	PrefixPath *string `json:"prefixPath,omitempty"`
 }
@@ -61,6 +61,39 @@ func (o *LogIntegrationResponse) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *LogIntegrationResponse) SetId(v string) {
 	o.Id = v
+}
+
+// GetLogTypes returns the LogTypes field value if set, zero value otherwise
+func (o *LogIntegrationResponse) GetLogTypes() []string {
+	if o == nil || IsNil(o.LogTypes) {
+		var ret []string
+		return ret
+	}
+	return *o.LogTypes
+}
+
+// GetLogTypesOk returns a tuple with the LogTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationResponse) GetLogTypesOk() (*[]string, bool) {
+	if o == nil || IsNil(o.LogTypes) {
+		return nil, false
+	}
+
+	return o.LogTypes, true
+}
+
+// HasLogTypes returns a boolean if a field has been set.
+func (o *LogIntegrationResponse) HasLogTypes() bool {
+	if o != nil && !IsNil(o.LogTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogTypes gets a reference to the given []string and assigns it to the LogTypes field.
+func (o *LogIntegrationResponse) SetLogTypes(v []string) {
+	o.LogTypes = &v
 }
 
 // GetType returns the Type field value
@@ -184,39 +217,6 @@ func (o *LogIntegrationResponse) HasKmsKey() bool {
 // SetKmsKey gets a reference to the given string and assigns it to the KmsKey field.
 func (o *LogIntegrationResponse) SetKmsKey(v string) {
 	o.KmsKey = &v
-}
-
-// GetLogTypes returns the LogTypes field value if set, zero value otherwise
-func (o *LogIntegrationResponse) GetLogTypes() []string {
-	if o == nil || IsNil(o.LogTypes) {
-		var ret []string
-		return ret
-	}
-	return *o.LogTypes
-}
-
-// GetLogTypesOk returns a tuple with the LogTypes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LogIntegrationResponse) GetLogTypesOk() (*[]string, bool) {
-	if o == nil || IsNil(o.LogTypes) {
-		return nil, false
-	}
-
-	return o.LogTypes, true
-}
-
-// HasLogTypes returns a boolean if a field has been set.
-func (o *LogIntegrationResponse) HasLogTypes() bool {
-	if o != nil && !IsNil(o.LogTypes) {
-		return true
-	}
-
-	return false
-}
-
-// SetLogTypes gets a reference to the given []string and assigns it to the LogTypes field.
-func (o *LogIntegrationResponse) SetLogTypes(v []string) {
-	o.LogTypes = &v
 }
 
 // GetPrefixPath returns the PrefixPath field value if set, zero value otherwise

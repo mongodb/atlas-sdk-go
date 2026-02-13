@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**LogTypes** | **[]string** | Array of log types exported by this integration. The specific log types available and maximum number of items depend on the integration type. See the integration-specific schema for details. | 
 **Type** | **string** | Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type. | 
 **BucketName** | Pointer to **string** | Human-readable label that identifies the S3 bucket name for storing log files. | [optional] 
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket. | [optional] 
 **KmsKey** | Pointer to **string** | AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. | [optional] 
-**LogTypes** | Pointer to **[]string** | Array of log types to export to S3. Valid values: MONGOD, MONGOS, MONGOD_AUDIT, MONGOS_AUDIT. | [optional] 
 **PrefixPath** | Pointer to **string** | S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type. | [optional] 
 
 ## Methods
 
 ### NewLogIntegrationRequest
 
-`func NewLogIntegrationRequest(type_ string, ) *LogIntegrationRequest`
+`func NewLogIntegrationRequest(logTypes []string, type_ string, ) *LogIntegrationRequest`
 
 NewLogIntegrationRequest instantiates a new LogIntegrationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +29,25 @@ will change when the set of required properties is changed
 NewLogIntegrationRequestWithDefaults instantiates a new LogIntegrationRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLogTypes
+
+`func (o *LogIntegrationRequest) GetLogTypes() []string`
+
+GetLogTypes returns the LogTypes field if non-nil, zero value otherwise.
+
+### GetLogTypesOk
+
+`func (o *LogIntegrationRequest) GetLogTypesOk() (*[]string, bool)`
+
+GetLogTypesOk returns a tuple with the LogTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogTypes
+
+`func (o *LogIntegrationRequest) SetLogTypes(v []string)`
+
+SetLogTypes sets LogTypes field to given value.
 
 ### GetType
 
@@ -121,30 +140,6 @@ SetKmsKey sets KmsKey field to given value.
 `func (o *LogIntegrationRequest) HasKmsKey() bool`
 
 HasKmsKey returns a boolean if a field has been set.
-### GetLogTypes
-
-`func (o *LogIntegrationRequest) GetLogTypes() []string`
-
-GetLogTypes returns the LogTypes field if non-nil, zero value otherwise.
-
-### GetLogTypesOk
-
-`func (o *LogIntegrationRequest) GetLogTypesOk() (*[]string, bool)`
-
-GetLogTypesOk returns a tuple with the LogTypes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLogTypes
-
-`func (o *LogIntegrationRequest) SetLogTypes(v []string)`
-
-SetLogTypes sets LogTypes field to given value.
-
-### HasLogTypes
-
-`func (o *LogIntegrationRequest) HasLogTypes() bool`
-
-HasLogTypes returns a boolean if a field has been set.
 ### GetPrefixPath
 
 `func (o *LogIntegrationRequest) GetPrefixPath() string`

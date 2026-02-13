@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Number** | Pointer to **float64** | Amount of the **metricName** recorded at the time of the event. This value triggered the alert. | [optional] [readonly] 
+**Number** | Pointer to **float64** | Amount of the &#x60;metricName&#x60; recorded at the time of the event. This value triggered the alert. | [optional] [readonly] 
 **Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] 
 
 ## Methods

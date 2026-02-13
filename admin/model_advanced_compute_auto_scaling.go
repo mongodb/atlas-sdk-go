@@ -4,7 +4,7 @@ package admin
 
 // AdvancedComputeAutoScaling Options that determine how this cluster handles CPU scaling.
 type AdvancedComputeAutoScaling struct {
-	// Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size reactive auto-scaling.
+	// Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for `replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize`. - Set to `false` to disable instance size reactive auto-scaling.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Instance size boundary to which your cluster can automatically scale.
 	// Read only field.
@@ -12,7 +12,7 @@ type AdvancedComputeAutoScaling struct {
 	// Instance size boundary to which your cluster can automatically scale.
 	// Read only field.
 	MinInstanceSize *string `json:"minInstanceSize,omitempty"`
-	// Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** is `true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
+	// Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if `replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled` is `true`. If you enable this option, specify a value for `replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize`.
 	ScaleDownEnabled *bool `json:"scaleDownEnabled,omitempty"`
 }
 

@@ -15,7 +15,7 @@ type DataLakeAWSCloudProviderConfig struct {
 	IamUserARN *string `json:"iamUserARN,omitempty"`
 	// Unique identifier of the role that the data lake can use to access the data stores.Required if specifying cloudProviderConfig.
 	RoleId string `json:"roleId"`
-	// Name of the S3 data bucket that the provided role ID is authorized to access.Required if specifying cloudProviderConfig.
+	// Name of the S3 data bucket that the provided role ID is authorized to access. Required if specifying `cloudProviderConfig`.
 	// Write only field.
 	TestS3Bucket string `json:"testS3Bucket"`
 }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Standard** | Pointer to **string** | Public connection string that you can use to connect to this cluster. This connection string uses the mongodb:// protocol. | [optional] [readonly] 
+**Standard** | Pointer to **string** | Public connection string that you can use to connect to this cluster. This connection string uses the &#x60;mongodb://&#x60; protocol. | [optional] [readonly] 
 **StandardSrv** | Pointer to **string** | Public connection string that you can use to connect to this flex cluster. This connection string uses the &#x60;mongodb+srv://&#x60; protocol. | [optional] [readonly] 
 
 ## Methods

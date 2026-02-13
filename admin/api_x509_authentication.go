@@ -376,7 +376,7 @@ func (a *X509AuthenticationApiService) ListDatabaseUserCertsWithParams(ctx conte
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
 func (r ListDatabaseUserCertsApiRequest) IncludeCount(includeCount bool) ListDatabaseUserCertsApiRequest {
 	r.includeCount = &includeCount
 	return r

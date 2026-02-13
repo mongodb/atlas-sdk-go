@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DataAccessIdentityProviderIds** | Pointer to **[]string** | The collection of unique ids representing the identity providers that can be used for data access in this organization. | [optional] 
 **DomainAllowList** | Pointer to **[]string** | Approved domains that restrict users who can join the organization based on their email address. | [optional] 
-**DomainRestrictionEnabled** | **bool** | Value that indicates whether domain restriction is enabled for this connected org. | 
-**IdentityProviderId** | Pointer to **string** | Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected org config is associated with. This id can be found within the Federation Management Console &gt; Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. | [optional] 
+**DomainRestrictionEnabled** | **bool** | Value that indicates whether domain restriction is enabled for this connected organization. | 
+**IdentityProviderId** | Pointer to **string** | Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console &gt; Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. | [optional] 
 **OrgId** | **string** | Unique 24-hexadecimal digit string that identifies the connected organization configuration. | [readonly] 
 **PostAuthRoleGrants** | Pointer to **[]string** | Atlas roles that are granted to a user in this organization after authenticating. Roles are a human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific MongoDB Cloud user. These roles can only be organization specific roles. | [optional] 
 **RoleMappings** | Pointer to [**[]AuthFederationRoleMapping**](AuthFederationRoleMapping.md) | Role mappings that are configured in this organization. | [optional] 

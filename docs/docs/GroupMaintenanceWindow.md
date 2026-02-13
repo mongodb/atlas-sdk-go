@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoDeferOnceEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. | [optional] 
+**AutoDeferOnceEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. This setting controls the same underlying auto-deferral feature as the &#x60;/maintenanceWindow/autoDefer&#x60; endpoint. Use either this field (to set a specific value) or that endpoint (to toggle the current value). For most use cases, this field in the PATCH request is preferred because it allows setting an explicit value rather than toggling. | [optional] 
 **DayOfWeek** | **int** | One-based integer that represents the day of the week that the maintenance window starts.  - &#x60;1&#x60;: Sunday. - &#x60;2&#x60;: Monday. - &#x60;3&#x60;: Tuesday. - &#x60;4&#x60;: Wednesday. - &#x60;5&#x60;: Thursday. - &#x60;6&#x60;: Friday. - &#x60;7&#x60;: Saturday. | 
 **HourOfDay** | Pointer to **int** | Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use &#x60;0&#x60; for midnight and &#x60;12&#x60; for noon. | [optional] 
 **NumberOfDeferrals** | Pointer to **int** | Number of times the current maintenance event for this project has been deferred. | [optional] [readonly] 

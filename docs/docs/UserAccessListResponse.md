@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CidrBlock** | Pointer to **string** | Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation in the access list for the API key. | [optional] 
-**Count** | Pointer to **int** | Total number of requests that have originated from the Internet Protocol (IP) address given as the value of the *lastUsedAddress* parameter. | [optional] [readonly] 
+**Count** | Pointer to **int** | Total number of requests that have originated from the Internet Protocol (IP) address given as the value of the &#x60;lastUsedAddress&#x60; parameter. | [optional] [readonly] 
 **Created** | Pointer to **time.Time** | Date and time when someone added the network addresses to the specified API access list. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **IpAddress** | Pointer to **string** | Network address in the access list for the API key. | [optional] 
 **LastUsed** | Pointer to **time.Time** | Date and time when MongoDB Cloud received the most recent request that originated from this Internet Protocol version 4 or version 6 address. The resource returns this parameter when at least one request has originated from this IP address. MongoDB Cloud updates this parameter each time a client accesses the permitted resource. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 

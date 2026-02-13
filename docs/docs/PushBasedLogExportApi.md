@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CreateGroupLogIntegration
 
-> LogIntegrationResponse CreateGroupLogIntegration(ctx, groupId, s3LogIntegrationRequest S3LogIntegrationRequest).Execute()
+> LogIntegrationResponse CreateGroupLogIntegration(ctx, groupId, logIntegrationRequest LogIntegrationRequest).Execute()
 
 Create One Log Integration
 
@@ -47,9 +47,9 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    s3LogIntegrationRequest := *openapiclient.NewS3LogIntegrationRequest("my-log-bucket", "507f1f77bcf86cd799439011", []string{"LogTypes_example"}, "mongo-logs/", "Type_example") // S3LogIntegrationRequest | 
+    logIntegrationRequest := *openapiclient.NewLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // LogIntegrationRequest | 
 
-    resp, r, err := sdk.PushBasedLogExportApi.CreateGroupLogIntegration(context.Background(), groupId, &s3LogIntegrationRequest).Execute()
+    resp, r, err := sdk.PushBasedLogExportApi.CreateGroupLogIntegration(context.Background(), groupId, &logIntegrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.CreateGroupLogIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -79,7 +79,7 @@ Other parameters are passed through a pointer to a apiCreateGroupLogIntegrationR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **s3LogIntegrationRequest** | [**S3LogIntegrationRequest**](S3LogIntegrationRequest.md) | Log integration configuration to create. | 
+ **logIntegrationRequest** | [**LogIntegrationRequest**](LogIntegrationRequest.md) | Log integration configuration to create. | 
 
 ### Return type
 
@@ -566,10 +566,10 @@ Other parameters are passed through a pointer to a apiListGroupLogIntegrationsRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
- **integrationType** | **string** | Optional filter by integration type (e.g., &#39;S3_LOG_EXPORT&#39;). | 
+ **integrationType** | **string** | Optional filter by integration type (e.g., &#x60;S3_LOG_EXPORT&#x60;). | 
 
 ### Return type
 
@@ -620,7 +620,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
-    logIntegrationRequest := *openapiclient.NewLogIntegrationRequest("Type_example") // LogIntegrationRequest | 
+    logIntegrationRequest := *openapiclient.NewLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // LogIntegrationRequest | 
 
     resp, r, err := sdk.PushBasedLogExportApi.UpdateGroupLogIntegration(context.Background(), groupId, id, &logIntegrationRequest).Execute()
     if err != nil {

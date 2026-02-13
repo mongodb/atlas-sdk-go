@@ -15,10 +15,10 @@ type ResourcePoliciesApi interface {
 	/*
 		CreateOrgResourcePolicy Create One Atlas Resource Policy
 
-		Create one Atlas Resource Policy for an org.
+		Create one Atlas Resource Policy for an organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param apiAtlasResourcePolicyCreate Atlas Resource Policy to create.
 		@return CreateOrgResourcePolicyApiRequest
 	*/
@@ -39,10 +39,10 @@ type ResourcePoliciesApi interface {
 	/*
 		DeleteOrgResourcePolicy Delete One Atlas Resource Policy
 
-		Delete one Atlas Resource Policy for an org.
+		Delete one Atlas Resource Policy for an organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
 		@return DeleteOrgResourcePolicyApiRequest
 	*/
@@ -63,10 +63,10 @@ type ResourcePoliciesApi interface {
 	/*
 		GetNonCompliantResources Return All Non-Compliant Resources
 
-		Return all non-compliant resources for an org.
+		Return all non-compliant resources for an organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return GetNonCompliantResourcesApiRequest
 	*/
 	GetNonCompliantResources(ctx context.Context, orgId string) GetNonCompliantResourcesApiRequest
@@ -86,10 +86,10 @@ type ResourcePoliciesApi interface {
 	/*
 		GetOrgResourcePolicy Return One Atlas Resource Policy
 
-		Return one Atlas Resource Policy for an org.
+		Return one Atlas Resource Policy for an organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
 		@return GetOrgResourcePolicyApiRequest
 	*/
@@ -110,10 +110,10 @@ type ResourcePoliciesApi interface {
 	/*
 		ListOrgResourcePolicies Return All Atlas Resource Policies
 
-		Return all Atlas Resource Policies for the org.
+		Return all Atlas Resource Policies for the organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return ListOrgResourcePoliciesApiRequest
 	*/
 	ListOrgResourcePolicies(ctx context.Context, orgId string) ListOrgResourcePoliciesApiRequest
@@ -133,10 +133,10 @@ type ResourcePoliciesApi interface {
 	/*
 		UpdateOrgResourcePolicy Update One Atlas Resource Policy
 
-		Update one Atlas Resource Policy for an org.
+		Update one Atlas Resource Policy for an organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
 		@param apiAtlasResourcePolicyEdit Atlas Resource Policy to update.
 		@return UpdateOrgResourcePolicyApiRequest
@@ -158,10 +158,10 @@ type ResourcePoliciesApi interface {
 	/*
 		ValidateResourcePolicies Validate One Atlas Resource Policy
 
-		Validate one Atlas Resource Policy for an org.
+		Validate one Atlas Resource Policy for an organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param apiAtlasResourcePolicyCreate Atlas Resource Policy to create.
 		@return ValidateResourcePoliciesApiRequest
 	*/
@@ -211,10 +211,10 @@ func (r CreateOrgResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *
 /*
 CreateOrgResourcePolicy Create One Atlas Resource Policy
 
-Create one Atlas Resource Policy for an org.
+Create one Atlas Resource Policy for an organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrgResourcePolicyApiRequest
 */
 func (a *ResourcePoliciesApiService) CreateOrgResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) CreateOrgResourcePolicyApiRequest {
@@ -334,10 +334,10 @@ func (r DeleteOrgResourcePolicyApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteOrgResourcePolicy Delete One Atlas Resource Policy
 
-Delete one Atlas Resource Policy for an org.
+Delete one Atlas Resource Policy for an organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
 	@return DeleteOrgResourcePolicyApiRequest
 */
@@ -437,10 +437,10 @@ func (r GetNonCompliantResourcesApiRequest) Execute() ([]ApiAtlasNonCompliantRes
 /*
 GetNonCompliantResources Return All Non-Compliant Resources
 
-Return all non-compliant resources for an org.
+Return all non-compliant resources for an organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetNonCompliantResourcesApiRequest
 */
 func (a *ResourcePoliciesApiService) GetNonCompliantResources(ctx context.Context, orgId string) GetNonCompliantResourcesApiRequest {
@@ -554,10 +554,10 @@ func (r GetOrgResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *htt
 /*
 GetOrgResourcePolicy Return One Atlas Resource Policy
 
-Return one Atlas Resource Policy for an org.
+Return one Atlas Resource Policy for an organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
 	@return GetOrgResourcePolicyApiRequest
 */
@@ -674,10 +674,10 @@ func (r ListOrgResourcePoliciesApiRequest) Execute() ([]ApiAtlasResourcePolicy, 
 /*
 ListOrgResourcePolicies Return All Atlas Resource Policies
 
-Return all Atlas Resource Policies for the org.
+Return all Atlas Resource Policies for the organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgResourcePoliciesApiRequest
 */
 func (a *ResourcePoliciesApiService) ListOrgResourcePolicies(ctx context.Context, orgId string) ListOrgResourcePoliciesApiRequest {
@@ -794,10 +794,10 @@ func (r UpdateOrgResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *
 /*
 UpdateOrgResourcePolicy Update One Atlas Resource Policy
 
-Update one Atlas Resource Policy for an org.
+Update one Atlas Resource Policy for an organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
 	@return UpdateOrgResourcePolicyApiRequest
 */
@@ -923,10 +923,10 @@ func (r ValidateResourcePoliciesApiRequest) Execute() (*ApiAtlasResourcePolicy, 
 /*
 ValidateResourcePolicies Validate One Atlas Resource Policy
 
-Validate one Atlas Resource Policy for an org.
+Validate one Atlas Resource Policy for an organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ValidateResourcePoliciesApiRequest
 */
 func (a *ResourcePoliciesApiService) ValidateResourcePolicies(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) ValidateResourcePoliciesApiRequest {

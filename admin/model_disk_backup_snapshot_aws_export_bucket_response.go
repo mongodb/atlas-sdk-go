@@ -18,7 +18,7 @@ type DiskBackupSnapshotAWSExportBucketResponse struct {
 	// AWS region for the export bucket. This is set by Atlas and is never user-supplied.
 	// Read only field.
 	Region *string `json:"region,omitempty"`
-	// Indicates whether to use privatelink. User supplied.
+	// Indicates whether to use private link. User supplied.
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
 }
 

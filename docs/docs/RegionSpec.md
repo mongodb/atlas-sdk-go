@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AnalyticsNodes** | Pointer to **int** | Number of analytics nodes in the region. Analytics nodes handle analytic data such as reporting queries from MongoDB Connector for Business Intelligence on MongoDB Cloud. Analytics nodes are read-only, and can never become the primary. Use **replicationSpecs[n].{region}.analyticsNodes** instead. | [optional] 
-**ElectableNodes** | Pointer to **int** | Number of electable nodes to deploy in the specified region. Electable nodes can become the primary and can facilitate local reads. Use **replicationSpecs[n].{region}.electableNodes** instead. | [optional] 
+**AnalyticsNodes** | Pointer to **int** | Number of analytics nodes in the region. Analytics nodes handle analytic data such as reporting queries from MongoDB Connector for Business Intelligence on MongoDB Cloud. Analytics nodes are read-only, and can never become the primary. Use &#x60;replicationSpecs[n].{region}.analyticsNodes&#x60; instead. | [optional] 
+**ElectableNodes** | Pointer to **int** | Number of electable nodes to deploy in the specified region. Electable nodes can become the primary and can facilitate local reads. Use &#x60;replicationSpecs[n].{region}.electableNodes&#x60; instead. | [optional] 
 **Priority** | Pointer to **int** | Number that indicates the election priority of the region. To identify the Preferred Region of the cluster, set this parameter to &#x60;7&#x60;. The primary node runs in the **Preferred Region**. To identify a read-only region, set this parameter to &#x60;0&#x60;. | [optional] 
-**ReadOnlyNodes** | Pointer to **int** | Number of read-only nodes in the region. Read-only nodes can never become the primary member, but can facilitate local reads. Use **replicationSpecs[n].{region}.readOnlyNodes** instead. | [optional] 
+**ReadOnlyNodes** | Pointer to **int** | Number of read-only nodes in the region. Read-only nodes can never become the primary member, but can facilitate local reads. Use &#x60;replicationSpecs[n].{region}.readOnlyNodes&#x60; instead. | [optional] 
 
 ## Methods
 

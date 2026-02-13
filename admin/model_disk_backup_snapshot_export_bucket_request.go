@@ -17,9 +17,9 @@ type DiskBackupSnapshotExportBucketRequest struct {
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket.
 	RoleId *string `json:"roleId,omitempty"`
-	// URL of the Azure Storage Account to export to. For example: \"https://examplestorageaccount.blob.core.windows.net/exportcontainer\". Only standard endpoints (with \"blob.core.windows.net\") are supported.
+	// URL of the Azure Storage Account to export to. For example: `https://examplestorageaccount.blob.core.windows.net/exportcontainer`. Only standard endpoints (with `blob.core.windows.net`) are supported.
 	ServiceUrl *string `json:"serviceUrl,omitempty"`
-	// UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the tenantId of the Cloud Provider Access role (from roleId) is used.
+	// UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the `tenantId` of the Cloud Provider Access role (from `roleId`) is used.
 	// Deprecated
 	TenantId *string `json:"tenantId,omitempty"`
 }
