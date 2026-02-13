@@ -23,6 +23,8 @@ type BaseSearchIndexResponseLatestDefinition struct {
 	TypeSets *[]SearchTypeSets `json:"typeSets,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
 	Fields *[]any `json:"fields,omitempty"`
+	// Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested.
+	NestedRoot *string `json:"nestedRoot,omitempty"`
 }
 
 // NewBaseSearchIndexResponseLatestDefinition instantiates a new BaseSearchIndexResponseLatestDefinition object
@@ -384,4 +386,37 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasFields() bool {
 // SetFields gets a reference to the given []any and assigns it to the Fields field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetFields(v []any) {
 	o.Fields = &v
+}
+
+// GetNestedRoot returns the NestedRoot field value if set, zero value otherwise
+func (o *BaseSearchIndexResponseLatestDefinition) GetNestedRoot() string {
+	if o == nil || IsNil(o.NestedRoot) {
+		var ret string
+		return ret
+	}
+	return *o.NestedRoot
+}
+
+// GetNestedRootOk returns a tuple with the NestedRoot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseSearchIndexResponseLatestDefinition) GetNestedRootOk() (*string, bool) {
+	if o == nil || IsNil(o.NestedRoot) {
+		return nil, false
+	}
+
+	return o.NestedRoot, true
+}
+
+// HasNestedRoot returns a boolean if a field has been set.
+func (o *BaseSearchIndexResponseLatestDefinition) HasNestedRoot() bool {
+	if o != nil && !IsNil(o.NestedRoot) {
+		return true
+	}
+
+	return false
+}
+
+// SetNestedRoot gets a reference to the given string and assigns it to the NestedRoot field.
+func (o *BaseSearchIndexResponseLatestDefinition) SetNestedRoot(v string) {
+	o.NestedRoot = &v
 }

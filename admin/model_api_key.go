@@ -6,7 +6,7 @@ package admin
 type ApiKey struct {
 	// List of network addresses granted access to this API using this API key.
 	// Read only field.
-	AccessList *[]AccessListItem `json:"accessList,omitempty"`
+	AccessList []AccessListItem `json:"accessList"`
 	// Unique 24-hexadecimal digit string that identifies this organization API key.
 	// Read only field.
 	Id string `json:"id"`
@@ -15,17 +15,19 @@ type ApiKey struct {
 	PublicKey string `json:"publicKey"`
 	// List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user.
 	// Read only field.
-	Roles *[]CloudAccessRoleAssignment `json:"roles,omitempty"`
+	Roles []CloudAccessRoleAssignment `json:"roles"`
 }
 
 // NewApiKey instantiates a new ApiKey object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiKey(id string, publicKey string) *ApiKey {
+func NewApiKey(accessList []AccessListItem, id string, publicKey string, roles []CloudAccessRoleAssignment) *ApiKey {
 	this := ApiKey{}
+	this.AccessList = accessList
 	this.Id = id
 	this.PublicKey = publicKey
+	this.Roles = roles
 	return &this
 }
 
@@ -37,37 +39,28 @@ func NewApiKeyWithDefaults() *ApiKey {
 	return &this
 }
 
-// GetAccessList returns the AccessList field value if set, zero value otherwise
+// GetAccessList returns the AccessList field value
 func (o *ApiKey) GetAccessList() []AccessListItem {
-	if o == nil || IsNil(o.AccessList) {
+	if o == nil {
 		var ret []AccessListItem
 		return ret
 	}
-	return *o.AccessList
+
+	return o.AccessList
 }
 
-// GetAccessListOk returns a tuple with the AccessList field value if set, nil otherwise
+// GetAccessListOk returns a tuple with the AccessList field value
 // and a boolean to check if the value has been set.
 func (o *ApiKey) GetAccessListOk() (*[]AccessListItem, bool) {
-	if o == nil || IsNil(o.AccessList) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.AccessList, true
+	return &o.AccessList, true
 }
 
-// HasAccessList returns a boolean if a field has been set.
-func (o *ApiKey) HasAccessList() bool {
-	if o != nil && !IsNil(o.AccessList) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessList gets a reference to the given []AccessListItem and assigns it to the AccessList field.
+// SetAccessList sets field value
 func (o *ApiKey) SetAccessList(v []AccessListItem) {
-	o.AccessList = &v
+	o.AccessList = v
 }
 
 // GetId returns the Id field value
@@ -118,35 +111,26 @@ func (o *ApiKey) SetPublicKey(v string) {
 	o.PublicKey = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise
+// GetRoles returns the Roles field value
 func (o *ApiKey) GetRoles() []CloudAccessRoleAssignment {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		var ret []CloudAccessRoleAssignment
 		return ret
 	}
-	return *o.Roles
+
+	return o.Roles
 }
 
-// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// GetRolesOk returns a tuple with the Roles field value
 // and a boolean to check if the value has been set.
 func (o *ApiKey) GetRolesOk() (*[]CloudAccessRoleAssignment, bool) {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Roles, true
+	return &o.Roles, true
 }
 
-// HasRoles returns a boolean if a field has been set.
-func (o *ApiKey) HasRoles() bool {
-	if o != nil && !IsNil(o.Roles) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
+// SetRoles sets field value
 func (o *ApiKey) SetRoles(v []CloudAccessRoleAssignment) {
-	o.Roles = &v
+	o.Roles = v
 }

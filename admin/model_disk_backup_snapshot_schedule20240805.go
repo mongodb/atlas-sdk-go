@@ -39,7 +39,7 @@ type DiskBackupSnapshotSchedule20240805 struct {
 	// Read only field.
 	NextSnapshot *time.Time `json:"nextSnapshot,omitempty"`
 	// Rules set for this backup schedule.
-	Policies *[]AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies,omitempty"`
+	Policies []AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies"`
 	// Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the Snapshot.
 	ReferenceHourOfDay *int `json:"referenceHourOfDay,omitempty"`
 	// Minute of the `referenceHourOfDay` that represents when MongoDB Cloud takes the Snapshot.
@@ -60,8 +60,9 @@ type DiskBackupSnapshotSchedule20240805 struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiskBackupSnapshotSchedule20240805() *DiskBackupSnapshotSchedule20240805 {
+func NewDiskBackupSnapshotSchedule20240805(policies []AdvancedDiskBackupSnapshotSchedulePolicy) *DiskBackupSnapshotSchedule20240805 {
 	this := DiskBackupSnapshotSchedule20240805{}
+	this.Policies = policies
 	return &this
 }
 
@@ -469,37 +470,28 @@ func (o *DiskBackupSnapshotSchedule20240805) SetNextSnapshot(v time.Time) {
 	o.NextSnapshot = &v
 }
 
-// GetPolicies returns the Policies field value if set, zero value otherwise
+// GetPolicies returns the Policies field value
 func (o *DiskBackupSnapshotSchedule20240805) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy {
-	if o == nil || IsNil(o.Policies) {
+	if o == nil {
 		var ret []AdvancedDiskBackupSnapshotSchedulePolicy
 		return ret
 	}
-	return *o.Policies
+
+	return o.Policies
 }
 
-// GetPoliciesOk returns a tuple with the Policies field value if set, nil otherwise
+// GetPoliciesOk returns a tuple with the Policies field value
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotSchedule20240805) GetPoliciesOk() (*[]AdvancedDiskBackupSnapshotSchedulePolicy, bool) {
-	if o == nil || IsNil(o.Policies) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Policies, true
+	return &o.Policies, true
 }
 
-// HasPolicies returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule20240805) HasPolicies() bool {
-	if o != nil && !IsNil(o.Policies) {
-		return true
-	}
-
-	return false
-}
-
-// SetPolicies gets a reference to the given []AdvancedDiskBackupSnapshotSchedulePolicy and assigns it to the Policies field.
+// SetPolicies sets field value
 func (o *DiskBackupSnapshotSchedule20240805) SetPolicies(v []AdvancedDiskBackupSnapshotSchedulePolicy) {
-	o.Policies = &v
+	o.Policies = v
 }
 
 // GetReferenceHourOfDay returns the ReferenceHourOfDay field value if set, zero value otherwise
