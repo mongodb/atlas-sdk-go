@@ -32,4 +32,4 @@ npm exec openapi-generator-cli -- generate \
 mv "$DOC_FOLDER"/README.md "$DOC_FOLDER"/doc_last_reference.md
 
 # Replace default import prefix in examples so docs compile with this SDK.
-find "$DOC_FOLDER/docs" -name "*.md" -print0 | xargs -0 perl -pi -e 's/openapiclient/admin/g'
+find "$DOC_FOLDER/docs" -name "*.md" -exec perl -pi -e "s/openapiclient/${client_package}/g" {} +
