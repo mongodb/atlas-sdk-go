@@ -47,7 +47,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    costExplorerFilterRequestBody := *openapiclient.NewCostExplorerFilterRequestBody(time.Now(), time.Now()) // CostExplorerFilterRequestBody | 
+    costExplorerFilterRequestBody := *admin.NewCostExplorerFilterRequestBody(time.Now(), time.Now()) // CostExplorerFilterRequestBody | 
 
     resp, r, err := sdk.InvoicesApi.CreateCostExplorerProcess(context.Background(), orgId, &costExplorerFilterRequestBody).Execute()
     if err != nil {
@@ -717,7 +717,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     invoiceId := "invoiceId_example" // string | 
-    apiPublicUsageDetailsQueryRequest := *openapiclient.NewApiPublicUsageDetailsQueryRequest() // ApiPublicUsageDetailsQueryRequest | 
+    apiPublicUsageDetailsQueryRequest := *admin.NewApiPublicUsageDetailsQueryRequest() // ApiPublicUsageDetailsQueryRequest | 
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 

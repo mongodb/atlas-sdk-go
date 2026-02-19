@@ -44,7 +44,7 @@ func main() {
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    thirdPartyIntegration := *openapiclient.NewThirdPartyIntegration() // ThirdPartyIntegration | 
+    thirdPartyIntegration := *admin.NewThirdPartyIntegration() // ThirdPartyIntegration | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
@@ -385,7 +385,7 @@ func main() {
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    thirdPartyIntegration := *openapiclient.NewThirdPartyIntegration() // ThirdPartyIntegration | 
+    thirdPartyIntegration := *admin.NewThirdPartyIntegration() // ThirdPartyIntegration | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)

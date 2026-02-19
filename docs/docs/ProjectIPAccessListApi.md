@@ -43,7 +43,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    networkPermissionEntry := []openapiclient.NetworkPermissionEntry{*openapiclient.NewNetworkPermissionEntry()} // []NetworkPermissionEntry | 
+    networkPermissionEntry := []admin.NetworkPermissionEntry{*admin.NewNetworkPermissionEntry()} // []NetworkPermissionEntry | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
