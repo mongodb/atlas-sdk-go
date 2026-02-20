@@ -2,38 +2,39 @@
 
 package admin
 
-// PaginatedTenantRestore struct for PaginatedTenantRestore
-type PaginatedTenantRestore struct {
+// PaginatedRateLimitEndpointSets A list of rate limit endpoint sets.
+type PaginatedRateLimitEndpointSets struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]TenantRestore `json:"results,omitempty"`
+	Results []RateLimitEndpointSetResponse `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
-// NewPaginatedTenantRestore instantiates a new PaginatedTenantRestore object
+// NewPaginatedRateLimitEndpointSets instantiates a new PaginatedRateLimitEndpointSets object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedTenantRestore() *PaginatedTenantRestore {
-	this := PaginatedTenantRestore{}
+func NewPaginatedRateLimitEndpointSets(results []RateLimitEndpointSetResponse) *PaginatedRateLimitEndpointSets {
+	this := PaginatedRateLimitEndpointSets{}
+	this.Results = results
 	return &this
 }
 
-// NewPaginatedTenantRestoreWithDefaults instantiates a new PaginatedTenantRestore object
+// NewPaginatedRateLimitEndpointSetsWithDefaults instantiates a new PaginatedRateLimitEndpointSets object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedTenantRestoreWithDefaults() *PaginatedTenantRestore {
-	this := PaginatedTenantRestore{}
+func NewPaginatedRateLimitEndpointSetsWithDefaults() *PaginatedRateLimitEndpointSets {
+	this := PaginatedRateLimitEndpointSets{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedTenantRestore) GetLinks() []Link {
+func (o *PaginatedRateLimitEndpointSets) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -43,7 +44,7 @@ func (o *PaginatedTenantRestore) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedTenantRestore) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedRateLimitEndpointSets) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -52,7 +53,7 @@ func (o *PaginatedTenantRestore) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedTenantRestore) HasLinks() bool {
+func (o *PaginatedRateLimitEndpointSets) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -61,45 +62,36 @@ func (o *PaginatedTenantRestore) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedTenantRestore) SetLinks(v []Link) {
+func (o *PaginatedRateLimitEndpointSets) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedTenantRestore) GetResults() []TenantRestore {
-	if o == nil || IsNil(o.Results) {
-		var ret []TenantRestore
+// GetResults returns the Results field value
+func (o *PaginatedRateLimitEndpointSets) GetResults() []RateLimitEndpointSetResponse {
+	if o == nil {
+		var ret []RateLimitEndpointSetResponse
 		return ret
 	}
-	return *o.Results
+
+	return o.Results
 }
 
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedTenantRestore) GetResultsOk() (*[]TenantRestore, bool) {
-	if o == nil || IsNil(o.Results) {
+func (o *PaginatedRateLimitEndpointSets) GetResultsOk() (*[]RateLimitEndpointSetResponse, bool) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Results, true
+	return &o.Results, true
 }
 
-// HasResults returns a boolean if a field has been set.
-func (o *PaginatedTenantRestore) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []TenantRestore and assigns it to the Results field.
-func (o *PaginatedTenantRestore) SetResults(v []TenantRestore) {
-	o.Results = &v
+// SetResults sets field value
+func (o *PaginatedRateLimitEndpointSets) SetResults(v []RateLimitEndpointSetResponse) {
+	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedTenantRestore) GetTotalCount() int {
+func (o *PaginatedRateLimitEndpointSets) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -109,7 +101,7 @@ func (o *PaginatedTenantRestore) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedTenantRestore) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedRateLimitEndpointSets) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -118,7 +110,7 @@ func (o *PaginatedTenantRestore) GetTotalCountOk() (*int, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedTenantRestore) HasTotalCount() bool {
+func (o *PaginatedRateLimitEndpointSets) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -127,6 +119,6 @@ func (o *PaginatedTenantRestore) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedTenantRestore) SetTotalCount(v int) {
+func (o *PaginatedRateLimitEndpointSets) SetTotalCount(v int) {
 	o.TotalCount = &v
 }

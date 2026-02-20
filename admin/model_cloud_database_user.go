@@ -32,7 +32,7 @@ type CloudDatabaseUser struct {
 	// Write only field.
 	Password *string `json:"password,omitempty"`
 	// List that provides the pairings of one role with one applicable database.
-	Roles *[]DatabaseUserRole `json:"roles,omitempty"`
+	Roles []DatabaseUserRole `json:"roles"`
 	// List that contains clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams Workspaces that this database user can access. If omitted, MongoDB Cloud grants the database user access to all the clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams Workspaces in the project.
 	Scopes *[]UserScope `json:"scopes,omitempty"`
 	// Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | `awsIAMType` | `ROLE` | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | `awsIAMType` | `USER` | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | `x509Type` | `CUSTOMER` | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | `x509Type` | `MANAGED` | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | `ldapAuthType` | `USER` | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | `ldapAuthType` | `GROUP` | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC Workforce | `oidcAuthType` | `IDP_GROUP` | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name | | OIDC Workload | `oidcAuthType` | `USER` | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP user name | | SCRAM-SHA | `awsIAMType`, `x509Type`, `ldapAuthType`, `oidcAuthType` | `NONE` | Alphanumeric string |
@@ -45,7 +45,7 @@ type CloudDatabaseUser struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudDatabaseUser(databaseName string, groupId string, username string) *CloudDatabaseUser {
+func NewCloudDatabaseUser(databaseName string, groupId string, roles []DatabaseUserRole, username string) *CloudDatabaseUser {
 	this := CloudDatabaseUser{}
 	var awsIAMType string = "NONE"
 	this.AwsIAMType = &awsIAMType
@@ -55,6 +55,7 @@ func NewCloudDatabaseUser(databaseName string, groupId string, username string) 
 	this.LdapAuthType = &ldapAuthType
 	var oidcAuthType string = "NONE"
 	this.OidcAuthType = &oidcAuthType
+	this.Roles = roles
 	this.Username = username
 	var x509Type string = "NONE"
 	this.X509Type = &x509Type
@@ -391,37 +392,28 @@ func (o *CloudDatabaseUser) SetPassword(v string) {
 	o.Password = &v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise
+// GetRoles returns the Roles field value
 func (o *CloudDatabaseUser) GetRoles() []DatabaseUserRole {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		var ret []DatabaseUserRole
 		return ret
 	}
-	return *o.Roles
+
+	return o.Roles
 }
 
-// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// GetRolesOk returns a tuple with the Roles field value
 // and a boolean to check if the value has been set.
 func (o *CloudDatabaseUser) GetRolesOk() (*[]DatabaseUserRole, bool) {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Roles, true
+	return &o.Roles, true
 }
 
-// HasRoles returns a boolean if a field has been set.
-func (o *CloudDatabaseUser) HasRoles() bool {
-	if o != nil && !IsNil(o.Roles) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoles gets a reference to the given []DatabaseUserRole and assigns it to the Roles field.
+// SetRoles sets field value
 func (o *CloudDatabaseUser) SetRoles(v []DatabaseUserRole) {
-	o.Roles = &v
+	o.Roles = v
 }
 
 // GetScopes returns the Scopes field value if set, zero value otherwise

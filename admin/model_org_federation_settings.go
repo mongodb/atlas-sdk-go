@@ -5,7 +5,7 @@ package admin
 // OrgFederationSettings Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
 type OrgFederationSettings struct {
 	// List of domains associated with the organization's identity provider.
-	FederatedDomains *[]string `json:"federatedDomains,omitempty"`
+	FederatedDomains []string `json:"federatedDomains"`
 	// Flag that indicates whether this organization has role mappings configured.
 	HasRoleMappings *bool `json:"hasRoleMappings,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this federation.
@@ -21,8 +21,9 @@ type OrgFederationSettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrgFederationSettings() *OrgFederationSettings {
+func NewOrgFederationSettings(federatedDomains []string) *OrgFederationSettings {
 	this := OrgFederationSettings{}
+	this.FederatedDomains = federatedDomains
 	return &this
 }
 
@@ -34,37 +35,28 @@ func NewOrgFederationSettingsWithDefaults() *OrgFederationSettings {
 	return &this
 }
 
-// GetFederatedDomains returns the FederatedDomains field value if set, zero value otherwise
+// GetFederatedDomains returns the FederatedDomains field value
 func (o *OrgFederationSettings) GetFederatedDomains() []string {
-	if o == nil || IsNil(o.FederatedDomains) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.FederatedDomains
+
+	return o.FederatedDomains
 }
 
-// GetFederatedDomainsOk returns a tuple with the FederatedDomains field value if set, nil otherwise
+// GetFederatedDomainsOk returns a tuple with the FederatedDomains field value
 // and a boolean to check if the value has been set.
 func (o *OrgFederationSettings) GetFederatedDomainsOk() (*[]string, bool) {
-	if o == nil || IsNil(o.FederatedDomains) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.FederatedDomains, true
+	return &o.FederatedDomains, true
 }
 
-// HasFederatedDomains returns a boolean if a field has been set.
-func (o *OrgFederationSettings) HasFederatedDomains() bool {
-	if o != nil && !IsNil(o.FederatedDomains) {
-		return true
-	}
-
-	return false
-}
-
-// SetFederatedDomains gets a reference to the given []string and assigns it to the FederatedDomains field.
+// SetFederatedDomains sets field value
 func (o *OrgFederationSettings) SetFederatedDomains(v []string) {
-	o.FederatedDomains = &v
+	o.FederatedDomains = v
 }
 
 // GetHasRoleMappings returns the HasRoleMappings field value if set, zero value otherwise

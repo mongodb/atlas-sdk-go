@@ -5,7 +5,9 @@ package admin
 // VectorSearchIndexDefinition The vector search index definition set by the user.
 type VectorSearchIndexDefinition struct {
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
-	Fields *[]any `json:"fields,omitempty"`
+	Fields []any `json:"fields"`
+	// Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested.
+	NestedRoot *string `json:"nestedRoot,omitempty"`
 	// Number of index partitions. Allowed values are [1, 2, 4].
 	NumPartitions *int `json:"numPartitions,omitempty"`
 	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
@@ -16,8 +18,9 @@ type VectorSearchIndexDefinition struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVectorSearchIndexDefinition() *VectorSearchIndexDefinition {
+func NewVectorSearchIndexDefinition(fields []any) *VectorSearchIndexDefinition {
 	this := VectorSearchIndexDefinition{}
+	this.Fields = fields
 	var numPartitions int = 1
 	this.NumPartitions = &numPartitions
 	return &this
@@ -33,37 +36,61 @@ func NewVectorSearchIndexDefinitionWithDefaults() *VectorSearchIndexDefinition {
 	return &this
 }
 
-// GetFields returns the Fields field value if set, zero value otherwise
+// GetFields returns the Fields field value
 func (o *VectorSearchIndexDefinition) GetFields() []any {
-	if o == nil || IsNil(o.Fields) {
+	if o == nil {
 		var ret []any
 		return ret
 	}
-	return *o.Fields
+
+	return o.Fields
 }
 
-// GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
+// GetFieldsOk returns a tuple with the Fields field value
 // and a boolean to check if the value has been set.
 func (o *VectorSearchIndexDefinition) GetFieldsOk() (*[]any, bool) {
-	if o == nil || IsNil(o.Fields) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Fields, true
+}
+
+// SetFields sets field value
+func (o *VectorSearchIndexDefinition) SetFields(v []any) {
+	o.Fields = v
+}
+
+// GetNestedRoot returns the NestedRoot field value if set, zero value otherwise
+func (o *VectorSearchIndexDefinition) GetNestedRoot() string {
+	if o == nil || IsNil(o.NestedRoot) {
+		var ret string
+		return ret
+	}
+	return *o.NestedRoot
+}
+
+// GetNestedRootOk returns a tuple with the NestedRoot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VectorSearchIndexDefinition) GetNestedRootOk() (*string, bool) {
+	if o == nil || IsNil(o.NestedRoot) {
 		return nil, false
 	}
 
-	return o.Fields, true
+	return o.NestedRoot, true
 }
 
-// HasFields returns a boolean if a field has been set.
-func (o *VectorSearchIndexDefinition) HasFields() bool {
-	if o != nil && !IsNil(o.Fields) {
+// HasNestedRoot returns a boolean if a field has been set.
+func (o *VectorSearchIndexDefinition) HasNestedRoot() bool {
+	if o != nil && !IsNil(o.NestedRoot) {
 		return true
 	}
 
 	return false
 }
 
-// SetFields gets a reference to the given []any and assigns it to the Fields field.
-func (o *VectorSearchIndexDefinition) SetFields(v []any) {
-	o.Fields = &v
+// SetNestedRoot gets a reference to the given string and assigns it to the NestedRoot field.
+func (o *VectorSearchIndexDefinition) SetNestedRoot(v string) {
+	o.NestedRoot = &v
 }
 
 // GetNumPartitions returns the NumPartitions field value if set, zero value otherwise

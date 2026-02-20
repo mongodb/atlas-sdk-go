@@ -15,7 +15,7 @@ type LiveMigrationRequest20240530 struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of migration hosts used for this migration.
-	MigrationHosts *[]string        `json:"migrationHosts,omitempty"`
+	MigrationHosts []string         `json:"migrationHosts"`
 	Sharding       *ShardingRequest `json:"sharding,omitempty"`
 	Source         Source           `json:"source"`
 }
@@ -24,11 +24,12 @@ type LiveMigrationRequest20240530 struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLiveMigrationRequest20240530(destination Destination, source Source) *LiveMigrationRequest20240530 {
+func NewLiveMigrationRequest20240530(destination Destination, migrationHosts []string, source Source) *LiveMigrationRequest20240530 {
 	this := LiveMigrationRequest20240530{}
 	this.Destination = destination
 	var dropDestinationData bool = false
 	this.DropDestinationData = &dropDestinationData
+	this.MigrationHosts = migrationHosts
 	this.Source = source
 	return &this
 }
@@ -166,37 +167,28 @@ func (o *LiveMigrationRequest20240530) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-// GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise
+// GetMigrationHosts returns the MigrationHosts field value
 func (o *LiveMigrationRequest20240530) GetMigrationHosts() []string {
-	if o == nil || IsNil(o.MigrationHosts) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.MigrationHosts
+
+	return o.MigrationHosts
 }
 
-// GetMigrationHostsOk returns a tuple with the MigrationHosts field value if set, nil otherwise
+// GetMigrationHostsOk returns a tuple with the MigrationHosts field value
 // and a boolean to check if the value has been set.
 func (o *LiveMigrationRequest20240530) GetMigrationHostsOk() (*[]string, bool) {
-	if o == nil || IsNil(o.MigrationHosts) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.MigrationHosts, true
+	return &o.MigrationHosts, true
 }
 
-// HasMigrationHosts returns a boolean if a field has been set.
-func (o *LiveMigrationRequest20240530) HasMigrationHosts() bool {
-	if o != nil && !IsNil(o.MigrationHosts) {
-		return true
-	}
-
-	return false
-}
-
-// SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
+// SetMigrationHosts sets field value
 func (o *LiveMigrationRequest20240530) SetMigrationHosts(v []string) {
-	o.MigrationHosts = &v
+	o.MigrationHosts = v
 }
 
 // GetSharding returns the Sharding field value if set, zero value otherwise

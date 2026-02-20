@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312014/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -1756,6 +1756,168 @@ func (_c *StreamsApi_DownloadAuditLogsWithParams_Call) Return(_a0 admin.Download
 }
 
 func (_c *StreamsApi_DownloadAuditLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadAuditLogsApiParams) admin.DownloadAuditLogsApiRequest) *StreamsApi_DownloadAuditLogsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DownloadOperationalLogs provides a mock function with given fields: ctx, groupId, tenantName
+func (_m *StreamsApi) DownloadOperationalLogs(ctx context.Context, groupId string, tenantName string) admin.DownloadOperationalLogsApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DownloadOperationalLogs")
+	}
+
+	var r0 admin.DownloadOperationalLogsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DownloadOperationalLogsApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName)
+	} else {
+		r0 = ret.Get(0).(admin.DownloadOperationalLogsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_DownloadOperationalLogs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadOperationalLogs'
+type StreamsApi_DownloadOperationalLogs_Call struct {
+	*mock.Call
+}
+
+// DownloadOperationalLogs is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+func (_e *StreamsApi_Expecter) DownloadOperationalLogs(ctx any, groupId any, tenantName any) *StreamsApi_DownloadOperationalLogs_Call {
+	return &StreamsApi_DownloadOperationalLogs_Call{Call: _e.mock.On("DownloadOperationalLogs", ctx, groupId, tenantName)}
+}
+
+func (_c *StreamsApi_DownloadOperationalLogs_Call) Run(run func(ctx context.Context, groupId string, tenantName string)) *StreamsApi_DownloadOperationalLogs_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DownloadOperationalLogs_Call) Return(_a0 admin.DownloadOperationalLogsApiRequest) *StreamsApi_DownloadOperationalLogs_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_DownloadOperationalLogs_Call) RunAndReturn(run func(context.Context, string, string) admin.DownloadOperationalLogsApiRequest) *StreamsApi_DownloadOperationalLogs_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DownloadOperationalLogsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) DownloadOperationalLogsExecute(r admin.DownloadOperationalLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DownloadOperationalLogsExecute")
+	}
+
+	var r0 io.ReadCloser
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.DownloadOperationalLogsApiRequest) (io.ReadCloser, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DownloadOperationalLogsApiRequest) io.ReadCloser); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(io.ReadCloser)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DownloadOperationalLogsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.DownloadOperationalLogsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_DownloadOperationalLogsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadOperationalLogsExecute'
+type StreamsApi_DownloadOperationalLogsExecute_Call struct {
+	*mock.Call
+}
+
+// DownloadOperationalLogsExecute is a helper method to define mock.On call
+//   - r admin.DownloadOperationalLogsApiRequest
+func (_e *StreamsApi_Expecter) DownloadOperationalLogsExecute(r any) *StreamsApi_DownloadOperationalLogsExecute_Call {
+	return &StreamsApi_DownloadOperationalLogsExecute_Call{Call: _e.mock.On("DownloadOperationalLogsExecute", r)}
+}
+
+func (_c *StreamsApi_DownloadOperationalLogsExecute_Call) Run(run func(r admin.DownloadOperationalLogsApiRequest)) *StreamsApi_DownloadOperationalLogsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DownloadOperationalLogsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DownloadOperationalLogsExecute_Call) Return(_a0 io.ReadCloser, _a1 *http.Response, _a2 error) *StreamsApi_DownloadOperationalLogsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_DownloadOperationalLogsExecute_Call) RunAndReturn(run func(admin.DownloadOperationalLogsApiRequest) (io.ReadCloser, *http.Response, error)) *StreamsApi_DownloadOperationalLogsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DownloadOperationalLogsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) DownloadOperationalLogsWithParams(ctx context.Context, args *admin.DownloadOperationalLogsApiParams) admin.DownloadOperationalLogsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DownloadOperationalLogsWithParams")
+	}
+
+	var r0 admin.DownloadOperationalLogsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DownloadOperationalLogsApiParams) admin.DownloadOperationalLogsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DownloadOperationalLogsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_DownloadOperationalLogsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DownloadOperationalLogsWithParams'
+type StreamsApi_DownloadOperationalLogsWithParams_Call struct {
+	*mock.Call
+}
+
+// DownloadOperationalLogsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DownloadOperationalLogsApiParams
+func (_e *StreamsApi_Expecter) DownloadOperationalLogsWithParams(ctx any, args any) *StreamsApi_DownloadOperationalLogsWithParams_Call {
+	return &StreamsApi_DownloadOperationalLogsWithParams_Call{Call: _e.mock.On("DownloadOperationalLogsWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_DownloadOperationalLogsWithParams_Call) Run(run func(ctx context.Context, args *admin.DownloadOperationalLogsApiParams)) *StreamsApi_DownloadOperationalLogsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DownloadOperationalLogsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DownloadOperationalLogsWithParams_Call) Return(_a0 admin.DownloadOperationalLogsApiRequest) *StreamsApi_DownloadOperationalLogsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_DownloadOperationalLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadOperationalLogsApiParams) admin.DownloadOperationalLogsApiRequest) *StreamsApi_DownloadOperationalLogsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

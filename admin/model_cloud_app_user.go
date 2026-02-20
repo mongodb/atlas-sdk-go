@@ -35,7 +35,7 @@ type CloudAppUser struct {
 	// Password applied with the username to log in to MongoDB Cloud. MongoDB Cloud does not return this parameter except in response to creating a new MongoDB Cloud user. Only the MongoDB Cloud user can update their password after it has been set from the MongoDB Cloud console.
 	Password string `json:"password"`
 	// List of objects that display the MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. A role can apply to one organization or one project but not both.
-	Roles *[]CloudAccessRoleAssignment `json:"roles,omitempty"`
+	Roles []CloudAccessRoleAssignment `json:"roles"`
 	// List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs.
 	// Read only field.
 	TeamIds *[]string `json:"teamIds,omitempty"`
@@ -47,7 +47,7 @@ type CloudAppUser struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudAppUser(country string, emailAddress string, firstName string, lastName string, mobileNumber string, password string, username string) *CloudAppUser {
+func NewCloudAppUser(country string, emailAddress string, firstName string, lastName string, mobileNumber string, password string, roles []CloudAccessRoleAssignment, username string) *CloudAppUser {
 	this := CloudAppUser{}
 	this.Country = country
 	this.EmailAddress = emailAddress
@@ -55,6 +55,7 @@ func NewCloudAppUser(country string, emailAddress string, firstName string, last
 	this.LastName = lastName
 	this.MobileNumber = mobileNumber
 	this.Password = password
+	this.Roles = roles
 	this.Username = username
 	return &this
 }
@@ -346,37 +347,28 @@ func (o *CloudAppUser) SetPassword(v string) {
 	o.Password = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise
+// GetRoles returns the Roles field value
 func (o *CloudAppUser) GetRoles() []CloudAccessRoleAssignment {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		var ret []CloudAccessRoleAssignment
 		return ret
 	}
-	return *o.Roles
+
+	return o.Roles
 }
 
-// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// GetRolesOk returns a tuple with the Roles field value
 // and a boolean to check if the value has been set.
 func (o *CloudAppUser) GetRolesOk() (*[]CloudAccessRoleAssignment, bool) {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Roles, true
+	return &o.Roles, true
 }
 
-// HasRoles returns a boolean if a field has been set.
-func (o *CloudAppUser) HasRoles() bool {
-	if o != nil && !IsNil(o.Roles) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
+// SetRoles sets field value
 func (o *CloudAppUser) SetRoles(v []CloudAccessRoleAssignment) {
-	o.Roles = &v
+	o.Roles = v
 }
 
 // GetTeamIds returns the TeamIds field value if set, zero value otherwise
