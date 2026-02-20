@@ -15,7 +15,7 @@ type FlexSnapshotsApi interface {
 	/*
 		DownloadFlexBackup Download One Flex Cluster Snapshot
 
-		Requests one snapshot for the specified flex cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+		Requests one snapshot for the specified flex cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Backup Export Operator role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param name Human-readable label that identifies the flex cluster.
@@ -121,7 +121,7 @@ func (r DownloadFlexBackupApiRequest) Execute() (*FlexBackupRestoreJob20241113, 
 /*
 DownloadFlexBackup Download One Flex Cluster Snapshot
 
-Requests one snapshot for the specified flex cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Requests one snapshot for the specified flex cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Backup Export Operator role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param name Human-readable label that identifies the flex cluster.

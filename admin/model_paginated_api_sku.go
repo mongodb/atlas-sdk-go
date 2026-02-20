@@ -9,7 +9,7 @@ type PaginatedApiSKU struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]SkuResponse `json:"results,omitempty"`
+	Results []SkuResponse `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -19,8 +19,9 @@ type PaginatedApiSKU struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedApiSKU() *PaginatedApiSKU {
+func NewPaginatedApiSKU(results []SkuResponse) *PaginatedApiSKU {
 	this := PaginatedApiSKU{}
+	this.Results = results
 	return &this
 }
 
@@ -65,37 +66,28 @@ func (o *PaginatedApiSKU) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise
+// GetResults returns the Results field value
 func (o *PaginatedApiSKU) GetResults() []SkuResponse {
-	if o == nil || IsNil(o.Results) {
+	if o == nil {
 		var ret []SkuResponse
 		return ret
 	}
-	return *o.Results
+
+	return o.Results
 }
 
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApiSKU) GetResultsOk() (*[]SkuResponse, bool) {
-	if o == nil || IsNil(o.Results) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Results, true
+	return &o.Results, true
 }
 
-// HasResults returns a boolean if a field has been set.
-func (o *PaginatedApiSKU) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []SkuResponse and assigns it to the Results field.
+// SetResults sets field value
 func (o *PaginatedApiSKU) SetResults(v []SkuResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

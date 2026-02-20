@@ -12,15 +12,16 @@ type CollStatsRankedNamespaces struct {
 	IdentifierId *string `json:"identifierId,omitempty"`
 	// Ordered list of the hottest namespaces, highest value first.
 	// Read only field.
-	RankedNamespaces *[]string `json:"rankedNamespaces,omitempty"`
+	RankedNamespaces []string `json:"rankedNamespaces"`
 }
 
 // NewCollStatsRankedNamespaces instantiates a new CollStatsRankedNamespaces object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCollStatsRankedNamespaces() *CollStatsRankedNamespaces {
+func NewCollStatsRankedNamespaces(rankedNamespaces []string) *CollStatsRankedNamespaces {
 	this := CollStatsRankedNamespaces{}
+	this.RankedNamespaces = rankedNamespaces
 	return &this
 }
 
@@ -98,35 +99,26 @@ func (o *CollStatsRankedNamespaces) SetIdentifierId(v string) {
 	o.IdentifierId = &v
 }
 
-// GetRankedNamespaces returns the RankedNamespaces field value if set, zero value otherwise
+// GetRankedNamespaces returns the RankedNamespaces field value
 func (o *CollStatsRankedNamespaces) GetRankedNamespaces() []string {
-	if o == nil || IsNil(o.RankedNamespaces) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.RankedNamespaces
+
+	return o.RankedNamespaces
 }
 
-// GetRankedNamespacesOk returns a tuple with the RankedNamespaces field value if set, nil otherwise
+// GetRankedNamespacesOk returns a tuple with the RankedNamespaces field value
 // and a boolean to check if the value has been set.
 func (o *CollStatsRankedNamespaces) GetRankedNamespacesOk() (*[]string, bool) {
-	if o == nil || IsNil(o.RankedNamespaces) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.RankedNamespaces, true
+	return &o.RankedNamespaces, true
 }
 
-// HasRankedNamespaces returns a boolean if a field has been set.
-func (o *CollStatsRankedNamespaces) HasRankedNamespaces() bool {
-	if o != nil && !IsNil(o.RankedNamespaces) {
-		return true
-	}
-
-	return false
-}
-
-// SetRankedNamespaces gets a reference to the given []string and assigns it to the RankedNamespaces field.
+// SetRankedNamespaces sets field value
 func (o *CollStatsRankedNamespaces) SetRankedNamespaces(v []string) {
-	o.RankedNamespaces = &v
+	o.RankedNamespaces = v
 }

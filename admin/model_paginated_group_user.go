@@ -9,7 +9,7 @@ type PaginatedGroupUser struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]GroupUserResponse `json:"results,omitempty"`
+	Results []GroupUserResponse `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -19,8 +19,9 @@ type PaginatedGroupUser struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedGroupUser() *PaginatedGroupUser {
+func NewPaginatedGroupUser(results []GroupUserResponse) *PaginatedGroupUser {
 	this := PaginatedGroupUser{}
+	this.Results = results
 	return &this
 }
 
@@ -65,37 +66,28 @@ func (o *PaginatedGroupUser) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise
+// GetResults returns the Results field value
 func (o *PaginatedGroupUser) GetResults() []GroupUserResponse {
-	if o == nil || IsNil(o.Results) {
+	if o == nil {
 		var ret []GroupUserResponse
 		return ret
 	}
-	return *o.Results
+
+	return o.Results
 }
 
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedGroupUser) GetResultsOk() (*[]GroupUserResponse, bool) {
-	if o == nil || IsNil(o.Results) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Results, true
+	return &o.Results, true
 }
 
-// HasResults returns a boolean if a field has been set.
-func (o *PaginatedGroupUser) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []GroupUserResponse and assigns it to the Results field.
+// SetResults sets field value
 func (o *PaginatedGroupUser) SetResults(v []GroupUserResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

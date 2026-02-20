@@ -104,6 +104,8 @@ type APIClient struct {
 
 	OnlineArchiveApi OnlineArchiveApi
 
+	OpenAPIApi OpenAPIApi
+
 	OrganizationsApi OrganizationsApi
 
 	PerformanceAdvisorApi PerformanceAdvisorApi
@@ -120,6 +122,8 @@ type APIClient struct {
 
 	QueryShapeInsightsApi QueryShapeInsightsApi
 
+	RateLimitingApi RateLimitingApi
+
 	ResourcePoliciesApi ResourcePoliciesApi
 
 	RollingIndexApi RollingIndexApi
@@ -131,10 +135,6 @@ type APIClient struct {
 	ServerlessPrivateEndpointsApi ServerlessPrivateEndpointsApi
 
 	ServiceAccountsApi ServiceAccountsApi
-
-	SharedTierRestoreJobsApi SharedTierRestoreJobsApi
-
-	SharedTierSnapshotsApi SharedTierSnapshotsApi
 
 	StreamsApi StreamsApi
 
@@ -194,6 +194,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
+	c.OpenAPIApi = (*OpenAPIApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PerformanceAdvisorApi = (*PerformanceAdvisorApiService)(&c.common)
 	c.PrivateEndpointServicesApi = (*PrivateEndpointServicesApiService)(&c.common)
@@ -202,14 +203,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
 	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
 	c.QueryShapeInsightsApi = (*QueryShapeInsightsApiService)(&c.common)
+	c.RateLimitingApi = (*RateLimitingApiService)(&c.common)
 	c.ResourcePoliciesApi = (*ResourcePoliciesApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)
 	c.ServerlessPrivateEndpointsApi = (*ServerlessPrivateEndpointsApiService)(&c.common)
 	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
-	c.SharedTierRestoreJobsApi = (*SharedTierRestoreJobsApiService)(&c.common)
-	c.SharedTierSnapshotsApi = (*SharedTierSnapshotsApiService)(&c.common)
 	c.StreamsApi = (*StreamsApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
 	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)

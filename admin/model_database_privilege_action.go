@@ -7,16 +7,17 @@ type DatabasePrivilegeAction struct {
 	// Human-readable label that identifies the privilege action.
 	Action string `json:"action"`
 	// List of resources on which you grant the action.
-	Resources *[]DatabasePermittedNamespaceResource `json:"resources,omitempty"`
+	Resources []DatabasePermittedNamespaceResource `json:"resources"`
 }
 
 // NewDatabasePrivilegeAction instantiates a new DatabasePrivilegeAction object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatabasePrivilegeAction(action string) *DatabasePrivilegeAction {
+func NewDatabasePrivilegeAction(action string, resources []DatabasePermittedNamespaceResource) *DatabasePrivilegeAction {
 	this := DatabasePrivilegeAction{}
 	this.Action = action
+	this.Resources = resources
 	return &this
 }
 
@@ -52,35 +53,26 @@ func (o *DatabasePrivilegeAction) SetAction(v string) {
 	o.Action = v
 }
 
-// GetResources returns the Resources field value if set, zero value otherwise
+// GetResources returns the Resources field value
 func (o *DatabasePrivilegeAction) GetResources() []DatabasePermittedNamespaceResource {
-	if o == nil || IsNil(o.Resources) {
+	if o == nil {
 		var ret []DatabasePermittedNamespaceResource
 		return ret
 	}
-	return *o.Resources
+
+	return o.Resources
 }
 
-// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// GetResourcesOk returns a tuple with the Resources field value
 // and a boolean to check if the value has been set.
 func (o *DatabasePrivilegeAction) GetResourcesOk() (*[]DatabasePermittedNamespaceResource, bool) {
-	if o == nil || IsNil(o.Resources) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Resources, true
+	return &o.Resources, true
 }
 
-// HasResources returns a boolean if a field has been set.
-func (o *DatabasePrivilegeAction) HasResources() bool {
-	if o != nil && !IsNil(o.Resources) {
-		return true
-	}
-
-	return false
-}
-
-// SetResources gets a reference to the given []DatabasePermittedNamespaceResource and assigns it to the Resources field.
+// SetResources sets field value
 func (o *DatabasePrivilegeAction) SetResources(v []DatabasePermittedNamespaceResource) {
-	o.Resources = &v
+	o.Resources = v
 }

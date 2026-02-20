@@ -9,7 +9,7 @@ type PaginatedApiAtlasServerlessBackupRestoreJob struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]ServerlessBackupRestoreJob `json:"results,omitempty"`
+	Results []ServerlessBackupRestoreJob `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -19,8 +19,9 @@ type PaginatedApiAtlasServerlessBackupRestoreJob struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedApiAtlasServerlessBackupRestoreJob() *PaginatedApiAtlasServerlessBackupRestoreJob {
+func NewPaginatedApiAtlasServerlessBackupRestoreJob(results []ServerlessBackupRestoreJob) *PaginatedApiAtlasServerlessBackupRestoreJob {
 	this := PaginatedApiAtlasServerlessBackupRestoreJob{}
+	this.Results = results
 	return &this
 }
 
@@ -65,37 +66,28 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise
+// GetResults returns the Results field value
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetResults() []ServerlessBackupRestoreJob {
-	if o == nil || IsNil(o.Results) {
+	if o == nil {
 		var ret []ServerlessBackupRestoreJob
 		return ret
 	}
-	return *o.Results
+
+	return o.Results
 }
 
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetResultsOk() (*[]ServerlessBackupRestoreJob, bool) {
-	if o == nil || IsNil(o.Results) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Results, true
+	return &o.Results, true
 }
 
-// HasResults returns a boolean if a field has been set.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []ServerlessBackupRestoreJob and assigns it to the Results field.
+// SetResults sets field value
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetResults(v []ServerlessBackupRestoreJob) {
-	o.Results = &v
+	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

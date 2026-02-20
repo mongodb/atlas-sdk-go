@@ -7,15 +7,16 @@ type AdvancedDiskBackupSnapshotSchedulePolicy struct {
 	// Unique 24-hexadecimal digit string that identifies this backup policy.
 	Id *string `json:"id,omitempty"`
 	// List that contains the specifications for one policy.
-	PolicyItems *[]DiskBackupApiPolicyItem `json:"policyItems,omitempty"`
+	PolicyItems []DiskBackupApiPolicyItem `json:"policyItems"`
 }
 
 // NewAdvancedDiskBackupSnapshotSchedulePolicy instantiates a new AdvancedDiskBackupSnapshotSchedulePolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdvancedDiskBackupSnapshotSchedulePolicy() *AdvancedDiskBackupSnapshotSchedulePolicy {
+func NewAdvancedDiskBackupSnapshotSchedulePolicy(policyItems []DiskBackupApiPolicyItem) *AdvancedDiskBackupSnapshotSchedulePolicy {
 	this := AdvancedDiskBackupSnapshotSchedulePolicy{}
+	this.PolicyItems = policyItems
 	return &this
 }
 
@@ -60,35 +61,26 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetId(v string) {
 	o.Id = &v
 }
 
-// GetPolicyItems returns the PolicyItems field value if set, zero value otherwise
+// GetPolicyItems returns the PolicyItems field value
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetPolicyItems() []DiskBackupApiPolicyItem {
-	if o == nil || IsNil(o.PolicyItems) {
+	if o == nil {
 		var ret []DiskBackupApiPolicyItem
 		return ret
 	}
-	return *o.PolicyItems
+
+	return o.PolicyItems
 }
 
-// GetPolicyItemsOk returns a tuple with the PolicyItems field value if set, nil otherwise
+// GetPolicyItemsOk returns a tuple with the PolicyItems field value
 // and a boolean to check if the value has been set.
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetPolicyItemsOk() (*[]DiskBackupApiPolicyItem, bool) {
-	if o == nil || IsNil(o.PolicyItems) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.PolicyItems, true
+	return &o.PolicyItems, true
 }
 
-// HasPolicyItems returns a boolean if a field has been set.
-func (o *AdvancedDiskBackupSnapshotSchedulePolicy) HasPolicyItems() bool {
-	if o != nil && !IsNil(o.PolicyItems) {
-		return true
-	}
-
-	return false
-}
-
-// SetPolicyItems gets a reference to the given []DiskBackupApiPolicyItem and assigns it to the PolicyItems field.
+// SetPolicyItems sets field value
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetPolicyItems(v []DiskBackupApiPolicyItem) {
-	o.PolicyItems = &v
+	o.PolicyItems = v
 }
