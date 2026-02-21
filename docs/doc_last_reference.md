@@ -439,6 +439,7 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [DeleteStreamWorkspace](./docs/StreamsApi.md#deletestreamworkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace |
 *StreamsApi* | [DeleteVpcPeeringConnection](./docs/StreamsApi.md#deletevpcpeeringconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection |
 *StreamsApi* | [DownloadAuditLogs](./docs/StreamsApi.md#downloadauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Workspace |
+*StreamsApi* | [DownloadOperationalLogs](./docs/StreamsApi.md#downloadoperationallogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs | Download Operational Logs for One Atlas Stream Processing Workspace |
 *StreamsApi* | [GetAccountDetails](./docs/StreamsApi.md#getaccountdetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region |
 *StreamsApi* | [GetPrivateLinkConnection](./docs/StreamsApi.md#getprivatelinkconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection |
 *StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection |
