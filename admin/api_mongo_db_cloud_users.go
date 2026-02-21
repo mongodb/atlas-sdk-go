@@ -15,7 +15,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddGroupUserRole Add One Project Role to One MongoDB Cloud User
 
-			Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+			Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 		**Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -42,7 +42,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddGroupUsers Add One MongoDB Cloud User to One Project
 
-			Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+			Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 		- If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
 		- If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
 		- If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
@@ -375,7 +375,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveGroupUser Remove One MongoDB Cloud User from One Project
 
-			Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+			Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -403,7 +403,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveGroupUserRole Remove One Project Role from One MongoDB Cloud User
 
-			Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+			Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 		**Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -575,7 +575,7 @@ func (r AddGroupUserRoleApiRequest) Execute() (*GroupUserResponse, *http.Respons
 /*
 AddGroupUserRole Add One Project Role to One MongoDB Cloud User
 
-Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 **Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -706,7 +706,7 @@ func (r AddGroupUsersApiRequest) Execute() (*GroupUserResponse, *http.Response, 
 /*
 AddGroupUsers Add One MongoDB Cloud User to One Project
 
-Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 - If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
 - If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
 - If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
@@ -2446,7 +2446,7 @@ func (r RemoveGroupUserApiRequest) Execute() (*http.Response, error) {
 /*
 RemoveGroupUser Remove One MongoDB Cloud User from One Project
 
-Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -2559,7 +2559,7 @@ func (r RemoveGroupUserRoleApiRequest) Execute() (*GroupUserResponse, *http.Resp
 /*
 RemoveGroupUserRole Remove One Project Role from One MongoDB Cloud User
 
-Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 **Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
