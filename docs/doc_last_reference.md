@@ -380,6 +380,8 @@ Class        | Method        | HTTP request  | Description   |
 *QueryShapeInsightsApi* | [ListClusterQueryShapes](./docs/QueryShapeInsightsApi.md#listclusterqueryshapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes |
 *QueryShapeInsightsApi* | [ListQueryShapeSummaries](./docs/QueryShapeInsightsApi.md#listqueryshapesummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries |
 *QueryShapeInsightsApi* | [UpdateClusterQueryShape](./docs/QueryShapeInsightsApi.md#updateclusterqueryshape) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Update Query Shape Rejection Status |
+*RateLimitingApi* | [GetRateLimit](./docs/RateLimitingApi.md#getratelimit) | **Get** /api/atlas/v2/rateLimits/{endpointSetId} | Return One Rate Limit |
+*RateLimitingApi* | [ListRateLimits](./docs/RateLimitingApi.md#listratelimits) | **Get** /api/atlas/v2/rateLimits | Return All Rate Limits |
 *ResourcePoliciesApi* | [CreateOrgResourcePolicy](./docs/ResourcePoliciesApi.md#createorgresourcepolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy |
 *ResourcePoliciesApi* | [DeleteOrgResourcePolicy](./docs/ResourcePoliciesApi.md#deleteorgresourcepolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy |
 *ResourcePoliciesApi* | [GetNonCompliantResources](./docs/ResourcePoliciesApi.md#getnoncompliantresources) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources |
@@ -439,6 +441,7 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [DeleteStreamWorkspace](./docs/StreamsApi.md#deletestreamworkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace |
 *StreamsApi* | [DeleteVpcPeeringConnection](./docs/StreamsApi.md#deletevpcpeeringconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection |
 *StreamsApi* | [DownloadAuditLogs](./docs/StreamsApi.md#downloadauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Workspace |
+*StreamsApi* | [DownloadOperationalLogs](./docs/StreamsApi.md#downloadoperationallogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs | Download Operational Logs for One Atlas Stream Processing Workspace |
 *StreamsApi* | [GetAccountDetails](./docs/StreamsApi.md#getaccountdetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region |
 *StreamsApi* | [GetPrivateLinkConnection](./docs/StreamsApi.md#getprivatelinkconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection |
 *StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection |
@@ -836,6 +839,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedPrivateNetworkEndpointIdEntry](./docs/PaginatedPrivateNetworkEndpointIdEntry.md)
  - [PaginatedPublicApiUsageDetailsLineItem](./docs/PaginatedPublicApiUsageDetailsLineItem.md)
  - [PaginatedQueryShapes](./docs/PaginatedQueryShapes.md)
+ - [PaginatedRateLimitEndpointSets](./docs/PaginatedRateLimitEndpointSets.md)
  - [PaginatedRestoreJob](./docs/PaginatedRestoreJob.md)
  - [PaginatedRoleMapping](./docs/PaginatedRoleMapping.md)
  - [PaginatedServerlessInstanceDescription](./docs/PaginatedServerlessInstanceDescription.md)
@@ -875,6 +879,11 @@ Class        | Method        | HTTP request  | Description   |
  - [QueryStatsDetailsResponse](./docs/QueryStatsDetailsResponse.md)
  - [QueryStatsSummary](./docs/QueryStatsSummary.md)
  - [QueryStatsSummaryListResponse](./docs/QueryStatsSummaryListResponse.md)
+ - [RateLimitEndpointSetCapacity](./docs/RateLimitEndpointSetCapacity.md)
+ - [RateLimitEndpointSetEndpoint](./docs/RateLimitEndpointSetEndpoint.md)
+ - [RateLimitEndpointSetRefillDurationSeconds](./docs/RateLimitEndpointSetRefillDurationSeconds.md)
+ - [RateLimitEndpointSetRefillRate](./docs/RateLimitEndpointSetRefillRate.md)
+ - [RateLimitEndpointSetResponse](./docs/RateLimitEndpointSetResponse.md)
  - [Raw](./docs/Raw.md)
  - [RegionSpec](./docs/RegionSpec.md)
  - [ReplicationSpec20240805](./docs/ReplicationSpec20240805.md)

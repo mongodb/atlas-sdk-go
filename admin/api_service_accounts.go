@@ -15,7 +15,7 @@ type ServiceAccountsApi interface {
 	/*
 		CreateAccessList Add Access List Entries for One Project Service Account
 
-		Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
+		Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -163,7 +163,7 @@ type ServiceAccountsApi interface {
 	/*
 		DeleteGroupAccessEntry Remove One Access List Entry from One Project Service Account
 
-		Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
+		Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -611,7 +611,7 @@ func (r CreateAccessListApiRequest) Execute() (*PaginatedServiceAccountIPAccessE
 /*
 CreateAccessList Add Access List Entries for One Project Service Account
 
-Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
+Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1454,7 +1454,7 @@ func (r DeleteGroupAccessEntryApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteGroupAccessEntry Remove One Access List Entry from One Project Service Account
 
-Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
+Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
