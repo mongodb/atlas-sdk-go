@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**DeleteStreamWorkspace**](StreamsApi.md#DeleteStreamWorkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace
 [**DeleteVpcPeeringConnection**](StreamsApi.md#DeleteVpcPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection
 [**DownloadAuditLogs**](StreamsApi.md#DownloadAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Workspace
+[**DownloadOperationalLogs**](StreamsApi.md#DownloadOperationalLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs | Download Operational Logs for One Atlas Stream Processing Workspace
 [**GetAccountDetails**](StreamsApi.md#GetAccountDetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region
 [**GetPrivateLinkConnection**](StreamsApi.md#GetPrivateLinkConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection
 [**GetStreamConnection**](StreamsApi.md#GetStreamConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection
@@ -54,7 +55,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -137,7 +138,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -219,7 +220,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -304,7 +305,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -389,7 +390,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -471,7 +472,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -552,7 +553,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -636,7 +637,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -720,7 +721,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -801,7 +802,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -867,7 +868,7 @@ Name | Type | Description  | Notes
 
 ## DownloadAuditLogs
 
-> io.ReadCloser DownloadAuditLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
+> io.ReadCloser DownloadAuditLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
 
 Download Audit Logs for One Atlas Stream Processing Workspace
 
@@ -882,7 +883,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -899,8 +900,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     endDate := int64(1636481348) // int64 |  (optional)
     startDate := int64(1636466948) // int64 |  (optional)
+    spName := "spName_example" // string |  (optional)
 
-    resp, r, err := sdk.StreamsApi.DownloadAuditLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
+    resp, r, err := sdk.StreamsApi.DownloadAuditLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadAuditLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -934,6 +936,7 @@ Name | Type | Description  | Notes
 
  **endDate** | **int64** | Timestamp that specifies the end point for the range of log messages to download.  MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. | 
  **startDate** | **int64** | Timestamp that specifies the starting point for the range of log messages to download. MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. | 
+ **spName** | **string** | Name of the stream processor to download logs for. An empty string will download logs for all stream processors in the workspace. | 
 
 ### Return type
 
@@ -946,6 +949,95 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-02-01+gzip
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DownloadOperationalLogs
+
+> io.ReadCloser DownloadOperationalLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
+
+Download Operational Logs for One Atlas Stream Processing Workspace
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    endDate := int64(1636481348) // int64 |  (optional)
+    startDate := int64(1636466948) // int64 |  (optional)
+    spName := "spName_example" // string |  (optional)
+
+    resp, r, err := sdk.StreamsApi.DownloadOperationalLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadOperationalLogs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `DownloadOperationalLogs`: io.ReadCloser
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DownloadOperationalLogs`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDownloadOperationalLogsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **endDate** | **int64** | Timestamp that specifies the end point for the range of log messages to download.  MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. | 
+ **startDate** | **int64** | Timestamp that specifies the starting point for the range of log messages to download. MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. | 
+ **spName** | **string** | Name of the stream processor to download logs for. An empty string will download logs for all stream processors in the workspace. | 
+
+### Return type
+
+[**io.ReadCloser**](io.ReadCloser.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+gzip
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -969,7 +1061,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1053,7 +1145,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1136,7 +1228,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1222,7 +1314,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1308,7 +1400,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1397,7 +1489,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1482,7 +1574,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1564,7 +1656,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1648,7 +1740,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1735,7 +1827,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1819,7 +1911,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1903,7 +1995,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -1984,7 +2076,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -2068,7 +2160,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -2154,7 +2246,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -2238,7 +2330,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -2326,7 +2418,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -2414,7 +2506,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
@@ -2499,7 +2591,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312014/admin"
+    "go.mongodb.org/atlas-sdk/v20250312015/admin"
 )
 
 func main() {
