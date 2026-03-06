@@ -12,15 +12,16 @@ type PinnedNamespaces struct {
 	GroupId *string `json:"groupId,omitempty"`
 	// List of all pinned namespaces.
 	// Read only field.
-	PinnedNamespaces *[]string `json:"pinnedNamespaces,omitempty"`
+	PinnedNamespaces []string `json:"pinnedNamespaces"`
 }
 
 // NewPinnedNamespaces instantiates a new PinnedNamespaces object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPinnedNamespaces() *PinnedNamespaces {
+func NewPinnedNamespaces(pinnedNamespaces []string) *PinnedNamespaces {
 	this := PinnedNamespaces{}
+	this.PinnedNamespaces = pinnedNamespaces
 	return &this
 }
 
@@ -98,35 +99,26 @@ func (o *PinnedNamespaces) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetPinnedNamespaces returns the PinnedNamespaces field value if set, zero value otherwise
+// GetPinnedNamespaces returns the PinnedNamespaces field value
 func (o *PinnedNamespaces) GetPinnedNamespaces() []string {
-	if o == nil || IsNil(o.PinnedNamespaces) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.PinnedNamespaces
+
+	return o.PinnedNamespaces
 }
 
-// GetPinnedNamespacesOk returns a tuple with the PinnedNamespaces field value if set, nil otherwise
+// GetPinnedNamespacesOk returns a tuple with the PinnedNamespaces field value
 // and a boolean to check if the value has been set.
 func (o *PinnedNamespaces) GetPinnedNamespacesOk() (*[]string, bool) {
-	if o == nil || IsNil(o.PinnedNamespaces) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.PinnedNamespaces, true
+	return &o.PinnedNamespaces, true
 }
 
-// HasPinnedNamespaces returns a boolean if a field has been set.
-func (o *PinnedNamespaces) HasPinnedNamespaces() bool {
-	if o != nil && !IsNil(o.PinnedNamespaces) {
-		return true
-	}
-
-	return false
-}
-
-// SetPinnedNamespaces gets a reference to the given []string and assigns it to the PinnedNamespaces field.
+// SetPinnedNamespaces sets field value
 func (o *PinnedNamespaces) SetPinnedNamespaces(v []string) {
-	o.PinnedNamespaces = &v
+	o.PinnedNamespaces = v
 }

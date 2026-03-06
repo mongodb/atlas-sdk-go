@@ -4,13 +4,15 @@ package admin
 
 // StreamsConnection Settings that define a connection to an external data store.
 type StreamsConnection struct {
+	// Unique identifier of the connection.
+	// Read only field.
+	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
 	Name *string `json:"name,omitempty"`
 	// The connection's region.
-	// Read only field.
 	Region *string `json:"region,omitempty"`
 	// The state of the connection.
 	// Read only field.
@@ -56,6 +58,39 @@ func NewStreamsConnection() *StreamsConnection {
 func NewStreamsConnectionWithDefaults() *StreamsConnection {
 	this := StreamsConnection{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise
+func (o *StreamsConnection) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *StreamsConnection) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *StreamsConnection) SetId(v string) {
+	o.Id = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

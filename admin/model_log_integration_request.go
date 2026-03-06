@@ -6,16 +6,34 @@ package admin
 type LogIntegrationRequest struct {
 	// Array of log types exported by this integration. The specific log types available and maximum number of items depend on the integration type. See the integration-specific schema for details.
 	LogTypes []string `json:"logTypes"`
-	// Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type.
+	// Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created.
 	Type string `json:"type"`
-	// Human-readable label that identifies the S3 bucket name for storing log files.
+	// Name of the bucket to store log files.
 	BucketName *string `json:"bucketName,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket.
+	// Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
 	KmsKey *string `json:"kmsKey,omitempty"`
-	// S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type.
+	// Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type.
 	PrefixPath *string `json:"prefixPath,omitempty"`
+	// API key for authentication.
+	ApiKey *string `json:"apiKey,omitempty"`
+	// Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED.
+	Region *string `json:"region,omitempty"`
+	// Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role.
+	RoleId *string `json:"roleId,omitempty"`
+	// OpenTelemetry collector endpoint URL. Must be HTTPS and not exceed 2048 characters.
+	OtelEndpoint *string `json:"otelEndpoint,omitempty"`
+	// HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB.
+	OtelSuppliedHeaders *[]Header `json:"otelSuppliedHeaders,omitempty"`
+	// HTTP Event Collector (HEC) token for authentication.
+	HecToken *string `json:"hecToken,omitempty"`
+	// HTTP Event Collector (HEC) endpoint URL.
+	HecUrl *string `json:"hecUrl,omitempty"`
+	// Storage account name where logs will be stored.
+	StorageAccountName *string `json:"storageAccountName,omitempty"`
+	// Storage container name for log files.
+	StorageContainerName *string `json:"storageContainerName,omitempty"`
 }
 
 // NewLogIntegrationRequest instantiates a new LogIntegrationRequest object
@@ -215,4 +233,301 @@ func (o *LogIntegrationRequest) HasPrefixPath() bool {
 // SetPrefixPath gets a reference to the given string and assigns it to the PrefixPath field.
 func (o *LogIntegrationRequest) SetPrefixPath(v string) {
 	o.PrefixPath = &v
+}
+
+// GetApiKey returns the ApiKey field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetApiKey() string {
+	if o == nil || IsNil(o.ApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.ApiKey
+}
+
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiKey) {
+		return nil, false
+	}
+
+	return o.ApiKey, true
+}
+
+// HasApiKey returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasApiKey() bool {
+	if o != nil && !IsNil(o.ApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
+func (o *LogIntegrationRequest) SetApiKey(v string) {
+	o.ApiKey = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *LogIntegrationRequest) SetRegion(v string) {
+	o.Region = &v
+}
+
+// GetRoleId returns the RoleId field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetRoleId() string {
+	if o == nil || IsNil(o.RoleId) {
+		var ret string
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetRoleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleId) {
+		return nil, false
+	}
+
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasRoleId() bool {
+	if o != nil && !IsNil(o.RoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *LogIntegrationRequest) SetRoleId(v string) {
+	o.RoleId = &v
+}
+
+// GetOtelEndpoint returns the OtelEndpoint field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetOtelEndpoint() string {
+	if o == nil || IsNil(o.OtelEndpoint) {
+		var ret string
+		return ret
+	}
+	return *o.OtelEndpoint
+}
+
+// GetOtelEndpointOk returns a tuple with the OtelEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetOtelEndpointOk() (*string, bool) {
+	if o == nil || IsNil(o.OtelEndpoint) {
+		return nil, false
+	}
+
+	return o.OtelEndpoint, true
+}
+
+// HasOtelEndpoint returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasOtelEndpoint() bool {
+	if o != nil && !IsNil(o.OtelEndpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtelEndpoint gets a reference to the given string and assigns it to the OtelEndpoint field.
+func (o *LogIntegrationRequest) SetOtelEndpoint(v string) {
+	o.OtelEndpoint = &v
+}
+
+// GetOtelSuppliedHeaders returns the OtelSuppliedHeaders field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetOtelSuppliedHeaders() []Header {
+	if o == nil || IsNil(o.OtelSuppliedHeaders) {
+		var ret []Header
+		return ret
+	}
+	return *o.OtelSuppliedHeaders
+}
+
+// GetOtelSuppliedHeadersOk returns a tuple with the OtelSuppliedHeaders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetOtelSuppliedHeadersOk() (*[]Header, bool) {
+	if o == nil || IsNil(o.OtelSuppliedHeaders) {
+		return nil, false
+	}
+
+	return o.OtelSuppliedHeaders, true
+}
+
+// HasOtelSuppliedHeaders returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasOtelSuppliedHeaders() bool {
+	if o != nil && !IsNil(o.OtelSuppliedHeaders) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtelSuppliedHeaders gets a reference to the given []Header and assigns it to the OtelSuppliedHeaders field.
+func (o *LogIntegrationRequest) SetOtelSuppliedHeaders(v []Header) {
+	o.OtelSuppliedHeaders = &v
+}
+
+// GetHecToken returns the HecToken field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetHecToken() string {
+	if o == nil || IsNil(o.HecToken) {
+		var ret string
+		return ret
+	}
+	return *o.HecToken
+}
+
+// GetHecTokenOk returns a tuple with the HecToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetHecTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.HecToken) {
+		return nil, false
+	}
+
+	return o.HecToken, true
+}
+
+// HasHecToken returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasHecToken() bool {
+	if o != nil && !IsNil(o.HecToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetHecToken gets a reference to the given string and assigns it to the HecToken field.
+func (o *LogIntegrationRequest) SetHecToken(v string) {
+	o.HecToken = &v
+}
+
+// GetHecUrl returns the HecUrl field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetHecUrl() string {
+	if o == nil || IsNil(o.HecUrl) {
+		var ret string
+		return ret
+	}
+	return *o.HecUrl
+}
+
+// GetHecUrlOk returns a tuple with the HecUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetHecUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.HecUrl) {
+		return nil, false
+	}
+
+	return o.HecUrl, true
+}
+
+// HasHecUrl returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasHecUrl() bool {
+	if o != nil && !IsNil(o.HecUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetHecUrl gets a reference to the given string and assigns it to the HecUrl field.
+func (o *LogIntegrationRequest) SetHecUrl(v string) {
+	o.HecUrl = &v
+}
+
+// GetStorageAccountName returns the StorageAccountName field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetStorageAccountName() string {
+	if o == nil || IsNil(o.StorageAccountName) {
+		var ret string
+		return ret
+	}
+	return *o.StorageAccountName
+}
+
+// GetStorageAccountNameOk returns a tuple with the StorageAccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetStorageAccountNameOk() (*string, bool) {
+	if o == nil || IsNil(o.StorageAccountName) {
+		return nil, false
+	}
+
+	return o.StorageAccountName, true
+}
+
+// HasStorageAccountName returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasStorageAccountName() bool {
+	if o != nil && !IsNil(o.StorageAccountName) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageAccountName gets a reference to the given string and assigns it to the StorageAccountName field.
+func (o *LogIntegrationRequest) SetStorageAccountName(v string) {
+	o.StorageAccountName = &v
+}
+
+// GetStorageContainerName returns the StorageContainerName field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetStorageContainerName() string {
+	if o == nil || IsNil(o.StorageContainerName) {
+		var ret string
+		return ret
+	}
+	return *o.StorageContainerName
+}
+
+// GetStorageContainerNameOk returns a tuple with the StorageContainerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetStorageContainerNameOk() (*string, bool) {
+	if o == nil || IsNil(o.StorageContainerName) {
+		return nil, false
+	}
+
+	return o.StorageContainerName, true
+}
+
+// HasStorageContainerName returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasStorageContainerName() bool {
+	if o != nil && !IsNil(o.StorageContainerName) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageContainerName gets a reference to the given string and assigns it to the StorageContainerName field.
+func (o *LogIntegrationRequest) SetStorageContainerName(v string) {
+	o.StorageContainerName = &v
 }
