@@ -25,6 +25,8 @@ type EndpointService struct {
 	// List of strings that identify private endpoint interfaces applied to the specified project.
 	// Read only field.
 	InterfaceEndpoints *[]string `json:"interfaceEndpoints,omitempty"`
+	// List of regions that the endpoint service supports. Native cross region support is implemented for AWS only.
+	SupportedRemoteRegions *[]string `json:"supportedRemoteRegions,omitempty"`
 	// List of private endpoints assigned to this Azure Private Link Service.
 	// Read only field.
 	PrivateEndpoints *[]string `json:"privateEndpoints,omitempty"`
@@ -280,6 +282,39 @@ func (o *EndpointService) HasInterfaceEndpoints() bool {
 // SetInterfaceEndpoints gets a reference to the given []string and assigns it to the InterfaceEndpoints field.
 func (o *EndpointService) SetInterfaceEndpoints(v []string) {
 	o.InterfaceEndpoints = &v
+}
+
+// GetSupportedRemoteRegions returns the SupportedRemoteRegions field value if set, zero value otherwise
+func (o *EndpointService) GetSupportedRemoteRegions() []string {
+	if o == nil || IsNil(o.SupportedRemoteRegions) {
+		var ret []string
+		return ret
+	}
+	return *o.SupportedRemoteRegions
+}
+
+// GetSupportedRemoteRegionsOk returns a tuple with the SupportedRemoteRegions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetSupportedRemoteRegionsOk() (*[]string, bool) {
+	if o == nil || IsNil(o.SupportedRemoteRegions) {
+		return nil, false
+	}
+
+	return o.SupportedRemoteRegions, true
+}
+
+// HasSupportedRemoteRegions returns a boolean if a field has been set.
+func (o *EndpointService) HasSupportedRemoteRegions() bool {
+	if o != nil && !IsNil(o.SupportedRemoteRegions) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportedRemoteRegions gets a reference to the given []string and assigns it to the SupportedRemoteRegions field.
+func (o *EndpointService) SetSupportedRemoteRegions(v []string) {
+	o.SupportedRemoteRegions = &v
 }
 
 // GetPrivateEndpoints returns the PrivateEndpoints field value if set, zero value otherwise

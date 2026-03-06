@@ -6,15 +6,16 @@ package admin
 type ShardKeys struct {
 	// List of fields to use for the shard key.
 	// Write only field.
-	Key *[]any `json:"key,omitempty"`
+	Key []any `json:"key"`
 }
 
 // NewShardKeys instantiates a new ShardKeys object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewShardKeys() *ShardKeys {
+func NewShardKeys(key []any) *ShardKeys {
 	this := ShardKeys{}
+	this.Key = key
 	return &this
 }
 
@@ -26,35 +27,26 @@ func NewShardKeysWithDefaults() *ShardKeys {
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise
+// GetKey returns the Key field value
 func (o *ShardKeys) GetKey() []any {
-	if o == nil || IsNil(o.Key) {
+	if o == nil {
 		var ret []any
 		return ret
 	}
-	return *o.Key
+
+	return o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *ShardKeys) GetKeyOk() (*[]any, bool) {
-	if o == nil || IsNil(o.Key) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Key, true
+	return &o.Key, true
 }
 
-// HasKey returns a boolean if a field has been set.
-func (o *ShardKeys) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given []any and assigns it to the Key field.
+// SetKey sets field value
 func (o *ShardKeys) SetKey(v []any) {
-	o.Key = &v
+	o.Key = v
 }
