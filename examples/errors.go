@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"go.mongodb.org/atlas-sdk/v20250312015/admin"
+	"go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func HandleErr(err error, resp *http.Response) {
