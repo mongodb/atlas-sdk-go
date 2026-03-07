@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Results** | Pointer to [**[]ServerlessInstanceDescription**](ServerlessInstanceDescription.md) | List of returned documents that MongoDB Cloud provides when completing this request. | [optional] [readonly] 
+**Results** | [**[]ServerlessInstanceDescription**](ServerlessInstanceDescription.md) | List of returned documents that MongoDB Cloud provides when completing this request. | [readonly] 
 **TotalCount** | Pointer to **int** | Total number of documents available. MongoDB Cloud omits this value if &#x60;includeCount&#x60; is set to &#x60;false&#x60;. The total number is an estimate and may not be exact. | [optional] [readonly] 
 
 ## Methods
 
 ### NewPaginatedServerlessInstanceDescription
 
-`func NewPaginatedServerlessInstanceDescription() *PaginatedServerlessInstanceDescription`
+`func NewPaginatedServerlessInstanceDescription(results []ServerlessInstanceDescription, ) *PaginatedServerlessInstanceDescription`
 
 NewPaginatedServerlessInstanceDescription instantiates a new PaginatedServerlessInstanceDescription object
 This constructor will assign default values to properties that have it defined,
@@ -70,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetResults sets Results field to given value.
 
-### HasResults
-
-`func (o *PaginatedServerlessInstanceDescription) HasResults() bool`
-
-HasResults returns a boolean if a field has been set.
 ### GetTotalCount
 
 `func (o *PaginatedServerlessInstanceDescription) GetTotalCount() int`

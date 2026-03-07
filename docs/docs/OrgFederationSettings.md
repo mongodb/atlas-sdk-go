@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FederatedDomains** | Pointer to **[]string** | List of domains associated with the organization&#39;s identity provider. | [optional] 
+**FederatedDomains** | **[]string** | List of domains associated with the organization&#39;s identity provider. | 
 **HasRoleMappings** | Pointer to **bool** | Flag that indicates whether this organization has role mappings configured. | [optional] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this federation. | [optional] [readonly] 
 **IdentityProviderId** | Pointer to **string** | Legacy 20-hexadecimal digit string that identifies the identity provider connected to this organization. | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewOrgFederationSettings
 
-`func NewOrgFederationSettings() *OrgFederationSettings`
+`func NewOrgFederationSettings(federatedDomains []string, ) *OrgFederationSettings`
 
 NewOrgFederationSettings instantiates a new OrgFederationSettings object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetFederatedDomains sets FederatedDomains field to given value.
 
-### HasFederatedDomains
-
-`func (o *OrgFederationSettings) HasFederatedDomains() bool`
-
-HasFederatedDomains returns a boolean if a field has been set.
 ### GetHasRoleMappings
 
 `func (o *OrgFederationSettings) GetHasRoleMappings() bool`

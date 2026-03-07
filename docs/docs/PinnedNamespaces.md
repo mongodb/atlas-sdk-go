@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the request cluster. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the request project. | [optional] [readonly] 
-**PinnedNamespaces** | Pointer to **[]string** | List of all pinned namespaces. | [optional] [readonly] 
+**PinnedNamespaces** | **[]string** | List of all pinned namespaces. | [readonly] 
 
 ## Methods
 
 ### NewPinnedNamespaces
 
-`func NewPinnedNamespaces() *PinnedNamespaces`
+`func NewPinnedNamespaces(pinnedNamespaces []string, ) *PinnedNamespaces`
 
 NewPinnedNamespaces instantiates a new PinnedNamespaces object
 This constructor will assign default values to properties that have it defined,
@@ -94,11 +94,6 @@ and a boolean to check if the value has been set.
 
 SetPinnedNamespaces sets PinnedNamespaces field to given value.
 
-### HasPinnedNamespaces
-
-`func (o *PinnedNamespaces) HasPinnedNamespaces() bool`
-
-HasPinnedNamespaces returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

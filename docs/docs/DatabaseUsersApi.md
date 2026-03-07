@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -43,7 +43,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudDatabaseUser := *admin.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", "Username_example") // CloudDatabaseUser | 
+    cloudDatabaseUser := *admin.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", []admin.DatabaseUserRole{*admin.NewDatabaseUserRole("DatabaseName_example", "RoleName_example")}, "Username_example") // CloudDatabaseUser | 
 
     resp, r, err := sdk.DatabaseUsersApi.CreateDatabaseUser(context.Background(), groupId, &cloudDatabaseUser).Execute()
     if err != nil {
@@ -111,7 +111,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -195,7 +195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -281,7 +281,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -367,7 +367,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -383,7 +383,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
-    cloudDatabaseUser := *admin.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", "Username_example") // CloudDatabaseUser | 
+    cloudDatabaseUser := *admin.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", []admin.DatabaseUserRole{*admin.NewDatabaseUserRole("DatabaseName_example", "RoleName_example")}, "Username_example") // CloudDatabaseUser | 
 
     resp, r, err := sdk.DatabaseUsersApi.UpdateDatabaseUser(context.Background(), groupId, databaseName, username, &cloudDatabaseUser).Execute()
     if err != nil {

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreateSupportingIndexes** | **bool** | Flag that lets the migration create supporting indexes for the shard keys, if none exists, as the destination cluster also needs compatible indexes for the specified shard keys. | 
-**ShardingEntries** | Pointer to [**[]ShardEntry**](ShardEntry.md) | List of shard configurations to shard destination collections. Atlas shards only those collections that you include in the sharding entries array. | [optional] 
+**ShardingEntries** | [**[]ShardEntry**](ShardEntry.md) | List of shard configurations to shard destination collections. Atlas shards only those collections that you include in the sharding entries array. | 
 
 ## Methods
 
 ### NewShardingRequest
 
-`func NewShardingRequest(createSupportingIndexes bool, ) *ShardingRequest`
+`func NewShardingRequest(createSupportingIndexes bool, shardingEntries []ShardEntry, ) *ShardingRequest`
 
 NewShardingRequest instantiates a new ShardingRequest object
 This constructor will assign default values to properties that have it defined,
@@ -64,11 +64,6 @@ and a boolean to check if the value has been set.
 
 SetShardingEntries sets ShardingEntries field to given value.
 
-### HasShardingEntries
-
-`func (o *ShardingRequest) HasShardingEntries() bool`
-
-HasShardingEntries returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

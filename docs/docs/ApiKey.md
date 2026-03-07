@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessList** | Pointer to [**[]AccessListItem**](AccessListItem.md) | List of network addresses granted access to this API using this API key. | [optional] [readonly] 
+**AccessList** | [**[]AccessListItem**](AccessListItem.md) | List of network addresses granted access to this API using this API key. | [readonly] 
 **Id** | **string** | Unique 24-hexadecimal digit string that identifies this organization API key. | [readonly] 
 **PublicKey** | **string** | Public API key value set for the specified organization API key. | [readonly] 
-**Roles** | Pointer to [**[]CloudAccessRoleAssignment**](CloudAccessRoleAssignment.md) | List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user. | [optional] [readonly] 
+**Roles** | [**[]CloudAccessRoleAssignment**](CloudAccessRoleAssignment.md) | List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user. | [readonly] 
 
 ## Methods
 
 ### NewApiKey
 
-`func NewApiKey(id string, publicKey string, ) *ApiKey`
+`func NewApiKey(accessList []AccessListItem, id string, publicKey string, roles []CloudAccessRoleAssignment, ) *ApiKey`
 
 NewApiKey instantiates a new ApiKey object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetAccessList sets AccessList field to given value.
 
-### HasAccessList
-
-`func (o *ApiKey) HasAccessList() bool`
-
-HasAccessList returns a boolean if a field has been set.
 ### GetId
 
 `func (o *ApiKey) GetId() string`
@@ -109,11 +104,6 @@ and a boolean to check if the value has been set.
 
 SetRoles sets Roles field to given value.
 
-### HasRoles
-
-`func (o *ApiKey) HasRoles() bool`
-
-HasRoles returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

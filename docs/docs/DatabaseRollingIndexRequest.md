@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Collation** | Pointer to [**Collation**](Collation.md) |  | [optional] 
 **Collection** | **string** | Human-readable label of the collection for which MongoDB Cloud creates an index. | 
 **Db** | **string** | Human-readable label of the database that holds the collection on which MongoDB Cloud creates an index. | 
-**Keys** | Pointer to **[]map[string]string** | List that contains one or more objects that describe the parameters that you want to index. | [optional] 
+**Keys** | **[]map[string]string** | List that contains one or more objects that describe the parameters that you want to index. | 
 **Options** | Pointer to [**IndexOptions**](IndexOptions.md) |  | [optional] 
 
 ## Methods
 
 ### NewDatabaseRollingIndexRequest
 
-`func NewDatabaseRollingIndexRequest(collection string, db string, ) *DatabaseRollingIndexRequest`
+`func NewDatabaseRollingIndexRequest(collection string, db string, keys []map[string]string, ) *DatabaseRollingIndexRequest`
 
 NewDatabaseRollingIndexRequest instantiates a new DatabaseRollingIndexRequest object
 This constructor will assign default values to properties that have it defined,
@@ -110,11 +110,6 @@ and a boolean to check if the value has been set.
 
 SetKeys sets Keys field to given value.
 
-### HasKeys
-
-`func (o *DatabaseRollingIndexRequest) HasKeys() bool`
-
-HasKeys returns a boolean if a field has been set.
 ### GetOptions
 
 `func (o *DatabaseRollingIndexRequest) GetOptions() IndexOptions`

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **OidcAuthType** | Pointer to **string** | Human-readable label that indicates whether the new database user or group authenticates with OIDC federated authentication. To create a federated authentication user, specify the value of USER in this field. To create a federated authentication group, specify the value of &#x60;IDP_GROUP&#x60; in this field. | [optional] [default to "NONE"]
 **Password** | Pointer to **string** | Alphanumeric string that authenticates this database user against the database specified in &#x60;databaseName&#x60;. To authenticate with SCRAM-SHA, you must specify this parameter. This parameter doesn&#39;t appear in this response. | [optional] 
-**Roles** | Pointer to [**[]DatabaseUserRole**](DatabaseUserRole.md) | List that provides the pairings of one role with one applicable database. | [optional] 
+**Roles** | [**[]DatabaseUserRole**](DatabaseUserRole.md) | List that provides the pairings of one role with one applicable database. | 
 **Scopes** | Pointer to [**[]UserScope**](UserScope.md) | List that contains clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams Workspaces that this database user can access. If omitted, MongoDB Cloud grants the database user access to all the clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams Workspaces in the project. | [optional] 
 **Username** | **string** | Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | &#x60;awsIAMType&#x60; | &#x60;ROLE&#x60; | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | AWS IAM | &#x60;awsIAMType&#x60; | &#x60;USER&#x60; | &lt;abbr title&#x3D;\&quot;Amazon Resource Name\&quot;&gt;ARN&lt;/abbr&gt; | | x.509 | &#x60;x509Type&#x60; | &#x60;CUSTOMER&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | &#x60;x509Type&#x60; | &#x60;MANAGED&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | &#x60;ldapAuthType&#x60; | &#x60;USER&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | &#x60;ldapAuthType&#x60; | &#x60;GROUP&#x60; | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC Workforce | &#x60;oidcAuthType&#x60; | &#x60;IDP_GROUP&#x60; | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP group name | | OIDC Workload | &#x60;oidcAuthType&#x60; | &#x60;USER&#x60; | Atlas OIDC IdP ID (found in federation settings), followed by a &#39;/&#39;, followed by the IdP user name | | SCRAM-SHA | &#x60;awsIAMType&#x60;, &#x60;x509Type&#x60;, &#x60;ldapAuthType&#x60;, &#x60;oidcAuthType&#x60; | &#x60;NONE&#x60; | Alphanumeric string |  | 
 **X509Type** | Pointer to **string** | X.509 method that MongoDB Cloud uses to authenticate the database user.  - For application-managed X.509, specify &#x60;MANAGED&#x60;. - For self-managed X.509, specify &#x60;CUSTOMER&#x60;.  Users created with the &#x60;CUSTOMER&#x60; method require a Common Name (CN) in the **username** parameter. You must create externally authenticated users on the &#x60;$external&#x60; database. | [optional] [default to "NONE"]
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewCloudDatabaseUser
 
-`func NewCloudDatabaseUser(databaseName string, groupId string, username string, ) *CloudDatabaseUser`
+`func NewCloudDatabaseUser(databaseName string, groupId string, roles []DatabaseUserRole, username string, ) *CloudDatabaseUser`
 
 NewCloudDatabaseUser instantiates a new CloudDatabaseUser object
 This constructor will assign default values to properties that have it defined,
@@ -287,11 +287,6 @@ and a boolean to check if the value has been set.
 
 SetRoles sets Roles field to given value.
 
-### HasRoles
-
-`func (o *CloudDatabaseUser) HasRoles() bool`
-
-HasRoles returns a boolean if a field has been set.
 ### GetScopes
 
 `func (o *CloudDatabaseUser) GetScopes() []UserScope`

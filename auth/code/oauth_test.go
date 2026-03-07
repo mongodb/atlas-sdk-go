@@ -24,7 +24,7 @@ import (
 	"reflect"
 	"testing"
 
-	core "go.mongodb.org/atlas-sdk/v20250312015/internal/core"
+	core "go.mongodb.org/atlas-sdk/v20250312016/internal/core"
 )
 
 const (
