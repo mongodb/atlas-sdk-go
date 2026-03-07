@@ -40,7 +40,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    databaseRollingIndexRequest := *admin.NewDatabaseRollingIndexRequest("Collection_example", "Db_example") // DatabaseRollingIndexRequest | 
+    databaseRollingIndexRequest := *admin.NewDatabaseRollingIndexRequest("Collection_example", "Db_example", []map[string]string{map[string]string{"key": "Inner_example"}}) // DatabaseRollingIndexRequest | 
 
     r, err := sdk.RollingIndexApi.CreateRollingIndex(context.Background(), groupId, clusterName, &databaseRollingIndexRequest).Execute()
     if err != nil {

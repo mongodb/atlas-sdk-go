@@ -9,7 +9,7 @@ type PaginatedApiUserAccessListResponse struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]UserAccessListResponse `json:"results,omitempty"`
+	Results []UserAccessListResponse `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -19,8 +19,9 @@ type PaginatedApiUserAccessListResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedApiUserAccessListResponse() *PaginatedApiUserAccessListResponse {
+func NewPaginatedApiUserAccessListResponse(results []UserAccessListResponse) *PaginatedApiUserAccessListResponse {
 	this := PaginatedApiUserAccessListResponse{}
+	this.Results = results
 	return &this
 }
 
@@ -65,37 +66,28 @@ func (o *PaginatedApiUserAccessListResponse) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise
+// GetResults returns the Results field value
 func (o *PaginatedApiUserAccessListResponse) GetResults() []UserAccessListResponse {
-	if o == nil || IsNil(o.Results) {
+	if o == nil {
 		var ret []UserAccessListResponse
 		return ret
 	}
-	return *o.Results
+
+	return o.Results
 }
 
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApiUserAccessListResponse) GetResultsOk() (*[]UserAccessListResponse, bool) {
-	if o == nil || IsNil(o.Results) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Results, true
+	return &o.Results, true
 }
 
-// HasResults returns a boolean if a field has been set.
-func (o *PaginatedApiUserAccessListResponse) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []UserAccessListResponse and assigns it to the Results field.
+// SetResults sets field value
 func (o *PaginatedApiUserAccessListResponse) SetResults(v []UserAccessListResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

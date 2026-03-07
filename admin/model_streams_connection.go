@@ -10,7 +10,6 @@ type StreamsConnection struct {
 	// Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
 	Name *string `json:"name,omitempty"`
 	// The connection's region.
-	// Read only field.
 	Region *string `json:"region,omitempty"`
 	// The state of the connection.
 	// Read only field.

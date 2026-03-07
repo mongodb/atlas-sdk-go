@@ -2795,7 +2795,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    diskBackupSnapshotSchedule20240805 := *admin.NewDiskBackupSnapshotSchedule20240805() // DiskBackupSnapshotSchedule20240805 | 
+    diskBackupSnapshotSchedule20240805 := *admin.NewDiskBackupSnapshotSchedule20240805([]admin.AdvancedDiskBackupSnapshotSchedulePolicy{*admin.NewAdvancedDiskBackupSnapshotSchedulePolicy([]admin.DiskBackupApiPolicyItem{*admin.NewDiskBackupApiPolicyItem(int(123), "FrequencyType_example", "RetentionUnit_example", int(123))})}) // DiskBackupSnapshotSchedule20240805 | 
 
     resp, r, err := sdk.CloudBackupsApi.UpdateBackupSchedule(context.Background(), groupId, clusterName, &diskBackupSnapshotSchedule20240805).Execute()
     if err != nil {

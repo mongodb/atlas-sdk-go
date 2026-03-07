@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
-**Region** | Pointer to **string** | The connection&#39;s region. | [optional] [readonly] 
+**Region** | Pointer to **string** | The connection&#39;s region. | [optional] 
 **State** | Pointer to **string** | The state of the connection. | [optional] [readonly] 
 **Type** | Pointer to **string** | Type of the connection. | [optional] 
 **ClusterGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. | [optional] 

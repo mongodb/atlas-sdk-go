@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Destination** | [**Destination**](Destination.md) |  | 
 **DropDestinationData** | Pointer to **bool** | Flag that indicates whether the migration process drops all collections from the destination cluster before the migration starts. | [optional] [default to false]
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**MigrationHosts** | Pointer to **[]string** | List of migration hosts used for this migration. | [optional] 
+**MigrationHosts** | **[]string** | List of migration hosts used for this migration. | 
 **Sharding** | Pointer to [**ShardingRequest**](ShardingRequest.md) |  | [optional] 
 **Source** | [**Source**](Source.md) |  | 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewLiveMigrationRequest20240530
 
-`func NewLiveMigrationRequest20240530(destination Destination, source Source, ) *LiveMigrationRequest20240530`
+`func NewLiveMigrationRequest20240530(destination Destination, migrationHosts []string, source Source, ) *LiveMigrationRequest20240530`
 
 NewLiveMigrationRequest20240530 instantiates a new LiveMigrationRequest20240530 object
 This constructor will assign default values to properties that have it defined,
@@ -141,11 +141,6 @@ and a boolean to check if the value has been set.
 
 SetMigrationHosts sets MigrationHosts field to given value.
 
-### HasMigrationHosts
-
-`func (o *LiveMigrationRequest20240530) HasMigrationHosts() bool`
-
-HasMigrationHosts returns a boolean if a field has been set.
 ### GetSharding
 
 `func (o *LiveMigrationRequest20240530) GetSharding() ShardingRequest`

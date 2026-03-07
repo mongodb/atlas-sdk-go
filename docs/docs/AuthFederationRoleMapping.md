@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExternalGroupName** | **string** | Unique human-readable label that identifies the identity provider group to which this role mapping applies. | 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this role mapping. | [optional] [readonly] 
-**RoleAssignments** | Pointer to [**[]ConnectedOrgConfigRoleAssignment**](ConnectedOrgConfigRoleAssignment.md) | Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective &#x60;orgId&#x60;. Each element in the array can have a value for &#x60;orgId&#x60; or &#x60;groupId&#x60;, but not both. | [optional] 
+**RoleAssignments** | [**[]ConnectedOrgConfigRoleAssignment**](ConnectedOrgConfigRoleAssignment.md) | Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective &#x60;orgId&#x60;. Each element in the array can have a value for &#x60;orgId&#x60; or &#x60;groupId&#x60;, but not both. | 
 
 ## Methods
 
 ### NewAuthFederationRoleMapping
 
-`func NewAuthFederationRoleMapping(externalGroupName string, ) *AuthFederationRoleMapping`
+`func NewAuthFederationRoleMapping(externalGroupName string, roleAssignments []ConnectedOrgConfigRoleAssignment, ) *AuthFederationRoleMapping`
 
 NewAuthFederationRoleMapping instantiates a new AuthFederationRoleMapping object
 This constructor will assign default values to properties that have it defined,
@@ -89,11 +89,6 @@ and a boolean to check if the value has been set.
 
 SetRoleAssignments sets RoleAssignments field to given value.
 
-### HasRoleAssignments
-
-`func (o *AuthFederationRoleMapping) HasRoleAssignments() bool`
-
-HasRoleAssignments returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Deployments** | Pointer to [**[]AvailableClustersDeployment**](AvailableClustersDeployment.md) | List of clusters that can be migrated to MongoDB Cloud. | [optional] 
-**MigrationHosts** | Pointer to **[]string** | Hostname of MongoDB Agent list that you configured to perform a migration. | [optional] 
+**Deployments** | [**[]AvailableClustersDeployment**](AvailableClustersDeployment.md) | List of clusters that can be migrated to MongoDB Cloud. | 
+**MigrationHosts** | **[]string** | Hostname of MongoDB Agent list that you configured to perform a migration. | 
 **Name** | **string** | Human-readable label that identifies this project. | [readonly] 
 **ProjectId** | **string** | Unique 24-hexadecimal digit string that identifies the project to be migrated. | [readonly] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewLiveImportAvailableProject
 
-`func NewLiveImportAvailableProject(name string, projectId string, ) *LiveImportAvailableProject`
+`func NewLiveImportAvailableProject(deployments []AvailableClustersDeployment, migrationHosts []string, name string, projectId string, ) *LiveImportAvailableProject`
 
 NewLiveImportAvailableProject instantiates a new LiveImportAvailableProject object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetDeployments sets Deployments field to given value.
 
-### HasDeployments
-
-`func (o *LiveImportAvailableProject) HasDeployments() bool`
-
-HasDeployments returns a boolean if a field has been set.
 ### GetMigrationHosts
 
 `func (o *LiveImportAvailableProject) GetMigrationHosts() []string`
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetMigrationHosts sets MigrationHosts field to given value.
 
-### HasMigrationHosts
-
-`func (o *LiveImportAvailableProject) HasMigrationHosts() bool`
-
-HasMigrationHosts returns a boolean if a field has been set.
 ### GetName
 
 `func (o *LiveImportAvailableProject) GetName() string`

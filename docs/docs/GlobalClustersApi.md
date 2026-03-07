@@ -44,7 +44,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    customZoneMappings := *admin.NewCustomZoneMappings() // CustomZoneMappings | 
+    customZoneMappings := *admin.NewCustomZoneMappings([]admin.ZoneMapping{*admin.NewZoneMapping("Location_example", "Zone_example")}) // CustomZoneMappings | 
 
     resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName, &customZoneMappings).Execute()
     if err != nil {

@@ -10,16 +10,17 @@ type AuthFederationRoleMapping struct {
 	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective `orgId`. Each element in the array can have a value for `orgId` or `groupId`, but not both.
-	RoleAssignments *[]ConnectedOrgConfigRoleAssignment `json:"roleAssignments,omitempty"`
+	RoleAssignments []ConnectedOrgConfigRoleAssignment `json:"roleAssignments"`
 }
 
 // NewAuthFederationRoleMapping instantiates a new AuthFederationRoleMapping object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthFederationRoleMapping(externalGroupName string) *AuthFederationRoleMapping {
+func NewAuthFederationRoleMapping(externalGroupName string, roleAssignments []ConnectedOrgConfigRoleAssignment) *AuthFederationRoleMapping {
 	this := AuthFederationRoleMapping{}
 	this.ExternalGroupName = externalGroupName
+	this.RoleAssignments = roleAssignments
 	return &this
 }
 
@@ -88,35 +89,26 @@ func (o *AuthFederationRoleMapping) SetId(v string) {
 	o.Id = &v
 }
 
-// GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise
+// GetRoleAssignments returns the RoleAssignments field value
 func (o *AuthFederationRoleMapping) GetRoleAssignments() []ConnectedOrgConfigRoleAssignment {
-	if o == nil || IsNil(o.RoleAssignments) {
+	if o == nil {
 		var ret []ConnectedOrgConfigRoleAssignment
 		return ret
 	}
-	return *o.RoleAssignments
+
+	return o.RoleAssignments
 }
 
-// GetRoleAssignmentsOk returns a tuple with the RoleAssignments field value if set, nil otherwise
+// GetRoleAssignmentsOk returns a tuple with the RoleAssignments field value
 // and a boolean to check if the value has been set.
 func (o *AuthFederationRoleMapping) GetRoleAssignmentsOk() (*[]ConnectedOrgConfigRoleAssignment, bool) {
-	if o == nil || IsNil(o.RoleAssignments) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.RoleAssignments, true
+	return &o.RoleAssignments, true
 }
 
-// HasRoleAssignments returns a boolean if a field has been set.
-func (o *AuthFederationRoleMapping) HasRoleAssignments() bool {
-	if o != nil && !IsNil(o.RoleAssignments) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoleAssignments gets a reference to the given []ConnectedOrgConfigRoleAssignment and assigns it to the RoleAssignments field.
+// SetRoleAssignments sets field value
 func (o *AuthFederationRoleMapping) SetRoleAssignments(v []ConnectedOrgConfigRoleAssignment) {
-	o.RoleAssignments = &v
+	o.RoleAssignments = v
 }
