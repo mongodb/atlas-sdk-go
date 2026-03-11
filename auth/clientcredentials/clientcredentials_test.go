@@ -4,10 +4,12 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"sync/atomic"
 	"testing"
 	"time"
 
 	"github.com/stretchr/testify/assert"
+
 	"go.mongodb.org/atlas-sdk/v20250312015/auth"
 )
 
@@ -47,9 +49,9 @@ func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
 }
 
 func TestRevokeToken_UsesContextHTTPClient(t *testing.T) {
-	var receivedHeader string
+	var receivedHeader atomic.Value
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		receivedHeader = r.Header.Get("X-Custom-Transport")
+		receivedHeader.Store(r.Header.Get("X-Custom-Transport"))
 		w.WriteHeader(http.StatusOK)
 	}))
 	defer server.Close()
@@ -71,13 +73,13 @@ func TestRevokeToken_UsesContextHTTPClient(t *testing.T) {
 		ExpiresIn:   expiry.Unix(),
 	})
 	assert.NoError(t, err)
-	assert.Equal(t, "true", receivedHeader, "RevokeToken should use the HTTP client from the context")
+	assert.Equal(t, "true", receivedHeader.Load(), "RevokeToken should use the HTTP client from the context")
 }
 
 func TestRevokeToken_FallsBackToDefaultClient(t *testing.T) {
-	var called bool
+	var called atomic.Bool
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-		called = true
+		called.Store(true)
 		w.WriteHeader(http.StatusOK)
 	}))
 	defer server.Close()
@@ -92,7 +94,7 @@ func TestRevokeToken_FallsBackToDefaultClient(t *testing.T) {
 		ExpiresIn:   expiry.Unix(),
 	})
 	assert.NoError(t, err)
-	assert.True(t, called, "RevokeToken should fall back to default client and still reach the server")
+	assert.True(t, called.Load(), "RevokeToken should fall back to default client and still reach the server")
 }
 
 // TestOAuthTokenSource_RevokeToken_Failure tests token revocation failure due to unauthorized access.
