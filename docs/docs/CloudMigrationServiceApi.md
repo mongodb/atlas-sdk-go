@@ -32,7 +32,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    liveMigrationRequest20240530 := *admin.NewLiveMigrationRequest20240530(*admin.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), *admin.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
+    liveMigrationRequest20240530 := *admin.NewLiveMigrationRequest20240530(*admin.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), []string{"vm001.example.com"}, *admin.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.CreateGroupLiveMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -277,7 +277,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -355,7 +355,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -438,7 +438,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -521,7 +521,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -601,7 +601,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -615,7 +615,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    liveMigrationRequest20240530 := *admin.NewLiveMigrationRequest20240530(*admin.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), *admin.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
+    liveMigrationRequest20240530 := *admin.NewLiveMigrationRequest20240530(*admin.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), []string{"vm001.example.com"}, *admin.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.ValidateLiveMigrations(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {

@@ -6,8 +6,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312015/admin"
-	"go.mongodb.org/atlas-sdk/v20250312015/examples"
+	"go.mongodb.org/atlas-sdk/v20250312016/admin"
+	"go.mongodb.org/atlas-sdk/v20250312016/examples"
 )
 
 const (
@@ -61,7 +61,7 @@ func update(current *admin.CloudDatabaseUser) *admin.CloudDatabaseUser {
 	current.Username = "user"
 	current.Password = admin.PtrString("password")
 	current.Scopes = &[]admin.UserScope{}
-	current.Roles = &[]admin.DatabaseUserRole{*admin.NewDatabaseUserRole(AdminDB, "readWrite")}
+	current.Roles = []admin.DatabaseUserRole{*admin.NewDatabaseUserRole(AdminDB, "readWrite")}
 	current.DatabaseName = getAuthDB(current)
 	return current
 }

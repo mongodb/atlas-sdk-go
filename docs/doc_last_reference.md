@@ -392,11 +392,8 @@ Class        | Method        | HTTP request  | Description   |
 *RollingIndexApi* | [CreateRollingIndex](./docs/RollingIndexApi.md#createrollingindex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index |
 *RootApi* | [GetSystemStatus](./docs/RootApi.md#getsystemstatus) | **Get** /api/atlas/v2 | Return the Status of This MongoDB Application |
 *RootApi* | [ListControlPlaneAddresses](./docs/RootApi.md#listcontrolplaneaddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses |
-*ServerlessInstancesApi* | [CreateServerlessInstance](./docs/ServerlessInstancesApi.md#createserverlessinstance) | **Post** /api/atlas/v2/groups/{groupId}/serverless | Create One Serverless Instance in One Project |
-*ServerlessInstancesApi* | [DeleteServerlessInstance](./docs/ServerlessInstancesApi.md#deleteserverlessinstance) | **Delete** /api/atlas/v2/groups/{groupId}/serverless/{name} | Remove One Serverless Instance from One Project |
 *ServerlessInstancesApi* | [GetServerlessInstance](./docs/ServerlessInstancesApi.md#getserverlessinstance) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{name} | Return One Serverless Instance from One Project |
 *ServerlessInstancesApi* | [ListServerlessInstances](./docs/ServerlessInstancesApi.md#listserverlessinstances) | **Get** /api/atlas/v2/groups/{groupId}/serverless | Return All Serverless Instances in One Project |
-*ServerlessInstancesApi* | [UpdateServerlessInstance](./docs/ServerlessInstancesApi.md#updateserverlessinstance) | **Patch** /api/atlas/v2/groups/{groupId}/serverless/{name} | Update One Serverless Instance in One Project |
 *ServerlessPrivateEndpointsApi* | [CreateServerlessPrivateEndpoint](./docs/ServerlessPrivateEndpointsApi.md#createserverlessprivateendpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Create One Private Endpoint for One Serverless Instance |
 *ServerlessPrivateEndpointsApi* | [DeleteServerlessPrivateEndpoint](./docs/ServerlessPrivateEndpointsApi.md#deleteserverlessprivateendpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Remove One Private Endpoint for One Serverless Instance |
 *ServerlessPrivateEndpointsApi* | [GetServerlessPrivateEndpoint](./docs/ServerlessPrivateEndpointsApi.md#getserverlessprivateendpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Return One Private Endpoint for One Serverless Instance |
@@ -424,12 +421,6 @@ Class        | Method        | HTTP request  | Description   |
 *ServiceAccountsApi* | [ListOrgServiceAccounts](./docs/ServiceAccountsApi.md#listorgserviceaccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Return All Organization Service Accounts |
 *ServiceAccountsApi* | [UpdateGroupServiceAccount](./docs/ServiceAccountsApi.md#updategroupserviceaccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update One Project Service Account |
 *ServiceAccountsApi* | [UpdateOrgServiceAccount](./docs/ServiceAccountsApi.md#updateorgserviceaccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update One Organization Service Account |
-*SharedTierRestoreJobsApi* | [CreateBackupTenantRestore](./docs/SharedTierRestoreJobsApi.md#createbackuptenantrestore) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore | Create One Restore Job for One M2 or M5 Cluster |
-*SharedTierRestoreJobsApi* | [GetBackupTenantRestore](./docs/SharedTierRestoreJobsApi.md#getbackuptenantrestore) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId} | Return One Restore Job for One M2 or M5 Cluster |
-*SharedTierRestoreJobsApi* | [ListBackupTenantRestores](./docs/SharedTierRestoreJobsApi.md#listbackuptenantrestores) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores | Return All Restore Jobs for One M2 or M5 Cluster |
-*SharedTierSnapshotsApi* | [DownloadClusterBackupTenant](./docs/SharedTierSnapshotsApi.md#downloadclusterbackuptenant) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download | Download One M2 or M5 Cluster Snapshot |
-*SharedTierSnapshotsApi* | [GetBackupTenantSnapshot](./docs/SharedTierSnapshotsApi.md#getbackuptenantsnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId} | Return One Snapshot of One M2 or M5 Cluster |
-*SharedTierSnapshotsApi* | [ListClusterBackupSnapshots](./docs/SharedTierSnapshotsApi.md#listclusterbackupsnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots | Return All Snapshots for One M2 or M5 Cluster |
 *StreamsApi* | [AcceptVpcPeeringConnection](./docs/StreamsApi.md#acceptvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Accept One Incoming VPC Peering Connection |
 *StreamsApi* | [CreatePrivateLinkConnection](./docs/StreamsApi.md#createprivatelinkconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection |
 *StreamsApi* | [CreateStreamConnection](./docs/StreamsApi.md#createstreamconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection |
@@ -552,7 +543,6 @@ Class        | Method        | HTTP request  | Description   |
  - [BackupSnapshot](./docs/BackupSnapshot.md)
  - [BackupSnapshotPart](./docs/BackupSnapshotPart.md)
  - [BackupSnapshotRetention](./docs/BackupSnapshotRetention.md)
- - [BackupTenantSnapshot](./docs/BackupTenantSnapshot.md)
  - [BadRequestDetail](./docs/BadRequestDetail.md)
  - [BaseNetworkPeeringConnectionSettings](./docs/BaseNetworkPeeringConnectionSettings.md)
  - [BaseSearchIndexCreateRequestDefinition](./docs/BaseSearchIndexCreateRequestDefinition.md)
@@ -725,6 +715,7 @@ Class        | Method        | HTTP request  | Description   |
  - [GroupUserRequest](./docs/GroupUserRequest.md)
  - [GroupUserResponse](./docs/GroupUserResponse.md)
  - [HardwareSpec20240805](./docs/HardwareSpec20240805.md)
+ - [Header](./docs/Header.md)
  - [InboundControlPlaneCloudProviderIPAddresses](./docs/InboundControlPlaneCloudProviderIPAddresses.md)
  - [IndexOptions](./docs/IndexOptions.md)
  - [IngestionPipelineRun](./docs/IngestionPipelineRun.md)
@@ -848,8 +839,6 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedSnapshot](./docs/PaginatedSnapshot.md)
  - [PaginatedTeam](./docs/PaginatedTeam.md)
  - [PaginatedTeamRole](./docs/PaginatedTeamRole.md)
- - [PaginatedTenantRestore](./docs/PaginatedTenantRestore.md)
- - [PaginatedTenantSnapshot](./docs/PaginatedTenantSnapshot.md)
  - [PaginatedUserCert](./docs/PaginatedUserCert.md)
  - [PartitionField](./docs/PartitionField.md)
  - [PemFileInfo](./docs/PemFileInfo.md)
@@ -909,8 +898,6 @@ Class        | Method        | HTTP request  | Description   |
  - [ServerlessConnectionStringsPrivateEndpointList](./docs/ServerlessConnectionStringsPrivateEndpointList.md)
  - [ServerlessInstanceDescription](./docs/ServerlessInstanceDescription.md)
  - [ServerlessInstanceDescriptionConnectionStrings](./docs/ServerlessInstanceDescriptionConnectionStrings.md)
- - [ServerlessInstanceDescriptionCreate](./docs/ServerlessInstanceDescriptionCreate.md)
- - [ServerlessInstanceDescriptionUpdate](./docs/ServerlessInstanceDescriptionUpdate.md)
  - [ServerlessProviderSettings](./docs/ServerlessProviderSettings.md)
  - [ServerlessTenantCreateRequest](./docs/ServerlessTenantCreateRequest.md)
  - [ServerlessTenantEndpoint](./docs/ServerlessTenantEndpoint.md)
@@ -955,7 +942,6 @@ Class        | Method        | HTTP request  | Description   |
  - [TeamResponse](./docs/TeamResponse.md)
  - [TeamRole](./docs/TeamRole.md)
  - [TeamUpdate](./docs/TeamUpdate.md)
- - [TenantRestore](./docs/TenantRestore.md)
  - [ThirdPartyIntegration](./docs/ThirdPartyIntegration.md)
  - [TriggerIngestionPipelineRequest](./docs/TriggerIngestionPipelineRequest.md)
  - [UpdateAtlasOrganizationApiKey](./docs/UpdateAtlasOrganizationApiKey.md)

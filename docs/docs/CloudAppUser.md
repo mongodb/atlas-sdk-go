@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **MobileNumber** | **string** | Mobile phone number that belongs to the MongoDB Cloud user. | 
 **Password** | **string** | Password applied with the username to log in to MongoDB Cloud. MongoDB Cloud does not return this parameter except in response to creating a new MongoDB Cloud user. Only the MongoDB Cloud user can update their password after it has been set from the MongoDB Cloud console. | 
-**Roles** | Pointer to [**[]CloudAccessRoleAssignment**](CloudAccessRoleAssignment.md) | List of objects that display the MongoDB Cloud user&#39;s roles and the corresponding organization or project to which that role applies. A role can apply to one organization or one project but not both. | [optional] 
+**Roles** | [**[]CloudAccessRoleAssignment**](CloudAccessRoleAssignment.md) | List of objects that display the MongoDB Cloud user&#39;s roles and the corresponding organization or project to which that role applies. A role can apply to one organization or one project but not both. | 
 **TeamIds** | Pointer to **[]string** | List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs. | [optional] [readonly] 
 **Username** | **string** | Email address that represents the username of the MongoDB Cloud user. | 
 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewCloudAppUser
 
-`func NewCloudAppUser(country string, emailAddress string, firstName string, lastName string, mobileNumber string, password string, username string, ) *CloudAppUser`
+`func NewCloudAppUser(country string, emailAddress string, firstName string, lastName string, mobileNumber string, password string, roles []CloudAccessRoleAssignment, username string, ) *CloudAppUser`
 
 NewCloudAppUser instantiates a new CloudAppUser object
 This constructor will assign default values to properties that have it defined,
@@ -266,11 +266,6 @@ and a boolean to check if the value has been set.
 
 SetRoles sets Roles field to given value.
 
-### HasRoles
-
-`func (o *CloudAppUser) HasRoles() bool`
-
-HasRoles returns a boolean if a field has been set.
 ### GetTeamIds
 
 `func (o *CloudAppUser) GetTeamIds() []string`

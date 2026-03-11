@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"go.mongodb.org/atlas-sdk/v20250312015/admin"
-	"go.mongodb.org/atlas-sdk/v20250312015/mockadmin"
+	"go.mongodb.org/atlas-sdk/v20250312016/admin"
+	"go.mongodb.org/atlas-sdk/v20250312016/mockadmin"
 )
 
 func myFunctionCallingListClusters(clusterAPI admin.ClustersApi) (int, error) {
@@ -26,7 +26,7 @@ func TestListClusters(t *testing.T) {
 	// Program expectations.
 	list := &admin.PaginatedClusterDescription20240805{
 		TotalCount: admin.PtrInt(2),
-		Results: &[]admin.ClusterDescription20240805{
+		Results: []admin.ClusterDescription20240805{
 			{StateName: admin.PtrString("IDLE")},
 			{StateName: admin.PtrString("DELETING")},
 		},

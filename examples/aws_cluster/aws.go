@@ -10,8 +10,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312015/admin"
-	"go.mongodb.org/atlas-sdk/v20250312015/examples"
+	"go.mongodb.org/atlas-sdk/v20250312016/admin"
+	"go.mongodb.org/atlas-sdk/v20250312016/examples"
 )
 
 /*
@@ -104,7 +104,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Clou
 		Username:     username,
 		Password:     &password,
 		DatabaseName: databaseName,
-		Roles: &[]admin.DatabaseUserRole{
+		Roles: []admin.DatabaseUserRole{
 			{
 				DatabaseName:   databaseName,
 				CollectionName: &collectionName,

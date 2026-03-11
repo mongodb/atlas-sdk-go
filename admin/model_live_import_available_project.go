@@ -5,9 +5,9 @@ package admin
 // LiveImportAvailableProject struct for LiveImportAvailableProject
 type LiveImportAvailableProject struct {
 	// List of clusters that can be migrated to MongoDB Cloud.
-	Deployments *[]AvailableClustersDeployment `json:"deployments,omitempty"`
+	Deployments []AvailableClustersDeployment `json:"deployments"`
 	// Hostname of MongoDB Agent list that you configured to perform a migration.
-	MigrationHosts *[]string `json:"migrationHosts,omitempty"`
+	MigrationHosts []string `json:"migrationHosts"`
 	// Human-readable label that identifies this project.
 	// Read only field.
 	Name string `json:"name"`
@@ -20,8 +20,10 @@ type LiveImportAvailableProject struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLiveImportAvailableProject(name string, projectId string) *LiveImportAvailableProject {
+func NewLiveImportAvailableProject(deployments []AvailableClustersDeployment, migrationHosts []string, name string, projectId string) *LiveImportAvailableProject {
 	this := LiveImportAvailableProject{}
+	this.Deployments = deployments
+	this.MigrationHosts = migrationHosts
 	this.Name = name
 	this.ProjectId = projectId
 	return &this
@@ -35,70 +37,52 @@ func NewLiveImportAvailableProjectWithDefaults() *LiveImportAvailableProject {
 	return &this
 }
 
-// GetDeployments returns the Deployments field value if set, zero value otherwise
+// GetDeployments returns the Deployments field value
 func (o *LiveImportAvailableProject) GetDeployments() []AvailableClustersDeployment {
-	if o == nil || IsNil(o.Deployments) {
+	if o == nil {
 		var ret []AvailableClustersDeployment
 		return ret
 	}
-	return *o.Deployments
+
+	return o.Deployments
 }
 
-// GetDeploymentsOk returns a tuple with the Deployments field value if set, nil otherwise
+// GetDeploymentsOk returns a tuple with the Deployments field value
 // and a boolean to check if the value has been set.
 func (o *LiveImportAvailableProject) GetDeploymentsOk() (*[]AvailableClustersDeployment, bool) {
-	if o == nil || IsNil(o.Deployments) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Deployments, true
+	return &o.Deployments, true
 }
 
-// HasDeployments returns a boolean if a field has been set.
-func (o *LiveImportAvailableProject) HasDeployments() bool {
-	if o != nil && !IsNil(o.Deployments) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeployments gets a reference to the given []AvailableClustersDeployment and assigns it to the Deployments field.
+// SetDeployments sets field value
 func (o *LiveImportAvailableProject) SetDeployments(v []AvailableClustersDeployment) {
-	o.Deployments = &v
+	o.Deployments = v
 }
 
-// GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise
+// GetMigrationHosts returns the MigrationHosts field value
 func (o *LiveImportAvailableProject) GetMigrationHosts() []string {
-	if o == nil || IsNil(o.MigrationHosts) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.MigrationHosts
+
+	return o.MigrationHosts
 }
 
-// GetMigrationHostsOk returns a tuple with the MigrationHosts field value if set, nil otherwise
+// GetMigrationHostsOk returns a tuple with the MigrationHosts field value
 // and a boolean to check if the value has been set.
 func (o *LiveImportAvailableProject) GetMigrationHostsOk() (*[]string, bool) {
-	if o == nil || IsNil(o.MigrationHosts) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.MigrationHosts, true
+	return &o.MigrationHosts, true
 }
 
-// HasMigrationHosts returns a boolean if a field has been set.
-func (o *LiveImportAvailableProject) HasMigrationHosts() bool {
-	if o != nil && !IsNil(o.MigrationHosts) {
-		return true
-	}
-
-	return false
-}
-
-// SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
+// SetMigrationHosts sets field value
 func (o *LiveImportAvailableProject) SetMigrationHosts(v []string) {
-	o.MigrationHosts = &v
+	o.MigrationHosts = v
 }
 
 // GetName returns the Name field value

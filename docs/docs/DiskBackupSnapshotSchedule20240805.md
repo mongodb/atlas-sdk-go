@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AutoCopySettingsEnabled** | Pointer to **bool** | Flag that indicates whether the copy settings are automatically managed by MongoDB Cloud and sync to the cluster topology. | [optional] 
 **AutoExportEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud automatically exports Cloud Backup Snapshots to the Export Bucket. | [optional] 
 **ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster with the Snapshot you want to return. | [optional] [readonly] 
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster with the Snapshot you want to return. | [optional] [readonly] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 **ExtraRetentionSettings** | Pointer to [**[]ExtraRetentionSetting**](ExtraRetentionSetting.md) | List that contains a document for each extra retention setting item in the desired backup policy. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **NextSnapshot** | Pointer to **time.Time** | Date and time when MongoDB Cloud takes the next Snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
-**Policies** | Pointer to [**[]AdvancedDiskBackupSnapshotSchedulePolicy**](AdvancedDiskBackupSnapshotSchedulePolicy.md) | Rules set for this backup schedule. | [optional] 
+**Policies** | [**[]AdvancedDiskBackupSnapshotSchedulePolicy**](AdvancedDiskBackupSnapshotSchedulePolicy.md) | Rules set for this backup schedule. | 
 **ReferenceHourOfDay** | Pointer to **int** | Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the Snapshot. | [optional] 
 **ReferenceMinuteOfHour** | Pointer to **int** | Minute of the &#x60;referenceHourOfDay&#x60; that represents when MongoDB Cloud takes the Snapshot. | [optional] 
 **RestoreWindowDays** | Pointer to **int** | Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous Cloud Backups only. | [optional] 
@@ -28,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewDiskBackupSnapshotSchedule20240805
 
-`func NewDiskBackupSnapshotSchedule20240805() *DiskBackupSnapshotSchedule20240805`
+`func NewDiskBackupSnapshotSchedule20240805(policies []AdvancedDiskBackupSnapshotSchedulePolicy, ) *DiskBackupSnapshotSchedule20240805`
 
 NewDiskBackupSnapshotSchedule20240805 instantiates a new DiskBackupSnapshotSchedule20240805 object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +44,30 @@ NewDiskBackupSnapshotSchedule20240805WithDefaults instantiates a new DiskBackupS
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAutoCopySettingsEnabled
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetAutoCopySettingsEnabled() bool`
+
+GetAutoCopySettingsEnabled returns the AutoCopySettingsEnabled field if non-nil, zero value otherwise.
+
+### GetAutoCopySettingsEnabledOk
+
+`func (o *DiskBackupSnapshotSchedule20240805) GetAutoCopySettingsEnabledOk() (*bool, bool)`
+
+GetAutoCopySettingsEnabledOk returns a tuple with the AutoCopySettingsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoCopySettingsEnabled
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetAutoCopySettingsEnabled(v bool)`
+
+SetAutoCopySettingsEnabled sets AutoCopySettingsEnabled field to given value.
+
+### HasAutoCopySettingsEnabled
+
+`func (o *DiskBackupSnapshotSchedule20240805) HasAutoCopySettingsEnabled() bool`
+
+HasAutoCopySettingsEnabled returns a boolean if a field has been set.
 ### GetAutoExportEnabled
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetAutoExportEnabled() bool`
@@ -350,11 +375,6 @@ and a boolean to check if the value has been set.
 
 SetPolicies sets Policies field to given value.
 
-### HasPolicies
-
-`func (o *DiskBackupSnapshotSchedule20240805) HasPolicies() bool`
-
-HasPolicies returns a boolean if a field has been set.
 ### GetReferenceHourOfDay
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetReferenceHourOfDay() int`

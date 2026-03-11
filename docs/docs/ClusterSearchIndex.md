@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
 **Synonyms** | Pointer to [**[]SearchSynonymMappingDefinition**](SearchSynonymMappingDefinition.md) | Rule sets that map words to their synonyms in this index. | [optional] 
 **Fields** | Pointer to [**[]any**](any.md) | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
+**NestedRoot** | Pointer to **string** | Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested. | [optional] 
 
 ## Methods
 
@@ -359,6 +360,30 @@ SetFields sets Fields field to given value.
 `func (o *ClusterSearchIndex) HasFields() bool`
 
 HasFields returns a boolean if a field has been set.
+### GetNestedRoot
+
+`func (o *ClusterSearchIndex) GetNestedRoot() string`
+
+GetNestedRoot returns the NestedRoot field if non-nil, zero value otherwise.
+
+### GetNestedRootOk
+
+`func (o *ClusterSearchIndex) GetNestedRootOk() (*string, bool)`
+
+GetNestedRootOk returns a tuple with the NestedRoot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNestedRoot
+
+`func (o *ClusterSearchIndex) SetNestedRoot(v string)`
+
+SetNestedRoot sets NestedRoot field to given value.
+
+### HasNestedRoot
+
+`func (o *ClusterSearchIndex) HasNestedRoot() bool`
+
+HasNestedRoot returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

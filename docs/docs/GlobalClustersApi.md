@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    customZoneMappings := *admin.NewCustomZoneMappings() // CustomZoneMappings | 
+    customZoneMappings := *admin.NewCustomZoneMappings([]admin.ZoneMapping{*admin.NewZoneMapping("Location_example", "Zone_example")}) // CustomZoneMappings | 
 
     resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName, &customZoneMappings).Execute()
     if err != nil {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -282,7 +282,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {
@@ -369,7 +369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312015/admin"
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
 )
 
 func main() {

@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the request project. | [optional] [readonly] 
 **IdentifierId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the request process. | [optional] [readonly] 
-**RankedNamespaces** | Pointer to **[]string** | Ordered list of the hottest namespaces, highest value first. | [optional] [readonly] 
+**RankedNamespaces** | **[]string** | Ordered list of the hottest namespaces, highest value first. | [readonly] 
 
 ## Methods
 
 ### NewCollStatsRankedNamespaces
 
-`func NewCollStatsRankedNamespaces() *CollStatsRankedNamespaces`
+`func NewCollStatsRankedNamespaces(rankedNamespaces []string, ) *CollStatsRankedNamespaces`
 
 NewCollStatsRankedNamespaces instantiates a new CollStatsRankedNamespaces object
 This constructor will assign default values to properties that have it defined,
@@ -94,11 +94,6 @@ and a boolean to check if the value has been set.
 
 SetRankedNamespaces sets RankedNamespaces field to given value.
 
-### HasRankedNamespaces
-
-`func (o *CollStatsRankedNamespaces) HasRankedNamespaces() bool`
-
-HasRankedNamespaces returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

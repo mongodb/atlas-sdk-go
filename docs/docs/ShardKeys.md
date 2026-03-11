@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to [**[]any**](any.md) | List of fields to use for the shard key. | [optional] 
+**Key** | [**[]any**](any.md) | List of fields to use for the shard key. | 
 
 ## Methods
 
 ### NewShardKeys
 
-`func NewShardKeys() *ShardKeys`
+`func NewShardKeys(key []any, ) *ShardKeys`
 
 NewShardKeys instantiates a new ShardKeys object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
-### HasKey
-
-`func (o *ShardKeys) HasKey() bool`
-
-HasKey returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

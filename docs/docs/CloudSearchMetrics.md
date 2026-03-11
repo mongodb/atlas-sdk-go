@@ -5,17 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GroupId** | **string** | Unique 24-hexadecimal digit string that identifies the project. | [readonly] 
-**HardwareMetrics** | Pointer to [**[]FTSMetric**](FTSMetric.md) | List that contains all host compute, memory, and storage utilization dedicated to Atlas Search when MongoDB Atlas received this request. | [optional] [readonly] 
-**IndexMetrics** | Pointer to [**[]FTSMetric**](FTSMetric.md) | List that contains all performance and utilization measurements that Atlas Search index performed by the time MongoDB Atlas received this request. | [optional] [readonly] 
+**HardwareMetrics** | [**[]FTSMetric**](FTSMetric.md) | List that contains all host compute, memory, and storage utilization dedicated to Atlas Search when MongoDB Atlas received this request. | [readonly] 
+**IndexMetrics** | [**[]FTSMetric**](FTSMetric.md) | List that contains all performance and utilization measurements that Atlas Search index performed by the time MongoDB Atlas received this request. | [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **ProcessId** | **string** | Hostname and port that identifies the process. | [readonly] 
-**StatusMetrics** | Pointer to [**[]FTSMetric**](FTSMetric.md) | List that contains all available Atlas Search status metrics when MongoDB Atlas received this request. | [optional] [readonly] 
+**StatusMetrics** | [**[]FTSMetric**](FTSMetric.md) | List that contains all available Atlas Search status metrics when MongoDB Atlas received this request. | 
 
 ## Methods
 
 ### NewCloudSearchMetrics
 
-`func NewCloudSearchMetrics(groupId string, processId string, ) *CloudSearchMetrics`
+`func NewCloudSearchMetrics(groupId string, hardwareMetrics []FTSMetric, indexMetrics []FTSMetric, processId string, statusMetrics []FTSMetric, ) *CloudSearchMetrics`
 
 NewCloudSearchMetrics instantiates a new CloudSearchMetrics object
 This constructor will assign default values to properties that have it defined,
@@ -68,11 +68,6 @@ and a boolean to check if the value has been set.
 
 SetHardwareMetrics sets HardwareMetrics field to given value.
 
-### HasHardwareMetrics
-
-`func (o *CloudSearchMetrics) HasHardwareMetrics() bool`
-
-HasHardwareMetrics returns a boolean if a field has been set.
 ### GetIndexMetrics
 
 `func (o *CloudSearchMetrics) GetIndexMetrics() []FTSMetric`
@@ -92,11 +87,6 @@ and a boolean to check if the value has been set.
 
 SetIndexMetrics sets IndexMetrics field to given value.
 
-### HasIndexMetrics
-
-`func (o *CloudSearchMetrics) HasIndexMetrics() bool`
-
-HasIndexMetrics returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *CloudSearchMetrics) GetLinks() []Link`
@@ -159,11 +149,6 @@ and a boolean to check if the value has been set.
 
 SetStatusMetrics sets StatusMetrics field to given value.
 
-### HasStatusMetrics
-
-`func (o *CloudSearchMetrics) HasStatusMetrics() bool`
-
-HasStatusMetrics returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
