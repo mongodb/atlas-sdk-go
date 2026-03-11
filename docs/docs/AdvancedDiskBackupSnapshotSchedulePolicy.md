@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this backup policy. | [optional] 
-**PolicyItems** | Pointer to [**[]DiskBackupApiPolicyItem**](DiskBackupApiPolicyItem.md) | List that contains the specifications for one policy. | [optional] 
+**PolicyItems** | [**[]DiskBackupApiPolicyItem**](DiskBackupApiPolicyItem.md) | List that contains the specifications for one policy. | 
 
 ## Methods
 
 ### NewAdvancedDiskBackupSnapshotSchedulePolicy
 
-`func NewAdvancedDiskBackupSnapshotSchedulePolicy() *AdvancedDiskBackupSnapshotSchedulePolicy`
+`func NewAdvancedDiskBackupSnapshotSchedulePolicy(policyItems []DiskBackupApiPolicyItem, ) *AdvancedDiskBackupSnapshotSchedulePolicy`
 
 NewAdvancedDiskBackupSnapshotSchedulePolicy instantiates a new AdvancedDiskBackupSnapshotSchedulePolicy object
 This constructor will assign default values to properties that have it defined,
@@ -69,11 +69,6 @@ and a boolean to check if the value has been set.
 
 SetPolicyItems sets PolicyItems field to given value.
 
-### HasPolicyItems
-
-`func (o *AdvancedDiskBackupSnapshotSchedulePolicy) HasPolicyItems() bool`
-
-HasPolicyItems returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

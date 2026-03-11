@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | **string** | Human-readable label that identifies the privilege action. | 
-**Resources** | Pointer to [**[]DatabasePermittedNamespaceResource**](DatabasePermittedNamespaceResource.md) | List of resources on which you grant the action. | [optional] 
+**Resources** | [**[]DatabasePermittedNamespaceResource**](DatabasePermittedNamespaceResource.md) | List of resources on which you grant the action. | 
 
 ## Methods
 
 ### NewDatabasePrivilegeAction
 
-`func NewDatabasePrivilegeAction(action string, ) *DatabasePrivilegeAction`
+`func NewDatabasePrivilegeAction(action string, resources []DatabasePermittedNamespaceResource, ) *DatabasePrivilegeAction`
 
 NewDatabasePrivilegeAction instantiates a new DatabasePrivilegeAction object
 This constructor will assign default values to properties that have it defined,
@@ -64,11 +64,6 @@ and a boolean to check if the value has been set.
 
 SetResources sets Resources field to given value.
 
-### HasResources
-
-`func (o *DatabasePrivilegeAction) HasResources() bool`
-
-HasResources returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

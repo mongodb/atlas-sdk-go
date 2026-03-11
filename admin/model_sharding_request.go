@@ -9,16 +9,17 @@ type ShardingRequest struct {
 	CreateSupportingIndexes bool `json:"createSupportingIndexes"`
 	// List of shard configurations to shard destination collections. Atlas shards only those collections that you include in the sharding entries array.
 	// Write only field.
-	ShardingEntries *[]ShardEntry `json:"shardingEntries,omitempty"`
+	ShardingEntries []ShardEntry `json:"shardingEntries"`
 }
 
 // NewShardingRequest instantiates a new ShardingRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewShardingRequest(createSupportingIndexes bool) *ShardingRequest {
+func NewShardingRequest(createSupportingIndexes bool, shardingEntries []ShardEntry) *ShardingRequest {
 	this := ShardingRequest{}
 	this.CreateSupportingIndexes = createSupportingIndexes
+	this.ShardingEntries = shardingEntries
 	return &this
 }
 
@@ -54,35 +55,26 @@ func (o *ShardingRequest) SetCreateSupportingIndexes(v bool) {
 	o.CreateSupportingIndexes = v
 }
 
-// GetShardingEntries returns the ShardingEntries field value if set, zero value otherwise
+// GetShardingEntries returns the ShardingEntries field value
 func (o *ShardingRequest) GetShardingEntries() []ShardEntry {
-	if o == nil || IsNil(o.ShardingEntries) {
+	if o == nil {
 		var ret []ShardEntry
 		return ret
 	}
-	return *o.ShardingEntries
+
+	return o.ShardingEntries
 }
 
-// GetShardingEntriesOk returns a tuple with the ShardingEntries field value if set, nil otherwise
+// GetShardingEntriesOk returns a tuple with the ShardingEntries field value
 // and a boolean to check if the value has been set.
 func (o *ShardingRequest) GetShardingEntriesOk() (*[]ShardEntry, bool) {
-	if o == nil || IsNil(o.ShardingEntries) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.ShardingEntries, true
+	return &o.ShardingEntries, true
 }
 
-// HasShardingEntries returns a boolean if a field has been set.
-func (o *ShardingRequest) HasShardingEntries() bool {
-	if o != nil && !IsNil(o.ShardingEntries) {
-		return true
-	}
-
-	return false
-}
-
-// SetShardingEntries gets a reference to the given []ShardEntry and assigns it to the ShardingEntries field.
+// SetShardingEntries sets field value
 func (o *ShardingRequest) SetShardingEntries(v []ShardEntry) {
-	o.ShardingEntries = &v
+	o.ShardingEntries = v
 }

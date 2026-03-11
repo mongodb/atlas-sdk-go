@@ -139,7 +139,7 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
-    authFederationRoleMapping := *admin.NewAuthFederationRoleMapping("ExternalGroupName_example") // AuthFederationRoleMapping | 
+    authFederationRoleMapping := *admin.NewAuthFederationRoleMapping("ExternalGroupName_example", []admin.ConnectedOrgConfigRoleAssignment{*admin.NewConnectedOrgConfigRoleAssignment()}) // AuthFederationRoleMapping | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId, &authFederationRoleMapping).Execute()
     if err != nil {
@@ -1470,7 +1470,7 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     id := "32b6e34b3d91647abb20e7b8" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
-    authFederationRoleMapping := *admin.NewAuthFederationRoleMapping("ExternalGroupName_example") // AuthFederationRoleMapping | 
+    authFederationRoleMapping := *admin.NewAuthFederationRoleMapping("ExternalGroupName_example", []admin.ConnectedOrgConfigRoleAssignment{*admin.NewConnectedOrgConfigRoleAssignment()}) // AuthFederationRoleMapping | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId, &authFederationRoleMapping).Execute()
     if err != nil {

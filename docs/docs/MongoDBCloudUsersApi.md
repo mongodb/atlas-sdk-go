@@ -475,7 +475,7 @@ func main() {
         return
     }
 
-    cloudAppUser := *admin.NewCloudAppUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", "Username_example") // CloudAppUser | 
+    cloudAppUser := *admin.NewCloudAppUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", []admin.CloudAccessRoleAssignment{*admin.NewCloudAccessRoleAssignment()}, "Username_example") // CloudAppUser | 
 
     resp, r, err := sdk.MongoDBCloudUsersApi.CreateUser(context.Background(), &cloudAppUser).Execute()
     if err != nil {

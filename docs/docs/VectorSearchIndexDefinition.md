@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Fields** | Pointer to [**[]any**](any.md) | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
+**Fields** | [**[]any**](any.md) | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | 
+**NestedRoot** | Pointer to **string** | Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested. | [optional] 
 **NumPartitions** | Pointer to **int** | Number of index partitions. Allowed values are [1, 2, 4]. | [optional] [default to 1]
 **StoredSource** | Pointer to [**any**](interface{}.md) | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields. | [optional] 
 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewVectorSearchIndexDefinition
 
-`func NewVectorSearchIndexDefinition() *VectorSearchIndexDefinition`
+`func NewVectorSearchIndexDefinition(fields []any, ) *VectorSearchIndexDefinition`
 
 NewVectorSearchIndexDefinition instantiates a new VectorSearchIndexDefinition object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +47,30 @@ and a boolean to check if the value has been set.
 
 SetFields sets Fields field to given value.
 
-### HasFields
+### GetNestedRoot
 
-`func (o *VectorSearchIndexDefinition) HasFields() bool`
+`func (o *VectorSearchIndexDefinition) GetNestedRoot() string`
 
-HasFields returns a boolean if a field has been set.
+GetNestedRoot returns the NestedRoot field if non-nil, zero value otherwise.
+
+### GetNestedRootOk
+
+`func (o *VectorSearchIndexDefinition) GetNestedRootOk() (*string, bool)`
+
+GetNestedRootOk returns a tuple with the NestedRoot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNestedRoot
+
+`func (o *VectorSearchIndexDefinition) SetNestedRoot(v string)`
+
+SetNestedRoot sets NestedRoot field to given value.
+
+### HasNestedRoot
+
+`func (o *VectorSearchIndexDefinition) HasNestedRoot() bool`
+
+HasNestedRoot returns a boolean if a field has been set.
 ### GetNumPartitions
 
 `func (o *VectorSearchIndexDefinition) GetNumPartitions() int`

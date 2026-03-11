@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Label that identifies the type set name. Each &#x60;typeSets.name&#x60; must be unique within the same index definition. | 
-**Types** | Pointer to [**[]any**](any.md) | List of types associated with the type set. Each type definition must include a &#x60;type&#x60; field specifying the search field type (&#x60;autocomplete&#x60;, &#x60;boolean&#x60;, &#x60;date&#x60;, &#x60;geo&#x60;, &#x60;number&#x60;, &#x60;objectId&#x60;, &#x60;string&#x60;, &#x60;token&#x60;, or &#x60;uuid&#x60;) and may include additional configuration properties specific to that type. | [optional] 
+**Types** | [**[]any**](any.md) | List of types associated with the type set. Each type definition must include a &#x60;type&#x60; field specifying the search field type (&#x60;autocomplete&#x60;, &#x60;boolean&#x60;, &#x60;date&#x60;, &#x60;geo&#x60;, &#x60;number&#x60;, &#x60;objectId&#x60;, &#x60;string&#x60;, &#x60;token&#x60;, or &#x60;uuid&#x60;) and may include additional configuration properties specific to that type. | 
 
 ## Methods
 
 ### NewSearchTypeSets
 
-`func NewSearchTypeSets(name string, ) *SearchTypeSets`
+`func NewSearchTypeSets(name string, types []any, ) *SearchTypeSets`
 
 NewSearchTypeSets instantiates a new SearchTypeSets object
 This constructor will assign default values to properties that have it defined,
@@ -64,11 +64,6 @@ and a boolean to check if the value has been set.
 
 SetTypes sets Types field to given value.
 
-### HasTypes
-
-`func (o *SearchTypeSets) HasTypes() bool`
-
-HasTypes returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

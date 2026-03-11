@@ -134,10 +134,6 @@ type APIClient struct {
 
 	ServiceAccountsApi ServiceAccountsApi
 
-	SharedTierRestoreJobsApi SharedTierRestoreJobsApi
-
-	SharedTierSnapshotsApi SharedTierSnapshotsApi
-
 	StreamsApi StreamsApi
 
 	TeamsApi TeamsApi
@@ -211,8 +207,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)
 	c.ServerlessPrivateEndpointsApi = (*ServerlessPrivateEndpointsApiService)(&c.common)
 	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
-	c.SharedTierRestoreJobsApi = (*SharedTierRestoreJobsApiService)(&c.common)
-	c.SharedTierSnapshotsApi = (*SharedTierSnapshotsApiService)(&c.common)
 	c.StreamsApi = (*StreamsApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
 	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)

@@ -4,12 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LogTypes** | **[]string** | Array of log types exported by this integration. The specific log types available and maximum number of items depend on the integration type. See the integration-specific schema for details. | 
-**Type** | **string** | Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the log integration type. | 
-**BucketName** | Pointer to **string** | Human-readable label that identifies the S3 bucket name for storing log files. | [optional] 
-**IamRoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the AWS IAM role that MongoDB Cloud uses to access your S3 bucket. | [optional] 
+**LogTypes** | **[]string** | Array of log types exported by this integration. | 
+**Type** | **string** | Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. | 
+**BucketName** | Pointer to **string** | Name of the bucket to store log files. | [optional] 
+**IamRoleId** | Pointer to **string** | Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. | [optional] 
 **KmsKey** | Pointer to **string** | AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. | [optional] 
-**PrefixPath** | Pointer to **string** | S3 directory path prefix where the log files will be stored. MongoDB Cloud will add further sub-directories based on the log type. | [optional] 
+**PrefixPath** | Pointer to **string** | Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. | [optional] 
+**ApiKey** | Pointer to **string** | API key for authentication. | [optional] 
+**Region** | Pointer to **string** | Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. | [optional] 
+**RoleId** | Pointer to **string** | Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. | [optional] 
+**OtelEndpoint** | Pointer to **string** | OpenTelemetry collector endpoint URL. Must be HTTPS and not exceed 2048 characters. | [optional] 
+**OtelSuppliedHeaders** | Pointer to [**[]Header**](Header.md) | HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. | [optional] 
+**HecToken** | Pointer to **string** | HTTP Event Collector (HEC) token for authentication. | [optional] 
+**HecUrl** | Pointer to **string** | HTTP Event Collector (HEC) endpoint URL. | [optional] 
+**StorageAccountName** | Pointer to **string** | Storage account name where logs will be stored. | [optional] 
+**StorageContainerName** | Pointer to **string** | Storage container name for log files. | [optional] 
 
 ## Methods
 
@@ -164,6 +173,222 @@ SetPrefixPath sets PrefixPath field to given value.
 `func (o *LogIntegrationRequest) HasPrefixPath() bool`
 
 HasPrefixPath returns a boolean if a field has been set.
+### GetApiKey
+
+`func (o *LogIntegrationRequest) GetApiKey() string`
+
+GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
+
+### GetApiKeyOk
+
+`func (o *LogIntegrationRequest) GetApiKeyOk() (*string, bool)`
+
+GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiKey
+
+`func (o *LogIntegrationRequest) SetApiKey(v string)`
+
+SetApiKey sets ApiKey field to given value.
+
+### HasApiKey
+
+`func (o *LogIntegrationRequest) HasApiKey() bool`
+
+HasApiKey returns a boolean if a field has been set.
+### GetRegion
+
+`func (o *LogIntegrationRequest) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *LogIntegrationRequest) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *LogIntegrationRequest) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *LogIntegrationRequest) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
+### GetRoleId
+
+`func (o *LogIntegrationRequest) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *LogIntegrationRequest) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *LogIntegrationRequest) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *LogIntegrationRequest) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
+### GetOtelEndpoint
+
+`func (o *LogIntegrationRequest) GetOtelEndpoint() string`
+
+GetOtelEndpoint returns the OtelEndpoint field if non-nil, zero value otherwise.
+
+### GetOtelEndpointOk
+
+`func (o *LogIntegrationRequest) GetOtelEndpointOk() (*string, bool)`
+
+GetOtelEndpointOk returns a tuple with the OtelEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOtelEndpoint
+
+`func (o *LogIntegrationRequest) SetOtelEndpoint(v string)`
+
+SetOtelEndpoint sets OtelEndpoint field to given value.
+
+### HasOtelEndpoint
+
+`func (o *LogIntegrationRequest) HasOtelEndpoint() bool`
+
+HasOtelEndpoint returns a boolean if a field has been set.
+### GetOtelSuppliedHeaders
+
+`func (o *LogIntegrationRequest) GetOtelSuppliedHeaders() []Header`
+
+GetOtelSuppliedHeaders returns the OtelSuppliedHeaders field if non-nil, zero value otherwise.
+
+### GetOtelSuppliedHeadersOk
+
+`func (o *LogIntegrationRequest) GetOtelSuppliedHeadersOk() (*[]Header, bool)`
+
+GetOtelSuppliedHeadersOk returns a tuple with the OtelSuppliedHeaders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOtelSuppliedHeaders
+
+`func (o *LogIntegrationRequest) SetOtelSuppliedHeaders(v []Header)`
+
+SetOtelSuppliedHeaders sets OtelSuppliedHeaders field to given value.
+
+### HasOtelSuppliedHeaders
+
+`func (o *LogIntegrationRequest) HasOtelSuppliedHeaders() bool`
+
+HasOtelSuppliedHeaders returns a boolean if a field has been set.
+### GetHecToken
+
+`func (o *LogIntegrationRequest) GetHecToken() string`
+
+GetHecToken returns the HecToken field if non-nil, zero value otherwise.
+
+### GetHecTokenOk
+
+`func (o *LogIntegrationRequest) GetHecTokenOk() (*string, bool)`
+
+GetHecTokenOk returns a tuple with the HecToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHecToken
+
+`func (o *LogIntegrationRequest) SetHecToken(v string)`
+
+SetHecToken sets HecToken field to given value.
+
+### HasHecToken
+
+`func (o *LogIntegrationRequest) HasHecToken() bool`
+
+HasHecToken returns a boolean if a field has been set.
+### GetHecUrl
+
+`func (o *LogIntegrationRequest) GetHecUrl() string`
+
+GetHecUrl returns the HecUrl field if non-nil, zero value otherwise.
+
+### GetHecUrlOk
+
+`func (o *LogIntegrationRequest) GetHecUrlOk() (*string, bool)`
+
+GetHecUrlOk returns a tuple with the HecUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHecUrl
+
+`func (o *LogIntegrationRequest) SetHecUrl(v string)`
+
+SetHecUrl sets HecUrl field to given value.
+
+### HasHecUrl
+
+`func (o *LogIntegrationRequest) HasHecUrl() bool`
+
+HasHecUrl returns a boolean if a field has been set.
+### GetStorageAccountName
+
+`func (o *LogIntegrationRequest) GetStorageAccountName() string`
+
+GetStorageAccountName returns the StorageAccountName field if non-nil, zero value otherwise.
+
+### GetStorageAccountNameOk
+
+`func (o *LogIntegrationRequest) GetStorageAccountNameOk() (*string, bool)`
+
+GetStorageAccountNameOk returns a tuple with the StorageAccountName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorageAccountName
+
+`func (o *LogIntegrationRequest) SetStorageAccountName(v string)`
+
+SetStorageAccountName sets StorageAccountName field to given value.
+
+### HasStorageAccountName
+
+`func (o *LogIntegrationRequest) HasStorageAccountName() bool`
+
+HasStorageAccountName returns a boolean if a field has been set.
+### GetStorageContainerName
+
+`func (o *LogIntegrationRequest) GetStorageContainerName() string`
+
+GetStorageContainerName returns the StorageContainerName field if non-nil, zero value otherwise.
+
+### GetStorageContainerNameOk
+
+`func (o *LogIntegrationRequest) GetStorageContainerNameOk() (*string, bool)`
+
+GetStorageContainerNameOk returns a tuple with the StorageContainerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorageContainerName
+
+`func (o *LogIntegrationRequest) SetStorageContainerName(v string)`
+
+SetStorageContainerName sets StorageContainerName field to given value.
+
+### HasStorageContainerName
+
+`func (o *LogIntegrationRequest) HasStorageContainerName() bool`
+
+HasStorageContainerName returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
