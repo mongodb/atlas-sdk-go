@@ -82,7 +82,7 @@ func (c *Config) RevokeToken(ctx context.Context, t *auth.Token) error {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Set(userAgent, c.userAgent)
 
-	client := http.DefaultClient
+	client := auth.NewClient(ctx, nil)
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
