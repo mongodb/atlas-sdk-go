@@ -26,7 +26,7 @@ func TestListClusters(t *testing.T) {
 	// Program expectations.
 	list := &admin.PaginatedClusterDescription20240805{
 		TotalCount: admin.PtrInt(2),
-		Results: &[]admin.ClusterDescription20240805{
+		Results: []admin.ClusterDescription20240805{
 			{StateName: admin.PtrString("IDLE")},
 			{StateName: admin.PtrString("DELETING")},
 		},

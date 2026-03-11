@@ -61,7 +61,7 @@ func update(current *admin.CloudDatabaseUser) *admin.CloudDatabaseUser {
 	current.Username = "user"
 	current.Password = admin.PtrString("password")
 	current.Scopes = &[]admin.UserScope{}
-	current.Roles = &[]admin.DatabaseUserRole{*admin.NewDatabaseUserRole(AdminDB, "readWrite")}
+	current.Roles = []admin.DatabaseUserRole{*admin.NewDatabaseUserRole(AdminDB, "readWrite")}
 	current.DatabaseName = getAuthDB(current)
 	return current
 }

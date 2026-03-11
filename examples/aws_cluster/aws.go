@@ -104,7 +104,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Clou
 		Username:     username,
 		Password:     &password,
 		DatabaseName: databaseName,
-		Roles: &[]admin.DatabaseUserRole{
+		Roles: []admin.DatabaseUserRole{
 			{
 				DatabaseName:   databaseName,
 				CollectionName: &collectionName,
