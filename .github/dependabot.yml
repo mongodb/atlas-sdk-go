@@ -18,10 +18,6 @@ updates:
       day: sunday
     ignore:
       - dependency-name: "*"
-    groups:
-      gomod:
-        patterns:
-          - "*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
