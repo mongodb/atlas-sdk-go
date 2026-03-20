@@ -7,6 +7,10 @@ updates:
       day: sunday
     allow:
       - dependency-type: "all"
+    groups:
+      gomod:
+        patterns:
+          - "*"
   - package-ecosystem: gomod
     directory: "/examples"
     schedule:
@@ -19,8 +23,16 @@ updates:
     schedule:
       interval: monthly
       day: sunday
+    groups:
+      github-actions:
+        patterns:
+          - "*"
   - package-ecosystem: npm
     directory: "/tools"
     schedule:
       interval: weekly
       day: sunday
+    groups:
+      npm:
+        patterns:
+          - "*"
