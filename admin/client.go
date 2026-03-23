@@ -328,10 +328,10 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
-		log.Printf("\n%s\n", string(dump))
+		log.Printf("\n%s\n", string(dump)) //nolint:gosec // G706 - debug-only logging of raw HTTP traffic
 	}
 
-	resp, err := c.cfg.HTTPClient.Do(request)
+	resp, err := c.cfg.HTTPClient.Do(request) //nolint:gosec // G704 - HTTP SDK makes requests to user-configured servers
 	if err != nil {
 		return resp, err
 	}
@@ -341,7 +341,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 		if err1 != nil {
 			return resp, err
 		}
-		log.Printf("\n%s\n", string(dump))
+		log.Printf("\n%s\n", string(dump)) //nolint:gosec // G706 - debug-only logging of raw HTTP traffic
 	}
 	return resp, err
 }

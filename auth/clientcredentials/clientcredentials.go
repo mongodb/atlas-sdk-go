@@ -83,7 +83,7 @@ func (c *Config) RevokeToken(ctx context.Context, t *auth.Token) error {
 	req.Header.Set(userAgent, c.userAgent)
 
 	client := auth.NewClient(ctx, nil)
-	resp, err := client.Do(req)
+	resp, err := client.Do(req) //nolint:gosec // G704 - HTTP SDK makes requests to user-configured servers
 	if err != nil {
 		return err
 	}
