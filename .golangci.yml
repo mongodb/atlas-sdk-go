@@ -22,6 +22,10 @@ linters:
     - unparam
     - unused
   settings:
+    gosec:
+      excludes:
+        - G704 # SSRF via taint analysis — false positive for an HTTP SDK that makes requests to user-configured servers
+        - G706 # Log injection — debug-only logging of raw HTTP traffic
     gocritic:
       disabled-checks:
         - octalLiteral
