@@ -16,8 +16,12 @@ updates:
     schedule:
       interval: monthly
       day: sunday
-    ignore:
-      - dependency-name: "*"
+    allow:
+      - dependency-type: "all"
+    groups:
+      gomod:
+        patterns:
+          - "*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
