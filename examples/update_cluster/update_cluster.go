@@ -27,7 +27,7 @@ import (
  *
  * Considerations when using the PATCH endpoint:
  *
- *   -  The Atlas PATCH endpoint operates on `ROOT-LEVEL`` fields only.
+ *   -  The Atlas PATCH endpoint operates on `ROOT-LEVEL` fields only.
  *      To change a nested value such as `ReplicationSpecs`, you must send the
  *      ENTIRE `ReplicationSpecs` array, not just the element you changed.
  *      For any root-level field you do NOT want to change, simply omit it.
@@ -41,6 +41,11 @@ import (
  *      `ZoneId`, `StateName`, and `CreateDate`. The API does not reject them but
  *      ignores them. Passing them has no effect. It is best practice to copy only
  *      the fields you need.
+ *
+ *   -  `UpdateCluster` is ASYNCHRONOUS. The API returns immediately while the
+ *      cluster transitions through states (e.g., UPDATING, PAUSING). Do not
+ *      issue a second `UpdateCluster`` call until the cluster returns to IDLE.
+ *      Poll `GetCluster` and check `StateName` before proceeding.
  *
  * For mock-based tests demonstrating these scenarios, see examples/mock/update_cluster_test.go.
  */
@@ -100,7 +105,7 @@ func main() {
 	updatedCluster, resp, err := sdk.ClustersApi.UpdateCluster(ctx, projectID, clusterName, updatePayload).Execute()
 	examples.HandleErr(err, resp)
 
-	fmt.Printf("Cluster %q tier update initiated. Current state: %v\n",
+	fmt.Printf("Cluster %q tier update initiated. Current state: %s\n",
 		updatedCluster.GetName(), updatedCluster.GetStateName())
 
 	// -------------------------------------------------------------------
