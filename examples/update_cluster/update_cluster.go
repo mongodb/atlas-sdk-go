@@ -47,6 +47,10 @@ import (
  *      issue a second `UpdateCluster` call until the cluster returns to IDLE.
  *      Poll `GetCluster` and check `StateName` before proceeding.
  *
+ *   -  `UseBaseURL` must be called before `UseOAuthAuth` when constructing the
+ * 		client so that the OAuth token endpoint is set to the correct base URL.
+ * 		See the `admin.NewClient` call in main() for the correct ordering.
+ *
  * For mock-based tests demonstrating these scenarios, see examples/update_cluster/update_cluster_test.go.
  */
 func main() {
@@ -67,8 +71,8 @@ func main() {
 	}
 
 	sdk, err := admin.NewClient(
-		admin.UseOAuthAuth(ctx, clientID, clientSecret),
 		admin.UseBaseURL(url),
+		admin.UseOAuthAuth(ctx, clientID, clientSecret),
 		admin.UseDebug(false))
 	examples.HandleErr(err, nil)
 
