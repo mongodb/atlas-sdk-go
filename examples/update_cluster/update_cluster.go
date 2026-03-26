@@ -20,7 +20,7 @@ import (
  *   B. Pause / unpause a cluster.
  *
  * Required env variables:
- *   `MONGODB_ATLAS_PUBLIC_KEY`, `MONGODB_ATLAS_PRIVATE_KEY`
+ *   `MONGODB_ATLAS_CLIENT_ID`, `MONGODB_ATLAS_CLIENT_SECRET`
  *   `MONGODB_ATLAS_PROJECT_ID`, `MONGODB_ATLAS_CLUSTER_NAME`
  * Optional:
  *   `MONGODB_ATLAS_BASE_URL` - override the default Atlas API base URL
@@ -52,19 +52,22 @@ import (
 func main() {
 	ctx := context.Background()
 
-	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
 	url := os.Getenv("MONGODB_ATLAS_BASE_URL")
 
 	projectID := os.Getenv("MONGODB_ATLAS_PROJECT_ID")
 	clusterName := os.Getenv("MONGODB_ATLAS_CLUSTER_NAME")
 
+	if clientID == "" || clientSecret == "" {
+		log.Fatal("MONGODB_ATLAS_CLIENT_ID and MONGODB_ATLAS_CLIENT_SECRET must be set")
+	}
 	if projectID == "" || clusterName == "" {
 		log.Fatal("MONGODB_ATLAS_PROJECT_ID and MONGODB_ATLAS_CLUSTER_NAME must be set")
 	}
 
 	sdk, err := admin.NewClient(
-		admin.UseDigestAuth(apiKey, apiSecret),
+		admin.UseOAuthAuth(ctx, clientID, clientSecret),
 		admin.UseBaseURL(url),
 		admin.UseDebug(false))
 	examples.HandleErr(err, nil)

@@ -28,8 +28,8 @@ Example demonstrates how to safely update an Atlas cluster using minimal PATCH p
 covering tier resize and pause/unpause operations.
 
 ```bash
-export MONGODB_ATLAS_PUBLIC_KEY=<your-public-key>
-export MONGODB_ATLAS_PRIVATE_KEY=<your-private-key>
+export MONGODB_ATLAS_CLIENT_ID=<your-client-id>
+export MONGODB_ATLAS_CLIENT_SECRET=<your-client-secret>
 export MONGODB_ATLAS_PROJECT_ID=<your-project-id>
 export MONGODB_ATLAS_CLUSTER_NAME=<your-cluster-name>
 go run ./update_cluster/update_cluster.go
