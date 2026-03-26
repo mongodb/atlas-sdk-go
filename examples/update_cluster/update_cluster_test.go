@@ -1,4 +1,4 @@
-package examples
+package main
 
 import (
 	"context"
@@ -92,7 +92,13 @@ func TestChangeClusterTier(t *testing.T) {
 					return false
 				}
 				specs := *payload.ReplicationSpecs
+				if len(specs) == 0 || specs[0].RegionConfigs == nil {
+					return false
+				}
 				regions := *specs[0].RegionConfigs
+				if len(regions) == 0 || regions[0].ElectableSpecs == nil {
+					return false
+				}
 				return regions[0].ElectableSpecs.GetInstanceSize() == "M20"
 			}),
 		).
