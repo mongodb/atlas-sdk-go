@@ -47,7 +47,7 @@ import (
  *      issue a second `UpdateCluster`` call until the cluster returns to IDLE.
  *      Poll `GetCluster` and check `StateName` before proceeding.
  *
- * For mock-based tests demonstrating these scenarios, see examples/mock/update_cluster_test.go.
+ * For mock-based tests demonstrating these scenarios, see examples/update_cluster/update_cluster_test.go.
  */
 func main() {
 	ctx := context.Background()
