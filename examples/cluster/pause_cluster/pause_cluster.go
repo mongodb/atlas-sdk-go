@@ -23,8 +23,8 @@ import (
  * Optional:
  *   `MONGODB_ATLAS_BASE_URL` - override the default Atlas API base URL
  *
- * Note: `UseBaseURL` must be called before `UseOAuthAuth` when constructing the
- * client so that the OAuth token endpoint is set to the correct base URL.
+ * Note: You must call`UseBaseURL` before `UseOAuthAuth` when constructing the
+ * client to set the OAuth token endpoint to the correct base URL.
  * See the `admin.NewClient` call in main() for the correct ordering.
  *
  * Considerations:
