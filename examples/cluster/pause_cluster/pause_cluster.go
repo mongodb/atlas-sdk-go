@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"go.mongodb.org/atlas-sdk/v20250312016/admin"
 	"go.mongodb.org/atlas-sdk/v20250312016/examples"
@@ -59,10 +60,16 @@ func main() {
 		admin.UseDebug(false))
 	examples.HandleErr(err, nil)
 
-	// Run one scenario at a time. The cluster must be in IDLE state before
-	// calling either function (see async note above).
+	// Pause then unpause the cluster, with a short wait in between to
+	// illustrate that the cluster is doing work between the two operations.
+	// Note: in practice you should poll GetCluster until StateName == IDLE
+	// before issuing the next UpdateCluster call (see async note above).
 	pauseCluster(ctx, sdk, projectID, clusterName)
-	// unpauseCluster(ctx, sdk, projectID, clusterName)
+
+	fmt.Println("Waiting 5 seconds before unpausing...")
+	time.Sleep(5 * time.Second)
+
+	unpauseCluster(ctx, sdk, projectID, clusterName)
 }
 
 // pauseCluster pauses a cluster. The cluster must be in IDLE state before calling.
