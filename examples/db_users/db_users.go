@@ -6,8 +6,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312016/admin"
-	"go.mongodb.org/atlas-sdk/v20250312016/examples"
+	"go.mongodb.org/atlas-sdk/v20250312017/admin"
+	"go.mongodb.org/atlas-sdk/v20250312017/examples"
 )
 
 const (
