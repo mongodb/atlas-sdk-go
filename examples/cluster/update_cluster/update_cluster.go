@@ -14,10 +14,7 @@ import (
  * MongoDB Atlas Go SDK Example - Update an Existing Cluster
  *
  * This example demonstrates the recommended approach for updating an Atlas
- * cluster via the PATCH API. It covers the following scenarios:
- *
- *   A. Change the cluster tier (instance size) for all electable nodes.
- *   B. Pause / unpause a cluster.
+ * cluster tier (instance size) for all electable nodes through the PATCH API.
  *
  * Required env variables:
  *   `MONGODB_ATLAS_CLIENT_ID`, `MONGODB_ATLAS_CLIENT_SECRET`
@@ -46,12 +43,6 @@ import (
  *      cluster transitions through states (e.g., UPDATING, PAUSING). Do not
  *      issue a second `UpdateCluster` call until the cluster returns to IDLE.
  *      Poll `GetCluster` and check `StateName` before proceeding.
- *
- *   -  `UseBaseURL` must be called before `UseOAuthAuth` when constructing the
- * 		client so that the OAuth token endpoint is set to the correct base URL.
- * 		See the `admin.NewClient` call in main() for the correct ordering.
- *
- * For mock-based tests demonstrating these scenarios, see examples/update_cluster/update_cluster_test.go.
  */
 func main() {
 	ctx := context.Background()
@@ -76,16 +67,10 @@ func main() {
 		admin.UseDebug(false))
 	examples.HandleErr(err, nil)
 
-	// Run each scenario independently. Do not call both in sequence against a
-	// real cluster without polling for IDLE state in between (see async note above).
 	changeClusterTierExample(ctx, sdk, projectID, clusterName)
-	// pauseClusterExample(ctx, sdk, projectID, clusterName)
-	// unpauseClusterExample(ctx, sdk, projectID, clusterName)
 }
 
 // changeClusterTierExample resizes all electable nodes to a new instance size.
-//
-// Scenario A: Change the Cluster Tier (Instance Size)
 func changeClusterTierExample(ctx context.Context, sdk *admin.APIClient, projectID, clusterName string) {
 	// Step 1 - GET the current cluster configuration.
 	cluster, resp, err := sdk.ClustersApi.GetCluster(ctx, projectID, clusterName).Execute()
@@ -121,34 +106,4 @@ func changeClusterTierExample(ctx context.Context, sdk *admin.APIClient, project
 
 	fmt.Printf("Cluster %q tier update initiated. Current state: %s\n",
 		updatedCluster.GetName(), updatedCluster.GetStateName())
-}
-
-// pauseClusterExample pauses a cluster. The cluster must be in IDLE state before calling.
-//
-// Scenario B: Pause a Cluster
-func pauseClusterExample(ctx context.Context, sdk *admin.APIClient, projectID, clusterName string) {
-	pausePayload := &admin.ClusterDescription20240805{
-		Paused: admin.PtrBool(true),
-	}
-
-	pausedCluster, resp, err := sdk.ClustersApi.UpdateCluster(ctx, projectID, clusterName, pausePayload).Execute()
-	examples.HandleErr(err, resp)
-
-	fmt.Printf("Cluster %q pause initiated. Paused: %v\n",
-		pausedCluster.GetName(), pausedCluster.GetPaused())
-}
-
-// unpauseClusterExample unpauses a cluster. The cluster must be in IDLE state before calling.
-//
-// Scenario B: Unpause a Cluster
-func unpauseClusterExample(ctx context.Context, sdk *admin.APIClient, projectID, clusterName string) {
-	unpausePayload := &admin.ClusterDescription20240805{
-		Paused: admin.PtrBool(false),
-	}
-
-	unpausedCluster, resp, err := sdk.ClustersApi.UpdateCluster(ctx, projectID, clusterName, unpausePayload).Execute()
-	examples.HandleErr(err, resp)
-
-	fmt.Printf("Cluster %q unpause initiated. Paused: %v\n",
-		unpausedCluster.GetName(), unpausedCluster.GetPaused())
 }

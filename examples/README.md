@@ -8,7 +8,7 @@ https://docs.atlas.mongodb.com/configure-api-access.
 ```bash
 export MONGODB_ATLAS_PUBLIC_KEY=somekey 
 export MONGODB_ATLAS_PRIVATE_KEY=some-secret-key-for-gosdkapi
-go run ./aws_cluster/aws.go
+go run ./cluster/aws_cluster/aws.go
 ```
 
 ## Running Examples with Mocked Backend
@@ -24,20 +24,31 @@ go test ./mock/cluster_test.go
 
 ### Update Cluster Example
 
-Example demonstrates how to safely update an Atlas cluster using minimal PATCH payloads,
-covering tier resize and pause/unpause operations.
+This example demonstrates how to safely change an Atlas cluster tier using a minimal PATCH payload.
 
 ```bash
 export MONGODB_ATLAS_CLIENT_ID=<your-client-id>
 export MONGODB_ATLAS_CLIENT_SECRET=<your-client-secret>
 export MONGODB_ATLAS_PROJECT_ID=<your-project-id>
 export MONGODB_ATLAS_CLUSTER_NAME=<your-cluster-name>
-go run ./update_cluster/update_cluster.go
+go run ./cluster/update_cluster/update_cluster.go
+```
+
+### Pause Cluster Example
+
+This example demonstrates how to pause and unpause an Atlas cluster using a minimal PATCH payload.
+
+```bash
+export MONGODB_ATLAS_CLIENT_ID=<your-client-id>
+export MONGODB_ATLAS_CLIENT_SECRET=<your-client-secret>
+export MONGODB_ATLAS_PROJECT_ID=<your-project-id>
+export MONGODB_ATLAS_CLUSTER_NAME=<your-cluster-name>
+go run ./cluster/pause_cluster/pause_cluster.go
 ```
 
 ### Retry Example
 
-Example provides automatic retries for all HTTP 500, 429 HTTP status errors.
+This example provides automatic retries for all HTTP 500, 429 HTTP status errors.
 
 ```bash
 go run ./retry/retry.go
