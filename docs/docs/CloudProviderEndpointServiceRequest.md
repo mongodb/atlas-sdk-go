@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **PortMappingEnabled** | Pointer to **bool** | Flag that indicates whether this endpoint service uses PSC port-mapping. This is only applicable for GCP Private Endpoint Services. | [optional] [default to false]
 **ProviderName** | **string** | Human-readable label that identifies the cloud service provider for which you want to create the private endpoint service. | 
 **Region** | **string** | Cloud provider region in which you want to create the private endpoint service. Regions accepted as values differ for [Amazon Web Services](https://docs.atlas.mongodb.com/reference/amazon-aws/), [Google Cloud Platform](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Microsoft Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/). | 
+**SupportedRemoteRegions** | Pointer to **[]string** | List of regions that the endpoint service supports. Native cross region support is implemented for AWS only. | [optional] 
 
 ## Methods
 
@@ -89,6 +90,30 @@ and a boolean to check if the value has been set.
 
 SetRegion sets Region field to given value.
 
+### GetSupportedRemoteRegions
+
+`func (o *CloudProviderEndpointServiceRequest) GetSupportedRemoteRegions() []string`
+
+GetSupportedRemoteRegions returns the SupportedRemoteRegions field if non-nil, zero value otherwise.
+
+### GetSupportedRemoteRegionsOk
+
+`func (o *CloudProviderEndpointServiceRequest) GetSupportedRemoteRegionsOk() (*[]string, bool)`
+
+GetSupportedRemoteRegionsOk returns a tuple with the SupportedRemoteRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedRemoteRegions
+
+`func (o *CloudProviderEndpointServiceRequest) SetSupportedRemoteRegions(v []string)`
+
+SetSupportedRemoteRegions sets SupportedRemoteRegions field to given value.
+
+### HasSupportedRemoteRegions
+
+`func (o *CloudProviderEndpointServiceRequest) HasSupportedRemoteRegions() bool`
+
+HasSupportedRemoteRegions returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

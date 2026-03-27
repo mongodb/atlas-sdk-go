@@ -234,6 +234,31 @@ type PrivateEndpointServicesApi interface {
 
 	// Method available only for mocking purposes
 	ToggleRegionalEndpointModeExecute(r ToggleRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error)
+
+	/*
+		UpdatePrivateEndpointService Update One Private Endpoint Service for One Provider
+
+		Updates the specified private endpoint service for the project. The cloud service provider manages the private endpoint service that belongs to the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to update.
+		@param apiAtlasModifyEndpointServiceRequest Updates to apply to the private endpoint service.
+		@return UpdatePrivateEndpointServiceApiRequest
+	*/
+	UpdatePrivateEndpointService(ctx context.Context, groupId string, endpointServiceId string, apiAtlasModifyEndpointServiceRequest *ApiAtlasModifyEndpointServiceRequest) UpdatePrivateEndpointServiceApiRequest
+	/*
+		UpdatePrivateEndpointService Update One Private Endpoint Service for One Provider
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdatePrivateEndpointServiceApiParams - Parameters for the request
+		@return UpdatePrivateEndpointServiceApiRequest
+	*/
+	UpdatePrivateEndpointServiceWithParams(ctx context.Context, args *UpdatePrivateEndpointServiceApiParams) UpdatePrivateEndpointServiceApiRequest
+
+	// Method available only for mocking purposes
+	UpdatePrivateEndpointServiceExecute(r UpdatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error)
 }
 
 // PrivateEndpointServicesApiService PrivateEndpointServicesApi service
@@ -1343,6 +1368,138 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointModeExecute(r 
 	}
 	// body params
 	localVarPostBody = r.projectSettingItem
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdatePrivateEndpointServiceApiRequest struct {
+	ctx                                  context.Context
+	ApiService                           PrivateEndpointServicesApi
+	groupId                              string
+	endpointServiceId                    string
+	apiAtlasModifyEndpointServiceRequest *ApiAtlasModifyEndpointServiceRequest
+}
+
+type UpdatePrivateEndpointServiceApiParams struct {
+	GroupId                              string
+	EndpointServiceId                    string
+	ApiAtlasModifyEndpointServiceRequest *ApiAtlasModifyEndpointServiceRequest
+}
+
+func (a *PrivateEndpointServicesApiService) UpdatePrivateEndpointServiceWithParams(ctx context.Context, args *UpdatePrivateEndpointServiceApiParams) UpdatePrivateEndpointServiceApiRequest {
+	return UpdatePrivateEndpointServiceApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              args.GroupId,
+		endpointServiceId:                    args.EndpointServiceId,
+		apiAtlasModifyEndpointServiceRequest: args.ApiAtlasModifyEndpointServiceRequest,
+	}
+}
+
+func (r UpdatePrivateEndpointServiceApiRequest) Execute() (*EndpointService, *http.Response, error) {
+	return r.ApiService.UpdatePrivateEndpointServiceExecute(r)
+}
+
+/*
+UpdatePrivateEndpointService Update One Private Endpoint Service for One Provider
+
+Updates the specified private endpoint service for the project. The cloud service provider manages the private endpoint service that belongs to the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to update.
+	@return UpdatePrivateEndpointServiceApiRequest
+*/
+func (a *PrivateEndpointServicesApiService) UpdatePrivateEndpointService(ctx context.Context, groupId string, endpointServiceId string, apiAtlasModifyEndpointServiceRequest *ApiAtlasModifyEndpointServiceRequest) UpdatePrivateEndpointServiceApiRequest {
+	return UpdatePrivateEndpointServiceApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              groupId,
+		endpointServiceId:                    endpointServiceId,
+		apiAtlasModifyEndpointServiceRequest: apiAtlasModifyEndpointServiceRequest,
+	}
+}
+
+// UpdatePrivateEndpointServiceExecute executes the request
+//
+//	@return EndpointService
+func (a *PrivateEndpointServicesApiService) UpdatePrivateEndpointServiceExecute(r UpdatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *EndpointService
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.UpdatePrivateEndpointService")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService/{endpointServiceId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.endpointServiceId == "" {
+		return localVarReturnValue, nil, reportError("endpointServiceId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointServiceId"+"}", url.PathEscape(r.endpointServiceId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.apiAtlasModifyEndpointServiceRequest == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasModifyEndpointServiceRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.apiAtlasModifyEndpointServiceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

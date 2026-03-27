@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | State of the Private Endpoint Service connection when MongoDB Cloud received this request. | [optional] [readonly] 
 **EndpointServiceName** | Pointer to **string** | Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service. | [optional] [readonly] 
 **InterfaceEndpoints** | Pointer to **[]string** | List of strings that identify private endpoint interfaces applied to the specified project. | [optional] [readonly] 
+**SupportedRemoteRegions** | Pointer to **[]string** | List of regions that the endpoint service supports. Native cross region support is implemented for AWS only. | [optional] 
 **PrivateEndpoints** | Pointer to **[]string** | List of private endpoints assigned to this Azure Private Link Service. | [optional] [readonly] 
 **PrivateLinkServiceName** | Pointer to **string** | Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages. | [optional] [readonly] 
 **PrivateLinkServiceResourceId** | Pointer to **string** | Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet. | [optional] [readonly] 
@@ -200,6 +201,30 @@ SetInterfaceEndpoints sets InterfaceEndpoints field to given value.
 `func (o *EndpointService) HasInterfaceEndpoints() bool`
 
 HasInterfaceEndpoints returns a boolean if a field has been set.
+### GetSupportedRemoteRegions
+
+`func (o *EndpointService) GetSupportedRemoteRegions() []string`
+
+GetSupportedRemoteRegions returns the SupportedRemoteRegions field if non-nil, zero value otherwise.
+
+### GetSupportedRemoteRegionsOk
+
+`func (o *EndpointService) GetSupportedRemoteRegionsOk() (*[]string, bool)`
+
+GetSupportedRemoteRegionsOk returns a tuple with the SupportedRemoteRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedRemoteRegions
+
+`func (o *EndpointService) SetSupportedRemoteRegions(v []string)`
+
+SetSupportedRemoteRegions sets SupportedRemoteRegions field to given value.
+
+### HasSupportedRemoteRegions
+
+`func (o *EndpointService) HasSupportedRemoteRegions() bool`
+
+HasSupportedRemoteRegions returns a boolean if a field has been set.
 ### GetPrivateEndpoints
 
 `func (o *EndpointService) GetPrivateEndpoints() []string`

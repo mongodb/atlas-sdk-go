@@ -471,7 +471,7 @@ type StreamsApi interface {
 	ListActivePeeringConnectionsWithParams(ctx context.Context, args *ListActivePeeringConnectionsApiParams) ListActivePeeringConnectionsApiRequest
 
 	// Method available only for mocking purposes
-	ListActivePeeringConnectionsExecute(r ListActivePeeringConnectionsApiRequest) (*http.Response, error)
+	ListActivePeeringConnectionsExecute(r ListActivePeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)
 
 	/*
 		ListPrivateLinkConnections Return All Private Link Connections
@@ -564,7 +564,7 @@ type StreamsApi interface {
 	ListVpcPeeringConnectionsWithParams(ctx context.Context, args *ListVpcPeeringConnectionsApiParams) ListVpcPeeringConnectionsApiRequest
 
 	// Method available only for mocking purposes
-	ListVpcPeeringConnectionsExecute(r ListVpcPeeringConnectionsApiRequest) (*http.Response, error)
+	ListVpcPeeringConnectionsExecute(r ListVpcPeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)
 
 	/*
 		RejectVpcPeeringConnection Reject One Incoming VPC Peering Connection
@@ -3131,7 +3131,7 @@ func (r ListActivePeeringConnectionsApiRequest) PageNum(pageNum int) ListActiveP
 	return r
 }
 
-func (r ListActivePeeringConnectionsApiRequest) Execute() (*http.Response, error) {
+func (r ListActivePeeringConnectionsApiRequest) Execute() (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
 	return r.ApiService.ListActivePeeringConnectionsExecute(r)
 }
 
@@ -3153,21 +3153,24 @@ func (a *StreamsApiService) ListActivePeeringConnections(ctx context.Context, gr
 }
 
 // ListActivePeeringConnectionsExecute executes the request
-func (a *StreamsApiService) ListActivePeeringConnectionsExecute(r ListActivePeeringConnectionsApiRequest) (*http.Response, error) {
+//
+//	@return PaginatedApiStreamsVPCPeeringConnection
+func (a *StreamsApiService) ListActivePeeringConnectionsExecute(r ListActivePeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   any
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiStreamsVPCPeeringConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListActivePeeringConnections")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections"
 	if r.groupId == "" {
-		return nil, reportError("groupId is empty and must be specified")
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -3208,20 +3211,34 @@ func (a *StreamsApiService) ListActivePeeringConnectionsExecute(r ListActivePeer
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ListPrivateLinkConnectionsApiRequest struct {
@@ -3716,7 +3733,7 @@ func (r ListVpcPeeringConnectionsApiRequest) PageNum(pageNum int) ListVpcPeering
 	return r
 }
 
-func (r ListVpcPeeringConnectionsApiRequest) Execute() (*http.Response, error) {
+func (r ListVpcPeeringConnectionsApiRequest) Execute() (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
 	return r.ApiService.ListVpcPeeringConnectionsExecute(r)
 }
 
@@ -3738,21 +3755,24 @@ func (a *StreamsApiService) ListVpcPeeringConnections(ctx context.Context, group
 }
 
 // ListVpcPeeringConnectionsExecute executes the request
-func (a *StreamsApiService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringConnectionsApiRequest) (*http.Response, error) {
+//
+//	@return PaginatedApiStreamsVPCPeeringConnection
+func (a *StreamsApiService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   any
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiStreamsVPCPeeringConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListVpcPeeringConnections")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections"
 	if r.groupId == "" {
-		return nil, reportError("groupId is empty and must be specified")
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -3760,7 +3780,7 @@ func (a *StreamsApiService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringCon
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.requesterAccountId == nil {
-		return nil, reportError("requesterAccountId is required and must be specified")
+		return localVarReturnValue, nil, reportError("requesterAccountId is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "requesterAccountId", r.requesterAccountId, "")
@@ -3797,20 +3817,34 @@ func (a *StreamsApiService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringCon
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type RejectVpcPeeringConnectionApiRequest struct {

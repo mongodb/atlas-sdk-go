@@ -4,6 +4,8 @@ package admin
 
 // GroupSettings Collection of settings that configures the project.
 type GroupSettings struct {
+	// Flag that indicates whether the AI Cluster Assistant is enabled for the specified project.
+	IsClusterAiAssistantEnabled *bool `json:"isClusterAiAssistantEnabled,omitempty"`
 	// Flag that indicates whether to collect database-specific metrics for the specified project.
 	IsCollectDatabaseSpecificsStatisticsEnabled *bool `json:"isCollectDatabaseSpecificsStatisticsEnabled,omitempty"`
 	// Flag that indicates whether to enable the Data Explorer for the specified project.
@@ -14,6 +16,8 @@ type GroupSettings struct {
 	IsDataExplorerGenAISampleDocumentPassingEnabled *bool `json:"isDataExplorerGenAISampleDocumentPassingEnabled,omitempty"`
 	// Flag that indicates whether to enable extended storage sizes for the specified project.
 	IsExtendedStorageSizesEnabled *bool `json:"isExtendedStorageSizesEnabled,omitempty"`
+	// Flag that indicates whether to enable Native Reranking with Voyage AI models in the Aggregation Pipeline for the specified project.
+	IsNativeRerankingEnabled *bool `json:"isNativeRerankingEnabled,omitempty"`
 	// Flag that indicates whether to enable the Performance Advisor and Profiler for the specified project.
 	IsPerformanceAdvisorEnabled *bool `json:"isPerformanceAdvisorEnabled,omitempty"`
 	// Flag that indicates whether to enable the Real Time Performance Panel for the specified project.
@@ -41,6 +45,39 @@ func NewGroupSettingsWithDefaults() *GroupSettings {
 	var isDataExplorerGenAISampleDocumentPassingEnabled bool = false
 	this.IsDataExplorerGenAISampleDocumentPassingEnabled = &isDataExplorerGenAISampleDocumentPassingEnabled
 	return &this
+}
+
+// GetIsClusterAiAssistantEnabled returns the IsClusterAiAssistantEnabled field value if set, zero value otherwise
+func (o *GroupSettings) GetIsClusterAiAssistantEnabled() bool {
+	if o == nil || IsNil(o.IsClusterAiAssistantEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsClusterAiAssistantEnabled
+}
+
+// GetIsClusterAiAssistantEnabledOk returns a tuple with the IsClusterAiAssistantEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupSettings) GetIsClusterAiAssistantEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsClusterAiAssistantEnabled) {
+		return nil, false
+	}
+
+	return o.IsClusterAiAssistantEnabled, true
+}
+
+// HasIsClusterAiAssistantEnabled returns a boolean if a field has been set.
+func (o *GroupSettings) HasIsClusterAiAssistantEnabled() bool {
+	if o != nil && !IsNil(o.IsClusterAiAssistantEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsClusterAiAssistantEnabled gets a reference to the given bool and assigns it to the IsClusterAiAssistantEnabled field.
+func (o *GroupSettings) SetIsClusterAiAssistantEnabled(v bool) {
+	o.IsClusterAiAssistantEnabled = &v
 }
 
 // GetIsCollectDatabaseSpecificsStatisticsEnabled returns the IsCollectDatabaseSpecificsStatisticsEnabled field value if set, zero value otherwise
@@ -206,6 +243,39 @@ func (o *GroupSettings) HasIsExtendedStorageSizesEnabled() bool {
 // SetIsExtendedStorageSizesEnabled gets a reference to the given bool and assigns it to the IsExtendedStorageSizesEnabled field.
 func (o *GroupSettings) SetIsExtendedStorageSizesEnabled(v bool) {
 	o.IsExtendedStorageSizesEnabled = &v
+}
+
+// GetIsNativeRerankingEnabled returns the IsNativeRerankingEnabled field value if set, zero value otherwise
+func (o *GroupSettings) GetIsNativeRerankingEnabled() bool {
+	if o == nil || IsNil(o.IsNativeRerankingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsNativeRerankingEnabled
+}
+
+// GetIsNativeRerankingEnabledOk returns a tuple with the IsNativeRerankingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupSettings) GetIsNativeRerankingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsNativeRerankingEnabled) {
+		return nil, false
+	}
+
+	return o.IsNativeRerankingEnabled, true
+}
+
+// HasIsNativeRerankingEnabled returns a boolean if a field has been set.
+func (o *GroupSettings) HasIsNativeRerankingEnabled() bool {
+	if o != nil && !IsNil(o.IsNativeRerankingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsNativeRerankingEnabled gets a reference to the given bool and assigns it to the IsNativeRerankingEnabled field.
+func (o *GroupSettings) SetIsNativeRerankingEnabled(v bool) {
+	o.IsNativeRerankingEnabled = &v
 }
 
 // GetIsPerformanceAdvisorEnabled returns the IsPerformanceAdvisorEnabled field value if set, zero value otherwise

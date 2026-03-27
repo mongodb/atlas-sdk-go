@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312016/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312017/admin"
 
 	http "net/http"
 
@@ -1468,6 +1468,169 @@ func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call) 
 }
 
 func (_c *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call) RunAndReturn(run func(context.Context, *admin.ToggleRegionalEndpointModeApiParams) admin.ToggleRegionalEndpointModeApiRequest) *PrivateEndpointServicesApi_ToggleRegionalEndpointModeWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdatePrivateEndpointService provides a mock function with given fields: ctx, groupId, endpointServiceId, apiAtlasModifyEndpointServiceRequest
+func (_m *PrivateEndpointServicesApi) UpdatePrivateEndpointService(ctx context.Context, groupId string, endpointServiceId string, apiAtlasModifyEndpointServiceRequest *admin.ApiAtlasModifyEndpointServiceRequest) admin.UpdatePrivateEndpointServiceApiRequest {
+	ret := _m.Called(ctx, groupId, endpointServiceId, apiAtlasModifyEndpointServiceRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateEndpointService")
+	}
+
+	var r0 admin.UpdatePrivateEndpointServiceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ApiAtlasModifyEndpointServiceRequest) admin.UpdatePrivateEndpointServiceApiRequest); ok {
+		r0 = rf(ctx, groupId, endpointServiceId, apiAtlasModifyEndpointServiceRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdatePrivateEndpointServiceApiRequest)
+	}
+
+	return r0
+}
+
+// PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateEndpointService'
+type PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateEndpointService is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - endpointServiceId string
+//   - apiAtlasModifyEndpointServiceRequest *admin.ApiAtlasModifyEndpointServiceRequest
+func (_e *PrivateEndpointServicesApi_Expecter) UpdatePrivateEndpointService(ctx any, groupId any, endpointServiceId any, apiAtlasModifyEndpointServiceRequest any) *PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call {
+	return &PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call{Call: _e.mock.On("UpdatePrivateEndpointService", ctx, groupId, endpointServiceId, apiAtlasModifyEndpointServiceRequest)}
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call) Run(run func(ctx context.Context, groupId string, endpointServiceId string, apiAtlasModifyEndpointServiceRequest *admin.ApiAtlasModifyEndpointServiceRequest)) *PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ApiAtlasModifyEndpointServiceRequest))
+	})
+	return _c
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call) Return(_a0 admin.UpdatePrivateEndpointServiceApiRequest) *PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call) RunAndReturn(run func(context.Context, string, string, *admin.ApiAtlasModifyEndpointServiceRequest) admin.UpdatePrivateEndpointServiceApiRequest) *PrivateEndpointServicesApi_UpdatePrivateEndpointService_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdatePrivateEndpointServiceExecute provides a mock function with given fields: r
+func (_m *PrivateEndpointServicesApi) UpdatePrivateEndpointServiceExecute(r admin.UpdatePrivateEndpointServiceApiRequest) (*admin.EndpointService, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateEndpointServiceExecute")
+	}
+
+	var r0 *admin.EndpointService
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdatePrivateEndpointServiceApiRequest) (*admin.EndpointService, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdatePrivateEndpointServiceApiRequest) *admin.EndpointService); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.EndpointService)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdatePrivateEndpointServiceApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdatePrivateEndpointServiceApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateEndpointServiceExecute'
+type PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateEndpointServiceExecute is a helper method to define mock.On call
+//   - r admin.UpdatePrivateEndpointServiceApiRequest
+func (_e *PrivateEndpointServicesApi_Expecter) UpdatePrivateEndpointServiceExecute(r any) *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call {
+	return &PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call{Call: _e.mock.On("UpdatePrivateEndpointServiceExecute", r)}
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call) Run(run func(r admin.UpdatePrivateEndpointServiceApiRequest)) *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdatePrivateEndpointServiceApiRequest))
+	})
+	return _c
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call) Return(_a0 *admin.EndpointService, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call) RunAndReturn(run func(admin.UpdatePrivateEndpointServiceApiRequest) (*admin.EndpointService, *http.Response, error)) *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdatePrivateEndpointServiceWithParams provides a mock function with given fields: ctx, args
+func (_m *PrivateEndpointServicesApi) UpdatePrivateEndpointServiceWithParams(ctx context.Context, args *admin.UpdatePrivateEndpointServiceApiParams) admin.UpdatePrivateEndpointServiceApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateEndpointServiceWithParams")
+	}
+
+	var r0 admin.UpdatePrivateEndpointServiceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdatePrivateEndpointServiceApiParams) admin.UpdatePrivateEndpointServiceApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdatePrivateEndpointServiceApiRequest)
+	}
+
+	return r0
+}
+
+// PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateEndpointServiceWithParams'
+type PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateEndpointServiceWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdatePrivateEndpointServiceApiParams
+func (_e *PrivateEndpointServicesApi_Expecter) UpdatePrivateEndpointServiceWithParams(ctx any, args any) *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call {
+	return &PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call{Call: _e.mock.On("UpdatePrivateEndpointServiceWithParams", ctx, args)}
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdatePrivateEndpointServiceApiParams)) *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdatePrivateEndpointServiceApiParams))
+	})
+	return _c
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call) Return(_a0 admin.UpdatePrivateEndpointServiceApiRequest) *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdatePrivateEndpointServiceApiParams) admin.UpdatePrivateEndpointServiceApiRequest) *PrivateEndpointServicesApi_UpdatePrivateEndpointServiceWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

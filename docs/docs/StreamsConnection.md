@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | Unique identifier of the connection. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
 **Region** | Pointer to **string** | The connection&#39;s region. | [optional] 
@@ -23,6 +24,8 @@ Name | Type | Description | Notes
 **Provider** | Pointer to **string** | The Schema Registry provider. | [optional] 
 **SchemaRegistryAuthentication** | Pointer to [**SchemaRegistryAuthentication**](SchemaRegistryAuthentication.md) |  | [optional] 
 **SchemaRegistryUrls** | Pointer to **[]string** | List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. | [optional] 
+**Azure** | Pointer to [**AzureConnection**](AzureConnection.md) |  | [optional] 
+**PublicPrivateNetworking** | Pointer to [**StreamsPublicPrivateLinkNetworking**](StreamsPublicPrivateLinkNetworking.md) |  | [optional] 
 
 ## Methods
 
@@ -43,6 +46,30 @@ NewStreamsConnectionWithDefaults instantiates a new StreamsConnection object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetId
+
+`func (o *StreamsConnection) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *StreamsConnection) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *StreamsConnection) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *StreamsConnection) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsConnection) GetLinks() []Link`
@@ -499,6 +526,54 @@ SetSchemaRegistryUrls sets SchemaRegistryUrls field to given value.
 `func (o *StreamsConnection) HasSchemaRegistryUrls() bool`
 
 HasSchemaRegistryUrls returns a boolean if a field has been set.
+### GetAzure
+
+`func (o *StreamsConnection) GetAzure() AzureConnection`
+
+GetAzure returns the Azure field if non-nil, zero value otherwise.
+
+### GetAzureOk
+
+`func (o *StreamsConnection) GetAzureOk() (*AzureConnection, bool)`
+
+GetAzureOk returns a tuple with the Azure field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzure
+
+`func (o *StreamsConnection) SetAzure(v AzureConnection)`
+
+SetAzure sets Azure field to given value.
+
+### HasAzure
+
+`func (o *StreamsConnection) HasAzure() bool`
+
+HasAzure returns a boolean if a field has been set.
+### GetPublicPrivateNetworking
+
+`func (o *StreamsConnection) GetPublicPrivateNetworking() StreamsPublicPrivateLinkNetworking`
+
+GetPublicPrivateNetworking returns the PublicPrivateNetworking field if non-nil, zero value otherwise.
+
+### GetPublicPrivateNetworkingOk
+
+`func (o *StreamsConnection) GetPublicPrivateNetworkingOk() (*StreamsPublicPrivateLinkNetworking, bool)`
+
+GetPublicPrivateNetworkingOk returns a tuple with the PublicPrivateNetworking field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicPrivateNetworking
+
+`func (o *StreamsConnection) SetPublicPrivateNetworking(v StreamsPublicPrivateLinkNetworking)`
+
+SetPublicPrivateNetworking sets PublicPrivateNetworking field to given value.
+
+### HasPublicPrivateNetworking
+
+`func (o *StreamsConnection) HasPublicPrivateNetworking() bool`
+
+HasPublicPrivateNetworking returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

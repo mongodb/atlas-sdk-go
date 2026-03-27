@@ -13,6 +13,9 @@ type CloudProviderEndpointServiceRequest struct {
 	// Cloud provider region in which you want to create the private endpoint service. Regions accepted as values differ for [Amazon Web Services](https://docs.atlas.mongodb.com/reference/amazon-aws/), [Google Cloud Platform](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Microsoft Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
 	// Write only field.
 	Region string `json:"region"`
+	// List of regions that the endpoint service supports. Native cross region support is implemented for AWS only.
+	// Write only field.
+	SupportedRemoteRegions *[]string `json:"supportedRemoteRegions,omitempty"`
 }
 
 // NewCloudProviderEndpointServiceRequest instantiates a new CloudProviderEndpointServiceRequest object
@@ -117,4 +120,37 @@ func (o *CloudProviderEndpointServiceRequest) GetRegionOk() (*string, bool) {
 // SetRegion sets field value
 func (o *CloudProviderEndpointServiceRequest) SetRegion(v string) {
 	o.Region = v
+}
+
+// GetSupportedRemoteRegions returns the SupportedRemoteRegions field value if set, zero value otherwise
+func (o *CloudProviderEndpointServiceRequest) GetSupportedRemoteRegions() []string {
+	if o == nil || IsNil(o.SupportedRemoteRegions) {
+		var ret []string
+		return ret
+	}
+	return *o.SupportedRemoteRegions
+}
+
+// GetSupportedRemoteRegionsOk returns a tuple with the SupportedRemoteRegions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderEndpointServiceRequest) GetSupportedRemoteRegionsOk() (*[]string, bool) {
+	if o == nil || IsNil(o.SupportedRemoteRegions) {
+		return nil, false
+	}
+
+	return o.SupportedRemoteRegions, true
+}
+
+// HasSupportedRemoteRegions returns a boolean if a field has been set.
+func (o *CloudProviderEndpointServiceRequest) HasSupportedRemoteRegions() bool {
+	if o != nil && !IsNil(o.SupportedRemoteRegions) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportedRemoteRegions gets a reference to the given []string and assigns it to the SupportedRemoteRegions field.
+func (o *CloudProviderEndpointServiceRequest) SetSupportedRemoteRegions(v []string) {
+	o.SupportedRemoteRegions = &v
 }

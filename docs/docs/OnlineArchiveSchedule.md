@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Type of schedule. | 
-**EndHour** | Pointer to **int** | Hour of the day when the scheduled window to run one online archive ends. | [optional] 
-**EndMinute** | Pointer to **int** | Minute of the hour when the scheduled window to run one online archive ends. | [optional] 
-**StartHour** | Pointer to **int** | Hour of the day when the when the scheduled window to run one online archive starts. | [optional] 
-**StartMinute** | Pointer to **int** | Minute of the hour when the scheduled window to run one online archive starts. | [optional] 
+**EndHour** | Pointer to **int** | Hour of the day when the scheduled window to run one online archive ends. This field uses the UTC time zone. The window must have a duration of at least two hours. If the end time is before or equal to the start time, the window extends to the next day. | [optional] 
+**EndMinute** | Pointer to **int** | Minute of the hour when the scheduled window to run one online archive ends. This field uses the UTC time zone. The window must have a duration of at least two hours. If the end time is before or equal to the start time, the window extends to the next day. | [optional] 
+**StartHour** | Pointer to **int** | Hour of the day when the scheduled window to run one online archive starts. This field uses the UTC time zone. | [optional] 
+**StartMinute** | Pointer to **int** | Minute of the hour when the scheduled window to run one online archive starts. This field uses the UTC time zone. | [optional] 
 **DayOfWeek** | Pointer to **int** | Day of the week when the scheduled archive starts. The week starts with Monday (&#x60;1&#x60;) and ends with Sunday (&#x60;7&#x60;). | [optional] 
 **DayOfMonth** | Pointer to **int** | Day of the month when the scheduled archive starts. | [optional] 
 
