@@ -66,6 +66,8 @@ func main() {
 	// before issuing the next UpdateCluster call (see async note above).
 	pauseCluster(ctx, sdk, projectID, clusterName)
 
+	// To keep the cluster paused longer, comment out the unpauseCluster call
+	// and the lines below it.
 	fmt.Println("Waiting 5 seconds before unpausing...")
 	time.Sleep(5 * time.Second)
 
