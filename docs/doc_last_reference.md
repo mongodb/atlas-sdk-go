@@ -324,6 +324,7 @@ Class        | Method        | HTTP request  | Description   |
 *PrivateEndpointServicesApi* | [GetRegionalEndpointMode](./docs/PrivateEndpointServicesApi.md#getregionalendpointmode) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Return Regionalized Private Endpoint Status |
 *PrivateEndpointServicesApi* | [ListPrivateEndpointService](./docs/PrivateEndpointServicesApi.md#listprivateendpointservice) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService | Return All Private Endpoint Services for One Provider |
 *PrivateEndpointServicesApi* | [ToggleRegionalEndpointMode](./docs/PrivateEndpointServicesApi.md#toggleregionalendpointmode) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Toggle Regionalized Private Endpoint Status |
+*PrivateEndpointServicesApi* | [UpdatePrivateEndpointService](./docs/PrivateEndpointServicesApi.md#updateprivateendpointservice) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService/{endpointServiceId} | Update One Private Endpoint Service for One Provider |
 *ProgrammaticAPIKeysApi* | [AddGroupApiKey](./docs/ProgrammaticAPIKeysApi.md#addgroupapikey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Assign One Organization API Key to One Project |
 *ProgrammaticAPIKeysApi* | [CreateGroupApiKey](./docs/ProgrammaticAPIKeysApi.md#creategroupapikey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys | Create and Assign One Organization API Key to One Project |
 *ProgrammaticAPIKeysApi* | [CreateOrgAccessEntry](./docs/ProgrammaticAPIKeysApi.md#createorgaccessentry) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Create One Access List Entry for One Organization API Key |
@@ -501,6 +502,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiAtlasInvalidPolicy](./docs/ApiAtlasInvalidPolicy.md)
  - [ApiAtlasInvalidPolicyErrorDetail](./docs/ApiAtlasInvalidPolicyErrorDetail.md)
  - [ApiAtlasInvalidResourcePolicyCreateError](./docs/ApiAtlasInvalidResourcePolicyCreateError.md)
+ - [ApiAtlasModifyEndpointServiceRequest](./docs/ApiAtlasModifyEndpointServiceRequest.md)
  - [ApiAtlasNonCompliantResource](./docs/ApiAtlasNonCompliantResource.md)
  - [ApiAtlasPolicy](./docs/ApiAtlasPolicy.md)
  - [ApiAtlasPolicyCreate](./docs/ApiAtlasPolicyCreate.md)
@@ -532,6 +534,7 @@ Class        | Method        | HTTP request  | Description   |
  - [AutoExportPolicy](./docs/AutoExportPolicy.md)
  - [AvailableCloudProviderRegion](./docs/AvailableCloudProviderRegion.md)
  - [AvailableClustersDeployment](./docs/AvailableClustersDeployment.md)
+ - [AzureConnection](./docs/AzureConnection.md)
  - [AzureKeyVault](./docs/AzureKeyVault.md)
  - [BackupComplianceOnDemandPolicyItem](./docs/BackupComplianceOnDemandPolicyItem.md)
  - [BackupComplianceScheduledPolicyItem](./docs/BackupComplianceScheduledPolicyItem.md)
@@ -798,6 +801,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiStreamsPrivateLink](./docs/PaginatedApiStreamsPrivateLink.md)
  - [PaginatedApiStreamsStreamProcessorWithStats](./docs/PaginatedApiStreamsStreamProcessorWithStats.md)
  - [PaginatedApiStreamsTenant](./docs/PaginatedApiStreamsTenant.md)
+ - [PaginatedApiStreamsVPCPeeringConnection](./docs/PaginatedApiStreamsVPCPeeringConnection.md)
  - [PaginatedApiUserAccessListResponse](./docs/PaginatedApiUserAccessListResponse.md)
  - [PaginatedAtlasGroup](./docs/PaginatedAtlasGroup.md)
  - [PaginatedAvailableVersion](./docs/PaginatedAvailableVersion.md)
@@ -929,6 +933,8 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamsPrivateLinkConnection](./docs/StreamsPrivateLinkConnection.md)
  - [StreamsProcessor](./docs/StreamsProcessor.md)
  - [StreamsProcessorWithStats](./docs/StreamsProcessorWithStats.md)
+ - [StreamsPublicPrivateLinkNetworking](./docs/StreamsPublicPrivateLinkNetworking.md)
+ - [StreamsPublicPrivateLinkNetworkingAccess](./docs/StreamsPublicPrivateLinkNetworkingAccess.md)
  - [StreamsSampleConnections](./docs/StreamsSampleConnections.md)
  - [StreamsStartStreamProcessorWith](./docs/StreamsStartStreamProcessorWith.md)
  - [StreamsTenant](./docs/StreamsTenant.md)
@@ -960,6 +966,7 @@ Class        | Method        | HTTP request  | Description   |
  - [UserSecurity](./docs/UserSecurity.md)
  - [UserToDNMapping](./docs/UserToDNMapping.md)
  - [VPCPeeringActionChallenge](./docs/VPCPeeringActionChallenge.md)
+ - [VPCPeeringConnection](./docs/VPCPeeringConnection.md)
  - [VectorSearchHostStatusDetail](./docs/VectorSearchHostStatusDetail.md)
  - [VectorSearchIndexDefinition](./docs/VectorSearchIndexDefinition.md)
  - [VectorSearchIndexStatusDetail](./docs/VectorSearchIndexStatusDetail.md)

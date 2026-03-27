@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**IsClusterAiAssistantEnabled** | Pointer to **bool** | Flag that indicates whether the AI Cluster Assistant is enabled for the specified project. | [optional] 
 **IsCollectDatabaseSpecificsStatisticsEnabled** | Pointer to **bool** | Flag that indicates whether to collect database-specific metrics for the specified project. | [optional] 
 **IsDataExplorerEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Data Explorer for the specified project. | [optional] 
 **IsDataExplorerGenAIFeaturesEnabled** | Pointer to **bool** | Flag that indicates whether to enable the use of generative AI features which make requests to 3rd party services in Data Explorer for the specified project. | [optional] 
 **IsDataExplorerGenAISampleDocumentPassingEnabled** | Pointer to **bool** | Flag that indicates whether to enable the passing of sample field values with the use of generative AI features in the Data Explorer for the specified project. | [optional] [default to false]
 **IsExtendedStorageSizesEnabled** | Pointer to **bool** | Flag that indicates whether to enable extended storage sizes for the specified project. | [optional] 
+**IsNativeRerankingEnabled** | Pointer to **bool** | Flag that indicates whether to enable Native Reranking with Voyage AI models in the Aggregation Pipeline for the specified project. | [optional] 
 **IsPerformanceAdvisorEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Performance Advisor and Profiler for the specified project. | [optional] 
 **IsRealtimePerformancePanelEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Real Time Performance Panel for the specified project. | [optional] 
 **IsSchemaAdvisorEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Schema Advisor for the specified project. | [optional] 
@@ -32,6 +34,30 @@ NewGroupSettingsWithDefaults instantiates a new GroupSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetIsClusterAiAssistantEnabled
+
+`func (o *GroupSettings) GetIsClusterAiAssistantEnabled() bool`
+
+GetIsClusterAiAssistantEnabled returns the IsClusterAiAssistantEnabled field if non-nil, zero value otherwise.
+
+### GetIsClusterAiAssistantEnabledOk
+
+`func (o *GroupSettings) GetIsClusterAiAssistantEnabledOk() (*bool, bool)`
+
+GetIsClusterAiAssistantEnabledOk returns a tuple with the IsClusterAiAssistantEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsClusterAiAssistantEnabled
+
+`func (o *GroupSettings) SetIsClusterAiAssistantEnabled(v bool)`
+
+SetIsClusterAiAssistantEnabled sets IsClusterAiAssistantEnabled field to given value.
+
+### HasIsClusterAiAssistantEnabled
+
+`func (o *GroupSettings) HasIsClusterAiAssistantEnabled() bool`
+
+HasIsClusterAiAssistantEnabled returns a boolean if a field has been set.
 ### GetIsCollectDatabaseSpecificsStatisticsEnabled
 
 `func (o *GroupSettings) GetIsCollectDatabaseSpecificsStatisticsEnabled() bool`
@@ -152,6 +178,30 @@ SetIsExtendedStorageSizesEnabled sets IsExtendedStorageSizesEnabled field to giv
 `func (o *GroupSettings) HasIsExtendedStorageSizesEnabled() bool`
 
 HasIsExtendedStorageSizesEnabled returns a boolean if a field has been set.
+### GetIsNativeRerankingEnabled
+
+`func (o *GroupSettings) GetIsNativeRerankingEnabled() bool`
+
+GetIsNativeRerankingEnabled returns the IsNativeRerankingEnabled field if non-nil, zero value otherwise.
+
+### GetIsNativeRerankingEnabledOk
+
+`func (o *GroupSettings) GetIsNativeRerankingEnabledOk() (*bool, bool)`
+
+GetIsNativeRerankingEnabledOk returns a tuple with the IsNativeRerankingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsNativeRerankingEnabled
+
+`func (o *GroupSettings) SetIsNativeRerankingEnabled(v bool)`
+
+SetIsNativeRerankingEnabled sets IsNativeRerankingEnabled field to given value.
+
+### HasIsNativeRerankingEnabled
+
+`func (o *GroupSettings) HasIsNativeRerankingEnabled() bool`
+
+HasIsNativeRerankingEnabled returns a boolean if a field has been set.
 ### GetIsPerformanceAdvisorEnabled
 
 `func (o *GroupSettings) GetIsPerformanceAdvisorEnabled() bool`

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AvgWorkingMillis** | Pointer to **float64** | Average total time in milliseconds spent running queries with the given query shape. If the query resulted in &#x60;getMore&#x60; commands, this metric includes the time spent processing the &#x60;getMore&#x60; requests. This metric does not include time spent waiting for the client. | [optional] 
 **BytesRead** | Pointer to **float64** | The number of bytes read by the given query shape from the disk to the cache. | [optional] 
 **Command** | Pointer to **string** | The MongoDB command issued for this query shape. | [optional] 
+**CpuNanos** | Pointer to **float64** | Total CPU time in nanoseconds consumed by queries with the given query shape. Available for MDB 8.2 and higher. | [optional] 
 **DocsExamined** | Pointer to **float64** | Total number of documents examined by queries with the given query shape. | [optional] 
 **DocsExaminedRatio** | Pointer to **float64** | Ratio of documents examined to documents returned by queries with the given query shape. | [optional] 
 **DocsReturned** | Pointer to **float64** | Total number of documents returned by queries with the given query shape. | [optional] 
@@ -115,6 +116,30 @@ SetCommand sets Command field to given value.
 `func (o *QueryStatsSummary) HasCommand() bool`
 
 HasCommand returns a boolean if a field has been set.
+### GetCpuNanos
+
+`func (o *QueryStatsSummary) GetCpuNanos() float64`
+
+GetCpuNanos returns the CpuNanos field if non-nil, zero value otherwise.
+
+### GetCpuNanosOk
+
+`func (o *QueryStatsSummary) GetCpuNanosOk() (*float64, bool)`
+
+GetCpuNanosOk returns a tuple with the CpuNanos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuNanos
+
+`func (o *QueryStatsSummary) SetCpuNanos(v float64)`
+
+SetCpuNanos sets CpuNanos field to given value.
+
+### HasCpuNanos
+
+`func (o *QueryStatsSummary) HasCpuNanos() bool`
+
+HasCpuNanos returns a boolean if a field has been set.
 ### GetDocsExamined
 
 `func (o *QueryStatsSummary) GetDocsExamined() float64`

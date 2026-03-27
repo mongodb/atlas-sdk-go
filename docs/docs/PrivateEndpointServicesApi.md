@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**GetRegionalEndpointMode**](PrivateEndpointServicesApi.md#GetRegionalEndpointMode) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Return Regionalized Private Endpoint Status
 [**ListPrivateEndpointService**](PrivateEndpointServicesApi.md#ListPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService | Return All Private Endpoint Services for One Provider
 [**ToggleRegionalEndpointMode**](PrivateEndpointServicesApi.md#ToggleRegionalEndpointMode) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Toggle Regionalized Private Endpoint Status
+[**UpdatePrivateEndpointService**](PrivateEndpointServicesApi.md#UpdatePrivateEndpointService) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService/{endpointServiceId} | Update One Private Endpoint Service for One Provider
 
 
 
@@ -763,6 +764,91 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProjectSettingItem**](ProjectSettingItem.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePrivateEndpointService
+
+> EndpointService UpdatePrivateEndpointService(ctx, groupId, endpointServiceId, apiAtlasModifyEndpointServiceRequest ApiAtlasModifyEndpointServiceRequest).Execute()
+
+Update One Private Endpoint Service for One Provider
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    endpointServiceId := "endpointServiceId_example" // string | 
+    apiAtlasModifyEndpointServiceRequest := *admin.NewApiAtlasModifyEndpointServiceRequest("CloudProvider_example") // ApiAtlasModifyEndpointServiceRequest | 
+
+    resp, r, err := sdk.PrivateEndpointServicesApi.UpdatePrivateEndpointService(context.Background(), groupId, endpointServiceId, &apiAtlasModifyEndpointServiceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.UpdatePrivateEndpointService`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdatePrivateEndpointService`: EndpointService
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.UpdatePrivateEndpointService`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**endpointServiceId** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to update. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePrivateEndpointServiceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **apiAtlasModifyEndpointServiceRequest** | [**ApiAtlasModifyEndpointServiceRequest**](ApiAtlasModifyEndpointServiceRequest.md) | Updates to apply to the private endpoint service. | 
+
+### Return type
+
+[**EndpointService**](EndpointService.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
