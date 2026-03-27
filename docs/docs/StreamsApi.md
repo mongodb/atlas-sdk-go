@@ -55,7 +55,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -138,7 +138,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -220,7 +220,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -305,7 +305,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -390,7 +390,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -472,7 +472,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -553,7 +553,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -637,7 +637,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -721,7 +721,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -802,7 +802,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -883,7 +883,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -972,7 +972,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1061,7 +1061,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1145,7 +1145,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1228,7 +1228,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1314,7 +1314,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1400,7 +1400,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1489,7 +1489,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1559,7 +1559,7 @@ Name | Type | Description  | Notes
 
 ## ListActivePeeringConnections
 
-> ListActivePeeringConnections(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiStreamsVPCPeeringConnection ListActivePeeringConnections(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Active Incoming VPC Peering Connections
 
@@ -1574,7 +1574,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1591,7 +1591,7 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    r, err := sdk.StreamsApi.ListActivePeeringConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsApi.ListActivePeeringConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListActivePeeringConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1600,6 +1600,8 @@ func main() {
         }
         return
     }
+    // response from `ListActivePeeringConnections`: PaginatedApiStreamsVPCPeeringConnection
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListActivePeeringConnections`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1624,7 +1626,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**PaginatedApiStreamsVPCPeeringConnection**](PaginatedApiStreamsVPCPeeringConnection.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1656,7 +1658,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1740,7 +1742,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1827,7 +1829,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1896,7 +1898,7 @@ Name | Type | Description  | Notes
 
 ## ListVpcPeeringConnections
 
-> ListVpcPeeringConnections(ctx, groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiStreamsVPCPeeringConnection ListVpcPeeringConnections(ctx, groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All VPC Peering Connections
 
@@ -1911,7 +1913,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -1929,7 +1931,7 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    r, err := sdk.StreamsApi.ListVpcPeeringConnections(context.Background(), groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsApi.ListVpcPeeringConnections(context.Background(), groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListVpcPeeringConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1938,6 +1940,8 @@ func main() {
         }
         return
     }
+    // response from `ListVpcPeeringConnections`: PaginatedApiStreamsVPCPeeringConnection
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListVpcPeeringConnections`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1963,7 +1967,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**PaginatedApiStreamsVPCPeeringConnection**](PaginatedApiStreamsVPCPeeringConnection.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1995,7 +1999,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -2076,7 +2080,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -2160,7 +2164,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -2246,7 +2250,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -2330,7 +2334,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -2418,7 +2422,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -2506,7 +2510,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {
@@ -2591,7 +2595,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312016/admin"
+    "go.mongodb.org/atlas-sdk/v20250312017/admin"
 )
 
 func main() {

@@ -6,13 +6,13 @@ package admin
 type OnlineArchiveSchedule struct {
 	// Type of schedule.
 	Type string `json:"type"`
-	// Hour of the day when the scheduled window to run one online archive ends.
+	// Hour of the day when the scheduled window to run one online archive ends. This field uses the UTC time zone. The window must have a duration of at least two hours. If the end time is before or equal to the start time, the window extends to the next day.
 	EndHour *int `json:"endHour,omitempty"`
-	// Minute of the hour when the scheduled window to run one online archive ends.
+	// Minute of the hour when the scheduled window to run one online archive ends. This field uses the UTC time zone. The window must have a duration of at least two hours. If the end time is before or equal to the start time, the window extends to the next day.
 	EndMinute *int `json:"endMinute,omitempty"`
-	// Hour of the day when the when the scheduled window to run one online archive starts.
+	// Hour of the day when the scheduled window to run one online archive starts. This field uses the UTC time zone.
 	StartHour *int `json:"startHour,omitempty"`
-	// Minute of the hour when the scheduled window to run one online archive starts.
+	// Minute of the hour when the scheduled window to run one online archive starts. This field uses the UTC time zone.
 	StartMinute *int `json:"startMinute,omitempty"`
 	// Day of the week when the scheduled archive starts. The week starts with Monday (`1`) and ends with Sunday (`7`).
 	DayOfWeek *int `json:"dayOfWeek,omitempty"`

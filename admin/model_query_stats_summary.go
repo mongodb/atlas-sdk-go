@@ -10,6 +10,8 @@ type QueryStatsSummary struct {
 	BytesRead *float64 `json:"bytesRead,omitempty"`
 	// The MongoDB command issued for this query shape.
 	Command *string `json:"command,omitempty"`
+	// Total CPU time in nanoseconds consumed by queries with the given query shape. Available for MDB 8.2 and higher.
+	CpuNanos *float64 `json:"cpuNanos,omitempty"`
 	// Total number of documents examined by queries with the given query shape.
 	DocsExamined *float64 `json:"docsExamined,omitempty"`
 	// Ratio of documents examined to documents returned by queries with the given query shape.
@@ -158,6 +160,39 @@ func (o *QueryStatsSummary) HasCommand() bool {
 // SetCommand gets a reference to the given string and assigns it to the Command field.
 func (o *QueryStatsSummary) SetCommand(v string) {
 	o.Command = &v
+}
+
+// GetCpuNanos returns the CpuNanos field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetCpuNanos() float64 {
+	if o == nil || IsNil(o.CpuNanos) {
+		var ret float64
+		return ret
+	}
+	return *o.CpuNanos
+}
+
+// GetCpuNanosOk returns a tuple with the CpuNanos field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetCpuNanosOk() (*float64, bool) {
+	if o == nil || IsNil(o.CpuNanos) {
+		return nil, false
+	}
+
+	return o.CpuNanos, true
+}
+
+// HasCpuNanos returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasCpuNanos() bool {
+	if o != nil && !IsNil(o.CpuNanos) {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuNanos gets a reference to the given float64 and assigns it to the CpuNanos field.
+func (o *QueryStatsSummary) SetCpuNanos(v float64) {
+	o.CpuNanos = &v
 }
 
 // GetDocsExamined returns the DocsExamined field value if set, zero value otherwise

@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312016/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312017/admin"
 
 	http "net/http"
 
@@ -2943,33 +2943,42 @@ func (_c *StreamsApi_ListActivePeeringConnections_Call) RunAndReturn(run func(co
 }
 
 // ListActivePeeringConnectionsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) ListActivePeeringConnectionsExecute(r admin.ListActivePeeringConnectionsApiRequest) (*http.Response, error) {
+func (_m *StreamsApi) ListActivePeeringConnectionsExecute(r admin.ListActivePeeringConnectionsApiRequest) (*admin.PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListActivePeeringConnectionsExecute")
 	}
 
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.ListActivePeeringConnectionsApiRequest) (*http.Response, error)); ok {
+	var r0 *admin.PaginatedApiStreamsVPCPeeringConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListActivePeeringConnectionsApiRequest) (*admin.PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListActivePeeringConnectionsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListActivePeeringConnectionsApiRequest) *admin.PaginatedApiStreamsVPCPeeringConnection); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
+			r0 = ret.Get(0).(*admin.PaginatedApiStreamsVPCPeeringConnection)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListActivePeeringConnectionsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListActivePeeringConnectionsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
-		r1 = ret.Error(1)
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
 	}
 
-	return r0, r1
+	if rf, ok := ret.Get(2).(func(admin.ListActivePeeringConnectionsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
 }
 
 // StreamsApi_ListActivePeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListActivePeeringConnectionsExecute'
@@ -2990,12 +2999,12 @@ func (_c *StreamsApi_ListActivePeeringConnectionsExecute_Call) Run(run func(r ad
 	return _c
 }
 
-func (_c *StreamsApi_ListActivePeeringConnectionsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_ListActivePeeringConnectionsExecute_Call {
-	_c.Call.Return(_a0, _a1)
+func (_c *StreamsApi_ListActivePeeringConnectionsExecute_Call) Return(_a0 *admin.PaginatedApiStreamsVPCPeeringConnection, _a1 *http.Response, _a2 error) *StreamsApi_ListActivePeeringConnectionsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_ListActivePeeringConnectionsExecute_Call) RunAndReturn(run func(admin.ListActivePeeringConnectionsApiRequest) (*http.Response, error)) *StreamsApi_ListActivePeeringConnectionsExecute_Call {
+func (_c *StreamsApi_ListActivePeeringConnectionsExecute_Call) RunAndReturn(run func(admin.ListActivePeeringConnectionsApiRequest) (*admin.PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)) *StreamsApi_ListActivePeeringConnectionsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3579,33 +3588,42 @@ func (_c *StreamsApi_ListVpcPeeringConnections_Call) RunAndReturn(run func(conte
 }
 
 // ListVpcPeeringConnectionsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) ListVpcPeeringConnectionsExecute(r admin.ListVpcPeeringConnectionsApiRequest) (*http.Response, error) {
+func (_m *StreamsApi) ListVpcPeeringConnectionsExecute(r admin.ListVpcPeeringConnectionsApiRequest) (*admin.PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListVpcPeeringConnectionsExecute")
 	}
 
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.ListVpcPeeringConnectionsApiRequest) (*http.Response, error)); ok {
+	var r0 *admin.PaginatedApiStreamsVPCPeeringConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListVpcPeeringConnectionsApiRequest) (*admin.PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListVpcPeeringConnectionsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListVpcPeeringConnectionsApiRequest) *admin.PaginatedApiStreamsVPCPeeringConnection); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
+			r0 = ret.Get(0).(*admin.PaginatedApiStreamsVPCPeeringConnection)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListVpcPeeringConnectionsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListVpcPeeringConnectionsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
-		r1 = ret.Error(1)
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
 	}
 
-	return r0, r1
+	if rf, ok := ret.Get(2).(func(admin.ListVpcPeeringConnectionsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
 }
 
 // StreamsApi_ListVpcPeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListVpcPeeringConnectionsExecute'
@@ -3626,12 +3644,12 @@ func (_c *StreamsApi_ListVpcPeeringConnectionsExecute_Call) Run(run func(r admin
 	return _c
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnectionsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_ListVpcPeeringConnectionsExecute_Call {
-	_c.Call.Return(_a0, _a1)
+func (_c *StreamsApi_ListVpcPeeringConnectionsExecute_Call) Return(_a0 *admin.PaginatedApiStreamsVPCPeeringConnection, _a1 *http.Response, _a2 error) *StreamsApi_ListVpcPeeringConnectionsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_ListVpcPeeringConnectionsExecute_Call) RunAndReturn(run func(admin.ListVpcPeeringConnectionsApiRequest) (*http.Response, error)) *StreamsApi_ListVpcPeeringConnectionsExecute_Call {
+func (_c *StreamsApi_ListVpcPeeringConnectionsExecute_Call) RunAndReturn(run func(admin.ListVpcPeeringConnectionsApiRequest) (*admin.PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)) *StreamsApi_ListVpcPeeringConnectionsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

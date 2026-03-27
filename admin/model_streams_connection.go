@@ -4,6 +4,9 @@ package admin
 
 // StreamsConnection Settings that define a connection to an external data store.
 type StreamsConnection struct {
+	// Unique identifier of the connection.
+	// Read only field.
+	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -37,7 +40,9 @@ type StreamsConnection struct {
 	Provider                     *string                       `json:"provider,omitempty"`
 	SchemaRegistryAuthentication *SchemaRegistryAuthentication `json:"schemaRegistryAuthentication,omitempty"`
 	// List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port.
-	SchemaRegistryUrls *[]string `json:"schemaRegistryUrls,omitempty"`
+	SchemaRegistryUrls      *[]string                           `json:"schemaRegistryUrls,omitempty"`
+	Azure                   *AzureConnection                    `json:"azure,omitempty"`
+	PublicPrivateNetworking *StreamsPublicPrivateLinkNetworking `json:"publicPrivateNetworking,omitempty"`
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -55,6 +60,39 @@ func NewStreamsConnection() *StreamsConnection {
 func NewStreamsConnectionWithDefaults() *StreamsConnection {
 	this := StreamsConnection{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise
+func (o *StreamsConnection) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *StreamsConnection) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *StreamsConnection) SetId(v string) {
+	o.Id = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -682,4 +720,70 @@ func (o *StreamsConnection) HasSchemaRegistryUrls() bool {
 // SetSchemaRegistryUrls gets a reference to the given []string and assigns it to the SchemaRegistryUrls field.
 func (o *StreamsConnection) SetSchemaRegistryUrls(v []string) {
 	o.SchemaRegistryUrls = &v
+}
+
+// GetAzure returns the Azure field value if set, zero value otherwise
+func (o *StreamsConnection) GetAzure() AzureConnection {
+	if o == nil || IsNil(o.Azure) {
+		var ret AzureConnection
+		return ret
+	}
+	return *o.Azure
+}
+
+// GetAzureOk returns a tuple with the Azure field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetAzureOk() (*AzureConnection, bool) {
+	if o == nil || IsNil(o.Azure) {
+		return nil, false
+	}
+
+	return o.Azure, true
+}
+
+// HasAzure returns a boolean if a field has been set.
+func (o *StreamsConnection) HasAzure() bool {
+	if o != nil && !IsNil(o.Azure) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzure gets a reference to the given AzureConnection and assigns it to the Azure field.
+func (o *StreamsConnection) SetAzure(v AzureConnection) {
+	o.Azure = &v
+}
+
+// GetPublicPrivateNetworking returns the PublicPrivateNetworking field value if set, zero value otherwise
+func (o *StreamsConnection) GetPublicPrivateNetworking() StreamsPublicPrivateLinkNetworking {
+	if o == nil || IsNil(o.PublicPrivateNetworking) {
+		var ret StreamsPublicPrivateLinkNetworking
+		return ret
+	}
+	return *o.PublicPrivateNetworking
+}
+
+// GetPublicPrivateNetworkingOk returns a tuple with the PublicPrivateNetworking field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetPublicPrivateNetworkingOk() (*StreamsPublicPrivateLinkNetworking, bool) {
+	if o == nil || IsNil(o.PublicPrivateNetworking) {
+		return nil, false
+	}
+
+	return o.PublicPrivateNetworking, true
+}
+
+// HasPublicPrivateNetworking returns a boolean if a field has been set.
+func (o *StreamsConnection) HasPublicPrivateNetworking() bool {
+	if o != nil && !IsNil(o.PublicPrivateNetworking) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicPrivateNetworking gets a reference to the given StreamsPublicPrivateLinkNetworking and assigns it to the PublicPrivateNetworking field.
+func (o *StreamsConnection) SetPublicPrivateNetworking(v StreamsPublicPrivateLinkNetworking) {
+	o.PublicPrivateNetworking = &v
 }
