@@ -1,5 +1,5 @@
 SOURCE_FILES?=./...
-GOLANGCI_VERSION=v2.1.6 # Also update golangci-lint GH action in pr.yml when updating this version
+GOLANGCI_VERSION=v2.11.4 # Also update golangci-lint GH action in pr.yml when updating this version
 
 export GO111MODULE := on
 export PATH := ./bin:$(PATH)

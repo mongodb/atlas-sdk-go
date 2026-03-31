@@ -922,6 +922,7 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamsConnection](./docs/StreamsConnection.md)
  - [StreamsDLQ](./docs/StreamsDLQ.md)
  - [StreamsDataProcessRegion](./docs/StreamsDataProcessRegion.md)
+ - [StreamsGCPConnectionConfig](./docs/StreamsGCPConnectionConfig.md)
  - [StreamsKafkaAuthentication](./docs/StreamsKafkaAuthentication.md)
  - [StreamsKafkaNetworking](./docs/StreamsKafkaNetworking.md)
  - [StreamsKafkaNetworkingAccess](./docs/StreamsKafkaNetworkingAccess.md)

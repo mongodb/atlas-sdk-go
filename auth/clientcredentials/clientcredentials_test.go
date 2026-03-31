@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.mongodb.org/atlas-sdk/v20250312017/auth"
+	"go.mongodb.org/atlas-sdk/v20250312018/auth"
 )
 
 type roundTripperFunc func(*http.Request) (*http.Response, error)
@@ -23,6 +23,7 @@ func (f roundTripperFunc) RoundTrip(req *http.Request) (*http.Response, error) {
 // that simulates token revocation responses.
 func mockOAuthRevokeEndpoint(statusCode int) *httptest.Server {
 	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 1<<20) // 1 MB limit
 		if r.Method != http.MethodPost || r.FormValue("token") == "" {
 			http.Error(w, "invalid request", http.StatusBadRequest)
 			return

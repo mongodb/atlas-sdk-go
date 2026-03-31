@@ -97,5 +97,5 @@ func DoRequestWithClient(
 	client *http.Client,
 	req *http.Request) (*http.Response, error) {
 	req = req.WithContext(ctx)
-	return client.Do(req)
+	return client.Do(req) //nolint:gosec // G704 - HTTP SDK makes requests to user-configured servers
 }

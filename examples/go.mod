@@ -1,13 +1,13 @@
-module go.mongodb.org/atlas-sdk/v20250312017/examples
+module go.mongodb.org/atlas-sdk/v20250312018/examples
 
-go 1.24.0
+go 1.25.0
 
-replace go.mongodb.org/atlas-sdk/v20250312017 => ../
+replace go.mongodb.org/atlas-sdk/v20250312018 => ../
 
 require (
-	github.com/hashicorp/go-retryablehttp v0.7.7
+	github.com/hashicorp/go-retryablehttp v0.7.8
 	github.com/mongodb-forks/digest v1.1.0
-	go.mongodb.org/atlas-sdk/v20250312017 v20250312017.2.0
+	go.mongodb.org/atlas-sdk/v20250312018 v20250312018.2.0
 )
 
 require (
@@ -16,6 +16,6 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.3 // indirect
 	github.com/stretchr/testify v1.11.1
-	golang.org/x/oauth2 v0.35.0 // indirect
+	golang.org/x/oauth2 v0.36.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
