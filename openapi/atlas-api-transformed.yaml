@@ -12935,7 +12935,7 @@ components:
         command:
           description: The MongoDB command issued for this query shape.
           type: string
-        cpuNanos:
+        cpuTime:
           description: Total CPU time in nanoseconds consumed by queries with the given query shape. Available for MDB 8.2 and higher.
           format: double
           type: number
@@ -14303,6 +14303,8 @@ components:
           $ref: "#/components/schemas/AzureConnection"
         publicPrivateNetworking:
           $ref: "#/components/schemas/StreamsPublicPrivateLinkNetworking"
+        gcp:
+          $ref: "#/components/schemas/StreamsGCPConnectionConfig"
       type: object
       x-xgen-discriminator:
         propertyName: type
@@ -14323,6 +14325,10 @@ components:
               - clusterGroupId
               - clusterName
               - dbRoleToExecute
+          GCPPubSub:
+            properties:
+              - gcp
+              - publicPrivateNetworking
           Https:
             properties:
               - headers
@@ -14393,6 +14399,22 @@ components:
       required:
         - cloudProvider
         - region
+      type: object
+    StreamsGCPConnectionConfig:
+      description: GCP-specific configuration for the connection.
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        serviceAccountId:
+          description: Email address of the Google Cloud Platform (GCP) service account that Atlas Streams uses to connect to the GCP Pub/Sub resources.
+          type: string
       type: object
     StreamsKafkaAuthentication:
       description: User credentials required to connect to a Kafka Cluster. Includes the authentication type, as well as the parameters for that authentication mode.
@@ -18496,7 +18518,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 2e7a54baaed18112a8c435ff3d05a95e72404f10
+  x-xgen-sha: 0d0901afd26a01b01af4eb03713b8d830103ca16
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
