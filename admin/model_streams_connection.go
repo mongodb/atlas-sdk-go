@@ -43,6 +43,7 @@ type StreamsConnection struct {
 	SchemaRegistryUrls      *[]string                           `json:"schemaRegistryUrls,omitempty"`
 	Azure                   *AzureConnection                    `json:"azure,omitempty"`
 	PublicPrivateNetworking *StreamsPublicPrivateLinkNetworking `json:"publicPrivateNetworking,omitempty"`
+	Gcp                     *StreamsGCPConnectionConfig         `json:"gcp,omitempty"`
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -786,4 +787,37 @@ func (o *StreamsConnection) HasPublicPrivateNetworking() bool {
 // SetPublicPrivateNetworking gets a reference to the given StreamsPublicPrivateLinkNetworking and assigns it to the PublicPrivateNetworking field.
 func (o *StreamsConnection) SetPublicPrivateNetworking(v StreamsPublicPrivateLinkNetworking) {
 	o.PublicPrivateNetworking = &v
+}
+
+// GetGcp returns the Gcp field value if set, zero value otherwise
+func (o *StreamsConnection) GetGcp() StreamsGCPConnectionConfig {
+	if o == nil || IsNil(o.Gcp) {
+		var ret StreamsGCPConnectionConfig
+		return ret
+	}
+	return *o.Gcp
+}
+
+// GetGcpOk returns a tuple with the Gcp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetGcpOk() (*StreamsGCPConnectionConfig, bool) {
+	if o == nil || IsNil(o.Gcp) {
+		return nil, false
+	}
+
+	return o.Gcp, true
+}
+
+// HasGcp returns a boolean if a field has been set.
+func (o *StreamsConnection) HasGcp() bool {
+	if o != nil && !IsNil(o.Gcp) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcp gets a reference to the given StreamsGCPConnectionConfig and assigns it to the Gcp field.
+func (o *StreamsConnection) SetGcp(v StreamsGCPConnectionConfig) {
+	o.Gcp = &v
 }
