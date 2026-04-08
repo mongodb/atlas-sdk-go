@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"go.mongodb.org/atlas-sdk/v20250312018/admin"
+	"go.mongodb.org/atlas-sdk/v20250312018/auth"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
 )
@@ -35,12 +36,15 @@ func main() {
 	// This example relies on https://pkg.go.dev/github.com/hashicorp/go-retryablehttp
 	// retryablehttp performs automatic retries under certain conditions.
 	// Mainly, if an error is returned by the client (connection errors etc),
-	/// or if a 500-range response is received, then a retry is invoked.
+	// or if a 500-range response is received, then a retry is invoked.
 	retryClient := retryablehttp.NewClient()
 	retryClient.RetryMax = 3
 
+	// Inject the retryable client into the context so that UseOAuthAuth wraps it
+	// rather than http.DefaultClient. This ensures retries apply to all API requests.
+	ctx = context.WithValue(ctx, auth.HTTPClient, retryClient.StandardClient())
+
 	sdk, err := admin.NewClient(
-		admin.UseHTTPClient(retryClient.StandardClient()),
 		admin.UseBaseURL(url),
 		admin.UseOAuthAuth(ctx, clientID, clientSecret),
 		admin.UseDebug(false))
