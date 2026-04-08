@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
 	"os"
 
 	"context"
@@ -11,7 +10,6 @@ import (
 	"go.mongodb.org/atlas-sdk/v20250312018/admin"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
-	"github.com/mongodb-forks/digest"
 )
 
 /*
@@ -24,10 +22,14 @@ import (
 func main() {
 	ctx := context.Background()
 	// Values provided as part of env variables
-	// See: https://www.mongodb.com/docs/atlas/app-services/authentication/api-key/
-	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+	// See: https://www.mongodb.com/docs/atlas/app-services/service-accounts/
+	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
 	url := os.Getenv("MONGODB_ATLAS_BASE_URL")
+
+	if clientID == "" || clientSecret == "" {
+		log.Fatal("MONGODB_ATLAS_CLIENT_ID and MONGODB_ATLAS_CLIENT_SECRET must be set")
+	}
 
 	// Using custom client
 	// This example relies on https://pkg.go.dev/github.com/hashicorp/go-retryablehttp
@@ -37,13 +39,10 @@ func main() {
 	retryClient := retryablehttp.NewClient()
 	retryClient.RetryMax = 3
 
-	retryableClient, err := newRetryableClient(retryClient, apiKey, apiSecret)
-	if err != nil {
-		log.Fatal("Cannot instantiate client")
-	}
 	sdk, err := admin.NewClient(
-		admin.UseHTTPClient(retryableClient),
+		admin.UseHTTPClient(retryClient.StandardClient()),
 		admin.UseBaseURL(url),
+		admin.UseOAuthAuth(ctx, clientID, clientSecret),
 		admin.UseDebug(false))
 	if err != nil {
 		log.Fatal(err)
@@ -62,10 +61,4 @@ func main() {
 
 	fmt.Println("Total Projects", projects.GetTotalCount())
 
-}
-
-func newRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) (*http.Client, error) {
-	var transport http.RoundTripper = &retryablehttp.RoundTripper{Client: retryClient}
-	digestRetryAbleTransport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret, transport)
-	return digestRetryAbleTransport.Client()
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"context"
@@ -22,14 +23,18 @@ const (
 func main() {
 	ctx := context.Background()
 	// Values provided as part of env variables
-	// See: https://www.mongodb.com/docs/atlas/app-services/authentication/api-key/
-	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+	// See: https://www.mongodb.com/docs/atlas/app-services/service-accounts/
+	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
 	url := os.Getenv("MONGODB_ATLAS_BASE_URL")
 
+	if clientID == "" || clientSecret == "" {
+		log.Fatal("MONGODB_ATLAS_CLIENT_ID and MONGODB_ATLAS_CLIENT_SECRET must be set")
+	}
+
 	sdk, err := admin.NewClient(
-		admin.UseDigestAuth(apiKey, apiSecret),
 		admin.UseBaseURL(url),
+		admin.UseOAuthAuth(ctx, clientID, clientSecret),
 		admin.UseDebug(true))
 	examples.HandleErr(err, nil)
 

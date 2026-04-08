@@ -17,17 +17,17 @@ func main() {
 	if url == "" {
 		url = "https://cloud.mongodb.com"
 	}
-	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
 	orgID := os.Getenv("MONGODB_ATLAS_ORG_ID")
 	invoiceID := os.Getenv("MONGODB_ATLAS_INVOICE_ID")
-	if apiKey == "" || apiSecret == "" || orgID == "" || invoiceID == "" {
-		log.Fatal("Environment variables MONGODB_ATLAS_PUBLIC_KEY, MONGODB_ATLAS_PRIVATE_KEY, MONGODB_ATLAS_ORG_ID and MONGODB_ATLAS_INVOICE_ID are required")
+	if clientID == "" || clientSecret == "" || orgID == "" || invoiceID == "" {
+		log.Fatal("Environment variables MONGODB_ATLAS_CLIENT_ID, MONGODB_ATLAS_CLIENT_SECRET, MONGODB_ATLAS_ORG_ID and MONGODB_ATLAS_INVOICE_ID are required")
 	}
 
 	sdk, err := admin.NewClient(
-		admin.UseDigestAuth(apiKey, apiSecret),
-		admin.UseBaseURL(url))
+		admin.UseBaseURL(url),
+		admin.UseOAuthAuth(ctx, clientID, clientSecret))
 	examples.HandleErr(err, nil)
 
 	invoice, response, err := sdk.InvoicesApi.GetInvoice(ctx, orgID, invoiceID).Execute()
