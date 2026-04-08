@@ -26,7 +26,7 @@ import (
 func main() {
 	ctx := context.Background()
 	// Values provided as part of env variables
-	// See: https://www.mongodb.com/docs/atlas/app-services/service-accounts/
+	// See: https://www.mongodb.com/docs/cloud-manager/tutorial/manage-programmatic-api-keys/
 	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
 	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
 	url := os.Getenv("MONGODB_ATLAS_BASE_URL")
