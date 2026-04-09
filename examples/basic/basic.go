@@ -16,15 +16,19 @@ import (
  */
 func main() {
 	ctx := context.Background()
-	// Values provided as part of env variables
-	// See: https://www.mongodb.com/docs/atlas/app-services/authentication/api-key/
-	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+	// Service Accounts are the recommended way to authenticate programmatically with the MongoDB Atlas API
+	// See: https://www.mongodb.com/docs/cloud-manager/tutorial/manage-programmatic-api-keys/
+	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
 	url := os.Getenv("MONGODB_ATLAS_BASE_URL")
 
+	if clientID == "" || clientSecret == "" {
+		log.Fatal("MONGODB_ATLAS_CLIENT_ID and MONGODB_ATLAS_CLIENT_SECRET must be set")
+	}
+
 	sdk, err := admin.NewClient(
-		admin.UseDigestAuth(apiKey, apiSecret),
-		admin.UseBaseURL(url))
+		admin.UseBaseURL(url),
+		admin.UseOAuthAuth(ctx, clientID, clientSecret))
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project

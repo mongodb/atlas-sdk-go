@@ -3,15 +3,14 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
 	"os"
 
 	"context"
 
 	"go.mongodb.org/atlas-sdk/v20250312018/admin"
+	"go.mongodb.org/atlas-sdk/v20250312018/auth"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
-	"github.com/mongodb-forks/digest"
 )
 
 /*
@@ -23,27 +22,31 @@ import (
  */
 func main() {
 	ctx := context.Background()
-	// Values provided as part of env variables
-	// See: https://www.mongodb.com/docs/atlas/app-services/authentication/api-key/
-	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+	// Service Accounts are the recommended way to authenticate programmatically with the MongoDB Atlas API
+	// See: See: https://www.mongodb.com/docs/cloud-manager/tutorial/manage-programmatic-api-keys/
+	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
 	url := os.Getenv("MONGODB_ATLAS_BASE_URL")
+
+	if clientID == "" || clientSecret == "" {
+		log.Fatal("MONGODB_ATLAS_CLIENT_ID and MONGODB_ATLAS_CLIENT_SECRET must be set")
+	}
 
 	// Using custom client
 	// This example relies on https://pkg.go.dev/github.com/hashicorp/go-retryablehttp
 	// retryablehttp performs automatic retries under certain conditions.
 	// Mainly, if an error is returned by the client (connection errors etc),
-	/// or if a 500-range response is received, then a retry is invoked.
+	// or if a 500-range response is received, then a retry is invoked.
 	retryClient := retryablehttp.NewClient()
 	retryClient.RetryMax = 3
 
-	retryableClient, err := newRetryableClient(retryClient, apiKey, apiSecret)
-	if err != nil {
-		log.Fatal("Cannot instantiate client")
-	}
+	// Inject the retryable client into the context so that UseOAuthAuth wraps it
+	// rather than http.DefaultClient. This ensures retries apply to all API requests.
+	ctx = context.WithValue(ctx, auth.HTTPClient, retryClient.StandardClient())
+
 	sdk, err := admin.NewClient(
-		admin.UseHTTPClient(retryableClient),
 		admin.UseBaseURL(url),
+		admin.UseOAuthAuth(ctx, clientID, clientSecret),
 		admin.UseDebug(false))
 	if err != nil {
 		log.Fatal(err)
@@ -62,10 +65,4 @@ func main() {
 
 	fmt.Println("Total Projects", projects.GetTotalCount())
 
-}
-
-func newRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) (*http.Client, error) {
-	var transport http.RoundTripper = &retryablehttp.RoundTripper{Client: retryClient}
-	digestRetryAbleTransport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret, transport)
-	return digestRetryAbleTransport.Client()
 }
