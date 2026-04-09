@@ -22,7 +22,7 @@ const (
  */
 func main() {
 	ctx := context.Background()
-	// Service Account is the recommended way to authenticate programmatically with the MongoDB Atlas API
+	// Service Accounts are the recommended way to authenticate programmatically with the MongoDB Atlas API
 	// See: https://www.mongodb.com/docs/cloud-manager/tutorial/manage-programmatic-api-keys/
 	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
 	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
