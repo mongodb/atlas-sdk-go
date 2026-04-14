@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -1812,41 +1813,44 @@ func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiReq
 }
 
 type ListGroupUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	groupId             string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	flattenTeams        *bool
-	includeOrgUsers     *bool
-	orgMembershipStatus *string
-	username            *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	groupId               string
+	includeCount          *bool
+	itemsPerPage          *int
+	pageNum               *int
+	flattenTeams          *bool
+	includeOrgUsers       *bool
+	orgMembershipStatus   *string
+	username              *string
+	orgMembershipStatuses *[]string
 }
 
 type ListGroupUsersApiParams struct {
-	GroupId             string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	FlattenTeams        *bool
-	IncludeOrgUsers     *bool
-	OrgMembershipStatus *string
-	Username            *string
+	GroupId               string
+	IncludeCount          *bool
+	ItemsPerPage          *int
+	PageNum               *int
+	FlattenTeams          *bool
+	IncludeOrgUsers       *bool
+	OrgMembershipStatus   *string
+	Username              *string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) ListGroupUsersWithParams(ctx context.Context, args *ListGroupUsersApiParams) ListGroupUsersApiRequest {
 	return ListGroupUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             args.GroupId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		flattenTeams:        args.FlattenTeams,
-		includeOrgUsers:     args.IncludeOrgUsers,
-		orgMembershipStatus: args.OrgMembershipStatus,
-		username:            args.Username,
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               args.GroupId,
+		includeCount:          args.IncludeCount,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		flattenTeams:          args.FlattenTeams,
+		includeOrgUsers:       args.IncludeOrgUsers,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		username:              args.Username,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
 }
 
@@ -1880,7 +1884,8 @@ func (r ListGroupUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListGrou
 	return r
 }
 
-// Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListGroupUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListGroupUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
 	return r
@@ -1889,6 +1894,12 @@ func (r ListGroupUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string
 // Email address to filter users by. Not supported in deprecated versions.
 func (r ListGroupUsersApiRequest) Username(username string) ListGroupUsersApiRequest {
 	r.username = &username
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListGroupUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListGroupUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -1984,6 +1995,13 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 	if r.username != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
 	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2034,35 +2052,38 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 }
 
 type ListOrgUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	orgId               string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	username            *string
-	orgMembershipStatus *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	orgId                 string
+	includeCount          *bool
+	itemsPerPage          *int
+	pageNum               *int
+	username              *string
+	orgMembershipStatus   *string
+	orgMembershipStatuses *[]string
 }
 
 type ListOrgUsersApiParams struct {
-	OrgId               string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	Username            *string
-	OrgMembershipStatus *string
+	OrgId                 string
+	IncludeCount          *bool
+	ItemsPerPage          *int
+	PageNum               *int
+	Username              *string
+	OrgMembershipStatus   *string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) ListOrgUsersWithParams(ctx context.Context, args *ListOrgUsersApiParams) ListOrgUsersApiRequest {
 	return ListOrgUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		orgId:               args.OrgId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		username:            args.Username,
-		orgMembershipStatus: args.OrgMembershipStatus,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		includeCount:          args.IncludeCount,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		username:              args.Username,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
 }
 
@@ -2090,9 +2111,16 @@ func (r ListOrgUsersApiRequest) Username(username string) ListOrgUsersApiRequest
 	return r
 }
 
-// Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListOrgUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListOrgUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListOrgUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListOrgUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -2174,6 +2202,13 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiReque
 	if r.orgMembershipStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
 	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2224,38 +2259,41 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiReque
 }
 
 type ListTeamUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	orgId               string
-	teamId              string
-	itemsPerPage        *int
-	pageNum             *int
-	username            *string
-	orgMembershipStatus *string
-	userId              *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	orgId                 string
+	teamId                string
+	itemsPerPage          *int
+	pageNum               *int
+	username              *string
+	orgMembershipStatus   *string
+	userId                *string
+	orgMembershipStatuses *[]string
 }
 
 type ListTeamUsersApiParams struct {
-	OrgId               string
-	TeamId              string
-	ItemsPerPage        *int
-	PageNum             *int
-	Username            *string
-	OrgMembershipStatus *string
-	UserId              *string
+	OrgId                 string
+	TeamId                string
+	ItemsPerPage          *int
+	PageNum               *int
+	Username              *string
+	OrgMembershipStatus   *string
+	UserId                *string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
 	return ListTeamUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		orgId:               args.OrgId,
-		teamId:              args.TeamId,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		username:            args.Username,
-		orgMembershipStatus: args.OrgMembershipStatus,
-		userId:              args.UserId,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		teamId:                args.TeamId,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		username:              args.Username,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		userId:                args.UserId,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
 }
 
@@ -2277,7 +2315,8 @@ func (r ListTeamUsersApiRequest) Username(username string) ListTeamUsersApiReque
 	return r
 }
 
-// Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListTeamUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListTeamUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
 	return r
@@ -2286,6 +2325,12 @@ func (r ListTeamUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string)
 // Unique 24-hexadecimal digit string to filter users by. Not supported in deprecated versions.
 func (r ListTeamUsersApiRequest) UserId(userId string) ListTeamUsersApiRequest {
 	r.userId = &userId
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListTeamUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListTeamUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -2368,6 +2413,13 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 	}
 	if r.userId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "userId", r.userId, "")
+	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
