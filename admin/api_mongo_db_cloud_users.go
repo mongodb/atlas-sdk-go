@@ -1884,7 +1884,7 @@ func (r ListGroupUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListGrou
 	return r
 }
 
-// Deprecated. Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
 // Deprecated
 func (r ListGroupUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListGroupUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
@@ -2111,7 +2111,7 @@ func (r ListOrgUsersApiRequest) Username(username string) ListOrgUsersApiRequest
 	return r
 }
 
-// Deprecated. Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
 // Deprecated
 func (r ListOrgUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListOrgUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
@@ -2315,7 +2315,7 @@ func (r ListTeamUsersApiRequest) Username(username string) ListTeamUsersApiReque
 	return r
 }
 
-// Deprecated. Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
 // Deprecated
 func (r ListTeamUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListTeamUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
