@@ -15,6 +15,8 @@ type StreamsProcessor struct {
 	Options *StreamsOptions `json:"options,omitempty"`
 	// Stream aggregation pipeline you want to apply to your streaming data.
 	Pipeline *[]any `json:"pipeline,omitempty"`
+	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
+	Tier *string `json:"tier,omitempty"`
 }
 
 // NewStreamsProcessor instantiates a new StreamsProcessor object
@@ -197,4 +199,37 @@ func (o *StreamsProcessor) HasPipeline() bool {
 // SetPipeline gets a reference to the given []any and assigns it to the Pipeline field.
 func (o *StreamsProcessor) SetPipeline(v []any) {
 	o.Pipeline = &v
+}
+
+// GetTier returns the Tier field value if set, zero value otherwise
+func (o *StreamsProcessor) GetTier() string {
+	if o == nil || IsNil(o.Tier) {
+		var ret string
+		return ret
+	}
+	return *o.Tier
+}
+
+// GetTierOk returns a tuple with the Tier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsProcessor) GetTierOk() (*string, bool) {
+	if o == nil || IsNil(o.Tier) {
+		return nil, false
+	}
+
+	return o.Tier, true
+}
+
+// HasTier returns a boolean if a field has been set.
+func (o *StreamsProcessor) HasTier() bool {
+	if o != nil && !IsNil(o.Tier) {
+		return true
+	}
+
+	return false
+}
+
+// SetTier gets a reference to the given string and assigns it to the Tier field.
+func (o *StreamsProcessor) SetTier(v string) {
+	o.Tier = &v
 }
