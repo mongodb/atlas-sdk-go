@@ -8,6 +8,8 @@ type GroupUpdate struct {
 	Name *string `json:"name,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project.
 	Tags *[]ResourceTag `json:"tags,omitempty"`
+	// Flag that indicates whether the project can automatically create default alerts.
+	WithDefaultAlertsSettings *bool `json:"withDefaultAlertsSettings,omitempty"`
 }
 
 // NewGroupUpdate instantiates a new GroupUpdate object
@@ -91,4 +93,37 @@ func (o *GroupUpdate) HasTags() bool {
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *GroupUpdate) SetTags(v []ResourceTag) {
 	o.Tags = &v
+}
+
+// GetWithDefaultAlertsSettings returns the WithDefaultAlertsSettings field value if set, zero value otherwise
+func (o *GroupUpdate) GetWithDefaultAlertsSettings() bool {
+	if o == nil || IsNil(o.WithDefaultAlertsSettings) {
+		var ret bool
+		return ret
+	}
+	return *o.WithDefaultAlertsSettings
+}
+
+// GetWithDefaultAlertsSettingsOk returns a tuple with the WithDefaultAlertsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupUpdate) GetWithDefaultAlertsSettingsOk() (*bool, bool) {
+	if o == nil || IsNil(o.WithDefaultAlertsSettings) {
+		return nil, false
+	}
+
+	return o.WithDefaultAlertsSettings, true
+}
+
+// HasWithDefaultAlertsSettings returns a boolean if a field has been set.
+func (o *GroupUpdate) HasWithDefaultAlertsSettings() bool {
+	if o != nil && !IsNil(o.WithDefaultAlertsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetWithDefaultAlertsSettings gets a reference to the given bool and assigns it to the WithDefaultAlertsSettings field.
+func (o *GroupUpdate) SetWithDefaultAlertsSettings(v bool) {
+	o.WithDefaultAlertsSettings = &v
 }
