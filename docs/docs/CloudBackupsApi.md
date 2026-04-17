@@ -2242,7 +2242,7 @@ Name | Type | Description  | Notes
 
 ## ListBackupSnapshots
 
-> PaginatedCloudBackupReplicaSet ListBackupSnapshots(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedCloudBackupReplicaSet ListBackupSnapshots(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).PointInTimeUtcSeconds(pointInTimeUtcSeconds).OplogTs(oplogTs).OplogInc(oplogInc).Execute()
 
 Return All Replica Set Cloud Backups
 
@@ -2275,8 +2275,11 @@ func main() {
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
+    pointInTimeUtcSeconds := int64(789) // int64 |  (optional)
+    oplogTs := int64(789) // int64 |  (optional)
+    oplogInc := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.CloudBackupsApi.ListBackupSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.CloudBackupsApi.ListBackupSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).PointInTimeUtcSeconds(pointInTimeUtcSeconds).OplogTs(oplogTs).OplogInc(oplogInc).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupSnapshots`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -2311,6 +2314,9 @@ Name | Type | Description  | Notes
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+ **pointInTimeUtcSeconds** | **int64** | Desired point in time, expressed as the number of seconds that have elapsed since the UNIX epoch. If specified, returns the closest snapshot created before that point in time. Mutually exclusive with &#x60;oplogTs&#x60; and &#x60;oplogInc&#x60;. | 
+ **oplogTs** | **int64** | Oplog timestamp that represents the desired point in time. This is the first part of an Oplog timestamp. Must be used with &#x60;oplogInc&#x60;. Mutually exclusive with &#x60;pointInTimeUtcSeconds&#x60;. | 
+ **oplogInc** | **int64** | Oplog operation number that represents the desired point in time. This is the second part of an Oplog timestamp. Must be used with &#x60;oplogTs&#x60;. Mutually exclusive with &#x60;pointInTimeUtcSeconds&#x60;. | 
 
 ### Return type
 

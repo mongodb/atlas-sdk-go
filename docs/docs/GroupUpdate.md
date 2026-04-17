@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Human-readable label that identifies the project included in the MongoDB Cloud organization. | [optional] 
 **Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project. | [optional] 
+**WithDefaultAlertsSettings** | Pointer to **bool** | Flag that indicates whether the project can automatically create default alerts. | [optional] 
 
 ## Methods
 
@@ -74,6 +75,30 @@ SetTags sets Tags field to given value.
 `func (o *GroupUpdate) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+### GetWithDefaultAlertsSettings
+
+`func (o *GroupUpdate) GetWithDefaultAlertsSettings() bool`
+
+GetWithDefaultAlertsSettings returns the WithDefaultAlertsSettings field if non-nil, zero value otherwise.
+
+### GetWithDefaultAlertsSettingsOk
+
+`func (o *GroupUpdate) GetWithDefaultAlertsSettingsOk() (*bool, bool)`
+
+GetWithDefaultAlertsSettingsOk returns a tuple with the WithDefaultAlertsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWithDefaultAlertsSettings
+
+`func (o *GroupUpdate) SetWithDefaultAlertsSettings(v bool)`
+
+SetWithDefaultAlertsSettings sets WithDefaultAlertsSettings field to given value.
+
+### HasWithDefaultAlertsSettings
+
+`func (o *GroupUpdate) HasWithDefaultAlertsSettings() bool`
+
+HasWithDefaultAlertsSettings returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
