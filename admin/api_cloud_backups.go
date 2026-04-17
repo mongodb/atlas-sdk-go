@@ -4285,32 +4285,41 @@ func (a *CloudBackupsApiService) ListBackupShardedClustersExecute(r ListBackupSh
 }
 
 type ListBackupSnapshotsApiRequest struct {
-	ctx          context.Context
-	ApiService   CloudBackupsApi
-	groupId      string
-	clusterName  string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
+	ctx                   context.Context
+	ApiService            CloudBackupsApi
+	groupId               string
+	clusterName           string
+	includeCount          *bool
+	itemsPerPage          *int
+	pageNum               *int
+	pointInTimeUtcSeconds *int64
+	oplogTs               *int64
+	oplogInc              *int64
 }
 
 type ListBackupSnapshotsApiParams struct {
-	GroupId      string
-	ClusterName  string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
+	GroupId               string
+	ClusterName           string
+	IncludeCount          *bool
+	ItemsPerPage          *int
+	PageNum               *int
+	PointInTimeUtcSeconds *int64
+	OplogTs               *int64
+	OplogInc              *int64
 }
 
 func (a *CloudBackupsApiService) ListBackupSnapshotsWithParams(ctx context.Context, args *ListBackupSnapshotsApiParams) ListBackupSnapshotsApiRequest {
 	return ListBackupSnapshotsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		clusterName:  args.ClusterName,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               args.GroupId,
+		clusterName:           args.ClusterName,
+		includeCount:          args.IncludeCount,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		pointInTimeUtcSeconds: args.PointInTimeUtcSeconds,
+		oplogTs:               args.OplogTs,
+		oplogInc:              args.OplogInc,
 	}
 }
 
@@ -4329,6 +4338,24 @@ func (r ListBackupSnapshotsApiRequest) ItemsPerPage(itemsPerPage int) ListBackup
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListBackupSnapshotsApiRequest) PageNum(pageNum int) ListBackupSnapshotsApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Desired point in time, expressed as the number of seconds that have elapsed since the UNIX epoch. If specified, returns the closest snapshot created before that point in time. Mutually exclusive with &#x60;oplogTs&#x60; and &#x60;oplogInc&#x60;.
+func (r ListBackupSnapshotsApiRequest) PointInTimeUtcSeconds(pointInTimeUtcSeconds int64) ListBackupSnapshotsApiRequest {
+	r.pointInTimeUtcSeconds = &pointInTimeUtcSeconds
+	return r
+}
+
+// Oplog timestamp that represents the desired point in time. This is the first part of an Oplog timestamp. Must be used with &#x60;oplogInc&#x60;. Mutually exclusive with &#x60;pointInTimeUtcSeconds&#x60;.
+func (r ListBackupSnapshotsApiRequest) OplogTs(oplogTs int64) ListBackupSnapshotsApiRequest {
+	r.oplogTs = &oplogTs
+	return r
+}
+
+// Oplog operation number that represents the desired point in time. This is the second part of an Oplog timestamp. Must be used with &#x60;oplogTs&#x60;. Mutually exclusive with &#x60;pointInTimeUtcSeconds&#x60;.
+func (r ListBackupSnapshotsApiRequest) OplogInc(oplogInc int64) ListBackupSnapshotsApiRequest {
+	r.oplogInc = &oplogInc
 	return r
 }
 
@@ -4405,6 +4432,15 @@ func (a *CloudBackupsApiService) ListBackupSnapshotsExecute(r ListBackupSnapshot
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pointInTimeUtcSeconds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pointInTimeUtcSeconds", r.pointInTimeUtcSeconds, "")
+	}
+	if r.oplogTs != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "oplogTs", r.oplogTs, "")
+	}
+	if r.oplogInc != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "oplogInc", r.oplogInc, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
