@@ -8,6 +8,7 @@ type AzureConnection struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Azure region where the storage account is located.
+	// Deprecated
 	Region *string `json:"region,omitempty"`
 	// Unique ID of the Azure Service Principal that has access to the storage account.
 	ServicePrincipalId *string `json:"servicePrincipalId,omitempty"`
@@ -66,6 +67,7 @@ func (o *AzureConnection) SetLinks(v []Link) {
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
+// Deprecated
 func (o *AzureConnection) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
@@ -76,6 +78,7 @@ func (o *AzureConnection) GetRegion() string {
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *AzureConnection) GetRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.Region) {
 		return nil, false
@@ -94,6 +97,7 @@ func (o *AzureConnection) HasRegion() bool {
 }
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
+// Deprecated
 func (o *AzureConnection) SetRegion(v string) {
 	o.Region = &v
 }
