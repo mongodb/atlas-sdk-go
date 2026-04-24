@@ -1348,11 +1348,7 @@ components:
           readOnly: true
           type: string
         intelligentWorkloadManagementPolicyOverrides:
-          description: Map of overrides for Intelligent Workload Management policies.
-          externalDocs:
-            description: Intelligent Workload Management
-            url: https://dochub.mongodb.org/core/intelligent-workload-management
-          type: object
+          $ref: "#/components/schemas/ApiAtlasIntelligentWorkloadManagementPolicyOverrides"
         internalClusterRole:
           description: "Internal classification of the cluster's role. Possible values: `NONE` (regular user cluster), `SYSTEM_CLUSTER` (system cluster for backup), `INTERNAL_SHADOW_CLUSTER` (internal use shadow cluster for testing)."
           readOnly: true
@@ -1629,6 +1625,7 @@ components:
           readOnly: true
           type: array
         region:
+          deprecated: true
           description: Azure region where the storage account is located.
           type: string
         servicePrincipalId:
@@ -4060,11 +4057,7 @@ components:
           readOnly: true
           type: string
         intelligentWorkloadManagementPolicyOverrides:
-          description: Map of overrides for Intelligent Workload Management policies.
-          externalDocs:
-            description: Intelligent Workload Management
-            url: https://dochub.mongodb.org/core/intelligent-workload-management
-          type: object
+          $ref: "#/components/schemas/ApiAtlasIntelligentWorkloadManagementPolicyOverrides"
         internalClusterRole:
           description: "Internal classification of the cluster's role. Possible values: `NONE` (regular user cluster), `SYSTEM_CLUSTER` (system cluster for backup), `INTERNAL_SHADOW_CLUSTER` (internal use shadow cluster for testing)."
           readOnly: true
@@ -4675,6 +4668,50 @@ components:
             $ref: "#/components/schemas/Link"
           readOnly: true
           type: array
+      type: object
+    CollStatsLatencyNamespaceMetric:
+      description: Coll Stats Latency metric name and its unit of measurement.
+      properties:
+        metricName:
+          description: Human-readable label that identifies this metric.
+          example: READS_OPS
+          readOnly: true
+          type: string
+        units:
+          description: Unit of measurement that applies to this metric.
+          readOnly: true
+          type: string
+      readOnly: true
+      required:
+        - metricName
+        - units
+      type: object
+    CollStatsLatencyNamespaceMetrics:
+      properties:
+        groupId:
+          description: Unique 24-hexadecimal digit string that identifies the project.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          type: string
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        metrics:
+          description: List of Coll Stats Latency metric names and their respective units.
+          items:
+            $ref: "#/components/schemas/CollStatsLatencyNamespaceMetric"
+          readOnly: true
+          type: array
+      required:
+        - groupId
+        - metrics
       type: object
     Collation:
       description: One or more settings that specify language-specific rules to compare strings within this index.
@@ -5955,6 +5992,40 @@ components:
           writeOnly: true
       type: object
       writeOnly: true
+    DeprecatedStreamProcessorMetricThreshold:
+      deprecated: true
+      description: "Threshold value that triggers an alert. Deprecated: use `metricThreshold` instead."
+      properties:
+        metricName:
+          description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`.
+          type: string
+        mode:
+          description: MongoDB Cloud computes the current metric value as an average.
+          type: string
+        operator:
+          description: Comparison operator to apply when checking the current metric value.
+          type: string
+        threshold:
+          description: Value of metric that, when exceeded, triggers an alert.
+          format: double
+          type: number
+        units:
+          $ref: "#/components/schemas/RawMetricUnits"
+          description: Element used to express the quantity. This can be an element of time, storage capacity, and the like.
+      required:
+        - metricName
+      type: object
+      x-xgen-discriminator:
+        propertyName: metricName
+        mapping:
+          STREAM_PROCESSOR_CHANGE_STREAM_LAG:
+            properties: []
+          STREAM_PROCESSOR_DLQ_MESSAGE_COUNT:
+            properties: []
+          STREAM_PROCESSOR_KAFKA_LAG:
+            properties: []
+          STREAM_PROCESSOR_OUTPUT_MESSAGE_COUNT:
+            properties: []
     Destination:
       description: Document that describes the destination of the migration.
       properties:
@@ -8417,61 +8488,6 @@ components:
           type: boolean
       title: Flex Cluster Description Update
       type: object
-    FlexClusterMetricThreshold:
-      description: Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
-      properties:
-        metricName:
-          description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`.
-          type: string
-        mode:
-          description: MongoDB Cloud computes the current metric value as an average.
-          type: string
-        operator:
-          description: Comparison operator to apply when checking the current metric value.
-          type: string
-        threshold:
-          description: Value of metric that, when exceeded, triggers an alert.
-          format: double
-          type: number
-        units:
-          $ref: "#/components/schemas/TimeMetricUnits"
-      required:
-        - metricName
-      title: Flex Cluster Metric Threshold
-      type: object
-      x-xgen-discriminator:
-        propertyName: metricName
-        mapping:
-          FLEX_AVG_COMMAND_EXECUTION_TIME:
-            properties: []
-          FLEX_AVG_READ_EXECUTION_TIME:
-            properties: []
-          FLEX_AVG_WRITE_EXECUTION_TIME:
-            properties: []
-          FLEX_CONNECTIONS:
-            properties: []
-          FLEX_CONNECTIONS_PERCENT:
-            properties: []
-          FLEX_DATA_SIZE_TOTAL:
-            properties: []
-          FLEX_NETWORK_BYTES_IN:
-            properties: []
-          FLEX_NETWORK_BYTES_OUT:
-            properties: []
-          FLEX_NETWORK_NUM_REQUESTS:
-            properties: []
-          FLEX_OPCOUNTER_CMD:
-            properties: []
-          FLEX_OPCOUNTER_DELETE:
-            properties: []
-          FLEX_OPCOUNTER_GETMORE:
-            properties: []
-          FLEX_OPCOUNTER_INSERT:
-            properties: []
-          FLEX_OPCOUNTER_QUERY:
-            properties: []
-          FLEX_OPCOUNTER_UPDATE:
-            properties: []
     FlexConnectionStrings20241113:
       description: Collection of Uniform Resource Locators that point to the MongoDB database.
       externalDocs:
@@ -8776,9 +8792,9 @@ components:
           readOnly: true
           type: string
         metricThreshold:
-          $ref: "#/components/schemas/FlexClusterMetricThreshold"
-        threshold:
           $ref: "#/components/schemas/StreamProcessorMetricThreshold"
+        threshold:
+          $ref: "#/components/schemas/DeprecatedStreamProcessorMetricThreshold"
     GroupIPAddresses:
       description: List of IP addresses in a project.
       properties:
@@ -10069,11 +10085,7 @@ components:
           readOnly: true
           type: string
         intelligentWorkloadManagementPolicyOverrides:
-          description: Map of overrides for Intelligent Workload Management policies.
-          externalDocs:
-            description: Intelligent Workload Management
-            url: https://dochub.mongodb.org/core/intelligent-workload-management
-          type: object
+          $ref: "#/components/schemas/ApiAtlasIntelligentWorkloadManagementPolicyOverrides"
         labels:
           deprecated: true
           description: |-
@@ -10373,11 +10385,7 @@ components:
           readOnly: true
           type: string
         intelligentWorkloadManagementPolicyOverrides:
-          description: Map of overrides for Intelligent Workload Management policies.
-          externalDocs:
-            description: Intelligent Workload Management
-            url: https://dochub.mongodb.org/core/intelligent-workload-management
-          type: object
+          $ref: "#/components/schemas/ApiAtlasIntelligentWorkloadManagementPolicyOverrides"
         labels:
           deprecated: true
           description: |-
@@ -10787,6 +10795,9 @@ components:
           description: Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type.
           example: logs/mongodb/
           type: string
+        useLegacyPathStructure:
+          description: "When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`."
+          type: boolean
         apiKey:
           description: API key for authentication.
           example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
@@ -10877,6 +10888,7 @@ components:
               - iamRoleId
               - kmsKey
               - prefixPath
+              - useLegacyPathStructure
             required:
               - bucketName
               - iamRoleId
@@ -10925,6 +10937,9 @@ components:
           description: Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type.
           example: logs/mongodb/
           type: string
+        useLegacyPathStructure:
+          description: "When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`."
+          type: boolean
         apiKey:
           description: API key for authentication.
           example: "****************************o5p6"
@@ -11016,6 +11031,7 @@ components:
               - iamRoleId
               - kmsKey
               - prefixPath
+              - useLegacyPathStructure
             required:
               - bucketName
               - iamRoleId
@@ -12927,19 +12943,17 @@ components:
           pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
           type: string
         endpointId:
-          description: Unique 22-character alphanumeric string that identifies the private endpoint.
-          example: vpce-3bf78b0ddee411ba1
+          description: Unique string that identifies the private endpoint. For AWS, this is a 22-character alphanumeric string in the format `vpce-<17 hex characters>`. For Azure, this is the full resource ID in the format `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{endpointName}`.
           externalDocs:
-            description: Atlas Data Lake supports Amazon Web Services private endpoints using the AWS PrivateLink feature.
-            url: https://aws.amazon.com/privatelink/?privatelink-blogs.sort-by=item.additionalFields.createdDate&privatelink-blogs.sort-order=desc
-          pattern: ^vpce-[0-9a-f]{17}$
+            description: Configure Private Endpoints for Federated Database Instances and Online Archives.
+            url: https://www.mongodb.com/docs/atlas/data-federation/tutorial/config-private-endpoint/
           type: string
         errorMessage:
           description: Error message describing a failure approving the private endpoint request.
           type: string
         provider:
           default: AWS
-          description: Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services only.
+          description: Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services and Azure.
           type: string
         region:
           description: Human-readable label to identify the region of customer's VPC endpoint. If defined, you must also specify a value for `customerEndpointDNSName`.
@@ -14826,14 +14840,14 @@ components:
           readOnly: true
           type: array
         provider:
-          description: Provider where the Kafka cluster is deployed. Valid values are AWS and AZURE.
+          description: Cloud provider where the private endpoint's target resource is deployed. Valid values are AWS, AZURE, and GCP.
           type: string
         providerAccountId:
           description: Account ID from the cloud provider.
           readOnly: true
           type: string
         region:
-          description: The region of the Provider’s cluster. See [AZURE](https://www.mongodb.com/docs/atlas/reference/microsoft-azure/#stream-processing-instances) and [AWS](https://www.mongodb.com/docs/atlas/reference/amazon-aws/#stream-processing-instances) supported regions.
+          description: The region of the Provider’s cluster. See [AWS](https://www.mongodb.com/docs/atlas/reference/amazon-aws/#stream-processing-workspaces), [AZURE](https://www.mongodb.com/docs/atlas/reference/microsoft-azure/#stream-processing-workspaces), and [GCP](https://www.mongodb.com/docs/atlas/reference/google-gcp/#stream-processing-workspaces) supported regions.
           type: string
         serviceEndpointId:
           description: For AZURE EVENTHUB, this is the [namespace endpoint ID](https://learn.microsoft.com/en-us/rest/api/eventhub/namespaces/get). For AWS CONFLUENT cluster, this is the [VPC Endpoint service name](https://docs.confluent.io/cloud/current/networking/private-links/aws-privatelink.html).
@@ -14952,7 +14966,7 @@ components:
         - state
       type: object
     StreamsPublicPrivateLinkNetworking:
-      description: Networking configuration for connections that support `PUBLIC` and `PRIVATE_LINK` access types.
+      description: Networking configuration for connections that support `PUBLIC` and `PRIVATE_LINK` access types. For GCP connections, use `PRIVATE_LINK` for GCP Private Service Connect (PSC).
       properties:
         access:
           $ref: "#/components/schemas/StreamsPublicPrivateLinkNetworkingAccess"
@@ -14970,7 +14984,7 @@ components:
       description: Information about networking access.
       properties:
         connectionId:
-          description: The ID of the Private Link connection. Required for `PRIVATE_LINK` type.
+          description: The ID of the Private Link connection. Required for `PRIVATE_LINK` type. For GCP connections using Private Service Connect (PSC), this is the PSC connection ID.
           example: 32b6e34b3d91647abb20e7b8
           pattern: ^([a-f0-9]{24})$
           type: string
@@ -14984,7 +14998,7 @@ components:
           readOnly: true
           type: array
         type:
-          description: Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`.
+          description: Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`. For AWS, Azure, and GCP connections, use `PRIVATE_LINK` for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively.
           title: Networking Access Type
           type: string
       type: object
@@ -15488,11 +15502,6 @@ components:
               - url
             required:
               - url
-    TimeMetricUnits:
-      default: HOURS
-      description: Element used to express the quantity. This can be an element of time, storage capacity, and the like.
-      title: Time Metric Units
-      type: string
     TriggerIngestionPipelineRequest:
       properties:
         datasetRetentionPolicy:
@@ -16363,6 +16372,13 @@ components:
         tlsCipherConfigMode:
           description: The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
           type: string
+      type: object
+    ApiAtlasIntelligentWorkloadManagementPolicyOverrides:
+      additionalProperties: true
+      description: Map of overrides for Intelligent Workload Management policies.
+      externalDocs:
+        description: Intelligent Workload Management
+        url: https://dochub.mongodb.org/core/intelligent-workload-management
       type: object
     ApiAtlasInvalidPolicyErrorDetail:
       properties:
@@ -18679,7 +18695,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: bdd9f5fcffbde37561cbd08e42031754d00b8f15
+  x-xgen-sha: 0486ccfb492c51cd3b3dc805aa742aa2cdb5e84a
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -34960,6 +34976,8 @@ paths:
         "200":
           content:
             application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: "#/components/schemas/CollStatsLatencyNamespaceMetrics"
               x-xgen-version: 2023-11-15
           description: Succeeded
           headers:
