@@ -24,7 +24,7 @@ type OrgUserResponse struct {
 	// Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	InvitationCreatedAt *time.Time `json:"invitationCreatedAt,omitempty"`
-	// Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users and null for rejected invitations.
 	// Read only field.
 	InvitationExpiresAt *time.Time `json:"invitationExpiresAt,omitempty"`
 	// Username of the MongoDB Cloud user who sent the invitation to join the organization.

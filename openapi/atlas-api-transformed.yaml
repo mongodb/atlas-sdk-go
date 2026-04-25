@@ -9175,7 +9175,7 @@ components:
           readOnly: true
           type: string
         invitationExpiresAt:
-          description: Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+          description: Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users and null for rejected invitations.
           format: date-time
           readOnly: true
           type: string
@@ -9243,7 +9243,6 @@ components:
               - inviterUsername
             required:
               - invitationCreatedAt
-              - invitationExpiresAt
               - inviterUsername
     HardwareSpec20240805:
       description: Hardware specifications for all electable nodes deployed in the region. Electable nodes can become the primary and can enable local reads. If you don't specify this option, MongoDB Cloud deploys no electable nodes to the region.
@@ -11772,7 +11771,7 @@ components:
           readOnly: true
           type: string
         invitationExpiresAt:
-          description: Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+          description: Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users and null for rejected invitations.
           format: date-time
           readOnly: true
           type: string
@@ -11840,7 +11839,6 @@ components:
               - inviterUsername
             required:
               - invitationCreatedAt
-              - invitationExpiresAt
               - inviterUsername
     OrgUserRolesRequest:
       description: Organization and project level roles to assign the MongoDB Cloud user within one organization.
@@ -55117,18 +55115,27 @@ paths:
           schema:
             default: false
             type: boolean
-        - description: Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+        - description: "Deprecated: Use `orgMembershipStatuses` instead. Organization membership status to filter users by. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions."
           in: query
           name: orgMembershipStatus
           schema:
             example: ACTIVE
             type: string
+          deprecated: true
         - description: Email address to filter users by. Not supported in deprecated versions.
           in: query
           name: username
           schema:
             format: email
             type: string
+        - description: "Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. Replaces the deprecated `orgMembershipStatus` parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with `orgMembershipStatus`. Not supported in deprecated versions."
+          in: query
+          name: orgMembershipStatuses
+          schema:
+            items:
+              type: string
+            maxItems: 4
+            type: array
       responses:
         "200":
           content:
@@ -61684,18 +61691,27 @@ paths:
           schema:
             format: email
             type: string
-        - description: Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+        - description: "Deprecated: Use `orgMembershipStatuses` instead. Organization membership status to filter users by. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions."
           in: query
           name: orgMembershipStatus
           schema:
             example: ACTIVE
             type: string
+          deprecated: true
         - description: Unique 24-hexadecimal digit string to filter users by. Not supported in deprecated versions.
           in: query
           name: userId
           schema:
             pattern: ^([a-f0-9]{24})$
             type: string
+        - description: "Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. Replaces the deprecated `orgMembershipStatus` parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with `orgMembershipStatus`. Not supported in deprecated versions."
+          in: query
+          name: orgMembershipStatuses
+          schema:
+            items:
+              type: string
+            maxItems: 4
+            type: array
       responses:
         "200":
           content:
@@ -62313,12 +62329,21 @@ paths:
           schema:
             format: email
             type: string
-        - description: Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+        - description: "Deprecated: Use `orgMembershipStatuses` instead. Organization membership status to filter users by. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions."
           in: query
           name: orgMembershipStatus
           schema:
             example: ACTIVE
             type: string
+          deprecated: true
+        - description: "Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. Replaces the deprecated `orgMembershipStatus` parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with `orgMembershipStatus`. Not supported in deprecated versions."
+          in: query
+          name: orgMembershipStatuses
+          schema:
+            items:
+              type: string
+            maxItems: 4
+            type: array
       responses:
         "200":
           content:
