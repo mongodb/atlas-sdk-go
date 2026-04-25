@@ -1298,9 +1298,8 @@ components:
             url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
           type: string
         effectiveIntelligentWorkloadManagementPolicies:
-          description: The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
+          $ref: "#/components/schemas/ApiAtlasIntelligentWorkloadManagementPolicyOverrides"
           readOnly: true
-          type: object
         effectiveReplicationSpecs:
           description: List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
           items:
@@ -4007,9 +4006,8 @@ components:
             url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
           type: string
         effectiveIntelligentWorkloadManagementPolicies:
-          description: The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
+          $ref: "#/components/schemas/ApiAtlasIntelligentWorkloadManagementPolicyOverrides"
           readOnly: true
-          type: object
         effectiveReplicationSpecs:
           description: List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
           items:
@@ -10041,9 +10039,8 @@ components:
             url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
           type: string
         effectiveIntelligentWorkloadManagementPolicies:
-          description: The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
+          $ref: "#/components/schemas/ApiAtlasIntelligentWorkloadManagementPolicyOverrides"
           readOnly: true
-          type: object
         encryptionAtRestProvider:
           description: 'Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `"backupEnabled" : false` or omitted entirely.'
           externalDocs:
@@ -10341,9 +10338,8 @@ components:
             url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
           type: string
         effectiveIntelligentWorkloadManagementPolicies:
-          description: The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
+          $ref: "#/components/schemas/ApiAtlasIntelligentWorkloadManagementPolicyOverrides"
           readOnly: true
-          type: object
         encryptionAtRestProvider:
           description: 'Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `"backupEnabled" : false` or omitted entirely.'
           externalDocs:

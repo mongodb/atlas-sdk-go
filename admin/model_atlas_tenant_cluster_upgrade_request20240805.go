@@ -27,9 +27,8 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
-	// The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
-	// Read only field.
-	EffectiveIntelligentWorkloadManagementPolicies any `json:"effectiveIntelligentWorkloadManagementPolicies,omitempty"`
+	// Map of overrides for Intelligent Workload Management policies.
+	EffectiveIntelligentWorkloadManagementPolicies *map[string]any `json:"effectiveIntelligentWorkloadManagementPolicies,omitempty"`
 	// List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
 	// Read only field.
 	EffectiveReplicationSpecs *[]ReplicationSpec20240805 `json:"effectiveReplicationSpecs,omitempty"`
@@ -480,20 +479,19 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) SetDiskWarmingMode(v string) 
 }
 
 // GetEffectiveIntelligentWorkloadManagementPolicies returns the EffectiveIntelligentWorkloadManagementPolicies field value if set, zero value otherwise
-func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveIntelligentWorkloadManagementPolicies() any {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveIntelligentWorkloadManagementPolicies() map[string]any {
 	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
-		var ret any
+		var ret map[string]any
 		return ret
 	}
-	return o.EffectiveIntelligentWorkloadManagementPolicies
+	return *o.EffectiveIntelligentWorkloadManagementPolicies
 }
 
 // GetEffectiveIntelligentWorkloadManagementPoliciesOk returns a tuple with the EffectiveIntelligentWorkloadManagementPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveIntelligentWorkloadManagementPoliciesOk() (any, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveIntelligentWorkloadManagementPoliciesOk() (*map[string]any, bool) {
 	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
-		var ret any
-		return ret, false
+		return nil, false
 	}
 
 	return o.EffectiveIntelligentWorkloadManagementPolicies, true
@@ -508,9 +506,9 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) HasEffectiveIntelligentWorklo
 	return false
 }
 
-// SetEffectiveIntelligentWorkloadManagementPolicies gets a reference to the given any and assigns it to the EffectiveIntelligentWorkloadManagementPolicies field.
-func (o *AtlasTenantClusterUpgradeRequest20240805) SetEffectiveIntelligentWorkloadManagementPolicies(v any) {
-	o.EffectiveIntelligentWorkloadManagementPolicies = v
+// SetEffectiveIntelligentWorkloadManagementPolicies gets a reference to the given map[string]any and assigns it to the EffectiveIntelligentWorkloadManagementPolicies field.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetEffectiveIntelligentWorkloadManagementPolicies(v map[string]any) {
+	o.EffectiveIntelligentWorkloadManagementPolicies = &v
 }
 
 // GetEffectiveReplicationSpecs returns the EffectiveReplicationSpecs field value if set, zero value otherwise

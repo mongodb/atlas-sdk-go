@@ -35,9 +35,8 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
-	// The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
-	// Read only field.
-	EffectiveIntelligentWorkloadManagementPolicies any `json:"effectiveIntelligentWorkloadManagementPolicies,omitempty"`
+	// Map of overrides for Intelligent Workload Management policies.
+	EffectiveIntelligentWorkloadManagementPolicies *map[string]any `json:"effectiveIntelligentWorkloadManagementPolicies,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Feature compatibility version of the cluster.
@@ -625,20 +624,19 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDiskWarmingMode(v string) {
 }
 
 // GetEffectiveIntelligentWorkloadManagementPolicies returns the EffectiveIntelligentWorkloadManagementPolicies field value if set, zero value otherwise
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEffectiveIntelligentWorkloadManagementPolicies() any {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEffectiveIntelligentWorkloadManagementPolicies() map[string]any {
 	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
-		var ret any
+		var ret map[string]any
 		return ret
 	}
-	return o.EffectiveIntelligentWorkloadManagementPolicies
+	return *o.EffectiveIntelligentWorkloadManagementPolicies
 }
 
 // GetEffectiveIntelligentWorkloadManagementPoliciesOk returns a tuple with the EffectiveIntelligentWorkloadManagementPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEffectiveIntelligentWorkloadManagementPoliciesOk() (any, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEffectiveIntelligentWorkloadManagementPoliciesOk() (*map[string]any, bool) {
 	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
-		var ret any
-		return ret, false
+		return nil, false
 	}
 
 	return o.EffectiveIntelligentWorkloadManagementPolicies, true
@@ -653,9 +651,9 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEffectiveIntelligentWorkload
 	return false
 }
 
-// SetEffectiveIntelligentWorkloadManagementPolicies gets a reference to the given any and assigns it to the EffectiveIntelligentWorkloadManagementPolicies field.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEffectiveIntelligentWorkloadManagementPolicies(v any) {
-	o.EffectiveIntelligentWorkloadManagementPolicies = v
+// SetEffectiveIntelligentWorkloadManagementPolicies gets a reference to the given map[string]any and assigns it to the EffectiveIntelligentWorkloadManagementPolicies field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEffectiveIntelligentWorkloadManagementPolicies(v map[string]any) {
+	o.EffectiveIntelligentWorkloadManagementPolicies = &v
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
