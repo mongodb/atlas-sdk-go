@@ -50,7 +50,7 @@ type ClusterDescription20240805 struct {
 	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Map of overrides for Intelligent Workload Management policies.
-	IntelligentWorkloadManagementPolicyOverrides map[string]any `json:"intelligentWorkloadManagementPolicyOverrides,omitempty"`
+	IntelligentWorkloadManagementPolicyOverrides *map[string]any `json:"intelligentWorkloadManagementPolicyOverrides,omitempty"`
 	// Internal classification of the cluster's role. Possible values: `NONE` (regular user cluster), `SYSTEM_CLUSTER` (system cluster for backup), `INTERNAL_SHADOW_CLUSTER` (internal use shadow cluster for testing).
 	// Read only field.
 	InternalClusterRole *string `json:"internalClusterRole,omitempty"`
@@ -749,15 +749,14 @@ func (o *ClusterDescription20240805) GetIntelligentWorkloadManagementPolicyOverr
 		var ret map[string]any
 		return ret
 	}
-	return o.IntelligentWorkloadManagementPolicyOverrides
+	return *o.IntelligentWorkloadManagementPolicyOverrides
 }
 
 // GetIntelligentWorkloadManagementPolicyOverridesOk returns a tuple with the IntelligentWorkloadManagementPolicyOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetIntelligentWorkloadManagementPolicyOverridesOk() (map[string]any, bool) {
+func (o *ClusterDescription20240805) GetIntelligentWorkloadManagementPolicyOverridesOk() (*map[string]any, bool) {
 	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
-		var ret map[string]any
-		return ret, false
+		return nil, false
 	}
 
 	return o.IntelligentWorkloadManagementPolicyOverrides, true
@@ -774,7 +773,7 @@ func (o *ClusterDescription20240805) HasIntelligentWorkloadManagementPolicyOverr
 
 // SetIntelligentWorkloadManagementPolicyOverrides gets a reference to the given map[string]any and assigns it to the IntelligentWorkloadManagementPolicyOverrides field.
 func (o *ClusterDescription20240805) SetIntelligentWorkloadManagementPolicyOverrides(v map[string]any) {
-	o.IntelligentWorkloadManagementPolicyOverrides = v
+	o.IntelligentWorkloadManagementPolicyOverrides = &v
 }
 
 // GetInternalClusterRole returns the InternalClusterRole field value if set, zero value otherwise

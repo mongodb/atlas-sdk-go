@@ -55,7 +55,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Map of overrides for Intelligent Workload Management policies.
-	IntelligentWorkloadManagementPolicyOverrides any `json:"intelligentWorkloadManagementPolicyOverrides,omitempty"`
+	IntelligentWorkloadManagementPolicyOverrides *map[string]any `json:"intelligentWorkloadManagementPolicyOverrides,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
@@ -857,20 +857,19 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) SetId(v string) {
 }
 
 // GetIntelligentWorkloadManagementPolicyOverrides returns the IntelligentWorkloadManagementPolicyOverrides field value if set, zero value otherwise
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetIntelligentWorkloadManagementPolicyOverrides() any {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetIntelligentWorkloadManagementPolicyOverrides() map[string]any {
 	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
-		var ret any
+		var ret map[string]any
 		return ret
 	}
-	return o.IntelligentWorkloadManagementPolicyOverrides
+	return *o.IntelligentWorkloadManagementPolicyOverrides
 }
 
 // GetIntelligentWorkloadManagementPolicyOverridesOk returns a tuple with the IntelligentWorkloadManagementPolicyOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetIntelligentWorkloadManagementPolicyOverridesOk() (any, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetIntelligentWorkloadManagementPolicyOverridesOk() (*map[string]any, bool) {
 	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
-		var ret any
-		return ret, false
+		return nil, false
 	}
 
 	return o.IntelligentWorkloadManagementPolicyOverrides, true
@@ -885,9 +884,9 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasIntelligentWorkloadManagemen
 	return false
 }
 
-// SetIntelligentWorkloadManagementPolicyOverrides gets a reference to the given any and assigns it to the IntelligentWorkloadManagementPolicyOverrides field.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) SetIntelligentWorkloadManagementPolicyOverrides(v any) {
-	o.IntelligentWorkloadManagementPolicyOverrides = v
+// SetIntelligentWorkloadManagementPolicyOverrides gets a reference to the given map[string]any and assigns it to the IntelligentWorkloadManagementPolicyOverrides field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetIntelligentWorkloadManagementPolicyOverrides(v map[string]any) {
+	o.IntelligentWorkloadManagementPolicyOverrides = &v
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise
