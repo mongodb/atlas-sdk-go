@@ -27,6 +27,9 @@ type ClusterDescription20240805 struct {
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
+	// The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
+	// Read only field.
+	EffectiveIntelligentWorkloadManagementPolicies any `json:"effectiveIntelligentWorkloadManagementPolicies,omitempty"`
 	// List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
 	// Read only field.
 	EffectiveReplicationSpecs *[]ReplicationSpec20240805 `json:"effectiveReplicationSpecs,omitempty"`
@@ -46,6 +49,8 @@ type ClusterDescription20240805 struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
+	// Map of overrides for Intelligent Workload Management policies.
+	IntelligentWorkloadManagementPolicyOverrides *map[string]any `json:"intelligentWorkloadManagementPolicyOverrides,omitempty"`
 	// Internal classification of the cluster's role. Possible values: `NONE` (regular user cluster), `SYSTEM_CLUSTER` (system cluster for backup), `INTERNAL_SHADOW_CLUSTER` (internal use shadow cluster for testing).
 	// Read only field.
 	InternalClusterRole *string `json:"internalClusterRole,omitempty"`
@@ -473,6 +478,40 @@ func (o *ClusterDescription20240805) SetDiskWarmingMode(v string) {
 	o.DiskWarmingMode = &v
 }
 
+// GetEffectiveIntelligentWorkloadManagementPolicies returns the EffectiveIntelligentWorkloadManagementPolicies field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetEffectiveIntelligentWorkloadManagementPolicies() any {
+	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		var ret any
+		return ret
+	}
+	return o.EffectiveIntelligentWorkloadManagementPolicies
+}
+
+// GetEffectiveIntelligentWorkloadManagementPoliciesOk returns a tuple with the EffectiveIntelligentWorkloadManagementPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetEffectiveIntelligentWorkloadManagementPoliciesOk() (any, bool) {
+	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		var ret any
+		return ret, false
+	}
+
+	return o.EffectiveIntelligentWorkloadManagementPolicies, true
+}
+
+// HasEffectiveIntelligentWorkloadManagementPolicies returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasEffectiveIntelligentWorkloadManagementPolicies() bool {
+	if o != nil && !IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveIntelligentWorkloadManagementPolicies gets a reference to the given any and assigns it to the EffectiveIntelligentWorkloadManagementPolicies field.
+func (o *ClusterDescription20240805) SetEffectiveIntelligentWorkloadManagementPolicies(v any) {
+	o.EffectiveIntelligentWorkloadManagementPolicies = v
+}
+
 // GetEffectiveReplicationSpecs returns the EffectiveReplicationSpecs field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetEffectiveReplicationSpecs() []ReplicationSpec20240805 {
 	if o == nil || IsNil(o.EffectiveReplicationSpecs) {
@@ -702,6 +741,39 @@ func (o *ClusterDescription20240805) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ClusterDescription20240805) SetId(v string) {
 	o.Id = &v
+}
+
+// GetIntelligentWorkloadManagementPolicyOverrides returns the IntelligentWorkloadManagementPolicyOverrides field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetIntelligentWorkloadManagementPolicyOverrides() map[string]any {
+	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		var ret map[string]any
+		return ret
+	}
+	return *o.IntelligentWorkloadManagementPolicyOverrides
+}
+
+// GetIntelligentWorkloadManagementPolicyOverridesOk returns a tuple with the IntelligentWorkloadManagementPolicyOverrides field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetIntelligentWorkloadManagementPolicyOverridesOk() (*map[string]any, bool) {
+	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		return nil, false
+	}
+
+	return o.IntelligentWorkloadManagementPolicyOverrides, true
+}
+
+// HasIntelligentWorkloadManagementPolicyOverrides returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasIntelligentWorkloadManagementPolicyOverrides() bool {
+	if o != nil && !IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntelligentWorkloadManagementPolicyOverrides gets a reference to the given map[string]any and assigns it to the IntelligentWorkloadManagementPolicyOverrides field.
+func (o *ClusterDescription20240805) SetIntelligentWorkloadManagementPolicyOverrides(v map[string]any) {
+	o.IntelligentWorkloadManagementPolicyOverrides = &v
 }
 
 // GetInternalClusterRole returns the InternalClusterRole field value if set, zero value otherwise

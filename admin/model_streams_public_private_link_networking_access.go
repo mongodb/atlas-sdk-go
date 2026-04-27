@@ -4,12 +4,12 @@ package admin
 
 // StreamsPublicPrivateLinkNetworkingAccess Information about networking access.
 type StreamsPublicPrivateLinkNetworkingAccess struct {
-	// The ID of the Private Link connection. Required for `PRIVATE_LINK` type.
+	// The ID of the Private Link connection. Required for `PRIVATE_LINK` type. For GCP connections using Private Service Connect (PSC), this is the PSC connection ID.
 	ConnectionId *string `json:"connectionId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`.
+	// Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`. For AWS, Azure, and GCP connections, use `PRIVATE_LINK` for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively.
 	Type *string `json:"type,omitempty"`
 }
 

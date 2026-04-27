@@ -11,7 +11,7 @@ type OrgUserResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
 	// Read only field.
 	Id string `json:"id"`
-	// String enum that indicates whether the MongoDB Cloud user has a pending invitation to join the organization or they are already active in the organization.
+	// String enum that indicates the user's organization membership status: ACTIVE (member), PENDING (invited), `INVITATION_EXPIRED` (invitation expired), or `INVITATION_REJECTED` (invitation declined).
 	// Read only field.
 	OrgMembershipStatus string               `json:"orgMembershipStatus"`
 	Roles               OrgUserRolesResponse `json:"roles"`
@@ -21,10 +21,10 @@ type OrgUserResponse struct {
 	// Email address that represents the username of the MongoDB Cloud user.
 	// Read only field.
 	Username string `json:"username"`
-	// Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users.
 	// Read only field.
 	InvitationCreatedAt *time.Time `json:"invitationCreatedAt,omitempty"`
-	// Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users and null for rejected invitations.
 	// Read only field.
 	InvitationExpiresAt *time.Time `json:"invitationExpiresAt,omitempty"`
 	// Username of the MongoDB Cloud user who sent the invitation to join the organization.

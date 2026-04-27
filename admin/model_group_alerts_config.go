@@ -33,8 +33,9 @@ type GroupAlertsConfig struct {
 	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated         *time.Time                      `json:"updated,omitempty"`
-	MetricThreshold *FlexClusterMetricThreshold     `json:"metricThreshold,omitempty"`
-	Threshold       *StreamProcessorMetricThreshold `json:"threshold,omitempty"`
+	MetricThreshold *StreamProcessorMetricThreshold `json:"metricThreshold,omitempty"`
+	// Deprecated
+	Threshold *DeprecatedStreamProcessorMetricThreshold `json:"threshold,omitempty"`
 }
 
 // NewGroupAlertsConfig instantiates a new GroupAlertsConfig object
@@ -389,9 +390,9 @@ func (o *GroupAlertsConfig) SetUpdated(v time.Time) {
 }
 
 // GetMetricThreshold returns the MetricThreshold field value if set, zero value otherwise
-func (o *GroupAlertsConfig) GetMetricThreshold() FlexClusterMetricThreshold {
+func (o *GroupAlertsConfig) GetMetricThreshold() StreamProcessorMetricThreshold {
 	if o == nil || IsNil(o.MetricThreshold) {
-		var ret FlexClusterMetricThreshold
+		var ret StreamProcessorMetricThreshold
 		return ret
 	}
 	return *o.MetricThreshold
@@ -399,7 +400,7 @@ func (o *GroupAlertsConfig) GetMetricThreshold() FlexClusterMetricThreshold {
 
 // GetMetricThresholdOk returns a tuple with the MetricThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetMetricThresholdOk() (*FlexClusterMetricThreshold, bool) {
+func (o *GroupAlertsConfig) GetMetricThresholdOk() (*StreamProcessorMetricThreshold, bool) {
 	if o == nil || IsNil(o.MetricThreshold) {
 		return nil, false
 	}
@@ -416,15 +417,16 @@ func (o *GroupAlertsConfig) HasMetricThreshold() bool {
 	return false
 }
 
-// SetMetricThreshold gets a reference to the given FlexClusterMetricThreshold and assigns it to the MetricThreshold field.
-func (o *GroupAlertsConfig) SetMetricThreshold(v FlexClusterMetricThreshold) {
+// SetMetricThreshold gets a reference to the given StreamProcessorMetricThreshold and assigns it to the MetricThreshold field.
+func (o *GroupAlertsConfig) SetMetricThreshold(v StreamProcessorMetricThreshold) {
 	o.MetricThreshold = &v
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise
-func (o *GroupAlertsConfig) GetThreshold() StreamProcessorMetricThreshold {
+// Deprecated
+func (o *GroupAlertsConfig) GetThreshold() DeprecatedStreamProcessorMetricThreshold {
 	if o == nil || IsNil(o.Threshold) {
-		var ret StreamProcessorMetricThreshold
+		var ret DeprecatedStreamProcessorMetricThreshold
 		return ret
 	}
 	return *o.Threshold
@@ -432,7 +434,8 @@ func (o *GroupAlertsConfig) GetThreshold() StreamProcessorMetricThreshold {
 
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetThresholdOk() (*StreamProcessorMetricThreshold, bool) {
+// Deprecated
+func (o *GroupAlertsConfig) GetThresholdOk() (*DeprecatedStreamProcessorMetricThreshold, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
@@ -449,7 +452,8 @@ func (o *GroupAlertsConfig) HasThreshold() bool {
 	return false
 }
 
-// SetThreshold gets a reference to the given StreamProcessorMetricThreshold and assigns it to the Threshold field.
-func (o *GroupAlertsConfig) SetThreshold(v StreamProcessorMetricThreshold) {
+// SetThreshold gets a reference to the given DeprecatedStreamProcessorMetricThreshold and assigns it to the Threshold field.
+// Deprecated
+func (o *GroupAlertsConfig) SetThreshold(v DeprecatedStreamProcessorMetricThreshold) {
 	o.Threshold = &v
 }

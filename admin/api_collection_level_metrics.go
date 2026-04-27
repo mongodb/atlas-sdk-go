@@ -111,7 +111,7 @@ type CollectionLevelMetricsApi interface {
 	ListCollStatMetricsWithParams(ctx context.Context, args *ListCollStatMetricsApiParams) ListCollStatMetricsApiRequest
 
 	// Method available only for mocking purposes
-	ListCollStatMetricsExecute(r ListCollStatMetricsApiRequest) (*http.Response, error)
+	ListCollStatMetricsExecute(r ListCollStatMetricsApiRequest) (*CollStatsLatencyNamespaceMetrics, *http.Response, error)
 
 	/*
 		ListPinnedNamespaces Return Pinned Namespaces
@@ -789,7 +789,7 @@ func (a *CollectionLevelMetricsApiService) ListCollStatMetricsWithParams(ctx con
 	}
 }
 
-func (r ListCollStatMetricsApiRequest) Execute() (*http.Response, error) {
+func (r ListCollStatMetricsApiRequest) Execute() (*CollStatsLatencyNamespaceMetrics, *http.Response, error) {
 	return r.ApiService.ListCollStatMetricsExecute(r)
 }
 
@@ -811,21 +811,24 @@ func (a *CollectionLevelMetricsApiService) ListCollStatMetrics(ctx context.Conte
 }
 
 // ListCollStatMetricsExecute executes the request
-func (a *CollectionLevelMetricsApiService) ListCollStatMetricsExecute(r ListCollStatMetricsApiRequest) (*http.Response, error) {
+//
+//	@return CollStatsLatencyNamespaceMetrics
+func (a *CollectionLevelMetricsApiService) ListCollStatMetricsExecute(r ListCollStatMetricsApiRequest) (*CollStatsLatencyNamespaceMetrics, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   any
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *CollStatsLatencyNamespaceMetrics
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListCollStatMetrics")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/collStats/metrics"
 	if r.groupId == "" {
-		return nil, reportError("groupId is empty and must be specified")
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -852,20 +855,34 @@ func (a *CollectionLevelMetricsApiService) ListCollStatMetricsExecute(r ListColl
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ListPinnedNamespacesApiRequest struct {

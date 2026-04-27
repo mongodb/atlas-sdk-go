@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"go.mongodb.org/atlas-sdk/v20250312018/admin"
+	"github.com/mongodb/atlas-sdk-go/admin"
 )
 
 type testCase[T comparable] struct {
