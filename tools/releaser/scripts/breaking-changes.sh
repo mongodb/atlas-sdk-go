@@ -52,31 +52,9 @@ echo "$RAW_CHANGES"
 BREAKING_CHANGES=$(extractChanges "$RAW_CHANGES" "## incompatible changes" "### incompatible changes")
 NON_BREAKING_CHANGES=$(extractChanges "$RAW_CHANGES" "## compatible changes" "### compatible changes")
 
-# Filter 1: additions (`X: added`) are not breaking for SDK consumers. They
-# only break implementors of exported interfaces, and the only implementors
-# are mockery-generated mocks, which are regenerated alongside the SDK. Move
-# these lines into the compatible changes section.
-ADDITIONS_IN_BREAKING=$(echo "$BREAKING_CHANGES" | grep ': added$' || true)
-BREAKING_CHANGES=$(echo "$BREAKING_CHANGES" | grep -v ': added$' || true)
-if [ -n "$ADDITIONS_IN_BREAKING" ]; then
-    if [ -z "$NON_BREAKING_CHANGES" ]; then
-        NON_BREAKING_CHANGES="### compatible changes"
-    fi
-    NON_BREAKING_CHANGES="${NON_BREAKING_CHANGES}
-### additions (moved from incompatible)
-${ADDITIONS_IN_BREAKING}"
-fi
-
-# Filter 2: mockery-generated `_Call` types (e.g. `(*FooApi_Bar_Call).Run`)
-# are internal mock plumbing, not part of the consumer-facing surface. Drop
-# them from breaking changes entirely.
-BREAKING_CHANGES=$(echo "$BREAKING_CHANGES" | grep -v '_Call)' || true)
-
-# If only the section header is left after filtering, treat as no breaking
-# changes so the release pipeline picks a minor bump.
-if ! echo "$BREAKING_CHANGES" | grep -q '^- '; then
-    BREAKING_CHANGES=""
-fi
+# shellcheck source=/dev/null
+source "$script_path/filter-changes.sh"
+filterChanges
 
 set -e
 popd || exit
