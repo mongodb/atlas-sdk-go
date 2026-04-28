@@ -565,8 +565,12 @@ func (c *APIClient) decode(v any, b io.ReadCloser, contentType string) (err erro
 				} else {
 					return errors.New("unknown type with GetActualInstance but no unmarshalObj.UnmarshalJSON defined")
 				}
-			} else if err = json.Unmarshal(buf, v); err != nil { // simple model
-				return err
+			} else { // simple model
+				dec := json.NewDecoder(bytes.NewReader(buf))
+				dec.UseNumber()
+				if err = dec.Decode(v); err != nil {
+					return err
+				}
 			}
 			return nil
 		}
