@@ -11,6 +11,7 @@
 # after editing filter-changes.sh to confirm which historical bumps would
 # have become minor and how much noise gets stripped from the rest.
 set -ueo pipefail
+shopt -s nullglob
 
 script_path=$(dirname "$0")
 dir="$script_path/../breaking_changes"
