@@ -46,6 +46,11 @@ update-version:
 	## When manually updating major version
 	./releaser/scripts/update-major-version.sh
 
+.PHONY: replay-historical
+replay-historical:
+	## Diagnostic: replay breaking-changes filters against breaking_changes/v*.md
+	./releaser/scripts/replay-historical.sh
+
 .PHONY: generate_mocks
 generate_mocks:	
 	./scripts/generate_mocks.sh

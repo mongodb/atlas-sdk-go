@@ -36,6 +36,11 @@ extractChanges() {
     '
 }
 
+# Source filter-changes.sh under `set -eu` so a missing file fails loudly,
+# rather than being silently swallowed by the `set +e` block below.
+# shellcheck source=/dev/null
+source "$script_path/filter-changes.sh"
+
 baseVersion
 
 echo "Installing gorelease"
@@ -53,6 +58,7 @@ BREAKING_CHANGES=$(extractChanges "$RAW_CHANGES" "## incompatible changes" "### 
 NON_BREAKING_CHANGES=$(extractChanges "$RAW_CHANGES" "## compatible changes" "### compatible changes")
 
 set -e
+filterChanges
 popd || exit
 
 if [ -z "$BREAKING_CHANGES" ] && [ -z "$NON_BREAKING_CHANGES" ]; then
