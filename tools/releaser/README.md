@@ -75,4 +75,4 @@ Version should never be committed to the main branch. This task should only be u
 
 ## Diagnostics
 
-`./scripts/replay-historical.sh` re-applies the `breaking-changes.sh` filter logic against every file under `./breaking_changes/` and prints a comparison table (items before, items after, additions stripped, mock-layer lines stripped, verdict). Use it after changing the filters to see which historical major bumps would have become minor and how much noise gets removed from the rest.
+Run `make replay-historical` (from `tools/`) to re-apply the `breaking-changes.sh` filter logic against every file under `./breaking_changes/`. It prints a comparison table (items before, items after, additions stripped, mock-layer lines stripped, verdict). Use it after changing the filters to see which historical major bumps would have become minor and how much noise gets removed from the rest.
