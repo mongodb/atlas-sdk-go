@@ -7,10 +7,10 @@
   "dependencies": {
     "yargs": "^18.0.0",
     "simple-node-logger": "^21.8.12",
-    "yaml": "2.8.3"
+    "yaml": "2.8.4"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "2.31.1",
+    "@openapitools/openapi-generator-cli": "2.32.0",
     "jest": "30.3.0",
     "replace-in-file": "^8.4.0",
     "prettier": "3.8.3"
