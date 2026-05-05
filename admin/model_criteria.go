@@ -6,14 +6,14 @@ package admin
 type Criteria struct {
 	// Means by which MongoDB Cloud selects data to archive. Data can be chosen using the age of the data or a MongoDB query. `DATE` selects documents to archive based on a date. `CUSTOM` selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support `CUSTOM` when `\"collectionType\": \"TIMESERIES\"`.
 	Type *string `json:"type,omitempty"`
-	// MongoDB find query that selects documents to archive. The specified query follows the syntax of the `db.collection.find(query)` command. This query can't use the empty document (`{}`) to return all documents. Set this parameter when `\"criteria.type\" : \"CUSTOM\"`.
-	Query *string `json:"query,omitempty"`
 	// Indexed database parameter that stores the date that determines when data moves to the online archive. MongoDB Cloud archives the data when the current date exceeds the date in this database parameter plus the number of days specified through the `expireAfterDays` parameter. Set this parameter when you set `\"criteria.type\" : \"DATE\"`.
 	DateField *string `json:"dateField,omitempty"`
 	// Syntax used to write the date after which data moves to the online archive. Date can be expressed as ISO 8601, Epoch timestamps, or Object ID. The Epoch timestamp can be expressed as nanoseconds, milliseconds, or seconds. Set this parameter when `criteria.type` : `DATE`. You must set `criteria.type` : `DATE` if `collectionType`: `TIMESERIES`.
 	DateFormat *string `json:"dateFormat,omitempty"`
 	// Number of days after the value in the `criteria.dateField` when MongoDB Cloud archives data in the specified cluster. Set this parameter when you set `\"criteria.type\" : \"DATE\"`.
 	ExpireAfterDays *int `json:"expireAfterDays,omitempty"`
+	// MongoDB find query that selects documents to archive. The specified query follows the syntax of the `db.collection.find(query)` command. This query can't use the empty document (`{}`) to return all documents. Set this parameter when `\"criteria.type\" : \"CUSTOM\"`.
+	Query *string `json:"query,omitempty"`
 }
 
 // NewCriteria instantiates a new Criteria object
@@ -68,39 +68,6 @@ func (o *Criteria) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *Criteria) SetType(v string) {
 	o.Type = &v
-}
-
-// GetQuery returns the Query field value if set, zero value otherwise
-func (o *Criteria) GetQuery() string {
-	if o == nil || IsNil(o.Query) {
-		var ret string
-		return ret
-	}
-	return *o.Query
-}
-
-// GetQueryOk returns a tuple with the Query field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Criteria) GetQueryOk() (*string, bool) {
-	if o == nil || IsNil(o.Query) {
-		return nil, false
-	}
-
-	return o.Query, true
-}
-
-// HasQuery returns a boolean if a field has been set.
-func (o *Criteria) HasQuery() bool {
-	if o != nil && !IsNil(o.Query) {
-		return true
-	}
-
-	return false
-}
-
-// SetQuery gets a reference to the given string and assigns it to the Query field.
-func (o *Criteria) SetQuery(v string) {
-	o.Query = &v
 }
 
 // GetDateField returns the DateField field value if set, zero value otherwise
@@ -200,4 +167,37 @@ func (o *Criteria) HasExpireAfterDays() bool {
 // SetExpireAfterDays gets a reference to the given int and assigns it to the ExpireAfterDays field.
 func (o *Criteria) SetExpireAfterDays(v int) {
 	o.ExpireAfterDays = &v
+}
+
+// GetQuery returns the Query field value if set, zero value otherwise
+func (o *Criteria) GetQuery() string {
+	if o == nil || IsNil(o.Query) {
+		var ret string
+		return ret
+	}
+	return *o.Query
+}
+
+// GetQueryOk returns a tuple with the Query field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Criteria) GetQueryOk() (*string, bool) {
+	if o == nil || IsNil(o.Query) {
+		return nil, false
+	}
+
+	return o.Query, true
+}
+
+// HasQuery returns a boolean if a field has been set.
+func (o *Criteria) HasQuery() bool {
+	if o != nil && !IsNil(o.Query) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuery gets a reference to the given string and assigns it to the Query field.
+func (o *Criteria) SetQuery(v string) {
+	o.Query = &v
 }

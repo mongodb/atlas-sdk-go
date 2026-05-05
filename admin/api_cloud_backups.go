@@ -115,9 +115,34 @@ type CloudBackupsApi interface {
 	CreateBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
+		CreateCollectionRestoreJob Create One Collection Restore Job
+
+		Creates one collection-level restore job for one cluster from the specified project. Collection-level restores allow restoring specific databases or collections from a snapshot or point-in-time. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role or Project Backup Recovery Operator role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the source cluster for the restore.
+		@param apiAtlasCollectionRestoreJobRequest Creates one collection-level restore job for one cluster from the specified project.
+		@return CreateCollectionRestoreJobApiRequest
+	*/
+	CreateCollectionRestoreJob(ctx context.Context, groupId string, clusterName string, apiAtlasCollectionRestoreJobRequest *ApiAtlasCollectionRestoreJobRequest) CreateCollectionRestoreJobApiRequest
+	/*
+		CreateCollectionRestoreJob Create One Collection Restore Job
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateCollectionRestoreJobApiParams - Parameters for the request
+		@return CreateCollectionRestoreJobApiRequest
+	*/
+	CreateCollectionRestoreJobWithParams(ctx context.Context, args *CreateCollectionRestoreJobApiParams) CreateCollectionRestoreJobApiRequest
+
+	// Method available only for mocking purposes
+	CreateCollectionRestoreJobExecute(r CreateCollectionRestoreJobApiRequest) (*ApiAtlasCollectionRestoreJobResponse, *http.Response, error)
+
+	/*
 		CreateExportBucket Create One Snapshot Export Bucket
 
-		Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -222,7 +247,7 @@ type CloudBackupsApi interface {
 	/*
 		DeleteClusterBackupSchedule Remove All Cloud Backup Schedules
 
-		Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role. Deprecated versions: v2-{2023-01-01}
+		Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -393,7 +418,7 @@ type CloudBackupsApi interface {
 	/*
 		GetBackupSchedule Return One Cloud Backup Schedule
 
-		Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+		Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -440,6 +465,32 @@ type CloudBackupsApi interface {
 	GetBackupShardedClusterExecute(r GetBackupShardedClusterApiRequest) (*DiskBackupShardedClusterSnapshot, *http.Response, error)
 
 	/*
+		GetBackupSnapshotDatabase Return One Database in One Snapshot
+
+		Returns one database that exists in the specified snapshot. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+		@param databaseName Human-readable label that identifies the database.
+		@return GetBackupSnapshotDatabaseApiRequest
+	*/
+	GetBackupSnapshotDatabase(ctx context.Context, groupId string, clusterName string, snapshotId string, databaseName string) GetBackupSnapshotDatabaseApiRequest
+	/*
+		GetBackupSnapshotDatabase Return One Database in One Snapshot
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetBackupSnapshotDatabaseApiParams - Parameters for the request
+		@return GetBackupSnapshotDatabaseApiRequest
+	*/
+	GetBackupSnapshotDatabaseWithParams(ctx context.Context, args *GetBackupSnapshotDatabaseApiParams) GetBackupSnapshotDatabaseApiRequest
+
+	// Method available only for mocking purposes
+	GetBackupSnapshotDatabaseExecute(r GetBackupSnapshotDatabaseApiRequest) (*DiskBackupDatabaseResponse, *http.Response, error)
+
+	/*
 		GetClusterBackupSnapshot Return One Replica Set Cloud Backup
 
 		Returns one snapshot from the specified cluster. To use this resource, the requesting Service Account or API Key must have the Project Read Only role or Project Backup Manager role.
@@ -465,9 +516,34 @@ type CloudBackupsApi interface {
 	GetClusterBackupSnapshotExecute(r GetClusterBackupSnapshotApiRequest) (*DiskBackupReplicaSet, *http.Response, error)
 
 	/*
+		GetCollectionRestoreJob Return One Collection Restore Job for One Cluster
+
+		Returns one collection restore job for one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster with the collection restore jobs you want to return.
+		@param jobId Unique 24-hexadecimal digit string that identifies the collection restore job to return.
+		@return GetCollectionRestoreJobApiRequest
+	*/
+	GetCollectionRestoreJob(ctx context.Context, groupId string, clusterName string, jobId string) GetCollectionRestoreJobApiRequest
+	/*
+		GetCollectionRestoreJob Return One Collection Restore Job for One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetCollectionRestoreJobApiParams - Parameters for the request
+		@return GetCollectionRestoreJobApiRequest
+	*/
+	GetCollectionRestoreJobWithParams(ctx context.Context, args *GetCollectionRestoreJobApiParams) GetCollectionRestoreJobApiRequest
+
+	// Method available only for mocking purposes
+	GetCollectionRestoreJobExecute(r GetCollectionRestoreJobApiRequest) (*ApiAtlasCollectionRestoreJobResponse, *http.Response, error)
+
+	/*
 		GetCompliancePolicy Return Backup Compliance Policy Settings
 
-		Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -490,7 +566,7 @@ type CloudBackupsApi interface {
 	/*
 		GetExportBucket Return One Snapshot Export Bucket
 
-		Returns one Export Bucket associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+		Returns one Export Bucket associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -510,6 +586,32 @@ type CloudBackupsApi interface {
 
 	// Method available only for mocking purposes
 	GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotExportBucketResponse, *http.Response, error)
+
+	/*
+		GetRestoreJobCollection Return One Collection State for One Collection Restore Job
+
+		Returns one collection-level restore state for one collection restore job from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster with the collection restore job you want to return.
+		@param jobId Unique 24-hexadecimal digit string that identifies the collection restore job.
+		@param sourceNamespace Source namespace that identifies the collection to return (e.g. `db.collection`).
+		@return GetRestoreJobCollectionApiRequest
+	*/
+	GetRestoreJobCollection(ctx context.Context, groupId string, clusterName string, jobId string, sourceNamespace string) GetRestoreJobCollectionApiRequest
+	/*
+		GetRestoreJobCollection Return One Collection State for One Collection Restore Job
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetRestoreJobCollectionApiParams - Parameters for the request
+		@return GetRestoreJobCollectionApiRequest
+	*/
+	GetRestoreJobCollectionWithParams(ctx context.Context, args *GetRestoreJobCollectionApiParams) GetRestoreJobCollectionApiRequest
+
+	// Method available only for mocking purposes
+	GetRestoreJobCollectionExecute(r GetRestoreJobCollectionApiRequest) (*ApiAtlasCollectionRestoreCollectionStateResponse, *http.Response, error)
 
 	/*
 			GetServerlessBackupSnapshot Return One Snapshot of One Serverless Instance
@@ -572,6 +674,33 @@ type CloudBackupsApi interface {
 
 	// Method available only for mocking purposes
 	GetServerlessRestoreJobExecute(r GetServerlessRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
+
+	/*
+		GetSnapshotDatabaseCollection Return One Collection in One Database in One Snapshot
+
+		Returns one collection that exists in the specified database in the snapshot. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+		@param databaseName Human-readable label that identifies the database.
+		@param collectionName Human-readable label that identifies the collection.
+		@return GetSnapshotDatabaseCollectionApiRequest
+	*/
+	GetSnapshotDatabaseCollection(ctx context.Context, groupId string, clusterName string, snapshotId string, databaseName string, collectionName string) GetSnapshotDatabaseCollectionApiRequest
+	/*
+		GetSnapshotDatabaseCollection Return One Collection in One Database in One Snapshot
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetSnapshotDatabaseCollectionApiParams - Parameters for the request
+		@return GetSnapshotDatabaseCollectionApiRequest
+	*/
+	GetSnapshotDatabaseCollectionWithParams(ctx context.Context, args *GetSnapshotDatabaseCollectionApiParams) GetSnapshotDatabaseCollectionApiRequest
+
+	// Method available only for mocking purposes
+	GetSnapshotDatabaseCollectionExecute(r GetSnapshotDatabaseCollectionApiRequest) (*DiskBackupCollectionResponse, *http.Response, error)
 
 	/*
 		ListBackupExports Return All Snapshot Export Jobs
@@ -670,6 +799,31 @@ type CloudBackupsApi interface {
 	ListBackupShardedClustersExecute(r ListBackupShardedClustersApiRequest) (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error)
 
 	/*
+		ListBackupSnapshotDatabases Return Databases in One Snapshot
+
+		Returns the list of databases that exist in the specified snapshot. Use this to discover namespaces before creating a collection restore job. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+		@return ListBackupSnapshotDatabasesApiRequest
+	*/
+	ListBackupSnapshotDatabases(ctx context.Context, groupId string, clusterName string, snapshotId string) ListBackupSnapshotDatabasesApiRequest
+	/*
+		ListBackupSnapshotDatabases Return Databases in One Snapshot
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListBackupSnapshotDatabasesApiParams - Parameters for the request
+		@return ListBackupSnapshotDatabasesApiRequest
+	*/
+	ListBackupSnapshotDatabasesWithParams(ctx context.Context, args *ListBackupSnapshotDatabasesApiParams) ListBackupSnapshotDatabasesApiRequest
+
+	// Method available only for mocking purposes
+	ListBackupSnapshotDatabasesExecute(r ListBackupSnapshotDatabasesApiRequest) (*PaginatedApiAtlasDiskBackupDatabase, *http.Response, error)
+
+	/*
 		ListBackupSnapshots Return All Replica Set Cloud Backups
 
 		Returns all snapshots of one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role or Project Backup Manager role.
@@ -694,9 +848,33 @@ type CloudBackupsApi interface {
 	ListBackupSnapshotsExecute(r ListBackupSnapshotsApiRequest) (*PaginatedCloudBackupReplicaSet, *http.Response, error)
 
 	/*
+		ListCollectionRestoreJobs Return All Collection Restore Jobs for One Cluster
+
+		Returns all collection restore jobs for one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster with the collection restore jobs you want to return.
+		@return ListCollectionRestoreJobsApiRequest
+	*/
+	ListCollectionRestoreJobs(ctx context.Context, groupId string, clusterName string) ListCollectionRestoreJobsApiRequest
+	/*
+		ListCollectionRestoreJobs Return All Collection Restore Jobs for One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListCollectionRestoreJobsApiParams - Parameters for the request
+		@return ListCollectionRestoreJobsApiRequest
+	*/
+	ListCollectionRestoreJobsWithParams(ctx context.Context, args *ListCollectionRestoreJobsApiParams) ListCollectionRestoreJobsApiRequest
+
+	// Method available only for mocking purposes
+	ListCollectionRestoreJobsExecute(r ListCollectionRestoreJobsApiRequest) (*PaginatedApiAtlasCollectionRestoreJob, *http.Response, error)
+
+	/*
 		ListExportBuckets Return All Snapshot Export Buckets
 
-		Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+		Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -715,6 +893,31 @@ type CloudBackupsApi interface {
 
 	// Method available only for mocking purposes
 	ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBuckets, *http.Response, error)
+
+	/*
+		ListRestoreJobCollections Return All Collection States for One Collection Restore Job
+
+		Returns all collection-level restore states for one collection restore job from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role. Note: If the restore job is in the INITIALIZING state, this endpoint returns an empty list because collection-level states have not yet been created.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster with the collection restore job you want to return.
+		@param jobId Unique 24-hexadecimal digit string that identifies the collection restore job.
+		@return ListRestoreJobCollectionsApiRequest
+	*/
+	ListRestoreJobCollections(ctx context.Context, groupId string, clusterName string, jobId string) ListRestoreJobCollectionsApiRequest
+	/*
+		ListRestoreJobCollections Return All Collection States for One Collection Restore Job
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListRestoreJobCollectionsApiParams - Parameters for the request
+		@return ListRestoreJobCollectionsApiRequest
+	*/
+	ListRestoreJobCollectionsWithParams(ctx context.Context, args *ListRestoreJobCollectionsApiParams) ListRestoreJobCollectionsApiRequest
+
+	// Method available only for mocking purposes
+	ListRestoreJobCollectionsExecute(r ListRestoreJobCollectionsApiRequest) (*PaginatedApiAtlasCollectionRestoreCollectionState, *http.Response, error)
 
 	/*
 			ListServerlessBackupSnapshots Return All Snapshots of One Serverless Instance
@@ -777,6 +980,32 @@ type CloudBackupsApi interface {
 	ListServerlessRestoreJobsExecute(r ListServerlessRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
+		ListSnapshotDatabaseCollections Return Collections in One Database in One Snapshot
+
+		Returns the list of collections in the specified database that exist in the snapshot. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+		@param databaseName Human-readable label that identifies the database.
+		@return ListSnapshotDatabaseCollectionsApiRequest
+	*/
+	ListSnapshotDatabaseCollections(ctx context.Context, groupId string, clusterName string, snapshotId string, databaseName string) ListSnapshotDatabaseCollectionsApiRequest
+	/*
+		ListSnapshotDatabaseCollections Return Collections in One Database in One Snapshot
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListSnapshotDatabaseCollectionsApiParams - Parameters for the request
+		@return ListSnapshotDatabaseCollectionsApiRequest
+	*/
+	ListSnapshotDatabaseCollectionsWithParams(ctx context.Context, args *ListSnapshotDatabaseCollectionsApiParams) ListSnapshotDatabaseCollectionsApiRequest
+
+	// Method available only for mocking purposes
+	ListSnapshotDatabaseCollectionsExecute(r ListSnapshotDatabaseCollectionsApiRequest) (*PaginatedApiAtlasDiskBackupCollection, *http.Response, error)
+
+	/*
 			TakeSnapshots Take One On-Demand Snapshot
 
 			Takes one on-demand snapshot for the specified cluster. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of `queued` or `inProgress` exists, before taking another snapshot, wait until Atlas completes processing the previously taken on-demand snapshot.
@@ -831,7 +1060,7 @@ type CloudBackupsApi interface {
 	/*
 		UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
 
-		Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -882,7 +1111,7 @@ type CloudBackupsApi interface {
 	/*
 		UpdateCompliancePolicy Update Backup Compliance Policy Settings
 
-		Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1420,6 +1649,138 @@ func (a *CloudBackupsApiService) CreateBackupRestoreJobExecute(r CreateBackupRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type CreateCollectionRestoreJobApiRequest struct {
+	ctx                                 context.Context
+	ApiService                          CloudBackupsApi
+	groupId                             string
+	clusterName                         string
+	apiAtlasCollectionRestoreJobRequest *ApiAtlasCollectionRestoreJobRequest
+}
+
+type CreateCollectionRestoreJobApiParams struct {
+	GroupId                             string
+	ClusterName                         string
+	ApiAtlasCollectionRestoreJobRequest *ApiAtlasCollectionRestoreJobRequest
+}
+
+func (a *CloudBackupsApiService) CreateCollectionRestoreJobWithParams(ctx context.Context, args *CreateCollectionRestoreJobApiParams) CreateCollectionRestoreJobApiRequest {
+	return CreateCollectionRestoreJobApiRequest{
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             args.GroupId,
+		clusterName:                         args.ClusterName,
+		apiAtlasCollectionRestoreJobRequest: args.ApiAtlasCollectionRestoreJobRequest,
+	}
+}
+
+func (r CreateCollectionRestoreJobApiRequest) Execute() (*ApiAtlasCollectionRestoreJobResponse, *http.Response, error) {
+	return r.ApiService.CreateCollectionRestoreJobExecute(r)
+}
+
+/*
+CreateCollectionRestoreJob Create One Collection Restore Job
+
+Creates one collection-level restore job for one cluster from the specified project. Collection-level restores allow restoring specific databases or collections from a snapshot or point-in-time. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role or Project Backup Recovery Operator role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the source cluster for the restore.
+	@return CreateCollectionRestoreJobApiRequest
+*/
+func (a *CloudBackupsApiService) CreateCollectionRestoreJob(ctx context.Context, groupId string, clusterName string, apiAtlasCollectionRestoreJobRequest *ApiAtlasCollectionRestoreJobRequest) CreateCollectionRestoreJobApiRequest {
+	return CreateCollectionRestoreJobApiRequest{
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             groupId,
+		clusterName:                         clusterName,
+		apiAtlasCollectionRestoreJobRequest: apiAtlasCollectionRestoreJobRequest,
+	}
+}
+
+// CreateCollectionRestoreJobExecute executes the request
+//
+//	@return ApiAtlasCollectionRestoreJobResponse
+func (a *CloudBackupsApiService) CreateCollectionRestoreJobExecute(r CreateCollectionRestoreJobApiRequest) (*ApiAtlasCollectionRestoreJobResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ApiAtlasCollectionRestoreJobResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.CreateCollectionRestoreJob")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.apiAtlasCollectionRestoreJobRequest == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasCollectionRestoreJobRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.apiAtlasCollectionRestoreJobRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type CreateExportBucketApiRequest struct {
 	ctx                                   context.Context
 	ApiService                            CloudBackupsApi
@@ -1448,7 +1809,7 @@ func (r CreateExportBucketApiRequest) Execute() (*DiskBackupSnapshotExportBucket
 /*
 CreateExportBucket Create One Snapshot Export Bucket
 
-Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1493,7 +1854,7 @@ func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketA
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json", "application/vnd.atlas.2023-01-01+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1939,7 +2300,7 @@ func (r DeleteClusterBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSch
 /*
 DeleteClusterBackupSchedule Remove All Cloud Backup Schedules
 
-Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role. Deprecated versions: v2-{2023-01-01}
+Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2776,7 +3137,7 @@ func (r GetBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule20240
 /*
 GetBackupSchedule Return One Cloud Backup Schedule
 
-Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3003,6 +3364,147 @@ func (a *CloudBackupsApiService) GetBackupShardedClusterExecute(r GetBackupShard
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetBackupSnapshotDatabaseApiRequest struct {
+	ctx          context.Context
+	ApiService   CloudBackupsApi
+	groupId      string
+	clusterName  string
+	snapshotId   string
+	databaseName string
+}
+
+type GetBackupSnapshotDatabaseApiParams struct {
+	GroupId      string
+	ClusterName  string
+	SnapshotId   string
+	DatabaseName string
+}
+
+func (a *CloudBackupsApiService) GetBackupSnapshotDatabaseWithParams(ctx context.Context, args *GetBackupSnapshotDatabaseApiParams) GetBackupSnapshotDatabaseApiRequest {
+	return GetBackupSnapshotDatabaseApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		clusterName:  args.ClusterName,
+		snapshotId:   args.SnapshotId,
+		databaseName: args.DatabaseName,
+	}
+}
+
+func (r GetBackupSnapshotDatabaseApiRequest) Execute() (*DiskBackupDatabaseResponse, *http.Response, error) {
+	return r.ApiService.GetBackupSnapshotDatabaseExecute(r)
+}
+
+/*
+GetBackupSnapshotDatabase Return One Database in One Snapshot
+
+Returns one database that exists in the specified snapshot. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+	@param databaseName Human-readable label that identifies the database.
+	@return GetBackupSnapshotDatabaseApiRequest
+*/
+func (a *CloudBackupsApiService) GetBackupSnapshotDatabase(ctx context.Context, groupId string, clusterName string, snapshotId string, databaseName string) GetBackupSnapshotDatabaseApiRequest {
+	return GetBackupSnapshotDatabaseApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      groupId,
+		clusterName:  clusterName,
+		snapshotId:   snapshotId,
+		databaseName: databaseName,
+	}
+}
+
+// GetBackupSnapshotDatabaseExecute executes the request
+//
+//	@return DiskBackupDatabaseResponse
+func (a *CloudBackupsApiService) GetBackupSnapshotDatabaseExecute(r GetBackupSnapshotDatabaseApiRequest) (*DiskBackupDatabaseResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *DiskBackupDatabaseResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetBackupSnapshotDatabase")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.snapshotId == "" {
+		return localVarReturnValue, nil, reportError("snapshotId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"snapshotId"+"}", url.PathEscape(r.snapshotId), -1)
+	if r.databaseName == "" {
+		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type GetClusterBackupSnapshotApiRequest struct {
 	ctx         context.Context
 	ApiService  CloudBackupsApi
@@ -3135,6 +3637,138 @@ func (a *CloudBackupsApiService) GetClusterBackupSnapshotExecute(r GetClusterBac
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetCollectionRestoreJobApiRequest struct {
+	ctx         context.Context
+	ApiService  CloudBackupsApi
+	groupId     string
+	clusterName string
+	jobId       string
+}
+
+type GetCollectionRestoreJobApiParams struct {
+	GroupId     string
+	ClusterName string
+	JobId       string
+}
+
+func (a *CloudBackupsApiService) GetCollectionRestoreJobWithParams(ctx context.Context, args *GetCollectionRestoreJobApiParams) GetCollectionRestoreJobApiRequest {
+	return GetCollectionRestoreJobApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+		jobId:       args.JobId,
+	}
+}
+
+func (r GetCollectionRestoreJobApiRequest) Execute() (*ApiAtlasCollectionRestoreJobResponse, *http.Response, error) {
+	return r.ApiService.GetCollectionRestoreJobExecute(r)
+}
+
+/*
+GetCollectionRestoreJob Return One Collection Restore Job for One Cluster
+
+Returns one collection restore job for one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster with the collection restore jobs you want to return.
+	@param jobId Unique 24-hexadecimal digit string that identifies the collection restore job to return.
+	@return GetCollectionRestoreJobApiRequest
+*/
+func (a *CloudBackupsApiService) GetCollectionRestoreJob(ctx context.Context, groupId string, clusterName string, jobId string) GetCollectionRestoreJobApiRequest {
+	return GetCollectionRestoreJobApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+		jobId:       jobId,
+	}
+}
+
+// GetCollectionRestoreJobExecute executes the request
+//
+//	@return ApiAtlasCollectionRestoreJobResponse
+func (a *CloudBackupsApiService) GetCollectionRestoreJobExecute(r GetCollectionRestoreJobApiRequest) (*ApiAtlasCollectionRestoreJobResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ApiAtlasCollectionRestoreJobResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetCollectionRestoreJob")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.jobId == "" {
+		return localVarReturnValue, nil, reportError("jobId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(r.jobId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type GetCompliancePolicyApiRequest struct {
 	ctx        context.Context
 	ApiService CloudBackupsApi
@@ -3160,7 +3794,7 @@ func (r GetCompliancePolicyApiRequest) Execute() (*DataProtectionSettings2023100
 /*
 GetCompliancePolicy Return Backup Compliance Policy Settings
 
-Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3277,7 +3911,7 @@ func (r GetExportBucketApiRequest) Execute() (*DiskBackupSnapshotExportBucketRes
 /*
 GetExportBucket Return One Snapshot Export Bucket
 
-Returns one Export Bucket associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+Returns one Export Bucket associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3334,6 +3968,147 @@ func (a *CloudBackupsApiService) GetExportBucketExecute(r GetExportBucketApiRequ
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetRestoreJobCollectionApiRequest struct {
+	ctx             context.Context
+	ApiService      CloudBackupsApi
+	groupId         string
+	clusterName     string
+	jobId           string
+	sourceNamespace string
+}
+
+type GetRestoreJobCollectionApiParams struct {
+	GroupId         string
+	ClusterName     string
+	JobId           string
+	SourceNamespace string
+}
+
+func (a *CloudBackupsApiService) GetRestoreJobCollectionWithParams(ctx context.Context, args *GetRestoreJobCollectionApiParams) GetRestoreJobCollectionApiRequest {
+	return GetRestoreJobCollectionApiRequest{
+		ApiService:      a,
+		ctx:             ctx,
+		groupId:         args.GroupId,
+		clusterName:     args.ClusterName,
+		jobId:           args.JobId,
+		sourceNamespace: args.SourceNamespace,
+	}
+}
+
+func (r GetRestoreJobCollectionApiRequest) Execute() (*ApiAtlasCollectionRestoreCollectionStateResponse, *http.Response, error) {
+	return r.ApiService.GetRestoreJobCollectionExecute(r)
+}
+
+/*
+GetRestoreJobCollection Return One Collection State for One Collection Restore Job
+
+Returns one collection-level restore state for one collection restore job from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster with the collection restore job you want to return.
+	@param jobId Unique 24-hexadecimal digit string that identifies the collection restore job.
+	@param sourceNamespace Source namespace that identifies the collection to return (e.g. `db.collection`).
+	@return GetRestoreJobCollectionApiRequest
+*/
+func (a *CloudBackupsApiService) GetRestoreJobCollection(ctx context.Context, groupId string, clusterName string, jobId string, sourceNamespace string) GetRestoreJobCollectionApiRequest {
+	return GetRestoreJobCollectionApiRequest{
+		ApiService:      a,
+		ctx:             ctx,
+		groupId:         groupId,
+		clusterName:     clusterName,
+		jobId:           jobId,
+		sourceNamespace: sourceNamespace,
+	}
+}
+
+// GetRestoreJobCollectionExecute executes the request
+//
+//	@return ApiAtlasCollectionRestoreCollectionStateResponse
+func (a *CloudBackupsApiService) GetRestoreJobCollectionExecute(r GetRestoreJobCollectionApiRequest) (*ApiAtlasCollectionRestoreCollectionStateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ApiAtlasCollectionRestoreCollectionStateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetRestoreJobCollection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.jobId == "" {
+		return localVarReturnValue, nil, reportError("jobId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(r.jobId), -1)
+	if r.sourceNamespace == "" {
+		return localVarReturnValue, nil, reportError("sourceNamespace is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceNamespace"+"}", url.PathEscape(r.sourceNamespace), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -3610,6 +4385,156 @@ func (a *CloudBackupsApiService) GetServerlessRestoreJobExecute(r GetServerlessR
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetSnapshotDatabaseCollectionApiRequest struct {
+	ctx            context.Context
+	ApiService     CloudBackupsApi
+	groupId        string
+	clusterName    string
+	snapshotId     string
+	databaseName   string
+	collectionName string
+}
+
+type GetSnapshotDatabaseCollectionApiParams struct {
+	GroupId        string
+	ClusterName    string
+	SnapshotId     string
+	DatabaseName   string
+	CollectionName string
+}
+
+func (a *CloudBackupsApiService) GetSnapshotDatabaseCollectionWithParams(ctx context.Context, args *GetSnapshotDatabaseCollectionApiParams) GetSnapshotDatabaseCollectionApiRequest {
+	return GetSnapshotDatabaseCollectionApiRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        args.GroupId,
+		clusterName:    args.ClusterName,
+		snapshotId:     args.SnapshotId,
+		databaseName:   args.DatabaseName,
+		collectionName: args.CollectionName,
+	}
+}
+
+func (r GetSnapshotDatabaseCollectionApiRequest) Execute() (*DiskBackupCollectionResponse, *http.Response, error) {
+	return r.ApiService.GetSnapshotDatabaseCollectionExecute(r)
+}
+
+/*
+GetSnapshotDatabaseCollection Return One Collection in One Database in One Snapshot
+
+Returns one collection that exists in the specified database in the snapshot. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+	@param databaseName Human-readable label that identifies the database.
+	@param collectionName Human-readable label that identifies the collection.
+	@return GetSnapshotDatabaseCollectionApiRequest
+*/
+func (a *CloudBackupsApiService) GetSnapshotDatabaseCollection(ctx context.Context, groupId string, clusterName string, snapshotId string, databaseName string, collectionName string) GetSnapshotDatabaseCollectionApiRequest {
+	return GetSnapshotDatabaseCollectionApiRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        groupId,
+		clusterName:    clusterName,
+		snapshotId:     snapshotId,
+		databaseName:   databaseName,
+		collectionName: collectionName,
+	}
+}
+
+// GetSnapshotDatabaseCollectionExecute executes the request
+//
+//	@return DiskBackupCollectionResponse
+func (a *CloudBackupsApiService) GetSnapshotDatabaseCollectionExecute(r GetSnapshotDatabaseCollectionApiRequest) (*DiskBackupCollectionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *DiskBackupCollectionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetSnapshotDatabaseCollection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.snapshotId == "" {
+		return localVarReturnValue, nil, reportError("snapshotId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"snapshotId"+"}", url.PathEscape(r.snapshotId), -1)
+	if r.databaseName == "" {
+		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	if r.collectionName == "" {
+		return localVarReturnValue, nil, reportError("collectionName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionName"+"}", url.PathEscape(r.collectionName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -4284,6 +5209,186 @@ func (a *CloudBackupsApiService) ListBackupShardedClustersExecute(r ListBackupSh
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ListBackupSnapshotDatabasesApiRequest struct {
+	ctx          context.Context
+	ApiService   CloudBackupsApi
+	groupId      string
+	clusterName  string
+	snapshotId   string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListBackupSnapshotDatabasesApiParams struct {
+	GroupId      string
+	ClusterName  string
+	SnapshotId   string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *CloudBackupsApiService) ListBackupSnapshotDatabasesWithParams(ctx context.Context, args *ListBackupSnapshotDatabasesApiParams) ListBackupSnapshotDatabasesApiRequest {
+	return ListBackupSnapshotDatabasesApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		clusterName:  args.ClusterName,
+		snapshotId:   args.SnapshotId,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+func (r ListBackupSnapshotDatabasesApiRequest) IncludeCount(includeCount bool) ListBackupSnapshotDatabasesApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListBackupSnapshotDatabasesApiRequest) ItemsPerPage(itemsPerPage int) ListBackupSnapshotDatabasesApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListBackupSnapshotDatabasesApiRequest) PageNum(pageNum int) ListBackupSnapshotDatabasesApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListBackupSnapshotDatabasesApiRequest) Execute() (*PaginatedApiAtlasDiskBackupDatabase, *http.Response, error) {
+	return r.ApiService.ListBackupSnapshotDatabasesExecute(r)
+}
+
+/*
+ListBackupSnapshotDatabases Return Databases in One Snapshot
+
+Returns the list of databases that exist in the specified snapshot. Use this to discover namespaces before creating a collection restore job. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+	@return ListBackupSnapshotDatabasesApiRequest
+*/
+func (a *CloudBackupsApiService) ListBackupSnapshotDatabases(ctx context.Context, groupId string, clusterName string, snapshotId string) ListBackupSnapshotDatabasesApiRequest {
+	return ListBackupSnapshotDatabasesApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+		snapshotId:  snapshotId,
+	}
+}
+
+// ListBackupSnapshotDatabasesExecute executes the request
+//
+//	@return PaginatedApiAtlasDiskBackupDatabase
+func (a *CloudBackupsApiService) ListBackupSnapshotDatabasesExecute(r ListBackupSnapshotDatabasesApiRequest) (*PaginatedApiAtlasDiskBackupDatabase, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiAtlasDiskBackupDatabase
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListBackupSnapshotDatabases")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.snapshotId == "" {
+		return localVarReturnValue, nil, reportError("snapshotId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"snapshotId"+"}", url.PathEscape(r.snapshotId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListBackupSnapshotsApiRequest struct {
 	ctx                   context.Context
 	ApiService            CloudBackupsApi
@@ -4491,6 +5596,161 @@ func (a *CloudBackupsApiService) ListBackupSnapshotsExecute(r ListBackupSnapshot
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ListCollectionRestoreJobsApiRequest struct {
+	ctx          context.Context
+	ApiService   CloudBackupsApi
+	groupId      string
+	clusterName  string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListCollectionRestoreJobsApiParams struct {
+	GroupId      string
+	ClusterName  string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *CloudBackupsApiService) ListCollectionRestoreJobsWithParams(ctx context.Context, args *ListCollectionRestoreJobsApiParams) ListCollectionRestoreJobsApiRequest {
+	return ListCollectionRestoreJobsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		clusterName:  args.ClusterName,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListCollectionRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListCollectionRestoreJobsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListCollectionRestoreJobsApiRequest) PageNum(pageNum int) ListCollectionRestoreJobsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListCollectionRestoreJobsApiRequest) Execute() (*PaginatedApiAtlasCollectionRestoreJob, *http.Response, error) {
+	return r.ApiService.ListCollectionRestoreJobsExecute(r)
+}
+
+/*
+ListCollectionRestoreJobs Return All Collection Restore Jobs for One Cluster
+
+Returns all collection restore jobs for one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster with the collection restore jobs you want to return.
+	@return ListCollectionRestoreJobsApiRequest
+*/
+func (a *CloudBackupsApiService) ListCollectionRestoreJobs(ctx context.Context, groupId string, clusterName string) ListCollectionRestoreJobsApiRequest {
+	return ListCollectionRestoreJobsApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// ListCollectionRestoreJobsExecute executes the request
+//
+//	@return PaginatedApiAtlasCollectionRestoreJob
+func (a *CloudBackupsApiService) ListCollectionRestoreJobsExecute(r ListCollectionRestoreJobsApiRequest) (*PaginatedApiAtlasCollectionRestoreJob, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiAtlasCollectionRestoreJob
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListCollectionRestoreJobs")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListExportBucketsApiRequest struct {
 	ctx          context.Context
 	ApiService   CloudBackupsApi
@@ -4543,7 +5803,7 @@ func (r ListExportBucketsApiRequest) Execute() (*PaginatedBackupSnapshotExportBu
 /*
 ListExportBuckets Return All Snapshot Export Buckets
 
-Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+Returns all Export Buckets associated with the specified Project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -4615,6 +5875,206 @@ func (a *CloudBackupsApiService) ListExportBucketsExecute(r ListExportBucketsApi
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListRestoreJobCollectionsApiRequest struct {
+	ctx             context.Context
+	ApiService      CloudBackupsApi
+	groupId         string
+	clusterName     string
+	jobId           string
+	itemsPerPage    *int
+	pageNum         *int
+	state           *string
+	sourceNamespace *string
+	targetNamespace *string
+}
+
+type ListRestoreJobCollectionsApiParams struct {
+	GroupId         string
+	ClusterName     string
+	JobId           string
+	ItemsPerPage    *int
+	PageNum         *int
+	State           *string
+	SourceNamespace *string
+	TargetNamespace *string
+}
+
+func (a *CloudBackupsApiService) ListRestoreJobCollectionsWithParams(ctx context.Context, args *ListRestoreJobCollectionsApiParams) ListRestoreJobCollectionsApiRequest {
+	return ListRestoreJobCollectionsApiRequest{
+		ApiService:      a,
+		ctx:             ctx,
+		groupId:         args.GroupId,
+		clusterName:     args.ClusterName,
+		jobId:           args.JobId,
+		itemsPerPage:    args.ItemsPerPage,
+		pageNum:         args.PageNum,
+		state:           args.State,
+		sourceNamespace: args.SourceNamespace,
+		targetNamespace: args.TargetNamespace,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListRestoreJobCollectionsApiRequest) ItemsPerPage(itemsPerPage int) ListRestoreJobCollectionsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListRestoreJobCollectionsApiRequest) PageNum(pageNum int) ListRestoreJobCollectionsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+// Collection-level state to filter by.
+func (r ListRestoreJobCollectionsApiRequest) State(state string) ListRestoreJobCollectionsApiRequest {
+	r.state = &state
+	return r
+}
+
+// Source namespace to filter by (e.g. &#x60;db.collection&#x60;).
+func (r ListRestoreJobCollectionsApiRequest) SourceNamespace(sourceNamespace string) ListRestoreJobCollectionsApiRequest {
+	r.sourceNamespace = &sourceNamespace
+	return r
+}
+
+// Target namespace to filter by (e.g. &#x60;db.collection&#x60;).
+func (r ListRestoreJobCollectionsApiRequest) TargetNamespace(targetNamespace string) ListRestoreJobCollectionsApiRequest {
+	r.targetNamespace = &targetNamespace
+	return r
+}
+
+func (r ListRestoreJobCollectionsApiRequest) Execute() (*PaginatedApiAtlasCollectionRestoreCollectionState, *http.Response, error) {
+	return r.ApiService.ListRestoreJobCollectionsExecute(r)
+}
+
+/*
+ListRestoreJobCollections Return All Collection States for One Collection Restore Job
+
+Returns all collection-level restore states for one collection restore job from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role. Note: If the restore job is in the INITIALIZING state, this endpoint returns an empty list because collection-level states have not yet been created.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster with the collection restore job you want to return.
+	@param jobId Unique 24-hexadecimal digit string that identifies the collection restore job.
+	@return ListRestoreJobCollectionsApiRequest
+*/
+func (a *CloudBackupsApiService) ListRestoreJobCollections(ctx context.Context, groupId string, clusterName string, jobId string) ListRestoreJobCollectionsApiRequest {
+	return ListRestoreJobCollectionsApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+		jobId:       jobId,
+	}
+}
+
+// ListRestoreJobCollectionsExecute executes the request
+//
+//	@return PaginatedApiAtlasCollectionRestoreCollectionState
+func (a *CloudBackupsApiService) ListRestoreJobCollectionsExecute(r ListRestoreJobCollectionsApiRequest) (*PaginatedApiAtlasCollectionRestoreCollectionState, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiAtlasCollectionRestoreCollectionState
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListRestoreJobCollections")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.jobId == "" {
+		return localVarReturnValue, nil, reportError("jobId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(r.jobId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.state != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "")
+	}
+	if r.sourceNamespace != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sourceNamespace", r.sourceNamespace, "")
+	}
+	if r.targetNamespace != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "targetNamespace", r.targetNamespace, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -5007,6 +6467,195 @@ func (a *CloudBackupsApiService) ListServerlessRestoreJobsExecute(r ListServerle
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ListSnapshotDatabaseCollectionsApiRequest struct {
+	ctx          context.Context
+	ApiService   CloudBackupsApi
+	groupId      string
+	clusterName  string
+	snapshotId   string
+	databaseName string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListSnapshotDatabaseCollectionsApiParams struct {
+	GroupId      string
+	ClusterName  string
+	SnapshotId   string
+	DatabaseName string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *CloudBackupsApiService) ListSnapshotDatabaseCollectionsWithParams(ctx context.Context, args *ListSnapshotDatabaseCollectionsApiParams) ListSnapshotDatabaseCollectionsApiRequest {
+	return ListSnapshotDatabaseCollectionsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		clusterName:  args.ClusterName,
+		snapshotId:   args.SnapshotId,
+		databaseName: args.DatabaseName,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+func (r ListSnapshotDatabaseCollectionsApiRequest) IncludeCount(includeCount bool) ListSnapshotDatabaseCollectionsApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListSnapshotDatabaseCollectionsApiRequest) ItemsPerPage(itemsPerPage int) ListSnapshotDatabaseCollectionsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListSnapshotDatabaseCollectionsApiRequest) PageNum(pageNum int) ListSnapshotDatabaseCollectionsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListSnapshotDatabaseCollectionsApiRequest) Execute() (*PaginatedApiAtlasDiskBackupCollection, *http.Response, error) {
+	return r.ApiService.ListSnapshotDatabaseCollectionsExecute(r)
+}
+
+/*
+ListSnapshotDatabaseCollections Return Collections in One Database in One Snapshot
+
+Returns the list of collections in the specified database that exist in the snapshot. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+	@param databaseName Human-readable label that identifies the database.
+	@return ListSnapshotDatabaseCollectionsApiRequest
+*/
+func (a *CloudBackupsApiService) ListSnapshotDatabaseCollections(ctx context.Context, groupId string, clusterName string, snapshotId string, databaseName string) ListSnapshotDatabaseCollectionsApiRequest {
+	return ListSnapshotDatabaseCollectionsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      groupId,
+		clusterName:  clusterName,
+		snapshotId:   snapshotId,
+		databaseName: databaseName,
+	}
+}
+
+// ListSnapshotDatabaseCollectionsExecute executes the request
+//
+//	@return PaginatedApiAtlasDiskBackupCollection
+func (a *CloudBackupsApiService) ListSnapshotDatabaseCollectionsExecute(r ListSnapshotDatabaseCollectionsApiRequest) (*PaginatedApiAtlasDiskBackupCollection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiAtlasDiskBackupCollection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListSnapshotDatabaseCollections")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.snapshotId == "" {
+		return localVarReturnValue, nil, reportError("snapshotId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"snapshotId"+"}", url.PathEscape(r.snapshotId), -1)
+	if r.databaseName == "" {
+		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type TakeSnapshotsApiRequest struct {
 	ctx                               context.Context
 	ApiService                        CloudBackupsApi
@@ -5304,7 +6953,7 @@ func (r UpdateBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule20
 /*
 UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
 
-Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -5355,7 +7004,7 @@ func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupSched
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json", "application/vnd.atlas.2023-01-01+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -5583,7 +7232,7 @@ func (r UpdateCompliancePolicyApiRequest) Execute() (*DataProtectionSettings2023
 /*
 UpdateCompliancePolicy Update Backup Compliance Policy Settings
 
-Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -5635,7 +7284,7 @@ func (a *CloudBackupsApiService) UpdateCompliancePolicyExecute(r UpdateComplianc
 		parameterAddToHeaderOrQuery(localVarQueryParams, "overwriteBackupPolicies", r.overwriteBackupPolicies, "")
 	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-10-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-10-01+json", "application/vnd.atlas.2023-01-01+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)

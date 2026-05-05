@@ -4,13 +4,13 @@ package admin
 
 // ApiAtlasFTSAnalyzers Settings that describe one Atlas Search custom analyzer.
 type ApiAtlasFTSAnalyzers struct {
-	// Filters that examine text one character at a time and perform filtering operations.
-	CharFilters *[]any `json:"charFilters,omitempty"`
 	// Human-readable name that identifies the custom analyzer. Names must be unique within an index, and must not start with any of the following strings: - `lucene.` - `builtin.` - `mongodb.`
 	Name string `json:"name"`
+	// Filters that examine text one character at a time and perform filtering operations.
+	CharFilters *[]any                        `json:"charFilters,omitempty"`
+	Tokenizer   ApiAtlasFTSAnalyzersTokenizer `json:"tokenizer"`
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, the removal of sensitive information from public documents.
-	TokenFilters *[]any                        `json:"tokenFilters,omitempty"`
-	Tokenizer    ApiAtlasFTSAnalyzersTokenizer `json:"tokenizer"`
+	TokenFilters *[]any `json:"tokenFilters,omitempty"`
 }
 
 // NewApiAtlasFTSAnalyzers instantiates a new ApiAtlasFTSAnalyzers object
@@ -30,6 +30,30 @@ func NewApiAtlasFTSAnalyzers(name string, tokenizer ApiAtlasFTSAnalyzersTokenize
 func NewApiAtlasFTSAnalyzersWithDefaults() *ApiAtlasFTSAnalyzers {
 	this := ApiAtlasFTSAnalyzers{}
 	return &this
+}
+
+// GetName returns the Name field value
+func (o *ApiAtlasFTSAnalyzers) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *ApiAtlasFTSAnalyzers) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *ApiAtlasFTSAnalyzers) SetName(v string) {
+	o.Name = v
 }
 
 // GetCharFilters returns the CharFilters field value if set, zero value otherwise
@@ -65,28 +89,28 @@ func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []any) {
 	o.CharFilters = &v
 }
 
-// GetName returns the Name field value
-func (o *ApiAtlasFTSAnalyzers) GetName() string {
+// GetTokenizer returns the Tokenizer field value
+func (o *ApiAtlasFTSAnalyzers) GetTokenizer() ApiAtlasFTSAnalyzersTokenizer {
 	if o == nil {
-		var ret string
+		var ret ApiAtlasFTSAnalyzersTokenizer
 		return ret
 	}
 
-	return o.Name
+	return o.Tokenizer
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetTokenizerOk returns a tuple with the Tokenizer field value
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasFTSAnalyzers) GetNameOk() (*string, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetTokenizerOk() (*ApiAtlasFTSAnalyzersTokenizer, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.Tokenizer, true
 }
 
-// SetName sets field value
-func (o *ApiAtlasFTSAnalyzers) SetName(v string) {
-	o.Name = v
+// SetTokenizer sets field value
+func (o *ApiAtlasFTSAnalyzers) SetTokenizer(v ApiAtlasFTSAnalyzersTokenizer) {
+	o.Tokenizer = v
 }
 
 // GetTokenFilters returns the TokenFilters field value if set, zero value otherwise
@@ -120,28 +144,4 @@ func (o *ApiAtlasFTSAnalyzers) HasTokenFilters() bool {
 // SetTokenFilters gets a reference to the given []any and assigns it to the TokenFilters field.
 func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []any) {
 	o.TokenFilters = &v
-}
-
-// GetTokenizer returns the Tokenizer field value
-func (o *ApiAtlasFTSAnalyzers) GetTokenizer() ApiAtlasFTSAnalyzersTokenizer {
-	if o == nil {
-		var ret ApiAtlasFTSAnalyzersTokenizer
-		return ret
-	}
-
-	return o.Tokenizer
-}
-
-// GetTokenizerOk returns a tuple with the Tokenizer field value
-// and a boolean to check if the value has been set.
-func (o *ApiAtlasFTSAnalyzers) GetTokenizerOk() (*ApiAtlasFTSAnalyzersTokenizer, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Tokenizer, true
-}
-
-// SetTokenizer sets field value
-func (o *ApiAtlasFTSAnalyzers) SetTokenizer(v ApiAtlasFTSAnalyzersTokenizer) {
-	o.Tokenizer = v
 }

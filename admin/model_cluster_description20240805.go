@@ -9,8 +9,10 @@ import (
 // ClusterDescription20240805 struct for ClusterDescription20240805
 type ClusterDescription20240805 struct {
 	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set `acceptDataRisksAndForceReplicaSetReconfig` to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                            `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
-	AdvancedConfiguration                     *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
+	AcceptDataRisksAndForceReplicaSetReconfig *time.Time `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
+	// Governs adaptive capacity behavior of Azure nodes in single-cloud Azure clusters or multi-cloud clusters that include Azure nodes. Adaptive capacity enables fallback hardware selection when the primary instance family is unavailable. ``ENABLED`` means the cluster explicitly opts in to adaptive capacity. ``DISABLED`` means the cluster explicitly opts out; the cluster receives capacity errors instead of being placed on fallback hardware. ``null`` means the field is unset; Azure clusters use adaptive capacity by default when the feature is enabled at the group level. Setting this field for single-cloud AWS or GCP clusters is a no-op.
+	AdaptiveCapacity      *string                               `json:"adaptiveCapacity,omitempty"`
+	AdvancedConfiguration *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
@@ -27,6 +29,9 @@ type ClusterDescription20240805 struct {
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
+	// The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
+	// Read only field.
+	EffectiveIntelligentWorkloadManagementPolicies *map[string]any `json:"effectiveIntelligentWorkloadManagementPolicies,omitempty"`
 	// List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
 	// Read only field.
 	EffectiveReplicationSpecs *[]ReplicationSpec20240805 `json:"effectiveReplicationSpecs,omitempty"`
@@ -46,6 +51,8 @@ type ClusterDescription20240805 struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
+	// Map of overrides for Intelligent Workload Management policies.
+	IntelligentWorkloadManagementPolicyOverrides *map[string]any `json:"intelligentWorkloadManagementPolicyOverrides,omitempty"`
 	// Internal classification of the cluster's role. Possible values: `NONE` (regular user cluster), `SYSTEM_CLUSTER` (system cluster for backup), `INTERNAL_SHADOW_CLUSTER` (internal use shadow cluster for testing).
 	// Read only field.
 	InternalClusterRole *string `json:"internalClusterRole,omitempty"`
@@ -174,6 +181,39 @@ func (o *ClusterDescription20240805) HasAcceptDataRisksAndForceReplicaSetReconfi
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
 func (o *ClusterDescription20240805) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
+}
+
+// GetAdaptiveCapacity returns the AdaptiveCapacity field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetAdaptiveCapacity() string {
+	if o == nil || IsNil(o.AdaptiveCapacity) {
+		var ret string
+		return ret
+	}
+	return *o.AdaptiveCapacity
+}
+
+// GetAdaptiveCapacityOk returns a tuple with the AdaptiveCapacity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetAdaptiveCapacityOk() (*string, bool) {
+	if o == nil || IsNil(o.AdaptiveCapacity) {
+		return nil, false
+	}
+
+	return o.AdaptiveCapacity, true
+}
+
+// HasAdaptiveCapacity returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasAdaptiveCapacity() bool {
+	if o != nil && !IsNil(o.AdaptiveCapacity) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdaptiveCapacity gets a reference to the given string and assigns it to the AdaptiveCapacity field.
+func (o *ClusterDescription20240805) SetAdaptiveCapacity(v string) {
+	o.AdaptiveCapacity = &v
 }
 
 // GetAdvancedConfiguration returns the AdvancedConfiguration field value if set, zero value otherwise
@@ -473,6 +513,39 @@ func (o *ClusterDescription20240805) SetDiskWarmingMode(v string) {
 	o.DiskWarmingMode = &v
 }
 
+// GetEffectiveIntelligentWorkloadManagementPolicies returns the EffectiveIntelligentWorkloadManagementPolicies field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetEffectiveIntelligentWorkloadManagementPolicies() map[string]any {
+	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		var ret map[string]any
+		return ret
+	}
+	return *o.EffectiveIntelligentWorkloadManagementPolicies
+}
+
+// GetEffectiveIntelligentWorkloadManagementPoliciesOk returns a tuple with the EffectiveIntelligentWorkloadManagementPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetEffectiveIntelligentWorkloadManagementPoliciesOk() (*map[string]any, bool) {
+	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		return nil, false
+	}
+
+	return o.EffectiveIntelligentWorkloadManagementPolicies, true
+}
+
+// HasEffectiveIntelligentWorkloadManagementPolicies returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasEffectiveIntelligentWorkloadManagementPolicies() bool {
+	if o != nil && !IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveIntelligentWorkloadManagementPolicies gets a reference to the given map[string]any and assigns it to the EffectiveIntelligentWorkloadManagementPolicies field.
+func (o *ClusterDescription20240805) SetEffectiveIntelligentWorkloadManagementPolicies(v map[string]any) {
+	o.EffectiveIntelligentWorkloadManagementPolicies = &v
+}
+
 // GetEffectiveReplicationSpecs returns the EffectiveReplicationSpecs field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetEffectiveReplicationSpecs() []ReplicationSpec20240805 {
 	if o == nil || IsNil(o.EffectiveReplicationSpecs) {
@@ -702,6 +775,39 @@ func (o *ClusterDescription20240805) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ClusterDescription20240805) SetId(v string) {
 	o.Id = &v
+}
+
+// GetIntelligentWorkloadManagementPolicyOverrides returns the IntelligentWorkloadManagementPolicyOverrides field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetIntelligentWorkloadManagementPolicyOverrides() map[string]any {
+	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		var ret map[string]any
+		return ret
+	}
+	return *o.IntelligentWorkloadManagementPolicyOverrides
+}
+
+// GetIntelligentWorkloadManagementPolicyOverridesOk returns a tuple with the IntelligentWorkloadManagementPolicyOverrides field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetIntelligentWorkloadManagementPolicyOverridesOk() (*map[string]any, bool) {
+	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		return nil, false
+	}
+
+	return o.IntelligentWorkloadManagementPolicyOverrides, true
+}
+
+// HasIntelligentWorkloadManagementPolicyOverrides returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasIntelligentWorkloadManagementPolicyOverrides() bool {
+	if o != nil && !IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntelligentWorkloadManagementPolicyOverrides gets a reference to the given map[string]any and assigns it to the IntelligentWorkloadManagementPolicyOverrides field.
+func (o *ClusterDescription20240805) SetIntelligentWorkloadManagementPolicyOverrides(v map[string]any) {
+	o.IntelligentWorkloadManagementPolicyOverrides = &v
 }
 
 // GetInternalClusterRole returns the InternalClusterRole field value if set, zero value otherwise

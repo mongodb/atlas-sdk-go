@@ -4,11 +4,14 @@ package admin
 
 // StreamsKafkaAuthentication User credentials required to connect to a Kafka Cluster. Includes the authentication type, as well as the parameters for that authentication mode.
 type StreamsKafkaAuthentication struct {
-	// OIDC client identifier for authentication to the Kafka cluster.
-	ClientId *string `json:"clientId,omitempty"`
 	// OIDC client secret for authentication to the Kafka cluster.
 	// Write only field.
 	ClientSecret *string `json:"clientSecret,omitempty"`
+	// Password of the account to connect to the Kafka cluster.
+	// Write only field.
+	Password *string `json:"password,omitempty"`
+	// OIDC client identifier for authentication to the Kafka cluster.
+	ClientId *string `json:"clientId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -16,9 +19,6 @@ type StreamsKafkaAuthentication struct {
 	Mechanism *string `json:"mechanism,omitempty"`
 	// SASL OAUTHBEARER authentication method. Can only be OIDC currently.
 	Method *string `json:"method,omitempty"`
-	// Password of the account to connect to the Kafka cluster.
-	// Write only field.
-	Password *string `json:"password,omitempty"`
 	// SASL OAUTHBEARER extensions parameter for additional OAuth2 configuration.
 	SaslOauthbearerExtensions *string `json:"saslOauthbearerExtensions,omitempty"`
 	// OIDC scope parameter defining the access permissions requested.
@@ -54,39 +54,6 @@ func NewStreamsKafkaAuthenticationWithDefaults() *StreamsKafkaAuthentication {
 	return &this
 }
 
-// GetClientId returns the ClientId field value if set, zero value otherwise
-func (o *StreamsKafkaAuthentication) GetClientId() string {
-	if o == nil || IsNil(o.ClientId) {
-		var ret string
-		return ret
-	}
-	return *o.ClientId
-}
-
-// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamsKafkaAuthentication) GetClientIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ClientId) {
-		return nil, false
-	}
-
-	return o.ClientId, true
-}
-
-// HasClientId returns a boolean if a field has been set.
-func (o *StreamsKafkaAuthentication) HasClientId() bool {
-	if o != nil && !IsNil(o.ClientId) {
-		return true
-	}
-
-	return false
-}
-
-// SetClientId gets a reference to the given string and assigns it to the ClientId field.
-func (o *StreamsKafkaAuthentication) SetClientId(v string) {
-	o.ClientId = &v
-}
-
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise
 func (o *StreamsKafkaAuthentication) GetClientSecret() string {
 	if o == nil || IsNil(o.ClientSecret) {
@@ -118,6 +85,72 @@ func (o *StreamsKafkaAuthentication) HasClientSecret() bool {
 // SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
 func (o *StreamsKafkaAuthentication) SetClientSecret(v string) {
 	o.ClientSecret = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *StreamsKafkaAuthentication) SetPassword(v string) {
+	o.Password = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetClientId() string {
+	if o == nil || IsNil(o.ClientId) {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetClientIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientId) {
+		return nil, false
+	}
+
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasClientId() bool {
+	if o != nil && !IsNil(o.ClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *StreamsKafkaAuthentication) SetClientId(v string) {
+	o.ClientId = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -217,39 +250,6 @@ func (o *StreamsKafkaAuthentication) HasMethod() bool {
 // SetMethod gets a reference to the given string and assigns it to the Method field.
 func (o *StreamsKafkaAuthentication) SetMethod(v string) {
 	o.Method = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise
-func (o *StreamsKafkaAuthentication) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamsKafkaAuthentication) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
-		return nil, false
-	}
-
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *StreamsKafkaAuthentication) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *StreamsKafkaAuthentication) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetSaslOauthbearerExtensions returns the SaslOauthbearerExtensions field value if set, zero value otherwise

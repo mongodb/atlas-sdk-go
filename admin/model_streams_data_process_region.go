@@ -6,11 +6,11 @@ package admin
 type StreamsDataProcessRegion struct {
 	// Human-readable label that identifies the cloud provider.
 	CloudProvider string `json:"cloudProvider"`
+	// Name of the cloud provider region hosting Atlas Stream Processing.
+	Region string `json:"region"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Name of the cloud provider region hosting Atlas Stream Processing.
-	Region string `json:"region"`
 }
 
 // NewStreamsDataProcessRegion instantiates a new StreamsDataProcessRegion object
@@ -56,6 +56,30 @@ func (o *StreamsDataProcessRegion) SetCloudProvider(v string) {
 	o.CloudProvider = v
 }
 
+// GetRegion returns the Region field value
+func (o *StreamsDataProcessRegion) GetRegion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value
+// and a boolean to check if the value has been set.
+func (o *StreamsDataProcessRegion) GetRegionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Region, true
+}
+
+// SetRegion sets field value
+func (o *StreamsDataProcessRegion) SetRegion(v string) {
+	o.Region = v
+}
+
 // GetLinks returns the Links field value if set, zero value otherwise
 func (o *StreamsDataProcessRegion) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
@@ -87,28 +111,4 @@ func (o *StreamsDataProcessRegion) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsDataProcessRegion) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-// GetRegion returns the Region field value
-func (o *StreamsDataProcessRegion) GetRegion() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Region
-}
-
-// GetRegionOk returns a tuple with the Region field value
-// and a boolean to check if the value has been set.
-func (o *StreamsDataProcessRegion) GetRegionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Region, true
-}
-
-// SetRegion sets field value
-func (o *StreamsDataProcessRegion) SetRegion(v string) {
-	o.Region = v
 }

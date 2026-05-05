@@ -31,12 +31,12 @@ type StreamsPrivateLinkConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Provider where the Kafka cluster is deployed. Valid values are AWS and AZURE.
+	// Cloud provider where the private endpoint's target resource is deployed. Valid values are AWS, AZURE, and GCP.
 	Provider string `json:"provider"`
 	// Account ID from the cloud provider.
 	// Read only field.
 	ProviderAccountId *string `json:"providerAccountId,omitempty"`
-	// The region of the Provider’s cluster. See [AZURE](https://www.mongodb.com/docs/atlas/reference/microsoft-azure/#stream-processing-instances) and [AWS](https://www.mongodb.com/docs/atlas/reference/amazon-aws/#stream-processing-instances) supported regions.
+	// The region of the Provider’s cluster. See [AWS](https://www.mongodb.com/docs/atlas/reference/amazon-aws/#stream-processing-workspaces), [AZURE](https://www.mongodb.com/docs/atlas/reference/microsoft-azure/#stream-processing-workspaces), and [GCP](https://www.mongodb.com/docs/atlas/reference/google-gcp/#stream-processing-workspaces) supported regions.
 	Region *string `json:"region,omitempty"`
 	// For AZURE EVENTHUB, this is the [namespace endpoint ID](https://learn.microsoft.com/en-us/rest/api/eventhub/namespaces/get). For AWS CONFLUENT cluster, this is the [VPC Endpoint service name](https://docs.confluent.io/cloud/current/networking/private-links/aws-privatelink.html).
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty"`

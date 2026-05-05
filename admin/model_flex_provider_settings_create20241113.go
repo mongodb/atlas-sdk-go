@@ -7,15 +7,15 @@ type FlexProviderSettingsCreate20241113 struct {
 	// Cloud service provider on which MongoDB Cloud provisioned the flex cluster.
 	// Write only field.
 	BackingProviderName string `json:"backingProviderName"`
+	// Human-readable label that identifies the geographic location of your MongoDB flex cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
+	// Write only field.
+	RegionName string `json:"regionName"`
 	// Storage capacity available to the flex cluster expressed in gigabytes.
 	// Read only field.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Human-readable label that identifies the provider type.
 	// Read only field.
 	ProviderName *string `json:"providerName,omitempty"`
-	// Human-readable label that identifies the geographic location of your MongoDB flex cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
-	// Write only field.
-	RegionName string `json:"regionName"`
 }
 
 // NewFlexProviderSettingsCreate20241113 instantiates a new FlexProviderSettingsCreate20241113 object
@@ -59,6 +59,30 @@ func (o *FlexProviderSettingsCreate20241113) GetBackingProviderNameOk() (*string
 // SetBackingProviderName sets field value
 func (o *FlexProviderSettingsCreate20241113) SetBackingProviderName(v string) {
 	o.BackingProviderName = v
+}
+
+// GetRegionName returns the RegionName field value
+func (o *FlexProviderSettingsCreate20241113) GetRegionName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RegionName
+}
+
+// GetRegionNameOk returns a tuple with the RegionName field value
+// and a boolean to check if the value has been set.
+func (o *FlexProviderSettingsCreate20241113) GetRegionNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RegionName, true
+}
+
+// SetRegionName sets field value
+func (o *FlexProviderSettingsCreate20241113) SetRegionName(v string) {
+	o.RegionName = v
 }
 
 // GetDiskSizeGB returns the DiskSizeGB field value if set, zero value otherwise
@@ -125,28 +149,4 @@ func (o *FlexProviderSettingsCreate20241113) HasProviderName() bool {
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *FlexProviderSettingsCreate20241113) SetProviderName(v string) {
 	o.ProviderName = &v
-}
-
-// GetRegionName returns the RegionName field value
-func (o *FlexProviderSettingsCreate20241113) GetRegionName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RegionName
-}
-
-// GetRegionNameOk returns a tuple with the RegionName field value
-// and a boolean to check if the value has been set.
-func (o *FlexProviderSettingsCreate20241113) GetRegionNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RegionName, true
-}
-
-// SetRegionName sets field value
-func (o *FlexProviderSettingsCreate20241113) SetRegionName(v string) {
-	o.RegionName = v
 }

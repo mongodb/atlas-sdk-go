@@ -19,17 +19,6 @@ type PrivateLinkEndpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the interface endpoint.
 	// Read only field.
 	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
-	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
-	// Read only field.
-	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
-	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
-	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty"`
-	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
-	// Read only field.
-	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`
-	// State of the Google Cloud network endpoint group when MongoDB Cloud received this request.
-	// Read only field.
-	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies a set of endpoints. If this private endpoint belongs to a port-mapped endpoint service, this field is the private endpoint name.
 	// Read only field.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
@@ -41,6 +30,17 @@ type PrivateLinkEndpoint struct {
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 	// Flag that indicates whether the endpoint service for this endpoint group uses PSC port-mapping.
 	PortMappingEnabled *bool `json:"portMappingEnabled,omitempty"`
+	// State of the Azure Private Link Service connection when MongoDB Cloud received this request.
+	// Read only field.
+	Status *string `json:"status,omitempty"`
+	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
+	// Read only field.
+	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
+	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
+	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty"`
+	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
+	// Read only field.
+	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`
 }
 
 // NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object
@@ -217,138 +217,6 @@ func (o *PrivateLinkEndpoint) SetInterfaceEndpointId(v string) {
 	o.InterfaceEndpointId = &v
 }
 
-// GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise
-func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionName() string {
-	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
-		var ret string
-		return ret
-	}
-	return *o.PrivateEndpointConnectionName
-}
-
-// GetPrivateEndpointConnectionNameOk returns a tuple with the PrivateEndpointConnectionName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionNameOk() (*string, bool) {
-	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
-		return nil, false
-	}
-
-	return o.PrivateEndpointConnectionName, true
-}
-
-// HasPrivateEndpointConnectionName returns a boolean if a field has been set.
-func (o *PrivateLinkEndpoint) HasPrivateEndpointConnectionName() bool {
-	if o != nil && !IsNil(o.PrivateEndpointConnectionName) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrivateEndpointConnectionName gets a reference to the given string and assigns it to the PrivateEndpointConnectionName field.
-func (o *PrivateLinkEndpoint) SetPrivateEndpointConnectionName(v string) {
-	o.PrivateEndpointConnectionName = &v
-}
-
-// GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise
-func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddress() string {
-	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
-		var ret string
-		return ret
-	}
-	return *o.PrivateEndpointIPAddress
-}
-
-// GetPrivateEndpointIPAddressOk returns a tuple with the PrivateEndpointIPAddress field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddressOk() (*string, bool) {
-	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
-		return nil, false
-	}
-
-	return o.PrivateEndpointIPAddress, true
-}
-
-// HasPrivateEndpointIPAddress returns a boolean if a field has been set.
-func (o *PrivateLinkEndpoint) HasPrivateEndpointIPAddress() bool {
-	if o != nil && !IsNil(o.PrivateEndpointIPAddress) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrivateEndpointIPAddress gets a reference to the given string and assigns it to the PrivateEndpointIPAddress field.
-func (o *PrivateLinkEndpoint) SetPrivateEndpointIPAddress(v string) {
-	o.PrivateEndpointIPAddress = &v
-}
-
-// GetPrivateEndpointResourceId returns the PrivateEndpointResourceId field value if set, zero value otherwise
-func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceId() string {
-	if o == nil || IsNil(o.PrivateEndpointResourceId) {
-		var ret string
-		return ret
-	}
-	return *o.PrivateEndpointResourceId
-}
-
-// GetPrivateEndpointResourceIdOk returns a tuple with the PrivateEndpointResourceId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.PrivateEndpointResourceId) {
-		return nil, false
-	}
-
-	return o.PrivateEndpointResourceId, true
-}
-
-// HasPrivateEndpointResourceId returns a boolean if a field has been set.
-func (o *PrivateLinkEndpoint) HasPrivateEndpointResourceId() bool {
-	if o != nil && !IsNil(o.PrivateEndpointResourceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrivateEndpointResourceId gets a reference to the given string and assigns it to the PrivateEndpointResourceId field.
-func (o *PrivateLinkEndpoint) SetPrivateEndpointResourceId(v string) {
-	o.PrivateEndpointResourceId = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise
-func (o *PrivateLinkEndpoint) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *PrivateLinkEndpoint) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *PrivateLinkEndpoint) SetStatus(v string) {
-	o.Status = &v
-}
-
 // GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetEndpointGroupName() string {
 	if o == nil || IsNil(o.EndpointGroupName) {
@@ -479,4 +347,136 @@ func (o *PrivateLinkEndpoint) HasPortMappingEnabled() bool {
 // SetPortMappingEnabled gets a reference to the given bool and assigns it to the PortMappingEnabled field.
 func (o *PrivateLinkEndpoint) SetPortMappingEnabled(v bool) {
 	o.PortMappingEnabled = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *PrivateLinkEndpoint) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionName() string {
+	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateEndpointConnectionName
+}
+
+// GetPrivateEndpointConnectionNameOk returns a tuple with the PrivateEndpointConnectionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
+		return nil, false
+	}
+
+	return o.PrivateEndpointConnectionName, true
+}
+
+// HasPrivateEndpointConnectionName returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasPrivateEndpointConnectionName() bool {
+	if o != nil && !IsNil(o.PrivateEndpointConnectionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointConnectionName gets a reference to the given string and assigns it to the PrivateEndpointConnectionName field.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointConnectionName(v string) {
+	o.PrivateEndpointConnectionName = &v
+}
+
+// GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddress() string {
+	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateEndpointIPAddress
+}
+
+// GetPrivateEndpointIPAddressOk returns a tuple with the PrivateEndpointIPAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
+		return nil, false
+	}
+
+	return o.PrivateEndpointIPAddress, true
+}
+
+// HasPrivateEndpointIPAddress returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasPrivateEndpointIPAddress() bool {
+	if o != nil && !IsNil(o.PrivateEndpointIPAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointIPAddress gets a reference to the given string and assigns it to the PrivateEndpointIPAddress field.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointIPAddress(v string) {
+	o.PrivateEndpointIPAddress = &v
+}
+
+// GetPrivateEndpointResourceId returns the PrivateEndpointResourceId field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceId() string {
+	if o == nil || IsNil(o.PrivateEndpointResourceId) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateEndpointResourceId
+}
+
+// GetPrivateEndpointResourceIdOk returns a tuple with the PrivateEndpointResourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateEndpointResourceId) {
+		return nil, false
+	}
+
+	return o.PrivateEndpointResourceId, true
+}
+
+// HasPrivateEndpointResourceId returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasPrivateEndpointResourceId() bool {
+	if o != nil && !IsNil(o.PrivateEndpointResourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointResourceId gets a reference to the given string and assigns it to the PrivateEndpointResourceId field.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointResourceId(v string) {
+	o.PrivateEndpointResourceId = &v
 }

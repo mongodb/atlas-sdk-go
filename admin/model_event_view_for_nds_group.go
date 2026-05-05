@@ -102,6 +102,9 @@ type EventViewForNdsGroup struct {
 	// Unique identification string that the cloud provider uses to identify the private endpoint.
 	// Read only field.
 	ProviderEndpointId *string `json:"providerEndpointId,omitempty"`
+	// Fully qualified domain name (FQDN) of the host associated with the event.
+	// Read only field.
+	Hostname *string `json:"hostname,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization team associated with this event.
 	// Read only field.
 	TeamId *string `json:"teamId,omitempty"`
@@ -1239,6 +1242,39 @@ func (o *EventViewForNdsGroup) HasProviderEndpointId() bool {
 // SetProviderEndpointId gets a reference to the given string and assigns it to the ProviderEndpointId field.
 func (o *EventViewForNdsGroup) SetProviderEndpointId(v string) {
 	o.ProviderEndpointId = &v
+}
+
+// GetHostname returns the Hostname field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetHostname() string {
+	if o == nil || IsNil(o.Hostname) {
+		var ret string
+		return ret
+	}
+	return *o.Hostname
+}
+
+// GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetHostnameOk() (*string, bool) {
+	if o == nil || IsNil(o.Hostname) {
+		return nil, false
+	}
+
+	return o.Hostname, true
+}
+
+// HasHostname returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasHostname() bool {
+	if o != nil && !IsNil(o.Hostname) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostname gets a reference to the given string and assigns it to the Hostname field.
+func (o *EventViewForNdsGroup) SetHostname(v string) {
+	o.Hostname = &v
 }
 
 // GetTeamId returns the TeamId field value if set, zero value otherwise

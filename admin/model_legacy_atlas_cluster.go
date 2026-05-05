@@ -35,6 +35,9 @@ type LegacyAtlasCluster struct {
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
+	// The actual state of Intelligent Workload Management policies based on `intelligentWorkloadManagementPolicyOverrides` and Atlas-managed defaults.
+	// Read only field.
+	EffectiveIntelligentWorkloadManagementPolicies *map[string]any `json:"effectiveIntelligentWorkloadManagementPolicies,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Feature compatibility version of the cluster.
@@ -51,6 +54,8 @@ type LegacyAtlasCluster struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
+	// Map of overrides for Intelligent Workload Management policies.
+	IntelligentWorkloadManagementPolicyOverrides *map[string]any `json:"intelligentWorkloadManagementPolicyOverrides,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
@@ -618,6 +623,39 @@ func (o *LegacyAtlasCluster) SetDiskWarmingMode(v string) {
 	o.DiskWarmingMode = &v
 }
 
+// GetEffectiveIntelligentWorkloadManagementPolicies returns the EffectiveIntelligentWorkloadManagementPolicies field value if set, zero value otherwise
+func (o *LegacyAtlasCluster) GetEffectiveIntelligentWorkloadManagementPolicies() map[string]any {
+	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		var ret map[string]any
+		return ret
+	}
+	return *o.EffectiveIntelligentWorkloadManagementPolicies
+}
+
+// GetEffectiveIntelligentWorkloadManagementPoliciesOk returns a tuple with the EffectiveIntelligentWorkloadManagementPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasCluster) GetEffectiveIntelligentWorkloadManagementPoliciesOk() (*map[string]any, bool) {
+	if o == nil || IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		return nil, false
+	}
+
+	return o.EffectiveIntelligentWorkloadManagementPolicies, true
+}
+
+// HasEffectiveIntelligentWorkloadManagementPolicies returns a boolean if a field has been set.
+func (o *LegacyAtlasCluster) HasEffectiveIntelligentWorkloadManagementPolicies() bool {
+	if o != nil && !IsNil(o.EffectiveIntelligentWorkloadManagementPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveIntelligentWorkloadManagementPolicies gets a reference to the given map[string]any and assigns it to the EffectiveIntelligentWorkloadManagementPolicies field.
+func (o *LegacyAtlasCluster) SetEffectiveIntelligentWorkloadManagementPolicies(v map[string]any) {
+	o.EffectiveIntelligentWorkloadManagementPolicies = &v
+}
+
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetEncryptionAtRestProvider() string {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
@@ -814,6 +852,39 @@ func (o *LegacyAtlasCluster) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LegacyAtlasCluster) SetId(v string) {
 	o.Id = &v
+}
+
+// GetIntelligentWorkloadManagementPolicyOverrides returns the IntelligentWorkloadManagementPolicyOverrides field value if set, zero value otherwise
+func (o *LegacyAtlasCluster) GetIntelligentWorkloadManagementPolicyOverrides() map[string]any {
+	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		var ret map[string]any
+		return ret
+	}
+	return *o.IntelligentWorkloadManagementPolicyOverrides
+}
+
+// GetIntelligentWorkloadManagementPolicyOverridesOk returns a tuple with the IntelligentWorkloadManagementPolicyOverrides field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasCluster) GetIntelligentWorkloadManagementPolicyOverridesOk() (*map[string]any, bool) {
+	if o == nil || IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		return nil, false
+	}
+
+	return o.IntelligentWorkloadManagementPolicyOverrides, true
+}
+
+// HasIntelligentWorkloadManagementPolicyOverrides returns a boolean if a field has been set.
+func (o *LegacyAtlasCluster) HasIntelligentWorkloadManagementPolicyOverrides() bool {
+	if o != nil && !IsNil(o.IntelligentWorkloadManagementPolicyOverrides) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntelligentWorkloadManagementPolicyOverrides gets a reference to the given map[string]any and assigns it to the IntelligentWorkloadManagementPolicyOverrides field.
+func (o *LegacyAtlasCluster) SetIntelligentWorkloadManagementPolicyOverrides(v map[string]any) {
+	o.IntelligentWorkloadManagementPolicyOverrides = &v
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise

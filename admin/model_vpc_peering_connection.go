@@ -22,9 +22,6 @@ type VPCPeeringConnection struct {
 	ExpirationTime *time.Time `json:"expirationTime,omitempty"`
 	// The internal project ID.
 	GroupId *string `json:"groupId,omitempty"`
-	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links *[]Link `json:"links,omitempty"`
 	// The local status of the VPC Peering Connection.
 	LocalStatus *string `json:"localStatus,omitempty"`
 	// Unique VPC Peering Connection name.
@@ -37,6 +34,9 @@ type VPCPeeringConnection struct {
 	RequesterVpcId *string `json:"requesterVpcId,omitempty"`
 	// A status message.
 	StatusMessage *string `json:"statusMessage,omitempty"`
+	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewVPCPeeringConnection instantiates a new VPCPeeringConnection object
@@ -287,39 +287,6 @@ func (o *VPCPeeringConnection) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise
-func (o *VPCPeeringConnection) GetLinks() []Link {
-	if o == nil || IsNil(o.Links) {
-		var ret []Link
-		return ret
-	}
-	return *o.Links
-}
-
-// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VPCPeeringConnection) GetLinksOk() (*[]Link, bool) {
-	if o == nil || IsNil(o.Links) {
-		return nil, false
-	}
-
-	return o.Links, true
-}
-
-// HasLinks returns a boolean if a field has been set.
-func (o *VPCPeeringConnection) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
-		return true
-	}
-
-	return false
-}
-
-// SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *VPCPeeringConnection) SetLinks(v []Link) {
-	o.Links = &v
-}
-
 // GetLocalStatus returns the LocalStatus field value if set, zero value otherwise
 func (o *VPCPeeringConnection) GetLocalStatus() string {
 	if o == nil || IsNil(o.LocalStatus) {
@@ -516,4 +483,37 @@ func (o *VPCPeeringConnection) HasStatusMessage() bool {
 // SetStatusMessage gets a reference to the given string and assigns it to the StatusMessage field.
 func (o *VPCPeeringConnection) SetStatusMessage(v string) {
 	o.StatusMessage = &v
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise
+func (o *VPCPeeringConnection) GetLinks() []Link {
+	if o == nil || IsNil(o.Links) {
+		var ret []Link
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VPCPeeringConnection) GetLinksOk() (*[]Link, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *VPCPeeringConnection) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given []Link and assigns it to the Links field.
+func (o *VPCPeeringConnection) SetLinks(v []Link) {
+	o.Links = &v
 }

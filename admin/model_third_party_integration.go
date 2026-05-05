@@ -44,15 +44,15 @@ type ThirdPartyIntegration struct {
 	Url *string `json:"url,omitempty"`
 	// Flag that indicates whether someone has activated the Prometheus integration.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Password needed to allow MongoDB Cloud to access your Prometheus account.
-	// Write only field.
-	Password *string `json:"password,omitempty"`
 	// Toggle sending user provided group and cluster resource tags with the Prometheus metrics.
 	SendUserProvidedResourceTagsEnabled *bool `json:"sendUserProvidedResourceTagsEnabled,omitempty"`
 	// Desired method to discover the Prometheus service.
 	ServiceDiscovery *string `json:"serviceDiscovery,omitempty"`
 	// Human-readable label that identifies your Prometheus incoming webhook.
 	Username *string `json:"username,omitempty"`
+	// Password needed to allow MongoDB Cloud to access your Prometheus account.
+	// Write only field.
+	Password *string `json:"password,omitempty"`
 	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
 	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
 }
@@ -758,39 +758,6 @@ func (o *ThirdPartyIntegration) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise
-func (o *ThirdPartyIntegration) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThirdPartyIntegration) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
-		return nil, false
-	}
-
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *ThirdPartyIntegration) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *ThirdPartyIntegration) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetSendUserProvidedResourceTagsEnabled returns the SendUserProvidedResourceTagsEnabled field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTagsEnabled() bool {
 	if o == nil || IsNil(o.SendUserProvidedResourceTagsEnabled) {
@@ -888,6 +855,39 @@ func (o *ThirdPartyIntegration) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *ThirdPartyIntegration) SetUsername(v string) {
 	o.Username = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *ThirdPartyIntegration) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise

@@ -11,13 +11,13 @@ type LiveMigrationRequest20240530 struct {
 	// Flag that indicates whether the migration process drops all collections from the destination cluster before the migration starts.
 	// Write only field.
 	DropDestinationData *bool `json:"dropDestinationData,omitempty"`
-	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links *[]Link `json:"links,omitempty"`
 	// List of migration hosts used for this migration.
 	MigrationHosts []string         `json:"migrationHosts"`
 	Sharding       *ShardingRequest `json:"sharding,omitempty"`
 	Source         Source           `json:"source"`
+	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewLiveMigrationRequest20240530 instantiates a new LiveMigrationRequest20240530 object
@@ -134,39 +134,6 @@ func (o *LiveMigrationRequest20240530) SetDropDestinationData(v bool) {
 	o.DropDestinationData = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise
-func (o *LiveMigrationRequest20240530) GetLinks() []Link {
-	if o == nil || IsNil(o.Links) {
-		var ret []Link
-		return ret
-	}
-	return *o.Links
-}
-
-// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LiveMigrationRequest20240530) GetLinksOk() (*[]Link, bool) {
-	if o == nil || IsNil(o.Links) {
-		return nil, false
-	}
-
-	return o.Links, true
-}
-
-// HasLinks returns a boolean if a field has been set.
-func (o *LiveMigrationRequest20240530) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
-		return true
-	}
-
-	return false
-}
-
-// SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *LiveMigrationRequest20240530) SetLinks(v []Link) {
-	o.Links = &v
-}
-
 // GetMigrationHosts returns the MigrationHosts field value
 func (o *LiveMigrationRequest20240530) GetMigrationHosts() []string {
 	if o == nil {
@@ -246,4 +213,37 @@ func (o *LiveMigrationRequest20240530) GetSourceOk() (*Source, bool) {
 // SetSource sets field value
 func (o *LiveMigrationRequest20240530) SetSource(v Source) {
 	o.Source = v
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise
+func (o *LiveMigrationRequest20240530) GetLinks() []Link {
+	if o == nil || IsNil(o.Links) {
+		var ret []Link
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LiveMigrationRequest20240530) GetLinksOk() (*[]Link, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *LiveMigrationRequest20240530) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given []Link and assigns it to the Links field.
+func (o *LiveMigrationRequest20240530) SetLinks(v []Link) {
+	o.Links = &v
 }

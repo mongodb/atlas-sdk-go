@@ -4,6 +4,9 @@ package admin
 
 // DataLakeAWSCloudProviderConfig Configuration for running Data Federation in AWS.
 type DataLakeAWSCloudProviderConfig struct {
+	// Name of the S3 data bucket that the provided role ID is authorized to access. Required if specifying `cloudProviderConfig`.
+	// Write only field.
+	TestS3Bucket string `json:"testS3Bucket"`
 	// Unique identifier associated with the Identity and Access Management (IAM) role that the data lake assumes when accessing the data stores.
 	// Read only field.
 	ExternalId *string `json:"externalId,omitempty"`
@@ -15,19 +18,16 @@ type DataLakeAWSCloudProviderConfig struct {
 	IamUserARN *string `json:"iamUserARN,omitempty"`
 	// Unique identifier of the role that the data lake can use to access the data stores.Required if specifying cloudProviderConfig.
 	RoleId string `json:"roleId"`
-	// Name of the S3 data bucket that the provided role ID is authorized to access. Required if specifying `cloudProviderConfig`.
-	// Write only field.
-	TestS3Bucket string `json:"testS3Bucket"`
 }
 
 // NewDataLakeAWSCloudProviderConfig instantiates a new DataLakeAWSCloudProviderConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataLakeAWSCloudProviderConfig(roleId string, testS3Bucket string) *DataLakeAWSCloudProviderConfig {
+func NewDataLakeAWSCloudProviderConfig(testS3Bucket string, roleId string) *DataLakeAWSCloudProviderConfig {
 	this := DataLakeAWSCloudProviderConfig{}
-	this.RoleId = roleId
 	this.TestS3Bucket = testS3Bucket
+	this.RoleId = roleId
 	return &this
 }
 
@@ -37,6 +37,30 @@ func NewDataLakeAWSCloudProviderConfig(roleId string, testS3Bucket string) *Data
 func NewDataLakeAWSCloudProviderConfigWithDefaults() *DataLakeAWSCloudProviderConfig {
 	this := DataLakeAWSCloudProviderConfig{}
 	return &this
+}
+
+// GetTestS3Bucket returns the TestS3Bucket field value
+func (o *DataLakeAWSCloudProviderConfig) GetTestS3Bucket() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TestS3Bucket
+}
+
+// GetTestS3BucketOk returns a tuple with the TestS3Bucket field value
+// and a boolean to check if the value has been set.
+func (o *DataLakeAWSCloudProviderConfig) GetTestS3BucketOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TestS3Bucket, true
+}
+
+// SetTestS3Bucket sets field value
+func (o *DataLakeAWSCloudProviderConfig) SetTestS3Bucket(v string) {
+	o.TestS3Bucket = v
 }
 
 // GetExternalId returns the ExternalId field value if set, zero value otherwise
@@ -160,28 +184,4 @@ func (o *DataLakeAWSCloudProviderConfig) GetRoleIdOk() (*string, bool) {
 // SetRoleId sets field value
 func (o *DataLakeAWSCloudProviderConfig) SetRoleId(v string) {
 	o.RoleId = v
-}
-
-// GetTestS3Bucket returns the TestS3Bucket field value
-func (o *DataLakeAWSCloudProviderConfig) GetTestS3Bucket() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.TestS3Bucket
-}
-
-// GetTestS3BucketOk returns a tuple with the TestS3Bucket field value
-// and a boolean to check if the value has been set.
-func (o *DataLakeAWSCloudProviderConfig) GetTestS3BucketOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TestS3Bucket, true
-}
-
-// SetTestS3Bucket sets field value
-func (o *DataLakeAWSCloudProviderConfig) SetTestS3Bucket(v string) {
-	o.TestS3Bucket = v
 }

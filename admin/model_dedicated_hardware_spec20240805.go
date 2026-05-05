@@ -8,12 +8,12 @@ type DedicatedHardwareSpec20240805 struct {
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
 	NodeCount *int `json:"nodeCount,omitempty"`
+	// Hardware specification for the instance sizes in this region in this shard. Each instance size has a default storage and memory capacity. Electable nodes and read-only nodes (known as \"base nodes\") within a single shard must use the same instance size. Analytics nodes can scale independently from base nodes within a shard. Both base nodes and analytics nodes can scale independently from their equivalents in other shards.
+	InstanceSize *string `json:"instanceSize,omitempty"`
 	// Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:  - set `replicationSpecs[n].regionConfigs[m].providerName` : `Azure`. - set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` : `M40` or greater not including `Mxx_NVME` tiers.  The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost.
 	DiskIOPS *int `json:"diskIOPS,omitempty"`
 	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (`PROVISIONED`) for NVMe clusters.
 	EbsVolumeType *string `json:"ebsVolumeType,omitempty"`
-	// Hardware specification for the instance sizes in this region in this shard. Each instance size has a default storage and memory capacity. Electable nodes and read-only nodes (known as \"base nodes\") within a single shard must use the same instance size. Analytics nodes can scale independently from base nodes within a shard. Both base nodes and analytics nodes can scale independently from their equivalents in other shards.
-	InstanceSize *string `json:"instanceSize,omitempty"`
 }
 
 // NewDedicatedHardwareSpec20240805 instantiates a new DedicatedHardwareSpec20240805 object
@@ -103,6 +103,39 @@ func (o *DedicatedHardwareSpec20240805) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 
+// GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
+func (o *DedicatedHardwareSpec20240805) GetInstanceSize() string {
+	if o == nil || IsNil(o.InstanceSize) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceSize
+}
+
+// GetInstanceSizeOk returns a tuple with the InstanceSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedHardwareSpec20240805) GetInstanceSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.InstanceSize) {
+		return nil, false
+	}
+
+	return o.InstanceSize, true
+}
+
+// HasInstanceSize returns a boolean if a field has been set.
+func (o *DedicatedHardwareSpec20240805) HasInstanceSize() bool {
+	if o != nil && !IsNil(o.InstanceSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceSize gets a reference to the given string and assigns it to the InstanceSize field.
+func (o *DedicatedHardwareSpec20240805) SetInstanceSize(v string) {
+	o.InstanceSize = &v
+}
+
 // GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise
 func (o *DedicatedHardwareSpec20240805) GetDiskIOPS() int {
 	if o == nil || IsNil(o.DiskIOPS) {
@@ -167,37 +200,4 @@ func (o *DedicatedHardwareSpec20240805) HasEbsVolumeType() bool {
 // SetEbsVolumeType gets a reference to the given string and assigns it to the EbsVolumeType field.
 func (o *DedicatedHardwareSpec20240805) SetEbsVolumeType(v string) {
 	o.EbsVolumeType = &v
-}
-
-// GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
-func (o *DedicatedHardwareSpec20240805) GetInstanceSize() string {
-	if o == nil || IsNil(o.InstanceSize) {
-		var ret string
-		return ret
-	}
-	return *o.InstanceSize
-}
-
-// GetInstanceSizeOk returns a tuple with the InstanceSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DedicatedHardwareSpec20240805) GetInstanceSizeOk() (*string, bool) {
-	if o == nil || IsNil(o.InstanceSize) {
-		return nil, false
-	}
-
-	return o.InstanceSize, true
-}
-
-// HasInstanceSize returns a boolean if a field has been set.
-func (o *DedicatedHardwareSpec20240805) HasInstanceSize() bool {
-	if o != nil && !IsNil(o.InstanceSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetInstanceSize gets a reference to the given string and assigns it to the InstanceSize field.
-func (o *DedicatedHardwareSpec20240805) SetInstanceSize(v string) {
-	o.InstanceSize = &v
 }

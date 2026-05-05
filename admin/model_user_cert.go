@@ -17,9 +17,6 @@ type UserCert struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
-	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links *[]Link `json:"links,omitempty"`
 	// Number of months that the certificate remains valid until it expires.
 	// Write only field.
 	MonthsUntilExpiration *int `json:"monthsUntilExpiration,omitempty"`
@@ -29,6 +26,9 @@ type UserCert struct {
 	// Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in RFC 2253.
 	// Read only field.
 	Subject *string `json:"subject,omitempty"`
+	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewUserCert instantiates a new UserCert object
@@ -151,39 +151,6 @@ func (o *UserCert) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise
-func (o *UserCert) GetLinks() []Link {
-	if o == nil || IsNil(o.Links) {
-		var ret []Link
-		return ret
-	}
-	return *o.Links
-}
-
-// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserCert) GetLinksOk() (*[]Link, bool) {
-	if o == nil || IsNil(o.Links) {
-		return nil, false
-	}
-
-	return o.Links, true
-}
-
-// HasLinks returns a boolean if a field has been set.
-func (o *UserCert) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
-		return true
-	}
-
-	return false
-}
-
-// SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *UserCert) SetLinks(v []Link) {
-	o.Links = &v
-}
-
 // GetMonthsUntilExpiration returns the MonthsUntilExpiration field value if set, zero value otherwise
 func (o *UserCert) GetMonthsUntilExpiration() int {
 	if o == nil || IsNil(o.MonthsUntilExpiration) {
@@ -281,4 +248,37 @@ func (o *UserCert) HasSubject() bool {
 // SetSubject gets a reference to the given string and assigns it to the Subject field.
 func (o *UserCert) SetSubject(v string) {
 	o.Subject = &v
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise
+func (o *UserCert) GetLinks() []Link {
+	if o == nil || IsNil(o.Links) {
+		var ret []Link
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserCert) GetLinksOk() (*[]Link, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *UserCert) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given []Link and assigns it to the Links field.
+func (o *UserCert) SetLinks(v []Link) {
+	o.Links = &v
 }
