@@ -6,12 +6,12 @@ package admin
 type HardwareSpec20240805 struct {
 	// Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value must be equal for all shards and node types.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set `replicationSpecs`.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
+	// Hardware specification for the instances in this M0/M2/M5 tier cluster.
+	InstanceSize *string `json:"instanceSize,omitempty"`
 	// Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:  - set `replicationSpecs[n].regionConfigs[m].providerName` : `Azure`. - set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` : `M40` or greater not including `Mxx_NVME` tiers.  The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost.
 	DiskIOPS *int `json:"diskIOPS,omitempty"`
 	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (`PROVISIONED`) for NVMe clusters.
 	EbsVolumeType *string `json:"ebsVolumeType,omitempty"`
-	// Hardware specification for the instances in this M0/M2/M5 tier cluster.
-	InstanceSize *string `json:"instanceSize,omitempty"`
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
 	NodeCount *int `json:"nodeCount,omitempty"`
 	// The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes.
@@ -71,6 +71,39 @@ func (o *HardwareSpec20240805) HasDiskSizeGB() bool {
 // SetDiskSizeGB gets a reference to the given float64 and assigns it to the DiskSizeGB field.
 func (o *HardwareSpec20240805) SetDiskSizeGB(v float64) {
 	o.DiskSizeGB = &v
+}
+
+// GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
+func (o *HardwareSpec20240805) GetInstanceSize() string {
+	if o == nil || IsNil(o.InstanceSize) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceSize
+}
+
+// GetInstanceSizeOk returns a tuple with the InstanceSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HardwareSpec20240805) GetInstanceSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.InstanceSize) {
+		return nil, false
+	}
+
+	return o.InstanceSize, true
+}
+
+// HasInstanceSize returns a boolean if a field has been set.
+func (o *HardwareSpec20240805) HasInstanceSize() bool {
+	if o != nil && !IsNil(o.InstanceSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceSize gets a reference to the given string and assigns it to the InstanceSize field.
+func (o *HardwareSpec20240805) SetInstanceSize(v string) {
+	o.InstanceSize = &v
 }
 
 // GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise
@@ -137,39 +170,6 @@ func (o *HardwareSpec20240805) HasEbsVolumeType() bool {
 // SetEbsVolumeType gets a reference to the given string and assigns it to the EbsVolumeType field.
 func (o *HardwareSpec20240805) SetEbsVolumeType(v string) {
 	o.EbsVolumeType = &v
-}
-
-// GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
-func (o *HardwareSpec20240805) GetInstanceSize() string {
-	if o == nil || IsNil(o.InstanceSize) {
-		var ret string
-		return ret
-	}
-	return *o.InstanceSize
-}
-
-// GetInstanceSizeOk returns a tuple with the InstanceSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HardwareSpec20240805) GetInstanceSizeOk() (*string, bool) {
-	if o == nil || IsNil(o.InstanceSize) {
-		return nil, false
-	}
-
-	return o.InstanceSize, true
-}
-
-// HasInstanceSize returns a boolean if a field has been set.
-func (o *HardwareSpec20240805) HasInstanceSize() bool {
-	if o != nil && !IsNil(o.InstanceSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetInstanceSize gets a reference to the given string and assigns it to the InstanceSize field.
-func (o *HardwareSpec20240805) SetInstanceSize(v string) {
-	o.InstanceSize = &v
 }
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise

@@ -16,6 +16,8 @@ type LogIntegrationRequest struct {
 	KmsKey *string `json:"kmsKey,omitempty"`
 	// Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type.
 	PrefixPath *string `json:"prefixPath,omitempty"`
+	// When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`.
+	UseLegacyPathStructure *bool `json:"useLegacyPathStructure,omitempty"`
 	// API key for authentication.
 	ApiKey *string `json:"apiKey,omitempty"`
 	// Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED.
@@ -233,6 +235,39 @@ func (o *LogIntegrationRequest) HasPrefixPath() bool {
 // SetPrefixPath gets a reference to the given string and assigns it to the PrefixPath field.
 func (o *LogIntegrationRequest) SetPrefixPath(v string) {
 	o.PrefixPath = &v
+}
+
+// GetUseLegacyPathStructure returns the UseLegacyPathStructure field value if set, zero value otherwise
+func (o *LogIntegrationRequest) GetUseLegacyPathStructure() bool {
+	if o == nil || IsNil(o.UseLegacyPathStructure) {
+		var ret bool
+		return ret
+	}
+	return *o.UseLegacyPathStructure
+}
+
+// GetUseLegacyPathStructureOk returns a tuple with the UseLegacyPathStructure field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationRequest) GetUseLegacyPathStructureOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseLegacyPathStructure) {
+		return nil, false
+	}
+
+	return o.UseLegacyPathStructure, true
+}
+
+// HasUseLegacyPathStructure returns a boolean if a field has been set.
+func (o *LogIntegrationRequest) HasUseLegacyPathStructure() bool {
+	if o != nil && !IsNil(o.UseLegacyPathStructure) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseLegacyPathStructure gets a reference to the given bool and assigns it to the UseLegacyPathStructure field.
+func (o *LogIntegrationRequest) SetUseLegacyPathStructure(v bool) {
+	o.UseLegacyPathStructure = &v
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise

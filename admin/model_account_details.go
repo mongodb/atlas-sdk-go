@@ -8,13 +8,13 @@ type AccountDetails struct {
 	AwsAccountId *string `json:"awsAccountId,omitempty"`
 	// The VPC CIDR Block.
 	CidrBlock *string `json:"cidrBlock,omitempty"`
+	// The VPC ID.
+	VpcId *string `json:"vpcId,omitempty"`
 	// Cloud provider.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// The VPC ID.
-	VpcId *string `json:"vpcId,omitempty"`
 	// The Azure Subscription ID.
 	AzureSubscriptionId *string `json:"azureSubscriptionId,omitempty"`
 	// The name of the virtual network.
@@ -108,6 +108,39 @@ func (o *AccountDetails) SetCidrBlock(v string) {
 	o.CidrBlock = &v
 }
 
+// GetVpcId returns the VpcId field value if set, zero value otherwise
+func (o *AccountDetails) GetVpcId() string {
+	if o == nil || IsNil(o.VpcId) {
+		var ret string
+		return ret
+	}
+	return *o.VpcId
+}
+
+// GetVpcIdOk returns a tuple with the VpcId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountDetails) GetVpcIdOk() (*string, bool) {
+	if o == nil || IsNil(o.VpcId) {
+		return nil, false
+	}
+
+	return o.VpcId, true
+}
+
+// HasVpcId returns a boolean if a field has been set.
+func (o *AccountDetails) HasVpcId() bool {
+	if o != nil && !IsNil(o.VpcId) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcId gets a reference to the given string and assigns it to the VpcId field.
+func (o *AccountDetails) SetVpcId(v string) {
+	o.VpcId = &v
+}
+
 // GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
 func (o *AccountDetails) GetCloudProvider() string {
 	if o == nil || IsNil(o.CloudProvider) {
@@ -172,39 +205,6 @@ func (o *AccountDetails) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AccountDetails) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-// GetVpcId returns the VpcId field value if set, zero value otherwise
-func (o *AccountDetails) GetVpcId() string {
-	if o == nil || IsNil(o.VpcId) {
-		var ret string
-		return ret
-	}
-	return *o.VpcId
-}
-
-// GetVpcIdOk returns a tuple with the VpcId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountDetails) GetVpcIdOk() (*string, bool) {
-	if o == nil || IsNil(o.VpcId) {
-		return nil, false
-	}
-
-	return o.VpcId, true
-}
-
-// HasVpcId returns a boolean if a field has been set.
-func (o *AccountDetails) HasVpcId() bool {
-	if o != nil && !IsNil(o.VpcId) {
-		return true
-	}
-
-	return false
-}
-
-// SetVpcId gets a reference to the given string and assigns it to the VpcId field.
-func (o *AccountDetails) SetVpcId(v string) {
-	o.VpcId = &v
 }
 
 // GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise

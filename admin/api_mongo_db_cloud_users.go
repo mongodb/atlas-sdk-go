@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -297,7 +298,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
-		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -324,7 +325,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
-		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -351,7 +352,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -379,7 +380,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
-		**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+		**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -490,7 +491,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
-		**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+		**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1322,24 +1323,33 @@ func (a *MongoDBCloudUsersApiService) CreateUserExecute(r CreateUserApiRequest) 
 }
 
 type GetGroupUserApiRequest struct {
-	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
-	groupId    string
-	userId     string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	groupId               string
+	userId                string
+	orgMembershipStatuses *[]string
 }
 
 type GetGroupUserApiParams struct {
-	GroupId string
-	UserId  string
+	GroupId               string
+	UserId                string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) GetGroupUserWithParams(ctx context.Context, args *GetGroupUserApiParams) GetGroupUserApiRequest {
 	return GetGroupUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		userId:     args.UserId,
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               args.GroupId,
+		userId:                args.UserId,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+func (r GetGroupUserApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) GetGroupUserApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
+	return r
 }
 
 func (r GetGroupUserApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
@@ -1399,6 +1409,13 @@ func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiReque
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1449,24 +1466,33 @@ func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiReque
 }
 
 type GetOrgUserApiRequest struct {
-	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
-	orgId      string
-	userId     string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	orgId                 string
+	userId                string
+	orgMembershipStatuses *[]string
 }
 
 type GetOrgUserApiParams struct {
-	OrgId  string
-	UserId string
+	OrgId                 string
+	UserId                string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) GetOrgUserWithParams(ctx context.Context, args *GetOrgUserApiParams) GetOrgUserApiRequest {
 	return GetOrgUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      args.OrgId,
-		userId:     args.UserId,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		userId:                args.UserId,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+func (r GetOrgUserApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) GetOrgUserApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
+	return r
 }
 
 func (r GetOrgUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
@@ -1526,6 +1552,13 @@ func (a *MongoDBCloudUsersApiService) GetOrgUserExecute(r GetOrgUserApiRequest) 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1812,41 +1845,44 @@ func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiReq
 }
 
 type ListGroupUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	groupId             string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	flattenTeams        *bool
-	includeOrgUsers     *bool
-	orgMembershipStatus *string
-	username            *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	groupId               string
+	includeCount          *bool
+	itemsPerPage          *int
+	pageNum               *int
+	flattenTeams          *bool
+	includeOrgUsers       *bool
+	orgMembershipStatus   *string
+	orgMembershipStatuses *[]string
+	username              *string
 }
 
 type ListGroupUsersApiParams struct {
-	GroupId             string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	FlattenTeams        *bool
-	IncludeOrgUsers     *bool
-	OrgMembershipStatus *string
-	Username            *string
+	GroupId               string
+	IncludeCount          *bool
+	ItemsPerPage          *int
+	PageNum               *int
+	FlattenTeams          *bool
+	IncludeOrgUsers       *bool
+	OrgMembershipStatus   *string
+	OrgMembershipStatuses *[]string
+	Username              *string
 }
 
 func (a *MongoDBCloudUsersApiService) ListGroupUsersWithParams(ctx context.Context, args *ListGroupUsersApiParams) ListGroupUsersApiRequest {
 	return ListGroupUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             args.GroupId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		flattenTeams:        args.FlattenTeams,
-		includeOrgUsers:     args.IncludeOrgUsers,
-		orgMembershipStatus: args.OrgMembershipStatus,
-		username:            args.Username,
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               args.GroupId,
+		includeCount:          args.IncludeCount,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		flattenTeams:          args.FlattenTeams,
+		includeOrgUsers:       args.IncludeOrgUsers,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
+		username:              args.Username,
 	}
 }
 
@@ -1880,9 +1916,16 @@ func (r ListGroupUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListGrou
 	return r
 }
 
-// Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListGroupUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListGroupUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListGroupUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListGroupUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -1903,7 +1946,7 @@ Returns details about the pending and active MongoDB Cloud users associated with
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
-**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1981,6 +2024,13 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 	if r.orgMembershipStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
 	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	if r.username != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
 	}
@@ -2034,35 +2084,38 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 }
 
 type ListOrgUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	orgId               string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	username            *string
-	orgMembershipStatus *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	orgId                 string
+	includeCount          *bool
+	itemsPerPage          *int
+	pageNum               *int
+	username              *string
+	orgMembershipStatus   *string
+	orgMembershipStatuses *[]string
 }
 
 type ListOrgUsersApiParams struct {
-	OrgId               string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	Username            *string
-	OrgMembershipStatus *string
+	OrgId                 string
+	IncludeCount          *bool
+	ItemsPerPage          *int
+	PageNum               *int
+	Username              *string
+	OrgMembershipStatus   *string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) ListOrgUsersWithParams(ctx context.Context, args *ListOrgUsersApiParams) ListOrgUsersApiRequest {
 	return ListOrgUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		orgId:               args.OrgId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		username:            args.Username,
-		orgMembershipStatus: args.OrgMembershipStatus,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		includeCount:          args.IncludeCount,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		username:              args.Username,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
 }
 
@@ -2090,9 +2143,16 @@ func (r ListOrgUsersApiRequest) Username(username string) ListOrgUsersApiRequest
 	return r
 }
 
-// Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListOrgUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListOrgUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListOrgUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListOrgUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -2107,7 +2167,7 @@ Returns details about the pending and active MongoDB Cloud users associated with
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
-**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2174,6 +2234,13 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiReque
 	if r.orgMembershipStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
 	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2224,38 +2291,41 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiReque
 }
 
 type ListTeamUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	orgId               string
-	teamId              string
-	itemsPerPage        *int
-	pageNum             *int
-	username            *string
-	orgMembershipStatus *string
-	userId              *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	orgId                 string
+	teamId                string
+	itemsPerPage          *int
+	pageNum               *int
+	username              *string
+	orgMembershipStatus   *string
+	orgMembershipStatuses *[]string
+	userId                *string
 }
 
 type ListTeamUsersApiParams struct {
-	OrgId               string
-	TeamId              string
-	ItemsPerPage        *int
-	PageNum             *int
-	Username            *string
-	OrgMembershipStatus *string
-	UserId              *string
+	OrgId                 string
+	TeamId                string
+	ItemsPerPage          *int
+	PageNum               *int
+	Username              *string
+	OrgMembershipStatus   *string
+	OrgMembershipStatuses *[]string
+	UserId                *string
 }
 
 func (a *MongoDBCloudUsersApiService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
 	return ListTeamUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		orgId:               args.OrgId,
-		teamId:              args.TeamId,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		username:            args.Username,
-		orgMembershipStatus: args.OrgMembershipStatus,
-		userId:              args.UserId,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		teamId:                args.TeamId,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		username:              args.Username,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
+		userId:                args.UserId,
 	}
 }
 
@@ -2277,9 +2347,16 @@ func (r ListTeamUsersApiRequest) Username(username string) ListTeamUsersApiReque
 	return r
 }
 
-// Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListTeamUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListTeamUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListTeamUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListTeamUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -2300,7 +2377,7 @@ Returns details about the pending and active MongoDB Cloud users associated with
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2365,6 +2442,13 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 	}
 	if r.orgMembershipStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
+	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
 	}
 	if r.userId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "userId", r.userId, "")
@@ -2450,7 +2534,7 @@ Removes one MongoDB Cloud user from the specified project. You can remove an act
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
-**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2964,7 +3048,7 @@ Removes one MongoDB Cloud user in the specified organization. You can remove an 
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
-**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.

@@ -4,13 +4,13 @@ package admin
 
 // FlexClusterDescriptionCreate20241113 Settings that you can specify when you create a flex cluster.
 type FlexClusterDescriptionCreate20241113 struct {
-	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the instance.
 	// Write only field.
 	Name             string                             `json:"name"`
 	ProviderSettings FlexProviderSettingsCreate20241113 `json:"providerSettings"`
+	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
+	Links *[]Link `json:"links,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the instance.
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
@@ -38,39 +38,6 @@ func NewFlexClusterDescriptionCreate20241113WithDefaults() *FlexClusterDescripti
 	var terminationProtectionEnabled bool = false
 	this.TerminationProtectionEnabled = &terminationProtectionEnabled
 	return &this
-}
-
-// GetLinks returns the Links field value if set, zero value otherwise
-func (o *FlexClusterDescriptionCreate20241113) GetLinks() []Link {
-	if o == nil || IsNil(o.Links) {
-		var ret []Link
-		return ret
-	}
-	return *o.Links
-}
-
-// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FlexClusterDescriptionCreate20241113) GetLinksOk() (*[]Link, bool) {
-	if o == nil || IsNil(o.Links) {
-		return nil, false
-	}
-
-	return o.Links, true
-}
-
-// HasLinks returns a boolean if a field has been set.
-func (o *FlexClusterDescriptionCreate20241113) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
-		return true
-	}
-
-	return false
-}
-
-// SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *FlexClusterDescriptionCreate20241113) SetLinks(v []Link) {
-	o.Links = &v
 }
 
 // GetName returns the Name field value
@@ -119,6 +86,39 @@ func (o *FlexClusterDescriptionCreate20241113) GetProviderSettingsOk() (*FlexPro
 // SetProviderSettings sets field value
 func (o *FlexClusterDescriptionCreate20241113) SetProviderSettings(v FlexProviderSettingsCreate20241113) {
 	o.ProviderSettings = v
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise
+func (o *FlexClusterDescriptionCreate20241113) GetLinks() []Link {
+	if o == nil || IsNil(o.Links) {
+		var ret []Link
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FlexClusterDescriptionCreate20241113) GetLinksOk() (*[]Link, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *FlexClusterDescriptionCreate20241113) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given []Link and assigns it to the Links field.
+func (o *FlexClusterDescriptionCreate20241113) SetLinks(v []Link) {
+	o.Links = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise

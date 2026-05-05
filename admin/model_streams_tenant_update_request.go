@@ -6,12 +6,12 @@ package admin
 type StreamsTenantUpdateRequest struct {
 	// Human-readable label that identifies the cloud provider.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
-	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links *[]Link `json:"links,omitempty"`
 	// Name of the cloud provider region hosting Atlas Stream Processing.
 	Region       *string       `json:"region,omitempty"`
 	StreamConfig *StreamConfig `json:"streamConfig,omitempty"`
+	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewStreamsTenantUpdateRequest instantiates a new StreamsTenantUpdateRequest object
@@ -62,39 +62,6 @@ func (o *StreamsTenantUpdateRequest) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *StreamsTenantUpdateRequest) SetCloudProvider(v string) {
 	o.CloudProvider = &v
-}
-
-// GetLinks returns the Links field value if set, zero value otherwise
-func (o *StreamsTenantUpdateRequest) GetLinks() []Link {
-	if o == nil || IsNil(o.Links) {
-		var ret []Link
-		return ret
-	}
-	return *o.Links
-}
-
-// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamsTenantUpdateRequest) GetLinksOk() (*[]Link, bool) {
-	if o == nil || IsNil(o.Links) {
-		return nil, false
-	}
-
-	return o.Links, true
-}
-
-// HasLinks returns a boolean if a field has been set.
-func (o *StreamsTenantUpdateRequest) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
-		return true
-	}
-
-	return false
-}
-
-// SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *StreamsTenantUpdateRequest) SetLinks(v []Link) {
-	o.Links = &v
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -161,4 +128,37 @@ func (o *StreamsTenantUpdateRequest) HasStreamConfig() bool {
 // SetStreamConfig gets a reference to the given StreamConfig and assigns it to the StreamConfig field.
 func (o *StreamsTenantUpdateRequest) SetStreamConfig(v StreamConfig) {
 	o.StreamConfig = &v
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise
+func (o *StreamsTenantUpdateRequest) GetLinks() []Link {
+	if o == nil || IsNil(o.Links) {
+		var ret []Link
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsTenantUpdateRequest) GetLinksOk() (*[]Link, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *StreamsTenantUpdateRequest) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given []Link and assigns it to the Links field.
+func (o *StreamsTenantUpdateRequest) SetLinks(v []Link) {
+	o.Links = &v
 }

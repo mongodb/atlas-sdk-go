@@ -14,10 +14,10 @@ type CloudRegionConfig20240805 struct {
 	AnalyticsAutoScaling    *AdvancedAutoScalingSettings   `json:"analyticsAutoScaling,omitempty"`
 	AnalyticsSpecs          *DedicatedHardwareSpec20240805 `json:"analyticsSpecs,omitempty"`
 	AutoScaling             *AdvancedAutoScalingSettings   `json:"autoScaling,omitempty"`
+	ReadOnlySpecs           *DedicatedHardwareSpec20240805 `json:"readOnlySpecs,omitempty"`
 	EffectiveAnalyticsSpecs *DedicatedHardwareSpec20240805 `json:"effectiveAnalyticsSpecs,omitempty"`
 	EffectiveElectableSpecs *DedicatedHardwareSpec20240805 `json:"effectiveElectableSpecs,omitempty"`
 	EffectiveReadOnlySpecs  *DedicatedHardwareSpec20240805 `json:"effectiveReadOnlySpecs,omitempty"`
-	ReadOnlySpecs           *DedicatedHardwareSpec20240805 `json:"readOnlySpecs,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when `providerName` is `TENANT` and `electableSpecs.instanceSize` is `M0`, `M2` or `M5`.   Please note that  using an `instanceSize` of `M2` or `M5` will create a Flex cluster instead. Support for the `instanceSize` of `M2` or `M5` will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
 }
@@ -270,6 +270,39 @@ func (o *CloudRegionConfig20240805) SetAutoScaling(v AdvancedAutoScalingSettings
 	o.AutoScaling = &v
 }
 
+// GetReadOnlySpecs returns the ReadOnlySpecs field value if set, zero value otherwise
+func (o *CloudRegionConfig20240805) GetReadOnlySpecs() DedicatedHardwareSpec20240805 {
+	if o == nil || IsNil(o.ReadOnlySpecs) {
+		var ret DedicatedHardwareSpec20240805
+		return ret
+	}
+	return *o.ReadOnlySpecs
+}
+
+// GetReadOnlySpecsOk returns a tuple with the ReadOnlySpecs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRegionConfig20240805) GetReadOnlySpecsOk() (*DedicatedHardwareSpec20240805, bool) {
+	if o == nil || IsNil(o.ReadOnlySpecs) {
+		return nil, false
+	}
+
+	return o.ReadOnlySpecs, true
+}
+
+// HasReadOnlySpecs returns a boolean if a field has been set.
+func (o *CloudRegionConfig20240805) HasReadOnlySpecs() bool {
+	if o != nil && !IsNil(o.ReadOnlySpecs) {
+		return true
+	}
+
+	return false
+}
+
+// SetReadOnlySpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the ReadOnlySpecs field.
+func (o *CloudRegionConfig20240805) SetReadOnlySpecs(v DedicatedHardwareSpec20240805) {
+	o.ReadOnlySpecs = &v
+}
+
 // GetEffectiveAnalyticsSpecs returns the EffectiveAnalyticsSpecs field value if set, zero value otherwise
 func (o *CloudRegionConfig20240805) GetEffectiveAnalyticsSpecs() DedicatedHardwareSpec20240805 {
 	if o == nil || IsNil(o.EffectiveAnalyticsSpecs) {
@@ -367,39 +400,6 @@ func (o *CloudRegionConfig20240805) HasEffectiveReadOnlySpecs() bool {
 // SetEffectiveReadOnlySpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the EffectiveReadOnlySpecs field.
 func (o *CloudRegionConfig20240805) SetEffectiveReadOnlySpecs(v DedicatedHardwareSpec20240805) {
 	o.EffectiveReadOnlySpecs = &v
-}
-
-// GetReadOnlySpecs returns the ReadOnlySpecs field value if set, zero value otherwise
-func (o *CloudRegionConfig20240805) GetReadOnlySpecs() DedicatedHardwareSpec20240805 {
-	if o == nil || IsNil(o.ReadOnlySpecs) {
-		var ret DedicatedHardwareSpec20240805
-		return ret
-	}
-	return *o.ReadOnlySpecs
-}
-
-// GetReadOnlySpecsOk returns a tuple with the ReadOnlySpecs field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRegionConfig20240805) GetReadOnlySpecsOk() (*DedicatedHardwareSpec20240805, bool) {
-	if o == nil || IsNil(o.ReadOnlySpecs) {
-		return nil, false
-	}
-
-	return o.ReadOnlySpecs, true
-}
-
-// HasReadOnlySpecs returns a boolean if a field has been set.
-func (o *CloudRegionConfig20240805) HasReadOnlySpecs() bool {
-	if o != nil && !IsNil(o.ReadOnlySpecs) {
-		return true
-	}
-
-	return false
-}
-
-// SetReadOnlySpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the ReadOnlySpecs field.
-func (o *CloudRegionConfig20240805) SetReadOnlySpecs(v DedicatedHardwareSpec20240805) {
-	o.ReadOnlySpecs = &v
 }
 
 // GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise

@@ -6,8 +6,8 @@ package admin
 type CloudProviderAccessFeatureUsage struct {
 	// Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 	// Read only field.
-	FeatureType *string                                                     `json:"featureType,omitempty"`
-	FeatureId   *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId `json:"featureId,omitempty"`
+	FeatureType *string                                                      `json:"featureType,omitempty"`
+	FeatureId   *CloudProviderAccessFeatureUsageAtlasLogIntegrationFeatureId `json:"featureId,omitempty"`
 }
 
 // NewCloudProviderAccessFeatureUsage instantiates a new CloudProviderAccessFeatureUsage object
@@ -61,9 +61,9 @@ func (o *CloudProviderAccessFeatureUsage) SetFeatureType(v string) {
 }
 
 // GetFeatureId returns the FeatureId field value if set, zero value otherwise
-func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId {
+func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsageAtlasLogIntegrationFeatureId {
 	if o == nil || IsNil(o.FeatureId) {
-		var ret CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId
+		var ret CloudProviderAccessFeatureUsageAtlasLogIntegrationFeatureId
 		return ret
 	}
 	return *o.FeatureId
@@ -71,7 +71,7 @@ func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeat
 
 // GetFeatureIdOk returns a tuple with the FeatureId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId, bool) {
+func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccessFeatureUsageAtlasLogIntegrationFeatureId, bool) {
 	if o == nil || IsNil(o.FeatureId) {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool {
 	return false
 }
 
-// SetFeatureId gets a reference to the given CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId and assigns it to the FeatureId field.
-func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) {
+// SetFeatureId gets a reference to the given CloudProviderAccessFeatureUsageAtlasLogIntegrationFeatureId and assigns it to the FeatureId field.
+func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsageAtlasLogIntegrationFeatureId) {
 	o.FeatureId = &v
 }

@@ -40,6 +40,10 @@ type APIClient struct {
 
 	// API Services
 
+	AIModelAPIKeysApi AIModelAPIKeysApi
+
+	AIModelRateLimitsApi AIModelRateLimitsApi
+
 	AWSClustersDNSApi AWSClustersDNSApi
 
 	AccessTrackingApi AccessTrackingApi
@@ -53,6 +57,8 @@ type APIClient struct {
 	AtlasSearchApi AtlasSearchApi
 
 	AuditingApi AuditingApi
+
+	ChartsDashboardsApi ChartsDashboardsApi
 
 	CloudBackupsApi CloudBackupsApi
 
@@ -94,7 +100,13 @@ type APIClient struct {
 
 	LegacyBackupApi LegacyBackupApi
 
+	LifecycleManagementApi LifecycleManagementApi
+
+	LimitDescriptionApi LimitDescriptionApi
+
 	MaintenanceWindowsApi MaintenanceWindowsApi
+
+	MetricIntegrationsApi MetricIntegrationsApi
 
 	MongoDBCloudUsersApi MongoDBCloudUsersApi
 
@@ -120,6 +132,8 @@ type APIClient struct {
 
 	QueryShapeInsightsApi QueryShapeInsightsApi
 
+	RateLimitApi RateLimitApi
+
 	RateLimitingApi RateLimitingApi
 
 	ResourcePoliciesApi ResourcePoliciesApi
@@ -128,15 +142,21 @@ type APIClient struct {
 
 	RootApi RootApi
 
+	SandboxApi SandboxApi
+
 	ServerlessInstancesApi ServerlessInstancesApi
 
 	ServerlessPrivateEndpointsApi ServerlessPrivateEndpointsApi
 
 	ServiceAccountsApi ServiceAccountsApi
 
+	StandbyLinksApi StandbyLinksApi
+
 	StreamsApi StreamsApi
 
 	TeamsApi TeamsApi
+
+	TestApi TestApi
 
 	ThirdPartyIntegrationsApi ThirdPartyIntegrationsApi
 
@@ -160,6 +180,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UntypedClient.client = c
 
 	// API Services
+	c.AIModelAPIKeysApi = (*AIModelAPIKeysApiService)(&c.common)
+	c.AIModelRateLimitsApi = (*AIModelRateLimitsApiService)(&c.common)
 	c.AWSClustersDNSApi = (*AWSClustersDNSApiService)(&c.common)
 	c.AccessTrackingApi = (*AccessTrackingApiService)(&c.common)
 	c.ActivityFeedApi = (*ActivityFeedApiService)(&c.common)
@@ -167,6 +189,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AlertsApi = (*AlertsApiService)(&c.common)
 	c.AtlasSearchApi = (*AtlasSearchApiService)(&c.common)
 	c.AuditingApi = (*AuditingApiService)(&c.common)
+	c.ChartsDashboardsApi = (*ChartsDashboardsApiService)(&c.common)
 	c.CloudBackupsApi = (*CloudBackupsApiService)(&c.common)
 	c.CloudMigrationServiceApi = (*CloudMigrationServiceApiService)(&c.common)
 	c.CloudProviderAccessApi = (*CloudProviderAccessApiService)(&c.common)
@@ -187,7 +210,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.InvoicesApi = (*InvoicesApiService)(&c.common)
 	c.LDAPConfigurationApi = (*LDAPConfigurationApiService)(&c.common)
 	c.LegacyBackupApi = (*LegacyBackupApiService)(&c.common)
+	c.LifecycleManagementApi = (*LifecycleManagementApiService)(&c.common)
+	c.LimitDescriptionApi = (*LimitDescriptionApiService)(&c.common)
 	c.MaintenanceWindowsApi = (*MaintenanceWindowsApiService)(&c.common)
+	c.MetricIntegrationsApi = (*MetricIntegrationsApiService)(&c.common)
 	c.MongoDBCloudUsersApi = (*MongoDBCloudUsersApiService)(&c.common)
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
@@ -200,15 +226,19 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
 	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
 	c.QueryShapeInsightsApi = (*QueryShapeInsightsApiService)(&c.common)
+	c.RateLimitApi = (*RateLimitApiService)(&c.common)
 	c.RateLimitingApi = (*RateLimitingApiService)(&c.common)
 	c.ResourcePoliciesApi = (*ResourcePoliciesApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
+	c.SandboxApi = (*SandboxApiService)(&c.common)
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)
 	c.ServerlessPrivateEndpointsApi = (*ServerlessPrivateEndpointsApiService)(&c.common)
 	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
+	c.StandbyLinksApi = (*StandbyLinksApiService)(&c.common)
 	c.StreamsApi = (*StreamsApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
+	c.TestApi = (*TestApiService)(&c.common)
 	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)
 	c.X509AuthenticationApi = (*X509AuthenticationApiService)(&c.common)
 
