@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312018/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312019/admin"
 
 	http "net/http"
 
@@ -563,33 +563,42 @@ func (_c *CollectionLevelMetricsApi_ListCollStatMetrics_Call) RunAndReturn(run f
 }
 
 // ListCollStatMetricsExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) ListCollStatMetricsExecute(r admin.ListCollStatMetricsApiRequest) (*http.Response, error) {
+func (_m *CollectionLevelMetricsApi) ListCollStatMetricsExecute(r admin.ListCollStatMetricsApiRequest) (*admin.CollStatsLatencyNamespaceMetrics, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListCollStatMetricsExecute")
 	}
 
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.ListCollStatMetricsApiRequest) (*http.Response, error)); ok {
+	var r0 *admin.CollStatsLatencyNamespaceMetrics
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListCollStatMetricsApiRequest) (*admin.CollStatsLatencyNamespaceMetrics, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListCollStatMetricsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListCollStatMetricsApiRequest) *admin.CollStatsLatencyNamespaceMetrics); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
+			r0 = ret.Get(0).(*admin.CollStatsLatencyNamespaceMetrics)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListCollStatMetricsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListCollStatMetricsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
-		r1 = ret.Error(1)
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
 	}
 
-	return r0, r1
+	if rf, ok := ret.Get(2).(func(admin.ListCollStatMetricsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
 }
 
 // CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCollStatMetricsExecute'
@@ -610,12 +619,12 @@ func (_c *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call) Return(_a0 *http.Response, _a1 error) *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call {
-	_c.Call.Return(_a0, _a1)
+func (_c *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call) Return(_a0 *admin.CollStatsLatencyNamespaceMetrics, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call) RunAndReturn(run func(admin.ListCollStatMetricsApiRequest) (*http.Response, error)) *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call {
+func (_c *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call) RunAndReturn(run func(admin.ListCollStatMetricsApiRequest) (*admin.CollStatsLatencyNamespaceMetrics, *http.Response, error)) *CollectionLevelMetricsApi_ListCollStatMetricsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
