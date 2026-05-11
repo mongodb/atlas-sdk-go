@@ -42,7 +42,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		CreateRoleMapping Create One Role Mapping in One Organization Configuration
 
-		Adds one role mapping to the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+		Adds one role mapping to the specified organization in the specified federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -116,7 +116,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		DeleteRoleMapping Remove One Role Mapping from One Organization
 
-		Removes one role mapping in the specified organization from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+		Removes one role mapping in the specified organization from the specified federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -165,7 +165,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		GetFederationSettings Return Federation Settings for One Organization
 
-		Returns information about the federation settings for the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in the connected organization.
+		Returns information about the federation settings for the specified organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -236,7 +236,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		GetRoleMapping Return One Role Mapping from One Organization
 
-		Returns one role mapping from the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+		Returns one role mapping from the specified organization in the specified federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -307,7 +307,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		ListRoleMappings Return All Role Mappings from One Organization
 
-		Returns all role mappings from the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+		Returns all role mappings from the specified organization in the specified federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -331,7 +331,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		RemoveConnectedOrgConfig Remove One Organization Configuration from One Federation
 
-		Removes one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. Note: This request fails if only one connected organization exists in the federation.
+		Removes one connected organization configuration from the specified federation. Note: This request fails if only one connected organization exists in the federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -381,7 +381,7 @@ type FederatedAuthenticationApi interface {
 	/*
 			UpdateConnectedOrgConfig Update One Organization Configuration in One Federation
 
-			Updates one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Updates one connected organization configuration from the specified federation.
 
 		**Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
 
@@ -443,7 +443,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		UpdateRoleMapping Update One Role Mapping in One Organization
 
-		Updates one role mapping in the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+		Updates one role mapping in the specified organization in the specified federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -626,7 +626,7 @@ func (r CreateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *htt
 /*
 CreateRoleMapping Create One Role Mapping in One Organization Configuration
 
-Adds one role mapping to the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Adds one role mapping to the specified organization in the specified federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -963,7 +963,7 @@ func (r DeleteRoleMappingApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteRoleMapping Remove One Role Mapping from One Organization
 
-Removes one role mapping in the specified organization from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Removes one role mapping in the specified organization from the specified federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -1195,7 +1195,7 @@ func (r GetFederationSettingsApiRequest) Execute() (*OrgFederationSettings, *htt
 /*
 GetFederationSettings Return Federation Settings for One Organization
 
-Returns information about the federation settings for the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role in the connected organization.
+Returns information about the federation settings for the specified organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1561,7 +1561,7 @@ func (r GetRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.R
 /*
 GetRoleMapping Return One Role Mapping from One Organization
 
-Returns one role mapping from the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Returns one role mapping from the specified organization in the specified federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -2014,7 +2014,7 @@ func (r ListRoleMappingsApiRequest) Execute() (*PaginatedRoleMapping, *http.Resp
 /*
 ListRoleMappings Return All Role Mappings from One Organization
 
-Returns all role mappings from the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Returns all role mappings from the specified organization in the specified federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -2137,7 +2137,7 @@ func (r RemoveConnectedOrgConfigApiRequest) Execute() (*http.Response, error) {
 /*
 RemoveConnectedOrgConfig Remove One Organization Configuration from One Federation
 
-Removes one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. Note: This request fails if only one connected organization exists in the federation.
+Removes one connected organization configuration from the specified federation. Note: This request fails if only one connected organization exists in the federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -2354,7 +2354,7 @@ func (r UpdateConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *htt
 /*
 UpdateConnectedOrgConfig Update One Organization Configuration in One Federation
 
-Updates one connected organization configuration from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Updates one connected organization configuration from the specified federation.
 
 **Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
 
@@ -2633,7 +2633,7 @@ func (r UpdateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *htt
 /*
 UpdateRoleMapping Update One Role Mapping in One Organization
 
-Updates one role mapping in the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Updates one role mapping in the specified organization in the specified federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.

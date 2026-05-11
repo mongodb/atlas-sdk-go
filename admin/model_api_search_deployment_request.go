@@ -4,15 +4,15 @@ package admin
 
 // ApiSearchDeploymentRequest struct for ApiSearchDeploymentRequest
 type ApiSearchDeploymentRequest struct {
-	// List of settings that configure the Search Nodes for your cluster.  **NOTE**: We accept a single configuration for all nodes currently.
-	Specs []ApiSearchDeploymentSpec `json:"specs"`
+	// List of settings that configure the Search Nodes for your cluster. Provide one element per region when configuring asymmetric deployments; a single element applies to all regions.
+	Specs []ApiSearchDeploymentRequestSpec `json:"specs"`
 }
 
 // NewApiSearchDeploymentRequest instantiates a new ApiSearchDeploymentRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiSearchDeploymentRequest(specs []ApiSearchDeploymentSpec) *ApiSearchDeploymentRequest {
+func NewApiSearchDeploymentRequest(specs []ApiSearchDeploymentRequestSpec) *ApiSearchDeploymentRequest {
 	this := ApiSearchDeploymentRequest{}
 	this.Specs = specs
 	return &this
@@ -27,9 +27,9 @@ func NewApiSearchDeploymentRequestWithDefaults() *ApiSearchDeploymentRequest {
 }
 
 // GetSpecs returns the Specs field value
-func (o *ApiSearchDeploymentRequest) GetSpecs() []ApiSearchDeploymentSpec {
+func (o *ApiSearchDeploymentRequest) GetSpecs() []ApiSearchDeploymentRequestSpec {
 	if o == nil {
-		var ret []ApiSearchDeploymentSpec
+		var ret []ApiSearchDeploymentRequestSpec
 		return ret
 	}
 
@@ -38,7 +38,7 @@ func (o *ApiSearchDeploymentRequest) GetSpecs() []ApiSearchDeploymentSpec {
 
 // GetSpecsOk returns a tuple with the Specs field value
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentRequest) GetSpecsOk() (*[]ApiSearchDeploymentSpec, bool) {
+func (o *ApiSearchDeploymentRequest) GetSpecsOk() (*[]ApiSearchDeploymentRequestSpec, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -46,6 +46,6 @@ func (o *ApiSearchDeploymentRequest) GetSpecsOk() (*[]ApiSearchDeploymentSpec, b
 }
 
 // SetSpecs sets field value
-func (o *ApiSearchDeploymentRequest) SetSpecs(v []ApiSearchDeploymentSpec) {
+func (o *ApiSearchDeploymentRequest) SetSpecs(v []ApiSearchDeploymentRequestSpec) {
 	o.Specs = v
 }

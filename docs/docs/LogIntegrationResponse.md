@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **IamRoleId** | Pointer to **string** | Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. | [optional] 
 **KmsKey** | Pointer to **string** | AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. | [optional] 
 **PrefixPath** | Pointer to **string** | Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. | [optional] 
+**UseLegacyPathStructure** | Pointer to **bool** | When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: &#x60;{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log&#x60;. When false (default), uses the flat timestamped structure: &#x60;{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log&#x60;. | [optional] 
 **ApiKey** | Pointer to **string** | API key for authentication. | [optional] 
 **Region** | Pointer to **string** | Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. | [optional] 
 **RoleId** | Pointer to **string** | Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. | [optional] 
@@ -193,6 +194,30 @@ SetPrefixPath sets PrefixPath field to given value.
 `func (o *LogIntegrationResponse) HasPrefixPath() bool`
 
 HasPrefixPath returns a boolean if a field has been set.
+### GetUseLegacyPathStructure
+
+`func (o *LogIntegrationResponse) GetUseLegacyPathStructure() bool`
+
+GetUseLegacyPathStructure returns the UseLegacyPathStructure field if non-nil, zero value otherwise.
+
+### GetUseLegacyPathStructureOk
+
+`func (o *LogIntegrationResponse) GetUseLegacyPathStructureOk() (*bool, bool)`
+
+GetUseLegacyPathStructureOk returns a tuple with the UseLegacyPathStructure field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseLegacyPathStructure
+
+`func (o *LogIntegrationResponse) SetUseLegacyPathStructure(v bool)`
+
+SetUseLegacyPathStructure sets UseLegacyPathStructure field to given value.
+
+### HasUseLegacyPathStructure
+
+`func (o *LogIntegrationResponse) HasUseLegacyPathStructure() bool`
+
+HasUseLegacyPathStructure returns a boolean if a field has been set.
 ### GetApiKey
 
 `func (o *LogIntegrationResponse) GetApiKey() string`

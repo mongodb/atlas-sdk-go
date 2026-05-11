@@ -101,7 +101,7 @@ type DataLakePipelinesApi interface {
 	/*
 		GetAvailablePipelineSchedules Return All Ingestion Schedules for One Data Lake Pipeline
 
-		Returns a list of backup schedule policy items that you can use as a Data Lake Pipeline source. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns a list of backup schedule policy items that you can use as a Data Lake Pipeline source.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -129,7 +129,7 @@ type DataLakePipelinesApi interface {
 	/*
 		GetAvailablePipelineSnapshots Return All Backup Snapshots for One Data Lake Pipeline
 
-		Returns a list of backup snapshots that you can use to trigger an on demand pipeline run. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns a list of backup snapshots that you can use to trigger an on demand pipeline run.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -157,7 +157,7 @@ type DataLakePipelinesApi interface {
 	/*
 		GetPipeline Return One Data Lake Pipeline
 
-		Returns the details of one Data Lake Pipeline within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns the details of one Data Lake Pipeline within the specified project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -185,7 +185,7 @@ type DataLakePipelinesApi interface {
 	/*
 		GetPipelineRun Return One Data Lake Pipeline Run
 
-		Returns the details of one Data Lake Pipeline run within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns the details of one Data Lake Pipeline run within the specified project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -214,7 +214,7 @@ type DataLakePipelinesApi interface {
 	/*
 		ListPipelineRuns Return All Data Lake Pipeline Runs in One Project
 
-		Returns a list of past Data Lake Pipeline runs. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns a list of past Data Lake Pipeline runs.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -242,7 +242,7 @@ type DataLakePipelinesApi interface {
 	/*
 		ListPipelines Return All Data Lake Pipelines in One Project
 
-		Returns a list of Data Lake Pipelines. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Returns a list of Data Lake Pipelines.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -269,7 +269,7 @@ type DataLakePipelinesApi interface {
 	/*
 		PausePipeline Pause One Data Lake Pipeline
 
-		Pauses ingestion for a Data Lake Pipeline within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Pauses ingestion for a Data Lake Pipeline within the specified project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -297,7 +297,7 @@ type DataLakePipelinesApi interface {
 	/*
 		ResumePipeline Resume One Data Lake Pipeline
 
-		Resumes ingestion for a Data Lake Pipeline within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+		Resumes ingestion for a Data Lake Pipeline within the specified project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -784,7 +784,7 @@ func (r GetAvailablePipelineSchedulesApiRequest) Execute() ([]DiskBackupApiPolic
 /*
 GetAvailablePipelineSchedules Return All Ingestion Schedules for One Data Lake Pipeline
 
-Returns a list of backup schedule policy items that you can use as a Data Lake Pipeline source. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns a list of backup schedule policy items that you can use as a Data Lake Pipeline source.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -947,7 +947,7 @@ func (r GetAvailablePipelineSnapshotsApiRequest) Execute() (*PaginatedBackupSnap
 /*
 GetAvailablePipelineSnapshots Return All Backup Snapshots for One Data Lake Pipeline
 
-Returns a list of backup snapshots that you can use to trigger an on demand pipeline run. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns a list of backup snapshots that you can use to trigger an on demand pipeline run.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1098,7 +1098,7 @@ func (r GetPipelineApiRequest) Execute() (*DataLakeIngestionPipeline, *http.Resp
 /*
 GetPipeline Return One Data Lake Pipeline
 
-Returns the details of one Data Lake Pipeline within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns the details of one Data Lake Pipeline within the specified project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1228,7 +1228,7 @@ func (r GetPipelineRunApiRequest) Execute() (*IngestionPipelineRun, *http.Respon
 /*
 GetPipelineRun Return One Data Lake Pipeline Run
 
-Returns the details of one Data Lake Pipeline run within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns the details of one Data Lake Pipeline run within the specified project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1397,7 +1397,7 @@ func (r ListPipelineRunsApiRequest) Execute() (*PaginatedPipelineRun, *http.Resp
 /*
 ListPipelineRuns Return All Data Lake Pipeline Runs in One Project
 
-Returns a list of past Data Lake Pipeline runs. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns a list of past Data Lake Pipeline runs.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1545,7 +1545,7 @@ func (r ListPipelinesApiRequest) Execute() ([]DataLakeIngestionPipeline, *http.R
 /*
 ListPipelines Return All Data Lake Pipelines in One Project
 
-Returns a list of Data Lake Pipelines. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns a list of Data Lake Pipelines.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1666,7 +1666,7 @@ func (r PausePipelineApiRequest) Execute() (*DataLakeIngestionPipeline, *http.Re
 /*
 PausePipeline Pause One Data Lake Pipeline
 
-Pauses ingestion for a Data Lake Pipeline within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Pauses ingestion for a Data Lake Pipeline within the specified project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1793,7 +1793,7 @@ func (r ResumePipelineApiRequest) Execute() (*DataLakeIngestionPipeline, *http.R
 /*
 ResumePipeline Resume One Data Lake Pipeline
 
-Resumes ingestion for a Data Lake Pipeline within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Resumes ingestion for a Data Lake Pipeline within the specified project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

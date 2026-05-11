@@ -11,8 +11,8 @@ import (
 
 	"golang.org/x/oauth2"
 
-	"go.mongodb.org/atlas-sdk/v20250312018/auth"
-	"go.mongodb.org/atlas-sdk/v20250312018/internal/core"
+	"go.mongodb.org/atlas-sdk/v20250312019/auth"
+	"go.mongodb.org/atlas-sdk/v20250312019/internal/core"
 	"golang.org/x/oauth2/clientcredentials"
 )
 

@@ -43,7 +43,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -128,7 +128,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -210,7 +210,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -295,7 +295,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -380,7 +380,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -462,7 +462,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -523,7 +523,7 @@ Name | Type | Description  | Notes
 
 ## GetGroupUser
 
-> GroupUserResponse GetGroupUser(ctx, groupId, userId).Execute()
+> GroupUserResponse GetGroupUser(ctx, groupId, userId).OrgMembershipStatuses(orgMembershipStatuses).Execute()
 
 Return One MongoDB Cloud User in One Project
 
@@ -538,7 +538,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -553,8 +553,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userId := "userId_example" // string | 
+    orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.GetGroupUser(context.Background(), groupId, userId).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersApi.GetGroupUser(context.Background(), groupId, userId).OrgMembershipStatuses(orgMembershipStatuses).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.GetGroupUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -586,6 +587,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **orgMembershipStatuses** | **[]string** | Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions. | 
 
 ### Return type
 
@@ -606,7 +608,7 @@ Name | Type | Description  | Notes
 
 ## GetOrgUser
 
-> OrgUserResponse GetOrgUser(ctx, orgId, userId).Execute()
+> OrgUserResponse GetOrgUser(ctx, orgId, userId).OrgMembershipStatuses(orgMembershipStatuses).Execute()
 
 Return One MongoDB Cloud User in One Organization
 
@@ -621,7 +623,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -636,8 +638,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     userId := "userId_example" // string | 
+    orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.GetOrgUser(context.Background(), orgId, userId).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersApi.GetOrgUser(context.Background(), orgId, userId).OrgMembershipStatuses(orgMembershipStatuses).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.GetOrgUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -669,6 +672,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **orgMembershipStatuses** | **[]string** | Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions. | 
 
 ### Return type
 
@@ -704,7 +708,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -784,7 +788,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -849,7 +853,7 @@ Name | Type | Description  | Notes
 
 ## ListGroupUsers
 
-> PaginatedGroupUser ListGroupUsers(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).OrgMembershipStatus(orgMembershipStatus).Username(username).Execute()
+> PaginatedGroupUser ListGroupUsers(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).Username(username).Execute()
 
 Return All MongoDB Cloud Users in One Project
 
@@ -864,7 +868,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -884,9 +888,10 @@ func main() {
     flattenTeams := true // bool |  (optional) (default to false)
     includeOrgUsers := true // bool |  (optional) (default to false)
     orgMembershipStatus := "ACTIVE" // string |  (optional)
+    orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
     username := "username_example" // string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.ListGroupUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).OrgMembershipStatus(orgMembershipStatus).Username(username).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersApi.ListGroupUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).Username(username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.ListGroupUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -921,7 +926,8 @@ Name | Type | Description  | Notes
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **flattenTeams** | **bool** | Flag that indicates whether the returned list should include users who belong to a team with a role in this project. You might not have assigned the individual users a role in this project. If &#x60;\&quot;flattenTeams\&quot; : false&#x60;, this resource returns only users with a role in the project.  If &#x60;\&quot;flattenTeams\&quot; : true&#x60;, this resource returns both users with roles in the project and users who belong to teams with roles in the project. | [default to false]
  **includeOrgUsers** | **bool** | Flag that indicates whether the returned list should include users with implicit access to the project, the Organization Owner or Organization Read Only role. You might not have assigned the individual users a role in this project. If &#x60;\&quot;includeOrgUsers\&quot;: false&#x60;, this resource returns only users with a role in the project. If &#x60;\&quot;includeOrgUsers\&quot;: true&#x60;, this resource returns both users with roles in the project and users who have implicit access to the project through their organization role. | [default to false]
- **orgMembershipStatus** | **string** | Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions. | 
+ **orgMembershipStatus** | **string** | Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions. | 
+ **orgMembershipStatuses** | **[]string** | Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions. | 
  **username** | **string** | Email address to filter users by. Not supported in deprecated versions. | 
 
 ### Return type
@@ -943,7 +949,7 @@ Name | Type | Description  | Notes
 
 ## ListOrgUsers
 
-> PaginatedOrgUser ListOrgUsers(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).Execute()
+> PaginatedOrgUser ListOrgUsers(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).Execute()
 
 Return All MongoDB Cloud Users in One Organization
 
@@ -958,7 +964,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -977,8 +983,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     username := "username_example" // string |  (optional)
     orgMembershipStatus := "ACTIVE" // string |  (optional)
+    orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.ListOrgUsers(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersApi.ListOrgUsers(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.ListOrgUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1012,7 +1019,8 @@ Name | Type | Description  | Notes
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **username** | **string** | Email address to filter users by. Not supported in deprecated versions. | 
- **orgMembershipStatus** | **string** | Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions. | 
+ **orgMembershipStatus** | **string** | Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions. | 
+ **orgMembershipStatuses** | **[]string** | Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions. | 
 
 ### Return type
 
@@ -1033,7 +1041,7 @@ Name | Type | Description  | Notes
 
 ## ListTeamUsers
 
-> PaginatedOrgUser ListTeamUsers(ctx, orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).UserId(userId).Execute()
+> PaginatedOrgUser ListTeamUsers(ctx, orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).UserId(userId).Execute()
 
 Return All MongoDB Cloud Users Assigned to One Team
 
@@ -1048,7 +1056,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -1067,9 +1075,10 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     username := "username_example" // string |  (optional)
     orgMembershipStatus := "ACTIVE" // string |  (optional)
+    orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
     userId := "userId_example" // string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.ListTeamUsers(context.Background(), orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).UserId(userId).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersApi.ListTeamUsers(context.Background(), orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).UserId(userId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.ListTeamUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1104,7 +1113,8 @@ Name | Type | Description  | Notes
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **username** | **string** | Email address to filter users by. Not supported in deprecated versions. | 
- **orgMembershipStatus** | **string** | Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions. | 
+ **orgMembershipStatus** | **string** | Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions. | 
+ **orgMembershipStatuses** | **[]string** | Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions. | 
  **userId** | **string** | Unique 24-hexadecimal digit string to filter users by. Not supported in deprecated versions. | 
 
 ### Return type
@@ -1141,7 +1151,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -1222,7 +1232,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -1307,7 +1317,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -1392,7 +1402,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -1477,7 +1487,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {
@@ -1558,7 +1568,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312018/admin"
+    "go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 func main() {

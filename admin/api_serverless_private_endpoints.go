@@ -15,7 +15,7 @@ type ServerlessPrivateEndpointsApi interface {
 	/*
 			CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless Instance
 
-			Creates one private endpoint for one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+			Creates one private endpoint for one serverless instance.
 
 		 A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
 
@@ -48,7 +48,7 @@ type ServerlessPrivateEndpointsApi interface {
 	/*
 			DeleteServerlessPrivateEndpoint Remove One Private Endpoint for One Serverless Instance
 
-			Remove one private endpoint from one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+			Remove one private endpoint from one serverless instance.
 
 		This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
 
@@ -140,7 +140,7 @@ type ServerlessPrivateEndpointsApi interface {
 	/*
 			UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless Instance
 
-			Updates one private endpoint for one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+			Updates one private endpoint for one serverless instance.
 
 		This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
 
@@ -204,7 +204,7 @@ func (r CreateServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantE
 /*
 CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless Instance
 
-Creates one private endpoint for one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Creates one private endpoint for one serverless instance.
 
 	A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
 
@@ -344,7 +344,7 @@ func (r DeleteServerlessPrivateEndpointApiRequest) Execute() (*http.Response, er
 /*
 DeleteServerlessPrivateEndpoint Remove One Private Endpoint for One Serverless Instance
 
-Remove one private endpoint from one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Remove one private endpoint from one serverless instance.
 
 This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
 
@@ -734,7 +734,7 @@ func (r UpdateServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantE
 /*
 UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless Instance
 
-Updates one private endpoint for one serverless instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+Updates one private endpoint for one serverless instance.
 
 This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead. This endpoint will be sunset on January 22, 2026.
 

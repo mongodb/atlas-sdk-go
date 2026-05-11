@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudProvider** | Pointer to **string** | Cloud service provider that manages this private endpoint. | [optional] 
 **Id** | Pointer to **string** | Unique string that identifies the private endpoint&#39;s network interface that someone added to this private endpoint service. | [optional] 
 **PrivateEndpointIPAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] 
 **EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. If this private endpoint belongs to a port-mapped endpoint service, this field is still required but ignored. | [optional] 
@@ -29,6 +30,30 @@ NewCreateEndpointRequestWithDefaults instantiates a new CreateEndpointRequest ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetCloudProvider
+
+`func (o *CreateEndpointRequest) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *CreateEndpointRequest) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *CreateEndpointRequest) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
+### HasCloudProvider
+
+`func (o *CreateEndpointRequest) HasCloudProvider() bool`
+
+HasCloudProvider returns a boolean if a field has been set.
 ### GetId
 
 `func (o *CreateEndpointRequest) GetId() string`

@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user. | [readonly] 
-**OrgMembershipStatus** | **string** | String enum that indicates whether the MongoDB Cloud user has a pending invitation to join the organization or they are already active in the organization. | [readonly] 
+**OrgMembershipStatus** | **string** | String enum that indicates the user&#39;s organization membership status: ACTIVE (member), PENDING (invited), &#x60;INVITATION_EXPIRED&#x60; (invitation expired), or &#x60;INVITATION_REJECTED&#x60; (invitation declined). | [readonly] 
 **Roles** | [**OrgUserRolesResponse**](OrgUserRolesResponse.md) |  | 
 **TeamIds** | Pointer to **[]string** | List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs. | [optional] [readonly] 
 **Username** | **string** | Email address that represents the username of the MongoDB Cloud user. | [readonly] 
-**InvitationCreatedAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
-**InvitationExpiresAt** | Pointer to **time.Time** | Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
+**InvitationCreatedAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users. | [optional] [readonly] 
+**InvitationExpiresAt** | Pointer to **time.Time** | Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. This field is absent for active users and null for rejected invitations. | [optional] [readonly] 
 **InviterUsername** | Pointer to **string** | Username of the MongoDB Cloud user who sent the invitation to join the organization. | [optional] [readonly] 
 **Country** | Pointer to **string** | Two-character alphabetical string that identifies the MongoDB Cloud user&#39;s geographic location. This parameter uses the ISO 3166-1a2 code format. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud created the current account. This value is in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
