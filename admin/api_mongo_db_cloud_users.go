@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -15,7 +16,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddGroupUserRole Add One Project Role to One MongoDB Cloud User
 
-			Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+			Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project.
 
 		**Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -42,7 +43,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddGroupUsers Add One MongoDB Cloud User to One Project
 
-			Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+			Adds one MongoDB Cloud user to one project.
 		- If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
 		- If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
 		- If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
@@ -70,7 +71,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddOrgRole Add One Organization Role to One MongoDB Cloud User
 
-			Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization.
 
 		**Note**: This operation is atomic.
 
@@ -99,7 +100,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddOrgTeamUser Add One MongoDB Cloud User to One Team
 
-			Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization.
 
 		**Note**: This resource cannot be used to add a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -126,7 +127,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			CreateOrgUser Add One MongoDB Cloud User to One Organization
 
-			Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days.
 
 		**Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
 
@@ -156,8 +157,6 @@ type MongoDBCloudUsersApi interface {
 
 		 MongoDB Cloud limits MongoDB Cloud user membership to a maximum of 250 MongoDB Cloud users per team. MongoDB Cloud limits MongoDB Cloud user membership to 500 MongoDB Cloud users per project and 500 MongoDB Cloud users per organization, which includes the combined membership of all projects in the organization. MongoDB Cloud raises an error if an operation exceeds these limits. For example, if you have an organization with five projects, and each project has 100 MongoDB Cloud users, and each MongoDB Cloud user belongs to only one project, you can't add any MongoDB Cloud users to this organization without first removing existing MongoDB Cloud users from the organization.
 
-		 To use this resource, the requesting Service Account or API Key can have any role.
-
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param cloudAppUser MongoDB Cloud user account to create.
 			@return CreateUserApiRequest
@@ -183,7 +182,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			GetGroupUser Return One MongoDB Cloud User in One Project
 
-			Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+			Returns information about the specified MongoDB Cloud user within the context of the specified project.
 
 		**Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
@@ -211,7 +210,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			GetOrgUser Return One MongoDB Cloud User in One Organization
 
-			Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+			Returns information about the specified MongoDB Cloud user within the context of the specified organization.
 
 		**Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
@@ -239,7 +238,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 		GetUser Return One MongoDB Cloud User by ID
 
-		Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting Service Account or API Key can have any role.
+		Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param userId Unique 24-hexadecimal digit string that identifies this user.
@@ -266,7 +265,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 		GetUserByName Return One MongoDB Cloud User by Username
 
-		Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. To use this resource, the requesting Service Account or API Key can have any role.
+		Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the Return One Organization API Key endpoint.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
@@ -293,7 +292,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			ListGroupUsers Return All MongoDB Cloud Users in One Project
 
-			Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+			Returns details about the pending and active MongoDB Cloud users associated with the specified project.
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -320,7 +319,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			ListOrgUsers Return All MongoDB Cloud Users in One Organization
 
-			Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+			Returns details about the pending and active MongoDB Cloud users associated with the specified organization.
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -347,7 +346,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
 
-			Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+			Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users.
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -375,7 +374,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveGroupUser Remove One MongoDB Cloud User from One Project
 
-			Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+			Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization.
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -403,7 +402,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveGroupUserRole Remove One Project Role from One MongoDB Cloud User
 
-			Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+			Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times.
 
 		**Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -430,7 +429,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveOrgRole Remove One Organization Role from One MongoDB Cloud User
 
-			Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times.
 
 		**Note**: This operation is atomic.
 
@@ -459,7 +458,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveOrgTeamUser Remove One MongoDB Cloud User from One Team
 
-			Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization.
 
 		**Note**: This resource cannot be used to remove a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -486,7 +485,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveOrgUser Remove One MongoDB Cloud User from One Organization
 
-			Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization.
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -514,7 +513,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			UpdateOrgUser Update One MongoDB Cloud User in One Organization
 
-			Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization.
 
 		**Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
 
@@ -575,7 +574,7 @@ func (r AddGroupUserRoleApiRequest) Execute() (*GroupUserResponse, *http.Respons
 /*
 AddGroupUserRole Add One Project Role to One MongoDB Cloud User
 
-Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project.
 
 **Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -706,7 +705,7 @@ func (r AddGroupUsersApiRequest) Execute() (*GroupUserResponse, *http.Response, 
 /*
 AddGroupUsers Add One MongoDB Cloud User to One Project
 
-Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+Adds one MongoDB Cloud user to one project.
 - If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
 - If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
 - If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
@@ -835,7 +834,7 @@ func (r AddOrgRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, error
 /*
 AddOrgRole Add One Organization Role to One MongoDB Cloud User
 
-Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization.
 
 **Note**: This operation is atomic.
 
@@ -971,7 +970,7 @@ func (r AddOrgTeamUserApiRequest) Execute() (*OrgUserResponse, *http.Response, e
 /*
 AddOrgTeamUser Add One MongoDB Cloud User to One Team
 
-Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization.
 
 **Note**: This resource cannot be used to add a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -1102,7 +1101,7 @@ func (r CreateOrgUserApiRequest) Execute() (*OrgUserResponse, *http.Response, er
 /*
 CreateOrgUser Add One MongoDB Cloud User to One Organization
 
-Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days.
 
 **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
 
@@ -1228,8 +1227,6 @@ Creates one MongoDB Cloud user account. A MongoDB Cloud user account grants acce
 
 	MongoDB Cloud limits MongoDB Cloud user membership to a maximum of 250 MongoDB Cloud users per team. MongoDB Cloud limits MongoDB Cloud user membership to 500 MongoDB Cloud users per project and 500 MongoDB Cloud users per organization, which includes the combined membership of all projects in the organization. MongoDB Cloud raises an error if an operation exceeds these limits. For example, if you have an organization with five projects, and each project has 100 MongoDB Cloud users, and each MongoDB Cloud user belongs to only one project, you can't add any MongoDB Cloud users to this organization without first removing existing MongoDB Cloud users from the organization.
 
-	To use this resource, the requesting Service Account or API Key can have any role.
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateUserApiRequest
 
@@ -1322,24 +1319,33 @@ func (a *MongoDBCloudUsersApiService) CreateUserExecute(r CreateUserApiRequest) 
 }
 
 type GetGroupUserApiRequest struct {
-	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
-	groupId    string
-	userId     string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	groupId               string
+	userId                string
+	orgMembershipStatuses *[]string
 }
 
 type GetGroupUserApiParams struct {
-	GroupId string
-	UserId  string
+	GroupId               string
+	UserId                string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) GetGroupUserWithParams(ctx context.Context, args *GetGroupUserApiParams) GetGroupUserApiRequest {
 	return GetGroupUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		userId:     args.UserId,
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               args.GroupId,
+		userId:                args.UserId,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+func (r GetGroupUserApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) GetGroupUserApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
+	return r
 }
 
 func (r GetGroupUserApiRequest) Execute() (*GroupUserResponse, *http.Response, error) {
@@ -1349,7 +1355,7 @@ func (r GetGroupUserApiRequest) Execute() (*GroupUserResponse, *http.Response, e
 /*
 GetGroupUser Return One MongoDB Cloud User in One Project
 
-Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns information about the specified MongoDB Cloud user within the context of the specified project.
 
 **Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
@@ -1399,6 +1405,13 @@ func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiReque
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1449,24 +1462,33 @@ func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiReque
 }
 
 type GetOrgUserApiRequest struct {
-	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
-	orgId      string
-	userId     string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	orgId                 string
+	userId                string
+	orgMembershipStatuses *[]string
 }
 
 type GetOrgUserApiParams struct {
-	OrgId  string
-	UserId string
+	OrgId                 string
+	UserId                string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) GetOrgUserWithParams(ctx context.Context, args *GetOrgUserApiParams) GetOrgUserApiRequest {
 	return GetOrgUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      args.OrgId,
-		userId:     args.UserId,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		userId:                args.UserId,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+func (r GetOrgUserApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) GetOrgUserApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
+	return r
 }
 
 func (r GetOrgUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error) {
@@ -1476,7 +1498,7 @@ func (r GetOrgUserApiRequest) Execute() (*OrgUserResponse, *http.Response, error
 /*
 GetOrgUser Return One MongoDB Cloud User in One Organization
 
-Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+Returns information about the specified MongoDB Cloud user within the context of the specified organization.
 
 **Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
@@ -1526,6 +1548,13 @@ func (a *MongoDBCloudUsersApiService) GetOrgUserExecute(r GetOrgUserApiRequest) 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1600,7 +1629,7 @@ func (r GetUserApiRequest) Execute() (*CloudAppUser, *http.Response, error) {
 /*
 GetUser Return One MongoDB Cloud User by ID
 
-Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting Service Account or API Key can have any role.
+Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param userId Unique 24-hexadecimal digit string that identifies this user.
@@ -1718,7 +1747,7 @@ func (r GetUserByNameApiRequest) Execute() (*CloudAppUser, *http.Response, error
 /*
 GetUserByName Return One MongoDB Cloud User by Username
 
-Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the Return One Organization API Key endpoint. To use this resource, the requesting Service Account or API Key can have any role.
+Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the Return One Organization API Key endpoint.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
@@ -1812,41 +1841,44 @@ func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiReq
 }
 
 type ListGroupUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	groupId             string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	flattenTeams        *bool
-	includeOrgUsers     *bool
-	orgMembershipStatus *string
-	username            *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	groupId               string
+	includeCount          *bool
+	itemsPerPage          *int
+	pageNum               *int
+	flattenTeams          *bool
+	includeOrgUsers       *bool
+	orgMembershipStatus   *string
+	orgMembershipStatuses *[]string
+	username              *string
 }
 
 type ListGroupUsersApiParams struct {
-	GroupId             string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	FlattenTeams        *bool
-	IncludeOrgUsers     *bool
-	OrgMembershipStatus *string
-	Username            *string
+	GroupId               string
+	IncludeCount          *bool
+	ItemsPerPage          *int
+	PageNum               *int
+	FlattenTeams          *bool
+	IncludeOrgUsers       *bool
+	OrgMembershipStatus   *string
+	OrgMembershipStatuses *[]string
+	Username              *string
 }
 
 func (a *MongoDBCloudUsersApiService) ListGroupUsersWithParams(ctx context.Context, args *ListGroupUsersApiParams) ListGroupUsersApiRequest {
 	return ListGroupUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             args.GroupId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		flattenTeams:        args.FlattenTeams,
-		includeOrgUsers:     args.IncludeOrgUsers,
-		orgMembershipStatus: args.OrgMembershipStatus,
-		username:            args.Username,
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               args.GroupId,
+		includeCount:          args.IncludeCount,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		flattenTeams:          args.FlattenTeams,
+		includeOrgUsers:       args.IncludeOrgUsers,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
+		username:              args.Username,
 	}
 }
 
@@ -1880,9 +1912,16 @@ func (r ListGroupUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListGrou
 	return r
 }
 
-// Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListGroupUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListGroupUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListGroupUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListGroupUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -1899,7 +1938,7 @@ func (r ListGroupUsersApiRequest) Execute() (*PaginatedGroupUser, *http.Response
 /*
 ListGroupUsers Return All MongoDB Cloud Users in One Project
 
-Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns details about the pending and active MongoDB Cloud users associated with the specified project.
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -1981,6 +2020,13 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 	if r.orgMembershipStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
 	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	if r.username != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
 	}
@@ -2034,35 +2080,38 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 }
 
 type ListOrgUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	orgId               string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	username            *string
-	orgMembershipStatus *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	orgId                 string
+	includeCount          *bool
+	itemsPerPage          *int
+	pageNum               *int
+	username              *string
+	orgMembershipStatus   *string
+	orgMembershipStatuses *[]string
 }
 
 type ListOrgUsersApiParams struct {
-	OrgId               string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	Username            *string
-	OrgMembershipStatus *string
+	OrgId                 string
+	IncludeCount          *bool
+	ItemsPerPage          *int
+	PageNum               *int
+	Username              *string
+	OrgMembershipStatus   *string
+	OrgMembershipStatuses *[]string
 }
 
 func (a *MongoDBCloudUsersApiService) ListOrgUsersWithParams(ctx context.Context, args *ListOrgUsersApiParams) ListOrgUsersApiRequest {
 	return ListOrgUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		orgId:               args.OrgId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		username:            args.Username,
-		orgMembershipStatus: args.OrgMembershipStatus,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		includeCount:          args.IncludeCount,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		username:              args.Username,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
 	}
 }
 
@@ -2090,9 +2139,16 @@ func (r ListOrgUsersApiRequest) Username(username string) ListOrgUsersApiRequest
 	return r
 }
 
-// Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListOrgUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListOrgUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListOrgUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListOrgUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -2103,7 +2159,7 @@ func (r ListOrgUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, er
 /*
 ListOrgUsers Return All MongoDB Cloud Users in One Organization
 
-Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+Returns details about the pending and active MongoDB Cloud users associated with the specified organization.
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -2174,6 +2230,13 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiReque
 	if r.orgMembershipStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
 	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2224,38 +2287,41 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiReque
 }
 
 type ListTeamUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          MongoDBCloudUsersApi
-	orgId               string
-	teamId              string
-	itemsPerPage        *int
-	pageNum             *int
-	username            *string
-	orgMembershipStatus *string
-	userId              *string
+	ctx                   context.Context
+	ApiService            MongoDBCloudUsersApi
+	orgId                 string
+	teamId                string
+	itemsPerPage          *int
+	pageNum               *int
+	username              *string
+	orgMembershipStatus   *string
+	orgMembershipStatuses *[]string
+	userId                *string
 }
 
 type ListTeamUsersApiParams struct {
-	OrgId               string
-	TeamId              string
-	ItemsPerPage        *int
-	PageNum             *int
-	Username            *string
-	OrgMembershipStatus *string
-	UserId              *string
+	OrgId                 string
+	TeamId                string
+	ItemsPerPage          *int
+	PageNum               *int
+	Username              *string
+	OrgMembershipStatus   *string
+	OrgMembershipStatuses *[]string
+	UserId                *string
 }
 
 func (a *MongoDBCloudUsersApiService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
 	return ListTeamUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		orgId:               args.OrgId,
-		teamId:              args.TeamId,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		username:            args.Username,
-		orgMembershipStatus: args.OrgMembershipStatus,
-		userId:              args.UserId,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		teamId:                args.TeamId,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
+		username:              args.Username,
+		orgMembershipStatus:   args.OrgMembershipStatus,
+		orgMembershipStatuses: args.OrgMembershipStatuses,
+		userId:                args.UserId,
 	}
 }
 
@@ -2277,9 +2343,16 @@ func (r ListTeamUsersApiRequest) Username(username string) ListTeamUsersApiReque
 	return r
 }
 
-// Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+// Deprecated: Use &#x60;orgMembershipStatuses&#x60; instead. Organization membership status to filter users by. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+// Deprecated
 func (r ListTeamUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListTeamUsersApiRequest {
 	r.orgMembershipStatus = &orgMembershipStatus
+	return r
+}
+
+// Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: &#x60;ACTIVE&#x60;, &#x60;PENDING&#x60;, &#x60;INVITATION_EXPIRED&#x60;, &#x60;INVITATION_REJECTED&#x60;. Replaces the deprecated &#x60;orgMembershipStatus&#x60; parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with &#x60;orgMembershipStatus&#x60;. Not supported in deprecated versions.
+func (r ListTeamUsersApiRequest) OrgMembershipStatuses(orgMembershipStatuses []string) ListTeamUsersApiRequest {
+	r.orgMembershipStatuses = &orgMembershipStatuses
 	return r
 }
 
@@ -2296,7 +2369,7 @@ func (r ListTeamUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, e
 /*
 ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
 
-Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users.
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -2365,6 +2438,13 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 	}
 	if r.orgMembershipStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
+	}
+	if r.orgMembershipStatuses != nil {
+		t := *r.orgMembershipStatuses
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatuses", t, "multi")
+
 	}
 	if r.userId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "userId", r.userId, "")
@@ -2446,7 +2526,7 @@ func (r RemoveGroupUserApiRequest) Execute() (*http.Response, error) {
 /*
 RemoveGroupUser Remove One MongoDB Cloud User from One Project
 
-Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization.
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -2559,7 +2639,7 @@ func (r RemoveGroupUserRoleApiRequest) Execute() (*GroupUserResponse, *http.Resp
 /*
 RemoveGroupUserRole Remove One Project Role from One MongoDB Cloud User
 
-Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times.
 
 **Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -2693,7 +2773,7 @@ func (r RemoveOrgRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, er
 /*
 RemoveOrgRole Remove One Organization Role from One MongoDB Cloud User
 
-Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times.
 
 **Note**: This operation is atomic.
 
@@ -2829,7 +2909,7 @@ func (r RemoveOrgTeamUserApiRequest) Execute() (*OrgUserResponse, *http.Response
 /*
 RemoveOrgTeamUser Remove One MongoDB Cloud User from One Team
 
-Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization.
 
 **Note**: This resource cannot be used to remove a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -2960,7 +3040,7 @@ func (r RemoveOrgUserApiRequest) Execute() (*http.Response, error) {
 /*
 RemoveOrgUser Remove One MongoDB Cloud User from One Organization
 
-Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization.
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
 
@@ -3073,7 +3153,7 @@ func (r UpdateOrgUserApiRequest) Execute() (*OrgUserResponse, *http.Response, er
 /*
 UpdateOrgUser Update One MongoDB Cloud User in One Organization
 
-Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization.
 
 **Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
 

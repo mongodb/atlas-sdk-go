@@ -1,4 +1,4 @@
-# FlexClusterMetricThreshold
+# DeprecatedStreamProcessorMetricThreshold
 
 ## Properties
 
@@ -8,140 +8,140 @@ Name | Type | Description | Notes
 **Mode** | Pointer to **string** | MongoDB Cloud computes the current metric value as an average. | [optional] 
 **Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **float64** | Value of metric that, when exceeded, triggers an alert. | [optional] 
-**Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] [default to "HOURS"]
+**Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] [default to "RAW"]
 
 ## Methods
 
-### NewFlexClusterMetricThreshold
+### NewDeprecatedStreamProcessorMetricThreshold
 
-`func NewFlexClusterMetricThreshold(metricName string, ) *FlexClusterMetricThreshold`
+`func NewDeprecatedStreamProcessorMetricThreshold(metricName string, ) *DeprecatedStreamProcessorMetricThreshold`
 
-NewFlexClusterMetricThreshold instantiates a new FlexClusterMetricThreshold object
+NewDeprecatedStreamProcessorMetricThreshold instantiates a new DeprecatedStreamProcessorMetricThreshold object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewFlexClusterMetricThresholdWithDefaults
+### NewDeprecatedStreamProcessorMetricThresholdWithDefaults
 
-`func NewFlexClusterMetricThresholdWithDefaults() *FlexClusterMetricThreshold`
+`func NewDeprecatedStreamProcessorMetricThresholdWithDefaults() *DeprecatedStreamProcessorMetricThreshold`
 
-NewFlexClusterMetricThresholdWithDefaults instantiates a new FlexClusterMetricThreshold object
+NewDeprecatedStreamProcessorMetricThresholdWithDefaults instantiates a new DeprecatedStreamProcessorMetricThreshold object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetMetricName
 
-`func (o *FlexClusterMetricThreshold) GetMetricName() string`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetMetricName() string`
 
 GetMetricName returns the MetricName field if non-nil, zero value otherwise.
 
 ### GetMetricNameOk
 
-`func (o *FlexClusterMetricThreshold) GetMetricNameOk() (*string, bool)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetMetricNameOk() (*string, bool)`
 
 GetMetricNameOk returns a tuple with the MetricName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetricName
 
-`func (o *FlexClusterMetricThreshold) SetMetricName(v string)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) SetMetricName(v string)`
 
 SetMetricName sets MetricName field to given value.
 
 ### GetMode
 
-`func (o *FlexClusterMetricThreshold) GetMode() string`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetMode() string`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *FlexClusterMetricThreshold) GetModeOk() (*string, bool)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetModeOk() (*string, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *FlexClusterMetricThreshold) SetMode(v string)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) SetMode(v string)`
 
 SetMode sets Mode field to given value.
 
 ### HasMode
 
-`func (o *FlexClusterMetricThreshold) HasMode() bool`
+`func (o *DeprecatedStreamProcessorMetricThreshold) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
 ### GetOperator
 
-`func (o *FlexClusterMetricThreshold) GetOperator() string`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetOperator() string`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *FlexClusterMetricThreshold) GetOperatorOk() (*string, bool)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetOperatorOk() (*string, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *FlexClusterMetricThreshold) SetOperator(v string)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) SetOperator(v string)`
 
 SetOperator sets Operator field to given value.
 
 ### HasOperator
 
-`func (o *FlexClusterMetricThreshold) HasOperator() bool`
+`func (o *DeprecatedStreamProcessorMetricThreshold) HasOperator() bool`
 
 HasOperator returns a boolean if a field has been set.
 ### GetThreshold
 
-`func (o *FlexClusterMetricThreshold) GetThreshold() float64`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetThreshold() float64`
 
 GetThreshold returns the Threshold field if non-nil, zero value otherwise.
 
 ### GetThresholdOk
 
-`func (o *FlexClusterMetricThreshold) GetThresholdOk() (*float64, bool)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetThresholdOk() (*float64, bool)`
 
 GetThresholdOk returns a tuple with the Threshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetThreshold
 
-`func (o *FlexClusterMetricThreshold) SetThreshold(v float64)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) SetThreshold(v float64)`
 
 SetThreshold sets Threshold field to given value.
 
 ### HasThreshold
 
-`func (o *FlexClusterMetricThreshold) HasThreshold() bool`
+`func (o *DeprecatedStreamProcessorMetricThreshold) HasThreshold() bool`
 
 HasThreshold returns a boolean if a field has been set.
 ### GetUnits
 
-`func (o *FlexClusterMetricThreshold) GetUnits() string`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetUnits() string`
 
 GetUnits returns the Units field if non-nil, zero value otherwise.
 
 ### GetUnitsOk
 
-`func (o *FlexClusterMetricThreshold) GetUnitsOk() (*string, bool)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) GetUnitsOk() (*string, bool)`
 
 GetUnitsOk returns a tuple with the Units field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnits
 
-`func (o *FlexClusterMetricThreshold) SetUnits(v string)`
+`func (o *DeprecatedStreamProcessorMetricThreshold) SetUnits(v string)`
 
 SetUnits sets Units field to given value.
 
 ### HasUnits
 
-`func (o *FlexClusterMetricThreshold) HasUnits() bool`
+`func (o *DeprecatedStreamProcessorMetricThreshold) HasUnits() bool`
 
 HasUnits returns a boolean if a field has been set.
 

@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **Notifications** | Pointer to [**[]AlertsNotificationRootForGroup**](AlertsNotificationRootForGroup.md) | List that contains the targets that MongoDB Cloud sends notifications. | [optional] 
 **SeverityOverride** | Pointer to **string** | Severity of the event. | [optional] 
 **Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
-**MetricThreshold** | Pointer to [**FlexClusterMetricThreshold**](FlexClusterMetricThreshold.md) |  | [optional] 
-**Threshold** | Pointer to [**StreamProcessorMetricThreshold**](StreamProcessorMetricThreshold.md) |  | [optional] 
+**MetricThreshold** | Pointer to [**StreamProcessorMetricThreshold**](StreamProcessorMetricThreshold.md) |  | [optional] 
+**Threshold** | Pointer to [**DeprecatedStreamProcessorMetricThreshold**](DeprecatedStreamProcessorMetricThreshold.md) |  | [optional] 
 
 ## Methods
 
@@ -278,20 +278,20 @@ SetUpdated sets Updated field to given value.
 HasUpdated returns a boolean if a field has been set.
 ### GetMetricThreshold
 
-`func (o *GroupAlertsConfig) GetMetricThreshold() FlexClusterMetricThreshold`
+`func (o *GroupAlertsConfig) GetMetricThreshold() StreamProcessorMetricThreshold`
 
 GetMetricThreshold returns the MetricThreshold field if non-nil, zero value otherwise.
 
 ### GetMetricThresholdOk
 
-`func (o *GroupAlertsConfig) GetMetricThresholdOk() (*FlexClusterMetricThreshold, bool)`
+`func (o *GroupAlertsConfig) GetMetricThresholdOk() (*StreamProcessorMetricThreshold, bool)`
 
 GetMetricThresholdOk returns a tuple with the MetricThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetricThreshold
 
-`func (o *GroupAlertsConfig) SetMetricThreshold(v FlexClusterMetricThreshold)`
+`func (o *GroupAlertsConfig) SetMetricThreshold(v StreamProcessorMetricThreshold)`
 
 SetMetricThreshold sets MetricThreshold field to given value.
 
@@ -302,20 +302,20 @@ SetMetricThreshold sets MetricThreshold field to given value.
 HasMetricThreshold returns a boolean if a field has been set.
 ### GetThreshold
 
-`func (o *GroupAlertsConfig) GetThreshold() StreamProcessorMetricThreshold`
+`func (o *GroupAlertsConfig) GetThreshold() DeprecatedStreamProcessorMetricThreshold`
 
 GetThreshold returns the Threshold field if non-nil, zero value otherwise.
 
 ### GetThresholdOk
 
-`func (o *GroupAlertsConfig) GetThresholdOk() (*StreamProcessorMetricThreshold, bool)`
+`func (o *GroupAlertsConfig) GetThresholdOk() (*DeprecatedStreamProcessorMetricThreshold, bool)`
 
 GetThresholdOk returns a tuple with the Threshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetThreshold
 
-`func (o *GroupAlertsConfig) SetThreshold(v StreamProcessorMetricThreshold)`
+`func (o *GroupAlertsConfig) SetThreshold(v DeprecatedStreamProcessorMetricThreshold)`
 
 SetThreshold sets Threshold field to given value.
 

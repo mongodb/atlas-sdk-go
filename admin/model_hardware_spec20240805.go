@@ -8,6 +8,9 @@ type HardwareSpec20240805 struct {
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:  - set `replicationSpecs[n].regionConfigs[m].providerName` : `Azure`. - set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` : `M40` or greater not including `Mxx_NVME` tiers.  The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost.
 	DiskIOPS *int `json:"diskIOPS,omitempty"`
+	// Target throughput desired for storage attached to this hardware. Only returned for Gen 2 instance sizes with Standard (GP3) volume type.
+	// Read only field.
+	DiskThroughput *int `json:"diskThroughput,omitempty"`
 	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (`PROVISIONED`) for NVMe clusters.
 	EbsVolumeType *string `json:"ebsVolumeType,omitempty"`
 	// Hardware specification for the instances in this M0/M2/M5 tier cluster.
@@ -104,6 +107,39 @@ func (o *HardwareSpec20240805) HasDiskIOPS() bool {
 // SetDiskIOPS gets a reference to the given int and assigns it to the DiskIOPS field.
 func (o *HardwareSpec20240805) SetDiskIOPS(v int) {
 	o.DiskIOPS = &v
+}
+
+// GetDiskThroughput returns the DiskThroughput field value if set, zero value otherwise
+func (o *HardwareSpec20240805) GetDiskThroughput() int {
+	if o == nil || IsNil(o.DiskThroughput) {
+		var ret int
+		return ret
+	}
+	return *o.DiskThroughput
+}
+
+// GetDiskThroughputOk returns a tuple with the DiskThroughput field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HardwareSpec20240805) GetDiskThroughputOk() (*int, bool) {
+	if o == nil || IsNil(o.DiskThroughput) {
+		return nil, false
+	}
+
+	return o.DiskThroughput, true
+}
+
+// HasDiskThroughput returns a boolean if a field has been set.
+func (o *HardwareSpec20240805) HasDiskThroughput() bool {
+	if o != nil && !IsNil(o.DiskThroughput) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskThroughput gets a reference to the given int and assigns it to the DiskThroughput field.
+func (o *HardwareSpec20240805) SetDiskThroughput(v int) {
+	o.DiskThroughput = &v
 }
 
 // GetEbsVolumeType returns the EbsVolumeType field value if set, zero value otherwise

@@ -15,7 +15,7 @@ type OrganizationsApi interface {
 	/*
 		CreateOrg Create One Organization
 
-		Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if `federationSettingsId` is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
+		Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if `federationSettingsId` is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param createOrganizationRequest Organization that you want to create.
@@ -38,7 +38,7 @@ type OrganizationsApi interface {
 	/*
 			CreateOrgInvite Create Invitation for One MongoDB Cloud User in One Organization
 
-			Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization.
 
 		**Note**: Invitation management APIs are deprecated. Use Add One MongoDB Cloud User to One Organization to invite a user.
 
@@ -72,7 +72,6 @@ type OrganizationsApi interface {
 
 		 - Organizations with active projects cannot be removed.
 		 - All projects in the organization must be removed before you can remove the organization.
-		 To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -95,7 +94,7 @@ type OrganizationsApi interface {
 	/*
 			DeleteOrgInvite Remove One Invitation from One Organization
 
-			Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted.
 
 		**Note**: Invitation management APIs are deprecated. Use Remove One MongoDB Cloud User From One Organization to remove a pending user.
 
@@ -125,7 +124,7 @@ type OrganizationsApi interface {
 	/*
 		GetOrg Return One Organization
 
-		Returns one organization to which the requesting Service Account or API Key has access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+		Returns one organization to which the requesting Service Account or API Key has access.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -155,8 +154,6 @@ type OrganizationsApi interface {
 		- Maintain separate cluster security configurations.
 		- Create different alert settings.
 
-		To use this resource, the requesting Service Account or API Key must have the Organization Member role.
-
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@return GetOrgGroupsApiRequest
@@ -178,7 +175,7 @@ type OrganizationsApi interface {
 	/*
 			GetOrgInvite Return One Invitation in One Organization by Invitation ID
 
-			Returns the details of one pending invitation to the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Returns the details of one pending invitation to the specified organization.
 
 		**Note**: Invitation management APIs are deprecated. Use Return One MongoDB Cloud User in One Organization to return a pending user.
 
@@ -208,7 +205,7 @@ type OrganizationsApi interface {
 	/*
 		GetOrgSettings Return Settings for One Organization
 
-		Returns details about the specified organization's settings. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+		Returns details about the specified organization's settings.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -231,7 +228,7 @@ type OrganizationsApi interface {
 	/*
 			ListOrgInvites Return All Invitations in One Organization
 
-			Returns all pending invitations to the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Returns all pending invitations to the specified organization.
 
 		**Note**: Invitation management APIs are deprecated. Use Return All MongoDB Cloud Users in One Organization and filter by `orgMembershipStatus` to return all pending users.
 
@@ -260,7 +257,7 @@ type OrganizationsApi interface {
 	/*
 		ListOrgs Return All Organizations
 
-		Returns all organizations to which the requesting Service Account or API Key has access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+		Returns all organizations to which the requesting Service Account or API Key has access.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return ListOrgsApiRequest
@@ -282,7 +279,7 @@ type OrganizationsApi interface {
 	/*
 		UpdateOrg Update One Organization
 
-		Updates one organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+		Updates one organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -306,7 +303,7 @@ type OrganizationsApi interface {
 	/*
 			UpdateOrgInviteById Update One Invitation in One Organization by Invitation ID
 
-			Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations.
 
 		**Note**: Invitation management APIs are deprecated. Use Update One MongoDB Cloud User in One Organization to update a pending user.
 
@@ -337,7 +334,7 @@ type OrganizationsApi interface {
 	/*
 			UpdateOrgInvites Update One Invitation in One Organization
 
-			Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+			Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user.
 
 		**Note**:  Invitation management are deprecated. Use Update One MongoDB Cloud User in One Organization to update a pending user.
 
@@ -367,7 +364,7 @@ type OrganizationsApi interface {
 	/*
 		UpdateOrgSettings Update Settings for One Organization
 
-		Updates the organization's settings. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+		Updates the organization's settings.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -391,7 +388,7 @@ type OrganizationsApi interface {
 	/*
 		UpdateOrgUserRoles Update Organization Roles for One MongoDB Cloud User
 
-		Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization User Admin role.
+		Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -446,7 +443,7 @@ func (r CreateOrgApiRequest) Execute() (*CreateOrganizationResponse, *http.Respo
 /*
 CreateOrg Create One Organization
 
-Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if `federationSettingsId` is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
+Creates one organization in MongoDB Cloud and links it to the requesting Service Account's or API Key's organization. The requesting Service Account's or API Key's organization must be a paying organization. To learn more, see Configure a Paying Organization in the MongoDB Atlas documentation. Optionally, if `federationSettingsId` is provided, the new Organization will be linked to the federation. The requesting Service Account or API Key must be an Organization Owner in the federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateOrgApiRequest
@@ -563,7 +560,7 @@ func (r CreateOrgInviteApiRequest) Execute() (*OrganizationInvitation, *http.Res
 /*
 CreateOrgInvite Create Invitation for One MongoDB Cloud User in One Organization
 
-Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization.
 
 **Note**: Invitation management APIs are deprecated. Use Add One MongoDB Cloud User to One Organization to invite a user.
 
@@ -694,7 +691,6 @@ Removes one specified organization. MongoDB Cloud imposes the following limits o
   - Organizations with active projects cannot be removed.
 
   - All projects in the organization must be removed before you can remove the organization.
-    To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
     @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
     @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -794,7 +790,7 @@ func (r DeleteOrgInviteApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteOrgInvite Remove One Invitation from One Organization
 
-Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted.
 
 **Note**: Invitation management APIs are deprecated. Use Remove One MongoDB Cloud User From One Organization to remove a pending user.
 
@@ -902,7 +898,7 @@ func (r GetOrgApiRequest) Execute() (*AtlasOrganization, *http.Response, error) 
 /*
 GetOrg Return One Organization
 
-Returns one organization to which the requesting Service Account or API Key has access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+Returns one organization to which the requesting Service Account or API Key has access.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1059,8 +1055,6 @@ Returns multiple projects in the specified organization. Each organization can h
 - Maintain separate cluster security configurations.
 - Create different alert settings.
 
-To use this resource, the requesting Service Account or API Key must have the Organization Member role.
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgGroupsApiRequest
@@ -1200,7 +1194,7 @@ func (r GetOrgInviteApiRequest) Execute() (*OrganizationInvitation, *http.Respon
 /*
 GetOrgInvite Return One Invitation in One Organization by Invitation ID
 
-Returns the details of one pending invitation to the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Returns the details of one pending invitation to the specified organization.
 
 **Note**: Invitation management APIs are deprecated. Use Return One MongoDB Cloud User in One Organization to return a pending user.
 
@@ -1326,7 +1320,7 @@ func (r GetOrgSettingsApiRequest) Execute() (*OrganizationSettings, *http.Respon
 /*
 GetOrgSettings Return Settings for One Organization
 
-Returns details about the specified organization's settings. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+Returns details about the specified organization's settings.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1449,7 +1443,7 @@ func (r ListOrgInvitesApiRequest) Execute() ([]OrganizationInvitation, *http.Res
 /*
 ListOrgInvites Return All Invitations in One Organization
 
-Returns all pending invitations to the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Returns all pending invitations to the specified organization.
 
 **Note**: Invitation management APIs are deprecated. Use Return All MongoDB Cloud Users in One Organization and filter by `orgMembershipStatus` to return all pending users.
 
@@ -1605,7 +1599,7 @@ func (r ListOrgsApiRequest) Execute() (*PaginatedOrganization, *http.Response, e
 /*
 ListOrgs Return All Organizations
 
-Returns all organizations to which the requesting Service Account or API Key has access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+Returns all organizations to which the requesting Service Account or API Key has access.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListOrgsApiRequest
@@ -1740,7 +1734,7 @@ func (r UpdateOrgApiRequest) Execute() (*AtlasOrganization, *http.Response, erro
 /*
 UpdateOrg Update One Organization
 
-Updates one organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Updates one organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1866,7 +1860,7 @@ func (r UpdateOrgInviteByIdApiRequest) Execute() (*OrganizationInvitation, *http
 /*
 UpdateOrgInviteById Update One Invitation in One Organization by Invitation ID
 
-Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations.
 
 **Note**: Invitation management APIs are deprecated. Use Update One MongoDB Cloud User in One Organization to update a pending user.
 
@@ -2001,7 +1995,7 @@ func (r UpdateOrgInvitesApiRequest) Execute() (*OrganizationInvitation, *http.Re
 /*
 UpdateOrgInvites Update One Invitation in One Organization
 
-Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user.
 
 **Note**:  Invitation management are deprecated. Use Update One MongoDB Cloud User in One Organization to update a pending user.
 
@@ -2130,7 +2124,7 @@ func (r UpdateOrgSettingsApiRequest) Execute() (*OrganizationSettings, *http.Res
 /*
 UpdateOrgSettings Update Settings for One Organization
 
-Updates the organization's settings. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+Updates the organization's settings.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2256,7 +2250,7 @@ func (r UpdateOrgUserRolesApiRequest) Execute() (*UpdateOrgRolesForUser, *http.R
 /*
 UpdateOrgUserRoles Update Organization Roles for One MongoDB Cloud User
 
-Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization User Admin role.
+Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.

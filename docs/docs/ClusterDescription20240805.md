@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AcceptDataRisksAndForceReplicaSetReconfig** | Pointer to **time.Time** | If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set &#x60;acceptDataRisksAndForceReplicaSetReconfig&#x60; to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
+**AdaptiveCapacity** | Pointer to **string** | Governs adaptive capacity behavior of Azure nodes in single-cloud Azure clusters or multi-cloud clusters that include Azure nodes. Adaptive capacity enables fallback hardware selection when the primary instance family is unavailable. &#x60;&#x60;ENABLED&#x60;&#x60; means the cluster explicitly opts in to adaptive capacity. &#x60;&#x60;DISABLED&#x60;&#x60; means the cluster explicitly opts out; the cluster receives capacity errors instead of being placed on fallback hardware. &#x60;&#x60;null&#x60;&#x60; means the field is unset; Azure clusters use adaptive capacity by default when the feature is enabled at the group level. Setting this field for single-cloud AWS or GCP clusters is a no-op. | [optional] 
 **AdvancedConfiguration** | Pointer to [**ApiAtlasClusterAdvancedConfiguration**](ApiAtlasClusterAdvancedConfiguration.md) |  | [optional] 
 **BackupEnabled** | Pointer to **bool** | Flag that indicates whether the cluster can perform backups. If set to &#x60;true&#x60;, the cluster can perform backups. You must set this value to &#x60;true&#x60; for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to &#x60;false&#x60;, the cluster doesn&#39;t use backups. | [optional] [default to false]
 **BiConnector** | Pointer to [**BiConnector**](BiConnector.md) |  | [optional] 
@@ -84,6 +85,30 @@ SetAcceptDataRisksAndForceReplicaSetReconfig sets AcceptDataRisksAndForceReplica
 `func (o *ClusterDescription20240805) HasAcceptDataRisksAndForceReplicaSetReconfig() bool`
 
 HasAcceptDataRisksAndForceReplicaSetReconfig returns a boolean if a field has been set.
+### GetAdaptiveCapacity
+
+`func (o *ClusterDescription20240805) GetAdaptiveCapacity() string`
+
+GetAdaptiveCapacity returns the AdaptiveCapacity field if non-nil, zero value otherwise.
+
+### GetAdaptiveCapacityOk
+
+`func (o *ClusterDescription20240805) GetAdaptiveCapacityOk() (*string, bool)`
+
+GetAdaptiveCapacityOk returns a tuple with the AdaptiveCapacity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdaptiveCapacity
+
+`func (o *ClusterDescription20240805) SetAdaptiveCapacity(v string)`
+
+SetAdaptiveCapacity sets AdaptiveCapacity field to given value.
+
+### HasAdaptiveCapacity
+
+`func (o *ClusterDescription20240805) HasAdaptiveCapacity() bool`
+
+HasAdaptiveCapacity returns a boolean if a field has been set.
 ### GetAdvancedConfiguration
 
 `func (o *ClusterDescription20240805) GetAdvancedConfiguration() ApiAtlasClusterAdvancedConfiguration`

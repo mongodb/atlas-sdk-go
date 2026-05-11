@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConnectionId** | Pointer to **string** | The ID of the Private Link connection. Required for &#x60;PRIVATE_LINK&#x60; type. | [optional] 
+**ConnectionId** | Pointer to **string** | The ID of the Private Link connection. Required for &#x60;PRIVATE_LINK&#x60; type. For GCP connections using Private Service Connect (PSC), this is the PSC connection ID. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Type** | Pointer to **string** | Selected networking type. Either &#x60;PUBLIC&#x60; or &#x60;PRIVATE_LINK&#x60;. Defaults to &#x60;PUBLIC&#x60;. | [optional] 
+**Type** | Pointer to **string** | Selected networking type. Either &#x60;PUBLIC&#x60; or &#x60;PRIVATE_LINK&#x60;. Defaults to &#x60;PUBLIC&#x60;. For AWS, Azure, and GCP connections, use &#x60;PRIVATE_LINK&#x60; for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively. | [optional] 
 
 ## Methods
 

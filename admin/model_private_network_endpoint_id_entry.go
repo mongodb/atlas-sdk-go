@@ -12,11 +12,11 @@ type PrivateNetworkEndpointIdEntry struct {
 	CustomerEndpointDNSName *string `json:"customerEndpointDNSName,omitempty"`
 	// IP address used to connect to the Azure private endpoint.
 	CustomerEndpointIPAddress *string `json:"customerEndpointIPAddress,omitempty"`
-	// Unique 22-character alphanumeric string that identifies the private endpoint.
+	// Unique string that identifies the private endpoint. For AWS, this is a 22-character alphanumeric string in the format `vpce-<17 hex characters>`. For Azure, this is the full resource ID in the format `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{endpointName}`.
 	EndpointId string `json:"endpointId"`
 	// Error message describing a failure approving the private endpoint request.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
-	// Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services only.
+	// Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services and Azure.
 	Provider *string `json:"provider,omitempty"`
 	// Human-readable label to identify the region of customer's VPC endpoint. If defined, you must also specify a value for `customerEndpointDNSName`.
 	Region *string `json:"region,omitempty"`

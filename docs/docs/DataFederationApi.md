@@ -136,7 +136,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    privateNetworkEndpointIdEntry := *admin.NewPrivateNetworkEndpointIdEntry("vpce-3bf78b0ddee411ba1") // PrivateNetworkEndpointIdEntry | 
+    privateNetworkEndpointIdEntry := *admin.NewPrivateNetworkEndpointIdEntry("EndpointId_example") // PrivateNetworkEndpointIdEntry | 
 
     resp, r, err := sdk.DataFederationApi.CreatePrivateEndpointId(context.Background(), groupId, &privateNetworkEndpointIdEntry).Execute()
     if err != nil {

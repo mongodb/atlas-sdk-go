@@ -15,7 +15,7 @@ type AlertConfigurationsApi interface {
 	/*
 			CreateAlertConfig Create One Alert Configuration in One Project
 
-			Creates one alert configuration for the specified project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+			Creates one alert configuration for the specified project. Alert configurations define the triggers and notification methods for alerts.
 
 		This resource remains under revision and may change.
 
@@ -41,7 +41,7 @@ type AlertConfigurationsApi interface {
 	/*
 			DeleteAlertConfig Remove One Alert Configuration from One Project
 
-			Removes one alert configuration from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
+			Removes one alert configuration from the specified project. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
 
 		This resource remains under revision and may change.
 
@@ -67,7 +67,7 @@ type AlertConfigurationsApi interface {
 	/*
 			GetAlertConfig Return One Alert Configuration from One Project
 
-			Returns the specified alert configuration from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
+			Returns the specified alert configuration from the specified project. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
 
 		This resource remains under revision and may change.
 
@@ -93,7 +93,7 @@ type AlertConfigurationsApi interface {
 	/*
 			GetAlertConfigs Return All Alert Configurations Set for One Alert
 
-			Returns all alert configurations set for the specified alert. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access.
+			Returns all alert configurations set for the specified alert. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access.
 
 		This resource remains under revision and may change.
 
@@ -119,7 +119,7 @@ type AlertConfigurationsApi interface {
 	/*
 			ListAlertConfigs Return All Alert Configurations in One Project
 
-			Returns all alert configurations for one project. These alert configurations apply to any component in the project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+			Returns all alert configurations for one project. These alert configurations apply to any component in the project. Alert configurations define the triggers and notification methods for alerts.
 
 		This resource remains under revision and may change.
 
@@ -166,7 +166,7 @@ type AlertConfigurationsApi interface {
 	/*
 			ToggleAlertConfig Toggle State of One Alert Configuration in One Project
 
-			Enables or disables the specified alert configuration in the specified project. The resource enables the specified alert configuration if currently enabled. The resource disables the specified alert configuration if currently disabled. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+			Enables or disables the specified alert configuration in the specified project. The resource enables the specified alert configuration if currently enabled. The resource disables the specified alert configuration if currently disabled.
 
 		**NOTE**: This endpoint updates only the enabled/disabled state for the alert configuration. To update more than just this configuration, see Update One Alert Configuration.
 
@@ -195,7 +195,7 @@ type AlertConfigurationsApi interface {
 	/*
 			UpdateAlertConfig Update One Alert Configuration in One Project
 
-			Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+			Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts.
 
 		**NOTE**: To enable or disable the alert configuration, see Toggle One State of One Alert Configuration in One Project.
 
@@ -253,7 +253,7 @@ func (r CreateAlertConfigApiRequest) Execute() (*GroupAlertsConfig, *http.Respon
 /*
 CreateAlertConfig Create One Alert Configuration in One Project
 
-Creates one alert configuration for the specified project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+Creates one alert configuration for the specified project. Alert configurations define the triggers and notification methods for alerts.
 
 This resource remains under revision and may change.
 
@@ -378,7 +378,7 @@ func (r DeleteAlertConfigApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteAlertConfig Remove One Alert Configuration from One Project
 
-Removes one alert configuration from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
+Removes one alert configuration from the specified project. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
 
 This resource remains under revision and may change.
 
@@ -486,7 +486,7 @@ func (r GetAlertConfigApiRequest) Execute() (*GroupAlertsConfig, *http.Response,
 /*
 GetAlertConfig Return One Alert Configuration from One Project
 
-Returns the specified alert configuration from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
+Returns the specified alert configuration from the specified project. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
 
 This resource remains under revision and may change.
 
@@ -638,7 +638,7 @@ func (r GetAlertConfigsApiRequest) Execute() (*PaginatedAlertConfig, *http.Respo
 /*
 GetAlertConfigs Return All Alert Configurations Set for One Alert
 
-Returns all alert configurations set for the specified alert. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access.
+Returns all alert configurations set for the specified alert. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access.
 
 This resource remains under revision and may change.
 
@@ -808,7 +808,7 @@ func (r ListAlertConfigsApiRequest) Execute() (*PaginatedAlertConfig, *http.Resp
 /*
 ListAlertConfigs Return All Alert Configurations in One Project
 
-Returns all alert configurations for one project. These alert configurations apply to any component in the project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns all alert configurations for one project. These alert configurations apply to any component in the project. Alert configurations define the triggers and notification methods for alerts.
 
 This resource remains under revision and may change.
 
@@ -1056,7 +1056,7 @@ func (r ToggleAlertConfigApiRequest) Execute() (*GroupAlertsConfig, *http.Respon
 /*
 ToggleAlertConfig Toggle State of One Alert Configuration in One Project
 
-Enables or disables the specified alert configuration in the specified project. The resource enables the specified alert configuration if currently enabled. The resource disables the specified alert configuration if currently disabled. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+Enables or disables the specified alert configuration in the specified project. The resource enables the specified alert configuration if currently enabled. The resource disables the specified alert configuration if currently disabled.
 
 **NOTE**: This endpoint updates only the enabled/disabled state for the alert configuration. To update more than just this configuration, see Update One Alert Configuration.
 
@@ -1192,7 +1192,7 @@ func (r UpdateAlertConfigApiRequest) Execute() (*GroupAlertsConfig, *http.Respon
 /*
 UpdateAlertConfig Update One Alert Configuration in One Project
 
-Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts.
 
 **NOTE**: To enable or disable the alert configuration, see Toggle One State of One Alert Configuration in One Project.
 

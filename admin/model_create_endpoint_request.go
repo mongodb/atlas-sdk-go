@@ -4,6 +4,8 @@ package admin
 
 // CreateEndpointRequest struct for CreateEndpointRequest
 type CreateEndpointRequest struct {
+	// Cloud service provider that manages this private endpoint.
+	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Unique string that identifies the private endpoint's network interface that someone added to this private endpoint service.
 	// Write only field.
 	Id *string `json:"id,omitempty"`
@@ -34,6 +36,39 @@ func NewCreateEndpointRequest() *CreateEndpointRequest {
 func NewCreateEndpointRequestWithDefaults() *CreateEndpointRequest {
 	this := CreateEndpointRequest{}
 	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
+func (o *CreateEndpointRequest) GetCloudProvider() string {
+	if o == nil || IsNil(o.CloudProvider) {
+		var ret string
+		return ret
+	}
+	return *o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateEndpointRequest) GetCloudProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.CloudProvider) {
+		return nil, false
+	}
+
+	return o.CloudProvider, true
+}
+
+// HasCloudProvider returns a boolean if a field has been set.
+func (o *CreateEndpointRequest) HasCloudProvider() bool {
+	if o != nil && !IsNil(o.CloudProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
+func (o *CreateEndpointRequest) SetCloudProvider(v string) {
+	o.CloudProvider = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise
