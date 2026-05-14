@@ -6011,40 +6011,6 @@ components:
           writeOnly: true
       type: object
       writeOnly: true
-    DeprecatedStreamProcessorMetricThreshold:
-      deprecated: true
-      description: "Threshold value that triggers an alert. Deprecated: use `metricThreshold` instead."
-      properties:
-        metricName:
-          description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`.
-          type: string
-        mode:
-          description: MongoDB Cloud computes the current metric value as an average.
-          type: string
-        operator:
-          description: Comparison operator to apply when checking the current metric value.
-          type: string
-        threshold:
-          description: Value of metric that, when exceeded, triggers an alert.
-          format: double
-          type: number
-        units:
-          $ref: "#/components/schemas/RawMetricUnits"
-          description: Element used to express the quantity. This can be an element of time, storage capacity, and the like.
-      required:
-        - metricName
-      type: object
-      x-xgen-discriminator:
-        propertyName: metricName
-        mapping:
-          STREAM_PROCESSOR_CHANGE_STREAM_LAG:
-            properties: []
-          STREAM_PROCESSOR_DLQ_MESSAGE_COUNT:
-            properties: []
-          STREAM_PROCESSOR_KAFKA_LAG:
-            properties: []
-          STREAM_PROCESSOR_OUTPUT_MESSAGE_COUNT:
-            properties: []
     Destination:
       description: Document that describes the destination of the migration.
       properties:
@@ -8818,7 +8784,7 @@ components:
         metricThreshold:
           $ref: "#/components/schemas/StreamProcessorMetricThreshold"
         threshold:
-          $ref: "#/components/schemas/DeprecatedStreamProcessorMetricThreshold"
+          $ref: "#/components/schemas/StreamProcessorMetricThreshold"
     GroupIPAddresses:
       description: List of IP addresses in a project.
       properties:
