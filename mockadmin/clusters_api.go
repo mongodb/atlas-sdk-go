@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312019/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -3207,6 +3207,168 @@ func (_c *ClustersApi_UpgradeTenantUpgradeWithParams_Call) Return(_a0 admin.Upgr
 }
 
 func (_c *ClustersApi_UpgradeTenantUpgradeWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpgradeTenantUpgradeApiParams) admin.UpgradeTenantUpgradeApiRequest) *ClustersApi_UpgradeTenantUpgradeWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ValidateGroupClusterConfigurations provides a mock function with given fields: ctx, groupId, clusterConfigurationValidation
+func (_m *ClustersApi) ValidateGroupClusterConfigurations(ctx context.Context, groupId string, clusterConfigurationValidation *admin.ClusterConfigurationValidation) admin.ValidateGroupClusterConfigurationsApiRequest {
+	ret := _m.Called(ctx, groupId, clusterConfigurationValidation)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ValidateGroupClusterConfigurations")
+	}
+
+	var r0 admin.ValidateGroupClusterConfigurationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ClusterConfigurationValidation) admin.ValidateGroupClusterConfigurationsApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterConfigurationValidation)
+	} else {
+		r0 = ret.Get(0).(admin.ValidateGroupClusterConfigurationsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_ValidateGroupClusterConfigurations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateGroupClusterConfigurations'
+type ClustersApi_ValidateGroupClusterConfigurations_Call struct {
+	*mock.Call
+}
+
+// ValidateGroupClusterConfigurations is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterConfigurationValidation *admin.ClusterConfigurationValidation
+func (_e *ClustersApi_Expecter) ValidateGroupClusterConfigurations(ctx any, groupId any, clusterConfigurationValidation any) *ClustersApi_ValidateGroupClusterConfigurations_Call {
+	return &ClustersApi_ValidateGroupClusterConfigurations_Call{Call: _e.mock.On("ValidateGroupClusterConfigurations", ctx, groupId, clusterConfigurationValidation)}
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurations_Call) Run(run func(ctx context.Context, groupId string, clusterConfigurationValidation *admin.ClusterConfigurationValidation)) *ClustersApi_ValidateGroupClusterConfigurations_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.ClusterConfigurationValidation))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurations_Call) Return(_a0 admin.ValidateGroupClusterConfigurationsApiRequest) *ClustersApi_ValidateGroupClusterConfigurations_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurations_Call) RunAndReturn(run func(context.Context, string, *admin.ClusterConfigurationValidation) admin.ValidateGroupClusterConfigurationsApiRequest) *ClustersApi_ValidateGroupClusterConfigurations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ValidateGroupClusterConfigurationsExecute provides a mock function with given fields: r
+func (_m *ClustersApi) ValidateGroupClusterConfigurationsExecute(r admin.ValidateGroupClusterConfigurationsApiRequest) (*admin.ClusterConfigurationValidationResult, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ValidateGroupClusterConfigurationsExecute")
+	}
+
+	var r0 *admin.ClusterConfigurationValidationResult
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ValidateGroupClusterConfigurationsApiRequest) (*admin.ClusterConfigurationValidationResult, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ValidateGroupClusterConfigurationsApiRequest) *admin.ClusterConfigurationValidationResult); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterConfigurationValidationResult)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ValidateGroupClusterConfigurationsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ValidateGroupClusterConfigurationsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersApi_ValidateGroupClusterConfigurationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateGroupClusterConfigurationsExecute'
+type ClustersApi_ValidateGroupClusterConfigurationsExecute_Call struct {
+	*mock.Call
+}
+
+// ValidateGroupClusterConfigurationsExecute is a helper method to define mock.On call
+//   - r admin.ValidateGroupClusterConfigurationsApiRequest
+func (_e *ClustersApi_Expecter) ValidateGroupClusterConfigurationsExecute(r any) *ClustersApi_ValidateGroupClusterConfigurationsExecute_Call {
+	return &ClustersApi_ValidateGroupClusterConfigurationsExecute_Call{Call: _e.mock.On("ValidateGroupClusterConfigurationsExecute", r)}
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurationsExecute_Call) Run(run func(r admin.ValidateGroupClusterConfigurationsApiRequest)) *ClustersApi_ValidateGroupClusterConfigurationsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ValidateGroupClusterConfigurationsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurationsExecute_Call) Return(_a0 *admin.ClusterConfigurationValidationResult, _a1 *http.Response, _a2 error) *ClustersApi_ValidateGroupClusterConfigurationsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurationsExecute_Call) RunAndReturn(run func(admin.ValidateGroupClusterConfigurationsApiRequest) (*admin.ClusterConfigurationValidationResult, *http.Response, error)) *ClustersApi_ValidateGroupClusterConfigurationsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ValidateGroupClusterConfigurationsWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersApi) ValidateGroupClusterConfigurationsWithParams(ctx context.Context, args *admin.ValidateGroupClusterConfigurationsApiParams) admin.ValidateGroupClusterConfigurationsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ValidateGroupClusterConfigurationsWithParams")
+	}
+
+	var r0 admin.ValidateGroupClusterConfigurationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ValidateGroupClusterConfigurationsApiParams) admin.ValidateGroupClusterConfigurationsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ValidateGroupClusterConfigurationsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateGroupClusterConfigurationsWithParams'
+type ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call struct {
+	*mock.Call
+}
+
+// ValidateGroupClusterConfigurationsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ValidateGroupClusterConfigurationsApiParams
+func (_e *ClustersApi_Expecter) ValidateGroupClusterConfigurationsWithParams(ctx any, args any) *ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call {
+	return &ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call{Call: _e.mock.On("ValidateGroupClusterConfigurationsWithParams", ctx, args)}
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call) Run(run func(ctx context.Context, args *admin.ValidateGroupClusterConfigurationsApiParams)) *ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ValidateGroupClusterConfigurationsApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call) Return(_a0 admin.ValidateGroupClusterConfigurationsApiRequest) *ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ValidateGroupClusterConfigurationsApiParams) admin.ValidateGroupClusterConfigurationsApiRequest) *ClustersApi_ValidateGroupClusterConfigurationsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
