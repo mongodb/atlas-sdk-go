@@ -1162,6 +1162,12 @@ components:
           description: Specify the sort order (ascending / descending) used to specify how to sort query results. Defaults to descending.
           type: string
       type: object
+    ApiVersion:
+      properties:
+        version:
+          description: Object representing a version of the Atlas Admin API.
+          type: string
+      type: object
     AtlasClusterOutageSimulationOutageFilter:
       properties:
         cloudProvider:
@@ -3875,6 +3881,52 @@ components:
           description: Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if `autoScaling.compute.enabled` is `true`. If you enable this option, specify a value for `providerSettings.autoScaling.compute.minInstanceSize`.
           type: boolean
       type: object
+    ClusterConfigurationValidation:
+      properties:
+        advancedConfiguration:
+          $ref: "#/components/schemas/ClusterDescriptionProcessArgs20240805"
+        clusterDescription:
+          $ref: "#/components/schemas/ClusterDescription20240805"
+        clusterName:
+          description: Name of the existing cluster to validate against when editing is true.
+          type: string
+        editing:
+          description: When true, validates the configuration as an update to an existing cluster. When false, validates as a new cluster create.
+          type: boolean
+        searchDeploymentSpec:
+          $ref: "#/components/schemas/ApiSearchDeploymentSpec"
+        tags:
+          description: Optional list of resource tags.
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+          maxItems: 50
+          type: array
+      required:
+        - clusterDescription
+        - editing
+      type: object
+    ClusterConfigurationValidationError:
+      properties:
+        errorCode:
+          description: Machine-readable error code identifying the type of validation failure.
+          example: CLUSTER_NOT_FOUND
+          type: string
+        validationIssue:
+          description: Description of the validation failure.
+          type: string
+      type: object
+    ClusterConfigurationValidationResult:
+      properties:
+        errors:
+          description: List of validation errors, present only when valid is false.
+          items:
+            $ref: "#/components/schemas/ClusterConfigurationValidationError"
+          maxItems: 100
+          type: array
+        valid:
+          description: Whether the cluster configuration is valid.
+          type: boolean
+      type: object
     ClusterConnectionStrings:
       description: Collection of Uniform Resource Locators that point to the MongoDB database.
       externalDocs:
@@ -3947,6 +3999,7 @@ components:
       title: Cluster Connection Strings
       type: object
     ClusterDescription20240805:
+      description: Configuration of a MongoDB Atlas cluster, including its replication topology, instance sizing, storage, and operational settings.
       properties:
         acceptDataRisksAndForceReplicaSetReconfig:
           description: If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set `acceptDataRisksAndForceReplicaSetReconfig` to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -4230,6 +4283,7 @@ components:
       title: Cluster Private Endpoint Connection Strings Endpoint
       type: object
     ClusterDescriptionProcessArgs20240805:
+      description: Advanced MongoDB process configuration options applied to the cluster.
       properties:
         changeStreamOptionsPreAndPostImagesExpireAfterSeconds:
           default: -1
@@ -6011,40 +6065,6 @@ components:
           writeOnly: true
       type: object
       writeOnly: true
-    DeprecatedStreamProcessorMetricThreshold:
-      deprecated: true
-      description: "Threshold value that triggers an alert. Deprecated: use `metricThreshold` instead."
-      properties:
-        metricName:
-          description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`.
-          type: string
-        mode:
-          description: MongoDB Cloud computes the current metric value as an average.
-          type: string
-        operator:
-          description: Comparison operator to apply when checking the current metric value.
-          type: string
-        threshold:
-          description: Value of metric that, when exceeded, triggers an alert.
-          format: double
-          type: number
-        units:
-          $ref: "#/components/schemas/RawMetricUnits"
-          description: Element used to express the quantity. This can be an element of time, storage capacity, and the like.
-      required:
-        - metricName
-      type: object
-      x-xgen-discriminator:
-        propertyName: metricName
-        mapping:
-          STREAM_PROCESSOR_CHANGE_STREAM_LAG:
-            properties: []
-          STREAM_PROCESSOR_DLQ_MESSAGE_COUNT:
-            properties: []
-          STREAM_PROCESSOR_KAFKA_LAG:
-            properties: []
-          STREAM_PROCESSOR_OUTPUT_MESSAGE_COUNT:
-            properties: []
     Destination:
       description: Document that describes the destination of the migration.
       properties:
@@ -7363,9 +7383,9 @@ components:
           readOnly: true
           type: string
         eventTypeName:
-          description: Unique identifier of event type.
-          example: RESOURCE_POLICY_VIOLATED
-          title: Atlas Resource Policy Audit Types
+          description: Audit event types for Lifecycle Management policy mutations in an Atlas group context.
+          example: LIFECYCLE_MANAGEMENT_POLICY_CREATED
+          title: Lifecycle Management Policy Audit Types For Atlas Group
           type: string
         groupId:
           description: Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event.
@@ -7584,6 +7604,26 @@ components:
           type: array
         violationAction:
           description: Resource policy action taken by the user and evaluated against the currently active policies.
+          readOnly: true
+          type: string
+        clusterId:
+          description: Unique 24-hexadecimal character string that identifies the cluster the policy belongs to.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          type: string
+        clusterName:
+          description: Human-readable label of the cluster the policy belongs to.
+          readOnly: true
+          type: string
+        policyId:
+          description: Unique 24-hexadecimal character string that identifies the Lifecycle Management policy.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          type: string
+        userAgent:
+          description: User agent of the request that triggered the audit event.
           readOnly: true
           type: string
     EventViewForOrg:
@@ -8818,7 +8858,7 @@ components:
         metricThreshold:
           $ref: "#/components/schemas/StreamProcessorMetricThreshold"
         threshold:
-          $ref: "#/components/schemas/DeprecatedStreamProcessorMetricThreshold"
+          $ref: "#/components/schemas/StreamProcessorMetricThreshold"
     GroupIPAddresses:
       description: List of IP addresses in a project.
       properties:
@@ -9552,6 +9592,28 @@ components:
           type: object
       type: object
       writeOnly: true
+    Info:
+      description: Information about the MongoDB Atlas Administration API OpenAPI Specification.
+      properties:
+        description:
+          description: Description of the MongoDB Atlas Administration API.
+          example: The MongoDB Atlas Administration API allows developers to manage all components in MongoDB Atlas.
+          type: string
+        license:
+          $ref: "#/components/schemas/License"
+        termsOfService:
+          description: Terms of Service URL.
+          example: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
+          type: string
+        title:
+          description: Title of the MongoDB Atlas Administration API.
+          example: MongoDB Atlas Administration API.
+          type: string
+        version:
+          description: Version of the MongoDB Atlas Administration API.
+          example: "2.0"
+          type: string
+      type: object
     IngestionPipelineRun:
       description: Run details of a Data Lake Pipeline.
       properties:
@@ -10573,6 +10635,18 @@ components:
           type: object
         zoneName:
           description: Human-readable label that identifies the zone in a Global Cluster. Provide this value only if `clusterType` is `GEOSHARDED`.
+          type: string
+      type: object
+    License:
+      description: License information of the MongoDB Atlas Administration API.
+      properties:
+        name:
+          description: Name of the license.
+          example: CC BY-NC-SA 3.0 US
+          type: string
+        url:
+          description: URL of the license.
+          example: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
           type: string
       type: object
     Link:
@@ -11659,6 +11733,11 @@ components:
               - endMinute
               - startHour
               - startMinute
+    OpenApiInfo:
+      properties:
+        info:
+          $ref: "#/components/schemas/Info"
+      type: object
     OrgFederationSettings:
       description: Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
       properties:
@@ -12209,6 +12288,32 @@ components:
           type: object
       readOnly: true
       title: Outbound Control Plane IP Addresses By Cloud Provider
+      type: object
+    PaginatedApiVersions:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/ApiVersion"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
       type: object
     PaginatedClusterDescription20240805:
       properties:
@@ -14059,6 +14164,12 @@ components:
           pattern: ^([a-f0-9]{24})$
           readOnly: true
           type: string
+        roles:
+          description: A list of project roles assigned to the Service Account in this project.
+          items:
+            type: string
+          maxItems: 100
+          type: array
       type: object
     ServiceAccountIPAccessListEntry:
       properties:
@@ -16671,8 +16782,35 @@ components:
           type: string
       readOnly: true
       type: object
+    ApiSearchDeploymentEffectiveSpec:
+      properties:
+        cloudProvider:
+          description: Cloud service provider on which Search Nodes are provisioned.
+          readOnly: true
+          type: string
+        instanceSize:
+          description: Hardware specification for the Search Node instance sizes.
+          readOnly: true
+          type: string
+        nodeCount:
+          description: Number of Search Nodes in this region.
+          example: 2
+          format: int32
+          maximum: 32
+          minimum: 2
+          readOnly: true
+          type: integer
+        regionName:
+          description: Cloud provider region where Search Nodes are provisioned.
+          example: US_EAST_1
+          readOnly: true
+          type: string
+      type: object
     ApiSearchDeploymentRequestSpec:
       properties:
+        cloudProvider:
+          description: Cloud service provider that hosts the Search Nodes in this region. Required when a region is specified.
+          type: string
         instanceSize:
           description: Hardware specification for the Search Node instance sizes.
           type: string
@@ -16683,11 +16821,22 @@ components:
           maximum: 32
           minimum: 2
           type: integer
+        regionName:
+          description: Cloud provider region where Search Nodes are provisioned. Required when the request configures more than one region; optional for single-region requests.
+          example: US_EAST_1
+          type: string
       required:
         - instanceSize
       type: object
     ApiSearchDeploymentRequest:
       properties:
+        defaultNodeCount:
+          description: Default number of Search Nodes per region. Applied to a region without an explicit override.
+          example: 2
+          format: int32
+          maximum: 32
+          minimum: 2
+          type: integer
         specs:
           description: List of settings that configure the Search Nodes for your cluster. Provide one element per region when configuring asymmetric deployments; a single element applies to all regions.
           items:
@@ -16699,6 +16848,12 @@ components:
       type: object
     ApiSearchDeploymentResponse:
       properties:
+        effectiveSpecs:
+          description: List of settings that configure the Search Nodes for your cluster, with per-region detail including the region name and cloud provider.
+          items:
+            $ref: "#/components/schemas/ApiSearchDeploymentEffectiveSpec"
+          readOnly: true
+          type: array
         encryptionAtRestProvider:
           description: Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster.
           externalDocs:
@@ -16730,6 +16885,7 @@ components:
           type: string
       type: object
     ApiSearchDeploymentSpec:
+      description: Hardware specification for the Search Nodes that back a search deployment.
       properties:
         instanceSize:
           description: Hardware specification for the Search Node instance sizes.
@@ -18651,7 +18807,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 5215d52bf868d07f25ec1a1e3813d98aeef70a68
+  x-xgen-sha: 3dcdc06a6cf83a350a7c07402e8d68a93d86a968
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -25143,6 +25299,99 @@ paths:
       x-xgen-method-verb-override:
         customMethod: "True"
         verb: authorizeRole
+  /api/atlas/v2/groups/{groupId}/clusterConfigurations:validate:
+    post:
+      description: Checks if the given cluster configuration is valid and ready to be used to create or edit a cluster.
+      operationId: validateGroupClusterConfigurations
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/ClusterConfigurationValidation"
+            x-xgen-version: 2025-03-12
+        description: Cluster configuration to validate.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ClusterConfigurationValidationResult"
+              x-xgen-version: 2025-03-12
+          description: Ok
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Validate One Cluster Configuration
+      tags:
+        - Clusters
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api clusters validateGroupClusterConfigurations --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ValidateGroupClusterConfigurationsApiParams{}
+            	sdkResp, httpResp, err := client.ClustersApi.
+            		ValidateGroupClusterConfigurationsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusterConfigurations:validate" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusterConfigurations:validate" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Cluster Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/validateGroupClusterConfigurations
   /api/atlas/v2/groups/{groupId}/clusters:
     get:
       description: |-
@@ -56113,6 +56362,75 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/byName/{groupName}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/getGroupByName
+  /api/atlas/v2/openapi/info:
+    get:
+      description: "This resource returns general information about the MongoDB Atlas Administration API OpenAPI Specification. Deprecated versions: v2-{2024-05-30}"
+      operationId: getOpenapiInfo
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OpenApiInfo"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return General Information on MongoDB Atlas Administration API OpenAPI Specification
+      tags:
+        - OpenAPI
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api openApi getOpenapiInfo --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOpenapiInfoApiParams{}
+            	sdkResp, httpResp, err := client.OpenAPIApi.
+            		GetOpenapiInfoWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/openapi/info?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/openapi/info?pretty=true"
+      x-xgen-method-verb-override:
+        customMethod: "False"
+        verb: get
   /api/atlas/v2/orgs:
     get:
       description: Returns all organizations to which the requesting Service Account or API Key has access.
@@ -63716,6 +64034,79 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/controlPlaneIPAddresses?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Root/operation/listControlPlaneIpAddresses
+  /api/atlas/v2/unauth/openapi/versions:
+    get:
+      description: API that provides a list of available versions for a given environment.
+      operationId: listOpenapiVersions
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: The environment to get the versions from. If not provided, it returns the versions for the given MongoDB URL. (E.g. prod for cloud.mongodb.com).
+          in: query
+          name: env
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+            application/vnd.atlas.2024-08-05+yaml:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Versions for One Environment
+      tags:
+        - OpenAPI
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api openApi listOpenapiVersions --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListOpenapiVersionsApiParams{}
+            	sdkResp, httpResp, err := client.OpenAPIApi.
+            		ListOpenapiVersionsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/openapi/versions?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/openapi/versions?pretty=true"
   /api/atlas/v2/users:
     post:
       deprecated: true
@@ -64061,6 +64452,8 @@ tags:
     name: Network Peering
   - description: Returns, adds, edits, or removes an online archive.
     name: Online Archive
+  - description: Returns information about the MongoDB Atlas Specification.
+    name: OpenAPI
   - description: Returns, adds, and edits organizational units in MongoDB Cloud.
     name: Organizations
   - description: Returns suggested indexes and slow query data for a database deployment. Also enables or disables MongoDB Cloud-managed slow operation thresholds. To view field values in a sample query, you must have the Project Data Access Read Only role or higher. Otherwise, MongoDB Cloud returns redacted data rather than the field values.

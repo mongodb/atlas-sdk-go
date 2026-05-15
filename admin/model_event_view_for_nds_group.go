@@ -14,7 +14,7 @@ type EventViewForNdsGroup struct {
 	// Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
-	// Unique identifier of event type.
+	// Audit event types for Lifecycle Management policy mutations in an Atlas group context.
 	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event.
 	// Read only field.
@@ -136,6 +136,18 @@ type EventViewForNdsGroup struct {
 	// Resource policy action taken by the user and evaluated against the currently active policies.
 	// Read only field.
 	ViolationAction *string `json:"violationAction,omitempty"`
+	// Unique 24-hexadecimal character string that identifies the cluster the policy belongs to.
+	// Read only field.
+	ClusterId *string `json:"clusterId,omitempty"`
+	// Human-readable label of the cluster the policy belongs to.
+	// Read only field.
+	ClusterName *string `json:"clusterName,omitempty"`
+	// Unique 24-hexadecimal character string that identifies the Lifecycle Management policy.
+	// Read only field.
+	PolicyId *string `json:"policyId,omitempty"`
+	// User agent of the request that triggered the audit event.
+	// Read only field.
+	UserAgent *string `json:"userAgent,omitempty"`
 }
 
 // NewEventViewForNdsGroup instantiates a new EventViewForNdsGroup object
@@ -1638,4 +1650,136 @@ func (o *EventViewForNdsGroup) HasViolationAction() bool {
 // SetViolationAction gets a reference to the given string and assigns it to the ViolationAction field.
 func (o *EventViewForNdsGroup) SetViolationAction(v string) {
 	o.ViolationAction = &v
+}
+
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetClusterId() string {
+	if o == nil || IsNil(o.ClusterId) {
+		var ret string
+		return ret
+	}
+	return *o.ClusterId
+}
+
+// GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetClusterIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ClusterId) {
+		return nil, false
+	}
+
+	return o.ClusterId, true
+}
+
+// HasClusterId returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasClusterId() bool {
+	if o != nil && !IsNil(o.ClusterId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
+func (o *EventViewForNdsGroup) SetClusterId(v string) {
+	o.ClusterId = &v
+}
+
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetClusterName() string {
+	if o == nil || IsNil(o.ClusterName) {
+		var ret string
+		return ret
+	}
+	return *o.ClusterName
+}
+
+// GetClusterNameOk returns a tuple with the ClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetClusterNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ClusterName) {
+		return nil, false
+	}
+
+	return o.ClusterName, true
+}
+
+// HasClusterName returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasClusterName() bool {
+	if o != nil && !IsNil(o.ClusterName) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
+func (o *EventViewForNdsGroup) SetClusterName(v string) {
+	o.ClusterName = &v
+}
+
+// GetPolicyId returns the PolicyId field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetPolicyId() string {
+	if o == nil || IsNil(o.PolicyId) {
+		var ret string
+		return ret
+	}
+	return *o.PolicyId
+}
+
+// GetPolicyIdOk returns a tuple with the PolicyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetPolicyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.PolicyId) {
+		return nil, false
+	}
+
+	return o.PolicyId, true
+}
+
+// HasPolicyId returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasPolicyId() bool {
+	if o != nil && !IsNil(o.PolicyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPolicyId gets a reference to the given string and assigns it to the PolicyId field.
+func (o *EventViewForNdsGroup) SetPolicyId(v string) {
+	o.PolicyId = &v
+}
+
+// GetUserAgent returns the UserAgent field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetUserAgent() string {
+	if o == nil || IsNil(o.UserAgent) {
+		var ret string
+		return ret
+	}
+	return *o.UserAgent
+}
+
+// GetUserAgentOk returns a tuple with the UserAgent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetUserAgentOk() (*string, bool) {
+	if o == nil || IsNil(o.UserAgent) {
+		return nil, false
+	}
+
+	return o.UserAgent, true
+}
+
+// HasUserAgent returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasUserAgent() bool {
+	if o != nil && !IsNil(o.UserAgent) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAgent gets a reference to the given string and assigns it to the UserAgent field.
+func (o *EventViewForNdsGroup) SetUserAgent(v string) {
+	o.UserAgent = &v
 }

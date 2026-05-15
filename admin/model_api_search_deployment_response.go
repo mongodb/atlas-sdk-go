@@ -4,6 +4,9 @@ package admin
 
 // ApiSearchDeploymentResponse struct for ApiSearchDeploymentResponse
 type ApiSearchDeploymentResponse struct {
+	// List of settings that configure the Search Nodes for your cluster, with per-region detail including the region name and cloud provider.
+	// Read only field.
+	EffectiveSpecs *[]ApiSearchDeploymentEffectiveSpec `json:"effectiveSpecs,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster.
 	// Read only field.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
@@ -36,6 +39,39 @@ func NewApiSearchDeploymentResponse() *ApiSearchDeploymentResponse {
 func NewApiSearchDeploymentResponseWithDefaults() *ApiSearchDeploymentResponse {
 	this := ApiSearchDeploymentResponse{}
 	return &this
+}
+
+// GetEffectiveSpecs returns the EffectiveSpecs field value if set, zero value otherwise
+func (o *ApiSearchDeploymentResponse) GetEffectiveSpecs() []ApiSearchDeploymentEffectiveSpec {
+	if o == nil || IsNil(o.EffectiveSpecs) {
+		var ret []ApiSearchDeploymentEffectiveSpec
+		return ret
+	}
+	return *o.EffectiveSpecs
+}
+
+// GetEffectiveSpecsOk returns a tuple with the EffectiveSpecs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentResponse) GetEffectiveSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool) {
+	if o == nil || IsNil(o.EffectiveSpecs) {
+		return nil, false
+	}
+
+	return o.EffectiveSpecs, true
+}
+
+// HasEffectiveSpecs returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentResponse) HasEffectiveSpecs() bool {
+	if o != nil && !IsNil(o.EffectiveSpecs) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveSpecs gets a reference to the given []ApiSearchDeploymentEffectiveSpec and assigns it to the EffectiveSpecs field.
+func (o *ApiSearchDeploymentResponse) SetEffectiveSpecs(v []ApiSearchDeploymentEffectiveSpec) {
+	o.EffectiveSpecs = &v
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise

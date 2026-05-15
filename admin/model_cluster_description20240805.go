@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// ClusterDescription20240805 struct for ClusterDescription20240805
+// ClusterDescription20240805 Configuration of a MongoDB Atlas cluster, including its replication topology, instance sizing, storage, and operational settings.
 type ClusterDescription20240805 struct {
 	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set `acceptDataRisksAndForceReplicaSetReconfig` to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	AcceptDataRisksAndForceReplicaSetReconfig *time.Time `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`

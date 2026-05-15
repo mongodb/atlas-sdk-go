@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"go.mongodb.org/atlas-sdk/v20250312019/admin"
-	"go.mongodb.org/atlas-sdk/v20250312019/examples"
+	"github.com/mongodb/atlas-sdk-go/admin"
+	"github.com/mongodb/atlas-sdk-go/examples"
 )
 
 /*
