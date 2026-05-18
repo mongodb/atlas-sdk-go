@@ -166,7 +166,11 @@ func (c *Config) Do(ctx context.Context, req *http.Request, v any) (*core.Respon
 				return nil, err
 			}
 		} else {
-			decErr := json.NewDecoder(body).Decode(v)
+			// UseNumber preserves large integers in any/[]any/map[string]any fields
+			// as json.Number instead of float64, preventing silent precision loss above 2^53.
+			dec := json.NewDecoder(body)
+			dec.UseNumber()
+			decErr := dec.Decode(v)
 			if errors.Is(decErr, io.EOF) {
 				decErr = nil // ignore EOF errors caused by empty response body
 			}
