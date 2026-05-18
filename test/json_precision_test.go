@@ -1,25 +1,26 @@
-package admin
+package test
 
 import (
 	"encoding/json"
-	"io"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"go.mongodb.org/atlas-sdk/v20250312019/admin"
 )
 
 // TestDecodePreservesLargeIntegers verifies that integers above 2^53 in dynamic
-// fields (any, []any, map[string]any) are not silently rounded to float64.
+// fields (any, []any, map[string]any) are not silently rounded to float64 when
+// decoded with UseNumber(), matching the SDK's decode path behavior.
 func TestDecodePreservesLargeIntegers(t *testing.T) {
 	// 2^53 + 1 = 9007199254740993, the first integer float64 cannot represent exactly.
 	const payload = `{"name":"test-proc","pipeline":[{"$match":{"tenantId":9007199254740993}}]}`
 
-	var proc StreamsProcessor
-	c := &APIClient{}
-	err := c.decode(&proc, io.NopCloser(strings.NewReader(payload)), "application/json")
-	require.NoError(t, err)
+	var proc admin.StreamsProcessor
+	dec := json.NewDecoder(strings.NewReader(payload))
+	dec.UseNumber()
+	require.NoError(t, dec.Decode(&proc))
 
 	pipeline := proc.GetPipeline()
 	require.Len(t, pipeline, 1)
