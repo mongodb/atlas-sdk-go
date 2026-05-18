@@ -2,7 +2,9 @@ package test
 
 import (
 	"encoding/json"
-	"strings"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -11,16 +13,26 @@ import (
 )
 
 // TestDecodePreservesLargeIntegers verifies that integers above 2^53 in dynamic
-// fields (any, []any, map[string]any) are not silently rounded to float64 when
-// decoded with UseNumber(), matching the SDK's decode path behavior.
+// fields (any, []any, map[string]any) are not silently rounded to float64 by the
+// SDK's response decoder (admin/client.go decode function).
 func TestDecodePreservesLargeIntegers(t *testing.T) {
 	// 2^53 + 1 = 9007199254740993, the first integer float64 cannot represent exactly.
 	const payload = `{"name":"test-proc","pipeline":[{"$match":{"tenantId":9007199254740993}}]}`
 
-	var proc admin.StreamsProcessor
-	dec := json.NewDecoder(strings.NewReader(payload))
-	dec.UseNumber()
-	require.NoError(t, dec.Decode(&proc))
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", "application/vnd.atlas.2024-05-30+json")
+		fmt.Fprint(w, payload)
+	}))
+	defer srv.Close()
+
+	sdk, err := admin.NewClient(
+		admin.UseDigestAuth("key", "secret"),
+		admin.UseBaseURL(srv.URL),
+	)
+	require.NoError(t, err)
+
+	proc, _, err := sdk.StreamsApi.GetStreamProcessor(t.Context(), "groupId", "tenantName", "test-proc").Execute()
+	require.NoError(t, err)
 
 	pipeline := proc.GetPipeline()
 	require.Len(t, pipeline, 1)
