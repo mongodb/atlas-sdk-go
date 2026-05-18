@@ -31,7 +31,10 @@ func TestDecodePreservesLargeIntegers(t *testing.T) {
 	)
 	require.NoError(t, err)
 
-	proc, _, err := sdk.StreamsApi.GetStreamProcessor(t.Context(), "groupId", "tenantName", "test-proc").Execute()
+	proc, httpResp, err := sdk.StreamsApi.GetStreamProcessor(t.Context(), "groupId", "tenantName", "test-proc").Execute()
+	if httpResp != nil {
+		defer httpResp.Body.Close()
+	}
 	require.NoError(t, err)
 
 	pipeline := proc.GetPipeline()
