@@ -83,6 +83,9 @@ A major version increment signifies breaking changes in the SDK. The rules for m
 2. When a new Versioned API Resource Version is introduced, the SDK undergoes breaking changes and the version identifier is incremented. For example, `vYYYYMMDD` will become `v20300101` if a major version was released one year later.
 3. If there are other significant breaking changes in the SDK that are unrelated to the Versioned API, increment the last three digits of the major version.
 
+For a list of breaking changes introduced across major versions, see the migration guides:
+- [JSON Number Precision (v20250312020)](mig_1_json_precision.md): dynamic fields now decode as `json.Number` instead of `float64`.
+
 
 #### Minor Version (vYYYYMMDDXXX.Y.0)
 

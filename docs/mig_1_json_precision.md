@@ -1,6 +1,6 @@
 # JSON Number Precision: Migration Guide
 
-This guide describes a breaking change introduced to fix silent integer precision loss in dynamic JSON fields.
+This guide describes a breaking change introduced in `v20250312020` to fix silent integer precision loss in dynamic JSON fields. If you are using `v20250312019` or earlier, the old `float64` behavior still applies.
 
 ## What changed
 
