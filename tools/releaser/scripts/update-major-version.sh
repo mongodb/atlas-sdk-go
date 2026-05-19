@@ -29,7 +29,7 @@ echo -e "# Breaking Changes\n## SDK changes\n ${BREAKING_CHANGES:-TODO} \n## API
 
 echo "Modifying $SDK_MAJOR_VERSION to $BUMPED_MAJOR_VERSION Resource Version across the repository."
 npm install
-npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $BUMPED_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
+npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $BUMPED_MAJOR_VERSION $VERSION_UPDATE_PATHS --ignore=$VERSION_IGNORE_PATHS --isRegex"
 
 ## Explicitly update version.go file
 export SDK_VERSION="${BUMPED_MAJOR_VERSION}.0.0"
