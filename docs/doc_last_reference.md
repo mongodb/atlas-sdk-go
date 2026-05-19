@@ -646,7 +646,6 @@ Class        | Method        | HTTP request  | Description   |
  - [DatasetRetentionPolicy](./docs/DatasetRetentionPolicy.md)
  - [DedicatedHardwareSpec20240805](./docs/DedicatedHardwareSpec20240805.md)
  - [DeleteCopiedBackups20240805](./docs/DeleteCopiedBackups20240805.md)
- - [DeprecatedStreamProcessorMetricThreshold](./docs/DeprecatedStreamProcessorMetricThreshold.md)
  - [Destination](./docs/Destination.md)
  - [DiskBackupApiPolicyItem](./docs/DiskBackupApiPolicyItem.md)
  - [DiskBackupCopyPolicyItem](./docs/DiskBackupCopyPolicyItem.md)
