@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/atlas-sdk/v20250312019/admin"
+	"go.mongodb.org/atlas-sdk/v20250312020/admin"
 )
 
 // Example for Service Account Management API

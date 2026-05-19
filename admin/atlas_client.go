@@ -1,4 +1,4 @@
-package admin // import "go.mongodb.org/atlas-sdk/v20250312019/admin"
+package admin // import "go.mongodb.org/atlas-sdk/v20250312020/admin"
 
 import (
 	"context"
@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"github.com/mongodb-forks/digest"
-	"go.mongodb.org/atlas-sdk/v20250312019/auth"
-	"go.mongodb.org/atlas-sdk/v20250312019/auth/clientcredentials"
-	"go.mongodb.org/atlas-sdk/v20250312019/internal/core"
+	"go.mongodb.org/atlas-sdk/v20250312020/auth"
+	"go.mongodb.org/atlas-sdk/v20250312020/auth/clientcredentials"
+	"go.mongodb.org/atlas-sdk/v20250312020/internal/core"
 )
 
 const (
