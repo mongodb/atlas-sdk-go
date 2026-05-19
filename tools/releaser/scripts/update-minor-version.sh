@@ -18,7 +18,7 @@ BUMPED_VERSION="${SDK_MAJOR_VERSION}.${new_minor}.0"
 
 echo "Modifying $SDK_MAJOR_VERSION.$SDK_MINOR_VERSION.0 to $BUMPED_VERSION across the repository."
 npm install
-npm exec -c "replace-in-file /$SDK_MAJOR_VERSION\.$SDK_MINOR_VERSION\.0/g $BUMPED_VERSION $VERSION_UPDATE_PATHS --isRegex"
+npm exec -c "replace-in-file /$SDK_MAJOR_VERSION\.$SDK_MINOR_VERSION\.0/g $BUMPED_VERSION $VERSION_UPDATE_PATHS $VERSION_IGNORE_FLAGS --isRegex"
 
 ## Explicitly update version.go file
 export SDK_VERSION="${BUMPED_VERSION}"
