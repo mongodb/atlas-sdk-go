@@ -16,7 +16,7 @@ echo "Delete specific version $SDK_MAJOR_VERSION from examples go.mod"
 
 echo "Modifying all instances from $OLD_PACKAGE to $NEW_PACKAGE across the repository."
 npm install
-npm exec -c "replace-in-file '/$OLD_PACKAGE/g' '$NEW_PACKAGE' $VERSION_UPDATE_PATHS_PREVIEW --isRegex"
+npm exec -c "replace-in-file '/$OLD_PACKAGE/g' '$NEW_PACKAGE' $VERSION_UPDATE_PATHS_PREVIEW $VERSION_IGNORE_FLAGS --isRegex"
 
 echo "Add preview version to examples go.mod"
 (cd "$examples_path" && go get $NEW_PACKAGE)
