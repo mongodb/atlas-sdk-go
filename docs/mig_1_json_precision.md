@@ -75,7 +75,10 @@ This affects any code that compares values from dynamic fields, including JSON m
 If you need `10` and `10.0` to compare as equal, normalize the string representation first by stripping a purely-zero fractional part, then compare:
 
 ```go
-import "strings"
+import (
+    "encoding/json"
+    "strings"
+)
 
 func normalizeNumber(n json.Number) json.Number {
     s := string(n)
