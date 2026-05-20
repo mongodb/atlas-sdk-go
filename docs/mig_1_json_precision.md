@@ -66,6 +66,32 @@ case string:
 }
 ```
 
+## Number comparison behavior change
+
+With `float64`, the values `10` and `10.0` decoded to the same `float64(10)` and compared equal. With `json.Number`, they are distinct strings (`json.Number("10") != json.Number("10.0")`), so equality checks that previously passed may now fail.
+
+This affects any code that compares values from dynamic fields, including JSON marshaling round-trips where the Atlas API returns `10.0` for a value the client originally sent as `10`.
+
+If you need `10` and `10.0` to compare as equal, normalize before comparing by trying `Int64` first (preserves precision above 2^53), then falling back to `Float64`:
+
+```go
+func numbersEqual(a, b json.Number) bool {
+    if ia, err := a.Int64(); err == nil {
+        if ib, err := b.Int64(); err == nil {
+            return ia == ib
+        }
+    }
+    fa, errA := a.Float64()
+    fb, errB := b.Float64()
+    return errA == nil && errB == nil && fa == fb
+}
+
+// numbersEqual(json.Number("10"), json.Number("10.0")) == true
+// numbersEqual(json.Number("9007199254740993"), json.Number("9007199254740992")) == false
+```
+
+Note: comparing via `Float64()` alone would silently return `true` for those last two values since both round to the same `float64`.
+
 ## Testing your migration
 
 Add round-trip tests with integers above 2^53 in dynamic fields to catch precision loss:
