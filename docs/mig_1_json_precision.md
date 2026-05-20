@@ -72,25 +72,26 @@ With `float64`, the values `10` and `10.0` decoded to the same `float64(10)` and
 
 This affects any code that compares values from dynamic fields, including JSON marshaling round-trips where the Atlas API returns `10.0` for a value the client originally sent as `10`.
 
-If you need `10` and `10.0` to compare as equal, normalize before comparing by trying `Int64` first (preserves precision above 2^53), then falling back to `Float64`:
+If you need `10` and `10.0` to compare as equal, normalize the string representation first by stripping a purely-zero fractional part, then compare:
 
 ```go
-func numbersEqual(a, b json.Number) bool {
-    if ia, err := a.Int64(); err == nil {
-        if ib, err := b.Int64(); err == nil {
-            return ia == ib
-        }
+import "strings"
+
+func normalizeNumber(n json.Number) json.Number {
+    s := string(n)
+    if idx := strings.IndexByte(s, '.'); idx != -1 && strings.TrimLeft(s[idx+1:], "0") == "" {
+        return json.Number(s[:idx])
     }
-    fa, errA := a.Float64()
-    fb, errB := b.Float64()
-    return errA == nil && errB == nil && fa == fb
+    return n
+}
+
+func numbersEqual(a, b json.Number) bool {
+    return normalizeNumber(a) == normalizeNumber(b)
 }
 
 // numbersEqual(json.Number("10"), json.Number("10.0")) == true
 // numbersEqual(json.Number("9007199254740993"), json.Number("9007199254740992")) == false
 ```
-
-Note: comparing via `Float64()` alone would silently return `true` for those last two values since both round to the same `float64`.
 
 ## Testing your migration
 
