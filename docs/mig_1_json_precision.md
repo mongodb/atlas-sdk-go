@@ -66,11 +66,15 @@ case string:
 }
 ```
 
-## Number comparison behavior change
+## Number decoding behavior change and its effects
 
-With `float64`, the values `10` and `10.0` decoded to the same `float64(10)` and compared equal. With `json.Number`, they are distinct strings (`json.Number("10") != json.Number("10.0")`), so equality checks that previously passed may now fail.
+The SDK change is in deserialization: the decoder now produces `json.Number("10.0")` instead of `float64(10)` for a JSON `10.0` in a dynamic field. This has two downstream effects.
 
-This affects any code that compares values from dynamic fields, including JSON marshaling round-trips where the Atlas API returns `10.0` for a value the client originally sent as `10`.
+**Re-serialization**: `float64(10)` marshaled back to `"10"` (Go normalizes float64 to its shortest representation), but `json.Number("10.0")` marshals back to `"10.0"` (the wire representation is preserved). Code that deserializes a response and re-serializes it to a string will now produce `"10.0"` where it previously produced `"10"`.
+
+**Direct comparison**: `float64(10.0) == float64(10)` was true before, but `json.Number("10.0") == json.Number("10")` is false after, since `json.Number` is just a string type.
+
+Both effects surface in JSON marshaling round-trips where the Atlas API returns `10.0` for a value the client originally sent as `10`.
 
 If you need `10` and `10.0` to compare as equal, normalize the string representation first by stripping a purely-zero fractional part, then compare:
 
