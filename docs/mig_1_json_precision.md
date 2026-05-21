@@ -66,6 +66,40 @@ case string:
 }
 ```
 
+## Number decoding behavior change and its effects
+
+The SDK change is in deserialization: the decoder now produces `json.Number("10.0")` instead of `float64(10)` for a JSON `10.0` in a dynamic field. This has two downstream effects.
+
+**Re-serialization**: `float64(10)` marshaled back to `"10"` (Go normalizes float64 to its shortest representation), but `json.Number("10.0")` marshals back to `"10.0"` (the wire representation is preserved). Code that deserializes a response and re-serializes it to a string will now produce `"10.0"` where it previously produced `"10"`.
+
+**Direct comparison**: `float64(10.0) == float64(10)` was true before, but `json.Number("10.0") == json.Number("10")` is false after, since `json.Number` is just a string type.
+
+Both effects surface in JSON marshaling round-trips where the Atlas API returns `10.0` for a value the client originally sent as `10`.
+
+If you need `10` and `10.0` to compare as equal, normalize the string representation first by stripping a purely-zero fractional part, then compare:
+
+```go
+import (
+    "encoding/json"
+    "strings"
+)
+
+func normalizeNumber(n json.Number) json.Number {
+    s := string(n)
+    if idx := strings.IndexByte(s, '.'); idx != -1 && strings.TrimLeft(s[idx+1:], "0") == "" {
+        return json.Number(s[:idx])
+    }
+    return n
+}
+
+func numbersEqual(a, b json.Number) bool {
+    return normalizeNumber(a) == normalizeNumber(b)
+}
+
+// numbersEqual(json.Number("10"), json.Number("10.0")) == true
+// numbersEqual(json.Number("9007199254740993"), json.Number("9007199254740992")) == false
+```
+
 ## Testing your migration
 
 Add round-trip tests with integers above 2^53 in dynamic fields to catch precision loss:
