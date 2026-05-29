@@ -7,6 +7,8 @@ type ServiceAccountGroup struct {
 	// Unique 24-hexadecimal digit string that identifies your project. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
+	// A list of project roles assigned to the Service Account in this project.
+	Roles *[]string `json:"roles,omitempty"`
 }
 
 // NewServiceAccountGroup instantiates a new ServiceAccountGroup object
@@ -57,4 +59,37 @@ func (o *ServiceAccountGroup) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ServiceAccountGroup) SetGroupId(v string) {
 	o.GroupId = &v
+}
+
+// GetRoles returns the Roles field value if set, zero value otherwise
+func (o *ServiceAccountGroup) GetRoles() []string {
+	if o == nil || IsNil(o.Roles) {
+		var ret []string
+		return ret
+	}
+	return *o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceAccountGroup) GetRolesOk() (*[]string, bool) {
+	if o == nil || IsNil(o.Roles) {
+		return nil, false
+	}
+
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *ServiceAccountGroup) HasRoles() bool {
+	if o != nil && !IsNil(o.Roles) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+func (o *ServiceAccountGroup) SetRoles(v []string) {
+	o.Roles = &v
 }

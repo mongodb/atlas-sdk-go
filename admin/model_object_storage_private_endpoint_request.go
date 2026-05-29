@@ -6,8 +6,10 @@ package admin
 type ObjectStoragePrivateEndpointRequest struct {
 	// Human-readable label that identifies the cloud provider.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
-	// Cloud provider region in which the Object Storage private endpoint is located.
+	// Cloud provider region of the S3 bucket that the Object Storage private endpoint accesses. For same-region endpoints, this is also the region where the VPC interface endpoint is deployed.
 	RegionName *string `json:"regionName,omitempty"`
+	// Cloud provider region in which the VPC interface endpoint is deployed. Omit to deploy the interface endpoint in the same region as the S3 bucket (same-region endpoint). Set to a region different from `regionName` to create a cross-region endpoint.
+	VpcRegionName *string `json:"vpcRegionName,omitempty"`
 }
 
 // NewObjectStoragePrivateEndpointRequest instantiates a new ObjectStoragePrivateEndpointRequest object
@@ -91,4 +93,37 @@ func (o *ObjectStoragePrivateEndpointRequest) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *ObjectStoragePrivateEndpointRequest) SetRegionName(v string) {
 	o.RegionName = &v
+}
+
+// GetVpcRegionName returns the VpcRegionName field value if set, zero value otherwise
+func (o *ObjectStoragePrivateEndpointRequest) GetVpcRegionName() string {
+	if o == nil || IsNil(o.VpcRegionName) {
+		var ret string
+		return ret
+	}
+	return *o.VpcRegionName
+}
+
+// GetVpcRegionNameOk returns a tuple with the VpcRegionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectStoragePrivateEndpointRequest) GetVpcRegionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.VpcRegionName) {
+		return nil, false
+	}
+
+	return o.VpcRegionName, true
+}
+
+// HasVpcRegionName returns a boolean if a field has been set.
+func (o *ObjectStoragePrivateEndpointRequest) HasVpcRegionName() bool {
+	if o != nil && !IsNil(o.VpcRegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcRegionName gets a reference to the given string and assigns it to the VpcRegionName field.
+func (o *ObjectStoragePrivateEndpointRequest) SetVpcRegionName(v string) {
+	o.VpcRegionName = &v
 }
