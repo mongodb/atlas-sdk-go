@@ -2,7 +2,7 @@
 
 package admin
 
-// ClusterDescriptionProcessArgs20240805 struct for ClusterDescriptionProcessArgs20240805
+// ClusterDescriptionProcessArgs20240805 Advanced MongoDB process configuration options applied to the cluster.
 type ClusterDescriptionProcessArgs20240805 struct {
 	// The minimum pre- and post-image retention time in seconds.
 	ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds *int `json:"changeStreamOptionsPreAndPostImagesExpireAfterSeconds,omitempty"`
