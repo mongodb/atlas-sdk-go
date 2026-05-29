@@ -4,6 +4,9 @@ on:
    - cron: '30 5 * * *'
  workflow_dispatch:
   
+permissions:
+  contents: read
+
 jobs:
   generate-client:
     runs-on: ubuntu-latest
