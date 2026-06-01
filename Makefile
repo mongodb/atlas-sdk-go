@@ -41,7 +41,7 @@ check: test lint-fix
 
 .PHONY: install-golangci-lint
 install-golangci-lint:
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s $(GOLANGCI_VERSION)
+	go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@$(GOLANGCI_VERSION)
 
 .PHONY: install-goimports
 install-goimports:
