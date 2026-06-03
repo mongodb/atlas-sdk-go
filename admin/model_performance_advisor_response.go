@@ -4,12 +4,14 @@ package admin
 
 // PerformanceAdvisorResponse struct for PerformanceAdvisorResponse
 type PerformanceAdvisorResponse struct {
-	// List of query predicates, sorts, and projections that the Performance Advisor suggests.
-	// Read only field.
-	Shapes *[]PerformanceAdvisorShape `json:"shapes,omitempty"`
-	// List that contains the documents with information about the indexes that the Performance Advisor suggests.
-	// Read only field.
-	SuggestedIndexes *[]PerformanceAdvisorIndex `json:"suggestedIndexes,omitempty"`
+	Content struct {
+		// List of query predicates, sorts, and projections that the Performance Advisor suggests.
+		// Read only field.
+		Shapes *[]PerformanceAdvisorShape `json:"shapes,omitempty"`
+		// List that contains the documents with information about the indexes that the Performance Advisor suggests.
+		// Read only field.
+		SuggestedIndexes *[]PerformanceAdvisorIndex `json:"suggestedIndexes,omitempty"`
+	} `json:"content"`
 }
 
 // NewPerformanceAdvisorResponse instantiates a new PerformanceAdvisorResponse object
@@ -31,26 +33,26 @@ func NewPerformanceAdvisorResponseWithDefaults() *PerformanceAdvisorResponse {
 
 // GetShapes returns the Shapes field value if set, zero value otherwise
 func (o *PerformanceAdvisorResponse) GetShapes() []PerformanceAdvisorShape {
-	if o == nil || IsNil(o.Shapes) {
+	if o == nil || IsNil(o.Content.Shapes) {
 		var ret []PerformanceAdvisorShape
 		return ret
 	}
-	return *o.Shapes
+	return *o.Content.Shapes
 }
 
 // GetShapesOk returns a tuple with the Shapes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PerformanceAdvisorResponse) GetShapesOk() (*[]PerformanceAdvisorShape, bool) {
-	if o == nil || IsNil(o.Shapes) {
+	if o == nil || IsNil(o.Content.Shapes) {
 		return nil, false
 	}
 
-	return o.Shapes, true
+	return o.Content.Shapes, true
 }
 
 // HasShapes returns a boolean if a field has been set.
 func (o *PerformanceAdvisorResponse) HasShapes() bool {
-	if o != nil && !IsNil(o.Shapes) {
+	if o != nil && !IsNil(o.Content) && !IsNil(o.Content.Shapes) {
 		return true
 	}
 
@@ -59,31 +61,31 @@ func (o *PerformanceAdvisorResponse) HasShapes() bool {
 
 // SetShapes gets a reference to the given []PerformanceAdvisorShape and assigns it to the Shapes field.
 func (o *PerformanceAdvisorResponse) SetShapes(v []PerformanceAdvisorShape) {
-	o.Shapes = &v
+	o.Content.Shapes = &v
 }
 
 // GetSuggestedIndexes returns the SuggestedIndexes field value if set, zero value otherwise
 func (o *PerformanceAdvisorResponse) GetSuggestedIndexes() []PerformanceAdvisorIndex {
-	if o == nil || IsNil(o.SuggestedIndexes) {
+	if o == nil || IsNil(o.Content.SuggestedIndexes) {
 		var ret []PerformanceAdvisorIndex
 		return ret
 	}
-	return *o.SuggestedIndexes
+	return *o.Content.SuggestedIndexes
 }
 
 // GetSuggestedIndexesOk returns a tuple with the SuggestedIndexes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PerformanceAdvisorResponse) GetSuggestedIndexesOk() (*[]PerformanceAdvisorIndex, bool) {
-	if o == nil || IsNil(o.SuggestedIndexes) {
+	if o == nil || IsNil(o.Content.SuggestedIndexes) {
 		return nil, false
 	}
 
-	return o.SuggestedIndexes, true
+	return o.Content.SuggestedIndexes, true
 }
 
 // HasSuggestedIndexes returns a boolean if a field has been set.
 func (o *PerformanceAdvisorResponse) HasSuggestedIndexes() bool {
-	if o != nil && !IsNil(o.SuggestedIndexes) {
+	if o != nil && !IsNil(o.Content) && !IsNil(o.Content.SuggestedIndexes) {
 		return true
 	}
 
@@ -92,5 +94,5 @@ func (o *PerformanceAdvisorResponse) HasSuggestedIndexes() bool {
 
 // SetSuggestedIndexes gets a reference to the given []PerformanceAdvisorIndex and assigns it to the SuggestedIndexes field.
 func (o *PerformanceAdvisorResponse) SetSuggestedIndexes(v []PerformanceAdvisorIndex) {
-	o.SuggestedIndexes = &v
+	o.Content.SuggestedIndexes = &v
 }
