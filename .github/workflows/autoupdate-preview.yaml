@@ -67,6 +67,8 @@ jobs:
             go get github.com/mongodb/atlas-sdk-go@dev-latest   
             ```
 
+            For Terraform provider integration (`AtlasPreview`, dependency updates, and acceptance tests), see the [Atlas SDK preview guide](https://github.com/mongodb/terraform-provider-mongodbatlas/blob/master/contributing/atlas-sdk-preview.md) in terraform-provider-mongodbatlas.
+
             ## Automated checks done for preview sdk
 
             1. Compilation and unit tests
@@ -84,7 +86,3 @@ jobs:
 
 
             
-
-
-
-
