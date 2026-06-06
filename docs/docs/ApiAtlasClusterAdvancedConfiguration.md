@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomOpensslCipherConfigTls12** | Pointer to **[]string** | The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when &#x60;tlsCipherConfigMode&#x60; is set to &#x60;CUSTOM&#x60;. | [optional] 
-**CustomOpensslCipherConfigTls13** | Pointer to **[]string** | The custom OpenSSL cipher suite list for TLS 1.3. This field is only valid when &#x60;tlsCipherConfigMode&#x60; is set to &#x60;CUSTOM&#x60;. | [optional] 
+**CustomOpensslCipherConfigTls12** | Pointer to **[]string** | The custom OpenSSL cipher suite list for TLS 1.2. Requires &#x60;tlsCipherConfigMode&#x60; &#x3D; &#x60;CUSTOM&#x60;; when &#x60;tlsCipherConfigMode&#x60; is omitted, supplying a non-empty list infers &#x60;CUSTOM&#x60;. | [optional] 
+**CustomOpensslCipherConfigTls13** | Pointer to **[]string** | The custom OpenSSL cipher suite list for TLS 1.3. Requires &#x60;tlsCipherConfigMode&#x60; &#x3D; &#x60;CUSTOM&#x60;; when &#x60;tlsCipherConfigMode&#x60; is omitted, supplying a non-empty list infers &#x60;CUSTOM&#x60;. | [optional] 
 **MinimumEnabledTlsProtocol** | Pointer to **string** | Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. | [optional] 
 **TlsCipherConfigMode** | Pointer to **string** | The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3. | [optional] 
 

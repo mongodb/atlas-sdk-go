@@ -2,15 +2,15 @@
 
 package admin
 
-// ClusterDescriptionProcessArgs20240805 struct for ClusterDescriptionProcessArgs20240805
+// ClusterDescriptionProcessArgs20240805 Advanced MongoDB process configuration options applied to the cluster.
 type ClusterDescriptionProcessArgs20240805 struct {
 	// The minimum pre- and post-image retention time in seconds.
 	ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds *int `json:"changeStreamOptionsPreAndPostImagesExpireAfterSeconds,omitempty"`
 	// Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster.
 	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
-	// The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+	// The custom OpenSSL cipher suite list for TLS 1.2. Requires `tlsCipherConfigMode` = `CUSTOM`; when `tlsCipherConfigMode` is omitted, supplying a non-empty list infers `CUSTOM`.
 	CustomOpensslCipherConfigTls12 *[]string `json:"customOpensslCipherConfigTls12,omitempty"`
-	// The custom OpenSSL cipher suite list for TLS 1.3. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+	// The custom OpenSSL cipher suite list for TLS 1.3. Requires `tlsCipherConfigMode` = `CUSTOM`; when `tlsCipherConfigMode` is omitted, supplying a non-empty list infers `CUSTOM`.
 	CustomOpensslCipherConfigTls13 *[]string `json:"customOpensslCipherConfigTls13,omitempty"`
 	// Default time limit in milliseconds for individual read operations to complete.
 	DefaultMaxTimeMS *int `json:"defaultMaxTimeMS,omitempty"`

@@ -115,6 +115,7 @@ Class        | Method        | HTTP request  | Description   |
 *ClustersApi* | [UpdateProcessArgs](./docs/ClustersApi.md#updateprocessargs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster |
 *ClustersApi* | [UpgradeClusterToServerless](./docs/ClustersApi.md#upgradeclustertoserverless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance |
 *ClustersApi* | [UpgradeTenantUpgrade](./docs/ClustersApi.md#upgradetenantupgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster |
+*ClustersApi* | [ValidateGroupClusterConfigurations](./docs/ClustersApi.md#validategroupclusterconfigurations) | **Post** /api/atlas/v2/groups/{groupId}/clusterConfigurations:validate | Validate One Cluster Configuration |
 *CollectionLevelMetricsApi* | [GetClusterNamespaces](./docs/CollectionLevelMetricsApi.md#getclusternamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from One Cluster |
 *CollectionLevelMetricsApi* | [GetProcessNamespaces](./docs/CollectionLevelMetricsApi.md#getprocessnamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from One Host |
 *CollectionLevelMetricsApi* | [ListCollStatMeasurements](./docs/CollectionLevelMetricsApi.md#listcollstatmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements | Return Cluster-Level Query Latency |
@@ -580,6 +581,9 @@ Class        | Method        | HTTP request  | Description   |
  - [ClusterAutoScalingSettings](./docs/ClusterAutoScalingSettings.md)
  - [ClusterCloudProviderInstanceSize](./docs/ClusterCloudProviderInstanceSize.md)
  - [ClusterComputeAutoScaling](./docs/ClusterComputeAutoScaling.md)
+ - [ClusterConfigurationValidation](./docs/ClusterConfigurationValidation.md)
+ - [ClusterConfigurationValidationError](./docs/ClusterConfigurationValidationError.md)
+ - [ClusterConfigurationValidationResult](./docs/ClusterConfigurationValidationResult.md)
  - [ClusterConnectionStrings](./docs/ClusterConnectionStrings.md)
  - [ClusterDescription20240805](./docs/ClusterDescription20240805.md)
  - [ClusterDescriptionAutoScalingModeConfiguration](./docs/ClusterDescriptionAutoScalingModeConfiguration.md)
