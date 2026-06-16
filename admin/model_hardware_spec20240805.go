@@ -11,7 +11,7 @@ type HardwareSpec20240805 struct {
 	// Target throughput desired for storage attached to this hardware. Only returned for Gen 2 instance sizes with Standard (GP3) volume type.
 	// Read only field.
 	DiskThroughput *int `json:"diskThroughput,omitempty"`
-	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (`PROVISIONED`) for NVMe clusters.
+	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size.  - `HIGH_PERFORMANCE` volume types use IO2 EBS volumes and must fall within the allowable IOPS range for the selected volume size.  NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`.
 	EbsVolumeType *string `json:"ebsVolumeType,omitempty"`
 	// Hardware specification for the instances in this M0/M2/M5 tier cluster.
 	InstanceSize *string `json:"instanceSize,omitempty"`

@@ -10,6 +10,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       release_tag: ${{ steps.set_tag.outputs.release_tag }}
     steps:
@@ -34,6 +36,8 @@ jobs:
   compliance:
     needs: release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       SILKBOMB_IMG: ${{ vars.SILKBOMB_IMG }}
       RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
@@ -59,6 +63,8 @@ jobs:
   generate-ssdlc-report:
     needs: compliance
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
       RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
     steps:

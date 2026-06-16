@@ -2,7 +2,7 @@
 
 package admin
 
-// ApiSearchDeploymentSpec struct for ApiSearchDeploymentSpec
+// ApiSearchDeploymentSpec Hardware specification for the Search Nodes that back a search deployment.
 type ApiSearchDeploymentSpec struct {
 	// Hardware specification for the Search Node instance sizes.
 	InstanceSize string `json:"instanceSize"`
