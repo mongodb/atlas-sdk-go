@@ -14,6 +14,8 @@ type GroupSettings struct {
 	IsDataExplorerGenAIFeaturesEnabled *bool `json:"isDataExplorerGenAIFeaturesEnabled,omitempty"`
 	// Flag that indicates whether to enable the passing of sample field values with the use of generative AI features in the Data Explorer for the specified project.
 	IsDataExplorerGenAISampleDocumentPassingEnabled *bool `json:"isDataExplorerGenAISampleDocumentPassingEnabled,omitempty"`
+	// Flag that indicates whether data validation is enabled for all clusters in the specified project.
+	IsDataValidationEnabled *bool `json:"isDataValidationEnabled,omitempty"`
 	// Flag that indicates whether to enable extended storage sizes for the specified project.
 	IsExtendedStorageSizesEnabled *bool `json:"isExtendedStorageSizesEnabled,omitempty"`
 	// Flag that indicates whether to enable Native Reranking with Voyage AI models in the Aggregation Pipeline for the specified project.
@@ -210,6 +212,39 @@ func (o *GroupSettings) HasIsDataExplorerGenAISampleDocumentPassingEnabled() boo
 // SetIsDataExplorerGenAISampleDocumentPassingEnabled gets a reference to the given bool and assigns it to the IsDataExplorerGenAISampleDocumentPassingEnabled field.
 func (o *GroupSettings) SetIsDataExplorerGenAISampleDocumentPassingEnabled(v bool) {
 	o.IsDataExplorerGenAISampleDocumentPassingEnabled = &v
+}
+
+// GetIsDataValidationEnabled returns the IsDataValidationEnabled field value if set, zero value otherwise
+func (o *GroupSettings) GetIsDataValidationEnabled() bool {
+	if o == nil || IsNil(o.IsDataValidationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDataValidationEnabled
+}
+
+// GetIsDataValidationEnabledOk returns a tuple with the IsDataValidationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupSettings) GetIsDataValidationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDataValidationEnabled) {
+		return nil, false
+	}
+
+	return o.IsDataValidationEnabled, true
+}
+
+// HasIsDataValidationEnabled returns a boolean if a field has been set.
+func (o *GroupSettings) HasIsDataValidationEnabled() bool {
+	if o != nil && !IsNil(o.IsDataValidationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDataValidationEnabled gets a reference to the given bool and assigns it to the IsDataValidationEnabled field.
+func (o *GroupSettings) SetIsDataValidationEnabled(v bool) {
+	o.IsDataValidationEnabled = &v
 }
 
 // GetIsExtendedStorageSizesEnabled returns the IsExtendedStorageSizesEnabled field value if set, zero value otherwise

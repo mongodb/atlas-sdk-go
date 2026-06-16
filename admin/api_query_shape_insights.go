@@ -713,7 +713,7 @@ func (r ListQueryShapeSummariesApiRequest) NSummaries(nSummaries int64) ListQuer
 	return r
 }
 
-// Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series.
+// Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series. The &#x60;P50_EXECUTION_TIME&#x60;, &#x60;P90_EXECUTION_TIME&#x60;, and &#x60;P99_EXECUTION_TIME&#x60; series are deprecated as the values they report may be inaccurate. They will be removed in a future release.
 func (r ListQueryShapeSummariesApiRequest) Series(series []string) ListQueryShapeSummariesApiRequest {
 	r.series = &series
 	return r

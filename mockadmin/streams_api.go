@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312020/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -177,6 +177,170 @@ func (_c *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call) Return(_a0 admin
 }
 
 func (_c *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.AcceptVpcPeeringConnectionApiParams) admin.AcceptVpcPeeringConnectionApiRequest) *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateFailoverConnection provides a mock function with given fields: ctx, groupId, tenantName, connectionName, streamsConnection
+func (_m *StreamsApi) CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *admin.StreamsConnection) admin.CreateFailoverConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, connectionName, streamsConnection)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateFailoverConnection")
+	}
+
+	var r0 admin.CreateFailoverConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.StreamsConnection) admin.CreateFailoverConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, connectionName, streamsConnection)
+	} else {
+		r0 = ret.Get(0).(admin.CreateFailoverConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateFailoverConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateFailoverConnection'
+type StreamsApi_CreateFailoverConnection_Call struct {
+	*mock.Call
+}
+
+// CreateFailoverConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+//   - connectionName string
+//   - streamsConnection *admin.StreamsConnection
+func (_e *StreamsApi_Expecter) CreateFailoverConnection(ctx any, groupId any, tenantName any, connectionName any, streamsConnection any) *StreamsApi_CreateFailoverConnection_Call {
+	return &StreamsApi_CreateFailoverConnection_Call{Call: _e.mock.On("CreateFailoverConnection", ctx, groupId, tenantName, connectionName, streamsConnection)}
+}
+
+func (_c *StreamsApi_CreateFailoverConnection_Call) Run(run func(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *admin.StreamsConnection)) *StreamsApi_CreateFailoverConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(*admin.StreamsConnection))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateFailoverConnection_Call) Return(_a0 admin.CreateFailoverConnectionApiRequest) *StreamsApi_CreateFailoverConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateFailoverConnection_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.StreamsConnection) admin.CreateFailoverConnectionApiRequest) *StreamsApi_CreateFailoverConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateFailoverConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) CreateFailoverConnectionExecute(r admin.CreateFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateFailoverConnectionExecute")
+	}
+
+	var r0 *admin.StreamsConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateFailoverConnectionApiRequest) *admin.StreamsConnection); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsConnection)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateFailoverConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateFailoverConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_CreateFailoverConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateFailoverConnectionExecute'
+type StreamsApi_CreateFailoverConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// CreateFailoverConnectionExecute is a helper method to define mock.On call
+//   - r admin.CreateFailoverConnectionApiRequest
+func (_e *StreamsApi_Expecter) CreateFailoverConnectionExecute(r any) *StreamsApi_CreateFailoverConnectionExecute_Call {
+	return &StreamsApi_CreateFailoverConnectionExecute_Call{Call: _e.mock.On("CreateFailoverConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_CreateFailoverConnectionExecute_Call) Run(run func(r admin.CreateFailoverConnectionApiRequest)) *StreamsApi_CreateFailoverConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateFailoverConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateFailoverConnectionExecute_Call) Return(_a0 *admin.StreamsConnection, _a1 *http.Response, _a2 error) *StreamsApi_CreateFailoverConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_CreateFailoverConnectionExecute_Call) RunAndReturn(run func(admin.CreateFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error)) *StreamsApi_CreateFailoverConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateFailoverConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) CreateFailoverConnectionWithParams(ctx context.Context, args *admin.CreateFailoverConnectionApiParams) admin.CreateFailoverConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateFailoverConnectionWithParams")
+	}
+
+	var r0 admin.CreateFailoverConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateFailoverConnectionApiParams) admin.CreateFailoverConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateFailoverConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateFailoverConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateFailoverConnectionWithParams'
+type StreamsApi_CreateFailoverConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateFailoverConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateFailoverConnectionApiParams
+func (_e *StreamsApi_Expecter) CreateFailoverConnectionWithParams(ctx any, args any) *StreamsApi_CreateFailoverConnectionWithParams_Call {
+	return &StreamsApi_CreateFailoverConnectionWithParams_Call{Call: _e.mock.On("CreateFailoverConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_CreateFailoverConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateFailoverConnectionApiParams)) *StreamsApi_CreateFailoverConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateFailoverConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateFailoverConnectionWithParams_Call) Return(_a0 admin.CreateFailoverConnectionApiRequest) *StreamsApi_CreateFailoverConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateFailoverConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateFailoverConnectionApiParams) admin.CreateFailoverConnectionApiRequest) *StreamsApi_CreateFailoverConnectionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1134,6 +1298,161 @@ func (_c *StreamsApi_DeleteStreamConnectionWithParams_Call) Return(_a0 admin.Del
 }
 
 func (_c *StreamsApi_DeleteStreamConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteStreamConnectionApiParams) admin.DeleteStreamConnectionApiRequest) *StreamsApi_DeleteStreamConnectionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteStreamFailoverConnection provides a mock function with given fields: ctx, groupId, tenantName, connectionName, failoverConnectionId
+func (_m *StreamsApi) DeleteStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) admin.DeleteStreamFailoverConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, connectionName, failoverConnectionId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteStreamFailoverConnection")
+	}
+
+	var r0 admin.DeleteStreamFailoverConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) admin.DeleteStreamFailoverConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, connectionName, failoverConnectionId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteStreamFailoverConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_DeleteStreamFailoverConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamFailoverConnection'
+type StreamsApi_DeleteStreamFailoverConnection_Call struct {
+	*mock.Call
+}
+
+// DeleteStreamFailoverConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+//   - connectionName string
+//   - failoverConnectionId string
+func (_e *StreamsApi_Expecter) DeleteStreamFailoverConnection(ctx any, groupId any, tenantName any, connectionName any, failoverConnectionId any) *StreamsApi_DeleteStreamFailoverConnection_Call {
+	return &StreamsApi_DeleteStreamFailoverConnection_Call{Call: _e.mock.On("DeleteStreamFailoverConnection", ctx, groupId, tenantName, connectionName, failoverConnectionId)}
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnection_Call) Run(run func(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string)) *StreamsApi_DeleteStreamFailoverConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnection_Call) Return(_a0 admin.DeleteStreamFailoverConnectionApiRequest) *StreamsApi_DeleteStreamFailoverConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnection_Call) RunAndReturn(run func(context.Context, string, string, string, string) admin.DeleteStreamFailoverConnectionApiRequest) *StreamsApi_DeleteStreamFailoverConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteStreamFailoverConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) DeleteStreamFailoverConnectionExecute(r admin.DeleteStreamFailoverConnectionApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteStreamFailoverConnectionExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamFailoverConnectionApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamFailoverConnectionApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteStreamFailoverConnectionApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsApi_DeleteStreamFailoverConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamFailoverConnectionExecute'
+type StreamsApi_DeleteStreamFailoverConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteStreamFailoverConnectionExecute is a helper method to define mock.On call
+//   - r admin.DeleteStreamFailoverConnectionApiRequest
+func (_e *StreamsApi_Expecter) DeleteStreamFailoverConnectionExecute(r any) *StreamsApi_DeleteStreamFailoverConnectionExecute_Call {
+	return &StreamsApi_DeleteStreamFailoverConnectionExecute_Call{Call: _e.mock.On("DeleteStreamFailoverConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnectionExecute_Call) Run(run func(r admin.DeleteStreamFailoverConnectionApiRequest)) *StreamsApi_DeleteStreamFailoverConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteStreamFailoverConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnectionExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_DeleteStreamFailoverConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnectionExecute_Call) RunAndReturn(run func(admin.DeleteStreamFailoverConnectionApiRequest) (*http.Response, error)) *StreamsApi_DeleteStreamFailoverConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteStreamFailoverConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) DeleteStreamFailoverConnectionWithParams(ctx context.Context, args *admin.DeleteStreamFailoverConnectionApiParams) admin.DeleteStreamFailoverConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteStreamFailoverConnectionWithParams")
+	}
+
+	var r0 admin.DeleteStreamFailoverConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteStreamFailoverConnectionApiParams) admin.DeleteStreamFailoverConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteStreamFailoverConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_DeleteStreamFailoverConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamFailoverConnectionWithParams'
+type StreamsApi_DeleteStreamFailoverConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteStreamFailoverConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteStreamFailoverConnectionApiParams
+func (_e *StreamsApi_Expecter) DeleteStreamFailoverConnectionWithParams(ctx any, args any) *StreamsApi_DeleteStreamFailoverConnectionWithParams_Call {
+	return &StreamsApi_DeleteStreamFailoverConnectionWithParams_Call{Call: _e.mock.On("DeleteStreamFailoverConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteStreamFailoverConnectionApiParams)) *StreamsApi_DeleteStreamFailoverConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteStreamFailoverConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnectionWithParams_Call) Return(_a0 admin.DeleteStreamFailoverConnectionApiRequest) *StreamsApi_DeleteStreamFailoverConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_DeleteStreamFailoverConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteStreamFailoverConnectionApiParams) admin.DeleteStreamFailoverConnectionApiRequest) *StreamsApi_DeleteStreamFailoverConnectionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2408,6 +2727,170 @@ func (_c *StreamsApi_GetStreamConnectionWithParams_Call) RunAndReturn(run func(c
 	return _c
 }
 
+// GetStreamFailoverConnection provides a mock function with given fields: ctx, groupId, tenantName, connectionName, failoverConnectionId
+func (_m *StreamsApi) GetStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) admin.GetStreamFailoverConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, connectionName, failoverConnectionId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetStreamFailoverConnection")
+	}
+
+	var r0 admin.GetStreamFailoverConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) admin.GetStreamFailoverConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, connectionName, failoverConnectionId)
+	} else {
+		r0 = ret.Get(0).(admin.GetStreamFailoverConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_GetStreamFailoverConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamFailoverConnection'
+type StreamsApi_GetStreamFailoverConnection_Call struct {
+	*mock.Call
+}
+
+// GetStreamFailoverConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+//   - connectionName string
+//   - failoverConnectionId string
+func (_e *StreamsApi_Expecter) GetStreamFailoverConnection(ctx any, groupId any, tenantName any, connectionName any, failoverConnectionId any) *StreamsApi_GetStreamFailoverConnection_Call {
+	return &StreamsApi_GetStreamFailoverConnection_Call{Call: _e.mock.On("GetStreamFailoverConnection", ctx, groupId, tenantName, connectionName, failoverConnectionId)}
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnection_Call) Run(run func(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string)) *StreamsApi_GetStreamFailoverConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnection_Call) Return(_a0 admin.GetStreamFailoverConnectionApiRequest) *StreamsApi_GetStreamFailoverConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnection_Call) RunAndReturn(run func(context.Context, string, string, string, string) admin.GetStreamFailoverConnectionApiRequest) *StreamsApi_GetStreamFailoverConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetStreamFailoverConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) GetStreamFailoverConnectionExecute(r admin.GetStreamFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetStreamFailoverConnectionExecute")
+	}
+
+	var r0 *admin.StreamsConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetStreamFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetStreamFailoverConnectionApiRequest) *admin.StreamsConnection); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsConnection)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetStreamFailoverConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetStreamFailoverConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_GetStreamFailoverConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamFailoverConnectionExecute'
+type StreamsApi_GetStreamFailoverConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// GetStreamFailoverConnectionExecute is a helper method to define mock.On call
+//   - r admin.GetStreamFailoverConnectionApiRequest
+func (_e *StreamsApi_Expecter) GetStreamFailoverConnectionExecute(r any) *StreamsApi_GetStreamFailoverConnectionExecute_Call {
+	return &StreamsApi_GetStreamFailoverConnectionExecute_Call{Call: _e.mock.On("GetStreamFailoverConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnectionExecute_Call) Run(run func(r admin.GetStreamFailoverConnectionApiRequest)) *StreamsApi_GetStreamFailoverConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetStreamFailoverConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnectionExecute_Call) Return(_a0 *admin.StreamsConnection, _a1 *http.Response, _a2 error) *StreamsApi_GetStreamFailoverConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnectionExecute_Call) RunAndReturn(run func(admin.GetStreamFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error)) *StreamsApi_GetStreamFailoverConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetStreamFailoverConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) GetStreamFailoverConnectionWithParams(ctx context.Context, args *admin.GetStreamFailoverConnectionApiParams) admin.GetStreamFailoverConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetStreamFailoverConnectionWithParams")
+	}
+
+	var r0 admin.GetStreamFailoverConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetStreamFailoverConnectionApiParams) admin.GetStreamFailoverConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetStreamFailoverConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_GetStreamFailoverConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetStreamFailoverConnectionWithParams'
+type StreamsApi_GetStreamFailoverConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// GetStreamFailoverConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetStreamFailoverConnectionApiParams
+func (_e *StreamsApi_Expecter) GetStreamFailoverConnectionWithParams(ctx any, args any) *StreamsApi_GetStreamFailoverConnectionWithParams_Call {
+	return &StreamsApi_GetStreamFailoverConnectionWithParams_Call{Call: _e.mock.On("GetStreamFailoverConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.GetStreamFailoverConnectionApiParams)) *StreamsApi_GetStreamFailoverConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetStreamFailoverConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnectionWithParams_Call) Return(_a0 admin.GetStreamFailoverConnectionApiRequest) *StreamsApi_GetStreamFailoverConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_GetStreamFailoverConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetStreamFailoverConnectionApiParams) admin.GetStreamFailoverConnectionApiRequest) *StreamsApi_GetStreamFailoverConnectionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, processorName
 func (_m *StreamsApi) GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) admin.GetStreamProcessorApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName, processorName)
@@ -3052,6 +3535,169 @@ func (_c *StreamsApi_ListActivePeeringConnectionsWithParams_Call) Return(_a0 adm
 }
 
 func (_c *StreamsApi_ListActivePeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListActivePeeringConnectionsApiParams) admin.ListActivePeeringConnectionsApiRequest) *StreamsApi_ListActivePeeringConnectionsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListFailoverConnections provides a mock function with given fields: ctx, groupId, tenantName, connectionName
+func (_m *StreamsApi) ListFailoverConnections(ctx context.Context, groupId string, tenantName string, connectionName string) admin.ListFailoverConnectionsApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, connectionName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListFailoverConnections")
+	}
+
+	var r0 admin.ListFailoverConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.ListFailoverConnectionsApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, connectionName)
+	} else {
+		r0 = ret.Get(0).(admin.ListFailoverConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_ListFailoverConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFailoverConnections'
+type StreamsApi_ListFailoverConnections_Call struct {
+	*mock.Call
+}
+
+// ListFailoverConnections is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+//   - connectionName string
+func (_e *StreamsApi_Expecter) ListFailoverConnections(ctx any, groupId any, tenantName any, connectionName any) *StreamsApi_ListFailoverConnections_Call {
+	return &StreamsApi_ListFailoverConnections_Call{Call: _e.mock.On("ListFailoverConnections", ctx, groupId, tenantName, connectionName)}
+}
+
+func (_c *StreamsApi_ListFailoverConnections_Call) Run(run func(ctx context.Context, groupId string, tenantName string, connectionName string)) *StreamsApi_ListFailoverConnections_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ListFailoverConnections_Call) Return(_a0 admin.ListFailoverConnectionsApiRequest) *StreamsApi_ListFailoverConnections_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_ListFailoverConnections_Call) RunAndReturn(run func(context.Context, string, string, string) admin.ListFailoverConnectionsApiRequest) *StreamsApi_ListFailoverConnections_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListFailoverConnectionsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) ListFailoverConnectionsExecute(r admin.ListFailoverConnectionsApiRequest) (*admin.PaginatedApiStreamsFailoverConnection, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListFailoverConnectionsExecute")
+	}
+
+	var r0 *admin.PaginatedApiStreamsFailoverConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListFailoverConnectionsApiRequest) (*admin.PaginatedApiStreamsFailoverConnection, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListFailoverConnectionsApiRequest) *admin.PaginatedApiStreamsFailoverConnection); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiStreamsFailoverConnection)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListFailoverConnectionsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListFailoverConnectionsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_ListFailoverConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFailoverConnectionsExecute'
+type StreamsApi_ListFailoverConnectionsExecute_Call struct {
+	*mock.Call
+}
+
+// ListFailoverConnectionsExecute is a helper method to define mock.On call
+//   - r admin.ListFailoverConnectionsApiRequest
+func (_e *StreamsApi_Expecter) ListFailoverConnectionsExecute(r any) *StreamsApi_ListFailoverConnectionsExecute_Call {
+	return &StreamsApi_ListFailoverConnectionsExecute_Call{Call: _e.mock.On("ListFailoverConnectionsExecute", r)}
+}
+
+func (_c *StreamsApi_ListFailoverConnectionsExecute_Call) Run(run func(r admin.ListFailoverConnectionsApiRequest)) *StreamsApi_ListFailoverConnectionsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListFailoverConnectionsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ListFailoverConnectionsExecute_Call) Return(_a0 *admin.PaginatedApiStreamsFailoverConnection, _a1 *http.Response, _a2 error) *StreamsApi_ListFailoverConnectionsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_ListFailoverConnectionsExecute_Call) RunAndReturn(run func(admin.ListFailoverConnectionsApiRequest) (*admin.PaginatedApiStreamsFailoverConnection, *http.Response, error)) *StreamsApi_ListFailoverConnectionsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListFailoverConnectionsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) ListFailoverConnectionsWithParams(ctx context.Context, args *admin.ListFailoverConnectionsApiParams) admin.ListFailoverConnectionsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListFailoverConnectionsWithParams")
+	}
+
+	var r0 admin.ListFailoverConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListFailoverConnectionsApiParams) admin.ListFailoverConnectionsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListFailoverConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_ListFailoverConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListFailoverConnectionsWithParams'
+type StreamsApi_ListFailoverConnectionsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListFailoverConnectionsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListFailoverConnectionsApiParams
+func (_e *StreamsApi_Expecter) ListFailoverConnectionsWithParams(ctx any, args any) *StreamsApi_ListFailoverConnectionsWithParams_Call {
+	return &StreamsApi_ListFailoverConnectionsWithParams_Call{Call: _e.mock.On("ListFailoverConnectionsWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_ListFailoverConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListFailoverConnectionsApiParams)) *StreamsApi_ListFailoverConnectionsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListFailoverConnectionsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ListFailoverConnectionsWithParams_Call) Return(_a0 admin.ListFailoverConnectionsApiRequest) *StreamsApi_ListFailoverConnectionsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_ListFailoverConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListFailoverConnectionsApiParams) admin.ListFailoverConnectionsApiRequest) *StreamsApi_ListFailoverConnectionsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -4477,6 +5123,171 @@ func (_c *StreamsApi_UpdateStreamConnectionWithParams_Call) Return(_a0 admin.Upd
 }
 
 func (_c *StreamsApi_UpdateStreamConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateStreamConnectionApiParams) admin.UpdateStreamConnectionApiRequest) *StreamsApi_UpdateStreamConnectionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateStreamFailoverConnection provides a mock function with given fields: ctx, groupId, tenantName, connectionName, failoverConnectionId, streamsConnection
+func (_m *StreamsApi) UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *admin.StreamsConnection) admin.UpdateStreamFailoverConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, connectionName, failoverConnectionId, streamsConnection)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateStreamFailoverConnection")
+	}
+
+	var r0 admin.UpdateStreamFailoverConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string, *admin.StreamsConnection) admin.UpdateStreamFailoverConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, connectionName, failoverConnectionId, streamsConnection)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateStreamFailoverConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_UpdateStreamFailoverConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamFailoverConnection'
+type StreamsApi_UpdateStreamFailoverConnection_Call struct {
+	*mock.Call
+}
+
+// UpdateStreamFailoverConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+//   - connectionName string
+//   - failoverConnectionId string
+//   - streamsConnection *admin.StreamsConnection
+func (_e *StreamsApi_Expecter) UpdateStreamFailoverConnection(ctx any, groupId any, tenantName any, connectionName any, failoverConnectionId any, streamsConnection any) *StreamsApi_UpdateStreamFailoverConnection_Call {
+	return &StreamsApi_UpdateStreamFailoverConnection_Call{Call: _e.mock.On("UpdateStreamFailoverConnection", ctx, groupId, tenantName, connectionName, failoverConnectionId, streamsConnection)}
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnection_Call) Run(run func(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *admin.StreamsConnection)) *StreamsApi_UpdateStreamFailoverConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string), args[5].(*admin.StreamsConnection))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnection_Call) Return(_a0 admin.UpdateStreamFailoverConnectionApiRequest) *StreamsApi_UpdateStreamFailoverConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnection_Call) RunAndReturn(run func(context.Context, string, string, string, string, *admin.StreamsConnection) admin.UpdateStreamFailoverConnectionApiRequest) *StreamsApi_UpdateStreamFailoverConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateStreamFailoverConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) UpdateStreamFailoverConnectionExecute(r admin.UpdateStreamFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateStreamFailoverConnectionExecute")
+	}
+
+	var r0 *admin.StreamsConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateStreamFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateStreamFailoverConnectionApiRequest) *admin.StreamsConnection); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsConnection)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateStreamFailoverConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateStreamFailoverConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_UpdateStreamFailoverConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamFailoverConnectionExecute'
+type StreamsApi_UpdateStreamFailoverConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateStreamFailoverConnectionExecute is a helper method to define mock.On call
+//   - r admin.UpdateStreamFailoverConnectionApiRequest
+func (_e *StreamsApi_Expecter) UpdateStreamFailoverConnectionExecute(r any) *StreamsApi_UpdateStreamFailoverConnectionExecute_Call {
+	return &StreamsApi_UpdateStreamFailoverConnectionExecute_Call{Call: _e.mock.On("UpdateStreamFailoverConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnectionExecute_Call) Run(run func(r admin.UpdateStreamFailoverConnectionApiRequest)) *StreamsApi_UpdateStreamFailoverConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateStreamFailoverConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnectionExecute_Call) Return(_a0 *admin.StreamsConnection, _a1 *http.Response, _a2 error) *StreamsApi_UpdateStreamFailoverConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnectionExecute_Call) RunAndReturn(run func(admin.UpdateStreamFailoverConnectionApiRequest) (*admin.StreamsConnection, *http.Response, error)) *StreamsApi_UpdateStreamFailoverConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateStreamFailoverConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) UpdateStreamFailoverConnectionWithParams(ctx context.Context, args *admin.UpdateStreamFailoverConnectionApiParams) admin.UpdateStreamFailoverConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateStreamFailoverConnectionWithParams")
+	}
+
+	var r0 admin.UpdateStreamFailoverConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateStreamFailoverConnectionApiParams) admin.UpdateStreamFailoverConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateStreamFailoverConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_UpdateStreamFailoverConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateStreamFailoverConnectionWithParams'
+type StreamsApi_UpdateStreamFailoverConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateStreamFailoverConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateStreamFailoverConnectionApiParams
+func (_e *StreamsApi_Expecter) UpdateStreamFailoverConnectionWithParams(ctx any, args any) *StreamsApi_UpdateStreamFailoverConnectionWithParams_Call {
+	return &StreamsApi_UpdateStreamFailoverConnectionWithParams_Call{Call: _e.mock.On("UpdateStreamFailoverConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateStreamFailoverConnectionApiParams)) *StreamsApi_UpdateStreamFailoverConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateStreamFailoverConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnectionWithParams_Call) Return(_a0 admin.UpdateStreamFailoverConnectionApiRequest) *StreamsApi_UpdateStreamFailoverConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_UpdateStreamFailoverConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateStreamFailoverConnectionApiParams) admin.UpdateStreamFailoverConnectionApiRequest) *StreamsApi_UpdateStreamFailoverConnectionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

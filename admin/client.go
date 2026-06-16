@@ -104,6 +104,8 @@ type APIClient struct {
 
 	OnlineArchiveApi OnlineArchiveApi
 
+	OpenAPIApi OpenAPIApi
+
 	OrganizationsApi OrganizationsApi
 
 	PerformanceAdvisorApi PerformanceAdvisorApi
@@ -192,6 +194,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
+	c.OpenAPIApi = (*OpenAPIApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PerformanceAdvisorApi = (*PerformanceAdvisorApiService)(&c.common)
 	c.PrivateEndpointServicesApi = (*PrivateEndpointServicesApiService)(&c.common)
