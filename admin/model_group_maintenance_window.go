@@ -8,9 +8,6 @@ type GroupMaintenanceWindow struct {
 	AutoDeferOnceEnabled *bool `json:"autoDeferOnceEnabled,omitempty"`
 	// One-based integer that represents the day of the week that the maintenance window starts.  - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday.
 	DayOfWeek int `json:"dayOfWeek"`
-	// Maintenance wave that Atlas uses when scheduling maintenance for this project. This value can differ from `waveAssignment` when cross-organization maintenance sequencing is enabled or when the organization derives waves from environment tags.
-	// Read only field.
-	EffectiveWaveAssignment *int `json:"effectiveWaveAssignment,omitempty"`
 	// Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon.
 	HourOfDay *int `json:"hourOfDay,omitempty"`
 	// Number of times the current maintenance event for this project has been deferred.
@@ -22,8 +19,6 @@ type GroupMaintenanceWindow struct {
 	// Identifier for the current time zone of the maintenance window. This can only be updated via the Project Settings UI.
 	// Read only field.
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
-	// Maintenance wave explicitly assigned to this project. Editable when the organization's effective wave assignment mode is MANUAL. Must be between 1 and 3, inclusive. Pass `null` to clear an explicit assignment.
-	WaveAssignment *int `json:"waveAssignment,omitempty"`
 }
 
 // NewGroupMaintenanceWindow instantiates a new GroupMaintenanceWindow object
@@ -99,39 +94,6 @@ func (o *GroupMaintenanceWindow) GetDayOfWeekOk() (*int, bool) {
 // SetDayOfWeek sets field value
 func (o *GroupMaintenanceWindow) SetDayOfWeek(v int) {
 	o.DayOfWeek = v
-}
-
-// GetEffectiveWaveAssignment returns the EffectiveWaveAssignment field value if set, zero value otherwise
-func (o *GroupMaintenanceWindow) GetEffectiveWaveAssignment() int {
-	if o == nil || IsNil(o.EffectiveWaveAssignment) {
-		var ret int
-		return ret
-	}
-	return *o.EffectiveWaveAssignment
-}
-
-// GetEffectiveWaveAssignmentOk returns a tuple with the EffectiveWaveAssignment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetEffectiveWaveAssignmentOk() (*int, bool) {
-	if o == nil || IsNil(o.EffectiveWaveAssignment) {
-		return nil, false
-	}
-
-	return o.EffectiveWaveAssignment, true
-}
-
-// HasEffectiveWaveAssignment returns a boolean if a field has been set.
-func (o *GroupMaintenanceWindow) HasEffectiveWaveAssignment() bool {
-	if o != nil && !IsNil(o.EffectiveWaveAssignment) {
-		return true
-	}
-
-	return false
-}
-
-// SetEffectiveWaveAssignment gets a reference to the given int and assigns it to the EffectiveWaveAssignment field.
-func (o *GroupMaintenanceWindow) SetEffectiveWaveAssignment(v int) {
-	o.EffectiveWaveAssignment = &v
 }
 
 // GetHourOfDay returns the HourOfDay field value if set, zero value otherwise
@@ -297,37 +259,4 @@ func (o *GroupMaintenanceWindow) HasTimeZoneId() bool {
 // SetTimeZoneId gets a reference to the given string and assigns it to the TimeZoneId field.
 func (o *GroupMaintenanceWindow) SetTimeZoneId(v string) {
 	o.TimeZoneId = &v
-}
-
-// GetWaveAssignment returns the WaveAssignment field value if set, zero value otherwise
-func (o *GroupMaintenanceWindow) GetWaveAssignment() int {
-	if o == nil || IsNil(o.WaveAssignment) {
-		var ret int
-		return ret
-	}
-	return *o.WaveAssignment
-}
-
-// GetWaveAssignmentOk returns a tuple with the WaveAssignment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetWaveAssignmentOk() (*int, bool) {
-	if o == nil || IsNil(o.WaveAssignment) {
-		return nil, false
-	}
-
-	return o.WaveAssignment, true
-}
-
-// HasWaveAssignment returns a boolean if a field has been set.
-func (o *GroupMaintenanceWindow) HasWaveAssignment() bool {
-	if o != nil && !IsNil(o.WaveAssignment) {
-		return true
-	}
-
-	return false
-}
-
-// SetWaveAssignment gets a reference to the given int and assigns it to the WaveAssignment field.
-func (o *GroupMaintenanceWindow) SetWaveAssignment(v int) {
-	o.WaveAssignment = &v
 }

@@ -28,11 +28,14 @@ type QueryStatsSummary struct {
 	LastExecMicros *float64 `json:"lastExecMicros,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	Namespace *string `json:"namespace,omitempty"`
-	// The 50th percentile value of execution time in microseconds.
+	// The 50th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release.
+	// Deprecated
 	P50ExecMicros *float64 `json:"p50ExecMicros,omitempty"`
-	// The 90th percentile value of execution time in microseconds.
+	// The 90th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release.
+	// Deprecated
 	P90ExecMicros *float64 `json:"p90ExecMicros,omitempty"`
-	// The 99th percentile value of execution time in microseconds.
+	// The 99th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release.
+	// Deprecated
 	P99ExecMicros *float64 `json:"p99ExecMicros,omitempty"`
 	// A query shape is a set of specifications that group similar queries together. Specifications can include filters, sorts, projections, aggregation pipeline stages, a namespace, and others. Queries that have similar specifications have the same query shape.
 	QueryShape *string `json:"queryShape,omitempty"`
@@ -460,6 +463,7 @@ func (o *QueryStatsSummary) SetNamespace(v string) {
 }
 
 // GetP50ExecMicros returns the P50ExecMicros field value if set, zero value otherwise
+// Deprecated
 func (o *QueryStatsSummary) GetP50ExecMicros() float64 {
 	if o == nil || IsNil(o.P50ExecMicros) {
 		var ret float64
@@ -470,6 +474,7 @@ func (o *QueryStatsSummary) GetP50ExecMicros() float64 {
 
 // GetP50ExecMicrosOk returns a tuple with the P50ExecMicros field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *QueryStatsSummary) GetP50ExecMicrosOk() (*float64, bool) {
 	if o == nil || IsNil(o.P50ExecMicros) {
 		return nil, false
@@ -488,11 +493,13 @@ func (o *QueryStatsSummary) HasP50ExecMicros() bool {
 }
 
 // SetP50ExecMicros gets a reference to the given float64 and assigns it to the P50ExecMicros field.
+// Deprecated
 func (o *QueryStatsSummary) SetP50ExecMicros(v float64) {
 	o.P50ExecMicros = &v
 }
 
 // GetP90ExecMicros returns the P90ExecMicros field value if set, zero value otherwise
+// Deprecated
 func (o *QueryStatsSummary) GetP90ExecMicros() float64 {
 	if o == nil || IsNil(o.P90ExecMicros) {
 		var ret float64
@@ -503,6 +510,7 @@ func (o *QueryStatsSummary) GetP90ExecMicros() float64 {
 
 // GetP90ExecMicrosOk returns a tuple with the P90ExecMicros field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *QueryStatsSummary) GetP90ExecMicrosOk() (*float64, bool) {
 	if o == nil || IsNil(o.P90ExecMicros) {
 		return nil, false
@@ -521,11 +529,13 @@ func (o *QueryStatsSummary) HasP90ExecMicros() bool {
 }
 
 // SetP90ExecMicros gets a reference to the given float64 and assigns it to the P90ExecMicros field.
+// Deprecated
 func (o *QueryStatsSummary) SetP90ExecMicros(v float64) {
 	o.P90ExecMicros = &v
 }
 
 // GetP99ExecMicros returns the P99ExecMicros field value if set, zero value otherwise
+// Deprecated
 func (o *QueryStatsSummary) GetP99ExecMicros() float64 {
 	if o == nil || IsNil(o.P99ExecMicros) {
 		var ret float64
@@ -536,6 +546,7 @@ func (o *QueryStatsSummary) GetP99ExecMicros() float64 {
 
 // GetP99ExecMicrosOk returns a tuple with the P99ExecMicros field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *QueryStatsSummary) GetP99ExecMicrosOk() (*float64, bool) {
 	if o == nil || IsNil(o.P99ExecMicros) {
 		return nil, false
@@ -554,6 +565,7 @@ func (o *QueryStatsSummary) HasP99ExecMicros() bool {
 }
 
 // SetP99ExecMicros gets a reference to the given float64 and assigns it to the P99ExecMicros field.
+// Deprecated
 func (o *QueryStatsSummary) SetP99ExecMicros(v float64) {
 	o.P99ExecMicros = &v
 }
