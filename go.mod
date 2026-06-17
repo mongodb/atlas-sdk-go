@@ -1,4 +1,4 @@
-module go.mongodb.org/atlas-sdk/v20250312020
+module go.mongodb.org/atlas-sdk/v20250312021
 
 go 1.25.0
 
