@@ -67,8 +67,8 @@ else
   echo "Detected changes in the release"
   if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
     echo "Changes for the release:"
-    [ -n "$BREAKING_CHANGES" ] && echo -e "\nBreaking Changes:\n$BREAKING_CHANGES"
-    [ -n "$NON_BREAKING_CHANGES" ] && echo -e "\nNon-Breaking Changes:\n$NON_BREAKING_CHANGES"
+    if [ -n "$BREAKING_CHANGES" ]; then echo -e "\nBreaking Changes:\n$BREAKING_CHANGES"; fi
+    if [ -n "$NON_BREAKING_CHANGES" ]; then echo -e "\nNon-Breaking Changes:\n$NON_BREAKING_CHANGES"; fi
   else
     # Only create breaking changes file for major version bumps
     if [ -n "$BREAKING_CHANGES" ]; then
