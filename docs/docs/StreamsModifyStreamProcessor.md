@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**FailoverEnabled** | Pointer to **bool** | Flag that enables or disables failover for the stream processor. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | New name for the stream processor. | [optional] 
 **Options** | Pointer to [**StreamsModifyStreamProcessorOptions**](StreamsModifyStreamProcessorOptions.md) |  | [optional] 
@@ -28,6 +29,30 @@ NewStreamsModifyStreamProcessorWithDefaults instantiates a new StreamsModifyStre
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetFailoverEnabled
+
+`func (o *StreamsModifyStreamProcessor) GetFailoverEnabled() bool`
+
+GetFailoverEnabled returns the FailoverEnabled field if non-nil, zero value otherwise.
+
+### GetFailoverEnabledOk
+
+`func (o *StreamsModifyStreamProcessor) GetFailoverEnabledOk() (*bool, bool)`
+
+GetFailoverEnabledOk returns a tuple with the FailoverEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailoverEnabled
+
+`func (o *StreamsModifyStreamProcessor) SetFailoverEnabled(v bool)`
+
+SetFailoverEnabled sets FailoverEnabled field to given value.
+
+### HasFailoverEnabled
+
+`func (o *StreamsModifyStreamProcessor) HasFailoverEnabled() bool`
+
+HasFailoverEnabled returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsModifyStreamProcessor) GetLinks() []Link`

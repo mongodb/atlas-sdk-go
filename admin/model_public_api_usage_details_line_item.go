@@ -8,6 +8,7 @@ import (
 
 // PublicApiUsageDetailsLineItem struct for PublicApiUsageDetailsLineItem
 type PublicApiUsageDetailsLineItem struct {
+	AdditionalData *AdditionalData `json:"additionalData,omitempty"`
 	// Billing date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	BillDate *time.Time `json:"billDate,omitempty"`
 	// Cluster associated with the line item.
@@ -42,6 +43,39 @@ func NewPublicApiUsageDetailsLineItem() *PublicApiUsageDetailsLineItem {
 func NewPublicApiUsageDetailsLineItemWithDefaults() *PublicApiUsageDetailsLineItem {
 	this := PublicApiUsageDetailsLineItem{}
 	return &this
+}
+
+// GetAdditionalData returns the AdditionalData field value if set, zero value otherwise
+func (o *PublicApiUsageDetailsLineItem) GetAdditionalData() AdditionalData {
+	if o == nil || IsNil(o.AdditionalData) {
+		var ret AdditionalData
+		return ret
+	}
+	return *o.AdditionalData
+}
+
+// GetAdditionalDataOk returns a tuple with the AdditionalData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicApiUsageDetailsLineItem) GetAdditionalDataOk() (*AdditionalData, bool) {
+	if o == nil || IsNil(o.AdditionalData) {
+		return nil, false
+	}
+
+	return o.AdditionalData, true
+}
+
+// HasAdditionalData returns a boolean if a field has been set.
+func (o *PublicApiUsageDetailsLineItem) HasAdditionalData() bool {
+	if o != nil && !IsNil(o.AdditionalData) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalData gets a reference to the given AdditionalData and assigns it to the AdditionalData field.
+func (o *PublicApiUsageDetailsLineItem) SetAdditionalData(v AdditionalData) {
+	o.AdditionalData = &v
 }
 
 // GetBillDate returns the BillDate field value if set, zero value otherwise

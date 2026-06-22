@@ -8,8 +8,9 @@ Name | Type | Description | Notes
 **ErrorMessage** | Pointer to **string** | Error message for failures associated with the Object Storage private endpoint. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Private Endpoint Service. | [optional] [readonly] 
 **PrivateEndpointConnectionName** | Pointer to **string** | Connection name of the Private Endpoint. | [optional] [readonly] 
-**RegionName** | Pointer to **string** | Cloud provider region in which the Object Storage private endpoint is located. | [optional] 
+**RegionName** | Pointer to **string** | Cloud provider region in which the Object Storage bucket is located. For cross-region endpoints, this differs from &#x60;vpcRegionName&#x60;, which is the region in which the VPC interface endpoint is deployed. | [optional] 
 **Status** | Pointer to **string** | State of the Object Storage private endpoint. | [optional] [readonly] 
+**VpcRegionName** | Pointer to **string** | Cloud provider region in which the VPC interface endpoint is deployed. Echoes &#x60;regionName&#x60; for same-region endpoints. | [optional] 
 
 ## Methods
 
@@ -174,6 +175,30 @@ SetStatus sets Status field to given value.
 `func (o *ObjectStoragePrivateEndpointResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+### GetVpcRegionName
+
+`func (o *ObjectStoragePrivateEndpointResponse) GetVpcRegionName() string`
+
+GetVpcRegionName returns the VpcRegionName field if non-nil, zero value otherwise.
+
+### GetVpcRegionNameOk
+
+`func (o *ObjectStoragePrivateEndpointResponse) GetVpcRegionNameOk() (*string, bool)`
+
+GetVpcRegionNameOk returns a tuple with the VpcRegionName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVpcRegionName
+
+`func (o *ObjectStoragePrivateEndpointResponse) SetVpcRegionName(v string)`
+
+SetVpcRegionName sets VpcRegionName field to given value.
+
+### HasVpcRegionName
+
+`func (o *ObjectStoragePrivateEndpointResponse) HasVpcRegionName() bool`
+
+HasVpcRegionName returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

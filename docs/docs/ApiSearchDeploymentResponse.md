@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**EffectiveSpecs** | Pointer to [**[]ApiSearchDeploymentEffectiveSpec**](ApiSearchDeploymentEffectiveSpec.md) | List of settings that configure the Search Nodes for your cluster, with per-region detail including the region name and cloud provider. | [optional] [readonly] 
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the search deployment. | [optional] [readonly] 
-**Specs** | Pointer to [**[]ApiSearchDeploymentSpec**](ApiSearchDeploymentSpec.md) | List of settings that configure the Search Nodes for your cluster. The configuration will be returned for each region and shard. | [optional] [readonly] 
+**Specs** | Pointer to [**[]ApiSearchDeploymentSpec**](ApiSearchDeploymentSpec.md) | Deprecated. &#x60;specs&#x60; will be removed in a future release. We strongly recommend that you use &#x60;effectiveSpecs&#x60; instead. | [optional] [readonly] 
 **StateName** | Pointer to **string** | Human-readable label that indicates the current operating condition of this search deployment. | [optional] [readonly] 
 
 ## Methods
@@ -29,6 +30,30 @@ NewApiSearchDeploymentResponseWithDefaults instantiates a new ApiSearchDeploymen
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetEffectiveSpecs
+
+`func (o *ApiSearchDeploymentResponse) GetEffectiveSpecs() []ApiSearchDeploymentEffectiveSpec`
+
+GetEffectiveSpecs returns the EffectiveSpecs field if non-nil, zero value otherwise.
+
+### GetEffectiveSpecsOk
+
+`func (o *ApiSearchDeploymentResponse) GetEffectiveSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool)`
+
+GetEffectiveSpecsOk returns a tuple with the EffectiveSpecs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveSpecs
+
+`func (o *ApiSearchDeploymentResponse) SetEffectiveSpecs(v []ApiSearchDeploymentEffectiveSpec)`
+
+SetEffectiveSpecs sets EffectiveSpecs field to given value.
+
+### HasEffectiveSpecs
+
+`func (o *ApiSearchDeploymentResponse) HasEffectiveSpecs() bool`
+
+HasEffectiveSpecs returns a boolean if a field has been set.
 ### GetEncryptionAtRestProvider
 
 `func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProvider() string`

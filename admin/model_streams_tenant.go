@@ -11,6 +11,8 @@ type StreamsTenant struct {
 	// Read only field.
 	Connections       *[]StreamsConnection      `json:"connections,omitempty"`
 	DataProcessRegion *StreamsDataProcessRegion `json:"dataProcessRegion,omitempty"`
+	// List of failover regions configured for the stream workspace.
+	FailoverRegions *[]StreamsDataProcessRegion `json:"failoverRegions,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
@@ -140,6 +142,39 @@ func (o *StreamsTenant) HasDataProcessRegion() bool {
 // SetDataProcessRegion gets a reference to the given StreamsDataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *StreamsTenant) SetDataProcessRegion(v StreamsDataProcessRegion) {
 	o.DataProcessRegion = &v
+}
+
+// GetFailoverRegions returns the FailoverRegions field value if set, zero value otherwise
+func (o *StreamsTenant) GetFailoverRegions() []StreamsDataProcessRegion {
+	if o == nil || IsNil(o.FailoverRegions) {
+		var ret []StreamsDataProcessRegion
+		return ret
+	}
+	return *o.FailoverRegions
+}
+
+// GetFailoverRegionsOk returns a tuple with the FailoverRegions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsTenant) GetFailoverRegionsOk() (*[]StreamsDataProcessRegion, bool) {
+	if o == nil || IsNil(o.FailoverRegions) {
+		return nil, false
+	}
+
+	return o.FailoverRegions, true
+}
+
+// HasFailoverRegions returns a boolean if a field has been set.
+func (o *StreamsTenant) HasFailoverRegions() bool {
+	if o != nil && !IsNil(o.FailoverRegions) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailoverRegions gets a reference to the given []StreamsDataProcessRegion and assigns it to the FailoverRegions field.
+func (o *StreamsTenant) SetFailoverRegions(v []StreamsDataProcessRegion) {
+	o.FailoverRegions = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise

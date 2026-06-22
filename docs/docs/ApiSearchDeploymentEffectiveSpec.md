@@ -1,122 +1,127 @@
-# ApiSearchDeploymentRequestSpec
+# ApiSearchDeploymentEffectiveSpec
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | Pointer to **string** | Cloud service provider that hosts the Search Nodes in this region. Required when a region is specified. | [optional] 
-**InstanceSize** | **string** | Hardware specification for the Search Node instance sizes. | 
-**NodeCount** | Pointer to **int** | Number of Search Nodes in this region. Optional; falls back to the request-level default when omitted. | [optional] 
-**RegionName** | Pointer to **string** | Cloud provider region where Search Nodes are provisioned. Required when the request configures more than one region; optional for single-region requests. | [optional] 
+**CloudProvider** | Pointer to **string** | Cloud service provider on which Search Nodes are provisioned. | [optional] [readonly] 
+**InstanceSize** | Pointer to **string** | Hardware specification for the Search Node instance sizes. | [optional] [readonly] 
+**NodeCount** | Pointer to **int** | Number of Search Nodes in this region. | [optional] [readonly] 
+**RegionName** | Pointer to **string** | Cloud provider region where Search Nodes are provisioned. | [optional] [readonly] 
 
 ## Methods
 
-### NewApiSearchDeploymentRequestSpec
+### NewApiSearchDeploymentEffectiveSpec
 
-`func NewApiSearchDeploymentRequestSpec(instanceSize string, ) *ApiSearchDeploymentRequestSpec`
+`func NewApiSearchDeploymentEffectiveSpec() *ApiSearchDeploymentEffectiveSpec`
 
-NewApiSearchDeploymentRequestSpec instantiates a new ApiSearchDeploymentRequestSpec object
+NewApiSearchDeploymentEffectiveSpec instantiates a new ApiSearchDeploymentEffectiveSpec object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewApiSearchDeploymentRequestSpecWithDefaults
+### NewApiSearchDeploymentEffectiveSpecWithDefaults
 
-`func NewApiSearchDeploymentRequestSpecWithDefaults() *ApiSearchDeploymentRequestSpec`
+`func NewApiSearchDeploymentEffectiveSpecWithDefaults() *ApiSearchDeploymentEffectiveSpec`
 
-NewApiSearchDeploymentRequestSpecWithDefaults instantiates a new ApiSearchDeploymentRequestSpec object
+NewApiSearchDeploymentEffectiveSpecWithDefaults instantiates a new ApiSearchDeploymentEffectiveSpec object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCloudProvider
 
-`func (o *ApiSearchDeploymentRequestSpec) GetCloudProvider() string`
+`func (o *ApiSearchDeploymentEffectiveSpec) GetCloudProvider() string`
 
 GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
 
 ### GetCloudProviderOk
 
-`func (o *ApiSearchDeploymentRequestSpec) GetCloudProviderOk() (*string, bool)`
+`func (o *ApiSearchDeploymentEffectiveSpec) GetCloudProviderOk() (*string, bool)`
 
 GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloudProvider
 
-`func (o *ApiSearchDeploymentRequestSpec) SetCloudProvider(v string)`
+`func (o *ApiSearchDeploymentEffectiveSpec) SetCloudProvider(v string)`
 
 SetCloudProvider sets CloudProvider field to given value.
 
 ### HasCloudProvider
 
-`func (o *ApiSearchDeploymentRequestSpec) HasCloudProvider() bool`
+`func (o *ApiSearchDeploymentEffectiveSpec) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
 ### GetInstanceSize
 
-`func (o *ApiSearchDeploymentRequestSpec) GetInstanceSize() string`
+`func (o *ApiSearchDeploymentEffectiveSpec) GetInstanceSize() string`
 
 GetInstanceSize returns the InstanceSize field if non-nil, zero value otherwise.
 
 ### GetInstanceSizeOk
 
-`func (o *ApiSearchDeploymentRequestSpec) GetInstanceSizeOk() (*string, bool)`
+`func (o *ApiSearchDeploymentEffectiveSpec) GetInstanceSizeOk() (*string, bool)`
 
 GetInstanceSizeOk returns a tuple with the InstanceSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInstanceSize
 
-`func (o *ApiSearchDeploymentRequestSpec) SetInstanceSize(v string)`
+`func (o *ApiSearchDeploymentEffectiveSpec) SetInstanceSize(v string)`
 
 SetInstanceSize sets InstanceSize field to given value.
 
+### HasInstanceSize
+
+`func (o *ApiSearchDeploymentEffectiveSpec) HasInstanceSize() bool`
+
+HasInstanceSize returns a boolean if a field has been set.
 ### GetNodeCount
 
-`func (o *ApiSearchDeploymentRequestSpec) GetNodeCount() int`
+`func (o *ApiSearchDeploymentEffectiveSpec) GetNodeCount() int`
 
 GetNodeCount returns the NodeCount field if non-nil, zero value otherwise.
 
 ### GetNodeCountOk
 
-`func (o *ApiSearchDeploymentRequestSpec) GetNodeCountOk() (*int, bool)`
+`func (o *ApiSearchDeploymentEffectiveSpec) GetNodeCountOk() (*int, bool)`
 
 GetNodeCountOk returns a tuple with the NodeCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNodeCount
 
-`func (o *ApiSearchDeploymentRequestSpec) SetNodeCount(v int)`
+`func (o *ApiSearchDeploymentEffectiveSpec) SetNodeCount(v int)`
 
 SetNodeCount sets NodeCount field to given value.
 
 ### HasNodeCount
 
-`func (o *ApiSearchDeploymentRequestSpec) HasNodeCount() bool`
+`func (o *ApiSearchDeploymentEffectiveSpec) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
 ### GetRegionName
 
-`func (o *ApiSearchDeploymentRequestSpec) GetRegionName() string`
+`func (o *ApiSearchDeploymentEffectiveSpec) GetRegionName() string`
 
 GetRegionName returns the RegionName field if non-nil, zero value otherwise.
 
 ### GetRegionNameOk
 
-`func (o *ApiSearchDeploymentRequestSpec) GetRegionNameOk() (*string, bool)`
+`func (o *ApiSearchDeploymentEffectiveSpec) GetRegionNameOk() (*string, bool)`
 
 GetRegionNameOk returns a tuple with the RegionName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegionName
 
-`func (o *ApiSearchDeploymentRequestSpec) SetRegionName(v string)`
+`func (o *ApiSearchDeploymentEffectiveSpec) SetRegionName(v string)`
 
 SetRegionName sets RegionName field to given value.
 
 ### HasRegionName
 
-`func (o *ApiSearchDeploymentRequestSpec) HasRegionName() bool`
+`func (o *ApiSearchDeploymentEffectiveSpec) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
 

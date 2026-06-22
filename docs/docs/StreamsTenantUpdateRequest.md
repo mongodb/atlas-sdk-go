@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider. | [optional] 
+**FailoverRegions** | Pointer to [**[]StreamsDataProcessRegion**](StreamsDataProcessRegion.md) | Failover regions for the stream workspace. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
+**ProcessorStatus** | Pointer to [**StreamsProcessorStatus**](StreamsProcessorStatus.md) |  | [optional] 
 **Region** | Pointer to **string** | Name of the cloud provider region hosting Atlas Stream Processing. | [optional] 
 **StreamConfig** | Pointer to [**StreamConfig**](StreamConfig.md) |  | [optional] 
 
@@ -52,6 +54,30 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *StreamsTenantUpdateRequest) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+### GetFailoverRegions
+
+`func (o *StreamsTenantUpdateRequest) GetFailoverRegions() []StreamsDataProcessRegion`
+
+GetFailoverRegions returns the FailoverRegions field if non-nil, zero value otherwise.
+
+### GetFailoverRegionsOk
+
+`func (o *StreamsTenantUpdateRequest) GetFailoverRegionsOk() (*[]StreamsDataProcessRegion, bool)`
+
+GetFailoverRegionsOk returns a tuple with the FailoverRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailoverRegions
+
+`func (o *StreamsTenantUpdateRequest) SetFailoverRegions(v []StreamsDataProcessRegion)`
+
+SetFailoverRegions sets FailoverRegions field to given value.
+
+### HasFailoverRegions
+
+`func (o *StreamsTenantUpdateRequest) HasFailoverRegions() bool`
+
+HasFailoverRegions returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsTenantUpdateRequest) GetLinks() []Link`
@@ -76,6 +102,30 @@ SetLinks sets Links field to given value.
 `func (o *StreamsTenantUpdateRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+### GetProcessorStatus
+
+`func (o *StreamsTenantUpdateRequest) GetProcessorStatus() StreamsProcessorStatus`
+
+GetProcessorStatus returns the ProcessorStatus field if non-nil, zero value otherwise.
+
+### GetProcessorStatusOk
+
+`func (o *StreamsTenantUpdateRequest) GetProcessorStatusOk() (*StreamsProcessorStatus, bool)`
+
+GetProcessorStatusOk returns a tuple with the ProcessorStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessorStatus
+
+`func (o *StreamsTenantUpdateRequest) SetProcessorStatus(v StreamsProcessorStatus)`
+
+SetProcessorStatus sets ProcessorStatus field to given value.
+
+### HasProcessorStatus
+
+`func (o *StreamsTenantUpdateRequest) HasProcessorStatus() bool`
+
+HasProcessorStatus returns a boolean if a field has been set.
 ### GetRegion
 
 `func (o *StreamsTenantUpdateRequest) GetRegion() string`

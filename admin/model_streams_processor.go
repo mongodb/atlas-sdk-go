@@ -7,6 +7,8 @@ type StreamsProcessor struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
 	// Read only field.
 	Id *string `json:"_id,omitempty"`
+	// Flag that enables or disables failover for the stream processor.
+	FailoverEnabled *bool `json:"failoverEnabled,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -67,6 +69,39 @@ func (o *StreamsProcessor) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StreamsProcessor) SetId(v string) {
 	o.Id = &v
+}
+
+// GetFailoverEnabled returns the FailoverEnabled field value if set, zero value otherwise
+func (o *StreamsProcessor) GetFailoverEnabled() bool {
+	if o == nil || IsNil(o.FailoverEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.FailoverEnabled
+}
+
+// GetFailoverEnabledOk returns a tuple with the FailoverEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsProcessor) GetFailoverEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.FailoverEnabled) {
+		return nil, false
+	}
+
+	return o.FailoverEnabled, true
+}
+
+// HasFailoverEnabled returns a boolean if a field has been set.
+func (o *StreamsProcessor) HasFailoverEnabled() bool {
+	if o != nil && !IsNil(o.FailoverEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailoverEnabled gets a reference to the given bool and assigns it to the FailoverEnabled field.
+func (o *StreamsProcessor) SetFailoverEnabled(v bool) {
+	o.FailoverEnabled = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

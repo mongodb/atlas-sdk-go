@@ -38,6 +38,32 @@ type StreamsApi interface {
 	AcceptVpcPeeringConnectionExecute(r AcceptVpcPeeringConnectionApiRequest) (*http.Response, error)
 
 	/*
+		CreateFailoverConnection Create One Failover Stream Connection
+
+		Creates one failover connection for a stream workspace in the specified project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Label that identifies the stream workspace.
+		@param connectionName Label that identifies the stream connection name.
+		@param streamsConnection Details to create one failover connection for a streams workspace in the specified project.
+		@return CreateFailoverConnectionApiRequest
+	*/
+	CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) CreateFailoverConnectionApiRequest
+	/*
+		CreateFailoverConnection Create One Failover Stream Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateFailoverConnectionApiParams - Parameters for the request
+		@return CreateFailoverConnectionApiRequest
+	*/
+	CreateFailoverConnectionWithParams(ctx context.Context, args *CreateFailoverConnectionApiParams) CreateFailoverConnectionApiRequest
+
+	// Method available only for mocking purposes
+	CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+
+	/*
 		CreatePrivateLinkConnection Create One Private Link Connection
 
 		Creates one Private Link in the specified project.
@@ -183,6 +209,32 @@ type StreamsApi interface {
 
 	// Method available only for mocking purposes
 	DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (*http.Response, error)
+
+	/*
+		DeleteStreamFailoverConnection Delete One Stream Failover Connection
+
+		Delete one failover connection of the specified stream workspace.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Label that identifies the stream workspace.
+		@param connectionName Label that identifies the stream connection.
+		@param failoverConnectionId Label that identifies the stream failover connection id.
+		@return DeleteStreamFailoverConnectionApiRequest
+	*/
+	DeleteStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) DeleteStreamFailoverConnectionApiRequest
+	/*
+		DeleteStreamFailoverConnection Delete One Stream Failover Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteStreamFailoverConnectionApiParams - Parameters for the request
+		@return DeleteStreamFailoverConnectionApiRequest
+	*/
+	DeleteStreamFailoverConnectionWithParams(ctx context.Context, args *DeleteStreamFailoverConnectionApiParams) DeleteStreamFailoverConnectionApiRequest
+
+	// Method available only for mocking purposes
+	DeleteStreamFailoverConnectionExecute(r DeleteStreamFailoverConnectionApiRequest) (*http.Response, error)
 
 	/*
 		DeleteStreamProcessor Delete One Stream Processor
@@ -378,6 +430,32 @@ type StreamsApi interface {
 	GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
+		GetStreamFailoverConnection Return One Stream Failover Connection
+
+		Get one failover connection of the specified stream workspace.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Label that identifies the stream workspace.
+		@param connectionName Label that identifies the stream connection.
+		@param failoverConnectionId Label that identifies the stream failover connection id.
+		@return GetStreamFailoverConnectionApiRequest
+	*/
+	GetStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) GetStreamFailoverConnectionApiRequest
+	/*
+		GetStreamFailoverConnection Return One Stream Failover Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetStreamFailoverConnectionApiParams - Parameters for the request
+		@return GetStreamFailoverConnectionApiRequest
+	*/
+	GetStreamFailoverConnectionWithParams(ctx context.Context, args *GetStreamFailoverConnectionApiParams) GetStreamFailoverConnectionApiRequest
+
+	// Method available only for mocking purposes
+	GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+
+	/*
 		GetStreamProcessor Return One Stream Processor
 
 		Get one Stream Processor within the specified stream workspace.
@@ -405,7 +483,7 @@ type StreamsApi interface {
 	/*
 		GetStreamProcessors Return All Stream Processors in One Stream Workspace
 
-		Returns all Stream Processors within the specified stream workspace.
+		Returns all Stream Processors within the specified stream workspace, including information on which processors are failover-eligible.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -472,6 +550,31 @@ type StreamsApi interface {
 
 	// Method available only for mocking purposes
 	ListActivePeeringConnectionsExecute(r ListActivePeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)
+
+	/*
+		ListFailoverConnections Return All Stream Failover Connections
+
+		Returns all failover connections for the specified connection in a stream workspace.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Label that identifies the stream workspace.
+		@param connectionName Label that identifies the stream connection.
+		@return ListFailoverConnectionsApiRequest
+	*/
+	ListFailoverConnections(ctx context.Context, groupId string, tenantName string, connectionName string) ListFailoverConnectionsApiRequest
+	/*
+		ListFailoverConnections Return All Stream Failover Connections
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListFailoverConnectionsApiParams - Parameters for the request
+		@return ListFailoverConnectionsApiRequest
+	*/
+	ListFailoverConnectionsWithParams(ctx context.Context, args *ListFailoverConnectionsApiParams) ListFailoverConnectionsApiRequest
+
+	// Method available only for mocking purposes
+	ListFailoverConnectionsExecute(r ListFailoverConnectionsApiRequest) (*PaginatedApiStreamsFailoverConnection, *http.Response, error)
 
 	/*
 		ListPrivateLinkConnections Return All Private Link Connections
@@ -693,6 +796,33 @@ type StreamsApi interface {
 	UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
+		UpdateStreamFailoverConnection Update One Stream Failover Connection
+
+		Update one failover connection of the specified stream workspace.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Label that identifies the stream workspace.
+		@param connectionName Label that identifies the stream connection.
+		@param failoverConnectionId Label that identifies the stream failover connection id.
+		@param streamsConnection Details to update one failover connection for a streams workspace in the specified project.
+		@return UpdateStreamFailoverConnectionApiRequest
+	*/
+	UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *StreamsConnection) UpdateStreamFailoverConnectionApiRequest
+	/*
+		UpdateStreamFailoverConnection Update One Stream Failover Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateStreamFailoverConnectionApiParams - Parameters for the request
+		@return UpdateStreamFailoverConnectionApiRequest
+	*/
+	UpdateStreamFailoverConnectionWithParams(ctx context.Context, args *UpdateStreamFailoverConnectionApiParams) UpdateStreamFailoverConnectionApiRequest
+
+	// Method available only for mocking purposes
+	UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+
+	/*
 		UpdateStreamProcessor Update One Stream Processor
 
 		Modify one existing Stream Processor within the specified stream workspace.
@@ -884,6 +1014,147 @@ func (a *StreamsApiService) AcceptVpcPeeringConnectionExecute(r AcceptVpcPeering
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type CreateFailoverConnectionApiRequest struct {
+	ctx               context.Context
+	ApiService        StreamsApi
+	groupId           string
+	tenantName        string
+	connectionName    string
+	streamsConnection *StreamsConnection
+}
+
+type CreateFailoverConnectionApiParams struct {
+	GroupId           string
+	TenantName        string
+	ConnectionName    string
+	StreamsConnection *StreamsConnection
+}
+
+func (a *StreamsApiService) CreateFailoverConnectionWithParams(ctx context.Context, args *CreateFailoverConnectionApiParams) CreateFailoverConnectionApiRequest {
+	return CreateFailoverConnectionApiRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           args.GroupId,
+		tenantName:        args.TenantName,
+		connectionName:    args.ConnectionName,
+		streamsConnection: args.StreamsConnection,
+	}
+}
+
+func (r CreateFailoverConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
+	return r.ApiService.CreateFailoverConnectionExecute(r)
+}
+
+/*
+CreateFailoverConnection Create One Failover Stream Connection
+
+Creates one failover connection for a stream workspace in the specified project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Label that identifies the stream workspace.
+	@param connectionName Label that identifies the stream connection name.
+	@return CreateFailoverConnectionApiRequest
+*/
+func (a *StreamsApiService) CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) CreateFailoverConnectionApiRequest {
+	return CreateFailoverConnectionApiRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           groupId,
+		tenantName:        tenantName,
+		connectionName:    connectionName,
+		streamsConnection: streamsConnection,
+	}
+}
+
+// CreateFailoverConnectionExecute executes the request
+//
+//	@return StreamsConnection
+func (a *StreamsApiService) CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreateFailoverConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.connectionName == "" {
+		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsConnection == nil {
+		return localVarReturnValue, nil, reportError("streamsConnection is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsConnection
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type CreatePrivateLinkConnectionApiRequest struct {
@@ -1593,6 +1864,130 @@ func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnecti
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DeleteStreamFailoverConnectionApiRequest struct {
+	ctx                  context.Context
+	ApiService           StreamsApi
+	groupId              string
+	tenantName           string
+	connectionName       string
+	failoverConnectionId string
+}
+
+type DeleteStreamFailoverConnectionApiParams struct {
+	GroupId              string
+	TenantName           string
+	ConnectionName       string
+	FailoverConnectionId string
+}
+
+func (a *StreamsApiService) DeleteStreamFailoverConnectionWithParams(ctx context.Context, args *DeleteStreamFailoverConnectionApiParams) DeleteStreamFailoverConnectionApiRequest {
+	return DeleteStreamFailoverConnectionApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		tenantName:           args.TenantName,
+		connectionName:       args.ConnectionName,
+		failoverConnectionId: args.FailoverConnectionId,
+	}
+}
+
+func (r DeleteStreamFailoverConnectionApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteStreamFailoverConnectionExecute(r)
+}
+
+/*
+DeleteStreamFailoverConnection Delete One Stream Failover Connection
+
+Delete one failover connection of the specified stream workspace.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Label that identifies the stream workspace.
+	@param connectionName Label that identifies the stream connection.
+	@param failoverConnectionId Label that identifies the stream failover connection id.
+	@return DeleteStreamFailoverConnectionApiRequest
+*/
+func (a *StreamsApiService) DeleteStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) DeleteStreamFailoverConnectionApiRequest {
+	return DeleteStreamFailoverConnectionApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              groupId,
+		tenantName:           tenantName,
+		connectionName:       connectionName,
+		failoverConnectionId: failoverConnectionId,
+	}
+}
+
+// DeleteStreamFailoverConnectionExecute executes the request
+func (a *StreamsApiService) DeleteStreamFailoverConnectionExecute(r DeleteStreamFailoverConnectionApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamFailoverConnection")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.connectionName == "" {
+		return nil, reportError("connectionName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
+	if r.failoverConnectionId == "" {
+		return nil, reportError("failoverConnectionId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"failoverConnectionId"+"}", url.PathEscape(r.failoverConnectionId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2657,6 +3052,147 @@ func (a *StreamsApiService) GetStreamConnectionExecute(r GetStreamConnectionApiR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetStreamFailoverConnectionApiRequest struct {
+	ctx                  context.Context
+	ApiService           StreamsApi
+	groupId              string
+	tenantName           string
+	connectionName       string
+	failoverConnectionId string
+}
+
+type GetStreamFailoverConnectionApiParams struct {
+	GroupId              string
+	TenantName           string
+	ConnectionName       string
+	FailoverConnectionId string
+}
+
+func (a *StreamsApiService) GetStreamFailoverConnectionWithParams(ctx context.Context, args *GetStreamFailoverConnectionApiParams) GetStreamFailoverConnectionApiRequest {
+	return GetStreamFailoverConnectionApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		tenantName:           args.TenantName,
+		connectionName:       args.ConnectionName,
+		failoverConnectionId: args.FailoverConnectionId,
+	}
+}
+
+func (r GetStreamFailoverConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
+	return r.ApiService.GetStreamFailoverConnectionExecute(r)
+}
+
+/*
+GetStreamFailoverConnection Return One Stream Failover Connection
+
+Get one failover connection of the specified stream workspace.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Label that identifies the stream workspace.
+	@param connectionName Label that identifies the stream connection.
+	@param failoverConnectionId Label that identifies the stream failover connection id.
+	@return GetStreamFailoverConnectionApiRequest
+*/
+func (a *StreamsApiService) GetStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) GetStreamFailoverConnectionApiRequest {
+	return GetStreamFailoverConnectionApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              groupId,
+		tenantName:           tenantName,
+		connectionName:       connectionName,
+		failoverConnectionId: failoverConnectionId,
+	}
+}
+
+// GetStreamFailoverConnectionExecute executes the request
+//
+//	@return StreamsConnection
+func (a *StreamsApiService) GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamFailoverConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.connectionName == "" {
+		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
+	if r.failoverConnectionId == "" {
+		return localVarReturnValue, nil, reportError("failoverConnectionId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"failoverConnectionId"+"}", url.PathEscape(r.failoverConnectionId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type GetStreamProcessorApiRequest struct {
 	ctx           context.Context
 	ApiService    StreamsApi
@@ -2844,7 +3380,7 @@ func (r GetStreamProcessorsApiRequest) Execute() (*PaginatedApiStreamsStreamProc
 /*
 GetStreamProcessors Return All Stream Processors in One Stream Workspace
 
-Returns all Stream Processors within the specified stream workspace.
+Returns all Stream Processors within the specified stream workspace, including information on which processors are failover-eligible.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3203,6 +3739,170 @@ func (a *StreamsApiService) ListActivePeeringConnectionsExecute(r ListActivePeer
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-11-13+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListFailoverConnectionsApiRequest struct {
+	ctx            context.Context
+	ApiService     StreamsApi
+	groupId        string
+	tenantName     string
+	connectionName string
+	itemsPerPage   *int
+	pageNum        *int
+}
+
+type ListFailoverConnectionsApiParams struct {
+	GroupId        string
+	TenantName     string
+	ConnectionName string
+	ItemsPerPage   *int
+	PageNum        *int
+}
+
+func (a *StreamsApiService) ListFailoverConnectionsWithParams(ctx context.Context, args *ListFailoverConnectionsApiParams) ListFailoverConnectionsApiRequest {
+	return ListFailoverConnectionsApiRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        args.GroupId,
+		tenantName:     args.TenantName,
+		connectionName: args.ConnectionName,
+		itemsPerPage:   args.ItemsPerPage,
+		pageNum:        args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListFailoverConnectionsApiRequest) ItemsPerPage(itemsPerPage int) ListFailoverConnectionsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListFailoverConnectionsApiRequest) PageNum(pageNum int) ListFailoverConnectionsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListFailoverConnectionsApiRequest) Execute() (*PaginatedApiStreamsFailoverConnection, *http.Response, error) {
+	return r.ApiService.ListFailoverConnectionsExecute(r)
+}
+
+/*
+ListFailoverConnections Return All Stream Failover Connections
+
+Returns all failover connections for the specified connection in a stream workspace.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Label that identifies the stream workspace.
+	@param connectionName Label that identifies the stream connection.
+	@return ListFailoverConnectionsApiRequest
+*/
+func (a *StreamsApiService) ListFailoverConnections(ctx context.Context, groupId string, tenantName string, connectionName string) ListFailoverConnectionsApiRequest {
+	return ListFailoverConnectionsApiRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        groupId,
+		tenantName:     tenantName,
+		connectionName: connectionName,
+	}
+}
+
+// ListFailoverConnectionsExecute executes the request
+//
+//	@return PaginatedApiStreamsFailoverConnection
+func (a *StreamsApiService) ListFailoverConnectionsExecute(r ListFailoverConnectionsApiRequest) (*PaginatedApiStreamsFailoverConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiStreamsFailoverConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListFailoverConnections")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.connectionName == "" {
+		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -4405,6 +5105,156 @@ func (a *StreamsApiService) UpdateStreamConnectionExecute(r UpdateStreamConnecti
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsConnection
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateStreamFailoverConnectionApiRequest struct {
+	ctx                  context.Context
+	ApiService           StreamsApi
+	groupId              string
+	tenantName           string
+	connectionName       string
+	failoverConnectionId string
+	streamsConnection    *StreamsConnection
+}
+
+type UpdateStreamFailoverConnectionApiParams struct {
+	GroupId              string
+	TenantName           string
+	ConnectionName       string
+	FailoverConnectionId string
+	StreamsConnection    *StreamsConnection
+}
+
+func (a *StreamsApiService) UpdateStreamFailoverConnectionWithParams(ctx context.Context, args *UpdateStreamFailoverConnectionApiParams) UpdateStreamFailoverConnectionApiRequest {
+	return UpdateStreamFailoverConnectionApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		tenantName:           args.TenantName,
+		connectionName:       args.ConnectionName,
+		failoverConnectionId: args.FailoverConnectionId,
+		streamsConnection:    args.StreamsConnection,
+	}
+}
+
+func (r UpdateStreamFailoverConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
+	return r.ApiService.UpdateStreamFailoverConnectionExecute(r)
+}
+
+/*
+UpdateStreamFailoverConnection Update One Stream Failover Connection
+
+Update one failover connection of the specified stream workspace.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Label that identifies the stream workspace.
+	@param connectionName Label that identifies the stream connection.
+	@param failoverConnectionId Label that identifies the stream failover connection id.
+	@return UpdateStreamFailoverConnectionApiRequest
+*/
+func (a *StreamsApiService) UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *StreamsConnection) UpdateStreamFailoverConnectionApiRequest {
+	return UpdateStreamFailoverConnectionApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              groupId,
+		tenantName:           tenantName,
+		connectionName:       connectionName,
+		failoverConnectionId: failoverConnectionId,
+		streamsConnection:    streamsConnection,
+	}
+}
+
+// UpdateStreamFailoverConnectionExecute executes the request
+//
+//	@return StreamsConnection
+func (a *StreamsApiService) UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdateStreamFailoverConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.connectionName == "" {
+		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
+	if r.failoverConnectionId == "" {
+		return localVarReturnValue, nil, reportError("failoverConnectionId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"failoverConnectionId"+"}", url.PathEscape(r.failoverConnectionId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsConnection == nil {
+		return localVarReturnValue, nil, reportError("streamsConnection is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

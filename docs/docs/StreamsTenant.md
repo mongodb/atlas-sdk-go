@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Connections** | Pointer to [**[]StreamsConnection**](StreamsConnection.md) | List of connections configured in the stream workspace. | [optional] [readonly] 
 **DataProcessRegion** | Pointer to [**StreamsDataProcessRegion**](StreamsDataProcessRegion.md) |  | [optional] 
+**FailoverRegions** | Pointer to [**[]StreamsDataProcessRegion**](StreamsDataProcessRegion.md) | List of failover regions configured for the stream workspace. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Hostnames** | Pointer to **[]string** | List that contains the hostnames assigned to the stream workspace. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -105,6 +106,30 @@ SetDataProcessRegion sets DataProcessRegion field to given value.
 `func (o *StreamsTenant) HasDataProcessRegion() bool`
 
 HasDataProcessRegion returns a boolean if a field has been set.
+### GetFailoverRegions
+
+`func (o *StreamsTenant) GetFailoverRegions() []StreamsDataProcessRegion`
+
+GetFailoverRegions returns the FailoverRegions field if non-nil, zero value otherwise.
+
+### GetFailoverRegionsOk
+
+`func (o *StreamsTenant) GetFailoverRegionsOk() (*[]StreamsDataProcessRegion, bool)`
+
+GetFailoverRegionsOk returns a tuple with the FailoverRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailoverRegions
+
+`func (o *StreamsTenant) SetFailoverRegions(v []StreamsDataProcessRegion)`
+
+SetFailoverRegions sets FailoverRegions field to given value.
+
+### HasFailoverRegions
+
+`func (o *StreamsTenant) HasFailoverRegions() bool`
+
+HasFailoverRegions returns a boolean if a field has been set.
 ### GetGroupId
 
 `func (o *StreamsTenant) GetGroupId() string`

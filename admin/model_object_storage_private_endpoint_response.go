@@ -15,11 +15,13 @@ type ObjectStoragePrivateEndpointResponse struct {
 	// Connection name of the Private Endpoint.
 	// Read only field.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
-	// Cloud provider region in which the Object Storage private endpoint is located.
+	// Cloud provider region in which the Object Storage bucket is located. For cross-region endpoints, this differs from `vpcRegionName`, which is the region in which the VPC interface endpoint is deployed.
 	RegionName *string `json:"regionName,omitempty"`
 	// State of the Object Storage private endpoint.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// Cloud provider region in which the VPC interface endpoint is deployed. Echoes `regionName` for same-region endpoints.
+	VpcRegionName *string `json:"vpcRegionName,omitempty"`
 }
 
 // NewObjectStoragePrivateEndpointResponse instantiates a new ObjectStoragePrivateEndpointResponse object
@@ -235,4 +237,37 @@ func (o *ObjectStoragePrivateEndpointResponse) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ObjectStoragePrivateEndpointResponse) SetStatus(v string) {
 	o.Status = &v
+}
+
+// GetVpcRegionName returns the VpcRegionName field value if set, zero value otherwise
+func (o *ObjectStoragePrivateEndpointResponse) GetVpcRegionName() string {
+	if o == nil || IsNil(o.VpcRegionName) {
+		var ret string
+		return ret
+	}
+	return *o.VpcRegionName
+}
+
+// GetVpcRegionNameOk returns a tuple with the VpcRegionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectStoragePrivateEndpointResponse) GetVpcRegionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.VpcRegionName) {
+		return nil, false
+	}
+
+	return o.VpcRegionName, true
+}
+
+// HasVpcRegionName returns a boolean if a field has been set.
+func (o *ObjectStoragePrivateEndpointResponse) HasVpcRegionName() bool {
+	if o != nil && !IsNil(o.VpcRegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcRegionName gets a reference to the given string and assigns it to the VpcRegionName field.
+func (o *ObjectStoragePrivateEndpointResponse) SetVpcRegionName(v string) {
+	o.VpcRegionName = &v
 }

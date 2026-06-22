@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider. | [optional] 
-**RegionName** | Pointer to **string** | Cloud provider region in which the Object Storage private endpoint is located. | [optional] 
+**RegionName** | Pointer to **string** | Cloud provider region of the S3 bucket that the Object Storage private endpoint accesses. For same-region endpoints, this is also the region where the VPC interface endpoint is deployed. | [optional] 
+**VpcRegionName** | Pointer to **string** | Cloud provider region in which the VPC interface endpoint is deployed. Omit to deploy the interface endpoint in the same region as the S3 bucket (same-region endpoint). Set to a region different from &#x60;regionName&#x60; to create a cross-region endpoint. | [optional] 
 
 ## Methods
 
@@ -74,6 +75,30 @@ SetRegionName sets RegionName field to given value.
 `func (o *ObjectStoragePrivateEndpointRequest) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+### GetVpcRegionName
+
+`func (o *ObjectStoragePrivateEndpointRequest) GetVpcRegionName() string`
+
+GetVpcRegionName returns the VpcRegionName field if non-nil, zero value otherwise.
+
+### GetVpcRegionNameOk
+
+`func (o *ObjectStoragePrivateEndpointRequest) GetVpcRegionNameOk() (*string, bool)`
+
+GetVpcRegionNameOk returns a tuple with the VpcRegionName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVpcRegionName
+
+`func (o *ObjectStoragePrivateEndpointRequest) SetVpcRegionName(v string)`
+
+SetVpcRegionName sets VpcRegionName field to given value.
+
+### HasVpcRegionName
+
+`func (o *ObjectStoragePrivateEndpointRequest) HasVpcRegionName() bool`
+
+HasVpcRegionName returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
