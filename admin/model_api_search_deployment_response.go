@@ -4,6 +4,9 @@ package admin
 
 // ApiSearchDeploymentResponse struct for ApiSearchDeploymentResponse
 type ApiSearchDeploymentResponse struct {
+	// List of settings that configure the Search Nodes for your cluster, with per-region detail including the region name and cloud provider.
+	// Read only field.
+	EffectiveSpecs *[]ApiSearchDeploymentEffectiveSpec `json:"effectiveSpecs,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster.
 	// Read only field.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
@@ -13,8 +16,9 @@ type ApiSearchDeploymentResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the search deployment.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// List of settings that configure the Search Nodes for your cluster. The configuration will be returned for each region and shard.
+	// Deprecated. `specs` will be removed in a future release. We strongly recommend that you use `effectiveSpecs` instead.
 	// Read only field.
+	// Deprecated
 	Specs *[]ApiSearchDeploymentSpec `json:"specs,omitempty"`
 	// Human-readable label that indicates the current operating condition of this search deployment.
 	// Read only field.
@@ -36,6 +40,39 @@ func NewApiSearchDeploymentResponse() *ApiSearchDeploymentResponse {
 func NewApiSearchDeploymentResponseWithDefaults() *ApiSearchDeploymentResponse {
 	this := ApiSearchDeploymentResponse{}
 	return &this
+}
+
+// GetEffectiveSpecs returns the EffectiveSpecs field value if set, zero value otherwise
+func (o *ApiSearchDeploymentResponse) GetEffectiveSpecs() []ApiSearchDeploymentEffectiveSpec {
+	if o == nil || IsNil(o.EffectiveSpecs) {
+		var ret []ApiSearchDeploymentEffectiveSpec
+		return ret
+	}
+	return *o.EffectiveSpecs
+}
+
+// GetEffectiveSpecsOk returns a tuple with the EffectiveSpecs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentResponse) GetEffectiveSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool) {
+	if o == nil || IsNil(o.EffectiveSpecs) {
+		return nil, false
+	}
+
+	return o.EffectiveSpecs, true
+}
+
+// HasEffectiveSpecs returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentResponse) HasEffectiveSpecs() bool {
+	if o != nil && !IsNil(o.EffectiveSpecs) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveSpecs gets a reference to the given []ApiSearchDeploymentEffectiveSpec and assigns it to the EffectiveSpecs field.
+func (o *ApiSearchDeploymentResponse) SetEffectiveSpecs(v []ApiSearchDeploymentEffectiveSpec) {
+	o.EffectiveSpecs = &v
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
@@ -138,6 +175,7 @@ func (o *ApiSearchDeploymentResponse) SetId(v string) {
 }
 
 // GetSpecs returns the Specs field value if set, zero value otherwise
+// Deprecated
 func (o *ApiSearchDeploymentResponse) GetSpecs() []ApiSearchDeploymentSpec {
 	if o == nil || IsNil(o.Specs) {
 		var ret []ApiSearchDeploymentSpec
@@ -148,6 +186,7 @@ func (o *ApiSearchDeploymentResponse) GetSpecs() []ApiSearchDeploymentSpec {
 
 // GetSpecsOk returns a tuple with the Specs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ApiSearchDeploymentResponse) GetSpecsOk() (*[]ApiSearchDeploymentSpec, bool) {
 	if o == nil || IsNil(o.Specs) {
 		return nil, false
@@ -166,6 +205,7 @@ func (o *ApiSearchDeploymentResponse) HasSpecs() bool {
 }
 
 // SetSpecs gets a reference to the given []ApiSearchDeploymentSpec and assigns it to the Specs field.
+// Deprecated
 func (o *ApiSearchDeploymentResponse) SetSpecs(v []ApiSearchDeploymentSpec) {
 	o.Specs = &v
 }

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **IsDataExplorerEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Data Explorer for the specified project. | [optional] 
 **IsDataExplorerGenAIFeaturesEnabled** | Pointer to **bool** | Flag that indicates whether to enable the use of generative AI features which make requests to 3rd party services in Data Explorer for the specified project. | [optional] 
 **IsDataExplorerGenAISampleDocumentPassingEnabled** | Pointer to **bool** | Flag that indicates whether to enable the passing of sample field values with the use of generative AI features in the Data Explorer for the specified project. | [optional] [default to false]
+**IsDataValidationEnabled** | Pointer to **bool** | Flag that indicates whether data validation is enabled for all clusters in the specified project. | [optional] 
 **IsExtendedStorageSizesEnabled** | Pointer to **bool** | Flag that indicates whether to enable extended storage sizes for the specified project. | [optional] 
 **IsNativeRerankingEnabled** | Pointer to **bool** | Flag that indicates whether to enable Native Reranking with Voyage AI models in the Aggregation Pipeline for the specified project. | [optional] 
 **IsPerformanceAdvisorEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Performance Advisor and Profiler for the specified project. | [optional] 
@@ -154,6 +155,30 @@ SetIsDataExplorerGenAISampleDocumentPassingEnabled sets IsDataExplorerGenAISampl
 `func (o *GroupSettings) HasIsDataExplorerGenAISampleDocumentPassingEnabled() bool`
 
 HasIsDataExplorerGenAISampleDocumentPassingEnabled returns a boolean if a field has been set.
+### GetIsDataValidationEnabled
+
+`func (o *GroupSettings) GetIsDataValidationEnabled() bool`
+
+GetIsDataValidationEnabled returns the IsDataValidationEnabled field if non-nil, zero value otherwise.
+
+### GetIsDataValidationEnabledOk
+
+`func (o *GroupSettings) GetIsDataValidationEnabledOk() (*bool, bool)`
+
+GetIsDataValidationEnabledOk returns a tuple with the IsDataValidationEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDataValidationEnabled
+
+`func (o *GroupSettings) SetIsDataValidationEnabled(v bool)`
+
+SetIsDataValidationEnabled sets IsDataValidationEnabled field to given value.
+
+### HasIsDataValidationEnabled
+
+`func (o *GroupSettings) HasIsDataValidationEnabled() bool`
+
+HasIsDataValidationEnabled returns a boolean if a field has been set.
 ### GetIsExtendedStorageSizesEnabled
 
 `func (o *GroupSettings) GetIsExtendedStorageSizesEnabled() bool`

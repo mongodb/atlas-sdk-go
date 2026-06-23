@@ -7,6 +7,12 @@ type StreamsProcessorWithStats struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
 	// Read only field.
 	Id string `json:"_id"`
+	// Flag that indicates whether the stream processor is eligible for failover.
+	// Read only field.
+	EligibleForFailover *bool `json:"eligibleForFailover,omitempty"`
+	// Flag that enables or disables failover for the stream processor.
+	// Read only field.
+	FailoverEnabled *bool `json:"failoverEnabled,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -70,6 +76,72 @@ func (o *StreamsProcessorWithStats) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *StreamsProcessorWithStats) SetId(v string) {
 	o.Id = v
+}
+
+// GetEligibleForFailover returns the EligibleForFailover field value if set, zero value otherwise
+func (o *StreamsProcessorWithStats) GetEligibleForFailover() bool {
+	if o == nil || IsNil(o.EligibleForFailover) {
+		var ret bool
+		return ret
+	}
+	return *o.EligibleForFailover
+}
+
+// GetEligibleForFailoverOk returns a tuple with the EligibleForFailover field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsProcessorWithStats) GetEligibleForFailoverOk() (*bool, bool) {
+	if o == nil || IsNil(o.EligibleForFailover) {
+		return nil, false
+	}
+
+	return o.EligibleForFailover, true
+}
+
+// HasEligibleForFailover returns a boolean if a field has been set.
+func (o *StreamsProcessorWithStats) HasEligibleForFailover() bool {
+	if o != nil && !IsNil(o.EligibleForFailover) {
+		return true
+	}
+
+	return false
+}
+
+// SetEligibleForFailover gets a reference to the given bool and assigns it to the EligibleForFailover field.
+func (o *StreamsProcessorWithStats) SetEligibleForFailover(v bool) {
+	o.EligibleForFailover = &v
+}
+
+// GetFailoverEnabled returns the FailoverEnabled field value if set, zero value otherwise
+func (o *StreamsProcessorWithStats) GetFailoverEnabled() bool {
+	if o == nil || IsNil(o.FailoverEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.FailoverEnabled
+}
+
+// GetFailoverEnabledOk returns a tuple with the FailoverEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsProcessorWithStats) GetFailoverEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.FailoverEnabled) {
+		return nil, false
+	}
+
+	return o.FailoverEnabled, true
+}
+
+// HasFailoverEnabled returns a boolean if a field has been set.
+func (o *StreamsProcessorWithStats) HasFailoverEnabled() bool {
+	if o != nil && !IsNil(o.FailoverEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailoverEnabled gets a reference to the given bool and assigns it to the FailoverEnabled field.
+func (o *StreamsProcessorWithStats) SetFailoverEnabled(v bool) {
+	o.FailoverEnabled = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

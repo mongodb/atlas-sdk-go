@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the stream processor. | [optional] [readonly] 
+**FailoverEnabled** | Pointer to **bool** | Flag that enables or disables failover for the stream processor. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable name of the stream processor. | [optional] 
 **Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
@@ -54,6 +55,30 @@ SetId sets Id field to given value.
 `func (o *StreamsProcessor) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+### GetFailoverEnabled
+
+`func (o *StreamsProcessor) GetFailoverEnabled() bool`
+
+GetFailoverEnabled returns the FailoverEnabled field if non-nil, zero value otherwise.
+
+### GetFailoverEnabledOk
+
+`func (o *StreamsProcessor) GetFailoverEnabledOk() (*bool, bool)`
+
+GetFailoverEnabledOk returns a tuple with the FailoverEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailoverEnabled
+
+`func (o *StreamsProcessor) SetFailoverEnabled(v bool)`
+
+SetFailoverEnabled sets FailoverEnabled field to given value.
+
+### HasFailoverEnabled
+
+`func (o *StreamsProcessor) HasFailoverEnabled() bool`
+
+HasFailoverEnabled returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsProcessor) GetLinks() []Link`

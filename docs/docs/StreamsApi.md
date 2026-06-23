@@ -5,12 +5,14 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AcceptVpcPeeringConnection**](StreamsApi.md#AcceptVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Accept One Incoming VPC Peering Connection
+[**CreateFailoverConnection**](StreamsApi.md#CreateFailoverConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Create One Failover Stream Connection
 [**CreatePrivateLinkConnection**](StreamsApi.md#CreatePrivateLinkConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection
 [**CreateStreamConnection**](StreamsApi.md#CreateStreamConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection
 [**CreateStreamProcessor**](StreamsApi.md#CreateStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor
 [**CreateStreamWorkspace**](StreamsApi.md#CreateStreamWorkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Workspace
 [**DeletePrivateLinkConnection**](StreamsApi.md#DeletePrivateLinkConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Delete One Private Link Connection
 [**DeleteStreamConnection**](StreamsApi.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
+[**DeleteStreamFailoverConnection**](StreamsApi.md#DeleteStreamFailoverConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Delete One Stream Failover Connection
 [**DeleteStreamProcessor**](StreamsApi.md#DeleteStreamProcessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor
 [**DeleteStreamWorkspace**](StreamsApi.md#DeleteStreamWorkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace
 [**DeleteVpcPeeringConnection**](StreamsApi.md#DeleteVpcPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection
@@ -19,10 +21,12 @@ Method | HTTP request | Description
 [**GetAccountDetails**](StreamsApi.md#GetAccountDetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region
 [**GetPrivateLinkConnection**](StreamsApi.md#GetPrivateLinkConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection
 [**GetStreamConnection**](StreamsApi.md#GetStreamConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection
+[**GetStreamFailoverConnection**](StreamsApi.md#GetStreamFailoverConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Return One Stream Failover Connection
 [**GetStreamProcessor**](StreamsApi.md#GetStreamProcessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Return One Stream Processor
 [**GetStreamProcessors**](StreamsApi.md#GetStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Workspace
 [**GetStreamWorkspace**](StreamsApi.md#GetStreamWorkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Workspace
 [**ListActivePeeringConnections**](StreamsApi.md#ListActivePeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections
+[**ListFailoverConnections**](StreamsApi.md#ListFailoverConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Return All Stream Failover Connections
 [**ListPrivateLinkConnections**](StreamsApi.md#ListPrivateLinkConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link Connections
 [**ListStreamConnections**](StreamsApi.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Workspaces
 [**ListStreamWorkspaces**](StreamsApi.md#ListStreamWorkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Workspaces in One Project
@@ -32,6 +36,7 @@ Method | HTTP request | Description
 [**StartStreamProcessorWith**](StreamsApi.md#StartStreamProcessorWith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options
 [**StopStreamProcessor**](StreamsApi.md#StopStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor
 [**UpdateStreamConnection**](StreamsApi.md#UpdateStreamConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection
+[**UpdateStreamFailoverConnection**](StreamsApi.md#UpdateStreamFailoverConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Update One Stream Failover Connection
 [**UpdateStreamProcessor**](StreamsApi.md#UpdateStreamProcessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor
 [**UpdateStreamWorkspace**](StreamsApi.md#UpdateStreamWorkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Workspace
 [**WithStreamSampleConnections**](StreamsApi.md#WithStreamSampleConnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Workspace with Sample Connections
@@ -55,7 +60,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -121,6 +126,94 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateFailoverConnection
+
+> StreamsConnection CreateFailoverConnection(ctx, groupId, tenantName, connectionName, streamsConnection StreamsConnection).Execute()
+
+Create One Failover Stream Connection
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    connectionName := "connectionName_example" // string | 
+    streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
+
+    resp, r, err := sdk.StreamsApi.CreateFailoverConnection(context.Background(), groupId, tenantName, connectionName, &streamsConnection).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateFailoverConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateFailoverConnection`: StreamsConnection
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateFailoverConnection`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**connectionName** | **string** | Label that identifies the stream connection name. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateFailoverConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **streamsConnection** | [**StreamsConnection**](StreamsConnection.md) | Details to create one failover connection for a streams workspace in the specified project. | 
+
+### Return type
+
+[**StreamsConnection**](StreamsConnection.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreatePrivateLinkConnection
 
 > StreamsPrivateLinkConnection CreatePrivateLinkConnection(ctx, groupId, streamsPrivateLinkConnection StreamsPrivateLinkConnection).Execute()
@@ -138,7 +231,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -220,7 +313,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -305,7 +398,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -390,7 +483,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -472,7 +565,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -553,7 +646,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -620,6 +713,93 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteStreamFailoverConnection
+
+> DeleteStreamFailoverConnection(ctx, groupId, tenantName, connectionName, failoverConnectionId).Execute()
+
+Delete One Stream Failover Connection
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    connectionName := "connectionName_example" // string | 
+    failoverConnectionId := "failoverConnectionId_example" // string | 
+
+    r, err := sdk.StreamsApi.DeleteStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamFailoverConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**connectionName** | **string** | Label that identifies the stream connection. | 
+**failoverConnectionId** | **string** | Label that identifies the stream failover connection id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteStreamFailoverConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteStreamProcessor
 
 > DeleteStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
@@ -637,7 +817,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -721,7 +901,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -802,7 +982,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -883,7 +1063,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -972,7 +1152,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1061,7 +1241,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1145,7 +1325,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1228,7 +1408,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1297,6 +1477,95 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetStreamFailoverConnection
+
+> StreamsConnection GetStreamFailoverConnection(ctx, groupId, tenantName, connectionName, failoverConnectionId).Execute()
+
+Return One Stream Failover Connection
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    connectionName := "connectionName_example" // string | 
+    failoverConnectionId := "failoverConnectionId_example" // string | 
+
+    resp, r, err := sdk.StreamsApi.GetStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamFailoverConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetStreamFailoverConnection`: StreamsConnection
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamFailoverConnection`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**connectionName** | **string** | Label that identifies the stream connection. | 
+**failoverConnectionId** | **string** | Label that identifies the stream failover connection id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetStreamFailoverConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+### Return type
+
+[**StreamsConnection**](StreamsConnection.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetStreamProcessor
 
 > StreamsProcessorWithStats GetStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
@@ -1314,7 +1583,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1400,7 +1669,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1489,7 +1758,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1574,7 +1843,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1641,6 +1910,96 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListFailoverConnections
+
+> PaginatedApiStreamsFailoverConnection ListFailoverConnections(ctx, groupId, tenantName, connectionName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Stream Failover Connections
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    connectionName := "connectionName_example" // string | 
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.StreamsApi.ListFailoverConnections(context.Background(), groupId, tenantName, connectionName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListFailoverConnections`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListFailoverConnections`: PaginatedApiStreamsFailoverConnection
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListFailoverConnections`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**connectionName** | **string** | Label that identifies the stream connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListFailoverConnectionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedApiStreamsFailoverConnection**](PaginatedApiStreamsFailoverConnection.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListPrivateLinkConnections
 
 > PaginatedApiStreamsPrivateLink ListPrivateLinkConnections(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
@@ -1658,7 +2017,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1742,7 +2101,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1829,7 +2188,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1913,7 +2272,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -1999,7 +2358,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -2080,7 +2439,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -2164,7 +2523,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -2250,7 +2609,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -2334,7 +2693,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -2405,6 +2764,97 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateStreamFailoverConnection
+
+> StreamsConnection UpdateStreamFailoverConnection(ctx, groupId, tenantName, connectionName, failoverConnectionId, streamsConnection StreamsConnection).Execute()
+
+Update One Stream Failover Connection
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    connectionName := "connectionName_example" // string | 
+    failoverConnectionId := "failoverConnectionId_example" // string | 
+    streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
+
+    resp, r, err := sdk.StreamsApi.UpdateStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId, &streamsConnection).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamFailoverConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateStreamFailoverConnection`: StreamsConnection
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamFailoverConnection`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Label that identifies the stream workspace. | 
+**connectionName** | **string** | Label that identifies the stream connection. | 
+**failoverConnectionId** | **string** | Label that identifies the stream failover connection id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateStreamFailoverConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+ **streamsConnection** | [**StreamsConnection**](StreamsConnection.md) | Details to update one failover connection for a streams workspace in the specified project. | 
+
+### Return type
+
+[**StreamsConnection**](StreamsConnection.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateStreamProcessor
 
 > StreamsProcessorWithStats UpdateStreamProcessor(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor StreamsModifyStreamProcessor).Execute()
@@ -2422,7 +2872,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -2510,7 +2960,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {
@@ -2595,7 +3045,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312020/admin"
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 func main() {

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Failover** | Pointer to [**StreamsStartProcessorFailover**](StreamsStartProcessorFailover.md) |  | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **ResumeFromCheckpoint** | Pointer to **bool** | When true or not specified, the stream processor resumes from its last checkpoint. When false, the stream processor starts fresh. | [optional] 
 **StartAtOperationTime** | Pointer to **time.Time** | The operation time after which the change stream source should begin reporting. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
@@ -28,6 +29,30 @@ NewStreamsStartStreamProcessorWithWithDefaults instantiates a new StreamsStartSt
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetFailover
+
+`func (o *StreamsStartStreamProcessorWith) GetFailover() StreamsStartProcessorFailover`
+
+GetFailover returns the Failover field if non-nil, zero value otherwise.
+
+### GetFailoverOk
+
+`func (o *StreamsStartStreamProcessorWith) GetFailoverOk() (*StreamsStartProcessorFailover, bool)`
+
+GetFailoverOk returns a tuple with the Failover field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailover
+
+`func (o *StreamsStartStreamProcessorWith) SetFailover(v StreamsStartProcessorFailover)`
+
+SetFailover sets Failover field to given value.
+
+### HasFailover
+
+`func (o *StreamsStartStreamProcessorWith) HasFailover() bool`
+
+HasFailover returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsStartStreamProcessorWith) GetLinks() []Link`

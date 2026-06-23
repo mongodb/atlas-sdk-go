@@ -424,12 +424,14 @@ Class        | Method        | HTTP request  | Description   |
 *ServiceAccountsApi* | [UpdateGroupServiceAccount](./docs/ServiceAccountsApi.md#updategroupserviceaccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update One Project Service Account |
 *ServiceAccountsApi* | [UpdateOrgServiceAccount](./docs/ServiceAccountsApi.md#updateorgserviceaccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update One Organization Service Account |
 *StreamsApi* | [AcceptVpcPeeringConnection](./docs/StreamsApi.md#acceptvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Accept One Incoming VPC Peering Connection |
+*StreamsApi* | [CreateFailoverConnection](./docs/StreamsApi.md#createfailoverconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Create One Failover Stream Connection |
 *StreamsApi* | [CreatePrivateLinkConnection](./docs/StreamsApi.md#createprivatelinkconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection |
 *StreamsApi* | [CreateStreamConnection](./docs/StreamsApi.md#createstreamconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection |
 *StreamsApi* | [CreateStreamProcessor](./docs/StreamsApi.md#createstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor |
 *StreamsApi* | [CreateStreamWorkspace](./docs/StreamsApi.md#createstreamworkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Workspace |
 *StreamsApi* | [DeletePrivateLinkConnection](./docs/StreamsApi.md#deleteprivatelinkconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Delete One Private Link Connection |
 *StreamsApi* | [DeleteStreamConnection](./docs/StreamsApi.md#deletestreamconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection |
+*StreamsApi* | [DeleteStreamFailoverConnection](./docs/StreamsApi.md#deletestreamfailoverconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Delete One Stream Failover Connection |
 *StreamsApi* | [DeleteStreamProcessor](./docs/StreamsApi.md#deletestreamprocessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor |
 *StreamsApi* | [DeleteStreamWorkspace](./docs/StreamsApi.md#deletestreamworkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace |
 *StreamsApi* | [DeleteVpcPeeringConnection](./docs/StreamsApi.md#deletevpcpeeringconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection |
@@ -438,10 +440,12 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [GetAccountDetails](./docs/StreamsApi.md#getaccountdetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region |
 *StreamsApi* | [GetPrivateLinkConnection](./docs/StreamsApi.md#getprivatelinkconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection |
 *StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection |
+*StreamsApi* | [GetStreamFailoverConnection](./docs/StreamsApi.md#getstreamfailoverconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Return One Stream Failover Connection |
 *StreamsApi* | [GetStreamProcessor](./docs/StreamsApi.md#getstreamprocessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Return One Stream Processor |
 *StreamsApi* | [GetStreamProcessors](./docs/StreamsApi.md#getstreamprocessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Workspace |
 *StreamsApi* | [GetStreamWorkspace](./docs/StreamsApi.md#getstreamworkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Workspace |
 *StreamsApi* | [ListActivePeeringConnections](./docs/StreamsApi.md#listactivepeeringconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections |
+*StreamsApi* | [ListFailoverConnections](./docs/StreamsApi.md#listfailoverconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Return All Stream Failover Connections |
 *StreamsApi* | [ListPrivateLinkConnections](./docs/StreamsApi.md#listprivatelinkconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link Connections |
 *StreamsApi* | [ListStreamConnections](./docs/StreamsApi.md#liststreamconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Workspaces |
 *StreamsApi* | [ListStreamWorkspaces](./docs/StreamsApi.md#liststreamworkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Workspaces in One Project |
@@ -451,6 +455,7 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [StartStreamProcessorWith](./docs/StreamsApi.md#startstreamprocessorwith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options |
 *StreamsApi* | [StopStreamProcessor](./docs/StreamsApi.md#stopstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor |
 *StreamsApi* | [UpdateStreamConnection](./docs/StreamsApi.md#updatestreamconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection |
+*StreamsApi* | [UpdateStreamFailoverConnection](./docs/StreamsApi.md#updatestreamfailoverconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Update One Stream Failover Connection |
 *StreamsApi* | [UpdateStreamProcessor](./docs/StreamsApi.md#updatestreamprocessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor |
 *StreamsApi* | [UpdateStreamWorkspace](./docs/StreamsApi.md#updatestreamworkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Workspace |
 *StreamsApi* | [WithStreamSampleConnections](./docs/StreamsApi.md#withstreamsampleconnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Workspace with Sample Connections |
@@ -489,6 +494,7 @@ Class        | Method        | HTTP request  | Description   |
  - [AddOrRemoveOrgRole](./docs/AddOrRemoveOrgRole.md)
  - [AddOrRemoveUserFromTeam](./docs/AddOrRemoveUserFromTeam.md)
  - [AddUserToTeam](./docs/AddUserToTeam.md)
+ - [AdditionalData](./docs/AdditionalData.md)
  - [AdvancedAutoScalingSettings](./docs/AdvancedAutoScalingSettings.md)
  - [AdvancedComputeAutoScaling](./docs/AdvancedComputeAutoScaling.md)
  - [AdvancedDiskBackupSnapshotSchedulePolicy](./docs/AdvancedDiskBackupSnapshotSchedulePolicy.md)
@@ -523,6 +529,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiMeasurementsGeneralViewAtlas](./docs/ApiMeasurementsGeneralViewAtlas.md)
  - [ApiPrivateDownloadDeliveryUrl](./docs/ApiPrivateDownloadDeliveryUrl.md)
  - [ApiPublicUsageDetailsQueryRequest](./docs/ApiPublicUsageDetailsQueryRequest.md)
+ - [ApiSearchDeploymentEffectiveSpec](./docs/ApiSearchDeploymentEffectiveSpec.md)
  - [ApiSearchDeploymentRequest](./docs/ApiSearchDeploymentRequest.md)
  - [ApiSearchDeploymentRequestSpec](./docs/ApiSearchDeploymentRequestSpec.md)
  - [ApiSearchDeploymentResponse](./docs/ApiSearchDeploymentResponse.md)
@@ -804,6 +811,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiInvoiceMetadata](./docs/PaginatedApiInvoiceMetadata.md)
  - [PaginatedApiSKU](./docs/PaginatedApiSKU.md)
  - [PaginatedApiStreamsConnection](./docs/PaginatedApiStreamsConnection.md)
+ - [PaginatedApiStreamsFailoverConnection](./docs/PaginatedApiStreamsFailoverConnection.md)
  - [PaginatedApiStreamsPrivateLink](./docs/PaginatedApiStreamsPrivateLink.md)
  - [PaginatedApiStreamsStreamProcessorWithStats](./docs/PaginatedApiStreamsStreamProcessorWithStats.md)
  - [PaginatedApiStreamsTenant](./docs/PaginatedApiStreamsTenant.md)
@@ -939,10 +947,12 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamsOptions](./docs/StreamsOptions.md)
  - [StreamsPrivateLinkConnection](./docs/StreamsPrivateLinkConnection.md)
  - [StreamsProcessor](./docs/StreamsProcessor.md)
+ - [StreamsProcessorStatus](./docs/StreamsProcessorStatus.md)
  - [StreamsProcessorWithStats](./docs/StreamsProcessorWithStats.md)
  - [StreamsPublicPrivateLinkNetworking](./docs/StreamsPublicPrivateLinkNetworking.md)
  - [StreamsPublicPrivateLinkNetworkingAccess](./docs/StreamsPublicPrivateLinkNetworkingAccess.md)
  - [StreamsSampleConnections](./docs/StreamsSampleConnections.md)
+ - [StreamsStartProcessorFailover](./docs/StreamsStartProcessorFailover.md)
  - [StreamsStartStreamProcessorWith](./docs/StreamsStartStreamProcessorWith.md)
  - [StreamsTenant](./docs/StreamsTenant.md)
  - [StreamsTenantUpdateRequest](./docs/StreamsTenantUpdateRequest.md)

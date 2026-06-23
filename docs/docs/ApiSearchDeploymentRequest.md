@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DefaultNodeCount** | Pointer to **int** | Default number of Search Nodes per region. Applied to a region without an explicit override. | [optional] 
 **Specs** | [**[]ApiSearchDeploymentRequestSpec**](ApiSearchDeploymentRequestSpec.md) | List of settings that configure the Search Nodes for your cluster. Provide one element per region when configuring asymmetric deployments; a single element applies to all regions. | 
 
 ## Methods
@@ -25,6 +26,30 @@ NewApiSearchDeploymentRequestWithDefaults instantiates a new ApiSearchDeployment
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetDefaultNodeCount
+
+`func (o *ApiSearchDeploymentRequest) GetDefaultNodeCount() int`
+
+GetDefaultNodeCount returns the DefaultNodeCount field if non-nil, zero value otherwise.
+
+### GetDefaultNodeCountOk
+
+`func (o *ApiSearchDeploymentRequest) GetDefaultNodeCountOk() (*int, bool)`
+
+GetDefaultNodeCountOk returns a tuple with the DefaultNodeCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultNodeCount
+
+`func (o *ApiSearchDeploymentRequest) SetDefaultNodeCount(v int)`
+
+SetDefaultNodeCount sets DefaultNodeCount field to given value.
+
+### HasDefaultNodeCount
+
+`func (o *ApiSearchDeploymentRequest) HasDefaultNodeCount() bool`
+
+HasDefaultNodeCount returns a boolean if a field has been set.
 ### GetSpecs
 
 `func (o *ApiSearchDeploymentRequest) GetSpecs() []ApiSearchDeploymentRequestSpec`

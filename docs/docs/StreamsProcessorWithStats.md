@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Unique 24-hexadecimal character string that identifies the stream processor. | [readonly] 
+**EligibleForFailover** | Pointer to **bool** | Flag that indicates whether the stream processor is eligible for failover. | [optional] [readonly] 
+**FailoverEnabled** | Pointer to **bool** | Flag that enables or disables failover for the stream processor. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | **string** | Human-readable name of the stream processor. | [readonly] 
 **Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
@@ -51,6 +53,54 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### GetEligibleForFailover
+
+`func (o *StreamsProcessorWithStats) GetEligibleForFailover() bool`
+
+GetEligibleForFailover returns the EligibleForFailover field if non-nil, zero value otherwise.
+
+### GetEligibleForFailoverOk
+
+`func (o *StreamsProcessorWithStats) GetEligibleForFailoverOk() (*bool, bool)`
+
+GetEligibleForFailoverOk returns a tuple with the EligibleForFailover field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEligibleForFailover
+
+`func (o *StreamsProcessorWithStats) SetEligibleForFailover(v bool)`
+
+SetEligibleForFailover sets EligibleForFailover field to given value.
+
+### HasEligibleForFailover
+
+`func (o *StreamsProcessorWithStats) HasEligibleForFailover() bool`
+
+HasEligibleForFailover returns a boolean if a field has been set.
+### GetFailoverEnabled
+
+`func (o *StreamsProcessorWithStats) GetFailoverEnabled() bool`
+
+GetFailoverEnabled returns the FailoverEnabled field if non-nil, zero value otherwise.
+
+### GetFailoverEnabledOk
+
+`func (o *StreamsProcessorWithStats) GetFailoverEnabledOk() (*bool, bool)`
+
+GetFailoverEnabledOk returns a tuple with the FailoverEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailoverEnabled
+
+`func (o *StreamsProcessorWithStats) SetFailoverEnabled(v bool)`
+
+SetFailoverEnabled sets FailoverEnabled field to given value.
+
+### HasFailoverEnabled
+
+`func (o *StreamsProcessorWithStats) HasFailoverEnabled() bool`
+
+HasFailoverEnabled returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsProcessorWithStats) GetLinks() []Link`

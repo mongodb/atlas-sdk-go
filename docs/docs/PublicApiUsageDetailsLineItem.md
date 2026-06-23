@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdditionalData** | Pointer to [**AdditionalData**](AdditionalData.md) |  | [optional] 
 **BillDate** | Pointer to **time.Time** | Billing date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
 **ClusterName** | Pointer to **string** | Cluster associated with the line item. | [optional] 
 **Description** | Pointer to **string** | Description of the line item, which can include SKU name and other identifying information. | [optional] 
@@ -32,6 +33,30 @@ NewPublicApiUsageDetailsLineItemWithDefaults instantiates a new PublicApiUsageDe
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAdditionalData
+
+`func (o *PublicApiUsageDetailsLineItem) GetAdditionalData() AdditionalData`
+
+GetAdditionalData returns the AdditionalData field if non-nil, zero value otherwise.
+
+### GetAdditionalDataOk
+
+`func (o *PublicApiUsageDetailsLineItem) GetAdditionalDataOk() (*AdditionalData, bool)`
+
+GetAdditionalDataOk returns a tuple with the AdditionalData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalData
+
+`func (o *PublicApiUsageDetailsLineItem) SetAdditionalData(v AdditionalData)`
+
+SetAdditionalData sets AdditionalData field to given value.
+
+### HasAdditionalData
+
+`func (o *PublicApiUsageDetailsLineItem) HasAdditionalData() bool`
+
+HasAdditionalData returns a boolean if a field has been set.
 ### GetBillDate
 
 `func (o *PublicApiUsageDetailsLineItem) GetBillDate() time.Time`

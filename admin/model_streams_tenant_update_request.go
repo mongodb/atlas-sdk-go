@@ -2,13 +2,16 @@
 
 package admin
 
-// StreamsTenantUpdateRequest Details to update a stream tenant.
+// StreamsTenantUpdateRequest Details to update a stream tenant, optionally accompanied by a processor status change (for example, triggering bulk regional failover).
 type StreamsTenantUpdateRequest struct {
 	// Human-readable label that identifies the cloud provider.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
+	// Failover regions for the stream workspace.
+	FailoverRegions *[]StreamsDataProcessRegion `json:"failoverRegions,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
-	Links *[]Link `json:"links,omitempty"`
+	Links           *[]Link                 `json:"links,omitempty"`
+	ProcessorStatus *StreamsProcessorStatus `json:"processorStatus,omitempty"`
 	// Name of the cloud provider region hosting Atlas Stream Processing.
 	Region       *string       `json:"region,omitempty"`
 	StreamConfig *StreamConfig `json:"streamConfig,omitempty"`
@@ -64,6 +67,39 @@ func (o *StreamsTenantUpdateRequest) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
+// GetFailoverRegions returns the FailoverRegions field value if set, zero value otherwise
+func (o *StreamsTenantUpdateRequest) GetFailoverRegions() []StreamsDataProcessRegion {
+	if o == nil || IsNil(o.FailoverRegions) {
+		var ret []StreamsDataProcessRegion
+		return ret
+	}
+	return *o.FailoverRegions
+}
+
+// GetFailoverRegionsOk returns a tuple with the FailoverRegions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsTenantUpdateRequest) GetFailoverRegionsOk() (*[]StreamsDataProcessRegion, bool) {
+	if o == nil || IsNil(o.FailoverRegions) {
+		return nil, false
+	}
+
+	return o.FailoverRegions, true
+}
+
+// HasFailoverRegions returns a boolean if a field has been set.
+func (o *StreamsTenantUpdateRequest) HasFailoverRegions() bool {
+	if o != nil && !IsNil(o.FailoverRegions) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailoverRegions gets a reference to the given []StreamsDataProcessRegion and assigns it to the FailoverRegions field.
+func (o *StreamsTenantUpdateRequest) SetFailoverRegions(v []StreamsDataProcessRegion) {
+	o.FailoverRegions = &v
+}
+
 // GetLinks returns the Links field value if set, zero value otherwise
 func (o *StreamsTenantUpdateRequest) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
@@ -95,6 +131,39 @@ func (o *StreamsTenantUpdateRequest) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsTenantUpdateRequest) SetLinks(v []Link) {
 	o.Links = &v
+}
+
+// GetProcessorStatus returns the ProcessorStatus field value if set, zero value otherwise
+func (o *StreamsTenantUpdateRequest) GetProcessorStatus() StreamsProcessorStatus {
+	if o == nil || IsNil(o.ProcessorStatus) {
+		var ret StreamsProcessorStatus
+		return ret
+	}
+	return *o.ProcessorStatus
+}
+
+// GetProcessorStatusOk returns a tuple with the ProcessorStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsTenantUpdateRequest) GetProcessorStatusOk() (*StreamsProcessorStatus, bool) {
+	if o == nil || IsNil(o.ProcessorStatus) {
+		return nil, false
+	}
+
+	return o.ProcessorStatus, true
+}
+
+// HasProcessorStatus returns a boolean if a field has been set.
+func (o *StreamsTenantUpdateRequest) HasProcessorStatus() bool {
+	if o != nil && !IsNil(o.ProcessorStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessorStatus gets a reference to the given StreamsProcessorStatus and assigns it to the ProcessorStatus field.
+func (o *StreamsTenantUpdateRequest) SetProcessorStatus(v StreamsProcessorStatus) {
+	o.ProcessorStatus = &v
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise

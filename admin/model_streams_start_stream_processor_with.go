@@ -8,6 +8,7 @@ import (
 
 // StreamsStartStreamProcessorWith A request to start a stream processor.
 type StreamsStartStreamProcessorWith struct {
+	Failover *StreamsStartProcessorFailover `json:"failover,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -34,6 +35,39 @@ func NewStreamsStartStreamProcessorWith() *StreamsStartStreamProcessorWith {
 func NewStreamsStartStreamProcessorWithWithDefaults() *StreamsStartStreamProcessorWith {
 	this := StreamsStartStreamProcessorWith{}
 	return &this
+}
+
+// GetFailover returns the Failover field value if set, zero value otherwise
+func (o *StreamsStartStreamProcessorWith) GetFailover() StreamsStartProcessorFailover {
+	if o == nil || IsNil(o.Failover) {
+		var ret StreamsStartProcessorFailover
+		return ret
+	}
+	return *o.Failover
+}
+
+// GetFailoverOk returns a tuple with the Failover field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsStartStreamProcessorWith) GetFailoverOk() (*StreamsStartProcessorFailover, bool) {
+	if o == nil || IsNil(o.Failover) {
+		return nil, false
+	}
+
+	return o.Failover, true
+}
+
+// HasFailover returns a boolean if a field has been set.
+func (o *StreamsStartStreamProcessorWith) HasFailover() bool {
+	if o != nil && !IsNil(o.Failover) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailover gets a reference to the given StreamsStartProcessorFailover and assigns it to the Failover field.
+func (o *StreamsStartStreamProcessorWith) SetFailover(v StreamsStartProcessorFailover) {
+	o.Failover = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

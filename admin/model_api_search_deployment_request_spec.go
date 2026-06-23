@@ -4,10 +4,14 @@ package admin
 
 // ApiSearchDeploymentRequestSpec struct for ApiSearchDeploymentRequestSpec
 type ApiSearchDeploymentRequestSpec struct {
+	// Cloud service provider that hosts the Search Nodes in this region. Required when a region is specified.
+	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Hardware specification for the Search Node instance sizes.
 	InstanceSize string `json:"instanceSize"`
 	// Number of Search Nodes in this region. Optional; falls back to the request-level default when omitted.
 	NodeCount *int `json:"nodeCount,omitempty"`
+	// Cloud provider region where Search Nodes are provisioned. Required when the request configures more than one region; optional for single-region requests.
+	RegionName *string `json:"regionName,omitempty"`
 }
 
 // NewApiSearchDeploymentRequestSpec instantiates a new ApiSearchDeploymentRequestSpec object
@@ -26,6 +30,39 @@ func NewApiSearchDeploymentRequestSpec(instanceSize string) *ApiSearchDeployment
 func NewApiSearchDeploymentRequestSpecWithDefaults() *ApiSearchDeploymentRequestSpec {
 	this := ApiSearchDeploymentRequestSpec{}
 	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
+func (o *ApiSearchDeploymentRequestSpec) GetCloudProvider() string {
+	if o == nil || IsNil(o.CloudProvider) {
+		var ret string
+		return ret
+	}
+	return *o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentRequestSpec) GetCloudProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.CloudProvider) {
+		return nil, false
+	}
+
+	return o.CloudProvider, true
+}
+
+// HasCloudProvider returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentRequestSpec) HasCloudProvider() bool {
+	if o != nil && !IsNil(o.CloudProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
+func (o *ApiSearchDeploymentRequestSpec) SetCloudProvider(v string) {
+	o.CloudProvider = &v
 }
 
 // GetInstanceSize returns the InstanceSize field value
@@ -83,4 +120,37 @@ func (o *ApiSearchDeploymentRequestSpec) HasNodeCount() bool {
 // SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
 func (o *ApiSearchDeploymentRequestSpec) SetNodeCount(v int) {
 	o.NodeCount = &v
+}
+
+// GetRegionName returns the RegionName field value if set, zero value otherwise
+func (o *ApiSearchDeploymentRequestSpec) GetRegionName() string {
+	if o == nil || IsNil(o.RegionName) {
+		var ret string
+		return ret
+	}
+	return *o.RegionName
+}
+
+// GetRegionNameOk returns a tuple with the RegionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentRequestSpec) GetRegionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.RegionName) {
+		return nil, false
+	}
+
+	return o.RegionName, true
+}
+
+// HasRegionName returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentRequestSpec) HasRegionName() bool {
+	if o != nil && !IsNil(o.RegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegionName gets a reference to the given string and assigns it to the RegionName field.
+func (o *ApiSearchDeploymentRequestSpec) SetRegionName(v string) {
+	o.RegionName = &v
 }
