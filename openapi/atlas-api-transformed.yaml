@@ -898,6 +898,14 @@ components:
           description: 'Routing key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `"notifications.[n].typeName" : "VICTOR_OPS"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.'
           example: test routing
           type: string
+        webhookBodyTemplate:
+          description: Template, using ${field} interpolation, that renders the HTTP body MongoDB Cloud sends with each webhook notification. Must render valid JSON. When unset, MongoDB Cloud sends its default JSON payload.
+          format: password
+          type: string
+        webhookHeadersTemplate:
+          description: Template, using ${field} interpolation, that renders the HTTP headers MongoDB Cloud sends with each webhook notification. Must render a JSON object mapping header name to header value. The webhook secret and the signature header are NOT exposed to templates.
+          format: password
+          type: string
         webhookSecret:
           description: |-
             Authentication secret for a webhook-based alert.
@@ -1184,6 +1192,12 @@ components:
           type: string
         sortOrder:
           description: Specify the sort order (ascending / descending) used to specify how to sort query results. Defaults to descending.
+          type: string
+      type: object
+    ApiVersion:
+      properties:
+        version:
+          description: Object representing a version of the Atlas Admin API.
           type: string
       type: object
     AtlasClusterOutageSimulationOutageFilter:
@@ -2377,7 +2391,7 @@ components:
           type: string
         vnetName:
           description: Human-readable label that identifies the VNet that you want to peer with the MongoDB Cloud VNet.
-          pattern: ^([-\w._()])$
+          pattern: ^([-\w._()])+$
           type: string
         errorMessage:
           description: Details of the error returned when requesting a GCP network peering resource. The resource returns `null` if the request succeeded.
@@ -3635,7 +3649,7 @@ components:
           type: string
         vnetName:
           description: Unique string that identifies the Azure VNet in which MongoDB Cloud clusters in this network peering container exist. The response returns **null** if no clusters exist in this network peering container.
-          pattern: ^([-\w._()])$
+          pattern: ^([-\w._()])+$
           readOnly: true
           type: string
         gcpProjectId:
@@ -4874,6 +4888,9 @@ components:
           description: Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
           pattern: ^([a-f0-9]{20})$
           type: string
+        instantUserProvisioningDisabled:
+          description: Flag that indicates whether instant user provisioning is disabled for this connected organization.
+          type: boolean
         orgId:
           description: Unique 24-hexadecimal digit string that identifies the connected organization configuration.
           example: 32b6e34b3d91647abb20e7b8
@@ -5090,6 +5107,56 @@ components:
           type: string
           writeOnly: true
       title: GCP Forwarding Rules
+      type: object
+    CreateGroupMcpConfigRequest:
+      properties:
+        ipAccessList:
+          description: List of IP access list entries that define allowed source addresses for this MCP configuration.
+          items:
+            $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+          maxItems: 200
+          type: array
+        mcpConfigName:
+          description: Human-readable name that identifies this MCP configuration.
+          minLength: 1
+          type: string
+        roles:
+          description: List of project roles to assign to this MCP configuration.
+          externalDocs:
+            description: Project-level Roles for Service Accounts
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
+          items:
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+      required:
+        - mcpConfigName
+        - roles
+      type: object
+    CreateOrgMcpConfigRequest:
+      properties:
+        ipAccessList:
+          description: List of IP access list entries that define allowed source addresses for this MCP configuration.
+          items:
+            $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+          maxItems: 200
+          type: array
+        mcpConfigName:
+          description: Human-readable name that identifies this MCP configuration.
+          minLength: 1
+          type: string
+        roles:
+          description: List of organization roles to assign to this MCP configuration.
+          items:
+            description: Organization roles available for Service Accounts.
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+      required:
+        - mcpConfigName
+        - roles
       type: object
     CreateOrganizationRequest:
       properties:
@@ -9003,6 +9070,69 @@ components:
       required:
         - dayOfWeek
       type: object
+    GroupMcpConfigResponse:
+      properties:
+        clientId:
+          description: Unique identifier for the Service Account client associated with this MCP configuration. Use this Service Account to connect to the Atlas Remote MCP.
+          example: mdb_sa_id_1234567890abcdef12345678
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+          readOnly: true
+          type: string
+        egressClientId:
+          description: Unique identifier for the egress Service Account client associated with this MCP configuration. This Service Account is managed by MongoDB Atlas.
+          example: mdb_sa_id_1234567890abcdef12345678
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+          readOnly: true
+          type: string
+        ipAccessList:
+          description: List of IP access list entries that define allowed source addresses for this MCP configuration.
+          items:
+            $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+          maxItems: 200
+          type: array
+        mcpConfigId:
+          description: Unique identifier that identifies this MCP configuration.
+          example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
+          pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+          readOnly: true
+          type: string
+        mcpConfigName:
+          description: Human-readable name that identifies this MCP configuration.
+          type: string
+        roles:
+          description: List of project roles associated with this MCP configuration.
+          externalDocs:
+            description: Project-level Roles for Service Accounts
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
+          items:
+            type: string
+          maxItems: 100
+          type: array
+      type: object
+    GroupMcpConfigUpdateRequest:
+      properties:
+        ipAccessList:
+          description: List of IP access list entries that define allowed source addresses for this MCP configuration. If provided, replaces the existing IP access list.
+          items:
+            $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+          maxItems: 200
+          type: array
+        mcpConfigName:
+          description: Updated human-readable name for this MCP configuration.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+          type: string
+        roles:
+          description: List of project roles associated with this MCP configuration. If provided, replaces the existing list of roles.
+          externalDocs:
+            description: Project-level Roles for Service Accounts
+            url: https://www.mongodb.com/docs/atlas/reference/user-roles/
+          items:
+            type: string
+          maxItems: 100
+          type: array
+      type: object
     GroupMigrationRequest:
       properties:
         destinationOrgId:
@@ -9129,7 +9259,9 @@ components:
         secretExpiresAfterHours:
           description: The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
           example: 8
+          exclusiveMinimum: true
           format: int32
+          minimum: 0
           type: integer
       required:
         - description
@@ -9601,6 +9733,28 @@ components:
           type: object
       type: object
       writeOnly: true
+    Info:
+      description: Information about the MongoDB Atlas Administration API OpenAPI Specification.
+      properties:
+        description:
+          description: Description of the MongoDB Atlas Administration API.
+          example: The MongoDB Atlas Administration API allows developers to manage all components in MongoDB Atlas.
+          type: string
+        license:
+          $ref: "#/components/schemas/License"
+        termsOfService:
+          description: Terms of Service URL.
+          example: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
+          type: string
+        title:
+          description: Title of the MongoDB Atlas Administration API.
+          example: MongoDB Atlas Administration API.
+          type: string
+        version:
+          description: Version of the MongoDB Atlas Administration API.
+          example: "2.0"
+          type: string
+      type: object
     IngestionPipelineRun:
       description: Run details of a Data Lake Pipeline.
       properties:
@@ -10622,6 +10776,18 @@ components:
           type: object
         zoneName:
           description: Human-readable label that identifies the zone in a Global Cluster. Provide this value only if `clusterType` is `GEOSHARDED`.
+          type: string
+      type: object
+    License:
+      description: License information of the MongoDB Atlas Administration API.
+      properties:
+        name:
+          description: Name of the license.
+          example: CC BY-NC-SA 3.0 US
+          type: string
+        url:
+          description: URL of the license.
+          example: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
           type: string
       type: object
     Link:
@@ -11714,6 +11880,53 @@ components:
               - endMinute
               - startHour
               - startMinute
+    OpenApiInfo:
+      properties:
+        info:
+          $ref: "#/components/schemas/Info"
+      type: object
+    OrgDelegationSettingsResponse:
+      properties:
+        delegatedMcpAccess:
+          description: Policy that controls how MCP (Model Context Protocol) delegated access is permitted within this organization. Possible values are `DISALLOWED`, `READ_ONLY`, and `READ_WRITE`. Defaults to `DISALLOWED`.
+          type: string
+        delegatedPartnerAccess:
+          description: Policy that controls whether partner delegated access is permitted within this organization. Possible values are `DISALLOWED` and `READ_WRITE`. Defaults to `DISALLOWED`.
+          type: string
+        idleRefreshTokenLifetime:
+          description: Maximum number of seconds a refresh token may be idle before it expires. When not set, the system default applies.
+          format: int64
+          maximum: 31536000
+          minimum: 1
+          type: integer
+        maximumRefreshTokenLifetime:
+          description: Maximum lifetime of a refresh token in seconds, regardless of activity. When not set, the system default applies.
+          format: int64
+          maximum: 31536000
+          minimum: 1
+          type: integer
+      type: object
+    OrgDelegationSettingsUpdateRequest:
+      properties:
+        delegatedMcpAccess:
+          description: Policy that controls how MCP (Model Context Protocol) delegated access is permitted within this organization. Possible values are `DISALLOWED`, `READ_ONLY`, and `READ_WRITE`. Defaults to `DISALLOWED`.
+          type: string
+        delegatedPartnerAccess:
+          description: Policy that controls whether partner delegated access is permitted within this organization. Possible values are `DISALLOWED` and `READ_WRITE`. Defaults to `DISALLOWED`.
+          type: string
+        idleRefreshTokenLifetime:
+          description: Maximum number of seconds a refresh token may be idle before it expires. Omit to leave unchanged; set to null to reset to the system default. Must be between 1 and 31536000 (1 year) when provided.
+          format: int64
+          maximum: 31536000
+          minimum: 1
+          type: integer
+        maximumRefreshTokenLifetime:
+          description: Maximum lifetime of a refresh token in seconds, regardless of activity. Omit to leave unchanged; set to null to reset to the system default. Must be between 1 and 31536000 (1 year) when provided.
+          format: int64
+          maximum: 31536000
+          minimum: 1
+          type: integer
+      type: object
     OrgFederationSettings:
       description: Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
       properties:
@@ -11780,6 +11993,65 @@ components:
           readOnly: true
           type: array
       type: object
+    OrgMcpConfigResponse:
+      properties:
+        clientId:
+          description: Unique identifier for the Service Account client associated with this MCP configuration. Use this Service Account to connect to the Atlas Remote MCP.
+          example: mdb_sa_id_1234567890abcdef12345678
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+          readOnly: true
+          type: string
+        egressClientId:
+          description: Unique identifier for the egress Service Account client associated with this MCP configuration. This Service Account is managed by MongoDB Atlas.
+          example: mdb_sa_id_1234567890abcdef12345678
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+          readOnly: true
+          type: string
+        ipAccessList:
+          description: List of IP access list entries that define allowed source addresses for this MCP configuration.
+          items:
+            $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+          maxItems: 200
+          type: array
+        mcpConfigId:
+          description: Unique identifier that identifies this MCP configuration.
+          example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
+          pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+          readOnly: true
+          type: string
+        mcpConfigName:
+          description: Human-readable name that identifies this MCP configuration.
+          type: string
+        roles:
+          description: List of organization roles associated with this MCP configuration.
+          items:
+            description: Organization roles available for Service Accounts.
+            type: string
+          maxItems: 100
+          type: array
+      type: object
+    OrgMcpConfigUpdateRequest:
+      properties:
+        ipAccessList:
+          description: List of IP access list entries that define allowed source addresses for this MCP configuration. If provided, replaces the existing IP access list.
+          items:
+            $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+          maxItems: 200
+          type: array
+        mcpConfigName:
+          description: Updated human-readable name for this MCP configuration.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+          type: string
+        roles:
+          description: List of organization roles associated with this MCP configuration. If provided, replaces the existing list of roles.
+          items:
+            description: Organization roles available for Service Accounts.
+            type: string
+          maxItems: 100
+          type: array
+      type: object
     OrgServiceAccount:
       description: Organization Service Account that Atlas created for the organization.
       properties:
@@ -11838,7 +12110,9 @@ components:
         secretExpiresAfterHours:
           description: The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
           example: 8
+          exclusiveMinimum: true
           format: int32
+          minimum: 0
           type: integer
       required:
         - description
@@ -12280,6 +12554,32 @@ components:
           description: List of returned documents that MongoDB Cloud provides when completing this request.
           items:
             $ref: "#/components/schemas/StreamsConnection"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
+    PaginatedApiVersions:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/ApiVersion"
           readOnly: true
           type: array
         totalCount:
@@ -15501,6 +15801,16 @@ components:
           description: Routing key associated with your Splunk On-Call account.
           example: test routing
           type: string
+        bodyTemplate:
+          description: "HTTP body template for a webhook-based alert. The rendered output MUST be valid JSON — MongoDB Cloud sends the rendered body with `Content-Type: application/json`. If the template fails to render, exceeds the 16 KB limit, or renders non-JSON output, MongoDB Cloud sends the webhook with its default JSON payload instead."
+          example: '{"alert":"${id}","severity":"${severity}"}'
+          format: password
+          type: string
+        headersTemplate:
+          description: 'HTTP headers template for a webhook-based alert. The rendered output MUST be a JSON object mapping header name to header value (e.g. `{"X-Custom-Header": "static-value", "X-Alert-Id": "${id}"}`). Placeholders may reference any alert-view field plus `${eventType}`; the webhook secret and the signature header are NOT exposed to templates. If the template fails to render, exceeds the 4 KB limit, or renders output that is not a valid JSON name→value object, MongoDB Cloud sends the webhook with its default set of headers instead.'
+          example: '{"X-Alert-Id":"${id}","X-Event-Type":"${eventType}"}'
+          format: password
+          type: string
         secret:
           description: |-
             An optional field returned if your webhook is configured with a secret.
@@ -15610,6 +15920,8 @@ components:
               - apiKey
           WEBHOOK:
             properties:
+              - bodyTemplate
+              - headersTemplate
               - secret
               - url
             required:
@@ -18103,6 +18415,32 @@ components:
       required:
         - results
       type: object
+    PaginatedGroupMcpConfig:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/GroupMcpConfigResponse"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
     PaginatedGroupUser:
       properties:
         links:
@@ -18144,6 +18482,32 @@ components:
           description: List of returned documents that MongoDB Cloud provides when completing this request.
           items:
             $ref: "#/components/schemas/ThirdPartyIntegration"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
+    PaginatedMcpConfigSecret:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecret"
           readOnly: true
           type: array
         totalCount:
@@ -18222,6 +18586,32 @@ components:
           description: List of returned documents that MongoDB Cloud provides when completing this request.
           items:
             $ref: "#/components/schemas/OrgGroup"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
+    PaginatedOrgMcpConfig:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/OrgMcpConfigResponse"
           readOnly: true
           type: array
         totalCount:
@@ -18859,7 +19249,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: d7345909d9e80107344a3bbee72fc3e2f4d9bfec
+  x-xgen-sha: 032a61133bb8c3d92cdc06b4e4688425434cb15e
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -24970,7 +25360,7 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/cloudProviderAccess?pretty=true"
       x-rolesRequirements:
-        - Project Owner
+        - Project Read Only
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Provider-Access/operation/listGroupCloudProviderAccess
     post:
       description: Creates one access role for the specified cloud provider. Some MongoDB Cloud features use these cloud provider access roles for authentication. For the GCP provider, if the project folder is not yet provisioned, Atlas will now create the role asynchronously. An intermediate role with status `IN_PROGRESS` will be returned, and the final service account will be provisioned. Once the GCP project is set up, subsequent requests will create the service account synchronously.
@@ -25243,7 +25633,7 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}?pretty=true"
       x-rolesRequirements:
-        - Project Owner
+        - Project Read Only
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Provider-Access/operation/getGroupCloudProviderAccess
     patch:
       description: Grants access to the specified project for the specified access role. This API endpoint is one step in a procedure to create unified access for MongoDB Cloud services. This is not required for GCP service account access.
@@ -43678,6 +44068,777 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Performance-Advisor/operation/enableGroupManagedSlowMs
       x-xgen-method-verb-override:
         customMethod: true
+  /api/atlas/v2/groups/{groupId}/mcpConfigs:
+    get:
+      description: Returns all MCP configurations associated with the specified project.
+      operationId: listGroupMcpConfigs
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/pageNum"
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedGroupMcpConfig"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All MCP Configurations for One Project
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations listGroupMcpConfigs --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupMcpConfigsApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		ListGroupMcpConfigsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/listGroupMcpConfigs
+    post:
+      description: Creates an MCP configuration for the specified project. Returns the configuration ID and ingress credentials.
+      operationId: createGroupMcpConfig
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/CreateGroupMcpConfigRequest"
+            x-xgen-version: 2025-03-12
+        description: MCP configuration to create.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/GroupMcpConfigResponse"
+              x-xgen-version: 2025-03-12
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One MCP Configuration for One Project
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations createGroupMcpConfig --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateGroupMcpConfigApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		CreateGroupMcpConfigWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/createGroupMcpConfig
+  /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}:
+    delete:
+      description: Deletes the MCP configuration with the specified ID for the specified project.
+      operationId: deleteGroupMcpConfig
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the MCP configuration to delete.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            type: string
+        - description: Flag that indicates whether to delete the MCP configuration even if it has active secrets. If false and active secrets exist, the request returns an error. Defaults to false.
+          in: query
+          name: cascading
+          schema:
+            default: false
+            type: boolean
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              x-xgen-version: 2025-03-12
+          description: No Content
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete One MCP Configuration for One Project
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations deleteGroupMcpConfig --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.DeleteGroupMcpConfigApiParams{}
+            	httpResp, err := client.RemoteMCPConfigurationsApi.
+            		DeleteGroupMcpConfigWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}"
+      x-rolesRequirements:
+        - Project Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/deleteGroupMcpConfig
+    get:
+      description: Returns the MCP configuration with the specified ID for the specified project.
+      operationId: getGroupMcpConfig
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/GroupMcpConfigResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One MCP Configuration for One Project
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations getGroupMcpConfig --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupMcpConfigApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		GetGroupMcpConfigWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/getGroupMcpConfig
+    patch:
+      description: "Updates the specified MCP configuration for the project. Supports partial updates: only provided fields are changed."
+      operationId: updateGroupMcpConfig
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the MCP configuration to update.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/GroupMcpConfigUpdateRequest"
+            x-xgen-version: 2025-03-12
+        description: MCP configuration fields to update.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/GroupMcpConfigResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update One MCP Configuration for One Project
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations updateGroupMcpConfig --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateGroupMcpConfigApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		UpdateGroupMcpConfigWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/updateGroupMcpConfig
+  /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets:
+    get:
+      description: Returns metadata for all secrets on the ingress service account of the specified project-level MCP configuration. Secret values are never returned.
+      operationId: listGroupMcpSecrets
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/pageNum"
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc012
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedMcpConfigSecret"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Secrets for One Project MCP Configuration
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations listGroupMcpSecrets --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupMcpConfigSecretsApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		ListGroupMcpConfigSecretsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/listGroupMcpConfigSecrets
+    post:
+      description: Creates a new secret on the ingress service account of the specified project-level MCP configuration. The plain-text secret value is returned only in this response and is never shown again.
+      operationId: createGroupMcpSecret
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc012
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountSecretRequest"
+            x-xgen-version: 2025-03-12
+        description: Secret creation request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2025-03-12
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Secret for One Project MCP Configuration
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations createGroupMcpSecret --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateGroupMcpConfigSecretApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		CreateGroupMcpConfigSecretWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/createGroupMcpConfigSecret
+  /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}:
+    delete:
+      description: Deletes the specified secret from the ingress service account of the specified project-level MCP configuration.
+      operationId: deleteGroupMcpSecret
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc012
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the secret.
+          in: path
+          name: secretId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc013
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              x-xgen-version: 2025-03-12
+          description: No Content
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete One Secret for One Project MCP Configuration
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations deleteGroupMcpSecret --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.DeleteGroupMcpConfigSecretApiParams{}
+            	httpResp, err := client.RemoteMCPConfigurationsApi.
+            		DeleteGroupMcpConfigSecretWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}"
+      x-rolesRequirements:
+        - Project Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/deleteGroupMcpConfigSecret
+    get:
+      description: Returns metadata for the specified secret on the ingress service account of a project-level MCP configuration. The secret value is never returned.
+      operationId: getGroupMcpSecret
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc012
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the secret.
+          in: path
+          name: secretId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc013
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Secret for One Project MCP Configuration
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations getGroupMcpSecret --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupMcpConfigSecretApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		GetGroupMcpConfigSecretWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/getGroupMcpConfigSecret
   /api/atlas/v2/groups/{groupId}/mongoDBVersions:
     get:
       description: Returns the MongoDB Long Term Support Major Versions available to new clusters in this project.
@@ -50360,12 +51521,18 @@ paths:
         verb: getInstance
   /api/atlas/v2/groups/{groupId}/serviceAccounts:
     get:
-      description: Returns all Service Accounts for the specified Project.
+      description: Returns all Service Accounts for the specified Project. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
       operationId: listGroupServiceAccounts
       parameters:
         - $ref: "#/components/parameters/groupId"
         - $ref: "#/components/parameters/itemsPerPage"
         - $ref: "#/components/parameters/pageNum"
+        - description: Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned.
+          in: query
+          name: includeSystemManaged
+          schema:
+            default: false
+            type: boolean
       responses:
         "200":
           content:
@@ -56125,6 +57292,7 @@ paths:
         - If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access. 
         - If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access. 
         - If the user is already active in the project's organization, MongoDB Cloud grants access to the project. 
+        - Replaces `INVITATION_EXPIRED` and `INVITATION_REJECTED` user with the same email. A conflict, if and only if, there is an existing `PENDING` or `ACTIVE` user. 
       operationId: addGroupUsers
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -56909,6 +58077,75 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/byName/{groupName}?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/getGroupByName
+  /api/atlas/v2/openapi/info:
+    get:
+      description: "This resource returns general information about the MongoDB Atlas Administration API OpenAPI Specification. Deprecated versions: v2-{2024-05-30}"
+      operationId: getOpenapiInfo
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OpenApiInfo"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return General Information on MongoDB Atlas Administration API OpenAPI Specification
+      tags:
+        - OpenAPI
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api openApi getOpenapiInfo --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOpenapiInfoApiParams{}
+            	sdkResp, httpResp, err := client.OpenAPIApi.
+            		GetOpenapiInfoWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/openapi/info?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/openapi/info?pretty=true"
+      x-xgen-method-verb-override:
+        customMethod: "False"
+        verb: get
   /api/atlas/v2/orgs:
     get:
       description: Returns all organizations to which the requesting Service Account or API Key has access.
@@ -58518,6 +59755,177 @@ paths:
       x-rolesRequirements:
         - Organization Billing Viewer
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/getOrgBillingCostExplorerUsage
+  /api/atlas/v2/orgs/{orgId}/delegationSettings:
+    get:
+      description: Returns the delegation settings for the specified organization.
+      operationId: getOrgDelegationSettings
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrgDelegationSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Delegation Settings for One Organization
+      tags:
+        - Organizations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api organizations getOrgDelegationSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgDelegationSettingsApiParams{}
+            	sdkResp, httpResp, err := client.OrganizationsApi.
+            		GetOrgDelegationSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/delegationSettings?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/delegationSettings?pretty=true"
+      x-rolesRequirements:
+        - Organization Member
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/getOrgDelegationSettings
+    patch:
+      description: Updates the delegation settings for the specified organization. Only fields present in the request body are updated; omitted fields retain their current values.
+      operationId: updateOrgDelegationSettings
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/OrgDelegationSettingsUpdateRequest"
+            x-xgen-version: 2025-03-12
+        description: Delegation settings to update.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrgDelegationSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update Delegation Settings for One Organization
+      tags:
+        - Organizations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api organizations updateOrgDelegationSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateOrgDelegationSettingsApiParams{}
+            	sdkResp, httpResp, err := client.OrganizationsApi.
+            		UpdateOrgDelegationSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/delegationSettings" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/delegationSettings" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrgDelegationSettings
   /api/atlas/v2/orgs/{orgId}/events:
     get:
       description: |-
@@ -60253,6 +61661,777 @@ paths:
       x-rolesRequirements:
         - Organization Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Migration-Service/operation/createOrgLiveMigrationLinkToken
+  /api/atlas/v2/orgs/{orgId}/mcpConfigs:
+    get:
+      description: Returns all MCP configurations associated with the specified organization.
+      operationId: listOrgMcpConfigs
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/pageNum"
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedOrgMcpConfig"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All MCP Configurations for One Organization
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations listOrgMcpConfigs --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListOrgMcpConfigsApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		ListOrgMcpConfigsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs?pretty=true"
+      x-rolesRequirements:
+        - Organization Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/listOrgMcpConfigs
+    post:
+      description: Creates an MCP configuration for the specified organization. Returns the configuration ID and ingress credentials.
+      operationId: createOrgMcpConfig
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/CreateOrgMcpConfigRequest"
+            x-xgen-version: 2025-03-12
+        description: MCP configuration to create.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrgMcpConfigResponse"
+              x-xgen-version: 2025-03-12
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One MCP Configuration for One Organization
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations createOrgMcpConfig --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateOrgMcpConfigApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		CreateOrgMcpConfigWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/createOrgMcpConfig
+  /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}:
+    delete:
+      description: Deletes the MCP configuration with the specified ID for the specified organization.
+      operationId: deleteOrgMcpConfig
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique identifier of the MCP configuration to delete.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            type: string
+        - description: Flag that indicates whether to delete the MCP configuration even if it has active secrets. If false and active secrets exist, the request returns an error. Defaults to false.
+          in: query
+          name: cascading
+          schema:
+            default: false
+            type: boolean
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              x-xgen-version: 2025-03-12
+          description: No Content
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete One MCP Configuration for One Organization
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations deleteOrgMcpConfig --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.DeleteOrgMcpConfigApiParams{}
+            	httpResp, err := client.RemoteMCPConfigurationsApi.
+            		DeleteOrgMcpConfigWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}"
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/deleteOrgMcpConfig
+    get:
+      description: Returns the MCP configuration with the specified ID for the specified organization.
+      operationId: getOrgMcpConfig
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrgMcpConfigResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One MCP Configuration for One Organization
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations getOrgMcpConfig --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgMcpConfigApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		GetOrgMcpConfigWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}?pretty=true"
+      x-rolesRequirements:
+        - Organization Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/getOrgMcpConfig
+    patch:
+      description: "Updates the specified MCP configuration for the organization. Supports partial updates: only provided fields are changed."
+      operationId: updateOrgMcpConfig
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique identifier of the MCP configuration to update.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
+            pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/OrgMcpConfigUpdateRequest"
+            x-xgen-version: 2025-03-12
+        description: MCP configuration fields to update.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrgMcpConfigResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update One MCP Configuration for One Organization
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations updateOrgMcpConfig --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateOrgMcpConfigApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		UpdateOrgMcpConfigWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/updateOrgMcpConfig
+  /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets:
+    get:
+      description: Returns metadata for all secrets on the ingress service account of the specified organization-level MCP configuration. Secret values are never returned.
+      operationId: listOrgMcpSecrets
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/pageNum"
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc012
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedMcpConfigSecret"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Secrets for One Organization MCP Configuration
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations listOrgMcpSecrets --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListOrgMcpConfigSecretsApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		ListOrgMcpConfigSecretsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets?pretty=true"
+      x-rolesRequirements:
+        - Organization Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/listOrgMcpConfigSecrets
+    post:
+      description: Creates a new secret on the ingress service account of the specified organization-level MCP configuration. The plain-text secret value is returned only in this response and is never shown again.
+      operationId: createOrgMcpSecret
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc012
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountSecretRequest"
+            x-xgen-version: 2025-03-12
+        description: Secret creation request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2025-03-12
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Secret for One Organization MCP Configuration
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations createOrgMcpSecret --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateOrgMcpConfigSecretApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		CreateOrgMcpConfigSecretWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/createOrgMcpConfigSecret
+  /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}:
+    delete:
+      description: Deletes the specified secret from the ingress service account of the specified organization-level MCP configuration.
+      operationId: deleteOrgMcpSecret
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc012
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the secret.
+          in: path
+          name: secretId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc013
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              x-xgen-version: 2025-03-12
+          description: No Content
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete One Secret for One Organization MCP Configuration
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations deleteOrgMcpSecret --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.DeleteOrgMcpConfigSecretApiParams{}
+            	httpResp, err := client.RemoteMCPConfigurationsApi.
+            		DeleteOrgMcpConfigSecretWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}"
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/deleteOrgMcpConfigSecret
+    get:
+      description: Returns metadata for the specified secret on the ingress service account of an organization-level MCP configuration. The secret value is never returned.
+      operationId: getOrgMcpSecret
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique identifier of the MCP configuration.
+          in: path
+          name: mcpConfigId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc012
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the secret.
+          in: path
+          name: secretId
+          required: true
+          schema:
+            example: 32b6e34b3d91647adeabc013
+            pattern: ^[a-fA-F0-9]{24}$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2025-03-12
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Secret for One Organization MCP Configuration
+      tags:
+        - Remote MCP Configurations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api remoteMcpConfigurations getOrgMcpSecret --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgMcpConfigSecretApiParams{}
+            	sdkResp, httpResp, err := client.RemoteMCPConfigurationsApi.
+            		GetOrgMcpConfigSecretWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}?pretty=true"
+      x-rolesRequirements:
+        - Organization Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Remote-MCP-Configurations/operation/getOrgMcpConfigSecret
   /api/atlas/v2/orgs/{orgId}/nonCompliantResources:
     get:
       description: Return all non-compliant resources for an organization.
@@ -60923,12 +63102,18 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Resource-Policies/operation/validateOrgResourcePolicies
   /api/atlas/v2/orgs/{orgId}/serviceAccounts:
     get:
-      description: Returns all Service Accounts for the specified Organization.
+      description: Returns all Service Accounts for the specified Organization. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
       operationId: listOrgServiceAccounts
       parameters:
         - $ref: "#/components/parameters/orgId"
         - $ref: "#/components/parameters/itemsPerPage"
         - $ref: "#/components/parameters/pageNum"
+        - description: Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned.
+          in: query
+          name: includeSystemManaged
+          schema:
+            default: false
+            type: boolean
       responses:
         "200":
           content:
@@ -62926,7 +65111,9 @@ paths:
       description: |-
         Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. 
 
-        **Note**: This resource cannot be used to add a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+        **Note**: This resource cannot be used to add a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint. 
+
+        A user whose only organization invitation has `EXPIRED` or been `REJECTED` is treated as not belonging to the organization (`USER_NOT_IN_ORG`); re-invite them to the organization first (which creates a new pending invitation), then add them to the team.
       externalDocs:
         description: "Deprecated: Invite One MongoDB Cloud User to Join One Project endpoint"
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/updateProjectInvitation
@@ -63338,7 +65525,9 @@ paths:
       description: |-
         Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. 
 
-        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
+        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization. 
+
+        Replaces `INVITATION_EXPIRED` and `INVITATION_REJECTED` user with the same email. A conflict, if and only if, there is an existing `PENDING` or `ACTIVE` user.
       operationId: createOrgUser
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -64512,6 +66701,79 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/controlPlaneIPAddresses?pretty=true"
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Root/operation/listControlPlaneIpAddresses
+  /api/atlas/v2/unauth/openapi/versions:
+    get:
+      description: API that provides a list of available versions for a given environment.
+      operationId: listOpenapiVersions
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: The environment to get the versions from. If not provided, it returns the versions for the given MongoDB URL. (E.g. prod for cloud.mongodb.com).
+          in: query
+          name: env
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+            application/vnd.atlas.2024-08-05+yaml:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Versions for One Environment
+      tags:
+        - OpenAPI
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api openApi listOpenapiVersions --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListOpenapiVersionsApiParams{}
+            	sdkResp, httpResp, err := client.OpenAPIApi.
+            		ListOpenapiVersionsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/openapi/versions?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/openapi/versions?pretty=true"
   /api/atlas/v2/users:
     post:
       deprecated: true
@@ -64857,6 +67119,8 @@ tags:
     name: Network Peering
   - description: Returns, adds, edits, or removes an online archive.
     name: Online Archive
+  - description: Returns information about the MongoDB Atlas Specification.
+    name: OpenAPI
   - description: Returns, adds, and edits organizational units in MongoDB Cloud.
     name: Organizations
   - description: Returns suggested indexes and slow query data for a database deployment. Also enables or disables MongoDB Cloud-managed slow operation thresholds. To view field values in a sample query, you must have the Project Data Access Read Only role or higher. Otherwise, MongoDB Cloud returns redacted data rather than the field values.
@@ -64876,6 +67140,8 @@ tags:
       description: Atlas API Rate Limits documentation
       url: http://dochub.mongodb.org/core/atlas-api-rate-limit
     name: Rate Limiting
+  - description: Returns and manages Remote MCP configurations for organizations and projects.
+    name: Remote MCP Configurations
   - description: Configure and manage Atlas Resource Policies within your organization.
     name: Resource Policies
   - description: Creates one index to a database deployment in a rolling manner. Rolling indexes build indexes on the applicable nodes sequentially and may reduce the performance impact of an index build if your deployment's average CPU utilization exceeds (N-1)/N-10% where N is the number of CPU threads available to mongod of if the WiredTiger cache fill ratio regularly exceeds 90%. If your deployment does not meet this criteria, use the default index build. You can't create a rolling index on an `M0` free cluster or `M2/M5` shared cluster.

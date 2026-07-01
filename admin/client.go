@@ -104,6 +104,8 @@ type APIClient struct {
 
 	OnlineArchiveApi OnlineArchiveApi
 
+	OpenAPIApi OpenAPIApi
+
 	OrganizationsApi OrganizationsApi
 
 	PerformanceAdvisorApi PerformanceAdvisorApi
@@ -121,6 +123,8 @@ type APIClient struct {
 	QueryShapeInsightsApi QueryShapeInsightsApi
 
 	RateLimitingApi RateLimitingApi
+
+	RemoteMCPConfigurationsApi RemoteMCPConfigurationsApi
 
 	ResourcePoliciesApi ResourcePoliciesApi
 
@@ -192,6 +196,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
+	c.OpenAPIApi = (*OpenAPIApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PerformanceAdvisorApi = (*PerformanceAdvisorApiService)(&c.common)
 	c.PrivateEndpointServicesApi = (*PrivateEndpointServicesApiService)(&c.common)
@@ -201,6 +206,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
 	c.QueryShapeInsightsApi = (*QueryShapeInsightsApiService)(&c.common)
 	c.RateLimitingApi = (*RateLimitingApiService)(&c.common)
+	c.RemoteMCPConfigurationsApi = (*RemoteMCPConfigurationsApiService)(&c.common)
 	c.ResourcePoliciesApi = (*ResourcePoliciesApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
