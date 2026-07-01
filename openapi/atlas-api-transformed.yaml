@@ -18859,7 +18859,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: d7345909d9e80107344a3bbee72fc3e2f4d9bfec
+  x-xgen-sha: 0b0e48a5d88c5c990402a8169e3f105ed24249f8
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -56125,6 +56125,7 @@ paths:
         - If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access. 
         - If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access. 
         - If the user is already active in the project's organization, MongoDB Cloud grants access to the project. 
+        - Replaces `INVITATION_EXPIRED` and `INVITATION_REJECTED` user with the same email. A conflict, if and only if, there is an existing `PENDING` or `ACTIVE` user. 
       operationId: addGroupUsers
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -62926,7 +62927,9 @@ paths:
       description: |-
         Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. 
 
-        **Note**: This resource cannot be used to add a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+        **Note**: This resource cannot be used to add a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint. 
+
+        A user whose only organization invitation has `EXPIRED` or been `REJECTED` is treated as not belonging to the organization (`USER_NOT_IN_ORG`); re-invite them to the organization first (which creates a new pending invitation), then add them to the team.
       externalDocs:
         description: "Deprecated: Invite One MongoDB Cloud User to Join One Project endpoint"
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/updateProjectInvitation
@@ -63338,7 +63341,9 @@ paths:
       description: |-
         Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. 
 
-        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
+        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization. 
+
+        Replaces `INVITATION_EXPIRED` and `INVITATION_REJECTED` user with the same email. A conflict, if and only if, there is an existing `PENDING` or `ACTIVE` user.
       operationId: createOrgUser
       parameters:
         - $ref: "#/components/parameters/orgId"
