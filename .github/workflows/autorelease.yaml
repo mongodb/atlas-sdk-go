@@ -16,13 +16,13 @@ jobs:
       release_tag: ${{ steps.set_tag.outputs.release_tag }}
     steps:
       - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
       - name: Release env
         id: set_tag
         working-directory: ./tools
         run: ./releaser/scripts/setghenv.sh
       - name: Create Release
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda
+        uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b
         with:
           body: ${{ env.RELEASE_NOTES }}
           tag_name: ${{ env.RELEASE_TAG }}
@@ -42,7 +42,7 @@ jobs:
       SILKBOMB_IMG: ${{ vars.SILKBOMB_IMG }}
       RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
         with:
           ref: ${{ env.RELEASE_TAG }}
       - name: Generate PURLs and SBOM
@@ -54,7 +54,7 @@ jobs:
           KONDUKTO_REPO: ${{ vars.KONDUKTO_REPO }}
           KONDUKTO_BRANCH_PREFIX: ${{ vars.KONDUKTO_BRANCH_PREFIX }}
       - name: Upload SBOM as release artifact
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda
+        uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b
         with:
           files: compliance/sbom.json
           tag_name: ${{ env.RELEASE_TAG }}
@@ -69,7 +69,7 @@ jobs:
       RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
     steps:
       - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
       - uses: mongodb/terraform-provider-mongodbatlas/.github/templates/run-script-and-commit@master
         with:
           script_call: |
