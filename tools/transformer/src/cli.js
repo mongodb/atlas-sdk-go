@@ -2,6 +2,7 @@
 const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 const { getAPI, saveAPI } = require("./engine/apifile");
+const { mergePreview } = require("./engine/mergePreview");
 const simpleLogger = require("simple-node-logger");
 const {
   runFlatteningTransformations,
@@ -65,6 +66,29 @@ yargs(hideBin(process.argv))
       try {
         const doc = readInput(args);
         const out = runAllTransformations(doc);
+        writeOutput({ doc: out, output: args.output });
+      } finally {
+        global.console = originalConsole;
+      }
+    },
+  )
+  .command(
+    "merge-preview",
+    "Merge a preview delta spec onto a full base spec",
+    (y) =>
+      y
+        .option("base", { alias: "b", type: "string", demandOption: true })
+        .option("preview", { alias: "p", type: "string", demandOption: true })
+        .option("output", { alias: "o", type: "string", demandOption: true })
+        .option("log-level", { type: "string" }),
+    async (args) => {
+      const log = configureLogger(args["log-level"]);
+      const originalConsole = global.console;
+      global.console = log;
+      try {
+        const base = getAPI([args.base]).doc;
+        const preview = getAPI([args.preview]).doc;
+        const out = mergePreview(base, preview);
         writeOutput({ doc: out, output: args.output });
       } finally {
         global.console = originalConsole;

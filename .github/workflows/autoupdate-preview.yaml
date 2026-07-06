@@ -27,6 +27,7 @@ jobs:
         run: make fetch_openapi
         env:
           API_BASE_URL:  https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
+          TARGET_API_VERSION: preview
       - name: Verify Changed files
         run: |
           FILES_CHANGED=false
@@ -61,6 +62,12 @@ jobs:
           body: |
             Automatic update for MongoDB Atlas Go Client based on *release candidate* OpenAPI file.
             **DO NOT MERGE THIS PR TO THE MAIN BRANCH**
+
+            > [!WARNING]
+            > **This preview SDK is not officially supported and is not production ready.**
+            > It includes in-progress, unstable API endpoints and fields that may change
+            > or be removed at any time without notice. Use it only for early development
+            > against pre-release Atlas features, never in production.
 
             > NOTE: This PR provides notifications for stability of the RC OpenAPI files
             > It is not intented to be merged!
