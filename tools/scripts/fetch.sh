@@ -75,7 +75,7 @@ if [ "${TARGET_API_VERSION}" = "preview" ]; then
   npm install
   npm exec --prefix .. atlas-openapi-transformer -- merge-preview \
     --base "${OPENAPI_FOLDER}/${OPENAPI_FILE_NAME}" \
-    --preview "${OPENAPI_FOLDER}/atlas-api-preview.yaml" \
+    --preview "${OPENAPI_FOLDER}/${PREVIEW_FILE_NAME}" \
     --output "${OPENAPI_FOLDER}/${OPENAPI_FILE_NAME}"
-  rm -f "${OPENAPI_FOLDER}/atlas-api-preview.yaml"
+  rm -f "${OPENAPI_FOLDER}/${PREVIEW_FILE_NAME}"
 fi
