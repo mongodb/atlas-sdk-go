@@ -10,10 +10,10 @@
     "yaml": "2.9.0"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "2.39.0",
+    "@openapitools/openapi-generator-cli": "2.39.1",
     "jest": "30.4.2",
     "replace-in-file": "^8.4.0",
-    "prettier": "3.9.1"
+    "prettier": "3.9.4"
   },
   "scripts": {
     "format": "prettier --write .",
