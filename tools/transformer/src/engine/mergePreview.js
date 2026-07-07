@@ -1,19 +1,10 @@
 /**
- * Merge a preview OpenAPI delta spec onto a full base (stable) spec.
+ * Overlay a preview OpenAPI delta (openapi-preview.yaml) onto a full base spec,
+ * so the result has every base endpoint plus the preview ones.
  *
- * The published `openapi-preview.yaml` only contains the operations that have
- * preview content (a small delta), not the full API surface. To produce a
- * usable preview SDK we overlay that delta on top of the latest stable spec so
- * the result is a superset: every stable endpoint plus the preview ones.
- *
- * Merge rules:
- *  - paths: preview paths/methods are added; a method present in both is
- *    overridden by the preview version (so preview media types win).
- *  - components.*: preview entries (schemas, parameters, responses,
- *    requestBodies, headers, securitySchemes, ...) are added/overridden so that
- *    $refs used by preview operations resolve.
- *  - tags: preview tags not already present are appended.
- *  - info/servers/security and everything else are kept from the base.
+ * For paths, components.*, and tags: preview-only entries are added, and
+ * entries with the same key are replaced by the preview version
+ * (no field-level merge). Everything else is kept from the base.
  *
  * @param {*} base full stable OpenAPI JSON doc (mutated and returned)
  * @param {*} preview preview delta OpenAPI JSON doc

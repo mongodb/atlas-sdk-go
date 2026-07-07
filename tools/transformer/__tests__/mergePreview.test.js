@@ -87,10 +87,16 @@ test("components are merged and preview entries override matching ones", () => {
   const preview = {
     components: {
       schemas: {
-        // Overrides existing base schema.
+        // Overrides the existing base schema. Real preview delta specs always
+        // redeclare the complete schema (verified against the dev spec: every
+        // name collision carries the full property set), so `id` is repeated
+        // here alongside the new preview field.
         Cluster: {
           type: "object",
-          properties: { previewField: { type: "string" } },
+          properties: {
+            id: { type: "string" },
+            previewField: { type: "string" },
+          },
         },
         // New schema referenced by preview operations.
         StreamPreview: { type: "object" },
@@ -103,11 +109,30 @@ test("components are merged and preview entries override matching ones", () => {
 
   const merged = mergePreview(baseDoc(), preview);
 
+  expect(merged.components.schemas.Cluster.properties).toHaveProperty("id");
   expect(merged.components.schemas.Cluster.properties).toHaveProperty(
     "previewField",
   );
   expect(merged.components.schemas).toHaveProperty("StreamPreview");
   expect(merged.components.parameters).toHaveProperty("previewParam");
+});
+
+test("component override replaces the whole entry, not a field-level merge", () => {
+  // A partial preview schema would drop any base fields it doesn't repeat.
+  const preview = {
+    components: {
+      schemas: {
+        Cluster: { type: "object", properties: { previewOnly: {} } },
+      },
+    },
+  };
+
+  const merged = mergePreview(baseDoc(), preview);
+
+  expect(merged.components.schemas.Cluster.properties).not.toHaveProperty("id");
+  expect(merged.components.schemas.Cluster.properties).toHaveProperty(
+    "previewOnly",
+  );
 });
 
 test("preview tags are appended without duplicating existing ones", () => {
