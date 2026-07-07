@@ -58,6 +58,7 @@ jobs:
           title: "APIBot: Dev Preview SDK (dev spec + preview APIs) — DO NOT MERGE"
           commit-message: "temp: client update"
           delete-branch: true
+          draft: true
           branch: dev-latest
           body: |
             Automatic update for MongoDB Atlas Go Client based on *release candidate* OpenAPI file.
