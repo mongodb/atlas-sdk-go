@@ -27,6 +27,7 @@ jobs:
         run: make fetch_openapi
         env:
           API_BASE_URL:  https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
+          TARGET_API_VERSION: preview
       - name: Verify Changed files
         run: |
           FILES_CHANGED=false
@@ -54,13 +55,23 @@ jobs:
         if: env.FILES_CHANGED == 'true'
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
-          title: "APIBot: GO SDK Dev Preview"
+          title: "APIBot: Dev Preview SDK (dev spec + preview APIs) — DO NOT MERGE"
           commit-message: "temp: client update"
           delete-branch: true
+          draft: true
           branch: dev-latest
           body: |
             Automatic update for MongoDB Atlas Go Client based on *release candidate* OpenAPI file.
             **DO NOT MERGE THIS PR TO THE MAIN BRANCH**
+
+            > [!WARNING]
+            > **This preview SDK is not officially supported and is not production ready.**
+            > It is generated from the `dev` OpenAPI spec and additionally merges the
+            > preview delta (`openapi-preview.yaml`, media type
+            > `application/vnd.atlas.preview+json`) on top of it. It includes in-progress,
+            > unstable API endpoints and fields that may change or be removed at any time
+            > without notice. Use it only for early development against pre-release Atlas
+            > features, never in production.
 
             > NOTE: This PR provides notifications for stability of the RC OpenAPI files
             > It is not intented to be merged!
