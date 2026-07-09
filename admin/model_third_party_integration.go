@@ -29,9 +29,9 @@ type ThirdPartyIntegration struct {
 	// Toggle sending user provided group and cluster resource tags with the Datadog metrics.
 	SendUserProvidedResourceTags *bool `json:"sendUserProvidedResourceTags,omitempty"`
 	// Unique 40-hexadecimal digit string that identifies your New Relic account.
-	AccountId *string `json:"accountId,omitempty"`
+	AccountId *string `json:"accountId,omitempty" validate:"regexp=^([0-9a-f]){40}$"`
 	// Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
-	LicenseKey *string `json:"licenseKey,omitempty"`
+	LicenseKey *string `json:"licenseKey,omitempty" validate:"regexp=^([0-9a-f]){40}$"`
 	// Query key used to access your New Relic account.
 	ReadToken *string `json:"readToken,omitempty"`
 	// Insert key associated with your New Relic account.

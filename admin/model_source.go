@@ -9,7 +9,7 @@ type Source struct {
 	// Label that identifies the source cluster name.
 	ClusterName string `json:"clusterName"`
 	// Unique 24-hexadecimal digit string that identifies the source project.
-	GroupId string `json:"groupId"`
+	GroupId string `json:"groupId" validate:"regexp=^([a-f0-9]{24})$"`
 	// Flag that indicates whether MongoDB Automation manages authentication to the source cluster. If true, do not provide values for username and password.
 	ManagedAuthentication bool `json:"managedAuthentication"`
 	// Password that authenticates the username to the source cluster.

@@ -5,9 +5,9 @@ package admin
 // OrgServiceAccountUpdateRequest struct for OrgServiceAccountUpdateRequest
 type OrgServiceAccountUpdateRequest struct {
 	// Human readable description for the Service Account.
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.,' ]*$"`
 	// Human-readable name for the Service Account. The name is modifiable and does not have to be unique.
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.,' ]*$"`
 	// A list of organization-level roles for the Service Account.
 	Roles *[]string `json:"roles,omitempty"`
 }

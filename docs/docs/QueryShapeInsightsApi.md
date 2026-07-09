@@ -1,14 +1,14 @@
-# \QueryShapeInsightsApi
+# \QueryShapeInsightsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetClusterQueryShape**](QueryShapeInsightsApi.md#GetClusterQueryShape) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Return One Query Shape
-[**GetQueryShapeDetails**](QueryShapeInsightsApi.md#GetQueryShapeDetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details
-[**ListClusterQueryShapes**](QueryShapeInsightsApi.md#ListClusterQueryShapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes
-[**ListQueryShapeSummaries**](QueryShapeInsightsApi.md#ListQueryShapeSummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries
-[**UpdateClusterQueryShape**](QueryShapeInsightsApi.md#UpdateClusterQueryShape) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Update Query Shape Rejection Status
+[**GetClusterQueryShape**](QueryShapeInsightsAPI.md#GetClusterQueryShape) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Return One Query Shape
+[**GetQueryShapeDetails**](QueryShapeInsightsAPI.md#GetQueryShapeDetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details
+[**ListClusterQueryShapes**](QueryShapeInsightsAPI.md#ListClusterQueryShapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes
+[**ListQueryShapeSummaries**](QueryShapeInsightsAPI.md#ListQueryShapeSummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries
+[**UpdateClusterQueryShape**](QueryShapeInsightsAPI.md#UpdateClusterQueryShape) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Update Query Shape Rejection Status
 
 
 
@@ -46,9 +46,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     queryShapeHash := "queryShapeHash_example" // string | 
 
-    resp, r, err := sdk.QueryShapeInsightsApi.GetClusterQueryShape(context.Background(), groupId, clusterName, queryShapeHash).Execute()
+    resp, r, err := sdk.QueryShapeInsightsAPI.GetClusterQueryShape(context.Background(), groupId, clusterName, queryShapeHash).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.GetClusterQueryShape`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsAPI.GetClusterQueryShape`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -56,7 +56,7 @@ func main() {
         return
     }
     // response from `GetClusterQueryShape`: QueryShapeResponse
-    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.GetClusterQueryShape`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsAPI.GetClusterQueryShape`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -135,9 +135,9 @@ func main() {
     until := int64(789) // int64 |  (optional)
     processIds := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.QueryShapeInsightsApi.GetQueryShapeDetails(context.Background(), groupId, clusterName, queryShapeHash).Since(since).Until(until).ProcessIds(processIds).Execute()
+    resp, r, err := sdk.QueryShapeInsightsAPI.GetQueryShapeDetails(context.Background(), groupId, clusterName, queryShapeHash).Since(since).Until(until).ProcessIds(processIds).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.GetQueryShapeDetails`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsAPI.GetQueryShapeDetails`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -145,7 +145,7 @@ func main() {
         return
     }
     // response from `GetQueryShapeDetails`: QueryStatsDetailsResponse
-    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.GetQueryShapeDetails`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsAPI.GetQueryShapeDetails`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -227,9 +227,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.QueryShapeInsightsApi.ListClusterQueryShapes(context.Background(), groupId, clusterName).Status(status).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.QueryShapeInsightsAPI.ListClusterQueryShapes(context.Background(), groupId, clusterName).Status(status).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.ListClusterQueryShapes`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsAPI.ListClusterQueryShapes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -237,7 +237,7 @@ func main() {
         return
     }
     // response from `ListClusterQueryShapes`: PaginatedQueryShapes
-    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.ListClusterQueryShapes`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsAPI.ListClusterQueryShapes`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -322,9 +322,9 @@ func main() {
     series := []string{"Inner_example"} // []string |  (optional)
     queryShapeHashes := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.QueryShapeInsightsApi.ListQueryShapeSummaries(context.Background(), groupId, clusterName).Since(since).Until(until).ProcessIds(processIds).Namespaces(namespaces).Commands(commands).NSummaries(nSummaries).Series(series).QueryShapeHashes(queryShapeHashes).Execute()
+    resp, r, err := sdk.QueryShapeInsightsAPI.ListQueryShapeSummaries(context.Background(), groupId, clusterName).Since(since).Until(until).ProcessIds(processIds).Namespaces(namespaces).Commands(commands).NSummaries(nSummaries).Series(series).QueryShapeHashes(queryShapeHashes).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.ListQueryShapeSummaries`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsAPI.ListQueryShapeSummaries`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -332,7 +332,7 @@ func main() {
         return
     }
     // response from `ListQueryShapeSummaries`: QueryStatsSummaryListResponse
-    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.ListQueryShapeSummaries`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsAPI.ListQueryShapeSummaries`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -415,9 +415,9 @@ func main() {
     queryShapeHash := "queryShapeHash_example" // string | 
     queryShapeUpdateRequest := *admin.NewQueryShapeUpdateRequest("Status_example") // QueryShapeUpdateRequest | 
 
-    resp, r, err := sdk.QueryShapeInsightsApi.UpdateClusterQueryShape(context.Background(), groupId, clusterName, queryShapeHash, &queryShapeUpdateRequest).Execute()
+    resp, r, err := sdk.QueryShapeInsightsAPI.UpdateClusterQueryShape(context.Background(), groupId, clusterName, queryShapeHash, &queryShapeUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsApi.UpdateClusterQueryShape`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `QueryShapeInsightsAPI.UpdateClusterQueryShape`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -425,7 +425,7 @@ func main() {
         return
     }
     // response from `UpdateClusterQueryShape`: QueryShapeResponse
-    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsApi.UpdateClusterQueryShape`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `QueryShapeInsightsAPI.UpdateClusterQueryShape`: %v (%v)\n", resp, r)
 }
 ```
 

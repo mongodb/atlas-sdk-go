@@ -17,10 +17,10 @@ type GroupAlertsConfig struct {
 	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique 24-hexadecimal digit string that identifies this alert configuration.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`

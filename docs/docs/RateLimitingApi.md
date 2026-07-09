@@ -1,11 +1,11 @@
-# \RateLimitingApi
+# \RateLimitingAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetRateLimit**](RateLimitingApi.md#GetRateLimit) | **Get** /api/atlas/v2/rateLimits/{endpointSetId} | Return One Rate Limit
-[**ListRateLimits**](RateLimitingApi.md#ListRateLimits) | **Get** /api/atlas/v2/rateLimits | Return All Rate Limits
+[**GetRateLimit**](RateLimitingAPI.md#GetRateLimit) | **Get** /api/atlas/v2/rateLimits/{endpointSetId} | Return One Rate Limit
+[**ListRateLimits**](RateLimitingAPI.md#ListRateLimits) | **Get** /api/atlas/v2/rateLimits | Return All Rate Limits
 
 
 
@@ -45,9 +45,9 @@ func main() {
     userId := "mdb_sa_id_1234567890abcdef12345678" // string |  (optional)
     ipAddress := "127.0.0.1" // string |  (optional)
 
-    resp, r, err := sdk.RateLimitingApi.GetRateLimit(context.Background(), endpointSetId).GroupId(groupId).OrgId(orgId).UserId(userId).IpAddress(ipAddress).Execute()
+    resp, r, err := sdk.RateLimitingAPI.GetRateLimit(context.Background(), endpointSetId).GroupId(groupId).OrgId(orgId).UserId(userId).IpAddress(ipAddress).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RateLimitingApi.GetRateLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `RateLimitingAPI.GetRateLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -55,7 +55,7 @@ func main() {
         return
     }
     // response from `GetRateLimit`: RateLimitEndpointSetResponse
-    fmt.Fprintf(os.Stdout, "Response from `RateLimitingApi.GetRateLimit`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `RateLimitingAPI.GetRateLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -136,9 +136,9 @@ func main() {
     name := "Rate Limits Inspection" // string |  (optional)
     endpointPath := "/api/atlas/v2/clusters" // string |  (optional)
 
-    resp, r, err := sdk.RateLimitingApi.ListRateLimits(context.Background()).ItemsPerPage(itemsPerPage).PageNum(pageNum).GroupId(groupId).OrgId(orgId).UserId(userId).IpAddress(ipAddress).Name(name).EndpointPath(endpointPath).Execute()
+    resp, r, err := sdk.RateLimitingAPI.ListRateLimits(context.Background()).ItemsPerPage(itemsPerPage).PageNum(pageNum).GroupId(groupId).OrgId(orgId).UserId(userId).IpAddress(ipAddress).Name(name).EndpointPath(endpointPath).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RateLimitingApi.ListRateLimits`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `RateLimitingAPI.ListRateLimits`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -146,7 +146,7 @@ func main() {
         return
     }
     // response from `ListRateLimits`: PaginatedRateLimitEndpointSets
-    fmt.Fprintf(os.Stdout, "Response from `RateLimitingApi.ListRateLimits`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `RateLimitingAPI.ListRateLimits`: %v (%v)\n", resp, r)
 }
 ```
 

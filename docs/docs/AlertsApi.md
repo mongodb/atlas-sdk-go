@@ -1,13 +1,13 @@
-# \AlertsApi
+# \AlertsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AcknowledgeAlert**](AlertsApi.md#AcknowledgeAlert) | **Patch** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Acknowledge One Alert from One Project
-[**GetAlert**](AlertsApi.md#GetAlert) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Return One Alert from One Project
-[**GetAlertConfigAlerts**](AlertsApi.md#GetAlertConfigAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts | Return All Open Alerts for One Alert Configuration
-[**ListAlerts**](AlertsApi.md#ListAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alerts | Return All Alerts from One Project
+[**AcknowledgeAlert**](AlertsAPI.md#AcknowledgeAlert) | **Patch** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Acknowledge One Alert from One Project
+[**GetAlert**](AlertsAPI.md#GetAlert) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Return One Alert from One Project
+[**GetAlertConfigAlerts**](AlertsAPI.md#GetAlertConfigAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts | Return All Open Alerts for One Alert Configuration
+[**ListAlerts**](AlertsAPI.md#ListAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alerts | Return All Alerts from One Project
 
 
 
@@ -45,9 +45,9 @@ func main() {
     alertId := "alertId_example" // string | 
     acknowledgeAlert := *admin.NewAcknowledgeAlert() // AcknowledgeAlert | 
 
-    resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId, &acknowledgeAlert).Execute()
+    resp, r, err := sdk.AlertsAPI.AcknowledgeAlert(context.Background(), groupId, alertId, &acknowledgeAlert).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.AcknowledgeAlert`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.AcknowledgeAlert`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -55,7 +55,7 @@ func main() {
         return
     }
     // response from `AcknowledgeAlert`: AlertViewForNdsGroup
-    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.AcknowledgeAlert`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.AcknowledgeAlert`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -129,9 +129,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertId := "alertId_example" // string | 
 
-    resp, r, err := sdk.AlertsApi.GetAlert(context.Background(), groupId, alertId).Execute()
+    resp, r, err := sdk.AlertsAPI.GetAlert(context.Background(), groupId, alertId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.GetAlert`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.GetAlert`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -139,7 +139,7 @@ func main() {
         return
     }
     // response from `GetAlert`: AlertViewForNdsGroup
-    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.GetAlert`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.GetAlert`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -215,9 +215,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.AlertsApi.GetAlertConfigAlerts(context.Background(), groupId, alertConfigId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.AlertsAPI.GetAlertConfigAlerts(context.Background(), groupId, alertConfigId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.GetAlertConfigAlerts`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.GetAlertConfigAlerts`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -225,7 +225,7 @@ func main() {
         return
     }
     // response from `GetAlertConfigAlerts`: PaginatedAlert
-    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.GetAlertConfigAlerts`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.GetAlertConfigAlerts`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -304,9 +304,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     status := "status_example" // string |  (optional)
 
-    resp, r, err := sdk.AlertsApi.ListAlerts(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Status(status).Execute()
+    resp, r, err := sdk.AlertsAPI.ListAlerts(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Status(status).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.ListAlerts`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.ListAlerts`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -314,7 +314,7 @@ func main() {
         return
     }
     // response from `ListAlerts`: PaginatedAlert
-    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.ListAlerts`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.ListAlerts`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -6,7 +6,7 @@ package admin
 type AtlasOrganization struct {
 	// Unique 24-hexadecimal digit string that identifies the organization.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Flag that indicates whether this organization has been deleted.
 	// Read only field.
 	IsDeleted *bool `json:"isDeleted,omitempty"`
@@ -14,7 +14,7 @@ type AtlasOrganization struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the organization.
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.(),:&@+']{1,64}$"`
 	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
 	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
 }

@@ -11,7 +11,7 @@ type LogIntegrationRequest struct {
 	// Name of the bucket to store log files.
 	BucketName *string `json:"bucketName,omitempty"`
 	// Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket.
-	IamRoleId *string `json:"iamRoleId,omitempty"`
+	IamRoleId *string `json:"iamRoleId,omitempty" validate:"regexp=^[a-fA-F0-9]{24}$"`
 	// AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings.
 	KmsKey *string `json:"kmsKey,omitempty"`
 	// Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type.
@@ -23,7 +23,7 @@ type LogIntegrationRequest struct {
 	// Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED.
 	Region *string `json:"region,omitempty"`
 	// Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role.
-	RoleId *string `json:"roleId,omitempty"`
+	RoleId *string `json:"roleId,omitempty" validate:"regexp=^[a-fA-F0-9]{24}$"`
 	// OpenTelemetry collector endpoint URL. Must be HTTPS and not exceed 2048 characters.
 	OtelEndpoint *string `json:"otelEndpoint,omitempty"`
 	// HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB.

@@ -10,7 +10,7 @@ import (
 type BackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
 	// Read only field.
-	ClusterId *string `json:"clusterId,omitempty"`
+	ClusterId *string `json:"clusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies the cluster.
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
@@ -24,10 +24,10 @@ type BackupSnapshot struct {
 	Expires *time.Time `json:"expires,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns the snapshots.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Flag indicating if this is an incremental or a full snapshot.
 	// Read only field.
 	Incremental               *bool             `json:"incremental,omitempty"`

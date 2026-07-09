@@ -9,7 +9,7 @@ import (
 // CloudAppUser struct for CloudAppUser
 type CloudAppUser struct {
 	// Two alphabet characters that identifies MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format.
-	Country string `json:"country"`
+	Country string `json:"country" validate:"regexp=^([A-Z]{2})$"`
 	// Date and time when the current account is created. This value is in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -21,7 +21,7 @@ type CloudAppUser struct {
 	FirstName string `json:"firstName"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Date and time when the current account last authenticated. This value is in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastAuth *time.Time `json:"lastAuth,omitempty"`
@@ -31,7 +31,7 @@ type CloudAppUser struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Mobile phone number that belongs to the MongoDB Cloud user.
-	MobileNumber string `json:"mobileNumber"`
+	MobileNumber string `json:"mobileNumber" validate:"regexp=(?:(?:\\\\\\\\+?1\\\\\\\\s*(?:[.-]\\\\\\\\s*)?)?(?:(\\\\\\\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\\\\\\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\\\\\\\s*(?:[.-]\\\\\\\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\\\\\\\s*(?:[.-]\\\\\\\\s*)?([0-9]{4})$"`
 	// Password applied with the username to log in to MongoDB Cloud. MongoDB Cloud does not return this parameter except in response to creating a new MongoDB Cloud user. Only the MongoDB Cloud user can update their password after it has been set from the MongoDB Cloud console.
 	Password string `json:"password"`
 	// List of objects that display the MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. A role can apply to one organization or one project but not both.

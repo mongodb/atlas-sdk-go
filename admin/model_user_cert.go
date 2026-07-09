@@ -16,7 +16,7 @@ type UserCert struct {
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -28,7 +28,7 @@ type UserCert struct {
 	NotAfter *time.Time `json:"notAfter,omitempty"`
 	// Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in RFC 2253.
 	// Read only field.
-	Subject *string `json:"subject,omitempty"`
+	Subject *string `json:"subject,omitempty" validate:"regexp=^(?:(?<cn>CN=(?<name>[^,]*)),)?(?:(?<path>(?:(?:CN|OU)=[^,]+,?)+),)?(?<domain>(?:DC=[^,]+,?)+)$"`
 }
 
 // NewUserCert instantiates a new UserCert object

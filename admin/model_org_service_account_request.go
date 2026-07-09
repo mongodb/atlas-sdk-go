@@ -5,9 +5,9 @@ package admin
 // OrgServiceAccountRequest Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters. Note that API Keys cannot be specified in the same request.
 type OrgServiceAccountRequest struct {
 	// Human readable description for the Service Account.
-	Description string `json:"description"`
+	Description string `json:"description" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.,' ]*$"`
 	// Human-readable name for the Service Account. The name is modifiable and does not have to be unique.
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.,' ]*$"`
 	// A list of organization-level roles for the Service Account.
 	Roles []string `json:"roles"`
 	// The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.

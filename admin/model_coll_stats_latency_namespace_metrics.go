@@ -6,7 +6,7 @@ package admin
 type CollStatsLatencyNamespaceMetrics struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
 	// Read only field.
-	GroupId string `json:"groupId"`
+	GroupId string `json:"groupId" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`

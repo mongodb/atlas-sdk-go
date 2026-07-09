@@ -10,10 +10,10 @@ import (
 type SampleDatasetStatus struct {
 	// Unique 24-hexadecimal character string that identifies this sample dataset.
 	// Read only field.
-	Id *string `json:"_id,omitempty"`
+	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies the cluster into which you loaded the sample dataset.
 	// Read only field.
-	ClusterName *string `json:"clusterName,omitempty"`
+	ClusterName *string `json:"clusterName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
 	// Date and time when the sample dataset load job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	CompleteDate *time.Time `json:"completeDate,omitempty"`

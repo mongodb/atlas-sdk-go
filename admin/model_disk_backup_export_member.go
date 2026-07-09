@@ -6,7 +6,7 @@ package admin
 type DiskBackupExportMember struct {
 	// Unique 24-hexadecimal character string that identifies the the Cloud Backup snapshot export job for each shard in a sharded cluster.
 	// Read only field.
-	ExportId *string `json:"exportId,omitempty"`
+	ExportId *string `json:"exportId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies the replica set on the sharded cluster.
 	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`

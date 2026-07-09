@@ -47,10 +47,10 @@ type LegacyAtlasCluster struct {
 	GlobalClusterSelfManagedSharding *bool `json:"globalClusterSelfManagedSharding,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
@@ -61,7 +61,7 @@ type LegacyAtlasCluster struct {
 	// MongoDB major version of the cluster.  On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).   On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
-	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
+	MongoDBVersion *string `json:"mongoDBVersion,omitempty" validate:"regexp=([\\\\d]+\\\\.[\\\\d]+\\\\.[\\\\d]+)"`
 	// Base connection string that you can use to connect to the cluster. MongoDB Cloud displays the string only after the cluster starts, not while it builds the cluster.
 	// Read only field.
 	MongoURI *string `json:"mongoURI,omitempty"`
@@ -72,7 +72,7 @@ type LegacyAtlasCluster struct {
 	// Read only field.
 	MongoURIWithOptions *string `json:"mongoURIWithOptions,omitempty"`
 	// Human-readable label that identifies the cluster.
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
 	// Number of shards up to 50 to deploy for a sharded cluster. The resource returns `1` to indicate a replica set and values of `2` and higher to indicate a sharded cluster. The returned value equals the number of shards in the cluster.
 	NumShards *int `json:"numShards,omitempty"`
 	// Flag that indicates whether the cluster is paused.

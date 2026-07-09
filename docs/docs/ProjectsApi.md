@@ -1,32 +1,32 @@
-# \ProjectsApi
+# \ProjectsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupUser**](ProjectsApi.md#AddGroupUser) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project
-[**CreateGroup**](ProjectsApi.md#CreateGroup) | **Post** /api/atlas/v2/groups | Create One Project
-[**CreateGroupInvite**](ProjectsApi.md#CreateGroupInvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Create Invitation for One MongoDB Cloud User in One Project
-[**DeleteGroup**](ProjectsApi.md#DeleteGroup) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project
-[**DeleteGroupInvite**](ProjectsApi.md#DeleteGroupInvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Invitation from One Project
-[**DeleteGroupLimit**](ProjectsApi.md#DeleteGroupLimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit
-[**GetGroup**](ProjectsApi.md#GetGroup) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
-[**GetGroupByName**](ProjectsApi.md#GetGroupByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name
-[**GetGroupInvite**](ProjectsApi.md#GetGroupInvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Invitation in One Project by Invitation ID
-[**GetGroupIpAddresses**](ProjectsApi.md#GetGroupIpAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
-[**GetGroupLimit**](ProjectsApi.md#GetGroupLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
-[**GetGroupSettings**](ProjectsApi.md#GetGroupSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings
-[**GetMongoDbVersions**](ProjectsApi.md#GetMongoDbVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project
-[**ListGroupInvites**](ProjectsApi.md#ListGroupInvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Invitations in One Project
-[**ListGroupLimits**](ProjectsApi.md#ListGroupLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
-[**ListGroups**](ProjectsApi.md#ListGroups) | **Get** /api/atlas/v2/groups | Return All Projects
-[**MigrateGroup**](ProjectsApi.md#MigrateGroup) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization
-[**SetGroupLimit**](ProjectsApi.md#SetGroupLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
-[**UpdateGroup**](ProjectsApi.md#UpdateGroup) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project
-[**UpdateGroupInvites**](ProjectsApi.md#UpdateGroupInvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Invitation in One Project
-[**UpdateGroupSettings**](ProjectsApi.md#UpdateGroupSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings
-[**UpdateGroupUserRoles**](ProjectsApi.md#UpdateGroupUserRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
-[**UpdateInviteById**](ProjectsApi.md#UpdateInviteById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Invitation in One Project by Invitation ID
+[**AddGroupUser**](ProjectsAPI.md#AddGroupUser) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project
+[**CreateGroup**](ProjectsAPI.md#CreateGroup) | **Post** /api/atlas/v2/groups | Create One Project
+[**CreateGroupInvite**](ProjectsAPI.md#CreateGroupInvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Create Invitation for One MongoDB Cloud User in One Project
+[**DeleteGroup**](ProjectsAPI.md#DeleteGroup) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project
+[**DeleteGroupInvite**](ProjectsAPI.md#DeleteGroupInvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Invitation from One Project
+[**DeleteGroupLimit**](ProjectsAPI.md#DeleteGroupLimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit
+[**GetGroup**](ProjectsAPI.md#GetGroup) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
+[**GetGroupByName**](ProjectsAPI.md#GetGroupByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name
+[**GetGroupInvite**](ProjectsAPI.md#GetGroupInvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Invitation in One Project by Invitation ID
+[**GetGroupIpAddresses**](ProjectsAPI.md#GetGroupIpAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
+[**GetGroupLimit**](ProjectsAPI.md#GetGroupLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
+[**GetGroupSettings**](ProjectsAPI.md#GetGroupSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings
+[**GetMongoDbVersions**](ProjectsAPI.md#GetMongoDbVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project
+[**ListGroupInvites**](ProjectsAPI.md#ListGroupInvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Invitations in One Project
+[**ListGroupLimits**](ProjectsAPI.md#ListGroupLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
+[**ListGroups**](ProjectsAPI.md#ListGroups) | **Get** /api/atlas/v2/groups | Return All Projects
+[**MigrateGroup**](ProjectsAPI.md#MigrateGroup) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization
+[**SetGroupLimit**](ProjectsAPI.md#SetGroupLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
+[**UpdateGroup**](ProjectsAPI.md#UpdateGroup) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project
+[**UpdateGroupInvites**](ProjectsAPI.md#UpdateGroupInvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Invitation in One Project
+[**UpdateGroupSettings**](ProjectsAPI.md#UpdateGroupSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings
+[**UpdateGroupUserRoles**](ProjectsAPI.md#UpdateGroupUserRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
+[**UpdateInviteById**](ProjectsAPI.md#UpdateInviteById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Invitation in One Project by Invitation ID
 
 
 
@@ -63,9 +63,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupInvitationRequest := *admin.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.AddGroupUser(context.Background(), groupId, &groupInvitationRequest).Execute()
+    resp, r, err := sdk.ProjectsAPI.AddGroupUser(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.AddGroupUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.AddGroupUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -73,7 +73,7 @@ func main() {
         return
     }
     // response from `AddGroupUser`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.AddGroupUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.AddGroupUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -145,9 +145,9 @@ func main() {
     group := *admin.NewGroup(int64(123), time.Now(), "Name_example", "32b6e34b3d91647abb20e7b8") // Group | 
     projectOwnerId := "projectOwnerId_example" // string |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.CreateGroup(context.Background(), &group).ProjectOwnerId(projectOwnerId).Execute()
+    resp, r, err := sdk.ProjectsAPI.CreateGroup(context.Background(), &group).ProjectOwnerId(projectOwnerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateGroup`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.CreateGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -155,7 +155,7 @@ func main() {
         return
     }
     // response from `CreateGroup`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateGroup`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.CreateGroup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -223,9 +223,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupInvitationRequest := *admin.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.CreateGroupInvite(context.Background(), groupId, &groupInvitationRequest).Execute()
+    resp, r, err := sdk.ProjectsAPI.CreateGroupInvite(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateGroupInvite`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.CreateGroupInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -233,7 +233,7 @@ func main() {
         return
     }
     // response from `CreateGroupInvite`: GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateGroupInvite`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.CreateGroupInvite`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -304,9 +304,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteGroup(context.Background(), groupId).Execute()
+    r, err := sdk.ProjectsAPI.DeleteGroup(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteGroup`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.DeleteGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -383,9 +383,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     invitationId := "invitationId_example" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteGroupInvite(context.Background(), groupId, invitationId).Execute()
+    r, err := sdk.ProjectsAPI.DeleteGroupInvite(context.Background(), groupId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteGroupInvite`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.DeleteGroupInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -464,9 +464,9 @@ func main() {
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteGroupLimit(context.Background(), limitName, groupId).Execute()
+    r, err := sdk.ProjectsAPI.DeleteGroupLimit(context.Background(), limitName, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteGroupLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.DeleteGroupLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -544,9 +544,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetGroup(context.Background(), groupId).Execute()
+    resp, r, err := sdk.ProjectsAPI.GetGroup(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroup`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.GetGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -554,7 +554,7 @@ func main() {
         return
     }
     // response from `GetGroup`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroup`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.GetGroup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -624,9 +624,9 @@ func main() {
 
     groupName := "groupName_example" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetGroupByName(context.Background(), groupName).Execute()
+    resp, r, err := sdk.ProjectsAPI.GetGroupByName(context.Background(), groupName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupByName`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.GetGroupByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -634,7 +634,7 @@ func main() {
         return
     }
     // response from `GetGroupByName`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupByName`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.GetGroupByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -705,9 +705,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     invitationId := "invitationId_example" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetGroupInvite(context.Background(), groupId, invitationId).Execute()
+    resp, r, err := sdk.ProjectsAPI.GetGroupInvite(context.Background(), groupId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupInvite`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.GetGroupInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -715,7 +715,7 @@ func main() {
         return
     }
     // response from `GetGroupInvite`: GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupInvite`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.GetGroupInvite`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -787,9 +787,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetGroupIpAddresses(context.Background(), groupId).Execute()
+    resp, r, err := sdk.ProjectsAPI.GetGroupIpAddresses(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupIpAddresses`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.GetGroupIpAddresses`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -797,7 +797,7 @@ func main() {
         return
     }
     // response from `GetGroupIpAddresses`: GroupIPAddresses
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupIpAddresses`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.GetGroupIpAddresses`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -868,9 +868,9 @@ func main() {
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetGroupLimit(context.Background(), limitName, groupId).Execute()
+    resp, r, err := sdk.ProjectsAPI.GetGroupLimit(context.Background(), limitName, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.GetGroupLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -878,7 +878,7 @@ func main() {
         return
     }
     // response from `GetGroupLimit`: DataFederationLimit
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupLimit`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.GetGroupLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -950,9 +950,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.GetGroupSettings(context.Background(), groupId).Execute()
+    resp, r, err := sdk.ProjectsAPI.GetGroupSettings(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetGroupSettings`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.GetGroupSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -960,7 +960,7 @@ func main() {
         return
     }
     // response from `GetGroupSettings`: GroupSettings
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetGroupSettings`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.GetGroupSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1035,9 +1035,9 @@ func main() {
     itemsPerPage := int64(100) // int64 |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectsApi.GetMongoDbVersions(context.Background(), groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectsAPI.GetMongoDbVersions(context.Background(), groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetMongoDbVersions`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.GetMongoDbVersions`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1045,7 +1045,7 @@ func main() {
         return
     }
     // response from `GetMongoDbVersions`: PaginatedAvailableVersion
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetMongoDbVersions`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.GetMongoDbVersions`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1121,9 +1121,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     username := "username_example" // string |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.ListGroupInvites(context.Background(), groupId).Username(username).Execute()
+    resp, r, err := sdk.ProjectsAPI.ListGroupInvites(context.Background(), groupId).Username(username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListGroupInvites`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ListGroupInvites`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1131,7 +1131,7 @@ func main() {
         return
     }
     // response from `ListGroupInvites`: []GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListGroupInvites`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ListGroupInvites`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1202,9 +1202,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.ListGroupLimits(context.Background(), groupId).Execute()
+    resp, r, err := sdk.ProjectsAPI.ListGroupLimits(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListGroupLimits`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ListGroupLimits`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1212,7 +1212,7 @@ func main() {
         return
     }
     // response from `ListGroupLimits`: []DataFederationLimit
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListGroupLimits`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ListGroupLimits`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1284,9 +1284,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectsApi.ListGroups(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectsAPI.ListGroups(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListGroups`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ListGroups`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1294,7 +1294,7 @@ func main() {
         return
     }
     // response from `ListGroups`: PaginatedAtlasGroup
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListGroups`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ListGroups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1363,9 +1363,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupMigrationRequest := *admin.NewGroupMigrationRequest() // GroupMigrationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.MigrateGroup(context.Background(), groupId, &groupMigrationRequest).Execute()
+    resp, r, err := sdk.ProjectsAPI.MigrateGroup(context.Background(), groupId, &groupMigrationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.MigrateGroup`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.MigrateGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1373,7 +1373,7 @@ func main() {
         return
     }
     // response from `MigrateGroup`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.MigrateGroup`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.MigrateGroup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1446,9 +1446,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     dataFederationLimit := *admin.NewDataFederationLimit("Name_example", int64(123)) // DataFederationLimit | 
 
-    resp, r, err := sdk.ProjectsApi.SetGroupLimit(context.Background(), limitName, groupId, &dataFederationLimit).Execute()
+    resp, r, err := sdk.ProjectsAPI.SetGroupLimit(context.Background(), limitName, groupId, &dataFederationLimit).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.SetGroupLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.SetGroupLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1456,7 +1456,7 @@ func main() {
         return
     }
     // response from `SetGroupLimit`: DataFederationLimit
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.SetGroupLimit`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.SetGroupLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1530,9 +1530,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupUpdate := *admin.NewGroupUpdate() // GroupUpdate | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateGroup(context.Background(), groupId, &groupUpdate).Execute()
+    resp, r, err := sdk.ProjectsAPI.UpdateGroup(context.Background(), groupId, &groupUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateGroup`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.UpdateGroup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1540,7 +1540,7 @@ func main() {
         return
     }
     // response from `UpdateGroup`: Group
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateGroup`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.UpdateGroup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1612,9 +1612,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupInvitationRequest := *admin.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateGroupInvites(context.Background(), groupId, &groupInvitationRequest).Execute()
+    resp, r, err := sdk.ProjectsAPI.UpdateGroupInvites(context.Background(), groupId, &groupInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateGroupInvites`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.UpdateGroupInvites`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1622,7 +1622,7 @@ func main() {
         return
     }
     // response from `UpdateGroupInvites`: GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateGroupInvites`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.UpdateGroupInvites`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1694,9 +1694,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupSettings := *admin.NewGroupSettings() // GroupSettings | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateGroupSettings(context.Background(), groupId, &groupSettings).Execute()
+    resp, r, err := sdk.ProjectsAPI.UpdateGroupSettings(context.Background(), groupId, &groupSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateGroupSettings`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.UpdateGroupSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1704,7 +1704,7 @@ func main() {
         return
     }
     // response from `UpdateGroupSettings`: GroupSettings
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateGroupSettings`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.UpdateGroupSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1777,9 +1777,9 @@ func main() {
     userId := "userId_example" // string | 
     updateGroupRolesForUser := *admin.NewUpdateGroupRolesForUser() // UpdateGroupRolesForUser | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateGroupUserRoles(context.Background(), groupId, userId, &updateGroupRolesForUser).Execute()
+    resp, r, err := sdk.ProjectsAPI.UpdateGroupUserRoles(context.Background(), groupId, userId, &updateGroupRolesForUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateGroupUserRoles`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.UpdateGroupUserRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1787,7 +1787,7 @@ func main() {
         return
     }
     // response from `UpdateGroupUserRoles`: UpdateGroupRolesForUser
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateGroupUserRoles`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.UpdateGroupUserRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1862,9 +1862,9 @@ func main() {
     invitationId := "invitationId_example" // string | 
     groupInvitationUpdateRequest := *admin.NewGroupInvitationUpdateRequest() // GroupInvitationUpdateRequest | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateInviteById(context.Background(), groupId, invitationId, &groupInvitationUpdateRequest).Execute()
+    resp, r, err := sdk.ProjectsAPI.UpdateInviteById(context.Background(), groupId, invitationId, &groupInvitationUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateInviteById`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.UpdateInviteById`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1872,7 +1872,7 @@ func main() {
         return
     }
     // response from `UpdateInviteById`: GroupInvitation
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateInviteById`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.UpdateInviteById`: %v (%v)\n", resp, r)
 }
 ```
 

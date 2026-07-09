@@ -1,27 +1,27 @@
-# \FederatedAuthenticationApi
+# \FederatedAuthenticationAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateIdentityProvider**](FederatedAuthenticationApi.md#CreateIdentityProvider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create One Identity Provider
-[**CreateRoleMapping**](FederatedAuthenticationApi.md#CreateRoleMapping) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Create One Role Mapping in One Organization Configuration
-[**DeleteFederationSetting**](FederatedAuthenticationApi.md#DeleteFederationSetting) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete One Federation Settings Instance
-[**DeleteIdentityProvider**](FederatedAuthenticationApi.md#DeleteIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Delete One Identity Provider
-[**DeleteRoleMapping**](FederatedAuthenticationApi.md#DeleteRoleMapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization
-[**GetConnectedOrgConfig**](FederatedAuthenticationApi.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Organization Configuration from One Federation
-[**GetFederationSettings**](FederatedAuthenticationApi.md#GetFederationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization
-[**GetIdentityProvider**](FederatedAuthenticationApi.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return One Identity Provider by ID
-[**GetIdentityProviderMetadata**](FederatedAuthenticationApi.md#GetIdentityProviderMetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return Metadata of One Identity Provider
-[**GetRoleMapping**](FederatedAuthenticationApi.md#GetRoleMapping) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Return One Role Mapping from One Organization
-[**ListConnectedOrgConfigs**](FederatedAuthenticationApi.md#ListConnectedOrgConfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Organization Configurations from One Federation
-[**ListIdentityProviders**](FederatedAuthenticationApi.md#ListIdentityProviders) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Return All Identity Providers in One Federation
-[**ListRoleMappings**](FederatedAuthenticationApi.md#ListRoleMappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization
-[**RemoveConnectedOrgConfig**](FederatedAuthenticationApi.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Organization Configuration from One Federation
-[**RevokeIdentityProviderJwks**](FederatedAuthenticationApi.md#RevokeIdentityProviderJwks) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke JWKS from One OIDC Identity Provider
-[**UpdateConnectedOrgConfig**](FederatedAuthenticationApi.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Organization Configuration in One Federation
-[**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update One Identity Provider
-[**UpdateRoleMapping**](FederatedAuthenticationApi.md#UpdateRoleMapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization
+[**CreateIdentityProvider**](FederatedAuthenticationAPI.md#CreateIdentityProvider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create One Identity Provider
+[**CreateRoleMapping**](FederatedAuthenticationAPI.md#CreateRoleMapping) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Create One Role Mapping in One Organization Configuration
+[**DeleteFederationSetting**](FederatedAuthenticationAPI.md#DeleteFederationSetting) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete One Federation Settings Instance
+[**DeleteIdentityProvider**](FederatedAuthenticationAPI.md#DeleteIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Delete One Identity Provider
+[**DeleteRoleMapping**](FederatedAuthenticationAPI.md#DeleteRoleMapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization
+[**GetConnectedOrgConfig**](FederatedAuthenticationAPI.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Organization Configuration from One Federation
+[**GetFederationSettings**](FederatedAuthenticationAPI.md#GetFederationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization
+[**GetIdentityProvider**](FederatedAuthenticationAPI.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return One Identity Provider by ID
+[**GetIdentityProviderMetadata**](FederatedAuthenticationAPI.md#GetIdentityProviderMetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return Metadata of One Identity Provider
+[**GetRoleMapping**](FederatedAuthenticationAPI.md#GetRoleMapping) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Return One Role Mapping from One Organization
+[**ListConnectedOrgConfigs**](FederatedAuthenticationAPI.md#ListConnectedOrgConfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Organization Configurations from One Federation
+[**ListIdentityProviders**](FederatedAuthenticationAPI.md#ListIdentityProviders) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Return All Identity Providers in One Federation
+[**ListRoleMappings**](FederatedAuthenticationAPI.md#ListRoleMappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization
+[**RemoveConnectedOrgConfig**](FederatedAuthenticationAPI.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Organization Configuration from One Federation
+[**RevokeIdentityProviderJwks**](FederatedAuthenticationAPI.md#RevokeIdentityProviderJwks) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke JWKS from One OIDC Identity Provider
+[**UpdateConnectedOrgConfig**](FederatedAuthenticationAPI.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Organization Configuration in One Federation
+[**UpdateIdentityProvider**](FederatedAuthenticationAPI.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update One Identity Provider
+[**UpdateRoleMapping**](FederatedAuthenticationAPI.md#UpdateRoleMapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization
 
 
 
@@ -58,9 +58,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     federationOidcIdentityProviderUpdate := *admin.NewFederationOidcIdentityProviderUpdate() // FederationOidcIdentityProviderUpdate | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.CreateIdentityProvider(context.Background(), federationSettingsId, &federationOidcIdentityProviderUpdate).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.CreateIdentityProvider(context.Background(), federationSettingsId, &federationOidcIdentityProviderUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateIdentityProvider`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.CreateIdentityProvider`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -68,7 +68,7 @@ func main() {
         return
     }
     // response from `CreateIdentityProvider`: FederationOidcIdentityProvider
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.CreateIdentityProvider`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.CreateIdentityProvider`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -141,9 +141,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     authFederationRoleMapping := *admin.NewAuthFederationRoleMapping("ExternalGroupName_example", []admin.ConnectedOrgConfigRoleAssignment{*admin.NewConnectedOrgConfigRoleAssignment()}) // AuthFederationRoleMapping | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId, &authFederationRoleMapping).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.CreateRoleMapping(context.Background(), federationSettingsId, orgId, &authFederationRoleMapping).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateRoleMapping`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.CreateRoleMapping`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -151,7 +151,7 @@ func main() {
         return
     }
     // response from `CreateRoleMapping`: AuthFederationRoleMapping
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.CreateRoleMapping`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.CreateRoleMapping`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -224,9 +224,9 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
 
-    r, err := sdk.FederatedAuthenticationApi.DeleteFederationSetting(context.Background(), federationSettingsId).Execute()
+    r, err := sdk.FederatedAuthenticationAPI.DeleteFederationSetting(context.Background(), federationSettingsId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteFederationSetting`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.DeleteFederationSetting`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -303,9 +303,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.FederatedAuthenticationApi.DeleteIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
+    r, err := sdk.FederatedAuthenticationAPI.DeleteIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteIdentityProvider`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.DeleteIdentityProvider`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -385,9 +385,9 @@ func main() {
     id := "32b6e34b3d91647abb20e7b8" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.FederatedAuthenticationApi.DeleteRoleMapping(context.Background(), federationSettingsId, id, orgId).Execute()
+    r, err := sdk.FederatedAuthenticationAPI.DeleteRoleMapping(context.Background(), federationSettingsId, id, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteRoleMapping`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.DeleteRoleMapping`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -468,9 +468,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.GetConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.GetConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetConnectedOrgConfig`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.GetConnectedOrgConfig`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -478,7 +478,7 @@ func main() {
         return
     }
     // response from `GetConnectedOrgConfig`: ConnectedOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetConnectedOrgConfig`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.GetConnectedOrgConfig`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -550,9 +550,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.GetFederationSettings(context.Background(), orgId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.GetFederationSettings(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetFederationSettings`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.GetFederationSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -560,7 +560,7 @@ func main() {
         return
     }
     // response from `GetFederationSettings`: OrgFederationSettings
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetFederationSettings`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.GetFederationSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -631,9 +631,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.GetIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.GetIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetIdentityProvider`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.GetIdentityProvider`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -641,7 +641,7 @@ func main() {
         return
     }
     // response from `GetIdentityProvider`: FederationIdentityProvider
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProvider`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.GetIdentityProvider`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -714,9 +714,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "c2777a9eca931f29fc2f" // string | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.GetIdentityProviderMetadata(context.Background(), federationSettingsId, identityProviderId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.GetIdentityProviderMetadata(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetIdentityProviderMetadata`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.GetIdentityProviderMetadata`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -724,7 +724,7 @@ func main() {
         return
     }
     // response from `GetIdentityProviderMetadata`: string
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProviderMetadata`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.GetIdentityProviderMetadata`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -798,9 +798,9 @@ func main() {
     id := "32b6e34b3d91647abb20e7b8" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.GetRoleMapping(context.Background(), federationSettingsId, id, orgId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.GetRoleMapping(context.Background(), federationSettingsId, id, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetRoleMapping`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.GetRoleMapping`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -808,7 +808,7 @@ func main() {
         return
     }
     // response from `GetRoleMapping`: AuthFederationRoleMapping
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetRoleMapping`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.GetRoleMapping`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -884,9 +884,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.FederatedAuthenticationApi.ListConnectedOrgConfigs(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.ListConnectedOrgConfigs(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListConnectedOrgConfigs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.ListConnectedOrgConfigs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -894,7 +894,7 @@ func main() {
         return
     }
     // response from `ListConnectedOrgConfigs`: PaginatedConnectedOrgConfigs
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListConnectedOrgConfigs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.ListConnectedOrgConfigs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -970,9 +970,9 @@ func main() {
     protocol := []string{"Inner_example"} // []string |  (optional)
     idpType := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.FederatedAuthenticationApi.ListIdentityProviders(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Protocol(protocol).IdpType(idpType).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.ListIdentityProviders(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Protocol(protocol).IdpType(idpType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListIdentityProviders`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.ListIdentityProviders`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -980,7 +980,7 @@ func main() {
         return
     }
     // response from `ListIdentityProviders`: PaginatedFederationIdentityProvider
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListIdentityProviders`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.ListIdentityProviders`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1055,9 +1055,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.ListRoleMappings(context.Background(), federationSettingsId, orgId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.ListRoleMappings(context.Background(), federationSettingsId, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListRoleMappings`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.ListRoleMappings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1065,7 +1065,7 @@ func main() {
         return
     }
     // response from `ListRoleMappings`: PaginatedRoleMapping
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListRoleMappings`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.ListRoleMappings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1138,9 +1138,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.FederatedAuthenticationApi.RemoveConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
+    r, err := sdk.FederatedAuthenticationAPI.RemoveConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RemoveConnectedOrgConfig`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.RemoveConnectedOrgConfig`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1219,9 +1219,9 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.FederatedAuthenticationApi.RevokeIdentityProviderJwks(context.Background(), federationSettingsId, identityProviderId).Execute()
+    r, err := sdk.FederatedAuthenticationAPI.RevokeIdentityProviderJwks(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RevokeIdentityProviderJwks`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.RevokeIdentityProviderJwks`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1301,9 +1301,9 @@ func main() {
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
     connectedOrgConfig := *admin.NewConnectedOrgConfig(false, "32b6e34b3d91647abb20e7b8") // ConnectedOrgConfig | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateConnectedOrgConfig(context.Background(), federationSettingsId, orgId, &connectedOrgConfig).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.UpdateConnectedOrgConfig(context.Background(), federationSettingsId, orgId, &connectedOrgConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateConnectedOrgConfig`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.UpdateConnectedOrgConfig`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1311,7 +1311,7 @@ func main() {
         return
     }
     // response from `UpdateConnectedOrgConfig`: ConnectedOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateConnectedOrgConfig`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.UpdateConnectedOrgConfig`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1386,9 +1386,9 @@ func main() {
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
     federationIdentityProviderUpdate := *admin.NewFederationIdentityProviderUpdate() // FederationIdentityProviderUpdate | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &federationIdentityProviderUpdate).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &federationIdentityProviderUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateIdentityProvider`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.UpdateIdentityProvider`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1396,7 +1396,7 @@ func main() {
         return
     }
     // response from `UpdateIdentityProvider`: FederationIdentityProvider
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateIdentityProvider`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.UpdateIdentityProvider`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1472,9 +1472,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     authFederationRoleMapping := *admin.NewAuthFederationRoleMapping("ExternalGroupName_example", []admin.ConnectedOrgConfigRoleAssignment{*admin.NewConnectedOrgConfigRoleAssignment()}) // AuthFederationRoleMapping | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId, &authFederationRoleMapping).Execute()
+    resp, r, err := sdk.FederatedAuthenticationAPI.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId, &authFederationRoleMapping).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateRoleMapping`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationAPI.UpdateRoleMapping`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1482,7 +1482,7 @@ func main() {
         return
     }
     // response from `UpdateRoleMapping`: AuthFederationRoleMapping
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateRoleMapping`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationAPI.UpdateRoleMapping`: %v (%v)\n", resp, r)
 }
 ```
 

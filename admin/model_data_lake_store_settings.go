@@ -25,7 +25,7 @@ type DataLakeStoreSettings struct {
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project.
 	// Read only field.
-	ProjectId      *string                           `json:"projectId,omitempty"`
+	ProjectId      *string                           `json:"projectId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	ReadConcern    *DataLakeAtlasStoreReadConcern    `json:"readConcern,omitempty"`
 	ReadPreference *DataLakeAtlasStoreReadPreference `json:"readPreference,omitempty"`
 	// Flag that validates the scheme in the specified URLs. If `true`, allows insecure `HTTP` scheme, doesn't verify the server's certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If `false`, allows secure `HTTPS` scheme only.

@@ -1,18 +1,18 @@
-# \CollectionLevelMetricsApi
+# \CollectionLevelMetricsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetClusterNamespaces**](CollectionLevelMetricsApi.md#GetClusterNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from One Cluster
-[**GetProcessNamespaces**](CollectionLevelMetricsApi.md#GetProcessNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from One Host
-[**ListCollStatMeasurements**](CollectionLevelMetricsApi.md#ListCollStatMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements | Return Cluster-Level Query Latency
-[**ListCollStatMetrics**](CollectionLevelMetricsApi.md#ListCollStatMetrics) | **Get** /api/atlas/v2/groups/{groupId}/collStats/metrics | Return All Metric Names
-[**ListPinnedNamespaces**](CollectionLevelMetricsApi.md#ListPinnedNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Return Pinned Namespaces
-[**ListProcessMeasurements**](CollectionLevelMetricsApi.md#ListProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements | Return Host-Level Query Latency
-[**PinNamespaces**](CollectionLevelMetricsApi.md#PinNamespaces) | **Put** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Pin Namespaces
-[**UnpinNamespaces**](CollectionLevelMetricsApi.md#UnpinNamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin | Unpin Namespaces
-[**UpdatePinnedNamespaces**](CollectionLevelMetricsApi.md#UpdatePinnedNamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Add Pinned Namespaces
+[**GetClusterNamespaces**](CollectionLevelMetricsAPI.md#GetClusterNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from One Cluster
+[**GetProcessNamespaces**](CollectionLevelMetricsAPI.md#GetProcessNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from One Host
+[**ListCollStatMeasurements**](CollectionLevelMetricsAPI.md#ListCollStatMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements | Return Cluster-Level Query Latency
+[**ListCollStatMetrics**](CollectionLevelMetricsAPI.md#ListCollStatMetrics) | **Get** /api/atlas/v2/groups/{groupId}/collStats/metrics | Return All Metric Names
+[**ListPinnedNamespaces**](CollectionLevelMetricsAPI.md#ListPinnedNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Return Pinned Namespaces
+[**ListProcessMeasurements**](CollectionLevelMetricsAPI.md#ListProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements | Return Host-Level Query Latency
+[**PinNamespaces**](CollectionLevelMetricsAPI.md#PinNamespaces) | **Put** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Pin Namespaces
+[**UnpinNamespaces**](CollectionLevelMetricsAPI.md#UnpinNamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin | Unpin Namespaces
+[**UpdatePinnedNamespaces**](CollectionLevelMetricsAPI.md#UpdatePinnedNamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Add Pinned Namespaces
 
 
 
@@ -53,9 +53,9 @@ func main() {
     end := time.Now() // time.Time |  (optional)
     period := "PT10H" // string |  (optional)
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.GetClusterNamespaces(context.Background(), groupId, clusterName, clusterView).Start(start).End(end).Period(period).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.GetClusterNamespaces(context.Background(), groupId, clusterName, clusterView).Start(start).End(end).Period(period).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetClusterNamespaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.GetClusterNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -63,7 +63,7 @@ func main() {
         return
     }
     // response from `GetClusterNamespaces`: CollStatsRankedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetClusterNamespaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.GetClusterNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -144,9 +144,9 @@ func main() {
     end := time.Now() // time.Time |  (optional)
     period := "PT10H" // string |  (optional)
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.GetProcessNamespaces(context.Background(), groupId, processId).Start(start).End(end).Period(period).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.GetProcessNamespaces(context.Background(), groupId, processId).Start(start).End(end).Period(period).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetProcessNamespaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.GetProcessNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -154,7 +154,7 @@ func main() {
         return
     }
     // response from `GetProcessNamespaces`: CollStatsRankedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetProcessNamespaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.GetProcessNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -237,9 +237,9 @@ func main() {
     end := time.Now() // time.Time |  (optional)
     period := "PT10H" // string |  (optional)
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.ListCollStatMeasurements(context.Background(), groupId, clusterName, clusterView, databaseName, collectionName).Metrics(metrics).Start(start).End(end).Period(period).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.ListCollStatMeasurements(context.Background(), groupId, clusterName, clusterView, databaseName, collectionName).Metrics(metrics).Start(start).End(end).Period(period).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.ListCollStatMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.ListCollStatMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -247,7 +247,7 @@ func main() {
         return
     }
     // response from `ListCollStatMeasurements`: MeasurementsCollStatsLatencyCluster
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.ListCollStatMeasurements`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.ListCollStatMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -329,9 +329,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.ListCollStatMetrics(context.Background(), groupId).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.ListCollStatMetrics(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.ListCollStatMetrics`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.ListCollStatMetrics`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -339,7 +339,7 @@ func main() {
         return
     }
     // response from `ListCollStatMetrics`: CollStatsLatencyNamespaceMetrics
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.ListCollStatMetrics`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.ListCollStatMetrics`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -410,9 +410,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.ListPinnedNamespaces(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.ListPinnedNamespaces(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.ListPinnedNamespaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.ListPinnedNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -420,7 +420,7 @@ func main() {
         return
     }
     // response from `ListPinnedNamespaces`: PinnedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.ListPinnedNamespaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.ListPinnedNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -499,9 +499,9 @@ func main() {
     end := time.Now() // time.Time |  (optional)
     period := "PT10H" // string |  (optional)
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.ListProcessMeasurements(context.Background(), groupId, processId, databaseName, collectionName).Metrics(metrics).Start(start).End(end).Period(period).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.ListProcessMeasurements(context.Background(), groupId, processId, databaseName, collectionName).Metrics(metrics).Start(start).End(end).Period(period).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.ListProcessMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.ListProcessMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -509,7 +509,7 @@ func main() {
         return
     }
     // response from `ListProcessMeasurements`: MeasurementsCollStatsLatencyHost
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.ListProcessMeasurements`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.ListProcessMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -591,9 +591,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     namespacesRequest := *admin.NewNamespacesRequest() // NamespacesRequest | 
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.PinNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.PinNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.PinNamespaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.PinNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -601,7 +601,7 @@ func main() {
         return
     }
     // response from `PinNamespaces`: PinnedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.PinNamespaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.PinNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -676,9 +676,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     namespacesRequest := *admin.NewNamespacesRequest() // NamespacesRequest | 
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.UnpinNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.UnpinNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.UnpinNamespaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.UnpinNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -686,7 +686,7 @@ func main() {
         return
     }
     // response from `UnpinNamespaces`: PinnedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.UnpinNamespaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.UnpinNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -761,9 +761,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     namespacesRequest := *admin.NewNamespacesRequest() // NamespacesRequest | 
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.UpdatePinnedNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
+    resp, r, err := sdk.CollectionLevelMetricsAPI.UpdatePinnedNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.UpdatePinnedNamespaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsAPI.UpdatePinnedNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -771,7 +771,7 @@ func main() {
         return
     }
     // response from `UpdatePinnedNamespaces`: PinnedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.UpdatePinnedNamespaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsAPI.UpdatePinnedNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 

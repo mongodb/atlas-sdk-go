@@ -1,11 +1,11 @@
-# \AuditingApi
+# \AuditingAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetGroupAuditLog**](AuditingApi.md#GetGroupAuditLog) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return Auditing Configuration for One Project
-[**UpdateAuditLog**](AuditingApi.md#UpdateAuditLog) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project
+[**GetGroupAuditLog**](AuditingAPI.md#GetGroupAuditLog) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return Auditing Configuration for One Project
+[**UpdateAuditLog**](AuditingAPI.md#UpdateAuditLog) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project
 
 
 
@@ -41,9 +41,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.AuditingApi.GetGroupAuditLog(context.Background(), groupId).Execute()
+    resp, r, err := sdk.AuditingAPI.GetGroupAuditLog(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.GetGroupAuditLog`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditingAPI.GetGroupAuditLog`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -51,7 +51,7 @@ func main() {
         return
     }
     // response from `GetGroupAuditLog`: AuditLog
-    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.GetGroupAuditLog`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AuditingAPI.GetGroupAuditLog`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -122,9 +122,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     auditLog := *admin.NewAuditLog() // AuditLog | 
 
-    resp, r, err := sdk.AuditingApi.UpdateAuditLog(context.Background(), groupId, &auditLog).Execute()
+    resp, r, err := sdk.AuditingAPI.UpdateAuditLog(context.Background(), groupId, &auditLog).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.UpdateAuditLog`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditingAPI.UpdateAuditLog`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -132,7 +132,7 @@ func main() {
         return
     }
     // response from `UpdateAuditLog`: AuditLog
-    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.UpdateAuditLog`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AuditingAPI.UpdateAuditLog`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -16,14 +16,14 @@ type Group struct {
 	Created time.Time `json:"created"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud project.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the project included in the MongoDB Cloud organization.
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.(),:&@+']{1,64}$"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud organization to which the project belongs.
-	OrgId string `json:"orgId"`
+	OrgId string `json:"orgId" validate:"regexp=^([a-f0-9]{24})$"`
 	// Applies to Atlas for Government only.  In Commercial Atlas, this field will be rejected in requests and missing in responses.  This field sets restrictions on available regions in the project.  `COMMERCIAL_FEDRAMP_REGIONS_ONLY`: Only allows deployments in FedRAMP Moderate regions.  `GOV_REGIONS_ONLY`: Only allows deployments in GovCloud regions.
 	RegionUsageRestrictions *string `json:"regionUsageRestrictions,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project.

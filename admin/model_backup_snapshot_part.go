@@ -10,7 +10,7 @@ import (
 type BackupSnapshotPart struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
 	// Read only field.
-	ClusterId *string `json:"clusterId,omitempty"`
+	ClusterId *string `json:"clusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Date and time when the snapshot completed. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CompletedTime *time.Time `json:"completedTime,omitempty"`
@@ -31,13 +31,13 @@ type BackupSnapshotPart struct {
 	FileSizeBytes *int64 `json:"fileSizeBytes,omitempty"`
 	// Hostname and port that indicate the node on which MongoDB Cloud created the snapshot.
 	// Read only field.
-	MachineId *string `json:"machineId,omitempty"`
+	MachineId *string `json:"machineId,omitempty" validate:"regexp=^([0-9]{1,3}\\\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\\.){1,10}[a-z]+)?(\\\\:[0-9]{4,5})$"`
 	// Unique string that identifies the Key Management Interoperability (KMIP) master key used to encrypt the snapshot data. The resource returns this parameter when `\"parts.encryptionEnabled\" : true`.
 	// Read only field.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// Number that indicates the version of MongoDB that the replica set primary ran when MongoDB Cloud created the snapshot.
 	// Read only field.
-	MongodVersion *string `json:"mongodVersion,omitempty"`
+	MongodVersion *string `json:"mongodVersion,omitempty" validate:"regexp=([\\\\d]+\\\\.[\\\\d]+\\\\.[\\\\d]+)"`
 	// Human-readable label that identifies the replica set.
 	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`

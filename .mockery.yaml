@@ -8,4 +8,4 @@ mockname: "{{.InterfaceName}}"
 packages:
   go.mongodb.org/atlas-sdk/v20250312021/admin:
     config:
-      include-regex: ".*Api"
+      include-regex: ".*API"

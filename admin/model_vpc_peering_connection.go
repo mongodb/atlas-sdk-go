@@ -9,7 +9,7 @@ import (
 // VPCPeeringConnection Represents a VPC Peering connection on AWS.
 type VPCPeeringConnection struct {
 	// Internal VPC Peering Connection ID.
-	Id *string `json:"_id,omitempty"`
+	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// The account ID responsible for accepting the request.
 	AccepterAccountId *string `json:"accepterAccountId,omitempty"`
 	// The CIDR block for the accepter VPC.
@@ -21,7 +21,7 @@ type VPCPeeringConnection struct {
 	// The time when the VPC Peering Connection request expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	ExpirationTime *time.Time `json:"expirationTime,omitempty"`
 	// The internal project ID.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`

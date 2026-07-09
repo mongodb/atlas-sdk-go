@@ -1,14 +1,14 @@
-# \EventsApi
+# \EventsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetGroupEvent**](EventsApi.md#GetGroupEvent) | **Get** /api/atlas/v2/groups/{groupId}/events/{eventId} | Return One Event from One Project
-[**GetOrgEvent**](EventsApi.md#GetOrgEvent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization
-[**ListEventTypes**](EventsApi.md#ListEventTypes) | **Get** /api/atlas/v2/eventTypes | Return All Event Types
-[**ListGroupEvents**](EventsApi.md#ListGroupEvents) | **Get** /api/atlas/v2/groups/{groupId}/events | Return Events from One Project
-[**ListOrgEvents**](EventsApi.md#ListOrgEvents) | **Get** /api/atlas/v2/orgs/{orgId}/events | Return Events from One Organization
+[**GetGroupEvent**](EventsAPI.md#GetGroupEvent) | **Get** /api/atlas/v2/groups/{groupId}/events/{eventId} | Return One Event from One Project
+[**GetOrgEvent**](EventsAPI.md#GetOrgEvent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization
+[**ListEventTypes**](EventsAPI.md#ListEventTypes) | **Get** /api/atlas/v2/eventTypes | Return All Event Types
+[**ListGroupEvents**](EventsAPI.md#ListGroupEvents) | **Get** /api/atlas/v2/groups/{groupId}/events | Return Events from One Project
+[**ListOrgEvents**](EventsAPI.md#ListOrgEvents) | **Get** /api/atlas/v2/orgs/{orgId}/events | Return Events from One Organization
 
 
 
@@ -46,9 +46,9 @@ func main() {
     eventId := "eventId_example" // string | 
     includeRaw := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.EventsApi.GetGroupEvent(context.Background(), groupId, eventId).IncludeRaw(includeRaw).Execute()
+    resp, r, err := sdk.EventsAPI.GetGroupEvent(context.Background(), groupId, eventId).IncludeRaw(includeRaw).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.GetGroupEvent`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.GetGroupEvent`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -56,7 +56,7 @@ func main() {
         return
     }
     // response from `GetGroupEvent`: EventViewForNdsGroup
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.GetGroupEvent`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EventsAPI.GetGroupEvent`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -131,9 +131,9 @@ func main() {
     eventId := "eventId_example" // string | 
     includeRaw := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.EventsApi.GetOrgEvent(context.Background(), orgId, eventId).IncludeRaw(includeRaw).Execute()
+    resp, r, err := sdk.EventsAPI.GetOrgEvent(context.Background(), orgId, eventId).IncludeRaw(includeRaw).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.GetOrgEvent`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.GetOrgEvent`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -141,7 +141,7 @@ func main() {
         return
     }
     // response from `GetOrgEvent`: EventViewForOrg
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.GetOrgEvent`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EventsAPI.GetOrgEvent`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -216,9 +216,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.EventsApi.ListEventTypes(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.EventsAPI.ListEventTypes(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListEventTypes`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.ListEventTypes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -226,7 +226,7 @@ func main() {
         return
     }
     // response from `ListEventTypes`: PaginatedEventTypeDetailsResponse
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListEventTypes`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EventsAPI.ListEventTypes`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -303,9 +303,9 @@ func main() {
     maxDate := time.Now() // time.Time |  (optional)
     minDate := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.EventsApi.ListGroupEvents(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ClusterNames(clusterNames).EventType(eventType).ExcludedEventType(excludedEventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
+    resp, r, err := sdk.EventsAPI.ListGroupEvents(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ClusterNames(clusterNames).EventType(eventType).ExcludedEventType(excludedEventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListGroupEvents`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.ListGroupEvents`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -313,7 +313,7 @@ func main() {
         return
     }
     // response from `ListGroupEvents`: GroupPaginatedEvent
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListGroupEvents`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EventsAPI.ListGroupEvents`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -399,9 +399,9 @@ func main() {
     maxDate := time.Now() // time.Time |  (optional)
     minDate := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.EventsApi.ListOrgEvents(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).EventType(eventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
+    resp, r, err := sdk.EventsAPI.ListOrgEvents(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).EventType(eventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListOrgEvents`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.ListOrgEvents`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -409,7 +409,7 @@ func main() {
         return
     }
     // response from `ListOrgEvents`: OrgPaginatedEvent
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListOrgEvents`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EventsAPI.ListOrgEvents`: %v (%v)\n", resp, r)
 }
 ```
 

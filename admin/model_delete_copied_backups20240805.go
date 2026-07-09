@@ -12,7 +12,7 @@ type DeleteCopiedBackups20240805 struct {
 	RegionName *string `json:"regionName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the `replicationSpecs` array.
 	// Write only field.
-	ZoneId *string `json:"zoneId,omitempty"`
+	ZoneId *string `json:"zoneId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewDeleteCopiedBackups20240805 instantiates a new DeleteCopiedBackups20240805 object

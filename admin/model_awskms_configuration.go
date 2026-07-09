@@ -16,7 +16,7 @@ type AWSKMSConfiguration struct {
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies an Amazon Web Services (AWS) Identity and Access Management (IAM) role. This IAM role has the permissions required to manage your AWS customer master key.
 	// Write only field.
-	RoleId *string `json:"roleId,omitempty"`
+	RoleId *string `json:"roleId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label of the Identity and Access Management (IAM) secret access key with permissions required to access your Amazon Web Services (AWS) customer master key.
 	// Write only field.
 	SecretAccessKey *string `json:"secretAccessKey,omitempty"`

@@ -8,7 +8,7 @@ type UserAccessRoleAssignment struct {
 	Roles *[]string `json:"roles,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization API key.
 	// Read only field.
-	UserId *string `json:"userId,omitempty"`
+	UserId *string `json:"userId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewUserAccessRoleAssignment instantiates a new UserAccessRoleAssignment object

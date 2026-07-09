@@ -1,23 +1,23 @@
-# \MonitoringAndLogsApi
+# \MonitoringAndLogsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DownloadClusterLog**](MonitoringAndLogsApi.md#DownloadClusterLog) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project
-[**GetDatabase**](MonitoringAndLogsApi.md#GetDatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for One MongoDB Process
-[**GetDatabaseMeasurements**](MonitoringAndLogsApi.md#GetDatabaseMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements for One Database in One MongoDB Process
-[**GetGroupProcess**](MonitoringAndLogsApi.md#GetGroupProcess) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId} | Return One MongoDB Process by ID
-[**GetIndexMeasurements**](MonitoringAndLogsApi.md#GetIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Namespace
-[**GetProcessDisk**](MonitoringAndLogsApi.md#GetProcessDisk) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName} | Return Measurements for One Disk
-[**GetProcessDiskMeasurements**](MonitoringAndLogsApi.md#GetProcessDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process
-[**GetProcessMeasurements**](MonitoringAndLogsApi.md#GetProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process
-[**ListDatabases**](MonitoringAndLogsApi.md#ListDatabases) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases | Return Available Databases for One MongoDB Process
-[**ListGroupProcesses**](MonitoringAndLogsApi.md#ListGroupProcesses) | **Get** /api/atlas/v2/groups/{groupId}/processes | Return All MongoDB Processes in One Project
-[**ListHostFtsMetrics**](MonitoringAndLogsApi.md#ListHostFtsMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics | Return All Atlas Search Metric Types for One Process
-[**ListIndexMeasurements**](MonitoringAndLogsApi.md#ListIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements | Return All Atlas Search Index Metrics for One Namespace
-[**ListMeasurements**](MonitoringAndLogsApi.md#ListMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics
-[**ListProcessDisks**](MonitoringAndLogsApi.md#ListProcessDisks) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks | Return Available Disks for One MongoDB Process
+[**DownloadClusterLog**](MonitoringAndLogsAPI.md#DownloadClusterLog) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project
+[**GetDatabase**](MonitoringAndLogsAPI.md#GetDatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for One MongoDB Process
+[**GetDatabaseMeasurements**](MonitoringAndLogsAPI.md#GetDatabaseMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements for One Database in One MongoDB Process
+[**GetGroupProcess**](MonitoringAndLogsAPI.md#GetGroupProcess) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId} | Return One MongoDB Process by ID
+[**GetIndexMeasurements**](MonitoringAndLogsAPI.md#GetIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Namespace
+[**GetProcessDisk**](MonitoringAndLogsAPI.md#GetProcessDisk) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName} | Return Measurements for One Disk
+[**GetProcessDiskMeasurements**](MonitoringAndLogsAPI.md#GetProcessDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process
+[**GetProcessMeasurements**](MonitoringAndLogsAPI.md#GetProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process
+[**ListDatabases**](MonitoringAndLogsAPI.md#ListDatabases) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases | Return Available Databases for One MongoDB Process
+[**ListGroupProcesses**](MonitoringAndLogsAPI.md#ListGroupProcesses) | **Get** /api/atlas/v2/groups/{groupId}/processes | Return All MongoDB Processes in One Project
+[**ListHostFtsMetrics**](MonitoringAndLogsAPI.md#ListHostFtsMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics | Return All Atlas Search Metric Types for One Process
+[**ListIndexMeasurements**](MonitoringAndLogsAPI.md#ListIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements | Return All Atlas Search Index Metrics for One Namespace
+[**ListMeasurements**](MonitoringAndLogsAPI.md#ListMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics
+[**ListProcessDisks**](MonitoringAndLogsAPI.md#ListProcessDisks) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks | Return Available Disks for One MongoDB Process
 
 
 
@@ -57,9 +57,9 @@ func main() {
     endDate := int64(789) // int64 |  (optional)
     startDate := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.DownloadClusterLog(context.Background(), groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.DownloadClusterLog(context.Background(), groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.DownloadClusterLog`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.DownloadClusterLog`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -67,7 +67,7 @@ func main() {
         return
     }
     // response from `DownloadClusterLog`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.DownloadClusterLog`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.DownloadClusterLog`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -145,9 +145,9 @@ func main() {
     databaseName := "databaseName_example" // string | 
     processId := "mongodb.example.com:27017" // string | 
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetDatabase(context.Background(), groupId, databaseName, processId).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.GetDatabase(context.Background(), groupId, databaseName, processId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetDatabase`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.GetDatabase`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -155,7 +155,7 @@ func main() {
         return
     }
     // response from `GetDatabase`: MesurementsDatabase
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDatabase`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.GetDatabase`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -236,9 +236,9 @@ func main() {
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetDatabaseMeasurements(context.Background(), groupId, databaseName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.GetDatabaseMeasurements(context.Background(), groupId, databaseName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetDatabaseMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.GetDatabaseMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -246,7 +246,7 @@ func main() {
         return
     }
     // response from `GetDatabaseMeasurements`: ApiMeasurementsGeneralViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDatabaseMeasurements`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.GetDatabaseMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -326,9 +326,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "mongodb.example.com:27017" // string | 
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetGroupProcess(context.Background(), groupId, processId).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.GetGroupProcess(context.Background(), groupId, processId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetGroupProcess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.GetGroupProcess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -336,7 +336,7 @@ func main() {
         return
     }
     // response from `GetGroupProcess`: ApiHostViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetGroupProcess`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.GetGroupProcess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -417,9 +417,9 @@ func main() {
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetIndexMeasurements(context.Background(), processId, indexName, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.GetIndexMeasurements(context.Background(), processId, indexName, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetIndexMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.GetIndexMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -427,7 +427,7 @@ func main() {
         return
     }
     // response from `GetIndexMeasurements`: MeasurementsIndexes
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetIndexMeasurements`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.GetIndexMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -512,9 +512,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "mongodb.example.com:27017" // string | 
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetProcessDisk(context.Background(), partitionName, groupId, processId).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.GetProcessDisk(context.Background(), partitionName, groupId, processId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetProcessDisk`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.GetProcessDisk`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -522,7 +522,7 @@ func main() {
         return
     }
     // response from `GetProcessDisk`: MeasurementDiskPartition
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetProcessDisk`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.GetProcessDisk`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -603,9 +603,9 @@ func main() {
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetProcessDiskMeasurements(context.Background(), groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.GetProcessDiskMeasurements(context.Background(), groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetProcessDiskMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.GetProcessDiskMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -613,7 +613,7 @@ func main() {
         return
     }
     // response from `GetProcessDiskMeasurements`: ApiMeasurementsGeneralViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetProcessDiskMeasurements`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.GetProcessDiskMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -698,9 +698,9 @@ func main() {
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetProcessMeasurements(context.Background(), groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.GetProcessMeasurements(context.Background(), groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetProcessMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.GetProcessMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -708,7 +708,7 @@ func main() {
         return
     }
     // response from `GetProcessMeasurements`: ApiMeasurementsGeneralViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetProcessMeasurements`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.GetProcessMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -789,9 +789,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListDatabases(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.ListDatabases(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListDatabases`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.ListDatabases`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -799,7 +799,7 @@ func main() {
         return
     }
     // response from `ListDatabases`: PaginatedDatabase
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListDatabases`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.ListDatabases`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -877,9 +877,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListGroupProcesses(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.ListGroupProcesses(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListGroupProcesses`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.ListGroupProcesses`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -887,7 +887,7 @@ func main() {
         return
     }
     // response from `ListGroupProcesses`: PaginatedHostViewAtlas
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListGroupProcesses`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.ListGroupProcesses`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -961,9 +961,9 @@ func main() {
     processId := "my.host.name.com:27017" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListHostFtsMetrics(context.Background(), processId, groupId).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.ListHostFtsMetrics(context.Background(), processId, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListHostFtsMetrics`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.ListHostFtsMetrics`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -971,7 +971,7 @@ func main() {
         return
     }
     // response from `ListHostFtsMetrics`: CloudSearchMetrics
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListHostFtsMetrics`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.ListHostFtsMetrics`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1051,9 +1051,9 @@ func main() {
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListIndexMeasurements(context.Background(), processId, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.ListIndexMeasurements(context.Background(), processId, databaseName, collectionName, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListIndexMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.ListIndexMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1061,7 +1061,7 @@ func main() {
         return
     }
     // response from `ListIndexMeasurements`: MeasurementsIndexes
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListIndexMeasurements`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.ListIndexMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1148,9 +1148,9 @@ func main() {
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListMeasurements(context.Background(), processId, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.ListMeasurements(context.Background(), processId, groupId).Granularity(granularity).Metrics(metrics).Period(period).Start(start).End(end).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListMeasurements`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.ListMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1158,7 +1158,7 @@ func main() {
         return
     }
     // response from `ListMeasurements`: MeasurementsNonIndex
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListMeasurements`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.ListMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1239,9 +1239,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.ListProcessDisks(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.MonitoringAndLogsAPI.ListProcessDisks(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListProcessDisks`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsAPI.ListProcessDisks`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1249,7 +1249,7 @@ func main() {
         return
     }
     // response from `ListProcessDisks`: PaginatedDiskPartition
-    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListProcessDisks`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsAPI.ListProcessDisks`: %v (%v)\n", resp, r)
 }
 ```
 

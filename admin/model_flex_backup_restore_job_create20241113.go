@@ -16,16 +16,16 @@ type FlexBackupRestoreJobCreate20241113 struct {
 	ExpirationDate *time.Time `json:"expirationDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the restore job.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies the source instance.
 	// Read only field.
-	InstanceName *string `json:"instanceName,omitempty"`
+	InstanceName *string `json:"instanceName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project from which the restore job originated.
 	// Read only field.
-	ProjectId *string `json:"projectId,omitempty"`
+	ProjectId *string `json:"projectId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Date and time when MongoDB Cloud completed writing this snapshot. MongoDB Cloud changes the status of the restore job to `CLOSED`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	RestoreFinishedDate *time.Time `json:"restoreFinishedDate,omitempty"`
@@ -37,7 +37,7 @@ type FlexBackupRestoreJobCreate20241113 struct {
 	SnapshotFinishedDate *time.Time `json:"snapshotFinishedDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot to restore.
 	// Write only field.
-	SnapshotId string `json:"snapshotId"`
+	SnapshotId string `json:"snapshotId" validate:"regexp=^([a-f0-9]{24})$"`
 	// Internet address from which you can download the compressed snapshot files. The resource returns this parameter when  `\"deliveryType\" : \"DOWNLOAD\"`.
 	// Read only field.
 	SnapshotUrl *string `json:"snapshotUrl,omitempty"`
@@ -46,10 +46,10 @@ type FlexBackupRestoreJobCreate20241113 struct {
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies the instance or cluster on the target project to which you want to restore the snapshot. You can restore the snapshot to another flex cluster or dedicated cluster tier.
 	// Write only field.
-	TargetDeploymentItemName string `json:"targetDeploymentItemName"`
+	TargetDeploymentItemName string `json:"targetDeploymentItemName" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.(),:&@+']{1,64}$"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the instance or cluster to which you want to restore the snapshot.
 	// Write only field.
-	TargetProjectId *string `json:"targetProjectId,omitempty"`
+	TargetProjectId *string `json:"targetProjectId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewFlexBackupRestoreJobCreate20241113 instantiates a new FlexBackupRestoreJobCreate20241113 object

@@ -6,10 +6,10 @@ package admin
 type ApiAtlasNonCompliantResource struct {
 	// Unique 24-hexadecimal character string that identifies the organization the resource belongs to.
 	// Read only field.
-	OrgId *string `json:"orgId,omitempty"`
+	OrgId *string `json:"orgId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique 24-hexadecimal character string that identifies the non-compliant resource.
 	// Read only field.
-	ResourceId *string `json:"resourceId,omitempty"`
+	ResourceId *string `json:"resourceId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique human readable string that identifies the non-compliant resource.
 	// Read only field.
 	ResourceName *string `json:"resourceName,omitempty"`

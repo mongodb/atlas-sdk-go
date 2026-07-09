@@ -5,7 +5,7 @@ package admin
 // GroupRole struct for GroupRole
 type GroupRole struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include project-level roles.
 	GroupRole *string `json:"groupRole,omitempty"`
 }

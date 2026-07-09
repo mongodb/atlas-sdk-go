@@ -6,7 +6,7 @@ package admin
 type ServiceAccountGroup struct {
 	// Unique 24-hexadecimal digit string that identifies your project. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// A list of project roles assigned to the Service Account in this project.
 	Roles *[]string `json:"roles,omitempty"`
 }

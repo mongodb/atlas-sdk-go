@@ -1,11 +1,11 @@
-# \AccessTrackingApi
+# \AccessTrackingAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAccessHistoryCluster**](AccessTrackingApi.md#GetAccessHistoryCluster) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster by Cluster Name
-[**GetAccessHistoryProcess**](AccessTrackingApi.md#GetAccessHistoryProcess) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname} | Return Database Access History for One Cluster by Hostname
+[**GetAccessHistoryCluster**](AccessTrackingAPI.md#GetAccessHistoryCluster) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster by Cluster Name
+[**GetAccessHistoryProcess**](AccessTrackingAPI.md#GetAccessHistoryProcess) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname} | Return Database Access History for One Cluster by Hostname
 
 
 
@@ -47,9 +47,9 @@ func main() {
     nLogs := int(56) // int |  (optional) (default to 20000)
     start := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.AccessTrackingApi.GetAccessHistoryCluster(context.Background(), groupId, clusterName).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
+    resp, r, err := sdk.AccessTrackingAPI.GetAccessHistoryCluster(context.Background(), groupId, clusterName).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessTrackingApi.GetAccessHistoryCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessTrackingAPI.GetAccessHistoryCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -57,7 +57,7 @@ func main() {
         return
     }
     // response from `GetAccessHistoryCluster`: MongoDBAccessLogsList
-    fmt.Fprintf(os.Stdout, "Response from `AccessTrackingApi.GetAccessHistoryCluster`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AccessTrackingAPI.GetAccessHistoryCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -140,9 +140,9 @@ func main() {
     nLogs := int(56) // int |  (optional) (default to 20000)
     start := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.AccessTrackingApi.GetAccessHistoryProcess(context.Background(), groupId, hostname).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
+    resp, r, err := sdk.AccessTrackingAPI.GetAccessHistoryProcess(context.Background(), groupId, hostname).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessTrackingApi.GetAccessHistoryProcess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessTrackingAPI.GetAccessHistoryProcess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -150,7 +150,7 @@ func main() {
         return
     }
     // response from `GetAccessHistoryProcess`: MongoDBAccessLogsList
-    fmt.Fprintf(os.Stdout, "Response from `AccessTrackingApi.GetAccessHistoryProcess`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AccessTrackingAPI.GetAccessHistoryProcess`: %v (%v)\n", resp, r)
 }
 ```
 

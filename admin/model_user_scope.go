@@ -5,7 +5,7 @@ package admin
 // UserScope Range of resources available to this database user.
 type UserScope struct {
 	// Human-readable label that identifies the cluster or MongoDB Atlas Data Lake that this database user can access.
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
 	// Category of resource that this database user can access.
 	Type string `json:"type"`
 }

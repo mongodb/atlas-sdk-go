@@ -11,7 +11,7 @@ import (
 	"go.mongodb.org/atlas-sdk/v20250312021/mockadmin"
 )
 
-func myFunctionCallingListClusters(clusterAPI admin.ClustersApi) (int, error) {
+func myFunctionCallingListClusters(clusterAPI admin.ClustersAPI) (int, error) {
 	clusters, _, err := clusterAPI.ListClusters(context.Background(), "my_group_id").Execute()
 	if err != nil {
 		return 0, err
@@ -21,7 +21,7 @@ func myFunctionCallingListClusters(clusterAPI admin.ClustersApi) (int, error) {
 
 func TestListClusters(t *testing.T) {
 	// Create mock API.
-	clusterAPI := mockadmin.NewClustersApi(t)
+	clusterAPI := mockadmin.NewClustersAPI(t)
 
 	// Program expectations.
 	list := &admin.PaginatedClusterDescription20240805{
@@ -46,7 +46,7 @@ func TestListClusters(t *testing.T) {
 
 func TestListClustersErrorMocks(t *testing.T) {
 	// Create mock API.
-	clusterAPI := mockadmin.NewClustersApi(t)
+	clusterAPI := mockadmin.NewClustersAPI(t)
 	apiError := admin.GenericOpenAPIError{}
 
 	apiError.SetModel(admin.ApiError{

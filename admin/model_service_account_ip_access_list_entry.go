@@ -9,12 +9,12 @@ import (
 // ServiceAccountIPAccessListEntry struct for ServiceAccountIPAccessListEntry
 type ServiceAccountIPAccessListEntry struct {
 	// Range of network addresses in the access list for the Service Account. This parameter requires the range to be expressed in Classless Inter-Domain Routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or `ipAddress`, but not for both in the same request.
-	CidrBlock *string `json:"cidrBlock,omitempty"`
+	CidrBlock *string `json:"cidrBlock,omitempty" validate:"regexp=^((([0-9]{1,3}\\\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|\\/)[0-9]{1,3})+$"`
 	// Date MongoDB Cloud added the entry was added to the Access List. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Network address in the access list for the Service Account. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or `cidrBlock`, but not for both in the same request.
-	IpAddress *string `json:"ipAddress,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
 	// Network address that issued the most recent request to the API. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. The resource returns this parameter after this IP address makes at least one request.
 	// Read only field.
 	LastUsedAddress *string `json:"lastUsedAddress,omitempty"`

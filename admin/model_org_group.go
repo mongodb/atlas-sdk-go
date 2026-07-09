@@ -11,12 +11,12 @@ type OrgGroup struct {
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the project.
-	GroupName *string `json:"groupName,omitempty"`
+	GroupName *string `json:"groupName,omitempty" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.(),:&@+']{1,64}$"`
 	// Unique 24-hexadecimal character string that identifies the organization that contains the project.
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies the organization that contains the project.
-	OrgName *string `json:"orgName,omitempty"`
+	OrgName *string `json:"orgName,omitempty" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.(),:&@+']{1,64}$"`
 	// Human-readable label that indicates the plan type.
 	// Read only field.
 	PlanType *string `json:"planType,omitempty"`

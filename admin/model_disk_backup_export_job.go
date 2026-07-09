@@ -18,22 +18,22 @@ type DiskBackupExportJob struct {
 	CustomData *[]BackupLabel `json:"customData,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
 	// Read only field.
-	ExportBucketId string        `json:"exportBucketId"`
+	ExportBucketId string        `json:"exportBucketId" validate:"regexp=^([a-f0-9]{24})$"`
 	ExportStatus   *ExportStatus `json:"exportStatus,omitempty"`
 	// Date and time when this Export Job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	FinishedAt *time.Time `json:"finishedAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the restore job.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Prefix used for all blob storage objects uploaded as part of the Export Job.
 	// Read only field.
-	Prefix *string `json:"prefix,omitempty"`
+	Prefix *string `json:"prefix,omitempty" validate:"regexp=exported_snapshots/\\\\{ORG-NAME\\\\}/\\\\{PROJECT-NAME\\\\}/\\\\{CLUSTER-NAME\\\\}/\\\\{SNAPSHOT-INITIATION-DATE\\\\}/\\\\{TIMESTAMP\\\\}"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.
-	SnapshotId *string `json:"snapshotId,omitempty"`
+	SnapshotId *string `json:"snapshotId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// State of the Export Job.
 	// Read only field.
 	State       *string      `json:"state,omitempty"`

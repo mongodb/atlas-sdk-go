@@ -7,12 +7,12 @@ type ApiAtlasSnapshotSchedule struct {
 	// Quantity of time expressed in minutes between successive cluster checkpoints. This parameter applies only to sharded clusters. This number determines the granularity of continuous cloud backups for sharded clusters.
 	ClusterCheckpointIntervalMin int `json:"clusterCheckpointIntervalMin"`
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshot you want to return.
-	ClusterId string `json:"clusterId"`
+	ClusterId string `json:"clusterId" validate:"regexp=^([a-f0-9]{24})$"`
 	// Quantity of time to keep daily snapshots. MongoDB Cloud expresses this value in days. Set this value to `0` to disable daily snapshot retention.
 	DailySnapshotRetentionDays int `json:"dailySnapshotRetentionDays"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the cluster.
 	// Read only field.
-	GroupId string `json:"groupId"`
+	GroupId string `json:"groupId" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`

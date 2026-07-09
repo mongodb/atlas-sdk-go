@@ -5,7 +5,7 @@ package admin
 // OrganizationInvitationGroupRoleAssignmentsRequest struct for OrganizationInvitationGroupRoleAssignmentsRequest
 type OrganizationInvitationGroupRoleAssignmentsRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which these roles belong.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// One or more project-level roles to assign to the MongoDB Cloud user.
 	Roles *[]string `json:"roles,omitempty"`
 }

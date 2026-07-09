@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -11,7 +10,7 @@ import (
 	"strings"
 )
 
-type MongoDBCloudUsersApi interface {
+type MongoDBCloudUsersAPI interface {
 
 	/*
 			AddGroupUserRole Add One Project Role to One MongoDB Cloud User
@@ -161,7 +160,7 @@ type MongoDBCloudUsersApi interface {
 			@param cloudAppUser MongoDB Cloud user account to create.
 			@return CreateUserApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersApi
+			Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersAPI
 	*/
 	CreateUser(ctx context.Context, cloudAppUser *CloudAppUser) CreateUserApiRequest
 	/*
@@ -172,7 +171,7 @@ type MongoDBCloudUsersApi interface {
 		@param CreateUserApiParams - Parameters for the request
 		@return CreateUserApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersAPI
 	*/
 	CreateUserWithParams(ctx context.Context, args *CreateUserApiParams) CreateUserApiRequest
 
@@ -244,7 +243,7 @@ type MongoDBCloudUsersApi interface {
 		@param userId Unique 24-hexadecimal digit string that identifies this user.
 		@return GetUserApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersAPI
 	*/
 	GetUser(ctx context.Context, userId string) GetUserApiRequest
 	/*
@@ -255,7 +254,7 @@ type MongoDBCloudUsersApi interface {
 		@param GetUserApiParams - Parameters for the request
 		@return GetUserApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersAPI
 	*/
 	GetUserWithParams(ctx context.Context, args *GetUserApiParams) GetUserApiRequest
 
@@ -271,7 +270,7 @@ type MongoDBCloudUsersApi interface {
 		@param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
 		@return GetUserByNameApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersAPI
 	*/
 	GetUserByName(ctx context.Context, userName string) GetUserByNameApiRequest
 	/*
@@ -282,7 +281,7 @@ type MongoDBCloudUsersApi interface {
 		@param GetUserByNameApiParams - Parameters for the request
 		@return GetUserByNameApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for MongoDBCloudUsersAPI
 	*/
 	GetUserByNameWithParams(ctx context.Context, args *GetUserByNameApiParams) GetUserByNameApiRequest
 
@@ -540,12 +539,12 @@ type MongoDBCloudUsersApi interface {
 	UpdateOrgUserExecute(r UpdateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error)
 }
 
-// MongoDBCloudUsersApiService MongoDBCloudUsersApi service
-type MongoDBCloudUsersApiService service
+// MongoDBCloudUsersAPIService MongoDBCloudUsersAPI service
+type MongoDBCloudUsersAPIService service
 
 type AddGroupUserRoleApiRequest struct {
 	ctx                  context.Context
-	ApiService           MongoDBCloudUsersApi
+	ApiService           MongoDBCloudUsersAPI
 	groupId              string
 	userId               string
 	addOrRemoveGroupRole *AddOrRemoveGroupRole
@@ -557,7 +556,7 @@ type AddGroupUserRoleApiParams struct {
 	AddOrRemoveGroupRole *AddOrRemoveGroupRole
 }
 
-func (a *MongoDBCloudUsersApiService) AddGroupUserRoleWithParams(ctx context.Context, args *AddGroupUserRoleApiParams) AddGroupUserRoleApiRequest {
+func (a *MongoDBCloudUsersAPIService) AddGroupUserRoleWithParams(ctx context.Context, args *AddGroupUserRoleApiParams) AddGroupUserRoleApiRequest {
 	return AddGroupUserRoleApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -583,7 +582,7 @@ Adds one project-level role to the MongoDB Cloud user. You can add a role to an 
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
 	@return AddGroupUserRoleApiRequest
 */
-func (a *MongoDBCloudUsersApiService) AddGroupUserRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) AddGroupUserRoleApiRequest {
+func (a *MongoDBCloudUsersAPIService) AddGroupUserRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) AddGroupUserRoleApiRequest {
 	return AddGroupUserRoleApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -596,7 +595,7 @@ func (a *MongoDBCloudUsersApiService) AddGroupUserRole(ctx context.Context, grou
 // AddGroupUserRoleExecute executes the request
 //
 //	@return GroupUserResponse
-func (a *MongoDBCloudUsersApiService) AddGroupUserRoleExecute(r AddGroupUserRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) AddGroupUserRoleExecute(r AddGroupUserRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -604,7 +603,7 @@ func (a *MongoDBCloudUsersApiService) AddGroupUserRoleExecute(r AddGroupUserRole
 		localVarReturnValue *GroupUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddGroupUserRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.AddGroupUserRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -679,7 +678,7 @@ func (a *MongoDBCloudUsersApiService) AddGroupUserRoleExecute(r AddGroupUserRole
 
 type AddGroupUsersApiRequest struct {
 	ctx              context.Context
-	ApiService       MongoDBCloudUsersApi
+	ApiService       MongoDBCloudUsersAPI
 	groupId          string
 	groupUserRequest *GroupUserRequest
 }
@@ -689,7 +688,7 @@ type AddGroupUsersApiParams struct {
 	GroupUserRequest *GroupUserRequest
 }
 
-func (a *MongoDBCloudUsersApiService) AddGroupUsersWithParams(ctx context.Context, args *AddGroupUsersApiParams) AddGroupUsersApiRequest {
+func (a *MongoDBCloudUsersAPIService) AddGroupUsersWithParams(ctx context.Context, args *AddGroupUsersApiParams) AddGroupUsersApiRequest {
 	return AddGroupUsersApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -714,7 +713,7 @@ Adds one MongoDB Cloud user to one project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return AddGroupUsersApiRequest
 */
-func (a *MongoDBCloudUsersApiService) AddGroupUsers(ctx context.Context, groupId string, groupUserRequest *GroupUserRequest) AddGroupUsersApiRequest {
+func (a *MongoDBCloudUsersAPIService) AddGroupUsers(ctx context.Context, groupId string, groupUserRequest *GroupUserRequest) AddGroupUsersApiRequest {
 	return AddGroupUsersApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -726,7 +725,7 @@ func (a *MongoDBCloudUsersApiService) AddGroupUsers(ctx context.Context, groupId
 // AddGroupUsersExecute executes the request
 //
 //	@return GroupUserResponse
-func (a *MongoDBCloudUsersApiService) AddGroupUsersExecute(r AddGroupUsersApiRequest) (*GroupUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) AddGroupUsersExecute(r AddGroupUsersApiRequest) (*GroupUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -734,7 +733,7 @@ func (a *MongoDBCloudUsersApiService) AddGroupUsersExecute(r AddGroupUsersApiReq
 		localVarReturnValue *GroupUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddGroupUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.AddGroupUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -805,7 +804,7 @@ func (a *MongoDBCloudUsersApiService) AddGroupUsersExecute(r AddGroupUsersApiReq
 
 type AddOrgRoleApiRequest struct {
 	ctx                context.Context
-	ApiService         MongoDBCloudUsersApi
+	ApiService         MongoDBCloudUsersAPI
 	orgId              string
 	userId             string
 	addOrRemoveOrgRole *AddOrRemoveOrgRole
@@ -817,7 +816,7 @@ type AddOrgRoleApiParams struct {
 	AddOrRemoveOrgRole *AddOrRemoveOrgRole
 }
 
-func (a *MongoDBCloudUsersApiService) AddOrgRoleWithParams(ctx context.Context, args *AddOrgRoleApiParams) AddOrgRoleApiRequest {
+func (a *MongoDBCloudUsersAPIService) AddOrgRoleWithParams(ctx context.Context, args *AddOrgRoleApiParams) AddOrgRoleApiRequest {
 	return AddOrgRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -845,7 +844,7 @@ Adds one organization-level role to the MongoDB Cloud user. You can add a role t
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by `username`.
 	@return AddOrgRoleApiRequest
 */
-func (a *MongoDBCloudUsersApiService) AddOrgRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) AddOrgRoleApiRequest {
+func (a *MongoDBCloudUsersAPIService) AddOrgRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) AddOrgRoleApiRequest {
 	return AddOrgRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -858,7 +857,7 @@ func (a *MongoDBCloudUsersApiService) AddOrgRole(ctx context.Context, orgId stri
 // AddOrgRoleExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) AddOrgRoleExecute(r AddOrgRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) AddOrgRoleExecute(r AddOrgRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -866,7 +865,7 @@ func (a *MongoDBCloudUsersApiService) AddOrgRoleExecute(r AddOrgRoleApiRequest) 
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddOrgRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.AddOrgRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -941,7 +940,7 @@ func (a *MongoDBCloudUsersApiService) AddOrgRoleExecute(r AddOrgRoleApiRequest) 
 
 type AddOrgTeamUserApiRequest struct {
 	ctx                     context.Context
-	ApiService              MongoDBCloudUsersApi
+	ApiService              MongoDBCloudUsersAPI
 	orgId                   string
 	teamId                  string
 	addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam
@@ -953,7 +952,7 @@ type AddOrgTeamUserApiParams struct {
 	AddOrRemoveUserFromTeam *AddOrRemoveUserFromTeam
 }
 
-func (a *MongoDBCloudUsersApiService) AddOrgTeamUserWithParams(ctx context.Context, args *AddOrgTeamUserApiParams) AddOrgTeamUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) AddOrgTeamUserWithParams(ctx context.Context, args *AddOrgTeamUserApiParams) AddOrgTeamUserApiRequest {
 	return AddOrgTeamUserApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -979,7 +978,7 @@ Adds one MongoDB Cloud user to one team. You can add an active user or a user th
 	@param teamId Unique 24-hexadecimal digit string that identifies the team to add the MongoDB Cloud user to.
 	@return AddOrgTeamUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) AddOrgTeamUser(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) AddOrgTeamUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) AddOrgTeamUser(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) AddOrgTeamUserApiRequest {
 	return AddOrgTeamUserApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -992,7 +991,7 @@ func (a *MongoDBCloudUsersApiService) AddOrgTeamUser(ctx context.Context, orgId 
 // AddOrgTeamUserExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) AddOrgTeamUserExecute(r AddOrgTeamUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) AddOrgTeamUserExecute(r AddOrgTeamUserApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1000,7 +999,7 @@ func (a *MongoDBCloudUsersApiService) AddOrgTeamUserExecute(r AddOrgTeamUserApiR
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.AddOrgTeamUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.AddOrgTeamUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1075,7 +1074,7 @@ func (a *MongoDBCloudUsersApiService) AddOrgTeamUserExecute(r AddOrgTeamUserApiR
 
 type CreateOrgUserApiRequest struct {
 	ctx            context.Context
-	ApiService     MongoDBCloudUsersApi
+	ApiService     MongoDBCloudUsersAPI
 	orgId          string
 	orgUserRequest *OrgUserRequest
 }
@@ -1085,7 +1084,7 @@ type CreateOrgUserApiParams struct {
 	OrgUserRequest *OrgUserRequest
 }
 
-func (a *MongoDBCloudUsersApiService) CreateOrgUserWithParams(ctx context.Context, args *CreateOrgUserApiParams) CreateOrgUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) CreateOrgUserWithParams(ctx context.Context, args *CreateOrgUserApiParams) CreateOrgUserApiRequest {
 	return CreateOrgUserApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1109,7 +1108,7 @@ Invites one new or existing MongoDB Cloud user to join the organization. The inv
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrgUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) CreateOrgUser(ctx context.Context, orgId string, orgUserRequest *OrgUserRequest) CreateOrgUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) CreateOrgUser(ctx context.Context, orgId string, orgUserRequest *OrgUserRequest) CreateOrgUserApiRequest {
 	return CreateOrgUserApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1121,7 +1120,7 @@ func (a *MongoDBCloudUsersApiService) CreateOrgUser(ctx context.Context, orgId s
 // CreateOrgUserExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) CreateOrgUserExecute(r CreateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) CreateOrgUserExecute(r CreateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1129,7 +1128,7 @@ func (a *MongoDBCloudUsersApiService) CreateOrgUserExecute(r CreateOrgUserApiReq
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.CreateOrgUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.CreateOrgUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1200,7 +1199,7 @@ func (a *MongoDBCloudUsersApiService) CreateOrgUserExecute(r CreateOrgUserApiReq
 
 type CreateUserApiRequest struct {
 	ctx          context.Context
-	ApiService   MongoDBCloudUsersApi
+	ApiService   MongoDBCloudUsersAPI
 	cloudAppUser *CloudAppUser
 }
 
@@ -1208,7 +1207,7 @@ type CreateUserApiParams struct {
 	CloudAppUser *CloudAppUser
 }
 
-func (a *MongoDBCloudUsersApiService) CreateUserWithParams(ctx context.Context, args *CreateUserApiParams) CreateUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) CreateUserWithParams(ctx context.Context, args *CreateUserApiParams) CreateUserApiRequest {
 	return CreateUserApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1232,7 +1231,7 @@ Creates one MongoDB Cloud user account. A MongoDB Cloud user account grants acce
 
 Deprecated
 */
-func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context, cloudAppUser *CloudAppUser) CreateUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) CreateUser(ctx context.Context, cloudAppUser *CloudAppUser) CreateUserApiRequest {
 	return CreateUserApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1245,7 +1244,7 @@ func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context, cloudAppUs
 //	@return CloudAppUser
 //
 // Deprecated
-func (a *MongoDBCloudUsersApiService) CreateUserExecute(r CreateUserApiRequest) (*CloudAppUser, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) CreateUserExecute(r CreateUserApiRequest) (*CloudAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1253,7 +1252,7 @@ func (a *MongoDBCloudUsersApiService) CreateUserExecute(r CreateUserApiRequest) 
 		localVarReturnValue *CloudAppUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.CreateUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.CreateUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1320,7 +1319,7 @@ func (a *MongoDBCloudUsersApiService) CreateUserExecute(r CreateUserApiRequest) 
 
 type GetGroupUserApiRequest struct {
 	ctx                   context.Context
-	ApiService            MongoDBCloudUsersApi
+	ApiService            MongoDBCloudUsersAPI
 	groupId               string
 	userId                string
 	orgMembershipStatuses *[]string
@@ -1332,7 +1331,7 @@ type GetGroupUserApiParams struct {
 	OrgMembershipStatuses *[]string
 }
 
-func (a *MongoDBCloudUsersApiService) GetGroupUserWithParams(ctx context.Context, args *GetGroupUserApiParams) GetGroupUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) GetGroupUserWithParams(ctx context.Context, args *GetGroupUserApiParams) GetGroupUserApiRequest {
 	return GetGroupUserApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -1366,7 +1365,7 @@ Returns information about the specified MongoDB Cloud user within the context of
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
 	@return GetGroupUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) GetGroupUser(ctx context.Context, groupId string, userId string) GetGroupUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) GetGroupUser(ctx context.Context, groupId string, userId string) GetGroupUserApiRequest {
 	return GetGroupUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1378,7 +1377,7 @@ func (a *MongoDBCloudUsersApiService) GetGroupUser(ctx context.Context, groupId 
 // GetGroupUserExecute executes the request
 //
 //	@return GroupUserResponse
-func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiRequest) (*GroupUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) GetGroupUserExecute(r GetGroupUserApiRequest) (*GroupUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1386,7 +1385,7 @@ func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiReque
 		localVarReturnValue *GroupUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetGroupUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.GetGroupUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1463,7 +1462,7 @@ func (a *MongoDBCloudUsersApiService) GetGroupUserExecute(r GetGroupUserApiReque
 
 type GetOrgUserApiRequest struct {
 	ctx                   context.Context
-	ApiService            MongoDBCloudUsersApi
+	ApiService            MongoDBCloudUsersAPI
 	orgId                 string
 	userId                string
 	orgMembershipStatuses *[]string
@@ -1475,7 +1474,7 @@ type GetOrgUserApiParams struct {
 	OrgMembershipStatuses *[]string
 }
 
-func (a *MongoDBCloudUsersApiService) GetOrgUserWithParams(ctx context.Context, args *GetOrgUserApiParams) GetOrgUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) GetOrgUserWithParams(ctx context.Context, args *GetOrgUserApiParams) GetOrgUserApiRequest {
 	return GetOrgUserApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -1509,7 +1508,7 @@ Returns information about the specified MongoDB Cloud user within the context of
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by `username`.
 	@return GetOrgUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) GetOrgUser(ctx context.Context, orgId string, userId string) GetOrgUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) GetOrgUser(ctx context.Context, orgId string, userId string) GetOrgUserApiRequest {
 	return GetOrgUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1521,7 +1520,7 @@ func (a *MongoDBCloudUsersApiService) GetOrgUser(ctx context.Context, orgId stri
 // GetOrgUserExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) GetOrgUserExecute(r GetOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) GetOrgUserExecute(r GetOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1529,7 +1528,7 @@ func (a *MongoDBCloudUsersApiService) GetOrgUserExecute(r GetOrgUserApiRequest) 
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetOrgUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.GetOrgUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1606,7 +1605,7 @@ func (a *MongoDBCloudUsersApiService) GetOrgUserExecute(r GetOrgUserApiRequest) 
 
 type GetUserApiRequest struct {
 	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
+	ApiService MongoDBCloudUsersAPI
 	userId     string
 }
 
@@ -1614,7 +1613,7 @@ type GetUserApiParams struct {
 	UserId string
 }
 
-func (a *MongoDBCloudUsersApiService) GetUserWithParams(ctx context.Context, args *GetUserApiParams) GetUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) GetUserWithParams(ctx context.Context, args *GetUserApiParams) GetUserApiRequest {
 	return GetUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1637,7 +1636,7 @@ Returns the details for one MongoDB Cloud user account with the specified unique
 
 Deprecated
 */
-func (a *MongoDBCloudUsersApiService) GetUser(ctx context.Context, userId string) GetUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) GetUser(ctx context.Context, userId string) GetUserApiRequest {
 	return GetUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1650,7 +1649,7 @@ func (a *MongoDBCloudUsersApiService) GetUser(ctx context.Context, userId string
 //	@return CloudAppUser
 //
 // Deprecated
-func (a *MongoDBCloudUsersApiService) GetUserExecute(r GetUserApiRequest) (*CloudAppUser, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) GetUserExecute(r GetUserApiRequest) (*CloudAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1658,7 +1657,7 @@ func (a *MongoDBCloudUsersApiService) GetUserExecute(r GetUserApiRequest) (*Clou
 		localVarReturnValue *CloudAppUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.GetUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1724,7 +1723,7 @@ func (a *MongoDBCloudUsersApiService) GetUserExecute(r GetUserApiRequest) (*Clou
 
 type GetUserByNameApiRequest struct {
 	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
+	ApiService MongoDBCloudUsersAPI
 	userName   string
 }
 
@@ -1732,7 +1731,7 @@ type GetUserByNameApiParams struct {
 	UserName string
 }
 
-func (a *MongoDBCloudUsersApiService) GetUserByNameWithParams(ctx context.Context, args *GetUserByNameApiParams) GetUserByNameApiRequest {
+func (a *MongoDBCloudUsersAPIService) GetUserByNameWithParams(ctx context.Context, args *GetUserByNameApiParams) GetUserByNameApiRequest {
 	return GetUserByNameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1755,7 +1754,7 @@ Returns the details for one MongoDB Cloud user account with the specified userna
 
 Deprecated
 */
-func (a *MongoDBCloudUsersApiService) GetUserByName(ctx context.Context, userName string) GetUserByNameApiRequest {
+func (a *MongoDBCloudUsersAPIService) GetUserByName(ctx context.Context, userName string) GetUserByNameApiRequest {
 	return GetUserByNameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1768,7 +1767,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByName(ctx context.Context, userNam
 //	@return CloudAppUser
 //
 // Deprecated
-func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiRequest) (*CloudAppUser, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) GetUserByNameExecute(r GetUserByNameApiRequest) (*CloudAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1776,7 +1775,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiReq
 		localVarReturnValue *CloudAppUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetUserByName")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.GetUserByName")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1842,7 +1841,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByNameExecute(r GetUserByNameApiReq
 
 type ListGroupUsersApiRequest struct {
 	ctx                   context.Context
-	ApiService            MongoDBCloudUsersApi
+	ApiService            MongoDBCloudUsersAPI
 	groupId               string
 	includeCount          *bool
 	itemsPerPage          *int
@@ -1866,7 +1865,7 @@ type ListGroupUsersApiParams struct {
 	Username              *string
 }
 
-func (a *MongoDBCloudUsersApiService) ListGroupUsersWithParams(ctx context.Context, args *ListGroupUsersApiParams) ListGroupUsersApiRequest {
+func (a *MongoDBCloudUsersAPIService) ListGroupUsersWithParams(ctx context.Context, args *ListGroupUsersApiParams) ListGroupUsersApiRequest {
 	return ListGroupUsersApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -1948,7 +1947,7 @@ Returns details about the pending and active MongoDB Cloud users associated with
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupUsersApiRequest
 */
-func (a *MongoDBCloudUsersApiService) ListGroupUsers(ctx context.Context, groupId string) ListGroupUsersApiRequest {
+func (a *MongoDBCloudUsersAPIService) ListGroupUsers(ctx context.Context, groupId string) ListGroupUsersApiRequest {
 	return ListGroupUsersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1959,7 +1958,7 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsers(ctx context.Context, groupI
 // ListGroupUsersExecute executes the request
 //
 //	@return PaginatedGroupUser
-func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiRequest) (*PaginatedGroupUser, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) ListGroupUsersExecute(r ListGroupUsersApiRequest) (*PaginatedGroupUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1967,7 +1966,7 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 		localVarReturnValue *PaginatedGroupUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.ListGroupUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.ListGroupUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2081,7 +2080,7 @@ func (a *MongoDBCloudUsersApiService) ListGroupUsersExecute(r ListGroupUsersApiR
 
 type ListOrgUsersApiRequest struct {
 	ctx                   context.Context
-	ApiService            MongoDBCloudUsersApi
+	ApiService            MongoDBCloudUsersAPI
 	orgId                 string
 	includeCount          *bool
 	itemsPerPage          *int
@@ -2101,7 +2100,7 @@ type ListOrgUsersApiParams struct {
 	OrgMembershipStatuses *[]string
 }
 
-func (a *MongoDBCloudUsersApiService) ListOrgUsersWithParams(ctx context.Context, args *ListOrgUsersApiParams) ListOrgUsersApiRequest {
+func (a *MongoDBCloudUsersAPIService) ListOrgUsersWithParams(ctx context.Context, args *ListOrgUsersApiParams) ListOrgUsersApiRequest {
 	return ListOrgUsersApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -2169,7 +2168,7 @@ Returns details about the pending and active MongoDB Cloud users associated with
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgUsersApiRequest
 */
-func (a *MongoDBCloudUsersApiService) ListOrgUsers(ctx context.Context, orgId string) ListOrgUsersApiRequest {
+func (a *MongoDBCloudUsersAPIService) ListOrgUsers(ctx context.Context, orgId string) ListOrgUsersApiRequest {
 	return ListOrgUsersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2180,7 +2179,7 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsers(ctx context.Context, orgId st
 // ListOrgUsersExecute executes the request
 //
 //	@return PaginatedOrgUser
-func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) ListOrgUsersExecute(r ListOrgUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2188,7 +2187,7 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiReque
 		localVarReturnValue *PaginatedOrgUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.ListOrgUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.ListOrgUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2288,7 +2287,7 @@ func (a *MongoDBCloudUsersApiService) ListOrgUsersExecute(r ListOrgUsersApiReque
 
 type ListTeamUsersApiRequest struct {
 	ctx                   context.Context
-	ApiService            MongoDBCloudUsersApi
+	ApiService            MongoDBCloudUsersAPI
 	orgId                 string
 	teamId                string
 	itemsPerPage          *int
@@ -2310,7 +2309,7 @@ type ListTeamUsersApiParams struct {
 	UserId                *string
 }
 
-func (a *MongoDBCloudUsersApiService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
+func (a *MongoDBCloudUsersAPIService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
 	return ListTeamUsersApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -2380,7 +2379,7 @@ Returns details about the pending and active MongoDB Cloud users associated with
 	@param teamId Unique 24-hexadecimal digit string that identifies the team whose application users you want to return.
 	@return ListTeamUsersApiRequest
 */
-func (a *MongoDBCloudUsersApiService) ListTeamUsers(ctx context.Context, orgId string, teamId string) ListTeamUsersApiRequest {
+func (a *MongoDBCloudUsersAPIService) ListTeamUsers(ctx context.Context, orgId string, teamId string) ListTeamUsersApiRequest {
 	return ListTeamUsersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2392,7 +2391,7 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsers(ctx context.Context, orgId s
 // ListTeamUsersExecute executes the request
 //
 //	@return PaginatedOrgUser
-func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2400,7 +2399,7 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 		localVarReturnValue *PaginatedOrgUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.ListTeamUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.ListTeamUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2500,7 +2499,7 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 
 type RemoveGroupUserApiRequest struct {
 	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
+	ApiService MongoDBCloudUsersAPI
 	groupId    string
 	userId     string
 }
@@ -2510,7 +2509,7 @@ type RemoveGroupUserApiParams struct {
 	UserId  string
 }
 
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserWithParams(ctx context.Context, args *RemoveGroupUserApiParams) RemoveGroupUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveGroupUserWithParams(ctx context.Context, args *RemoveGroupUserApiParams) RemoveGroupUserApiRequest {
 	return RemoveGroupUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2537,7 +2536,7 @@ Removes one MongoDB Cloud user from the specified project. You can remove an act
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Project](#tag/MongoDB-Cloud-Users/operation/listProjectUsers) resource and filter by `username`.
 	@return RemoveGroupUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) RemoveGroupUser(ctx context.Context, groupId string, userId string) RemoveGroupUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveGroupUser(ctx context.Context, groupId string, userId string) RemoveGroupUserApiRequest {
 	return RemoveGroupUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2547,14 +2546,14 @@ func (a *MongoDBCloudUsersApiService) RemoveGroupUser(ctx context.Context, group
 }
 
 // RemoveGroupUserExecute executes the request
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserExecute(r RemoveGroupUserApiRequest) (*http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) RemoveGroupUserExecute(r RemoveGroupUserApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveGroupUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.RemoveGroupUser")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2610,7 +2609,7 @@ func (a *MongoDBCloudUsersApiService) RemoveGroupUserExecute(r RemoveGroupUserAp
 
 type RemoveGroupUserRoleApiRequest struct {
 	ctx                  context.Context
-	ApiService           MongoDBCloudUsersApi
+	ApiService           MongoDBCloudUsersAPI
 	groupId              string
 	userId               string
 	addOrRemoveGroupRole *AddOrRemoveGroupRole
@@ -2622,7 +2621,7 @@ type RemoveGroupUserRoleApiParams struct {
 	AddOrRemoveGroupRole *AddOrRemoveGroupRole
 }
 
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserRoleWithParams(ctx context.Context, args *RemoveGroupUserRoleApiParams) RemoveGroupUserRoleApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveGroupUserRoleWithParams(ctx context.Context, args *RemoveGroupUserRoleApiParams) RemoveGroupUserRoleApiRequest {
 	return RemoveGroupUserRoleApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -2648,7 +2647,7 @@ Removes one project-level role from the MongoDB Cloud user. You can remove a rol
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
 	@return RemoveGroupUserRoleApiRequest
 */
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) RemoveGroupUserRoleApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveGroupUserRole(ctx context.Context, groupId string, userId string, addOrRemoveGroupRole *AddOrRemoveGroupRole) RemoveGroupUserRoleApiRequest {
 	return RemoveGroupUserRoleApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -2661,7 +2660,7 @@ func (a *MongoDBCloudUsersApiService) RemoveGroupUserRole(ctx context.Context, g
 // RemoveGroupUserRoleExecute executes the request
 //
 //	@return GroupUserResponse
-func (a *MongoDBCloudUsersApiService) RemoveGroupUserRoleExecute(r RemoveGroupUserRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) RemoveGroupUserRoleExecute(r RemoveGroupUserRoleApiRequest) (*GroupUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2669,7 +2668,7 @@ func (a *MongoDBCloudUsersApiService) RemoveGroupUserRoleExecute(r RemoveGroupUs
 		localVarReturnValue *GroupUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveGroupUserRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.RemoveGroupUserRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2744,7 +2743,7 @@ func (a *MongoDBCloudUsersApiService) RemoveGroupUserRoleExecute(r RemoveGroupUs
 
 type RemoveOrgRoleApiRequest struct {
 	ctx                context.Context
-	ApiService         MongoDBCloudUsersApi
+	ApiService         MongoDBCloudUsersAPI
 	orgId              string
 	userId             string
 	addOrRemoveOrgRole *AddOrRemoveOrgRole
@@ -2756,7 +2755,7 @@ type RemoveOrgRoleApiParams struct {
 	AddOrRemoveOrgRole *AddOrRemoveOrgRole
 }
 
-func (a *MongoDBCloudUsersApiService) RemoveOrgRoleWithParams(ctx context.Context, args *RemoveOrgRoleApiParams) RemoveOrgRoleApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgRoleWithParams(ctx context.Context, args *RemoveOrgRoleApiParams) RemoveOrgRoleApiRequest {
 	return RemoveOrgRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -2784,7 +2783,7 @@ Removes one organization-level role from the MongoDB Cloud user. You can remove 
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by `username`.
 	@return RemoveOrgRoleApiRequest
 */
-func (a *MongoDBCloudUsersApiService) RemoveOrgRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) RemoveOrgRoleApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgRole(ctx context.Context, orgId string, userId string, addOrRemoveOrgRole *AddOrRemoveOrgRole) RemoveOrgRoleApiRequest {
 	return RemoveOrgRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -2797,7 +2796,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgRole(ctx context.Context, orgId s
 // RemoveOrgRoleExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) RemoveOrgRoleExecute(r RemoveOrgRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgRoleExecute(r RemoveOrgRoleApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2805,7 +2804,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgRoleExecute(r RemoveOrgRoleApiReq
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrgRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.RemoveOrgRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2880,7 +2879,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgRoleExecute(r RemoveOrgRoleApiReq
 
 type RemoveOrgTeamUserApiRequest struct {
 	ctx                     context.Context
-	ApiService              MongoDBCloudUsersApi
+	ApiService              MongoDBCloudUsersAPI
 	orgId                   string
 	teamId                  string
 	addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam
@@ -2892,7 +2891,7 @@ type RemoveOrgTeamUserApiParams struct {
 	AddOrRemoveUserFromTeam *AddOrRemoveUserFromTeam
 }
 
-func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserWithParams(ctx context.Context, args *RemoveOrgTeamUserApiParams) RemoveOrgTeamUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgTeamUserWithParams(ctx context.Context, args *RemoveOrgTeamUserApiParams) RemoveOrgTeamUserApiRequest {
 	return RemoveOrgTeamUserApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -2918,7 +2917,7 @@ Removes one MongoDB Cloud user from one team. You can remove an active user or a
 	@param teamId Unique 24-hexadecimal digit string that identifies the team to remove the MongoDB user from.
 	@return RemoveOrgTeamUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUser(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) RemoveOrgTeamUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgTeamUser(ctx context.Context, orgId string, teamId string, addOrRemoveUserFromTeam *AddOrRemoveUserFromTeam) RemoveOrgTeamUserApiRequest {
 	return RemoveOrgTeamUserApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -2931,7 +2930,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUser(ctx context.Context, org
 // RemoveOrgTeamUserExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserExecute(r RemoveOrgTeamUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgTeamUserExecute(r RemoveOrgTeamUserApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2939,7 +2938,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserExecute(r RemoveOrgTeamUs
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrgTeamUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.RemoveOrgTeamUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3014,7 +3013,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgTeamUserExecute(r RemoveOrgTeamUs
 
 type RemoveOrgUserApiRequest struct {
 	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
+	ApiService MongoDBCloudUsersAPI
 	orgId      string
 	userId     string
 }
@@ -3024,7 +3023,7 @@ type RemoveOrgUserApiParams struct {
 	UserId string
 }
 
-func (a *MongoDBCloudUsersApiService) RemoveOrgUserWithParams(ctx context.Context, args *RemoveOrgUserApiParams) RemoveOrgUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgUserWithParams(ctx context.Context, args *RemoveOrgUserApiParams) RemoveOrgUserApiRequest {
 	return RemoveOrgUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3051,7 +3050,7 @@ Removes one MongoDB Cloud user in the specified organization. You can remove an 
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Organization](#tag/MongoDB-Cloud-Users/operation/listOrganizationUsers) resource and filter by `username`.
 	@return RemoveOrgUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) RemoveOrgUser(ctx context.Context, orgId string, userId string) RemoveOrgUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgUser(ctx context.Context, orgId string, userId string) RemoveOrgUserApiRequest {
 	return RemoveOrgUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3061,14 +3060,14 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgUser(ctx context.Context, orgId s
 }
 
 // RemoveOrgUserExecute executes the request
-func (a *MongoDBCloudUsersApiService) RemoveOrgUserExecute(r RemoveOrgUserApiRequest) (*http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) RemoveOrgUserExecute(r RemoveOrgUserApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrgUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.RemoveOrgUser")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3124,7 +3123,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrgUserExecute(r RemoveOrgUserApiReq
 
 type UpdateOrgUserApiRequest struct {
 	ctx                  context.Context
-	ApiService           MongoDBCloudUsersApi
+	ApiService           MongoDBCloudUsersAPI
 	orgId                string
 	userId               string
 	orgUserUpdateRequest *OrgUserUpdateRequest
@@ -3136,7 +3135,7 @@ type UpdateOrgUserApiParams struct {
 	OrgUserUpdateRequest *OrgUserUpdateRequest
 }
 
-func (a *MongoDBCloudUsersApiService) UpdateOrgUserWithParams(ctx context.Context, args *UpdateOrgUserApiParams) UpdateOrgUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) UpdateOrgUserWithParams(ctx context.Context, args *UpdateOrgUserApiParams) UpdateOrgUserApiRequest {
 	return UpdateOrgUserApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -3164,7 +3163,7 @@ Updates one MongoDB Cloud user in the specified organization. You can update an 
 	@param userId Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by `username`.
 	@return UpdateOrgUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) UpdateOrgUser(ctx context.Context, orgId string, userId string, orgUserUpdateRequest *OrgUserUpdateRequest) UpdateOrgUserApiRequest {
+func (a *MongoDBCloudUsersAPIService) UpdateOrgUser(ctx context.Context, orgId string, userId string, orgUserUpdateRequest *OrgUserUpdateRequest) UpdateOrgUserApiRequest {
 	return UpdateOrgUserApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -3177,7 +3176,7 @@ func (a *MongoDBCloudUsersApiService) UpdateOrgUser(ctx context.Context, orgId s
 // UpdateOrgUserExecute executes the request
 //
 //	@return OrgUserResponse
-func (a *MongoDBCloudUsersApiService) UpdateOrgUserExecute(r UpdateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
+func (a *MongoDBCloudUsersAPIService) UpdateOrgUserExecute(r UpdateOrgUserApiRequest) (*OrgUserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3185,7 +3184,7 @@ func (a *MongoDBCloudUsersApiService) UpdateOrgUserExecute(r UpdateOrgUserApiReq
 		localVarReturnValue *OrgUserResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.UpdateOrgUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersAPIService.UpdateOrgUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

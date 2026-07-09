@@ -1,12 +1,12 @@
-# \FlexSnapshotsApi
+# \FlexSnapshotsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DownloadFlexBackup**](FlexSnapshotsApi.md#DownloadFlexBackup) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download | Download One Flex Cluster Snapshot
-[**GetFlexBackupSnapshot**](FlexSnapshotsApi.md#GetFlexBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot for One Flex Cluster
-[**ListFlexBackupSnapshots**](FlexSnapshotsApi.md#ListFlexBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots for One Flex Cluster
+[**DownloadFlexBackup**](FlexSnapshotsAPI.md#DownloadFlexBackup) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download | Download One Flex Cluster Snapshot
+[**GetFlexBackupSnapshot**](FlexSnapshotsAPI.md#GetFlexBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot for One Flex Cluster
+[**ListFlexBackupSnapshots**](FlexSnapshotsAPI.md#ListFlexBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots for One Flex Cluster
 
 
 
@@ -44,9 +44,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     flexBackupSnapshotDownloadCreate20241113 := *admin.NewFlexBackupSnapshotDownloadCreate20241113("32b6e34b3d91647abb20e7b8") // FlexBackupSnapshotDownloadCreate20241113 | 
 
-    resp, r, err := sdk.FlexSnapshotsApi.DownloadFlexBackup(context.Background(), name, groupId, &flexBackupSnapshotDownloadCreate20241113).Execute()
+    resp, r, err := sdk.FlexSnapshotsAPI.DownloadFlexBackup(context.Background(), name, groupId, &flexBackupSnapshotDownloadCreate20241113).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsApi.DownloadFlexBackup`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsAPI.DownloadFlexBackup`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -54,7 +54,7 @@ func main() {
         return
     }
     // response from `DownloadFlexBackup`: FlexBackupRestoreJob20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsApi.DownloadFlexBackup`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsAPI.DownloadFlexBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -129,9 +129,9 @@ func main() {
     name := "name_example" // string | 
     snapshotId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.FlexSnapshotsApi.GetFlexBackupSnapshot(context.Background(), groupId, name, snapshotId).Execute()
+    resp, r, err := sdk.FlexSnapshotsAPI.GetFlexBackupSnapshot(context.Background(), groupId, name, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsApi.GetFlexBackupSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsAPI.GetFlexBackupSnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -139,7 +139,7 @@ func main() {
         return
     }
     // response from `GetFlexBackupSnapshot`: FlexBackupSnapshot20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsApi.GetFlexBackupSnapshot`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsAPI.GetFlexBackupSnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -217,9 +217,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.FlexSnapshotsApi.ListFlexBackupSnapshots(context.Background(), groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.FlexSnapshotsAPI.ListFlexBackupSnapshots(context.Background(), groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsApi.ListFlexBackupSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexSnapshotsAPI.ListFlexBackupSnapshots`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -227,7 +227,7 @@ func main() {
         return
     }
     // response from `ListFlexBackupSnapshots`: PaginatedApiAtlasFlexBackupSnapshot20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsApi.ListFlexBackupSnapshots`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexSnapshotsAPI.ListFlexBackupSnapshots`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -1,15 +1,15 @@
-# \EncryptionAtRestUsingCustomerKeyManagementApi
+# \EncryptionAtRestUsingCustomerKeyManagementAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementApi.md#CreateRestPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
-[**GetEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetEncryptionAtRest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest Using Customer-Managed Keys for One Project
-[**GetRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementApi.md#GetRestPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Return One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
-[**ListRestPrivateEndpoints**](EncryptionAtRestUsingCustomerKeyManagementApi.md#ListRestPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Return Private Endpoints for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
-[**RequestPrivateEndpointDeletion**](EncryptionAtRestUsingCustomerKeyManagementApi.md#RequestPrivateEndpointDeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider from One Project
-[**UpdateEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementApi.md#UpdateEncryptionAtRest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Encryption at Rest Configuration in One Project
+[**CreateRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#CreateRestPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**GetEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#GetEncryptionAtRest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest Using Customer-Managed Keys for One Project
+[**GetRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#GetRestPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Return One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**ListRestPrivateEndpoints**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#ListRestPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Return Private Endpoints for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**RequestPrivateEndpointDeletion**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#RequestPrivateEndpointDeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider from One Project
+[**UpdateEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#UpdateEncryptionAtRest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Encryption at Rest Configuration in One Project
 
 
 
@@ -47,9 +47,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     eARPrivateEndpoint := *admin.NewEARPrivateEndpoint() // EARPrivateEndpoint | 
 
-    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.CreateRestPrivateEndpoint(context.Background(), groupId, cloudProvider, &eARPrivateEndpoint).Execute()
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.CreateRestPrivateEndpoint(context.Background(), groupId, cloudProvider, &eARPrivateEndpoint).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementApi.CreateRestPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.CreateRestPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -57,7 +57,7 @@ func main() {
         return
     }
     // response from `CreateRestPrivateEndpoint`: EARPrivateEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementApi.CreateRestPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.CreateRestPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -130,9 +130,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.GetEncryptionAtRest(context.Background(), groupId).Execute()
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.GetEncryptionAtRest(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementApi.GetEncryptionAtRest`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.GetEncryptionAtRest`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -140,7 +140,7 @@ func main() {
         return
     }
     // response from `GetEncryptionAtRest`: EncryptionAtRest
-    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementApi.GetEncryptionAtRest`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.GetEncryptionAtRest`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -212,9 +212,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.GetRestPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.GetRestPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementApi.GetRestPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.GetRestPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -222,7 +222,7 @@ func main() {
         return
     }
     // response from `GetRestPrivateEndpoint`: EARPrivateEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementApi.GetRestPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.GetRestPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -300,9 +300,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.ListRestPrivateEndpoints(context.Background(), groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.ListRestPrivateEndpoints(context.Background(), groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementApi.ListRestPrivateEndpoints`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.ListRestPrivateEndpoints`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -310,7 +310,7 @@ func main() {
         return
     }
     // response from `ListRestPrivateEndpoints`: PaginatedApiAtlasEARPrivateEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementApi.ListRestPrivateEndpoints`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.ListRestPrivateEndpoints`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -387,9 +387,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.RequestPrivateEndpointDeletion(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.RequestPrivateEndpointDeletion(context.Background(), groupId, cloudProvider, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementApi.RequestPrivateEndpointDeletion`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.RequestPrivateEndpointDeletion`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -470,9 +470,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     encryptionAtRest := *admin.NewEncryptionAtRest() // EncryptionAtRest | 
 
-    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.UpdateEncryptionAtRest(context.Background(), groupId, &encryptionAtRest).Execute()
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.UpdateEncryptionAtRest(context.Background(), groupId, &encryptionAtRest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementApi.UpdateEncryptionAtRest`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.UpdateEncryptionAtRest`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -480,7 +480,7 @@ func main() {
         return
     }
     // response from `UpdateEncryptionAtRest`: EncryptionAtRest
-    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementApi.UpdateEncryptionAtRest`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.UpdateEncryptionAtRest`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -14,9 +14,9 @@ type IngestionSource struct {
 	DatabaseName *string `json:"databaseName,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique 24-hexadecimal character string that identifies a policy item.
-	PolicyItemId *string `json:"policyItemId,omitempty"`
+	PolicyItemId *string `json:"policyItemId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewIngestionSource instantiates a new IngestionSource object

@@ -1,22 +1,22 @@
-# \NetworkPeeringApi
+# \NetworkPeeringAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupContainer**](NetworkPeeringApi.md#CreateGroupContainer) | **Post** /api/atlas/v2/groups/{groupId}/containers | Create One Network Peering Container
-[**CreateGroupPeer**](NetworkPeeringApi.md#CreateGroupPeer) | **Post** /api/atlas/v2/groups/{groupId}/peers | Create One Network Peering Connection
-[**DeleteGroupContainer**](NetworkPeeringApi.md#DeleteGroupContainer) | **Delete** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Remove One Network Peering Container
-[**DeleteGroupPeer**](NetworkPeeringApi.md#DeleteGroupPeer) | **Delete** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Remove One Network Peering Connection
-[**DisablePeering**](NetworkPeeringApi.md#DisablePeering) | **Patch** /api/atlas/v2/groups/{groupId}/privateIpMode | Disable Connect via Peering-Only Mode for One Project
-[**GetGroupContainer**](NetworkPeeringApi.md#GetGroupContainer) | **Get** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Return One Network Peering Container
-[**GetGroupPeer**](NetworkPeeringApi.md#GetGroupPeer) | **Get** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Return One Network Peering Connection in One Project
-[**ListGroupContainerAll**](NetworkPeeringApi.md#ListGroupContainerAll) | **Get** /api/atlas/v2/groups/{groupId}/containers/all | Return All Network Peering Containers in One Project
-[**ListGroupContainers**](NetworkPeeringApi.md#ListGroupContainers) | **Get** /api/atlas/v2/groups/{groupId}/containers | Return All Network Peering Containers in One Project for One Cloud Provider
-[**ListGroupPeers**](NetworkPeeringApi.md#ListGroupPeers) | **Get** /api/atlas/v2/groups/{groupId}/peers | Return All Network Peering Connections in One Project
-[**UpdateGroupContainer**](NetworkPeeringApi.md#UpdateGroupContainer) | **Patch** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Update One Network Peering Container
-[**UpdateGroupPeer**](NetworkPeeringApi.md#UpdateGroupPeer) | **Patch** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Update One Network Peering Connection
-[**VerifyPrivateIpMode**](NetworkPeeringApi.md#VerifyPrivateIpMode) | **Get** /api/atlas/v2/groups/{groupId}/privateIpMode | Verify Connect via Peering-Only Mode for One Project
+[**CreateGroupContainer**](NetworkPeeringAPI.md#CreateGroupContainer) | **Post** /api/atlas/v2/groups/{groupId}/containers | Create One Network Peering Container
+[**CreateGroupPeer**](NetworkPeeringAPI.md#CreateGroupPeer) | **Post** /api/atlas/v2/groups/{groupId}/peers | Create One Network Peering Connection
+[**DeleteGroupContainer**](NetworkPeeringAPI.md#DeleteGroupContainer) | **Delete** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Remove One Network Peering Container
+[**DeleteGroupPeer**](NetworkPeeringAPI.md#DeleteGroupPeer) | **Delete** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Remove One Network Peering Connection
+[**DisablePeering**](NetworkPeeringAPI.md#DisablePeering) | **Patch** /api/atlas/v2/groups/{groupId}/privateIpMode | Disable Connect via Peering-Only Mode for One Project
+[**GetGroupContainer**](NetworkPeeringAPI.md#GetGroupContainer) | **Get** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Return One Network Peering Container
+[**GetGroupPeer**](NetworkPeeringAPI.md#GetGroupPeer) | **Get** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Return One Network Peering Connection in One Project
+[**ListGroupContainerAll**](NetworkPeeringAPI.md#ListGroupContainerAll) | **Get** /api/atlas/v2/groups/{groupId}/containers/all | Return All Network Peering Containers in One Project
+[**ListGroupContainers**](NetworkPeeringAPI.md#ListGroupContainers) | **Get** /api/atlas/v2/groups/{groupId}/containers | Return All Network Peering Containers in One Project for One Cloud Provider
+[**ListGroupPeers**](NetworkPeeringAPI.md#ListGroupPeers) | **Get** /api/atlas/v2/groups/{groupId}/peers | Return All Network Peering Connections in One Project
+[**UpdateGroupContainer**](NetworkPeeringAPI.md#UpdateGroupContainer) | **Patch** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Update One Network Peering Container
+[**UpdateGroupPeer**](NetworkPeeringAPI.md#UpdateGroupPeer) | **Patch** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Update One Network Peering Connection
+[**VerifyPrivateIpMode**](NetworkPeeringAPI.md#VerifyPrivateIpMode) | **Get** /api/atlas/v2/groups/{groupId}/privateIpMode | Verify Connect via Peering-Only Mode for One Project
 
 
 
@@ -53,9 +53,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderContainer := *admin.NewCloudProviderContainer() // CloudProviderContainer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.CreateGroupContainer(context.Background(), groupId, &cloudProviderContainer).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.CreateGroupContainer(context.Background(), groupId, &cloudProviderContainer).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreateGroupContainer`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.CreateGroupContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -63,7 +63,7 @@ func main() {
         return
     }
     // response from `CreateGroupContainer`: CloudProviderContainer
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.CreateGroupContainer`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.CreateGroupContainer`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -135,9 +135,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     baseNetworkPeeringConnectionSettings := *admin.NewBaseNetworkPeeringConnectionSettings("32b6e34b3d91647abb20e7b8") // BaseNetworkPeeringConnectionSettings | 
 
-    resp, r, err := sdk.NetworkPeeringApi.CreateGroupPeer(context.Background(), groupId, &baseNetworkPeeringConnectionSettings).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.CreateGroupPeer(context.Background(), groupId, &baseNetworkPeeringConnectionSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreateGroupPeer`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.CreateGroupPeer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -145,7 +145,7 @@ func main() {
         return
     }
     // response from `CreateGroupPeer`: BaseNetworkPeeringConnectionSettings
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.CreateGroupPeer`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.CreateGroupPeer`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -217,9 +217,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.NetworkPeeringApi.DeleteGroupContainer(context.Background(), groupId, containerId).Execute()
+    r, err := sdk.NetworkPeeringAPI.DeleteGroupContainer(context.Background(), groupId, containerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DeleteGroupContainer`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.DeleteGroupContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -298,9 +298,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     peerId := "peerId_example" // string | 
 
-    resp, r, err := sdk.NetworkPeeringApi.DeleteGroupPeer(context.Background(), groupId, peerId).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.DeleteGroupPeer(context.Background(), groupId, peerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DeleteGroupPeer`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.DeleteGroupPeer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -308,7 +308,7 @@ func main() {
         return
     }
     // response from `DeleteGroupPeer`: any
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeleteGroupPeer`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.DeleteGroupPeer`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -381,9 +381,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     privateIPMode := *admin.NewPrivateIPMode(false) // PrivateIPMode | 
 
-    resp, r, err := sdk.NetworkPeeringApi.DisablePeering(context.Background(), groupId, &privateIPMode).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.DisablePeering(context.Background(), groupId, &privateIPMode).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DisablePeering`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.DisablePeering`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -391,7 +391,7 @@ func main() {
         return
     }
     // response from `DisablePeering`: PrivateIPMode
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DisablePeering`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.DisablePeering`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -463,9 +463,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.NetworkPeeringApi.GetGroupContainer(context.Background(), groupId, containerId).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.GetGroupContainer(context.Background(), groupId, containerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.GetGroupContainer`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.GetGroupContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -473,7 +473,7 @@ func main() {
         return
     }
     // response from `GetGroupContainer`: CloudProviderContainer
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.GetGroupContainer`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.GetGroupContainer`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -546,9 +546,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     peerId := "peerId_example" // string | 
 
-    resp, r, err := sdk.NetworkPeeringApi.GetGroupPeer(context.Background(), groupId, peerId).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.GetGroupPeer(context.Background(), groupId, peerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.GetGroupPeer`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.GetGroupPeer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -556,7 +556,7 @@ func main() {
         return
     }
     // response from `GetGroupPeer`: BaseNetworkPeeringConnectionSettings
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.GetGroupPeer`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.GetGroupPeer`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -631,9 +631,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.NetworkPeeringApi.ListGroupContainerAll(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.ListGroupContainerAll(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.ListGroupContainerAll`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.ListGroupContainerAll`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -641,7 +641,7 @@ func main() {
         return
     }
     // response from `ListGroupContainerAll`: PaginatedCloudProviderContainer
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.ListGroupContainerAll`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.ListGroupContainerAll`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -718,9 +718,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.NetworkPeeringApi.ListGroupContainers(context.Background(), groupId).ProviderName(providerName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.ListGroupContainers(context.Background(), groupId).ProviderName(providerName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.ListGroupContainers`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.ListGroupContainers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -728,7 +728,7 @@ func main() {
         return
     }
     // response from `ListGroupContainers`: PaginatedCloudProviderContainer
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.ListGroupContainers`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.ListGroupContainers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -806,9 +806,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     providerName := "providerName_example" // string |  (optional) (default to "AWS")
 
-    resp, r, err := sdk.NetworkPeeringApi.ListGroupPeers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ProviderName(providerName).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.ListGroupPeers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ProviderName(providerName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.ListGroupPeers`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.ListGroupPeers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -816,7 +816,7 @@ func main() {
         return
     }
     // response from `ListGroupPeers`: PaginatedContainerPeer
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.ListGroupPeers`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.ListGroupPeers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -892,9 +892,9 @@ func main() {
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderContainer := *admin.NewCloudProviderContainer() // CloudProviderContainer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.UpdateGroupContainer(context.Background(), groupId, containerId, &cloudProviderContainer).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.UpdateGroupContainer(context.Background(), groupId, containerId, &cloudProviderContainer).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdateGroupContainer`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.UpdateGroupContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -902,7 +902,7 @@ func main() {
         return
     }
     // response from `UpdateGroupContainer`: CloudProviderContainer
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.UpdateGroupContainer`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.UpdateGroupContainer`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -977,9 +977,9 @@ func main() {
     peerId := "peerId_example" // string | 
     baseNetworkPeeringConnectionSettings := *admin.NewBaseNetworkPeeringConnectionSettings("32b6e34b3d91647abb20e7b8") // BaseNetworkPeeringConnectionSettings | 
 
-    resp, r, err := sdk.NetworkPeeringApi.UpdateGroupPeer(context.Background(), groupId, peerId, &baseNetworkPeeringConnectionSettings).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.UpdateGroupPeer(context.Background(), groupId, peerId, &baseNetworkPeeringConnectionSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdateGroupPeer`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.UpdateGroupPeer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -987,7 +987,7 @@ func main() {
         return
     }
     // response from `UpdateGroupPeer`: BaseNetworkPeeringConnectionSettings
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.UpdateGroupPeer`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.UpdateGroupPeer`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1060,9 +1060,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.NetworkPeeringApi.VerifyPrivateIpMode(context.Background(), groupId).Execute()
+    resp, r, err := sdk.NetworkPeeringAPI.VerifyPrivateIpMode(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.VerifyPrivateIpMode`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringAPI.VerifyPrivateIpMode`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1070,7 +1070,7 @@ func main() {
         return
     }
     // response from `VerifyPrivateIpMode`: PrivateIPMode
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.VerifyPrivateIpMode`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringAPI.VerifyPrivateIpMode`: %v (%v)\n", resp, r)
 }
 ```
 

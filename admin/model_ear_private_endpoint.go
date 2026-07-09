@@ -12,7 +12,7 @@ type EARPrivateEndpoint struct {
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Cloud provider region in which the Encryption At Rest private endpoint is located.
 	RegionName *string `json:"regionName,omitempty"`
 	// State of the Encryption At Rest private endpoint.

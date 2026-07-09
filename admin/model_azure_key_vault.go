@@ -19,7 +19,7 @@ type AzureKeyVault struct {
 	// Name of the Azure resource group that contains your Azure Key Vault. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Key Vault.
-	RoleId *string `json:"roleId,omitempty"`
+	RoleId *string `json:"roleId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Private data that you need secured and that belongs to the specified Azure Key Vault (AKV) tenant (`azureKeyVault.tenantID`). This data can include any type of sensitive data such as passwords, database connection strings, API keys, and the like. AKV stores this information as encrypted binary data.
 	// Write only field.
 	Secret *string `json:"secret,omitempty"`

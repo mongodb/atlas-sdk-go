@@ -11,7 +11,7 @@ type PrivateNetworkEndpointIdEntry struct {
 	// Human-readable label to identify customer's VPC endpoint DNS name. If defined, you must also specify a value for `region`.
 	CustomerEndpointDNSName *string `json:"customerEndpointDNSName,omitempty"`
 	// IP address used to connect to the Azure private endpoint.
-	CustomerEndpointIPAddress *string `json:"customerEndpointIPAddress,omitempty"`
+	CustomerEndpointIPAddress *string `json:"customerEndpointIPAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
 	// Unique string that identifies the private endpoint. For AWS, this is a 22-character alphanumeric string in the format `vpce-<17 hex characters>`. For Azure, this is the full resource ID in the format `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{endpointName}`.
 	EndpointId string `json:"endpointId"`
 	// Error message describing a failure approving the private endpoint request.

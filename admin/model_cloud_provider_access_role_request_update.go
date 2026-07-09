@@ -29,10 +29,10 @@ type CloudProviderAccessRoleRequestUpdate struct {
 	IamAssumedRoleArn *string `json:"iamAssumedRoleArn,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
-	RoleId *string `json:"roleId,omitempty"`
+	RoleId *string `json:"roleId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
-	Id *string `json:"_id,omitempty"`
+	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided.
 	AtlasAzureAppId *string `json:"atlasAzureAppId,omitempty"`
 	// Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

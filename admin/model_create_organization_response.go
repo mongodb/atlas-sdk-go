@@ -7,10 +7,10 @@ type CreateOrganizationResponse struct {
 	ApiKey *ApiKeyUserDetails `json:"apiKey,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to.
 	// Read only field.
-	FederationSettingsId *string `json:"federationSettingsId,omitempty"`
+	FederationSettingsId *string `json:"federationSettingsId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization.
 	// Read only field.
-	OrgOwnerId     *string            `json:"orgOwnerId,omitempty"`
+	OrgOwnerId     *string            `json:"orgOwnerId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	Organization   *AtlasOrganization `json:"organization,omitempty"`
 	ServiceAccount *OrgServiceAccount `json:"serviceAccount,omitempty"`
 	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.

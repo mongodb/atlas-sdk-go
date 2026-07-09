@@ -1,17 +1,17 @@
-# \CloudMigrationServiceApi
+# \CloudMigrationServiceAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupLiveMigration**](CloudMigrationServiceApi.md#CreateGroupLiveMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Create One Migration for One Local Managed Cluster to MongoDB Atlas
-[**CreateLinkToken**](CloudMigrationServiceApi.md#CreateLinkToken) | **Post** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Create One Link-Token
-[**CutoverMigration**](CloudMigrationServiceApi.md#CutoverMigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over One Migrated Cluster
-[**DeleteLinkTokens**](CloudMigrationServiceApi.md#DeleteLinkTokens) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token
-[**GetGroupLiveMigration**](CloudMigrationServiceApi.md#GetGroupLiveMigration) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId} | Return One Migration Job
-[**GetMigrationValidateStatus**](CloudMigrationServiceApi.md#GetMigrationValidateStatus) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId} | Return One Migration Validation Job
-[**ListAvailableProjects**](CloudMigrationServiceApi.md#ListAvailableProjects) | **Get** /api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects | Return All Projects Available for Migration
-[**ValidateLiveMigrations**](CloudMigrationServiceApi.md#ValidateLiveMigrations) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations/validate | Validate One Migration Request
+[**CreateGroupLiveMigration**](CloudMigrationServiceAPI.md#CreateGroupLiveMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Create One Migration for One Local Managed Cluster to MongoDB Atlas
+[**CreateLinkToken**](CloudMigrationServiceAPI.md#CreateLinkToken) | **Post** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Create One Link-Token
+[**CutoverMigration**](CloudMigrationServiceAPI.md#CutoverMigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over One Migrated Cluster
+[**DeleteLinkTokens**](CloudMigrationServiceAPI.md#DeleteLinkTokens) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token
+[**GetGroupLiveMigration**](CloudMigrationServiceAPI.md#GetGroupLiveMigration) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId} | Return One Migration Job
+[**GetMigrationValidateStatus**](CloudMigrationServiceAPI.md#GetMigrationValidateStatus) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId} | Return One Migration Validation Job
+[**ListAvailableProjects**](CloudMigrationServiceAPI.md#ListAvailableProjects) | **Get** /api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects | Return All Projects Available for Migration
+[**ValidateLiveMigrations**](CloudMigrationServiceAPI.md#ValidateLiveMigrations) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations/validate | Validate One Migration Request
 
 
 
@@ -48,9 +48,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationRequest20240530 := *admin.NewLiveMigrationRequest20240530(*admin.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), []string{"vm001.example.com"}, *admin.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.CreateGroupLiveMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
+    resp, r, err := sdk.CloudMigrationServiceAPI.CreateGroupLiveMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreateGroupLiveMigration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceAPI.CreateGroupLiveMigration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -58,7 +58,7 @@ func main() {
         return
     }
     // response from `CreateGroupLiveMigration`: LiveMigrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.CreateGroupLiveMigration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceAPI.CreateGroupLiveMigration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -130,9 +130,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     targetOrgRequest := *admin.NewTargetOrgRequest() // TargetOrgRequest | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.CreateLinkToken(context.Background(), orgId, &targetOrgRequest).Execute()
+    resp, r, err := sdk.CloudMigrationServiceAPI.CreateLinkToken(context.Background(), orgId, &targetOrgRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreateLinkToken`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceAPI.CreateLinkToken`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -140,7 +140,7 @@ func main() {
         return
     }
     // response from `CreateLinkToken`: TargetOrg
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.CreateLinkToken`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceAPI.CreateLinkToken`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -212,9 +212,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationId := "6296fb4c7c7aa997cf94e9a8" // string | 
 
-    r, err := sdk.CloudMigrationServiceApi.CutoverMigration(context.Background(), groupId, liveMigrationId).Execute()
+    r, err := sdk.CloudMigrationServiceAPI.CutoverMigration(context.Background(), groupId, liveMigrationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CutoverMigration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceAPI.CutoverMigration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -292,9 +292,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.CloudMigrationServiceApi.DeleteLinkTokens(context.Background(), orgId).Execute()
+    r, err := sdk.CloudMigrationServiceAPI.DeleteLinkTokens(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.DeleteLinkTokens`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceAPI.DeleteLinkTokens`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -371,9 +371,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationId := "6296fb4c7c7aa997cf94e9a8" // string | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.GetGroupLiveMigration(context.Background(), groupId, liveMigrationId).Execute()
+    resp, r, err := sdk.CloudMigrationServiceAPI.GetGroupLiveMigration(context.Background(), groupId, liveMigrationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetGroupLiveMigration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceAPI.GetGroupLiveMigration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -381,7 +381,7 @@ func main() {
         return
     }
     // response from `GetGroupLiveMigration`: LiveMigrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetGroupLiveMigration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceAPI.GetGroupLiveMigration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -454,9 +454,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     validationId := "507f1f77bcf86cd799439011" // string | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.GetMigrationValidateStatus(context.Background(), groupId, validationId).Execute()
+    resp, r, err := sdk.CloudMigrationServiceAPI.GetMigrationValidateStatus(context.Background(), groupId, validationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetMigrationValidateStatus`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceAPI.GetMigrationValidateStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -464,7 +464,7 @@ func main() {
         return
     }
     // response from `GetMigrationValidateStatus`: LiveImportValidation
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetMigrationValidateStatus`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceAPI.GetMigrationValidateStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -536,9 +536,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.ListAvailableProjects(context.Background(), orgId).Execute()
+    resp, r, err := sdk.CloudMigrationServiceAPI.ListAvailableProjects(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ListAvailableProjects`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceAPI.ListAvailableProjects`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -546,7 +546,7 @@ func main() {
         return
     }
     // response from `ListAvailableProjects`: []LiveImportAvailableProject
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ListAvailableProjects`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceAPI.ListAvailableProjects`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -617,9 +617,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationRequest20240530 := *admin.NewLiveMigrationRequest20240530(*admin.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), []string{"vm001.example.com"}, *admin.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.ValidateLiveMigrations(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
+    resp, r, err := sdk.CloudMigrationServiceAPI.ValidateLiveMigrations(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ValidateLiveMigrations`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceAPI.ValidateLiveMigrations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -627,7 +627,7 @@ func main() {
         return
     }
     // response from `ValidateLiveMigrations`: LiveImportValidation
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ValidateLiveMigrations`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceAPI.ValidateLiveMigrations`: %v (%v)\n", resp, r)
 }
 ```
 

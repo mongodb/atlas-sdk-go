@@ -7,7 +7,7 @@ type ApiPrivateDownloadDeliveryUrl struct {
 	// One Uniform Resource Locator that points to the compressed snapshot files for manual download.
 	DeliveryUrl *string `json:"deliveryUrl,omitempty"`
 	// Unique 22-character alphanumeric string that identifies the private endpoint.
-	EndpointId *string `json:"endpointId,omitempty"`
+	EndpointId *string `json:"endpointId,omitempty" validate:"regexp=^vpce-[0-9a-f]{17}$"`
 }
 
 // NewApiPrivateDownloadDeliveryUrl instantiates a new ApiPrivateDownloadDeliveryUrl object

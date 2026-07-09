@@ -9,7 +9,7 @@ type PerformanceAdvisorIndex struct {
 	AvgObjSize *float64 `json:"avgObjSize,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this index.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List that contains unique 24-hexadecimal character string that identifies the query shapes in this response that the Performance Advisor suggests.
 	// Read only field.
 	Impact *[]string `json:"impact,omitempty"`

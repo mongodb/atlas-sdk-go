@@ -6,8 +6,10 @@ import (
 	"time"
 )
 
-// CloudProviderAccessAWSIAMRole Details that describe the features linked to the Amazon Web Services (AWS) Identity and Access Management (IAM) role.
+// CloudProviderAccessAWSIAMRole struct for CloudProviderAccessAWSIAMRole
 type CloudProviderAccessAWSIAMRole struct {
+	// Human-readable label that identifies the cloud provider of the role.
+	ProviderName string `json:"providerName"`
 	// Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
 	// Read only field.
 	AtlasAWSAccountArn *string `json:"atlasAWSAccountArn,omitempty"`
@@ -27,12 +29,10 @@ type CloudProviderAccessAWSIAMRole struct {
 	IamAssumedRoleArn *string `json:"iamAssumedRoleArn,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
-	RoleId *string `json:"roleId,omitempty"`
-	// Human-readable label that identifies the cloud provider of the role.
-	ProviderName string `json:"providerName"`
+	RoleId *string `json:"roleId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
-	Id *string `json:"_id,omitempty"`
+	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided.
 	AtlasAzureAppId *string `json:"atlasAzureAppId,omitempty"`
 	// Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -43,7 +43,7 @@ type CloudProviderAccessAWSIAMRole struct {
 	// UUID String that identifies the Azure Active Directory Tenant ID.
 	TenantId *string `json:"tenantId,omitempty"`
 	// Email address for the Google Service Account created by Atlas.
-	GcpServiceAccountForAtlas *string `json:"gcpServiceAccountForAtlas,omitempty"`
+	GcpServiceAccountForAtlas *string `json:"gcpServiceAccountForAtlas,omitempty" validate:"regexp=^mongodb-atlas-[0-9a-z]{16}@p-[0-9a-z]{24}.iam.gserviceaccount.com$"`
 	// Provision status of the service account.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
@@ -65,6 +65,30 @@ func NewCloudProviderAccessAWSIAMRole(providerName string) *CloudProviderAccessA
 func NewCloudProviderAccessAWSIAMRoleWithDefaults() *CloudProviderAccessAWSIAMRole {
 	this := CloudProviderAccessAWSIAMRole{}
 	return &this
+}
+
+// GetProviderName returns the ProviderName field value
+func (o *CloudProviderAccessAWSIAMRole) GetProviderName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ProviderName
+}
+
+// GetProviderNameOk returns a tuple with the ProviderName field value
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAWSIAMRole) GetProviderNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProviderName, true
+}
+
+// SetProviderName sets field value
+func (o *CloudProviderAccessAWSIAMRole) SetProviderName(v string) {
+	o.ProviderName = v
 }
 
 // GetAtlasAWSAccountArn returns the AtlasAWSAccountArn field value if set, zero value otherwise
@@ -296,30 +320,6 @@ func (o *CloudProviderAccessAWSIAMRole) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *CloudProviderAccessAWSIAMRole) SetRoleId(v string) {
 	o.RoleId = &v
-}
-
-// GetProviderName returns the ProviderName field value
-func (o *CloudProviderAccessAWSIAMRole) GetProviderName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ProviderName
-}
-
-// GetProviderNameOk returns a tuple with the ProviderName field value
-// and a boolean to check if the value has been set.
-func (o *CloudProviderAccessAWSIAMRole) GetProviderNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ProviderName, true
-}
-
-// SetProviderName sets field value
-func (o *CloudProviderAccessAWSIAMRole) SetProviderName(v string) {
-	o.ProviderName = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise

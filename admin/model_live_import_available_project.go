@@ -13,7 +13,7 @@ type LiveImportAvailableProject struct {
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the project to be migrated.
 	// Read only field.
-	ProjectId string `json:"projectId"`
+	ProjectId string `json:"projectId" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewLiveImportAvailableProject instantiates a new LiveImportAvailableProject object

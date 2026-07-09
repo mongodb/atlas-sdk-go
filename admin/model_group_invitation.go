@@ -16,13 +16,13 @@ type GroupInvitation struct {
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies the project to which you invited the MongoDB Cloud user.
 	// Read only field.
-	GroupName *string `json:"groupName,omitempty"`
+	GroupName *string `json:"groupName,omitempty" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.(),:&@+']{1,64}$"`
 	// Unique 24-hexadecimal character string that identifies the invitation.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Email address of the MongoDB Cloud user who sent the invitation.
 	// Read only field.
 	InviterUsername *string `json:"inviterUsername,omitempty"`

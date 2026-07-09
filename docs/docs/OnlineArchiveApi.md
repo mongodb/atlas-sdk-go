@@ -1,15 +1,15 @@
-# \OnlineArchiveApi
+# \OnlineArchiveAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOnlineArchive**](OnlineArchiveApi.md#CreateOnlineArchive) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Create One Online Archive
-[**DeleteOnlineArchive**](OnlineArchiveApi.md#DeleteOnlineArchive) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Remove One Online Archive
-[**DownloadQueryLogs**](OnlineArchiveApi.md#DownloadQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz | Download Online Archive Query Logs
-[**GetOnlineArchive**](OnlineArchiveApi.md#GetOnlineArchive) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Return One Online Archive
-[**ListOnlineArchives**](OnlineArchiveApi.md#ListOnlineArchives) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Return All Online Archives for One Cluster
-[**UpdateOnlineArchive**](OnlineArchiveApi.md#UpdateOnlineArchive) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Update One Online Archive
+[**CreateOnlineArchive**](OnlineArchiveAPI.md#CreateOnlineArchive) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Create One Online Archive
+[**DeleteOnlineArchive**](OnlineArchiveAPI.md#DeleteOnlineArchive) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Remove One Online Archive
+[**DownloadQueryLogs**](OnlineArchiveAPI.md#DownloadQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz | Download Online Archive Query Logs
+[**GetOnlineArchive**](OnlineArchiveAPI.md#GetOnlineArchive) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Return One Online Archive
+[**ListOnlineArchives**](OnlineArchiveAPI.md#ListOnlineArchives) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Return All Online Archives for One Cluster
+[**UpdateOnlineArchive**](OnlineArchiveAPI.md#UpdateOnlineArchive) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Update One Online Archive
 
 
 
@@ -47,9 +47,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     backupOnlineArchiveCreate := *admin.NewBackupOnlineArchiveCreate("CollName_example", *admin.NewCriteria(), "DbName_example") // BackupOnlineArchiveCreate | 
 
-    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName, &backupOnlineArchiveCreate).Execute()
+    resp, r, err := sdk.OnlineArchiveAPI.CreateOnlineArchive(context.Background(), groupId, clusterName, &backupOnlineArchiveCreate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.CreateOnlineArchive`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveAPI.CreateOnlineArchive`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -57,7 +57,7 @@ func main() {
         return
     }
     // response from `CreateOnlineArchive`: BackupOnlineArchive
-    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.CreateOnlineArchive`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveAPI.CreateOnlineArchive`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -132,9 +132,9 @@ func main() {
     archiveId := "archiveId_example" // string | 
     clusterName := "clusterName_example" // string | 
 
-    r, err := sdk.OnlineArchiveApi.DeleteOnlineArchive(context.Background(), groupId, archiveId, clusterName).Execute()
+    r, err := sdk.OnlineArchiveAPI.DeleteOnlineArchive(context.Background(), groupId, archiveId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.DeleteOnlineArchive`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveAPI.DeleteOnlineArchive`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -218,9 +218,9 @@ func main() {
     endDate := int64(1636481348) // int64 |  (optional)
     archiveOnly := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.OnlineArchiveApi.DownloadQueryLogs(context.Background(), groupId, clusterName).StartDate(startDate).EndDate(endDate).ArchiveOnly(archiveOnly).Execute()
+    resp, r, err := sdk.OnlineArchiveAPI.DownloadQueryLogs(context.Background(), groupId, clusterName).StartDate(startDate).EndDate(endDate).ArchiveOnly(archiveOnly).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.DownloadQueryLogs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveAPI.DownloadQueryLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -228,7 +228,7 @@ func main() {
         return
     }
     // response from `DownloadQueryLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.DownloadQueryLogs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveAPI.DownloadQueryLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -305,9 +305,9 @@ func main() {
     archiveId := "archiveId_example" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.OnlineArchiveApi.GetOnlineArchive(context.Background(), groupId, archiveId, clusterName).Execute()
+    resp, r, err := sdk.OnlineArchiveAPI.GetOnlineArchive(context.Background(), groupId, archiveId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.GetOnlineArchive`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveAPI.GetOnlineArchive`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -315,7 +315,7 @@ func main() {
         return
     }
     // response from `GetOnlineArchive`: BackupOnlineArchive
-    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.GetOnlineArchive`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveAPI.GetOnlineArchive`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -393,9 +393,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.OnlineArchiveApi.ListOnlineArchives(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.OnlineArchiveAPI.ListOnlineArchives(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.ListOnlineArchives`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveAPI.ListOnlineArchives`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -403,7 +403,7 @@ func main() {
         return
     }
     // response from `ListOnlineArchives`: PaginatedOnlineArchive
-    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.ListOnlineArchives`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveAPI.ListOnlineArchives`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -481,9 +481,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     backupOnlineArchive := *admin.NewBackupOnlineArchive() // BackupOnlineArchive | 
 
-    resp, r, err := sdk.OnlineArchiveApi.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName, &backupOnlineArchive).Execute()
+    resp, r, err := sdk.OnlineArchiveAPI.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName, &backupOnlineArchive).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.UpdateOnlineArchive`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveAPI.UpdateOnlineArchive`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -491,7 +491,7 @@ func main() {
         return
     }
     // response from `UpdateOnlineArchive`: BackupOnlineArchive
-    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.UpdateOnlineArchive`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveAPI.UpdateOnlineArchive`: %v (%v)\n", resp, r)
 }
 ```
 

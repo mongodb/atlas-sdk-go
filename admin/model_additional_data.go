@@ -5,7 +5,7 @@ package admin
 // AdditionalData Additional metadata associated with the line item.
 type AdditionalData struct {
 	// Identifier of the stream processor associated with the line item.
-	ProcessorId *string `json:"processorId,omitempty"`
+	ProcessorId *string `json:"processorId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Name of the stream processor associated with the line item.
 	ProcessorName *string `json:"processorName,omitempty"`
 	// Workspace associated with the line item.

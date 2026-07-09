@@ -7,7 +7,7 @@ type CreatePushBasedLogExportProjectRequest struct {
 	// The name of the bucket to which the agent will send the logs to.
 	BucketName string `json:"bucketName"`
 	// ID of the AWS IAM role that will be used to write to the S3 bucket.
-	IamRoleId string `json:"iamRoleId"`
+	IamRoleId string `json:"iamRoleId" validate:"regexp=^([a-f0-9]{24})$"`
 	// S3 directory in which vector will write to in order to store the logs. An empty string denotes the root directory.
 	PrefixPath string `json:"prefixPath"`
 }

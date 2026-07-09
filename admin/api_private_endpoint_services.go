@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type PrivateEndpointServicesApi interface {
+type PrivateEndpointServicesAPI interface {
 
 	/*
 		CreatePrivateEndpoint Create One Private Endpoint for One Provider
@@ -261,12 +260,12 @@ type PrivateEndpointServicesApi interface {
 	UpdatePrivateEndpointServiceExecute(r UpdatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error)
 }
 
-// PrivateEndpointServicesApiService PrivateEndpointServicesApi service
-type PrivateEndpointServicesApiService service
+// PrivateEndpointServicesAPIService PrivateEndpointServicesAPI service
+type PrivateEndpointServicesAPIService service
 
 type CreatePrivateEndpointApiRequest struct {
 	ctx                   context.Context
-	ApiService            PrivateEndpointServicesApi
+	ApiService            PrivateEndpointServicesAPI
 	groupId               string
 	cloudProvider         string
 	endpointServiceId     string
@@ -280,7 +279,7 @@ type CreatePrivateEndpointApiParams struct {
 	CreateEndpointRequest *CreateEndpointRequest
 }
 
-func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointWithParams(ctx context.Context, args *CreatePrivateEndpointApiParams) CreatePrivateEndpointApiRequest {
+func (a *PrivateEndpointServicesAPIService) CreatePrivateEndpointWithParams(ctx context.Context, args *CreatePrivateEndpointApiParams) CreatePrivateEndpointApiRequest {
 	return CreatePrivateEndpointApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -306,7 +305,7 @@ Creates one private endpoint for the specified cloud service provider. This clou
 	@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service for which you want to create a private endpoint.
 	@return CreatePrivateEndpointApiRequest
 */
-func (a *PrivateEndpointServicesApiService) CreatePrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string, createEndpointRequest *CreateEndpointRequest) CreatePrivateEndpointApiRequest {
+func (a *PrivateEndpointServicesAPIService) CreatePrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string, createEndpointRequest *CreateEndpointRequest) CreatePrivateEndpointApiRequest {
 	return CreatePrivateEndpointApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -320,7 +319,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpoint(ctx context.Co
 // CreatePrivateEndpointExecute executes the request
 //
 //	@return PrivateLinkEndpoint
-func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) CreatePrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -328,7 +327,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointExecute(r Creat
 		localVarReturnValue *PrivateLinkEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.CreatePrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.CreatePrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -407,7 +406,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointExecute(r Creat
 
 type CreatePrivateEndpointServiceApiRequest struct {
 	ctx                                 context.Context
-	ApiService                          PrivateEndpointServicesApi
+	ApiService                          PrivateEndpointServicesAPI
 	groupId                             string
 	cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest
 }
@@ -417,7 +416,7 @@ type CreatePrivateEndpointServiceApiParams struct {
 	CloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest
 }
 
-func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointServiceWithParams(ctx context.Context, args *CreatePrivateEndpointServiceApiParams) CreatePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) CreatePrivateEndpointServiceWithParams(ctx context.Context, args *CreatePrivateEndpointServiceApiParams) CreatePrivateEndpointServiceApiRequest {
 	return CreatePrivateEndpointServiceApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -439,7 +438,7 @@ Creates one private endpoint service for the specified cloud service provider. T
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointService(ctx context.Context, groupId string, cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) CreatePrivateEndpointService(ctx context.Context, groupId string, cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest {
 	return CreatePrivateEndpointServiceApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -451,7 +450,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointService(ctx con
 // CreatePrivateEndpointServiceExecute executes the request
 //
 //	@return EndpointService
-func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointServiceExecute(r CreatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) CreatePrivateEndpointServiceExecute(r CreatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -459,7 +458,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointServiceExecute(
 		localVarReturnValue *EndpointService
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.CreatePrivateEndpointService")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.CreatePrivateEndpointService")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -530,7 +529,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointServiceExecute(
 
 type DeletePrivateEndpointApiRequest struct {
 	ctx               context.Context
-	ApiService        PrivateEndpointServicesApi
+	ApiService        PrivateEndpointServicesAPI
 	groupId           string
 	cloudProvider     string
 	endpointId        string
@@ -544,7 +543,7 @@ type DeletePrivateEndpointApiParams struct {
 	EndpointServiceId string
 }
 
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointWithParams(ctx context.Context, args *DeletePrivateEndpointApiParams) DeletePrivateEndpointApiRequest {
+func (a *PrivateEndpointServicesAPIService) DeletePrivateEndpointWithParams(ctx context.Context, args *DeletePrivateEndpointApiParams) DeletePrivateEndpointApiRequest {
 	return DeletePrivateEndpointApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -571,7 +570,7 @@ Removes one private endpoint from the specified project and private endpoint ser
 	@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service from which you want to delete a private endpoint.
 	@return DeletePrivateEndpointApiRequest
 */
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string, endpointServiceId string) DeletePrivateEndpointApiRequest {
+func (a *PrivateEndpointServicesAPIService) DeletePrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string, endpointServiceId string) DeletePrivateEndpointApiRequest {
 	return DeletePrivateEndpointApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -583,14 +582,14 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpoint(ctx context.Co
 }
 
 // DeletePrivateEndpointExecute executes the request
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointExecute(r DeletePrivateEndpointApiRequest) (*http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) DeletePrivateEndpointExecute(r DeletePrivateEndpointApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.DeletePrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.DeletePrivateEndpoint")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -654,7 +653,7 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointExecute(r Delet
 
 type DeletePrivateEndpointServiceApiRequest struct {
 	ctx               context.Context
-	ApiService        PrivateEndpointServicesApi
+	ApiService        PrivateEndpointServicesAPI
 	groupId           string
 	cloudProvider     string
 	endpointServiceId string
@@ -666,7 +665,7 @@ type DeletePrivateEndpointServiceApiParams struct {
 	EndpointServiceId string
 }
 
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceWithParams(ctx context.Context, args *DeletePrivateEndpointServiceApiParams) DeletePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) DeletePrivateEndpointServiceWithParams(ctx context.Context, args *DeletePrivateEndpointServiceApiParams) DeletePrivateEndpointServiceApiRequest {
 	return DeletePrivateEndpointServiceApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -691,7 +690,7 @@ Removes one private endpoint service from the specified project. This cloud serv
 	@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete.
 	@return DeletePrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointService(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string) DeletePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) DeletePrivateEndpointService(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string) DeletePrivateEndpointServiceApiRequest {
 	return DeletePrivateEndpointServiceApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -702,14 +701,14 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointService(ctx con
 }
 
 // DeletePrivateEndpointServiceExecute executes the request
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceExecute(r DeletePrivateEndpointServiceApiRequest) (*http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) DeletePrivateEndpointServiceExecute(r DeletePrivateEndpointServiceApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.DeletePrivateEndpointService")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.DeletePrivateEndpointService")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -769,7 +768,7 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceExecute(
 
 type GetPrivateEndpointApiRequest struct {
 	ctx               context.Context
-	ApiService        PrivateEndpointServicesApi
+	ApiService        PrivateEndpointServicesAPI
 	groupId           string
 	cloudProvider     string
 	endpointId        string
@@ -783,7 +782,7 @@ type GetPrivateEndpointApiParams struct {
 	EndpointServiceId string
 }
 
-func (a *PrivateEndpointServicesApiService) GetPrivateEndpointWithParams(ctx context.Context, args *GetPrivateEndpointApiParams) GetPrivateEndpointApiRequest {
+func (a *PrivateEndpointServicesAPIService) GetPrivateEndpointWithParams(ctx context.Context, args *GetPrivateEndpointApiParams) GetPrivateEndpointApiRequest {
 	return GetPrivateEndpointApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -810,7 +809,7 @@ Returns the connection state of the specified private endpoint. The private endp
 	@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service for which you want to return a private endpoint.
 	@return GetPrivateEndpointApiRequest
 */
-func (a *PrivateEndpointServicesApiService) GetPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string, endpointServiceId string) GetPrivateEndpointApiRequest {
+func (a *PrivateEndpointServicesAPIService) GetPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string, endpointServiceId string) GetPrivateEndpointApiRequest {
 	return GetPrivateEndpointApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -824,7 +823,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpoint(ctx context.Conte
 // GetPrivateEndpointExecute executes the request
 //
 //	@return PrivateLinkEndpoint
-func (a *PrivateEndpointServicesApiService) GetPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) GetPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -832,7 +831,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointExecute(r GetPriva
 		localVarReturnValue *PrivateLinkEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.GetPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.GetPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -910,7 +909,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointExecute(r GetPriva
 
 type GetPrivateEndpointServiceApiRequest struct {
 	ctx               context.Context
-	ApiService        PrivateEndpointServicesApi
+	ApiService        PrivateEndpointServicesAPI
 	groupId           string
 	cloudProvider     string
 	endpointServiceId string
@@ -922,7 +921,7 @@ type GetPrivateEndpointServiceApiParams struct {
 	EndpointServiceId string
 }
 
-func (a *PrivateEndpointServicesApiService) GetPrivateEndpointServiceWithParams(ctx context.Context, args *GetPrivateEndpointServiceApiParams) GetPrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) GetPrivateEndpointServiceWithParams(ctx context.Context, args *GetPrivateEndpointServiceApiParams) GetPrivateEndpointServiceApiRequest {
 	return GetPrivateEndpointServiceApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -947,7 +946,7 @@ Returns the name, interfaces, and state of the specified private endpoint servic
 	@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to return.
 	@return GetPrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) GetPrivateEndpointService(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string) GetPrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) GetPrivateEndpointService(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string) GetPrivateEndpointServiceApiRequest {
 	return GetPrivateEndpointServiceApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -960,7 +959,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointService(ctx contex
 // GetPrivateEndpointServiceExecute executes the request
 //
 //	@return EndpointService
-func (a *PrivateEndpointServicesApiService) GetPrivateEndpointServiceExecute(r GetPrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) GetPrivateEndpointServiceExecute(r GetPrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -968,7 +967,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointServiceExecute(r G
 		localVarReturnValue *EndpointService
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.GetPrivateEndpointService")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.GetPrivateEndpointService")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1042,7 +1041,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointServiceExecute(r G
 
 type GetRegionalEndpointModeApiRequest struct {
 	ctx        context.Context
-	ApiService PrivateEndpointServicesApi
+	ApiService PrivateEndpointServicesAPI
 	groupId    string
 }
 
@@ -1050,7 +1049,7 @@ type GetRegionalEndpointModeApiParams struct {
 	GroupId string
 }
 
-func (a *PrivateEndpointServicesApiService) GetRegionalEndpointModeWithParams(ctx context.Context, args *GetRegionalEndpointModeApiParams) GetRegionalEndpointModeApiRequest {
+func (a *PrivateEndpointServicesAPIService) GetRegionalEndpointModeWithParams(ctx context.Context, args *GetRegionalEndpointModeApiParams) GetRegionalEndpointModeApiRequest {
 	return GetRegionalEndpointModeApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1071,7 +1070,7 @@ Checks whether each region in the specified cloud service provider can create mu
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetRegionalEndpointModeApiRequest
 */
-func (a *PrivateEndpointServicesApiService) GetRegionalEndpointMode(ctx context.Context, groupId string) GetRegionalEndpointModeApiRequest {
+func (a *PrivateEndpointServicesAPIService) GetRegionalEndpointMode(ctx context.Context, groupId string) GetRegionalEndpointModeApiRequest {
 	return GetRegionalEndpointModeApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1082,7 +1081,7 @@ func (a *PrivateEndpointServicesApiService) GetRegionalEndpointMode(ctx context.
 // GetRegionalEndpointModeExecute executes the request
 //
 //	@return ProjectSettingItem
-func (a *PrivateEndpointServicesApiService) GetRegionalEndpointModeExecute(r GetRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) GetRegionalEndpointModeExecute(r GetRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1090,7 +1089,7 @@ func (a *PrivateEndpointServicesApiService) GetRegionalEndpointModeExecute(r Get
 		localVarReturnValue *ProjectSettingItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.GetRegionalEndpointMode")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.GetRegionalEndpointMode")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1156,7 +1155,7 @@ func (a *PrivateEndpointServicesApiService) GetRegionalEndpointModeExecute(r Get
 
 type ListPrivateEndpointServiceApiRequest struct {
 	ctx           context.Context
-	ApiService    PrivateEndpointServicesApi
+	ApiService    PrivateEndpointServicesAPI
 	groupId       string
 	cloudProvider string
 }
@@ -1166,7 +1165,7 @@ type ListPrivateEndpointServiceApiParams struct {
 	CloudProvider string
 }
 
-func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServiceWithParams(ctx context.Context, args *ListPrivateEndpointServiceApiParams) ListPrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) ListPrivateEndpointServiceWithParams(ctx context.Context, args *ListPrivateEndpointServiceApiParams) ListPrivateEndpointServiceApiRequest {
 	return ListPrivateEndpointServiceApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1189,7 +1188,7 @@ Returns the name, interfaces, and state of all private endpoint services for the
 	@param cloudProvider Cloud service provider that manages this private endpoint service.
 	@return ListPrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) ListPrivateEndpointService(ctx context.Context, groupId string, cloudProvider string) ListPrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) ListPrivateEndpointService(ctx context.Context, groupId string, cloudProvider string) ListPrivateEndpointServiceApiRequest {
 	return ListPrivateEndpointServiceApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1201,7 +1200,7 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointService(ctx conte
 // ListPrivateEndpointServiceExecute executes the request
 //
 //	@return []EndpointService
-func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServiceExecute(r ListPrivateEndpointServiceApiRequest) ([]EndpointService, *http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) ListPrivateEndpointServiceExecute(r ListPrivateEndpointServiceApiRequest) ([]EndpointService, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1209,7 +1208,7 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServiceExecute(r 
 		localVarReturnValue []EndpointService
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.ListPrivateEndpointService")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.ListPrivateEndpointService")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1279,7 +1278,7 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServiceExecute(r 
 
 type ToggleRegionalEndpointModeApiRequest struct {
 	ctx                context.Context
-	ApiService         PrivateEndpointServicesApi
+	ApiService         PrivateEndpointServicesAPI
 	groupId            string
 	projectSettingItem *ProjectSettingItem
 }
@@ -1289,7 +1288,7 @@ type ToggleRegionalEndpointModeApiParams struct {
 	ProjectSettingItem *ProjectSettingItem
 }
 
-func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointModeWithParams(ctx context.Context, args *ToggleRegionalEndpointModeApiParams) ToggleRegionalEndpointModeApiRequest {
+func (a *PrivateEndpointServicesAPIService) ToggleRegionalEndpointModeWithParams(ctx context.Context, args *ToggleRegionalEndpointModeApiParams) ToggleRegionalEndpointModeApiRequest {
 	return ToggleRegionalEndpointModeApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -1311,7 +1310,7 @@ Enables or disables the ability to create multiple private endpoints per region 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ToggleRegionalEndpointModeApiRequest
 */
-func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointMode(ctx context.Context, groupId string, projectSettingItem *ProjectSettingItem) ToggleRegionalEndpointModeApiRequest {
+func (a *PrivateEndpointServicesAPIService) ToggleRegionalEndpointMode(ctx context.Context, groupId string, projectSettingItem *ProjectSettingItem) ToggleRegionalEndpointModeApiRequest {
 	return ToggleRegionalEndpointModeApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -1323,7 +1322,7 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointMode(ctx conte
 // ToggleRegionalEndpointModeExecute executes the request
 //
 //	@return ProjectSettingItem
-func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointModeExecute(r ToggleRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) ToggleRegionalEndpointModeExecute(r ToggleRegionalEndpointModeApiRequest) (*ProjectSettingItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1331,7 +1330,7 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointModeExecute(r 
 		localVarReturnValue *ProjectSettingItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.ToggleRegionalEndpointMode")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.ToggleRegionalEndpointMode")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1402,7 +1401,7 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalEndpointModeExecute(r 
 
 type UpdatePrivateEndpointServiceApiRequest struct {
 	ctx                                  context.Context
-	ApiService                           PrivateEndpointServicesApi
+	ApiService                           PrivateEndpointServicesAPI
 	groupId                              string
 	endpointServiceId                    string
 	apiAtlasModifyEndpointServiceRequest *ApiAtlasModifyEndpointServiceRequest
@@ -1414,7 +1413,7 @@ type UpdatePrivateEndpointServiceApiParams struct {
 	ApiAtlasModifyEndpointServiceRequest *ApiAtlasModifyEndpointServiceRequest
 }
 
-func (a *PrivateEndpointServicesApiService) UpdatePrivateEndpointServiceWithParams(ctx context.Context, args *UpdatePrivateEndpointServiceApiParams) UpdatePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) UpdatePrivateEndpointServiceWithParams(ctx context.Context, args *UpdatePrivateEndpointServiceApiParams) UpdatePrivateEndpointServiceApiRequest {
 	return UpdatePrivateEndpointServiceApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -1438,7 +1437,7 @@ Updates the specified private endpoint service for the project. The cloud servic
 	@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to update.
 	@return UpdatePrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) UpdatePrivateEndpointService(ctx context.Context, groupId string, endpointServiceId string, apiAtlasModifyEndpointServiceRequest *ApiAtlasModifyEndpointServiceRequest) UpdatePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesAPIService) UpdatePrivateEndpointService(ctx context.Context, groupId string, endpointServiceId string, apiAtlasModifyEndpointServiceRequest *ApiAtlasModifyEndpointServiceRequest) UpdatePrivateEndpointServiceApiRequest {
 	return UpdatePrivateEndpointServiceApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -1451,7 +1450,7 @@ func (a *PrivateEndpointServicesApiService) UpdatePrivateEndpointService(ctx con
 // UpdatePrivateEndpointServiceExecute executes the request
 //
 //	@return EndpointService
-func (a *PrivateEndpointServicesApiService) UpdatePrivateEndpointServiceExecute(r UpdatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
+func (a *PrivateEndpointServicesAPIService) UpdatePrivateEndpointServiceExecute(r UpdatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1459,7 +1458,7 @@ func (a *PrivateEndpointServicesApiService) UpdatePrivateEndpointServiceExecute(
 		localVarReturnValue *EndpointService
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.UpdatePrivateEndpointService")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesAPIService.UpdatePrivateEndpointService")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

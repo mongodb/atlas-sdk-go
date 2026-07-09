@@ -1,28 +1,28 @@
-# \MongoDBCloudUsersApi
+# \MongoDBCloudUsersAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupUserRole**](MongoDBCloudUsersApi.md#AddGroupUserRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:addRole | Add One Project Role to One MongoDB Cloud User
-[**AddGroupUsers**](MongoDBCloudUsersApi.md#AddGroupUsers) | **Post** /api/atlas/v2/groups/{groupId}/users | Add One MongoDB Cloud User to One Project
-[**AddOrgRole**](MongoDBCloudUsersApi.md#AddOrgRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole | Add One Organization Role to One MongoDB Cloud User
-[**AddOrgTeamUser**](MongoDBCloudUsersApi.md#AddOrgTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser | Add One MongoDB Cloud User to One Team
-[**CreateOrgUser**](MongoDBCloudUsersApi.md#CreateOrgUser) | **Post** /api/atlas/v2/orgs/{orgId}/users | Add One MongoDB Cloud User to One Organization
-[**CreateUser**](MongoDBCloudUsersApi.md#CreateUser) | **Post** /api/atlas/v2/users | Create One MongoDB Cloud User
-[**GetGroupUser**](MongoDBCloudUsersApi.md#GetGroupUser) | **Get** /api/atlas/v2/groups/{groupId}/users/{userId} | Return One MongoDB Cloud User in One Project
-[**GetOrgUser**](MongoDBCloudUsersApi.md#GetOrgUser) | **Get** /api/atlas/v2/orgs/{orgId}/users/{userId} | Return One MongoDB Cloud User in One Organization
-[**GetUser**](MongoDBCloudUsersApi.md#GetUser) | **Get** /api/atlas/v2/users/{userId} | Return One MongoDB Cloud User by ID
-[**GetUserByName**](MongoDBCloudUsersApi.md#GetUserByName) | **Get** /api/atlas/v2/users/byName/{userName} | Return One MongoDB Cloud User by Username
-[**ListGroupUsers**](MongoDBCloudUsersApi.md#ListGroupUsers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All MongoDB Cloud Users in One Project
-[**ListOrgUsers**](MongoDBCloudUsersApi.md#ListOrgUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
-[**ListTeamUsers**](MongoDBCloudUsersApi.md#ListTeamUsers) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Return All MongoDB Cloud Users Assigned to One Team
-[**RemoveGroupUser**](MongoDBCloudUsersApi.md#RemoveGroupUser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One MongoDB Cloud User from One Project
-[**RemoveGroupUserRole**](MongoDBCloudUsersApi.md#RemoveGroupUserRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:removeRole | Remove One Project Role from One MongoDB Cloud User
-[**RemoveOrgRole**](MongoDBCloudUsersApi.md#RemoveOrgRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole | Remove One Organization Role from One MongoDB Cloud User
-[**RemoveOrgTeamUser**](MongoDBCloudUsersApi.md#RemoveOrgTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser | Remove One MongoDB Cloud User from One Team
-[**RemoveOrgUser**](MongoDBCloudUsersApi.md#RemoveOrgUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User from One Organization
-[**UpdateOrgUser**](MongoDBCloudUsersApi.md#UpdateOrgUser) | **Patch** /api/atlas/v2/orgs/{orgId}/users/{userId} | Update One MongoDB Cloud User in One Organization
+[**AddGroupUserRole**](MongoDBCloudUsersAPI.md#AddGroupUserRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:addRole | Add One Project Role to One MongoDB Cloud User
+[**AddGroupUsers**](MongoDBCloudUsersAPI.md#AddGroupUsers) | **Post** /api/atlas/v2/groups/{groupId}/users | Add One MongoDB Cloud User to One Project
+[**AddOrgRole**](MongoDBCloudUsersAPI.md#AddOrgRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole | Add One Organization Role to One MongoDB Cloud User
+[**AddOrgTeamUser**](MongoDBCloudUsersAPI.md#AddOrgTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser | Add One MongoDB Cloud User to One Team
+[**CreateOrgUser**](MongoDBCloudUsersAPI.md#CreateOrgUser) | **Post** /api/atlas/v2/orgs/{orgId}/users | Add One MongoDB Cloud User to One Organization
+[**CreateUser**](MongoDBCloudUsersAPI.md#CreateUser) | **Post** /api/atlas/v2/users | Create One MongoDB Cloud User
+[**GetGroupUser**](MongoDBCloudUsersAPI.md#GetGroupUser) | **Get** /api/atlas/v2/groups/{groupId}/users/{userId} | Return One MongoDB Cloud User in One Project
+[**GetOrgUser**](MongoDBCloudUsersAPI.md#GetOrgUser) | **Get** /api/atlas/v2/orgs/{orgId}/users/{userId} | Return One MongoDB Cloud User in One Organization
+[**GetUser**](MongoDBCloudUsersAPI.md#GetUser) | **Get** /api/atlas/v2/users/{userId} | Return One MongoDB Cloud User by ID
+[**GetUserByName**](MongoDBCloudUsersAPI.md#GetUserByName) | **Get** /api/atlas/v2/users/byName/{userName} | Return One MongoDB Cloud User by Username
+[**ListGroupUsers**](MongoDBCloudUsersAPI.md#ListGroupUsers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All MongoDB Cloud Users in One Project
+[**ListOrgUsers**](MongoDBCloudUsersAPI.md#ListOrgUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
+[**ListTeamUsers**](MongoDBCloudUsersAPI.md#ListTeamUsers) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Return All MongoDB Cloud Users Assigned to One Team
+[**RemoveGroupUser**](MongoDBCloudUsersAPI.md#RemoveGroupUser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One MongoDB Cloud User from One Project
+[**RemoveGroupUserRole**](MongoDBCloudUsersAPI.md#RemoveGroupUserRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:removeRole | Remove One Project Role from One MongoDB Cloud User
+[**RemoveOrgRole**](MongoDBCloudUsersAPI.md#RemoveOrgRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole | Remove One Organization Role from One MongoDB Cloud User
+[**RemoveOrgTeamUser**](MongoDBCloudUsersAPI.md#RemoveOrgTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser | Remove One MongoDB Cloud User from One Team
+[**RemoveOrgUser**](MongoDBCloudUsersAPI.md#RemoveOrgUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User from One Organization
+[**UpdateOrgUser**](MongoDBCloudUsersAPI.md#UpdateOrgUser) | **Patch** /api/atlas/v2/orgs/{orgId}/users/{userId} | Update One MongoDB Cloud User in One Organization
 
 
 
@@ -60,9 +60,9 @@ func main() {
     userId := "userId_example" // string | 
     addOrRemoveGroupRole := *admin.NewAddOrRemoveGroupRole("GroupRole_example") // AddOrRemoveGroupRole | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.AddGroupUserRole(context.Background(), groupId, userId, &addOrRemoveGroupRole).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.AddGroupUserRole(context.Background(), groupId, userId, &addOrRemoveGroupRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.AddGroupUserRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.AddGroupUserRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -70,7 +70,7 @@ func main() {
         return
     }
     // response from `AddGroupUserRole`: GroupUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.AddGroupUserRole`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.AddGroupUserRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -144,9 +144,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupUserRequest := *admin.NewGroupUserRequest([]string{"Roles_example"}, "Username_example") // GroupUserRequest | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.AddGroupUsers(context.Background(), groupId, &groupUserRequest).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.AddGroupUsers(context.Background(), groupId, &groupUserRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.AddGroupUsers`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.AddGroupUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -154,7 +154,7 @@ func main() {
         return
     }
     // response from `AddGroupUsers`: GroupUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.AddGroupUsers`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.AddGroupUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -227,9 +227,9 @@ func main() {
     userId := "userId_example" // string | 
     addOrRemoveOrgRole := *admin.NewAddOrRemoveOrgRole("OrgRole_example") // AddOrRemoveOrgRole | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.AddOrgRole(context.Background(), orgId, userId, &addOrRemoveOrgRole).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.AddOrgRole(context.Background(), orgId, userId, &addOrRemoveOrgRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.AddOrgRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.AddOrgRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -237,7 +237,7 @@ func main() {
         return
     }
     // response from `AddOrgRole`: OrgUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.AddOrgRole`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.AddOrgRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -312,9 +312,9 @@ func main() {
     teamId := "teamId_example" // string | 
     addOrRemoveUserFromTeam := *admin.NewAddOrRemoveUserFromTeam("32b6e34b3d91647abb20e7b8") // AddOrRemoveUserFromTeam | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.AddOrgTeamUser(context.Background(), orgId, teamId, &addOrRemoveUserFromTeam).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.AddOrgTeamUser(context.Background(), orgId, teamId, &addOrRemoveUserFromTeam).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.AddOrgTeamUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.AddOrgTeamUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -322,7 +322,7 @@ func main() {
         return
     }
     // response from `AddOrgTeamUser`: OrgUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.AddOrgTeamUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.AddOrgTeamUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -396,9 +396,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     orgUserRequest := *admin.NewOrgUserRequest(*admin.NewOrgUserRolesRequest([]string{"OrgRoles_example"}), "Username_example") // OrgUserRequest | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.CreateOrgUser(context.Background(), orgId, &orgUserRequest).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.CreateOrgUser(context.Background(), orgId, &orgUserRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.CreateOrgUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.CreateOrgUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -406,7 +406,7 @@ func main() {
         return
     }
     // response from `CreateOrgUser`: OrgUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.CreateOrgUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.CreateOrgUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -477,9 +477,9 @@ func main() {
 
     cloudAppUser := *admin.NewCloudAppUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", []admin.CloudAccessRoleAssignment{*admin.NewCloudAccessRoleAssignment()}, "Username_example") // CloudAppUser | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.CreateUser(context.Background(), &cloudAppUser).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.CreateUser(context.Background(), &cloudAppUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.CreateUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.CreateUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -487,7 +487,7 @@ func main() {
         return
     }
     // response from `CreateUser`: CloudAppUser
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.CreateUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.CreateUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -555,9 +555,9 @@ func main() {
     userId := "userId_example" // string | 
     orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.GetGroupUser(context.Background(), groupId, userId).OrgMembershipStatuses(orgMembershipStatuses).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.GetGroupUser(context.Background(), groupId, userId).OrgMembershipStatuses(orgMembershipStatuses).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.GetGroupUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.GetGroupUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -565,7 +565,7 @@ func main() {
         return
     }
     // response from `GetGroupUser`: GroupUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.GetGroupUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.GetGroupUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -640,9 +640,9 @@ func main() {
     userId := "userId_example" // string | 
     orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.GetOrgUser(context.Background(), orgId, userId).OrgMembershipStatuses(orgMembershipStatuses).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.GetOrgUser(context.Background(), orgId, userId).OrgMembershipStatuses(orgMembershipStatuses).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.GetOrgUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.GetOrgUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -650,7 +650,7 @@ func main() {
         return
     }
     // response from `GetOrgUser`: OrgUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.GetOrgUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.GetOrgUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -723,9 +723,9 @@ func main() {
 
     userId := "userId_example" // string | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.GetUser(context.Background(), userId).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.GetUser(context.Background(), userId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.GetUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.GetUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -733,7 +733,7 @@ func main() {
         return
     }
     // response from `GetUser`: CloudAppUser
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.GetUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.GetUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -803,9 +803,9 @@ func main() {
 
     userName := "userName_example" // string | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.GetUserByName(context.Background(), userName).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.GetUserByName(context.Background(), userName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.GetUserByName`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.GetUserByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -813,7 +813,7 @@ func main() {
         return
     }
     // response from `GetUserByName`: CloudAppUser
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.GetUserByName`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.GetUserByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -891,9 +891,9 @@ func main() {
     orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
     username := "username_example" // string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.ListGroupUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).Username(username).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.ListGroupUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).Username(username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.ListGroupUsers`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.ListGroupUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -901,7 +901,7 @@ func main() {
         return
     }
     // response from `ListGroupUsers`: PaginatedGroupUser
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.ListGroupUsers`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.ListGroupUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -985,9 +985,9 @@ func main() {
     orgMembershipStatus := "ACTIVE" // string |  (optional)
     orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.ListOrgUsers(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.ListOrgUsers(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.ListOrgUsers`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.ListOrgUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -995,7 +995,7 @@ func main() {
         return
     }
     // response from `ListOrgUsers`: PaginatedOrgUser
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.ListOrgUsers`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.ListOrgUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1078,9 +1078,9 @@ func main() {
     orgMembershipStatuses := []string{"Inner_example"} // []string |  (optional)
     userId := "userId_example" // string |  (optional)
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.ListTeamUsers(context.Background(), orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).UserId(userId).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.ListTeamUsers(context.Background(), orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Username(username).OrgMembershipStatus(orgMembershipStatus).OrgMembershipStatuses(orgMembershipStatuses).UserId(userId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.ListTeamUsers`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.ListTeamUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1088,7 +1088,7 @@ func main() {
         return
     }
     // response from `ListTeamUsers`: PaginatedOrgUser
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.ListTeamUsers`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.ListTeamUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1167,9 +1167,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userId := "userId_example" // string | 
 
-    r, err := sdk.MongoDBCloudUsersApi.RemoveGroupUser(context.Background(), groupId, userId).Execute()
+    r, err := sdk.MongoDBCloudUsersAPI.RemoveGroupUser(context.Background(), groupId, userId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.RemoveGroupUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.RemoveGroupUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1249,9 +1249,9 @@ func main() {
     userId := "userId_example" // string | 
     addOrRemoveGroupRole := *admin.NewAddOrRemoveGroupRole("GroupRole_example") // AddOrRemoveGroupRole | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.RemoveGroupUserRole(context.Background(), groupId, userId, &addOrRemoveGroupRole).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.RemoveGroupUserRole(context.Background(), groupId, userId, &addOrRemoveGroupRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.RemoveGroupUserRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.RemoveGroupUserRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1259,7 +1259,7 @@ func main() {
         return
     }
     // response from `RemoveGroupUserRole`: GroupUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.RemoveGroupUserRole`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.RemoveGroupUserRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1334,9 +1334,9 @@ func main() {
     userId := "userId_example" // string | 
     addOrRemoveOrgRole := *admin.NewAddOrRemoveOrgRole("OrgRole_example") // AddOrRemoveOrgRole | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.RemoveOrgRole(context.Background(), orgId, userId, &addOrRemoveOrgRole).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.RemoveOrgRole(context.Background(), orgId, userId, &addOrRemoveOrgRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.RemoveOrgRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.RemoveOrgRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1344,7 +1344,7 @@ func main() {
         return
     }
     // response from `RemoveOrgRole`: OrgUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.RemoveOrgRole`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.RemoveOrgRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1419,9 +1419,9 @@ func main() {
     teamId := "teamId_example" // string | 
     addOrRemoveUserFromTeam := *admin.NewAddOrRemoveUserFromTeam("32b6e34b3d91647abb20e7b8") // AddOrRemoveUserFromTeam | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.RemoveOrgTeamUser(context.Background(), orgId, teamId, &addOrRemoveUserFromTeam).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.RemoveOrgTeamUser(context.Background(), orgId, teamId, &addOrRemoveUserFromTeam).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.RemoveOrgTeamUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.RemoveOrgTeamUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1429,7 +1429,7 @@ func main() {
         return
     }
     // response from `RemoveOrgTeamUser`: OrgUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.RemoveOrgTeamUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.RemoveOrgTeamUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1503,9 +1503,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     userId := "userId_example" // string | 
 
-    r, err := sdk.MongoDBCloudUsersApi.RemoveOrgUser(context.Background(), orgId, userId).Execute()
+    r, err := sdk.MongoDBCloudUsersAPI.RemoveOrgUser(context.Background(), orgId, userId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.RemoveOrgUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.RemoveOrgUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1585,9 +1585,9 @@ func main() {
     userId := "userId_example" // string | 
     orgUserUpdateRequest := *admin.NewOrgUserUpdateRequest() // OrgUserUpdateRequest | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.UpdateOrgUser(context.Background(), orgId, userId, &orgUserUpdateRequest).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersAPI.UpdateOrgUser(context.Background(), orgId, userId, &orgUserUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.UpdateOrgUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersAPI.UpdateOrgUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1595,7 +1595,7 @@ func main() {
         return
     }
     // response from `UpdateOrgUser`: OrgUserResponse
-    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.UpdateOrgUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersAPI.UpdateOrgUser`: %v (%v)\n", resp, r)
 }
 ```
 

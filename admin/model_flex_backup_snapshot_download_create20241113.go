@@ -9,7 +9,7 @@ type FlexBackupSnapshotDownloadCreate20241113 struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot to download.
 	// Write only field.
-	SnapshotId string `json:"snapshotId"`
+	SnapshotId string `json:"snapshotId" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewFlexBackupSnapshotDownloadCreate20241113 instantiates a new FlexBackupSnapshotDownloadCreate20241113 object

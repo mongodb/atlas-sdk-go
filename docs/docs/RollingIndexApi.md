@@ -1,10 +1,10 @@
-# \RollingIndexApi
+# \RollingIndexAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRollingIndex**](RollingIndexApi.md#CreateRollingIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index
+[**CreateRollingIndex**](RollingIndexAPI.md#CreateRollingIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index
 
 
 
@@ -42,9 +42,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     databaseRollingIndexRequest := *admin.NewDatabaseRollingIndexRequest("Collection_example", "Db_example", []map[string]string{map[string]string{"key": "Inner_example"}}) // DatabaseRollingIndexRequest | 
 
-    r, err := sdk.RollingIndexApi.CreateRollingIndex(context.Background(), groupId, clusterName, &databaseRollingIndexRequest).Execute()
+    r, err := sdk.RollingIndexAPI.CreateRollingIndex(context.Background(), groupId, clusterName, &databaseRollingIndexRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RollingIndexApi.CreateRollingIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `RollingIndexAPI.CreateRollingIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)

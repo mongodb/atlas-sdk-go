@@ -9,7 +9,7 @@ type ApiAtlasPolicy struct {
 	Body *string `json:"body,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the policy.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewApiAtlasPolicy instantiates a new ApiAtlasPolicy object

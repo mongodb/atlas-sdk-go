@@ -6,7 +6,7 @@ package admin
 type LiveMigrationRequest20240530 struct {
 	// Unique 24-hexadecimal digit string that identifies the migration request.
 	// Read only field.
-	Id          *string     `json:"_id,omitempty"`
+	Id          *string     `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	Destination Destination `json:"destination"`
 	// Flag that indicates whether the migration process drops all collections from the destination cluster before the migration starts.
 	// Write only field.

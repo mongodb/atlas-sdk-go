@@ -6,14 +6,14 @@ package admin
 type LDAPVerifyConnectivityJobRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project associated with this Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links   *[]Link                                 `json:"links,omitempty"`
 	Request *LDAPVerifyConnectivityJobRequestParams `json:"request,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
 	// Read only field.
-	RequestId *string `json:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable string that indicates the status of the Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
 	// Read only field.
 	Status *string `json:"status,omitempty"`

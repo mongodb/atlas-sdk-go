@@ -14,10 +14,10 @@ type DiskBackupSnapshotSchedule20240805 struct {
 	AutoExportEnabled *bool `json:"autoExportEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster with the Snapshot you want to return.
 	// Read only field.
-	ClusterId *string `json:"clusterId,omitempty"`
+	ClusterId *string `json:"clusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies the cluster with the Snapshot you want to return.
 	// Read only field.
-	ClusterName *string `json:"clusterName,omitempty"`
+	ClusterName *string `json:"clusterName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
 	// Flag that indicates whether copy settings use `copyPolicyItems` instead of `frequencies`. When true, requests must supply `copyPolicyItems` and responses return `copyPolicyItems` only. When false or omitted, requests must supply `frequencies` and responses return `frequencies` only.
 	CopyPolicyItemsEnabled *bool `json:"copyPolicyItemsEnabled,omitempty"`
 	// List that contains a document for each copy setting item in the desired backup policy.

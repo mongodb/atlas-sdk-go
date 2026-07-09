@@ -9,7 +9,7 @@ type CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId struct {
 	BucketName *string `json:"bucketName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies your project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewCloudProviderAccessFeatureUsagePushBasedLogExportFeatureId instantiates a new CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId object

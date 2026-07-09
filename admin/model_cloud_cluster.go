@@ -18,13 +18,13 @@ type CloudCluster struct {
 	BackupEnabled *bool `json:"backupEnabled,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the cluster. Each `clusterId` is used only once across all MongoDB Cloud deployments.
 	// Read only field.
-	ClusterId *string `json:"clusterId,omitempty"`
+	ClusterId *string `json:"clusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Total size of the data stored on each node in the cluster. The resource expresses this value in bytes.
 	// Read only field.
 	DataSizeBytes *int64 `json:"dataSizeBytes,omitempty"`
 	// Human-readable label that identifies the cluster.
 	// Read only field.
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
 	// Whole number that indicates the quantity of nodes that comprise the cluster.
 	// Read only field.
 	NodeCount *int `json:"nodeCount,omitempty"`

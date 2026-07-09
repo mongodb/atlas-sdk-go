@@ -1,44 +1,44 @@
-# \CloudBackupsApi
+# \CloudBackupsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelBackupRestoreJob**](CloudBackupsApi.md#CancelBackupRestoreJob) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Cancel One Restore Job for One Cluster
-[**CreateBackupExport**](CloudBackupsApi.md#CreateBackupExport) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Create One Snapshot Export Job
-[**CreateBackupPrivateEndpoint**](CloudBackupsApi.md#CreateBackupPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
-[**CreateBackupRestoreJob**](CloudBackupsApi.md#CreateBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Create One Restore Job of One Cluster
-[**CreateExportBucket**](CloudBackupsApi.md#CreateExportBucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Create One Snapshot Export Bucket
-[**CreateServerlessRestoreJob**](CloudBackupsApi.md#CreateServerlessRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Create One Restore Job for One Serverless Instance
-[**DeleteBackupPrivateEndpoint**](CloudBackupsApi.md#DeleteBackupPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
-[**DeleteBackupShardedCluster**](CloudBackupsApi.md#DeleteBackupShardedCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Remove One Sharded Cluster Cloud Backup
-[**DeleteClusterBackupSchedule**](CloudBackupsApi.md#DeleteClusterBackupSchedule) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Remove All Cloud Backup Schedules
-[**DeleteClusterBackupSnapshot**](CloudBackupsApi.md#DeleteClusterBackupSnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Remove One Replica Set Cloud Backup
-[**DeleteExportBucket**](CloudBackupsApi.md#DeleteExportBucket) | **Delete** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Delete One Snapshot Export Bucket
-[**DisableCompliancePolicy**](CloudBackupsApi.md#DisableCompliancePolicy) | **Delete** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Disable Backup Compliance Policy Settings
-[**GetBackupExport**](CloudBackupsApi.md#GetBackupExport) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId} | Return One Snapshot Export Job
-[**GetBackupPrivateEndpoint**](CloudBackupsApi.md#GetBackupPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Return One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
-[**GetBackupRestoreJob**](CloudBackupsApi.md#GetBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Cluster
-[**GetBackupSchedule**](CloudBackupsApi.md#GetBackupSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Return One Cloud Backup Schedule
-[**GetBackupShardedCluster**](CloudBackupsApi.md#GetBackupShardedCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Return One Sharded Cluster Cloud Backup
-[**GetClusterBackupSnapshot**](CloudBackupsApi.md#GetClusterBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Return One Replica Set Cloud Backup
-[**GetCompliancePolicy**](CloudBackupsApi.md#GetCompliancePolicy) | **Get** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Return Backup Compliance Policy Settings
-[**GetExportBucket**](CloudBackupsApi.md#GetExportBucket) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Return One Snapshot Export Bucket
-[**GetServerlessBackupSnapshot**](CloudBackupsApi.md#GetServerlessBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId} | Return One Snapshot of One Serverless Instance
-[**GetServerlessRestoreJob**](CloudBackupsApi.md#GetServerlessRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Serverless Instance
-[**ListBackupExports**](CloudBackupsApi.md#ListBackupExports) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Return All Snapshot Export Jobs
-[**ListBackupPrivateEndpoints**](CloudBackupsApi.md#ListBackupPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
-[**ListBackupRestoreJobs**](CloudBackupsApi.md#ListBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Cluster
-[**ListBackupShardedClusters**](CloudBackupsApi.md#ListBackupShardedClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters | Return All Sharded Cluster Cloud Backups
-[**ListBackupSnapshots**](CloudBackupsApi.md#ListBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Return All Replica Set Cloud Backups
-[**ListExportBuckets**](CloudBackupsApi.md#ListExportBuckets) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Return All Snapshot Export Buckets
-[**ListServerlessBackupSnapshots**](CloudBackupsApi.md#ListServerlessBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots | Return All Snapshots of One Serverless Instance
-[**ListServerlessRestoreJobs**](CloudBackupsApi.md#ListServerlessRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Serverless Instance
-[**TakeSnapshots**](CloudBackupsApi.md#TakeSnapshots) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Take One On-Demand Snapshot
-[**UpdateBackupExportBucket**](CloudBackupsApi.md#UpdateBackupExportBucket) | **Patch** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Update One Export Bucket Private Networking Settings
-[**UpdateBackupSchedule**](CloudBackupsApi.md#UpdateBackupSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Update Cloud Backup Schedule for One Cluster
-[**UpdateBackupSnapshot**](CloudBackupsApi.md#UpdateBackupSnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Update Expiration Date for One Cloud Backup
-[**UpdateCompliancePolicy**](CloudBackupsApi.md#UpdateCompliancePolicy) | **Put** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Update Backup Compliance Policy Settings
+[**CancelBackupRestoreJob**](CloudBackupsAPI.md#CancelBackupRestoreJob) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Cancel One Restore Job for One Cluster
+[**CreateBackupExport**](CloudBackupsAPI.md#CreateBackupExport) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Create One Snapshot Export Job
+[**CreateBackupPrivateEndpoint**](CloudBackupsAPI.md#CreateBackupPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+[**CreateBackupRestoreJob**](CloudBackupsAPI.md#CreateBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Create One Restore Job of One Cluster
+[**CreateExportBucket**](CloudBackupsAPI.md#CreateExportBucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Create One Snapshot Export Bucket
+[**CreateServerlessRestoreJob**](CloudBackupsAPI.md#CreateServerlessRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Create One Restore Job for One Serverless Instance
+[**DeleteBackupPrivateEndpoint**](CloudBackupsAPI.md#DeleteBackupPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
+[**DeleteBackupShardedCluster**](CloudBackupsAPI.md#DeleteBackupShardedCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Remove One Sharded Cluster Cloud Backup
+[**DeleteClusterBackupSchedule**](CloudBackupsAPI.md#DeleteClusterBackupSchedule) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Remove All Cloud Backup Schedules
+[**DeleteClusterBackupSnapshot**](CloudBackupsAPI.md#DeleteClusterBackupSnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Remove One Replica Set Cloud Backup
+[**DeleteExportBucket**](CloudBackupsAPI.md#DeleteExportBucket) | **Delete** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Delete One Snapshot Export Bucket
+[**DisableCompliancePolicy**](CloudBackupsAPI.md#DisableCompliancePolicy) | **Delete** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Disable Backup Compliance Policy Settings
+[**GetBackupExport**](CloudBackupsAPI.md#GetBackupExport) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId} | Return One Snapshot Export Job
+[**GetBackupPrivateEndpoint**](CloudBackupsAPI.md#GetBackupPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Return One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
+[**GetBackupRestoreJob**](CloudBackupsAPI.md#GetBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Cluster
+[**GetBackupSchedule**](CloudBackupsAPI.md#GetBackupSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Return One Cloud Backup Schedule
+[**GetBackupShardedCluster**](CloudBackupsAPI.md#GetBackupShardedCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Return One Sharded Cluster Cloud Backup
+[**GetClusterBackupSnapshot**](CloudBackupsAPI.md#GetClusterBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Return One Replica Set Cloud Backup
+[**GetCompliancePolicy**](CloudBackupsAPI.md#GetCompliancePolicy) | **Get** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Return Backup Compliance Policy Settings
+[**GetExportBucket**](CloudBackupsAPI.md#GetExportBucket) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Return One Snapshot Export Bucket
+[**GetServerlessBackupSnapshot**](CloudBackupsAPI.md#GetServerlessBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId} | Return One Snapshot of One Serverless Instance
+[**GetServerlessRestoreJob**](CloudBackupsAPI.md#GetServerlessRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Serverless Instance
+[**ListBackupExports**](CloudBackupsAPI.md#ListBackupExports) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Return All Snapshot Export Jobs
+[**ListBackupPrivateEndpoints**](CloudBackupsAPI.md#ListBackupPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
+[**ListBackupRestoreJobs**](CloudBackupsAPI.md#ListBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Cluster
+[**ListBackupShardedClusters**](CloudBackupsAPI.md#ListBackupShardedClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters | Return All Sharded Cluster Cloud Backups
+[**ListBackupSnapshots**](CloudBackupsAPI.md#ListBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Return All Replica Set Cloud Backups
+[**ListExportBuckets**](CloudBackupsAPI.md#ListExportBuckets) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Return All Snapshot Export Buckets
+[**ListServerlessBackupSnapshots**](CloudBackupsAPI.md#ListServerlessBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots | Return All Snapshots of One Serverless Instance
+[**ListServerlessRestoreJobs**](CloudBackupsAPI.md#ListServerlessRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Serverless Instance
+[**TakeSnapshots**](CloudBackupsAPI.md#TakeSnapshots) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Take One On-Demand Snapshot
+[**UpdateBackupExportBucket**](CloudBackupsAPI.md#UpdateBackupExportBucket) | **Patch** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Update One Export Bucket Private Networking Settings
+[**UpdateBackupSchedule**](CloudBackupsAPI.md#UpdateBackupSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Update Cloud Backup Schedule for One Cluster
+[**UpdateBackupSnapshot**](CloudBackupsAPI.md#UpdateBackupSnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Update Expiration Date for One Cloud Backup
+[**UpdateCompliancePolicy**](CloudBackupsAPI.md#UpdateCompliancePolicy) | **Put** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Update Backup Compliance Policy Settings
 
 
 
@@ -76,9 +76,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     restoreJobId := "restoreJobId_example" // string | 
 
-    r, err := sdk.CloudBackupsApi.CancelBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
+    r, err := sdk.CloudBackupsAPI.CancelBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CancelBackupRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.CancelBackupRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -160,9 +160,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     diskBackupExportJobRequest := *admin.NewDiskBackupExportJobRequest("32b6e34b3d91647abb20e7b8", "32b6e34b3d91647abb20e7b8") // DiskBackupExportJobRequest | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateBackupExport(context.Background(), groupId, clusterName, &diskBackupExportJobRequest).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.CreateBackupExport(context.Background(), groupId, clusterName, &diskBackupExportJobRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupExport`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.CreateBackupExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -170,7 +170,7 @@ func main() {
         return
     }
     // response from `CreateBackupExport`: DiskBackupExportJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupExport`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.CreateBackupExport`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -245,9 +245,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     objectStoragePrivateEndpointRequest := *admin.NewObjectStoragePrivateEndpointRequest() // ObjectStoragePrivateEndpointRequest | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, &objectStoragePrivateEndpointRequest).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.CreateBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, &objectStoragePrivateEndpointRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.CreateBackupPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -255,7 +255,7 @@ func main() {
         return
     }
     // response from `CreateBackupPrivateEndpoint`: ObjectStoragePrivateEndpointResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.CreateBackupPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -330,9 +330,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     diskBackupSnapshotRestoreJob := *admin.NewDiskBackupSnapshotRestoreJob("DeliveryType_example") // DiskBackupSnapshotRestoreJob | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateBackupRestoreJob(context.Background(), groupId, clusterName, &diskBackupSnapshotRestoreJob).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.CreateBackupRestoreJob(context.Background(), groupId, clusterName, &diskBackupSnapshotRestoreJob).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.CreateBackupRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -340,7 +340,7 @@ func main() {
         return
     }
     // response from `CreateBackupRestoreJob`: DiskBackupSnapshotRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupRestoreJob`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.CreateBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -414,9 +414,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     diskBackupSnapshotExportBucketRequest := *admin.NewDiskBackupSnapshotExportBucketRequest("CloudProvider_example") // DiskBackupSnapshotExportBucketRequest | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateExportBucket(context.Background(), groupId, &diskBackupSnapshotExportBucketRequest).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.CreateExportBucket(context.Background(), groupId, &diskBackupSnapshotExportBucketRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateExportBucket`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.CreateExportBucket`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -424,7 +424,7 @@ func main() {
         return
     }
     // response from `CreateExportBucket`: DiskBackupSnapshotExportBucketResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateExportBucket`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.CreateExportBucket`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -497,9 +497,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     serverlessBackupRestoreJob := *admin.NewServerlessBackupRestoreJob("DeliveryType_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8") // ServerlessBackupRestoreJob | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateServerlessRestoreJob(context.Background(), groupId, clusterName, &serverlessBackupRestoreJob).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.CreateServerlessRestoreJob(context.Background(), groupId, clusterName, &serverlessBackupRestoreJob).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateServerlessRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.CreateServerlessRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -507,7 +507,7 @@ func main() {
         return
     }
     // response from `CreateServerlessRestoreJob`: ServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateServerlessRestoreJob`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.CreateServerlessRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -582,9 +582,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    r, err := sdk.CloudBackupsApi.DeleteBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    r, err := sdk.CloudBackupsAPI.DeleteBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteBackupPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.DeleteBackupPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -666,9 +666,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    r, err := sdk.CloudBackupsApi.DeleteBackupShardedCluster(context.Background(), groupId, clusterName, snapshotId).Execute()
+    r, err := sdk.CloudBackupsAPI.DeleteBackupShardedCluster(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteBackupShardedCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.DeleteBackupShardedCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -749,9 +749,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.DeleteClusterBackupSchedule(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.DeleteClusterBackupSchedule(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteClusterBackupSchedule`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.DeleteClusterBackupSchedule`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -759,7 +759,7 @@ func main() {
         return
     }
     // response from `DeleteClusterBackupSchedule`: DiskBackupSnapshotSchedule20240805
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteClusterBackupSchedule`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.DeleteClusterBackupSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -833,9 +833,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    r, err := sdk.CloudBackupsApi.DeleteClusterBackupSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    r, err := sdk.CloudBackupsAPI.DeleteClusterBackupSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteClusterBackupSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.DeleteClusterBackupSnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -916,9 +916,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     exportBucketId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.CloudBackupsApi.DeleteExportBucket(context.Background(), groupId, exportBucketId).Execute()
+    r, err := sdk.CloudBackupsAPI.DeleteExportBucket(context.Background(), groupId, exportBucketId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteExportBucket`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.DeleteExportBucket`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -996,9 +996,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.CloudBackupsApi.DisableCompliancePolicy(context.Background(), groupId).Execute()
+    r, err := sdk.CloudBackupsAPI.DisableCompliancePolicy(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DisableCompliancePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.DisableCompliancePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1076,9 +1076,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     exportId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetBackupExport(context.Background(), groupId, clusterName, exportId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetBackupExport(context.Background(), groupId, clusterName, exportId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupExport`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetBackupExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1086,7 +1086,7 @@ func main() {
         return
     }
     // response from `GetBackupExport`: DiskBackupExportJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupExport`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetBackupExport`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1162,9 +1162,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetBackupPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetBackupPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1172,7 +1172,7 @@ func main() {
         return
     }
     // response from `GetBackupPrivateEndpoint`: ObjectStoragePrivateEndpointResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetBackupPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1248,9 +1248,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     restoreJobId := "restoreJobId_example" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetBackupRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1258,7 +1258,7 @@ func main() {
         return
     }
     // response from `GetBackupRestoreJob`: DiskBackupSnapshotRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupRestoreJob`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1333,9 +1333,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetBackupSchedule(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetBackupSchedule(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupSchedule`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetBackupSchedule`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1343,7 +1343,7 @@ func main() {
         return
     }
     // response from `GetBackupSchedule`: DiskBackupSnapshotSchedule20240805
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupSchedule`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetBackupSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1417,9 +1417,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetBackupShardedCluster(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetBackupShardedCluster(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupShardedCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetBackupShardedCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1427,7 +1427,7 @@ func main() {
         return
     }
     // response from `GetBackupShardedCluster`: DiskBackupShardedClusterSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupShardedCluster`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetBackupShardedCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1503,9 +1503,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetClusterBackupSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetClusterBackupSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetClusterBackupSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetClusterBackupSnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1513,7 +1513,7 @@ func main() {
         return
     }
     // response from `GetClusterBackupSnapshot`: DiskBackupReplicaSet
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetClusterBackupSnapshot`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetClusterBackupSnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1587,9 +1587,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetCompliancePolicy(context.Background(), groupId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetCompliancePolicy(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetCompliancePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetCompliancePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1597,7 +1597,7 @@ func main() {
         return
     }
     // response from `GetCompliancePolicy`: DataProtectionSettings20231001
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetCompliancePolicy`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetCompliancePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1668,9 +1668,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     exportBucketId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetExportBucket(context.Background(), groupId, exportBucketId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetExportBucket(context.Background(), groupId, exportBucketId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetExportBucket`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetExportBucket`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1678,7 +1678,7 @@ func main() {
         return
     }
     // response from `GetExportBucket`: DiskBackupSnapshotExportBucketResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetExportBucket`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetExportBucket`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1752,9 +1752,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetServerlessBackupSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetServerlessBackupSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetServerlessBackupSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetServerlessBackupSnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1762,7 +1762,7 @@ func main() {
         return
     }
     // response from `GetServerlessBackupSnapshot`: ServerlessBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetServerlessBackupSnapshot`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetServerlessBackupSnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1838,9 +1838,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     restoreJobId := "restoreJobId_example" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.GetServerlessRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.GetServerlessRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetServerlessRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetServerlessRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1848,7 +1848,7 @@ func main() {
         return
     }
     // response from `GetServerlessRestoreJob`: ServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetServerlessRestoreJob`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetServerlessRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1926,9 +1926,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.CloudBackupsApi.ListBackupExports(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.ListBackupExports(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupExports`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListBackupExports`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1936,7 +1936,7 @@ func main() {
         return
     }
     // response from `ListBackupExports`: PaginatedApiAtlasDiskBackupExportJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupExports`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListBackupExports`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2015,9 +2015,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.CloudBackupsApi.ListBackupPrivateEndpoints(context.Background(), groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.ListBackupPrivateEndpoints(context.Background(), groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupPrivateEndpoints`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListBackupPrivateEndpoints`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2025,7 +2025,7 @@ func main() {
         return
     }
     // response from `ListBackupPrivateEndpoints`: PaginatedApiAtlasObjectStoragePrivateEndpointResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupPrivateEndpoints`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListBackupPrivateEndpoints`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2104,9 +2104,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.CloudBackupsApi.ListBackupRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.ListBackupRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupRestoreJobs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListBackupRestoreJobs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2114,7 +2114,7 @@ func main() {
         return
     }
     // response from `ListBackupRestoreJobs`: PaginatedCloudBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupRestoreJobs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListBackupRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2190,9 +2190,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.CloudBackupsApi.ListBackupShardedClusters(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.ListBackupShardedClusters(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupShardedClusters`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListBackupShardedClusters`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2200,7 +2200,7 @@ func main() {
         return
     }
     // response from `ListBackupShardedClusters`: PaginatedCloudBackupShardedClusterSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupShardedClusters`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListBackupShardedClusters`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2279,9 +2279,9 @@ func main() {
     oplogTs := int64(789) // int64 |  (optional)
     oplogInc := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.CloudBackupsApi.ListBackupSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).PointInTimeUtcSeconds(pointInTimeUtcSeconds).OplogTs(oplogTs).OplogInc(oplogInc).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.ListBackupSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).PointInTimeUtcSeconds(pointInTimeUtcSeconds).OplogTs(oplogTs).OplogInc(oplogInc).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListBackupSnapshots`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2289,7 +2289,7 @@ func main() {
         return
     }
     // response from `ListBackupSnapshots`: PaginatedCloudBackupReplicaSet
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupSnapshots`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListBackupSnapshots`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2370,9 +2370,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.CloudBackupsApi.ListExportBuckets(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.ListExportBuckets(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListExportBuckets`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListExportBuckets`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2380,7 +2380,7 @@ func main() {
         return
     }
     // response from `ListExportBuckets`: PaginatedBackupSnapshotExportBuckets
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListExportBuckets`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListExportBuckets`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2457,9 +2457,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.CloudBackupsApi.ListServerlessBackupSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.ListServerlessBackupSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListServerlessBackupSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListServerlessBackupSnapshots`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2467,7 +2467,7 @@ func main() {
         return
     }
     // response from `ListServerlessBackupSnapshots`: PaginatedApiAtlasServerlessBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListServerlessBackupSnapshots`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListServerlessBackupSnapshots`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2546,9 +2546,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.CloudBackupsApi.ListServerlessRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.ListServerlessRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListServerlessRestoreJobs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListServerlessRestoreJobs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2556,7 +2556,7 @@ func main() {
         return
     }
     // response from `ListServerlessRestoreJobs`: PaginatedApiAtlasServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListServerlessRestoreJobs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListServerlessRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2633,9 +2633,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     diskBackupOnDemandSnapshotRequest := *admin.NewDiskBackupOnDemandSnapshotRequest() // DiskBackupOnDemandSnapshotRequest | 
 
-    resp, r, err := sdk.CloudBackupsApi.TakeSnapshots(context.Background(), groupId, clusterName, &diskBackupOnDemandSnapshotRequest).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.TakeSnapshots(context.Background(), groupId, clusterName, &diskBackupOnDemandSnapshotRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.TakeSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.TakeSnapshots`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2643,7 +2643,7 @@ func main() {
         return
     }
     // response from `TakeSnapshots`: DiskBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.TakeSnapshots`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.TakeSnapshots`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2718,9 +2718,9 @@ func main() {
     exportBucketId := "32b6e34b3d91647abb20e7b8" // string | 
     updateRequirePrivateNetworkingRequest := *admin.NewUpdateRequirePrivateNetworkingRequest(false) // UpdateRequirePrivateNetworkingRequest | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateBackupExportBucket(context.Background(), groupId, exportBucketId, &updateRequirePrivateNetworkingRequest).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.UpdateBackupExportBucket(context.Background(), groupId, exportBucketId, &updateRequirePrivateNetworkingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateBackupExportBucket`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.UpdateBackupExportBucket`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2728,7 +2728,7 @@ func main() {
         return
     }
     // response from `UpdateBackupExportBucket`: DiskBackupSnapshotAWSExportBucketResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateBackupExportBucket`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.UpdateBackupExportBucket`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2803,9 +2803,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     diskBackupSnapshotSchedule20240805 := *admin.NewDiskBackupSnapshotSchedule20240805([]admin.AdvancedDiskBackupSnapshotSchedulePolicy{*admin.NewAdvancedDiskBackupSnapshotSchedulePolicy([]admin.DiskBackupApiPolicyItem{*admin.NewDiskBackupApiPolicyItem(int(123), "FrequencyType_example", "RetentionUnit_example", int(123))})}) // DiskBackupSnapshotSchedule20240805 | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateBackupSchedule(context.Background(), groupId, clusterName, &diskBackupSnapshotSchedule20240805).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.UpdateBackupSchedule(context.Background(), groupId, clusterName, &diskBackupSnapshotSchedule20240805).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateBackupSchedule`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.UpdateBackupSchedule`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2813,7 +2813,7 @@ func main() {
         return
     }
     // response from `UpdateBackupSchedule`: DiskBackupSnapshotSchedule20240805
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateBackupSchedule`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.UpdateBackupSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2889,9 +2889,9 @@ func main() {
     snapshotId := "snapshotId_example" // string | 
     backupSnapshotRetention := *admin.NewBackupSnapshotRetention("RetentionUnit_example", int(5)) // BackupSnapshotRetention | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateBackupSnapshot(context.Background(), groupId, clusterName, snapshotId, &backupSnapshotRetention).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.UpdateBackupSnapshot(context.Background(), groupId, clusterName, snapshotId, &backupSnapshotRetention).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateBackupSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.UpdateBackupSnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2899,7 +2899,7 @@ func main() {
         return
     }
     // response from `UpdateBackupSnapshot`: DiskBackupReplicaSet
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateBackupSnapshot`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.UpdateBackupSnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2976,9 +2976,9 @@ func main() {
     dataProtectionSettings20231001 := *admin.NewDataProtectionSettings20231001("AuthorizedEmail_example", "AuthorizedUserFirstName_example", "AuthorizedUserLastName_example") // DataProtectionSettings20231001 | 
     overwriteBackupPolicies := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateCompliancePolicy(context.Background(), groupId, &dataProtectionSettings20231001).OverwriteBackupPolicies(overwriteBackupPolicies).Execute()
+    resp, r, err := sdk.CloudBackupsAPI.UpdateCompliancePolicy(context.Background(), groupId, &dataProtectionSettings20231001).OverwriteBackupPolicies(overwriteBackupPolicies).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateCompliancePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.UpdateCompliancePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2986,7 +2986,7 @@ func main() {
         return
     }
     // response from `UpdateCompliancePolicy`: DataProtectionSettings20231001
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateCompliancePolicy`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.UpdateCompliancePolicy`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -16,7 +16,7 @@ type ServiceAccountSecret struct {
 	ExpiresAt time.Time `json:"expiresAt"`
 	// Unique 24-hexadecimal digit string that identifies the secret.
 	// Read only field.
-	Id string `json:"id"`
+	Id string `json:"id" validate:"regexp=^([a-f0-9]{24})$"`
 	// The last time the secret was used. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastUsedAt *time.Time `json:"lastUsedAt,omitempty"`

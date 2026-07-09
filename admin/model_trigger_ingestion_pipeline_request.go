@@ -7,7 +7,7 @@ type TriggerIngestionPipelineRequest struct {
 	DatasetRetentionPolicy *DatasetRetentionPolicy `json:"datasetRetentionPolicy,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.
 	// Write only field.
-	SnapshotId string `json:"snapshotId"`
+	SnapshotId string `json:"snapshotId" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewTriggerIngestionPipelineRequest instantiates a new TriggerIngestionPipelineRequest object

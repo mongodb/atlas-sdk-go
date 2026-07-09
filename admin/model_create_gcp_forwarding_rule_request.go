@@ -9,7 +9,7 @@ type CreateGCPForwardingRuleRequest struct {
 	EndpointName *string `json:"endpointName,omitempty"`
 	// One Private Internet Protocol version 4 (IPv4) address to which this Google Cloud consumer forwarding rule resolves.
 	// Write only field.
-	IpAddress *string `json:"ipAddress,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
 }
 
 // NewCreateGCPForwardingRuleRequest instantiates a new CreateGCPForwardingRuleRequest object

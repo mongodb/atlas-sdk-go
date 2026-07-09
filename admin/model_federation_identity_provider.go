@@ -19,13 +19,13 @@ type FederationIdentityProvider struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the identity provider.
 	// Read only field.
-	Id string `json:"id"`
+	Id string `json:"id" validate:"regexp=^([a-f0-9]{24})$"`
 	// String enum that indicates the type of the identity provider. Default is WORKFORCE.
 	IdpType *string `json:"idpType,omitempty"`
 	// Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL.
 	IssuerUri *string `json:"issuerUri,omitempty"`
 	// Legacy 20-hexadecimal digit string that identifies the identity provider.
-	OktaIdpId string `json:"oktaIdpId"`
+	OktaIdpId string `json:"oktaIdpId" validate:"regexp=^([a-f0-9]{20})$"`
 	// String enum that indicates the protocol of the identity provider. Either SAML or OIDC.
 	Protocol *string `json:"protocol,omitempty"`
 	// Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

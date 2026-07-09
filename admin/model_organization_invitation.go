@@ -18,7 +18,7 @@ type OrganizationInvitation struct {
 	GroupRoleAssignments *[]GroupRole `json:"groupRoleAssignments,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this invitation.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Email address of the MongoDB Cloud user who sent the invitation to join the organization.
 	// Read only field.
 	InviterUsername *string `json:"inviterUsername,omitempty"`
@@ -27,9 +27,9 @@ type OrganizationInvitation struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization.
 	// Read only field.
-	OrgId *string `json:"orgId,omitempty"`
+	OrgId *string `json:"orgId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies this organization.
-	OrgName string `json:"orgName"`
+	OrgName string `json:"orgName" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.(),:&@+']{1,64}$"`
 	// One or more organization-level roles to assign to the MongoDB Cloud user.
 	Roles *[]string `json:"roles,omitempty"`
 	// List of unique 24-hexadecimal digit strings that identifies each team.

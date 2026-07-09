@@ -6,7 +6,7 @@ package admin
 type StreamsProcessorWithStats struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
 	// Read only field.
-	Id string `json:"_id"`
+	Id string `json:"_id" validate:"regexp=^([a-f0-9]{24})$"`
 	// Flag that indicates whether the stream processor is eligible for failover.
 	// Read only field.
 	EligibleForFailover *bool `json:"eligibleForFailover,omitempty"`

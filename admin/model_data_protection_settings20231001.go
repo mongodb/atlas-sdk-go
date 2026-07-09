@@ -25,7 +25,7 @@ type DataProtectionSettings20231001 struct {
 	// Flag that indicates whether the cluster uses Continuous Cloud Backups with a Backup Compliance Policy. If unspecified, this value defaults to false.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project for the Backup Compliance Policy.
-	ProjectId *string `json:"projectId,omitempty"`
+	ProjectId *string `json:"projectId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Number of previous days that you can restore back to with Continuous Cloud Backup with a Backup Compliance Policy. You must specify a positive, non-zero integer, and the maximum retention window can't exceed the hourly retention time. This parameter applies only to Continuous Cloud Backups with a Backup Compliance Policy.
 	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
 	// List that contains the specifications for one scheduled policy.

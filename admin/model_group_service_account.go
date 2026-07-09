@@ -9,7 +9,7 @@ import (
 // GroupServiceAccount struct for GroupServiceAccount
 type GroupServiceAccount struct {
 	// The Client ID of the Service Account.
-	ClientId *string `json:"clientId,omitempty"`
+	ClientId *string `json:"clientId,omitempty" validate:"regexp=^mdb_sa_id_[a-fA-F\\\\d]{24}$"`
 	// The date that the Service Account was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Human readable description for the Service Account.

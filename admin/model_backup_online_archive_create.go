@@ -6,10 +6,10 @@ package admin
 type BackupOnlineArchiveCreate struct {
 	// Unique 24-hexadecimal digit string that identifies the online archive.
 	// Read only field.
-	Id *string `json:"_id,omitempty"`
+	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Human-readable label that identifies the cluster that contains the collection for which you want to create an online archive.
 	// Read only field.
-	ClusterName *string `json:"clusterName,omitempty"`
+	ClusterName *string `json:"clusterName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
 	// Human-readable label that identifies the collection for which you created the online archive.
 	// Write only field.
 	CollName string `json:"collName"`
@@ -27,7 +27,7 @@ type BackupOnlineArchiveCreate struct {
 	DbName string `json:"dbName"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify parameters that you frequently query. If you specified `criteria.type`: `DATE` in the Create One Online Archive endpoint, then you can specify up to three parameters by which to query. One of these parameters must be the `DATE` value, which is required in this case. If you specified `criteria.type`: `CUSTOM` in the Create One Online Archive endpoint, then you can specify up to two parameters by which to query. Queries that don't use `criteria.type`: `DATE` or `criteria.type`: `CUSTOM` parameters cause MongoDB to scan a full collection of all archived documents. This takes more time and increases your costs.
 	// Write only field.
 	PartitionFields *[]PartitionField `json:"partitionFields,omitempty"`

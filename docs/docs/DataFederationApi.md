@@ -1,23 +1,23 @@
-# \DataFederationApi
+# \DataFederationAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDataFederation**](DataFederationApi.md#CreateDataFederation) | **Post** /api/atlas/v2/groups/{groupId}/dataFederation | Create One Federated Database Instance in One Project
-[**CreatePrivateEndpointId**](DataFederationApi.md#CreatePrivateEndpointId) | **Post** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Create One Federated Database Instance and Online Archive Private Endpoint for One Project
-[**DeleteDataFederation**](DataFederationApi.md#DeleteDataFederation) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Remove One Federated Database Instance from One Project
-[**DeleteDataFederationLimit**](DataFederationApi.md#DeleteDataFederationLimit) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Delete One Query Limit for One Federated Database Instance
-[**DeletePrivateEndpointId**](DataFederationApi.md#DeletePrivateEndpointId) | **Delete** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
-[**DownloadFederationQueryLogs**](DataFederationApi.md#DownloadFederationQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz | Download Query Logs for One Federated Database Instance
-[**GetDataFederation**](DataFederationApi.md#GetDataFederation) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Return One Federated Database Instance in One Project
-[**GetDataFederationLimit**](DataFederationApi.md#GetDataFederationLimit) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Return One Federated Database Instance Query Limit for One Project
-[**GetPrivateEndpointId**](DataFederationApi.md#GetPrivateEndpointId) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Return One Federated Database Instance and Online Archive Private Endpoint in One Project
-[**ListDataFederation**](DataFederationApi.md#ListDataFederation) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation | Return All Federated Database Instances in One Project
-[**ListDataFederationLimits**](DataFederationApi.md#ListDataFederationLimits) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits | Return All Query Limits for One Federated Database Instance
-[**ListPrivateEndpointIds**](DataFederationApi.md#ListPrivateEndpointIds) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Return All Federated Database Instance and Online Archive Private Endpoints in One Project
-[**SetDataFederationLimit**](DataFederationApi.md#SetDataFederationLimit) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Configure One Query Limit for One Federated Database Instance
-[**UpdateDataFederation**](DataFederationApi.md#UpdateDataFederation) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Update One Federated Database Instance in One Project
+[**CreateDataFederation**](DataFederationAPI.md#CreateDataFederation) | **Post** /api/atlas/v2/groups/{groupId}/dataFederation | Create One Federated Database Instance in One Project
+[**CreatePrivateEndpointId**](DataFederationAPI.md#CreatePrivateEndpointId) | **Post** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Create One Federated Database Instance and Online Archive Private Endpoint for One Project
+[**DeleteDataFederation**](DataFederationAPI.md#DeleteDataFederation) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Remove One Federated Database Instance from One Project
+[**DeleteDataFederationLimit**](DataFederationAPI.md#DeleteDataFederationLimit) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Delete One Query Limit for One Federated Database Instance
+[**DeletePrivateEndpointId**](DataFederationAPI.md#DeletePrivateEndpointId) | **Delete** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
+[**DownloadFederationQueryLogs**](DataFederationAPI.md#DownloadFederationQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz | Download Query Logs for One Federated Database Instance
+[**GetDataFederation**](DataFederationAPI.md#GetDataFederation) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Return One Federated Database Instance in One Project
+[**GetDataFederationLimit**](DataFederationAPI.md#GetDataFederationLimit) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Return One Federated Database Instance Query Limit for One Project
+[**GetPrivateEndpointId**](DataFederationAPI.md#GetPrivateEndpointId) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Return One Federated Database Instance and Online Archive Private Endpoint in One Project
+[**ListDataFederation**](DataFederationAPI.md#ListDataFederation) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation | Return All Federated Database Instances in One Project
+[**ListDataFederationLimits**](DataFederationAPI.md#ListDataFederationLimits) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits | Return All Query Limits for One Federated Database Instance
+[**ListPrivateEndpointIds**](DataFederationAPI.md#ListPrivateEndpointIds) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Return All Federated Database Instance and Online Archive Private Endpoints in One Project
+[**SetDataFederationLimit**](DataFederationAPI.md#SetDataFederationLimit) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Configure One Query Limit for One Federated Database Instance
+[**UpdateDataFederation**](DataFederationAPI.md#UpdateDataFederation) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Update One Federated Database Instance in One Project
 
 
 
@@ -55,9 +55,9 @@ func main() {
     dataLakeTenant := *admin.NewDataLakeTenant() // DataLakeTenant | 
     skipRoleValidation := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.DataFederationApi.CreateDataFederation(context.Background(), groupId, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
+    resp, r, err := sdk.DataFederationAPI.CreateDataFederation(context.Background(), groupId, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateDataFederation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.CreateDataFederation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -65,7 +65,7 @@ func main() {
         return
     }
     // response from `CreateDataFederation`: DataLakeTenant
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateDataFederation`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.CreateDataFederation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -138,9 +138,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     privateNetworkEndpointIdEntry := *admin.NewPrivateNetworkEndpointIdEntry("EndpointId_example") // PrivateNetworkEndpointIdEntry | 
 
-    resp, r, err := sdk.DataFederationApi.CreatePrivateEndpointId(context.Background(), groupId, &privateNetworkEndpointIdEntry).Execute()
+    resp, r, err := sdk.DataFederationAPI.CreatePrivateEndpointId(context.Background(), groupId, &privateNetworkEndpointIdEntry).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreatePrivateEndpointId`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.CreatePrivateEndpointId`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -148,7 +148,7 @@ func main() {
         return
     }
     // response from `CreatePrivateEndpointId`: PaginatedPrivateNetworkEndpointIdEntry
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreatePrivateEndpointId`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.CreatePrivateEndpointId`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -220,9 +220,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
-    r, err := sdk.DataFederationApi.DeleteDataFederation(context.Background(), groupId, tenantName).Execute()
+    r, err := sdk.DataFederationAPI.DeleteDataFederation(context.Background(), groupId, tenantName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteDataFederation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.DeleteDataFederation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -302,9 +302,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     limitName := "limitName_example" // string | 
 
-    r, err := sdk.DataFederationApi.DeleteDataFederationLimit(context.Background(), groupId, tenantName, limitName).Execute()
+    r, err := sdk.DataFederationAPI.DeleteDataFederationLimit(context.Background(), groupId, tenantName, limitName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteDataFederationLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.DeleteDataFederationLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -385,9 +385,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     endpointId := "endpointId_example" // string | 
 
-    r, err := sdk.DataFederationApi.DeletePrivateEndpointId(context.Background(), groupId, endpointId).Execute()
+    r, err := sdk.DataFederationAPI.DeletePrivateEndpointId(context.Background(), groupId, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeletePrivateEndpointId`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.DeletePrivateEndpointId`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -468,9 +468,9 @@ func main() {
     endDate := int64(1636481348) // int64 |  (optional)
     startDate := int64(1636466948) // int64 |  (optional)
 
-    resp, r, err := sdk.DataFederationApi.DownloadFederationQueryLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
+    resp, r, err := sdk.DataFederationAPI.DownloadFederationQueryLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DownloadFederationQueryLogs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.DownloadFederationQueryLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -478,7 +478,7 @@ func main() {
         return
     }
     // response from `DownloadFederationQueryLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DownloadFederationQueryLogs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.DownloadFederationQueryLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -553,9 +553,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
-    resp, r, err := sdk.DataFederationApi.GetDataFederation(context.Background(), groupId, tenantName).Execute()
+    resp, r, err := sdk.DataFederationAPI.GetDataFederation(context.Background(), groupId, tenantName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetDataFederation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.GetDataFederation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -563,7 +563,7 @@ func main() {
         return
     }
     // response from `GetDataFederation`: DataLakeTenant
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetDataFederation`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.GetDataFederation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -637,9 +637,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     limitName := "limitName_example" // string | 
 
-    resp, r, err := sdk.DataFederationApi.GetDataFederationLimit(context.Background(), groupId, tenantName, limitName).Execute()
+    resp, r, err := sdk.DataFederationAPI.GetDataFederationLimit(context.Background(), groupId, tenantName, limitName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetDataFederationLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.GetDataFederationLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -647,7 +647,7 @@ func main() {
         return
     }
     // response from `GetDataFederationLimit`: DataFederationTenantQueryLimit
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetDataFederationLimit`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.GetDataFederationLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -722,9 +722,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     endpointId := "endpointId_example" // string | 
 
-    resp, r, err := sdk.DataFederationApi.GetPrivateEndpointId(context.Background(), groupId, endpointId).Execute()
+    resp, r, err := sdk.DataFederationAPI.GetPrivateEndpointId(context.Background(), groupId, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetPrivateEndpointId`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.GetPrivateEndpointId`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -732,7 +732,7 @@ func main() {
         return
     }
     // response from `GetPrivateEndpointId`: PrivateNetworkEndpointIdEntry
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetPrivateEndpointId`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.GetPrivateEndpointId`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -805,9 +805,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     type_ := "type__example" // string |  (optional) (default to "USER")
 
-    resp, r, err := sdk.DataFederationApi.ListDataFederation(context.Background(), groupId).Type_(type_).Execute()
+    resp, r, err := sdk.DataFederationAPI.ListDataFederation(context.Background(), groupId).Type_(type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListDataFederation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.ListDataFederation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -815,7 +815,7 @@ func main() {
         return
     }
     // response from `ListDataFederation`: []DataLakeTenant
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListDataFederation`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.ListDataFederation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -887,9 +887,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
-    resp, r, err := sdk.DataFederationApi.ListDataFederationLimits(context.Background(), groupId, tenantName).Execute()
+    resp, r, err := sdk.DataFederationAPI.ListDataFederationLimits(context.Background(), groupId, tenantName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListDataFederationLimits`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.ListDataFederationLimits`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -897,7 +897,7 @@ func main() {
         return
     }
     // response from `ListDataFederationLimits`: []DataFederationTenantQueryLimit
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListDataFederationLimits`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.ListDataFederationLimits`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -972,9 +972,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.DataFederationApi.ListPrivateEndpointIds(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.DataFederationAPI.ListPrivateEndpointIds(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListPrivateEndpointIds`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.ListPrivateEndpointIds`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -982,7 +982,7 @@ func main() {
         return
     }
     // response from `ListPrivateEndpointIds`: PaginatedPrivateNetworkEndpointIdEntry
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListPrivateEndpointIds`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.ListPrivateEndpointIds`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1058,9 +1058,9 @@ func main() {
     limitName := "limitName_example" // string | 
     dataFederationTenantQueryLimit := *admin.NewDataFederationTenantQueryLimit("Name_example", int64(123)) // DataFederationTenantQueryLimit | 
 
-    resp, r, err := sdk.DataFederationApi.SetDataFederationLimit(context.Background(), groupId, tenantName, limitName, &dataFederationTenantQueryLimit).Execute()
+    resp, r, err := sdk.DataFederationAPI.SetDataFederationLimit(context.Background(), groupId, tenantName, limitName, &dataFederationTenantQueryLimit).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.SetDataFederationLimit`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.SetDataFederationLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1068,7 +1068,7 @@ func main() {
         return
     }
     // response from `SetDataFederationLimit`: DataFederationTenantQueryLimit
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.SetDataFederationLimit`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.SetDataFederationLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1146,9 +1146,9 @@ func main() {
     skipRoleValidation := true // bool | 
     dataLakeTenant := *admin.NewDataLakeTenant() // DataLakeTenant | 
 
-    resp, r, err := sdk.DataFederationApi.UpdateDataFederation(context.Background(), groupId, tenantName, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
+    resp, r, err := sdk.DataFederationAPI.UpdateDataFederation(context.Background(), groupId, tenantName, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.UpdateDataFederation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationAPI.UpdateDataFederation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1156,7 +1156,7 @@ func main() {
         return
     }
     // response from `UpdateDataFederation`: DataLakeTenant
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.UpdateDataFederation`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationAPI.UpdateDataFederation`: %v (%v)\n", resp, r)
 }
 ```
 

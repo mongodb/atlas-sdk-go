@@ -6,7 +6,7 @@ package admin
 type StreamsProcessor struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
 	// Read only field.
-	Id *string `json:"_id,omitempty"`
+	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// Flag that enables or disables failover for the stream processor.
 	FailoverEnabled *bool `json:"failoverEnabled,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.

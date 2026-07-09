@@ -8,13 +8,13 @@ type DiskBackupExportJobRequest struct {
 	CustomData *[]BackupLabel `json:"customData,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
 	// Write only field.
-	ExportBucketId string `json:"exportBucketId"`
+	ExportBucketId string `json:"exportBucketId" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Cloud Backup Snapshot to export.
 	// Write only field.
-	SnapshotId string `json:"snapshotId"`
+	SnapshotId string `json:"snapshotId" validate:"regexp=^([a-f0-9]{24})$"`
 }
 
 // NewDiskBackupExportJobRequest instantiates a new DiskBackupExportJobRequest object

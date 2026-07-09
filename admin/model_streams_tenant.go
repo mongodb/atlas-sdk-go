@@ -6,7 +6,7 @@ package admin
 type StreamsTenant struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	Id *string `json:"_id,omitempty"`
+	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List of connections configured in the stream workspace.
 	// Read only field.
 	Connections       *[]StreamsConnection      `json:"connections,omitempty"`
@@ -15,7 +15,7 @@ type StreamsTenant struct {
 	FailoverRegions *[]StreamsDataProcessRegion `json:"failoverRegions,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
 	// List that contains the hostnames assigned to the stream workspace.
 	// Read only field.
 	Hostnames *[]string `json:"hostnames,omitempty"`

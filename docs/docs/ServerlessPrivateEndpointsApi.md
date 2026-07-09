@@ -1,14 +1,14 @@
-# \ServerlessPrivateEndpointsApi
+# \ServerlessPrivateEndpointsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#CreateServerlessPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Create One Private Endpoint for One Serverless Instance
-[**DeleteServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#DeleteServerlessPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Remove One Private Endpoint for One Serverless Instance
-[**GetServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#GetServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Return One Private Endpoint for One Serverless Instance
-[**ListServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#ListServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Return All Private Endpoints for One Serverless Instance
-[**UpdateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#UpdateServerlessPrivateEndpoint) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Update One Private Endpoint for One Serverless Instance
+[**CreateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#CreateServerlessPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Create One Private Endpoint for One Serverless Instance
+[**DeleteServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#DeleteServerlessPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Remove One Private Endpoint for One Serverless Instance
+[**GetServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#GetServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Return One Private Endpoint for One Serverless Instance
+[**ListServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#ListServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Return All Private Endpoints for One Serverless Instance
+[**UpdateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#UpdateServerlessPrivateEndpoint) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Update One Private Endpoint for One Serverless Instance
 
 
 
@@ -46,9 +46,9 @@ func main() {
     instanceName := "instanceName_example" // string | 
     serverlessTenantCreateRequest := *admin.NewServerlessTenantCreateRequest() // ServerlessTenantCreateRequest | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, &serverlessTenantCreateRequest).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsAPI.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, &serverlessTenantCreateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsAPI.CreateServerlessPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -56,7 +56,7 @@ func main() {
         return
     }
     // response from `CreateServerlessPrivateEndpoint`: ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsAPI.CreateServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -131,9 +131,9 @@ func main() {
     instanceName := "instanceName_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    r, err := sdk.ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
+    r, err := sdk.ServerlessPrivateEndpointsAPI.DeleteServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsAPI.DeleteServerlessPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -215,9 +215,9 @@ func main() {
     instanceName := "instanceName_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.GetServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsAPI.GetServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.GetServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsAPI.GetServerlessPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -225,7 +225,7 @@ func main() {
         return
     }
     // response from `GetServerlessPrivateEndpoint`: ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.GetServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsAPI.GetServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -300,9 +300,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoint(context.Background(), groupId, instanceName).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsAPI.ListServerlessPrivateEndpoint(context.Background(), groupId, instanceName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsAPI.ListServerlessPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -310,7 +310,7 @@ func main() {
         return
     }
     // response from `ListServerlessPrivateEndpoint`: []ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsAPI.ListServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -385,9 +385,9 @@ func main() {
     endpointId := "endpointId_example" // string | 
     serverlessTenantEndpointUpdate := *admin.NewServerlessTenantEndpointUpdate("ProviderName_example") // ServerlessTenantEndpointUpdate | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId, &serverlessTenantEndpointUpdate).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsAPI.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId, &serverlessTenantEndpointUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsAPI.UpdateServerlessPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -395,7 +395,7 @@ func main() {
         return
     }
     // response from `UpdateServerlessPrivateEndpoint`: ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsAPI.UpdateServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
