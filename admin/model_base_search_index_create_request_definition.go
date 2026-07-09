@@ -25,6 +25,15 @@ type BaseSearchIndexCreateRequestDefinition struct {
 	Fields *[]any `json:"fields,omitempty"`
 	// Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested.
 	NestedRoot *string `json:"nestedRoot,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BaseSearchIndexCreateRequestDefinition) MarshalJSON() ([]byte, error) {
+	type noMethod BaseSearchIndexCreateRequestDefinition
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBaseSearchIndexCreateRequestDefinition instantiates a new BaseSearchIndexCreateRequestDefinition object
@@ -87,6 +96,12 @@ func (o *BaseSearchIndexCreateRequestDefinition) HasAnalyzer() bool {
 // SetAnalyzer gets a reference to the given string and assigns it to the Analyzer field.
 func (o *BaseSearchIndexCreateRequestDefinition) SetAnalyzer(v string) {
 	o.Analyzer = &v
+}
+
+// SetAnalyzerNil sets Analyzer to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexCreateRequestDefinition) SetAnalyzerNil() {
+	o.Analyzer = nil
+	o.NullFields = append(o.NullFields, "Analyzer")
 }
 
 // GetAnalyzers returns the Analyzers field value if set, zero value otherwise
@@ -155,6 +170,12 @@ func (o *BaseSearchIndexCreateRequestDefinition) SetMappings(v SearchMappings) {
 	o.Mappings = &v
 }
 
+// SetMappingsNil sets Mappings to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexCreateRequestDefinition) SetMappingsNil() {
+	o.Mappings = nil
+	o.NullFields = append(o.NullFields, "Mappings")
+}
+
 // GetNumPartitions returns the NumPartitions field value if set, zero value otherwise
 func (o *BaseSearchIndexCreateRequestDefinition) GetNumPartitions() int {
 	if o == nil || IsNil(o.NumPartitions) {
@@ -188,6 +209,12 @@ func (o *BaseSearchIndexCreateRequestDefinition) SetNumPartitions(v int) {
 	o.NumPartitions = &v
 }
 
+// SetNumPartitionsNil sets NumPartitions to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexCreateRequestDefinition) SetNumPartitionsNil() {
+	o.NumPartitions = nil
+	o.NullFields = append(o.NullFields, "NumPartitions")
+}
+
 // GetSearchAnalyzer returns the SearchAnalyzer field value if set, zero value otherwise
 func (o *BaseSearchIndexCreateRequestDefinition) GetSearchAnalyzer() string {
 	if o == nil || IsNil(o.SearchAnalyzer) {
@@ -219,6 +246,12 @@ func (o *BaseSearchIndexCreateRequestDefinition) HasSearchAnalyzer() bool {
 // SetSearchAnalyzer gets a reference to the given string and assigns it to the SearchAnalyzer field.
 func (o *BaseSearchIndexCreateRequestDefinition) SetSearchAnalyzer(v string) {
 	o.SearchAnalyzer = &v
+}
+
+// SetSearchAnalyzerNil sets SearchAnalyzer to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexCreateRequestDefinition) SetSearchAnalyzerNil() {
+	o.SearchAnalyzer = nil
+	o.NullFields = append(o.NullFields, "SearchAnalyzer")
 }
 
 // GetSort returns the Sort field value if set, zero value otherwise
@@ -255,6 +288,12 @@ func (o *BaseSearchIndexCreateRequestDefinition) SetSort(v any) {
 	o.Sort = v
 }
 
+// SetSortNil sets Sort to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexCreateRequestDefinition) SetSortNil() {
+	o.Sort = nil
+	o.NullFields = append(o.NullFields, "Sort")
+}
+
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
 func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSource() any {
 	if o == nil || IsNil(o.StoredSource) {
@@ -287,6 +326,12 @@ func (o *BaseSearchIndexCreateRequestDefinition) HasStoredSource() bool {
 // SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
 func (o *BaseSearchIndexCreateRequestDefinition) SetStoredSource(v any) {
 	o.StoredSource = v
+}
+
+// SetStoredSourceNil sets StoredSource to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexCreateRequestDefinition) SetStoredSourceNil() {
+	o.StoredSource = nil
+	o.NullFields = append(o.NullFields, "StoredSource")
 }
 
 // GetSynonyms returns the Synonyms field value if set, zero value otherwise
@@ -419,4 +464,10 @@ func (o *BaseSearchIndexCreateRequestDefinition) HasNestedRoot() bool {
 // SetNestedRoot gets a reference to the given string and assigns it to the NestedRoot field.
 func (o *BaseSearchIndexCreateRequestDefinition) SetNestedRoot(v string) {
 	o.NestedRoot = &v
+}
+
+// SetNestedRootNil sets NestedRoot to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexCreateRequestDefinition) SetNestedRootNil() {
+	o.NestedRoot = nil
+	o.NullFields = append(o.NullFields, "NestedRoot")
 }

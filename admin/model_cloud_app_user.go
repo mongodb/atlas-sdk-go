@@ -41,6 +41,15 @@ type CloudAppUser struct {
 	TeamIds *[]string `json:"teamIds,omitempty"`
 	// Email address that represents the username of the MongoDB Cloud user.
 	Username string `json:"username"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudAppUser) MarshalJSON() ([]byte, error) {
+	type noMethod CloudAppUser
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudAppUser instantiates a new CloudAppUser object
@@ -123,6 +132,12 @@ func (o *CloudAppUser) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *CloudAppUser) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *CloudAppUser) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = append(o.NullFields, "CreatedAt")
 }
 
 // GetEmailAddress returns the EmailAddress field value
@@ -209,6 +224,12 @@ func (o *CloudAppUser) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *CloudAppUser) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetLastAuth returns the LastAuth field value if set, zero value otherwise
 func (o *CloudAppUser) GetLastAuth() time.Time {
 	if o == nil || IsNil(o.LastAuth) {
@@ -240,6 +261,12 @@ func (o *CloudAppUser) HasLastAuth() bool {
 // SetLastAuth gets a reference to the given time.Time and assigns it to the LastAuth field.
 func (o *CloudAppUser) SetLastAuth(v time.Time) {
 	o.LastAuth = &v
+}
+
+// SetLastAuthNil sets LastAuth to an explicit JSON null when marshaled.
+func (o *CloudAppUser) SetLastAuthNil() {
+	o.LastAuth = nil
+	o.NullFields = append(o.NullFields, "LastAuth")
 }
 
 // GetLastName returns the LastName field value

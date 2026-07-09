@@ -26,6 +26,15 @@ type CloudProviderAccessAzureServicePrincipalAllOf struct {
 	ServicePrincipalId *string `json:"servicePrincipalId,omitempty"`
 	// UUID String that identifies the Azure Active Directory Tenant ID.
 	TenantId *string `json:"tenantId,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderAccessAzureServicePrincipalAllOf
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessAzureServicePrincipalAllOf instantiates a new CloudProviderAccessAzureServicePrincipalAllOf object
@@ -78,6 +87,12 @@ func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetAtlasAzureAppId returns the AtlasAzureAppId field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipalAllOf) GetAtlasAzureAppId() string {
 	if o == nil || IsNil(o.AtlasAzureAppId) {
@@ -111,6 +126,12 @@ func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetAtlasAzureAppId(v str
 	o.AtlasAzureAppId = &v
 }
 
+// SetAtlasAzureAppIdNil sets AtlasAzureAppId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetAtlasAzureAppIdNil() {
+	o.AtlasAzureAppId = nil
+	o.NullFields = append(o.NullFields, "AtlasAzureAppId")
+}
+
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipalAllOf) GetCreatedDate() time.Time {
 	if o == nil || IsNil(o.CreatedDate) {
@@ -142,6 +163,12 @@ func (o *CloudProviderAccessAzureServicePrincipalAllOf) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
+}
+
+// SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetCreatedDateNil() {
+	o.CreatedDate = nil
+	o.NullFields = append(o.NullFields, "CreatedDate")
 }
 
 // GetFeatureUsages returns the FeatureUsages field value if set, zero value otherwise
@@ -210,6 +237,12 @@ func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetLastUpdatedDate(v tim
 	o.LastUpdatedDate = &v
 }
 
+// SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetLastUpdatedDateNil() {
+	o.LastUpdatedDate = nil
+	o.NullFields = append(o.NullFields, "LastUpdatedDate")
+}
+
 // GetServicePrincipalId returns the ServicePrincipalId field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipalAllOf) GetServicePrincipalId() string {
 	if o == nil || IsNil(o.ServicePrincipalId) {
@@ -243,6 +276,12 @@ func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetServicePrincipalId(v 
 	o.ServicePrincipalId = &v
 }
 
+// SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetServicePrincipalIdNil() {
+	o.ServicePrincipalId = nil
+	o.NullFields = append(o.NullFields, "ServicePrincipalId")
+}
+
 // GetTenantId returns the TenantId field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipalAllOf) GetTenantId() string {
 	if o == nil || IsNil(o.TenantId) {
@@ -274,4 +313,10 @@ func (o *CloudProviderAccessAzureServicePrincipalAllOf) HasTenantId() bool {
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetTenantId(v string) {
 	o.TenantId = &v
+}
+
+// SetTenantIdNil sets TenantId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetTenantIdNil() {
+	o.TenantId = nil
+	o.NullFields = append(o.NullFields, "TenantId")
 }

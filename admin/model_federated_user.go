@@ -15,6 +15,15 @@ type FederatedUser struct {
 	// Unique 24-hexadecimal digit string that identifies this user.
 	// Read only field.
 	UserId *string `json:"userId,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FederatedUser) MarshalJSON() ([]byte, error) {
+	type noMethod FederatedUser
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFederatedUser instantiates a new FederatedUser object
@@ -165,4 +174,10 @@ func (o *FederatedUser) HasUserId() bool {
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *FederatedUser) SetUserId(v string) {
 	o.UserId = &v
+}
+
+// SetUserIdNil sets UserId to an explicit JSON null when marshaled.
+func (o *FederatedUser) SetUserIdNil() {
+	o.UserId = nil
+	o.NullFields = append(o.NullFields, "UserId")
 }

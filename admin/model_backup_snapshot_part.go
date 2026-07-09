@@ -50,6 +50,15 @@ type BackupSnapshotPart struct {
 	// Human-readable label that identifies the type of server from which MongoDB Cloud took this snapshot.
 	// Read only field.
 	TypeName *string `json:"typeName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BackupSnapshotPart) MarshalJSON() ([]byte, error) {
+	type noMethod BackupSnapshotPart
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBackupSnapshotPart instantiates a new BackupSnapshotPart object
@@ -102,6 +111,12 @@ func (o *BackupSnapshotPart) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
+// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetClusterIdNil() {
+	o.ClusterId = nil
+	o.NullFields = append(o.NullFields, "ClusterId")
+}
+
 // GetCompletedTime returns the CompletedTime field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetCompletedTime() time.Time {
 	if o == nil || IsNil(o.CompletedTime) {
@@ -133,6 +148,12 @@ func (o *BackupSnapshotPart) HasCompletedTime() bool {
 // SetCompletedTime gets a reference to the given time.Time and assigns it to the CompletedTime field.
 func (o *BackupSnapshotPart) SetCompletedTime(v time.Time) {
 	o.CompletedTime = &v
+}
+
+// SetCompletedTimeNil sets CompletedTime to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetCompletedTimeNil() {
+	o.CompletedTime = nil
+	o.NullFields = append(o.NullFields, "CompletedTime")
 }
 
 // GetCompressionSetting returns the CompressionSetting field value if set, zero value otherwise
@@ -168,6 +189,12 @@ func (o *BackupSnapshotPart) SetCompressionSetting(v string) {
 	o.CompressionSetting = &v
 }
 
+// SetCompressionSettingNil sets CompressionSetting to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetCompressionSettingNil() {
+	o.CompressionSetting = nil
+	o.NullFields = append(o.NullFields, "CompressionSetting")
+}
+
 // GetDataSizeBytes returns the DataSizeBytes field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetDataSizeBytes() int64 {
 	if o == nil || IsNil(o.DataSizeBytes) {
@@ -199,6 +226,12 @@ func (o *BackupSnapshotPart) HasDataSizeBytes() bool {
 // SetDataSizeBytes gets a reference to the given int64 and assigns it to the DataSizeBytes field.
 func (o *BackupSnapshotPart) SetDataSizeBytes(v int64) {
 	o.DataSizeBytes = &v
+}
+
+// SetDataSizeBytesNil sets DataSizeBytes to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetDataSizeBytesNil() {
+	o.DataSizeBytes = nil
+	o.NullFields = append(o.NullFields, "DataSizeBytes")
 }
 
 // GetEncryptionEnabled returns the EncryptionEnabled field value if set, zero value otherwise
@@ -234,6 +267,12 @@ func (o *BackupSnapshotPart) SetEncryptionEnabled(v bool) {
 	o.EncryptionEnabled = &v
 }
 
+// SetEncryptionEnabledNil sets EncryptionEnabled to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetEncryptionEnabledNil() {
+	o.EncryptionEnabled = nil
+	o.NullFields = append(o.NullFields, "EncryptionEnabled")
+}
+
 // GetFcv returns the Fcv field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetFcv() string {
 	if o == nil || IsNil(o.Fcv) {
@@ -265,6 +304,12 @@ func (o *BackupSnapshotPart) HasFcv() bool {
 // SetFcv gets a reference to the given string and assigns it to the Fcv field.
 func (o *BackupSnapshotPart) SetFcv(v string) {
 	o.Fcv = &v
+}
+
+// SetFcvNil sets Fcv to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetFcvNil() {
+	o.Fcv = nil
+	o.NullFields = append(o.NullFields, "Fcv")
 }
 
 // GetFileSizeBytes returns the FileSizeBytes field value if set, zero value otherwise
@@ -300,6 +345,12 @@ func (o *BackupSnapshotPart) SetFileSizeBytes(v int64) {
 	o.FileSizeBytes = &v
 }
 
+// SetFileSizeBytesNil sets FileSizeBytes to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetFileSizeBytesNil() {
+	o.FileSizeBytes = nil
+	o.NullFields = append(o.NullFields, "FileSizeBytes")
+}
+
 // GetMachineId returns the MachineId field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetMachineId() string {
 	if o == nil || IsNil(o.MachineId) {
@@ -331,6 +382,12 @@ func (o *BackupSnapshotPart) HasMachineId() bool {
 // SetMachineId gets a reference to the given string and assigns it to the MachineId field.
 func (o *BackupSnapshotPart) SetMachineId(v string) {
 	o.MachineId = &v
+}
+
+// SetMachineIdNil sets MachineId to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetMachineIdNil() {
+	o.MachineId = nil
+	o.NullFields = append(o.NullFields, "MachineId")
 }
 
 // GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
@@ -366,6 +423,12 @@ func (o *BackupSnapshotPart) SetMasterKeyUUID(v string) {
 	o.MasterKeyUUID = &v
 }
 
+// SetMasterKeyUUIDNil sets MasterKeyUUID to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetMasterKeyUUIDNil() {
+	o.MasterKeyUUID = nil
+	o.NullFields = append(o.NullFields, "MasterKeyUUID")
+}
+
 // GetMongodVersion returns the MongodVersion field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetMongodVersion() string {
 	if o == nil || IsNil(o.MongodVersion) {
@@ -397,6 +460,12 @@ func (o *BackupSnapshotPart) HasMongodVersion() bool {
 // SetMongodVersion gets a reference to the given string and assigns it to the MongodVersion field.
 func (o *BackupSnapshotPart) SetMongodVersion(v string) {
 	o.MongodVersion = &v
+}
+
+// SetMongodVersionNil sets MongodVersion to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetMongodVersionNil() {
+	o.MongodVersion = nil
+	o.NullFields = append(o.NullFields, "MongodVersion")
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
@@ -432,6 +501,12 @@ func (o *BackupSnapshotPart) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
+// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetReplicaSetNameNil() {
+	o.ReplicaSetName = nil
+	o.NullFields = append(o.NullFields, "ReplicaSetName")
+}
+
 // GetReplicaState returns the ReplicaState field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetReplicaState() string {
 	if o == nil || IsNil(o.ReplicaState) {
@@ -463,6 +538,12 @@ func (o *BackupSnapshotPart) HasReplicaState() bool {
 // SetReplicaState gets a reference to the given string and assigns it to the ReplicaState field.
 func (o *BackupSnapshotPart) SetReplicaState(v string) {
 	o.ReplicaState = &v
+}
+
+// SetReplicaStateNil sets ReplicaState to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetReplicaStateNil() {
+	o.ReplicaState = nil
+	o.NullFields = append(o.NullFields, "ReplicaState")
 }
 
 // GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise
@@ -498,6 +579,12 @@ func (o *BackupSnapshotPart) SetStorageSizeBytes(v int64) {
 	o.StorageSizeBytes = &v
 }
 
+// SetStorageSizeBytesNil sets StorageSizeBytes to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetStorageSizeBytesNil() {
+	o.StorageSizeBytes = nil
+	o.NullFields = append(o.NullFields, "StorageSizeBytes")
+}
+
 // GetTypeName returns the TypeName field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetTypeName() string {
 	if o == nil || IsNil(o.TypeName) {
@@ -529,4 +616,10 @@ func (o *BackupSnapshotPart) HasTypeName() bool {
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *BackupSnapshotPart) SetTypeName(v string) {
 	o.TypeName = &v
+}
+
+// SetTypeNameNil sets TypeName to an explicit JSON null when marshaled.
+func (o *BackupSnapshotPart) SetTypeNameNil() {
+	o.TypeName = nil
+	o.NullFields = append(o.NullFields, "TypeName")
 }

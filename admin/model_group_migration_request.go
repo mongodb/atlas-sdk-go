@@ -10,6 +10,15 @@ type GroupMigrationRequest struct {
 	DestinationOrgPrivateApiKey *string `json:"destinationOrgPrivateApiKey,omitempty"`
 	// Unique string that identifies the public part of the API Key used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys.
 	DestinationOrgPublicApiKey *string `json:"destinationOrgPublicApiKey,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupMigrationRequest) MarshalJSON() ([]byte, error) {
+	type noMethod GroupMigrationRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupMigrationRequest instantiates a new GroupMigrationRequest object
@@ -62,6 +71,12 @@ func (o *GroupMigrationRequest) SetDestinationOrgId(v string) {
 	o.DestinationOrgId = &v
 }
 
+// SetDestinationOrgIdNil sets DestinationOrgId to an explicit JSON null when marshaled.
+func (o *GroupMigrationRequest) SetDestinationOrgIdNil() {
+	o.DestinationOrgId = nil
+	o.NullFields = append(o.NullFields, "DestinationOrgId")
+}
+
 // GetDestinationOrgPrivateApiKey returns the DestinationOrgPrivateApiKey field value if set, zero value otherwise
 func (o *GroupMigrationRequest) GetDestinationOrgPrivateApiKey() string {
 	if o == nil || IsNil(o.DestinationOrgPrivateApiKey) {
@@ -95,6 +110,12 @@ func (o *GroupMigrationRequest) SetDestinationOrgPrivateApiKey(v string) {
 	o.DestinationOrgPrivateApiKey = &v
 }
 
+// SetDestinationOrgPrivateApiKeyNil sets DestinationOrgPrivateApiKey to an explicit JSON null when marshaled.
+func (o *GroupMigrationRequest) SetDestinationOrgPrivateApiKeyNil() {
+	o.DestinationOrgPrivateApiKey = nil
+	o.NullFields = append(o.NullFields, "DestinationOrgPrivateApiKey")
+}
+
 // GetDestinationOrgPublicApiKey returns the DestinationOrgPublicApiKey field value if set, zero value otherwise
 func (o *GroupMigrationRequest) GetDestinationOrgPublicApiKey() string {
 	if o == nil || IsNil(o.DestinationOrgPublicApiKey) {
@@ -126,4 +147,10 @@ func (o *GroupMigrationRequest) HasDestinationOrgPublicApiKey() bool {
 // SetDestinationOrgPublicApiKey gets a reference to the given string and assigns it to the DestinationOrgPublicApiKey field.
 func (o *GroupMigrationRequest) SetDestinationOrgPublicApiKey(v string) {
 	o.DestinationOrgPublicApiKey = &v
+}
+
+// SetDestinationOrgPublicApiKeyNil sets DestinationOrgPublicApiKey to an explicit JSON null when marshaled.
+func (o *GroupMigrationRequest) SetDestinationOrgPublicApiKeyNil() {
+	o.DestinationOrgPublicApiKey = nil
+	o.NullFields = append(o.NullFields, "DestinationOrgPublicApiKey")
 }

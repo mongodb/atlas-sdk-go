@@ -38,6 +38,15 @@ type ServerlessBackupSnapshot struct {
 	// Number of bytes taken to store the backup snapshot.
 	// Read only field.
 	StorageSizeBytes *int64 `json:"storageSizeBytes,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessBackupSnapshot) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessBackupSnapshot
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessBackupSnapshot instantiates a new ServerlessBackupSnapshot object
@@ -90,6 +99,12 @@ func (o *ServerlessBackupSnapshot) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = append(o.NullFields, "CreatedAt")
+}
+
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
@@ -121,6 +136,12 @@ func (o *ServerlessBackupSnapshot) HasExpiresAt() bool {
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *ServerlessBackupSnapshot) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
+}
+
+// SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetExpiresAtNil() {
+	o.ExpiresAt = nil
+	o.NullFields = append(o.NullFields, "ExpiresAt")
 }
 
 // GetFrequencyType returns the FrequencyType field value if set, zero value otherwise
@@ -156,6 +177,12 @@ func (o *ServerlessBackupSnapshot) SetFrequencyType(v string) {
 	o.FrequencyType = &v
 }
 
+// SetFrequencyTypeNil sets FrequencyType to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetFrequencyTypeNil() {
+	o.FrequencyType = nil
+	o.NullFields = append(o.NullFields, "FrequencyType")
+}
+
 // GetId returns the Id field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -187,6 +214,12 @@ func (o *ServerlessBackupSnapshot) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessBackupSnapshot) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -255,6 +288,12 @@ func (o *ServerlessBackupSnapshot) SetMongodVersion(v string) {
 	o.MongodVersion = &v
 }
 
+// SetMongodVersionNil sets MongodVersion to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetMongodVersionNil() {
+	o.MongodVersion = nil
+	o.NullFields = append(o.NullFields, "MongodVersion")
+}
+
 // GetServerlessInstanceName returns the ServerlessInstanceName field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetServerlessInstanceName() string {
 	if o == nil || IsNil(o.ServerlessInstanceName) {
@@ -286,6 +325,12 @@ func (o *ServerlessBackupSnapshot) HasServerlessInstanceName() bool {
 // SetServerlessInstanceName gets a reference to the given string and assigns it to the ServerlessInstanceName field.
 func (o *ServerlessBackupSnapshot) SetServerlessInstanceName(v string) {
 	o.ServerlessInstanceName = &v
+}
+
+// SetServerlessInstanceNameNil sets ServerlessInstanceName to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetServerlessInstanceNameNil() {
+	o.ServerlessInstanceName = nil
+	o.NullFields = append(o.NullFields, "ServerlessInstanceName")
 }
 
 // GetSnapshotType returns the SnapshotType field value if set, zero value otherwise
@@ -321,6 +366,12 @@ func (o *ServerlessBackupSnapshot) SetSnapshotType(v string) {
 	o.SnapshotType = &v
 }
 
+// SetSnapshotTypeNil sets SnapshotType to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetSnapshotTypeNil() {
+	o.SnapshotType = nil
+	o.NullFields = append(o.NullFields, "SnapshotType")
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -354,6 +405,12 @@ func (o *ServerlessBackupSnapshot) SetStatus(v string) {
 	o.Status = &v
 }
 
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
+}
+
 // GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetStorageSizeBytes() int64 {
 	if o == nil || IsNil(o.StorageSizeBytes) {
@@ -385,4 +442,10 @@ func (o *ServerlessBackupSnapshot) HasStorageSizeBytes() bool {
 // SetStorageSizeBytes gets a reference to the given int64 and assigns it to the StorageSizeBytes field.
 func (o *ServerlessBackupSnapshot) SetStorageSizeBytes(v int64) {
 	o.StorageSizeBytes = &v
+}
+
+// SetStorageSizeBytesNil sets StorageSizeBytes to an explicit JSON null when marshaled.
+func (o *ServerlessBackupSnapshot) SetStorageSizeBytesNil() {
+	o.StorageSizeBytes = nil
+	o.NullFields = append(o.NullFields, "StorageSizeBytes")
 }

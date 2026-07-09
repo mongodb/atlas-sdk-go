@@ -10,6 +10,15 @@ type GroupUpdate struct {
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether the project can automatically create default alerts.
 	WithDefaultAlertsSettings *bool `json:"withDefaultAlertsSettings,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupUpdate) MarshalJSON() ([]byte, error) {
+	type noMethod GroupUpdate
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupUpdate instantiates a new GroupUpdate object
@@ -60,6 +69,12 @@ func (o *GroupUpdate) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *GroupUpdate) SetName(v string) {
 	o.Name = &v
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *GroupUpdate) SetNameNil() {
+	o.Name = nil
+	o.NullFields = append(o.NullFields, "Name")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -126,4 +141,10 @@ func (o *GroupUpdate) HasWithDefaultAlertsSettings() bool {
 // SetWithDefaultAlertsSettings gets a reference to the given bool and assigns it to the WithDefaultAlertsSettings field.
 func (o *GroupUpdate) SetWithDefaultAlertsSettings(v bool) {
 	o.WithDefaultAlertsSettings = &v
+}
+
+// SetWithDefaultAlertsSettingsNil sets WithDefaultAlertsSettings to an explicit JSON null when marshaled.
+func (o *GroupUpdate) SetWithDefaultAlertsSettingsNil() {
+	o.WithDefaultAlertsSettings = nil
+	o.NullFields = append(o.NullFields, "WithDefaultAlertsSettings")
 }

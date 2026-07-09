@@ -14,6 +14,15 @@ type ReplicationSpec20240805 struct {
 	ZoneId *string `json:"zoneId,omitempty"`
 	// Human-readable label that describes the zone this shard belongs to in a Global Cluster. Provide this value only if `clusterType` : `GEOSHARDED` but not `selfManagedSharding` : `true`.
 	ZoneName *string `json:"zoneName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ReplicationSpec20240805) MarshalJSON() ([]byte, error) {
+	type noMethod ReplicationSpec20240805
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewReplicationSpec20240805 instantiates a new ReplicationSpec20240805 object
@@ -64,6 +73,12 @@ func (o *ReplicationSpec20240805) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ReplicationSpec20240805) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ReplicationSpec20240805) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetRegionConfigs returns the RegionConfigs field value if set, zero value otherwise
@@ -132,6 +147,12 @@ func (o *ReplicationSpec20240805) SetZoneId(v string) {
 	o.ZoneId = &v
 }
 
+// SetZoneIdNil sets ZoneId to an explicit JSON null when marshaled.
+func (o *ReplicationSpec20240805) SetZoneIdNil() {
+	o.ZoneId = nil
+	o.NullFields = append(o.NullFields, "ZoneId")
+}
+
 // GetZoneName returns the ZoneName field value if set, zero value otherwise
 func (o *ReplicationSpec20240805) GetZoneName() string {
 	if o == nil || IsNil(o.ZoneName) {
@@ -163,4 +184,10 @@ func (o *ReplicationSpec20240805) HasZoneName() bool {
 // SetZoneName gets a reference to the given string and assigns it to the ZoneName field.
 func (o *ReplicationSpec20240805) SetZoneName(v string) {
 	o.ZoneName = &v
+}
+
+// SetZoneNameNil sets ZoneName to an explicit JSON null when marshaled.
+func (o *ReplicationSpec20240805) SetZoneNameNil() {
+	o.ZoneName = nil
+	o.NullFields = append(o.NullFields, "ZoneName")
 }

@@ -13,6 +13,15 @@ type PaginatedDatabase struct {
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PaginatedDatabase) MarshalJSON() ([]byte, error) {
+	type noMethod PaginatedDatabase
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPaginatedDatabase instantiates a new PaginatedDatabase object
@@ -121,4 +130,10 @@ func (o *PaginatedDatabase) HasTotalCount() bool {
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedDatabase) SetTotalCount(v int) {
 	o.TotalCount = &v
+}
+
+// SetTotalCountNil sets TotalCount to an explicit JSON null when marshaled.
+func (o *PaginatedDatabase) SetTotalCountNil() {
+	o.TotalCount = nil
+	o.NullFields = append(o.NullFields, "TotalCount")
 }

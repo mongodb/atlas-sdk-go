@@ -7,6 +7,15 @@ type FlexBackupSettings20241113 struct {
 	// Flag that indicates whether backups are performed for this flex cluster. Backup uses flex cluster backups.
 	// Read only field.
 	Enabled *bool `json:"enabled,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FlexBackupSettings20241113) MarshalJSON() ([]byte, error) {
+	type noMethod FlexBackupSettings20241113
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexBackupSettings20241113 instantiates a new FlexBackupSettings20241113 object
@@ -57,4 +66,10 @@ func (o *FlexBackupSettings20241113) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *FlexBackupSettings20241113) SetEnabled(v bool) {
 	o.Enabled = &v
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *FlexBackupSettings20241113) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = append(o.NullFields, "Enabled")
 }

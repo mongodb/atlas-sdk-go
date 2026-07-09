@@ -8,6 +8,15 @@ type DataLakePipelinesPartitionField struct {
 	FieldName string `json:"fieldName"`
 	// Sequence in which MongoDB Cloud slices the collection data to create partitions. The resource expresses this sequence starting with zero.
 	Order int `json:"order"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakePipelinesPartitionField) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakePipelinesPartitionField
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakePipelinesPartitionField instantiates a new DataLakePipelinesPartitionField object

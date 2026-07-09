@@ -22,6 +22,15 @@ type PerformanceAdvisorIndex struct {
 	// Estimated performance improvement that the suggested index provides. This value corresponds to **Impact** in the Performance Advisor user interface.
 	// Read only field.
 	Weight *float64 `json:"weight,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PerformanceAdvisorIndex) MarshalJSON() ([]byte, error) {
+	type noMethod PerformanceAdvisorIndex
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorIndex instantiates a new PerformanceAdvisorIndex object
@@ -74,6 +83,12 @@ func (o *PerformanceAdvisorIndex) SetAvgObjSize(v float64) {
 	o.AvgObjSize = &v
 }
 
+// SetAvgObjSizeNil sets AvgObjSize to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorIndex) SetAvgObjSizeNil() {
+	o.AvgObjSize = nil
+	o.NullFields = append(o.NullFields, "AvgObjSize")
+}
+
 // GetId returns the Id field value if set, zero value otherwise
 func (o *PerformanceAdvisorIndex) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -105,6 +120,12 @@ func (o *PerformanceAdvisorIndex) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *PerformanceAdvisorIndex) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorIndex) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetImpact returns the Impact field value if set, zero value otherwise
@@ -206,6 +227,12 @@ func (o *PerformanceAdvisorIndex) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
+// SetNamespaceNil sets Namespace to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorIndex) SetNamespaceNil() {
+	o.Namespace = nil
+	o.NullFields = append(o.NullFields, "Namespace")
+}
+
 // GetWeight returns the Weight field value if set, zero value otherwise
 func (o *PerformanceAdvisorIndex) GetWeight() float64 {
 	if o == nil || IsNil(o.Weight) {
@@ -237,4 +264,10 @@ func (o *PerformanceAdvisorIndex) HasWeight() bool {
 // SetWeight gets a reference to the given float64 and assigns it to the Weight field.
 func (o *PerformanceAdvisorIndex) SetWeight(v float64) {
 	o.Weight = &v
+}
+
+// SetWeightNil sets Weight to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorIndex) SetWeightNil() {
+	o.Weight = nil
+	o.NullFields = append(o.NullFields, "Weight")
 }

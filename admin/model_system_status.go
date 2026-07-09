@@ -17,6 +17,15 @@ type SystemStatus struct {
 	// Flag that indicates whether someone enabled throttling on this service.
 	// Read only field.
 	Throttling bool `json:"throttling"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SystemStatus) MarshalJSON() ([]byte, error) {
+	type noMethod SystemStatus
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSystemStatus instantiates a new SystemStatus object

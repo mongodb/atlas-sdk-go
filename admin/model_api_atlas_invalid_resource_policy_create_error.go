@@ -9,6 +9,15 @@ type ApiAtlasInvalidResourcePolicyCreateError struct {
 	// List of invalid policies containing details of their validation errors.
 	// Read only field.
 	InvalidPolicies *[]ApiAtlasInvalidPolicy `json:"invalidPolicies,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasInvalidResourcePolicyCreateError) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasInvalidResourcePolicyCreateError
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasInvalidResourcePolicyCreateError instantiates a new ApiAtlasInvalidResourcePolicyCreateError object
@@ -59,6 +68,12 @@ func (o *ApiAtlasInvalidResourcePolicyCreateError) HasErrorType() bool {
 // SetErrorType gets a reference to the given string and assigns it to the ErrorType field.
 func (o *ApiAtlasInvalidResourcePolicyCreateError) SetErrorType(v string) {
 	o.ErrorType = &v
+}
+
+// SetErrorTypeNil sets ErrorType to an explicit JSON null when marshaled.
+func (o *ApiAtlasInvalidResourcePolicyCreateError) SetErrorTypeNil() {
+	o.ErrorType = nil
+	o.NullFields = append(o.NullFields, "ErrorType")
 }
 
 // GetInvalidPolicies returns the InvalidPolicies field value if set, zero value otherwise

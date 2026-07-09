@@ -6,6 +6,15 @@ package admin
 type TargetOrg struct {
 	// Link token that contains all the information required to complete the link.
 	LinkToken string `json:"linkToken"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *TargetOrg) MarshalJSON() ([]byte, error) {
+	type noMethod TargetOrg
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewTargetOrg instantiates a new TargetOrg object

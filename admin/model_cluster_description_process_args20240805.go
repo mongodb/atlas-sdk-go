@@ -36,6 +36,15 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	TlsCipherConfigMode *string `json:"tlsCipherConfigMode,omitempty"`
 	// Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic clean-up process.
 	TransactionLifetimeLimitSeconds *int64 `json:"transactionLifetimeLimitSeconds,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterDescriptionProcessArgs20240805) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterDescriptionProcessArgs20240805
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterDescriptionProcessArgs20240805 instantiates a new ClusterDescriptionProcessArgs20240805 object
@@ -96,6 +105,12 @@ func (o *ClusterDescriptionProcessArgs20240805) SetChangeStreamOptionsPreAndPost
 	o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &v
 }
 
+// SetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsNil sets ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsNil() {
+	o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = nil
+	o.NullFields = append(o.NullFields, "ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds")
+}
+
 // GetChunkMigrationConcurrency returns the ChunkMigrationConcurrency field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs20240805) GetChunkMigrationConcurrency() int {
 	if o == nil || IsNil(o.ChunkMigrationConcurrency) {
@@ -127,6 +142,12 @@ func (o *ClusterDescriptionProcessArgs20240805) HasChunkMigrationConcurrency() b
 // SetChunkMigrationConcurrency gets a reference to the given int and assigns it to the ChunkMigrationConcurrency field.
 func (o *ClusterDescriptionProcessArgs20240805) SetChunkMigrationConcurrency(v int) {
 	o.ChunkMigrationConcurrency = &v
+}
+
+// SetChunkMigrationConcurrencyNil sets ChunkMigrationConcurrency to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetChunkMigrationConcurrencyNil() {
+	o.ChunkMigrationConcurrency = nil
+	o.NullFields = append(o.NullFields, "ChunkMigrationConcurrency")
 }
 
 // GetCustomOpensslCipherConfigTls12 returns the CustomOpensslCipherConfigTls12 field value if set, zero value otherwise
@@ -228,6 +249,12 @@ func (o *ClusterDescriptionProcessArgs20240805) SetDefaultMaxTimeMS(v int) {
 	o.DefaultMaxTimeMS = &v
 }
 
+// SetDefaultMaxTimeMSNil sets DefaultMaxTimeMS to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetDefaultMaxTimeMSNil() {
+	o.DefaultMaxTimeMS = nil
+	o.NullFields = append(o.NullFields, "DefaultMaxTimeMS")
+}
+
 // GetDefaultWriteConcern returns the DefaultWriteConcern field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs20240805) GetDefaultWriteConcern() string {
 	if o == nil || IsNil(o.DefaultWriteConcern) {
@@ -259,6 +286,12 @@ func (o *ClusterDescriptionProcessArgs20240805) HasDefaultWriteConcern() bool {
 // SetDefaultWriteConcern gets a reference to the given string and assigns it to the DefaultWriteConcern field.
 func (o *ClusterDescriptionProcessArgs20240805) SetDefaultWriteConcern(v string) {
 	o.DefaultWriteConcern = &v
+}
+
+// SetDefaultWriteConcernNil sets DefaultWriteConcern to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetDefaultWriteConcernNil() {
+	o.DefaultWriteConcern = nil
+	o.NullFields = append(o.NullFields, "DefaultWriteConcern")
 }
 
 // GetJavascriptEnabled returns the JavascriptEnabled field value if set, zero value otherwise
@@ -294,6 +327,12 @@ func (o *ClusterDescriptionProcessArgs20240805) SetJavascriptEnabled(v bool) {
 	o.JavascriptEnabled = &v
 }
 
+// SetJavascriptEnabledNil sets JavascriptEnabled to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetJavascriptEnabledNil() {
+	o.JavascriptEnabled = nil
+	o.NullFields = append(o.NullFields, "JavascriptEnabled")
+}
+
 // GetMinimumEnabledTlsProtocol returns the MinimumEnabledTlsProtocol field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs20240805) GetMinimumEnabledTlsProtocol() string {
 	if o == nil || IsNil(o.MinimumEnabledTlsProtocol) {
@@ -325,6 +364,12 @@ func (o *ClusterDescriptionProcessArgs20240805) HasMinimumEnabledTlsProtocol() b
 // SetMinimumEnabledTlsProtocol gets a reference to the given string and assigns it to the MinimumEnabledTlsProtocol field.
 func (o *ClusterDescriptionProcessArgs20240805) SetMinimumEnabledTlsProtocol(v string) {
 	o.MinimumEnabledTlsProtocol = &v
+}
+
+// SetMinimumEnabledTlsProtocolNil sets MinimumEnabledTlsProtocol to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetMinimumEnabledTlsProtocolNil() {
+	o.MinimumEnabledTlsProtocol = nil
+	o.NullFields = append(o.NullFields, "MinimumEnabledTlsProtocol")
 }
 
 // GetNoTableScan returns the NoTableScan field value if set, zero value otherwise
@@ -360,6 +405,12 @@ func (o *ClusterDescriptionProcessArgs20240805) SetNoTableScan(v bool) {
 	o.NoTableScan = &v
 }
 
+// SetNoTableScanNil sets NoTableScan to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetNoTableScanNil() {
+	o.NoTableScan = nil
+	o.NullFields = append(o.NullFields, "NoTableScan")
+}
+
 // GetOplogMinRetentionHours returns the OplogMinRetentionHours field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs20240805) GetOplogMinRetentionHours() float64 {
 	if o == nil || IsNil(o.OplogMinRetentionHours) {
@@ -391,6 +442,12 @@ func (o *ClusterDescriptionProcessArgs20240805) HasOplogMinRetentionHours() bool
 // SetOplogMinRetentionHours gets a reference to the given float64 and assigns it to the OplogMinRetentionHours field.
 func (o *ClusterDescriptionProcessArgs20240805) SetOplogMinRetentionHours(v float64) {
 	o.OplogMinRetentionHours = &v
+}
+
+// SetOplogMinRetentionHoursNil sets OplogMinRetentionHours to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetOplogMinRetentionHoursNil() {
+	o.OplogMinRetentionHours = nil
+	o.NullFields = append(o.NullFields, "OplogMinRetentionHours")
 }
 
 // GetOplogSizeMB returns the OplogSizeMB field value if set, zero value otherwise
@@ -426,6 +483,12 @@ func (o *ClusterDescriptionProcessArgs20240805) SetOplogSizeMB(v int) {
 	o.OplogSizeMB = &v
 }
 
+// SetOplogSizeMBNil sets OplogSizeMB to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetOplogSizeMBNil() {
+	o.OplogSizeMB = nil
+	o.NullFields = append(o.NullFields, "OplogSizeMB")
+}
+
 // GetQueryStatsLogVerbosity returns the QueryStatsLogVerbosity field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs20240805) GetQueryStatsLogVerbosity() int {
 	if o == nil || IsNil(o.QueryStatsLogVerbosity) {
@@ -457,6 +520,12 @@ func (o *ClusterDescriptionProcessArgs20240805) HasQueryStatsLogVerbosity() bool
 // SetQueryStatsLogVerbosity gets a reference to the given int and assigns it to the QueryStatsLogVerbosity field.
 func (o *ClusterDescriptionProcessArgs20240805) SetQueryStatsLogVerbosity(v int) {
 	o.QueryStatsLogVerbosity = &v
+}
+
+// SetQueryStatsLogVerbosityNil sets QueryStatsLogVerbosity to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetQueryStatsLogVerbosityNil() {
+	o.QueryStatsLogVerbosity = nil
+	o.NullFields = append(o.NullFields, "QueryStatsLogVerbosity")
 }
 
 // GetSampleRefreshIntervalBIConnector returns the SampleRefreshIntervalBIConnector field value if set, zero value otherwise
@@ -492,6 +561,12 @@ func (o *ClusterDescriptionProcessArgs20240805) SetSampleRefreshIntervalBIConnec
 	o.SampleRefreshIntervalBIConnector = &v
 }
 
+// SetSampleRefreshIntervalBIConnectorNil sets SampleRefreshIntervalBIConnector to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetSampleRefreshIntervalBIConnectorNil() {
+	o.SampleRefreshIntervalBIConnector = nil
+	o.NullFields = append(o.NullFields, "SampleRefreshIntervalBIConnector")
+}
+
 // GetSampleSizeBIConnector returns the SampleSizeBIConnector field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs20240805) GetSampleSizeBIConnector() int {
 	if o == nil || IsNil(o.SampleSizeBIConnector) {
@@ -523,6 +598,12 @@ func (o *ClusterDescriptionProcessArgs20240805) HasSampleSizeBIConnector() bool 
 // SetSampleSizeBIConnector gets a reference to the given int and assigns it to the SampleSizeBIConnector field.
 func (o *ClusterDescriptionProcessArgs20240805) SetSampleSizeBIConnector(v int) {
 	o.SampleSizeBIConnector = &v
+}
+
+// SetSampleSizeBIConnectorNil sets SampleSizeBIConnector to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetSampleSizeBIConnectorNil() {
+	o.SampleSizeBIConnector = nil
+	o.NullFields = append(o.NullFields, "SampleSizeBIConnector")
 }
 
 // GetTlsCipherConfigMode returns the TlsCipherConfigMode field value if set, zero value otherwise
@@ -558,6 +639,12 @@ func (o *ClusterDescriptionProcessArgs20240805) SetTlsCipherConfigMode(v string)
 	o.TlsCipherConfigMode = &v
 }
 
+// SetTlsCipherConfigModeNil sets TlsCipherConfigMode to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetTlsCipherConfigModeNil() {
+	o.TlsCipherConfigMode = nil
+	o.NullFields = append(o.NullFields, "TlsCipherConfigMode")
+}
+
 // GetTransactionLifetimeLimitSeconds returns the TransactionLifetimeLimitSeconds field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs20240805) GetTransactionLifetimeLimitSeconds() int64 {
 	if o == nil || IsNil(o.TransactionLifetimeLimitSeconds) {
@@ -589,4 +676,10 @@ func (o *ClusterDescriptionProcessArgs20240805) HasTransactionLifetimeLimitSecon
 // SetTransactionLifetimeLimitSeconds gets a reference to the given int64 and assigns it to the TransactionLifetimeLimitSeconds field.
 func (o *ClusterDescriptionProcessArgs20240805) SetTransactionLifetimeLimitSeconds(v int64) {
 	o.TransactionLifetimeLimitSeconds = &v
+}
+
+// SetTransactionLifetimeLimitSecondsNil sets TransactionLifetimeLimitSeconds to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionProcessArgs20240805) SetTransactionLifetimeLimitSecondsNil() {
+	o.TransactionLifetimeLimitSeconds = nil
+	o.NullFields = append(o.NullFields, "TransactionLifetimeLimitSeconds")
 }

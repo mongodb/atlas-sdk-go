@@ -20,6 +20,15 @@ type OrgServiceAccount struct {
 	Roles *[]string `json:"roles,omitempty"`
 	// A list of secrets associated with the specified Service Account.
 	Secrets *[]ServiceAccountSecret `json:"secrets,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrgServiceAccount) MarshalJSON() ([]byte, error) {
+	type noMethod OrgServiceAccount
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgServiceAccount instantiates a new OrgServiceAccount object
@@ -72,6 +81,12 @@ func (o *OrgServiceAccount) SetClientId(v string) {
 	o.ClientId = &v
 }
 
+// SetClientIdNil sets ClientId to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetClientIdNil() {
+	o.ClientId = nil
+	o.NullFields = append(o.NullFields, "ClientId")
+}
+
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *OrgServiceAccount) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
@@ -103,6 +118,12 @@ func (o *OrgServiceAccount) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *OrgServiceAccount) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = append(o.NullFields, "CreatedAt")
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise
@@ -138,6 +159,12 @@ func (o *OrgServiceAccount) SetDescription(v string) {
 	o.Description = &v
 }
 
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = append(o.NullFields, "Description")
+}
+
 // GetName returns the Name field value if set, zero value otherwise
 func (o *OrgServiceAccount) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -169,6 +196,12 @@ func (o *OrgServiceAccount) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OrgServiceAccount) SetName(v string) {
 	o.Name = &v
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetNameNil() {
+	o.Name = nil
+	o.NullFields = append(o.NullFields, "Name")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise

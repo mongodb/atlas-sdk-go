@@ -22,6 +22,15 @@ type DiskBackupSnapshotExportBucketRequest struct {
 	// UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the `tenantId` of the Cloud Provider Access role (from `roleId`) is used.
 	// Deprecated
 	TenantId *string `json:"tenantId,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupSnapshotExportBucketRequest) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupSnapshotExportBucketRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupSnapshotExportBucketRequest instantiates a new DiskBackupSnapshotExportBucketRequest object
@@ -132,6 +141,12 @@ func (o *DiskBackupSnapshotExportBucketRequest) SetBucketName(v string) {
 	o.BucketName = &v
 }
 
+// SetBucketNameNil sets BucketName to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetBucketNameNil() {
+	o.BucketName = nil
+	o.NullFields = append(o.NullFields, "BucketName")
+}
+
 // GetIamRoleId returns the IamRoleId field value if set, zero value otherwise
 func (o *DiskBackupSnapshotExportBucketRequest) GetIamRoleId() string {
 	if o == nil || IsNil(o.IamRoleId) {
@@ -163,6 +178,12 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasIamRoleId() bool {
 // SetIamRoleId gets a reference to the given string and assigns it to the IamRoleId field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetIamRoleId(v string) {
 	o.IamRoleId = &v
+}
+
+// SetIamRoleIdNil sets IamRoleId to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetIamRoleIdNil() {
+	o.IamRoleId = nil
+	o.NullFields = append(o.NullFields, "IamRoleId")
 }
 
 // GetRequirePrivateNetworking returns the RequirePrivateNetworking field value if set, zero value otherwise
@@ -198,6 +219,12 @@ func (o *DiskBackupSnapshotExportBucketRequest) SetRequirePrivateNetworking(v bo
 	o.RequirePrivateNetworking = &v
 }
 
+// SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetRequirePrivateNetworkingNil() {
+	o.RequirePrivateNetworking = nil
+	o.NullFields = append(o.NullFields, "RequirePrivateNetworking")
+}
+
 // GetRoleId returns the RoleId field value if set, zero value otherwise
 func (o *DiskBackupSnapshotExportBucketRequest) GetRoleId() string {
 	if o == nil || IsNil(o.RoleId) {
@@ -231,6 +258,12 @@ func (o *DiskBackupSnapshotExportBucketRequest) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = append(o.NullFields, "RoleId")
+}
+
 // GetServiceUrl returns the ServiceUrl field value if set, zero value otherwise
 func (o *DiskBackupSnapshotExportBucketRequest) GetServiceUrl() string {
 	if o == nil || IsNil(o.ServiceUrl) {
@@ -262,6 +295,12 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasServiceUrl() bool {
 // SetServiceUrl gets a reference to the given string and assigns it to the ServiceUrl field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetServiceUrl(v string) {
 	o.ServiceUrl = &v
+}
+
+// SetServiceUrlNil sets ServiceUrl to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetServiceUrlNil() {
+	o.ServiceUrl = nil
+	o.NullFields = append(o.NullFields, "ServiceUrl")
 }
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise
@@ -298,4 +337,10 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasTenantId() bool {
 // Deprecated
 func (o *DiskBackupSnapshotExportBucketRequest) SetTenantId(v string) {
 	o.TenantId = &v
+}
+
+// SetTenantIdNil sets TenantId to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetTenantIdNil() {
+	o.TenantId = nil
+	o.NullFields = append(o.NullFields, "TenantId")
 }

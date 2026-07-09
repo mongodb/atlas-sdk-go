@@ -30,6 +30,15 @@ type Group struct {
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether to create the project with default alert settings.
 	WithDefaultAlertsSettings *bool `json:"withDefaultAlertsSettings,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *Group) MarshalJSON() ([]byte, error) {
+	type noMethod Group
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroup instantiates a new Group object
@@ -140,6 +149,12 @@ func (o *Group) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Group) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *Group) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -256,6 +271,12 @@ func (o *Group) SetRegionUsageRestrictions(v string) {
 	o.RegionUsageRestrictions = &v
 }
 
+// SetRegionUsageRestrictionsNil sets RegionUsageRestrictions to an explicit JSON null when marshaled.
+func (o *Group) SetRegionUsageRestrictionsNil() {
+	o.RegionUsageRestrictions = nil
+	o.NullFields = append(o.NullFields, "RegionUsageRestrictions")
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise
 func (o *Group) GetTags() []ResourceTag {
 	if o == nil || IsNil(o.Tags) {
@@ -320,4 +341,10 @@ func (o *Group) HasWithDefaultAlertsSettings() bool {
 // SetWithDefaultAlertsSettings gets a reference to the given bool and assigns it to the WithDefaultAlertsSettings field.
 func (o *Group) SetWithDefaultAlertsSettings(v bool) {
 	o.WithDefaultAlertsSettings = &v
+}
+
+// SetWithDefaultAlertsSettingsNil sets WithDefaultAlertsSettings to an explicit JSON null when marshaled.
+func (o *Group) SetWithDefaultAlertsSettingsNil() {
+	o.WithDefaultAlertsSettings = nil
+	o.NullFields = append(o.NullFields, "WithDefaultAlertsSettings")
 }

@@ -19,6 +19,15 @@ type ClusterIPAddresses struct {
 	// List of outbound IP addresses associated with the cluster. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that your Atlas cluster can communicate with your webhooks and KMS.
 	// Read only field.
 	Outbound *[]string `json:"outbound,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterIPAddresses) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterIPAddresses
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterIPAddresses instantiates a new ClusterIPAddresses object
@@ -69,6 +78,12 @@ func (o *ClusterIPAddresses) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *ClusterIPAddresses) SetClusterName(v string) {
 	o.ClusterName = &v
+}
+
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *ClusterIPAddresses) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = append(o.NullFields, "ClusterName")
 }
 
 // GetFutureInbound returns the FutureInbound field value if set, zero value otherwise

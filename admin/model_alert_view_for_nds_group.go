@@ -79,6 +79,15 @@ type AlertViewForNdsGroup struct {
 	// The state of the Stream Processor to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processors.
 	// Read only field.
 	ProcessorState *string `json:"processorState,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AlertViewForNdsGroup) MarshalJSON() ([]byte, error) {
+	type noMethod AlertViewForNdsGroup
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAlertViewForNdsGroup instantiates a new AlertViewForNdsGroup object
@@ -131,6 +140,12 @@ func (o *AlertViewForNdsGroup) SetAcknowledgedUntil(v time.Time) {
 	o.AcknowledgedUntil = &v
 }
 
+// SetAcknowledgedUntilNil sets AcknowledgedUntil to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetAcknowledgedUntilNil() {
+	o.AcknowledgedUntil = nil
+	o.NullFields = append(o.NullFields, "AcknowledgedUntil")
+}
+
 // GetAcknowledgementComment returns the AcknowledgementComment field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetAcknowledgementComment() string {
 	if o == nil || IsNil(o.AcknowledgementComment) {
@@ -162,6 +177,12 @@ func (o *AlertViewForNdsGroup) HasAcknowledgementComment() bool {
 // SetAcknowledgementComment gets a reference to the given string and assigns it to the AcknowledgementComment field.
 func (o *AlertViewForNdsGroup) SetAcknowledgementComment(v string) {
 	o.AcknowledgementComment = &v
+}
+
+// SetAcknowledgementCommentNil sets AcknowledgementComment to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetAcknowledgementCommentNil() {
+	o.AcknowledgementComment = nil
+	o.NullFields = append(o.NullFields, "AcknowledgementComment")
 }
 
 // GetAcknowledgingUsername returns the AcknowledgingUsername field value if set, zero value otherwise
@@ -197,6 +218,12 @@ func (o *AlertViewForNdsGroup) SetAcknowledgingUsername(v string) {
 	o.AcknowledgingUsername = &v
 }
 
+// SetAcknowledgingUsernameNil sets AcknowledgingUsername to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetAcknowledgingUsernameNil() {
+	o.AcknowledgingUsername = nil
+	o.NullFields = append(o.NullFields, "AcknowledgingUsername")
+}
+
 // GetAlertConfigId returns the AlertConfigId field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetAlertConfigId() string {
 	if o == nil || IsNil(o.AlertConfigId) {
@@ -228,6 +255,12 @@ func (o *AlertViewForNdsGroup) HasAlertConfigId() bool {
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *AlertViewForNdsGroup) SetAlertConfigId(v string) {
 	o.AlertConfigId = &v
+}
+
+// SetAlertConfigIdNil sets AlertConfigId to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetAlertConfigIdNil() {
+	o.AlertConfigId = nil
+	o.NullFields = append(o.NullFields, "AlertConfigId")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -263,6 +296,12 @@ func (o *AlertViewForNdsGroup) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = append(o.NullFields, "Created")
+}
+
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetEventTypeName() string {
 	if o == nil || IsNil(o.EventTypeName) {
@@ -294,6 +333,12 @@ func (o *AlertViewForNdsGroup) HasEventTypeName() bool {
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *AlertViewForNdsGroup) SetEventTypeName(v string) {
 	o.EventTypeName = &v
+}
+
+// SetEventTypeNameNil sets EventTypeName to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetEventTypeNameNil() {
+	o.EventTypeName = nil
+	o.NullFields = append(o.NullFields, "EventTypeName")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -329,6 +374,12 @@ func (o *AlertViewForNdsGroup) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = append(o.NullFields, "GroupId")
+}
+
 // GetId returns the Id field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -362,6 +413,12 @@ func (o *AlertViewForNdsGroup) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetLastNotified returns the LastNotified field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetLastNotified() time.Time {
 	if o == nil || IsNil(o.LastNotified) {
@@ -393,6 +450,12 @@ func (o *AlertViewForNdsGroup) HasLastNotified() bool {
 // SetLastNotified gets a reference to the given time.Time and assigns it to the LastNotified field.
 func (o *AlertViewForNdsGroup) SetLastNotified(v time.Time) {
 	o.LastNotified = &v
+}
+
+// SetLastNotifiedNil sets LastNotified to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetLastNotifiedNil() {
+	o.LastNotified = nil
+	o.NullFields = append(o.NullFields, "LastNotified")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -461,6 +524,12 @@ func (o *AlertViewForNdsGroup) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = append(o.NullFields, "OrgId")
+}
+
 // GetResolved returns the Resolved field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetResolved() time.Time {
 	if o == nil || IsNil(o.Resolved) {
@@ -492,6 +561,12 @@ func (o *AlertViewForNdsGroup) HasResolved() bool {
 // SetResolved gets a reference to the given time.Time and assigns it to the Resolved field.
 func (o *AlertViewForNdsGroup) SetResolved(v time.Time) {
 	o.Resolved = &v
+}
+
+// SetResolvedNil sets Resolved to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetResolvedNil() {
+	o.Resolved = nil
+	o.NullFields = append(o.NullFields, "Resolved")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -527,6 +602,12 @@ func (o *AlertViewForNdsGroup) SetStatus(v string) {
 	o.Status = &v
 }
 
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
+}
+
 // GetUpdated returns the Updated field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetUpdated() time.Time {
 	if o == nil || IsNil(o.Updated) {
@@ -558,6 +639,12 @@ func (o *AlertViewForNdsGroup) HasUpdated() bool {
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *AlertViewForNdsGroup) SetUpdated(v time.Time) {
 	o.Updated = &v
+}
+
+// SetUpdatedNil sets Updated to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetUpdatedNil() {
+	o.Updated = nil
+	o.NullFields = append(o.NullFields, "Updated")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
@@ -593,6 +680,12 @@ func (o *AlertViewForNdsGroup) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = append(o.NullFields, "ClusterName")
+}
+
 // GetHostnameAndPort returns the HostnameAndPort field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetHostnameAndPort() string {
 	if o == nil || IsNil(o.HostnameAndPort) {
@@ -624,6 +717,12 @@ func (o *AlertViewForNdsGroup) HasHostnameAndPort() bool {
 // SetHostnameAndPort gets a reference to the given string and assigns it to the HostnameAndPort field.
 func (o *AlertViewForNdsGroup) SetHostnameAndPort(v string) {
 	o.HostnameAndPort = &v
+}
+
+// SetHostnameAndPortNil sets HostnameAndPort to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetHostnameAndPortNil() {
+	o.HostnameAndPort = nil
+	o.NullFields = append(o.NullFields, "HostnameAndPort")
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
@@ -659,6 +758,12 @@ func (o *AlertViewForNdsGroup) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
+// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetReplicaSetNameNil() {
+	o.ReplicaSetName = nil
+	o.NullFields = append(o.NullFields, "ReplicaSetName")
+}
+
 // GetCurrentValue returns the CurrentValue field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetCurrentValue() NumberMetricValue {
 	if o == nil || IsNil(o.CurrentValue) {
@@ -692,6 +797,12 @@ func (o *AlertViewForNdsGroup) SetCurrentValue(v NumberMetricValue) {
 	o.CurrentValue = &v
 }
 
+// SetCurrentValueNil sets CurrentValue to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetCurrentValueNil() {
+	o.CurrentValue = nil
+	o.NullFields = append(o.NullFields, "CurrentValue")
+}
+
 // GetMetricName returns the MetricName field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetMetricName() string {
 	if o == nil || IsNil(o.MetricName) {
@@ -723,6 +834,12 @@ func (o *AlertViewForNdsGroup) HasMetricName() bool {
 // SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *AlertViewForNdsGroup) SetMetricName(v string) {
 	o.MetricName = &v
+}
+
+// SetMetricNameNil sets MetricName to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetMetricNameNil() {
+	o.MetricName = nil
+	o.NullFields = append(o.NullFields, "MetricName")
 }
 
 // GetNonRunningHostIds returns the NonRunningHostIds field value if set, zero value otherwise
@@ -791,6 +908,12 @@ func (o *AlertViewForNdsGroup) SetParentClusterId(v string) {
 	o.ParentClusterId = &v
 }
 
+// SetParentClusterIdNil sets ParentClusterId to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetParentClusterIdNil() {
+	o.ParentClusterId = nil
+	o.NullFields = append(o.NullFields, "ParentClusterId")
+}
+
 // GetInstanceName returns the InstanceName field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetInstanceName() string {
 	if o == nil || IsNil(o.InstanceName) {
@@ -822,6 +945,12 @@ func (o *AlertViewForNdsGroup) HasInstanceName() bool {
 // SetInstanceName gets a reference to the given string and assigns it to the InstanceName field.
 func (o *AlertViewForNdsGroup) SetInstanceName(v string) {
 	o.InstanceName = &v
+}
+
+// SetInstanceNameNil sets InstanceName to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetInstanceNameNil() {
+	o.InstanceName = nil
+	o.NullFields = append(o.NullFields, "InstanceName")
 }
 
 // GetProcessorErrorMsg returns the ProcessorErrorMsg field value if set, zero value otherwise
@@ -857,6 +986,12 @@ func (o *AlertViewForNdsGroup) SetProcessorErrorMsg(v string) {
 	o.ProcessorErrorMsg = &v
 }
 
+// SetProcessorErrorMsgNil sets ProcessorErrorMsg to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetProcessorErrorMsgNil() {
+	o.ProcessorErrorMsg = nil
+	o.NullFields = append(o.NullFields, "ProcessorErrorMsg")
+}
+
 // GetProcessorName returns the ProcessorName field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetProcessorName() string {
 	if o == nil || IsNil(o.ProcessorName) {
@@ -890,6 +1025,12 @@ func (o *AlertViewForNdsGroup) SetProcessorName(v string) {
 	o.ProcessorName = &v
 }
 
+// SetProcessorNameNil sets ProcessorName to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetProcessorNameNil() {
+	o.ProcessorName = nil
+	o.NullFields = append(o.NullFields, "ProcessorName")
+}
+
 // GetProcessorState returns the ProcessorState field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetProcessorState() string {
 	if o == nil || IsNil(o.ProcessorState) {
@@ -921,4 +1062,10 @@ func (o *AlertViewForNdsGroup) HasProcessorState() bool {
 // SetProcessorState gets a reference to the given string and assigns it to the ProcessorState field.
 func (o *AlertViewForNdsGroup) SetProcessorState(v string) {
 	o.ProcessorState = &v
+}
+
+// SetProcessorStateNil sets ProcessorState to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetProcessorStateNil() {
+	o.ProcessorState = nil
+	o.NullFields = append(o.NullFields, "ProcessorState")
 }

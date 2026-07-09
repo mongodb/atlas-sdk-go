@@ -10,6 +10,15 @@ type AtlasClusterOutageSimulationOutageFilter struct {
 	RegionName *string `json:"regionName,omitempty"`
 	// The type of cluster outage to simulate. `REGION` simulates a cluster outage for a region.
 	Type *string `json:"type,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AtlasClusterOutageSimulationOutageFilter) MarshalJSON() ([]byte, error) {
+	type noMethod AtlasClusterOutageSimulationOutageFilter
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAtlasClusterOutageSimulationOutageFilter instantiates a new AtlasClusterOutageSimulationOutageFilter object
@@ -62,6 +71,12 @@ func (o *AtlasClusterOutageSimulationOutageFilter) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *AtlasClusterOutageSimulationOutageFilter) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = append(o.NullFields, "CloudProvider")
+}
+
 // GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *AtlasClusterOutageSimulationOutageFilter) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
@@ -95,6 +110,12 @@ func (o *AtlasClusterOutageSimulationOutageFilter) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *AtlasClusterOutageSimulationOutageFilter) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = append(o.NullFields, "RegionName")
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *AtlasClusterOutageSimulationOutageFilter) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -126,4 +147,10 @@ func (o *AtlasClusterOutageSimulationOutageFilter) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *AtlasClusterOutageSimulationOutageFilter) SetType(v string) {
 	o.Type = &v
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *AtlasClusterOutageSimulationOutageFilter) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = append(o.NullFields, "Type")
 }

@@ -12,6 +12,15 @@ type TeamResponse struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the team.
 	Name *string `json:"name,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *TeamResponse) MarshalJSON() ([]byte, error) {
+	type noMethod TeamResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewTeamResponse instantiates a new TeamResponse object
@@ -62,6 +71,12 @@ func (o *TeamResponse) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *TeamResponse) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *TeamResponse) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -128,4 +143,10 @@ func (o *TeamResponse) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *TeamResponse) SetName(v string) {
 	o.Name = &v
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *TeamResponse) SetNameNil() {
+	o.Name = nil
+	o.NullFields = append(o.NullFields, "Name")
 }

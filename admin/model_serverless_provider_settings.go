@@ -19,6 +19,15 @@ type ServerlessProviderSettings struct {
 	ProviderName *string `json:"providerName,omitempty"`
 	// Human-readable label that identifies the geographic location of your MongoDB serverless instance. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
 	RegionName string `json:"regionName"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessProviderSettings) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessProviderSettings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessProviderSettings instantiates a new ServerlessProviderSettings object
@@ -101,6 +110,12 @@ func (o *ServerlessProviderSettings) SetEffectiveDiskSizeGBLimit(v int) {
 	o.EffectiveDiskSizeGBLimit = &v
 }
 
+// SetEffectiveDiskSizeGBLimitNil sets EffectiveDiskSizeGBLimit to an explicit JSON null when marshaled.
+func (o *ServerlessProviderSettings) SetEffectiveDiskSizeGBLimitNil() {
+	o.EffectiveDiskSizeGBLimit = nil
+	o.NullFields = append(o.NullFields, "EffectiveDiskSizeGBLimit")
+}
+
 // GetEffectiveInstanceSizeName returns the EffectiveInstanceSizeName field value if set, zero value otherwise
 func (o *ServerlessProviderSettings) GetEffectiveInstanceSizeName() string {
 	if o == nil || IsNil(o.EffectiveInstanceSizeName) {
@@ -132,6 +147,12 @@ func (o *ServerlessProviderSettings) HasEffectiveInstanceSizeName() bool {
 // SetEffectiveInstanceSizeName gets a reference to the given string and assigns it to the EffectiveInstanceSizeName field.
 func (o *ServerlessProviderSettings) SetEffectiveInstanceSizeName(v string) {
 	o.EffectiveInstanceSizeName = &v
+}
+
+// SetEffectiveInstanceSizeNameNil sets EffectiveInstanceSizeName to an explicit JSON null when marshaled.
+func (o *ServerlessProviderSettings) SetEffectiveInstanceSizeNameNil() {
+	o.EffectiveInstanceSizeName = nil
+	o.NullFields = append(o.NullFields, "EffectiveInstanceSizeName")
 }
 
 // GetEffectiveProviderName returns the EffectiveProviderName field value if set, zero value otherwise
@@ -167,6 +188,12 @@ func (o *ServerlessProviderSettings) SetEffectiveProviderName(v string) {
 	o.EffectiveProviderName = &v
 }
 
+// SetEffectiveProviderNameNil sets EffectiveProviderName to an explicit JSON null when marshaled.
+func (o *ServerlessProviderSettings) SetEffectiveProviderNameNil() {
+	o.EffectiveProviderName = nil
+	o.NullFields = append(o.NullFields, "EffectiveProviderName")
+}
+
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *ServerlessProviderSettings) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
@@ -198,6 +225,12 @@ func (o *ServerlessProviderSettings) HasProviderName() bool {
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *ServerlessProviderSettings) SetProviderName(v string) {
 	o.ProviderName = &v
+}
+
+// SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled.
+func (o *ServerlessProviderSettings) SetProviderNameNil() {
+	o.ProviderName = nil
+	o.NullFields = append(o.NullFields, "ProviderName")
 }
 
 // GetRegionName returns the RegionName field value

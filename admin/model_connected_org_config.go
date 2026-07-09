@@ -21,6 +21,15 @@ type ConnectedOrgConfig struct {
 	RoleMappings *[]AuthFederationRoleMapping `json:"roleMappings,omitempty"`
 	// List that contains the users who have an email address that doesn't match any domain on the allowed list.
 	UserConflicts *[]FederatedUser `json:"userConflicts,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ConnectedOrgConfig) MarshalJSON() ([]byte, error) {
+	type noMethod ConnectedOrgConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewConnectedOrgConfig instantiates a new ConnectedOrgConfig object
@@ -163,6 +172,12 @@ func (o *ConnectedOrgConfig) HasIdentityProviderId() bool {
 // SetIdentityProviderId gets a reference to the given string and assigns it to the IdentityProviderId field.
 func (o *ConnectedOrgConfig) SetIdentityProviderId(v string) {
 	o.IdentityProviderId = &v
+}
+
+// SetIdentityProviderIdNil sets IdentityProviderId to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfig) SetIdentityProviderIdNil() {
+	o.IdentityProviderId = nil
+	o.NullFields = append(o.NullFields, "IdentityProviderId")
 }
 
 // GetOrgId returns the OrgId field value

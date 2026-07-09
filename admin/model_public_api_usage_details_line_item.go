@@ -26,6 +26,15 @@ type PublicApiUsageDetailsLineItem struct {
 	UnitPriceDollars *float64 `json:"unitPriceDollars,omitempty"`
 	// Usage date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	UsageDate *time.Time `json:"usageDate,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PublicApiUsageDetailsLineItem) MarshalJSON() ([]byte, error) {
+	type noMethod PublicApiUsageDetailsLineItem
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPublicApiUsageDetailsLineItem instantiates a new PublicApiUsageDetailsLineItem object
@@ -78,6 +87,12 @@ func (o *PublicApiUsageDetailsLineItem) SetAdditionalData(v AdditionalData) {
 	o.AdditionalData = &v
 }
 
+// SetAdditionalDataNil sets AdditionalData to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetAdditionalDataNil() {
+	o.AdditionalData = nil
+	o.NullFields = append(o.NullFields, "AdditionalData")
+}
+
 // GetBillDate returns the BillDate field value if set, zero value otherwise
 func (o *PublicApiUsageDetailsLineItem) GetBillDate() time.Time {
 	if o == nil || IsNil(o.BillDate) {
@@ -109,6 +124,12 @@ func (o *PublicApiUsageDetailsLineItem) HasBillDate() bool {
 // SetBillDate gets a reference to the given time.Time and assigns it to the BillDate field.
 func (o *PublicApiUsageDetailsLineItem) SetBillDate(v time.Time) {
 	o.BillDate = &v
+}
+
+// SetBillDateNil sets BillDate to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetBillDateNil() {
+	o.BillDate = nil
+	o.NullFields = append(o.NullFields, "BillDate")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
@@ -144,6 +165,12 @@ func (o *PublicApiUsageDetailsLineItem) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = append(o.NullFields, "ClusterName")
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise
 func (o *PublicApiUsageDetailsLineItem) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -175,6 +202,12 @@ func (o *PublicApiUsageDetailsLineItem) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *PublicApiUsageDetailsLineItem) SetDescription(v string) {
 	o.Description = &v
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = append(o.NullFields, "Description")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -210,6 +243,12 @@ func (o *PublicApiUsageDetailsLineItem) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = append(o.NullFields, "GroupId")
+}
+
 // GetQuantity returns the Quantity field value if set, zero value otherwise
 func (o *PublicApiUsageDetailsLineItem) GetQuantity() float64 {
 	if o == nil || IsNil(o.Quantity) {
@@ -241,6 +280,12 @@ func (o *PublicApiUsageDetailsLineItem) HasQuantity() bool {
 // SetQuantity gets a reference to the given float64 and assigns it to the Quantity field.
 func (o *PublicApiUsageDetailsLineItem) SetQuantity(v float64) {
 	o.Quantity = &v
+}
+
+// SetQuantityNil sets Quantity to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetQuantityNil() {
+	o.Quantity = nil
+	o.NullFields = append(o.NullFields, "Quantity")
 }
 
 // GetTotalPriceCents returns the TotalPriceCents field value if set, zero value otherwise
@@ -276,6 +321,12 @@ func (o *PublicApiUsageDetailsLineItem) SetTotalPriceCents(v int64) {
 	o.TotalPriceCents = &v
 }
 
+// SetTotalPriceCentsNil sets TotalPriceCents to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetTotalPriceCentsNil() {
+	o.TotalPriceCents = nil
+	o.NullFields = append(o.NullFields, "TotalPriceCents")
+}
+
 // GetUnitPriceDollars returns the UnitPriceDollars field value if set, zero value otherwise
 func (o *PublicApiUsageDetailsLineItem) GetUnitPriceDollars() float64 {
 	if o == nil || IsNil(o.UnitPriceDollars) {
@@ -309,6 +360,12 @@ func (o *PublicApiUsageDetailsLineItem) SetUnitPriceDollars(v float64) {
 	o.UnitPriceDollars = &v
 }
 
+// SetUnitPriceDollarsNil sets UnitPriceDollars to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetUnitPriceDollarsNil() {
+	o.UnitPriceDollars = nil
+	o.NullFields = append(o.NullFields, "UnitPriceDollars")
+}
+
 // GetUsageDate returns the UsageDate field value if set, zero value otherwise
 func (o *PublicApiUsageDetailsLineItem) GetUsageDate() time.Time {
 	if o == nil || IsNil(o.UsageDate) {
@@ -340,4 +397,10 @@ func (o *PublicApiUsageDetailsLineItem) HasUsageDate() bool {
 // SetUsageDate gets a reference to the given time.Time and assigns it to the UsageDate field.
 func (o *PublicApiUsageDetailsLineItem) SetUsageDate(v time.Time) {
 	o.UsageDate = &v
+}
+
+// SetUsageDateNil sets UsageDate to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetUsageDateNil() {
+	o.UsageDate = nil
+	o.NullFields = append(o.NullFields, "UsageDate")
 }

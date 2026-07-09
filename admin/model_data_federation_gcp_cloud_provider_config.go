@@ -9,6 +9,15 @@ type DataFederationGCPCloudProviderConfig struct {
 	GcpServiceAccount *string `json:"gcpServiceAccount,omitempty"`
 	// Unique identifier of the role that Data Federation can use to access the data stores. Required if specifying `cloudProviderConfig`.
 	RoleId string `json:"roleId"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataFederationGCPCloudProviderConfig) MarshalJSON() ([]byte, error) {
+	type noMethod DataFederationGCPCloudProviderConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataFederationGCPCloudProviderConfig instantiates a new DataFederationGCPCloudProviderConfig object
@@ -60,6 +69,12 @@ func (o *DataFederationGCPCloudProviderConfig) HasGcpServiceAccount() bool {
 // SetGcpServiceAccount gets a reference to the given string and assigns it to the GcpServiceAccount field.
 func (o *DataFederationGCPCloudProviderConfig) SetGcpServiceAccount(v string) {
 	o.GcpServiceAccount = &v
+}
+
+// SetGcpServiceAccountNil sets GcpServiceAccount to an explicit JSON null when marshaled.
+func (o *DataFederationGCPCloudProviderConfig) SetGcpServiceAccountNil() {
+	o.GcpServiceAccount = nil
+	o.NullFields = append(o.NullFields, "GcpServiceAccount")
 }
 
 // GetRoleId returns the RoleId field value

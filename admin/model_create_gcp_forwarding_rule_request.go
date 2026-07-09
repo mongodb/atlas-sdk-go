@@ -10,6 +10,15 @@ type CreateGCPForwardingRuleRequest struct {
 	// One Private Internet Protocol version 4 (IPv4) address to which this Google Cloud consumer forwarding rule resolves.
 	// Write only field.
 	IpAddress *string `json:"ipAddress,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CreateGCPForwardingRuleRequest) MarshalJSON() ([]byte, error) {
+	type noMethod CreateGCPForwardingRuleRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCreateGCPForwardingRuleRequest instantiates a new CreateGCPForwardingRuleRequest object
@@ -62,6 +71,12 @@ func (o *CreateGCPForwardingRuleRequest) SetEndpointName(v string) {
 	o.EndpointName = &v
 }
 
+// SetEndpointNameNil sets EndpointName to an explicit JSON null when marshaled.
+func (o *CreateGCPForwardingRuleRequest) SetEndpointNameNil() {
+	o.EndpointName = nil
+	o.NullFields = append(o.NullFields, "EndpointName")
+}
+
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
 func (o *CreateGCPForwardingRuleRequest) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress) {
@@ -93,4 +108,10 @@ func (o *CreateGCPForwardingRuleRequest) HasIpAddress() bool {
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *CreateGCPForwardingRuleRequest) SetIpAddress(v string) {
 	o.IpAddress = &v
+}
+
+// SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled.
+func (o *CreateGCPForwardingRuleRequest) SetIpAddressNil() {
+	o.IpAddress = nil
+	o.NullFields = append(o.NullFields, "IpAddress")
 }

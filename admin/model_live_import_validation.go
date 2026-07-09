@@ -18,6 +18,15 @@ type LiveImportValidation struct {
 	// State of the specified validation job returned at the time of the request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LiveImportValidation) MarshalJSON() ([]byte, error) {
+	type noMethod LiveImportValidation
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLiveImportValidation instantiates a new LiveImportValidation object
@@ -70,6 +79,12 @@ func (o *LiveImportValidation) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *LiveImportValidation) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *LiveImportValidation) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
@@ -101,6 +116,12 @@ func (o *LiveImportValidation) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *LiveImportValidation) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *LiveImportValidation) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = append(o.NullFields, "ErrorMessage")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -136,6 +157,12 @@ func (o *LiveImportValidation) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *LiveImportValidation) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = append(o.NullFields, "GroupId")
+}
+
 // GetSourceGroupId returns the SourceGroupId field value if set, zero value otherwise
 func (o *LiveImportValidation) GetSourceGroupId() string {
 	if o == nil || IsNil(o.SourceGroupId) {
@@ -169,6 +196,12 @@ func (o *LiveImportValidation) SetSourceGroupId(v string) {
 	o.SourceGroupId = &v
 }
 
+// SetSourceGroupIdNil sets SourceGroupId to an explicit JSON null when marshaled.
+func (o *LiveImportValidation) SetSourceGroupIdNil() {
+	o.SourceGroupId = nil
+	o.NullFields = append(o.NullFields, "SourceGroupId")
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *LiveImportValidation) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -200,4 +233,10 @@ func (o *LiveImportValidation) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LiveImportValidation) SetStatus(v string) {
 	o.Status = &v
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *LiveImportValidation) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
 }

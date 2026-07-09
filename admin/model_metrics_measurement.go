@@ -13,6 +13,15 @@ type MetricsMeasurement struct {
 	// Element used to quantify the measurement. The resource returns units of throughput, storage, and time.
 	// Read only field.
 	Units *string `json:"units,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MetricsMeasurement) MarshalJSON() ([]byte, error) {
+	type noMethod MetricsMeasurement
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMetricsMeasurement instantiates a new MetricsMeasurement object
@@ -98,6 +107,12 @@ func (o *MetricsMeasurement) SetName(v string) {
 	o.Name = &v
 }
 
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *MetricsMeasurement) SetNameNil() {
+	o.Name = nil
+	o.NullFields = append(o.NullFields, "Name")
+}
+
 // GetUnits returns the Units field value if set, zero value otherwise
 func (o *MetricsMeasurement) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
@@ -129,4 +144,10 @@ func (o *MetricsMeasurement) HasUnits() bool {
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *MetricsMeasurement) SetUnits(v string) {
 	o.Units = &v
+}
+
+// SetUnitsNil sets Units to an explicit JSON null when marshaled.
+func (o *MetricsMeasurement) SetUnitsNil() {
+	o.Units = nil
+	o.NullFields = append(o.NullFields, "Units")
 }

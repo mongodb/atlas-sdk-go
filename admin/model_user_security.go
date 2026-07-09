@@ -9,6 +9,15 @@ type UserSecurity struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UserSecurity) MarshalJSON() ([]byte, error) {
+	type noMethod UserSecurity
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserSecurity instantiates a new UserSecurity object
@@ -61,6 +70,12 @@ func (o *UserSecurity) SetCustomerX509(v DBUserTLSX509Settings) {
 	o.CustomerX509 = &v
 }
 
+// SetCustomerX509Nil sets CustomerX509 to an explicit JSON null when marshaled.
+func (o *UserSecurity) SetCustomerX509Nil() {
+	o.CustomerX509 = nil
+	o.NullFields = append(o.NullFields, "CustomerX509")
+}
+
 // GetLdap returns the Ldap field value if set, zero value otherwise
 func (o *UserSecurity) GetLdap() LDAPSecuritySettings {
 	if o == nil || IsNil(o.Ldap) {
@@ -92,6 +107,12 @@ func (o *UserSecurity) HasLdap() bool {
 // SetLdap gets a reference to the given LDAPSecuritySettings and assigns it to the Ldap field.
 func (o *UserSecurity) SetLdap(v LDAPSecuritySettings) {
 	o.Ldap = &v
+}
+
+// SetLdapNil sets Ldap to an explicit JSON null when marshaled.
+func (o *UserSecurity) SetLdapNil() {
+	o.Ldap = nil
+	o.NullFields = append(o.NullFields, "Ldap")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

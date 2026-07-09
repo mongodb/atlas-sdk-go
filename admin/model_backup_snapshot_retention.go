@@ -11,6 +11,15 @@ type BackupSnapshotRetention struct {
 	RetentionUnit string `json:"retentionUnit"`
 	// Number that indicates the amount of days, weeks, months, or years that MongoDB Cloud retains the snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items. If the hourly policy item specifies a retention of two days, specify two days or greater for the retention of the weekly policy item.
 	RetentionValue int `json:"retentionValue"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BackupSnapshotRetention) MarshalJSON() ([]byte, error) {
+	type noMethod BackupSnapshotRetention
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBackupSnapshotRetention instantiates a new BackupSnapshotRetention object

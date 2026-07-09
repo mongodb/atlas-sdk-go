@@ -10,6 +10,15 @@ type GroupUserRequest struct {
 	// Email address that represents the username of the MongoDB Cloud user.
 	// Write only field.
 	Username string `json:"username"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupUserRequest) MarshalJSON() ([]byte, error) {
+	type noMethod GroupUserRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupUserRequest instantiates a new GroupUserRequest object

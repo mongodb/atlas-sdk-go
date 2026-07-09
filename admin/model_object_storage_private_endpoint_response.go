@@ -22,6 +22,15 @@ type ObjectStoragePrivateEndpointResponse struct {
 	Status *string `json:"status,omitempty"`
 	// Cloud provider region in which the VPC interface endpoint is deployed. Echoes `regionName` for same-region endpoints.
 	VpcRegionName *string `json:"vpcRegionName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ObjectStoragePrivateEndpointResponse) MarshalJSON() ([]byte, error) {
+	type noMethod ObjectStoragePrivateEndpointResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewObjectStoragePrivateEndpointResponse instantiates a new ObjectStoragePrivateEndpointResponse object
@@ -74,6 +83,12 @@ func (o *ObjectStoragePrivateEndpointResponse) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = append(o.NullFields, "CloudProvider")
+}
+
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *ObjectStoragePrivateEndpointResponse) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
@@ -105,6 +120,12 @@ func (o *ObjectStoragePrivateEndpointResponse) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *ObjectStoragePrivateEndpointResponse) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = append(o.NullFields, "ErrorMessage")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -140,6 +161,12 @@ func (o *ObjectStoragePrivateEndpointResponse) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise
 func (o *ObjectStoragePrivateEndpointResponse) GetPrivateEndpointConnectionName() string {
 	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
@@ -171,6 +198,12 @@ func (o *ObjectStoragePrivateEndpointResponse) HasPrivateEndpointConnectionName(
 // SetPrivateEndpointConnectionName gets a reference to the given string and assigns it to the PrivateEndpointConnectionName field.
 func (o *ObjectStoragePrivateEndpointResponse) SetPrivateEndpointConnectionName(v string) {
 	o.PrivateEndpointConnectionName = &v
+}
+
+// SetPrivateEndpointConnectionNameNil sets PrivateEndpointConnectionName to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetPrivateEndpointConnectionNameNil() {
+	o.PrivateEndpointConnectionName = nil
+	o.NullFields = append(o.NullFields, "PrivateEndpointConnectionName")
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -206,6 +239,12 @@ func (o *ObjectStoragePrivateEndpointResponse) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = append(o.NullFields, "RegionName")
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *ObjectStoragePrivateEndpointResponse) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -239,6 +278,12 @@ func (o *ObjectStoragePrivateEndpointResponse) SetStatus(v string) {
 	o.Status = &v
 }
 
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
+}
+
 // GetVpcRegionName returns the VpcRegionName field value if set, zero value otherwise
 func (o *ObjectStoragePrivateEndpointResponse) GetVpcRegionName() string {
 	if o == nil || IsNil(o.VpcRegionName) {
@@ -270,4 +315,10 @@ func (o *ObjectStoragePrivateEndpointResponse) HasVpcRegionName() bool {
 // SetVpcRegionName gets a reference to the given string and assigns it to the VpcRegionName field.
 func (o *ObjectStoragePrivateEndpointResponse) SetVpcRegionName(v string) {
 	o.VpcRegionName = &v
+}
+
+// SetVpcRegionNameNil sets VpcRegionName to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetVpcRegionNameNil() {
+	o.VpcRegionName = nil
+	o.NullFields = append(o.NullFields, "VpcRegionName")
 }

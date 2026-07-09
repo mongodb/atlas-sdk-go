@@ -8,6 +8,15 @@ type CloudProviderAccessFeatureUsage struct {
 	// Read only field.
 	FeatureType *string                                                     `json:"featureType,omitempty"`
 	FeatureId   *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId `json:"featureId,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderAccessFeatureUsage) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderAccessFeatureUsage
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessFeatureUsage instantiates a new CloudProviderAccessFeatureUsage object
@@ -60,6 +69,12 @@ func (o *CloudProviderAccessFeatureUsage) SetFeatureType(v string) {
 	o.FeatureType = &v
 }
 
+// SetFeatureTypeNil sets FeatureType to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessFeatureUsage) SetFeatureTypeNil() {
+	o.FeatureType = nil
+	o.NullFields = append(o.NullFields, "FeatureType")
+}
+
 // GetFeatureId returns the FeatureId field value if set, zero value otherwise
 func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId {
 	if o == nil || IsNil(o.FeatureId) {
@@ -91,4 +106,10 @@ func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool {
 // SetFeatureId gets a reference to the given CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId and assigns it to the FeatureId field.
 func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) {
 	o.FeatureId = &v
+}
+
+// SetFeatureIdNil sets FeatureId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessFeatureUsage) SetFeatureIdNil() {
+	o.FeatureId = nil
+	o.NullFields = append(o.NullFields, "FeatureId")
 }

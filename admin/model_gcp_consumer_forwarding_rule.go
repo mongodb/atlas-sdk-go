@@ -13,6 +13,15 @@ type GCPConsumerForwardingRule struct {
 	// State of the MongoDB Cloud endpoint group when MongoDB Cloud received this request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GCPConsumerForwardingRule) MarshalJSON() ([]byte, error) {
+	type noMethod GCPConsumerForwardingRule
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGCPConsumerForwardingRule instantiates a new GCPConsumerForwardingRule object
@@ -65,6 +74,12 @@ func (o *GCPConsumerForwardingRule) SetEndpointName(v string) {
 	o.EndpointName = &v
 }
 
+// SetEndpointNameNil sets EndpointName to an explicit JSON null when marshaled.
+func (o *GCPConsumerForwardingRule) SetEndpointNameNil() {
+	o.EndpointName = nil
+	o.NullFields = append(o.NullFields, "EndpointName")
+}
+
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
 func (o *GCPConsumerForwardingRule) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress) {
@@ -98,6 +113,12 @@ func (o *GCPConsumerForwardingRule) SetIpAddress(v string) {
 	o.IpAddress = &v
 }
 
+// SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled.
+func (o *GCPConsumerForwardingRule) SetIpAddressNil() {
+	o.IpAddress = nil
+	o.NullFields = append(o.NullFields, "IpAddress")
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *GCPConsumerForwardingRule) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -129,4 +150,10 @@ func (o *GCPConsumerForwardingRule) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *GCPConsumerForwardingRule) SetStatus(v string) {
 	o.Status = &v
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *GCPConsumerForwardingRule) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
 }

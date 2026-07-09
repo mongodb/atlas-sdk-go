@@ -47,6 +47,15 @@ type QueryStatsSummary struct {
 	TotalTimeToResponseMicros *float64 `json:"totalTimeToResponseMicros,omitempty"`
 	// Total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
 	TotalWorkingMillis *float64 `json:"totalWorkingMillis,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *QueryStatsSummary) MarshalJSON() ([]byte, error) {
+	type noMethod QueryStatsSummary
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewQueryStatsSummary instantiates a new QueryStatsSummary object
@@ -99,6 +108,12 @@ func (o *QueryStatsSummary) SetAvgWorkingMillis(v float64) {
 	o.AvgWorkingMillis = &v
 }
 
+// SetAvgWorkingMillisNil sets AvgWorkingMillis to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetAvgWorkingMillisNil() {
+	o.AvgWorkingMillis = nil
+	o.NullFields = append(o.NullFields, "AvgWorkingMillis")
+}
+
 // GetBytesRead returns the BytesRead field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetBytesRead() float64 {
 	if o == nil || IsNil(o.BytesRead) {
@@ -130,6 +145,12 @@ func (o *QueryStatsSummary) HasBytesRead() bool {
 // SetBytesRead gets a reference to the given float64 and assigns it to the BytesRead field.
 func (o *QueryStatsSummary) SetBytesRead(v float64) {
 	o.BytesRead = &v
+}
+
+// SetBytesReadNil sets BytesRead to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetBytesReadNil() {
+	o.BytesRead = nil
+	o.NullFields = append(o.NullFields, "BytesRead")
 }
 
 // GetCommand returns the Command field value if set, zero value otherwise
@@ -165,6 +186,12 @@ func (o *QueryStatsSummary) SetCommand(v string) {
 	o.Command = &v
 }
 
+// SetCommandNil sets Command to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetCommandNil() {
+	o.Command = nil
+	o.NullFields = append(o.NullFields, "Command")
+}
+
 // GetCpuTime returns the CpuTime field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetCpuTime() float64 {
 	if o == nil || IsNil(o.CpuTime) {
@@ -196,6 +223,12 @@ func (o *QueryStatsSummary) HasCpuTime() bool {
 // SetCpuTime gets a reference to the given float64 and assigns it to the CpuTime field.
 func (o *QueryStatsSummary) SetCpuTime(v float64) {
 	o.CpuTime = &v
+}
+
+// SetCpuTimeNil sets CpuTime to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetCpuTimeNil() {
+	o.CpuTime = nil
+	o.NullFields = append(o.NullFields, "CpuTime")
 }
 
 // GetDocsExamined returns the DocsExamined field value if set, zero value otherwise
@@ -231,6 +264,12 @@ func (o *QueryStatsSummary) SetDocsExamined(v float64) {
 	o.DocsExamined = &v
 }
 
+// SetDocsExaminedNil sets DocsExamined to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetDocsExaminedNil() {
+	o.DocsExamined = nil
+	o.NullFields = append(o.NullFields, "DocsExamined")
+}
+
 // GetDocsExaminedRatio returns the DocsExaminedRatio field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetDocsExaminedRatio() float64 {
 	if o == nil || IsNil(o.DocsExaminedRatio) {
@@ -262,6 +301,12 @@ func (o *QueryStatsSummary) HasDocsExaminedRatio() bool {
 // SetDocsExaminedRatio gets a reference to the given float64 and assigns it to the DocsExaminedRatio field.
 func (o *QueryStatsSummary) SetDocsExaminedRatio(v float64) {
 	o.DocsExaminedRatio = &v
+}
+
+// SetDocsExaminedRatioNil sets DocsExaminedRatio to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetDocsExaminedRatioNil() {
+	o.DocsExaminedRatio = nil
+	o.NullFields = append(o.NullFields, "DocsExaminedRatio")
 }
 
 // GetDocsReturned returns the DocsReturned field value if set, zero value otherwise
@@ -297,6 +342,12 @@ func (o *QueryStatsSummary) SetDocsReturned(v float64) {
 	o.DocsReturned = &v
 }
 
+// SetDocsReturnedNil sets DocsReturned to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetDocsReturnedNil() {
+	o.DocsReturned = nil
+	o.NullFields = append(o.NullFields, "DocsReturned")
+}
+
 // GetExecCount returns the ExecCount field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetExecCount() float64 {
 	if o == nil || IsNil(o.ExecCount) {
@@ -328,6 +379,12 @@ func (o *QueryStatsSummary) HasExecCount() bool {
 // SetExecCount gets a reference to the given float64 and assigns it to the ExecCount field.
 func (o *QueryStatsSummary) SetExecCount(v float64) {
 	o.ExecCount = &v
+}
+
+// SetExecCountNil sets ExecCount to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetExecCountNil() {
+	o.ExecCount = nil
+	o.NullFields = append(o.NullFields, "ExecCount")
 }
 
 // GetKeysExamined returns the KeysExamined field value if set, zero value otherwise
@@ -363,6 +420,12 @@ func (o *QueryStatsSummary) SetKeysExamined(v float64) {
 	o.KeysExamined = &v
 }
 
+// SetKeysExaminedNil sets KeysExamined to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetKeysExaminedNil() {
+	o.KeysExamined = nil
+	o.NullFields = append(o.NullFields, "KeysExamined")
+}
+
 // GetKeysExaminedRatio returns the KeysExaminedRatio field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetKeysExaminedRatio() float64 {
 	if o == nil || IsNil(o.KeysExaminedRatio) {
@@ -394,6 +457,12 @@ func (o *QueryStatsSummary) HasKeysExaminedRatio() bool {
 // SetKeysExaminedRatio gets a reference to the given float64 and assigns it to the KeysExaminedRatio field.
 func (o *QueryStatsSummary) SetKeysExaminedRatio(v float64) {
 	o.KeysExaminedRatio = &v
+}
+
+// SetKeysExaminedRatioNil sets KeysExaminedRatio to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetKeysExaminedRatioNil() {
+	o.KeysExaminedRatio = nil
+	o.NullFields = append(o.NullFields, "KeysExaminedRatio")
 }
 
 // GetLastExecMicros returns the LastExecMicros field value if set, zero value otherwise
@@ -429,6 +498,12 @@ func (o *QueryStatsSummary) SetLastExecMicros(v float64) {
 	o.LastExecMicros = &v
 }
 
+// SetLastExecMicrosNil sets LastExecMicros to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetLastExecMicrosNil() {
+	o.LastExecMicros = nil
+	o.NullFields = append(o.NullFields, "LastExecMicros")
+}
+
 // GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
@@ -460,6 +535,12 @@ func (o *QueryStatsSummary) HasNamespace() bool {
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *QueryStatsSummary) SetNamespace(v string) {
 	o.Namespace = &v
+}
+
+// SetNamespaceNil sets Namespace to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetNamespaceNil() {
+	o.Namespace = nil
+	o.NullFields = append(o.NullFields, "Namespace")
 }
 
 // GetP50ExecMicros returns the P50ExecMicros field value if set, zero value otherwise
@@ -498,6 +579,12 @@ func (o *QueryStatsSummary) SetP50ExecMicros(v float64) {
 	o.P50ExecMicros = &v
 }
 
+// SetP50ExecMicrosNil sets P50ExecMicros to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetP50ExecMicrosNil() {
+	o.P50ExecMicros = nil
+	o.NullFields = append(o.NullFields, "P50ExecMicros")
+}
+
 // GetP90ExecMicros returns the P90ExecMicros field value if set, zero value otherwise
 // Deprecated
 func (o *QueryStatsSummary) GetP90ExecMicros() float64 {
@@ -532,6 +619,12 @@ func (o *QueryStatsSummary) HasP90ExecMicros() bool {
 // Deprecated
 func (o *QueryStatsSummary) SetP90ExecMicros(v float64) {
 	o.P90ExecMicros = &v
+}
+
+// SetP90ExecMicrosNil sets P90ExecMicros to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetP90ExecMicrosNil() {
+	o.P90ExecMicros = nil
+	o.NullFields = append(o.NullFields, "P90ExecMicros")
 }
 
 // GetP99ExecMicros returns the P99ExecMicros field value if set, zero value otherwise
@@ -570,6 +663,12 @@ func (o *QueryStatsSummary) SetP99ExecMicros(v float64) {
 	o.P99ExecMicros = &v
 }
 
+// SetP99ExecMicrosNil sets P99ExecMicros to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetP99ExecMicrosNil() {
+	o.P99ExecMicros = nil
+	o.NullFields = append(o.NullFields, "P99ExecMicros")
+}
+
 // GetQueryShape returns the QueryShape field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetQueryShape() string {
 	if o == nil || IsNil(o.QueryShape) {
@@ -601,6 +700,12 @@ func (o *QueryStatsSummary) HasQueryShape() bool {
 // SetQueryShape gets a reference to the given string and assigns it to the QueryShape field.
 func (o *QueryStatsSummary) SetQueryShape(v string) {
 	o.QueryShape = &v
+}
+
+// SetQueryShapeNil sets QueryShape to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetQueryShapeNil() {
+	o.QueryShape = nil
+	o.NullFields = append(o.NullFields, "QueryShape")
 }
 
 // GetQueryShapeHash returns the QueryShapeHash field value if set, zero value otherwise
@@ -636,6 +741,12 @@ func (o *QueryStatsSummary) SetQueryShapeHash(v string) {
 	o.QueryShapeHash = &v
 }
 
+// SetQueryShapeHashNil sets QueryShapeHash to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetQueryShapeHashNil() {
+	o.QueryShapeHash = nil
+	o.NullFields = append(o.NullFields, "QueryShapeHash")
+}
+
 // GetSystemQuery returns the SystemQuery field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetSystemQuery() bool {
 	if o == nil || IsNil(o.SystemQuery) {
@@ -667,6 +778,12 @@ func (o *QueryStatsSummary) HasSystemQuery() bool {
 // SetSystemQuery gets a reference to the given bool and assigns it to the SystemQuery field.
 func (o *QueryStatsSummary) SetSystemQuery(v bool) {
 	o.SystemQuery = &v
+}
+
+// SetSystemQueryNil sets SystemQuery to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetSystemQueryNil() {
+	o.SystemQuery = nil
+	o.NullFields = append(o.NullFields, "SystemQuery")
 }
 
 // GetTotalTimeToResponseMicros returns the TotalTimeToResponseMicros field value if set, zero value otherwise
@@ -702,6 +819,12 @@ func (o *QueryStatsSummary) SetTotalTimeToResponseMicros(v float64) {
 	o.TotalTimeToResponseMicros = &v
 }
 
+// SetTotalTimeToResponseMicrosNil sets TotalTimeToResponseMicros to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetTotalTimeToResponseMicrosNil() {
+	o.TotalTimeToResponseMicros = nil
+	o.NullFields = append(o.NullFields, "TotalTimeToResponseMicros")
+}
+
 // GetTotalWorkingMillis returns the TotalWorkingMillis field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetTotalWorkingMillis() float64 {
 	if o == nil || IsNil(o.TotalWorkingMillis) {
@@ -733,4 +856,10 @@ func (o *QueryStatsSummary) HasTotalWorkingMillis() bool {
 // SetTotalWorkingMillis gets a reference to the given float64 and assigns it to the TotalWorkingMillis field.
 func (o *QueryStatsSummary) SetTotalWorkingMillis(v float64) {
 	o.TotalWorkingMillis = &v
+}
+
+// SetTotalWorkingMillisNil sets TotalWorkingMillis to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetTotalWorkingMillisNil() {
+	o.TotalWorkingMillis = nil
+	o.NullFields = append(o.NullFields, "TotalWorkingMillis")
 }

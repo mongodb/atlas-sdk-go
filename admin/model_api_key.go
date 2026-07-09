@@ -16,6 +16,15 @@ type ApiKey struct {
 	// List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user.
 	// Read only field.
 	Roles []CloudAccessRoleAssignment `json:"roles"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiKey) MarshalJSON() ([]byte, error) {
+	type noMethod ApiKey
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiKey instantiates a new ApiKey object

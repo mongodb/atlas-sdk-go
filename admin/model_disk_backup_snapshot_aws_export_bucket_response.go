@@ -20,6 +20,15 @@ type DiskBackupSnapshotAWSExportBucketResponse struct {
 	Region *string `json:"region,omitempty"`
 	// Indicates whether to use private link. User supplied.
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupSnapshotAWSExportBucketResponse) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupSnapshotAWSExportBucketResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupSnapshotAWSExportBucketResponse instantiates a new DiskBackupSnapshotAWSExportBucketResponse object
@@ -205,6 +214,12 @@ func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRegion(v string) {
 	o.Region = &v
 }
 
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = append(o.NullFields, "Region")
+}
+
 // GetRequirePrivateNetworking returns the RequirePrivateNetworking field value if set, zero value otherwise
 func (o *DiskBackupSnapshotAWSExportBucketResponse) GetRequirePrivateNetworking() bool {
 	if o == nil || IsNil(o.RequirePrivateNetworking) {
@@ -236,4 +251,10 @@ func (o *DiskBackupSnapshotAWSExportBucketResponse) HasRequirePrivateNetworking(
 // SetRequirePrivateNetworking gets a reference to the given bool and assigns it to the RequirePrivateNetworking field.
 func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRequirePrivateNetworking(v bool) {
 	o.RequirePrivateNetworking = &v
+}
+
+// SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRequirePrivateNetworkingNil() {
+	o.RequirePrivateNetworking = nil
+	o.NullFields = append(o.NullFields, "RequirePrivateNetworking")
 }

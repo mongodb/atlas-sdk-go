@@ -24,6 +24,15 @@ type ClusterProviderSettings struct {
 	// The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes.
 	// Read only field.
 	EffectiveInstanceSizeName *string `json:"effectiveInstanceSizeName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterProviderSettings) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterProviderSettings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterProviderSettings instantiates a new ClusterProviderSettings object
@@ -105,6 +114,12 @@ func (o *ClusterProviderSettings) SetAutoScaling(v ClusterFreeAutoScaling) {
 	o.AutoScaling = &v
 }
 
+// SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetAutoScalingNil() {
+	o.AutoScaling = nil
+	o.NullFields = append(o.NullFields, "AutoScaling")
+}
+
 // GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetDiskIOPS() int {
 	if o == nil || IsNil(o.DiskIOPS) {
@@ -136,6 +151,12 @@ func (o *ClusterProviderSettings) HasDiskIOPS() bool {
 // SetDiskIOPS gets a reference to the given int and assigns it to the DiskIOPS field.
 func (o *ClusterProviderSettings) SetDiskIOPS(v int) {
 	o.DiskIOPS = &v
+}
+
+// SetDiskIOPSNil sets DiskIOPS to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetDiskIOPSNil() {
+	o.DiskIOPS = nil
+	o.NullFields = append(o.NullFields, "DiskIOPS")
 }
 
 // GetEncryptEBSVolume returns the EncryptEBSVolume field value if set, zero value otherwise
@@ -174,6 +195,12 @@ func (o *ClusterProviderSettings) SetEncryptEBSVolume(v bool) {
 	o.EncryptEBSVolume = &v
 }
 
+// SetEncryptEBSVolumeNil sets EncryptEBSVolume to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetEncryptEBSVolumeNil() {
+	o.EncryptEBSVolume = nil
+	o.NullFields = append(o.NullFields, "EncryptEBSVolume")
+}
+
 // GetInstanceSizeName returns the InstanceSizeName field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetInstanceSizeName() string {
 	if o == nil || IsNil(o.InstanceSizeName) {
@@ -205,6 +232,12 @@ func (o *ClusterProviderSettings) HasInstanceSizeName() bool {
 // SetInstanceSizeName gets a reference to the given string and assigns it to the InstanceSizeName field.
 func (o *ClusterProviderSettings) SetInstanceSizeName(v string) {
 	o.InstanceSizeName = &v
+}
+
+// SetInstanceSizeNameNil sets InstanceSizeName to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetInstanceSizeNameNil() {
+	o.InstanceSizeName = nil
+	o.NullFields = append(o.NullFields, "InstanceSizeName")
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -240,6 +273,12 @@ func (o *ClusterProviderSettings) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = append(o.NullFields, "RegionName")
+}
+
 // GetVolumeType returns the VolumeType field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetVolumeType() string {
 	if o == nil || IsNil(o.VolumeType) {
@@ -271,6 +310,12 @@ func (o *ClusterProviderSettings) HasVolumeType() bool {
 // SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
 func (o *ClusterProviderSettings) SetVolumeType(v string) {
 	o.VolumeType = &v
+}
+
+// SetVolumeTypeNil sets VolumeType to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetVolumeTypeNil() {
+	o.VolumeType = nil
+	o.NullFields = append(o.NullFields, "VolumeType")
 }
 
 // GetDiskTypeName returns the DiskTypeName field value if set, zero value otherwise
@@ -306,6 +351,12 @@ func (o *ClusterProviderSettings) SetDiskTypeName(v string) {
 	o.DiskTypeName = &v
 }
 
+// SetDiskTypeNameNil sets DiskTypeName to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetDiskTypeNameNil() {
+	o.DiskTypeName = nil
+	o.NullFields = append(o.NullFields, "DiskTypeName")
+}
+
 // GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetBackingProviderName() string {
 	if o == nil || IsNil(o.BackingProviderName) {
@@ -339,6 +390,12 @@ func (o *ClusterProviderSettings) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
 }
 
+// SetBackingProviderNameNil sets BackingProviderName to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetBackingProviderNameNil() {
+	o.BackingProviderName = nil
+	o.NullFields = append(o.NullFields, "BackingProviderName")
+}
+
 // GetEffectiveInstanceSizeName returns the EffectiveInstanceSizeName field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetEffectiveInstanceSizeName() string {
 	if o == nil || IsNil(o.EffectiveInstanceSizeName) {
@@ -370,4 +427,10 @@ func (o *ClusterProviderSettings) HasEffectiveInstanceSizeName() bool {
 // SetEffectiveInstanceSizeName gets a reference to the given string and assigns it to the EffectiveInstanceSizeName field.
 func (o *ClusterProviderSettings) SetEffectiveInstanceSizeName(v string) {
 	o.EffectiveInstanceSizeName = &v
+}
+
+// SetEffectiveInstanceSizeNameNil sets EffectiveInstanceSizeName to an explicit JSON null when marshaled.
+func (o *ClusterProviderSettings) SetEffectiveInstanceSizeNameNil() {
+	o.EffectiveInstanceSizeName = nil
+	o.NullFields = append(o.NullFields, "EffectiveInstanceSizeName")
 }

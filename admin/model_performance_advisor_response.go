@@ -10,6 +10,15 @@ type PerformanceAdvisorResponse struct {
 	// List that contains the documents with information about the indexes that the Performance Advisor suggests.
 	// Read only field.
 	SuggestedIndexes *[]PerformanceAdvisorIndex `json:"suggestedIndexes,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PerformanceAdvisorResponse) MarshalJSON() ([]byte, error) {
+	type noMethod PerformanceAdvisorResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorResponse instantiates a new PerformanceAdvisorResponse object

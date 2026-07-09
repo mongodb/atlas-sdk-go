@@ -16,6 +16,15 @@ type RestoreJobFileHash struct {
 	// Human-readable label that identifies the hashing algorithm used to compute the hash value.
 	// Read only field.
 	TypeName *string `json:"typeName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *RestoreJobFileHash) MarshalJSON() ([]byte, error) {
+	type noMethod RestoreJobFileHash
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewRestoreJobFileHash instantiates a new RestoreJobFileHash object
@@ -68,6 +77,12 @@ func (o *RestoreJobFileHash) SetFileName(v string) {
 	o.FileName = &v
 }
 
+// SetFileNameNil sets FileName to an explicit JSON null when marshaled.
+func (o *RestoreJobFileHash) SetFileNameNil() {
+	o.FileName = nil
+	o.NullFields = append(o.NullFields, "FileName")
+}
+
 // GetHash returns the Hash field value if set, zero value otherwise
 func (o *RestoreJobFileHash) GetHash() string {
 	if o == nil || IsNil(o.Hash) {
@@ -99,6 +114,12 @@ func (o *RestoreJobFileHash) HasHash() bool {
 // SetHash gets a reference to the given string and assigns it to the Hash field.
 func (o *RestoreJobFileHash) SetHash(v string) {
 	o.Hash = &v
+}
+
+// SetHashNil sets Hash to an explicit JSON null when marshaled.
+func (o *RestoreJobFileHash) SetHashNil() {
+	o.Hash = nil
+	o.NullFields = append(o.NullFields, "Hash")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -165,4 +186,10 @@ func (o *RestoreJobFileHash) HasTypeName() bool {
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *RestoreJobFileHash) SetTypeName(v string) {
 	o.TypeName = &v
+}
+
+// SetTypeNameNil sets TypeName to an explicit JSON null when marshaled.
+func (o *RestoreJobFileHash) SetTypeNameNil() {
+	o.TypeName = nil
+	o.NullFields = append(o.NullFields, "TypeName")
 }

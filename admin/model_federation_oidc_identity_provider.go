@@ -45,6 +45,15 @@ type FederationOidcIdentityProvider struct {
 	ClientId *string `json:"clientId,omitempty"`
 	// Scopes that MongoDB applications will request from the authorization endpoint.
 	RequestedScopes *[]string `json:"requestedScopes,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FederationOidcIdentityProvider) MarshalJSON() ([]byte, error) {
+	type noMethod FederationOidcIdentityProvider
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFederationOidcIdentityProvider instantiates a new FederationOidcIdentityProvider object
@@ -132,6 +141,12 @@ func (o *FederationOidcIdentityProvider) SetAudience(v string) {
 	o.Audience = &v
 }
 
+// SetAudienceNil sets Audience to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetAudienceNil() {
+	o.Audience = nil
+	o.NullFields = append(o.NullFields, "Audience")
+}
+
 // GetAuthorizationType returns the AuthorizationType field value if set, zero value otherwise
 func (o *FederationOidcIdentityProvider) GetAuthorizationType() string {
 	if o == nil || IsNil(o.AuthorizationType) {
@@ -163,6 +178,12 @@ func (o *FederationOidcIdentityProvider) HasAuthorizationType() bool {
 // SetAuthorizationType gets a reference to the given string and assigns it to the AuthorizationType field.
 func (o *FederationOidcIdentityProvider) SetAuthorizationType(v string) {
 	o.AuthorizationType = &v
+}
+
+// SetAuthorizationTypeNil sets AuthorizationType to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetAuthorizationTypeNil() {
+	o.AuthorizationType = nil
+	o.NullFields = append(o.NullFields, "AuthorizationType")
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
@@ -198,6 +219,12 @@ func (o *FederationOidcIdentityProvider) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = append(o.NullFields, "CreatedAt")
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise
 func (o *FederationOidcIdentityProvider) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -229,6 +256,12 @@ func (o *FederationOidcIdentityProvider) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *FederationOidcIdentityProvider) SetDescription(v string) {
 	o.Description = &v
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = append(o.NullFields, "Description")
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise
@@ -264,6 +297,12 @@ func (o *FederationOidcIdentityProvider) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
+// SetDisplayNameNil sets DisplayName to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetDisplayNameNil() {
+	o.DisplayName = nil
+	o.NullFields = append(o.NullFields, "DisplayName")
+}
+
 // GetGroupsClaim returns the GroupsClaim field value if set, zero value otherwise
 func (o *FederationOidcIdentityProvider) GetGroupsClaim() string {
 	if o == nil || IsNil(o.GroupsClaim) {
@@ -295,6 +334,12 @@ func (o *FederationOidcIdentityProvider) HasGroupsClaim() bool {
 // SetGroupsClaim gets a reference to the given string and assigns it to the GroupsClaim field.
 func (o *FederationOidcIdentityProvider) SetGroupsClaim(v string) {
 	o.GroupsClaim = &v
+}
+
+// SetGroupsClaimNil sets GroupsClaim to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetGroupsClaimNil() {
+	o.GroupsClaim = nil
+	o.NullFields = append(o.NullFields, "GroupsClaim")
 }
 
 // GetId returns the Id field value
@@ -354,6 +399,12 @@ func (o *FederationOidcIdentityProvider) SetIdpType(v string) {
 	o.IdpType = &v
 }
 
+// SetIdpTypeNil sets IdpType to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetIdpTypeNil() {
+	o.IdpType = nil
+	o.NullFields = append(o.NullFields, "IdpType")
+}
+
 // GetIssuerUri returns the IssuerUri field value if set, zero value otherwise
 func (o *FederationOidcIdentityProvider) GetIssuerUri() string {
 	if o == nil || IsNil(o.IssuerUri) {
@@ -385,6 +436,12 @@ func (o *FederationOidcIdentityProvider) HasIssuerUri() bool {
 // SetIssuerUri gets a reference to the given string and assigns it to the IssuerUri field.
 func (o *FederationOidcIdentityProvider) SetIssuerUri(v string) {
 	o.IssuerUri = &v
+}
+
+// SetIssuerUriNil sets IssuerUri to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetIssuerUriNil() {
+	o.IssuerUri = nil
+	o.NullFields = append(o.NullFields, "IssuerUri")
 }
 
 // GetOktaIdpId returns the OktaIdpId field value
@@ -444,6 +501,12 @@ func (o *FederationOidcIdentityProvider) SetProtocol(v string) {
 	o.Protocol = &v
 }
 
+// SetProtocolNil sets Protocol to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetProtocolNil() {
+	o.Protocol = nil
+	o.NullFields = append(o.NullFields, "Protocol")
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise
 func (o *FederationOidcIdentityProvider) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -477,6 +540,12 @@ func (o *FederationOidcIdentityProvider) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// SetUpdatedAtNil sets UpdatedAt to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetUpdatedAtNil() {
+	o.UpdatedAt = nil
+	o.NullFields = append(o.NullFields, "UpdatedAt")
+}
+
 // GetUserClaim returns the UserClaim field value if set, zero value otherwise
 func (o *FederationOidcIdentityProvider) GetUserClaim() string {
 	if o == nil || IsNil(o.UserClaim) {
@@ -508,6 +577,12 @@ func (o *FederationOidcIdentityProvider) HasUserClaim() bool {
 // SetUserClaim gets a reference to the given string and assigns it to the UserClaim field.
 func (o *FederationOidcIdentityProvider) SetUserClaim(v string) {
 	o.UserClaim = &v
+}
+
+// SetUserClaimNil sets UserClaim to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetUserClaimNil() {
+	o.UserClaim = nil
+	o.NullFields = append(o.NullFields, "UserClaim")
 }
 
 // GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise
@@ -574,6 +649,12 @@ func (o *FederationOidcIdentityProvider) HasClientId() bool {
 // SetClientId gets a reference to the given string and assigns it to the ClientId field.
 func (o *FederationOidcIdentityProvider) SetClientId(v string) {
 	o.ClientId = &v
+}
+
+// SetClientIdNil sets ClientId to an explicit JSON null when marshaled.
+func (o *FederationOidcIdentityProvider) SetClientIdNil() {
+	o.ClientId = nil
+	o.NullFields = append(o.NullFields, "ClientId")
 }
 
 // GetRequestedScopes returns the RequestedScopes field value if set, zero value otherwise

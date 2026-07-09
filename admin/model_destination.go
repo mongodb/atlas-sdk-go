@@ -12,6 +12,15 @@ type Destination struct {
 	HostnameSchemaType string `json:"hostnameSchemaType"`
 	// Represents the endpoint to use when the host schema type is `PRIVATE_LINK`.
 	PrivateLinkId *string `json:"privateLinkId,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *Destination) MarshalJSON() ([]byte, error) {
+	type noMethod Destination
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDestination instantiates a new Destination object
@@ -137,4 +146,10 @@ func (o *Destination) HasPrivateLinkId() bool {
 // SetPrivateLinkId gets a reference to the given string and assigns it to the PrivateLinkId field.
 func (o *Destination) SetPrivateLinkId(v string) {
 	o.PrivateLinkId = &v
+}
+
+// SetPrivateLinkIdNil sets PrivateLinkId to an explicit JSON null when marshaled.
+func (o *Destination) SetPrivateLinkIdNil() {
+	o.PrivateLinkId = nil
+	o.NullFields = append(o.NullFields, "PrivateLinkId")
 }

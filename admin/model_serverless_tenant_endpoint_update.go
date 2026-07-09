@@ -16,6 +16,15 @@ type ServerlessTenantEndpointUpdate struct {
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	// Write only field.
 	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessTenantEndpointUpdate) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessTenantEndpointUpdate
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessTenantEndpointUpdate instantiates a new ServerlessTenantEndpointUpdate object
@@ -67,6 +76,12 @@ func (o *ServerlessTenantEndpointUpdate) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ServerlessTenantEndpointUpdate) SetComment(v string) {
 	o.Comment = &v
+}
+
+// SetCommentNil sets Comment to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpointUpdate) SetCommentNil() {
+	o.Comment = nil
+	o.NullFields = append(o.NullFields, "Comment")
 }
 
 // GetProviderName returns the ProviderName field value
@@ -126,6 +141,12 @@ func (o *ServerlessTenantEndpointUpdate) SetCloudProviderEndpointId(v string) {
 	o.CloudProviderEndpointId = &v
 }
 
+// SetCloudProviderEndpointIdNil sets CloudProviderEndpointId to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpointUpdate) SetCloudProviderEndpointIdNil() {
+	o.CloudProviderEndpointId = nil
+	o.NullFields = append(o.NullFields, "CloudProviderEndpointId")
+}
+
 // GetPrivateEndpointIpAddress returns the PrivateEndpointIpAddress field value if set, zero value otherwise
 func (o *ServerlessTenantEndpointUpdate) GetPrivateEndpointIpAddress() string {
 	if o == nil || IsNil(o.PrivateEndpointIpAddress) {
@@ -157,4 +178,10 @@ func (o *ServerlessTenantEndpointUpdate) HasPrivateEndpointIpAddress() bool {
 // SetPrivateEndpointIpAddress gets a reference to the given string and assigns it to the PrivateEndpointIpAddress field.
 func (o *ServerlessTenantEndpointUpdate) SetPrivateEndpointIpAddress(v string) {
 	o.PrivateEndpointIpAddress = &v
+}
+
+// SetPrivateEndpointIpAddressNil sets PrivateEndpointIpAddress to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpointUpdate) SetPrivateEndpointIpAddressNil() {
+	o.PrivateEndpointIpAddress = nil
+	o.NullFields = append(o.NullFields, "PrivateEndpointIpAddress")
 }

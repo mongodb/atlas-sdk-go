@@ -44,6 +44,15 @@ type StreamsConnection struct {
 	Azure                   *AzureConnection                    `json:"azure,omitempty"`
 	PublicPrivateNetworking *StreamsPublicPrivateLinkNetworking `json:"publicPrivateNetworking,omitempty"`
 	Gcp                     *StreamsGCPConnectionConfig         `json:"gcp,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsConnection) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsConnection
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -94,6 +103,12 @@ func (o *StreamsConnection) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StreamsConnection) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -162,6 +177,12 @@ func (o *StreamsConnection) SetName(v string) {
 	o.Name = &v
 }
 
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetNameNil() {
+	o.Name = nil
+	o.NullFields = append(o.NullFields, "Name")
+}
+
 // GetRegion returns the Region field value if set, zero value otherwise
 func (o *StreamsConnection) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
@@ -193,6 +214,12 @@ func (o *StreamsConnection) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *StreamsConnection) SetRegion(v string) {
 	o.Region = &v
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = append(o.NullFields, "Region")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -228,6 +255,12 @@ func (o *StreamsConnection) SetState(v string) {
 	o.State = &v
 }
 
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetStateNil() {
+	o.State = nil
+	o.NullFields = append(o.NullFields, "State")
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *StreamsConnection) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -259,6 +292,12 @@ func (o *StreamsConnection) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *StreamsConnection) SetType(v string) {
 	o.Type = &v
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = append(o.NullFields, "Type")
 }
 
 // GetClusterGroupId returns the ClusterGroupId field value if set, zero value otherwise
@@ -294,6 +333,12 @@ func (o *StreamsConnection) SetClusterGroupId(v string) {
 	o.ClusterGroupId = &v
 }
 
+// SetClusterGroupIdNil sets ClusterGroupId to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetClusterGroupIdNil() {
+	o.ClusterGroupId = nil
+	o.NullFields = append(o.NullFields, "ClusterGroupId")
+}
+
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *StreamsConnection) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
@@ -325,6 +370,12 @@ func (o *StreamsConnection) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *StreamsConnection) SetClusterName(v string) {
 	o.ClusterName = &v
+}
+
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = append(o.NullFields, "ClusterName")
 }
 
 // GetDbRoleToExecute returns the DbRoleToExecute field value if set, zero value otherwise
@@ -360,6 +411,12 @@ func (o *StreamsConnection) SetDbRoleToExecute(v DBRoleToExecute) {
 	o.DbRoleToExecute = &v
 }
 
+// SetDbRoleToExecuteNil sets DbRoleToExecute to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetDbRoleToExecuteNil() {
+	o.DbRoleToExecute = nil
+	o.NullFields = append(o.NullFields, "DbRoleToExecute")
+}
+
 // GetAuthentication returns the Authentication field value if set, zero value otherwise
 func (o *StreamsConnection) GetAuthentication() StreamsKafkaAuthentication {
 	if o == nil || IsNil(o.Authentication) {
@@ -391,6 +448,12 @@ func (o *StreamsConnection) HasAuthentication() bool {
 // SetAuthentication gets a reference to the given StreamsKafkaAuthentication and assigns it to the Authentication field.
 func (o *StreamsConnection) SetAuthentication(v StreamsKafkaAuthentication) {
 	o.Authentication = &v
+}
+
+// SetAuthenticationNil sets Authentication to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetAuthenticationNil() {
+	o.Authentication = nil
+	o.NullFields = append(o.NullFields, "Authentication")
 }
 
 // GetBootstrapServers returns the BootstrapServers field value if set, zero value otherwise
@@ -426,6 +489,12 @@ func (o *StreamsConnection) SetBootstrapServers(v string) {
 	o.BootstrapServers = &v
 }
 
+// SetBootstrapServersNil sets BootstrapServers to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetBootstrapServersNil() {
+	o.BootstrapServers = nil
+	o.NullFields = append(o.NullFields, "BootstrapServers")
+}
+
 // GetConfig returns the Config field value if set, zero value otherwise
 func (o *StreamsConnection) GetConfig() map[string]string {
 	if o == nil || IsNil(o.Config) {
@@ -457,6 +526,12 @@ func (o *StreamsConnection) HasConfig() bool {
 // SetConfig gets a reference to the given map[string]string and assigns it to the Config field.
 func (o *StreamsConnection) SetConfig(v map[string]string) {
 	o.Config = &v
+}
+
+// SetConfigNil sets Config to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetConfigNil() {
+	o.Config = nil
+	o.NullFields = append(o.NullFields, "Config")
 }
 
 // GetNetworking returns the Networking field value if set, zero value otherwise
@@ -492,6 +567,12 @@ func (o *StreamsConnection) SetNetworking(v StreamsKafkaNetworking) {
 	o.Networking = &v
 }
 
+// SetNetworkingNil sets Networking to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetNetworkingNil() {
+	o.Networking = nil
+	o.NullFields = append(o.NullFields, "Networking")
+}
+
 // GetSecurity returns the Security field value if set, zero value otherwise
 func (o *StreamsConnection) GetSecurity() StreamsKafkaSecurity {
 	if o == nil || IsNil(o.Security) {
@@ -523,6 +604,12 @@ func (o *StreamsConnection) HasSecurity() bool {
 // SetSecurity gets a reference to the given StreamsKafkaSecurity and assigns it to the Security field.
 func (o *StreamsConnection) SetSecurity(v StreamsKafkaSecurity) {
 	o.Security = &v
+}
+
+// SetSecurityNil sets Security to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetSecurityNil() {
+	o.Security = nil
+	o.NullFields = append(o.NullFields, "Security")
 }
 
 // GetHeaders returns the Headers field value if set, zero value otherwise
@@ -558,6 +645,12 @@ func (o *StreamsConnection) SetHeaders(v map[string]string) {
 	o.Headers = &v
 }
 
+// SetHeadersNil sets Headers to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetHeadersNil() {
+	o.Headers = nil
+	o.NullFields = append(o.NullFields, "Headers")
+}
+
 // GetUrl returns the Url field value if set, zero value otherwise
 func (o *StreamsConnection) GetUrl() string {
 	if o == nil || IsNil(o.Url) {
@@ -589,6 +682,12 @@ func (o *StreamsConnection) HasUrl() bool {
 // SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *StreamsConnection) SetUrl(v string) {
 	o.Url = &v
+}
+
+// SetUrlNil sets Url to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetUrlNil() {
+	o.Url = nil
+	o.NullFields = append(o.NullFields, "Url")
 }
 
 // GetAws returns the Aws field value if set, zero value otherwise
@@ -624,6 +723,12 @@ func (o *StreamsConnection) SetAws(v StreamsAWSConnectionConfig) {
 	o.Aws = &v
 }
 
+// SetAwsNil sets Aws to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetAwsNil() {
+	o.Aws = nil
+	o.NullFields = append(o.NullFields, "Aws")
+}
+
 // GetProvider returns the Provider field value if set, zero value otherwise
 func (o *StreamsConnection) GetProvider() string {
 	if o == nil || IsNil(o.Provider) {
@@ -657,6 +762,12 @@ func (o *StreamsConnection) SetProvider(v string) {
 	o.Provider = &v
 }
 
+// SetProviderNil sets Provider to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetProviderNil() {
+	o.Provider = nil
+	o.NullFields = append(o.NullFields, "Provider")
+}
+
 // GetSchemaRegistryAuthentication returns the SchemaRegistryAuthentication field value if set, zero value otherwise
 func (o *StreamsConnection) GetSchemaRegistryAuthentication() SchemaRegistryAuthentication {
 	if o == nil || IsNil(o.SchemaRegistryAuthentication) {
@@ -688,6 +799,12 @@ func (o *StreamsConnection) HasSchemaRegistryAuthentication() bool {
 // SetSchemaRegistryAuthentication gets a reference to the given SchemaRegistryAuthentication and assigns it to the SchemaRegistryAuthentication field.
 func (o *StreamsConnection) SetSchemaRegistryAuthentication(v SchemaRegistryAuthentication) {
 	o.SchemaRegistryAuthentication = &v
+}
+
+// SetSchemaRegistryAuthenticationNil sets SchemaRegistryAuthentication to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetSchemaRegistryAuthenticationNil() {
+	o.SchemaRegistryAuthentication = nil
+	o.NullFields = append(o.NullFields, "SchemaRegistryAuthentication")
 }
 
 // GetSchemaRegistryUrls returns the SchemaRegistryUrls field value if set, zero value otherwise
@@ -756,6 +873,12 @@ func (o *StreamsConnection) SetAzure(v AzureConnection) {
 	o.Azure = &v
 }
 
+// SetAzureNil sets Azure to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetAzureNil() {
+	o.Azure = nil
+	o.NullFields = append(o.NullFields, "Azure")
+}
+
 // GetPublicPrivateNetworking returns the PublicPrivateNetworking field value if set, zero value otherwise
 func (o *StreamsConnection) GetPublicPrivateNetworking() StreamsPublicPrivateLinkNetworking {
 	if o == nil || IsNil(o.PublicPrivateNetworking) {
@@ -789,6 +912,12 @@ func (o *StreamsConnection) SetPublicPrivateNetworking(v StreamsPublicPrivateLin
 	o.PublicPrivateNetworking = &v
 }
 
+// SetPublicPrivateNetworkingNil sets PublicPrivateNetworking to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetPublicPrivateNetworkingNil() {
+	o.PublicPrivateNetworking = nil
+	o.NullFields = append(o.NullFields, "PublicPrivateNetworking")
+}
+
 // GetGcp returns the Gcp field value if set, zero value otherwise
 func (o *StreamsConnection) GetGcp() StreamsGCPConnectionConfig {
 	if o == nil || IsNil(o.Gcp) {
@@ -820,4 +949,10 @@ func (o *StreamsConnection) HasGcp() bool {
 // SetGcp gets a reference to the given StreamsGCPConnectionConfig and assigns it to the Gcp field.
 func (o *StreamsConnection) SetGcp(v StreamsGCPConnectionConfig) {
 	o.Gcp = &v
+}
+
+// SetGcpNil sets Gcp to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetGcpNil() {
+	o.Gcp = nil
+	o.NullFields = append(o.NullFields, "Gcp")
 }

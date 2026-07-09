@@ -7,6 +7,15 @@ type GroupService struct {
 	// IP addresses of clusters.
 	// Read only field.
 	Clusters *[]ClusterIPAddresses `json:"clusters,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupService) MarshalJSON() ([]byte, error) {
+	type noMethod GroupService
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupService instantiates a new GroupService object

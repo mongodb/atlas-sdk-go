@@ -13,6 +13,15 @@ type DiskBackupRestoreMember struct {
 	// Human-readable label that identifies the replica set on the sharded cluster.
 	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupRestoreMember) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupRestoreMember
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupRestoreMember instantiates a new DiskBackupRestoreMember object
@@ -63,6 +72,12 @@ func (o *DiskBackupRestoreMember) HasDownloadUrl() bool {
 // SetDownloadUrl gets a reference to the given string and assigns it to the DownloadUrl field.
 func (o *DiskBackupRestoreMember) SetDownloadUrl(v string) {
 	o.DownloadUrl = &v
+}
+
+// SetDownloadUrlNil sets DownloadUrl to an explicit JSON null when marshaled.
+func (o *DiskBackupRestoreMember) SetDownloadUrlNil() {
+	o.DownloadUrl = nil
+	o.NullFields = append(o.NullFields, "DownloadUrl")
 }
 
 // GetPrivateDownloadDeliveryUrls returns the PrivateDownloadDeliveryUrls field value if set, zero value otherwise
@@ -129,4 +144,10 @@ func (o *DiskBackupRestoreMember) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *DiskBackupRestoreMember) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
+}
+
+// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
+func (o *DiskBackupRestoreMember) SetReplicaSetNameNil() {
+	o.ReplicaSetName = nil
+	o.NullFields = append(o.NullFields, "ReplicaSetName")
 }

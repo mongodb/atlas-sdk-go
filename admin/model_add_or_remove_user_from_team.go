@@ -7,6 +7,15 @@ type AddOrRemoveUserFromTeam struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
 	// Write only field.
 	Id string `json:"id"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AddOrRemoveUserFromTeam) MarshalJSON() ([]byte, error) {
+	type noMethod AddOrRemoveUserFromTeam
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAddOrRemoveUserFromTeam instantiates a new AddOrRemoveUserFromTeam object

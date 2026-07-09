@@ -17,6 +17,15 @@ type PerformanceAdvisorSlowQuery struct {
 	// Replica state associated with this slow query log.
 	// Read only field.
 	ReplicaState *string `json:"replicaState,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PerformanceAdvisorSlowQuery) MarshalJSON() ([]byte, error) {
+	type noMethod PerformanceAdvisorSlowQuery
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorSlowQuery instantiates a new PerformanceAdvisorSlowQuery object
@@ -69,6 +78,12 @@ func (o *PerformanceAdvisorSlowQuery) SetLine(v string) {
 	o.Line = &v
 }
 
+// SetLineNil sets Line to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQuery) SetLineNil() {
+	o.Line = nil
+	o.NullFields = append(o.NullFields, "Line")
+}
+
 // GetMetrics returns the Metrics field value if set, zero value otherwise
 func (o *PerformanceAdvisorSlowQuery) GetMetrics() PerformanceAdvisorSlowQueryMetrics {
 	if o == nil || IsNil(o.Metrics) {
@@ -100,6 +115,12 @@ func (o *PerformanceAdvisorSlowQuery) HasMetrics() bool {
 // SetMetrics gets a reference to the given PerformanceAdvisorSlowQueryMetrics and assigns it to the Metrics field.
 func (o *PerformanceAdvisorSlowQuery) SetMetrics(v PerformanceAdvisorSlowQueryMetrics) {
 	o.Metrics = &v
+}
+
+// SetMetricsNil sets Metrics to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQuery) SetMetricsNil() {
+	o.Metrics = nil
+	o.NullFields = append(o.NullFields, "Metrics")
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise
@@ -135,6 +156,12 @@ func (o *PerformanceAdvisorSlowQuery) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
+// SetNamespaceNil sets Namespace to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQuery) SetNamespaceNil() {
+	o.Namespace = nil
+	o.NullFields = append(o.NullFields, "Namespace")
+}
+
 // GetOpType returns the OpType field value if set, zero value otherwise
 func (o *PerformanceAdvisorSlowQuery) GetOpType() string {
 	if o == nil || IsNil(o.OpType) {
@@ -168,6 +195,12 @@ func (o *PerformanceAdvisorSlowQuery) SetOpType(v string) {
 	o.OpType = &v
 }
 
+// SetOpTypeNil sets OpType to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQuery) SetOpTypeNil() {
+	o.OpType = nil
+	o.NullFields = append(o.NullFields, "OpType")
+}
+
 // GetReplicaState returns the ReplicaState field value if set, zero value otherwise
 func (o *PerformanceAdvisorSlowQuery) GetReplicaState() string {
 	if o == nil || IsNil(o.ReplicaState) {
@@ -199,4 +232,10 @@ func (o *PerformanceAdvisorSlowQuery) HasReplicaState() bool {
 // SetReplicaState gets a reference to the given string and assigns it to the ReplicaState field.
 func (o *PerformanceAdvisorSlowQuery) SetReplicaState(v string) {
 	o.ReplicaState = &v
+}
+
+// SetReplicaStateNil sets ReplicaState to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQuery) SetReplicaStateNil() {
+	o.ReplicaState = nil
+	o.NullFields = append(o.NullFields, "ReplicaState")
 }

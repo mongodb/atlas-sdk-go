@@ -8,6 +8,15 @@ type CreateAtlasOrganizationApiKey struct {
 	Desc string `json:"desc"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization.
 	Roles []string `json:"roles"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CreateAtlasOrganizationApiKey) MarshalJSON() ([]byte, error) {
+	type noMethod CreateAtlasOrganizationApiKey
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCreateAtlasOrganizationApiKey instantiates a new CreateAtlasOrganizationApiKey object

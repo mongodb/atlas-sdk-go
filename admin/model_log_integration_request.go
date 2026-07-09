@@ -36,6 +36,15 @@ type LogIntegrationRequest struct {
 	StorageAccountName *string `json:"storageAccountName,omitempty"`
 	// Storage container name for log files.
 	StorageContainerName *string `json:"storageContainerName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LogIntegrationRequest) MarshalJSON() ([]byte, error) {
+	type noMethod LogIntegrationRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLogIntegrationRequest instantiates a new LogIntegrationRequest object
@@ -138,6 +147,12 @@ func (o *LogIntegrationRequest) SetBucketName(v string) {
 	o.BucketName = &v
 }
 
+// SetBucketNameNil sets BucketName to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetBucketNameNil() {
+	o.BucketName = nil
+	o.NullFields = append(o.NullFields, "BucketName")
+}
+
 // GetIamRoleId returns the IamRoleId field value if set, zero value otherwise
 func (o *LogIntegrationRequest) GetIamRoleId() string {
 	if o == nil || IsNil(o.IamRoleId) {
@@ -169,6 +184,12 @@ func (o *LogIntegrationRequest) HasIamRoleId() bool {
 // SetIamRoleId gets a reference to the given string and assigns it to the IamRoleId field.
 func (o *LogIntegrationRequest) SetIamRoleId(v string) {
 	o.IamRoleId = &v
+}
+
+// SetIamRoleIdNil sets IamRoleId to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetIamRoleIdNil() {
+	o.IamRoleId = nil
+	o.NullFields = append(o.NullFields, "IamRoleId")
 }
 
 // GetKmsKey returns the KmsKey field value if set, zero value otherwise
@@ -204,6 +225,12 @@ func (o *LogIntegrationRequest) SetKmsKey(v string) {
 	o.KmsKey = &v
 }
 
+// SetKmsKeyNil sets KmsKey to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetKmsKeyNil() {
+	o.KmsKey = nil
+	o.NullFields = append(o.NullFields, "KmsKey")
+}
+
 // GetPrefixPath returns the PrefixPath field value if set, zero value otherwise
 func (o *LogIntegrationRequest) GetPrefixPath() string {
 	if o == nil || IsNil(o.PrefixPath) {
@@ -235,6 +262,12 @@ func (o *LogIntegrationRequest) HasPrefixPath() bool {
 // SetPrefixPath gets a reference to the given string and assigns it to the PrefixPath field.
 func (o *LogIntegrationRequest) SetPrefixPath(v string) {
 	o.PrefixPath = &v
+}
+
+// SetPrefixPathNil sets PrefixPath to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetPrefixPathNil() {
+	o.PrefixPath = nil
+	o.NullFields = append(o.NullFields, "PrefixPath")
 }
 
 // GetUseLegacyPathStructure returns the UseLegacyPathStructure field value if set, zero value otherwise
@@ -270,6 +303,12 @@ func (o *LogIntegrationRequest) SetUseLegacyPathStructure(v bool) {
 	o.UseLegacyPathStructure = &v
 }
 
+// SetUseLegacyPathStructureNil sets UseLegacyPathStructure to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetUseLegacyPathStructureNil() {
+	o.UseLegacyPathStructure = nil
+	o.NullFields = append(o.NullFields, "UseLegacyPathStructure")
+}
+
 // GetApiKey returns the ApiKey field value if set, zero value otherwise
 func (o *LogIntegrationRequest) GetApiKey() string {
 	if o == nil || IsNil(o.ApiKey) {
@@ -301,6 +340,12 @@ func (o *LogIntegrationRequest) HasApiKey() bool {
 // SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
 func (o *LogIntegrationRequest) SetApiKey(v string) {
 	o.ApiKey = &v
+}
+
+// SetApiKeyNil sets ApiKey to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetApiKeyNil() {
+	o.ApiKey = nil
+	o.NullFields = append(o.NullFields, "ApiKey")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -336,6 +381,12 @@ func (o *LogIntegrationRequest) SetRegion(v string) {
 	o.Region = &v
 }
 
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = append(o.NullFields, "Region")
+}
+
 // GetRoleId returns the RoleId field value if set, zero value otherwise
 func (o *LogIntegrationRequest) GetRoleId() string {
 	if o == nil || IsNil(o.RoleId) {
@@ -369,6 +420,12 @@ func (o *LogIntegrationRequest) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = append(o.NullFields, "RoleId")
+}
+
 // GetOtelEndpoint returns the OtelEndpoint field value if set, zero value otherwise
 func (o *LogIntegrationRequest) GetOtelEndpoint() string {
 	if o == nil || IsNil(o.OtelEndpoint) {
@@ -400,6 +457,12 @@ func (o *LogIntegrationRequest) HasOtelEndpoint() bool {
 // SetOtelEndpoint gets a reference to the given string and assigns it to the OtelEndpoint field.
 func (o *LogIntegrationRequest) SetOtelEndpoint(v string) {
 	o.OtelEndpoint = &v
+}
+
+// SetOtelEndpointNil sets OtelEndpoint to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetOtelEndpointNil() {
+	o.OtelEndpoint = nil
+	o.NullFields = append(o.NullFields, "OtelEndpoint")
 }
 
 // GetOtelSuppliedHeaders returns the OtelSuppliedHeaders field value if set, zero value otherwise
@@ -468,6 +531,12 @@ func (o *LogIntegrationRequest) SetHecToken(v string) {
 	o.HecToken = &v
 }
 
+// SetHecTokenNil sets HecToken to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetHecTokenNil() {
+	o.HecToken = nil
+	o.NullFields = append(o.NullFields, "HecToken")
+}
+
 // GetHecUrl returns the HecUrl field value if set, zero value otherwise
 func (o *LogIntegrationRequest) GetHecUrl() string {
 	if o == nil || IsNil(o.HecUrl) {
@@ -499,6 +568,12 @@ func (o *LogIntegrationRequest) HasHecUrl() bool {
 // SetHecUrl gets a reference to the given string and assigns it to the HecUrl field.
 func (o *LogIntegrationRequest) SetHecUrl(v string) {
 	o.HecUrl = &v
+}
+
+// SetHecUrlNil sets HecUrl to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetHecUrlNil() {
+	o.HecUrl = nil
+	o.NullFields = append(o.NullFields, "HecUrl")
 }
 
 // GetStorageAccountName returns the StorageAccountName field value if set, zero value otherwise
@@ -534,6 +609,12 @@ func (o *LogIntegrationRequest) SetStorageAccountName(v string) {
 	o.StorageAccountName = &v
 }
 
+// SetStorageAccountNameNil sets StorageAccountName to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetStorageAccountNameNil() {
+	o.StorageAccountName = nil
+	o.NullFields = append(o.NullFields, "StorageAccountName")
+}
+
 // GetStorageContainerName returns the StorageContainerName field value if set, zero value otherwise
 func (o *LogIntegrationRequest) GetStorageContainerName() string {
 	if o == nil || IsNil(o.StorageContainerName) {
@@ -565,4 +646,10 @@ func (o *LogIntegrationRequest) HasStorageContainerName() bool {
 // SetStorageContainerName gets a reference to the given string and assigns it to the StorageContainerName field.
 func (o *LogIntegrationRequest) SetStorageContainerName(v string) {
 	o.StorageContainerName = &v
+}
+
+// SetStorageContainerNameNil sets StorageContainerName to an explicit JSON null when marshaled.
+func (o *LogIntegrationRequest) SetStorageContainerNameNil() {
+	o.StorageContainerName = nil
+	o.NullFields = append(o.NullFields, "StorageContainerName")
 }

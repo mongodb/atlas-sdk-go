@@ -15,6 +15,15 @@ type DatasetRetentionPolicy struct {
 	Units string `json:"units"`
 	// Number that indicates the amount of days, weeks, or months that the Data Lake Pipeline will retain datasets.
 	Value int `json:"value"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DatasetRetentionPolicy) MarshalJSON() ([]byte, error) {
+	type noMethod DatasetRetentionPolicy
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDatasetRetentionPolicy instantiates a new DatasetRetentionPolicy object
@@ -67,6 +76,12 @@ func (o *DatasetRetentionPolicy) HasLastModifiedDate() bool {
 // SetLastModifiedDate gets a reference to the given time.Time and assigns it to the LastModifiedDate field.
 func (o *DatasetRetentionPolicy) SetLastModifiedDate(v time.Time) {
 	o.LastModifiedDate = &v
+}
+
+// SetLastModifiedDateNil sets LastModifiedDate to an explicit JSON null when marshaled.
+func (o *DatasetRetentionPolicy) SetLastModifiedDateNil() {
+	o.LastModifiedDate = nil
+	o.NullFields = append(o.NullFields, "LastModifiedDate")
 }
 
 // GetUnits returns the Units field value

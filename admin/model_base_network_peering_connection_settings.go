@@ -49,6 +49,15 @@ type BaseNetworkPeeringConnectionSettings struct {
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 	// Human-readable label that identifies the network to peer with the MongoDB Cloud VPC.
 	NetworkName *string `json:"networkName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BaseNetworkPeeringConnectionSettings) MarshalJSON() ([]byte, error) {
+	type noMethod BaseNetworkPeeringConnectionSettings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBaseNetworkPeeringConnectionSettings instantiates a new BaseNetworkPeeringConnectionSettings object
@@ -126,6 +135,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
@@ -157,6 +172,12 @@ func (o *BaseNetworkPeeringConnectionSettings) HasProviderName() bool {
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetProviderName(v string) {
 	o.ProviderName = &v
+}
+
+// SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetProviderNameNil() {
+	o.ProviderName = nil
+	o.NullFields = append(o.NullFields, "ProviderName")
 }
 
 // GetAccepterRegionName returns the AccepterRegionName field value if set, zero value otherwise
@@ -192,6 +213,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetAccepterRegionName(v string) {
 	o.AccepterRegionName = &v
 }
 
+// SetAccepterRegionNameNil sets AccepterRegionName to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetAccepterRegionNameNil() {
+	o.AccepterRegionName = nil
+	o.NullFields = append(o.NullFields, "AccepterRegionName")
+}
+
 // GetAwsAccountId returns the AwsAccountId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetAwsAccountId() string {
 	if o == nil || IsNil(o.AwsAccountId) {
@@ -223,6 +250,12 @@ func (o *BaseNetworkPeeringConnectionSettings) HasAwsAccountId() bool {
 // SetAwsAccountId gets a reference to the given string and assigns it to the AwsAccountId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetAwsAccountId(v string) {
 	o.AwsAccountId = &v
+}
+
+// SetAwsAccountIdNil sets AwsAccountId to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetAwsAccountIdNil() {
+	o.AwsAccountId = nil
+	o.NullFields = append(o.NullFields, "AwsAccountId")
 }
 
 // GetConnectionId returns the ConnectionId field value if set, zero value otherwise
@@ -258,6 +291,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetConnectionId(v string) {
 	o.ConnectionId = &v
 }
 
+// SetConnectionIdNil sets ConnectionId to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetConnectionIdNil() {
+	o.ConnectionId = nil
+	o.NullFields = append(o.NullFields, "ConnectionId")
+}
+
 // GetErrorStateName returns the ErrorStateName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetErrorStateName() string {
 	if o == nil || IsNil(o.ErrorStateName) {
@@ -289,6 +328,12 @@ func (o *BaseNetworkPeeringConnectionSettings) HasErrorStateName() bool {
 // SetErrorStateName gets a reference to the given string and assigns it to the ErrorStateName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetErrorStateName(v string) {
 	o.ErrorStateName = &v
+}
+
+// SetErrorStateNameNil sets ErrorStateName to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetErrorStateNameNil() {
+	o.ErrorStateName = nil
+	o.NullFields = append(o.NullFields, "ErrorStateName")
 }
 
 // GetRouteTableCidrBlock returns the RouteTableCidrBlock field value if set, zero value otherwise
@@ -324,6 +369,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetRouteTableCidrBlock(v string) 
 	o.RouteTableCidrBlock = &v
 }
 
+// SetRouteTableCidrBlockNil sets RouteTableCidrBlock to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetRouteTableCidrBlockNil() {
+	o.RouteTableCidrBlock = nil
+	o.NullFields = append(o.NullFields, "RouteTableCidrBlock")
+}
+
 // GetStatusName returns the StatusName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetStatusName() string {
 	if o == nil || IsNil(o.StatusName) {
@@ -355,6 +406,12 @@ func (o *BaseNetworkPeeringConnectionSettings) HasStatusName() bool {
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetStatusName(v string) {
 	o.StatusName = &v
+}
+
+// SetStatusNameNil sets StatusName to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetStatusNameNil() {
+	o.StatusName = nil
+	o.NullFields = append(o.NullFields, "StatusName")
 }
 
 // GetVpcId returns the VpcId field value if set, zero value otherwise
@@ -390,6 +447,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetVpcId(v string) {
 	o.VpcId = &v
 }
 
+// SetVpcIdNil sets VpcId to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetVpcIdNil() {
+	o.VpcId = nil
+	o.NullFields = append(o.NullFields, "VpcId")
+}
+
 // GetAzureDirectoryId returns the AzureDirectoryId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetAzureDirectoryId() string {
 	if o == nil || IsNil(o.AzureDirectoryId) {
@@ -421,6 +484,12 @@ func (o *BaseNetworkPeeringConnectionSettings) HasAzureDirectoryId() bool {
 // SetAzureDirectoryId gets a reference to the given string and assigns it to the AzureDirectoryId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetAzureDirectoryId(v string) {
 	o.AzureDirectoryId = &v
+}
+
+// SetAzureDirectoryIdNil sets AzureDirectoryId to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetAzureDirectoryIdNil() {
+	o.AzureDirectoryId = nil
+	o.NullFields = append(o.NullFields, "AzureDirectoryId")
 }
 
 // GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise
@@ -456,6 +525,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetAzureSubscriptionId(v string) 
 	o.AzureSubscriptionId = &v
 }
 
+// SetAzureSubscriptionIdNil sets AzureSubscriptionId to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetAzureSubscriptionIdNil() {
+	o.AzureSubscriptionId = nil
+	o.NullFields = append(o.NullFields, "AzureSubscriptionId")
+}
+
 // GetErrorState returns the ErrorState field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetErrorState() string {
 	if o == nil || IsNil(o.ErrorState) {
@@ -487,6 +562,12 @@ func (o *BaseNetworkPeeringConnectionSettings) HasErrorState() bool {
 // SetErrorState gets a reference to the given string and assigns it to the ErrorState field.
 func (o *BaseNetworkPeeringConnectionSettings) SetErrorState(v string) {
 	o.ErrorState = &v
+}
+
+// SetErrorStateNil sets ErrorState to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetErrorStateNil() {
+	o.ErrorState = nil
+	o.NullFields = append(o.NullFields, "ErrorState")
 }
 
 // GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise
@@ -522,6 +603,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetResourceGroupName(v string) {
 	o.ResourceGroupName = &v
 }
 
+// SetResourceGroupNameNil sets ResourceGroupName to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetResourceGroupNameNil() {
+	o.ResourceGroupName = nil
+	o.NullFields = append(o.NullFields, "ResourceGroupName")
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -553,6 +640,12 @@ func (o *BaseNetworkPeeringConnectionSettings) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *BaseNetworkPeeringConnectionSettings) SetStatus(v string) {
 	o.Status = &v
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
 }
 
 // GetVnetName returns the VnetName field value if set, zero value otherwise
@@ -588,6 +681,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetVnetName(v string) {
 	o.VnetName = &v
 }
 
+// SetVnetNameNil sets VnetName to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetVnetNameNil() {
+	o.VnetName = nil
+	o.NullFields = append(o.NullFields, "VnetName")
+}
+
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
@@ -619,6 +718,12 @@ func (o *BaseNetworkPeeringConnectionSettings) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *BaseNetworkPeeringConnectionSettings) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = append(o.NullFields, "ErrorMessage")
 }
 
 // GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise
@@ -654,6 +759,12 @@ func (o *BaseNetworkPeeringConnectionSettings) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
 }
 
+// SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetGcpProjectIdNil() {
+	o.GcpProjectId = nil
+	o.NullFields = append(o.NullFields, "GcpProjectId")
+}
+
 // GetNetworkName returns the NetworkName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetNetworkName() string {
 	if o == nil || IsNil(o.NetworkName) {
@@ -685,4 +796,10 @@ func (o *BaseNetworkPeeringConnectionSettings) HasNetworkName() bool {
 // SetNetworkName gets a reference to the given string and assigns it to the NetworkName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetNetworkName(v string) {
 	o.NetworkName = &v
+}
+
+// SetNetworkNameNil sets NetworkName to an explicit JSON null when marshaled.
+func (o *BaseNetworkPeeringConnectionSettings) SetNetworkNameNil() {
+	o.NetworkName = nil
+	o.NullFields = append(o.NullFields, "NetworkName")
 }

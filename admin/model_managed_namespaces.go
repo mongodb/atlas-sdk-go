@@ -18,6 +18,15 @@ type ManagedNamespaces struct {
 	NumInitialChunks *int64 `json:"numInitialChunks,omitempty"`
 	// Flag that indicates whether MongoDB Cloud should create and distribute initial chunks for an empty or non-existing collection. MongoDB Cloud distributes data based on the defined zones and zone ranges for the collection.
 	PresplitHashedZones *bool `json:"presplitHashedZones,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ManagedNamespaces) MarshalJSON() ([]byte, error) {
+	type noMethod ManagedNamespaces
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewManagedNamespaces instantiates a new ManagedNamespaces object
@@ -157,6 +166,12 @@ func (o *ManagedNamespaces) SetIsCustomShardKeyHashed(v bool) {
 	o.IsCustomShardKeyHashed = &v
 }
 
+// SetIsCustomShardKeyHashedNil sets IsCustomShardKeyHashed to an explicit JSON null when marshaled.
+func (o *ManagedNamespaces) SetIsCustomShardKeyHashedNil() {
+	o.IsCustomShardKeyHashed = nil
+	o.NullFields = append(o.NullFields, "IsCustomShardKeyHashed")
+}
+
 // GetIsShardKeyUnique returns the IsShardKeyUnique field value if set, zero value otherwise
 func (o *ManagedNamespaces) GetIsShardKeyUnique() bool {
 	if o == nil || IsNil(o.IsShardKeyUnique) {
@@ -188,6 +203,12 @@ func (o *ManagedNamespaces) HasIsShardKeyUnique() bool {
 // SetIsShardKeyUnique gets a reference to the given bool and assigns it to the IsShardKeyUnique field.
 func (o *ManagedNamespaces) SetIsShardKeyUnique(v bool) {
 	o.IsShardKeyUnique = &v
+}
+
+// SetIsShardKeyUniqueNil sets IsShardKeyUnique to an explicit JSON null when marshaled.
+func (o *ManagedNamespaces) SetIsShardKeyUniqueNil() {
+	o.IsShardKeyUnique = nil
+	o.NullFields = append(o.NullFields, "IsShardKeyUnique")
 }
 
 // GetNumInitialChunks returns the NumInitialChunks field value if set, zero value otherwise
@@ -223,6 +244,12 @@ func (o *ManagedNamespaces) SetNumInitialChunks(v int64) {
 	o.NumInitialChunks = &v
 }
 
+// SetNumInitialChunksNil sets NumInitialChunks to an explicit JSON null when marshaled.
+func (o *ManagedNamespaces) SetNumInitialChunksNil() {
+	o.NumInitialChunks = nil
+	o.NullFields = append(o.NullFields, "NumInitialChunks")
+}
+
 // GetPresplitHashedZones returns the PresplitHashedZones field value if set, zero value otherwise
 func (o *ManagedNamespaces) GetPresplitHashedZones() bool {
 	if o == nil || IsNil(o.PresplitHashedZones) {
@@ -254,4 +281,10 @@ func (o *ManagedNamespaces) HasPresplitHashedZones() bool {
 // SetPresplitHashedZones gets a reference to the given bool and assigns it to the PresplitHashedZones field.
 func (o *ManagedNamespaces) SetPresplitHashedZones(v bool) {
 	o.PresplitHashedZones = &v
+}
+
+// SetPresplitHashedZonesNil sets PresplitHashedZones to an explicit JSON null when marshaled.
+func (o *ManagedNamespaces) SetPresplitHashedZonesNil() {
+	o.PresplitHashedZones = nil
+	o.NullFields = append(o.NullFields, "PresplitHashedZones")
 }

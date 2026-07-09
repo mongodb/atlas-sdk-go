@@ -10,6 +10,15 @@ type ClusterCloudProviderInstanceSize struct {
 	// Human-readable label that identifies the instance size or cluster tier.
 	// Read only field.
 	Name *string `json:"name,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterCloudProviderInstanceSize) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterCloudProviderInstanceSize
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterCloudProviderInstanceSize instantiates a new ClusterCloudProviderInstanceSize object
@@ -93,4 +102,10 @@ func (o *ClusterCloudProviderInstanceSize) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ClusterCloudProviderInstanceSize) SetName(v string) {
 	o.Name = &v
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *ClusterCloudProviderInstanceSize) SetNameNil() {
+	o.Name = nil
+	o.NullFields = append(o.NullFields, "Name")
 }

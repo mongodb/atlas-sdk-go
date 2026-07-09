@@ -6,6 +6,15 @@ package admin
 type UpdateRequirePrivateNetworkingRequest struct {
 	// True to require private networking; false to disable it.
 	RequirePrivateNetworking bool `json:"requirePrivateNetworking"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UpdateRequirePrivateNetworkingRequest) MarshalJSON() ([]byte, error) {
+	type noMethod UpdateRequirePrivateNetworkingRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUpdateRequirePrivateNetworkingRequest instantiates a new UpdateRequirePrivateNetworkingRequest object

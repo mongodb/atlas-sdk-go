@@ -10,6 +10,15 @@ type AccessListItem struct {
 	// IP address included in the API access list.
 	// Read only field.
 	IpAddress string `json:"ipAddress"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AccessListItem) MarshalJSON() ([]byte, error) {
+	type noMethod AccessListItem
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAccessListItem instantiates a new AccessListItem object
@@ -61,6 +70,12 @@ func (o *AccessListItem) HasCidrBlock() bool {
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
 func (o *AccessListItem) SetCidrBlock(v string) {
 	o.CidrBlock = &v
+}
+
+// SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled.
+func (o *AccessListItem) SetCidrBlockNil() {
+	o.CidrBlock = nil
+	o.NullFields = append(o.NullFields, "CidrBlock")
 }
 
 // GetIpAddress returns the IpAddress field value

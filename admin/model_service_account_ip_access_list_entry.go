@@ -24,6 +24,15 @@ type ServiceAccountIPAccessListEntry struct {
 	// The number of requests that has originated from this network address.
 	// Read only field.
 	RequestCount *int `json:"requestCount,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServiceAccountIPAccessListEntry) MarshalJSON() ([]byte, error) {
+	type noMethod ServiceAccountIPAccessListEntry
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServiceAccountIPAccessListEntry instantiates a new ServiceAccountIPAccessListEntry object
@@ -76,6 +85,12 @@ func (o *ServiceAccountIPAccessListEntry) SetCidrBlock(v string) {
 	o.CidrBlock = &v
 }
 
+// SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled.
+func (o *ServiceAccountIPAccessListEntry) SetCidrBlockNil() {
+	o.CidrBlock = nil
+	o.NullFields = append(o.NullFields, "CidrBlock")
+}
+
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *ServiceAccountIPAccessListEntry) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
@@ -107,6 +122,12 @@ func (o *ServiceAccountIPAccessListEntry) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *ServiceAccountIPAccessListEntry) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *ServiceAccountIPAccessListEntry) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = append(o.NullFields, "CreatedAt")
 }
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
@@ -142,6 +163,12 @@ func (o *ServiceAccountIPAccessListEntry) SetIpAddress(v string) {
 	o.IpAddress = &v
 }
 
+// SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled.
+func (o *ServiceAccountIPAccessListEntry) SetIpAddressNil() {
+	o.IpAddress = nil
+	o.NullFields = append(o.NullFields, "IpAddress")
+}
+
 // GetLastUsedAddress returns the LastUsedAddress field value if set, zero value otherwise
 func (o *ServiceAccountIPAccessListEntry) GetLastUsedAddress() string {
 	if o == nil || IsNil(o.LastUsedAddress) {
@@ -173,6 +200,12 @@ func (o *ServiceAccountIPAccessListEntry) HasLastUsedAddress() bool {
 // SetLastUsedAddress gets a reference to the given string and assigns it to the LastUsedAddress field.
 func (o *ServiceAccountIPAccessListEntry) SetLastUsedAddress(v string) {
 	o.LastUsedAddress = &v
+}
+
+// SetLastUsedAddressNil sets LastUsedAddress to an explicit JSON null when marshaled.
+func (o *ServiceAccountIPAccessListEntry) SetLastUsedAddressNil() {
+	o.LastUsedAddress = nil
+	o.NullFields = append(o.NullFields, "LastUsedAddress")
 }
 
 // GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise
@@ -208,6 +241,12 @@ func (o *ServiceAccountIPAccessListEntry) SetLastUsedAt(v time.Time) {
 	o.LastUsedAt = &v
 }
 
+// SetLastUsedAtNil sets LastUsedAt to an explicit JSON null when marshaled.
+func (o *ServiceAccountIPAccessListEntry) SetLastUsedAtNil() {
+	o.LastUsedAt = nil
+	o.NullFields = append(o.NullFields, "LastUsedAt")
+}
+
 // GetRequestCount returns the RequestCount field value if set, zero value otherwise
 func (o *ServiceAccountIPAccessListEntry) GetRequestCount() int {
 	if o == nil || IsNil(o.RequestCount) {
@@ -239,4 +278,10 @@ func (o *ServiceAccountIPAccessListEntry) HasRequestCount() bool {
 // SetRequestCount gets a reference to the given int and assigns it to the RequestCount field.
 func (o *ServiceAccountIPAccessListEntry) SetRequestCount(v int) {
 	o.RequestCount = &v
+}
+
+// SetRequestCountNil sets RequestCount to an explicit JSON null when marshaled.
+func (o *ServiceAccountIPAccessListEntry) SetRequestCountNil() {
+	o.RequestCount = nil
+	o.NullFields = append(o.NullFields, "RequestCount")
 }

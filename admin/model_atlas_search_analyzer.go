@@ -12,6 +12,15 @@ type AtlasSearchAnalyzer struct {
 	TokenFilters *[]any `json:"tokenFilters,omitempty"`
 	// Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
 	Tokenizer any `json:"tokenizer"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AtlasSearchAnalyzer) MarshalJSON() ([]byte, error) {
+	type noMethod AtlasSearchAnalyzer
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAtlasSearchAnalyzer instantiates a new AtlasSearchAnalyzer object

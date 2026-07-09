@@ -10,6 +10,15 @@ type PipelineRunStats struct {
 	// Number of docs ingested for a this pipeline run.
 	// Read only field.
 	NumDocs *int64 `json:"numDocs,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PipelineRunStats) MarshalJSON() ([]byte, error) {
+	type noMethod PipelineRunStats
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPipelineRunStats instantiates a new PipelineRunStats object
@@ -62,6 +71,12 @@ func (o *PipelineRunStats) SetBytesExported(v int64) {
 	o.BytesExported = &v
 }
 
+// SetBytesExportedNil sets BytesExported to an explicit JSON null when marshaled.
+func (o *PipelineRunStats) SetBytesExportedNil() {
+	o.BytesExported = nil
+	o.NullFields = append(o.NullFields, "BytesExported")
+}
+
 // GetNumDocs returns the NumDocs field value if set, zero value otherwise
 func (o *PipelineRunStats) GetNumDocs() int64 {
 	if o == nil || IsNil(o.NumDocs) {
@@ -93,4 +108,10 @@ func (o *PipelineRunStats) HasNumDocs() bool {
 // SetNumDocs gets a reference to the given int64 and assigns it to the NumDocs field.
 func (o *PipelineRunStats) SetNumDocs(v int64) {
 	o.NumDocs = &v
+}
+
+// SetNumDocsNil sets NumDocs to an explicit JSON null when marshaled.
+func (o *PipelineRunStats) SetNumDocsNil() {
+	o.NumDocs = nil
+	o.NullFields = append(o.NullFields, "NumDocs")
 }

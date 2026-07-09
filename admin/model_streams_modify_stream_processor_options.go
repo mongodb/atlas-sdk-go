@@ -10,6 +10,15 @@ type StreamsModifyStreamProcessorOptions struct {
 	Links *[]Link `json:"links,omitempty"`
 	// When true, the modified stream processor resumes from its last checkpoint.
 	ResumeFromCheckpoint *bool `json:"resumeFromCheckpoint,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsModifyStreamProcessorOptions) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsModifyStreamProcessorOptions
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsModifyStreamProcessorOptions instantiates a new StreamsModifyStreamProcessorOptions object
@@ -60,6 +69,12 @@ func (o *StreamsModifyStreamProcessorOptions) HasDlq() bool {
 // SetDlq gets a reference to the given StreamsDLQ and assigns it to the Dlq field.
 func (o *StreamsModifyStreamProcessorOptions) SetDlq(v StreamsDLQ) {
 	o.Dlq = &v
+}
+
+// SetDlqNil sets Dlq to an explicit JSON null when marshaled.
+func (o *StreamsModifyStreamProcessorOptions) SetDlqNil() {
+	o.Dlq = nil
+	o.NullFields = append(o.NullFields, "Dlq")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -126,4 +141,10 @@ func (o *StreamsModifyStreamProcessorOptions) HasResumeFromCheckpoint() bool {
 // SetResumeFromCheckpoint gets a reference to the given bool and assigns it to the ResumeFromCheckpoint field.
 func (o *StreamsModifyStreamProcessorOptions) SetResumeFromCheckpoint(v bool) {
 	o.ResumeFromCheckpoint = &v
+}
+
+// SetResumeFromCheckpointNil sets ResumeFromCheckpoint to an explicit JSON null when marshaled.
+func (o *StreamsModifyStreamProcessorOptions) SetResumeFromCheckpointNil() {
+	o.ResumeFromCheckpoint = nil
+	o.NullFields = append(o.NullFields, "ResumeFromCheckpoint")
 }

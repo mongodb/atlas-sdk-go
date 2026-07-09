@@ -8,6 +8,15 @@ type UserAccessListRequest struct {
 	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// Network address that you want to add to the access list for the API key. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or `cidrBlock` but not both in the same request.
 	IpAddress *string `json:"ipAddress,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UserAccessListRequest) MarshalJSON() ([]byte, error) {
+	type noMethod UserAccessListRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserAccessListRequest instantiates a new UserAccessListRequest object
@@ -60,6 +69,12 @@ func (o *UserAccessListRequest) SetCidrBlock(v string) {
 	o.CidrBlock = &v
 }
 
+// SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled.
+func (o *UserAccessListRequest) SetCidrBlockNil() {
+	o.CidrBlock = nil
+	o.NullFields = append(o.NullFields, "CidrBlock")
+}
+
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
 func (o *UserAccessListRequest) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress) {
@@ -91,4 +106,10 @@ func (o *UserAccessListRequest) HasIpAddress() bool {
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *UserAccessListRequest) SetIpAddress(v string) {
 	o.IpAddress = &v
+}
+
+// SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled.
+func (o *UserAccessListRequest) SetIpAddressNil() {
+	o.IpAddress = nil
+	o.NullFields = append(o.NullFields, "IpAddress")
 }

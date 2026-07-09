@@ -8,6 +8,15 @@ type UpdateCustomDBRole struct {
 	Actions *[]DatabasePrivilegeAction `json:"actions,omitempty"`
 	// List of the built-in roles that this custom role inherits.
 	InheritedRoles *[]DatabaseInheritedRole `json:"inheritedRoles,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UpdateCustomDBRole) MarshalJSON() ([]byte, error) {
+	type noMethod UpdateCustomDBRole
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUpdateCustomDBRole instantiates a new UpdateCustomDBRole object

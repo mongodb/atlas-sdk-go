@@ -10,6 +10,15 @@ type PrivateEndpointHostname struct {
 	// Human-readable label that identifies private endpoint.
 	// Read only field.
 	PrivateEndpoint *string `json:"privateEndpoint,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PrivateEndpointHostname) MarshalJSON() ([]byte, error) {
+	type noMethod PrivateEndpointHostname
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPrivateEndpointHostname instantiates a new PrivateEndpointHostname object
@@ -62,6 +71,12 @@ func (o *PrivateEndpointHostname) SetHostname(v string) {
 	o.Hostname = &v
 }
 
+// SetHostnameNil sets Hostname to an explicit JSON null when marshaled.
+func (o *PrivateEndpointHostname) SetHostnameNil() {
+	o.Hostname = nil
+	o.NullFields = append(o.NullFields, "Hostname")
+}
+
 // GetPrivateEndpoint returns the PrivateEndpoint field value if set, zero value otherwise
 func (o *PrivateEndpointHostname) GetPrivateEndpoint() string {
 	if o == nil || IsNil(o.PrivateEndpoint) {
@@ -93,4 +108,10 @@ func (o *PrivateEndpointHostname) HasPrivateEndpoint() bool {
 // SetPrivateEndpoint gets a reference to the given string and assigns it to the PrivateEndpoint field.
 func (o *PrivateEndpointHostname) SetPrivateEndpoint(v string) {
 	o.PrivateEndpoint = &v
+}
+
+// SetPrivateEndpointNil sets PrivateEndpoint to an explicit JSON null when marshaled.
+func (o *PrivateEndpointHostname) SetPrivateEndpointNil() {
+	o.PrivateEndpoint = nil
+	o.NullFields = append(o.NullFields, "PrivateEndpoint")
 }

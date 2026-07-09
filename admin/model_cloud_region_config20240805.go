@@ -20,6 +20,15 @@ type CloudRegionConfig20240805 struct {
 	ReadOnlySpecs           *DedicatedHardwareSpec20240805 `json:"readOnlySpecs,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when `providerName` is `TENANT` and `electableSpecs.instanceSize` is `M0`, `M2` or `M5`.   Please note that  using an `instanceSize` of `M2` or `M5` will create a Flex cluster instead. Support for the `instanceSize` of `M2` or `M5` will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudRegionConfig20240805) MarshalJSON() ([]byte, error) {
+	type noMethod CloudRegionConfig20240805
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudRegionConfig20240805 instantiates a new CloudRegionConfig20240805 object
@@ -72,6 +81,12 @@ func (o *CloudRegionConfig20240805) SetElectableSpecs(v HardwareSpec20240805) {
 	o.ElectableSpecs = &v
 }
 
+// SetElectableSpecsNil sets ElectableSpecs to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetElectableSpecsNil() {
+	o.ElectableSpecs = nil
+	o.NullFields = append(o.NullFields, "ElectableSpecs")
+}
+
 // GetPriority returns the Priority field value if set, zero value otherwise
 func (o *CloudRegionConfig20240805) GetPriority() int {
 	if o == nil || IsNil(o.Priority) {
@@ -103,6 +118,12 @@ func (o *CloudRegionConfig20240805) HasPriority() bool {
 // SetPriority gets a reference to the given int and assigns it to the Priority field.
 func (o *CloudRegionConfig20240805) SetPriority(v int) {
 	o.Priority = &v
+}
+
+// SetPriorityNil sets Priority to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetPriorityNil() {
+	o.Priority = nil
+	o.NullFields = append(o.NullFields, "Priority")
 }
 
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
@@ -138,6 +159,12 @@ func (o *CloudRegionConfig20240805) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
+// SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetProviderNameNil() {
+	o.ProviderName = nil
+	o.NullFields = append(o.NullFields, "ProviderName")
+}
+
 // GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *CloudRegionConfig20240805) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
@@ -169,6 +196,12 @@ func (o *CloudRegionConfig20240805) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *CloudRegionConfig20240805) SetRegionName(v string) {
 	o.RegionName = &v
+}
+
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = append(o.NullFields, "RegionName")
 }
 
 // GetAnalyticsAutoScaling returns the AnalyticsAutoScaling field value if set, zero value otherwise
@@ -204,6 +237,12 @@ func (o *CloudRegionConfig20240805) SetAnalyticsAutoScaling(v AdvancedAutoScalin
 	o.AnalyticsAutoScaling = &v
 }
 
+// SetAnalyticsAutoScalingNil sets AnalyticsAutoScaling to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetAnalyticsAutoScalingNil() {
+	o.AnalyticsAutoScaling = nil
+	o.NullFields = append(o.NullFields, "AnalyticsAutoScaling")
+}
+
 // GetAnalyticsSpecs returns the AnalyticsSpecs field value if set, zero value otherwise
 func (o *CloudRegionConfig20240805) GetAnalyticsSpecs() DedicatedHardwareSpec20240805 {
 	if o == nil || IsNil(o.AnalyticsSpecs) {
@@ -235,6 +274,12 @@ func (o *CloudRegionConfig20240805) HasAnalyticsSpecs() bool {
 // SetAnalyticsSpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the AnalyticsSpecs field.
 func (o *CloudRegionConfig20240805) SetAnalyticsSpecs(v DedicatedHardwareSpec20240805) {
 	o.AnalyticsSpecs = &v
+}
+
+// SetAnalyticsSpecsNil sets AnalyticsSpecs to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetAnalyticsSpecsNil() {
+	o.AnalyticsSpecs = nil
+	o.NullFields = append(o.NullFields, "AnalyticsSpecs")
 }
 
 // GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
@@ -270,6 +315,12 @@ func (o *CloudRegionConfig20240805) SetAutoScaling(v AdvancedAutoScalingSettings
 	o.AutoScaling = &v
 }
 
+// SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetAutoScalingNil() {
+	o.AutoScaling = nil
+	o.NullFields = append(o.NullFields, "AutoScaling")
+}
+
 // GetEffectiveAnalyticsSpecs returns the EffectiveAnalyticsSpecs field value if set, zero value otherwise
 func (o *CloudRegionConfig20240805) GetEffectiveAnalyticsSpecs() DedicatedHardwareSpec20240805 {
 	if o == nil || IsNil(o.EffectiveAnalyticsSpecs) {
@@ -301,6 +352,12 @@ func (o *CloudRegionConfig20240805) HasEffectiveAnalyticsSpecs() bool {
 // SetEffectiveAnalyticsSpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the EffectiveAnalyticsSpecs field.
 func (o *CloudRegionConfig20240805) SetEffectiveAnalyticsSpecs(v DedicatedHardwareSpec20240805) {
 	o.EffectiveAnalyticsSpecs = &v
+}
+
+// SetEffectiveAnalyticsSpecsNil sets EffectiveAnalyticsSpecs to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetEffectiveAnalyticsSpecsNil() {
+	o.EffectiveAnalyticsSpecs = nil
+	o.NullFields = append(o.NullFields, "EffectiveAnalyticsSpecs")
 }
 
 // GetEffectiveElectableSpecs returns the EffectiveElectableSpecs field value if set, zero value otherwise
@@ -336,6 +393,12 @@ func (o *CloudRegionConfig20240805) SetEffectiveElectableSpecs(v DedicatedHardwa
 	o.EffectiveElectableSpecs = &v
 }
 
+// SetEffectiveElectableSpecsNil sets EffectiveElectableSpecs to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetEffectiveElectableSpecsNil() {
+	o.EffectiveElectableSpecs = nil
+	o.NullFields = append(o.NullFields, "EffectiveElectableSpecs")
+}
+
 // GetEffectiveReadOnlySpecs returns the EffectiveReadOnlySpecs field value if set, zero value otherwise
 func (o *CloudRegionConfig20240805) GetEffectiveReadOnlySpecs() DedicatedHardwareSpec20240805 {
 	if o == nil || IsNil(o.EffectiveReadOnlySpecs) {
@@ -367,6 +430,12 @@ func (o *CloudRegionConfig20240805) HasEffectiveReadOnlySpecs() bool {
 // SetEffectiveReadOnlySpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the EffectiveReadOnlySpecs field.
 func (o *CloudRegionConfig20240805) SetEffectiveReadOnlySpecs(v DedicatedHardwareSpec20240805) {
 	o.EffectiveReadOnlySpecs = &v
+}
+
+// SetEffectiveReadOnlySpecsNil sets EffectiveReadOnlySpecs to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetEffectiveReadOnlySpecsNil() {
+	o.EffectiveReadOnlySpecs = nil
+	o.NullFields = append(o.NullFields, "EffectiveReadOnlySpecs")
 }
 
 // GetReadOnlySpecs returns the ReadOnlySpecs field value if set, zero value otherwise
@@ -402,6 +471,12 @@ func (o *CloudRegionConfig20240805) SetReadOnlySpecs(v DedicatedHardwareSpec2024
 	o.ReadOnlySpecs = &v
 }
 
+// SetReadOnlySpecsNil sets ReadOnlySpecs to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetReadOnlySpecsNil() {
+	o.ReadOnlySpecs = nil
+	o.NullFields = append(o.NullFields, "ReadOnlySpecs")
+}
+
 // GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise
 func (o *CloudRegionConfig20240805) GetBackingProviderName() string {
 	if o == nil || IsNil(o.BackingProviderName) {
@@ -433,4 +508,10 @@ func (o *CloudRegionConfig20240805) HasBackingProviderName() bool {
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
 func (o *CloudRegionConfig20240805) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
+}
+
+// SetBackingProviderNameNil sets BackingProviderName to an explicit JSON null when marshaled.
+func (o *CloudRegionConfig20240805) SetBackingProviderNameNil() {
+	o.BackingProviderName = nil
+	o.NullFields = append(o.NullFields, "BackingProviderName")
 }

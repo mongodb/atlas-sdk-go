@@ -41,6 +41,15 @@ type PrivateLinkEndpoint struct {
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 	// Flag that indicates whether the endpoint service for this endpoint group uses PSC port-mapping.
 	PortMappingEnabled *bool `json:"portMappingEnabled,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PrivateLinkEndpoint) MarshalJSON() ([]byte, error) {
+	type noMethod PrivateLinkEndpoint
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object
@@ -118,6 +127,12 @@ func (o *PrivateLinkEndpoint) SetDeleteRequested(v bool) {
 	o.DeleteRequested = &v
 }
 
+// SetDeleteRequestedNil sets DeleteRequested to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetDeleteRequestedNil() {
+	o.DeleteRequested = nil
+	o.NullFields = append(o.NullFields, "DeleteRequested")
+}
+
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
@@ -149,6 +164,12 @@ func (o *PrivateLinkEndpoint) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *PrivateLinkEndpoint) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = append(o.NullFields, "ErrorMessage")
 }
 
 // GetConnectionStatus returns the ConnectionStatus field value if set, zero value otherwise
@@ -184,6 +205,12 @@ func (o *PrivateLinkEndpoint) SetConnectionStatus(v string) {
 	o.ConnectionStatus = &v
 }
 
+// SetConnectionStatusNil sets ConnectionStatus to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetConnectionStatusNil() {
+	o.ConnectionStatus = nil
+	o.NullFields = append(o.NullFields, "ConnectionStatus")
+}
+
 // GetInterfaceEndpointId returns the InterfaceEndpointId field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetInterfaceEndpointId() string {
 	if o == nil || IsNil(o.InterfaceEndpointId) {
@@ -215,6 +242,12 @@ func (o *PrivateLinkEndpoint) HasInterfaceEndpointId() bool {
 // SetInterfaceEndpointId gets a reference to the given string and assigns it to the InterfaceEndpointId field.
 func (o *PrivateLinkEndpoint) SetInterfaceEndpointId(v string) {
 	o.InterfaceEndpointId = &v
+}
+
+// SetInterfaceEndpointIdNil sets InterfaceEndpointId to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetInterfaceEndpointIdNil() {
+	o.InterfaceEndpointId = nil
+	o.NullFields = append(o.NullFields, "InterfaceEndpointId")
 }
 
 // GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise
@@ -250,6 +283,12 @@ func (o *PrivateLinkEndpoint) SetPrivateEndpointConnectionName(v string) {
 	o.PrivateEndpointConnectionName = &v
 }
 
+// SetPrivateEndpointConnectionNameNil sets PrivateEndpointConnectionName to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointConnectionNameNil() {
+	o.PrivateEndpointConnectionName = nil
+	o.NullFields = append(o.NullFields, "PrivateEndpointConnectionName")
+}
+
 // GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddress() string {
 	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
@@ -281,6 +320,12 @@ func (o *PrivateLinkEndpoint) HasPrivateEndpointIPAddress() bool {
 // SetPrivateEndpointIPAddress gets a reference to the given string and assigns it to the PrivateEndpointIPAddress field.
 func (o *PrivateLinkEndpoint) SetPrivateEndpointIPAddress(v string) {
 	o.PrivateEndpointIPAddress = &v
+}
+
+// SetPrivateEndpointIPAddressNil sets PrivateEndpointIPAddress to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointIPAddressNil() {
+	o.PrivateEndpointIPAddress = nil
+	o.NullFields = append(o.NullFields, "PrivateEndpointIPAddress")
 }
 
 // GetPrivateEndpointResourceId returns the PrivateEndpointResourceId field value if set, zero value otherwise
@@ -316,6 +361,12 @@ func (o *PrivateLinkEndpoint) SetPrivateEndpointResourceId(v string) {
 	o.PrivateEndpointResourceId = &v
 }
 
+// SetPrivateEndpointResourceIdNil sets PrivateEndpointResourceId to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointResourceIdNil() {
+	o.PrivateEndpointResourceId = nil
+	o.NullFields = append(o.NullFields, "PrivateEndpointResourceId")
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -349,6 +400,12 @@ func (o *PrivateLinkEndpoint) SetStatus(v string) {
 	o.Status = &v
 }
 
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
+}
+
 // GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetEndpointGroupName() string {
 	if o == nil || IsNil(o.EndpointGroupName) {
@@ -380,6 +437,12 @@ func (o *PrivateLinkEndpoint) HasEndpointGroupName() bool {
 // SetEndpointGroupName gets a reference to the given string and assigns it to the EndpointGroupName field.
 func (o *PrivateLinkEndpoint) SetEndpointGroupName(v string) {
 	o.EndpointGroupName = &v
+}
+
+// SetEndpointGroupNameNil sets EndpointGroupName to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetEndpointGroupNameNil() {
+	o.EndpointGroupName = nil
+	o.NullFields = append(o.NullFields, "EndpointGroupName")
 }
 
 // GetEndpoints returns the Endpoints field value if set, zero value otherwise
@@ -448,6 +511,12 @@ func (o *PrivateLinkEndpoint) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
 }
 
+// SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetGcpProjectIdNil() {
+	o.GcpProjectId = nil
+	o.NullFields = append(o.NullFields, "GcpProjectId")
+}
+
 // GetPortMappingEnabled returns the PortMappingEnabled field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetPortMappingEnabled() bool {
 	if o == nil || IsNil(o.PortMappingEnabled) {
@@ -479,4 +548,10 @@ func (o *PrivateLinkEndpoint) HasPortMappingEnabled() bool {
 // SetPortMappingEnabled gets a reference to the given bool and assigns it to the PortMappingEnabled field.
 func (o *PrivateLinkEndpoint) SetPortMappingEnabled(v bool) {
 	o.PortMappingEnabled = &v
+}
+
+// SetPortMappingEnabledNil sets PortMappingEnabled to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetPortMappingEnabledNil() {
+	o.PortMappingEnabled = nil
+	o.NullFields = append(o.NullFields, "PortMappingEnabled")
 }

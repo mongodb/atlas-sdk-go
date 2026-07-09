@@ -6,6 +6,15 @@ package admin
 type DiskGBAutoScaling struct {
 	// Flag that indicates whether this cluster enables disk auto-scaling. The maximum memory allowed for the selected cluster tier and the oplog size can limit storage auto-scaling.
 	Enabled *bool `json:"enabled,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskGBAutoScaling) MarshalJSON() ([]byte, error) {
+	type noMethod DiskGBAutoScaling
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskGBAutoScaling instantiates a new DiskGBAutoScaling object
@@ -56,4 +65,10 @@ func (o *DiskGBAutoScaling) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *DiskGBAutoScaling) SetEnabled(v bool) {
 	o.Enabled = &v
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *DiskGBAutoScaling) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = append(o.NullFields, "Enabled")
 }

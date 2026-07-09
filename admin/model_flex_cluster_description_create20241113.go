@@ -15,6 +15,15 @@ type FlexClusterDescriptionCreate20241113 struct {
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FlexClusterDescriptionCreate20241113) MarshalJSON() ([]byte, error) {
+	type noMethod FlexClusterDescriptionCreate20241113
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexClusterDescriptionCreate20241113 instantiates a new FlexClusterDescriptionCreate20241113 object
@@ -185,4 +194,10 @@ func (o *FlexClusterDescriptionCreate20241113) HasTerminationProtectionEnabled()
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *FlexClusterDescriptionCreate20241113) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
+}
+
+// SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled.
+func (o *FlexClusterDescriptionCreate20241113) SetTerminationProtectionEnabledNil() {
+	o.TerminationProtectionEnabled = nil
+	o.NullFields = append(o.NullFields, "TerminationProtectionEnabled")
 }

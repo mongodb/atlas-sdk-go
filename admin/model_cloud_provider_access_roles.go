@@ -10,6 +10,15 @@ type CloudProviderAccessRoles struct {
 	AzureServicePrincipals *[]CloudProviderAccessAzureServicePrincipal `json:"azureServicePrincipals,omitempty"`
 	// List that contains the Google Service Accounts registered and authorized with MongoDB Cloud.
 	GcpServiceAccounts *[]CloudProviderAccessGCPServiceAccount `json:"gcpServiceAccounts,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderAccessRoles) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderAccessRoles
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessRoles instantiates a new CloudProviderAccessRoles object

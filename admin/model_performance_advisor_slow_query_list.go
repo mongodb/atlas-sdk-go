@@ -7,6 +7,15 @@ type PerformanceAdvisorSlowQueryList struct {
 	// List of operations that the Performance Advisor detected that took longer to execute than a specified threshold.
 	// Read only field.
 	SlowQueries *[]PerformanceAdvisorSlowQuery `json:"slowQueries,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PerformanceAdvisorSlowQueryList) MarshalJSON() ([]byte, error) {
+	type noMethod PerformanceAdvisorSlowQueryList
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorSlowQueryList instantiates a new PerformanceAdvisorSlowQueryList object

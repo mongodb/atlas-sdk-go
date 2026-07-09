@@ -12,6 +12,15 @@ type ApiAtlasClusterAdvancedConfiguration struct {
 	MinimumEnabledTlsProtocol *string `json:"minimumEnabledTlsProtocol,omitempty"`
 	// The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
 	TlsCipherConfigMode *string `json:"tlsCipherConfigMode,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasClusterAdvancedConfiguration) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasClusterAdvancedConfiguration
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasClusterAdvancedConfiguration instantiates a new ApiAtlasClusterAdvancedConfiguration object
@@ -130,6 +139,12 @@ func (o *ApiAtlasClusterAdvancedConfiguration) SetMinimumEnabledTlsProtocol(v st
 	o.MinimumEnabledTlsProtocol = &v
 }
 
+// SetMinimumEnabledTlsProtocolNil sets MinimumEnabledTlsProtocol to an explicit JSON null when marshaled.
+func (o *ApiAtlasClusterAdvancedConfiguration) SetMinimumEnabledTlsProtocolNil() {
+	o.MinimumEnabledTlsProtocol = nil
+	o.NullFields = append(o.NullFields, "MinimumEnabledTlsProtocol")
+}
+
 // GetTlsCipherConfigMode returns the TlsCipherConfigMode field value if set, zero value otherwise
 func (o *ApiAtlasClusterAdvancedConfiguration) GetTlsCipherConfigMode() string {
 	if o == nil || IsNil(o.TlsCipherConfigMode) {
@@ -161,4 +176,10 @@ func (o *ApiAtlasClusterAdvancedConfiguration) HasTlsCipherConfigMode() bool {
 // SetTlsCipherConfigMode gets a reference to the given string and assigns it to the TlsCipherConfigMode field.
 func (o *ApiAtlasClusterAdvancedConfiguration) SetTlsCipherConfigMode(v string) {
 	o.TlsCipherConfigMode = &v
+}
+
+// SetTlsCipherConfigModeNil sets TlsCipherConfigMode to an explicit JSON null when marshaled.
+func (o *ApiAtlasClusterAdvancedConfiguration) SetTlsCipherConfigModeNil() {
+	o.TlsCipherConfigMode = nil
+	o.NullFields = append(o.NullFields, "TlsCipherConfigMode")
 }

@@ -13,6 +13,15 @@ type InboundControlPlaneCloudProviderIPAddresses struct {
 	// Control plane IP addresses in GCP. Each key identifies a Google Cloud (GCP) region. Each value identifies control plane IP addresses in the GCP region.
 	// Read only field.
 	Gcp *map[string][]string `json:"gcp,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *InboundControlPlaneCloudProviderIPAddresses) MarshalJSON() ([]byte, error) {
+	type noMethod InboundControlPlaneCloudProviderIPAddresses
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewInboundControlPlaneCloudProviderIPAddresses instantiates a new InboundControlPlaneCloudProviderIPAddresses object
@@ -65,6 +74,12 @@ func (o *InboundControlPlaneCloudProviderIPAddresses) SetAws(v map[string][]stri
 	o.Aws = &v
 }
 
+// SetAwsNil sets Aws to an explicit JSON null when marshaled.
+func (o *InboundControlPlaneCloudProviderIPAddresses) SetAwsNil() {
+	o.Aws = nil
+	o.NullFields = append(o.NullFields, "Aws")
+}
+
 // GetAzure returns the Azure field value if set, zero value otherwise
 func (o *InboundControlPlaneCloudProviderIPAddresses) GetAzure() map[string][]string {
 	if o == nil || IsNil(o.Azure) {
@@ -98,6 +113,12 @@ func (o *InboundControlPlaneCloudProviderIPAddresses) SetAzure(v map[string][]st
 	o.Azure = &v
 }
 
+// SetAzureNil sets Azure to an explicit JSON null when marshaled.
+func (o *InboundControlPlaneCloudProviderIPAddresses) SetAzureNil() {
+	o.Azure = nil
+	o.NullFields = append(o.NullFields, "Azure")
+}
+
 // GetGcp returns the Gcp field value if set, zero value otherwise
 func (o *InboundControlPlaneCloudProviderIPAddresses) GetGcp() map[string][]string {
 	if o == nil || IsNil(o.Gcp) {
@@ -129,4 +150,10 @@ func (o *InboundControlPlaneCloudProviderIPAddresses) HasGcp() bool {
 // SetGcp gets a reference to the given map[string][]string and assigns it to the Gcp field.
 func (o *InboundControlPlaneCloudProviderIPAddresses) SetGcp(v map[string][]string) {
 	o.Gcp = &v
+}
+
+// SetGcpNil sets Gcp to an explicit JSON null when marshaled.
+func (o *InboundControlPlaneCloudProviderIPAddresses) SetGcpNil() {
+	o.Gcp = nil
+	o.NullFields = append(o.NullFields, "Gcp")
 }

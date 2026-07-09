@@ -11,6 +11,15 @@ type DBRoleToExecute struct {
 	Role *string `json:"role,omitempty"`
 	// Type of the DB role. Can be either Built In or Custom.
 	Type *string `json:"type,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DBRoleToExecute) MarshalJSON() ([]byte, error) {
+	type noMethod DBRoleToExecute
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDBRoleToExecute instantiates a new DBRoleToExecute object
@@ -96,6 +105,12 @@ func (o *DBRoleToExecute) SetRole(v string) {
 	o.Role = &v
 }
 
+// SetRoleNil sets Role to an explicit JSON null when marshaled.
+func (o *DBRoleToExecute) SetRoleNil() {
+	o.Role = nil
+	o.NullFields = append(o.NullFields, "Role")
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *DBRoleToExecute) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -127,4 +142,10 @@ func (o *DBRoleToExecute) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DBRoleToExecute) SetType(v string) {
 	o.Type = &v
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *DBRoleToExecute) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = append(o.NullFields, "Type")
 }

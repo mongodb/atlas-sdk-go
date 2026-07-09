@@ -8,6 +8,15 @@ type Header struct {
 	Name string `json:"name"`
 	// Header value.
 	Value string `json:"value"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *Header) MarshalJSON() ([]byte, error) {
+	type noMethod Header
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewHeader instantiates a new Header object

@@ -15,6 +15,15 @@ type DiskBackupExportJobRequest struct {
 	// Unique 24-hexadecimal character string that identifies the Cloud Backup Snapshot to export.
 	// Write only field.
 	SnapshotId string `json:"snapshotId"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupExportJobRequest) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupExportJobRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupExportJobRequest instantiates a new DiskBackupExportJobRequest object

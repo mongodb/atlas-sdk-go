@@ -10,6 +10,15 @@ type StreamsMatcher struct {
 	Operator string `json:"operator"`
 	// Value to match or exceed using the specified `matchers.operator`.
 	Value string `json:"value"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsMatcher) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsMatcher
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsMatcher instantiates a new StreamsMatcher object

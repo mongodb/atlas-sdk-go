@@ -37,6 +37,15 @@ type OrganizationInvitation struct {
 	TeamIds *[]string `json:"teamIds,omitempty"`
 	// Email address of the MongoDB Cloud user invited to join the organization.
 	Username *string `json:"username,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrganizationInvitation) MarshalJSON() ([]byte, error) {
+	type noMethod OrganizationInvitation
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrganizationInvitation instantiates a new OrganizationInvitation object
@@ -90,6 +99,12 @@ func (o *OrganizationInvitation) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *OrganizationInvitation) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = append(o.NullFields, "CreatedAt")
+}
+
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
@@ -121,6 +136,12 @@ func (o *OrganizationInvitation) HasExpiresAt() bool {
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *OrganizationInvitation) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
+}
+
+// SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled.
+func (o *OrganizationInvitation) SetExpiresAtNil() {
+	o.ExpiresAt = nil
+	o.NullFields = append(o.NullFields, "ExpiresAt")
 }
 
 // GetGroupRoleAssignments returns the GroupRoleAssignments field value if set, zero value otherwise
@@ -189,6 +210,12 @@ func (o *OrganizationInvitation) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *OrganizationInvitation) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetInviterUsername returns the InviterUsername field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetInviterUsername() string {
 	if o == nil || IsNil(o.InviterUsername) {
@@ -220,6 +247,12 @@ func (o *OrganizationInvitation) HasInviterUsername() bool {
 // SetInviterUsername gets a reference to the given string and assigns it to the InviterUsername field.
 func (o *OrganizationInvitation) SetInviterUsername(v string) {
 	o.InviterUsername = &v
+}
+
+// SetInviterUsernameNil sets InviterUsername to an explicit JSON null when marshaled.
+func (o *OrganizationInvitation) SetInviterUsernameNil() {
+	o.InviterUsername = nil
+	o.NullFields = append(o.NullFields, "InviterUsername")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -286,6 +319,12 @@ func (o *OrganizationInvitation) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *OrganizationInvitation) SetOrgId(v string) {
 	o.OrgId = &v
+}
+
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *OrganizationInvitation) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = append(o.NullFields, "OrgId")
 }
 
 // GetOrgName returns the OrgName field value
@@ -409,4 +448,10 @@ func (o *OrganizationInvitation) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *OrganizationInvitation) SetUsername(v string) {
 	o.Username = &v
+}
+
+// SetUsernameNil sets Username to an explicit JSON null when marshaled.
+func (o *OrganizationInvitation) SetUsernameNil() {
+	o.Username = nil
+	o.NullFields = append(o.NullFields, "Username")
 }

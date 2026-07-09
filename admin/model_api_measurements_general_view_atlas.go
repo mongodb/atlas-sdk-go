@@ -38,6 +38,15 @@ type ApiMeasurementsGeneralViewAtlas struct {
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Start *time.Time `json:"start,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiMeasurementsGeneralViewAtlas) MarshalJSON() ([]byte, error) {
+	type noMethod ApiMeasurementsGeneralViewAtlas
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiMeasurementsGeneralViewAtlas instantiates a new ApiMeasurementsGeneralViewAtlas object
@@ -90,6 +99,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetDatabaseName(v string) {
 	o.DatabaseName = &v
 }
 
+// SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetDatabaseNameNil() {
+	o.DatabaseName = nil
+	o.NullFields = append(o.NullFields, "DatabaseName")
+}
+
 // GetEnd returns the End field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetEnd() time.Time {
 	if o == nil || IsNil(o.End) {
@@ -121,6 +136,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasEnd() bool {
 // SetEnd gets a reference to the given time.Time and assigns it to the End field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetEnd(v time.Time) {
 	o.End = &v
+}
+
+// SetEndNil sets End to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetEndNil() {
+	o.End = nil
+	o.NullFields = append(o.NullFields, "End")
 }
 
 // GetGranularity returns the Granularity field value if set, zero value otherwise
@@ -156,6 +177,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetGranularity(v string) {
 	o.Granularity = &v
 }
 
+// SetGranularityNil sets Granularity to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetGranularityNil() {
+	o.Granularity = nil
+	o.NullFields = append(o.NullFields, "Granularity")
+}
+
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -189,6 +216,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = append(o.NullFields, "GroupId")
+}
+
 // GetHostId returns the HostId field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetHostId() string {
 	if o == nil || IsNil(o.HostId) {
@@ -220,6 +253,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasHostId() bool {
 // SetHostId gets a reference to the given string and assigns it to the HostId field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetHostId(v string) {
 	o.HostId = &v
+}
+
+// SetHostIdNil sets HostId to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetHostIdNil() {
+	o.HostId = nil
+	o.NullFields = append(o.NullFields, "HostId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -321,6 +360,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetPartitionName(v string) {
 	o.PartitionName = &v
 }
 
+// SetPartitionNameNil sets PartitionName to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetPartitionNameNil() {
+	o.PartitionName = nil
+	o.NullFields = append(o.NullFields, "PartitionName")
+}
+
 // GetProcessId returns the ProcessId field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetProcessId() string {
 	if o == nil || IsNil(o.ProcessId) {
@@ -354,6 +399,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetProcessId(v string) {
 	o.ProcessId = &v
 }
 
+// SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetProcessIdNil() {
+	o.ProcessId = nil
+	o.NullFields = append(o.NullFields, "ProcessId")
+}
+
 // GetStart returns the Start field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetStart() time.Time {
 	if o == nil || IsNil(o.Start) {
@@ -385,4 +436,10 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasStart() bool {
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetStart(v time.Time) {
 	o.Start = &v
+}
+
+// SetStartNil sets Start to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetStartNil() {
+	o.Start = nil
+	o.NullFields = append(o.NullFields, "Start")
 }

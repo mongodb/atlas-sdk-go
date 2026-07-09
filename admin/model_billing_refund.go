@@ -20,6 +20,15 @@ type BillingRefund struct {
 	// Justification that MongoDB accepted to return funds to the organization.
 	// Read only field.
 	Reason *string `json:"reason,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BillingRefund) MarshalJSON() ([]byte, error) {
+	type noMethod BillingRefund
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBillingRefund instantiates a new BillingRefund object
@@ -72,6 +81,12 @@ func (o *BillingRefund) SetAmountCents(v int64) {
 	o.AmountCents = &v
 }
 
+// SetAmountCentsNil sets AmountCents to an explicit JSON null when marshaled.
+func (o *BillingRefund) SetAmountCentsNil() {
+	o.AmountCents = nil
+	o.NullFields = append(o.NullFields, "AmountCents")
+}
+
 // GetCreated returns the Created field value if set, zero value otherwise
 func (o *BillingRefund) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
@@ -103,6 +118,12 @@ func (o *BillingRefund) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *BillingRefund) SetCreated(v time.Time) {
 	o.Created = &v
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *BillingRefund) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = append(o.NullFields, "Created")
 }
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise
@@ -138,6 +159,12 @@ func (o *BillingRefund) SetPaymentId(v string) {
 	o.PaymentId = &v
 }
 
+// SetPaymentIdNil sets PaymentId to an explicit JSON null when marshaled.
+func (o *BillingRefund) SetPaymentIdNil() {
+	o.PaymentId = nil
+	o.NullFields = append(o.NullFields, "PaymentId")
+}
+
 // GetReason returns the Reason field value if set, zero value otherwise
 func (o *BillingRefund) GetReason() string {
 	if o == nil || IsNil(o.Reason) {
@@ -169,4 +196,10 @@ func (o *BillingRefund) HasReason() bool {
 // SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *BillingRefund) SetReason(v string) {
 	o.Reason = &v
+}
+
+// SetReasonNil sets Reason to an explicit JSON null when marshaled.
+func (o *BillingRefund) SetReasonNil() {
+	o.Reason = nil
+	o.NullFields = append(o.NullFields, "Reason")
 }

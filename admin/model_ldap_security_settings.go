@@ -26,6 +26,15 @@ type LDAPSecuritySettings struct {
 	Port *int `json:"port,omitempty"`
 	// User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN.
 	UserToDNMapping *[]UserToDNMapping `json:"userToDNMapping,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LDAPSecuritySettings) MarshalJSON() ([]byte, error) {
+	type noMethod LDAPSecuritySettings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLDAPSecuritySettings instantiates a new LDAPSecuritySettings object
@@ -86,6 +95,12 @@ func (o *LDAPSecuritySettings) SetAuthenticationEnabled(v bool) {
 	o.AuthenticationEnabled = &v
 }
 
+// SetAuthenticationEnabledNil sets AuthenticationEnabled to an explicit JSON null when marshaled.
+func (o *LDAPSecuritySettings) SetAuthenticationEnabledNil() {
+	o.AuthenticationEnabled = nil
+	o.NullFields = append(o.NullFields, "AuthenticationEnabled")
+}
+
 // GetAuthorizationEnabled returns the AuthorizationEnabled field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetAuthorizationEnabled() bool {
 	if o == nil || IsNil(o.AuthorizationEnabled) {
@@ -117,6 +132,12 @@ func (o *LDAPSecuritySettings) HasAuthorizationEnabled() bool {
 // SetAuthorizationEnabled gets a reference to the given bool and assigns it to the AuthorizationEnabled field.
 func (o *LDAPSecuritySettings) SetAuthorizationEnabled(v bool) {
 	o.AuthorizationEnabled = &v
+}
+
+// SetAuthorizationEnabledNil sets AuthorizationEnabled to an explicit JSON null when marshaled.
+func (o *LDAPSecuritySettings) SetAuthorizationEnabledNil() {
+	o.AuthorizationEnabled = nil
+	o.NullFields = append(o.NullFields, "AuthorizationEnabled")
 }
 
 // GetAuthzQueryTemplate returns the AuthzQueryTemplate field value if set, zero value otherwise
@@ -152,6 +173,12 @@ func (o *LDAPSecuritySettings) SetAuthzQueryTemplate(v string) {
 	o.AuthzQueryTemplate = &v
 }
 
+// SetAuthzQueryTemplateNil sets AuthzQueryTemplate to an explicit JSON null when marshaled.
+func (o *LDAPSecuritySettings) SetAuthzQueryTemplateNil() {
+	o.AuthzQueryTemplate = nil
+	o.NullFields = append(o.NullFields, "AuthzQueryTemplate")
+}
+
 // GetBindPassword returns the BindPassword field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetBindPassword() string {
 	if o == nil || IsNil(o.BindPassword) {
@@ -183,6 +210,12 @@ func (o *LDAPSecuritySettings) HasBindPassword() bool {
 // SetBindPassword gets a reference to the given string and assigns it to the BindPassword field.
 func (o *LDAPSecuritySettings) SetBindPassword(v string) {
 	o.BindPassword = &v
+}
+
+// SetBindPasswordNil sets BindPassword to an explicit JSON null when marshaled.
+func (o *LDAPSecuritySettings) SetBindPasswordNil() {
+	o.BindPassword = nil
+	o.NullFields = append(o.NullFields, "BindPassword")
 }
 
 // GetBindUsername returns the BindUsername field value if set, zero value otherwise
@@ -218,6 +251,12 @@ func (o *LDAPSecuritySettings) SetBindUsername(v string) {
 	o.BindUsername = &v
 }
 
+// SetBindUsernameNil sets BindUsername to an explicit JSON null when marshaled.
+func (o *LDAPSecuritySettings) SetBindUsernameNil() {
+	o.BindUsername = nil
+	o.NullFields = append(o.NullFields, "BindUsername")
+}
+
 // GetCaCertificate returns the CaCertificate field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetCaCertificate() string {
 	if o == nil || IsNil(o.CaCertificate) {
@@ -251,6 +290,12 @@ func (o *LDAPSecuritySettings) SetCaCertificate(v string) {
 	o.CaCertificate = &v
 }
 
+// SetCaCertificateNil sets CaCertificate to an explicit JSON null when marshaled.
+func (o *LDAPSecuritySettings) SetCaCertificateNil() {
+	o.CaCertificate = nil
+	o.NullFields = append(o.NullFields, "CaCertificate")
+}
+
 // GetHostname returns the Hostname field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetHostname() string {
 	if o == nil || IsNil(o.Hostname) {
@@ -282,6 +327,12 @@ func (o *LDAPSecuritySettings) HasHostname() bool {
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *LDAPSecuritySettings) SetHostname(v string) {
 	o.Hostname = &v
+}
+
+// SetHostnameNil sets Hostname to an explicit JSON null when marshaled.
+func (o *LDAPSecuritySettings) SetHostnameNil() {
+	o.Hostname = nil
+	o.NullFields = append(o.NullFields, "Hostname")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -348,6 +399,12 @@ func (o *LDAPSecuritySettings) HasPort() bool {
 // SetPort gets a reference to the given int and assigns it to the Port field.
 func (o *LDAPSecuritySettings) SetPort(v int) {
 	o.Port = &v
+}
+
+// SetPortNil sets Port to an explicit JSON null when marshaled.
+func (o *LDAPSecuritySettings) SetPortNil() {
+	o.Port = nil
+	o.NullFields = append(o.NullFields, "Port")
 }
 
 // GetUserToDNMapping returns the UserToDNMapping field value if set, zero value otherwise

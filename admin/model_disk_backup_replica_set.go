@@ -56,6 +56,15 @@ type DiskBackupReplicaSet struct {
 	// Human-readable label that categorizes the cluster as a replica set or sharded cluster.
 	// Read only field.
 	Type *string `json:"type,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupReplicaSet) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupReplicaSet
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupReplicaSet instantiates a new DiskBackupReplicaSet object
@@ -106,6 +115,12 @@ func (o *DiskBackupReplicaSet) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DiskBackupReplicaSet) SetCloudProvider(v string) {
 	o.CloudProvider = &v
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = append(o.NullFields, "CloudProvider")
 }
 
 // GetCopyRegions returns the CopyRegions field value if set, zero value otherwise
@@ -174,6 +189,12 @@ func (o *DiskBackupReplicaSet) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = append(o.NullFields, "CreatedAt")
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise
 func (o *DiskBackupReplicaSet) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -205,6 +226,12 @@ func (o *DiskBackupReplicaSet) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DiskBackupReplicaSet) SetDescription(v string) {
 	o.Description = &v
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = append(o.NullFields, "Description")
 }
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
@@ -240,6 +267,12 @@ func (o *DiskBackupReplicaSet) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
+// SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetExpiresAtNil() {
+	o.ExpiresAt = nil
+	o.NullFields = append(o.NullFields, "ExpiresAt")
+}
+
 // GetFrequencyType returns the FrequencyType field value if set, zero value otherwise
 func (o *DiskBackupReplicaSet) GetFrequencyType() string {
 	if o == nil || IsNil(o.FrequencyType) {
@@ -273,6 +306,12 @@ func (o *DiskBackupReplicaSet) SetFrequencyType(v string) {
 	o.FrequencyType = &v
 }
 
+// SetFrequencyTypeNil sets FrequencyType to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetFrequencyTypeNil() {
+	o.FrequencyType = nil
+	o.NullFields = append(o.NullFields, "FrequencyType")
+}
+
 // GetId returns the Id field value if set, zero value otherwise
 func (o *DiskBackupReplicaSet) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -304,6 +343,12 @@ func (o *DiskBackupReplicaSet) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupReplicaSet) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -372,6 +417,12 @@ func (o *DiskBackupReplicaSet) SetMasterKeyUUID(v string) {
 	o.MasterKeyUUID = &v
 }
 
+// SetMasterKeyUUIDNil sets MasterKeyUUID to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetMasterKeyUUIDNil() {
+	o.MasterKeyUUID = nil
+	o.NullFields = append(o.NullFields, "MasterKeyUUID")
+}
+
 // GetMongodVersion returns the MongodVersion field value if set, zero value otherwise
 func (o *DiskBackupReplicaSet) GetMongodVersion() string {
 	if o == nil || IsNil(o.MongodVersion) {
@@ -403,6 +454,12 @@ func (o *DiskBackupReplicaSet) HasMongodVersion() bool {
 // SetMongodVersion gets a reference to the given string and assigns it to the MongodVersion field.
 func (o *DiskBackupReplicaSet) SetMongodVersion(v string) {
 	o.MongodVersion = &v
+}
+
+// SetMongodVersionNil sets MongodVersion to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetMongodVersionNil() {
+	o.MongodVersion = nil
+	o.NullFields = append(o.NullFields, "MongodVersion")
 }
 
 // GetPolicyItems returns the PolicyItems field value if set, zero value otherwise
@@ -471,6 +528,12 @@ func (o *DiskBackupReplicaSet) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
+// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetReplicaSetNameNil() {
+	o.ReplicaSetName = nil
+	o.NullFields = append(o.NullFields, "ReplicaSetName")
+}
+
 // GetSnapshotType returns the SnapshotType field value if set, zero value otherwise
 func (o *DiskBackupReplicaSet) GetSnapshotType() string {
 	if o == nil || IsNil(o.SnapshotType) {
@@ -502,6 +565,12 @@ func (o *DiskBackupReplicaSet) HasSnapshotType() bool {
 // SetSnapshotType gets a reference to the given string and assigns it to the SnapshotType field.
 func (o *DiskBackupReplicaSet) SetSnapshotType(v string) {
 	o.SnapshotType = &v
+}
+
+// SetSnapshotTypeNil sets SnapshotType to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetSnapshotTypeNil() {
+	o.SnapshotType = nil
+	o.NullFields = append(o.NullFields, "SnapshotType")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -537,6 +606,12 @@ func (o *DiskBackupReplicaSet) SetStatus(v string) {
 	o.Status = &v
 }
 
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
+}
+
 // GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise
 func (o *DiskBackupReplicaSet) GetStorageSizeBytes() int64 {
 	if o == nil || IsNil(o.StorageSizeBytes) {
@@ -570,6 +645,12 @@ func (o *DiskBackupReplicaSet) SetStorageSizeBytes(v int64) {
 	o.StorageSizeBytes = &v
 }
 
+// SetStorageSizeBytesNil sets StorageSizeBytes to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetStorageSizeBytesNil() {
+	o.StorageSizeBytes = nil
+	o.NullFields = append(o.NullFields, "StorageSizeBytes")
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *DiskBackupReplicaSet) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -601,4 +682,10 @@ func (o *DiskBackupReplicaSet) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DiskBackupReplicaSet) SetType(v string) {
 	o.Type = &v
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *DiskBackupReplicaSet) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = append(o.NullFields, "Type")
 }

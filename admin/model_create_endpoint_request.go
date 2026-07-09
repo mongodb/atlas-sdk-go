@@ -19,6 +19,15 @@ type CreateEndpointRequest struct {
 	// Unique string that identifies the Google Cloud project in which you created the endpoints.
 	// Write only field.
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CreateEndpointRequest) MarshalJSON() ([]byte, error) {
+	type noMethod CreateEndpointRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCreateEndpointRequest instantiates a new CreateEndpointRequest object
@@ -71,6 +80,12 @@ func (o *CreateEndpointRequest) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *CreateEndpointRequest) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = append(o.NullFields, "CloudProvider")
+}
+
 // GetId returns the Id field value if set, zero value otherwise
 func (o *CreateEndpointRequest) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -102,6 +117,12 @@ func (o *CreateEndpointRequest) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CreateEndpointRequest) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *CreateEndpointRequest) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise
@@ -137,6 +158,12 @@ func (o *CreateEndpointRequest) SetPrivateEndpointIPAddress(v string) {
 	o.PrivateEndpointIPAddress = &v
 }
 
+// SetPrivateEndpointIPAddressNil sets PrivateEndpointIPAddress to an explicit JSON null when marshaled.
+func (o *CreateEndpointRequest) SetPrivateEndpointIPAddressNil() {
+	o.PrivateEndpointIPAddress = nil
+	o.NullFields = append(o.NullFields, "PrivateEndpointIPAddress")
+}
+
 // GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise
 func (o *CreateEndpointRequest) GetEndpointGroupName() string {
 	if o == nil || IsNil(o.EndpointGroupName) {
@@ -168,6 +195,12 @@ func (o *CreateEndpointRequest) HasEndpointGroupName() bool {
 // SetEndpointGroupName gets a reference to the given string and assigns it to the EndpointGroupName field.
 func (o *CreateEndpointRequest) SetEndpointGroupName(v string) {
 	o.EndpointGroupName = &v
+}
+
+// SetEndpointGroupNameNil sets EndpointGroupName to an explicit JSON null when marshaled.
+func (o *CreateEndpointRequest) SetEndpointGroupNameNil() {
+	o.EndpointGroupName = nil
+	o.NullFields = append(o.NullFields, "EndpointGroupName")
 }
 
 // GetEndpoints returns the Endpoints field value if set, zero value otherwise
@@ -234,4 +267,10 @@ func (o *CreateEndpointRequest) HasGcpProjectId() bool {
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *CreateEndpointRequest) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
+}
+
+// SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled.
+func (o *CreateEndpointRequest) SetGcpProjectIdNil() {
+	o.GcpProjectId = nil
+	o.NullFields = append(o.NullFields, "GcpProjectId")
 }

@@ -7,6 +7,15 @@ type DataLakeCloudProviderConfig struct {
 	Aws   *DataLakeAWSCloudProviderConfig         `json:"aws,omitempty"`
 	Azure *DataFederationAzureCloudProviderConfig `json:"azure,omitempty"`
 	Gcp   *DataFederationGCPCloudProviderConfig   `json:"gcp,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeCloudProviderConfig) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeCloudProviderConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeCloudProviderConfig instantiates a new DataLakeCloudProviderConfig object
@@ -59,6 +68,12 @@ func (o *DataLakeCloudProviderConfig) SetAws(v DataLakeAWSCloudProviderConfig) {
 	o.Aws = &v
 }
 
+// SetAwsNil sets Aws to an explicit JSON null when marshaled.
+func (o *DataLakeCloudProviderConfig) SetAwsNil() {
+	o.Aws = nil
+	o.NullFields = append(o.NullFields, "Aws")
+}
+
 // GetAzure returns the Azure field value if set, zero value otherwise
 func (o *DataLakeCloudProviderConfig) GetAzure() DataFederationAzureCloudProviderConfig {
 	if o == nil || IsNil(o.Azure) {
@@ -92,6 +107,12 @@ func (o *DataLakeCloudProviderConfig) SetAzure(v DataFederationAzureCloudProvide
 	o.Azure = &v
 }
 
+// SetAzureNil sets Azure to an explicit JSON null when marshaled.
+func (o *DataLakeCloudProviderConfig) SetAzureNil() {
+	o.Azure = nil
+	o.NullFields = append(o.NullFields, "Azure")
+}
+
 // GetGcp returns the Gcp field value if set, zero value otherwise
 func (o *DataLakeCloudProviderConfig) GetGcp() DataFederationGCPCloudProviderConfig {
 	if o == nil || IsNil(o.Gcp) {
@@ -123,4 +144,10 @@ func (o *DataLakeCloudProviderConfig) HasGcp() bool {
 // SetGcp gets a reference to the given DataFederationGCPCloudProviderConfig and assigns it to the Gcp field.
 func (o *DataLakeCloudProviderConfig) SetGcp(v DataFederationGCPCloudProviderConfig) {
 	o.Gcp = &v
+}
+
+// SetGcpNil sets Gcp to an explicit JSON null when marshaled.
+func (o *DataLakeCloudProviderConfig) SetGcpNil() {
+	o.Gcp = nil
+	o.NullFields = append(o.NullFields, "Gcp")
 }

@@ -8,6 +8,15 @@ type PemFileInfo struct {
 	Certificates *[]X509Certificate `json:"certificates,omitempty"`
 	// Human-readable label given to the file.
 	FileName *string `json:"fileName,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PemFileInfo) MarshalJSON() ([]byte, error) {
+	type noMethod PemFileInfo
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPemFileInfo instantiates a new PemFileInfo object
@@ -91,4 +100,10 @@ func (o *PemFileInfo) HasFileName() bool {
 // SetFileName gets a reference to the given string and assigns it to the FileName field.
 func (o *PemFileInfo) SetFileName(v string) {
 	o.FileName = &v
+}
+
+// SetFileNameNil sets FileName to an explicit JSON null when marshaled.
+func (o *PemFileInfo) SetFileNameNil() {
+	o.FileName = nil
+	o.NullFields = append(o.NullFields, "FileName")
 }

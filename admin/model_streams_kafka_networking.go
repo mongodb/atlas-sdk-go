@@ -8,6 +8,15 @@ type StreamsKafkaNetworking struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsKafkaNetworking) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsKafkaNetworking
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsKafkaNetworking instantiates a new StreamsKafkaNetworking object
@@ -58,6 +67,12 @@ func (o *StreamsKafkaNetworking) HasAccess() bool {
 // SetAccess gets a reference to the given StreamsKafkaNetworkingAccess and assigns it to the Access field.
 func (o *StreamsKafkaNetworking) SetAccess(v StreamsKafkaNetworkingAccess) {
 	o.Access = &v
+}
+
+// SetAccessNil sets Access to an explicit JSON null when marshaled.
+func (o *StreamsKafkaNetworking) SetAccessNil() {
+	o.Access = nil
+	o.NullFields = append(o.NullFields, "Access")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

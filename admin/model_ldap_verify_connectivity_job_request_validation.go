@@ -10,6 +10,15 @@ type LDAPVerifyConnectivityJobRequestValidation struct {
 	// Human-readable label that identifies this verification test that MongoDB Cloud runs.
 	// Read only field.
 	ValidationType *string `json:"validationType,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LDAPVerifyConnectivityJobRequestValidation) MarshalJSON() ([]byte, error) {
+	type noMethod LDAPVerifyConnectivityJobRequestValidation
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLDAPVerifyConnectivityJobRequestValidation instantiates a new LDAPVerifyConnectivityJobRequestValidation object
@@ -62,6 +71,12 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) SetStatus(v string) {
 	o.Status = &v
 }
 
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequestValidation) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
+}
+
 // GetValidationType returns the ValidationType field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequestValidation) GetValidationType() string {
 	if o == nil || IsNil(o.ValidationType) {
@@ -93,4 +108,10 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) HasValidationType() bool {
 // SetValidationType gets a reference to the given string and assigns it to the ValidationType field.
 func (o *LDAPVerifyConnectivityJobRequestValidation) SetValidationType(v string) {
 	o.ValidationType = &v
+}
+
+// SetValidationTypeNil sets ValidationType to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequestValidation) SetValidationTypeNil() {
+	o.ValidationType = nil
+	o.NullFields = append(o.NullFields, "ValidationType")
 }

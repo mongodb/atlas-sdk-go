@@ -55,6 +55,15 @@ type ThirdPartyIntegration struct {
 	Username *string `json:"username,omitempty"`
 	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
 	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ThirdPartyIntegration) MarshalJSON() ([]byte, error) {
+	type noMethod ThirdPartyIntegration
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewThirdPartyIntegration instantiates a new ThirdPartyIntegration object
@@ -131,6 +140,12 @@ func (o *ThirdPartyIntegration) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -162,6 +177,12 @@ func (o *ThirdPartyIntegration) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ThirdPartyIntegration) SetType(v string) {
 	o.Type = &v
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = append(o.NullFields, "Type")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -197,6 +218,12 @@ func (o *ThirdPartyIntegration) SetRegion(v string) {
 	o.Region = &v
 }
 
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = append(o.NullFields, "Region")
+}
+
 // GetServiceKey returns the ServiceKey field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetServiceKey() string {
 	if o == nil || IsNil(o.ServiceKey) {
@@ -228,6 +255,12 @@ func (o *ThirdPartyIntegration) HasServiceKey() bool {
 // SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
 func (o *ThirdPartyIntegration) SetServiceKey(v string) {
 	o.ServiceKey = &v
+}
+
+// SetServiceKeyNil sets ServiceKey to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetServiceKeyNil() {
+	o.ServiceKey = nil
+	o.NullFields = append(o.NullFields, "ServiceKey")
 }
 
 // GetApiToken returns the ApiToken field value if set, zero value otherwise
@@ -263,6 +296,12 @@ func (o *ThirdPartyIntegration) SetApiToken(v string) {
 	o.ApiToken = &v
 }
 
+// SetApiTokenNil sets ApiToken to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetApiTokenNil() {
+	o.ApiToken = nil
+	o.NullFields = append(o.NullFields, "ApiToken")
+}
+
 // GetChannelName returns the ChannelName field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetChannelName() string {
 	if o == nil || IsNil(o.ChannelName) {
@@ -294,6 +333,12 @@ func (o *ThirdPartyIntegration) HasChannelName() bool {
 // SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
 func (o *ThirdPartyIntegration) SetChannelName(v string) {
 	o.ChannelName = &v
+}
+
+// SetChannelNameNil sets ChannelName to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetChannelNameNil() {
+	o.ChannelName = nil
+	o.NullFields = append(o.NullFields, "ChannelName")
 }
 
 // GetTeamName returns the TeamName field value if set, zero value otherwise
@@ -329,6 +374,12 @@ func (o *ThirdPartyIntegration) SetTeamName(v string) {
 	o.TeamName = &v
 }
 
+// SetTeamNameNil sets TeamName to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetTeamNameNil() {
+	o.TeamName = nil
+	o.NullFields = append(o.NullFields, "TeamName")
+}
+
 // GetApiKey returns the ApiKey field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetApiKey() string {
 	if o == nil || IsNil(o.ApiKey) {
@@ -360,6 +411,12 @@ func (o *ThirdPartyIntegration) HasApiKey() bool {
 // SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
 func (o *ThirdPartyIntegration) SetApiKey(v string) {
 	o.ApiKey = &v
+}
+
+// SetApiKeyNil sets ApiKey to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetApiKeyNil() {
+	o.ApiKey = nil
+	o.NullFields = append(o.NullFields, "ApiKey")
 }
 
 // GetSendCollectionLatencyMetrics returns the SendCollectionLatencyMetrics field value if set, zero value otherwise
@@ -395,6 +452,12 @@ func (o *ThirdPartyIntegration) SetSendCollectionLatencyMetrics(v bool) {
 	o.SendCollectionLatencyMetrics = &v
 }
 
+// SetSendCollectionLatencyMetricsNil sets SendCollectionLatencyMetrics to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetSendCollectionLatencyMetricsNil() {
+	o.SendCollectionLatencyMetrics = nil
+	o.NullFields = append(o.NullFields, "SendCollectionLatencyMetrics")
+}
+
 // GetSendDatabaseMetrics returns the SendDatabaseMetrics field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetSendDatabaseMetrics() bool {
 	if o == nil || IsNil(o.SendDatabaseMetrics) {
@@ -426,6 +489,12 @@ func (o *ThirdPartyIntegration) HasSendDatabaseMetrics() bool {
 // SetSendDatabaseMetrics gets a reference to the given bool and assigns it to the SendDatabaseMetrics field.
 func (o *ThirdPartyIntegration) SetSendDatabaseMetrics(v bool) {
 	o.SendDatabaseMetrics = &v
+}
+
+// SetSendDatabaseMetricsNil sets SendDatabaseMetrics to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetSendDatabaseMetricsNil() {
+	o.SendDatabaseMetrics = nil
+	o.NullFields = append(o.NullFields, "SendDatabaseMetrics")
 }
 
 // GetSendQueryStatsMetrics returns the SendQueryStatsMetrics field value if set, zero value otherwise
@@ -461,6 +530,12 @@ func (o *ThirdPartyIntegration) SetSendQueryStatsMetrics(v bool) {
 	o.SendQueryStatsMetrics = &v
 }
 
+// SetSendQueryStatsMetricsNil sets SendQueryStatsMetrics to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetSendQueryStatsMetricsNil() {
+	o.SendQueryStatsMetrics = nil
+	o.NullFields = append(o.NullFields, "SendQueryStatsMetrics")
+}
+
 // GetSendUserProvidedResourceTags returns the SendUserProvidedResourceTags field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTags() bool {
 	if o == nil || IsNil(o.SendUserProvidedResourceTags) {
@@ -492,6 +567,12 @@ func (o *ThirdPartyIntegration) HasSendUserProvidedResourceTags() bool {
 // SetSendUserProvidedResourceTags gets a reference to the given bool and assigns it to the SendUserProvidedResourceTags field.
 func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTags(v bool) {
 	o.SendUserProvidedResourceTags = &v
+}
+
+// SetSendUserProvidedResourceTagsNil sets SendUserProvidedResourceTags to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTagsNil() {
+	o.SendUserProvidedResourceTags = nil
+	o.NullFields = append(o.NullFields, "SendUserProvidedResourceTags")
 }
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise
@@ -527,6 +608,12 @@ func (o *ThirdPartyIntegration) SetAccountId(v string) {
 	o.AccountId = &v
 }
 
+// SetAccountIdNil sets AccountId to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetAccountIdNil() {
+	o.AccountId = nil
+	o.NullFields = append(o.NullFields, "AccountId")
+}
+
 // GetLicenseKey returns the LicenseKey field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetLicenseKey() string {
 	if o == nil || IsNil(o.LicenseKey) {
@@ -558,6 +645,12 @@ func (o *ThirdPartyIntegration) HasLicenseKey() bool {
 // SetLicenseKey gets a reference to the given string and assigns it to the LicenseKey field.
 func (o *ThirdPartyIntegration) SetLicenseKey(v string) {
 	o.LicenseKey = &v
+}
+
+// SetLicenseKeyNil sets LicenseKey to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetLicenseKeyNil() {
+	o.LicenseKey = nil
+	o.NullFields = append(o.NullFields, "LicenseKey")
 }
 
 // GetReadToken returns the ReadToken field value if set, zero value otherwise
@@ -593,6 +686,12 @@ func (o *ThirdPartyIntegration) SetReadToken(v string) {
 	o.ReadToken = &v
 }
 
+// SetReadTokenNil sets ReadToken to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetReadTokenNil() {
+	o.ReadToken = nil
+	o.NullFields = append(o.NullFields, "ReadToken")
+}
+
 // GetWriteToken returns the WriteToken field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetWriteToken() string {
 	if o == nil || IsNil(o.WriteToken) {
@@ -624,6 +723,12 @@ func (o *ThirdPartyIntegration) HasWriteToken() bool {
 // SetWriteToken gets a reference to the given string and assigns it to the WriteToken field.
 func (o *ThirdPartyIntegration) SetWriteToken(v string) {
 	o.WriteToken = &v
+}
+
+// SetWriteTokenNil sets WriteToken to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetWriteTokenNil() {
+	o.WriteToken = nil
+	o.NullFields = append(o.NullFields, "WriteToken")
 }
 
 // GetRoutingKey returns the RoutingKey field value if set, zero value otherwise
@@ -659,6 +764,12 @@ func (o *ThirdPartyIntegration) SetRoutingKey(v string) {
 	o.RoutingKey = &v
 }
 
+// SetRoutingKeyNil sets RoutingKey to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetRoutingKeyNil() {
+	o.RoutingKey = nil
+	o.NullFields = append(o.NullFields, "RoutingKey")
+}
+
 // GetSecret returns the Secret field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetSecret() string {
 	if o == nil || IsNil(o.Secret) {
@@ -690,6 +801,12 @@ func (o *ThirdPartyIntegration) HasSecret() bool {
 // SetSecret gets a reference to the given string and assigns it to the Secret field.
 func (o *ThirdPartyIntegration) SetSecret(v string) {
 	o.Secret = &v
+}
+
+// SetSecretNil sets Secret to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetSecretNil() {
+	o.Secret = nil
+	o.NullFields = append(o.NullFields, "Secret")
 }
 
 // GetUrl returns the Url field value if set, zero value otherwise
@@ -725,6 +842,12 @@ func (o *ThirdPartyIntegration) SetUrl(v string) {
 	o.Url = &v
 }
 
+// SetUrlNil sets Url to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetUrlNil() {
+	o.Url = nil
+	o.NullFields = append(o.NullFields, "Url")
+}
+
 // GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
@@ -756,6 +879,12 @@ func (o *ThirdPartyIntegration) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *ThirdPartyIntegration) SetEnabled(v bool) {
 	o.Enabled = &v
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = append(o.NullFields, "Enabled")
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise
@@ -791,6 +920,12 @@ func (o *ThirdPartyIntegration) SetPassword(v string) {
 	o.Password = &v
 }
 
+// SetPasswordNil sets Password to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetPasswordNil() {
+	o.Password = nil
+	o.NullFields = append(o.NullFields, "Password")
+}
+
 // GetSendUserProvidedResourceTagsEnabled returns the SendUserProvidedResourceTagsEnabled field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTagsEnabled() bool {
 	if o == nil || IsNil(o.SendUserProvidedResourceTagsEnabled) {
@@ -822,6 +957,12 @@ func (o *ThirdPartyIntegration) HasSendUserProvidedResourceTagsEnabled() bool {
 // SetSendUserProvidedResourceTagsEnabled gets a reference to the given bool and assigns it to the SendUserProvidedResourceTagsEnabled field.
 func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTagsEnabled(v bool) {
 	o.SendUserProvidedResourceTagsEnabled = &v
+}
+
+// SetSendUserProvidedResourceTagsEnabledNil sets SendUserProvidedResourceTagsEnabled to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTagsEnabledNil() {
+	o.SendUserProvidedResourceTagsEnabled = nil
+	o.NullFields = append(o.NullFields, "SendUserProvidedResourceTagsEnabled")
 }
 
 // GetServiceDiscovery returns the ServiceDiscovery field value if set, zero value otherwise
@@ -857,6 +998,12 @@ func (o *ThirdPartyIntegration) SetServiceDiscovery(v string) {
 	o.ServiceDiscovery = &v
 }
 
+// SetServiceDiscoveryNil sets ServiceDiscovery to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetServiceDiscoveryNil() {
+	o.ServiceDiscovery = nil
+	o.NullFields = append(o.NullFields, "ServiceDiscovery")
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -890,6 +1037,12 @@ func (o *ThirdPartyIntegration) SetUsername(v string) {
 	o.Username = &v
 }
 
+// SetUsernameNil sets Username to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetUsernameNil() {
+	o.Username = nil
+	o.NullFields = append(o.NullFields, "Username")
+}
+
 // GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise
 func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrl() string {
 	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
@@ -921,4 +1074,10 @@ func (o *ThirdPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool {
 // SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
 func (o *ThirdPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string) {
 	o.MicrosoftTeamsWebhookUrl = &v
+}
+
+// SetMicrosoftTeamsWebhookUrlNil sets MicrosoftTeamsWebhookUrl to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetMicrosoftTeamsWebhookUrlNil() {
+	o.MicrosoftTeamsWebhookUrl = nil
+	o.NullFields = append(o.NullFields, "MicrosoftTeamsWebhookUrl")
 }

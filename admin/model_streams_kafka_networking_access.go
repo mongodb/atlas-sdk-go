@@ -15,6 +15,15 @@ type StreamsKafkaNetworkingAccess struct {
 	TgwRouteId *string `json:"tgwRouteId,omitempty"`
 	// Selected networking type. Either `PUBLIC`, `VPC`, `PRIVATE_LINK`, or `TRANSIT_GATEWAY`. Defaults to `PUBLIC`. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. `TRANSIT_GATEWAY` support is coming soon.
 	Type *string `json:"type,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsKafkaNetworkingAccess) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsKafkaNetworkingAccess
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsKafkaNetworkingAccess instantiates a new StreamsKafkaNetworkingAccess object
@@ -65,6 +74,12 @@ func (o *StreamsKafkaNetworkingAccess) HasConnectionId() bool {
 // SetConnectionId gets a reference to the given string and assigns it to the ConnectionId field.
 func (o *StreamsKafkaNetworkingAccess) SetConnectionId(v string) {
 	o.ConnectionId = &v
+}
+
+// SetConnectionIdNil sets ConnectionId to an explicit JSON null when marshaled.
+func (o *StreamsKafkaNetworkingAccess) SetConnectionIdNil() {
+	o.ConnectionId = nil
+	o.NullFields = append(o.NullFields, "ConnectionId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -133,6 +148,12 @@ func (o *StreamsKafkaNetworkingAccess) SetName(v string) {
 	o.Name = &v
 }
 
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *StreamsKafkaNetworkingAccess) SetNameNil() {
+	o.Name = nil
+	o.NullFields = append(o.NullFields, "Name")
+}
+
 // GetTgwRouteId returns the TgwRouteId field value if set, zero value otherwise
 func (o *StreamsKafkaNetworkingAccess) GetTgwRouteId() string {
 	if o == nil || IsNil(o.TgwRouteId) {
@@ -166,6 +187,12 @@ func (o *StreamsKafkaNetworkingAccess) SetTgwRouteId(v string) {
 	o.TgwRouteId = &v
 }
 
+// SetTgwRouteIdNil sets TgwRouteId to an explicit JSON null when marshaled.
+func (o *StreamsKafkaNetworkingAccess) SetTgwRouteIdNil() {
+	o.TgwRouteId = nil
+	o.NullFields = append(o.NullFields, "TgwRouteId")
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *StreamsKafkaNetworkingAccess) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -197,4 +224,10 @@ func (o *StreamsKafkaNetworkingAccess) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *StreamsKafkaNetworkingAccess) SetType(v string) {
 	o.Type = &v
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *StreamsKafkaNetworkingAccess) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = append(o.NullFields, "Type")
 }

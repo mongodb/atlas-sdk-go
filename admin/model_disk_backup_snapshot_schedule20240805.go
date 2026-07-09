@@ -56,6 +56,15 @@ type DiskBackupSnapshotSchedule20240805 struct {
 	UpdateSnapshots *bool `json:"updateSnapshots,omitempty"`
 	// Flag that indicates whether to use organization and project names instead of organization and project UUIDs in the path to the metadata files that MongoDB Cloud uploads to your Export Bucket.
 	UseOrgAndGroupNamesInExportPrefix *bool `json:"useOrgAndGroupNamesInExportPrefix,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupSnapshotSchedule20240805) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupSnapshotSchedule20240805
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupSnapshotSchedule20240805 instantiates a new DiskBackupSnapshotSchedule20240805 object
@@ -109,6 +118,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetAutoCopySettingsEnabled(v bool) 
 	o.AutoCopySettingsEnabled = &v
 }
 
+// SetAutoCopySettingsEnabledNil sets AutoCopySettingsEnabled to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetAutoCopySettingsEnabledNil() {
+	o.AutoCopySettingsEnabled = nil
+	o.NullFields = append(o.NullFields, "AutoCopySettingsEnabled")
+}
+
 // GetAutoExportEnabled returns the AutoExportEnabled field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetAutoExportEnabled() bool {
 	if o == nil || IsNil(o.AutoExportEnabled) {
@@ -140,6 +155,12 @@ func (o *DiskBackupSnapshotSchedule20240805) HasAutoExportEnabled() bool {
 // SetAutoExportEnabled gets a reference to the given bool and assigns it to the AutoExportEnabled field.
 func (o *DiskBackupSnapshotSchedule20240805) SetAutoExportEnabled(v bool) {
 	o.AutoExportEnabled = &v
+}
+
+// SetAutoExportEnabledNil sets AutoExportEnabled to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetAutoExportEnabledNil() {
+	o.AutoExportEnabled = nil
+	o.NullFields = append(o.NullFields, "AutoExportEnabled")
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise
@@ -175,6 +196,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
+// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetClusterIdNil() {
+	o.ClusterId = nil
+	o.NullFields = append(o.NullFields, "ClusterId")
+}
+
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
@@ -208,6 +235,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = append(o.NullFields, "ClusterName")
+}
+
 // GetCopyPolicyItemsEnabled returns the CopyPolicyItemsEnabled field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetCopyPolicyItemsEnabled() bool {
 	if o == nil || IsNil(o.CopyPolicyItemsEnabled) {
@@ -239,6 +272,12 @@ func (o *DiskBackupSnapshotSchedule20240805) HasCopyPolicyItemsEnabled() bool {
 // SetCopyPolicyItemsEnabled gets a reference to the given bool and assigns it to the CopyPolicyItemsEnabled field.
 func (o *DiskBackupSnapshotSchedule20240805) SetCopyPolicyItemsEnabled(v bool) {
 	o.CopyPolicyItemsEnabled = &v
+}
+
+// SetCopyPolicyItemsEnabledNil sets CopyPolicyItemsEnabled to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetCopyPolicyItemsEnabledNil() {
+	o.CopyPolicyItemsEnabled = nil
+	o.NullFields = append(o.NullFields, "CopyPolicyItemsEnabled")
 }
 
 // GetCopySettings returns the CopySettings field value if set, zero value otherwise
@@ -340,6 +379,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopySnapshots(v bool) {
 	o.DeleteCopySnapshots = &v
 }
 
+// SetDeleteCopySnapshotsNil sets DeleteCopySnapshots to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopySnapshotsNil() {
+	o.DeleteCopySnapshots = nil
+	o.NullFields = append(o.NullFields, "DeleteCopySnapshots")
+}
+
 // GetDeleteSnapshots returns the DeleteSnapshots field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetDeleteSnapshots() bool {
 	if o == nil || IsNil(o.DeleteSnapshots) {
@@ -373,6 +418,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetDeleteSnapshots(v bool) {
 	o.DeleteSnapshots = &v
 }
 
+// SetDeleteSnapshotsNil sets DeleteSnapshots to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetDeleteSnapshotsNil() {
+	o.DeleteSnapshots = nil
+	o.NullFields = append(o.NullFields, "DeleteSnapshots")
+}
+
 // GetExport returns the Export field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetExport() AutoExportPolicy {
 	if o == nil || IsNil(o.Export) {
@@ -404,6 +455,12 @@ func (o *DiskBackupSnapshotSchedule20240805) HasExport() bool {
 // SetExport gets a reference to the given AutoExportPolicy and assigns it to the Export field.
 func (o *DiskBackupSnapshotSchedule20240805) SetExport(v AutoExportPolicy) {
 	o.Export = &v
+}
+
+// SetExportNil sets Export to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetExportNil() {
+	o.Export = nil
+	o.NullFields = append(o.NullFields, "Export")
 }
 
 // GetExtraRetentionSettings returns the ExtraRetentionSettings field value if set, zero value otherwise
@@ -505,6 +562,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetNextSnapshot(v time.Time) {
 	o.NextSnapshot = &v
 }
 
+// SetNextSnapshotNil sets NextSnapshot to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetNextSnapshotNil() {
+	o.NextSnapshot = nil
+	o.NullFields = append(o.NullFields, "NextSnapshot")
+}
+
 // GetPolicies returns the Policies field value
 func (o *DiskBackupSnapshotSchedule20240805) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy {
 	if o == nil {
@@ -562,6 +625,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetReferenceHourOfDay(v int) {
 	o.ReferenceHourOfDay = &v
 }
 
+// SetReferenceHourOfDayNil sets ReferenceHourOfDay to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetReferenceHourOfDayNil() {
+	o.ReferenceHourOfDay = nil
+	o.NullFields = append(o.NullFields, "ReferenceHourOfDay")
+}
+
 // GetReferenceMinuteOfHour returns the ReferenceMinuteOfHour field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetReferenceMinuteOfHour() int {
 	if o == nil || IsNil(o.ReferenceMinuteOfHour) {
@@ -593,6 +662,12 @@ func (o *DiskBackupSnapshotSchedule20240805) HasReferenceMinuteOfHour() bool {
 // SetReferenceMinuteOfHour gets a reference to the given int and assigns it to the ReferenceMinuteOfHour field.
 func (o *DiskBackupSnapshotSchedule20240805) SetReferenceMinuteOfHour(v int) {
 	o.ReferenceMinuteOfHour = &v
+}
+
+// SetReferenceMinuteOfHourNil sets ReferenceMinuteOfHour to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetReferenceMinuteOfHourNil() {
+	o.ReferenceMinuteOfHour = nil
+	o.NullFields = append(o.NullFields, "ReferenceMinuteOfHour")
 }
 
 // GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise
@@ -628,6 +703,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetRestoreWindowDays(v int) {
 	o.RestoreWindowDays = &v
 }
 
+// SetRestoreWindowDaysNil sets RestoreWindowDays to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetRestoreWindowDaysNil() {
+	o.RestoreWindowDays = nil
+	o.NullFields = append(o.NullFields, "RestoreWindowDays")
+}
+
 // GetUpdateCopySnapshots returns the UpdateCopySnapshots field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetUpdateCopySnapshots() bool {
 	if o == nil || IsNil(o.UpdateCopySnapshots) {
@@ -659,6 +740,12 @@ func (o *DiskBackupSnapshotSchedule20240805) HasUpdateCopySnapshots() bool {
 // SetUpdateCopySnapshots gets a reference to the given bool and assigns it to the UpdateCopySnapshots field.
 func (o *DiskBackupSnapshotSchedule20240805) SetUpdateCopySnapshots(v bool) {
 	o.UpdateCopySnapshots = &v
+}
+
+// SetUpdateCopySnapshotsNil sets UpdateCopySnapshots to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetUpdateCopySnapshotsNil() {
+	o.UpdateCopySnapshots = nil
+	o.NullFields = append(o.NullFields, "UpdateCopySnapshots")
 }
 
 // GetUpdateSnapshots returns the UpdateSnapshots field value if set, zero value otherwise
@@ -694,6 +781,12 @@ func (o *DiskBackupSnapshotSchedule20240805) SetUpdateSnapshots(v bool) {
 	o.UpdateSnapshots = &v
 }
 
+// SetUpdateSnapshotsNil sets UpdateSnapshots to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetUpdateSnapshotsNil() {
+	o.UpdateSnapshots = nil
+	o.NullFields = append(o.NullFields, "UpdateSnapshots")
+}
+
 // GetUseOrgAndGroupNamesInExportPrefix returns the UseOrgAndGroupNamesInExportPrefix field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule20240805) GetUseOrgAndGroupNamesInExportPrefix() bool {
 	if o == nil || IsNil(o.UseOrgAndGroupNamesInExportPrefix) {
@@ -725,4 +818,10 @@ func (o *DiskBackupSnapshotSchedule20240805) HasUseOrgAndGroupNamesInExportPrefi
 // SetUseOrgAndGroupNamesInExportPrefix gets a reference to the given bool and assigns it to the UseOrgAndGroupNamesInExportPrefix field.
 func (o *DiskBackupSnapshotSchedule20240805) SetUseOrgAndGroupNamesInExportPrefix(v bool) {
 	o.UseOrgAndGroupNamesInExportPrefix = &v
+}
+
+// SetUseOrgAndGroupNamesInExportPrefixNil sets UseOrgAndGroupNamesInExportPrefix to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotSchedule20240805) SetUseOrgAndGroupNamesInExportPrefixNil() {
+	o.UseOrgAndGroupNamesInExportPrefix = nil
+	o.NullFields = append(o.NullFields, "UseOrgAndGroupNamesInExportPrefix")
 }

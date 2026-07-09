@@ -10,6 +10,15 @@ type DataLakeAtlasStoreReadPreference struct {
 	Mode *string `json:"mode,omitempty"`
 	// List that contains tag sets or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
 	TagSets *[][]DataLakeAtlasStoreReadPreferenceTag `json:"tagSets,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeAtlasStoreReadPreference) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeAtlasStoreReadPreference
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeAtlasStoreReadPreference instantiates a new DataLakeAtlasStoreReadPreference object
@@ -62,6 +71,12 @@ func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSeconds(v int) {
 	o.MaxStalenessSeconds = &v
 }
 
+// SetMaxStalenessSecondsNil sets MaxStalenessSeconds to an explicit JSON null when marshaled.
+func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSecondsNil() {
+	o.MaxStalenessSeconds = nil
+	o.NullFields = append(o.NullFields, "MaxStalenessSeconds")
+}
+
 // GetMode returns the Mode field value if set, zero value otherwise
 func (o *DataLakeAtlasStoreReadPreference) GetMode() string {
 	if o == nil || IsNil(o.Mode) {
@@ -93,6 +108,12 @@ func (o *DataLakeAtlasStoreReadPreference) HasMode() bool {
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *DataLakeAtlasStoreReadPreference) SetMode(v string) {
 	o.Mode = &v
+}
+
+// SetModeNil sets Mode to an explicit JSON null when marshaled.
+func (o *DataLakeAtlasStoreReadPreference) SetModeNil() {
+	o.Mode = nil
+	o.NullFields = append(o.NullFields, "Mode")
 }
 
 // GetTagSets returns the TagSets field value if set, zero value otherwise

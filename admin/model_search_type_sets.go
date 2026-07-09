@@ -8,6 +8,15 @@ type SearchTypeSets struct {
 	Name string `json:"name"`
 	// List of types associated with the type set. Each type definition must include a `type` field specifying the search field type (`autocomplete`, `boolean`, `date`, `geo`, `number`, `objectId`, `string`, `token`, or `uuid`) and may include additional configuration properties specific to that type.
 	Types []any `json:"types"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SearchTypeSets) MarshalJSON() ([]byte, error) {
+	type noMethod SearchTypeSets
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSearchTypeSets instantiates a new SearchTypeSets object

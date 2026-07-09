@@ -27,6 +27,15 @@ type UserAccessListResponse struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UserAccessListResponse) MarshalJSON() ([]byte, error) {
+	type noMethod UserAccessListResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserAccessListResponse instantiates a new UserAccessListResponse object
@@ -79,6 +88,12 @@ func (o *UserAccessListResponse) SetCidrBlock(v string) {
 	o.CidrBlock = &v
 }
 
+// SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled.
+func (o *UserAccessListResponse) SetCidrBlockNil() {
+	o.CidrBlock = nil
+	o.NullFields = append(o.NullFields, "CidrBlock")
+}
+
 // GetCount returns the Count field value if set, zero value otherwise
 func (o *UserAccessListResponse) GetCount() int {
 	if o == nil || IsNil(o.Count) {
@@ -110,6 +125,12 @@ func (o *UserAccessListResponse) HasCount() bool {
 // SetCount gets a reference to the given int and assigns it to the Count field.
 func (o *UserAccessListResponse) SetCount(v int) {
 	o.Count = &v
+}
+
+// SetCountNil sets Count to an explicit JSON null when marshaled.
+func (o *UserAccessListResponse) SetCountNil() {
+	o.Count = nil
+	o.NullFields = append(o.NullFields, "Count")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -145,6 +166,12 @@ func (o *UserAccessListResponse) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *UserAccessListResponse) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = append(o.NullFields, "Created")
+}
+
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
 func (o *UserAccessListResponse) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress) {
@@ -176,6 +203,12 @@ func (o *UserAccessListResponse) HasIpAddress() bool {
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *UserAccessListResponse) SetIpAddress(v string) {
 	o.IpAddress = &v
+}
+
+// SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled.
+func (o *UserAccessListResponse) SetIpAddressNil() {
+	o.IpAddress = nil
+	o.NullFields = append(o.NullFields, "IpAddress")
 }
 
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise
@@ -211,6 +244,12 @@ func (o *UserAccessListResponse) SetLastUsed(v time.Time) {
 	o.LastUsed = &v
 }
 
+// SetLastUsedNil sets LastUsed to an explicit JSON null when marshaled.
+func (o *UserAccessListResponse) SetLastUsedNil() {
+	o.LastUsed = nil
+	o.NullFields = append(o.NullFields, "LastUsed")
+}
+
 // GetLastUsedAddress returns the LastUsedAddress field value if set, zero value otherwise
 func (o *UserAccessListResponse) GetLastUsedAddress() string {
 	if o == nil || IsNil(o.LastUsedAddress) {
@@ -242,6 +281,12 @@ func (o *UserAccessListResponse) HasLastUsedAddress() bool {
 // SetLastUsedAddress gets a reference to the given string and assigns it to the LastUsedAddress field.
 func (o *UserAccessListResponse) SetLastUsedAddress(v string) {
 	o.LastUsedAddress = &v
+}
+
+// SetLastUsedAddressNil sets LastUsedAddress to an explicit JSON null when marshaled.
+func (o *UserAccessListResponse) SetLastUsedAddressNil() {
+	o.LastUsedAddress = nil
+	o.NullFields = append(o.NullFields, "LastUsedAddress")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

@@ -8,6 +8,15 @@ type FreeComputeAutoScalingRules struct {
 	MaxInstanceSize *string `json:"maxInstanceSize,omitempty"`
 	// Minimum instance size to which your cluster can automatically scale.
 	MinInstanceSize *string `json:"minInstanceSize,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FreeComputeAutoScalingRules) MarshalJSON() ([]byte, error) {
+	type noMethod FreeComputeAutoScalingRules
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFreeComputeAutoScalingRules instantiates a new FreeComputeAutoScalingRules object
@@ -60,6 +69,12 @@ func (o *FreeComputeAutoScalingRules) SetMaxInstanceSize(v string) {
 	o.MaxInstanceSize = &v
 }
 
+// SetMaxInstanceSizeNil sets MaxInstanceSize to an explicit JSON null when marshaled.
+func (o *FreeComputeAutoScalingRules) SetMaxInstanceSizeNil() {
+	o.MaxInstanceSize = nil
+	o.NullFields = append(o.NullFields, "MaxInstanceSize")
+}
+
 // GetMinInstanceSize returns the MinInstanceSize field value if set, zero value otherwise
 func (o *FreeComputeAutoScalingRules) GetMinInstanceSize() string {
 	if o == nil || IsNil(o.MinInstanceSize) {
@@ -91,4 +106,10 @@ func (o *FreeComputeAutoScalingRules) HasMinInstanceSize() bool {
 // SetMinInstanceSize gets a reference to the given string and assigns it to the MinInstanceSize field.
 func (o *FreeComputeAutoScalingRules) SetMinInstanceSize(v string) {
 	o.MinInstanceSize = &v
+}
+
+// SetMinInstanceSizeNil sets MinInstanceSize to an explicit JSON null when marshaled.
+func (o *FreeComputeAutoScalingRules) SetMinInstanceSizeNil() {
+	o.MinInstanceSize = nil
+	o.NullFields = append(o.NullFields, "MinInstanceSize")
 }

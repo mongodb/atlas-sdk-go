@@ -10,6 +10,15 @@ type AvailableCloudProviderRegion struct {
 	// Human-readable label that identifies the supported region.
 	// Read only field.
 	Name *string `json:"name,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AvailableCloudProviderRegion) MarshalJSON() ([]byte, error) {
+	type noMethod AvailableCloudProviderRegion
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAvailableCloudProviderRegion instantiates a new AvailableCloudProviderRegion object
@@ -62,6 +71,12 @@ func (o *AvailableCloudProviderRegion) SetDefault(v bool) {
 	o.Default = &v
 }
 
+// SetDefaultNil sets Default to an explicit JSON null when marshaled.
+func (o *AvailableCloudProviderRegion) SetDefaultNil() {
+	o.Default = nil
+	o.NullFields = append(o.NullFields, "Default")
+}
+
 // GetName returns the Name field value if set, zero value otherwise
 func (o *AvailableCloudProviderRegion) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -93,4 +108,10 @@ func (o *AvailableCloudProviderRegion) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AvailableCloudProviderRegion) SetName(v string) {
 	o.Name = &v
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *AvailableCloudProviderRegion) SetNameNil() {
+	o.Name = nil
+	o.NullFields = append(o.NullFields, "Name")
 }

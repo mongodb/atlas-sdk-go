@@ -26,6 +26,15 @@ type ServiceAccountSecret struct {
 	// The secret for the Service Account. It will be returned only the first time after creation.
 	// Read only field.
 	Secret *string `json:"secret,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServiceAccountSecret) MarshalJSON() ([]byte, error) {
+	type noMethod ServiceAccountSecret
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServiceAccountSecret instantiates a new ServiceAccountSecret object
@@ -153,6 +162,12 @@ func (o *ServiceAccountSecret) SetLastUsedAt(v time.Time) {
 	o.LastUsedAt = &v
 }
 
+// SetLastUsedAtNil sets LastUsedAt to an explicit JSON null when marshaled.
+func (o *ServiceAccountSecret) SetLastUsedAtNil() {
+	o.LastUsedAt = nil
+	o.NullFields = append(o.NullFields, "LastUsedAt")
+}
+
 // GetMaskedSecretValue returns the MaskedSecretValue field value if set, zero value otherwise
 func (o *ServiceAccountSecret) GetMaskedSecretValue() string {
 	if o == nil || IsNil(o.MaskedSecretValue) {
@@ -186,6 +201,12 @@ func (o *ServiceAccountSecret) SetMaskedSecretValue(v string) {
 	o.MaskedSecretValue = &v
 }
 
+// SetMaskedSecretValueNil sets MaskedSecretValue to an explicit JSON null when marshaled.
+func (o *ServiceAccountSecret) SetMaskedSecretValueNil() {
+	o.MaskedSecretValue = nil
+	o.NullFields = append(o.NullFields, "MaskedSecretValue")
+}
+
 // GetSecret returns the Secret field value if set, zero value otherwise
 func (o *ServiceAccountSecret) GetSecret() string {
 	if o == nil || IsNil(o.Secret) {
@@ -217,4 +238,10 @@ func (o *ServiceAccountSecret) HasSecret() bool {
 // SetSecret gets a reference to the given string and assigns it to the Secret field.
 func (o *ServiceAccountSecret) SetSecret(v string) {
 	o.Secret = &v
+}
+
+// SetSecretNil sets Secret to an explicit JSON null when marshaled.
+func (o *ServiceAccountSecret) SetSecretNil() {
+	o.Secret = nil
+	o.NullFields = append(o.NullFields, "Secret")
 }

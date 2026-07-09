@@ -50,6 +50,15 @@ type FlexBackupRestoreJobCreate20241113 struct {
 	// Unique 24-hexadecimal digit string that identifies the project that contains the instance or cluster to which you want to restore the snapshot.
 	// Write only field.
 	TargetProjectId *string `json:"targetProjectId,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FlexBackupRestoreJobCreate20241113) MarshalJSON() ([]byte, error) {
+	type noMethod FlexBackupRestoreJobCreate20241113
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexBackupRestoreJobCreate20241113 instantiates a new FlexBackupRestoreJobCreate20241113 object
@@ -104,6 +113,12 @@ func (o *FlexBackupRestoreJobCreate20241113) SetDeliveryType(v string) {
 	o.DeliveryType = &v
 }
 
+// SetDeliveryTypeNil sets DeliveryType to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetDeliveryTypeNil() {
+	o.DeliveryType = nil
+	o.NullFields = append(o.NullFields, "DeliveryType")
+}
+
 // GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise
 func (o *FlexBackupRestoreJobCreate20241113) GetExpirationDate() time.Time {
 	if o == nil || IsNil(o.ExpirationDate) {
@@ -135,6 +150,12 @@ func (o *FlexBackupRestoreJobCreate20241113) HasExpirationDate() bool {
 // SetExpirationDate gets a reference to the given time.Time and assigns it to the ExpirationDate field.
 func (o *FlexBackupRestoreJobCreate20241113) SetExpirationDate(v time.Time) {
 	o.ExpirationDate = &v
+}
+
+// SetExpirationDateNil sets ExpirationDate to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetExpirationDateNil() {
+	o.ExpirationDate = nil
+	o.NullFields = append(o.NullFields, "ExpirationDate")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -170,6 +191,12 @@ func (o *FlexBackupRestoreJobCreate20241113) SetId(v string) {
 	o.Id = &v
 }
 
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
+}
+
 // GetInstanceName returns the InstanceName field value if set, zero value otherwise
 func (o *FlexBackupRestoreJobCreate20241113) GetInstanceName() string {
 	if o == nil || IsNil(o.InstanceName) {
@@ -201,6 +228,12 @@ func (o *FlexBackupRestoreJobCreate20241113) HasInstanceName() bool {
 // SetInstanceName gets a reference to the given string and assigns it to the InstanceName field.
 func (o *FlexBackupRestoreJobCreate20241113) SetInstanceName(v string) {
 	o.InstanceName = &v
+}
+
+// SetInstanceNameNil sets InstanceName to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetInstanceNameNil() {
+	o.InstanceName = nil
+	o.NullFields = append(o.NullFields, "InstanceName")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -269,6 +302,12 @@ func (o *FlexBackupRestoreJobCreate20241113) SetProjectId(v string) {
 	o.ProjectId = &v
 }
 
+// SetProjectIdNil sets ProjectId to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetProjectIdNil() {
+	o.ProjectId = nil
+	o.NullFields = append(o.NullFields, "ProjectId")
+}
+
 // GetRestoreFinishedDate returns the RestoreFinishedDate field value if set, zero value otherwise
 func (o *FlexBackupRestoreJobCreate20241113) GetRestoreFinishedDate() time.Time {
 	if o == nil || IsNil(o.RestoreFinishedDate) {
@@ -300,6 +339,12 @@ func (o *FlexBackupRestoreJobCreate20241113) HasRestoreFinishedDate() bool {
 // SetRestoreFinishedDate gets a reference to the given time.Time and assigns it to the RestoreFinishedDate field.
 func (o *FlexBackupRestoreJobCreate20241113) SetRestoreFinishedDate(v time.Time) {
 	o.RestoreFinishedDate = &v
+}
+
+// SetRestoreFinishedDateNil sets RestoreFinishedDate to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetRestoreFinishedDateNil() {
+	o.RestoreFinishedDate = nil
+	o.NullFields = append(o.NullFields, "RestoreFinishedDate")
 }
 
 // GetRestoreScheduledDate returns the RestoreScheduledDate field value if set, zero value otherwise
@@ -335,6 +380,12 @@ func (o *FlexBackupRestoreJobCreate20241113) SetRestoreScheduledDate(v time.Time
 	o.RestoreScheduledDate = &v
 }
 
+// SetRestoreScheduledDateNil sets RestoreScheduledDate to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetRestoreScheduledDateNil() {
+	o.RestoreScheduledDate = nil
+	o.NullFields = append(o.NullFields, "RestoreScheduledDate")
+}
+
 // GetSnapshotFinishedDate returns the SnapshotFinishedDate field value if set, zero value otherwise
 func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotFinishedDate() time.Time {
 	if o == nil || IsNil(o.SnapshotFinishedDate) {
@@ -366,6 +417,12 @@ func (o *FlexBackupRestoreJobCreate20241113) HasSnapshotFinishedDate() bool {
 // SetSnapshotFinishedDate gets a reference to the given time.Time and assigns it to the SnapshotFinishedDate field.
 func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotFinishedDate(v time.Time) {
 	o.SnapshotFinishedDate = &v
+}
+
+// SetSnapshotFinishedDateNil sets SnapshotFinishedDate to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotFinishedDateNil() {
+	o.SnapshotFinishedDate = nil
+	o.NullFields = append(o.NullFields, "SnapshotFinishedDate")
 }
 
 // GetSnapshotId returns the SnapshotId field value
@@ -425,6 +482,12 @@ func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotUrl(v string) {
 	o.SnapshotUrl = &v
 }
 
+// SetSnapshotUrlNil sets SnapshotUrl to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotUrlNil() {
+	o.SnapshotUrl = nil
+	o.NullFields = append(o.NullFields, "SnapshotUrl")
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *FlexBackupRestoreJobCreate20241113) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -456,6 +519,12 @@ func (o *FlexBackupRestoreJobCreate20241113) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *FlexBackupRestoreJobCreate20241113) SetStatus(v string) {
 	o.Status = &v
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = append(o.NullFields, "Status")
 }
 
 // GetTargetDeploymentItemName returns the TargetDeploymentItemName field value
@@ -513,4 +582,10 @@ func (o *FlexBackupRestoreJobCreate20241113) HasTargetProjectId() bool {
 // SetTargetProjectId gets a reference to the given string and assigns it to the TargetProjectId field.
 func (o *FlexBackupRestoreJobCreate20241113) SetTargetProjectId(v string) {
 	o.TargetProjectId = &v
+}
+
+// SetTargetProjectIdNil sets TargetProjectId to an explicit JSON null when marshaled.
+func (o *FlexBackupRestoreJobCreate20241113) SetTargetProjectIdNil() {
+	o.TargetProjectId = nil
+	o.NullFields = append(o.NullFields, "TargetProjectId")
 }

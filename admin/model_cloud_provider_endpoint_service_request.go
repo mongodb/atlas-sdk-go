@@ -16,6 +16,15 @@ type CloudProviderEndpointServiceRequest struct {
 	// List of regions that the endpoint service supports. Native cross region support is implemented for AWS only.
 	// Write only field.
 	SupportedRemoteRegions *[]string `json:"supportedRemoteRegions,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderEndpointServiceRequest) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderEndpointServiceRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderEndpointServiceRequest instantiates a new CloudProviderEndpointServiceRequest object
@@ -72,6 +81,12 @@ func (o *CloudProviderEndpointServiceRequest) HasPortMappingEnabled() bool {
 // SetPortMappingEnabled gets a reference to the given bool and assigns it to the PortMappingEnabled field.
 func (o *CloudProviderEndpointServiceRequest) SetPortMappingEnabled(v bool) {
 	o.PortMappingEnabled = &v
+}
+
+// SetPortMappingEnabledNil sets PortMappingEnabled to an explicit JSON null when marshaled.
+func (o *CloudProviderEndpointServiceRequest) SetPortMappingEnabledNil() {
+	o.PortMappingEnabled = nil
+	o.NullFields = append(o.NullFields, "PortMappingEnabled")
 }
 
 // GetProviderName returns the ProviderName field value

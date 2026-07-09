@@ -14,6 +14,15 @@ type Team struct {
 	Name string `json:"name"`
 	// List that contains the MongoDB Cloud users in this team.
 	Usernames []string `json:"usernames"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *Team) MarshalJSON() ([]byte, error) {
+	type noMethod Team
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewTeam instantiates a new Team object
@@ -66,6 +75,12 @@ func (o *Team) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Team) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *Team) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

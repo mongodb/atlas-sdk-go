@@ -6,6 +6,15 @@ package admin
 type CostExplorerFilterResponse struct {
 	// The token used to identify the created Cost Explorer query.
 	Token *string `json:"token,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CostExplorerFilterResponse) MarshalJSON() ([]byte, error) {
+	type noMethod CostExplorerFilterResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCostExplorerFilterResponse instantiates a new CostExplorerFilterResponse object
@@ -56,4 +65,10 @@ func (o *CostExplorerFilterResponse) HasToken() bool {
 // SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *CostExplorerFilterResponse) SetToken(v string) {
 	o.Token = &v
+}
+
+// SetTokenNil sets Token to an explicit JSON null when marshaled.
+func (o *CostExplorerFilterResponse) SetTokenNil() {
+	o.Token = nil
+	o.NullFields = append(o.NullFields, "Token")
 }

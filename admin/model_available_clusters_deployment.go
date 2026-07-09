@@ -37,6 +37,15 @@ type AvailableClustersDeployment struct {
 	// Flag that indicates whether someone enabled TLS for this cluster.
 	// Read only field.
 	TlsEnabled bool `json:"tlsEnabled"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AvailableClustersDeployment) MarshalJSON() ([]byte, error) {
+	type noMethod AvailableClustersDeployment
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAvailableClustersDeployment instantiates a new AvailableClustersDeployment object
@@ -95,6 +104,12 @@ func (o *AvailableClustersDeployment) SetAgentVersion(v string) {
 	o.AgentVersion = &v
 }
 
+// SetAgentVersionNil sets AgentVersion to an explicit JSON null when marshaled.
+func (o *AvailableClustersDeployment) SetAgentVersionNil() {
+	o.AgentVersion = nil
+	o.NullFields = append(o.NullFields, "AgentVersion")
+}
+
 // GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *AvailableClustersDeployment) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
@@ -128,6 +143,12 @@ func (o *AvailableClustersDeployment) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
+// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
+func (o *AvailableClustersDeployment) SetClusterIdNil() {
+	o.ClusterId = nil
+	o.NullFields = append(o.NullFields, "ClusterId")
+}
+
 // GetDbSizeBytes returns the DbSizeBytes field value if set, zero value otherwise
 func (o *AvailableClustersDeployment) GetDbSizeBytes() int64 {
 	if o == nil || IsNil(o.DbSizeBytes) {
@@ -159,6 +180,12 @@ func (o *AvailableClustersDeployment) HasDbSizeBytes() bool {
 // SetDbSizeBytes gets a reference to the given int64 and assigns it to the DbSizeBytes field.
 func (o *AvailableClustersDeployment) SetDbSizeBytes(v int64) {
 	o.DbSizeBytes = &v
+}
+
+// SetDbSizeBytesNil sets DbSizeBytes to an explicit JSON null when marshaled.
+func (o *AvailableClustersDeployment) SetDbSizeBytesNil() {
+	o.DbSizeBytes = nil
+	o.NullFields = append(o.NullFields, "DbSizeBytes")
 }
 
 // GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field value
@@ -290,6 +317,12 @@ func (o *AvailableClustersDeployment) SetOplogSizeMB(v int) {
 	o.OplogSizeMB = &v
 }
 
+// SetOplogSizeMBNil sets OplogSizeMB to an explicit JSON null when marshaled.
+func (o *AvailableClustersDeployment) SetOplogSizeMBNil() {
+	o.OplogSizeMB = nil
+	o.NullFields = append(o.NullFields, "OplogSizeMB")
+}
+
 // GetSharded returns the Sharded field value
 func (o *AvailableClustersDeployment) GetSharded() bool {
 	if o == nil {
@@ -345,6 +378,12 @@ func (o *AvailableClustersDeployment) HasShardsSize() bool {
 // SetShardsSize gets a reference to the given int and assigns it to the ShardsSize field.
 func (o *AvailableClustersDeployment) SetShardsSize(v int) {
 	o.ShardsSize = &v
+}
+
+// SetShardsSizeNil sets ShardsSize to an explicit JSON null when marshaled.
+func (o *AvailableClustersDeployment) SetShardsSizeNil() {
+	o.ShardsSize = nil
+	o.NullFields = append(o.NullFields, "ShardsSize")
 }
 
 // GetTlsEnabled returns the TlsEnabled field value

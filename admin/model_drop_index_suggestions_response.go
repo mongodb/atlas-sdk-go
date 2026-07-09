@@ -13,6 +13,15 @@ type DropIndexSuggestionsResponse struct {
 	// List that contains the documents with information about the unused indexes that the Performance Advisor suggests to remove.
 	// Read only field.
 	UnusedIndexes *[]DropIndexSuggestionsIndex `json:"unusedIndexes,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DropIndexSuggestionsResponse) MarshalJSON() ([]byte, error) {
+	type noMethod DropIndexSuggestionsResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDropIndexSuggestionsResponse instantiates a new DropIndexSuggestionsResponse object

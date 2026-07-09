@@ -39,6 +39,15 @@ type BackupRestoreJobDelivery struct {
 	// Uniform Resource Locator (URL) from which you can download the restored snapshot data. This should be preferred over `url`. The verification key must be sent as an HTTP header. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
 	// Read only field.
 	UrlV2 *string `json:"urlV2,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BackupRestoreJobDelivery) MarshalJSON() ([]byte, error) {
+	type noMethod BackupRestoreJobDelivery
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBackupRestoreJobDelivery instantiates a new BackupRestoreJobDelivery object
@@ -92,6 +101,12 @@ func (o *BackupRestoreJobDelivery) SetAuthHeader(v string) {
 	o.AuthHeader = &v
 }
 
+// SetAuthHeaderNil sets AuthHeader to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetAuthHeaderNil() {
+	o.AuthHeader = nil
+	o.NullFields = append(o.NullFields, "AuthHeader")
+}
+
 // GetAuthValue returns the AuthValue field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetAuthValue() string {
 	if o == nil || IsNil(o.AuthValue) {
@@ -123,6 +138,12 @@ func (o *BackupRestoreJobDelivery) HasAuthValue() bool {
 // SetAuthValue gets a reference to the given string and assigns it to the AuthValue field.
 func (o *BackupRestoreJobDelivery) SetAuthValue(v string) {
 	o.AuthValue = &v
+}
+
+// SetAuthValueNil sets AuthValue to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetAuthValueNil() {
+	o.AuthValue = nil
+	o.NullFields = append(o.NullFields, "AuthValue")
 }
 
 // GetExpirationHours returns the ExpirationHours field value if set, zero value otherwise
@@ -158,6 +179,12 @@ func (o *BackupRestoreJobDelivery) SetExpirationHours(v int) {
 	o.ExpirationHours = &v
 }
 
+// SetExpirationHoursNil sets ExpirationHours to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetExpirationHoursNil() {
+	o.ExpirationHours = nil
+	o.NullFields = append(o.NullFields, "ExpirationHours")
+}
+
 // GetExpires returns the Expires field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetExpires() time.Time {
 	if o == nil || IsNil(o.Expires) {
@@ -191,6 +218,12 @@ func (o *BackupRestoreJobDelivery) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
+// SetExpiresNil sets Expires to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetExpiresNil() {
+	o.Expires = nil
+	o.NullFields = append(o.NullFields, "Expires")
+}
+
 // GetMaxDownloads returns the MaxDownloads field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetMaxDownloads() int {
 	if o == nil || IsNil(o.MaxDownloads) {
@@ -222,6 +255,12 @@ func (o *BackupRestoreJobDelivery) HasMaxDownloads() bool {
 // SetMaxDownloads gets a reference to the given int and assigns it to the MaxDownloads field.
 func (o *BackupRestoreJobDelivery) SetMaxDownloads(v int) {
 	o.MaxDownloads = &v
+}
+
+// SetMaxDownloadsNil sets MaxDownloads to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetMaxDownloadsNil() {
+	o.MaxDownloads = nil
+	o.NullFields = append(o.NullFields, "MaxDownloads")
 }
 
 // GetMethodName returns the MethodName field value
@@ -281,6 +320,12 @@ func (o *BackupRestoreJobDelivery) SetStatusName(v string) {
 	o.StatusName = &v
 }
 
+// SetStatusNameNil sets StatusName to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetStatusNameNil() {
+	o.StatusName = nil
+	o.NullFields = append(o.NullFields, "StatusName")
+}
+
 // GetTargetClusterId returns the TargetClusterId field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetTargetClusterId() string {
 	if o == nil || IsNil(o.TargetClusterId) {
@@ -312,6 +357,12 @@ func (o *BackupRestoreJobDelivery) HasTargetClusterId() bool {
 // SetTargetClusterId gets a reference to the given string and assigns it to the TargetClusterId field.
 func (o *BackupRestoreJobDelivery) SetTargetClusterId(v string) {
 	o.TargetClusterId = &v
+}
+
+// SetTargetClusterIdNil sets TargetClusterId to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetTargetClusterIdNil() {
+	o.TargetClusterId = nil
+	o.NullFields = append(o.NullFields, "TargetClusterId")
 }
 
 // GetTargetClusterName returns the TargetClusterName field value if set, zero value otherwise
@@ -347,6 +398,12 @@ func (o *BackupRestoreJobDelivery) SetTargetClusterName(v string) {
 	o.TargetClusterName = &v
 }
 
+// SetTargetClusterNameNil sets TargetClusterName to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetTargetClusterNameNil() {
+	o.TargetClusterName = nil
+	o.NullFields = append(o.NullFields, "TargetClusterName")
+}
+
 // GetTargetGroupId returns the TargetGroupId field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetTargetGroupId() string {
 	if o == nil || IsNil(o.TargetGroupId) {
@@ -378,6 +435,12 @@ func (o *BackupRestoreJobDelivery) HasTargetGroupId() bool {
 // SetTargetGroupId gets a reference to the given string and assigns it to the TargetGroupId field.
 func (o *BackupRestoreJobDelivery) SetTargetGroupId(v string) {
 	o.TargetGroupId = &v
+}
+
+// SetTargetGroupIdNil sets TargetGroupId to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetTargetGroupIdNil() {
+	o.TargetGroupId = nil
+	o.NullFields = append(o.NullFields, "TargetGroupId")
 }
 
 // GetUrl returns the Url field value if set, zero value otherwise
@@ -416,6 +479,12 @@ func (o *BackupRestoreJobDelivery) SetUrl(v string) {
 	o.Url = &v
 }
 
+// SetUrlNil sets Url to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetUrlNil() {
+	o.Url = nil
+	o.NullFields = append(o.NullFields, "Url")
+}
+
 // GetUrlV2 returns the UrlV2 field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetUrlV2() string {
 	if o == nil || IsNil(o.UrlV2) {
@@ -447,4 +516,10 @@ func (o *BackupRestoreJobDelivery) HasUrlV2() bool {
 // SetUrlV2 gets a reference to the given string and assigns it to the UrlV2 field.
 func (o *BackupRestoreJobDelivery) SetUrlV2(v string) {
 	o.UrlV2 = &v
+}
+
+// SetUrlV2Nil sets UrlV2 to an explicit JSON null when marshaled.
+func (o *BackupRestoreJobDelivery) SetUrlV2Nil() {
+	o.UrlV2 = nil
+	o.NullFields = append(o.NullFields, "UrlV2")
 }

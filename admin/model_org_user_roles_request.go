@@ -8,6 +8,15 @@ type OrgUserRolesRequest struct {
 	GroupRoleAssignments *[]GroupRoleAssignment `json:"groupRoleAssignments,omitempty"`
 	// One or more organization level roles to assign the MongoDB Cloud user.
 	OrgRoles []string `json:"orgRoles"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrgUserRolesRequest) MarshalJSON() ([]byte, error) {
+	type noMethod OrgUserRolesRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgUserRolesRequest instantiates a new OrgUserRolesRequest object

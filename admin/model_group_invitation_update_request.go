@@ -6,6 +6,15 @@ package admin
 type GroupInvitationUpdateRequest struct {
 	// One or more project-level roles to assign to the MongoDB Cloud user.
 	Roles *[]string `json:"roles,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupInvitationUpdateRequest) MarshalJSON() ([]byte, error) {
+	type noMethod GroupInvitationUpdateRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupInvitationUpdateRequest instantiates a new GroupInvitationUpdateRequest object

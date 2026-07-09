@@ -18,6 +18,15 @@ type OnlineArchiveSchedule struct {
 	DayOfWeek *int `json:"dayOfWeek,omitempty"`
 	// Day of the month when the scheduled archive starts.
 	DayOfMonth *int `json:"dayOfMonth,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OnlineArchiveSchedule) MarshalJSON() ([]byte, error) {
+	type noMethod OnlineArchiveSchedule
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOnlineArchiveSchedule instantiates a new OnlineArchiveSchedule object
@@ -95,6 +104,12 @@ func (o *OnlineArchiveSchedule) SetEndHour(v int) {
 	o.EndHour = &v
 }
 
+// SetEndHourNil sets EndHour to an explicit JSON null when marshaled.
+func (o *OnlineArchiveSchedule) SetEndHourNil() {
+	o.EndHour = nil
+	o.NullFields = append(o.NullFields, "EndHour")
+}
+
 // GetEndMinute returns the EndMinute field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetEndMinute() int {
 	if o == nil || IsNil(o.EndMinute) {
@@ -126,6 +141,12 @@ func (o *OnlineArchiveSchedule) HasEndMinute() bool {
 // SetEndMinute gets a reference to the given int and assigns it to the EndMinute field.
 func (o *OnlineArchiveSchedule) SetEndMinute(v int) {
 	o.EndMinute = &v
+}
+
+// SetEndMinuteNil sets EndMinute to an explicit JSON null when marshaled.
+func (o *OnlineArchiveSchedule) SetEndMinuteNil() {
+	o.EndMinute = nil
+	o.NullFields = append(o.NullFields, "EndMinute")
 }
 
 // GetStartHour returns the StartHour field value if set, zero value otherwise
@@ -161,6 +182,12 @@ func (o *OnlineArchiveSchedule) SetStartHour(v int) {
 	o.StartHour = &v
 }
 
+// SetStartHourNil sets StartHour to an explicit JSON null when marshaled.
+func (o *OnlineArchiveSchedule) SetStartHourNil() {
+	o.StartHour = nil
+	o.NullFields = append(o.NullFields, "StartHour")
+}
+
 // GetStartMinute returns the StartMinute field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetStartMinute() int {
 	if o == nil || IsNil(o.StartMinute) {
@@ -192,6 +219,12 @@ func (o *OnlineArchiveSchedule) HasStartMinute() bool {
 // SetStartMinute gets a reference to the given int and assigns it to the StartMinute field.
 func (o *OnlineArchiveSchedule) SetStartMinute(v int) {
 	o.StartMinute = &v
+}
+
+// SetStartMinuteNil sets StartMinute to an explicit JSON null when marshaled.
+func (o *OnlineArchiveSchedule) SetStartMinuteNil() {
+	o.StartMinute = nil
+	o.NullFields = append(o.NullFields, "StartMinute")
 }
 
 // GetDayOfWeek returns the DayOfWeek field value if set, zero value otherwise
@@ -227,6 +260,12 @@ func (o *OnlineArchiveSchedule) SetDayOfWeek(v int) {
 	o.DayOfWeek = &v
 }
 
+// SetDayOfWeekNil sets DayOfWeek to an explicit JSON null when marshaled.
+func (o *OnlineArchiveSchedule) SetDayOfWeekNil() {
+	o.DayOfWeek = nil
+	o.NullFields = append(o.NullFields, "DayOfWeek")
+}
+
 // GetDayOfMonth returns the DayOfMonth field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetDayOfMonth() int {
 	if o == nil || IsNil(o.DayOfMonth) {
@@ -258,4 +297,10 @@ func (o *OnlineArchiveSchedule) HasDayOfMonth() bool {
 // SetDayOfMonth gets a reference to the given int and assigns it to the DayOfMonth field.
 func (o *OnlineArchiveSchedule) SetDayOfMonth(v int) {
 	o.DayOfMonth = &v
+}
+
+// SetDayOfMonthNil sets DayOfMonth to an explicit JSON null when marshaled.
+func (o *OnlineArchiveSchedule) SetDayOfMonthNil() {
+	o.DayOfMonth = nil
+	o.NullFields = append(o.NullFields, "DayOfMonth")
 }

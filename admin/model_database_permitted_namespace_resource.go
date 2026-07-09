@@ -10,6 +10,15 @@ type DatabasePermittedNamespaceResource struct {
 	Collection string `json:"collection"`
 	// Human-readable label that identifies the database on which you grant the action to one MongoDB user. If you set `\"actions.resources.cluster\" : true`, MongoDB Cloud ignores this parameter.
 	Db string `json:"db"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DatabasePermittedNamespaceResource) MarshalJSON() ([]byte, error) {
+	type noMethod DatabasePermittedNamespaceResource
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDatabasePermittedNamespaceResource instantiates a new DatabasePermittedNamespaceResource object

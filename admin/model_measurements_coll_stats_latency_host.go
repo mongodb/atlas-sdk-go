@@ -35,6 +35,15 @@ type MeasurementsCollStatsLatencyHost struct {
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Start *time.Time `json:"start,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MeasurementsCollStatsLatencyHost) MarshalJSON() ([]byte, error) {
+	type noMethod MeasurementsCollStatsLatencyHost
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMeasurementsCollStatsLatencyHost instantiates a new MeasurementsCollStatsLatencyHost object
@@ -87,6 +96,12 @@ func (o *MeasurementsCollStatsLatencyHost) SetCollectionName(v string) {
 	o.CollectionName = &v
 }
 
+// SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyHost) SetCollectionNameNil() {
+	o.CollectionName = nil
+	o.NullFields = append(o.NullFields, "CollectionName")
+}
+
 // GetDatabaseName returns the DatabaseName field value if set, zero value otherwise
 func (o *MeasurementsCollStatsLatencyHost) GetDatabaseName() string {
 	if o == nil || IsNil(o.DatabaseName) {
@@ -118,6 +133,12 @@ func (o *MeasurementsCollStatsLatencyHost) HasDatabaseName() bool {
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *MeasurementsCollStatsLatencyHost) SetDatabaseName(v string) {
 	o.DatabaseName = &v
+}
+
+// SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyHost) SetDatabaseNameNil() {
+	o.DatabaseName = nil
+	o.NullFields = append(o.NullFields, "DatabaseName")
 }
 
 // GetEnd returns the End field value if set, zero value otherwise
@@ -153,6 +174,12 @@ func (o *MeasurementsCollStatsLatencyHost) SetEnd(v time.Time) {
 	o.End = &v
 }
 
+// SetEndNil sets End to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyHost) SetEndNil() {
+	o.End = nil
+	o.NullFields = append(o.NullFields, "End")
+}
+
 // GetGranularity returns the Granularity field value if set, zero value otherwise
 func (o *MeasurementsCollStatsLatencyHost) GetGranularity() string {
 	if o == nil || IsNil(o.Granularity) {
@@ -186,6 +213,12 @@ func (o *MeasurementsCollStatsLatencyHost) SetGranularity(v string) {
 	o.Granularity = &v
 }
 
+// SetGranularityNil sets Granularity to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyHost) SetGranularityNil() {
+	o.Granularity = nil
+	o.NullFields = append(o.NullFields, "Granularity")
+}
+
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *MeasurementsCollStatsLatencyHost) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -217,6 +250,12 @@ func (o *MeasurementsCollStatsLatencyHost) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *MeasurementsCollStatsLatencyHost) SetGroupId(v string) {
 	o.GroupId = &v
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyHost) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = append(o.NullFields, "GroupId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -318,6 +357,12 @@ func (o *MeasurementsCollStatsLatencyHost) SetProcessId(v string) {
 	o.ProcessId = &v
 }
 
+// SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyHost) SetProcessIdNil() {
+	o.ProcessId = nil
+	o.NullFields = append(o.NullFields, "ProcessId")
+}
+
 // GetStart returns the Start field value if set, zero value otherwise
 func (o *MeasurementsCollStatsLatencyHost) GetStart() time.Time {
 	if o == nil || IsNil(o.Start) {
@@ -349,4 +394,10 @@ func (o *MeasurementsCollStatsLatencyHost) HasStart() bool {
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *MeasurementsCollStatsLatencyHost) SetStart(v time.Time) {
 	o.Start = &v
+}
+
+// SetStartNil sets Start to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyHost) SetStartNil() {
+	o.Start = nil
+	o.NullFields = append(o.NullFields, "Start")
 }

@@ -10,6 +10,15 @@ type AdditionalData struct {
 	ProcessorName *string `json:"processorName,omitempty"`
 	// Workspace associated with the line item.
 	Workspace *string `json:"workspace,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AdditionalData) MarshalJSON() ([]byte, error) {
+	type noMethod AdditionalData
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAdditionalData instantiates a new AdditionalData object
@@ -62,6 +71,12 @@ func (o *AdditionalData) SetProcessorId(v string) {
 	o.ProcessorId = &v
 }
 
+// SetProcessorIdNil sets ProcessorId to an explicit JSON null when marshaled.
+func (o *AdditionalData) SetProcessorIdNil() {
+	o.ProcessorId = nil
+	o.NullFields = append(o.NullFields, "ProcessorId")
+}
+
 // GetProcessorName returns the ProcessorName field value if set, zero value otherwise
 func (o *AdditionalData) GetProcessorName() string {
 	if o == nil || IsNil(o.ProcessorName) {
@@ -95,6 +110,12 @@ func (o *AdditionalData) SetProcessorName(v string) {
 	o.ProcessorName = &v
 }
 
+// SetProcessorNameNil sets ProcessorName to an explicit JSON null when marshaled.
+func (o *AdditionalData) SetProcessorNameNil() {
+	o.ProcessorName = nil
+	o.NullFields = append(o.NullFields, "ProcessorName")
+}
+
 // GetWorkspace returns the Workspace field value if set, zero value otherwise
 func (o *AdditionalData) GetWorkspace() string {
 	if o == nil || IsNil(o.Workspace) {
@@ -126,4 +147,10 @@ func (o *AdditionalData) HasWorkspace() bool {
 // SetWorkspace gets a reference to the given string and assigns it to the Workspace field.
 func (o *AdditionalData) SetWorkspace(v string) {
 	o.Workspace = &v
+}
+
+// SetWorkspaceNil sets Workspace to an explicit JSON null when marshaled.
+func (o *AdditionalData) SetWorkspaceNil() {
+	o.Workspace = nil
+	o.NullFields = append(o.NullFields, "Workspace")
 }

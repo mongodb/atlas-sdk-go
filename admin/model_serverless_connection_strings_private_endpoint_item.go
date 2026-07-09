@@ -13,6 +13,15 @@ type ServerlessConnectionStringsPrivateEndpointItem struct {
 	// Region where the private endpoint is deployed.
 	// Read only field.
 	Region *string `json:"region,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessConnectionStringsPrivateEndpointItem) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessConnectionStringsPrivateEndpointItem
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessConnectionStringsPrivateEndpointItem instantiates a new ServerlessConnectionStringsPrivateEndpointItem object
@@ -65,6 +74,12 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) SetEndpointId(v string)
 	o.EndpointId = &v
 }
 
+// SetEndpointIdNil sets EndpointId to an explicit JSON null when marshaled.
+func (o *ServerlessConnectionStringsPrivateEndpointItem) SetEndpointIdNil() {
+	o.EndpointId = nil
+	o.NullFields = append(o.NullFields, "EndpointId")
+}
+
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointItem) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
@@ -98,6 +113,12 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) SetProviderName(v strin
 	o.ProviderName = &v
 }
 
+// SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled.
+func (o *ServerlessConnectionStringsPrivateEndpointItem) SetProviderNameNil() {
+	o.ProviderName = nil
+	o.NullFields = append(o.NullFields, "ProviderName")
+}
+
 // GetRegion returns the Region field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointItem) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
@@ -129,4 +150,10 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *ServerlessConnectionStringsPrivateEndpointItem) SetRegion(v string) {
 	o.Region = &v
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *ServerlessConnectionStringsPrivateEndpointItem) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = append(o.NullFields, "Region")
 }

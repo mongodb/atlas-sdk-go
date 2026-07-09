@@ -9,6 +9,15 @@ type EncryptionAtRest struct {
 	// Flag that indicates whether Encryption at Rest for Dedicated Search Nodes is enabled in the specified project.
 	EnabledForSearchNodes *bool           `json:"enabledForSearchNodes,omitempty"`
 	GoogleCloudKms        *GoogleCloudKMS `json:"googleCloudKms,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *EncryptionAtRest) MarshalJSON() ([]byte, error) {
+	type noMethod EncryptionAtRest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewEncryptionAtRest instantiates a new EncryptionAtRest object
@@ -61,6 +70,12 @@ func (o *EncryptionAtRest) SetAwsKms(v AWSKMSConfiguration) {
 	o.AwsKms = &v
 }
 
+// SetAwsKmsNil sets AwsKms to an explicit JSON null when marshaled.
+func (o *EncryptionAtRest) SetAwsKmsNil() {
+	o.AwsKms = nil
+	o.NullFields = append(o.NullFields, "AwsKms")
+}
+
 // GetAzureKeyVault returns the AzureKeyVault field value if set, zero value otherwise
 func (o *EncryptionAtRest) GetAzureKeyVault() AzureKeyVault {
 	if o == nil || IsNil(o.AzureKeyVault) {
@@ -92,6 +107,12 @@ func (o *EncryptionAtRest) HasAzureKeyVault() bool {
 // SetAzureKeyVault gets a reference to the given AzureKeyVault and assigns it to the AzureKeyVault field.
 func (o *EncryptionAtRest) SetAzureKeyVault(v AzureKeyVault) {
 	o.AzureKeyVault = &v
+}
+
+// SetAzureKeyVaultNil sets AzureKeyVault to an explicit JSON null when marshaled.
+func (o *EncryptionAtRest) SetAzureKeyVaultNil() {
+	o.AzureKeyVault = nil
+	o.NullFields = append(o.NullFields, "AzureKeyVault")
 }
 
 // GetEnabledForSearchNodes returns the EnabledForSearchNodes field value if set, zero value otherwise
@@ -127,6 +148,12 @@ func (o *EncryptionAtRest) SetEnabledForSearchNodes(v bool) {
 	o.EnabledForSearchNodes = &v
 }
 
+// SetEnabledForSearchNodesNil sets EnabledForSearchNodes to an explicit JSON null when marshaled.
+func (o *EncryptionAtRest) SetEnabledForSearchNodesNil() {
+	o.EnabledForSearchNodes = nil
+	o.NullFields = append(o.NullFields, "EnabledForSearchNodes")
+}
+
 // GetGoogleCloudKms returns the GoogleCloudKms field value if set, zero value otherwise
 func (o *EncryptionAtRest) GetGoogleCloudKms() GoogleCloudKMS {
 	if o == nil || IsNil(o.GoogleCloudKms) {
@@ -158,4 +185,10 @@ func (o *EncryptionAtRest) HasGoogleCloudKms() bool {
 // SetGoogleCloudKms gets a reference to the given GoogleCloudKMS and assigns it to the GoogleCloudKms field.
 func (o *EncryptionAtRest) SetGoogleCloudKms(v GoogleCloudKMS) {
 	o.GoogleCloudKms = &v
+}
+
+// SetGoogleCloudKmsNil sets GoogleCloudKms to an explicit JSON null when marshaled.
+func (o *EncryptionAtRest) SetGoogleCloudKmsNil() {
+	o.GoogleCloudKms = nil
+	o.NullFields = append(o.NullFields, "GoogleCloudKms")
 }

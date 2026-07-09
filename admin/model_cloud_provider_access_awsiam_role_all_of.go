@@ -28,6 +28,15 @@ type CloudProviderAccessAWSIAMRoleAllOf struct {
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
 	RoleId *string `json:"roleId,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderAccessAWSIAMRoleAllOf) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderAccessAWSIAMRoleAllOf
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessAWSIAMRoleAllOf instantiates a new CloudProviderAccessAWSIAMRoleAllOf object
@@ -80,6 +89,12 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAtlasAWSAccountArn(v string) {
 	o.AtlasAWSAccountArn = &v
 }
 
+// SetAtlasAWSAccountArnNil sets AtlasAWSAccountArn to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAtlasAWSAccountArnNil() {
+	o.AtlasAWSAccountArn = nil
+	o.NullFields = append(o.NullFields, "AtlasAWSAccountArn")
+}
+
 // GetAtlasAssumedRoleExternalId returns the AtlasAssumedRoleExternalId field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRoleAllOf) GetAtlasAssumedRoleExternalId() string {
 	if o == nil || IsNil(o.AtlasAssumedRoleExternalId) {
@@ -111,6 +126,12 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAtlasAssumedRoleExternalId() boo
 // SetAtlasAssumedRoleExternalId gets a reference to the given string and assigns it to the AtlasAssumedRoleExternalId field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAtlasAssumedRoleExternalId(v string) {
 	o.AtlasAssumedRoleExternalId = &v
+}
+
+// SetAtlasAssumedRoleExternalIdNil sets AtlasAssumedRoleExternalId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAtlasAssumedRoleExternalIdNil() {
+	o.AtlasAssumedRoleExternalId = nil
+	o.NullFields = append(o.NullFields, "AtlasAssumedRoleExternalId")
 }
 
 // GetAuthorizedDate returns the AuthorizedDate field value if set, zero value otherwise
@@ -146,6 +167,12 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAuthorizedDate(v time.Time) {
 	o.AuthorizedDate = &v
 }
 
+// SetAuthorizedDateNil sets AuthorizedDate to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAuthorizedDateNil() {
+	o.AuthorizedDate = nil
+	o.NullFields = append(o.NullFields, "AuthorizedDate")
+}
+
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRoleAllOf) GetCreatedDate() time.Time {
 	if o == nil || IsNil(o.CreatedDate) {
@@ -177,6 +204,12 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
+}
+
+// SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAWSIAMRoleAllOf) SetCreatedDateNil() {
+	o.CreatedDate = nil
+	o.NullFields = append(o.NullFields, "CreatedDate")
 }
 
 // GetFeatureUsages returns the FeatureUsages field value if set, zero value otherwise
@@ -245,6 +278,12 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) SetIamAssumedRoleArn(v string) {
 	o.IamAssumedRoleArn = &v
 }
 
+// SetIamAssumedRoleArnNil sets IamAssumedRoleArn to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAWSIAMRoleAllOf) SetIamAssumedRoleArnNil() {
+	o.IamAssumedRoleArn = nil
+	o.NullFields = append(o.NullFields, "IamAssumedRoleArn")
+}
+
 // GetRoleId returns the RoleId field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRoleAllOf) GetRoleId() string {
 	if o == nil || IsNil(o.RoleId) {
@@ -276,4 +315,10 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetRoleId(v string) {
 	o.RoleId = &v
+}
+
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessAWSIAMRoleAllOf) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = append(o.NullFields, "RoleId")
 }

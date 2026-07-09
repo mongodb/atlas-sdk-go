@@ -13,6 +13,15 @@ type SchemaAdvisorItemRecommendation struct {
 	// Type of recommendation.
 	// Read only field.
 	Recommendation *string `json:"recommendation,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SchemaAdvisorItemRecommendation) MarshalJSON() ([]byte, error) {
+	type noMethod SchemaAdvisorItemRecommendation
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSchemaAdvisorItemRecommendation instantiates a new SchemaAdvisorItemRecommendation object
@@ -98,6 +107,12 @@ func (o *SchemaAdvisorItemRecommendation) SetDescription(v string) {
 	o.Description = &v
 }
 
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *SchemaAdvisorItemRecommendation) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = append(o.NullFields, "Description")
+}
+
 // GetRecommendation returns the Recommendation field value if set, zero value otherwise
 func (o *SchemaAdvisorItemRecommendation) GetRecommendation() string {
 	if o == nil || IsNil(o.Recommendation) {
@@ -129,4 +144,10 @@ func (o *SchemaAdvisorItemRecommendation) HasRecommendation() bool {
 // SetRecommendation gets a reference to the given string and assigns it to the Recommendation field.
 func (o *SchemaAdvisorItemRecommendation) SetRecommendation(v string) {
 	o.Recommendation = &v
+}
+
+// SetRecommendationNil sets Recommendation to an explicit JSON null when marshaled.
+func (o *SchemaAdvisorItemRecommendation) SetRecommendationNil() {
+	o.Recommendation = nil
+	o.NullFields = append(o.NullFields, "Recommendation")
 }

@@ -20,6 +20,15 @@ type ApiKeyUserDetails struct {
 	PublicKey *string `json:"publicKey,omitempty"`
 	// List that contains the roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the API key.
 	Roles *[]CloudAccessRoleAssignment `json:"roles,omitempty"`
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiKeyUserDetails) MarshalJSON() ([]byte, error) {
+	type noMethod ApiKeyUserDetails
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiKeyUserDetails instantiates a new ApiKeyUserDetails object
@@ -72,6 +81,12 @@ func (o *ApiKeyUserDetails) SetDesc(v string) {
 	o.Desc = &v
 }
 
+// SetDescNil sets Desc to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetDescNil() {
+	o.Desc = nil
+	o.NullFields = append(o.NullFields, "Desc")
+}
+
 // GetId returns the Id field value if set, zero value otherwise
 func (o *ApiKeyUserDetails) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -103,6 +118,12 @@ func (o *ApiKeyUserDetails) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiKeyUserDetails) SetId(v string) {
 	o.Id = &v
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetIdNil() {
+	o.Id = nil
+	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -171,6 +192,12 @@ func (o *ApiKeyUserDetails) SetPrivateKey(v string) {
 	o.PrivateKey = &v
 }
 
+// SetPrivateKeyNil sets PrivateKey to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetPrivateKeyNil() {
+	o.PrivateKey = nil
+	o.NullFields = append(o.NullFields, "PrivateKey")
+}
+
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise
 func (o *ApiKeyUserDetails) GetPublicKey() string {
 	if o == nil || IsNil(o.PublicKey) {
@@ -202,6 +229,12 @@ func (o *ApiKeyUserDetails) HasPublicKey() bool {
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *ApiKeyUserDetails) SetPublicKey(v string) {
 	o.PublicKey = &v
+}
+
+// SetPublicKeyNil sets PublicKey to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetPublicKeyNil() {
+	o.PublicKey = nil
+	o.NullFields = append(o.NullFields, "PublicKey")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
