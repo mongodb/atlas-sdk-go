@@ -71,11 +71,13 @@ Version should never be committed to the main branch. This task should only be u
 The Preview SDK targets the `preview` version of the OpenAPI spec
 (`TARGET_API_VERSION=preview` in `fetch.sh`), so it includes preview media-type
 (`application/vnd.atlas.preview+json`) endpoints and fields that are excluded from the
-stable, production SDK. It is not officially supported and not production ready: it
-exposes in-progress, unstable APIs that may change or be removed at any time. Use it
-only for early development against pre-release Atlas features (for example, Terraform
-provider work), never in production. Consume it via
-`go get github.com/mongodb/atlas-sdk-go@dev-latest`.
+stable, production SDK. This covers both the public preview delta
+(`openapi-preview.yaml`) and every active private preview delta
+(`openapi/v2/private/*`), all merged onto the stable base spec. It is not officially
+supported and not production ready: it exposes in-progress, unstable APIs that may
+change or be removed at any time. Use it only for early development against
+pre-release Atlas features (for example, Terraform provider work), never in
+production. Consume it via `go get github.com/mongodb/atlas-sdk-go@dev-latest`.
 
 ## Folder structure
 

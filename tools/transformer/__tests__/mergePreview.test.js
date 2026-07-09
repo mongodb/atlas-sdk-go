@@ -150,3 +150,50 @@ test("missing preview doc returns the base unchanged", () => {
   const base = baseDoc();
   expect(mergePreview(base, undefined)).toBe(base);
 });
+
+test("multiple deltas can be layered by calling mergePreview in sequence", () => {
+  // Mirrors the CLI, which applies the public preview delta and then each
+  // private preview delta (one per feature area) on top of the base in turn.
+  const publicPreview = {
+    paths: {
+      "/streams": {
+        get: { operationId: "listStreamsPreview", tags: ["Streams"] },
+      },
+    },
+  };
+  const privatePreviewA = {
+    paths: {
+      "/rateLimits": {
+        get: { operationId: "listRateLimits", tags: ["Rate Limiting"] },
+      },
+    },
+    components: { schemas: { RateLimit: { type: "object" } } },
+  };
+  const privatePreviewB = {
+    paths: {
+      // Overrides the operation added by privatePreviewA above.
+      "/rateLimits": {
+        get: {
+          operationId: "listRateLimitsV2",
+          tags: ["Rate Limiting"],
+        },
+      },
+    },
+  };
+
+  let merged = baseDoc();
+  for (const delta of [publicPreview, privatePreviewA, privatePreviewB]) {
+    merged = mergePreview(merged, delta);
+  }
+
+  // Base and every delta's additions are present.
+  expect(merged.paths["/clusters"].get.operationId).toEqual("listClusters");
+  expect(merged.paths["/streams"].get.operationId).toEqual(
+    "listStreamsPreview",
+  );
+  expect(merged.components.schemas.RateLimit).toEqual({ type: "object" });
+  // Later deltas win on conflicts.
+  expect(merged.paths["/rateLimits"].get.operationId).toEqual(
+    "listRateLimitsV2",
+  );
+});
