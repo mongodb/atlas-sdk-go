@@ -31,12 +31,29 @@ type {{classname}} struct {
 {{#isAdditionalPropertiesTrue}}
 	AdditionalProperties map[string]any
 {{/isAdditionalPropertiesTrue}}
+{{^isArray}}
+{{^isAdditionalPropertiesTrue}}
+	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
+	// overriding the field's actual value.
+	NullFields []string `json:"-"`
+{{/isAdditionalPropertiesTrue}}
+{{/isArray}}
 }
 
 {{#isAdditionalPropertiesTrue}}
 type _{{{classname}}} {{{classname}}}
 
 {{/isAdditionalPropertiesTrue}}
+{{^isArray}}
+{{^isAdditionalPropertiesTrue}}
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *{{classname}}) MarshalJSON() ([]byte, error) {
+	type noMethod {{classname}}
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
+}
+
+{{/isAdditionalPropertiesTrue}}
+{{/isArray}}
 // New{{classname}} instantiates a new {{classname}} object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -175,6 +192,16 @@ func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
 	o.{{name}} = {{^isFreeFormObject}}&{{/isFreeFormObject}}{{#isFreeFormObject}}{{#isMap}}&{{/isMap}}{{/isFreeFormObject}}v
 }
 
+{{^isArray}}
+{{^isAdditionalPropertiesTrue}}
+// Set{{name}}Nil sets {{name}} to an explicit JSON null when marshaled.
+func (o *{{classname}}) Set{{name}}Nil() {
+	o.{{name}} = nil
+	o.NullFields = append(o.NullFields, "{{name}}")
+}
+
+{{/isAdditionalPropertiesTrue}}
+{{/isArray}}
 {{/required}}
 {{/vars}}
 {{#isArray}}
