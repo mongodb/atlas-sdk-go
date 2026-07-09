@@ -9,7 +9,7 @@ type ApiAtlasResourcePolicyMetadata struct {
 	PoliciesCausingNonCompliance *[]ApiAtlasPolicyMetadata `json:"policiesCausingNonCompliance,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the atlas resource policy.
 	// Read only field.
-	ResourcePolicyId *string `json:"resourcePolicyId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	ResourcePolicyId *string `json:"resourcePolicyId,omitempty"`
 	// Human-readable label that describes the atlas resource policy.
 	// Read only field.
 	ResourcePolicyName *string `json:"resourcePolicyName,omitempty"`

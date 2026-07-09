@@ -10,7 +10,7 @@ type BackupComplianceScheduledPolicyItem struct {
 	FrequencyType string `json:"frequencyType"`
 	// Unique 24-hexadecimal digit string that identifies this backup policy item.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Unit of time in which MongoDB Cloud measures Snapshot retention.
 	RetentionUnit string `json:"retentionUnit"`
 	// Duration in days, weeks, months, or years that MongoDB Cloud retains the Snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items.  For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item.

@@ -16,7 +16,7 @@ type MeasurementsNonIndex struct {
 	Granularity *string `json:"granularity,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the `mongod` or `mongos`.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the Atlas Search hardware measurements.
 	// Read only field.
 	HardwareMeasurements *[]MetricsMeasurement `json:"hardwareMeasurements,omitempty"`
@@ -25,7 +25,7 @@ type MeasurementsNonIndex struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	// Read only field.
-	ProcessId *string `json:"processId,omitempty" validate:"regexp=^([0-9]{1,3}\\\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\\.){1,10}[a-z]+)?(\\\\:[0-9]{4,5})$"`
+	ProcessId *string `json:"processId,omitempty"`
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Start *time.Time `json:"start,omitempty"`

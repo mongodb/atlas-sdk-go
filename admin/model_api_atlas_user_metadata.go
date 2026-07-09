@@ -6,7 +6,7 @@ package admin
 type ApiAtlasUserMetadata struct {
 	// Unique 24-hexadecimal character string that identifies a user.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Human-readable label that describes a user.
 	// Read only field.
 	Name *string `json:"name,omitempty"`

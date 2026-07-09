@@ -14,11 +14,11 @@ type LDAPSecuritySettings struct {
 	// Write only field.
 	BindPassword *string `json:"bindPassword,omitempty"`
 	// Full Distinguished Name (DN) of the Lightweight Directory Access Protocol (LDAP) user that MongoDB Cloud uses to connect to the LDAP host. LDAP distinguished names must be formatted according to RFC 2253.
-	BindUsername *string `json:"bindUsername,omitempty" validate:"regexp=^(?:(?<cn>CN=(?<name>[^,]*)),)?(?:(?<path>(?:(?:CN|OU)=[^,]+,?)+),)?(?<domain>(?:DC=[^,]+,?)+)$"`
+	BindUsername *string `json:"bindUsername,omitempty"`
 	// Certificate Authority (CA) certificate that MongoDB Cloud uses to verify the identity of the Lightweight Directory Access Protocol (LDAP) host. MongoDB Cloud allows self-signed certificates. To delete an assigned value, pass an empty string: `\"caCertificate\": \"\"`.
 	CaCertificate *string `json:"caCertificate,omitempty"`
 	// Human-readable label that identifies the hostname or Internet Protocol (IP) address of the Lightweight Directory Access Protocol (LDAP) host. This host must have access to the internet or have a Virtual Private Cloud (VPC) peering connection to your cluster.
-	Hostname *string `json:"hostname,omitempty" validate:"regexp=^([0-9]{1,3}\\\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\\.){1,10}[a-z]+)?$"`
+	Hostname *string `json:"hostname,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`

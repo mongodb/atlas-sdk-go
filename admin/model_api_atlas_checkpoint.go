@@ -10,16 +10,16 @@ import (
 type ApiAtlasCheckpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster that contains the checkpoint.
 	// Read only field.
-	ClusterId *string `json:"clusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	ClusterId *string `json:"clusterId,omitempty"`
 	// Date and time when the checkpoint completed and the balancer restarted. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Completed *time.Time `json:"completed,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns the checkpoints.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies checkpoint.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`

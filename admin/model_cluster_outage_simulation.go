@@ -10,16 +10,16 @@ import (
 type ClusterOutageSimulation struct {
 	// Human-readable label that identifies the cluster that undergoes outage simulation.
 	// Read only field.
-	ClusterName *string `json:"clusterName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
+	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when MongoDB Cloud expires the outage simulation. This parameter expresses its value in the ISO 8601 timestamp format in UTC. If not provided, defaults to 3 days from the start date.
 	// Read only field.
 	ExpirationDate *time.Time `json:"expirationDate,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project that contains the cluster to undergo outage simulation.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the outage simulation.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// List of settings that specify the type of cluster outage simulation.
 	OutageFilters *[]AtlasClusterOutageSimulationOutageFilter `json:"outageFilters,omitempty"`
 	// Date and time when MongoDB Cloud started the regional outage simulation. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

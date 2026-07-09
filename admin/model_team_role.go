@@ -10,7 +10,7 @@ type TeamRole struct {
 	// One or more project-level roles to assign to the team.
 	RoleNames []string `json:"roleNames"`
 	// Unique 24-hexadecimal character string that identifies the team.
-	TeamId string `json:"teamId" validate:"regexp=^([a-f0-9]{24})$"`
+	TeamId string `json:"teamId"`
 }
 
 // NewTeamRole instantiates a new TeamRole object

@@ -10,7 +10,7 @@ import (
 type IngestionPipelineRun struct {
 	// Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
 	// Read only field.
-	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"_id,omitempty"`
 	// Backup schedule interval of the Data Lake Pipeline.
 	// Read only field.
 	BackupFrequencyType *string `json:"backupFrequencyType,omitempty"`
@@ -23,7 +23,7 @@ type IngestionPipelineRun struct {
 	DatasetRetentionPolicy *DatasetRetentionPolicy `json:"datasetRetentionPolicy,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Timestamp that indicates the last time that the pipeline run was updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`
@@ -32,13 +32,13 @@ type IngestionPipelineRun struct {
 	Phase *string `json:"phase,omitempty"`
 	// Unique 24-hexadecimal character string that identifies a Data Lake Pipeline.
 	// Read only field.
-	PipelineId *string `json:"pipelineId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	PipelineId *string `json:"pipelineId,omitempty"`
 	// Timestamp that indicates when the pipeline run will expire and its dataset will be deleted. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	ScheduledDeletionDate *time.Time `json:"scheduledDeletionDate,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot of a cluster.
 	// Read only field.
-	SnapshotId *string `json:"snapshotId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	SnapshotId *string `json:"snapshotId,omitempty"`
 	// State of the pipeline run.
 	// Read only field.
 	State *string           `json:"state,omitempty"`

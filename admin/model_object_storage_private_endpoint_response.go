@@ -11,7 +11,7 @@ type ObjectStoragePrivateEndpointResponse struct {
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Connection name of the Private Endpoint.
 	// Read only field.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`

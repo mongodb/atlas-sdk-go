@@ -9,7 +9,7 @@ import (
 // UserAccessListResponse struct for UserAccessListResponse
 type UserAccessListResponse struct {
 	// Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation in the access list for the API key.
-	CidrBlock *string `json:"cidrBlock,omitempty" validate:"regexp=^((([0-9]{1,3}\\\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|\\/)[0-9]{1,3})+$"`
+	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// Total number of requests that have originated from the Internet Protocol (IP) address given as the value of the `lastUsedAddress` parameter.
 	// Read only field.
 	Count *int `json:"count,omitempty"`
@@ -17,7 +17,7 @@ type UserAccessListResponse struct {
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Network address in the access list for the API key.
-	IpAddress *string `json:"ipAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	// Date and time when MongoDB Cloud received the most recent request that originated from this Internet Protocol version 4 or version 6 address. The resource returns this parameter when at least one request has originated from this IP address. MongoDB Cloud updates this parameter each time a client accesses the permitted resource. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastUsed *time.Time `json:"lastUsed,omitempty"`

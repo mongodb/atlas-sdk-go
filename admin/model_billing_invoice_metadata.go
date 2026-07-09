@@ -25,7 +25,7 @@ type BillingInvoiceMetadata struct {
 	EndDate *time.Time `json:"endDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// List that contains the invoices for organizations linked to the paying organization.
 	// Read only field.
 	LinkedInvoices *[]BillingInvoiceMetadata `json:"linkedInvoices,omitempty"`
@@ -34,7 +34,7 @@ type BillingInvoiceMetadata struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization charged for services consumed from MongoDB Cloud.
 	// Read only field.
-	OrgId *string `json:"orgId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	OrgId *string `json:"orgId,omitempty"`
 	// Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	SalesTaxCents *int64 `json:"salesTaxCents,omitempty"`

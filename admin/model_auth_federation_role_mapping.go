@@ -8,7 +8,7 @@ type AuthFederationRoleMapping struct {
 	ExternalGroupName string `json:"externalGroupName"`
 	// Unique 24-hexadecimal digit string that identifies this role mapping.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective `orgId`. Each element in the array can have a value for `orgId` or `groupId`, but not both.
 	RoleAssignments []ConnectedOrgConfigRoleAssignment `json:"roleAssignments"`
 }

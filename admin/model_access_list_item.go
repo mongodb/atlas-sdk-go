@@ -6,10 +6,10 @@ package admin
 type AccessListItem struct {
 	// Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation that found in this project's access list.
 	// Read only field.
-	CidrBlock *string `json:"cidrBlock,omitempty" validate:"regexp=^((([0-9]{1,3}\\\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|\\/)[0-9]{1,3})+$"`
+	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// IP address included in the API access list.
 	// Read only field.
-	IpAddress string `json:"ipAddress" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	IpAddress string `json:"ipAddress"`
 }
 
 // NewAccessListItem instantiates a new AccessListItem object

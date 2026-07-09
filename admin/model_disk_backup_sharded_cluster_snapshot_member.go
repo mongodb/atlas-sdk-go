@@ -9,7 +9,7 @@ type DiskBackupShardedClusterSnapshotMember struct {
 	CloudProvider string `json:"cloudProvider"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	// Read only field.
-	Id string `json:"id" validate:"regexp=^([a-f0-9]{24})$"`
+	Id string `json:"id"`
 	// Human-readable label that identifies the shard or config host from which MongoDB Cloud took this snapshot.
 	// Read only field.
 	ReplicaSetName string `json:"replicaSetName"`

@@ -12,7 +12,7 @@ type EndpointService struct {
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Cloud provider region that manages this Private Endpoint Service.
 	// Read only field.
 	RegionName *string `json:"regionName,omitempty"`
@@ -21,7 +21,7 @@ type EndpointService struct {
 	Status *string `json:"status,omitempty"`
 	// Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
 	// Read only field.
-	EndpointServiceName *string `json:"endpointServiceName,omitempty" validate:"regexp=^com\\\\.amazonaws\\\\.vpce\\\\.[a-z-0-9]+\\\\.vpce-svc-[0-9a-f]{17}"`
+	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
 	// List of strings that identify private endpoint interfaces applied to the specified project.
 	// Read only field.
 	InterfaceEndpoints *[]string `json:"interfaceEndpoints,omitempty"`
@@ -32,7 +32,7 @@ type EndpointService struct {
 	PrivateEndpoints *[]string `json:"privateEndpoints,omitempty"`
 	// Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages.
 	// Read only field.
-	PrivateLinkServiceName *string `json:"privateLinkServiceName,omitempty" validate:"regexp=^pls_[0-9a-f]{24}$"`
+	PrivateLinkServiceName *string `json:"privateLinkServiceName,omitempty"`
 	// Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet.
 	// Read only field.
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`

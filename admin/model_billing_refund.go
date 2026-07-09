@@ -16,7 +16,7 @@ type BillingRefund struct {
 	Created *time.Time `json:"created,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the payment that the organization had made.
 	// Read only field.
-	PaymentId *string `json:"paymentId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	PaymentId *string `json:"paymentId,omitempty"`
 	// Justification that MongoDB accepted to return funds to the organization.
 	// Read only field.
 	Reason *string `json:"reason,omitempty"`

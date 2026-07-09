@@ -6,7 +6,7 @@ package admin
 type LiveMigrationResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the migration job.
 	// Read only field.
-	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"_id,omitempty"`
 	// Replication lag between the source and destination clusters. Atlas returns this setting only during an active migration, before the cutover phase.
 	// Read only field.
 	LagTimeSeconds *int64 `json:"lagTimeSeconds,omitempty"`

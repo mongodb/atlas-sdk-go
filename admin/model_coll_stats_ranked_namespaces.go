@@ -6,7 +6,7 @@ package admin
 type CollStatsRankedNamespaces struct {
 	// Unique 24-hexadecimal digit string that identifies the request project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the request process.
 	// Read only field.
 	IdentifierId *string `json:"identifierId,omitempty"`

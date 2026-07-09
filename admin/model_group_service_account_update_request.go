@@ -5,9 +5,9 @@ package admin
 // GroupServiceAccountUpdateRequest struct for GroupServiceAccountUpdateRequest
 type GroupServiceAccountUpdateRequest struct {
 	// Human readable description for the Service Account.
-	Description *string `json:"description,omitempty" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.,' ]*$"`
+	Description *string `json:"description,omitempty"`
 	// Human-readable name for the Service Account. The name is modifiable and does not have to be unique.
-	Name *string `json:"name,omitempty" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.,' ]*$"`
+	Name *string `json:"name,omitempty"`
 	// A list of Project roles associated with the Service Account.
 	Roles *[]string `json:"roles,omitempty"`
 }

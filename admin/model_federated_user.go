@@ -7,14 +7,14 @@ type FederatedUser struct {
 	// Email address of the MongoDB Cloud user linked to the federated organization.
 	EmailAddress string `json:"emailAddress"`
 	// Unique 24-hexadecimal digit string that identifies the federation to which this MongoDB Cloud user belongs.
-	FederationSettingsId string `json:"federationSettingsId" validate:"regexp=^([a-f0-9]{24})$"`
+	FederationSettingsId string `json:"federationSettingsId"`
 	// First or given name that belongs to the MongoDB Cloud user.
 	FirstName string `json:"firstName"`
 	// Last name, family name, or surname that belongs to the MongoDB Cloud user.
 	LastName string `json:"lastName"`
 	// Unique 24-hexadecimal digit string that identifies this user.
 	// Read only field.
-	UserId *string `json:"userId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	UserId *string `json:"userId,omitempty"`
 }
 
 // NewFederatedUser instantiates a new FederatedUser object

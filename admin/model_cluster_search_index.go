@@ -10,7 +10,7 @@ type ClusterSearchIndex struct {
 	Database string `json:"database"`
 	// Unique 24-hexadecimal digit string that identifies this Atlas Search index.
 	// Read only field.
-	IndexID *string `json:"indexID,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	IndexID *string `json:"indexID,omitempty"`
 	// Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
 	Name string `json:"name"`
 	// Number of index partitions. Allowed values are [1, 2, 4].

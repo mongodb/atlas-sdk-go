@@ -22,7 +22,7 @@ type BillingPayment struct {
 	Currency *string `json:"currency,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this payment toward the associated invoice.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	SalesTaxCents *int64 `json:"salesTaxCents,omitempty"`

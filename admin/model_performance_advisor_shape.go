@@ -12,7 +12,7 @@ type PerformanceAdvisorShape struct {
 	Count *int64 `json:"count,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this shape. This string exists only for the duration of this API request.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Average number of documents read for every document that the query returns.
 	// Read only field.
 	InefficiencyScore *int64 `json:"inefficiencyScore,omitempty"`

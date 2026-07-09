@@ -44,10 +44,10 @@ type ClusterDescription20240805 struct {
 	GlobalClusterSelfManagedSharding *bool `json:"globalClusterSelfManagedSharding,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Internal classification of the cluster's role. Possible values: `NONE` (regular user cluster), `SYSTEM_CLUSTER` (system cluster for backup), `INTERNAL_SHADOW_CLUSTER` (internal use shadow cluster for testing).
 	// Read only field.
 	InternalClusterRole *string `json:"internalClusterRole,omitempty"`
@@ -62,9 +62,9 @@ type ClusterDescription20240805 struct {
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
 	// Read only field.
-	MongoDBVersion *string `json:"mongoDBVersion,omitempty" validate:"regexp=([\\\\d]+\\\\.[\\\\d]+\\\\.[\\\\d]+)"`
+	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the cluster.
-	Name *string `json:"name,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
+	Name *string `json:"name,omitempty"`
 	// Flag that indicates whether the cluster is paused.
 	Paused *bool `json:"paused,omitempty"`
 	// Flag that indicates whether the cluster uses continuous cloud backups.

@@ -20,7 +20,7 @@ type MongoDBAccessLogs struct {
 	Hostname *string `json:"hostname,omitempty"`
 	// Internet Protocol address that attempted to authenticate with the database.
 	// Read only field.
-	IpAddress *string `json:"ipAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	// Text of the host log concerning the authentication attempt.
 	// Read only field.
 	LogLine *string `json:"logLine,omitempty"`

@@ -8,7 +8,7 @@ type DataFederationAzureCloudProviderConfig struct {
 	// Read only field.
 	AtlasAppId *string `json:"atlasAppId,omitempty"`
 	// Unique identifier of the role that Data Federation can use to access the data stores. Required if specifying `cloudProviderConfig`.
-	RoleId string `json:"roleId" validate:"regexp=^([a-f0-9]{24})$"`
+	RoleId string `json:"roleId"`
 	// The ID of the Service Principal for which there is an access policy for Atlas to access Azure resources.
 	// Read only field.
 	ServicePrincipalId *string `json:"servicePrincipalId,omitempty"`

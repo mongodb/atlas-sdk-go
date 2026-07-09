@@ -13,13 +13,13 @@ type ApiHostViewAtlas struct {
 	Created *time.Time `json:"created,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the `mongod` or `mongos`.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`).
 	// Read only field.
-	Hostname *string `json:"hostname,omitempty" validate:"regexp=^([0-9]{1,3}\\\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\\.){1,10}[a-z]+)?$"`
+	Hostname *string `json:"hostname,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([0-9]{1,3}\\\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\\.){1,10}[a-z]+)?(\\\\:[0-9]{4,5})$"`
+	Id *string `json:"id,omitempty"`
 	// Date and time when MongoDB Cloud received the last ping for this MongoDB process. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastPing *time.Time `json:"lastPing,omitempty"`
@@ -43,7 +43,7 @@ type ApiHostViewAtlas struct {
 	UserAlias *string `json:"userAlias,omitempty"`
 	// Version of MongoDB that this process runs.
 	// Read only field.
-	Version *string `json:"version,omitempty" validate:"regexp=([\\\\d]+\\\\.[\\\\d]+\\\\.[\\\\d]+)"`
+	Version *string `json:"version,omitempty"`
 }
 
 // NewApiHostViewAtlas instantiates a new ApiHostViewAtlas object

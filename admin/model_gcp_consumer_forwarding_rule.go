@@ -9,7 +9,7 @@ type GCPConsumerForwardingRule struct {
 	EndpointName *string `json:"endpointName,omitempty"`
 	// One Private Internet Protocol version 4 (IPv4) address to which this Google Cloud consumer forwarding rule resolves.
 	// Read only field.
-	IpAddress *string `json:"ipAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	// State of the MongoDB Cloud endpoint group when MongoDB Cloud received this request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`

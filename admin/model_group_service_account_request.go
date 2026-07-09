@@ -5,9 +5,9 @@ package admin
 // GroupServiceAccountRequest struct for GroupServiceAccountRequest
 type GroupServiceAccountRequest struct {
 	// Human readable description for the Service Account.
-	Description string `json:"description" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.,' ]*$"`
+	Description string `json:"description"`
 	// Human-readable name for the Service Account. The name is modifiable and does not have to be unique.
-	Name string `json:"name" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.,' ]*$"`
+	Name string `json:"name"`
 	// A list of project-level roles for the Service Account.
 	Roles []string `json:"roles"`
 	// The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.

@@ -8,7 +8,7 @@ type DataFederationGCPCloudProviderConfig struct {
 	// Read only field.
 	GcpServiceAccount *string `json:"gcpServiceAccount,omitempty"`
 	// Unique identifier of the role that Data Federation can use to access the data stores. Required if specifying `cloudProviderConfig`.
-	RoleId string `json:"roleId" validate:"regexp=^([a-f0-9]{24})$"`
+	RoleId string `json:"roleId"`
 }
 
 // NewDataFederationGCPCloudProviderConfig instantiates a new DataFederationGCPCloudProviderConfig object

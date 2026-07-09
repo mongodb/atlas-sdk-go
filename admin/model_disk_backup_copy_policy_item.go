@@ -8,7 +8,7 @@ type DiskBackupCopyPolicyItem struct {
 	FrequencyType string `json:"frequencyType"`
 	// Unique 24-hexadecimal digit string that identifies this copy policy item.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Unit of time in which MongoDB Cloud measures snapshot copy retention.
 	RetentionUnit *string `json:"retentionUnit,omitempty"`
 	// Duration in days, weeks, months, or years that MongoDB Cloud retains the snapshot copy.

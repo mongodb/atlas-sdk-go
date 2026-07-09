@@ -17,7 +17,7 @@ type AlertViewForNdsGroup struct {
 	AcknowledgingUsername *string `json:"acknowledgingUsername,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the alert configuration that sets this alert.
 	// Read only field.
-	AlertConfigId *string `json:"alertConfigId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	AlertConfigId *string `json:"alertConfigId,omitempty"`
 	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
@@ -26,10 +26,10 @@ type AlertViewForNdsGroup struct {
 	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this alert.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Date and time that any notifications were last sent for this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert.
 	// Read only field.
 	LastNotified *time.Time `json:"lastNotified,omitempty"`
@@ -38,7 +38,7 @@ type AlertViewForNdsGroup struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the organization that owns the project to which this alert applies.
 	// Read only field.
-	OrgId *string `json:"orgId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	OrgId *string `json:"orgId,omitempty"`
 	// Date and time that this alert changed to `\"status\" : \"CLOSED\"`. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter once `\"status\" : \"CLOSED\"`.
 	// Read only field.
 	Resolved *time.Time `json:"resolved,omitempty"`
@@ -50,7 +50,7 @@ type AlertViewForNdsGroup struct {
 	Updated *time.Time `json:"updated,omitempty"`
 	// Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters.
 	// Read only field.
-	ClusterName *string `json:"clusterName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
+	ClusterName *string `json:"clusterName,omitempty"`
 	// Hostname and port of the host to which this alert applies. The resource returns this parameter for alerts of events impacting hosts or replica sets.
 	// Read only field.
 	HostnameAndPort *string `json:"hostnameAndPort,omitempty"`
@@ -66,7 +66,7 @@ type AlertViewForNdsGroup struct {
 	NonRunningHostIds *[]string `json:"nonRunningHostIds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters.
 	// Read only field.
-	ParentClusterId *string `json:"parentClusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	ParentClusterId *string `json:"parentClusterId,omitempty"`
 	// The name of the Stream Processing Workspace to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processing Workspaces.
 	// Read only field.
 	InstanceName *string `json:"instanceName,omitempty"`

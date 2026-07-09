@@ -9,7 +9,7 @@ type SearchIndexResponse struct {
 	// Label that identifies the database that contains the collection with one or more Atlas Search indexes.
 	Database *string `json:"database,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this Atlas Search index.
-	IndexID                 *string                                  `json:"indexID,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	IndexID                 *string                                  `json:"indexID,omitempty"`
 	LatestDefinition        *BaseSearchIndexResponseLatestDefinition `json:"latestDefinition,omitempty"`
 	LatestDefinitionVersion *SearchIndexDefinitionVersion            `json:"latestDefinitionVersion,omitempty"`
 	// Label that identifies this index. Within each namespace, the names of all indexes must be unique.

@@ -6,7 +6,7 @@ package admin
 type ApiAtlasPolicyMetadata struct {
 	// Unique 24-hexadecimal character string that identifies the policy.
 	// Read only field.
-	PolicyId *string `json:"policyId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	PolicyId *string `json:"policyId,omitempty"`
 }
 
 // NewApiAtlasPolicyMetadata instantiates a new ApiAtlasPolicyMetadata object

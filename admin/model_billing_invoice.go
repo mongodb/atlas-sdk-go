@@ -25,7 +25,7 @@ type BillingInvoice struct {
 	EndDate *time.Time `json:"endDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// List that contains individual services included in this invoice.
 	// Read only field.
 	LineItems *[]InvoiceLineItem `json:"lineItems,omitempty"`
@@ -37,7 +37,7 @@ type BillingInvoice struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization charged for services consumed from MongoDB Cloud.
 	// Read only field.
-	OrgId *string `json:"orgId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	OrgId *string `json:"orgId,omitempty"`
 	// List that contains funds transferred to MongoDB to cover the specified service noted in this invoice.
 	// Read only field.
 	Payments *[]BillingPayment `json:"payments,omitempty"`

@@ -10,7 +10,7 @@ import (
 type InvoiceLineItem struct {
 	// Human-readable label that identifies the cluster that incurred the charge.
 	// Read only field.
-	ClusterName *string `json:"clusterName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
+	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when MongoDB Cloud created this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
@@ -22,7 +22,7 @@ type InvoiceLineItem struct {
 	EndDate *time.Time `json:"endDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project associated to this line item.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the project.
 	GroupName *string `json:"groupName,omitempty"`
 	// Comment that applies to this line item.

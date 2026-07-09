@@ -27,11 +27,11 @@ type BackupRestoreJobDelivery struct {
 	// Read only field.
 	StatusName *string `json:"statusName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the target cluster. Use the `clusterId` returned in the response body of the **Get All Snapshots** and **Get a Snapshot** endpoints. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.   If the target cluster doesn't have backup enabled, two resources return parameters with empty values:  - **Get All Snapshots** endpoint returns an empty results array without `clusterId` elements - **Get a Snapshot** endpoint doesn't return a `clusterId` parameter.  To return a response with the `clusterId` parameter, either use the `delivery.targetClusterName` parameter or enable backup on the target cluster.
-	TargetClusterId *string `json:"targetClusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	TargetClusterId *string `json:"targetClusterId,omitempty"`
 	// Human-readable label that identifies the target cluster. Use the `clusterName` returned in the response body of the **Get All Snapshots** and **Get a Snapshot** endpoints.  This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.  If the target cluster doesn't have backup enabled, two resources return parameters with empty values:  - **Get All Snapshots** endpoint returns an empty results array without `clusterId` elements - **Get a Snapshot** endpoint doesn't return a `clusterId` parameter.  To return a response with the `clusterId` parameter, either use the `delivery.targetClusterName` parameter or enable backup on the target cluster.
-	TargetClusterName *string `json:"targetClusterName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
+	TargetClusterName *string `json:"targetClusterName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the destination cluster for the restore job. The resource returns this parameter when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.
-	TargetGroupId *string `json:"targetGroupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	TargetGroupId *string `json:"targetGroupId,omitempty"`
 	// Uniform Resource Locator (URL) from which you can download the restored snapshot data. URL includes the verification key. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
 	// Read only field.
 	// Deprecated

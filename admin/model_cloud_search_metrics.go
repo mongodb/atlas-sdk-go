@@ -6,7 +6,7 @@ package admin
 type CloudSearchMetrics struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
 	// Read only field.
-	GroupId string `json:"groupId" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId string `json:"groupId"`
 	// List that contains all host compute, memory, and storage utilization dedicated to Atlas Search when MongoDB Atlas received this request.
 	// Read only field.
 	HardwareMetrics []FTSMetric `json:"hardwareMetrics"`
@@ -18,7 +18,7 @@ type CloudSearchMetrics struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Hostname and port that identifies the process.
 	// Read only field.
-	ProcessId string `json:"processId" validate:"regexp=^([0-9]{1,3}\\\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\\.){1,10}[a-z]+)?(\\\\:[0-9]{4,5})$"`
+	ProcessId string `json:"processId"`
 	// List that contains all available Atlas Search status metrics when MongoDB Atlas received this request.
 	StatusMetrics []FTSMetric `json:"statusMetrics"`
 }

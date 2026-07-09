@@ -5,9 +5,9 @@ package admin
 // UserAccessListRequest struct for UserAccessListRequest
 type UserAccessListRequest struct {
 	// Range of network addresses that you want to add to the access list for the API key. This parameter requires the range to be expressed in classless inter-domain routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or `ipAddress` but not both in the same request.
-	CidrBlock *string `json:"cidrBlock,omitempty" validate:"regexp=^((([0-9]{1,3}\\\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|\\/)[0-9]{1,3})+$"`
+	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// Network address that you want to add to the access list for the API key. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or `cidrBlock` but not both in the same request.
-	IpAddress *string `json:"ipAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 }
 
 // NewUserAccessListRequest instantiates a new UserAccessListRequest object

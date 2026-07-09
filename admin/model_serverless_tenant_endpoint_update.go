@@ -12,10 +12,10 @@ type ServerlessTenantEndpointUpdate struct {
 	ProviderName string `json:"providerName"`
 	// Unique string that identifies the Azure private endpoint's network interface for this private endpoint service.
 	// Write only field.
-	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty" validate:"regexp=^\\/subscriptions\\/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}\\/resource[gG]roups\\/private[Ll]ink\\/providers\\/Microsoft\\\\.Network\\/privateEndpoints\\/[-\\\\w._()]+$"`
+	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	// Write only field.
-	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty"`
 }
 
 // NewServerlessTenantEndpointUpdate instantiates a new ServerlessTenantEndpointUpdate object

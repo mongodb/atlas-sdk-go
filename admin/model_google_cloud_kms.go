@@ -9,7 +9,7 @@ type GoogleCloudKMS struct {
 	// Resource path that displays the key version resource ID for your Google Cloud KMS.
 	KeyVersionResourceID *string `json:"keyVersionResourceID,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Google Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud KMS.
-	RoleId *string `json:"roleId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	RoleId *string `json:"roleId,omitempty"`
 	// JavaScript Object Notation (JSON) object that contains the Google Cloud Key Management Service (KMS). Format the JSON as a string and not as an object.
 	// Write only field.
 	ServiceAccountKey *string `json:"serviceAccountKey,omitempty"`

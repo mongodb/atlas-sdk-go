@@ -5,13 +5,13 @@ package admin
 // DiskBackupSnapshotAWSExportBucketResponse struct for DiskBackupSnapshotAWSExportBucketResponse
 type DiskBackupSnapshotAWSExportBucketResponse struct {
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
-	Id string `json:"_id" validate:"regexp=^([a-f0-9]{24})$"`
+	Id string `json:"_id"`
 	// The name of the AWS S3 Bucket, Azure Storage Container, or Google Cloud Storage Bucket that Snapshots are exported to.
 	BucketName string `json:"bucketName"`
 	// Human-readable label that identifies the cloud provider.
 	CloudProvider string `json:"cloudProvider"`
 	// Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket.
-	IamRoleId string `json:"iamRoleId" validate:"regexp=^([a-f0-9]{24})$"`
+	IamRoleId string `json:"iamRoleId"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`

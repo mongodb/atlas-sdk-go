@@ -11,10 +11,10 @@ type ConnectedOrgConfig struct {
 	// Value that indicates whether domain restriction is enabled for this connected organization.
 	DomainRestrictionEnabled bool `json:"domainRestrictionEnabled"`
 	// Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
-	IdentityProviderId *string `json:"identityProviderId,omitempty" validate:"regexp=^([a-f0-9]{20})$"`
+	IdentityProviderId *string `json:"identityProviderId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
 	// Read only field.
-	OrgId string `json:"orgId" validate:"regexp=^([a-f0-9]{24})$"`
+	OrgId string `json:"orgId"`
 	// Atlas roles that are granted to a user in this organization after authenticating. Roles are a human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific MongoDB Cloud user. These roles can only be organization specific roles.
 	PostAuthRoleGrants *[]string `json:"postAuthRoleGrants,omitempty"`
 	// Role mappings that are configured in this organization.

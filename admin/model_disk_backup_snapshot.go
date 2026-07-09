@@ -22,7 +22,7 @@ type DiskBackupSnapshot struct {
 	FrequencyType *string `json:"frequencyType,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -31,7 +31,7 @@ type DiskBackupSnapshot struct {
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// Version of the MongoDB host that this snapshot backs up.
 	// Read only field.
-	MongodVersion *string `json:"mongodVersion,omitempty" validate:"regexp=([\\\\d]+\\\\.[\\\\d]+\\\\.[\\\\d]+)"`
+	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// List that contains unique identifiers for the policy items.
 	// Read only field.
 	PolicyItems *[]string `json:"policyItems,omitempty"`

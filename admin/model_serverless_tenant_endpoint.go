@@ -6,16 +6,16 @@ package admin
 type ServerlessTenantEndpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the private endpoint.
 	// Read only field.
-	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"_id,omitempty"`
 	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
 	// Read only field.
-	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty" validate:"regexp=^\\/subscriptions\\/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}\\/resource[gG]roups\\/private[Ll]ink\\/providers\\/Microsoft\\\\.Network\\/privateEndpoints\\/[-\\\\w._()]+$"`
+	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
 	// Human-readable comment associated with the private endpoint.
 	// Read only field.
 	Comment *string `json:"comment,omitempty"`
 	// Unique string that identifies the Azure private endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
 	// Read only field.
-	EndpointServiceName *string `json:"endpointServiceName,omitempty" validate:"regexp=^pls_[0-9a-f]{24}$"`
+	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
 	// Human-readable error message that indicates error condition associated with establishing the private endpoint connection.
 	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
@@ -27,7 +27,7 @@ type ServerlessTenantEndpoint struct {
 	ProviderName *string `json:"providerName,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	// Read only field.
-	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty"`
 	// Root-relative path that identifies the Azure Private Link Service that MongoDB Cloud manages. MongoDB Cloud returns null while it creates the endpoint service.
 	// Read only field.
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`

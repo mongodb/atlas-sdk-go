@@ -21,9 +21,9 @@ type PrivateLinkEndpoint struct {
 	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
 	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
 	// Read only field.
-	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty" validate:"regexp=^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}%2[fF]([-\\\\w._()]+)%2[fF]([-\\\\w._()]+)"`
+	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
-	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty"`
 	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
 	// Read only field.
 	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`

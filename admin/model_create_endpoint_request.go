@@ -10,7 +10,7 @@ type CreateEndpointRequest struct {
 	// Write only field.
 	Id *string `json:"id,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
-	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty"`
 	// Human-readable label that identifies a set of endpoints. If this private endpoint belongs to a port-mapped endpoint service, this field is still required but ignored.
 	// Write only field.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
@@ -18,7 +18,7 @@ type CreateEndpointRequest struct {
 	Endpoints *[]CreateGCPForwardingRuleRequest `json:"endpoints,omitempty"`
 	// Unique string that identifies the Google Cloud project in which you created the endpoints.
 	// Write only field.
-	GcpProjectId *string `json:"gcpProjectId,omitempty" validate:"regexp=^p-[0-9a-z]{24}$"`
+	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 }
 
 // NewCreateEndpointRequest instantiates a new CreateEndpointRequest object

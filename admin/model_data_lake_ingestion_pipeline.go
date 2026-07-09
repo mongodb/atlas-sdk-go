@@ -10,14 +10,14 @@ import (
 type DataLakeIngestionPipeline struct {
 	// Unique 24-hexadecimal digit string that identifies the Data Lake Pipeline.
 	// Read only field.
-	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"_id,omitempty"`
 	// Timestamp that indicates when the Data Lake Pipeline was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedDate            *time.Time              `json:"createdDate,omitempty"`
 	DatasetRetentionPolicy *DatasetRetentionPolicy `json:"datasetRetentionPolicy,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the group.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Timestamp that indicates the last time that the Data Lake Pipeline was updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`

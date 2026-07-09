@@ -6,9 +6,9 @@ package admin
 type StreamsPrivateLinkConnection struct {
 	// The ID of the Private Link connection.
 	// Read only field.
-	Id *string `json:"_id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"_id,omitempty"`
 	// Amazon Resource Name (ARN). Required for AWS Provider and MSK vendor.
-	Arn *string `json:"arn,omitempty" validate:"regexp=^arn:aws:kafka"`
+	Arn *string `json:"arn,omitempty"`
 	// Azure Resource IDs of each availability zone for the Azure Confluent cluster.
 	AzureResourceIds *[]string `json:"azureResourceIds,omitempty"`
 	// The domain hostname. Required for the following provider and vendor combinations: - AWS provider with CONFLUENT vendor. - AZURE provider with EVENTHUB or CONFLUENT vendor.

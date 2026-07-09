@@ -5,16 +5,16 @@ package admin
 // BaseNetworkPeeringConnectionSettings struct for BaseNetworkPeeringConnectionSettings
 type BaseNetworkPeeringConnectionSettings struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.
-	ContainerId string `json:"containerId" validate:"regexp=^([a-f0-9]{24})$"`
+	ContainerId string `json:"containerId"`
 	// Unique 24-hexadecimal digit string that identifies the network peering connection.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Cloud service provider that serves the requested network peering connection.
 	ProviderName *string `json:"providerName,omitempty"`
 	// Amazon Web Services (AWS) region where the Virtual Peering Connection (VPC) that you peered with the MongoDB Cloud VPC resides. The resource returns `null` if your VPC and the MongoDB Cloud VPC reside in the same region.
 	AccepterRegionName *string `json:"accepterRegionName,omitempty"`
 	// Unique twelve-digit string that identifies the Amazon Web Services (AWS) account that owns the VPC that you peered with the MongoDB Cloud VPC.
-	AwsAccountId *string `json:"awsAccountId,omitempty" validate:"regexp=^[0-9]{12}$"`
+	AwsAccountId *string `json:"awsAccountId,omitempty"`
 	// Unique string that identifies the peering connection on AWS.
 	// Read only field.
 	ConnectionId *string `json:"connectionId,omitempty"`
@@ -22,12 +22,12 @@ type BaseNetworkPeeringConnectionSettings struct {
 	// Read only field.
 	ErrorStateName *string `json:"errorStateName,omitempty"`
 	// Internet Protocol (IP) addresses expressed in Classless Inter-Domain Routing (CIDR) notation of the VPC's subnet that you want to peer with the MongoDB Cloud VPC.
-	RouteTableCidrBlock *string `json:"routeTableCidrBlock,omitempty" validate:"regexp=^((25[0-5]|(2[0-4]|1\\\\d|[1-9]|)\\\\d)(\\\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"`
+	RouteTableCidrBlock *string `json:"routeTableCidrBlock,omitempty"`
 	// State of the network peering connection at the time you made the request.
 	// Read only field.
 	StatusName *string `json:"statusName,omitempty"`
 	// Unique string that identifies the VPC on Amazon Web Services (AWS) that you want to peer with the MongoDB Cloud VPC.
-	VpcId *string `json:"vpcId,omitempty" validate:"regexp=^vpc-[0-9a-f]{17}$"`
+	VpcId *string `json:"vpcId,omitempty"`
 	// Unique string that identifies the Azure AD directory in which the VNet peered with the MongoDB Cloud VNet resides.
 	AzureDirectoryId *string `json:"azureDirectoryId,omitempty"`
 	// Unique string that identifies the Azure subscription in which the VNet you peered with the MongoDB Cloud VNet resides.
@@ -36,19 +36,19 @@ type BaseNetworkPeeringConnectionSettings struct {
 	// Read only field.
 	ErrorState *string `json:"errorState,omitempty"`
 	// Human-readable label that identifies the resource group in which the VNet to peer with the MongoDB Cloud VNet resides.
-	ResourceGroupName *string `json:"resourceGroupName,omitempty" validate:"regexp=^([-\\\\w._()])+$"`
+	ResourceGroupName *string `json:"resourceGroupName,omitempty"`
 	// State of the network peering connection at the time you made the request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies the VNet that you want to peer with the MongoDB Cloud VNet.
-	VnetName *string `json:"vnetName,omitempty" validate:"regexp=^([-\\\\w._()])$"`
+	VnetName *string `json:"vnetName,omitempty"`
 	// Details of the error returned when requesting a GCP network peering resource. The resource returns `null` if the request succeeded.
 	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Human-readable label that identifies the GCP project that contains the network that you want to peer with the MongoDB Cloud VPC.
-	GcpProjectId *string `json:"gcpProjectId,omitempty" validate:"regexp=^[a-z][0-9a-z-]{4,28}[0-9a-z]{1}"`
+	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 	// Human-readable label that identifies the network to peer with the MongoDB Cloud VPC.
-	NetworkName *string `json:"networkName,omitempty" validate:"regexp=[a-z]([-a-z0-9]{0,62}[a-z0-9]{0,1})?"`
+	NetworkName *string `json:"networkName,omitempty"`
 }
 
 // NewBaseNetworkPeeringConnectionSettings instantiates a new BaseNetworkPeeringConnectionSettings object

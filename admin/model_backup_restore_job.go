@@ -10,16 +10,16 @@ import (
 type BackupRestoreJob struct {
 	// Unique 24-hexadecimal digit string that identifies the batch to which this restore job belongs. This parameter exists only for a sharded cluster restore.
 	// Read only field.
-	BatchId *string `json:"batchId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	BatchId *string `json:"batchId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the sharded cluster checkpoint. The checkpoint represents the point in time back to which you want to restore you data. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`. Use this parameter with sharded clusters only.  - If you set `checkpointId`, you can't set `oplogInc`, `oplogTs`, `snapshotId`, or `pointInTimeUTCMillis`. - If you provide this parameter, this endpoint restores all data up to this checkpoint to the database you specify in the `delivery` object.
 	// Write only field.
-	CheckpointId *string `json:"checkpointId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	CheckpointId *string `json:"checkpointId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshot you want to return. This parameter returns for restore clusters.
 	// Read only field.
-	ClusterId *string `json:"clusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	ClusterId *string `json:"clusterId,omitempty"`
 	// Human-readable label that identifies the cluster containing the snapshots you want to retrieve.
 	// Read only field.
-	ClusterName *string `json:"clusterName,omitempty" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
+	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when someone requested this restore job. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created  *time.Time               `json:"created,omitempty"`
@@ -32,13 +32,13 @@ type BackupRestoreJob struct {
 	EncryptionEnabled *bool `json:"encryptionEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns the snapshots.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// List that contains documents mapping each restore file to a hashed checksum. This parameter applies after you download the corresponding `delivery.url`. If `\"methodName\" : \"HTTP\"`, this list contains one object that represents the hash of the `.tar.gz` file.
 	// Read only field.
 	Hashes *[]RestoreJobFileHash `json:"hashes,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the restore job.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -50,12 +50,12 @@ type BackupRestoreJob struct {
 	OplogInc *int `json:"oplogInc,omitempty"`
 	// Date and time from which you want to restore this snapshot. This parameter expresses its value in ISO 8601 format in UTC. This represents the first part of an Oplog timestamp. When paired with `oplogInc`, they represent the last database operation to which you want to restore your data. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`. Run a query against `local.oplog.rs` on your replica set to find the desired timestamp.  - If you set `oplogTs`, you must set `oplogInc`, and you can't set `checkpointId`, `snapshotId`, or `pointInTimeUTCMillis`. - If you provide this parameter, this endpoint restores all data up to and including this Oplog timestamp to the database you specified in the `delivery` object.
 	// Write only field.
-	OplogTs *string `json:"oplogTs,omitempty" validate:"regexp=^(?:[1-9]\\\\\\\\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\\\\\\\\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\\\\\\\\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)T(?:[01]\\\\\\\\d|2[0-3]):[0-5]\\\\\\\\d:[0-5]\\\\\\\\d(?:\\\\\\\\.\\\\\\\\d{1,9})?(?:Z|[+-][01]\\\\\\\\d:[0-5]\\\\\\\\d)$"`
+	OplogTs *string `json:"oplogTs,omitempty"`
 	// Timestamp from which you want to restore this snapshot. This parameter expresses its value in the number of milliseconds elapsed since the UNIX epoch. This timestamp must fall within the last 24 hours of the current time. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.  - If you provide this parameter, this endpoint restores all data up to this point in time to the database you specified in the `delivery` object. - If you set `pointInTimeUTCMillis`, you can't set `oplogInc`, `oplogTs`, `snapshotId`, or `checkpointId`.
 	// Write only field.
 	PointInTimeUTCMillis *int64 `json:"pointInTimeUTCMillis,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot to restore. If you set `snapshotId`, you can't set `oplogInc`, `oplogTs`, `pointInTimeUTCMillis`, or `checkpointId`.
-	SnapshotId *string `json:"snapshotId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	SnapshotId *string `json:"snapshotId,omitempty"`
 	// Human-readable label that identifies the status of the downloadable file at the time of the request.
 	// Read only field.
 	StatusName *string           `json:"statusName,omitempty"`

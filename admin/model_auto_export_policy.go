@@ -5,7 +5,7 @@ package admin
 // AutoExportPolicy Policy for automatically exporting Cloud Backup Snapshots.
 type AutoExportPolicy struct {
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
-	ExportBucketId *string `json:"exportBucketId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	ExportBucketId *string `json:"exportBucketId,omitempty"`
 	// Human-readable label that indicates the rate at which the export policy item occurs.
 	FrequencyType *string `json:"frequencyType,omitempty"`
 }

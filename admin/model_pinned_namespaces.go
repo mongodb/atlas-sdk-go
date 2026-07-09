@@ -6,10 +6,10 @@ package admin
 type PinnedNamespaces struct {
 	// Unique 24-hexadecimal digit string that identifies the request cluster.
 	// Read only field.
-	ClusterId *string `json:"clusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	ClusterId *string `json:"clusterId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the request project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// List of all pinned namespaces.
 	// Read only field.
 	PinnedNamespaces []string `json:"pinnedNamespaces"`

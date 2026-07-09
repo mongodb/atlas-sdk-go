@@ -6,11 +6,11 @@ package admin
 type CreateOrganizationRequest struct {
 	ApiKey *CreateAtlasOrganizationApiKey `json:"apiKey,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the federation to link the newly created organization to. If specified, the proposed Organization Owner of the new organization must have the Organization Owner role in an organization associated with the federation.
-	FederationSettingsId *string `json:"federationSettingsId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	FederationSettingsId *string `json:"federationSettingsId,omitempty"`
 	// Human-readable label that identifies the organization.
-	Name string `json:"name" validate:"regexp=^[\\\\p{L}\\\\p{N}\\\\-_.(),:&@+']{1,64}$"`
+	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. If you provide `federationSettingsId`,  this user must instead have the Organization Owner role on an organization in the specified federation. This parameter is required only when you authenticate with Programmatic API Keys.
-	OrgOwnerId     *string                   `json:"orgOwnerId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	OrgOwnerId     *string                   `json:"orgOwnerId,omitempty"`
 	ServiceAccount *OrgServiceAccountRequest `json:"serviceAccount,omitempty"`
 	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
 	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`

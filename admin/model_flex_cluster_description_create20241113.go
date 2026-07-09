@@ -9,7 +9,7 @@ type FlexClusterDescriptionCreate20241113 struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the instance.
 	// Write only field.
-	Name             string                             `json:"name" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
+	Name             string                             `json:"name"`
 	ProviderSettings FlexProviderSettingsCreate20241113 `json:"providerSettings"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the instance.
 	Tags *[]ResourceTag `json:"tags,omitempty"`

@@ -31,7 +31,7 @@ type ServerlessBackupRestoreJob struct {
 	FinishedAt *time.Time `json:"finishedAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the restore job.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -42,11 +42,11 @@ type ServerlessBackupRestoreJob struct {
 	// Date and time from which MongoDB Cloud restored this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and `pointInTimeUTCSeconds` exceeds `0`.
 	PointInTimeUTCSeconds *int `json:"pointInTimeUTCSeconds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.
-	SnapshotId *string `json:"snapshotId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	SnapshotId *string `json:"snapshotId,omitempty"`
 	// Human-readable label that identifies the target cluster to which the restore job restores the snapshot. The resource returns this parameter when `\"deliveryType\":` `\"automated\"`.
-	TargetClusterName string `json:"targetClusterName" validate:"regexp=^[a-zA-Z0-9][a-zA-Z0-9-]*$"`
+	TargetClusterName string `json:"targetClusterName"`
 	// Unique 24-hexadecimal digit string that identifies the target project for the specified `targetClusterName`.
-	TargetGroupId string `json:"targetGroupId" validate:"regexp=^([a-f0-9]{24})$"`
+	TargetGroupId string `json:"targetGroupId"`
 	// Date and time when MongoDB Cloud took the snapshot associated with `snapshotId`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Timestamp *time.Time `json:"timestamp,omitempty"`

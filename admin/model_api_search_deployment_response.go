@@ -12,10 +12,10 @@ type ApiSearchDeploymentResponse struct {
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the search deployment.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Deprecated. `specs` will be removed in a future release. We strongly recommend that you use `effectiveSpecs` instead.
 	// Read only field.
 	// Deprecated

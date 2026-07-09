@@ -12,10 +12,10 @@ type Raw struct {
 	T *string `json:"_t,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the alert configuration related to the event.
 	// Read only field.
-	AlertConfigId *string `json:"alertConfigId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	AlertConfigId *string `json:"alertConfigId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred.
 	// Read only field.
-	Cid *string `json:"cid,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Cid *string `json:"cid,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Cre *time.Time `json:"cre,omitempty"`
@@ -25,10 +25,10 @@ type Raw struct {
 	Gn *string `json:"gn,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the event.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	// Read only field.
-	OrgId *string `json:"orgId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies the organization that contains the project.
 	OrgName *string `json:"orgName,omitempty"`
 	// Severity of the event.

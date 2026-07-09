@@ -5,7 +5,7 @@ package admin
 // DiskBackupSnapshotExportBucketResponse Disk backup snapshot Export Bucket.
 type DiskBackupSnapshotExportBucketResponse struct {
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
-	Id string `json:"_id" validate:"regexp=^([a-f0-9]{24})$"`
+	Id string `json:"_id"`
 	// The name of the AWS S3 Bucket, Azure Storage Container, or Google Cloud Storage Bucket that Snapshots are exported to.
 	BucketName string `json:"bucketName"`
 	// Human-readable label that identifies the cloud provider.
@@ -14,14 +14,14 @@ type DiskBackupSnapshotExportBucketResponse struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket.
-	IamRoleId *string `json:"iamRoleId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// AWS region for the export bucket. This is set by Atlas and is never user-supplied.
 	// Read only field.
 	Region *string `json:"region,omitempty"`
 	// Indicates whether to use private link. User supplied.
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket.
-	RoleId *string `json:"roleId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	RoleId *string `json:"roleId,omitempty"`
 	// URL of the Azure Storage Account to export to. Only standard endpoints (with `blob.core.windows.net`) are supported.
 	ServiceUrl *string `json:"serviceUrl,omitempty"`
 	// UUID that identifies the Azure Active Directory Tenant ID used during exports.

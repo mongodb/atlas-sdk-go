@@ -5,7 +5,7 @@ package admin
 // AddUserToTeam struct for AddUserToTeam
 type AddUserToTeam struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
-	Id string `json:"id" validate:"regexp=^([a-f0-9]{24})$"`
+	Id string `json:"id"`
 }
 
 // NewAddUserToTeam instantiates a new AddUserToTeam object

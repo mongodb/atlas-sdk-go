@@ -10,7 +10,7 @@ import (
 type OrgUserResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
 	// Read only field.
-	Id string `json:"id" validate:"regexp=^([a-f0-9]{24})$"`
+	Id string `json:"id"`
 	// String enum that indicates the user's organization membership status: ACTIVE (member), PENDING (invited), `INVITATION_EXPIRED` (invitation expired), or `INVITATION_REJECTED` (invitation declined).
 	// Read only field.
 	OrgMembershipStatus string               `json:"orgMembershipStatus"`
@@ -32,7 +32,7 @@ type OrgUserResponse struct {
 	InviterUsername *string `json:"inviterUsername,omitempty"`
 	// Two-character alphabetical string that identifies the MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format.
 	// Read only field.
-	Country *string `json:"country,omitempty" validate:"regexp=^([A-Z]{2})$"`
+	Country *string `json:"country,omitempty"`
 	// Date and time when MongoDB Cloud created the current account. This value is in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -47,7 +47,7 @@ type OrgUserResponse struct {
 	LastName *string `json:"lastName,omitempty"`
 	// Mobile phone number that belongs to the MongoDB Cloud user.
 	// Read only field.
-	MobileNumber *string `json:"mobileNumber,omitempty" validate:"regexp=(?:(?:\\\\\\\\+?1\\\\\\\\s*(?:[.-]\\\\\\\\s*)?)?(?:(\\\\\\\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\\\\\\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\\\\\\\s*(?:[.-]\\\\\\\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\\\\\\\s*(?:[.-]\\\\\\\\s*)?([0-9]{4})$"`
+	MobileNumber *string `json:"mobileNumber,omitempty"`
 }
 
 // NewOrgUserResponse instantiates a new OrgUserResponse object

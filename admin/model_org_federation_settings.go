@@ -10,9 +10,9 @@ type OrgFederationSettings struct {
 	HasRoleMappings *bool `json:"hasRoleMappings,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this federation.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// Legacy 20-hexadecimal digit string that identifies the identity provider connected to this organization.
-	IdentityProviderId *string `json:"identityProviderId,omitempty" validate:"regexp=^([a-f0-9]{20})$"`
+	IdentityProviderId *string `json:"identityProviderId,omitempty"`
 	// String enum that indicates whether the identity provider is active.
 	IdentityProviderStatus *string `json:"identityProviderStatus,omitempty"`
 }

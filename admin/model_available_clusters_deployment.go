@@ -9,7 +9,7 @@ type AvailableClustersDeployment struct {
 	AgentVersion *string `json:"agentVersion,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
-	ClusterId *string `json:"clusterId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	ClusterId *string `json:"clusterId,omitempty"`
 	// Size of this database on disk at the time of the request expressed in bytes.
 	// Read only field.
 	DbSizeBytes *int64 `json:"dbSizeBytes,omitempty"`

@@ -16,7 +16,7 @@ type PublicApiUsageDetailsLineItem struct {
 	// Description of the line item, which can include SKU name and other identifying information.
 	Description *string `json:"description,omitempty"`
 	// Group id associated with the line item.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Quantity of line item in units associated with SKU.
 	// Read only field.
 	Quantity *float64 `json:"quantity,omitempty"`

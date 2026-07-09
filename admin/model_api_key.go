@@ -9,7 +9,7 @@ type ApiKey struct {
 	AccessList []AccessListItem `json:"accessList"`
 	// Unique 24-hexadecimal digit string that identifies this organization API key.
 	// Read only field.
-	Id string `json:"id" validate:"regexp=^([a-f0-9]{24})$"`
+	Id string `json:"id"`
 	// Public API key value set for the specified organization API key.
 	// Read only field.
 	PublicKey string `json:"publicKey"`

@@ -15,7 +15,7 @@ type AlertsNotificationRootForGroup struct {
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
 	IntervalMin *int `json:"intervalMin,omitempty"`
 	// The `notifierId` is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials.
-	NotifierId *string `json:"notifierId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	NotifierId *string `json:"notifierId,omitempty"`
 	// Human-readable label that displays the alert notification type.
 	TypeName *string `json:"typeName,omitempty"`
 	// Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"EMAIL\"`. You don't need to set this value to send emails to individual or groups of MongoDB Cloud users including:  - specific MongoDB Cloud users (`\"notifications.[n].typeName\" : \"USER\"`) - MongoDB Cloud users with specific project roles (`\"notifications.[n].typeName\" : \"GROUP\"`) - MongoDB Cloud users with specific organization roles (`\"notifications.[n].typeName\" : \"ORG\"`) - MongoDB Cloud teams (`\"notifications.[n].typeName\" : \"TEAM\"`)  To send emails to one MongoDB Cloud user or grouping of users, set the `notifications.[n].emailEnabled` parameter.
@@ -47,7 +47,7 @@ type AlertsNotificationRootForGroup struct {
 	// Mobile phone number to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"SMS\"`.
 	MobileNumber *string `json:"mobileNumber,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies one MongoDB Cloud team. The resource requires this parameter when `\"notifications.[n].typeName\" : \"TEAM\"`.
-	TeamId *string `json:"teamId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	TeamId *string `json:"teamId,omitempty"`
 	// Name of the MongoDB Cloud team that receives this notification. The resource requires this parameter when `\"notifications.[n].typeName\" : \"TEAM\"`.
 	TeamName *string `json:"teamName,omitempty"`
 	// MongoDB Cloud username of the person to whom MongoDB Cloud sends notifications. Specify only MongoDB Cloud users who belong to the project that owns the alert configuration. The resource requires this parameter when `\"notifications.[n].typeName\" : \"USER\"`.

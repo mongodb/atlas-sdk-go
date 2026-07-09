@@ -16,7 +16,7 @@ type FlexBackupSnapshot20241113 struct {
 	FinishTime *time.Time `json:"finishTime,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	// Read only field.
-	Id *string `json:"id,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`

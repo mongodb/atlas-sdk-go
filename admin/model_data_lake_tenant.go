@@ -8,7 +8,7 @@ type DataLakeTenant struct {
 	DataProcessRegion   *DataLakeDataProcessRegion   `json:"dataProcessRegion,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
-	GroupId *string `json:"groupId,omitempty" validate:"regexp=^([a-f0-9]{24})$"`
+	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the hostnames assigned to the Federated Database Instance.
 	// Read only field.
 	Hostnames *[]string `json:"hostnames,omitempty"`
