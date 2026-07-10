@@ -2,7 +2,7 @@
 
 package admin
 
-// DropIndexSuggestionsResponse struct for DropIndexSuggestionsResponse
+// DropIndexSuggestionsResponse Response that contains Performance Advisor drop index suggestions.
 type DropIndexSuggestionsResponse struct {
 	// List that contains the documents with information about the hidden indexes that the Performance Advisor suggests to remove.
 	// Read only field.

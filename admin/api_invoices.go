@@ -37,6 +37,33 @@ type InvoicesAPI interface {
 	CreateCostExplorerProcessExecute(r CreateCostExplorerProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error)
 
 	/*
+			GenerateInvoiceReport Generate and Download Invoice Report
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Generates and downloads a report for the specified invoice.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param invoiceId Unique string that identifies the invoice for which to generate the report.
+			@param reportGenerationRequest Generate and Download Invoice Report request body.
+			@return GenerateInvoiceReportApiRequest
+	*/
+	GenerateInvoiceReport(ctx context.Context, orgId string, invoiceId string, reportGenerationRequest *ReportGenerationRequest) GenerateInvoiceReportApiRequest
+	/*
+		GenerateInvoiceReport Generate and Download Invoice Report
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GenerateInvoiceReportApiParams - Parameters for the request
+		@return GenerateInvoiceReportApiRequest
+	*/
+	GenerateInvoiceReportWithParams(ctx context.Context, args *GenerateInvoiceReportApiParams) GenerateInvoiceReportApiRequest
+
+	// Method available only for mocking purposes
+	GenerateInvoiceReportExecute(r GenerateInvoiceReportApiRequest) (string, *http.Response, error)
+
+	/*
 		GetCostExplorerUsage Return Usage Details for One Cost Explorer Query
 
 		Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response will indicate that another request should be sent later to view the data.
@@ -109,6 +136,31 @@ type InvoicesAPI interface {
 
 	// Method available only for mocking purposes
 	GetInvoiceCsvExecute(r GetInvoiceCsvApiRequest) (string, *http.Response, error)
+
+	/*
+			GetOrgAssociatedInvoices Return Associated Invoices
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns a list of invoice IDs for the specified organization and month/year. Optionally includes invoices from linked organizations.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return GetOrgAssociatedInvoicesApiRequest
+	*/
+	GetOrgAssociatedInvoices(ctx context.Context, orgId string) GetOrgAssociatedInvoicesApiRequest
+	/*
+		GetOrgAssociatedInvoices Return Associated Invoices
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetOrgAssociatedInvoicesApiParams - Parameters for the request
+		@return GetOrgAssociatedInvoicesApiRequest
+	*/
+	GetOrgAssociatedInvoicesWithParams(ctx context.Context, args *GetOrgAssociatedInvoicesApiParams) GetOrgAssociatedInvoicesApiRequest
+
+	// Method available only for mocking purposes
+	GetOrgAssociatedInvoicesExecute(r GetOrgAssociatedInvoicesApiRequest) (*OrgAssociatedInvoiceResponse, *http.Response, error)
 
 	/*
 		GetSku Return One Stock Keeping Unit
@@ -322,6 +374,140 @@ func (a *InvoicesAPIService) CreateCostExplorerProcessExecute(r CreateCostExplor
 	}
 	// body params
 	localVarPostBody = r.costExplorerFilterRequestBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GenerateInvoiceReportApiRequest struct {
+	ctx                     context.Context
+	ApiService              InvoicesAPI
+	orgId                   string
+	invoiceId               string
+	reportGenerationRequest *ReportGenerationRequest
+}
+
+type GenerateInvoiceReportApiParams struct {
+	OrgId                   string
+	InvoiceId               string
+	ReportGenerationRequest *ReportGenerationRequest
+}
+
+func (a *InvoicesAPIService) GenerateInvoiceReportWithParams(ctx context.Context, args *GenerateInvoiceReportApiParams) GenerateInvoiceReportApiRequest {
+	return GenerateInvoiceReportApiRequest{
+		ApiService:              a,
+		ctx:                     ctx,
+		orgId:                   args.OrgId,
+		invoiceId:               args.InvoiceId,
+		reportGenerationRequest: args.ReportGenerationRequest,
+	}
+}
+
+func (r GenerateInvoiceReportApiRequest) Execute() (string, *http.Response, error) {
+	return r.ApiService.GenerateInvoiceReportExecute(r)
+}
+
+/*
+GenerateInvoiceReport Generate and Download Invoice Report
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Generates and downloads a report for the specified invoice.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param invoiceId Unique string that identifies the invoice for which to generate the report.
+	@return GenerateInvoiceReportApiRequest
+*/
+func (a *InvoicesAPIService) GenerateInvoiceReport(ctx context.Context, orgId string, invoiceId string, reportGenerationRequest *ReportGenerationRequest) GenerateInvoiceReportApiRequest {
+	return GenerateInvoiceReportApiRequest{
+		ApiService:              a,
+		ctx:                     ctx,
+		orgId:                   orgId,
+		invoiceId:               invoiceId,
+		reportGenerationRequest: reportGenerationRequest,
+	}
+}
+
+// GenerateInvoiceReportExecute executes the request
+//
+//	@return string
+func (a *InvoicesAPIService) GenerateInvoiceReportExecute(r GenerateInvoiceReportApiRequest) (string, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.GenerateInvoiceReport")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}:generateAndDownloadReport"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.invoiceId == "" {
+		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.reportGenerationRequest == nil {
+		return localVarReturnValue, nil, reportError("reportGenerationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+gzip"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.reportGenerationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -688,6 +874,158 @@ func (a *InvoicesAPIService) GetInvoiceCsvExecute(r GetInvoiceCsvApiRequest) (st
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+csv"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetOrgAssociatedInvoicesApiRequest struct {
+	ctx               context.Context
+	ApiService        InvoicesAPI
+	orgId             string
+	month             *int64
+	year              *int64
+	includeLinkedOrgs *bool
+}
+
+type GetOrgAssociatedInvoicesApiParams struct {
+	OrgId             string
+	Month             *int64
+	Year              *int64
+	IncludeLinkedOrgs *bool
+}
+
+func (a *InvoicesAPIService) GetOrgAssociatedInvoicesWithParams(ctx context.Context, args *GetOrgAssociatedInvoicesApiParams) GetOrgAssociatedInvoicesApiRequest {
+	return GetOrgAssociatedInvoicesApiRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		orgId:             args.OrgId,
+		month:             args.Month,
+		year:              args.Year,
+		includeLinkedOrgs: args.IncludeLinkedOrgs,
+	}
+}
+
+// The month for which to retrieve invoices (1-12). Defaults to current month.
+func (r GetOrgAssociatedInvoicesApiRequest) Month(month int64) GetOrgAssociatedInvoicesApiRequest {
+	r.month = &month
+	return r
+}
+
+// The year for which to retrieve invoices. Defaults to current year.
+func (r GetOrgAssociatedInvoicesApiRequest) Year(year int64) GetOrgAssociatedInvoicesApiRequest {
+	r.year = &year
+	return r
+}
+
+// Whether to include invoices from linked organizations. Defaults to false.
+func (r GetOrgAssociatedInvoicesApiRequest) IncludeLinkedOrgs(includeLinkedOrgs bool) GetOrgAssociatedInvoicesApiRequest {
+	r.includeLinkedOrgs = &includeLinkedOrgs
+	return r
+}
+
+func (r GetOrgAssociatedInvoicesApiRequest) Execute() (*OrgAssociatedInvoiceResponse, *http.Response, error) {
+	return r.ApiService.GetOrgAssociatedInvoicesExecute(r)
+}
+
+/*
+GetOrgAssociatedInvoices Return Associated Invoices
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns a list of invoice IDs for the specified organization and month/year. Optionally includes invoices from linked organizations.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetOrgAssociatedInvoicesApiRequest
+*/
+func (a *InvoicesAPIService) GetOrgAssociatedInvoices(ctx context.Context, orgId string) GetOrgAssociatedInvoicesApiRequest {
+	return GetOrgAssociatedInvoicesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// GetOrgAssociatedInvoicesExecute executes the request
+//
+//	@return OrgAssociatedInvoiceResponse
+func (a *InvoicesAPIService) GetOrgAssociatedInvoicesExecute(r GetOrgAssociatedInvoicesApiRequest) (*OrgAssociatedInvoiceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgAssociatedInvoiceResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.GetOrgAssociatedInvoices")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/associatedInvoices"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.month != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "month", r.month, "")
+	}
+	if r.year != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "year", r.year, "")
+	}
+	if r.includeLinkedOrgs != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeLinkedOrgs", r.includeLinkedOrgs, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

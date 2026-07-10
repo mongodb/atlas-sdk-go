@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-// StreamsStartStreamProcessorWith A request to start a stream processor.
-type StreamsStartStreamProcessorWith struct {
+// StartStreamProcessorWithPreview A request to start a stream processor.
+type StartStreamProcessorWithPreview struct {
 	Failover *StreamsStartProcessorFailover `json:"failover,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
@@ -20,25 +20,25 @@ type StreamsStartStreamProcessorWith struct {
 	Tier *string `json:"tier,omitempty"`
 }
 
-// NewStreamsStartStreamProcessorWith instantiates a new StreamsStartStreamProcessorWith object
+// NewStartStreamProcessorWithPreview instantiates a new StartStreamProcessorWithPreview object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamsStartStreamProcessorWith() *StreamsStartStreamProcessorWith {
-	this := StreamsStartStreamProcessorWith{}
+func NewStartStreamProcessorWithPreview() *StartStreamProcessorWithPreview {
+	this := StartStreamProcessorWithPreview{}
 	return &this
 }
 
-// NewStreamsStartStreamProcessorWithWithDefaults instantiates a new StreamsStartStreamProcessorWith object
+// NewStartStreamProcessorWithPreviewWithDefaults instantiates a new StartStreamProcessorWithPreview object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStreamsStartStreamProcessorWithWithDefaults() *StreamsStartStreamProcessorWith {
-	this := StreamsStartStreamProcessorWith{}
+func NewStartStreamProcessorWithPreviewWithDefaults() *StartStreamProcessorWithPreview {
+	this := StartStreamProcessorWithPreview{}
 	return &this
 }
 
 // GetFailover returns the Failover field value if set, zero value otherwise
-func (o *StreamsStartStreamProcessorWith) GetFailover() StreamsStartProcessorFailover {
+func (o *StartStreamProcessorWithPreview) GetFailover() StreamsStartProcessorFailover {
 	if o == nil || IsNil(o.Failover) {
 		var ret StreamsStartProcessorFailover
 		return ret
@@ -48,7 +48,7 @@ func (o *StreamsStartStreamProcessorWith) GetFailover() StreamsStartProcessorFai
 
 // GetFailoverOk returns a tuple with the Failover field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsStartStreamProcessorWith) GetFailoverOk() (*StreamsStartProcessorFailover, bool) {
+func (o *StartStreamProcessorWithPreview) GetFailoverOk() (*StreamsStartProcessorFailover, bool) {
 	if o == nil || IsNil(o.Failover) {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *StreamsStartStreamProcessorWith) GetFailoverOk() (*StreamsStartProcesso
 }
 
 // HasFailover returns a boolean if a field has been set.
-func (o *StreamsStartStreamProcessorWith) HasFailover() bool {
+func (o *StartStreamProcessorWithPreview) HasFailover() bool {
 	if o != nil && !IsNil(o.Failover) {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *StreamsStartStreamProcessorWith) HasFailover() bool {
 }
 
 // SetFailover gets a reference to the given StreamsStartProcessorFailover and assigns it to the Failover field.
-func (o *StreamsStartStreamProcessorWith) SetFailover(v StreamsStartProcessorFailover) {
+func (o *StartStreamProcessorWithPreview) SetFailover(v StreamsStartProcessorFailover) {
 	o.Failover = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *StreamsStartStreamProcessorWith) GetLinks() []Link {
+func (o *StartStreamProcessorWithPreview) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -81,7 +81,7 @@ func (o *StreamsStartStreamProcessorWith) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsStartStreamProcessorWith) GetLinksOk() (*[]Link, bool) {
+func (o *StartStreamProcessorWithPreview) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *StreamsStartStreamProcessorWith) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *StreamsStartStreamProcessorWith) HasLinks() bool {
+func (o *StartStreamProcessorWithPreview) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *StreamsStartStreamProcessorWith) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *StreamsStartStreamProcessorWith) SetLinks(v []Link) {
+func (o *StartStreamProcessorWithPreview) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetResumeFromCheckpoint returns the ResumeFromCheckpoint field value if set, zero value otherwise
-func (o *StreamsStartStreamProcessorWith) GetResumeFromCheckpoint() bool {
+func (o *StartStreamProcessorWithPreview) GetResumeFromCheckpoint() bool {
 	if o == nil || IsNil(o.ResumeFromCheckpoint) {
 		var ret bool
 		return ret
@@ -114,7 +114,7 @@ func (o *StreamsStartStreamProcessorWith) GetResumeFromCheckpoint() bool {
 
 // GetResumeFromCheckpointOk returns a tuple with the ResumeFromCheckpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsStartStreamProcessorWith) GetResumeFromCheckpointOk() (*bool, bool) {
+func (o *StartStreamProcessorWithPreview) GetResumeFromCheckpointOk() (*bool, bool) {
 	if o == nil || IsNil(o.ResumeFromCheckpoint) {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *StreamsStartStreamProcessorWith) GetResumeFromCheckpointOk() (*bool, bo
 }
 
 // HasResumeFromCheckpoint returns a boolean if a field has been set.
-func (o *StreamsStartStreamProcessorWith) HasResumeFromCheckpoint() bool {
+func (o *StartStreamProcessorWithPreview) HasResumeFromCheckpoint() bool {
 	if o != nil && !IsNil(o.ResumeFromCheckpoint) {
 		return true
 	}
@@ -132,12 +132,12 @@ func (o *StreamsStartStreamProcessorWith) HasResumeFromCheckpoint() bool {
 }
 
 // SetResumeFromCheckpoint gets a reference to the given bool and assigns it to the ResumeFromCheckpoint field.
-func (o *StreamsStartStreamProcessorWith) SetResumeFromCheckpoint(v bool) {
+func (o *StartStreamProcessorWithPreview) SetResumeFromCheckpoint(v bool) {
 	o.ResumeFromCheckpoint = &v
 }
 
 // GetStartAtOperationTime returns the StartAtOperationTime field value if set, zero value otherwise
-func (o *StreamsStartStreamProcessorWith) GetStartAtOperationTime() time.Time {
+func (o *StartStreamProcessorWithPreview) GetStartAtOperationTime() time.Time {
 	if o == nil || IsNil(o.StartAtOperationTime) {
 		var ret time.Time
 		return ret
@@ -147,7 +147,7 @@ func (o *StreamsStartStreamProcessorWith) GetStartAtOperationTime() time.Time {
 
 // GetStartAtOperationTimeOk returns a tuple with the StartAtOperationTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsStartStreamProcessorWith) GetStartAtOperationTimeOk() (*time.Time, bool) {
+func (o *StartStreamProcessorWithPreview) GetStartAtOperationTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartAtOperationTime) {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *StreamsStartStreamProcessorWith) GetStartAtOperationTimeOk() (*time.Tim
 }
 
 // HasStartAtOperationTime returns a boolean if a field has been set.
-func (o *StreamsStartStreamProcessorWith) HasStartAtOperationTime() bool {
+func (o *StartStreamProcessorWithPreview) HasStartAtOperationTime() bool {
 	if o != nil && !IsNil(o.StartAtOperationTime) {
 		return true
 	}
@@ -165,12 +165,12 @@ func (o *StreamsStartStreamProcessorWith) HasStartAtOperationTime() bool {
 }
 
 // SetStartAtOperationTime gets a reference to the given time.Time and assigns it to the StartAtOperationTime field.
-func (o *StreamsStartStreamProcessorWith) SetStartAtOperationTime(v time.Time) {
+func (o *StartStreamProcessorWithPreview) SetStartAtOperationTime(v time.Time) {
 	o.StartAtOperationTime = &v
 }
 
 // GetTier returns the Tier field value if set, zero value otherwise
-func (o *StreamsStartStreamProcessorWith) GetTier() string {
+func (o *StartStreamProcessorWithPreview) GetTier() string {
 	if o == nil || IsNil(o.Tier) {
 		var ret string
 		return ret
@@ -180,7 +180,7 @@ func (o *StreamsStartStreamProcessorWith) GetTier() string {
 
 // GetTierOk returns a tuple with the Tier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsStartStreamProcessorWith) GetTierOk() (*string, bool) {
+func (o *StartStreamProcessorWithPreview) GetTierOk() (*string, bool) {
 	if o == nil || IsNil(o.Tier) {
 		return nil, false
 	}
@@ -189,7 +189,7 @@ func (o *StreamsStartStreamProcessorWith) GetTierOk() (*string, bool) {
 }
 
 // HasTier returns a boolean if a field has been set.
-func (o *StreamsStartStreamProcessorWith) HasTier() bool {
+func (o *StartStreamProcessorWithPreview) HasTier() bool {
 	if o != nil && !IsNil(o.Tier) {
 		return true
 	}
@@ -198,6 +198,6 @@ func (o *StreamsStartStreamProcessorWith) HasTier() bool {
 }
 
 // SetTier gets a reference to the given string and assigns it to the Tier field.
-func (o *StreamsStartStreamProcessorWith) SetTier(v string) {
+func (o *StartStreamProcessorWithPreview) SetTier(v string) {
 	o.Tier = &v
 }

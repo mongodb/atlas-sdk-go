@@ -60,6 +60,59 @@ type FlexClustersAPI interface {
 	DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (*http.Response, error)
 
 	/*
+			EstimateCreateFlexCost Estimate the Cost of Creating One Flex Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Create One Flex Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param flexClusterDescriptionCreate20241113 Flex cluster configuration to estimate.
+			@return EstimateCreateFlexCostApiRequest
+	*/
+	EstimateCreateFlexCost(ctx context.Context, groupId string, flexClusterDescriptionCreate20241113 *FlexClusterDescriptionCreate20241113) EstimateCreateFlexCostApiRequest
+	/*
+		EstimateCreateFlexCost Estimate the Cost of Creating One Flex Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param EstimateCreateFlexCostApiParams - Parameters for the request
+		@return EstimateCreateFlexCostApiRequest
+	*/
+	EstimateCreateFlexCostWithParams(ctx context.Context, args *EstimateCreateFlexCostApiParams) EstimateCreateFlexCostApiRequest
+
+	// Method available only for mocking purposes
+	EstimateCreateFlexCostExecute(r EstimateCreateFlexCostApiRequest) (*ClusterCostEstimate, *http.Response, error)
+
+	/*
+			EstimateUpdateFlexCost Estimate the Cost of Updating One Flex Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Update One Flex Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the flex cluster.
+			@param flexClusterDescriptionUpdate20241113 Flex cluster update to estimate pricing for.
+			@return EstimateUpdateFlexCostApiRequest
+	*/
+	EstimateUpdateFlexCost(ctx context.Context, groupId string, clusterName string, flexClusterDescriptionUpdate20241113 *FlexClusterDescriptionUpdate20241113) EstimateUpdateFlexCostApiRequest
+	/*
+		EstimateUpdateFlexCost Estimate the Cost of Updating One Flex Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param EstimateUpdateFlexCostApiParams - Parameters for the request
+		@return EstimateUpdateFlexCostApiRequest
+	*/
+	EstimateUpdateFlexCostWithParams(ctx context.Context, args *EstimateUpdateFlexCostApiParams) EstimateUpdateFlexCostApiRequest
+
+	// Method available only for mocking purposes
+	EstimateUpdateFlexCostExecute(r EstimateUpdateFlexCostApiRequest) (*ClusterCostEstimate, *http.Response, error)
+
+	/*
 		GetFlexCluster Return One Flex Cluster from One Project
 
 		Returns details for one flex cluster in the specified project.
@@ -386,6 +439,265 @@ func (a *FlexClustersAPIService) DeleteFlexClusterExecute(r DeleteFlexClusterApi
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type EstimateCreateFlexCostApiRequest struct {
+	ctx                                  context.Context
+	ApiService                           FlexClustersAPI
+	groupId                              string
+	flexClusterDescriptionCreate20241113 *FlexClusterDescriptionCreate20241113
+}
+
+type EstimateCreateFlexCostApiParams struct {
+	GroupId                              string
+	FlexClusterDescriptionCreate20241113 *FlexClusterDescriptionCreate20241113
+}
+
+func (a *FlexClustersAPIService) EstimateCreateFlexCostWithParams(ctx context.Context, args *EstimateCreateFlexCostApiParams) EstimateCreateFlexCostApiRequest {
+	return EstimateCreateFlexCostApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              args.GroupId,
+		flexClusterDescriptionCreate20241113: args.FlexClusterDescriptionCreate20241113,
+	}
+}
+
+func (r EstimateCreateFlexCostApiRequest) Execute() (*ClusterCostEstimate, *http.Response, error) {
+	return r.ApiService.EstimateCreateFlexCostExecute(r)
+}
+
+/*
+EstimateCreateFlexCost Estimate the Cost of Creating One Flex Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Create One Flex Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return EstimateCreateFlexCostApiRequest
+*/
+func (a *FlexClustersAPIService) EstimateCreateFlexCost(ctx context.Context, groupId string, flexClusterDescriptionCreate20241113 *FlexClusterDescriptionCreate20241113) EstimateCreateFlexCostApiRequest {
+	return EstimateCreateFlexCostApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              groupId,
+		flexClusterDescriptionCreate20241113: flexClusterDescriptionCreate20241113,
+	}
+}
+
+// EstimateCreateFlexCostExecute executes the request
+//
+//	@return ClusterCostEstimate
+func (a *FlexClustersAPIService) EstimateCreateFlexCostExecute(r EstimateCreateFlexCostApiRequest) (*ClusterCostEstimate, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterCostEstimate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersAPIService.EstimateCreateFlexCost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters:estimateCreateCost"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.flexClusterDescriptionCreate20241113 == nil {
+		return localVarReturnValue, nil, reportError("flexClusterDescriptionCreate20241113 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.flexClusterDescriptionCreate20241113
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EstimateUpdateFlexCostApiRequest struct {
+	ctx                                  context.Context
+	ApiService                           FlexClustersAPI
+	groupId                              string
+	clusterName                          string
+	flexClusterDescriptionUpdate20241113 *FlexClusterDescriptionUpdate20241113
+}
+
+type EstimateUpdateFlexCostApiParams struct {
+	GroupId                              string
+	ClusterName                          string
+	FlexClusterDescriptionUpdate20241113 *FlexClusterDescriptionUpdate20241113
+}
+
+func (a *FlexClustersAPIService) EstimateUpdateFlexCostWithParams(ctx context.Context, args *EstimateUpdateFlexCostApiParams) EstimateUpdateFlexCostApiRequest {
+	return EstimateUpdateFlexCostApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              args.GroupId,
+		clusterName:                          args.ClusterName,
+		flexClusterDescriptionUpdate20241113: args.FlexClusterDescriptionUpdate20241113,
+	}
+}
+
+func (r EstimateUpdateFlexCostApiRequest) Execute() (*ClusterCostEstimate, *http.Response, error) {
+	return r.ApiService.EstimateUpdateFlexCostExecute(r)
+}
+
+/*
+EstimateUpdateFlexCost Estimate the Cost of Updating One Flex Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Update One Flex Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the flex cluster.
+	@return EstimateUpdateFlexCostApiRequest
+*/
+func (a *FlexClustersAPIService) EstimateUpdateFlexCost(ctx context.Context, groupId string, clusterName string, flexClusterDescriptionUpdate20241113 *FlexClusterDescriptionUpdate20241113) EstimateUpdateFlexCostApiRequest {
+	return EstimateUpdateFlexCostApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              groupId,
+		clusterName:                          clusterName,
+		flexClusterDescriptionUpdate20241113: flexClusterDescriptionUpdate20241113,
+	}
+}
+
+// EstimateUpdateFlexCostExecute executes the request
+//
+//	@return ClusterCostEstimate
+func (a *FlexClustersAPIService) EstimateUpdateFlexCostExecute(r EstimateUpdateFlexCostApiRequest) (*ClusterCostEstimate, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterCostEstimate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersAPIService.EstimateUpdateFlexCost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{clusterName}:estimateUpdateCost"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.flexClusterDescriptionUpdate20241113 == nil {
+		return localVarReturnValue, nil, reportError("flexClusterDescriptionUpdate20241113 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.flexClusterDescriptionUpdate20241113
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type GetFlexClusterApiRequest struct {

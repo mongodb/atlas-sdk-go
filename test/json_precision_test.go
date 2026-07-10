@@ -7,9 +7,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/mongodb/atlas-sdk-go/admin"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.mongodb.org/atlas-sdk/v20250312021/admin"
 )
 
 // TestDecodePreservesLargeIntegers verifies that integers above 2^53 in dynamic

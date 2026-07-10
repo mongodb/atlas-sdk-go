@@ -2,12 +2,15 @@
 
 package admin
 
-// GroupMaintenanceWindow struct for GroupMaintenanceWindow
-type GroupMaintenanceWindow struct {
+// GroupMaintenanceWindowPreviewResponse struct for GroupMaintenanceWindowPreviewResponse
+type GroupMaintenanceWindowPreviewResponse struct {
 	// Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. This setting controls the same underlying auto-deferral feature as the `/maintenanceWindow/autoDefer` endpoint. Use either this field (to set a specific value) or that endpoint (to toggle the current value). For most use cases, this field in the PATCH request is preferred because it allows setting an explicit value rather than toggling.
 	AutoDeferOnceEnabled *bool `json:"autoDeferOnceEnabled,omitempty"`
 	// One-based integer that represents the day of the week that the maintenance window starts.  - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday.
 	DayOfWeek int `json:"dayOfWeek"`
+	// Maintenance wave Atlas uses for scheduling (1–3). May differ from `waveAssignment` when the organization uses environment-tag mapping or cross-organization maintenance sequencing.
+	// Read only field.
+	EffectiveWaveAssignment *int `json:"effectiveWaveAssignment,omitempty"`
 	// Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon.
 	HourOfDay *int `json:"hourOfDay,omitempty"`
 	// Number of times the current maintenance event for this project has been deferred.
@@ -19,28 +22,30 @@ type GroupMaintenanceWindow struct {
 	// Identifier for the current time zone of the maintenance window. This can only be updated via the Project Settings UI.
 	// Read only field.
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
+	// Maintenance wave assigned to this project (1–3). Not used for scheduling when the organization's `effectiveWaveAssignmentMode` is `ENV_TAG_MAPPING`. Pass `null` to clear.
+	WaveAssignment *int `json:"waveAssignment,omitempty"`
 }
 
-// NewGroupMaintenanceWindow instantiates a new GroupMaintenanceWindow object
+// NewGroupMaintenanceWindowPreviewResponse instantiates a new GroupMaintenanceWindowPreviewResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupMaintenanceWindow(dayOfWeek int) *GroupMaintenanceWindow {
-	this := GroupMaintenanceWindow{}
+func NewGroupMaintenanceWindowPreviewResponse(dayOfWeek int) *GroupMaintenanceWindowPreviewResponse {
+	this := GroupMaintenanceWindowPreviewResponse{}
 	this.DayOfWeek = dayOfWeek
 	return &this
 }
 
-// NewGroupMaintenanceWindowWithDefaults instantiates a new GroupMaintenanceWindow object
+// NewGroupMaintenanceWindowPreviewResponseWithDefaults instantiates a new GroupMaintenanceWindowPreviewResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGroupMaintenanceWindowWithDefaults() *GroupMaintenanceWindow {
-	this := GroupMaintenanceWindow{}
+func NewGroupMaintenanceWindowPreviewResponseWithDefaults() *GroupMaintenanceWindowPreviewResponse {
+	this := GroupMaintenanceWindowPreviewResponse{}
 	return &this
 }
 
 // GetAutoDeferOnceEnabled returns the AutoDeferOnceEnabled field value if set, zero value otherwise
-func (o *GroupMaintenanceWindow) GetAutoDeferOnceEnabled() bool {
+func (o *GroupMaintenanceWindowPreviewResponse) GetAutoDeferOnceEnabled() bool {
 	if o == nil || IsNil(o.AutoDeferOnceEnabled) {
 		var ret bool
 		return ret
@@ -50,7 +55,7 @@ func (o *GroupMaintenanceWindow) GetAutoDeferOnceEnabled() bool {
 
 // GetAutoDeferOnceEnabledOk returns a tuple with the AutoDeferOnceEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetAutoDeferOnceEnabledOk() (*bool, bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) GetAutoDeferOnceEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.AutoDeferOnceEnabled) {
 		return nil, false
 	}
@@ -59,7 +64,7 @@ func (o *GroupMaintenanceWindow) GetAutoDeferOnceEnabledOk() (*bool, bool) {
 }
 
 // HasAutoDeferOnceEnabled returns a boolean if a field has been set.
-func (o *GroupMaintenanceWindow) HasAutoDeferOnceEnabled() bool {
+func (o *GroupMaintenanceWindowPreviewResponse) HasAutoDeferOnceEnabled() bool {
 	if o != nil && !IsNil(o.AutoDeferOnceEnabled) {
 		return true
 	}
@@ -68,12 +73,12 @@ func (o *GroupMaintenanceWindow) HasAutoDeferOnceEnabled() bool {
 }
 
 // SetAutoDeferOnceEnabled gets a reference to the given bool and assigns it to the AutoDeferOnceEnabled field.
-func (o *GroupMaintenanceWindow) SetAutoDeferOnceEnabled(v bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) SetAutoDeferOnceEnabled(v bool) {
 	o.AutoDeferOnceEnabled = &v
 }
 
 // GetDayOfWeek returns the DayOfWeek field value
-func (o *GroupMaintenanceWindow) GetDayOfWeek() int {
+func (o *GroupMaintenanceWindowPreviewResponse) GetDayOfWeek() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -84,7 +89,7 @@ func (o *GroupMaintenanceWindow) GetDayOfWeek() int {
 
 // GetDayOfWeekOk returns a tuple with the DayOfWeek field value
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetDayOfWeekOk() (*int, bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) GetDayOfWeekOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,12 +97,45 @@ func (o *GroupMaintenanceWindow) GetDayOfWeekOk() (*int, bool) {
 }
 
 // SetDayOfWeek sets field value
-func (o *GroupMaintenanceWindow) SetDayOfWeek(v int) {
+func (o *GroupMaintenanceWindowPreviewResponse) SetDayOfWeek(v int) {
 	o.DayOfWeek = v
 }
 
+// GetEffectiveWaveAssignment returns the EffectiveWaveAssignment field value if set, zero value otherwise
+func (o *GroupMaintenanceWindowPreviewResponse) GetEffectiveWaveAssignment() int {
+	if o == nil || IsNil(o.EffectiveWaveAssignment) {
+		var ret int
+		return ret
+	}
+	return *o.EffectiveWaveAssignment
+}
+
+// GetEffectiveWaveAssignmentOk returns a tuple with the EffectiveWaveAssignment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMaintenanceWindowPreviewResponse) GetEffectiveWaveAssignmentOk() (*int, bool) {
+	if o == nil || IsNil(o.EffectiveWaveAssignment) {
+		return nil, false
+	}
+
+	return o.EffectiveWaveAssignment, true
+}
+
+// HasEffectiveWaveAssignment returns a boolean if a field has been set.
+func (o *GroupMaintenanceWindowPreviewResponse) HasEffectiveWaveAssignment() bool {
+	if o != nil && !IsNil(o.EffectiveWaveAssignment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveWaveAssignment gets a reference to the given int and assigns it to the EffectiveWaveAssignment field.
+func (o *GroupMaintenanceWindowPreviewResponse) SetEffectiveWaveAssignment(v int) {
+	o.EffectiveWaveAssignment = &v
+}
+
 // GetHourOfDay returns the HourOfDay field value if set, zero value otherwise
-func (o *GroupMaintenanceWindow) GetHourOfDay() int {
+func (o *GroupMaintenanceWindowPreviewResponse) GetHourOfDay() int {
 	if o == nil || IsNil(o.HourOfDay) {
 		var ret int
 		return ret
@@ -107,7 +145,7 @@ func (o *GroupMaintenanceWindow) GetHourOfDay() int {
 
 // GetHourOfDayOk returns a tuple with the HourOfDay field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetHourOfDayOk() (*int, bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) GetHourOfDayOk() (*int, bool) {
 	if o == nil || IsNil(o.HourOfDay) {
 		return nil, false
 	}
@@ -116,7 +154,7 @@ func (o *GroupMaintenanceWindow) GetHourOfDayOk() (*int, bool) {
 }
 
 // HasHourOfDay returns a boolean if a field has been set.
-func (o *GroupMaintenanceWindow) HasHourOfDay() bool {
+func (o *GroupMaintenanceWindowPreviewResponse) HasHourOfDay() bool {
 	if o != nil && !IsNil(o.HourOfDay) {
 		return true
 	}
@@ -125,12 +163,12 @@ func (o *GroupMaintenanceWindow) HasHourOfDay() bool {
 }
 
 // SetHourOfDay gets a reference to the given int and assigns it to the HourOfDay field.
-func (o *GroupMaintenanceWindow) SetHourOfDay(v int) {
+func (o *GroupMaintenanceWindowPreviewResponse) SetHourOfDay(v int) {
 	o.HourOfDay = &v
 }
 
 // GetNumberOfDeferrals returns the NumberOfDeferrals field value if set, zero value otherwise
-func (o *GroupMaintenanceWindow) GetNumberOfDeferrals() int {
+func (o *GroupMaintenanceWindowPreviewResponse) GetNumberOfDeferrals() int {
 	if o == nil || IsNil(o.NumberOfDeferrals) {
 		var ret int
 		return ret
@@ -140,7 +178,7 @@ func (o *GroupMaintenanceWindow) GetNumberOfDeferrals() int {
 
 // GetNumberOfDeferralsOk returns a tuple with the NumberOfDeferrals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetNumberOfDeferralsOk() (*int, bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) GetNumberOfDeferralsOk() (*int, bool) {
 	if o == nil || IsNil(o.NumberOfDeferrals) {
 		return nil, false
 	}
@@ -149,7 +187,7 @@ func (o *GroupMaintenanceWindow) GetNumberOfDeferralsOk() (*int, bool) {
 }
 
 // HasNumberOfDeferrals returns a boolean if a field has been set.
-func (o *GroupMaintenanceWindow) HasNumberOfDeferrals() bool {
+func (o *GroupMaintenanceWindowPreviewResponse) HasNumberOfDeferrals() bool {
 	if o != nil && !IsNil(o.NumberOfDeferrals) {
 		return true
 	}
@@ -158,12 +196,12 @@ func (o *GroupMaintenanceWindow) HasNumberOfDeferrals() bool {
 }
 
 // SetNumberOfDeferrals gets a reference to the given int and assigns it to the NumberOfDeferrals field.
-func (o *GroupMaintenanceWindow) SetNumberOfDeferrals(v int) {
+func (o *GroupMaintenanceWindowPreviewResponse) SetNumberOfDeferrals(v int) {
 	o.NumberOfDeferrals = &v
 }
 
 // GetProtectedHours returns the ProtectedHours field value if set, zero value otherwise
-func (o *GroupMaintenanceWindow) GetProtectedHours() ProtectedHours {
+func (o *GroupMaintenanceWindowPreviewResponse) GetProtectedHours() ProtectedHours {
 	if o == nil || IsNil(o.ProtectedHours) {
 		var ret ProtectedHours
 		return ret
@@ -173,7 +211,7 @@ func (o *GroupMaintenanceWindow) GetProtectedHours() ProtectedHours {
 
 // GetProtectedHoursOk returns a tuple with the ProtectedHours field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetProtectedHoursOk() (*ProtectedHours, bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) GetProtectedHoursOk() (*ProtectedHours, bool) {
 	if o == nil || IsNil(o.ProtectedHours) {
 		return nil, false
 	}
@@ -182,7 +220,7 @@ func (o *GroupMaintenanceWindow) GetProtectedHoursOk() (*ProtectedHours, bool) {
 }
 
 // HasProtectedHours returns a boolean if a field has been set.
-func (o *GroupMaintenanceWindow) HasProtectedHours() bool {
+func (o *GroupMaintenanceWindowPreviewResponse) HasProtectedHours() bool {
 	if o != nil && !IsNil(o.ProtectedHours) {
 		return true
 	}
@@ -191,12 +229,12 @@ func (o *GroupMaintenanceWindow) HasProtectedHours() bool {
 }
 
 // SetProtectedHours gets a reference to the given ProtectedHours and assigns it to the ProtectedHours field.
-func (o *GroupMaintenanceWindow) SetProtectedHours(v ProtectedHours) {
+func (o *GroupMaintenanceWindowPreviewResponse) SetProtectedHours(v ProtectedHours) {
 	o.ProtectedHours = &v
 }
 
 // GetStartASAP returns the StartASAP field value if set, zero value otherwise
-func (o *GroupMaintenanceWindow) GetStartASAP() bool {
+func (o *GroupMaintenanceWindowPreviewResponse) GetStartASAP() bool {
 	if o == nil || IsNil(o.StartASAP) {
 		var ret bool
 		return ret
@@ -206,7 +244,7 @@ func (o *GroupMaintenanceWindow) GetStartASAP() bool {
 
 // GetStartASAPOk returns a tuple with the StartASAP field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetStartASAPOk() (*bool, bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) GetStartASAPOk() (*bool, bool) {
 	if o == nil || IsNil(o.StartASAP) {
 		return nil, false
 	}
@@ -215,7 +253,7 @@ func (o *GroupMaintenanceWindow) GetStartASAPOk() (*bool, bool) {
 }
 
 // HasStartASAP returns a boolean if a field has been set.
-func (o *GroupMaintenanceWindow) HasStartASAP() bool {
+func (o *GroupMaintenanceWindowPreviewResponse) HasStartASAP() bool {
 	if o != nil && !IsNil(o.StartASAP) {
 		return true
 	}
@@ -224,12 +262,12 @@ func (o *GroupMaintenanceWindow) HasStartASAP() bool {
 }
 
 // SetStartASAP gets a reference to the given bool and assigns it to the StartASAP field.
-func (o *GroupMaintenanceWindow) SetStartASAP(v bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) SetStartASAP(v bool) {
 	o.StartASAP = &v
 }
 
 // GetTimeZoneId returns the TimeZoneId field value if set, zero value otherwise
-func (o *GroupMaintenanceWindow) GetTimeZoneId() string {
+func (o *GroupMaintenanceWindowPreviewResponse) GetTimeZoneId() string {
 	if o == nil || IsNil(o.TimeZoneId) {
 		var ret string
 		return ret
@@ -239,7 +277,7 @@ func (o *GroupMaintenanceWindow) GetTimeZoneId() string {
 
 // GetTimeZoneIdOk returns a tuple with the TimeZoneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetTimeZoneIdOk() (*string, bool) {
+func (o *GroupMaintenanceWindowPreviewResponse) GetTimeZoneIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TimeZoneId) {
 		return nil, false
 	}
@@ -248,7 +286,7 @@ func (o *GroupMaintenanceWindow) GetTimeZoneIdOk() (*string, bool) {
 }
 
 // HasTimeZoneId returns a boolean if a field has been set.
-func (o *GroupMaintenanceWindow) HasTimeZoneId() bool {
+func (o *GroupMaintenanceWindowPreviewResponse) HasTimeZoneId() bool {
 	if o != nil && !IsNil(o.TimeZoneId) {
 		return true
 	}
@@ -257,6 +295,39 @@ func (o *GroupMaintenanceWindow) HasTimeZoneId() bool {
 }
 
 // SetTimeZoneId gets a reference to the given string and assigns it to the TimeZoneId field.
-func (o *GroupMaintenanceWindow) SetTimeZoneId(v string) {
+func (o *GroupMaintenanceWindowPreviewResponse) SetTimeZoneId(v string) {
 	o.TimeZoneId = &v
+}
+
+// GetWaveAssignment returns the WaveAssignment field value if set, zero value otherwise
+func (o *GroupMaintenanceWindowPreviewResponse) GetWaveAssignment() int {
+	if o == nil || IsNil(o.WaveAssignment) {
+		var ret int
+		return ret
+	}
+	return *o.WaveAssignment
+}
+
+// GetWaveAssignmentOk returns a tuple with the WaveAssignment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMaintenanceWindowPreviewResponse) GetWaveAssignmentOk() (*int, bool) {
+	if o == nil || IsNil(o.WaveAssignment) {
+		return nil, false
+	}
+
+	return o.WaveAssignment, true
+}
+
+// HasWaveAssignment returns a boolean if a field has been set.
+func (o *GroupMaintenanceWindowPreviewResponse) HasWaveAssignment() bool {
+	if o != nil && !IsNil(o.WaveAssignment) {
+		return true
+	}
+
+	return false
+}
+
+// SetWaveAssignment gets a reference to the given int and assigns it to the WaveAssignment field.
+func (o *GroupMaintenanceWindowPreviewResponse) SetWaveAssignment(v int) {
+	o.WaveAssignment = &v
 }

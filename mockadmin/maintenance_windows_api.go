@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312021/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -225,24 +225,24 @@ func (_c *MaintenanceWindowsAPI_GetMaintenanceWindow_Call) RunAndReturn(run func
 }
 
 // GetMaintenanceWindowExecute provides a mock function with given fields: r
-func (_m *MaintenanceWindowsAPI) GetMaintenanceWindowExecute(r admin.GetMaintenanceWindowApiRequest) (*admin.GroupMaintenanceWindow, *http.Response, error) {
+func (_m *MaintenanceWindowsAPI) GetMaintenanceWindowExecute(r admin.GetMaintenanceWindowApiRequest) (*admin.GroupMaintenanceWindowPreviewResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetMaintenanceWindowExecute")
 	}
 
-	var r0 *admin.GroupMaintenanceWindow
+	var r0 *admin.GroupMaintenanceWindowPreviewResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetMaintenanceWindowApiRequest) (*admin.GroupMaintenanceWindow, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetMaintenanceWindowApiRequest) (*admin.GroupMaintenanceWindowPreviewResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetMaintenanceWindowApiRequest) *admin.GroupMaintenanceWindow); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetMaintenanceWindowApiRequest) *admin.GroupMaintenanceWindowPreviewResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GroupMaintenanceWindow)
+			r0 = ret.Get(0).(*admin.GroupMaintenanceWindowPreviewResponse)
 		}
 	}
 
@@ -281,12 +281,12 @@ func (_c *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call) Run(run func(r
 	return _c
 }
 
-func (_c *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call) Return(_a0 *admin.GroupMaintenanceWindow, _a1 *http.Response, _a2 error) *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call {
+func (_c *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call) Return(_a0 *admin.GroupMaintenanceWindowPreviewResponse, _a1 *http.Response, _a2 error) *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call) RunAndReturn(run func(admin.GetMaintenanceWindowApiRequest) (*admin.GroupMaintenanceWindow, *http.Response, error)) *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call {
+func (_c *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call) RunAndReturn(run func(admin.GetMaintenanceWindowApiRequest) (*admin.GroupMaintenanceWindowPreviewResponse, *http.Response, error)) *MaintenanceWindowsAPI_GetMaintenanceWindowExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -642,17 +642,17 @@ func (_c *MaintenanceWindowsAPI_ToggleMaintenanceAutoDeferWithParams_Call) RunAn
 	return _c
 }
 
-// UpdateMaintenanceWindow provides a mock function with given fields: ctx, groupId, groupMaintenanceWindow
-func (_m *MaintenanceWindowsAPI) UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindow *admin.GroupMaintenanceWindow) admin.UpdateMaintenanceWindowApiRequest {
-	ret := _m.Called(ctx, groupId, groupMaintenanceWindow)
+// UpdateMaintenanceWindow provides a mock function with given fields: ctx, groupId, groupMaintenanceWindowPreviewUpdateRequest
+func (_m *MaintenanceWindowsAPI) UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindowPreviewUpdateRequest *admin.GroupMaintenanceWindowPreviewUpdateRequest) admin.UpdateMaintenanceWindowApiRequest {
+	ret := _m.Called(ctx, groupId, groupMaintenanceWindowPreviewUpdateRequest)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateMaintenanceWindow")
 	}
 
 	var r0 admin.UpdateMaintenanceWindowApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupMaintenanceWindow) admin.UpdateMaintenanceWindowApiRequest); ok {
-		r0 = rf(ctx, groupId, groupMaintenanceWindow)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupMaintenanceWindowPreviewUpdateRequest) admin.UpdateMaintenanceWindowApiRequest); ok {
+		r0 = rf(ctx, groupId, groupMaintenanceWindowPreviewUpdateRequest)
 	} else {
 		r0 = ret.Get(0).(admin.UpdateMaintenanceWindowApiRequest)
 	}
@@ -668,14 +668,14 @@ type MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call struct {
 // UpdateMaintenanceWindow is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - groupMaintenanceWindow *admin.GroupMaintenanceWindow
-func (_e *MaintenanceWindowsAPI_Expecter) UpdateMaintenanceWindow(ctx any, groupId any, groupMaintenanceWindow any) *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call {
-	return &MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call{Call: _e.mock.On("UpdateMaintenanceWindow", ctx, groupId, groupMaintenanceWindow)}
+//   - groupMaintenanceWindowPreviewUpdateRequest *admin.GroupMaintenanceWindowPreviewUpdateRequest
+func (_e *MaintenanceWindowsAPI_Expecter) UpdateMaintenanceWindow(ctx any, groupId any, groupMaintenanceWindowPreviewUpdateRequest any) *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call {
+	return &MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call{Call: _e.mock.On("UpdateMaintenanceWindow", ctx, groupId, groupMaintenanceWindowPreviewUpdateRequest)}
 }
 
-func (_c *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call) Run(run func(ctx context.Context, groupId string, groupMaintenanceWindow *admin.GroupMaintenanceWindow)) *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call {
+func (_c *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call) Run(run func(ctx context.Context, groupId string, groupMaintenanceWindowPreviewUpdateRequest *admin.GroupMaintenanceWindowPreviewUpdateRequest)) *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupMaintenanceWindow))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupMaintenanceWindowPreviewUpdateRequest))
 	})
 	return _c
 }
@@ -685,7 +685,7 @@ func (_c *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call) Return(_a0 admin.U
 	return _c
 }
 
-func (_c *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call) RunAndReturn(run func(context.Context, string, *admin.GroupMaintenanceWindow) admin.UpdateMaintenanceWindowApiRequest) *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call {
+func (_c *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call) RunAndReturn(run func(context.Context, string, *admin.GroupMaintenanceWindowPreviewUpdateRequest) admin.UpdateMaintenanceWindowApiRequest) *MaintenanceWindowsAPI_UpdateMaintenanceWindow_Call {
 	_c.Call.Return(run)
 	return _c
 }

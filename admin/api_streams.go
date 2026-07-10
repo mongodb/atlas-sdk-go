@@ -12,6 +12,32 @@ import (
 type StreamsAPI interface {
 
 	/*
+			AcceptTransitGatewayInvitations Accept Transit Gateway Resource Share Invitations
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Accept AWS RAM Resource Share for a Transit Gateway that has been shared with an Atlas AWS account. This Transit Gateway will be used in Atlas Streams private networking connections.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param streamsTransitGatewayResourceShare Detailed information on accepting a transit gateway resource share invitation.
+			@return AcceptTransitGatewayInvitationsApiRequest
+	*/
+	AcceptTransitGatewayInvitations(ctx context.Context, groupId string, streamsTransitGatewayResourceShare *StreamsTransitGatewayResourceShare) AcceptTransitGatewayInvitationsApiRequest
+	/*
+		AcceptTransitGatewayInvitations Accept Transit Gateway Resource Share Invitations
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param AcceptTransitGatewayInvitationsApiParams - Parameters for the request
+		@return AcceptTransitGatewayInvitationsApiRequest
+	*/
+	AcceptTransitGatewayInvitationsWithParams(ctx context.Context, args *AcceptTransitGatewayInvitationsApiParams) AcceptTransitGatewayInvitationsApiRequest
+
+	// Method available only for mocking purposes
+	AcceptTransitGatewayInvitationsExecute(r AcceptTransitGatewayInvitationsApiRequest) (*http.Response, error)
+
+	/*
 		AcceptVpcPeeringConnection Accept One Incoming VPC Peering Connection
 
 		Requests the acceptance of an incoming VPC Peering connection.
@@ -37,16 +63,20 @@ type StreamsAPI interface {
 	AcceptVpcPeeringConnectionExecute(r AcceptVpcPeeringConnectionApiRequest) (*http.Response, error)
 
 	/*
-		CreateFailoverConnection Create One Failover Stream Connection
+			CreateFailoverConnection Create One Failover Stream Connection
 
-		Creates one failover connection for a stream workspace in the specified project.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Label that identifies the stream workspace.
-		@param connectionName Label that identifies the stream connection name.
-		@param streamsConnection Details to create one failover connection for a streams workspace in the specified project.
-		@return CreateFailoverConnectionApiRequest
+		 Creates one failover connection for a stream workspace in the specified project. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param tenantName Label that identifies the stream workspace.
+			@param connectionName Label that identifies the stream connection name.
+			@param streamsConnection Details to create one failover connection for a streams workspace in the specified project.
+			@return CreateFailoverConnectionApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) CreateFailoverConnectionApiRequest
 	/*
@@ -56,6 +86,8 @@ type StreamsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateFailoverConnectionApiParams - Parameters for the request
 		@return CreateFailoverConnectionApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	CreateFailoverConnectionWithParams(ctx context.Context, args *CreateFailoverConnectionApiParams) CreateFailoverConnectionApiRequest
 
@@ -161,6 +193,58 @@ type StreamsAPI interface {
 	CreateStreamWorkspaceExecute(r CreateStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
+			CreateTransitGatewayAttachment Create One Transit Gateway Attachment
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Creates Transit Gateway Attachment with the provided VPC for a Transit Gateway that has been shared with an Atlas AWS Account. This Transit Gateway will be used in Atlas Streams private networking connections.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param streamsTransitGatewayAttachmentRequest Metadata needed for creating a transit gateway attachment.
+			@return CreateTransitGatewayAttachmentApiRequest
+	*/
+	CreateTransitGatewayAttachment(ctx context.Context, groupId string, streamsTransitGatewayAttachmentRequest *StreamsTransitGatewayAttachmentRequest) CreateTransitGatewayAttachmentApiRequest
+	/*
+		CreateTransitGatewayAttachment Create One Transit Gateway Attachment
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateTransitGatewayAttachmentApiParams - Parameters for the request
+		@return CreateTransitGatewayAttachmentApiRequest
+	*/
+	CreateTransitGatewayAttachmentWithParams(ctx context.Context, args *CreateTransitGatewayAttachmentApiParams) CreateTransitGatewayAttachmentApiRequest
+
+	// Method available only for mocking purposes
+	CreateTransitGatewayAttachmentExecute(r CreateTransitGatewayAttachmentApiRequest) (*StreamsTransitGatewayAttachmentResponse, *http.Response, error)
+
+	/*
+			CreateTransitGatewayRoute Create One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Creates a route in the default route table associated with Atlas VPC to route all traffic destined for provided CIDR to the provided Transit Gateway.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param streamsTransitGatewayRouteRequest Metadata needed for creating a transit gateway route.
+			@return CreateTransitGatewayRouteApiRequest
+	*/
+	CreateTransitGatewayRoute(ctx context.Context, groupId string, streamsTransitGatewayRouteRequest *StreamsTransitGatewayRouteRequest) CreateTransitGatewayRouteApiRequest
+	/*
+		CreateTransitGatewayRoute Create One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateTransitGatewayRouteApiParams - Parameters for the request
+		@return CreateTransitGatewayRouteApiRequest
+	*/
+	CreateTransitGatewayRouteWithParams(ctx context.Context, args *CreateTransitGatewayRouteApiParams) CreateTransitGatewayRouteApiRequest
+
+	// Method available only for mocking purposes
+	CreateTransitGatewayRouteExecute(r CreateTransitGatewayRouteApiRequest) (*StreamsTransitGatewayRouteResponse, *http.Response, error)
+
+	/*
 		DeletePrivateLinkConnection Delete One Private Link Connection
 
 		Deletes one Private Link in the specified project.
@@ -210,16 +294,20 @@ type StreamsAPI interface {
 	DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (*http.Response, error)
 
 	/*
-		DeleteStreamFailoverConnection Delete One Stream Failover Connection
+			DeleteStreamFailoverConnection Delete One Stream Failover Connection
 
-		Delete one failover connection of the specified stream workspace.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Label that identifies the stream workspace.
-		@param connectionName Label that identifies the stream connection.
-		@param failoverConnectionId Label that identifies the stream failover connection id.
-		@return DeleteStreamFailoverConnectionApiRequest
+		 Delete one failover connection of the specified stream workspace. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param tenantName Label that identifies the stream workspace.
+			@param connectionName Label that identifies the stream connection.
+			@param failoverConnectionId Label that identifies the stream failover connection id.
+			@return DeleteStreamFailoverConnectionApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	DeleteStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) DeleteStreamFailoverConnectionApiRequest
 	/*
@@ -229,6 +317,8 @@ type StreamsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DeleteStreamFailoverConnectionApiParams - Parameters for the request
 		@return DeleteStreamFailoverConnectionApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	DeleteStreamFailoverConnectionWithParams(ctx context.Context, args *DeleteStreamFailoverConnectionApiParams) DeleteStreamFailoverConnectionApiRequest
 
@@ -283,6 +373,84 @@ type StreamsAPI interface {
 
 	// Method available only for mocking purposes
 	DeleteStreamWorkspaceExecute(r DeleteStreamWorkspaceApiRequest) (*http.Response, error)
+
+	/*
+			DeleteTransitGatewayAttachment Delete One Transit Gateway Attachment
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Deletes a transit gateway attachment.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param attachmentId Unique identifier that identifies the Transit Gateway Attachment.
+			@return DeleteTransitGatewayAttachmentApiRequest
+	*/
+	DeleteTransitGatewayAttachment(ctx context.Context, groupId string, attachmentId string) DeleteTransitGatewayAttachmentApiRequest
+	/*
+		DeleteTransitGatewayAttachment Delete One Transit Gateway Attachment
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteTransitGatewayAttachmentApiParams - Parameters for the request
+		@return DeleteTransitGatewayAttachmentApiRequest
+	*/
+	DeleteTransitGatewayAttachmentWithParams(ctx context.Context, args *DeleteTransitGatewayAttachmentApiParams) DeleteTransitGatewayAttachmentApiRequest
+
+	// Method available only for mocking purposes
+	DeleteTransitGatewayAttachmentExecute(r DeleteTransitGatewayAttachmentApiRequest) (*http.Response, error)
+
+	/*
+			DeleteTransitGatewayInvitation Delete One Transit Gateway Invitation
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Deletes an AWS Resource Share Invitation for a Transit Gateway that has been shared with an Atlas AWS account. This does not delete the resource share invitation from the sender's AWS account. This only deletes the resource share invitation that's cached for Atlas Streams Processing.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param resourceShareArn AWS Transit Gateway resource share ARN.
+			@return DeleteTransitGatewayInvitationApiRequest
+	*/
+	DeleteTransitGatewayInvitation(ctx context.Context, groupId string, resourceShareArn string) DeleteTransitGatewayInvitationApiRequest
+	/*
+		DeleteTransitGatewayInvitation Delete One Transit Gateway Invitation
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteTransitGatewayInvitationApiParams - Parameters for the request
+		@return DeleteTransitGatewayInvitationApiRequest
+	*/
+	DeleteTransitGatewayInvitationWithParams(ctx context.Context, args *DeleteTransitGatewayInvitationApiParams) DeleteTransitGatewayInvitationApiRequest
+
+	// Method available only for mocking purposes
+	DeleteTransitGatewayInvitationExecute(r DeleteTransitGatewayInvitationApiRequest) (*http.Response, error)
+
+	/*
+			DeleteTransitGatewayRoute Delete One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Deletes a transit gateway route in the default route table associated with Atlas VPC.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param routeId The Object ID that uniquely identifies a transit gateway route.
+			@return DeleteTransitGatewayRouteApiRequest
+	*/
+	DeleteTransitGatewayRoute(ctx context.Context, groupId string, routeId string) DeleteTransitGatewayRouteApiRequest
+	/*
+		DeleteTransitGatewayRoute Delete One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteTransitGatewayRouteApiParams - Parameters for the request
+		@return DeleteTransitGatewayRouteApiRequest
+	*/
+	DeleteTransitGatewayRouteWithParams(ctx context.Context, args *DeleteTransitGatewayRouteApiParams) DeleteTransitGatewayRouteApiRequest
+
+	// Method available only for mocking purposes
+	DeleteTransitGatewayRouteExecute(r DeleteTransitGatewayRouteApiRequest) (*http.Response, error)
 
 	/*
 		DeleteVpcPeeringConnection Delete One VPC Peering Connection
@@ -429,16 +597,20 @@ type StreamsAPI interface {
 	GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
-		GetStreamFailoverConnection Return One Stream Failover Connection
+			GetStreamFailoverConnection Return One Stream Failover Connection
 
-		Get one failover connection of the specified stream workspace.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Label that identifies the stream workspace.
-		@param connectionName Label that identifies the stream connection.
-		@param failoverConnectionId Label that identifies the stream failover connection id.
-		@return GetStreamFailoverConnectionApiRequest
+		 Get one failover connection of the specified stream workspace. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param tenantName Label that identifies the stream workspace.
+			@param connectionName Label that identifies the stream connection.
+			@param failoverConnectionId Label that identifies the stream failover connection id.
+			@return GetStreamFailoverConnectionApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	GetStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) GetStreamFailoverConnectionApiRequest
 	/*
@@ -448,6 +620,8 @@ type StreamsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetStreamFailoverConnectionApiParams - Parameters for the request
 		@return GetStreamFailoverConnectionApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	GetStreamFailoverConnectionWithParams(ctx context.Context, args *GetStreamFailoverConnectionApiParams) GetStreamFailoverConnectionApiRequest
 
@@ -528,6 +702,84 @@ type StreamsAPI interface {
 	GetStreamWorkspaceExecute(r GetStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
+			GetTransitGatewayAttachment Return One Transit Gateway Attachment for One Group
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns one Transit Gateway Attachment for this group from the shared Atlas AWS Account.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param attachmentId Unique identifier that identifies the Transit Gateway Attachment.
+			@return GetTransitGatewayAttachmentApiRequest
+	*/
+	GetTransitGatewayAttachment(ctx context.Context, groupId string, attachmentId string) GetTransitGatewayAttachmentApiRequest
+	/*
+		GetTransitGatewayAttachment Return One Transit Gateway Attachment for One Group
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetTransitGatewayAttachmentApiParams - Parameters for the request
+		@return GetTransitGatewayAttachmentApiRequest
+	*/
+	GetTransitGatewayAttachmentWithParams(ctx context.Context, args *GetTransitGatewayAttachmentApiParams) GetTransitGatewayAttachmentApiRequest
+
+	// Method available only for mocking purposes
+	GetTransitGatewayAttachmentExecute(r GetTransitGatewayAttachmentApiRequest) (*StreamsTransitGatewayAttachmentResponse, *http.Response, error)
+
+	/*
+			GetTransitGatewayInvitation Return One Transit Gateway Invitation
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns the details of one AWS Resource Share Invitation for a Transit Gateway that has been shared with an Atlas AWS Account. This only returns the resource share invitation cached for Atlas Streams Processing.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param resourceShareArn AWS Transit Gateway resource share ARN.
+			@return GetTransitGatewayInvitationApiRequest
+	*/
+	GetTransitGatewayInvitation(ctx context.Context, groupId string, resourceShareArn string) GetTransitGatewayInvitationApiRequest
+	/*
+		GetTransitGatewayInvitation Return One Transit Gateway Invitation
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetTransitGatewayInvitationApiParams - Parameters for the request
+		@return GetTransitGatewayInvitationApiRequest
+	*/
+	GetTransitGatewayInvitationWithParams(ctx context.Context, args *GetTransitGatewayInvitationApiParams) GetTransitGatewayInvitationApiRequest
+
+	// Method available only for mocking purposes
+	GetTransitGatewayInvitationExecute(r GetTransitGatewayInvitationApiRequest) (*StreamsTransitGatewayInvitationsResponse, *http.Response, error)
+
+	/*
+			GetTransitGatewayRoute Return One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Retrieves a transit gateway route in the default route table associated with Atlas VPC.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param routeId The Object ID that uniquely identifies a transit gateway route.
+			@return GetTransitGatewayRouteApiRequest
+	*/
+	GetTransitGatewayRoute(ctx context.Context, groupId string, routeId string) GetTransitGatewayRouteApiRequest
+	/*
+		GetTransitGatewayRoute Return One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetTransitGatewayRouteApiParams - Parameters for the request
+		@return GetTransitGatewayRouteApiRequest
+	*/
+	GetTransitGatewayRouteWithParams(ctx context.Context, args *GetTransitGatewayRouteApiParams) GetTransitGatewayRouteApiRequest
+
+	// Method available only for mocking purposes
+	GetTransitGatewayRouteExecute(r GetTransitGatewayRouteApiRequest) (*StreamsTransitGatewayRouteResponse, *http.Response, error)
+
+	/*
 		ListActivePeeringConnections Return All Active Incoming VPC Peering Connections
 
 		Returns a list of active incoming VPC Peering Connections.
@@ -551,15 +803,19 @@ type StreamsAPI interface {
 	ListActivePeeringConnectionsExecute(r ListActivePeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)
 
 	/*
-		ListFailoverConnections Return All Stream Failover Connections
+			ListFailoverConnections Return All Stream Failover Connections
 
-		Returns all failover connections for the specified connection in a stream workspace.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Label that identifies the stream workspace.
-		@param connectionName Label that identifies the stream connection.
-		@return ListFailoverConnectionsApiRequest
+		 Returns all failover connections for the specified connection in a stream workspace. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param tenantName Label that identifies the stream workspace.
+			@param connectionName Label that identifies the stream connection.
+			@return ListFailoverConnectionsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	ListFailoverConnections(ctx context.Context, groupId string, tenantName string, connectionName string) ListFailoverConnectionsApiRequest
 	/*
@@ -569,6 +825,8 @@ type StreamsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListFailoverConnectionsApiParams - Parameters for the request
 		@return ListFailoverConnectionsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	ListFailoverConnectionsWithParams(ctx context.Context, args *ListFailoverConnectionsApiParams) ListFailoverConnectionsApiRequest
 
@@ -646,6 +904,81 @@ type StreamsAPI interface {
 	ListStreamWorkspacesExecute(r ListStreamWorkspacesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error)
 
 	/*
+			ListTransitGatewayAttachments Return All Transit Gateway Attachments for One Group
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns the Transit Gateway Attachments for this group in the shared Atlas AWS Account.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListTransitGatewayAttachmentsApiRequest
+	*/
+	ListTransitGatewayAttachments(ctx context.Context, groupId string) ListTransitGatewayAttachmentsApiRequest
+	/*
+		ListTransitGatewayAttachments Return All Transit Gateway Attachments for One Group
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListTransitGatewayAttachmentsApiParams - Parameters for the request
+		@return ListTransitGatewayAttachmentsApiRequest
+	*/
+	ListTransitGatewayAttachmentsWithParams(ctx context.Context, args *ListTransitGatewayAttachmentsApiParams) ListTransitGatewayAttachmentsApiRequest
+
+	// Method available only for mocking purposes
+	ListTransitGatewayAttachmentsExecute(r ListTransitGatewayAttachmentsApiRequest) (*PaginatedApiStreamsTransitGatewayAttachmentResponse, *http.Response, error)
+
+	/*
+			ListTransitGatewayInvitations Return All Streams Transit Gateway Invitations
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns the AWS RAM Resource Shares and Transit Gateway IDs for a Transit Gateway that has been shared with an Atlas AWS Account. This only returns the resource shares cached for Atlas Streams Processing.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListTransitGatewayInvitationsApiRequest
+	*/
+	ListTransitGatewayInvitations(ctx context.Context, groupId string) ListTransitGatewayInvitationsApiRequest
+	/*
+		ListTransitGatewayInvitations Return All Streams Transit Gateway Invitations
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListTransitGatewayInvitationsApiParams - Parameters for the request
+		@return ListTransitGatewayInvitationsApiRequest
+	*/
+	ListTransitGatewayInvitationsWithParams(ctx context.Context, args *ListTransitGatewayInvitationsApiParams) ListTransitGatewayInvitationsApiRequest
+
+	// Method available only for mocking purposes
+	ListTransitGatewayInvitationsExecute(r ListTransitGatewayInvitationsApiRequest) (*PaginatedStreamsTransitGatewayInvitationsResponse, *http.Response, error)
+
+	/*
+			ListTransitGatewayRoutes Return All Transit Gateway Routes in the Default Route Table for One Atlas VPC
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 List Transit Gateway routes in the default route table associated with Atlas VPC.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListTransitGatewayRoutesApiRequest
+	*/
+	ListTransitGatewayRoutes(ctx context.Context, groupId string) ListTransitGatewayRoutesApiRequest
+	/*
+		ListTransitGatewayRoutes Return All Transit Gateway Routes in the Default Route Table for One Atlas VPC
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListTransitGatewayRoutesApiParams - Parameters for the request
+		@return ListTransitGatewayRoutesApiRequest
+	*/
+	ListTransitGatewayRoutesWithParams(ctx context.Context, args *ListTransitGatewayRoutesApiParams) ListTransitGatewayRoutesApiRequest
+
+	// Method available only for mocking purposes
+	ListTransitGatewayRoutesExecute(r ListTransitGatewayRoutesApiRequest) (*PaginatedApiStreamsTransitGatewayRouteResponse, *http.Response, error)
+
+	/*
 		ListVpcPeeringConnections Return All VPC Peering Connections
 
 		Returns a list of incoming VPC Peering Connections.
@@ -667,6 +1000,32 @@ type StreamsAPI interface {
 
 	// Method available only for mocking purposes
 	ListVpcPeeringConnectionsExecute(r ListVpcPeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)
+
+	/*
+			RejectTransitGatewayInvitations Reject Transit Gateway Resource Share Invitations
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Rejects AWS RAM Resource Share for a Transit Gateway that has been shared with an Atlas AWS account.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param streamsTransitGatewayResourceShare Detailed information on rejecting a transit gateway resource share invitation.
+			@return RejectTransitGatewayInvitationsApiRequest
+	*/
+	RejectTransitGatewayInvitations(ctx context.Context, groupId string, streamsTransitGatewayResourceShare *StreamsTransitGatewayResourceShare) RejectTransitGatewayInvitationsApiRequest
+	/*
+		RejectTransitGatewayInvitations Reject Transit Gateway Resource Share Invitations
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RejectTransitGatewayInvitationsApiParams - Parameters for the request
+		@return RejectTransitGatewayInvitationsApiRequest
+	*/
+	RejectTransitGatewayInvitationsWithParams(ctx context.Context, args *RejectTransitGatewayInvitationsApiParams) RejectTransitGatewayInvitationsApiRequest
+
+	// Method available only for mocking purposes
+	RejectTransitGatewayInvitationsExecute(r RejectTransitGatewayInvitationsApiRequest) (*http.Response, error)
 
 	/*
 		RejectVpcPeeringConnection Reject One Incoming VPC Peering Connection
@@ -718,18 +1077,20 @@ type StreamsAPI interface {
 	StartStreamProcessorExecute(r StartStreamProcessorApiRequest) (*http.Response, error)
 
 	/*
-		StartStreamProcessorWith Start One Stream Processor With Options
+			StartStreamProcessorWith Start One Stream Processor With Options
 
-		Start a Stream Processor within the specified stream workspace.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Label that identifies the stream workspace.
-		@param processorName Label that identifies the stream processor.
-		@param streamsStartStreamProcessorWith Options for starting a stream processor.
-		@return StartStreamProcessorWithApiRequest
+		 Start a Stream Processor within the specified stream workspace. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param tenantName Label that identifies the stream workspace.
+			@param processorName Label that identifies the stream processor.
+			@param startStreamProcessorWithPreview Options for starting a stream processor.
+			@return StartStreamProcessorWithApiRequest
 	*/
-	StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith) StartStreamProcessorWithApiRequest
+	StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, startStreamProcessorWithPreview *StartStreamProcessorWithPreview) StartStreamProcessorWithApiRequest
 	/*
 		StartStreamProcessorWith Start One Stream Processor With Options
 
@@ -769,6 +1130,31 @@ type StreamsAPI interface {
 	StopStreamProcessorExecute(r StopStreamProcessorApiRequest) (*http.Response, error)
 
 	/*
+		UpdatePrivateLinkConnection Update One Private Link Connection
+
+		Updates one Private Link connection in the specified project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param connectionId Unique ID that identifies the Private Link connection.
+		@param streamsPrivateLinkConnectionRequest The fields to update on the Private Link connection.
+		@return UpdatePrivateLinkConnectionApiRequest
+	*/
+	UpdatePrivateLinkConnection(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest) UpdatePrivateLinkConnectionApiRequest
+	/*
+		UpdatePrivateLinkConnection Update One Private Link Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdatePrivateLinkConnectionApiParams - Parameters for the request
+		@return UpdatePrivateLinkConnectionApiRequest
+	*/
+	UpdatePrivateLinkConnectionWithParams(ctx context.Context, args *UpdatePrivateLinkConnectionApiParams) UpdatePrivateLinkConnectionApiRequest
+
+	// Method available only for mocking purposes
+	UpdatePrivateLinkConnectionExecute(r UpdatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error)
+
+	/*
 		UpdateStreamConnection Update One Stream Connection
 
 		Update one connection for the specified stream workspace in the specified project.
@@ -795,17 +1181,21 @@ type StreamsAPI interface {
 	UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
-		UpdateStreamFailoverConnection Update One Stream Failover Connection
+			UpdateStreamFailoverConnection Update One Stream Failover Connection
 
-		Update one failover connection of the specified stream workspace.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Label that identifies the stream workspace.
-		@param connectionName Label that identifies the stream connection.
-		@param failoverConnectionId Label that identifies the stream failover connection id.
-		@param streamsConnection Details to update one failover connection for a streams workspace in the specified project.
-		@return UpdateStreamFailoverConnectionApiRequest
+		 Update one failover connection of the specified stream workspace. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param tenantName Label that identifies the stream workspace.
+			@param connectionName Label that identifies the stream connection.
+			@param failoverConnectionId Label that identifies the stream failover connection id.
+			@param streamsConnection Details to update one failover connection for a streams workspace in the specified project.
+			@return UpdateStreamFailoverConnectionApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *StreamsConnection) UpdateStreamFailoverConnectionApiRequest
 	/*
@@ -815,6 +1205,8 @@ type StreamsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateStreamFailoverConnectionApiParams - Parameters for the request
 		@return UpdateStreamFailoverConnectionApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for StreamsAPI
 	*/
 	UpdateStreamFailoverConnectionWithParams(ctx context.Context, args *UpdateStreamFailoverConnectionApiParams) UpdateStreamFailoverConnectionApiRequest
 
@@ -848,15 +1240,17 @@ type StreamsAPI interface {
 	UpdateStreamProcessorExecute(r UpdateStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
 
 	/*
-		UpdateStreamWorkspace Update One Stream Workspace
+			UpdateStreamWorkspace Update One Stream Workspace
 
-		Update one stream workspace in the specified project.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantName Label that identifies the stream workspace to update.
-		@param streamsTenantUpdateRequest Details to update in the streams workspace.
-		@return UpdateStreamWorkspaceApiRequest
+		 Update one stream workspace in the specified project. Deprecated versions: v2-{2023-02-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param tenantName Label that identifies the stream workspace to update.
+			@param streamsTenantUpdateRequest Details to update in the streams workspace.
+			@return UpdateStreamWorkspaceApiRequest
 	*/
 	UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsTenantUpdateRequest *StreamsTenantUpdateRequest) UpdateStreamWorkspaceApiRequest
 	/*
@@ -899,6 +1293,114 @@ type StreamsAPI interface {
 
 // StreamsAPIService StreamsAPI service
 type StreamsAPIService service
+
+type AcceptTransitGatewayInvitationsApiRequest struct {
+	ctx                                context.Context
+	ApiService                         StreamsAPI
+	groupId                            string
+	streamsTransitGatewayResourceShare *StreamsTransitGatewayResourceShare
+}
+
+type AcceptTransitGatewayInvitationsApiParams struct {
+	GroupId                            string
+	StreamsTransitGatewayResourceShare *StreamsTransitGatewayResourceShare
+}
+
+func (a *StreamsAPIService) AcceptTransitGatewayInvitationsWithParams(ctx context.Context, args *AcceptTransitGatewayInvitationsApiParams) AcceptTransitGatewayInvitationsApiRequest {
+	return AcceptTransitGatewayInvitationsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            args.GroupId,
+		streamsTransitGatewayResourceShare: args.StreamsTransitGatewayResourceShare,
+	}
+}
+
+func (r AcceptTransitGatewayInvitationsApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.AcceptTransitGatewayInvitationsExecute(r)
+}
+
+/*
+AcceptTransitGatewayInvitations Accept Transit Gateway Resource Share Invitations
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Accept AWS RAM Resource Share for a Transit Gateway that has been shared with an Atlas AWS account. This Transit Gateway will be used in Atlas Streams private networking connections.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return AcceptTransitGatewayInvitationsApiRequest
+*/
+func (a *StreamsAPIService) AcceptTransitGatewayInvitations(ctx context.Context, groupId string, streamsTransitGatewayResourceShare *StreamsTransitGatewayResourceShare) AcceptTransitGatewayInvitationsApiRequest {
+	return AcceptTransitGatewayInvitationsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            groupId,
+		streamsTransitGatewayResourceShare: streamsTransitGatewayResourceShare,
+	}
+}
+
+// AcceptTransitGatewayInvitationsExecute executes the request
+func (a *StreamsAPIService) AcceptTransitGatewayInvitationsExecute(r AcceptTransitGatewayInvitationsApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.AcceptTransitGatewayInvitations")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayInvitations:accept"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsTransitGatewayResourceShare == nil {
+		return nil, reportError("streamsTransitGatewayResourceShare is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsTransitGatewayResourceShare
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
 
 type AcceptVpcPeeringConnectionApiRequest struct {
 	ctx                       context.Context
@@ -1049,13 +1551,17 @@ func (r CreateFailoverConnectionApiRequest) Execute() (*StreamsConnection, *http
 /*
 CreateFailoverConnection Create One Failover Stream Connection
 
-Creates one failover connection for a stream workspace in the specified project.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Creates one failover connection for a stream workspace in the specified project. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param tenantName Label that identifies the stream workspace.
 	@param connectionName Label that identifies the stream connection name.
 	@return CreateFailoverConnectionApiRequest
+
+Deprecated
 */
 func (a *StreamsAPIService) CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) CreateFailoverConnectionApiRequest {
 	return CreateFailoverConnectionApiRequest{
@@ -1071,6 +1577,8 @@ func (a *StreamsAPIService) CreateFailoverConnection(ctx context.Context, groupI
 // CreateFailoverConnectionExecute executes the request
 //
 //	@return StreamsConnection
+//
+// Deprecated
 func (a *StreamsAPIService) CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1115,7 +1623,7 @@ func (a *StreamsAPIService) CreateFailoverConnectionExecute(r CreateFailoverConn
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1666,6 +2174,256 @@ func (a *StreamsAPIService) CreateStreamWorkspaceExecute(r CreateStreamWorkspace
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type CreateTransitGatewayAttachmentApiRequest struct {
+	ctx                                    context.Context
+	ApiService                             StreamsAPI
+	groupId                                string
+	streamsTransitGatewayAttachmentRequest *StreamsTransitGatewayAttachmentRequest
+}
+
+type CreateTransitGatewayAttachmentApiParams struct {
+	GroupId                                string
+	StreamsTransitGatewayAttachmentRequest *StreamsTransitGatewayAttachmentRequest
+}
+
+func (a *StreamsAPIService) CreateTransitGatewayAttachmentWithParams(ctx context.Context, args *CreateTransitGatewayAttachmentApiParams) CreateTransitGatewayAttachmentApiRequest {
+	return CreateTransitGatewayAttachmentApiRequest{
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                args.GroupId,
+		streamsTransitGatewayAttachmentRequest: args.StreamsTransitGatewayAttachmentRequest,
+	}
+}
+
+func (r CreateTransitGatewayAttachmentApiRequest) Execute() (*StreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	return r.ApiService.CreateTransitGatewayAttachmentExecute(r)
+}
+
+/*
+CreateTransitGatewayAttachment Create One Transit Gateway Attachment
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Creates Transit Gateway Attachment with the provided VPC for a Transit Gateway that has been shared with an Atlas AWS Account. This Transit Gateway will be used in Atlas Streams private networking connections.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateTransitGatewayAttachmentApiRequest
+*/
+func (a *StreamsAPIService) CreateTransitGatewayAttachment(ctx context.Context, groupId string, streamsTransitGatewayAttachmentRequest *StreamsTransitGatewayAttachmentRequest) CreateTransitGatewayAttachmentApiRequest {
+	return CreateTransitGatewayAttachmentApiRequest{
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                groupId,
+		streamsTransitGatewayAttachmentRequest: streamsTransitGatewayAttachmentRequest,
+	}
+}
+
+// CreateTransitGatewayAttachmentExecute executes the request
+//
+//	@return StreamsTransitGatewayAttachmentResponse
+func (a *StreamsAPIService) CreateTransitGatewayAttachmentExecute(r CreateTransitGatewayAttachmentApiRequest) (*StreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsTransitGatewayAttachmentResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateTransitGatewayAttachment")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayAttachments"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsTransitGatewayAttachmentRequest == nil {
+		return localVarReturnValue, nil, reportError("streamsTransitGatewayAttachmentRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsTransitGatewayAttachmentRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CreateTransitGatewayRouteApiRequest struct {
+	ctx                               context.Context
+	ApiService                        StreamsAPI
+	groupId                           string
+	streamsTransitGatewayRouteRequest *StreamsTransitGatewayRouteRequest
+}
+
+type CreateTransitGatewayRouteApiParams struct {
+	GroupId                           string
+	StreamsTransitGatewayRouteRequest *StreamsTransitGatewayRouteRequest
+}
+
+func (a *StreamsAPIService) CreateTransitGatewayRouteWithParams(ctx context.Context, args *CreateTransitGatewayRouteApiParams) CreateTransitGatewayRouteApiRequest {
+	return CreateTransitGatewayRouteApiRequest{
+		ApiService:                        a,
+		ctx:                               ctx,
+		groupId:                           args.GroupId,
+		streamsTransitGatewayRouteRequest: args.StreamsTransitGatewayRouteRequest,
+	}
+}
+
+func (r CreateTransitGatewayRouteApiRequest) Execute() (*StreamsTransitGatewayRouteResponse, *http.Response, error) {
+	return r.ApiService.CreateTransitGatewayRouteExecute(r)
+}
+
+/*
+CreateTransitGatewayRoute Create One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Creates a route in the default route table associated with Atlas VPC to route all traffic destined for provided CIDR to the provided Transit Gateway.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateTransitGatewayRouteApiRequest
+*/
+func (a *StreamsAPIService) CreateTransitGatewayRoute(ctx context.Context, groupId string, streamsTransitGatewayRouteRequest *StreamsTransitGatewayRouteRequest) CreateTransitGatewayRouteApiRequest {
+	return CreateTransitGatewayRouteApiRequest{
+		ApiService:                        a,
+		ctx:                               ctx,
+		groupId:                           groupId,
+		streamsTransitGatewayRouteRequest: streamsTransitGatewayRouteRequest,
+	}
+}
+
+// CreateTransitGatewayRouteExecute executes the request
+//
+//	@return StreamsTransitGatewayRouteResponse
+func (a *StreamsAPIService) CreateTransitGatewayRouteExecute(r CreateTransitGatewayRouteApiRequest) (*StreamsTransitGatewayRouteResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsTransitGatewayRouteResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateTransitGatewayRoute")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayRoutes"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsTransitGatewayRouteRequest == nil {
+		return localVarReturnValue, nil, reportError("streamsTransitGatewayRouteRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsTransitGatewayRouteRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DeletePrivateLinkConnectionApiRequest struct {
 	ctx          context.Context
 	ApiService   StreamsAPI
@@ -1921,7 +2679,9 @@ func (r DeleteStreamFailoverConnectionApiRequest) Execute() (*http.Response, err
 /*
 DeleteStreamFailoverConnection Delete One Stream Failover Connection
 
-Delete one failover connection of the specified stream workspace.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Delete one failover connection of the specified stream workspace. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1929,6 +2689,8 @@ Delete one failover connection of the specified stream workspace.
 	@param connectionName Label that identifies the stream connection.
 	@param failoverConnectionId Label that identifies the stream failover connection id.
 	@return DeleteStreamFailoverConnectionApiRequest
+
+Deprecated
 */
 func (a *StreamsAPIService) DeleteStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) DeleteStreamFailoverConnectionApiRequest {
 	return DeleteStreamFailoverConnectionApiRequest{
@@ -1942,6 +2704,7 @@ func (a *StreamsAPIService) DeleteStreamFailoverConnection(ctx context.Context, 
 }
 
 // DeleteStreamFailoverConnectionExecute executes the request
+// Deprecated
 func (a *StreamsAPIService) DeleteStreamFailoverConnectionExecute(r DeleteStreamFailoverConnectionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -1986,7 +2749,7 @@ func (a *StreamsAPIService) DeleteStreamFailoverConnectionExecute(r DeleteStream
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2208,6 +2971,330 @@ func (a *StreamsAPIService) DeleteStreamWorkspaceExecute(r DeleteStreamWorkspace
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DeleteTransitGatewayAttachmentApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsAPI
+	groupId      string
+	attachmentId string
+}
+
+type DeleteTransitGatewayAttachmentApiParams struct {
+	GroupId      string
+	AttachmentId string
+}
+
+func (a *StreamsAPIService) DeleteTransitGatewayAttachmentWithParams(ctx context.Context, args *DeleteTransitGatewayAttachmentApiParams) DeleteTransitGatewayAttachmentApiRequest {
+	return DeleteTransitGatewayAttachmentApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		attachmentId: args.AttachmentId,
+	}
+}
+
+func (r DeleteTransitGatewayAttachmentApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteTransitGatewayAttachmentExecute(r)
+}
+
+/*
+DeleteTransitGatewayAttachment Delete One Transit Gateway Attachment
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Deletes a transit gateway attachment.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param attachmentId Unique identifier that identifies the Transit Gateway Attachment.
+	@return DeleteTransitGatewayAttachmentApiRequest
+*/
+func (a *StreamsAPIService) DeleteTransitGatewayAttachment(ctx context.Context, groupId string, attachmentId string) DeleteTransitGatewayAttachmentApiRequest {
+	return DeleteTransitGatewayAttachmentApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      groupId,
+		attachmentId: attachmentId,
+	}
+}
+
+// DeleteTransitGatewayAttachmentExecute executes the request
+func (a *StreamsAPIService) DeleteTransitGatewayAttachmentExecute(r DeleteTransitGatewayAttachmentApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteTransitGatewayAttachment")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayAttachments/{attachmentId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.attachmentId == "" {
+		return nil, reportError("attachmentId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"attachmentId"+"}", url.PathEscape(r.attachmentId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DeleteTransitGatewayInvitationApiRequest struct {
+	ctx              context.Context
+	ApiService       StreamsAPI
+	groupId          string
+	resourceShareArn string
+}
+
+type DeleteTransitGatewayInvitationApiParams struct {
+	GroupId          string
+	ResourceShareArn string
+}
+
+func (a *StreamsAPIService) DeleteTransitGatewayInvitationWithParams(ctx context.Context, args *DeleteTransitGatewayInvitationApiParams) DeleteTransitGatewayInvitationApiRequest {
+	return DeleteTransitGatewayInvitationApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          args.GroupId,
+		resourceShareArn: args.ResourceShareArn,
+	}
+}
+
+func (r DeleteTransitGatewayInvitationApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteTransitGatewayInvitationExecute(r)
+}
+
+/*
+DeleteTransitGatewayInvitation Delete One Transit Gateway Invitation
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Deletes an AWS Resource Share Invitation for a Transit Gateway that has been shared with an Atlas AWS account. This does not delete the resource share invitation from the sender's AWS account. This only deletes the resource share invitation that's cached for Atlas Streams Processing.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param resourceShareArn AWS Transit Gateway resource share ARN.
+	@return DeleteTransitGatewayInvitationApiRequest
+*/
+func (a *StreamsAPIService) DeleteTransitGatewayInvitation(ctx context.Context, groupId string, resourceShareArn string) DeleteTransitGatewayInvitationApiRequest {
+	return DeleteTransitGatewayInvitationApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          groupId,
+		resourceShareArn: resourceShareArn,
+	}
+}
+
+// DeleteTransitGatewayInvitationExecute executes the request
+func (a *StreamsAPIService) DeleteTransitGatewayInvitationExecute(r DeleteTransitGatewayInvitationApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteTransitGatewayInvitation")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayInvitations/{resourceShareArn}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.resourceShareArn == "" {
+		return nil, reportError("resourceShareArn is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceShareArn"+"}", url.PathEscape(r.resourceShareArn), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DeleteTransitGatewayRouteApiRequest struct {
+	ctx        context.Context
+	ApiService StreamsAPI
+	groupId    string
+	routeId    string
+}
+
+type DeleteTransitGatewayRouteApiParams struct {
+	GroupId string
+	RouteId string
+}
+
+func (a *StreamsAPIService) DeleteTransitGatewayRouteWithParams(ctx context.Context, args *DeleteTransitGatewayRouteApiParams) DeleteTransitGatewayRouteApiRequest {
+	return DeleteTransitGatewayRouteApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		routeId:    args.RouteId,
+	}
+}
+
+func (r DeleteTransitGatewayRouteApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteTransitGatewayRouteExecute(r)
+}
+
+/*
+DeleteTransitGatewayRoute Delete One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Deletes a transit gateway route in the default route table associated with Atlas VPC.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param routeId The Object ID that uniquely identifies a transit gateway route.
+	@return DeleteTransitGatewayRouteApiRequest
+*/
+func (a *StreamsAPIService) DeleteTransitGatewayRoute(ctx context.Context, groupId string, routeId string) DeleteTransitGatewayRouteApiRequest {
+	return DeleteTransitGatewayRouteApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		routeId:    routeId,
+	}
+}
+
+// DeleteTransitGatewayRouteExecute executes the request
+func (a *StreamsAPIService) DeleteTransitGatewayRouteExecute(r DeleteTransitGatewayRouteApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteTransitGatewayRoute")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayRoutes/{routeId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.routeId == "" {
+		return nil, reportError("routeId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"routeId"+"}", url.PathEscape(r.routeId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -3085,7 +4172,9 @@ func (r GetStreamFailoverConnectionApiRequest) Execute() (*StreamsConnection, *h
 /*
 GetStreamFailoverConnection Return One Stream Failover Connection
 
-Get one failover connection of the specified stream workspace.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Get one failover connection of the specified stream workspace. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3093,6 +4182,8 @@ Get one failover connection of the specified stream workspace.
 	@param connectionName Label that identifies the stream connection.
 	@param failoverConnectionId Label that identifies the stream failover connection id.
 	@return GetStreamFailoverConnectionApiRequest
+
+Deprecated
 */
 func (a *StreamsAPIService) GetStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) GetStreamFailoverConnectionApiRequest {
 	return GetStreamFailoverConnectionApiRequest{
@@ -3108,6 +4199,8 @@ func (a *StreamsAPIService) GetStreamFailoverConnection(ctx context.Context, gro
 // GetStreamFailoverConnectionExecute executes the request
 //
 //	@return StreamsConnection
+//
+// Deprecated
 func (a *StreamsAPIService) GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3153,7 +4246,7 @@ func (a *StreamsAPIService) GetStreamFailoverConnectionExecute(r GetStreamFailov
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -3630,6 +4723,381 @@ func (a *StreamsAPIService) GetStreamWorkspaceExecute(r GetStreamWorkspaceApiReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetTransitGatewayAttachmentApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsAPI
+	groupId      string
+	attachmentId string
+}
+
+type GetTransitGatewayAttachmentApiParams struct {
+	GroupId      string
+	AttachmentId string
+}
+
+func (a *StreamsAPIService) GetTransitGatewayAttachmentWithParams(ctx context.Context, args *GetTransitGatewayAttachmentApiParams) GetTransitGatewayAttachmentApiRequest {
+	return GetTransitGatewayAttachmentApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		attachmentId: args.AttachmentId,
+	}
+}
+
+func (r GetTransitGatewayAttachmentApiRequest) Execute() (*StreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	return r.ApiService.GetTransitGatewayAttachmentExecute(r)
+}
+
+/*
+GetTransitGatewayAttachment Return One Transit Gateway Attachment for One Group
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns one Transit Gateway Attachment for this group from the shared Atlas AWS Account.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param attachmentId Unique identifier that identifies the Transit Gateway Attachment.
+	@return GetTransitGatewayAttachmentApiRequest
+*/
+func (a *StreamsAPIService) GetTransitGatewayAttachment(ctx context.Context, groupId string, attachmentId string) GetTransitGatewayAttachmentApiRequest {
+	return GetTransitGatewayAttachmentApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      groupId,
+		attachmentId: attachmentId,
+	}
+}
+
+// GetTransitGatewayAttachmentExecute executes the request
+//
+//	@return StreamsTransitGatewayAttachmentResponse
+func (a *StreamsAPIService) GetTransitGatewayAttachmentExecute(r GetTransitGatewayAttachmentApiRequest) (*StreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsTransitGatewayAttachmentResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetTransitGatewayAttachment")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayAttachments/{attachmentId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.attachmentId == "" {
+		return localVarReturnValue, nil, reportError("attachmentId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"attachmentId"+"}", url.PathEscape(r.attachmentId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetTransitGatewayInvitationApiRequest struct {
+	ctx              context.Context
+	ApiService       StreamsAPI
+	groupId          string
+	resourceShareArn string
+}
+
+type GetTransitGatewayInvitationApiParams struct {
+	GroupId          string
+	ResourceShareArn string
+}
+
+func (a *StreamsAPIService) GetTransitGatewayInvitationWithParams(ctx context.Context, args *GetTransitGatewayInvitationApiParams) GetTransitGatewayInvitationApiRequest {
+	return GetTransitGatewayInvitationApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          args.GroupId,
+		resourceShareArn: args.ResourceShareArn,
+	}
+}
+
+func (r GetTransitGatewayInvitationApiRequest) Execute() (*StreamsTransitGatewayInvitationsResponse, *http.Response, error) {
+	return r.ApiService.GetTransitGatewayInvitationExecute(r)
+}
+
+/*
+GetTransitGatewayInvitation Return One Transit Gateway Invitation
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the details of one AWS Resource Share Invitation for a Transit Gateway that has been shared with an Atlas AWS Account. This only returns the resource share invitation cached for Atlas Streams Processing.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param resourceShareArn AWS Transit Gateway resource share ARN.
+	@return GetTransitGatewayInvitationApiRequest
+*/
+func (a *StreamsAPIService) GetTransitGatewayInvitation(ctx context.Context, groupId string, resourceShareArn string) GetTransitGatewayInvitationApiRequest {
+	return GetTransitGatewayInvitationApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          groupId,
+		resourceShareArn: resourceShareArn,
+	}
+}
+
+// GetTransitGatewayInvitationExecute executes the request
+//
+//	@return StreamsTransitGatewayInvitationsResponse
+func (a *StreamsAPIService) GetTransitGatewayInvitationExecute(r GetTransitGatewayInvitationApiRequest) (*StreamsTransitGatewayInvitationsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsTransitGatewayInvitationsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetTransitGatewayInvitation")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayInvitations/{resourceShareArn}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.resourceShareArn == "" {
+		return localVarReturnValue, nil, reportError("resourceShareArn is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceShareArn"+"}", url.PathEscape(r.resourceShareArn), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetTransitGatewayRouteApiRequest struct {
+	ctx        context.Context
+	ApiService StreamsAPI
+	groupId    string
+	routeId    string
+}
+
+type GetTransitGatewayRouteApiParams struct {
+	GroupId string
+	RouteId string
+}
+
+func (a *StreamsAPIService) GetTransitGatewayRouteWithParams(ctx context.Context, args *GetTransitGatewayRouteApiParams) GetTransitGatewayRouteApiRequest {
+	return GetTransitGatewayRouteApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		routeId:    args.RouteId,
+	}
+}
+
+func (r GetTransitGatewayRouteApiRequest) Execute() (*StreamsTransitGatewayRouteResponse, *http.Response, error) {
+	return r.ApiService.GetTransitGatewayRouteExecute(r)
+}
+
+/*
+GetTransitGatewayRoute Return One Transit Gateway Route in the Default Route Table for One Atlas VPC
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Retrieves a transit gateway route in the default route table associated with Atlas VPC.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param routeId The Object ID that uniquely identifies a transit gateway route.
+	@return GetTransitGatewayRouteApiRequest
+*/
+func (a *StreamsAPIService) GetTransitGatewayRoute(ctx context.Context, groupId string, routeId string) GetTransitGatewayRouteApiRequest {
+	return GetTransitGatewayRouteApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		routeId:    routeId,
+	}
+}
+
+// GetTransitGatewayRouteExecute executes the request
+//
+//	@return StreamsTransitGatewayRouteResponse
+func (a *StreamsAPIService) GetTransitGatewayRouteExecute(r GetTransitGatewayRouteApiRequest) (*StreamsTransitGatewayRouteResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsTransitGatewayRouteResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetTransitGatewayRoute")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayRoutes/{routeId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.routeId == "" {
+		return localVarReturnValue, nil, reportError("routeId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"routeId"+"}", url.PathEscape(r.routeId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListActivePeeringConnectionsApiRequest struct {
 	ctx          context.Context
 	ApiService   StreamsAPI
@@ -3825,13 +5293,17 @@ func (r ListFailoverConnectionsApiRequest) Execute() (*PaginatedApiStreamsFailov
 /*
 ListFailoverConnections Return All Stream Failover Connections
 
-Returns all failover connections for the specified connection in a stream workspace.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns all failover connections for the specified connection in a stream workspace. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param tenantName Label that identifies the stream workspace.
 	@param connectionName Label that identifies the stream connection.
 	@return ListFailoverConnectionsApiRequest
+
+Deprecated
 */
 func (a *StreamsAPIService) ListFailoverConnections(ctx context.Context, groupId string, tenantName string, connectionName string) ListFailoverConnectionsApiRequest {
 	return ListFailoverConnectionsApiRequest{
@@ -3846,6 +5318,8 @@ func (a *StreamsAPIService) ListFailoverConnections(ctx context.Context, groupId
 // ListFailoverConnectionsExecute executes the request
 //
 //	@return PaginatedApiStreamsFailoverConnection
+//
+// Deprecated
 func (a *StreamsAPIService) ListFailoverConnectionsExecute(r ListFailoverConnectionsApiRequest) (*PaginatedApiStreamsFailoverConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3901,7 +5375,7 @@ func (a *StreamsAPIService) ListFailoverConnectionsExecute(r ListFailoverConnect
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -4387,6 +5861,450 @@ func (a *StreamsAPIService) ListStreamWorkspacesExecute(r ListStreamWorkspacesAp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ListTransitGatewayAttachmentsApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsAPI
+	groupId      string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListTransitGatewayAttachmentsApiParams struct {
+	GroupId      string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *StreamsAPIService) ListTransitGatewayAttachmentsWithParams(ctx context.Context, args *ListTransitGatewayAttachmentsApiParams) ListTransitGatewayAttachmentsApiRequest {
+	return ListTransitGatewayAttachmentsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListTransitGatewayAttachmentsApiRequest) ItemsPerPage(itemsPerPage int) ListTransitGatewayAttachmentsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListTransitGatewayAttachmentsApiRequest) PageNum(pageNum int) ListTransitGatewayAttachmentsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListTransitGatewayAttachmentsApiRequest) Execute() (*PaginatedApiStreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	return r.ApiService.ListTransitGatewayAttachmentsExecute(r)
+}
+
+/*
+ListTransitGatewayAttachments Return All Transit Gateway Attachments for One Group
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the Transit Gateway Attachments for this group in the shared Atlas AWS Account.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListTransitGatewayAttachmentsApiRequest
+*/
+func (a *StreamsAPIService) ListTransitGatewayAttachments(ctx context.Context, groupId string) ListTransitGatewayAttachmentsApiRequest {
+	return ListTransitGatewayAttachmentsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListTransitGatewayAttachmentsExecute executes the request
+//
+//	@return PaginatedApiStreamsTransitGatewayAttachmentResponse
+func (a *StreamsAPIService) ListTransitGatewayAttachmentsExecute(r ListTransitGatewayAttachmentsApiRequest) (*PaginatedApiStreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiStreamsTransitGatewayAttachmentResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListTransitGatewayAttachments")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayAttachments"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListTransitGatewayInvitationsApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsAPI
+	groupId      string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListTransitGatewayInvitationsApiParams struct {
+	GroupId      string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *StreamsAPIService) ListTransitGatewayInvitationsWithParams(ctx context.Context, args *ListTransitGatewayInvitationsApiParams) ListTransitGatewayInvitationsApiRequest {
+	return ListTransitGatewayInvitationsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListTransitGatewayInvitationsApiRequest) ItemsPerPage(itemsPerPage int) ListTransitGatewayInvitationsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListTransitGatewayInvitationsApiRequest) PageNum(pageNum int) ListTransitGatewayInvitationsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListTransitGatewayInvitationsApiRequest) Execute() (*PaginatedStreamsTransitGatewayInvitationsResponse, *http.Response, error) {
+	return r.ApiService.ListTransitGatewayInvitationsExecute(r)
+}
+
+/*
+ListTransitGatewayInvitations Return All Streams Transit Gateway Invitations
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the AWS RAM Resource Shares and Transit Gateway IDs for a Transit Gateway that has been shared with an Atlas AWS Account. This only returns the resource shares cached for Atlas Streams Processing.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListTransitGatewayInvitationsApiRequest
+*/
+func (a *StreamsAPIService) ListTransitGatewayInvitations(ctx context.Context, groupId string) ListTransitGatewayInvitationsApiRequest {
+	return ListTransitGatewayInvitationsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListTransitGatewayInvitationsExecute executes the request
+//
+//	@return PaginatedStreamsTransitGatewayInvitationsResponse
+func (a *StreamsAPIService) ListTransitGatewayInvitationsExecute(r ListTransitGatewayInvitationsApiRequest) (*PaginatedStreamsTransitGatewayInvitationsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedStreamsTransitGatewayInvitationsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListTransitGatewayInvitations")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayInvitations"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListTransitGatewayRoutesApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsAPI
+	groupId      string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListTransitGatewayRoutesApiParams struct {
+	GroupId      string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *StreamsAPIService) ListTransitGatewayRoutesWithParams(ctx context.Context, args *ListTransitGatewayRoutesApiParams) ListTransitGatewayRoutesApiRequest {
+	return ListTransitGatewayRoutesApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListTransitGatewayRoutesApiRequest) ItemsPerPage(itemsPerPage int) ListTransitGatewayRoutesApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListTransitGatewayRoutesApiRequest) PageNum(pageNum int) ListTransitGatewayRoutesApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListTransitGatewayRoutesApiRequest) Execute() (*PaginatedApiStreamsTransitGatewayRouteResponse, *http.Response, error) {
+	return r.ApiService.ListTransitGatewayRoutesExecute(r)
+}
+
+/*
+ListTransitGatewayRoutes Return All Transit Gateway Routes in the Default Route Table for One Atlas VPC
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	List Transit Gateway routes in the default route table associated with Atlas VPC.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListTransitGatewayRoutesApiRequest
+*/
+func (a *StreamsAPIService) ListTransitGatewayRoutes(ctx context.Context, groupId string) ListTransitGatewayRoutesApiRequest {
+	return ListTransitGatewayRoutesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListTransitGatewayRoutesExecute executes the request
+//
+//	@return PaginatedApiStreamsTransitGatewayRouteResponse
+func (a *StreamsAPIService) ListTransitGatewayRoutesExecute(r ListTransitGatewayRoutesApiRequest) (*PaginatedApiStreamsTransitGatewayRouteResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiStreamsTransitGatewayRouteResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListTransitGatewayRoutes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayRoutes"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListVpcPeeringConnectionsApiRequest struct {
 	ctx                context.Context
 	ApiService         StreamsAPI
@@ -4544,6 +6462,114 @@ func (a *StreamsAPIService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringCon
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RejectTransitGatewayInvitationsApiRequest struct {
+	ctx                                context.Context
+	ApiService                         StreamsAPI
+	groupId                            string
+	streamsTransitGatewayResourceShare *StreamsTransitGatewayResourceShare
+}
+
+type RejectTransitGatewayInvitationsApiParams struct {
+	GroupId                            string
+	StreamsTransitGatewayResourceShare *StreamsTransitGatewayResourceShare
+}
+
+func (a *StreamsAPIService) RejectTransitGatewayInvitationsWithParams(ctx context.Context, args *RejectTransitGatewayInvitationsApiParams) RejectTransitGatewayInvitationsApiRequest {
+	return RejectTransitGatewayInvitationsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            args.GroupId,
+		streamsTransitGatewayResourceShare: args.StreamsTransitGatewayResourceShare,
+	}
+}
+
+func (r RejectTransitGatewayInvitationsApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RejectTransitGatewayInvitationsExecute(r)
+}
+
+/*
+RejectTransitGatewayInvitations Reject Transit Gateway Resource Share Invitations
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Rejects AWS RAM Resource Share for a Transit Gateway that has been shared with an Atlas AWS account.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return RejectTransitGatewayInvitationsApiRequest
+*/
+func (a *StreamsAPIService) RejectTransitGatewayInvitations(ctx context.Context, groupId string, streamsTransitGatewayResourceShare *StreamsTransitGatewayResourceShare) RejectTransitGatewayInvitationsApiRequest {
+	return RejectTransitGatewayInvitationsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            groupId,
+		streamsTransitGatewayResourceShare: streamsTransitGatewayResourceShare,
+	}
+}
+
+// RejectTransitGatewayInvitationsExecute executes the request
+func (a *StreamsAPIService) RejectTransitGatewayInvitationsExecute(r RejectTransitGatewayInvitationsApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.RejectTransitGatewayInvitations")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsTransitGatewayInvitations:reject"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsTransitGatewayResourceShare == nil {
+		return nil, reportError("streamsTransitGatewayResourceShare is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsTransitGatewayResourceShare
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type RejectVpcPeeringConnectionApiRequest struct {
@@ -4773,14 +6799,14 @@ type StartStreamProcessorWithApiRequest struct {
 	groupId                         string
 	tenantName                      string
 	processorName                   string
-	streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith
+	startStreamProcessorWithPreview *StartStreamProcessorWithPreview
 }
 
 type StartStreamProcessorWithApiParams struct {
 	GroupId                         string
 	TenantName                      string
 	ProcessorName                   string
-	StreamsStartStreamProcessorWith *StreamsStartStreamProcessorWith
+	StartStreamProcessorWithPreview *StartStreamProcessorWithPreview
 }
 
 func (a *StreamsAPIService) StartStreamProcessorWithWithParams(ctx context.Context, args *StartStreamProcessorWithApiParams) StartStreamProcessorWithApiRequest {
@@ -4790,7 +6816,7 @@ func (a *StreamsAPIService) StartStreamProcessorWithWithParams(ctx context.Conte
 		groupId:                         args.GroupId,
 		tenantName:                      args.TenantName,
 		processorName:                   args.ProcessorName,
-		streamsStartStreamProcessorWith: args.StreamsStartStreamProcessorWith,
+		startStreamProcessorWithPreview: args.StartStreamProcessorWithPreview,
 	}
 }
 
@@ -4801,7 +6827,9 @@ func (r StartStreamProcessorWithApiRequest) Execute() (*http.Response, error) {
 /*
 StartStreamProcessorWith Start One Stream Processor With Options
 
-Start a Stream Processor within the specified stream workspace.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Start a Stream Processor within the specified stream workspace. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -4809,14 +6837,14 @@ Start a Stream Processor within the specified stream workspace.
 	@param processorName Label that identifies the stream processor.
 	@return StartStreamProcessorWithApiRequest
 */
-func (a *StreamsAPIService) StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith) StartStreamProcessorWithApiRequest {
+func (a *StreamsAPIService) StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, startStreamProcessorWithPreview *StartStreamProcessorWithPreview) StartStreamProcessorWithApiRequest {
 	return StartStreamProcessorWithApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
 		groupId:                         groupId,
 		tenantName:                      tenantName,
 		processorName:                   processorName,
-		streamsStartStreamProcessorWith: streamsStartStreamProcessorWith,
+		startStreamProcessorWithPreview: startStreamProcessorWithPreview,
 	}
 }
 
@@ -4852,7 +6880,7 @@ func (a *StreamsAPIService) StartStreamProcessorWithExecute(r StartStreamProcess
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -4861,7 +6889,7 @@ func (a *StreamsAPIService) StartStreamProcessorWithExecute(r StartStreamProcess
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -4869,7 +6897,7 @@ func (a *StreamsAPIService) StartStreamProcessorWithExecute(r StartStreamProcess
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.streamsStartStreamProcessorWith
+	localVarPostBody = r.startStreamProcessorWithPreview
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -5001,6 +7029,138 @@ func (a *StreamsAPIService) StopStreamProcessorExecute(r StopStreamProcessorApiR
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type UpdatePrivateLinkConnectionApiRequest struct {
+	ctx                                 context.Context
+	ApiService                          StreamsAPI
+	groupId                             string
+	connectionId                        string
+	streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest
+}
+
+type UpdatePrivateLinkConnectionApiParams struct {
+	GroupId                             string
+	ConnectionId                        string
+	StreamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest
+}
+
+func (a *StreamsAPIService) UpdatePrivateLinkConnectionWithParams(ctx context.Context, args *UpdatePrivateLinkConnectionApiParams) UpdatePrivateLinkConnectionApiRequest {
+	return UpdatePrivateLinkConnectionApiRequest{
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             args.GroupId,
+		connectionId:                        args.ConnectionId,
+		streamsPrivateLinkConnectionRequest: args.StreamsPrivateLinkConnectionRequest,
+	}
+}
+
+func (r UpdatePrivateLinkConnectionApiRequest) Execute() (*StreamsPrivateLinkConnection, *http.Response, error) {
+	return r.ApiService.UpdatePrivateLinkConnectionExecute(r)
+}
+
+/*
+UpdatePrivateLinkConnection Update One Private Link Connection
+
+Updates one Private Link connection in the specified project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param connectionId Unique ID that identifies the Private Link connection.
+	@return UpdatePrivateLinkConnectionApiRequest
+*/
+func (a *StreamsAPIService) UpdatePrivateLinkConnection(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest) UpdatePrivateLinkConnectionApiRequest {
+	return UpdatePrivateLinkConnectionApiRequest{
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             groupId,
+		connectionId:                        connectionId,
+		streamsPrivateLinkConnectionRequest: streamsPrivateLinkConnectionRequest,
+	}
+}
+
+// UpdatePrivateLinkConnectionExecute executes the request
+//
+//	@return StreamsPrivateLinkConnection
+func (a *StreamsAPIService) UpdatePrivateLinkConnectionExecute(r UpdatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsPrivateLinkConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdatePrivateLinkConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.connectionId == "" {
+		return localVarReturnValue, nil, reportError("connectionId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(r.connectionId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsPrivateLinkConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("streamsPrivateLinkConnectionRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsPrivateLinkConnectionRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type UpdateStreamConnectionApiRequest struct {
@@ -5181,7 +7341,9 @@ func (r UpdateStreamFailoverConnectionApiRequest) Execute() (*StreamsConnection,
 /*
 UpdateStreamFailoverConnection Update One Stream Failover Connection
 
-Update one failover connection of the specified stream workspace.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Update one failover connection of the specified stream workspace. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -5189,6 +7351,8 @@ Update one failover connection of the specified stream workspace.
 	@param connectionName Label that identifies the stream connection.
 	@param failoverConnectionId Label that identifies the stream failover connection id.
 	@return UpdateStreamFailoverConnectionApiRequest
+
+Deprecated
 */
 func (a *StreamsAPIService) UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *StreamsConnection) UpdateStreamFailoverConnectionApiRequest {
 	return UpdateStreamFailoverConnectionApiRequest{
@@ -5205,6 +7369,8 @@ func (a *StreamsAPIService) UpdateStreamFailoverConnection(ctx context.Context, 
 // UpdateStreamFailoverConnectionExecute executes the request
 //
 //	@return StreamsConnection
+//
+// Deprecated
 func (a *StreamsAPIService) UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -5253,7 +7419,7 @@ func (a *StreamsAPIService) UpdateStreamFailoverConnectionExecute(r UpdateStream
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -5466,7 +7632,9 @@ func (r UpdateStreamWorkspaceApiRequest) Execute() (*StreamsTenant, *http.Respon
 /*
 UpdateStreamWorkspace Update One Stream Workspace
 
-Update one stream workspace in the specified project.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Update one stream workspace in the specified project. Deprecated versions: v2-{2023-02-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -5517,7 +7685,7 @@ func (a *StreamsAPIService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspace
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -5526,7 +7694,7 @@ func (a *StreamsAPIService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspace
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

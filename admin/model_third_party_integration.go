@@ -38,6 +38,10 @@ type ThirdPartyIntegration struct {
 	WriteToken *string `json:"writeToken,omitempty"`
 	// Routing key associated with your Splunk On-Call account.
 	RoutingKey *string `json:"routingKey,omitempty"`
+	// HTTP body template for a webhook-based alert. The rendered output MUST be valid JSON — MongoDB Cloud sends the rendered body with `Content-Type: application/json`. If the template fails to render, exceeds the 16 KB limit, or renders non-JSON output, MongoDB Cloud sends the webhook with its default JSON payload instead.
+	BodyTemplate *string `json:"bodyTemplate,omitempty"`
+	// HTTP headers template for a webhook-based alert. The rendered output MUST be a JSON object mapping header name to header value (e.g. `{\"X-Custom-Header\": \"static-value\", \"X-Alert-Id\": \"${id}\"}`). Placeholders may reference any alert-view field plus `${eventType}`; the webhook secret and the signature header are NOT exposed to templates. If the template fails to render, exceeds the 4 KB limit, or renders output that is not a valid JSON name→value object, MongoDB Cloud sends the webhook with its default set of headers instead.
+	HeadersTemplate *string `json:"headersTemplate,omitempty"`
 	// An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
 	Secret *string `json:"secret,omitempty"`
 	// Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
@@ -657,6 +661,72 @@ func (o *ThirdPartyIntegration) HasRoutingKey() bool {
 // SetRoutingKey gets a reference to the given string and assigns it to the RoutingKey field.
 func (o *ThirdPartyIntegration) SetRoutingKey(v string) {
 	o.RoutingKey = &v
+}
+
+// GetBodyTemplate returns the BodyTemplate field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetBodyTemplate() string {
+	if o == nil || IsNil(o.BodyTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.BodyTemplate
+}
+
+// GetBodyTemplateOk returns a tuple with the BodyTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetBodyTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.BodyTemplate) {
+		return nil, false
+	}
+
+	return o.BodyTemplate, true
+}
+
+// HasBodyTemplate returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasBodyTemplate() bool {
+	if o != nil && !IsNil(o.BodyTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetBodyTemplate gets a reference to the given string and assigns it to the BodyTemplate field.
+func (o *ThirdPartyIntegration) SetBodyTemplate(v string) {
+	o.BodyTemplate = &v
+}
+
+// GetHeadersTemplate returns the HeadersTemplate field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetHeadersTemplate() string {
+	if o == nil || IsNil(o.HeadersTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.HeadersTemplate
+}
+
+// GetHeadersTemplateOk returns a tuple with the HeadersTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetHeadersTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.HeadersTemplate) {
+		return nil, false
+	}
+
+	return o.HeadersTemplate, true
+}
+
+// HasHeadersTemplate returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasHeadersTemplate() bool {
+	if o != nil && !IsNil(o.HeadersTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeadersTemplate gets a reference to the given string and assigns it to the HeadersTemplate field.
+func (o *ThirdPartyIntegration) SetHeadersTemplate(v string) {
+	o.HeadersTemplate = &v
 }
 
 // GetSecret returns the Secret field value if set, zero value otherwise

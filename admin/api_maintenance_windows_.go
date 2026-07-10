@@ -35,13 +35,15 @@ type MaintenanceWindowsAPI interface {
 	DeferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error)
 
 	/*
-		GetMaintenanceWindow Return One Maintenance Window for One Project
+			GetMaintenanceWindow Return One Maintenance Window for One Project
 
-		Returns the maintenance window for the specified project. MongoDB Cloud starts those maintenance activities when needed. You can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetMaintenanceWindowApiRequest
+		 Returns the maintenance window for the specified project. MongoDB Cloud starts those maintenance activities when needed. You can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return GetMaintenanceWindowApiRequest
 	*/
 	GetMaintenanceWindow(ctx context.Context, groupId string) GetMaintenanceWindowApiRequest
 	/*
@@ -55,7 +57,7 @@ type MaintenanceWindowsAPI interface {
 	GetMaintenanceWindowWithParams(ctx context.Context, args *GetMaintenanceWindowApiParams) GetMaintenanceWindowApiRequest
 
 	// Method available only for mocking purposes
-	GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error)
+	GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindowPreviewResponse, *http.Response, error)
 
 	/*
 		ResetMaintenanceWindow Reset One Maintenance Window for One Project
@@ -104,16 +106,18 @@ type MaintenanceWindowsAPI interface {
 	ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error)
 
 	/*
-		UpdateMaintenanceWindow Update One Maintenance Window for One Project
+			UpdateMaintenanceWindow Update One Maintenance Window for One Project
 
-		Updates the maintenance window for the specified project. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. Updating the maintenance window will reset any maintenance deferrals for this project.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param groupMaintenanceWindow Updates the maintenance window for the specified project.
-		@return UpdateMaintenanceWindowApiRequest
+		 Updates the maintenance window for the specified project. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. Updating the maintenance window will reset any maintenance deferrals for this project. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param groupMaintenanceWindowPreviewUpdateRequest Updates the maintenance window for the specified project.
+			@return UpdateMaintenanceWindowApiRequest
 	*/
-	UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest
+	UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindowPreviewUpdateRequest *GroupMaintenanceWindowPreviewUpdateRequest) UpdateMaintenanceWindowApiRequest
 	/*
 		UpdateMaintenanceWindow Update One Maintenance Window for One Project
 
@@ -246,14 +250,16 @@ func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowWithParams(ctx contex
 	}
 }
 
-func (r GetMaintenanceWindowApiRequest) Execute() (*GroupMaintenanceWindow, *http.Response, error) {
+func (r GetMaintenanceWindowApiRequest) Execute() (*GroupMaintenanceWindowPreviewResponse, *http.Response, error) {
 	return r.ApiService.GetMaintenanceWindowExecute(r)
 }
 
 /*
 GetMaintenanceWindow Return One Maintenance Window for One Project
 
-Returns the maintenance window for the specified project. MongoDB Cloud starts those maintenance activities when needed. You can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the maintenance window for the specified project. MongoDB Cloud starts those maintenance activities when needed. You can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -269,13 +275,13 @@ func (a *MaintenanceWindowsAPIService) GetMaintenanceWindow(ctx context.Context,
 
 // GetMaintenanceWindowExecute executes the request
 //
-//	@return GroupMaintenanceWindow
-func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error) {
+//	@return GroupMaintenanceWindowPreviewResponse
+func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindowPreviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *GroupMaintenanceWindow
+		localVarReturnValue *GroupMaintenanceWindowPreviewResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsAPIService.GetMaintenanceWindow")
@@ -303,7 +309,7 @@ func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowExecute(r GetMaintena
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -537,23 +543,23 @@ func (a *MaintenanceWindowsAPIService) ToggleMaintenanceAutoDeferExecute(r Toggl
 }
 
 type UpdateMaintenanceWindowApiRequest struct {
-	ctx                    context.Context
-	ApiService             MaintenanceWindowsAPI
-	groupId                string
-	groupMaintenanceWindow *GroupMaintenanceWindow
+	ctx                                        context.Context
+	ApiService                                 MaintenanceWindowsAPI
+	groupId                                    string
+	groupMaintenanceWindowPreviewUpdateRequest *GroupMaintenanceWindowPreviewUpdateRequest
 }
 
 type UpdateMaintenanceWindowApiParams struct {
-	GroupId                string
-	GroupMaintenanceWindow *GroupMaintenanceWindow
+	GroupId                                    string
+	GroupMaintenanceWindowPreviewUpdateRequest *GroupMaintenanceWindowPreviewUpdateRequest
 }
 
 func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindowWithParams(ctx context.Context, args *UpdateMaintenanceWindowApiParams) UpdateMaintenanceWindowApiRequest {
 	return UpdateMaintenanceWindowApiRequest{
-		ApiService:             a,
-		ctx:                    ctx,
-		groupId:                args.GroupId,
-		groupMaintenanceWindow: args.GroupMaintenanceWindow,
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		groupMaintenanceWindowPreviewUpdateRequest: args.GroupMaintenanceWindowPreviewUpdateRequest,
 	}
 }
 
@@ -564,18 +570,20 @@ func (r UpdateMaintenanceWindowApiRequest) Execute() (*http.Response, error) {
 /*
 UpdateMaintenanceWindow Update One Maintenance Window for One Project
 
-Updates the maintenance window for the specified project. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. Updating the maintenance window will reset any maintenance deferrals for this project.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates the maintenance window for the specified project. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. Updating the maintenance window will reset any maintenance deferrals for this project. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateMaintenanceWindowApiRequest
 */
-func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindowPreviewUpdateRequest *GroupMaintenanceWindowPreviewUpdateRequest) UpdateMaintenanceWindowApiRequest {
 	return UpdateMaintenanceWindowApiRequest{
-		ApiService:             a,
-		ctx:                    ctx,
-		groupId:                groupId,
-		groupMaintenanceWindow: groupMaintenanceWindow,
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		groupMaintenanceWindowPreviewUpdateRequest: groupMaintenanceWindowPreviewUpdateRequest,
 	}
 }
 
@@ -601,12 +609,12 @@ func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindowExecute(r UpdateMa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.groupMaintenanceWindow == nil {
-		return nil, reportError("groupMaintenanceWindow is required and must be specified")
+	if r.groupMaintenanceWindowPreviewUpdateRequest == nil {
+		return nil, reportError("groupMaintenanceWindowPreviewUpdateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -615,7 +623,7 @@ func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindowExecute(r UpdateMa
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -623,7 +631,7 @@ func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindowExecute(r UpdateMa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.groupMaintenanceWindow
+	localVarPostBody = r.groupMaintenanceWindowPreviewUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

@@ -431,7 +431,7 @@ type ServiceAccountsAPI interface {
 	/*
 		ListGroupServiceAccounts Return All Project Service Accounts
 
-		Returns all Service Accounts for the specified Project.
+		Returns all Service Accounts for the specified Project. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -478,7 +478,7 @@ type ServiceAccountsAPI interface {
 	/*
 		ListOrgServiceAccounts Return All Organization Service Accounts
 
-		Returns all Service Accounts for the specified Organization.
+		Returns all Service Accounts for the specified Organization. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2799,26 +2799,29 @@ func (a *ServiceAccountsAPIService) ListAccessListExecute(r ListAccessListApiReq
 }
 
 type ListGroupServiceAccountsApiRequest struct {
-	ctx          context.Context
-	ApiService   ServiceAccountsAPI
-	groupId      string
-	itemsPerPage *int
-	pageNum      *int
+	ctx                  context.Context
+	ApiService           ServiceAccountsAPI
+	groupId              string
+	itemsPerPage         *int
+	pageNum              *int
+	includeSystemManaged *bool
 }
 
 type ListGroupServiceAccountsApiParams struct {
-	GroupId      string
-	ItemsPerPage *int
-	PageNum      *int
+	GroupId              string
+	ItemsPerPage         *int
+	PageNum              *int
+	IncludeSystemManaged *bool
 }
 
 func (a *ServiceAccountsAPIService) ListGroupServiceAccountsWithParams(ctx context.Context, args *ListGroupServiceAccountsApiParams) ListGroupServiceAccountsApiRequest {
 	return ListGroupServiceAccountsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		itemsPerPage:         args.ItemsPerPage,
+		pageNum:              args.PageNum,
+		includeSystemManaged: args.IncludeSystemManaged,
 	}
 }
 
@@ -2834,6 +2837,12 @@ func (r ListGroupServiceAccountsApiRequest) PageNum(pageNum int) ListGroupServic
 	return r
 }
 
+// Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned.
+func (r ListGroupServiceAccountsApiRequest) IncludeSystemManaged(includeSystemManaged bool) ListGroupServiceAccountsApiRequest {
+	r.includeSystemManaged = &includeSystemManaged
+	return r
+}
+
 func (r ListGroupServiceAccountsApiRequest) Execute() (*PaginatedGroupServiceAccounts, *http.Response, error) {
 	return r.ApiService.ListGroupServiceAccountsExecute(r)
 }
@@ -2841,7 +2850,7 @@ func (r ListGroupServiceAccountsApiRequest) Execute() (*PaginatedGroupServiceAcc
 /*
 ListGroupServiceAccounts Return All Project Service Accounts
 
-Returns all Service Accounts for the specified Project.
+Returns all Service Accounts for the specified Project. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2894,6 +2903,13 @@ func (a *ServiceAccountsAPIService) ListGroupServiceAccountsExecute(r ListGroupS
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.includeSystemManaged != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemManaged", r.includeSystemManaged, "")
+	} else {
+		var defaultValue bool = false
+		r.includeSystemManaged = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemManaged", r.includeSystemManaged, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3116,26 +3132,29 @@ func (a *ServiceAccountsAPIService) ListOrgAccessListExecute(r ListOrgAccessList
 }
 
 type ListOrgServiceAccountsApiRequest struct {
-	ctx          context.Context
-	ApiService   ServiceAccountsAPI
-	orgId        string
-	itemsPerPage *int
-	pageNum      *int
+	ctx                  context.Context
+	ApiService           ServiceAccountsAPI
+	orgId                string
+	itemsPerPage         *int
+	pageNum              *int
+	includeSystemManaged *bool
 }
 
 type ListOrgServiceAccountsApiParams struct {
-	OrgId        string
-	ItemsPerPage *int
-	PageNum      *int
+	OrgId                string
+	ItemsPerPage         *int
+	PageNum              *int
+	IncludeSystemManaged *bool
 }
 
 func (a *ServiceAccountsAPIService) ListOrgServiceAccountsWithParams(ctx context.Context, args *ListOrgServiceAccountsApiParams) ListOrgServiceAccountsApiRequest {
 	return ListOrgServiceAccountsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		orgId:        args.OrgId,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
+		ApiService:           a,
+		ctx:                  ctx,
+		orgId:                args.OrgId,
+		itemsPerPage:         args.ItemsPerPage,
+		pageNum:              args.PageNum,
+		includeSystemManaged: args.IncludeSystemManaged,
 	}
 }
 
@@ -3151,6 +3170,12 @@ func (r ListOrgServiceAccountsApiRequest) PageNum(pageNum int) ListOrgServiceAcc
 	return r
 }
 
+// Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned.
+func (r ListOrgServiceAccountsApiRequest) IncludeSystemManaged(includeSystemManaged bool) ListOrgServiceAccountsApiRequest {
+	r.includeSystemManaged = &includeSystemManaged
+	return r
+}
+
 func (r ListOrgServiceAccountsApiRequest) Execute() (*PaginatedOrgServiceAccounts, *http.Response, error) {
 	return r.ApiService.ListOrgServiceAccountsExecute(r)
 }
@@ -3158,7 +3183,7 @@ func (r ListOrgServiceAccountsApiRequest) Execute() (*PaginatedOrgServiceAccount
 /*
 ListOrgServiceAccounts Return All Organization Service Accounts
 
-Returns all Service Accounts for the specified Organization.
+Returns all Service Accounts for the specified Organization. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -3211,6 +3236,13 @@ func (a *ServiceAccountsAPIService) ListOrgServiceAccountsExecute(r ListOrgServi
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.includeSystemManaged != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemManaged", r.includeSystemManaged, "")
+	} else {
+		var defaultValue bool = false
+		r.includeSystemManaged = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemManaged", r.includeSystemManaged, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

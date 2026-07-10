@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312021/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -697,24 +697,24 @@ func (_c *PerformanceAdvisorAPI_ListClusterSuggestedIndexes_Call) RunAndReturn(r
 }
 
 // ListClusterSuggestedIndexesExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorAPI) ListClusterSuggestedIndexesExecute(r admin.ListClusterSuggestedIndexesApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error) {
+func (_m *PerformanceAdvisorAPI) ListClusterSuggestedIndexesExecute(r admin.ListClusterSuggestedIndexesApiRequest) (*admin.EnvelopedPerformanceAdvisorResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListClusterSuggestedIndexesExecute")
 	}
 
-	var r0 *admin.PerformanceAdvisorResponse
+	var r0 *admin.EnvelopedPerformanceAdvisorResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListClusterSuggestedIndexesApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListClusterSuggestedIndexesApiRequest) (*admin.EnvelopedPerformanceAdvisorResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListClusterSuggestedIndexesApiRequest) *admin.PerformanceAdvisorResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListClusterSuggestedIndexesApiRequest) *admin.EnvelopedPerformanceAdvisorResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PerformanceAdvisorResponse)
+			r0 = ret.Get(0).(*admin.EnvelopedPerformanceAdvisorResponse)
 		}
 	}
 
@@ -753,12 +753,12 @@ func (_c *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call) Run(run
 	return _c
 }
 
-func (_c *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call) Return(_a0 *admin.PerformanceAdvisorResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call {
+func (_c *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call) Return(_a0 *admin.EnvelopedPerformanceAdvisorResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call) RunAndReturn(run func(admin.ListClusterSuggestedIndexesApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error)) *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call {
+func (_c *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call) RunAndReturn(run func(admin.ListClusterSuggestedIndexesApiRequest) (*admin.EnvelopedPerformanceAdvisorResponse, *http.Response, error)) *PerformanceAdvisorAPI_ListClusterSuggestedIndexesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -859,24 +859,24 @@ func (_c *PerformanceAdvisorAPI_ListDropIndexSuggestions_Call) RunAndReturn(run 
 }
 
 // ListDropIndexSuggestionsExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorAPI) ListDropIndexSuggestionsExecute(r admin.ListDropIndexSuggestionsApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error) {
+func (_m *PerformanceAdvisorAPI) ListDropIndexSuggestionsExecute(r admin.ListDropIndexSuggestionsApiRequest) (*admin.EnvelopedDropIndexSuggestionsResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListDropIndexSuggestionsExecute")
 	}
 
-	var r0 *admin.DropIndexSuggestionsResponse
+	var r0 *admin.EnvelopedDropIndexSuggestionsResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListDropIndexSuggestionsApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListDropIndexSuggestionsApiRequest) (*admin.EnvelopedDropIndexSuggestionsResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListDropIndexSuggestionsApiRequest) *admin.DropIndexSuggestionsResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListDropIndexSuggestionsApiRequest) *admin.EnvelopedDropIndexSuggestionsResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DropIndexSuggestionsResponse)
+			r0 = ret.Get(0).(*admin.EnvelopedDropIndexSuggestionsResponse)
 		}
 	}
 
@@ -915,12 +915,12 @@ func (_c *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call) Run(run fu
 	return _c
 }
 
-func (_c *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call) Return(_a0 *admin.DropIndexSuggestionsResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call {
+func (_c *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call) Return(_a0 *admin.EnvelopedDropIndexSuggestionsResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call) RunAndReturn(run func(admin.ListDropIndexSuggestionsApiRequest) (*admin.DropIndexSuggestionsResponse, *http.Response, error)) *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call {
+func (_c *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call) RunAndReturn(run func(admin.ListDropIndexSuggestionsApiRequest) (*admin.EnvelopedDropIndexSuggestionsResponse, *http.Response, error)) *PerformanceAdvisorAPI_ListDropIndexSuggestionsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1183,24 +1183,24 @@ func (_c *PerformanceAdvisorAPI_ListSchemaAdvice_Call) RunAndReturn(run func(con
 }
 
 // ListSchemaAdviceExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorAPI) ListSchemaAdviceExecute(r admin.ListSchemaAdviceApiRequest) (*admin.SchemaAdvisorResponse, *http.Response, error) {
+func (_m *PerformanceAdvisorAPI) ListSchemaAdviceExecute(r admin.ListSchemaAdviceApiRequest) (*admin.EnvelopedSchemaAdvisorResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListSchemaAdviceExecute")
 	}
 
-	var r0 *admin.SchemaAdvisorResponse
+	var r0 *admin.EnvelopedSchemaAdvisorResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListSchemaAdviceApiRequest) (*admin.SchemaAdvisorResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListSchemaAdviceApiRequest) (*admin.EnvelopedSchemaAdvisorResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListSchemaAdviceApiRequest) *admin.SchemaAdvisorResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListSchemaAdviceApiRequest) *admin.EnvelopedSchemaAdvisorResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.SchemaAdvisorResponse)
+			r0 = ret.Get(0).(*admin.EnvelopedSchemaAdvisorResponse)
 		}
 	}
 
@@ -1239,12 +1239,12 @@ func (_c *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call) Return(_a0 *admin.SchemaAdvisorResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call {
+func (_c *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call) Return(_a0 *admin.EnvelopedSchemaAdvisorResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call) RunAndReturn(run func(admin.ListSchemaAdviceApiRequest) (*admin.SchemaAdvisorResponse, *http.Response, error)) *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call {
+func (_c *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call) RunAndReturn(run func(admin.ListSchemaAdviceApiRequest) (*admin.EnvelopedSchemaAdvisorResponse, *http.Response, error)) *PerformanceAdvisorAPI_ListSchemaAdviceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

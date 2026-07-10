@@ -12,13 +12,17 @@ import (
 type RateLimitingAPI interface {
 
 	/*
-		GetRateLimit Return One Rate Limit
+			GetRateLimit Return One Rate Limit
 
-		Get one rate limit endpoint set.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param endpointSetId The ID of the rate limit endpoint set.
-		@return GetRateLimitApiRequest
+		 Get one rate limit endpoint set. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param endpointSetId The ID of the rate limit endpoint set.
+			@return GetRateLimitApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for RateLimitingAPI
 	*/
 	GetRateLimit(ctx context.Context, endpointSetId string) GetRateLimitApiRequest
 	/*
@@ -28,6 +32,8 @@ type RateLimitingAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetRateLimitApiParams - Parameters for the request
 		@return GetRateLimitApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for RateLimitingAPI
 	*/
 	GetRateLimitWithParams(ctx context.Context, args *GetRateLimitApiParams) GetRateLimitApiRequest
 
@@ -35,12 +41,16 @@ type RateLimitingAPI interface {
 	GetRateLimitExecute(r GetRateLimitApiRequest) (*RateLimitEndpointSetResponse, *http.Response, error)
 
 	/*
-		ListRateLimits Return All Rate Limits
+			ListRateLimits Return All Rate Limits
 
-		Get all rate limits for all v2 Atlas Administration API endpoint sets.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ListRateLimitsApiRequest
+		 Get all rate limits for all v2 Atlas Administration API endpoint sets. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ListRateLimitsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for RateLimitingAPI
 	*/
 	ListRateLimits(ctx context.Context) ListRateLimitsApiRequest
 	/*
@@ -50,6 +60,8 @@ type RateLimitingAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListRateLimitsApiParams - Parameters for the request
 		@return ListRateLimitsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for RateLimitingAPI
 	*/
 	ListRateLimitsWithParams(ctx context.Context, args *ListRateLimitsApiParams) ListRateLimitsApiRequest
 
@@ -121,11 +133,15 @@ func (r GetRateLimitApiRequest) Execute() (*RateLimitEndpointSetResponse, *http.
 /*
 GetRateLimit Return One Rate Limit
 
-Get one rate limit endpoint set.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Get one rate limit endpoint set. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param endpointSetId The ID of the rate limit endpoint set.
 	@return GetRateLimitApiRequest
+
+Deprecated
 */
 func (a *RateLimitingAPIService) GetRateLimit(ctx context.Context, endpointSetId string) GetRateLimitApiRequest {
 	return GetRateLimitApiRequest{
@@ -138,6 +154,8 @@ func (a *RateLimitingAPIService) GetRateLimit(ctx context.Context, endpointSetId
 // GetRateLimitExecute executes the request
 //
 //	@return RateLimitEndpointSetResponse
+//
+// Deprecated
 func (a *RateLimitingAPIService) GetRateLimitExecute(r GetRateLimitApiRequest) (*RateLimitEndpointSetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -183,7 +201,7 @@ func (a *RateLimitingAPIService) GetRateLimitExecute(r GetRateLimitApiRequest) (
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -316,10 +334,14 @@ func (r ListRateLimitsApiRequest) Execute() (*PaginatedRateLimitEndpointSets, *h
 /*
 ListRateLimits Return All Rate Limits
 
-Get all rate limits for all v2 Atlas Administration API endpoint sets.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Get all rate limits for all v2 Atlas Administration API endpoint sets. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListRateLimitsApiRequest
+
+Deprecated
 */
 func (a *RateLimitingAPIService) ListRateLimits(ctx context.Context) ListRateLimitsApiRequest {
 	return ListRateLimitsApiRequest{
@@ -331,6 +353,8 @@ func (a *RateLimitingAPIService) ListRateLimits(ctx context.Context) ListRateLim
 // ListRateLimitsExecute executes the request
 //
 //	@return PaginatedRateLimitEndpointSets
+//
+// Deprecated
 func (a *RateLimitingAPIService) ListRateLimitsExecute(r ListRateLimitsApiRequest) (*PaginatedRateLimitEndpointSets, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -392,7 +416,7 @@ func (a *RateLimitingAPIService) ListRateLimitsExecute(r ListRateLimitsApiReques
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

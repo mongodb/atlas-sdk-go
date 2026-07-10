@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312021/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -336,6 +336,331 @@ func (_c *FlexClustersAPI_DeleteFlexClusterWithParams_Call) Return(_a0 admin.Del
 }
 
 func (_c *FlexClustersAPI_DeleteFlexClusterWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteFlexClusterApiParams) admin.DeleteFlexClusterApiRequest) *FlexClustersAPI_DeleteFlexClusterWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateCreateFlexCost provides a mock function with given fields: ctx, groupId, flexClusterDescriptionCreate20241113
+func (_m *FlexClustersAPI) EstimateCreateFlexCost(ctx context.Context, groupId string, flexClusterDescriptionCreate20241113 *admin.FlexClusterDescriptionCreate20241113) admin.EstimateCreateFlexCostApiRequest {
+	ret := _m.Called(ctx, groupId, flexClusterDescriptionCreate20241113)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateCreateFlexCost")
+	}
+
+	var r0 admin.EstimateCreateFlexCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.FlexClusterDescriptionCreate20241113) admin.EstimateCreateFlexCostApiRequest); ok {
+		r0 = rf(ctx, groupId, flexClusterDescriptionCreate20241113)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateCreateFlexCostApiRequest)
+	}
+
+	return r0
+}
+
+// FlexClustersAPI_EstimateCreateFlexCost_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateCreateFlexCost'
+type FlexClustersAPI_EstimateCreateFlexCost_Call struct {
+	*mock.Call
+}
+
+// EstimateCreateFlexCost is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - flexClusterDescriptionCreate20241113 *admin.FlexClusterDescriptionCreate20241113
+func (_e *FlexClustersAPI_Expecter) EstimateCreateFlexCost(ctx any, groupId any, flexClusterDescriptionCreate20241113 any) *FlexClustersAPI_EstimateCreateFlexCost_Call {
+	return &FlexClustersAPI_EstimateCreateFlexCost_Call{Call: _e.mock.On("EstimateCreateFlexCost", ctx, groupId, flexClusterDescriptionCreate20241113)}
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCost_Call) Run(run func(ctx context.Context, groupId string, flexClusterDescriptionCreate20241113 *admin.FlexClusterDescriptionCreate20241113)) *FlexClustersAPI_EstimateCreateFlexCost_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.FlexClusterDescriptionCreate20241113))
+	})
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCost_Call) Return(_a0 admin.EstimateCreateFlexCostApiRequest) *FlexClustersAPI_EstimateCreateFlexCost_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCost_Call) RunAndReturn(run func(context.Context, string, *admin.FlexClusterDescriptionCreate20241113) admin.EstimateCreateFlexCostApiRequest) *FlexClustersAPI_EstimateCreateFlexCost_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateCreateFlexCostExecute provides a mock function with given fields: r
+func (_m *FlexClustersAPI) EstimateCreateFlexCostExecute(r admin.EstimateCreateFlexCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateCreateFlexCostExecute")
+	}
+
+	var r0 *admin.ClusterCostEstimate
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.EstimateCreateFlexCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.EstimateCreateFlexCostApiRequest) *admin.ClusterCostEstimate); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterCostEstimate)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.EstimateCreateFlexCostApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.EstimateCreateFlexCostApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// FlexClustersAPI_EstimateCreateFlexCostExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateCreateFlexCostExecute'
+type FlexClustersAPI_EstimateCreateFlexCostExecute_Call struct {
+	*mock.Call
+}
+
+// EstimateCreateFlexCostExecute is a helper method to define mock.On call
+//   - r admin.EstimateCreateFlexCostApiRequest
+func (_e *FlexClustersAPI_Expecter) EstimateCreateFlexCostExecute(r any) *FlexClustersAPI_EstimateCreateFlexCostExecute_Call {
+	return &FlexClustersAPI_EstimateCreateFlexCostExecute_Call{Call: _e.mock.On("EstimateCreateFlexCostExecute", r)}
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCostExecute_Call) Run(run func(r admin.EstimateCreateFlexCostApiRequest)) *FlexClustersAPI_EstimateCreateFlexCostExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.EstimateCreateFlexCostApiRequest))
+	})
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCostExecute_Call) Return(_a0 *admin.ClusterCostEstimate, _a1 *http.Response, _a2 error) *FlexClustersAPI_EstimateCreateFlexCostExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCostExecute_Call) RunAndReturn(run func(admin.EstimateCreateFlexCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)) *FlexClustersAPI_EstimateCreateFlexCostExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateCreateFlexCostWithParams provides a mock function with given fields: ctx, args
+func (_m *FlexClustersAPI) EstimateCreateFlexCostWithParams(ctx context.Context, args *admin.EstimateCreateFlexCostApiParams) admin.EstimateCreateFlexCostApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateCreateFlexCostWithParams")
+	}
+
+	var r0 admin.EstimateCreateFlexCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.EstimateCreateFlexCostApiParams) admin.EstimateCreateFlexCostApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateCreateFlexCostApiRequest)
+	}
+
+	return r0
+}
+
+// FlexClustersAPI_EstimateCreateFlexCostWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateCreateFlexCostWithParams'
+type FlexClustersAPI_EstimateCreateFlexCostWithParams_Call struct {
+	*mock.Call
+}
+
+// EstimateCreateFlexCostWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.EstimateCreateFlexCostApiParams
+func (_e *FlexClustersAPI_Expecter) EstimateCreateFlexCostWithParams(ctx any, args any) *FlexClustersAPI_EstimateCreateFlexCostWithParams_Call {
+	return &FlexClustersAPI_EstimateCreateFlexCostWithParams_Call{Call: _e.mock.On("EstimateCreateFlexCostWithParams", ctx, args)}
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCostWithParams_Call) Run(run func(ctx context.Context, args *admin.EstimateCreateFlexCostApiParams)) *FlexClustersAPI_EstimateCreateFlexCostWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.EstimateCreateFlexCostApiParams))
+	})
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCostWithParams_Call) Return(_a0 admin.EstimateCreateFlexCostApiRequest) *FlexClustersAPI_EstimateCreateFlexCostWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateCreateFlexCostWithParams_Call) RunAndReturn(run func(context.Context, *admin.EstimateCreateFlexCostApiParams) admin.EstimateCreateFlexCostApiRequest) *FlexClustersAPI_EstimateCreateFlexCostWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateUpdateFlexCost provides a mock function with given fields: ctx, groupId, clusterName, flexClusterDescriptionUpdate20241113
+func (_m *FlexClustersAPI) EstimateUpdateFlexCost(ctx context.Context, groupId string, clusterName string, flexClusterDescriptionUpdate20241113 *admin.FlexClusterDescriptionUpdate20241113) admin.EstimateUpdateFlexCostApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, flexClusterDescriptionUpdate20241113)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateUpdateFlexCost")
+	}
+
+	var r0 admin.EstimateUpdateFlexCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.FlexClusterDescriptionUpdate20241113) admin.EstimateUpdateFlexCostApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, flexClusterDescriptionUpdate20241113)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateUpdateFlexCostApiRequest)
+	}
+
+	return r0
+}
+
+// FlexClustersAPI_EstimateUpdateFlexCost_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateUpdateFlexCost'
+type FlexClustersAPI_EstimateUpdateFlexCost_Call struct {
+	*mock.Call
+}
+
+// EstimateUpdateFlexCost is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - flexClusterDescriptionUpdate20241113 *admin.FlexClusterDescriptionUpdate20241113
+func (_e *FlexClustersAPI_Expecter) EstimateUpdateFlexCost(ctx any, groupId any, clusterName any, flexClusterDescriptionUpdate20241113 any) *FlexClustersAPI_EstimateUpdateFlexCost_Call {
+	return &FlexClustersAPI_EstimateUpdateFlexCost_Call{Call: _e.mock.On("EstimateUpdateFlexCost", ctx, groupId, clusterName, flexClusterDescriptionUpdate20241113)}
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCost_Call) Run(run func(ctx context.Context, groupId string, clusterName string, flexClusterDescriptionUpdate20241113 *admin.FlexClusterDescriptionUpdate20241113)) *FlexClustersAPI_EstimateUpdateFlexCost_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.FlexClusterDescriptionUpdate20241113))
+	})
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCost_Call) Return(_a0 admin.EstimateUpdateFlexCostApiRequest) *FlexClustersAPI_EstimateUpdateFlexCost_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCost_Call) RunAndReturn(run func(context.Context, string, string, *admin.FlexClusterDescriptionUpdate20241113) admin.EstimateUpdateFlexCostApiRequest) *FlexClustersAPI_EstimateUpdateFlexCost_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateUpdateFlexCostExecute provides a mock function with given fields: r
+func (_m *FlexClustersAPI) EstimateUpdateFlexCostExecute(r admin.EstimateUpdateFlexCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateUpdateFlexCostExecute")
+	}
+
+	var r0 *admin.ClusterCostEstimate
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.EstimateUpdateFlexCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.EstimateUpdateFlexCostApiRequest) *admin.ClusterCostEstimate); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterCostEstimate)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.EstimateUpdateFlexCostApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.EstimateUpdateFlexCostApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// FlexClustersAPI_EstimateUpdateFlexCostExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateUpdateFlexCostExecute'
+type FlexClustersAPI_EstimateUpdateFlexCostExecute_Call struct {
+	*mock.Call
+}
+
+// EstimateUpdateFlexCostExecute is a helper method to define mock.On call
+//   - r admin.EstimateUpdateFlexCostApiRequest
+func (_e *FlexClustersAPI_Expecter) EstimateUpdateFlexCostExecute(r any) *FlexClustersAPI_EstimateUpdateFlexCostExecute_Call {
+	return &FlexClustersAPI_EstimateUpdateFlexCostExecute_Call{Call: _e.mock.On("EstimateUpdateFlexCostExecute", r)}
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCostExecute_Call) Run(run func(r admin.EstimateUpdateFlexCostApiRequest)) *FlexClustersAPI_EstimateUpdateFlexCostExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.EstimateUpdateFlexCostApiRequest))
+	})
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCostExecute_Call) Return(_a0 *admin.ClusterCostEstimate, _a1 *http.Response, _a2 error) *FlexClustersAPI_EstimateUpdateFlexCostExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCostExecute_Call) RunAndReturn(run func(admin.EstimateUpdateFlexCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)) *FlexClustersAPI_EstimateUpdateFlexCostExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateUpdateFlexCostWithParams provides a mock function with given fields: ctx, args
+func (_m *FlexClustersAPI) EstimateUpdateFlexCostWithParams(ctx context.Context, args *admin.EstimateUpdateFlexCostApiParams) admin.EstimateUpdateFlexCostApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateUpdateFlexCostWithParams")
+	}
+
+	var r0 admin.EstimateUpdateFlexCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.EstimateUpdateFlexCostApiParams) admin.EstimateUpdateFlexCostApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateUpdateFlexCostApiRequest)
+	}
+
+	return r0
+}
+
+// FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateUpdateFlexCostWithParams'
+type FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call struct {
+	*mock.Call
+}
+
+// EstimateUpdateFlexCostWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.EstimateUpdateFlexCostApiParams
+func (_e *FlexClustersAPI_Expecter) EstimateUpdateFlexCostWithParams(ctx any, args any) *FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call {
+	return &FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call{Call: _e.mock.On("EstimateUpdateFlexCostWithParams", ctx, args)}
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call) Run(run func(ctx context.Context, args *admin.EstimateUpdateFlexCostApiParams)) *FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.EstimateUpdateFlexCostApiParams))
+	})
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call) Return(_a0 admin.EstimateUpdateFlexCostApiRequest) *FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call) RunAndReturn(run func(context.Context, *admin.EstimateUpdateFlexCostApiParams) admin.EstimateUpdateFlexCostApiRequest) *FlexClustersAPI_EstimateUpdateFlexCostWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

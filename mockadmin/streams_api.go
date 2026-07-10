@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312021/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -25,6 +25,159 @@ type StreamsAPI_Expecter struct {
 
 func (_m *StreamsAPI) EXPECT() *StreamsAPI_Expecter {
 	return &StreamsAPI_Expecter{mock: &_m.Mock}
+}
+
+// AcceptTransitGatewayInvitations provides a mock function with given fields: ctx, groupId, streamsTransitGatewayResourceShare
+func (_m *StreamsAPI) AcceptTransitGatewayInvitations(ctx context.Context, groupId string, streamsTransitGatewayResourceShare *admin.StreamsTransitGatewayResourceShare) admin.AcceptTransitGatewayInvitationsApiRequest {
+	ret := _m.Called(ctx, groupId, streamsTransitGatewayResourceShare)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AcceptTransitGatewayInvitations")
+	}
+
+	var r0 admin.AcceptTransitGatewayInvitationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.StreamsTransitGatewayResourceShare) admin.AcceptTransitGatewayInvitationsApiRequest); ok {
+		r0 = rf(ctx, groupId, streamsTransitGatewayResourceShare)
+	} else {
+		r0 = ret.Get(0).(admin.AcceptTransitGatewayInvitationsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_AcceptTransitGatewayInvitations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptTransitGatewayInvitations'
+type StreamsAPI_AcceptTransitGatewayInvitations_Call struct {
+	*mock.Call
+}
+
+// AcceptTransitGatewayInvitations is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - streamsTransitGatewayResourceShare *admin.StreamsTransitGatewayResourceShare
+func (_e *StreamsAPI_Expecter) AcceptTransitGatewayInvitations(ctx any, groupId any, streamsTransitGatewayResourceShare any) *StreamsAPI_AcceptTransitGatewayInvitations_Call {
+	return &StreamsAPI_AcceptTransitGatewayInvitations_Call{Call: _e.mock.On("AcceptTransitGatewayInvitations", ctx, groupId, streamsTransitGatewayResourceShare)}
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitations_Call) Run(run func(ctx context.Context, groupId string, streamsTransitGatewayResourceShare *admin.StreamsTransitGatewayResourceShare)) *StreamsAPI_AcceptTransitGatewayInvitations_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.StreamsTransitGatewayResourceShare))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitations_Call) Return(_a0 admin.AcceptTransitGatewayInvitationsApiRequest) *StreamsAPI_AcceptTransitGatewayInvitations_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitations_Call) RunAndReturn(run func(context.Context, string, *admin.StreamsTransitGatewayResourceShare) admin.AcceptTransitGatewayInvitationsApiRequest) *StreamsAPI_AcceptTransitGatewayInvitations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// AcceptTransitGatewayInvitationsExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) AcceptTransitGatewayInvitationsExecute(r admin.AcceptTransitGatewayInvitationsApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AcceptTransitGatewayInvitationsExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.AcceptTransitGatewayInvitationsApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.AcceptTransitGatewayInvitationsApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.AcceptTransitGatewayInvitationsApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptTransitGatewayInvitationsExecute'
+type StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call struct {
+	*mock.Call
+}
+
+// AcceptTransitGatewayInvitationsExecute is a helper method to define mock.On call
+//   - r admin.AcceptTransitGatewayInvitationsApiRequest
+func (_e *StreamsAPI_Expecter) AcceptTransitGatewayInvitationsExecute(r any) *StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call {
+	return &StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call{Call: _e.mock.On("AcceptTransitGatewayInvitationsExecute", r)}
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call) Run(run func(r admin.AcceptTransitGatewayInvitationsApiRequest)) *StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.AcceptTransitGatewayInvitationsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call) RunAndReturn(run func(admin.AcceptTransitGatewayInvitationsApiRequest) (*http.Response, error)) *StreamsAPI_AcceptTransitGatewayInvitationsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// AcceptTransitGatewayInvitationsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) AcceptTransitGatewayInvitationsWithParams(ctx context.Context, args *admin.AcceptTransitGatewayInvitationsApiParams) admin.AcceptTransitGatewayInvitationsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AcceptTransitGatewayInvitationsWithParams")
+	}
+
+	var r0 admin.AcceptTransitGatewayInvitationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AcceptTransitGatewayInvitationsApiParams) admin.AcceptTransitGatewayInvitationsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.AcceptTransitGatewayInvitationsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptTransitGatewayInvitationsWithParams'
+type StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call struct {
+	*mock.Call
+}
+
+// AcceptTransitGatewayInvitationsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.AcceptTransitGatewayInvitationsApiParams
+func (_e *StreamsAPI_Expecter) AcceptTransitGatewayInvitationsWithParams(ctx any, args any) *StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call {
+	return &StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call{Call: _e.mock.On("AcceptTransitGatewayInvitationsWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call) Run(run func(ctx context.Context, args *admin.AcceptTransitGatewayInvitationsApiParams)) *StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.AcceptTransitGatewayInvitationsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call) Return(_a0 admin.AcceptTransitGatewayInvitationsApiRequest) *StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.AcceptTransitGatewayInvitationsApiParams) admin.AcceptTransitGatewayInvitationsApiRequest) *StreamsAPI_AcceptTransitGatewayInvitationsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // AcceptVpcPeeringConnection provides a mock function with given fields: ctx, groupId, id, vPCPeeringActionChallenge
@@ -995,6 +1148,330 @@ func (_c *StreamsAPI_CreateStreamWorkspaceWithParams_Call) RunAndReturn(run func
 	return _c
 }
 
+// CreateTransitGatewayAttachment provides a mock function with given fields: ctx, groupId, streamsTransitGatewayAttachmentRequest
+func (_m *StreamsAPI) CreateTransitGatewayAttachment(ctx context.Context, groupId string, streamsTransitGatewayAttachmentRequest *admin.StreamsTransitGatewayAttachmentRequest) admin.CreateTransitGatewayAttachmentApiRequest {
+	ret := _m.Called(ctx, groupId, streamsTransitGatewayAttachmentRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateTransitGatewayAttachment")
+	}
+
+	var r0 admin.CreateTransitGatewayAttachmentApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.StreamsTransitGatewayAttachmentRequest) admin.CreateTransitGatewayAttachmentApiRequest); ok {
+		r0 = rf(ctx, groupId, streamsTransitGatewayAttachmentRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateTransitGatewayAttachmentApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_CreateTransitGatewayAttachment_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTransitGatewayAttachment'
+type StreamsAPI_CreateTransitGatewayAttachment_Call struct {
+	*mock.Call
+}
+
+// CreateTransitGatewayAttachment is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - streamsTransitGatewayAttachmentRequest *admin.StreamsTransitGatewayAttachmentRequest
+func (_e *StreamsAPI_Expecter) CreateTransitGatewayAttachment(ctx any, groupId any, streamsTransitGatewayAttachmentRequest any) *StreamsAPI_CreateTransitGatewayAttachment_Call {
+	return &StreamsAPI_CreateTransitGatewayAttachment_Call{Call: _e.mock.On("CreateTransitGatewayAttachment", ctx, groupId, streamsTransitGatewayAttachmentRequest)}
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachment_Call) Run(run func(ctx context.Context, groupId string, streamsTransitGatewayAttachmentRequest *admin.StreamsTransitGatewayAttachmentRequest)) *StreamsAPI_CreateTransitGatewayAttachment_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.StreamsTransitGatewayAttachmentRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachment_Call) Return(_a0 admin.CreateTransitGatewayAttachmentApiRequest) *StreamsAPI_CreateTransitGatewayAttachment_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachment_Call) RunAndReturn(run func(context.Context, string, *admin.StreamsTransitGatewayAttachmentRequest) admin.CreateTransitGatewayAttachmentApiRequest) *StreamsAPI_CreateTransitGatewayAttachment_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateTransitGatewayAttachmentExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) CreateTransitGatewayAttachmentExecute(r admin.CreateTransitGatewayAttachmentApiRequest) (*admin.StreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateTransitGatewayAttachmentExecute")
+	}
+
+	var r0 *admin.StreamsTransitGatewayAttachmentResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateTransitGatewayAttachmentApiRequest) (*admin.StreamsTransitGatewayAttachmentResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateTransitGatewayAttachmentApiRequest) *admin.StreamsTransitGatewayAttachmentResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTransitGatewayAttachmentResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateTransitGatewayAttachmentApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateTransitGatewayAttachmentApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_CreateTransitGatewayAttachmentExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTransitGatewayAttachmentExecute'
+type StreamsAPI_CreateTransitGatewayAttachmentExecute_Call struct {
+	*mock.Call
+}
+
+// CreateTransitGatewayAttachmentExecute is a helper method to define mock.On call
+//   - r admin.CreateTransitGatewayAttachmentApiRequest
+func (_e *StreamsAPI_Expecter) CreateTransitGatewayAttachmentExecute(r any) *StreamsAPI_CreateTransitGatewayAttachmentExecute_Call {
+	return &StreamsAPI_CreateTransitGatewayAttachmentExecute_Call{Call: _e.mock.On("CreateTransitGatewayAttachmentExecute", r)}
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachmentExecute_Call) Run(run func(r admin.CreateTransitGatewayAttachmentApiRequest)) *StreamsAPI_CreateTransitGatewayAttachmentExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateTransitGatewayAttachmentApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachmentExecute_Call) Return(_a0 *admin.StreamsTransitGatewayAttachmentResponse, _a1 *http.Response, _a2 error) *StreamsAPI_CreateTransitGatewayAttachmentExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachmentExecute_Call) RunAndReturn(run func(admin.CreateTransitGatewayAttachmentApiRequest) (*admin.StreamsTransitGatewayAttachmentResponse, *http.Response, error)) *StreamsAPI_CreateTransitGatewayAttachmentExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateTransitGatewayAttachmentWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) CreateTransitGatewayAttachmentWithParams(ctx context.Context, args *admin.CreateTransitGatewayAttachmentApiParams) admin.CreateTransitGatewayAttachmentApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateTransitGatewayAttachmentWithParams")
+	}
+
+	var r0 admin.CreateTransitGatewayAttachmentApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateTransitGatewayAttachmentApiParams) admin.CreateTransitGatewayAttachmentApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateTransitGatewayAttachmentApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTransitGatewayAttachmentWithParams'
+type StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateTransitGatewayAttachmentWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateTransitGatewayAttachmentApiParams
+func (_e *StreamsAPI_Expecter) CreateTransitGatewayAttachmentWithParams(ctx any, args any) *StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call {
+	return &StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call{Call: _e.mock.On("CreateTransitGatewayAttachmentWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateTransitGatewayAttachmentApiParams)) *StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateTransitGatewayAttachmentApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call) Return(_a0 admin.CreateTransitGatewayAttachmentApiRequest) *StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateTransitGatewayAttachmentApiParams) admin.CreateTransitGatewayAttachmentApiRequest) *StreamsAPI_CreateTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateTransitGatewayRoute provides a mock function with given fields: ctx, groupId, streamsTransitGatewayRouteRequest
+func (_m *StreamsAPI) CreateTransitGatewayRoute(ctx context.Context, groupId string, streamsTransitGatewayRouteRequest *admin.StreamsTransitGatewayRouteRequest) admin.CreateTransitGatewayRouteApiRequest {
+	ret := _m.Called(ctx, groupId, streamsTransitGatewayRouteRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateTransitGatewayRoute")
+	}
+
+	var r0 admin.CreateTransitGatewayRouteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.StreamsTransitGatewayRouteRequest) admin.CreateTransitGatewayRouteApiRequest); ok {
+		r0 = rf(ctx, groupId, streamsTransitGatewayRouteRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateTransitGatewayRouteApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_CreateTransitGatewayRoute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTransitGatewayRoute'
+type StreamsAPI_CreateTransitGatewayRoute_Call struct {
+	*mock.Call
+}
+
+// CreateTransitGatewayRoute is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - streamsTransitGatewayRouteRequest *admin.StreamsTransitGatewayRouteRequest
+func (_e *StreamsAPI_Expecter) CreateTransitGatewayRoute(ctx any, groupId any, streamsTransitGatewayRouteRequest any) *StreamsAPI_CreateTransitGatewayRoute_Call {
+	return &StreamsAPI_CreateTransitGatewayRoute_Call{Call: _e.mock.On("CreateTransitGatewayRoute", ctx, groupId, streamsTransitGatewayRouteRequest)}
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRoute_Call) Run(run func(ctx context.Context, groupId string, streamsTransitGatewayRouteRequest *admin.StreamsTransitGatewayRouteRequest)) *StreamsAPI_CreateTransitGatewayRoute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.StreamsTransitGatewayRouteRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRoute_Call) Return(_a0 admin.CreateTransitGatewayRouteApiRequest) *StreamsAPI_CreateTransitGatewayRoute_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRoute_Call) RunAndReturn(run func(context.Context, string, *admin.StreamsTransitGatewayRouteRequest) admin.CreateTransitGatewayRouteApiRequest) *StreamsAPI_CreateTransitGatewayRoute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateTransitGatewayRouteExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) CreateTransitGatewayRouteExecute(r admin.CreateTransitGatewayRouteApiRequest) (*admin.StreamsTransitGatewayRouteResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateTransitGatewayRouteExecute")
+	}
+
+	var r0 *admin.StreamsTransitGatewayRouteResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateTransitGatewayRouteApiRequest) (*admin.StreamsTransitGatewayRouteResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateTransitGatewayRouteApiRequest) *admin.StreamsTransitGatewayRouteResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTransitGatewayRouteResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateTransitGatewayRouteApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateTransitGatewayRouteApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_CreateTransitGatewayRouteExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTransitGatewayRouteExecute'
+type StreamsAPI_CreateTransitGatewayRouteExecute_Call struct {
+	*mock.Call
+}
+
+// CreateTransitGatewayRouteExecute is a helper method to define mock.On call
+//   - r admin.CreateTransitGatewayRouteApiRequest
+func (_e *StreamsAPI_Expecter) CreateTransitGatewayRouteExecute(r any) *StreamsAPI_CreateTransitGatewayRouteExecute_Call {
+	return &StreamsAPI_CreateTransitGatewayRouteExecute_Call{Call: _e.mock.On("CreateTransitGatewayRouteExecute", r)}
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRouteExecute_Call) Run(run func(r admin.CreateTransitGatewayRouteApiRequest)) *StreamsAPI_CreateTransitGatewayRouteExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateTransitGatewayRouteApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRouteExecute_Call) Return(_a0 *admin.StreamsTransitGatewayRouteResponse, _a1 *http.Response, _a2 error) *StreamsAPI_CreateTransitGatewayRouteExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRouteExecute_Call) RunAndReturn(run func(admin.CreateTransitGatewayRouteApiRequest) (*admin.StreamsTransitGatewayRouteResponse, *http.Response, error)) *StreamsAPI_CreateTransitGatewayRouteExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateTransitGatewayRouteWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) CreateTransitGatewayRouteWithParams(ctx context.Context, args *admin.CreateTransitGatewayRouteApiParams) admin.CreateTransitGatewayRouteApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateTransitGatewayRouteWithParams")
+	}
+
+	var r0 admin.CreateTransitGatewayRouteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateTransitGatewayRouteApiParams) admin.CreateTransitGatewayRouteApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateTransitGatewayRouteApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_CreateTransitGatewayRouteWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTransitGatewayRouteWithParams'
+type StreamsAPI_CreateTransitGatewayRouteWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateTransitGatewayRouteWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateTransitGatewayRouteApiParams
+func (_e *StreamsAPI_Expecter) CreateTransitGatewayRouteWithParams(ctx any, args any) *StreamsAPI_CreateTransitGatewayRouteWithParams_Call {
+	return &StreamsAPI_CreateTransitGatewayRouteWithParams_Call{Call: _e.mock.On("CreateTransitGatewayRouteWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRouteWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateTransitGatewayRouteApiParams)) *StreamsAPI_CreateTransitGatewayRouteWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateTransitGatewayRouteApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRouteWithParams_Call) Return(_a0 admin.CreateTransitGatewayRouteApiRequest) *StreamsAPI_CreateTransitGatewayRouteWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateTransitGatewayRouteWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateTransitGatewayRouteApiParams) admin.CreateTransitGatewayRouteApiRequest) *StreamsAPI_CreateTransitGatewayRouteWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeletePrivateLinkConnection provides a mock function with given fields: ctx, groupId, connectionId
 func (_m *StreamsAPI) DeletePrivateLinkConnection(ctx context.Context, groupId string, connectionId string) admin.DeletePrivateLinkConnectionApiRequest {
 	ret := _m.Called(ctx, groupId, connectionId)
@@ -1760,6 +2237,465 @@ func (_c *StreamsAPI_DeleteStreamWorkspaceWithParams_Call) Return(_a0 admin.Dele
 }
 
 func (_c *StreamsAPI_DeleteStreamWorkspaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteStreamWorkspaceApiParams) admin.DeleteStreamWorkspaceApiRequest) *StreamsAPI_DeleteStreamWorkspaceWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayAttachment provides a mock function with given fields: ctx, groupId, attachmentId
+func (_m *StreamsAPI) DeleteTransitGatewayAttachment(ctx context.Context, groupId string, attachmentId string) admin.DeleteTransitGatewayAttachmentApiRequest {
+	ret := _m.Called(ctx, groupId, attachmentId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayAttachment")
+	}
+
+	var r0 admin.DeleteTransitGatewayAttachmentApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteTransitGatewayAttachmentApiRequest); ok {
+		r0 = rf(ctx, groupId, attachmentId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteTransitGatewayAttachmentApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_DeleteTransitGatewayAttachment_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayAttachment'
+type StreamsAPI_DeleteTransitGatewayAttachment_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayAttachment is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - attachmentId string
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayAttachment(ctx any, groupId any, attachmentId any) *StreamsAPI_DeleteTransitGatewayAttachment_Call {
+	return &StreamsAPI_DeleteTransitGatewayAttachment_Call{Call: _e.mock.On("DeleteTransitGatewayAttachment", ctx, groupId, attachmentId)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachment_Call) Run(run func(ctx context.Context, groupId string, attachmentId string)) *StreamsAPI_DeleteTransitGatewayAttachment_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachment_Call) Return(_a0 admin.DeleteTransitGatewayAttachmentApiRequest) *StreamsAPI_DeleteTransitGatewayAttachment_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachment_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteTransitGatewayAttachmentApiRequest) *StreamsAPI_DeleteTransitGatewayAttachment_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayAttachmentExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) DeleteTransitGatewayAttachmentExecute(r admin.DeleteTransitGatewayAttachmentApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayAttachmentExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteTransitGatewayAttachmentApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteTransitGatewayAttachmentApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteTransitGatewayAttachmentApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayAttachmentExecute'
+type StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayAttachmentExecute is a helper method to define mock.On call
+//   - r admin.DeleteTransitGatewayAttachmentApiRequest
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayAttachmentExecute(r any) *StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call {
+	return &StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call{Call: _e.mock.On("DeleteTransitGatewayAttachmentExecute", r)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call) Run(run func(r admin.DeleteTransitGatewayAttachmentApiRequest)) *StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteTransitGatewayAttachmentApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call) RunAndReturn(run func(admin.DeleteTransitGatewayAttachmentApiRequest) (*http.Response, error)) *StreamsAPI_DeleteTransitGatewayAttachmentExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayAttachmentWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) DeleteTransitGatewayAttachmentWithParams(ctx context.Context, args *admin.DeleteTransitGatewayAttachmentApiParams) admin.DeleteTransitGatewayAttachmentApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayAttachmentWithParams")
+	}
+
+	var r0 admin.DeleteTransitGatewayAttachmentApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteTransitGatewayAttachmentApiParams) admin.DeleteTransitGatewayAttachmentApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteTransitGatewayAttachmentApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayAttachmentWithParams'
+type StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayAttachmentWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteTransitGatewayAttachmentApiParams
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayAttachmentWithParams(ctx any, args any) *StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call {
+	return &StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call{Call: _e.mock.On("DeleteTransitGatewayAttachmentWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteTransitGatewayAttachmentApiParams)) *StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteTransitGatewayAttachmentApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call) Return(_a0 admin.DeleteTransitGatewayAttachmentApiRequest) *StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteTransitGatewayAttachmentApiParams) admin.DeleteTransitGatewayAttachmentApiRequest) *StreamsAPI_DeleteTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayInvitation provides a mock function with given fields: ctx, groupId, resourceShareArn
+func (_m *StreamsAPI) DeleteTransitGatewayInvitation(ctx context.Context, groupId string, resourceShareArn string) admin.DeleteTransitGatewayInvitationApiRequest {
+	ret := _m.Called(ctx, groupId, resourceShareArn)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayInvitation")
+	}
+
+	var r0 admin.DeleteTransitGatewayInvitationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteTransitGatewayInvitationApiRequest); ok {
+		r0 = rf(ctx, groupId, resourceShareArn)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteTransitGatewayInvitationApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_DeleteTransitGatewayInvitation_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayInvitation'
+type StreamsAPI_DeleteTransitGatewayInvitation_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayInvitation is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - resourceShareArn string
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayInvitation(ctx any, groupId any, resourceShareArn any) *StreamsAPI_DeleteTransitGatewayInvitation_Call {
+	return &StreamsAPI_DeleteTransitGatewayInvitation_Call{Call: _e.mock.On("DeleteTransitGatewayInvitation", ctx, groupId, resourceShareArn)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitation_Call) Run(run func(ctx context.Context, groupId string, resourceShareArn string)) *StreamsAPI_DeleteTransitGatewayInvitation_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitation_Call) Return(_a0 admin.DeleteTransitGatewayInvitationApiRequest) *StreamsAPI_DeleteTransitGatewayInvitation_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitation_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteTransitGatewayInvitationApiRequest) *StreamsAPI_DeleteTransitGatewayInvitation_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayInvitationExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) DeleteTransitGatewayInvitationExecute(r admin.DeleteTransitGatewayInvitationApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayInvitationExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteTransitGatewayInvitationApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteTransitGatewayInvitationApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteTransitGatewayInvitationApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsAPI_DeleteTransitGatewayInvitationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayInvitationExecute'
+type StreamsAPI_DeleteTransitGatewayInvitationExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayInvitationExecute is a helper method to define mock.On call
+//   - r admin.DeleteTransitGatewayInvitationApiRequest
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayInvitationExecute(r any) *StreamsAPI_DeleteTransitGatewayInvitationExecute_Call {
+	return &StreamsAPI_DeleteTransitGatewayInvitationExecute_Call{Call: _e.mock.On("DeleteTransitGatewayInvitationExecute", r)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitationExecute_Call) Run(run func(r admin.DeleteTransitGatewayInvitationApiRequest)) *StreamsAPI_DeleteTransitGatewayInvitationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteTransitGatewayInvitationApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitationExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsAPI_DeleteTransitGatewayInvitationExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitationExecute_Call) RunAndReturn(run func(admin.DeleteTransitGatewayInvitationApiRequest) (*http.Response, error)) *StreamsAPI_DeleteTransitGatewayInvitationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayInvitationWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) DeleteTransitGatewayInvitationWithParams(ctx context.Context, args *admin.DeleteTransitGatewayInvitationApiParams) admin.DeleteTransitGatewayInvitationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayInvitationWithParams")
+	}
+
+	var r0 admin.DeleteTransitGatewayInvitationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteTransitGatewayInvitationApiParams) admin.DeleteTransitGatewayInvitationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteTransitGatewayInvitationApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayInvitationWithParams'
+type StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayInvitationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteTransitGatewayInvitationApiParams
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayInvitationWithParams(ctx any, args any) *StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call {
+	return &StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call{Call: _e.mock.On("DeleteTransitGatewayInvitationWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteTransitGatewayInvitationApiParams)) *StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteTransitGatewayInvitationApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call) Return(_a0 admin.DeleteTransitGatewayInvitationApiRequest) *StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteTransitGatewayInvitationApiParams) admin.DeleteTransitGatewayInvitationApiRequest) *StreamsAPI_DeleteTransitGatewayInvitationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayRoute provides a mock function with given fields: ctx, groupId, routeId
+func (_m *StreamsAPI) DeleteTransitGatewayRoute(ctx context.Context, groupId string, routeId string) admin.DeleteTransitGatewayRouteApiRequest {
+	ret := _m.Called(ctx, groupId, routeId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayRoute")
+	}
+
+	var r0 admin.DeleteTransitGatewayRouteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteTransitGatewayRouteApiRequest); ok {
+		r0 = rf(ctx, groupId, routeId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteTransitGatewayRouteApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_DeleteTransitGatewayRoute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayRoute'
+type StreamsAPI_DeleteTransitGatewayRoute_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayRoute is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - routeId string
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayRoute(ctx any, groupId any, routeId any) *StreamsAPI_DeleteTransitGatewayRoute_Call {
+	return &StreamsAPI_DeleteTransitGatewayRoute_Call{Call: _e.mock.On("DeleteTransitGatewayRoute", ctx, groupId, routeId)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRoute_Call) Run(run func(ctx context.Context, groupId string, routeId string)) *StreamsAPI_DeleteTransitGatewayRoute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRoute_Call) Return(_a0 admin.DeleteTransitGatewayRouteApiRequest) *StreamsAPI_DeleteTransitGatewayRoute_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRoute_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteTransitGatewayRouteApiRequest) *StreamsAPI_DeleteTransitGatewayRoute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayRouteExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) DeleteTransitGatewayRouteExecute(r admin.DeleteTransitGatewayRouteApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayRouteExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteTransitGatewayRouteApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteTransitGatewayRouteApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteTransitGatewayRouteApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsAPI_DeleteTransitGatewayRouteExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayRouteExecute'
+type StreamsAPI_DeleteTransitGatewayRouteExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayRouteExecute is a helper method to define mock.On call
+//   - r admin.DeleteTransitGatewayRouteApiRequest
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayRouteExecute(r any) *StreamsAPI_DeleteTransitGatewayRouteExecute_Call {
+	return &StreamsAPI_DeleteTransitGatewayRouteExecute_Call{Call: _e.mock.On("DeleteTransitGatewayRouteExecute", r)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRouteExecute_Call) Run(run func(r admin.DeleteTransitGatewayRouteApiRequest)) *StreamsAPI_DeleteTransitGatewayRouteExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteTransitGatewayRouteApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRouteExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsAPI_DeleteTransitGatewayRouteExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRouteExecute_Call) RunAndReturn(run func(admin.DeleteTransitGatewayRouteApiRequest) (*http.Response, error)) *StreamsAPI_DeleteTransitGatewayRouteExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTransitGatewayRouteWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) DeleteTransitGatewayRouteWithParams(ctx context.Context, args *admin.DeleteTransitGatewayRouteApiParams) admin.DeleteTransitGatewayRouteApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTransitGatewayRouteWithParams")
+	}
+
+	var r0 admin.DeleteTransitGatewayRouteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteTransitGatewayRouteApiParams) admin.DeleteTransitGatewayRouteApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteTransitGatewayRouteApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_DeleteTransitGatewayRouteWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTransitGatewayRouteWithParams'
+type StreamsAPI_DeleteTransitGatewayRouteWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteTransitGatewayRouteWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteTransitGatewayRouteApiParams
+func (_e *StreamsAPI_Expecter) DeleteTransitGatewayRouteWithParams(ctx any, args any) *StreamsAPI_DeleteTransitGatewayRouteWithParams_Call {
+	return &StreamsAPI_DeleteTransitGatewayRouteWithParams_Call{Call: _e.mock.On("DeleteTransitGatewayRouteWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRouteWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteTransitGatewayRouteApiParams)) *StreamsAPI_DeleteTransitGatewayRouteWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteTransitGatewayRouteApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRouteWithParams_Call) Return(_a0 admin.DeleteTransitGatewayRouteApiRequest) *StreamsAPI_DeleteTransitGatewayRouteWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteTransitGatewayRouteWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteTransitGatewayRouteApiParams) admin.DeleteTransitGatewayRouteApiRequest) *StreamsAPI_DeleteTransitGatewayRouteWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3378,6 +4314,492 @@ func (_c *StreamsAPI_GetStreamWorkspaceWithParams_Call) RunAndReturn(run func(co
 	return _c
 }
 
+// GetTransitGatewayAttachment provides a mock function with given fields: ctx, groupId, attachmentId
+func (_m *StreamsAPI) GetTransitGatewayAttachment(ctx context.Context, groupId string, attachmentId string) admin.GetTransitGatewayAttachmentApiRequest {
+	ret := _m.Called(ctx, groupId, attachmentId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayAttachment")
+	}
+
+	var r0 admin.GetTransitGatewayAttachmentApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetTransitGatewayAttachmentApiRequest); ok {
+		r0 = rf(ctx, groupId, attachmentId)
+	} else {
+		r0 = ret.Get(0).(admin.GetTransitGatewayAttachmentApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_GetTransitGatewayAttachment_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayAttachment'
+type StreamsAPI_GetTransitGatewayAttachment_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayAttachment is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - attachmentId string
+func (_e *StreamsAPI_Expecter) GetTransitGatewayAttachment(ctx any, groupId any, attachmentId any) *StreamsAPI_GetTransitGatewayAttachment_Call {
+	return &StreamsAPI_GetTransitGatewayAttachment_Call{Call: _e.mock.On("GetTransitGatewayAttachment", ctx, groupId, attachmentId)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachment_Call) Run(run func(ctx context.Context, groupId string, attachmentId string)) *StreamsAPI_GetTransitGatewayAttachment_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachment_Call) Return(_a0 admin.GetTransitGatewayAttachmentApiRequest) *StreamsAPI_GetTransitGatewayAttachment_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachment_Call) RunAndReturn(run func(context.Context, string, string) admin.GetTransitGatewayAttachmentApiRequest) *StreamsAPI_GetTransitGatewayAttachment_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetTransitGatewayAttachmentExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) GetTransitGatewayAttachmentExecute(r admin.GetTransitGatewayAttachmentApiRequest) (*admin.StreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayAttachmentExecute")
+	}
+
+	var r0 *admin.StreamsTransitGatewayAttachmentResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetTransitGatewayAttachmentApiRequest) (*admin.StreamsTransitGatewayAttachmentResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetTransitGatewayAttachmentApiRequest) *admin.StreamsTransitGatewayAttachmentResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTransitGatewayAttachmentResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetTransitGatewayAttachmentApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetTransitGatewayAttachmentApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_GetTransitGatewayAttachmentExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayAttachmentExecute'
+type StreamsAPI_GetTransitGatewayAttachmentExecute_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayAttachmentExecute is a helper method to define mock.On call
+//   - r admin.GetTransitGatewayAttachmentApiRequest
+func (_e *StreamsAPI_Expecter) GetTransitGatewayAttachmentExecute(r any) *StreamsAPI_GetTransitGatewayAttachmentExecute_Call {
+	return &StreamsAPI_GetTransitGatewayAttachmentExecute_Call{Call: _e.mock.On("GetTransitGatewayAttachmentExecute", r)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachmentExecute_Call) Run(run func(r admin.GetTransitGatewayAttachmentApiRequest)) *StreamsAPI_GetTransitGatewayAttachmentExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetTransitGatewayAttachmentApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachmentExecute_Call) Return(_a0 *admin.StreamsTransitGatewayAttachmentResponse, _a1 *http.Response, _a2 error) *StreamsAPI_GetTransitGatewayAttachmentExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachmentExecute_Call) RunAndReturn(run func(admin.GetTransitGatewayAttachmentApiRequest) (*admin.StreamsTransitGatewayAttachmentResponse, *http.Response, error)) *StreamsAPI_GetTransitGatewayAttachmentExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetTransitGatewayAttachmentWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) GetTransitGatewayAttachmentWithParams(ctx context.Context, args *admin.GetTransitGatewayAttachmentApiParams) admin.GetTransitGatewayAttachmentApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayAttachmentWithParams")
+	}
+
+	var r0 admin.GetTransitGatewayAttachmentApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetTransitGatewayAttachmentApiParams) admin.GetTransitGatewayAttachmentApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetTransitGatewayAttachmentApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_GetTransitGatewayAttachmentWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayAttachmentWithParams'
+type StreamsAPI_GetTransitGatewayAttachmentWithParams_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayAttachmentWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetTransitGatewayAttachmentApiParams
+func (_e *StreamsAPI_Expecter) GetTransitGatewayAttachmentWithParams(ctx any, args any) *StreamsAPI_GetTransitGatewayAttachmentWithParams_Call {
+	return &StreamsAPI_GetTransitGatewayAttachmentWithParams_Call{Call: _e.mock.On("GetTransitGatewayAttachmentWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachmentWithParams_Call) Run(run func(ctx context.Context, args *admin.GetTransitGatewayAttachmentApiParams)) *StreamsAPI_GetTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetTransitGatewayAttachmentApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachmentWithParams_Call) Return(_a0 admin.GetTransitGatewayAttachmentApiRequest) *StreamsAPI_GetTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayAttachmentWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetTransitGatewayAttachmentApiParams) admin.GetTransitGatewayAttachmentApiRequest) *StreamsAPI_GetTransitGatewayAttachmentWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetTransitGatewayInvitation provides a mock function with given fields: ctx, groupId, resourceShareArn
+func (_m *StreamsAPI) GetTransitGatewayInvitation(ctx context.Context, groupId string, resourceShareArn string) admin.GetTransitGatewayInvitationApiRequest {
+	ret := _m.Called(ctx, groupId, resourceShareArn)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayInvitation")
+	}
+
+	var r0 admin.GetTransitGatewayInvitationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetTransitGatewayInvitationApiRequest); ok {
+		r0 = rf(ctx, groupId, resourceShareArn)
+	} else {
+		r0 = ret.Get(0).(admin.GetTransitGatewayInvitationApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_GetTransitGatewayInvitation_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayInvitation'
+type StreamsAPI_GetTransitGatewayInvitation_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayInvitation is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - resourceShareArn string
+func (_e *StreamsAPI_Expecter) GetTransitGatewayInvitation(ctx any, groupId any, resourceShareArn any) *StreamsAPI_GetTransitGatewayInvitation_Call {
+	return &StreamsAPI_GetTransitGatewayInvitation_Call{Call: _e.mock.On("GetTransitGatewayInvitation", ctx, groupId, resourceShareArn)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitation_Call) Run(run func(ctx context.Context, groupId string, resourceShareArn string)) *StreamsAPI_GetTransitGatewayInvitation_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitation_Call) Return(_a0 admin.GetTransitGatewayInvitationApiRequest) *StreamsAPI_GetTransitGatewayInvitation_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitation_Call) RunAndReturn(run func(context.Context, string, string) admin.GetTransitGatewayInvitationApiRequest) *StreamsAPI_GetTransitGatewayInvitation_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetTransitGatewayInvitationExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) GetTransitGatewayInvitationExecute(r admin.GetTransitGatewayInvitationApiRequest) (*admin.StreamsTransitGatewayInvitationsResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayInvitationExecute")
+	}
+
+	var r0 *admin.StreamsTransitGatewayInvitationsResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetTransitGatewayInvitationApiRequest) (*admin.StreamsTransitGatewayInvitationsResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetTransitGatewayInvitationApiRequest) *admin.StreamsTransitGatewayInvitationsResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTransitGatewayInvitationsResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetTransitGatewayInvitationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetTransitGatewayInvitationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_GetTransitGatewayInvitationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayInvitationExecute'
+type StreamsAPI_GetTransitGatewayInvitationExecute_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayInvitationExecute is a helper method to define mock.On call
+//   - r admin.GetTransitGatewayInvitationApiRequest
+func (_e *StreamsAPI_Expecter) GetTransitGatewayInvitationExecute(r any) *StreamsAPI_GetTransitGatewayInvitationExecute_Call {
+	return &StreamsAPI_GetTransitGatewayInvitationExecute_Call{Call: _e.mock.On("GetTransitGatewayInvitationExecute", r)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitationExecute_Call) Run(run func(r admin.GetTransitGatewayInvitationApiRequest)) *StreamsAPI_GetTransitGatewayInvitationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetTransitGatewayInvitationApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitationExecute_Call) Return(_a0 *admin.StreamsTransitGatewayInvitationsResponse, _a1 *http.Response, _a2 error) *StreamsAPI_GetTransitGatewayInvitationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitationExecute_Call) RunAndReturn(run func(admin.GetTransitGatewayInvitationApiRequest) (*admin.StreamsTransitGatewayInvitationsResponse, *http.Response, error)) *StreamsAPI_GetTransitGatewayInvitationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetTransitGatewayInvitationWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) GetTransitGatewayInvitationWithParams(ctx context.Context, args *admin.GetTransitGatewayInvitationApiParams) admin.GetTransitGatewayInvitationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayInvitationWithParams")
+	}
+
+	var r0 admin.GetTransitGatewayInvitationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetTransitGatewayInvitationApiParams) admin.GetTransitGatewayInvitationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetTransitGatewayInvitationApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_GetTransitGatewayInvitationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayInvitationWithParams'
+type StreamsAPI_GetTransitGatewayInvitationWithParams_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayInvitationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetTransitGatewayInvitationApiParams
+func (_e *StreamsAPI_Expecter) GetTransitGatewayInvitationWithParams(ctx any, args any) *StreamsAPI_GetTransitGatewayInvitationWithParams_Call {
+	return &StreamsAPI_GetTransitGatewayInvitationWithParams_Call{Call: _e.mock.On("GetTransitGatewayInvitationWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetTransitGatewayInvitationApiParams)) *StreamsAPI_GetTransitGatewayInvitationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetTransitGatewayInvitationApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitationWithParams_Call) Return(_a0 admin.GetTransitGatewayInvitationApiRequest) *StreamsAPI_GetTransitGatewayInvitationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayInvitationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetTransitGatewayInvitationApiParams) admin.GetTransitGatewayInvitationApiRequest) *StreamsAPI_GetTransitGatewayInvitationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetTransitGatewayRoute provides a mock function with given fields: ctx, groupId, routeId
+func (_m *StreamsAPI) GetTransitGatewayRoute(ctx context.Context, groupId string, routeId string) admin.GetTransitGatewayRouteApiRequest {
+	ret := _m.Called(ctx, groupId, routeId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayRoute")
+	}
+
+	var r0 admin.GetTransitGatewayRouteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetTransitGatewayRouteApiRequest); ok {
+		r0 = rf(ctx, groupId, routeId)
+	} else {
+		r0 = ret.Get(0).(admin.GetTransitGatewayRouteApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_GetTransitGatewayRoute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayRoute'
+type StreamsAPI_GetTransitGatewayRoute_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayRoute is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - routeId string
+func (_e *StreamsAPI_Expecter) GetTransitGatewayRoute(ctx any, groupId any, routeId any) *StreamsAPI_GetTransitGatewayRoute_Call {
+	return &StreamsAPI_GetTransitGatewayRoute_Call{Call: _e.mock.On("GetTransitGatewayRoute", ctx, groupId, routeId)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRoute_Call) Run(run func(ctx context.Context, groupId string, routeId string)) *StreamsAPI_GetTransitGatewayRoute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRoute_Call) Return(_a0 admin.GetTransitGatewayRouteApiRequest) *StreamsAPI_GetTransitGatewayRoute_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRoute_Call) RunAndReturn(run func(context.Context, string, string) admin.GetTransitGatewayRouteApiRequest) *StreamsAPI_GetTransitGatewayRoute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetTransitGatewayRouteExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) GetTransitGatewayRouteExecute(r admin.GetTransitGatewayRouteApiRequest) (*admin.StreamsTransitGatewayRouteResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayRouteExecute")
+	}
+
+	var r0 *admin.StreamsTransitGatewayRouteResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetTransitGatewayRouteApiRequest) (*admin.StreamsTransitGatewayRouteResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetTransitGatewayRouteApiRequest) *admin.StreamsTransitGatewayRouteResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTransitGatewayRouteResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetTransitGatewayRouteApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetTransitGatewayRouteApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_GetTransitGatewayRouteExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayRouteExecute'
+type StreamsAPI_GetTransitGatewayRouteExecute_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayRouteExecute is a helper method to define mock.On call
+//   - r admin.GetTransitGatewayRouteApiRequest
+func (_e *StreamsAPI_Expecter) GetTransitGatewayRouteExecute(r any) *StreamsAPI_GetTransitGatewayRouteExecute_Call {
+	return &StreamsAPI_GetTransitGatewayRouteExecute_Call{Call: _e.mock.On("GetTransitGatewayRouteExecute", r)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRouteExecute_Call) Run(run func(r admin.GetTransitGatewayRouteApiRequest)) *StreamsAPI_GetTransitGatewayRouteExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetTransitGatewayRouteApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRouteExecute_Call) Return(_a0 *admin.StreamsTransitGatewayRouteResponse, _a1 *http.Response, _a2 error) *StreamsAPI_GetTransitGatewayRouteExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRouteExecute_Call) RunAndReturn(run func(admin.GetTransitGatewayRouteApiRequest) (*admin.StreamsTransitGatewayRouteResponse, *http.Response, error)) *StreamsAPI_GetTransitGatewayRouteExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetTransitGatewayRouteWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) GetTransitGatewayRouteWithParams(ctx context.Context, args *admin.GetTransitGatewayRouteApiParams) admin.GetTransitGatewayRouteApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTransitGatewayRouteWithParams")
+	}
+
+	var r0 admin.GetTransitGatewayRouteApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetTransitGatewayRouteApiParams) admin.GetTransitGatewayRouteApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetTransitGatewayRouteApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_GetTransitGatewayRouteWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTransitGatewayRouteWithParams'
+type StreamsAPI_GetTransitGatewayRouteWithParams_Call struct {
+	*mock.Call
+}
+
+// GetTransitGatewayRouteWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetTransitGatewayRouteApiParams
+func (_e *StreamsAPI_Expecter) GetTransitGatewayRouteWithParams(ctx any, args any) *StreamsAPI_GetTransitGatewayRouteWithParams_Call {
+	return &StreamsAPI_GetTransitGatewayRouteWithParams_Call{Call: _e.mock.On("GetTransitGatewayRouteWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRouteWithParams_Call) Run(run func(ctx context.Context, args *admin.GetTransitGatewayRouteApiParams)) *StreamsAPI_GetTransitGatewayRouteWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetTransitGatewayRouteApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRouteWithParams_Call) Return(_a0 admin.GetTransitGatewayRouteApiRequest) *StreamsAPI_GetTransitGatewayRouteWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_GetTransitGatewayRouteWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetTransitGatewayRouteApiParams) admin.GetTransitGatewayRouteApiRequest) *StreamsAPI_GetTransitGatewayRouteWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListActivePeeringConnections provides a mock function with given fields: ctx, groupId
 func (_m *StreamsAPI) ListActivePeeringConnections(ctx context.Context, groupId string) admin.ListActivePeeringConnectionsApiRequest {
 	ret := _m.Called(ctx, groupId)
@@ -4186,6 +5608,489 @@ func (_c *StreamsAPI_ListStreamWorkspacesWithParams_Call) RunAndReturn(run func(
 	return _c
 }
 
+// ListTransitGatewayAttachments provides a mock function with given fields: ctx, groupId
+func (_m *StreamsAPI) ListTransitGatewayAttachments(ctx context.Context, groupId string) admin.ListTransitGatewayAttachmentsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayAttachments")
+	}
+
+	var r0 admin.ListTransitGatewayAttachmentsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListTransitGatewayAttachmentsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListTransitGatewayAttachmentsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_ListTransitGatewayAttachments_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayAttachments'
+type StreamsAPI_ListTransitGatewayAttachments_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayAttachments is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *StreamsAPI_Expecter) ListTransitGatewayAttachments(ctx any, groupId any) *StreamsAPI_ListTransitGatewayAttachments_Call {
+	return &StreamsAPI_ListTransitGatewayAttachments_Call{Call: _e.mock.On("ListTransitGatewayAttachments", ctx, groupId)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachments_Call) Run(run func(ctx context.Context, groupId string)) *StreamsAPI_ListTransitGatewayAttachments_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachments_Call) Return(_a0 admin.ListTransitGatewayAttachmentsApiRequest) *StreamsAPI_ListTransitGatewayAttachments_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachments_Call) RunAndReturn(run func(context.Context, string) admin.ListTransitGatewayAttachmentsApiRequest) *StreamsAPI_ListTransitGatewayAttachments_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTransitGatewayAttachmentsExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) ListTransitGatewayAttachmentsExecute(r admin.ListTransitGatewayAttachmentsApiRequest) (*admin.PaginatedApiStreamsTransitGatewayAttachmentResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayAttachmentsExecute")
+	}
+
+	var r0 *admin.PaginatedApiStreamsTransitGatewayAttachmentResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListTransitGatewayAttachmentsApiRequest) (*admin.PaginatedApiStreamsTransitGatewayAttachmentResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListTransitGatewayAttachmentsApiRequest) *admin.PaginatedApiStreamsTransitGatewayAttachmentResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiStreamsTransitGatewayAttachmentResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListTransitGatewayAttachmentsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListTransitGatewayAttachmentsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_ListTransitGatewayAttachmentsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayAttachmentsExecute'
+type StreamsAPI_ListTransitGatewayAttachmentsExecute_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayAttachmentsExecute is a helper method to define mock.On call
+//   - r admin.ListTransitGatewayAttachmentsApiRequest
+func (_e *StreamsAPI_Expecter) ListTransitGatewayAttachmentsExecute(r any) *StreamsAPI_ListTransitGatewayAttachmentsExecute_Call {
+	return &StreamsAPI_ListTransitGatewayAttachmentsExecute_Call{Call: _e.mock.On("ListTransitGatewayAttachmentsExecute", r)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachmentsExecute_Call) Run(run func(r admin.ListTransitGatewayAttachmentsApiRequest)) *StreamsAPI_ListTransitGatewayAttachmentsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListTransitGatewayAttachmentsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachmentsExecute_Call) Return(_a0 *admin.PaginatedApiStreamsTransitGatewayAttachmentResponse, _a1 *http.Response, _a2 error) *StreamsAPI_ListTransitGatewayAttachmentsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachmentsExecute_Call) RunAndReturn(run func(admin.ListTransitGatewayAttachmentsApiRequest) (*admin.PaginatedApiStreamsTransitGatewayAttachmentResponse, *http.Response, error)) *StreamsAPI_ListTransitGatewayAttachmentsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTransitGatewayAttachmentsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) ListTransitGatewayAttachmentsWithParams(ctx context.Context, args *admin.ListTransitGatewayAttachmentsApiParams) admin.ListTransitGatewayAttachmentsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayAttachmentsWithParams")
+	}
+
+	var r0 admin.ListTransitGatewayAttachmentsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListTransitGatewayAttachmentsApiParams) admin.ListTransitGatewayAttachmentsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListTransitGatewayAttachmentsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayAttachmentsWithParams'
+type StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayAttachmentsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListTransitGatewayAttachmentsApiParams
+func (_e *StreamsAPI_Expecter) ListTransitGatewayAttachmentsWithParams(ctx any, args any) *StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call {
+	return &StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call{Call: _e.mock.On("ListTransitGatewayAttachmentsWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListTransitGatewayAttachmentsApiParams)) *StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListTransitGatewayAttachmentsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call) Return(_a0 admin.ListTransitGatewayAttachmentsApiRequest) *StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListTransitGatewayAttachmentsApiParams) admin.ListTransitGatewayAttachmentsApiRequest) *StreamsAPI_ListTransitGatewayAttachmentsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTransitGatewayInvitations provides a mock function with given fields: ctx, groupId
+func (_m *StreamsAPI) ListTransitGatewayInvitations(ctx context.Context, groupId string) admin.ListTransitGatewayInvitationsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayInvitations")
+	}
+
+	var r0 admin.ListTransitGatewayInvitationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListTransitGatewayInvitationsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListTransitGatewayInvitationsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_ListTransitGatewayInvitations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayInvitations'
+type StreamsAPI_ListTransitGatewayInvitations_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayInvitations is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *StreamsAPI_Expecter) ListTransitGatewayInvitations(ctx any, groupId any) *StreamsAPI_ListTransitGatewayInvitations_Call {
+	return &StreamsAPI_ListTransitGatewayInvitations_Call{Call: _e.mock.On("ListTransitGatewayInvitations", ctx, groupId)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitations_Call) Run(run func(ctx context.Context, groupId string)) *StreamsAPI_ListTransitGatewayInvitations_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitations_Call) Return(_a0 admin.ListTransitGatewayInvitationsApiRequest) *StreamsAPI_ListTransitGatewayInvitations_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitations_Call) RunAndReturn(run func(context.Context, string) admin.ListTransitGatewayInvitationsApiRequest) *StreamsAPI_ListTransitGatewayInvitations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTransitGatewayInvitationsExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) ListTransitGatewayInvitationsExecute(r admin.ListTransitGatewayInvitationsApiRequest) (*admin.PaginatedStreamsTransitGatewayInvitationsResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayInvitationsExecute")
+	}
+
+	var r0 *admin.PaginatedStreamsTransitGatewayInvitationsResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListTransitGatewayInvitationsApiRequest) (*admin.PaginatedStreamsTransitGatewayInvitationsResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListTransitGatewayInvitationsApiRequest) *admin.PaginatedStreamsTransitGatewayInvitationsResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedStreamsTransitGatewayInvitationsResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListTransitGatewayInvitationsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListTransitGatewayInvitationsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_ListTransitGatewayInvitationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayInvitationsExecute'
+type StreamsAPI_ListTransitGatewayInvitationsExecute_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayInvitationsExecute is a helper method to define mock.On call
+//   - r admin.ListTransitGatewayInvitationsApiRequest
+func (_e *StreamsAPI_Expecter) ListTransitGatewayInvitationsExecute(r any) *StreamsAPI_ListTransitGatewayInvitationsExecute_Call {
+	return &StreamsAPI_ListTransitGatewayInvitationsExecute_Call{Call: _e.mock.On("ListTransitGatewayInvitationsExecute", r)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitationsExecute_Call) Run(run func(r admin.ListTransitGatewayInvitationsApiRequest)) *StreamsAPI_ListTransitGatewayInvitationsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListTransitGatewayInvitationsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitationsExecute_Call) Return(_a0 *admin.PaginatedStreamsTransitGatewayInvitationsResponse, _a1 *http.Response, _a2 error) *StreamsAPI_ListTransitGatewayInvitationsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitationsExecute_Call) RunAndReturn(run func(admin.ListTransitGatewayInvitationsApiRequest) (*admin.PaginatedStreamsTransitGatewayInvitationsResponse, *http.Response, error)) *StreamsAPI_ListTransitGatewayInvitationsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTransitGatewayInvitationsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) ListTransitGatewayInvitationsWithParams(ctx context.Context, args *admin.ListTransitGatewayInvitationsApiParams) admin.ListTransitGatewayInvitationsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayInvitationsWithParams")
+	}
+
+	var r0 admin.ListTransitGatewayInvitationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListTransitGatewayInvitationsApiParams) admin.ListTransitGatewayInvitationsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListTransitGatewayInvitationsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_ListTransitGatewayInvitationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayInvitationsWithParams'
+type StreamsAPI_ListTransitGatewayInvitationsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayInvitationsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListTransitGatewayInvitationsApiParams
+func (_e *StreamsAPI_Expecter) ListTransitGatewayInvitationsWithParams(ctx any, args any) *StreamsAPI_ListTransitGatewayInvitationsWithParams_Call {
+	return &StreamsAPI_ListTransitGatewayInvitationsWithParams_Call{Call: _e.mock.On("ListTransitGatewayInvitationsWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitationsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListTransitGatewayInvitationsApiParams)) *StreamsAPI_ListTransitGatewayInvitationsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListTransitGatewayInvitationsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitationsWithParams_Call) Return(_a0 admin.ListTransitGatewayInvitationsApiRequest) *StreamsAPI_ListTransitGatewayInvitationsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayInvitationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListTransitGatewayInvitationsApiParams) admin.ListTransitGatewayInvitationsApiRequest) *StreamsAPI_ListTransitGatewayInvitationsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTransitGatewayRoutes provides a mock function with given fields: ctx, groupId
+func (_m *StreamsAPI) ListTransitGatewayRoutes(ctx context.Context, groupId string) admin.ListTransitGatewayRoutesApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayRoutes")
+	}
+
+	var r0 admin.ListTransitGatewayRoutesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListTransitGatewayRoutesApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListTransitGatewayRoutesApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_ListTransitGatewayRoutes_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayRoutes'
+type StreamsAPI_ListTransitGatewayRoutes_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayRoutes is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *StreamsAPI_Expecter) ListTransitGatewayRoutes(ctx any, groupId any) *StreamsAPI_ListTransitGatewayRoutes_Call {
+	return &StreamsAPI_ListTransitGatewayRoutes_Call{Call: _e.mock.On("ListTransitGatewayRoutes", ctx, groupId)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutes_Call) Run(run func(ctx context.Context, groupId string)) *StreamsAPI_ListTransitGatewayRoutes_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutes_Call) Return(_a0 admin.ListTransitGatewayRoutesApiRequest) *StreamsAPI_ListTransitGatewayRoutes_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutes_Call) RunAndReturn(run func(context.Context, string) admin.ListTransitGatewayRoutesApiRequest) *StreamsAPI_ListTransitGatewayRoutes_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTransitGatewayRoutesExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) ListTransitGatewayRoutesExecute(r admin.ListTransitGatewayRoutesApiRequest) (*admin.PaginatedApiStreamsTransitGatewayRouteResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayRoutesExecute")
+	}
+
+	var r0 *admin.PaginatedApiStreamsTransitGatewayRouteResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListTransitGatewayRoutesApiRequest) (*admin.PaginatedApiStreamsTransitGatewayRouteResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListTransitGatewayRoutesApiRequest) *admin.PaginatedApiStreamsTransitGatewayRouteResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiStreamsTransitGatewayRouteResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListTransitGatewayRoutesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListTransitGatewayRoutesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_ListTransitGatewayRoutesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayRoutesExecute'
+type StreamsAPI_ListTransitGatewayRoutesExecute_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayRoutesExecute is a helper method to define mock.On call
+//   - r admin.ListTransitGatewayRoutesApiRequest
+func (_e *StreamsAPI_Expecter) ListTransitGatewayRoutesExecute(r any) *StreamsAPI_ListTransitGatewayRoutesExecute_Call {
+	return &StreamsAPI_ListTransitGatewayRoutesExecute_Call{Call: _e.mock.On("ListTransitGatewayRoutesExecute", r)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutesExecute_Call) Run(run func(r admin.ListTransitGatewayRoutesApiRequest)) *StreamsAPI_ListTransitGatewayRoutesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListTransitGatewayRoutesApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutesExecute_Call) Return(_a0 *admin.PaginatedApiStreamsTransitGatewayRouteResponse, _a1 *http.Response, _a2 error) *StreamsAPI_ListTransitGatewayRoutesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutesExecute_Call) RunAndReturn(run func(admin.ListTransitGatewayRoutesApiRequest) (*admin.PaginatedApiStreamsTransitGatewayRouteResponse, *http.Response, error)) *StreamsAPI_ListTransitGatewayRoutesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTransitGatewayRoutesWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) ListTransitGatewayRoutesWithParams(ctx context.Context, args *admin.ListTransitGatewayRoutesApiParams) admin.ListTransitGatewayRoutesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTransitGatewayRoutesWithParams")
+	}
+
+	var r0 admin.ListTransitGatewayRoutesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListTransitGatewayRoutesApiParams) admin.ListTransitGatewayRoutesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListTransitGatewayRoutesApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_ListTransitGatewayRoutesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTransitGatewayRoutesWithParams'
+type StreamsAPI_ListTransitGatewayRoutesWithParams_Call struct {
+	*mock.Call
+}
+
+// ListTransitGatewayRoutesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListTransitGatewayRoutesApiParams
+func (_e *StreamsAPI_Expecter) ListTransitGatewayRoutesWithParams(ctx any, args any) *StreamsAPI_ListTransitGatewayRoutesWithParams_Call {
+	return &StreamsAPI_ListTransitGatewayRoutesWithParams_Call{Call: _e.mock.On("ListTransitGatewayRoutesWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListTransitGatewayRoutesApiParams)) *StreamsAPI_ListTransitGatewayRoutesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListTransitGatewayRoutesApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutesWithParams_Call) Return(_a0 admin.ListTransitGatewayRoutesApiRequest) *StreamsAPI_ListTransitGatewayRoutesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_ListTransitGatewayRoutesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListTransitGatewayRoutesApiParams) admin.ListTransitGatewayRoutesApiRequest) *StreamsAPI_ListTransitGatewayRoutesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListVpcPeeringConnections provides a mock function with given fields: ctx, groupId
 func (_m *StreamsAPI) ListVpcPeeringConnections(ctx context.Context, groupId string) admin.ListVpcPeeringConnectionsApiRequest {
 	ret := _m.Called(ctx, groupId)
@@ -4343,6 +6248,159 @@ func (_c *StreamsAPI_ListVpcPeeringConnectionsWithParams_Call) Return(_a0 admin.
 }
 
 func (_c *StreamsAPI_ListVpcPeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListVpcPeeringConnectionsApiParams) admin.ListVpcPeeringConnectionsApiRequest) *StreamsAPI_ListVpcPeeringConnectionsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RejectTransitGatewayInvitations provides a mock function with given fields: ctx, groupId, streamsTransitGatewayResourceShare
+func (_m *StreamsAPI) RejectTransitGatewayInvitations(ctx context.Context, groupId string, streamsTransitGatewayResourceShare *admin.StreamsTransitGatewayResourceShare) admin.RejectTransitGatewayInvitationsApiRequest {
+	ret := _m.Called(ctx, groupId, streamsTransitGatewayResourceShare)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RejectTransitGatewayInvitations")
+	}
+
+	var r0 admin.RejectTransitGatewayInvitationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.StreamsTransitGatewayResourceShare) admin.RejectTransitGatewayInvitationsApiRequest); ok {
+		r0 = rf(ctx, groupId, streamsTransitGatewayResourceShare)
+	} else {
+		r0 = ret.Get(0).(admin.RejectTransitGatewayInvitationsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_RejectTransitGatewayInvitations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectTransitGatewayInvitations'
+type StreamsAPI_RejectTransitGatewayInvitations_Call struct {
+	*mock.Call
+}
+
+// RejectTransitGatewayInvitations is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - streamsTransitGatewayResourceShare *admin.StreamsTransitGatewayResourceShare
+func (_e *StreamsAPI_Expecter) RejectTransitGatewayInvitations(ctx any, groupId any, streamsTransitGatewayResourceShare any) *StreamsAPI_RejectTransitGatewayInvitations_Call {
+	return &StreamsAPI_RejectTransitGatewayInvitations_Call{Call: _e.mock.On("RejectTransitGatewayInvitations", ctx, groupId, streamsTransitGatewayResourceShare)}
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitations_Call) Run(run func(ctx context.Context, groupId string, streamsTransitGatewayResourceShare *admin.StreamsTransitGatewayResourceShare)) *StreamsAPI_RejectTransitGatewayInvitations_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.StreamsTransitGatewayResourceShare))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitations_Call) Return(_a0 admin.RejectTransitGatewayInvitationsApiRequest) *StreamsAPI_RejectTransitGatewayInvitations_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitations_Call) RunAndReturn(run func(context.Context, string, *admin.StreamsTransitGatewayResourceShare) admin.RejectTransitGatewayInvitationsApiRequest) *StreamsAPI_RejectTransitGatewayInvitations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RejectTransitGatewayInvitationsExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) RejectTransitGatewayInvitationsExecute(r admin.RejectTransitGatewayInvitationsApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RejectTransitGatewayInvitationsExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.RejectTransitGatewayInvitationsApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.RejectTransitGatewayInvitationsApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.RejectTransitGatewayInvitationsApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsAPI_RejectTransitGatewayInvitationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectTransitGatewayInvitationsExecute'
+type StreamsAPI_RejectTransitGatewayInvitationsExecute_Call struct {
+	*mock.Call
+}
+
+// RejectTransitGatewayInvitationsExecute is a helper method to define mock.On call
+//   - r admin.RejectTransitGatewayInvitationsApiRequest
+func (_e *StreamsAPI_Expecter) RejectTransitGatewayInvitationsExecute(r any) *StreamsAPI_RejectTransitGatewayInvitationsExecute_Call {
+	return &StreamsAPI_RejectTransitGatewayInvitationsExecute_Call{Call: _e.mock.On("RejectTransitGatewayInvitationsExecute", r)}
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitationsExecute_Call) Run(run func(r admin.RejectTransitGatewayInvitationsApiRequest)) *StreamsAPI_RejectTransitGatewayInvitationsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.RejectTransitGatewayInvitationsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitationsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsAPI_RejectTransitGatewayInvitationsExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitationsExecute_Call) RunAndReturn(run func(admin.RejectTransitGatewayInvitationsApiRequest) (*http.Response, error)) *StreamsAPI_RejectTransitGatewayInvitationsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RejectTransitGatewayInvitationsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) RejectTransitGatewayInvitationsWithParams(ctx context.Context, args *admin.RejectTransitGatewayInvitationsApiParams) admin.RejectTransitGatewayInvitationsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RejectTransitGatewayInvitationsWithParams")
+	}
+
+	var r0 admin.RejectTransitGatewayInvitationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RejectTransitGatewayInvitationsApiParams) admin.RejectTransitGatewayInvitationsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.RejectTransitGatewayInvitationsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectTransitGatewayInvitationsWithParams'
+type StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call struct {
+	*mock.Call
+}
+
+// RejectTransitGatewayInvitationsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.RejectTransitGatewayInvitationsApiParams
+func (_e *StreamsAPI_Expecter) RejectTransitGatewayInvitationsWithParams(ctx any, args any) *StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call {
+	return &StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call{Call: _e.mock.On("RejectTransitGatewayInvitationsWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call) Run(run func(ctx context.Context, args *admin.RejectTransitGatewayInvitationsApiParams)) *StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.RejectTransitGatewayInvitationsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call) Return(_a0 admin.RejectTransitGatewayInvitationsApiRequest) *StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.RejectTransitGatewayInvitationsApiParams) admin.RejectTransitGatewayInvitationsApiRequest) *StreamsAPI_RejectTransitGatewayInvitationsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -4607,17 +6665,17 @@ func (_c *StreamsAPI_StartStreamProcessorExecute_Call) RunAndReturn(run func(adm
 	return _c
 }
 
-// StartStreamProcessorWith provides a mock function with given fields: ctx, groupId, tenantName, processorName, streamsStartStreamProcessorWith
-func (_m *StreamsAPI) StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *admin.StreamsStartStreamProcessorWith) admin.StartStreamProcessorWithApiRequest {
-	ret := _m.Called(ctx, groupId, tenantName, processorName, streamsStartStreamProcessorWith)
+// StartStreamProcessorWith provides a mock function with given fields: ctx, groupId, tenantName, processorName, startStreamProcessorWithPreview
+func (_m *StreamsAPI) StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, startStreamProcessorWithPreview *admin.StartStreamProcessorWithPreview) admin.StartStreamProcessorWithApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, processorName, startStreamProcessorWithPreview)
 
 	if len(ret) == 0 {
 		panic("no return value specified for StartStreamProcessorWith")
 	}
 
 	var r0 admin.StartStreamProcessorWithApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.StreamsStartStreamProcessorWith) admin.StartStreamProcessorWithApiRequest); ok {
-		r0 = rf(ctx, groupId, tenantName, processorName, streamsStartStreamProcessorWith)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.StartStreamProcessorWithPreview) admin.StartStreamProcessorWithApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, processorName, startStreamProcessorWithPreview)
 	} else {
 		r0 = ret.Get(0).(admin.StartStreamProcessorWithApiRequest)
 	}
@@ -4635,14 +6693,14 @@ type StreamsAPI_StartStreamProcessorWith_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - processorName string
-//   - streamsStartStreamProcessorWith *admin.StreamsStartStreamProcessorWith
-func (_e *StreamsAPI_Expecter) StartStreamProcessorWith(ctx any, groupId any, tenantName any, processorName any, streamsStartStreamProcessorWith any) *StreamsAPI_StartStreamProcessorWith_Call {
-	return &StreamsAPI_StartStreamProcessorWith_Call{Call: _e.mock.On("StartStreamProcessorWith", ctx, groupId, tenantName, processorName, streamsStartStreamProcessorWith)}
+//   - startStreamProcessorWithPreview *admin.StartStreamProcessorWithPreview
+func (_e *StreamsAPI_Expecter) StartStreamProcessorWith(ctx any, groupId any, tenantName any, processorName any, startStreamProcessorWithPreview any) *StreamsAPI_StartStreamProcessorWith_Call {
+	return &StreamsAPI_StartStreamProcessorWith_Call{Call: _e.mock.On("StartStreamProcessorWith", ctx, groupId, tenantName, processorName, startStreamProcessorWithPreview)}
 }
 
-func (_c *StreamsAPI_StartStreamProcessorWith_Call) Run(run func(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *admin.StreamsStartStreamProcessorWith)) *StreamsAPI_StartStreamProcessorWith_Call {
+func (_c *StreamsAPI_StartStreamProcessorWith_Call) Run(run func(ctx context.Context, groupId string, tenantName string, processorName string, startStreamProcessorWithPreview *admin.StartStreamProcessorWithPreview)) *StreamsAPI_StartStreamProcessorWith_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(*admin.StreamsStartStreamProcessorWith))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(*admin.StartStreamProcessorWithPreview))
 	})
 	return _c
 }
@@ -4652,7 +6710,7 @@ func (_c *StreamsAPI_StartStreamProcessorWith_Call) Return(_a0 admin.StartStream
 	return _c
 }
 
-func (_c *StreamsAPI_StartStreamProcessorWith_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.StreamsStartStreamProcessorWith) admin.StartStreamProcessorWithApiRequest) *StreamsAPI_StartStreamProcessorWith_Call {
+func (_c *StreamsAPI_StartStreamProcessorWith_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.StartStreamProcessorWithPreview) admin.StartStreamProcessorWithApiRequest) *StreamsAPI_StartStreamProcessorWith_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -4959,6 +7017,169 @@ func (_c *StreamsAPI_StopStreamProcessorWithParams_Call) Return(_a0 admin.StopSt
 }
 
 func (_c *StreamsAPI_StopStreamProcessorWithParams_Call) RunAndReturn(run func(context.Context, *admin.StopStreamProcessorApiParams) admin.StopStreamProcessorApiRequest) *StreamsAPI_StopStreamProcessorWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdatePrivateLinkConnection provides a mock function with given fields: ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest
+func (_m *StreamsAPI) UpdatePrivateLinkConnection(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *admin.StreamsPrivateLinkConnectionRequest) admin.UpdatePrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateLinkConnection")
+	}
+
+	var r0 admin.UpdatePrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsPrivateLinkConnectionRequest) admin.UpdatePrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdatePrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_UpdatePrivateLinkConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateLinkConnection'
+type StreamsAPI_UpdatePrivateLinkConnection_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateLinkConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - connectionId string
+//   - streamsPrivateLinkConnectionRequest *admin.StreamsPrivateLinkConnectionRequest
+func (_e *StreamsAPI_Expecter) UpdatePrivateLinkConnection(ctx any, groupId any, connectionId any, streamsPrivateLinkConnectionRequest any) *StreamsAPI_UpdatePrivateLinkConnection_Call {
+	return &StreamsAPI_UpdatePrivateLinkConnection_Call{Call: _e.mock.On("UpdatePrivateLinkConnection", ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest)}
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnection_Call) Run(run func(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *admin.StreamsPrivateLinkConnectionRequest)) *StreamsAPI_UpdatePrivateLinkConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.StreamsPrivateLinkConnectionRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnection_Call) Return(_a0 admin.UpdatePrivateLinkConnectionApiRequest) *StreamsAPI_UpdatePrivateLinkConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnection_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsPrivateLinkConnectionRequest) admin.UpdatePrivateLinkConnectionApiRequest) *StreamsAPI_UpdatePrivateLinkConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdatePrivateLinkConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) UpdatePrivateLinkConnectionExecute(r admin.UpdatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateLinkConnectionExecute")
+	}
+
+	var r0 *admin.StreamsPrivateLinkConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdatePrivateLinkConnectionApiRequest) *admin.StreamsPrivateLinkConnection); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsPrivateLinkConnection)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdatePrivateLinkConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdatePrivateLinkConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_UpdatePrivateLinkConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateLinkConnectionExecute'
+type StreamsAPI_UpdatePrivateLinkConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateLinkConnectionExecute is a helper method to define mock.On call
+//   - r admin.UpdatePrivateLinkConnectionApiRequest
+func (_e *StreamsAPI_Expecter) UpdatePrivateLinkConnectionExecute(r any) *StreamsAPI_UpdatePrivateLinkConnectionExecute_Call {
+	return &StreamsAPI_UpdatePrivateLinkConnectionExecute_Call{Call: _e.mock.On("UpdatePrivateLinkConnectionExecute", r)}
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnectionExecute_Call) Run(run func(r admin.UpdatePrivateLinkConnectionApiRequest)) *StreamsAPI_UpdatePrivateLinkConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdatePrivateLinkConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnectionExecute_Call) Return(_a0 *admin.StreamsPrivateLinkConnection, _a1 *http.Response, _a2 error) *StreamsAPI_UpdatePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnectionExecute_Call) RunAndReturn(run func(admin.UpdatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error)) *StreamsAPI_UpdatePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdatePrivateLinkConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) UpdatePrivateLinkConnectionWithParams(ctx context.Context, args *admin.UpdatePrivateLinkConnectionApiParams) admin.UpdatePrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateLinkConnectionWithParams")
+	}
+
+	var r0 admin.UpdatePrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdatePrivateLinkConnectionApiParams) admin.UpdatePrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdatePrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateLinkConnectionWithParams'
+type StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateLinkConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdatePrivateLinkConnectionApiParams
+func (_e *StreamsAPI_Expecter) UpdatePrivateLinkConnectionWithParams(ctx any, args any) *StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call {
+	return &StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call{Call: _e.mock.On("UpdatePrivateLinkConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdatePrivateLinkConnectionApiParams)) *StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdatePrivateLinkConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call) Return(_a0 admin.UpdatePrivateLinkConnectionApiRequest) *StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdatePrivateLinkConnectionApiParams) admin.UpdatePrivateLinkConnectionApiRequest) *StreamsAPI_UpdatePrivateLinkConnectionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
