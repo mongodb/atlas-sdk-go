@@ -190,6 +190,11 @@ func (o *{{classname}}) Has{{name}}() bool {
 {{/deprecated}}
 func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
 	o.{{name}} = {{^isFreeFormObject}}&{{/isFreeFormObject}}{{#isFreeFormObject}}{{#isMap}}&{{/isMap}}{{/isFreeFormObject}}v
+{{^isArray}}
+{{^isAdditionalPropertiesTrue}}
+	o.NullFields = removeNullField(o.NullFields, "{{name}}")
+{{/isAdditionalPropertiesTrue}}
+{{/isArray}}
 }
 
 {{^isArray}}
@@ -197,7 +202,7 @@ func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
 // Set{{name}}Nil sets {{name}} to an explicit JSON null when marshaled.
 func (o *{{classname}}) Set{{name}}Nil() {
 	o.{{name}} = nil
-	o.NullFields = append(o.NullFields, "{{name}}")
+	o.NullFields = addNullField(o.NullFields, "{{name}}")
 }
 
 {{/isAdditionalPropertiesTrue}}

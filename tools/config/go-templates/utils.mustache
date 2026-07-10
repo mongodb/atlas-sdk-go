@@ -120,6 +120,26 @@ func jsonTagsByFieldName(v any) map[string]string {
 	return tags
 }
 
+// addNullField appends name to fields if not already present.
+func addNullField(fields []string, name string) []string {
+	for _, f := range fields {
+		if f == name {
+			return fields
+		}
+	}
+	return append(fields, name)
+}
+
+// removeNullField returns fields with name removed, if present.
+func removeNullField(fields []string, name string) []string {
+	for i, f := range fields {
+		if f == name {
+			return append(fields[:i], fields[i+1:]...)
+		}
+	}
+	return fields
+}
+
 // marshalWithNullFields marshals v to JSON as usual, then patches the result so that fields named
 // in nullFields are sent as an explicit JSON null, regardless of their value.
 //

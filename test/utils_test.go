@@ -1,6 +1,7 @@
 package test
 
 import (
+	"encoding/json"
 	"testing"
 	"time"
 
@@ -101,4 +102,126 @@ func TestStringToTime(t *testing.T) {
 			}
 		})
 	}
+}
+
+func unmarshalToMap(t *testing.T, b []byte) map[string]any {
+	t.Helper()
+	var out map[string]any
+	if err := json.Unmarshal(b, &out); err != nil {
+		t.Fatalf("failed to unmarshal JSON: %v", err)
+	}
+	return out
+}
+
+func TestNullFieldsMarshalJSON(t *testing.T) {
+	t.Run("empty NullFields marshals normally", func(t *testing.T) {
+		entry := admin.NewNetworkPermissionEntry()
+		entry.SetIpAddress("1.2.3.4")
+		entry.SetComment("a comment")
+
+		b, err := json.Marshal(entry)
+		if err != nil {
+			t.Fatalf("unexpected error: %v", err)
+		}
+
+		got := unmarshalToMap(t, b)
+		if got["ipAddress"] != "1.2.3.4" {
+			t.Errorf("want ipAddress %q, got %v", "1.2.3.4", got["ipAddress"])
+		}
+		if got["comment"] != "a comment" {
+			t.Errorf("want comment %q, got %v", "a comment", got["comment"])
+		}
+	})
+
+	t.Run("single null field overrides its value", func(t *testing.T) {
+		entry := admin.NewNetworkPermissionEntry()
+		entry.SetIpAddress("1.2.3.4")
+		entry.SetComment("a comment")
+		entry.SetCommentNil()
+
+		b, err := json.Marshal(entry)
+		if err != nil {
+			t.Fatalf("unexpected error: %v", err)
+		}
+
+		got := unmarshalToMap(t, b)
+		if v, ok := got["comment"]; !ok || v != nil {
+			t.Errorf("want comment null, got %v (present=%t)", v, ok)
+		}
+		if got["ipAddress"] != "1.2.3.4" {
+			t.Errorf("want ipAddress %q, got %v", "1.2.3.4", got["ipAddress"])
+		}
+	})
+
+	t.Run("multiple null fields are all overridden", func(t *testing.T) {
+		entry := admin.NewNetworkPermissionEntry()
+		entry.SetIpAddress("1.2.3.4")
+		entry.SetComment("a comment")
+		entry.SetCommentNil()
+		entry.SetCidrBlockNil()
+
+		b, err := json.Marshal(entry)
+		if err != nil {
+			t.Fatalf("unexpected error: %v", err)
+		}
+
+		got := unmarshalToMap(t, b)
+		if v, ok := got["comment"]; !ok || v != nil {
+			t.Errorf("want comment null, got %v (present=%t)", v, ok)
+		}
+		if v, ok := got["cidrBlock"]; !ok || v != nil {
+			t.Errorf("want cidrBlock null, got %v (present=%t)", v, ok)
+		}
+	})
+
+	t.Run("unknown field name in NullFields is ignored", func(t *testing.T) {
+		entry := admin.NewNetworkPermissionEntry()
+		entry.SetIpAddress("1.2.3.4")
+		entry.NullFields = append(entry.NullFields, "NotARealField")
+
+		b, err := json.Marshal(entry)
+		if err != nil {
+			t.Fatalf("unexpected error: %v", err)
+		}
+
+		got := unmarshalToMap(t, b)
+		if _, ok := got["NotARealField"]; ok {
+			t.Errorf("did not expect unknown field to appear in output, got %v", got)
+		}
+		if got["ipAddress"] != "1.2.3.4" {
+			t.Errorf("want ipAddress %q, got %v", "1.2.3.4", got["ipAddress"])
+		}
+	})
+
+	t.Run("setting a value after SetXxxNil clears the null override", func(t *testing.T) {
+		entry := admin.NewNetworkPermissionEntry()
+		entry.SetCommentNil()
+		entry.SetComment("a comment")
+
+		b, err := json.Marshal(entry)
+		if err != nil {
+			t.Fatalf("unexpected error: %v", err)
+		}
+
+		got := unmarshalToMap(t, b)
+		if got["comment"] != "a comment" {
+			t.Errorf("want comment %q, got %v", "a comment", got["comment"])
+		}
+	})
+
+	t.Run("calling SetXxxNil twice does not duplicate the field name", func(t *testing.T) {
+		entry := admin.NewNetworkPermissionEntry()
+		entry.SetCommentNil()
+		entry.SetCommentNil()
+
+		count := 0
+		for _, f := range entry.NullFields {
+			if f == "Comment" {
+				count++
+			}
+		}
+		if count != 1 {
+			t.Errorf("want Comment to appear once in NullFields, got %d (%v)", count, entry.NullFields)
+		}
+	})
 }
