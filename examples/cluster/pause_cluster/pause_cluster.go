@@ -80,7 +80,7 @@ func pauseCluster(ctx context.Context, sdk *admin.APIClient, projectID, clusterN
 		Paused: admin.PtrBool(true),
 	}
 
-	result, resp, err := sdk.ClustersApi.UpdateCluster(ctx, projectID, clusterName, payload).Execute()
+	result, resp, err := sdk.ClustersAPI.UpdateCluster(ctx, projectID, clusterName, payload).Execute()
 	examples.HandleErr(err, resp)
 
 	fmt.Printf("Cluster %q pause initiated. Paused: %v\n",
@@ -93,7 +93,7 @@ func unpauseCluster(ctx context.Context, sdk *admin.APIClient, projectID, cluste
 		Paused: admin.PtrBool(false),
 	}
 
-	result, resp, err := sdk.ClustersApi.UpdateCluster(ctx, projectID, clusterName, payload).Execute()
+	result, resp, err := sdk.ClustersAPI.UpdateCluster(ctx, projectID, clusterName, payload).Execute()
 	examples.HandleErr(err, resp)
 
 	fmt.Printf("Cluster %q unpause initiated. Paused: %v\n",

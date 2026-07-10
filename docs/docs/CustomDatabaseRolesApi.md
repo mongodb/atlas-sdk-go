@@ -1,14 +1,14 @@
-# \CustomDatabaseRolesApi
+# \CustomDatabaseRolesAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomDbRole**](CustomDatabaseRolesApi.md#CreateCustomDbRole) | **Post** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Create One Custom Role
-[**DeleteCustomDbRole**](CustomDatabaseRolesApi.md#DeleteCustomDbRole) | **Delete** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Remove One Custom Role from One Project
-[**GetCustomDbRole**](CustomDatabaseRolesApi.md#GetCustomDbRole) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Return One Custom Role in One Project
-[**ListCustomDbRoles**](CustomDatabaseRolesApi.md#ListCustomDbRoles) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Return All Custom Roles in One Project
-[**UpdateCustomDbRole**](CustomDatabaseRolesApi.md#UpdateCustomDbRole) | **Patch** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Update One Custom Role in One Project
+[**CreateCustomDbRole**](CustomDatabaseRolesAPI.md#CreateCustomDbRole) | **Post** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Create One Custom Role
+[**DeleteCustomDbRole**](CustomDatabaseRolesAPI.md#DeleteCustomDbRole) | **Delete** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Remove One Custom Role from One Project
+[**GetCustomDbRole**](CustomDatabaseRolesAPI.md#GetCustomDbRole) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Return One Custom Role in One Project
+[**ListCustomDbRoles**](CustomDatabaseRolesAPI.md#ListCustomDbRoles) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Return All Custom Roles in One Project
+[**UpdateCustomDbRole**](CustomDatabaseRolesAPI.md#UpdateCustomDbRole) | **Patch** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Update One Custom Role in One Project
 
 
 
@@ -45,9 +45,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userCustomDBRole := *admin.NewUserCustomDBRole("RoleName_example") // UserCustomDBRole | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDbRole(context.Background(), groupId, &userCustomDBRole).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesAPI.CreateCustomDbRole(context.Background(), groupId, &userCustomDBRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.CreateCustomDbRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesAPI.CreateCustomDbRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -55,7 +55,7 @@ func main() {
         return
     }
     // response from `CreateCustomDbRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.CreateCustomDbRole`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesAPI.CreateCustomDbRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -127,9 +127,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleName := "roleName_example" // string | 
 
-    r, err := sdk.CustomDatabaseRolesApi.DeleteCustomDbRole(context.Background(), groupId, roleName).Execute()
+    r, err := sdk.CustomDatabaseRolesAPI.DeleteCustomDbRole(context.Background(), groupId, roleName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.DeleteCustomDbRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesAPI.DeleteCustomDbRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -208,9 +208,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleName := "roleName_example" // string | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.GetCustomDbRole(context.Background(), groupId, roleName).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesAPI.GetCustomDbRole(context.Background(), groupId, roleName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.GetCustomDbRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesAPI.GetCustomDbRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -218,7 +218,7 @@ func main() {
         return
     }
     // response from `GetCustomDbRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.GetCustomDbRole`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesAPI.GetCustomDbRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -290,9 +290,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.ListCustomDbRoles(context.Background(), groupId).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesAPI.ListCustomDbRoles(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.ListCustomDbRoles`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesAPI.ListCustomDbRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -300,7 +300,7 @@ func main() {
         return
     }
     // response from `ListCustomDbRoles`: []UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.ListCustomDbRoles`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesAPI.ListCustomDbRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -372,9 +372,9 @@ func main() {
     roleName := "roleName_example" // string | 
     updateCustomDBRole := *admin.NewUpdateCustomDBRole() // UpdateCustomDBRole | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.UpdateCustomDbRole(context.Background(), groupId, roleName, &updateCustomDBRole).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesAPI.UpdateCustomDbRole(context.Background(), groupId, roleName, &updateCustomDBRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.UpdateCustomDbRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesAPI.UpdateCustomDbRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -382,7 +382,7 @@ func main() {
         return
     }
     // response from `UpdateCustomDbRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.UpdateCustomDbRole`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesAPI.UpdateCustomDbRole`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -1,14 +1,14 @@
-# \ThirdPartyIntegrationsApi
+# \ThirdPartyIntegrationsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupIntegration**](ThirdPartyIntegrationsApi.md#CreateGroupIntegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Create One Third-Party Service Integration
-[**DeleteGroupIntegration**](ThirdPartyIntegrationsApi.md#DeleteGroupIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration
-[**GetGroupIntegration**](ThirdPartyIntegrationsApi.md#GetGroupIntegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration
-[**ListGroupIntegrations**](ThirdPartyIntegrationsApi.md#ListGroupIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/integrations | Return All Active Third-Party Service Integrations
-[**UpdateGroupIntegration**](ThirdPartyIntegrationsApi.md#UpdateGroupIntegration) | **Put** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Update One Third-Party Service Integration
+[**CreateGroupIntegration**](ThirdPartyIntegrationsAPI.md#CreateGroupIntegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Create One Third-Party Service Integration
+[**DeleteGroupIntegration**](ThirdPartyIntegrationsAPI.md#DeleteGroupIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration
+[**GetGroupIntegration**](ThirdPartyIntegrationsAPI.md#GetGroupIntegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration
+[**ListGroupIntegrations**](ThirdPartyIntegrationsAPI.md#ListGroupIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/integrations | Return All Active Third-Party Service Integrations
+[**UpdateGroupIntegration**](ThirdPartyIntegrationsAPI.md#UpdateGroupIntegration) | **Put** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Update One Third-Party Service Integration
 
 
 
@@ -49,9 +49,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateGroupIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsAPI.CreateGroupIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.CreateGroupIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsAPI.CreateGroupIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -59,7 +59,7 @@ func main() {
         return
     }
     // response from `CreateGroupIntegration`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.CreateGroupIntegration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsAPI.CreateGroupIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -136,9 +136,9 @@ func main() {
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ThirdPartyIntegrationsApi.DeleteGroupIntegration(context.Background(), integrationType, groupId).Execute()
+    r, err := sdk.ThirdPartyIntegrationsAPI.DeleteGroupIntegration(context.Background(), integrationType, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.DeleteGroupIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsAPI.DeleteGroupIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -217,9 +217,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     integrationType := "integrationType_example" // string | 
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.GetGroupIntegration(context.Background(), groupId, integrationType).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsAPI.GetGroupIntegration(context.Background(), groupId, integrationType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.GetGroupIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsAPI.GetGroupIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -227,7 +227,7 @@ func main() {
         return
     }
     // response from `GetGroupIntegration`: ThirdPartyIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.GetGroupIntegration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsAPI.GetGroupIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -302,9 +302,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.ListGroupIntegrations(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsAPI.ListGroupIntegrations(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.ListGroupIntegrations`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsAPI.ListGroupIntegrations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -312,7 +312,7 @@ func main() {
         return
     }
     // response from `ListGroupIntegrations`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.ListGroupIntegrations`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsAPI.ListGroupIntegrations`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -390,9 +390,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateGroupIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsAPI.UpdateGroupIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.UpdateGroupIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsAPI.UpdateGroupIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -400,7 +400,7 @@ func main() {
         return
     }
     // response from `UpdateGroupIntegration`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.UpdateGroupIntegration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsAPI.UpdateGroupIntegration`: %v (%v)\n", resp, r)
 }
 ```
 

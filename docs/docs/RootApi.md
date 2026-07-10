@@ -1,11 +1,11 @@
-# \RootApi
+# \RootAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetSystemStatus**](RootApi.md#GetSystemStatus) | **Get** /api/atlas/v2 | Return the Status of This MongoDB Application
-[**ListControlPlaneAddresses**](RootApi.md#ListControlPlaneAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
+[**GetSystemStatus**](RootAPI.md#GetSystemStatus) | **Get** /api/atlas/v2 | Return the Status of This MongoDB Application
+[**ListControlPlaneAddresses**](RootAPI.md#ListControlPlaneAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
 
 
 
@@ -40,9 +40,9 @@ func main() {
     }
 
 
-    resp, r, err := sdk.RootApi.GetSystemStatus(context.Background()).Execute()
+    resp, r, err := sdk.RootAPI.GetSystemStatus(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.GetSystemStatus`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `RootAPI.GetSystemStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -50,7 +50,7 @@ func main() {
         return
     }
     // response from `GetSystemStatus`: SystemStatus
-    fmt.Fprintf(os.Stdout, "Response from `RootApi.GetSystemStatus`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `RootAPI.GetSystemStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -111,9 +111,9 @@ func main() {
     }
 
 
-    resp, r, err := sdk.RootApi.ListControlPlaneAddresses(context.Background()).Execute()
+    resp, r, err := sdk.RootAPI.ListControlPlaneAddresses(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.ListControlPlaneAddresses`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `RootAPI.ListControlPlaneAddresses`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -121,7 +121,7 @@ func main() {
         return
     }
     // response from `ListControlPlaneAddresses`: ControlPlaneIPAddresses
-    fmt.Fprintf(os.Stdout, "Response from `RootApi.ListControlPlaneAddresses`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `RootAPI.ListControlPlaneAddresses`: %v (%v)\n", resp, r)
 }
 ```
 

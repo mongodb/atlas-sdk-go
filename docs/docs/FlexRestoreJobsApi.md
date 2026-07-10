@@ -1,12 +1,12 @@
-# \FlexRestoreJobsApi
+# \FlexRestoreJobsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFlexRestoreJob**](FlexRestoreJobsApi.md#CreateFlexRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Create One Restore Job for One Flex Cluster
-[**GetFlexRestoreJob**](FlexRestoreJobsApi.md#GetFlexRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster
-[**ListFlexRestoreJobs**](FlexRestoreJobsApi.md#ListFlexRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster
+[**CreateFlexRestoreJob**](FlexRestoreJobsAPI.md#CreateFlexRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Create One Restore Job for One Flex Cluster
+[**GetFlexRestoreJob**](FlexRestoreJobsAPI.md#GetFlexRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster
+[**ListFlexRestoreJobs**](FlexRestoreJobsAPI.md#ListFlexRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster
 
 
 
@@ -44,9 +44,9 @@ func main() {
     name := "name_example" // string | 
     flexBackupRestoreJobCreate20241113 := *admin.NewFlexBackupRestoreJobCreate20241113("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // FlexBackupRestoreJobCreate20241113 | 
 
-    resp, r, err := sdk.FlexRestoreJobsApi.CreateFlexRestoreJob(context.Background(), groupId, name, &flexBackupRestoreJobCreate20241113).Execute()
+    resp, r, err := sdk.FlexRestoreJobsAPI.CreateFlexRestoreJob(context.Background(), groupId, name, &flexBackupRestoreJobCreate20241113).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.CreateFlexRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsAPI.CreateFlexRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -54,7 +54,7 @@ func main() {
         return
     }
     // response from `CreateFlexRestoreJob`: FlexBackupRestoreJob20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.CreateFlexRestoreJob`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsAPI.CreateFlexRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -129,9 +129,9 @@ func main() {
     name := "name_example" // string | 
     restoreJobId := "restoreJobId_example" // string | 
 
-    resp, r, err := sdk.FlexRestoreJobsApi.GetFlexRestoreJob(context.Background(), groupId, name, restoreJobId).Execute()
+    resp, r, err := sdk.FlexRestoreJobsAPI.GetFlexRestoreJob(context.Background(), groupId, name, restoreJobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.GetFlexRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsAPI.GetFlexRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -139,7 +139,7 @@ func main() {
         return
     }
     // response from `GetFlexRestoreJob`: FlexBackupRestoreJob20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.GetFlexRestoreJob`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsAPI.GetFlexRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -217,9 +217,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.FlexRestoreJobsApi.ListFlexRestoreJobs(context.Background(), groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.FlexRestoreJobsAPI.ListFlexRestoreJobs(context.Background(), groupId, name).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsApi.ListFlexRestoreJobs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexRestoreJobsAPI.ListFlexRestoreJobs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -227,7 +227,7 @@ func main() {
         return
     }
     // response from `ListFlexRestoreJobs`: PaginatedApiAtlasFlexBackupRestoreJob20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsApi.ListFlexRestoreJobs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexRestoreJobsAPI.ListFlexRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 

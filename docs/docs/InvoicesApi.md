@@ -1,18 +1,18 @@
-# \InvoicesApi
+# \InvoicesAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCostExplorerProcess**](InvoicesApi.md#CreateCostExplorerProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
-[**GetCostExplorerUsage**](InvoicesApi.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query
-[**GetInvoice**](InvoicesApi.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
-[**GetInvoiceCsv**](InvoicesApi.md#GetInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
-[**GetSku**](InvoicesApi.md#GetSku) | **Get** /api/atlas/v2/skus/{skuId} | Return One Stock Keeping Unit
-[**ListInvoicePending**](InvoicesApi.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
-[**ListInvoices**](InvoicesApi.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
-[**ListSkus**](InvoicesApi.md#ListSkus) | **Get** /api/atlas/v2/skus | Return All Stock Keeping Units
-[**SearchInvoiceLineItems**](InvoicesApi.md#SearchInvoiceLineItems) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
+[**CreateCostExplorerProcess**](InvoicesAPI.md#CreateCostExplorerProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
+[**GetCostExplorerUsage**](InvoicesAPI.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query
+[**GetInvoice**](InvoicesAPI.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
+[**GetInvoiceCsv**](InvoicesAPI.md#GetInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
+[**GetSku**](InvoicesAPI.md#GetSku) | **Get** /api/atlas/v2/skus/{skuId} | Return One Stock Keeping Unit
+[**ListInvoicePending**](InvoicesAPI.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
+[**ListInvoices**](InvoicesAPI.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
+[**ListSkus**](InvoicesAPI.md#ListSkus) | **Get** /api/atlas/v2/skus | Return All Stock Keeping Units
+[**SearchInvoiceLineItems**](InvoicesAPI.md#SearchInvoiceLineItems) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
 
 
 
@@ -49,9 +49,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     costExplorerFilterRequestBody := *admin.NewCostExplorerFilterRequestBody(time.Now(), time.Now()) // CostExplorerFilterRequestBody | 
 
-    resp, r, err := sdk.InvoicesApi.CreateCostExplorerProcess(context.Background(), orgId, &costExplorerFilterRequestBody).Execute()
+    resp, r, err := sdk.InvoicesAPI.CreateCostExplorerProcess(context.Background(), orgId, &costExplorerFilterRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerProcess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.CreateCostExplorerProcess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -59,7 +59,7 @@ func main() {
         return
     }
     // response from `CreateCostExplorerProcess`: CostExplorerFilterResponse
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerProcess`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.CreateCostExplorerProcess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -131,9 +131,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     token := "4ABBE973862346D40F3AE859D4BE96E0F895764EB14EAB039E7B82F9D638C05C" // string | 
 
-    resp, r, err := sdk.InvoicesApi.GetCostExplorerUsage(context.Background(), orgId, token).Execute()
+    resp, r, err := sdk.InvoicesAPI.GetCostExplorerUsage(context.Background(), orgId, token).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetCostExplorerUsage`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.GetCostExplorerUsage`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -141,7 +141,7 @@ func main() {
         return
     }
     // response from `GetCostExplorerUsage`: any
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetCostExplorerUsage`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.GetCostExplorerUsage`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -214,9 +214,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invoiceId := "invoiceId_example" // string | 
 
-    resp, r, err := sdk.InvoicesApi.GetInvoice(context.Background(), orgId, invoiceId).Execute()
+    resp, r, err := sdk.InvoicesAPI.GetInvoice(context.Background(), orgId, invoiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetInvoice`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.GetInvoice`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -224,7 +224,7 @@ func main() {
         return
     }
     // response from `GetInvoice`: BillingInvoice
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetInvoice`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.GetInvoice`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -297,9 +297,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invoiceId := "invoiceId_example" // string | 
 
-    resp, r, err := sdk.InvoicesApi.GetInvoiceCsv(context.Background(), orgId, invoiceId).Execute()
+    resp, r, err := sdk.InvoicesAPI.GetInvoiceCsv(context.Background(), orgId, invoiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetInvoiceCsv`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.GetInvoiceCsv`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -307,7 +307,7 @@ func main() {
         return
     }
     // response from `GetInvoiceCsv`: string
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetInvoiceCsv`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.GetInvoiceCsv`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -379,9 +379,9 @@ func main() {
 
     skuId := "ATLAS_AWS_INSTANCE_M10" // string | 
 
-    resp, r, err := sdk.InvoicesApi.GetSku(context.Background(), skuId).Execute()
+    resp, r, err := sdk.InvoicesAPI.GetSku(context.Background(), skuId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetSku`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.GetSku`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -389,7 +389,7 @@ func main() {
         return
     }
     // response from `GetSku`: SkuResponse
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetSku`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.GetSku`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -459,9 +459,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.InvoicesApi.ListInvoicePending(context.Background(), orgId).Execute()
+    resp, r, err := sdk.InvoicesAPI.ListInvoicePending(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListInvoicePending`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.ListInvoicePending`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -469,7 +469,7 @@ func main() {
         return
     }
     // response from `ListInvoicePending`: PaginatedApiInvoice
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListInvoicePending`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.ListInvoicePending`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -548,9 +548,9 @@ func main() {
     sortBy := "sortBy_example" // string |  (optional) (default to "END_DATE")
     orderBy := "desc" // string |  (optional) (default to "desc")
 
-    resp, r, err := sdk.InvoicesApi.ListInvoices(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ViewLinkedInvoices(viewLinkedInvoices).StatusNames(statusNames).FromDate(fromDate).ToDate(toDate).SortBy(sortBy).OrderBy(orderBy).Execute()
+    resp, r, err := sdk.InvoicesAPI.ListInvoices(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ViewLinkedInvoices(viewLinkedInvoices).StatusNames(statusNames).FromDate(fromDate).ToDate(toDate).SortBy(sortBy).OrderBy(orderBy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListInvoices`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.ListInvoices`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -558,7 +558,7 @@ func main() {
         return
     }
     // response from `ListInvoices`: PaginatedApiInvoiceMetadata
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListInvoices`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.ListInvoices`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -639,9 +639,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.InvoicesApi.ListSkus(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.InvoicesAPI.ListSkus(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListSkus`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.ListSkus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -649,7 +649,7 @@ func main() {
         return
     }
     // response from `ListSkus`: PaginatedApiSKU
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListSkus`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.ListSkus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -721,9 +721,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.InvoicesApi.SearchInvoiceLineItems(context.Background(), orgId, invoiceId, &apiPublicUsageDetailsQueryRequest).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.InvoicesAPI.SearchInvoiceLineItems(context.Background(), orgId, invoiceId, &apiPublicUsageDetailsQueryRequest).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.SearchInvoiceLineItems`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.SearchInvoiceLineItems`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -731,7 +731,7 @@ func main() {
         return
     }
     // response from `SearchInvoiceLineItems`: PaginatedPublicApiUsageDetailsLineItem
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.SearchInvoiceLineItems`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.SearchInvoiceLineItems`: %v (%v)\n", resp, r)
 }
 ```
 

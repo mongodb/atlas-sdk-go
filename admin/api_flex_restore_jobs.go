@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type FlexRestoreJobsApi interface {
+type FlexRestoreJobsAPI interface {
 
 	/*
 		CreateFlexRestoreJob Create One Restore Job for One Flex Cluster
@@ -87,12 +86,12 @@ type FlexRestoreJobsApi interface {
 	ListFlexRestoreJobsExecute(r ListFlexRestoreJobsApiRequest) (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error)
 }
 
-// FlexRestoreJobsApiService FlexRestoreJobsApi service
-type FlexRestoreJobsApiService service
+// FlexRestoreJobsAPIService FlexRestoreJobsAPI service
+type FlexRestoreJobsAPIService service
 
 type CreateFlexRestoreJobApiRequest struct {
 	ctx                                context.Context
-	ApiService                         FlexRestoreJobsApi
+	ApiService                         FlexRestoreJobsAPI
 	groupId                            string
 	name                               string
 	flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113
@@ -104,7 +103,7 @@ type CreateFlexRestoreJobApiParams struct {
 	FlexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113
 }
 
-func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobWithParams(ctx context.Context, args *CreateFlexRestoreJobApiParams) CreateFlexRestoreJobApiRequest {
+func (a *FlexRestoreJobsAPIService) CreateFlexRestoreJobWithParams(ctx context.Context, args *CreateFlexRestoreJobApiParams) CreateFlexRestoreJobApiRequest {
 	return CreateFlexRestoreJobApiRequest{
 		ApiService:                         a,
 		ctx:                                ctx,
@@ -128,7 +127,7 @@ Restores one snapshot of one flex cluster from the specified project.
 	@param name Human-readable label that identifies the flex cluster whose snapshot you want to restore.
 	@return CreateFlexRestoreJobApiRequest
 */
-func (a *FlexRestoreJobsApiService) CreateFlexRestoreJob(ctx context.Context, groupId string, name string, flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113) CreateFlexRestoreJobApiRequest {
+func (a *FlexRestoreJobsAPIService) CreateFlexRestoreJob(ctx context.Context, groupId string, name string, flexBackupRestoreJobCreate20241113 *FlexBackupRestoreJobCreate20241113) CreateFlexRestoreJobApiRequest {
 	return CreateFlexRestoreJobApiRequest{
 		ApiService:                         a,
 		ctx:                                ctx,
@@ -141,7 +140,7 @@ func (a *FlexRestoreJobsApiService) CreateFlexRestoreJob(ctx context.Context, gr
 // CreateFlexRestoreJobExecute executes the request
 //
 //	@return FlexBackupRestoreJob20241113
-func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobExecute(r CreateFlexRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
+func (a *FlexRestoreJobsAPIService) CreateFlexRestoreJobExecute(r CreateFlexRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -149,7 +148,7 @@ func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobExecute(r CreateFlexRest
 		localVarReturnValue *FlexBackupRestoreJob20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.CreateFlexRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsAPIService.CreateFlexRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -224,7 +223,7 @@ func (a *FlexRestoreJobsApiService) CreateFlexRestoreJobExecute(r CreateFlexRest
 
 type GetFlexRestoreJobApiRequest struct {
 	ctx          context.Context
-	ApiService   FlexRestoreJobsApi
+	ApiService   FlexRestoreJobsAPI
 	groupId      string
 	name         string
 	restoreJobId string
@@ -236,7 +235,7 @@ type GetFlexRestoreJobApiParams struct {
 	RestoreJobId string
 }
 
-func (a *FlexRestoreJobsApiService) GetFlexRestoreJobWithParams(ctx context.Context, args *GetFlexRestoreJobApiParams) GetFlexRestoreJobApiRequest {
+func (a *FlexRestoreJobsAPIService) GetFlexRestoreJobWithParams(ctx context.Context, args *GetFlexRestoreJobApiParams) GetFlexRestoreJobApiRequest {
 	return GetFlexRestoreJobApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -261,7 +260,7 @@ Returns one restore job for one flex cluster from the specified project.
 	@param restoreJobId Unique 24-hexadecimal digit string that identifies the restore job to return.
 	@return GetFlexRestoreJobApiRequest
 */
-func (a *FlexRestoreJobsApiService) GetFlexRestoreJob(ctx context.Context, groupId string, name string, restoreJobId string) GetFlexRestoreJobApiRequest {
+func (a *FlexRestoreJobsAPIService) GetFlexRestoreJob(ctx context.Context, groupId string, name string, restoreJobId string) GetFlexRestoreJobApiRequest {
 	return GetFlexRestoreJobApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -274,7 +273,7 @@ func (a *FlexRestoreJobsApiService) GetFlexRestoreJob(ctx context.Context, group
 // GetFlexRestoreJobExecute executes the request
 //
 //	@return FlexBackupRestoreJob20241113
-func (a *FlexRestoreJobsApiService) GetFlexRestoreJobExecute(r GetFlexRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
+func (a *FlexRestoreJobsAPIService) GetFlexRestoreJobExecute(r GetFlexRestoreJobApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -282,7 +281,7 @@ func (a *FlexRestoreJobsApiService) GetFlexRestoreJobExecute(r GetFlexRestoreJob
 		localVarReturnValue *FlexBackupRestoreJob20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.GetFlexRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsAPIService.GetFlexRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -356,7 +355,7 @@ func (a *FlexRestoreJobsApiService) GetFlexRestoreJobExecute(r GetFlexRestoreJob
 
 type ListFlexRestoreJobsApiRequest struct {
 	ctx          context.Context
-	ApiService   FlexRestoreJobsApi
+	ApiService   FlexRestoreJobsAPI
 	groupId      string
 	name         string
 	includeCount *bool
@@ -372,7 +371,7 @@ type ListFlexRestoreJobsApiParams struct {
 	PageNum      *int
 }
 
-func (a *FlexRestoreJobsApiService) ListFlexRestoreJobsWithParams(ctx context.Context, args *ListFlexRestoreJobsApiParams) ListFlexRestoreJobsApiRequest {
+func (a *FlexRestoreJobsAPIService) ListFlexRestoreJobsWithParams(ctx context.Context, args *ListFlexRestoreJobsApiParams) ListFlexRestoreJobsApiRequest {
 	return ListFlexRestoreJobsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -416,7 +415,7 @@ Returns all restore jobs for one flex cluster from the specified project.
 	@param name Human-readable label that identifies the flex cluster.
 	@return ListFlexRestoreJobsApiRequest
 */
-func (a *FlexRestoreJobsApiService) ListFlexRestoreJobs(ctx context.Context, groupId string, name string) ListFlexRestoreJobsApiRequest {
+func (a *FlexRestoreJobsAPIService) ListFlexRestoreJobs(ctx context.Context, groupId string, name string) ListFlexRestoreJobsApiRequest {
 	return ListFlexRestoreJobsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -428,7 +427,7 @@ func (a *FlexRestoreJobsApiService) ListFlexRestoreJobs(ctx context.Context, gro
 // ListFlexRestoreJobsExecute executes the request
 //
 //	@return PaginatedApiAtlasFlexBackupRestoreJob20241113
-func (a *FlexRestoreJobsApiService) ListFlexRestoreJobsExecute(r ListFlexRestoreJobsApiRequest) (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error) {
+func (a *FlexRestoreJobsAPIService) ListFlexRestoreJobsExecute(r ListFlexRestoreJobsApiRequest) (*PaginatedApiAtlasFlexBackupRestoreJob20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -436,7 +435,7 @@ func (a *FlexRestoreJobsApiService) ListFlexRestoreJobsExecute(r ListFlexRestore
 		localVarReturnValue *PaginatedApiAtlasFlexBackupRestoreJob20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsApiService.ListFlexRestoreJobs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexRestoreJobsAPIService.ListFlexRestoreJobs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

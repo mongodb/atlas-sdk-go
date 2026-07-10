@@ -1,27 +1,27 @@
-# \AtlasSearchApi
+# \AtlasSearchAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClusterFtsIndex**](AtlasSearchApi.md#CreateClusterFtsIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index
-[**CreateClusterSearchDeployment**](AtlasSearchApi.md#CreateClusterSearchDeployment) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Create Search Nodes
-[**CreateClusterSearchIndex**](AtlasSearchApi.md#CreateClusterSearchIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Create One Atlas Search Index
-[**DeleteClusterFtsIndex**](AtlasSearchApi.md#DeleteClusterFtsIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index
-[**DeleteClusterSearchDeployment**](AtlasSearchApi.md#DeleteClusterSearchDeployment) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Delete Search Nodes
-[**DeleteClusterSearchIndex**](AtlasSearchApi.md#DeleteClusterSearchIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Remove One Atlas Search Index by ID
-[**DeleteIndexByName**](AtlasSearchApi.md#DeleteIndexByName) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Remove One Atlas Search Index by Name
-[**GetClusterFtsIndex**](AtlasSearchApi.md#GetClusterFtsIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index
-[**GetClusterSearchDeployment**](AtlasSearchApi.md#GetClusterSearchDeployment) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Return All Search Nodes
-[**GetClusterSearchIndex**](AtlasSearchApi.md#GetClusterSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Return One Atlas Search Index by ID
-[**GetIndexByName**](AtlasSearchApi.md#GetIndexByName) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Return One Atlas Search Index by Name
-[**ListClusterFtsIndex**](AtlasSearchApi.md#ListClusterFtsIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
-[**ListClusterSearchIndexes**](AtlasSearchApi.md#ListClusterSearchIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Return All Atlas Search Indexes for One Cluster
-[**ListSearchIndex**](AtlasSearchApi.md#ListSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
-[**UpdateClusterFtsIndex**](AtlasSearchApi.md#UpdateClusterFtsIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index
-[**UpdateClusterSearchDeployment**](AtlasSearchApi.md#UpdateClusterSearchDeployment) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Update Search Nodes
-[**UpdateClusterSearchIndex**](AtlasSearchApi.md#UpdateClusterSearchIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Update One Atlas Search Index by ID
-[**UpdateIndexByName**](AtlasSearchApi.md#UpdateIndexByName) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Update One Atlas Search Index by Name
+[**CreateClusterFtsIndex**](AtlasSearchAPI.md#CreateClusterFtsIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index
+[**CreateClusterSearchDeployment**](AtlasSearchAPI.md#CreateClusterSearchDeployment) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Create Search Nodes
+[**CreateClusterSearchIndex**](AtlasSearchAPI.md#CreateClusterSearchIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Create One Atlas Search Index
+[**DeleteClusterFtsIndex**](AtlasSearchAPI.md#DeleteClusterFtsIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index
+[**DeleteClusterSearchDeployment**](AtlasSearchAPI.md#DeleteClusterSearchDeployment) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Delete Search Nodes
+[**DeleteClusterSearchIndex**](AtlasSearchAPI.md#DeleteClusterSearchIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Remove One Atlas Search Index by ID
+[**DeleteIndexByName**](AtlasSearchAPI.md#DeleteIndexByName) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Remove One Atlas Search Index by Name
+[**GetClusterFtsIndex**](AtlasSearchAPI.md#GetClusterFtsIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index
+[**GetClusterSearchDeployment**](AtlasSearchAPI.md#GetClusterSearchDeployment) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Return All Search Nodes
+[**GetClusterSearchIndex**](AtlasSearchAPI.md#GetClusterSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Return One Atlas Search Index by ID
+[**GetIndexByName**](AtlasSearchAPI.md#GetIndexByName) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Return One Atlas Search Index by Name
+[**ListClusterFtsIndex**](AtlasSearchAPI.md#ListClusterFtsIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
+[**ListClusterSearchIndexes**](AtlasSearchAPI.md#ListClusterSearchIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Return All Atlas Search Indexes for One Cluster
+[**ListSearchIndex**](AtlasSearchAPI.md#ListSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
+[**UpdateClusterFtsIndex**](AtlasSearchAPI.md#UpdateClusterFtsIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index
+[**UpdateClusterSearchDeployment**](AtlasSearchAPI.md#UpdateClusterSearchDeployment) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Update Search Nodes
+[**UpdateClusterSearchIndex**](AtlasSearchAPI.md#UpdateClusterSearchIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Update One Atlas Search Index by ID
+[**UpdateIndexByName**](AtlasSearchAPI.md#UpdateIndexByName) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Update One Atlas Search Index by Name
 
 
 
@@ -59,9 +59,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterSearchIndex := *admin.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.CreateClusterFtsIndex(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.CreateClusterFtsIndex(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateClusterFtsIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.CreateClusterFtsIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -69,7 +69,7 @@ func main() {
         return
     }
     // response from `CreateClusterFtsIndex`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateClusterFtsIndex`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.CreateClusterFtsIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -144,9 +144,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     apiSearchDeploymentRequest := *admin.NewApiSearchDeploymentRequest([]admin.ApiSearchDeploymentRequestSpec{*admin.NewApiSearchDeploymentRequestSpec("InstanceSize_example")}) // ApiSearchDeploymentRequest | 
 
-    resp, r, err := sdk.AtlasSearchApi.CreateClusterSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.CreateClusterSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateClusterSearchDeployment`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.CreateClusterSearchDeployment`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -154,7 +154,7 @@ func main() {
         return
     }
     // response from `CreateClusterSearchDeployment`: ApiSearchDeploymentResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateClusterSearchDeployment`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.CreateClusterSearchDeployment`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -229,9 +229,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     searchIndexCreateRequest := *admin.NewSearchIndexCreateRequest("CollectionName_example", "Database_example", "Name_example") // SearchIndexCreateRequest | 
 
-    resp, r, err := sdk.AtlasSearchApi.CreateClusterSearchIndex(context.Background(), groupId, clusterName, &searchIndexCreateRequest).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.CreateClusterSearchIndex(context.Background(), groupId, clusterName, &searchIndexCreateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateClusterSearchIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.CreateClusterSearchIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -239,7 +239,7 @@ func main() {
         return
     }
     // response from `CreateClusterSearchIndex`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateClusterSearchIndex`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.CreateClusterSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -314,9 +314,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    r, err := sdk.AtlasSearchApi.DeleteClusterFtsIndex(context.Background(), groupId, clusterName, indexId).Execute()
+    r, err := sdk.AtlasSearchAPI.DeleteClusterFtsIndex(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteClusterFtsIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.DeleteClusterFtsIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -397,9 +397,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    r, err := sdk.AtlasSearchApi.DeleteClusterSearchDeployment(context.Background(), groupId, clusterName).Execute()
+    r, err := sdk.AtlasSearchAPI.DeleteClusterSearchDeployment(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteClusterSearchDeployment`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.DeleteClusterSearchDeployment`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -479,9 +479,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    r, err := sdk.AtlasSearchApi.DeleteClusterSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
+    r, err := sdk.AtlasSearchAPI.DeleteClusterSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteClusterSearchIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.DeleteClusterSearchIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -565,9 +565,9 @@ func main() {
     databaseName := "databaseName_example" // string | 
     indexName := "indexName_example" // string | 
 
-    r, err := sdk.AtlasSearchApi.DeleteIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
+    r, err := sdk.AtlasSearchAPI.DeleteIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteIndexByName`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.DeleteIndexByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -653,9 +653,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.GetClusterFtsIndex(context.Background(), groupId, clusterName, indexId).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.GetClusterFtsIndex(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetClusterFtsIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.GetClusterFtsIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -663,7 +663,7 @@ func main() {
         return
     }
     // response from `GetClusterFtsIndex`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetClusterFtsIndex`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.GetClusterFtsIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -738,9 +738,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.GetClusterSearchDeployment(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.GetClusterSearchDeployment(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetClusterSearchDeployment`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.GetClusterSearchDeployment`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -748,7 +748,7 @@ func main() {
         return
     }
     // response from `GetClusterSearchDeployment`: ApiSearchDeploymentResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetClusterSearchDeployment`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.GetClusterSearchDeployment`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -822,9 +822,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.GetClusterSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.GetClusterSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetClusterSearchIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.GetClusterSearchIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -832,7 +832,7 @@ func main() {
         return
     }
     // response from `GetClusterSearchIndex`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetClusterSearchIndex`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.GetClusterSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -910,9 +910,9 @@ func main() {
     databaseName := "databaseName_example" // string | 
     indexName := "indexName_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.GetIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.GetIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetIndexByName`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.GetIndexByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -920,7 +920,7 @@ func main() {
         return
     }
     // response from `GetIndexByName`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetIndexByName`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.GetIndexByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1001,9 +1001,9 @@ func main() {
     collectionName := "collectionName_example" // string | 
     databaseName := "databaseName_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.ListClusterFtsIndex(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.ListClusterFtsIndex(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListClusterFtsIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.ListClusterFtsIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1011,7 +1011,7 @@ func main() {
         return
     }
     // response from `ListClusterFtsIndex`: []ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListClusterFtsIndex`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.ListClusterFtsIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1088,9 +1088,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.ListClusterSearchIndexes(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.ListClusterSearchIndexes(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListClusterSearchIndexes`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.ListClusterSearchIndexes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1098,7 +1098,7 @@ func main() {
         return
     }
     // response from `ListClusterSearchIndexes`: []SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListClusterSearchIndexes`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.ListClusterSearchIndexes`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1173,9 +1173,9 @@ func main() {
     collectionName := "collectionName_example" // string | 
     databaseName := "databaseName_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.ListSearchIndex(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.ListSearchIndex(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListSearchIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.ListSearchIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1183,7 +1183,7 @@ func main() {
         return
     }
     // response from `ListSearchIndex`: []SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListSearchIndex`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.ListSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1262,9 +1262,9 @@ func main() {
     indexId := "indexId_example" // string | 
     clusterSearchIndex := *admin.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateClusterFtsIndex(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.UpdateClusterFtsIndex(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateClusterFtsIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.UpdateClusterFtsIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1272,7 +1272,7 @@ func main() {
         return
     }
     // response from `UpdateClusterFtsIndex`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateClusterFtsIndex`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.UpdateClusterFtsIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1349,9 +1349,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     apiSearchDeploymentRequest := *admin.NewApiSearchDeploymentRequest([]admin.ApiSearchDeploymentRequestSpec{*admin.NewApiSearchDeploymentRequestSpec("InstanceSize_example")}) // ApiSearchDeploymentRequest | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateClusterSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.UpdateClusterSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateClusterSearchDeployment`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.UpdateClusterSearchDeployment`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1359,7 +1359,7 @@ func main() {
         return
     }
     // response from `UpdateClusterSearchDeployment`: ApiSearchDeploymentResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateClusterSearchDeployment`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.UpdateClusterSearchDeployment`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1435,9 +1435,9 @@ func main() {
     indexId := "indexId_example" // string | 
     searchIndexUpdateRequest := *admin.NewSearchIndexUpdateRequest(*admin.NewSearchIndexUpdateRequestDefinition()) // SearchIndexUpdateRequest | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateClusterSearchIndex(context.Background(), groupId, clusterName, indexId, &searchIndexUpdateRequest).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.UpdateClusterSearchIndex(context.Background(), groupId, clusterName, indexId, &searchIndexUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateClusterSearchIndex`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.UpdateClusterSearchIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1445,7 +1445,7 @@ func main() {
         return
     }
     // response from `UpdateClusterSearchIndex`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateClusterSearchIndex`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.UpdateClusterSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1525,9 +1525,9 @@ func main() {
     indexName := "indexName_example" // string | 
     searchIndexUpdateRequest := *admin.NewSearchIndexUpdateRequest(*admin.NewSearchIndexUpdateRequestDefinition()) // SearchIndexUpdateRequest | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName, &searchIndexUpdateRequest).Execute()
+    resp, r, err := sdk.AtlasSearchAPI.UpdateIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName, &searchIndexUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateIndexByName`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchAPI.UpdateIndexByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1535,7 +1535,7 @@ func main() {
         return
     }
     // response from `UpdateIndexByName`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateIndexByName`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchAPI.UpdateIndexByName`: %v (%v)\n", resp, r)
 }
 ```
 

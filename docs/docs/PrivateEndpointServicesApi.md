@@ -1,19 +1,19 @@
-# \PrivateEndpointServicesApi
+# \PrivateEndpointServicesAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePrivateEndpoint**](PrivateEndpointServicesApi.md#CreatePrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint | Create One Private Endpoint for One Provider
-[**CreatePrivateEndpointService**](PrivateEndpointServicesApi.md#CreatePrivateEndpointService) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService | Create One Private Endpoint Service for One Provider
-[**DeletePrivateEndpoint**](PrivateEndpointServicesApi.md#DeletePrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Remove One Private Endpoint for One Provider
-[**DeletePrivateEndpointService**](PrivateEndpointServicesApi.md#DeletePrivateEndpointService) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Remove One Private Endpoint Service for One Provider
-[**GetPrivateEndpoint**](PrivateEndpointServicesApi.md#GetPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Return One Private Endpoint for One Provider
-[**GetPrivateEndpointService**](PrivateEndpointServicesApi.md#GetPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Return One Private Endpoint Service for One Provider
-[**GetRegionalEndpointMode**](PrivateEndpointServicesApi.md#GetRegionalEndpointMode) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Return Regionalized Private Endpoint Status
-[**ListPrivateEndpointService**](PrivateEndpointServicesApi.md#ListPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService | Return All Private Endpoint Services for One Provider
-[**ToggleRegionalEndpointMode**](PrivateEndpointServicesApi.md#ToggleRegionalEndpointMode) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Toggle Regionalized Private Endpoint Status
-[**UpdatePrivateEndpointService**](PrivateEndpointServicesApi.md#UpdatePrivateEndpointService) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService/{endpointServiceId} | Update One Private Endpoint Service for One Provider
+[**CreatePrivateEndpoint**](PrivateEndpointServicesAPI.md#CreatePrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint | Create One Private Endpoint for One Provider
+[**CreatePrivateEndpointService**](PrivateEndpointServicesAPI.md#CreatePrivateEndpointService) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService | Create One Private Endpoint Service for One Provider
+[**DeletePrivateEndpoint**](PrivateEndpointServicesAPI.md#DeletePrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Remove One Private Endpoint for One Provider
+[**DeletePrivateEndpointService**](PrivateEndpointServicesAPI.md#DeletePrivateEndpointService) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Remove One Private Endpoint Service for One Provider
+[**GetPrivateEndpoint**](PrivateEndpointServicesAPI.md#GetPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Return One Private Endpoint for One Provider
+[**GetPrivateEndpointService**](PrivateEndpointServicesAPI.md#GetPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Return One Private Endpoint Service for One Provider
+[**GetRegionalEndpointMode**](PrivateEndpointServicesAPI.md#GetRegionalEndpointMode) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Return Regionalized Private Endpoint Status
+[**ListPrivateEndpointService**](PrivateEndpointServicesAPI.md#ListPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService | Return All Private Endpoint Services for One Provider
+[**ToggleRegionalEndpointMode**](PrivateEndpointServicesAPI.md#ToggleRegionalEndpointMode) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Toggle Regionalized Private Endpoint Status
+[**UpdatePrivateEndpointService**](PrivateEndpointServicesAPI.md#UpdatePrivateEndpointService) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService/{endpointServiceId} | Update One Private Endpoint Service for One Provider
 
 
 
@@ -52,9 +52,9 @@ func main() {
     endpointServiceId := "endpointServiceId_example" // string | 
     createEndpointRequest := *admin.NewCreateEndpointRequest() // CreateEndpointRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId, &createEndpointRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesAPI.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId, &createEndpointRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.CreatePrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.CreatePrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -62,7 +62,7 @@ func main() {
         return
     }
     // response from `CreatePrivateEndpoint`: PrivateLinkEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.CreatePrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesAPI.CreatePrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -138,9 +138,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderEndpointServiceRequest := *admin.NewCloudProviderEndpointServiceRequest("ProviderName_example", "Region_example") // CloudProviderEndpointServiceRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpointService(context.Background(), groupId, &cloudProviderEndpointServiceRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesAPI.CreatePrivateEndpointService(context.Background(), groupId, &cloudProviderEndpointServiceRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.CreatePrivateEndpointService`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.CreatePrivateEndpointService`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -148,7 +148,7 @@ func main() {
         return
     }
     // response from `CreatePrivateEndpointService`: EndpointService
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.CreatePrivateEndpointService`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesAPI.CreatePrivateEndpointService`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -222,9 +222,9 @@ func main() {
     endpointId := "endpointId_example" // string | 
     endpointServiceId := "endpointServiceId_example" // string | 
 
-    r, err := sdk.PrivateEndpointServicesApi.DeletePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId, endpointServiceId).Execute()
+    r, err := sdk.PrivateEndpointServicesAPI.DeletePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId, endpointServiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.DeletePrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.DeletePrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -308,9 +308,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
     endpointServiceId := "endpointServiceId_example" // string | 
 
-    r, err := sdk.PrivateEndpointServicesApi.DeletePrivateEndpointService(context.Background(), groupId, cloudProvider, endpointServiceId).Execute()
+    r, err := sdk.PrivateEndpointServicesAPI.DeletePrivateEndpointService(context.Background(), groupId, cloudProvider, endpointServiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.DeletePrivateEndpointService`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.DeletePrivateEndpointService`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -393,9 +393,9 @@ func main() {
     endpointId := "endpointId_example" // string | 
     endpointServiceId := "endpointServiceId_example" // string | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.GetPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId, endpointServiceId).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesAPI.GetPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId, endpointServiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.GetPrivateEndpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.GetPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -403,7 +403,7 @@ func main() {
         return
     }
     // response from `GetPrivateEndpoint`: PrivateLinkEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.GetPrivateEndpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesAPI.GetPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -481,9 +481,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
     endpointServiceId := "endpointServiceId_example" // string | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.GetPrivateEndpointService(context.Background(), groupId, cloudProvider, endpointServiceId).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesAPI.GetPrivateEndpointService(context.Background(), groupId, cloudProvider, endpointServiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.GetPrivateEndpointService`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.GetPrivateEndpointService`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -491,7 +491,7 @@ func main() {
         return
     }
     // response from `GetPrivateEndpointService`: EndpointService
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.GetPrivateEndpointService`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesAPI.GetPrivateEndpointService`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -565,9 +565,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.GetRegionalEndpointMode(context.Background(), groupId).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesAPI.GetRegionalEndpointMode(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.GetRegionalEndpointMode`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.GetRegionalEndpointMode`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -575,7 +575,7 @@ func main() {
         return
     }
     // response from `GetRegionalEndpointMode`: ProjectSettingItem
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.GetRegionalEndpointMode`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesAPI.GetRegionalEndpointMode`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -646,9 +646,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.ListPrivateEndpointService(context.Background(), groupId, cloudProvider).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesAPI.ListPrivateEndpointService(context.Background(), groupId, cloudProvider).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.ListPrivateEndpointService`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.ListPrivateEndpointService`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -656,7 +656,7 @@ func main() {
         return
     }
     // response from `ListPrivateEndpointService`: []EndpointService
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.ListPrivateEndpointService`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesAPI.ListPrivateEndpointService`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -729,9 +729,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     projectSettingItem := *admin.NewProjectSettingItem(false) // ProjectSettingItem | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.ToggleRegionalEndpointMode(context.Background(), groupId, &projectSettingItem).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesAPI.ToggleRegionalEndpointMode(context.Background(), groupId, &projectSettingItem).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.ToggleRegionalEndpointMode`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.ToggleRegionalEndpointMode`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -739,7 +739,7 @@ func main() {
         return
     }
     // response from `ToggleRegionalEndpointMode`: ProjectSettingItem
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.ToggleRegionalEndpointMode`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesAPI.ToggleRegionalEndpointMode`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -812,9 +812,9 @@ func main() {
     endpointServiceId := "endpointServiceId_example" // string | 
     apiAtlasModifyEndpointServiceRequest := *admin.NewApiAtlasModifyEndpointServiceRequest("CloudProvider_example") // ApiAtlasModifyEndpointServiceRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.UpdatePrivateEndpointService(context.Background(), groupId, endpointServiceId, &apiAtlasModifyEndpointServiceRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesAPI.UpdatePrivateEndpointService(context.Background(), groupId, endpointServiceId, &apiAtlasModifyEndpointServiceRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.UpdatePrivateEndpointService`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesAPI.UpdatePrivateEndpointService`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -822,7 +822,7 @@ func main() {
         return
     }
     // response from `UpdatePrivateEndpointService`: EndpointService
-    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.UpdatePrivateEndpointService`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesAPI.UpdatePrivateEndpointService`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -1,15 +1,15 @@
-# \FlexClustersApi
+# \FlexClustersAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFlexCluster**](FlexClustersApi.md#CreateFlexCluster) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters | Create One Flex Cluster in One Project
-[**DeleteFlexCluster**](FlexClustersApi.md#DeleteFlexCluster) | **Delete** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Remove One Flex Cluster from One Project
-[**GetFlexCluster**](FlexClustersApi.md#GetFlexCluster) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Return One Flex Cluster from One Project
-[**ListFlexClusters**](FlexClustersApi.md#ListFlexClusters) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters | Return All Flex Clusters from One Project
-[**TenantUpgrade**](FlexClustersApi.md#TenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade | Upgrade One Flex Cluster
-[**UpdateFlexCluster**](FlexClustersApi.md#UpdateFlexCluster) | **Patch** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Update One Flex Cluster in One Project
+[**CreateFlexCluster**](FlexClustersAPI.md#CreateFlexCluster) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters | Create One Flex Cluster in One Project
+[**DeleteFlexCluster**](FlexClustersAPI.md#DeleteFlexCluster) | **Delete** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Remove One Flex Cluster from One Project
+[**GetFlexCluster**](FlexClustersAPI.md#GetFlexCluster) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Return One Flex Cluster from One Project
+[**ListFlexClusters**](FlexClustersAPI.md#ListFlexClusters) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters | Return All Flex Clusters from One Project
+[**TenantUpgrade**](FlexClustersAPI.md#TenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade | Upgrade One Flex Cluster
+[**UpdateFlexCluster**](FlexClustersAPI.md#UpdateFlexCluster) | **Patch** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Update One Flex Cluster in One Project
 
 
 
@@ -46,9 +46,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     flexClusterDescriptionCreate20241113 := *admin.NewFlexClusterDescriptionCreate20241113("Name_example", *admin.NewFlexProviderSettingsCreate20241113("BackingProviderName_example", "RegionName_example")) // FlexClusterDescriptionCreate20241113 | 
 
-    resp, r, err := sdk.FlexClustersApi.CreateFlexCluster(context.Background(), groupId, &flexClusterDescriptionCreate20241113).Execute()
+    resp, r, err := sdk.FlexClustersAPI.CreateFlexCluster(context.Background(), groupId, &flexClusterDescriptionCreate20241113).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersApi.CreateFlexCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersAPI.CreateFlexCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -56,7 +56,7 @@ func main() {
         return
     }
     // response from `CreateFlexCluster`: FlexClusterDescription20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexClustersApi.CreateFlexCluster`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexClustersAPI.CreateFlexCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -128,9 +128,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
 
-    r, err := sdk.FlexClustersApi.DeleteFlexCluster(context.Background(), groupId, name).Execute()
+    r, err := sdk.FlexClustersAPI.DeleteFlexCluster(context.Background(), groupId, name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersApi.DeleteFlexCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersAPI.DeleteFlexCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -209,9 +209,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
 
-    resp, r, err := sdk.FlexClustersApi.GetFlexCluster(context.Background(), groupId, name).Execute()
+    resp, r, err := sdk.FlexClustersAPI.GetFlexCluster(context.Background(), groupId, name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersApi.GetFlexCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersAPI.GetFlexCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -219,7 +219,7 @@ func main() {
         return
     }
     // response from `GetFlexCluster`: FlexClusterDescription20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexClustersApi.GetFlexCluster`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexClustersAPI.GetFlexCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -294,9 +294,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.FlexClustersApi.ListFlexClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.FlexClustersAPI.ListFlexClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersApi.ListFlexClusters`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersAPI.ListFlexClusters`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -304,7 +304,7 @@ func main() {
         return
     }
     // response from `ListFlexClusters`: PaginatedFlexClusters20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexClustersApi.ListFlexClusters`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexClustersAPI.ListFlexClusters`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -378,9 +378,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     atlasTenantClusterUpgradeRequest20240805 := *admin.NewAtlasTenantClusterUpgradeRequest20240805("Name_example") // AtlasTenantClusterUpgradeRequest20240805 | 
 
-    resp, r, err := sdk.FlexClustersApi.TenantUpgrade(context.Background(), groupId, &atlasTenantClusterUpgradeRequest20240805).Execute()
+    resp, r, err := sdk.FlexClustersAPI.TenantUpgrade(context.Background(), groupId, &atlasTenantClusterUpgradeRequest20240805).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersApi.TenantUpgrade`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersAPI.TenantUpgrade`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -388,7 +388,7 @@ func main() {
         return
     }
     // response from `TenantUpgrade`: FlexClusterDescription20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexClustersApi.TenantUpgrade`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexClustersAPI.TenantUpgrade`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -461,9 +461,9 @@ func main() {
     name := "name_example" // string | 
     flexClusterDescriptionUpdate20241113 := *admin.NewFlexClusterDescriptionUpdate20241113() // FlexClusterDescriptionUpdate20241113 | 
 
-    resp, r, err := sdk.FlexClustersApi.UpdateFlexCluster(context.Background(), groupId, name, &flexClusterDescriptionUpdate20241113).Execute()
+    resp, r, err := sdk.FlexClustersAPI.UpdateFlexCluster(context.Background(), groupId, name, &flexClusterDescriptionUpdate20241113).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersApi.UpdateFlexCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersAPI.UpdateFlexCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -471,7 +471,7 @@ func main() {
         return
     }
     // response from `UpdateFlexCluster`: FlexClusterDescription20241113
-    fmt.Fprintf(os.Stdout, "Response from `FlexClustersApi.UpdateFlexCluster`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `FlexClustersAPI.UpdateFlexCluster`: %v (%v)\n", resp, r)
 }
 ```
 

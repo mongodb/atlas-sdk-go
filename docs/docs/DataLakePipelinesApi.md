@@ -1,22 +1,22 @@
-# \DataLakePipelinesApi
+# \DataLakePipelinesAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePipeline**](DataLakePipelinesApi.md#CreatePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines | Create One Data Lake Pipeline
-[**DeletePipeline**](DataLakePipelinesApi.md#DeletePipeline) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Remove One Data Lake Pipeline
-[**DeletePipelineRun**](DataLakePipelinesApi.md#DeletePipelineRun) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Delete One Pipeline Run Dataset
-[**GetAvailablePipelineSchedules**](DataLakePipelinesApi.md#GetAvailablePipelineSchedules) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules | Return All Ingestion Schedules for One Data Lake Pipeline
-[**GetAvailablePipelineSnapshots**](DataLakePipelinesApi.md#GetAvailablePipelineSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots | Return All Backup Snapshots for One Data Lake Pipeline
-[**GetPipeline**](DataLakePipelinesApi.md#GetPipeline) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Return One Data Lake Pipeline
-[**GetPipelineRun**](DataLakePipelinesApi.md#GetPipelineRun) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Return One Data Lake Pipeline Run
-[**ListPipelineRuns**](DataLakePipelinesApi.md#ListPipelineRuns) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs | Return All Data Lake Pipeline Runs in One Project
-[**ListPipelines**](DataLakePipelinesApi.md#ListPipelines) | **Get** /api/atlas/v2/groups/{groupId}/pipelines | Return All Data Lake Pipelines in One Project
-[**PausePipeline**](DataLakePipelinesApi.md#PausePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause | Pause One Data Lake Pipeline
-[**ResumePipeline**](DataLakePipelinesApi.md#ResumePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume | Resume One Data Lake Pipeline
-[**TriggerPipeline**](DataLakePipelinesApi.md#TriggerPipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger | Trigger On-Demand Snapshot Ingestion
-[**UpdatePipeline**](DataLakePipelinesApi.md#UpdatePipeline) | **Patch** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Update One Data Lake Pipeline
+[**CreatePipeline**](DataLakePipelinesAPI.md#CreatePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines | Create One Data Lake Pipeline
+[**DeletePipeline**](DataLakePipelinesAPI.md#DeletePipeline) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Remove One Data Lake Pipeline
+[**DeletePipelineRun**](DataLakePipelinesAPI.md#DeletePipelineRun) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Delete One Pipeline Run Dataset
+[**GetAvailablePipelineSchedules**](DataLakePipelinesAPI.md#GetAvailablePipelineSchedules) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules | Return All Ingestion Schedules for One Data Lake Pipeline
+[**GetAvailablePipelineSnapshots**](DataLakePipelinesAPI.md#GetAvailablePipelineSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots | Return All Backup Snapshots for One Data Lake Pipeline
+[**GetPipeline**](DataLakePipelinesAPI.md#GetPipeline) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Return One Data Lake Pipeline
+[**GetPipelineRun**](DataLakePipelinesAPI.md#GetPipelineRun) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Return One Data Lake Pipeline Run
+[**ListPipelineRuns**](DataLakePipelinesAPI.md#ListPipelineRuns) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs | Return All Data Lake Pipeline Runs in One Project
+[**ListPipelines**](DataLakePipelinesAPI.md#ListPipelines) | **Get** /api/atlas/v2/groups/{groupId}/pipelines | Return All Data Lake Pipelines in One Project
+[**PausePipeline**](DataLakePipelinesAPI.md#PausePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause | Pause One Data Lake Pipeline
+[**ResumePipeline**](DataLakePipelinesAPI.md#ResumePipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume | Resume One Data Lake Pipeline
+[**TriggerPipeline**](DataLakePipelinesAPI.md#TriggerPipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger | Trigger On-Demand Snapshot Ingestion
+[**UpdatePipeline**](DataLakePipelinesAPI.md#UpdatePipeline) | **Patch** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Update One Data Lake Pipeline
 
 
 
@@ -53,9 +53,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     dataLakeIngestionPipeline := *admin.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId, &dataLakeIngestionPipeline).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.CreatePipeline(context.Background(), groupId, &dataLakeIngestionPipeline).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.CreatePipeline`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.CreatePipeline`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -63,7 +63,7 @@ func main() {
         return
     }
     // response from `CreatePipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.CreatePipeline`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.CreatePipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -135,9 +135,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
-    r, err := sdk.DataLakePipelinesApi.DeletePipeline(context.Background(), groupId, pipelineName).Execute()
+    r, err := sdk.DataLakePipelinesAPI.DeletePipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipeline`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.DeletePipeline`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -217,9 +217,9 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     pipelineRunId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.DeletePipelineRun(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.DeletePipelineRun(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipelineRun`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.DeletePipelineRun`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -227,7 +227,7 @@ func main() {
         return
     }
     // response from `DeletePipelineRun`: any
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipelineRun`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.DeletePipelineRun`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -302,9 +302,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.GetAvailablePipelineSchedules(context.Background(), groupId, pipelineName).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.GetAvailablePipelineSchedules(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetAvailablePipelineSchedules`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.GetAvailablePipelineSchedules`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -312,7 +312,7 @@ func main() {
         return
     }
     // response from `GetAvailablePipelineSchedules`: []DiskBackupApiPolicyItem
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetAvailablePipelineSchedules`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.GetAvailablePipelineSchedules`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -389,9 +389,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     completedAfter := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.DataLakePipelinesApi.GetAvailablePipelineSnapshots(context.Background(), groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.GetAvailablePipelineSnapshots(context.Background(), groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetAvailablePipelineSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.GetAvailablePipelineSnapshots`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -399,7 +399,7 @@ func main() {
         return
     }
     // response from `GetAvailablePipelineSnapshots`: PaginatedBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetAvailablePipelineSnapshots`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.GetAvailablePipelineSnapshots`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -476,9 +476,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.GetPipeline(context.Background(), groupId, pipelineName).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.GetPipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetPipeline`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.GetPipeline`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -486,7 +486,7 @@ func main() {
         return
     }
     // response from `GetPipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetPipeline`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.GetPipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -560,9 +560,9 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     pipelineRunId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.GetPipelineRun(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.GetPipelineRun(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetPipelineRun`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.GetPipelineRun`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -570,7 +570,7 @@ func main() {
         return
     }
     // response from `GetPipelineRun`: IngestionPipelineRun
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetPipelineRun`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.GetPipelineRun`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -649,9 +649,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     createdBefore := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.DataLakePipelinesApi.ListPipelineRuns(context.Background(), groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CreatedBefore(createdBefore).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.ListPipelineRuns(context.Background(), groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CreatedBefore(createdBefore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineRuns`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.ListPipelineRuns`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -659,7 +659,7 @@ func main() {
         return
     }
     // response from `ListPipelineRuns`: PaginatedPipelineRun
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineRuns`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.ListPipelineRuns`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -735,9 +735,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.ListPipelines(context.Background(), groupId).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.ListPipelines(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelines`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.ListPipelines`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -745,7 +745,7 @@ func main() {
         return
     }
     // response from `ListPipelines`: []DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelines`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.ListPipelines`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -816,9 +816,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.PausePipeline(context.Background(), groupId, pipelineName).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.PausePipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.PausePipeline`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.PausePipeline`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -826,7 +826,7 @@ func main() {
         return
     }
     // response from `PausePipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.PausePipeline`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.PausePipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -899,9 +899,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.ResumePipeline(context.Background(), groupId, pipelineName).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.ResumePipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ResumePipeline`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.ResumePipeline`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -909,7 +909,7 @@ func main() {
         return
     }
     // response from `ResumePipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ResumePipeline`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.ResumePipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -983,9 +983,9 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     triggerIngestionPipelineRequest := *admin.NewTriggerIngestionPipelineRequest("32b6e34b3d91647abb20e7b8") // TriggerIngestionPipelineRequest | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.TriggerPipeline(context.Background(), groupId, pipelineName, &triggerIngestionPipelineRequest).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.TriggerPipeline(context.Background(), groupId, pipelineName, &triggerIngestionPipelineRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.TriggerPipeline`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.TriggerPipeline`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -993,7 +993,7 @@ func main() {
         return
     }
     // response from `TriggerPipeline`: IngestionPipelineRun
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.TriggerPipeline`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.TriggerPipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1068,9 +1068,9 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     dataLakeIngestionPipeline := *admin.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName, &dataLakeIngestionPipeline).Execute()
+    resp, r, err := sdk.DataLakePipelinesAPI.UpdatePipeline(context.Background(), groupId, pipelineName, &dataLakeIngestionPipeline).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.UpdatePipeline`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesAPI.UpdatePipeline`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1078,7 +1078,7 @@ func main() {
         return
     }
     // response from `UpdatePipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.UpdatePipeline`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesAPI.UpdatePipeline`: %v (%v)\n", resp, r)
 }
 ```
 

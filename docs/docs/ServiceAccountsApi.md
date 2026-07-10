@@ -1,31 +1,31 @@
-# \ServiceAccountsApi
+# \ServiceAccountsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAccessList**](ServiceAccountsApi.md#CreateAccessList) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Project Service Account
-[**CreateGroupSecret**](ServiceAccountsApi.md#CreateGroupSecret) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets | Create One Project Service Account Secret
-[**CreateGroupServiceAccount**](ServiceAccountsApi.md#CreateGroupServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts | Create One Project Service Account
-[**CreateOrgAccessList**](ServiceAccountsApi.md#CreateOrgAccessList) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Organization Service Account
-[**CreateOrgSecret**](ServiceAccountsApi.md#CreateOrgSecret) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets | Create One Organization Service Account Secret
-[**CreateOrgServiceAccount**](ServiceAccountsApi.md#CreateOrgServiceAccount) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Create One Organization Service Account
-[**DeleteGroupAccessEntry**](ServiceAccountsApi.md#DeleteGroupAccessEntry) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Project Service Account
-[**DeleteGroupSecret**](ServiceAccountsApi.md#DeleteGroupSecret) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Project Service Account Secret
-[**DeleteGroupServiceAccount**](ServiceAccountsApi.md#DeleteGroupServiceAccount) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Remove One Project Service Account
-[**DeleteOrgAccessEntry**](ServiceAccountsApi.md#DeleteOrgAccessEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Organization Service Account
-[**DeleteOrgSecret**](ServiceAccountsApi.md#DeleteOrgSecret) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Organization Service Account Secret
-[**DeleteOrgServiceAccount**](ServiceAccountsApi.md#DeleteOrgServiceAccount) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Delete One Organization Service Account
-[**GetGroupServiceAccount**](ServiceAccountsApi.md#GetGroupServiceAccount) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Return One Project Service Account
-[**GetOrgServiceAccount**](ServiceAccountsApi.md#GetOrgServiceAccount) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Return One Organization Service Account
-[**GetServiceAccountGroups**](ServiceAccountsApi.md#GetServiceAccountGroups) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups | Return All Service Account Project Assignments
-[**InviteGroupServiceAccount**](ServiceAccountsApi.md#InviteGroupServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite | Assign One Service Account to One Project
-[**ListAccessList**](ServiceAccountsApi.md#ListAccessList) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Project Service Account
-[**ListGroupServiceAccounts**](ServiceAccountsApi.md#ListGroupServiceAccounts) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts | Return All Project Service Accounts
-[**ListOrgAccessList**](ServiceAccountsApi.md#ListOrgAccessList) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Organization Service Account
-[**ListOrgServiceAccounts**](ServiceAccountsApi.md#ListOrgServiceAccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Return All Organization Service Accounts
-[**UpdateGroupServiceAccount**](ServiceAccountsApi.md#UpdateGroupServiceAccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update One Project Service Account
-[**UpdateOrgServiceAccount**](ServiceAccountsApi.md#UpdateOrgServiceAccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update One Organization Service Account
+[**CreateAccessList**](ServiceAccountsAPI.md#CreateAccessList) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Project Service Account
+[**CreateGroupSecret**](ServiceAccountsAPI.md#CreateGroupSecret) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets | Create One Project Service Account Secret
+[**CreateGroupServiceAccount**](ServiceAccountsAPI.md#CreateGroupServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts | Create One Project Service Account
+[**CreateOrgAccessList**](ServiceAccountsAPI.md#CreateOrgAccessList) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Organization Service Account
+[**CreateOrgSecret**](ServiceAccountsAPI.md#CreateOrgSecret) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets | Create One Organization Service Account Secret
+[**CreateOrgServiceAccount**](ServiceAccountsAPI.md#CreateOrgServiceAccount) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Create One Organization Service Account
+[**DeleteGroupAccessEntry**](ServiceAccountsAPI.md#DeleteGroupAccessEntry) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Project Service Account
+[**DeleteGroupSecret**](ServiceAccountsAPI.md#DeleteGroupSecret) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Project Service Account Secret
+[**DeleteGroupServiceAccount**](ServiceAccountsAPI.md#DeleteGroupServiceAccount) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Remove One Project Service Account
+[**DeleteOrgAccessEntry**](ServiceAccountsAPI.md#DeleteOrgAccessEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Organization Service Account
+[**DeleteOrgSecret**](ServiceAccountsAPI.md#DeleteOrgSecret) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Organization Service Account Secret
+[**DeleteOrgServiceAccount**](ServiceAccountsAPI.md#DeleteOrgServiceAccount) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Delete One Organization Service Account
+[**GetGroupServiceAccount**](ServiceAccountsAPI.md#GetGroupServiceAccount) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Return One Project Service Account
+[**GetOrgServiceAccount**](ServiceAccountsAPI.md#GetOrgServiceAccount) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Return One Organization Service Account
+[**GetServiceAccountGroups**](ServiceAccountsAPI.md#GetServiceAccountGroups) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups | Return All Service Account Project Assignments
+[**InviteGroupServiceAccount**](ServiceAccountsAPI.md#InviteGroupServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite | Assign One Service Account to One Project
+[**ListAccessList**](ServiceAccountsAPI.md#ListAccessList) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Project Service Account
+[**ListGroupServiceAccounts**](ServiceAccountsAPI.md#ListGroupServiceAccounts) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts | Return All Project Service Accounts
+[**ListOrgAccessList**](ServiceAccountsAPI.md#ListOrgAccessList) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Organization Service Account
+[**ListOrgServiceAccounts**](ServiceAccountsAPI.md#ListOrgServiceAccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Return All Organization Service Accounts
+[**UpdateGroupServiceAccount**](ServiceAccountsAPI.md#UpdateGroupServiceAccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update One Project Service Account
+[**UpdateOrgServiceAccount**](ServiceAccountsAPI.md#UpdateOrgServiceAccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update One Organization Service Account
 
 
 
@@ -66,9 +66,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ServiceAccountsApi.CreateAccessList(context.Background(), groupId, clientId, &serviceAccountIPAccessListEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.CreateAccessList(context.Background(), groupId, clientId, &serviceAccountIPAccessListEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateAccessList`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.CreateAccessList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -76,7 +76,7 @@ func main() {
         return
     }
     // response from `CreateAccessList`: PaginatedServiceAccountIPAccessEntry
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateAccessList`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.CreateAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -154,9 +154,9 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     serviceAccountSecretRequest := *admin.NewServiceAccountSecretRequest(int(8)) // ServiceAccountSecretRequest | 
 
-    resp, r, err := sdk.ServiceAccountsApi.CreateGroupSecret(context.Background(), groupId, clientId, &serviceAccountSecretRequest).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.CreateGroupSecret(context.Background(), groupId, clientId, &serviceAccountSecretRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateGroupSecret`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.CreateGroupSecret`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -164,7 +164,7 @@ func main() {
         return
     }
     // response from `CreateGroupSecret`: ServiceAccountSecret
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateGroupSecret`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.CreateGroupSecret`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -238,9 +238,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupServiceAccountRequest := *admin.NewGroupServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(8)) // GroupServiceAccountRequest | 
 
-    resp, r, err := sdk.ServiceAccountsApi.CreateGroupServiceAccount(context.Background(), groupId, &groupServiceAccountRequest).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.CreateGroupServiceAccount(context.Background(), groupId, &groupServiceAccountRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateGroupServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.CreateGroupServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -248,7 +248,7 @@ func main() {
         return
     }
     // response from `CreateGroupServiceAccount`: GroupServiceAccount
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateGroupServiceAccount`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.CreateGroupServiceAccount`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -324,9 +324,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ServiceAccountsApi.CreateOrgAccessList(context.Background(), orgId, clientId, &serviceAccountIPAccessListEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.CreateOrgAccessList(context.Background(), orgId, clientId, &serviceAccountIPAccessListEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateOrgAccessList`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.CreateOrgAccessList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -334,7 +334,7 @@ func main() {
         return
     }
     // response from `CreateOrgAccessList`: PaginatedServiceAccountIPAccessEntry
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateOrgAccessList`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.CreateOrgAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -412,9 +412,9 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     serviceAccountSecretRequest := *admin.NewServiceAccountSecretRequest(int(8)) // ServiceAccountSecretRequest | 
 
-    resp, r, err := sdk.ServiceAccountsApi.CreateOrgSecret(context.Background(), orgId, clientId, &serviceAccountSecretRequest).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.CreateOrgSecret(context.Background(), orgId, clientId, &serviceAccountSecretRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateOrgSecret`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.CreateOrgSecret`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -422,7 +422,7 @@ func main() {
         return
     }
     // response from `CreateOrgSecret`: ServiceAccountSecret
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateOrgSecret`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.CreateOrgSecret`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -496,9 +496,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     orgServiceAccountRequest := *admin.NewOrgServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(8)) // OrgServiceAccountRequest | 
 
-    resp, r, err := sdk.ServiceAccountsApi.CreateOrgServiceAccount(context.Background(), orgId, &orgServiceAccountRequest).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.CreateOrgServiceAccount(context.Background(), orgId, &orgServiceAccountRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateOrgServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.CreateOrgServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -506,7 +506,7 @@ func main() {
         return
     }
     // response from `CreateOrgServiceAccount`: OrgServiceAccount
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateOrgServiceAccount`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.CreateOrgServiceAccount`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -579,9 +579,9 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     ipAddress := "192.0.2.0%2F24" // string | 
 
-    r, err := sdk.ServiceAccountsApi.DeleteGroupAccessEntry(context.Background(), groupId, clientId, ipAddress).Execute()
+    r, err := sdk.ServiceAccountsAPI.DeleteGroupAccessEntry(context.Background(), groupId, clientId, ipAddress).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteGroupAccessEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.DeleteGroupAccessEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -663,9 +663,9 @@ func main() {
     secretId := "secretId_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ServiceAccountsApi.DeleteGroupSecret(context.Background(), clientId, secretId, groupId).Execute()
+    r, err := sdk.ServiceAccountsAPI.DeleteGroupSecret(context.Background(), clientId, secretId, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteGroupSecret`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.DeleteGroupSecret`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -746,9 +746,9 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ServiceAccountsApi.DeleteGroupServiceAccount(context.Background(), clientId, groupId).Execute()
+    r, err := sdk.ServiceAccountsAPI.DeleteGroupServiceAccount(context.Background(), clientId, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteGroupServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.DeleteGroupServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -828,9 +828,9 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     ipAddress := "192.0.2.0%2F24" // string | 
 
-    r, err := sdk.ServiceAccountsApi.DeleteOrgAccessEntry(context.Background(), orgId, clientId, ipAddress).Execute()
+    r, err := sdk.ServiceAccountsAPI.DeleteOrgAccessEntry(context.Background(), orgId, clientId, ipAddress).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteOrgAccessEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.DeleteOrgAccessEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -912,9 +912,9 @@ func main() {
     secretId := "secretId_example" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.ServiceAccountsApi.DeleteOrgSecret(context.Background(), clientId, secretId, orgId).Execute()
+    r, err := sdk.ServiceAccountsAPI.DeleteOrgSecret(context.Background(), clientId, secretId, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteOrgSecret`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.DeleteOrgSecret`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -995,9 +995,9 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.ServiceAccountsApi.DeleteOrgServiceAccount(context.Background(), clientId, orgId).Execute()
+    r, err := sdk.ServiceAccountsAPI.DeleteOrgServiceAccount(context.Background(), clientId, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteOrgServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.DeleteOrgServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1076,9 +1076,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
 
-    resp, r, err := sdk.ServiceAccountsApi.GetGroupServiceAccount(context.Background(), groupId, clientId).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.GetGroupServiceAccount(context.Background(), groupId, clientId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.GetGroupServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.GetGroupServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1086,7 +1086,7 @@ func main() {
         return
     }
     // response from `GetGroupServiceAccount`: GroupServiceAccount
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.GetGroupServiceAccount`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.GetGroupServiceAccount`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1159,9 +1159,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
 
-    resp, r, err := sdk.ServiceAccountsApi.GetOrgServiceAccount(context.Background(), orgId, clientId).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.GetOrgServiceAccount(context.Background(), orgId, clientId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.GetOrgServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.GetOrgServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1169,7 +1169,7 @@ func main() {
         return
     }
     // response from `GetOrgServiceAccount`: OrgServiceAccount
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.GetOrgServiceAccount`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.GetOrgServiceAccount`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1244,9 +1244,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ServiceAccountsApi.GetServiceAccountGroups(context.Background(), orgId, clientId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.GetServiceAccountGroups(context.Background(), orgId, clientId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.GetServiceAccountGroups`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.GetServiceAccountGroups`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1254,7 +1254,7 @@ func main() {
         return
     }
     // response from `GetServiceAccountGroups`: PaginatedServiceAccountGroup
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.GetServiceAccountGroups`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.GetServiceAccountGroups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1330,9 +1330,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupServiceAccountRoleAssignment := *admin.NewGroupServiceAccountRoleAssignment([]string{"Roles_example"}) // GroupServiceAccountRoleAssignment | 
 
-    resp, r, err := sdk.ServiceAccountsApi.InviteGroupServiceAccount(context.Background(), clientId, groupId, &groupServiceAccountRoleAssignment).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.InviteGroupServiceAccount(context.Background(), clientId, groupId, &groupServiceAccountRoleAssignment).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.InviteGroupServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.InviteGroupServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1340,7 +1340,7 @@ func main() {
         return
     }
     // response from `InviteGroupServiceAccount`: GroupServiceAccount
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.InviteGroupServiceAccount`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.InviteGroupServiceAccount`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1417,9 +1417,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ServiceAccountsApi.ListAccessList(context.Background(), groupId, clientId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.ListAccessList(context.Background(), groupId, clientId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ListAccessList`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.ListAccessList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1427,7 +1427,7 @@ func main() {
         return
     }
     // response from `ListAccessList`: PaginatedServiceAccountIPAccessEntry
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.ListAccessList`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.ListAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1504,9 +1504,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ServiceAccountsApi.ListGroupServiceAccounts(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.ListGroupServiceAccounts(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ListGroupServiceAccounts`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.ListGroupServiceAccounts`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1514,7 +1514,7 @@ func main() {
         return
     }
     // response from `ListGroupServiceAccounts`: PaginatedGroupServiceAccounts
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.ListGroupServiceAccounts`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.ListGroupServiceAccounts`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1590,9 +1590,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ServiceAccountsApi.ListOrgAccessList(context.Background(), orgId, clientId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.ListOrgAccessList(context.Background(), orgId, clientId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ListOrgAccessList`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.ListOrgAccessList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1600,7 +1600,7 @@ func main() {
         return
     }
     // response from `ListOrgAccessList`: PaginatedServiceAccountIPAccessEntry
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.ListOrgAccessList`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.ListOrgAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1677,9 +1677,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ServiceAccountsApi.ListOrgServiceAccounts(context.Background(), orgId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.ListOrgServiceAccounts(context.Background(), orgId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ListOrgServiceAccounts`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.ListOrgServiceAccounts`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1687,7 +1687,7 @@ func main() {
         return
     }
     // response from `ListOrgServiceAccounts`: PaginatedOrgServiceAccounts
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.ListOrgServiceAccounts`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.ListOrgServiceAccounts`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1761,9 +1761,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupServiceAccountUpdateRequest := *admin.NewGroupServiceAccountUpdateRequest() // GroupServiceAccountUpdateRequest | 
 
-    resp, r, err := sdk.ServiceAccountsApi.UpdateGroupServiceAccount(context.Background(), clientId, groupId, &groupServiceAccountUpdateRequest).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.UpdateGroupServiceAccount(context.Background(), clientId, groupId, &groupServiceAccountUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.UpdateGroupServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.UpdateGroupServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1771,7 +1771,7 @@ func main() {
         return
     }
     // response from `UpdateGroupServiceAccount`: GroupServiceAccount
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.UpdateGroupServiceAccount`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.UpdateGroupServiceAccount`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1846,9 +1846,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     orgServiceAccountUpdateRequest := *admin.NewOrgServiceAccountUpdateRequest() // OrgServiceAccountUpdateRequest | 
 
-    resp, r, err := sdk.ServiceAccountsApi.UpdateOrgServiceAccount(context.Background(), clientId, orgId, &orgServiceAccountUpdateRequest).Execute()
+    resp, r, err := sdk.ServiceAccountsAPI.UpdateOrgServiceAccount(context.Background(), clientId, orgId, &orgServiceAccountUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.UpdateOrgServiceAccount`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsAPI.UpdateOrgServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1856,7 +1856,7 @@ func main() {
         return
     }
     // response from `UpdateOrgServiceAccount`: OrgServiceAccount
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.UpdateOrgServiceAccount`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsAPI.UpdateOrgServiceAccount`: %v (%v)\n", resp, r)
 }
 ```
 

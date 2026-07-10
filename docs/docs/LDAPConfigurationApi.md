@@ -1,14 +1,14 @@
-# \LDAPConfigurationApi
+# \LDAPConfigurationAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteLdapUserMapping**](LDAPConfigurationApi.md#DeleteLdapUserMapping) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove LDAP User to DN Mapping
-[**GetUserSecurity**](LDAPConfigurationApi.md#GetUserSecurity) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return LDAP or X.509 Configuration
-[**GetUserSecurityVerify**](LDAPConfigurationApi.md#GetUserSecurityVerify) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return Status of LDAP Configuration Verification in One Project
-[**UpdateUserSecurity**](LDAPConfigurationApi.md#UpdateUserSecurity) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Update LDAP or X.509 Configuration
-[**VerifyUserSecurityLdap**](LDAPConfigurationApi.md#VerifyUserSecurityLdap) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify LDAP Configuration in One Project
+[**DeleteLdapUserMapping**](LDAPConfigurationAPI.md#DeleteLdapUserMapping) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove LDAP User to DN Mapping
+[**GetUserSecurity**](LDAPConfigurationAPI.md#GetUserSecurity) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return LDAP or X.509 Configuration
+[**GetUserSecurityVerify**](LDAPConfigurationAPI.md#GetUserSecurityVerify) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return Status of LDAP Configuration Verification in One Project
+[**UpdateUserSecurity**](LDAPConfigurationAPI.md#UpdateUserSecurity) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Update LDAP or X.509 Configuration
+[**VerifyUserSecurityLdap**](LDAPConfigurationAPI.md#VerifyUserSecurityLdap) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify LDAP Configuration in One Project
 
 
 
@@ -44,9 +44,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.DeleteLdapUserMapping(context.Background(), groupId).Execute()
+    resp, r, err := sdk.LDAPConfigurationAPI.DeleteLdapUserMapping(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.DeleteLdapUserMapping`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationAPI.DeleteLdapUserMapping`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -54,7 +54,7 @@ func main() {
         return
     }
     // response from `DeleteLdapUserMapping`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.DeleteLdapUserMapping`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationAPI.DeleteLdapUserMapping`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -124,9 +124,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.GetUserSecurity(context.Background(), groupId).Execute()
+    resp, r, err := sdk.LDAPConfigurationAPI.GetUserSecurity(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetUserSecurity`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationAPI.GetUserSecurity`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -134,7 +134,7 @@ func main() {
         return
     }
     // response from `GetUserSecurity`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetUserSecurity`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationAPI.GetUserSecurity`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -205,9 +205,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     requestId := "requestId_example" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.GetUserSecurityVerify(context.Background(), groupId, requestId).Execute()
+    resp, r, err := sdk.LDAPConfigurationAPI.GetUserSecurityVerify(context.Background(), groupId, requestId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetUserSecurityVerify`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationAPI.GetUserSecurityVerify`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -215,7 +215,7 @@ func main() {
         return
     }
     // response from `GetUserSecurityVerify`: LDAPVerifyConnectivityJobRequest
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetUserSecurityVerify`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationAPI.GetUserSecurityVerify`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -288,9 +288,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userSecurity := *admin.NewUserSecurity() // UserSecurity | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.UpdateUserSecurity(context.Background(), groupId, &userSecurity).Execute()
+    resp, r, err := sdk.LDAPConfigurationAPI.UpdateUserSecurity(context.Background(), groupId, &userSecurity).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.UpdateUserSecurity`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationAPI.UpdateUserSecurity`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -298,7 +298,7 @@ func main() {
         return
     }
     // response from `UpdateUserSecurity`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.UpdateUserSecurity`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationAPI.UpdateUserSecurity`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -370,9 +370,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     lDAPVerifyConnectivityJobRequestParams := *admin.NewLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // LDAPVerifyConnectivityJobRequestParams | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.VerifyUserSecurityLdap(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
+    resp, r, err := sdk.LDAPConfigurationAPI.VerifyUserSecurityLdap(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyUserSecurityLdap`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationAPI.VerifyUserSecurityLdap`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -380,7 +380,7 @@ func main() {
         return
     }
     // response from `VerifyUserSecurityLdap`: LDAPVerifyConnectivityJobRequest
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.VerifyUserSecurityLdap`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationAPI.VerifyUserSecurityLdap`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -1,20 +1,20 @@
-# \LegacyBackupApi
+# \LegacyBackupAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClusterRestoreJob**](LegacyBackupApi.md#CreateClusterRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Create One Legacy Backup Restore Job
-[**DeleteClusterSnapshot**](LegacyBackupApi.md#DeleteClusterSnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Remove One Legacy Backup Snapshot
-[**GetClusterBackupCheckpoint**](LegacyBackupApi.md#GetClusterBackupCheckpoint) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId} | Return One Legacy Backup Checkpoint
-[**GetClusterRestoreJob**](LegacyBackupApi.md#GetClusterRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId} | Return One Legacy Backup Restore Job
-[**GetClusterSnapshot**](LegacyBackupApi.md#GetClusterSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Return One Legacy Backup Snapshot
-[**GetClusterSnapshotSchedule**](LegacyBackupApi.md#GetClusterSnapshotSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Return One Snapshot Schedule
-[**ListClusterBackupCheckpoints**](LegacyBackupApi.md#ListClusterBackupCheckpoints) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints | Return All Legacy Backup Checkpoints
-[**ListClusterRestoreJobs**](LegacyBackupApi.md#ListClusterRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Return All Legacy Backup Restore Jobs
-[**ListClusterSnapshots**](LegacyBackupApi.md#ListClusterSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots | Return All Legacy Backup Snapshots
-[**UpdateClusterSnapshot**](LegacyBackupApi.md#UpdateClusterSnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Update Expiration Date for One Legacy Backup Snapshot
-[**UpdateClusterSnapshotSchedule**](LegacyBackupApi.md#UpdateClusterSnapshotSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Update Snapshot Schedule for One Cluster
+[**CreateClusterRestoreJob**](LegacyBackupAPI.md#CreateClusterRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Create One Legacy Backup Restore Job
+[**DeleteClusterSnapshot**](LegacyBackupAPI.md#DeleteClusterSnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Remove One Legacy Backup Snapshot
+[**GetClusterBackupCheckpoint**](LegacyBackupAPI.md#GetClusterBackupCheckpoint) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId} | Return One Legacy Backup Checkpoint
+[**GetClusterRestoreJob**](LegacyBackupAPI.md#GetClusterRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId} | Return One Legacy Backup Restore Job
+[**GetClusterSnapshot**](LegacyBackupAPI.md#GetClusterSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Return One Legacy Backup Snapshot
+[**GetClusterSnapshotSchedule**](LegacyBackupAPI.md#GetClusterSnapshotSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Return One Snapshot Schedule
+[**ListClusterBackupCheckpoints**](LegacyBackupAPI.md#ListClusterBackupCheckpoints) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints | Return All Legacy Backup Checkpoints
+[**ListClusterRestoreJobs**](LegacyBackupAPI.md#ListClusterRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Return All Legacy Backup Restore Jobs
+[**ListClusterSnapshots**](LegacyBackupAPI.md#ListClusterSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots | Return All Legacy Backup Snapshots
+[**UpdateClusterSnapshot**](LegacyBackupAPI.md#UpdateClusterSnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Update Expiration Date for One Legacy Backup Snapshot
+[**UpdateClusterSnapshotSchedule**](LegacyBackupAPI.md#UpdateClusterSnapshotSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Update Snapshot Schedule for One Cluster
 
 
 
@@ -52,9 +52,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     backupRestoreJob := *admin.NewBackupRestoreJob(*admin.NewBackupRestoreJobDelivery("MethodName_example")) // BackupRestoreJob | 
 
-    resp, r, err := sdk.LegacyBackupApi.CreateClusterRestoreJob(context.Background(), groupId, clusterName, &backupRestoreJob).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.CreateClusterRestoreJob(context.Background(), groupId, clusterName, &backupRestoreJob).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.CreateClusterRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.CreateClusterRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -62,7 +62,7 @@ func main() {
         return
     }
     // response from `CreateClusterRestoreJob`: PaginatedRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.CreateClusterRestoreJob`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.CreateClusterRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -137,9 +137,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    r, err := sdk.LegacyBackupApi.DeleteClusterSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    r, err := sdk.LegacyBackupAPI.DeleteClusterSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.DeleteClusterSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.DeleteClusterSnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -221,9 +221,9 @@ func main() {
     checkpointId := "checkpointId_example" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.LegacyBackupApi.GetClusterBackupCheckpoint(context.Background(), groupId, checkpointId, clusterName).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.GetClusterBackupCheckpoint(context.Background(), groupId, checkpointId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetClusterBackupCheckpoint`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.GetClusterBackupCheckpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -231,7 +231,7 @@ func main() {
         return
     }
     // response from `GetClusterBackupCheckpoint`: ApiAtlasCheckpoint
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetClusterBackupCheckpoint`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.GetClusterBackupCheckpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -307,9 +307,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     jobId := "jobId_example" // string | 
 
-    resp, r, err := sdk.LegacyBackupApi.GetClusterRestoreJob(context.Background(), groupId, clusterName, jobId).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.GetClusterRestoreJob(context.Background(), groupId, clusterName, jobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetClusterRestoreJob`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.GetClusterRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -317,7 +317,7 @@ func main() {
         return
     }
     // response from `GetClusterRestoreJob`: BackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetClusterRestoreJob`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.GetClusterRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -393,9 +393,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    resp, r, err := sdk.LegacyBackupApi.GetClusterSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.GetClusterSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetClusterSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.GetClusterSnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -403,7 +403,7 @@ func main() {
         return
     }
     // response from `GetClusterSnapshot`: BackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetClusterSnapshot`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.GetClusterSnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -478,9 +478,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.LegacyBackupApi.GetClusterSnapshotSchedule(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.GetClusterSnapshotSchedule(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetClusterSnapshotSchedule`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.GetClusterSnapshotSchedule`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -488,7 +488,7 @@ func main() {
         return
     }
     // response from `GetClusterSnapshotSchedule`: ApiAtlasSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetClusterSnapshotSchedule`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.GetClusterSnapshotSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -564,9 +564,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.LegacyBackupApi.ListClusterBackupCheckpoints(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.ListClusterBackupCheckpoints(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListClusterBackupCheckpoints`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.ListClusterBackupCheckpoints`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -574,7 +574,7 @@ func main() {
         return
     }
     // response from `ListClusterBackupCheckpoints`: PaginatedApiAtlasCheckpoint
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListClusterBackupCheckpoints`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.ListClusterBackupCheckpoints`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -654,9 +654,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     batchId := "batchId_example" // string |  (optional)
 
-    resp, r, err := sdk.LegacyBackupApi.ListClusterRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).BatchId(batchId).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.ListClusterRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).BatchId(batchId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListClusterRestoreJobs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.ListClusterRestoreJobs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -664,7 +664,7 @@ func main() {
         return
     }
     // response from `ListClusterRestoreJobs`: PaginatedRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListClusterRestoreJobs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.ListClusterRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -745,9 +745,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     completed := "completed_example" // string |  (optional) (default to "true")
 
-    resp, r, err := sdk.LegacyBackupApi.ListClusterSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Completed(completed).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.ListClusterSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Completed(completed).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListClusterSnapshots`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.ListClusterSnapshots`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -755,7 +755,7 @@ func main() {
         return
     }
     // response from `ListClusterSnapshots`: PaginatedSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListClusterSnapshots`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.ListClusterSnapshots`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -834,9 +834,9 @@ func main() {
     snapshotId := "snapshotId_example" // string | 
     backupSnapshot := *admin.NewBackupSnapshot() // BackupSnapshot | 
 
-    resp, r, err := sdk.LegacyBackupApi.UpdateClusterSnapshot(context.Background(), groupId, clusterName, snapshotId, &backupSnapshot).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.UpdateClusterSnapshot(context.Background(), groupId, clusterName, snapshotId, &backupSnapshot).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateClusterSnapshot`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.UpdateClusterSnapshot`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -844,7 +844,7 @@ func main() {
         return
     }
     // response from `UpdateClusterSnapshot`: BackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateClusterSnapshot`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.UpdateClusterSnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -921,9 +921,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     apiAtlasSnapshotSchedule := *admin.NewApiAtlasSnapshotSchedule(int(123), "32b6e34b3d91647abb20e7b8", int(123), "32b6e34b3d91647abb20e7b8", int(123), int(123), int(123), int(123), int(123)) // ApiAtlasSnapshotSchedule | 
 
-    resp, r, err := sdk.LegacyBackupApi.UpdateClusterSnapshotSchedule(context.Background(), groupId, clusterName, &apiAtlasSnapshotSchedule).Execute()
+    resp, r, err := sdk.LegacyBackupAPI.UpdateClusterSnapshotSchedule(context.Background(), groupId, clusterName, &apiAtlasSnapshotSchedule).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateClusterSnapshotSchedule`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupAPI.UpdateClusterSnapshotSchedule`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -931,7 +931,7 @@ func main() {
         return
     }
     // response from `UpdateClusterSnapshotSchedule`: ApiAtlasSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateClusterSnapshotSchedule`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupAPI.UpdateClusterSnapshotSchedule`: %v (%v)\n", resp, r)
 }
 ```
 

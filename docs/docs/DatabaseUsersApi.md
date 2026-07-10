@@ -1,14 +1,14 @@
-# \DatabaseUsersApi
+# \DatabaseUsersAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDatabaseUser**](DatabaseUsersApi.md#CreateDatabaseUser) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers | Create One Database User in One Project
-[**DeleteDatabaseUser**](DatabaseUsersApi.md#DeleteDatabaseUser) | **Delete** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Remove One Database User from One Project
-[**GetDatabaseUser**](DatabaseUsersApi.md#GetDatabaseUser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project
-[**ListDatabaseUsers**](DatabaseUsersApi.md#ListDatabaseUsers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users in One Project
-[**UpdateDatabaseUser**](DatabaseUsersApi.md#UpdateDatabaseUser) | **Patch** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Update One Database User in One Project
+[**CreateDatabaseUser**](DatabaseUsersAPI.md#CreateDatabaseUser) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers | Create One Database User in One Project
+[**DeleteDatabaseUser**](DatabaseUsersAPI.md#DeleteDatabaseUser) | **Delete** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Remove One Database User from One Project
+[**GetDatabaseUser**](DatabaseUsersAPI.md#GetDatabaseUser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project
+[**ListDatabaseUsers**](DatabaseUsersAPI.md#ListDatabaseUsers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users in One Project
+[**UpdateDatabaseUser**](DatabaseUsersAPI.md#UpdateDatabaseUser) | **Patch** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Update One Database User in One Project
 
 
 
@@ -45,9 +45,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudDatabaseUser := *admin.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", []admin.DatabaseUserRole{*admin.NewDatabaseUserRole("DatabaseName_example", "RoleName_example")}, "Username_example") // CloudDatabaseUser | 
 
-    resp, r, err := sdk.DatabaseUsersApi.CreateDatabaseUser(context.Background(), groupId, &cloudDatabaseUser).Execute()
+    resp, r, err := sdk.DatabaseUsersAPI.CreateDatabaseUser(context.Background(), groupId, &cloudDatabaseUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.CreateDatabaseUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersAPI.CreateDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -55,7 +55,7 @@ func main() {
         return
     }
     // response from `CreateDatabaseUser`: CloudDatabaseUser
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.CreateDatabaseUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersAPI.CreateDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -128,9 +128,9 @@ func main() {
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
 
-    r, err := sdk.DatabaseUsersApi.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
+    r, err := sdk.DatabaseUsersAPI.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.DeleteDatabaseUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersAPI.DeleteDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -212,9 +212,9 @@ func main() {
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
 
-    resp, r, err := sdk.DatabaseUsersApi.GetDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
+    resp, r, err := sdk.DatabaseUsersAPI.GetDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.GetDatabaseUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersAPI.GetDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -222,7 +222,7 @@ func main() {
         return
     }
     // response from `GetDatabaseUser`: CloudDatabaseUser
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.GetDatabaseUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersAPI.GetDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -299,9 +299,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.DatabaseUsersApi.ListDatabaseUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.DatabaseUsersAPI.ListDatabaseUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.ListDatabaseUsers`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersAPI.ListDatabaseUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -309,7 +309,7 @@ func main() {
         return
     }
     // response from `ListDatabaseUsers`: PaginatedApiAtlasDatabaseUser
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.ListDatabaseUsers`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersAPI.ListDatabaseUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -385,9 +385,9 @@ func main() {
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
     cloudDatabaseUser := *admin.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", []admin.DatabaseUserRole{*admin.NewDatabaseUserRole("DatabaseName_example", "RoleName_example")}, "Username_example") // CloudDatabaseUser | 
 
-    resp, r, err := sdk.DatabaseUsersApi.UpdateDatabaseUser(context.Background(), groupId, databaseName, username, &cloudDatabaseUser).Execute()
+    resp, r, err := sdk.DatabaseUsersAPI.UpdateDatabaseUser(context.Background(), groupId, databaseName, username, &cloudDatabaseUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.UpdateDatabaseUser`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersAPI.UpdateDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -395,7 +395,7 @@ func main() {
         return
     }
     // response from `UpdateDatabaseUser`: CloudDatabaseUser
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.UpdateDatabaseUser`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersAPI.UpdateDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
 

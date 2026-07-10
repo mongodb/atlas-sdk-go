@@ -1,45 +1,45 @@
-# \StreamsApi
+# \StreamsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AcceptVpcPeeringConnection**](StreamsApi.md#AcceptVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Accept One Incoming VPC Peering Connection
-[**CreateFailoverConnection**](StreamsApi.md#CreateFailoverConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Create One Failover Stream Connection
-[**CreatePrivateLinkConnection**](StreamsApi.md#CreatePrivateLinkConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection
-[**CreateStreamConnection**](StreamsApi.md#CreateStreamConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection
-[**CreateStreamProcessor**](StreamsApi.md#CreateStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor
-[**CreateStreamWorkspace**](StreamsApi.md#CreateStreamWorkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Workspace
-[**DeletePrivateLinkConnection**](StreamsApi.md#DeletePrivateLinkConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Delete One Private Link Connection
-[**DeleteStreamConnection**](StreamsApi.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
-[**DeleteStreamFailoverConnection**](StreamsApi.md#DeleteStreamFailoverConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Delete One Stream Failover Connection
-[**DeleteStreamProcessor**](StreamsApi.md#DeleteStreamProcessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor
-[**DeleteStreamWorkspace**](StreamsApi.md#DeleteStreamWorkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace
-[**DeleteVpcPeeringConnection**](StreamsApi.md#DeleteVpcPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection
-[**DownloadAuditLogs**](StreamsApi.md#DownloadAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Workspace
-[**DownloadOperationalLogs**](StreamsApi.md#DownloadOperationalLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs | Download Operational Logs for One Atlas Stream Processing Workspace
-[**GetAccountDetails**](StreamsApi.md#GetAccountDetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region
-[**GetPrivateLinkConnection**](StreamsApi.md#GetPrivateLinkConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection
-[**GetStreamConnection**](StreamsApi.md#GetStreamConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection
-[**GetStreamFailoverConnection**](StreamsApi.md#GetStreamFailoverConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Return One Stream Failover Connection
-[**GetStreamProcessor**](StreamsApi.md#GetStreamProcessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Return One Stream Processor
-[**GetStreamProcessors**](StreamsApi.md#GetStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Workspace
-[**GetStreamWorkspace**](StreamsApi.md#GetStreamWorkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Workspace
-[**ListActivePeeringConnections**](StreamsApi.md#ListActivePeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections
-[**ListFailoverConnections**](StreamsApi.md#ListFailoverConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Return All Stream Failover Connections
-[**ListPrivateLinkConnections**](StreamsApi.md#ListPrivateLinkConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link Connections
-[**ListStreamConnections**](StreamsApi.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Workspaces
-[**ListStreamWorkspaces**](StreamsApi.md#ListStreamWorkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Workspaces in One Project
-[**ListVpcPeeringConnections**](StreamsApi.md#ListVpcPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections
-[**RejectVpcPeeringConnection**](StreamsApi.md#RejectVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Reject One Incoming VPC Peering Connection
-[**StartStreamProcessor**](StreamsApi.md#StartStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor
-[**StartStreamProcessorWith**](StreamsApi.md#StartStreamProcessorWith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options
-[**StopStreamProcessor**](StreamsApi.md#StopStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor
-[**UpdateStreamConnection**](StreamsApi.md#UpdateStreamConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection
-[**UpdateStreamFailoverConnection**](StreamsApi.md#UpdateStreamFailoverConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Update One Stream Failover Connection
-[**UpdateStreamProcessor**](StreamsApi.md#UpdateStreamProcessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor
-[**UpdateStreamWorkspace**](StreamsApi.md#UpdateStreamWorkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Workspace
-[**WithStreamSampleConnections**](StreamsApi.md#WithStreamSampleConnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Workspace with Sample Connections
+[**AcceptVpcPeeringConnection**](StreamsAPI.md#AcceptVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Accept One Incoming VPC Peering Connection
+[**CreateFailoverConnection**](StreamsAPI.md#CreateFailoverConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Create One Failover Stream Connection
+[**CreatePrivateLinkConnection**](StreamsAPI.md#CreatePrivateLinkConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection
+[**CreateStreamConnection**](StreamsAPI.md#CreateStreamConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection
+[**CreateStreamProcessor**](StreamsAPI.md#CreateStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor
+[**CreateStreamWorkspace**](StreamsAPI.md#CreateStreamWorkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Workspace
+[**DeletePrivateLinkConnection**](StreamsAPI.md#DeletePrivateLinkConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Delete One Private Link Connection
+[**DeleteStreamConnection**](StreamsAPI.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
+[**DeleteStreamFailoverConnection**](StreamsAPI.md#DeleteStreamFailoverConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Delete One Stream Failover Connection
+[**DeleteStreamProcessor**](StreamsAPI.md#DeleteStreamProcessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor
+[**DeleteStreamWorkspace**](StreamsAPI.md#DeleteStreamWorkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace
+[**DeleteVpcPeeringConnection**](StreamsAPI.md#DeleteVpcPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection
+[**DownloadAuditLogs**](StreamsAPI.md#DownloadAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Workspace
+[**DownloadOperationalLogs**](StreamsAPI.md#DownloadOperationalLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs | Download Operational Logs for One Atlas Stream Processing Workspace
+[**GetAccountDetails**](StreamsAPI.md#GetAccountDetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region
+[**GetPrivateLinkConnection**](StreamsAPI.md#GetPrivateLinkConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One Private Link Connection
+[**GetStreamConnection**](StreamsAPI.md#GetStreamConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection
+[**GetStreamFailoverConnection**](StreamsAPI.md#GetStreamFailoverConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Return One Stream Failover Connection
+[**GetStreamProcessor**](StreamsAPI.md#GetStreamProcessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Return One Stream Processor
+[**GetStreamProcessors**](StreamsAPI.md#GetStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Workspace
+[**GetStreamWorkspace**](StreamsAPI.md#GetStreamWorkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Workspace
+[**ListActivePeeringConnections**](StreamsAPI.md#ListActivePeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections
+[**ListFailoverConnections**](StreamsAPI.md#ListFailoverConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Return All Stream Failover Connections
+[**ListPrivateLinkConnections**](StreamsAPI.md#ListPrivateLinkConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link Connections
+[**ListStreamConnections**](StreamsAPI.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Workspaces
+[**ListStreamWorkspaces**](StreamsAPI.md#ListStreamWorkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Workspaces in One Project
+[**ListVpcPeeringConnections**](StreamsAPI.md#ListVpcPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections
+[**RejectVpcPeeringConnection**](StreamsAPI.md#RejectVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Reject One Incoming VPC Peering Connection
+[**StartStreamProcessor**](StreamsAPI.md#StartStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor
+[**StartStreamProcessorWith**](StreamsAPI.md#StartStreamProcessorWith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options
+[**StopStreamProcessor**](StreamsAPI.md#StopStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor
+[**UpdateStreamConnection**](StreamsAPI.md#UpdateStreamConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection
+[**UpdateStreamFailoverConnection**](StreamsAPI.md#UpdateStreamFailoverConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Update One Stream Failover Connection
+[**UpdateStreamProcessor**](StreamsAPI.md#UpdateStreamProcessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor
+[**UpdateStreamWorkspace**](StreamsAPI.md#UpdateStreamWorkspace) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Workspace
+[**WithStreamSampleConnections**](StreamsAPI.md#WithStreamSampleConnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Workspace with Sample Connections
 
 
 
@@ -77,9 +77,9 @@ func main() {
     id := "id_example" // string | 
     vPCPeeringActionChallenge := *admin.NewVPCPeeringActionChallenge() // VPCPeeringActionChallenge | 
 
-    r, err := sdk.StreamsApi.AcceptVpcPeeringConnection(context.Background(), groupId, id, &vPCPeeringActionChallenge).Execute()
+    r, err := sdk.StreamsAPI.AcceptVpcPeeringConnection(context.Background(), groupId, id, &vPCPeeringActionChallenge).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.AcceptVpcPeeringConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.AcceptVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -161,9 +161,9 @@ func main() {
     connectionName := "connectionName_example" // string | 
     streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
 
-    resp, r, err := sdk.StreamsApi.CreateFailoverConnection(context.Background(), groupId, tenantName, connectionName, &streamsConnection).Execute()
+    resp, r, err := sdk.StreamsAPI.CreateFailoverConnection(context.Background(), groupId, tenantName, connectionName, &streamsConnection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateFailoverConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.CreateFailoverConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -171,7 +171,7 @@ func main() {
         return
     }
     // response from `CreateFailoverConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateFailoverConnection`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.CreateFailoverConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -247,9 +247,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     streamsPrivateLinkConnection := *admin.NewStreamsPrivateLinkConnection("Provider_example") // StreamsPrivateLinkConnection | 
 
-    resp, r, err := sdk.StreamsApi.CreatePrivateLinkConnection(context.Background(), groupId, &streamsPrivateLinkConnection).Execute()
+    resp, r, err := sdk.StreamsAPI.CreatePrivateLinkConnection(context.Background(), groupId, &streamsPrivateLinkConnection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreatePrivateLinkConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.CreatePrivateLinkConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -257,7 +257,7 @@ func main() {
         return
     }
     // response from `CreatePrivateLinkConnection`: StreamsPrivateLinkConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreatePrivateLinkConnection`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.CreatePrivateLinkConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -330,9 +330,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
 
-    resp, r, err := sdk.StreamsApi.CreateStreamConnection(context.Background(), groupId, tenantName, &streamsConnection).Execute()
+    resp, r, err := sdk.StreamsAPI.CreateStreamConnection(context.Background(), groupId, tenantName, &streamsConnection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.CreateStreamConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -340,7 +340,7 @@ func main() {
         return
     }
     // response from `CreateStreamConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamConnection`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.CreateStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -415,9 +415,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     streamsProcessor := *admin.NewStreamsProcessor() // StreamsProcessor | 
 
-    resp, r, err := sdk.StreamsApi.CreateStreamProcessor(context.Background(), groupId, tenantName, &streamsProcessor).Execute()
+    resp, r, err := sdk.StreamsAPI.CreateStreamProcessor(context.Background(), groupId, tenantName, &streamsProcessor).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamProcessor`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.CreateStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -425,7 +425,7 @@ func main() {
         return
     }
     // response from `CreateStreamProcessor`: StreamsProcessor
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamProcessor`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.CreateStreamProcessor`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -499,9 +499,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     streamsTenant := *admin.NewStreamsTenant() // StreamsTenant | 
 
-    resp, r, err := sdk.StreamsApi.CreateStreamWorkspace(context.Background(), groupId, &streamsTenant).Execute()
+    resp, r, err := sdk.StreamsAPI.CreateStreamWorkspace(context.Background(), groupId, &streamsTenant).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamWorkspace`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.CreateStreamWorkspace`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -509,7 +509,7 @@ func main() {
         return
     }
     // response from `CreateStreamWorkspace`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamWorkspace`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.CreateStreamWorkspace`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -581,9 +581,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     connectionId := "connectionId_example" // string | 
 
-    r, err := sdk.StreamsApi.DeletePrivateLinkConnection(context.Background(), groupId, connectionId).Execute()
+    r, err := sdk.StreamsAPI.DeletePrivateLinkConnection(context.Background(), groupId, connectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeletePrivateLinkConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DeletePrivateLinkConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -663,9 +663,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     connectionName := "connectionName_example" // string | 
 
-    r, err := sdk.StreamsApi.DeleteStreamConnection(context.Background(), groupId, tenantName, connectionName).Execute()
+    r, err := sdk.StreamsAPI.DeleteStreamConnection(context.Background(), groupId, tenantName, connectionName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DeleteStreamConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -748,9 +748,9 @@ func main() {
     connectionName := "connectionName_example" // string | 
     failoverConnectionId := "failoverConnectionId_example" // string | 
 
-    r, err := sdk.StreamsApi.DeleteStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId).Execute()
+    r, err := sdk.StreamsAPI.DeleteStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamFailoverConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DeleteStreamFailoverConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -834,9 +834,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     processorName := "processorName_example" // string | 
 
-    r, err := sdk.StreamsApi.DeleteStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
+    r, err := sdk.StreamsAPI.DeleteStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamProcessor`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DeleteStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -917,9 +917,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
-    r, err := sdk.StreamsApi.DeleteStreamWorkspace(context.Background(), groupId, tenantName).Execute()
+    r, err := sdk.StreamsAPI.DeleteStreamWorkspace(context.Background(), groupId, tenantName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamWorkspace`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DeleteStreamWorkspace`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -998,9 +998,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
 
-    r, err := sdk.StreamsApi.DeleteVpcPeeringConnection(context.Background(), groupId, id).Execute()
+    r, err := sdk.StreamsAPI.DeleteVpcPeeringConnection(context.Background(), groupId, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteVpcPeeringConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DeleteVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1082,9 +1082,9 @@ func main() {
     startDate := int64(1636466948) // int64 |  (optional)
     spName := "spName_example" // string |  (optional)
 
-    resp, r, err := sdk.StreamsApi.DownloadAuditLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
+    resp, r, err := sdk.StreamsAPI.DownloadAuditLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadAuditLogs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DownloadAuditLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1092,7 +1092,7 @@ func main() {
         return
     }
     // response from `DownloadAuditLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DownloadAuditLogs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.DownloadAuditLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1171,9 +1171,9 @@ func main() {
     startDate := int64(1636466948) // int64 |  (optional)
     spName := "spName_example" // string |  (optional)
 
-    resp, r, err := sdk.StreamsApi.DownloadOperationalLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
+    resp, r, err := sdk.StreamsAPI.DownloadOperationalLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadOperationalLogs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DownloadOperationalLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1181,7 +1181,7 @@ func main() {
         return
     }
     // response from `DownloadOperationalLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DownloadOperationalLogs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.DownloadOperationalLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1258,9 +1258,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     regionName := "regionName_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.GetAccountDetails(context.Background(), groupId).CloudProvider(cloudProvider).RegionName(regionName).Execute()
+    resp, r, err := sdk.StreamsAPI.GetAccountDetails(context.Background(), groupId).CloudProvider(cloudProvider).RegionName(regionName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetAccountDetails`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetAccountDetails`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1268,7 +1268,7 @@ func main() {
         return
     }
     // response from `GetAccountDetails`: AccountDetails
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetAccountDetails`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetAccountDetails`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1341,9 +1341,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     connectionId := "connectionId_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.GetPrivateLinkConnection(context.Background(), groupId, connectionId).Execute()
+    resp, r, err := sdk.StreamsAPI.GetPrivateLinkConnection(context.Background(), groupId, connectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetPrivateLinkConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetPrivateLinkConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1351,7 +1351,7 @@ func main() {
         return
     }
     // response from `GetPrivateLinkConnection`: StreamsPrivateLinkConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetPrivateLinkConnection`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetPrivateLinkConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1425,9 +1425,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     connectionName := "connectionName_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.GetStreamConnection(context.Background(), groupId, tenantName, connectionName).Execute()
+    resp, r, err := sdk.StreamsAPI.GetStreamConnection(context.Background(), groupId, tenantName, connectionName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetStreamConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1435,7 +1435,7 @@ func main() {
         return
     }
     // response from `GetStreamConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamConnection`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1512,9 +1512,9 @@ func main() {
     connectionName := "connectionName_example" // string | 
     failoverConnectionId := "failoverConnectionId_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.GetStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId).Execute()
+    resp, r, err := sdk.StreamsAPI.GetStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamFailoverConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetStreamFailoverConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1522,7 +1522,7 @@ func main() {
         return
     }
     // response from `GetStreamFailoverConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamFailoverConnection`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetStreamFailoverConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1600,9 +1600,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     processorName := "processorName_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.GetStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
+    resp, r, err := sdk.StreamsAPI.GetStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamProcessor`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1610,7 +1610,7 @@ func main() {
         return
     }
     // response from `GetStreamProcessor`: StreamsProcessorWithStats
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamProcessor`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetStreamProcessor`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1688,9 +1688,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     includeCount := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.StreamsApi.GetStreamProcessors(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeCount(includeCount).Execute()
+    resp, r, err := sdk.StreamsAPI.GetStreamProcessors(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeCount(includeCount).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamProcessors`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetStreamProcessors`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1698,7 +1698,7 @@ func main() {
         return
     }
     // response from `GetStreamProcessors`: PaginatedApiStreamsStreamProcessorWithStats
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamProcessors`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetStreamProcessors`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1775,9 +1775,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     includeConnections := true // bool |  (optional)
 
-    resp, r, err := sdk.StreamsApi.GetStreamWorkspace(context.Background(), groupId, tenantName).IncludeConnections(includeConnections).Execute()
+    resp, r, err := sdk.StreamsAPI.GetStreamWorkspace(context.Background(), groupId, tenantName).IncludeConnections(includeConnections).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamWorkspace`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetStreamWorkspace`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1785,7 +1785,7 @@ func main() {
         return
     }
     // response from `GetStreamWorkspace`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamWorkspace`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetStreamWorkspace`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1860,9 +1860,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.StreamsApi.ListActivePeeringConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsAPI.ListActivePeeringConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListActivePeeringConnections`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.ListActivePeeringConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1870,7 +1870,7 @@ func main() {
         return
     }
     // response from `ListActivePeeringConnections`: PaginatedApiStreamsVPCPeeringConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListActivePeeringConnections`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.ListActivePeeringConnections`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1946,9 +1946,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.StreamsApi.ListFailoverConnections(context.Background(), groupId, tenantName, connectionName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsAPI.ListFailoverConnections(context.Background(), groupId, tenantName, connectionName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListFailoverConnections`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.ListFailoverConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1956,7 +1956,7 @@ func main() {
         return
     }
     // response from `ListFailoverConnections`: PaginatedApiStreamsFailoverConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListFailoverConnections`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.ListFailoverConnections`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2034,9 +2034,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.StreamsApi.ListPrivateLinkConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsAPI.ListPrivateLinkConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListPrivateLinkConnections`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.ListPrivateLinkConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2044,7 +2044,7 @@ func main() {
         return
     }
     // response from `ListPrivateLinkConnections`: PaginatedApiStreamsPrivateLink
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListPrivateLinkConnections`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.ListPrivateLinkConnections`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2119,9 +2119,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.StreamsApi.ListStreamConnections(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsAPI.ListStreamConnections(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamConnections`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.ListStreamConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2129,7 +2129,7 @@ func main() {
         return
     }
     // response from `ListStreamConnections`: PaginatedApiStreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamConnections`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.ListStreamConnections`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2205,9 +2205,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.StreamsApi.ListStreamWorkspaces(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsAPI.ListStreamWorkspaces(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamWorkspaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.ListStreamWorkspaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2215,7 +2215,7 @@ func main() {
         return
     }
     // response from `ListStreamWorkspaces`: PaginatedApiStreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamWorkspaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.ListStreamWorkspaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2290,9 +2290,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.StreamsApi.ListVpcPeeringConnections(context.Background(), groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.StreamsAPI.ListVpcPeeringConnections(context.Background(), groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListVpcPeeringConnections`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.ListVpcPeeringConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2300,7 +2300,7 @@ func main() {
         return
     }
     // response from `ListVpcPeeringConnections`: PaginatedApiStreamsVPCPeeringConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListVpcPeeringConnections`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.ListVpcPeeringConnections`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2374,9 +2374,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
 
-    r, err := sdk.StreamsApi.RejectVpcPeeringConnection(context.Background(), groupId, id).Execute()
+    r, err := sdk.StreamsAPI.RejectVpcPeeringConnection(context.Background(), groupId, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.RejectVpcPeeringConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.RejectVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2456,9 +2456,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     processorName := "processorName_example" // string | 
 
-    r, err := sdk.StreamsApi.StartStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
+    r, err := sdk.StreamsAPI.StartStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.StartStreamProcessor`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.StartStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2541,9 +2541,9 @@ func main() {
     processorName := "processorName_example" // string | 
     streamsStartStreamProcessorWith := *admin.NewStreamsStartStreamProcessorWith() // StreamsStartStreamProcessorWith |  (optional)
 
-    r, err := sdk.StreamsApi.StartStreamProcessorWith(context.Background(), groupId, tenantName, processorName, &streamsStartStreamProcessorWith).Execute()
+    r, err := sdk.StreamsAPI.StartStreamProcessorWith(context.Background(), groupId, tenantName, processorName, &streamsStartStreamProcessorWith).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.StartStreamProcessorWith`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.StartStreamProcessorWith`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2626,9 +2626,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     processorName := "processorName_example" // string | 
 
-    r, err := sdk.StreamsApi.StopStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
+    r, err := sdk.StreamsAPI.StopStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.StopStreamProcessor`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.StopStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2711,9 +2711,9 @@ func main() {
     connectionName := "connectionName_example" // string | 
     streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
 
-    resp, r, err := sdk.StreamsApi.UpdateStreamConnection(context.Background(), groupId, tenantName, connectionName, &streamsConnection).Execute()
+    resp, r, err := sdk.StreamsAPI.UpdateStreamConnection(context.Background(), groupId, tenantName, connectionName, &streamsConnection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.UpdateStreamConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2721,7 +2721,7 @@ func main() {
         return
     }
     // response from `UpdateStreamConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamConnection`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.UpdateStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2800,9 +2800,9 @@ func main() {
     failoverConnectionId := "failoverConnectionId_example" // string | 
     streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
 
-    resp, r, err := sdk.StreamsApi.UpdateStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId, &streamsConnection).Execute()
+    resp, r, err := sdk.StreamsAPI.UpdateStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId, &streamsConnection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamFailoverConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.UpdateStreamFailoverConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2810,7 +2810,7 @@ func main() {
         return
     }
     // response from `UpdateStreamFailoverConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamFailoverConnection`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.UpdateStreamFailoverConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2890,9 +2890,9 @@ func main() {
     processorName := "processorName_example" // string | 
     streamsModifyStreamProcessor := *admin.NewStreamsModifyStreamProcessor() // StreamsModifyStreamProcessor | 
 
-    resp, r, err := sdk.StreamsApi.UpdateStreamProcessor(context.Background(), groupId, tenantName, processorName, &streamsModifyStreamProcessor).Execute()
+    resp, r, err := sdk.StreamsAPI.UpdateStreamProcessor(context.Background(), groupId, tenantName, processorName, &streamsModifyStreamProcessor).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamProcessor`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.UpdateStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2900,7 +2900,7 @@ func main() {
         return
     }
     // response from `UpdateStreamProcessor`: StreamsProcessorWithStats
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamProcessor`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.UpdateStreamProcessor`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2977,9 +2977,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     streamsTenantUpdateRequest := *admin.NewStreamsTenantUpdateRequest() // StreamsTenantUpdateRequest | 
 
-    resp, r, err := sdk.StreamsApi.UpdateStreamWorkspace(context.Background(), groupId, tenantName, &streamsTenantUpdateRequest).Execute()
+    resp, r, err := sdk.StreamsAPI.UpdateStreamWorkspace(context.Background(), groupId, tenantName, &streamsTenantUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamWorkspace`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.UpdateStreamWorkspace`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -2987,7 +2987,7 @@ func main() {
         return
     }
     // response from `UpdateStreamWorkspace`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamWorkspace`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.UpdateStreamWorkspace`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -3061,9 +3061,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     body := any{ ... } // any | 
 
-    resp, r, err := sdk.StreamsApi.WithStreamSampleConnections(context.Background(), groupId, &body).Execute()
+    resp, r, err := sdk.StreamsAPI.WithStreamSampleConnections(context.Background(), groupId, &body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.WithStreamSampleConnections`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.WithStreamSampleConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -3071,7 +3071,7 @@ func main() {
         return
     }
     // response from `WithStreamSampleConnections`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.WithStreamSampleConnections`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.WithStreamSampleConnections`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -11,7 +10,7 @@ import (
 	"strings"
 )
 
-type PerformanceAdvisorApi interface {
+type PerformanceAdvisorAPI interface {
 
 	/*
 		DisableManagedSlowMs Disable Managed Slow Operation Threshold
@@ -92,7 +91,7 @@ type PerformanceAdvisorApi interface {
 		@param clusterName Human-readable label that identifies the cluster.
 		@return GetServerlessAutoIndexingApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorAPI
 	*/
 	GetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) GetServerlessAutoIndexingApiRequest
 	/*
@@ -103,7 +102,7 @@ type PerformanceAdvisorApi interface {
 		@param GetServerlessAutoIndexingApiParams - Parameters for the request
 		@return GetServerlessAutoIndexingApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorAPI
 	*/
 	GetServerlessAutoIndexingWithParams(ctx context.Context, args *GetServerlessAutoIndexingApiParams) GetServerlessAutoIndexingApiRequest
 
@@ -264,7 +263,7 @@ type PerformanceAdvisorApi interface {
 		@param clusterName Human-readable label that identifies the cluster.
 		@return SetServerlessAutoIndexingApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorAPI
 	*/
 	SetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) SetServerlessAutoIndexingApiRequest
 	/*
@@ -275,7 +274,7 @@ type PerformanceAdvisorApi interface {
 		@param SetServerlessAutoIndexingApiParams - Parameters for the request
 		@return SetServerlessAutoIndexingApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PerformanceAdvisorAPI
 	*/
 	SetServerlessAutoIndexingWithParams(ctx context.Context, args *SetServerlessAutoIndexingApiParams) SetServerlessAutoIndexingApiRequest
 
@@ -283,12 +282,12 @@ type PerformanceAdvisorApi interface {
 	SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (*http.Response, error)
 }
 
-// PerformanceAdvisorApiService PerformanceAdvisorApi service
-type PerformanceAdvisorApiService service
+// PerformanceAdvisorAPIService PerformanceAdvisorAPI service
+type PerformanceAdvisorAPIService service
 
 type DisableManagedSlowMsApiRequest struct {
 	ctx        context.Context
-	ApiService PerformanceAdvisorApi
+	ApiService PerformanceAdvisorAPI
 	groupId    string
 }
 
@@ -296,7 +295,7 @@ type DisableManagedSlowMsApiParams struct {
 	GroupId string
 }
 
-func (a *PerformanceAdvisorApiService) DisableManagedSlowMsWithParams(ctx context.Context, args *DisableManagedSlowMsApiParams) DisableManagedSlowMsApiRequest {
+func (a *PerformanceAdvisorAPIService) DisableManagedSlowMsWithParams(ctx context.Context, args *DisableManagedSlowMsApiParams) DisableManagedSlowMsApiRequest {
 	return DisableManagedSlowMsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -317,7 +316,7 @@ Disables the slow operation threshold that MongoDB Cloud calculated for the spec
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DisableManagedSlowMsApiRequest
 */
-func (a *PerformanceAdvisorApiService) DisableManagedSlowMs(ctx context.Context, groupId string) DisableManagedSlowMsApiRequest {
+func (a *PerformanceAdvisorAPIService) DisableManagedSlowMs(ctx context.Context, groupId string) DisableManagedSlowMsApiRequest {
 	return DisableManagedSlowMsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -326,14 +325,14 @@ func (a *PerformanceAdvisorApiService) DisableManagedSlowMs(ctx context.Context,
 }
 
 // DisableManagedSlowMsExecute executes the request
-func (a *PerformanceAdvisorApiService) DisableManagedSlowMsExecute(r DisableManagedSlowMsApiRequest) (*http.Response, error) {
+func (a *PerformanceAdvisorAPIService) DisableManagedSlowMsExecute(r DisableManagedSlowMsApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.DisableManagedSlowMs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.DisableManagedSlowMs")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -385,7 +384,7 @@ func (a *PerformanceAdvisorApiService) DisableManagedSlowMsExecute(r DisableMana
 
 type EnableManagedSlowMsApiRequest struct {
 	ctx        context.Context
-	ApiService PerformanceAdvisorApi
+	ApiService PerformanceAdvisorAPI
 	groupId    string
 }
 
@@ -393,7 +392,7 @@ type EnableManagedSlowMsApiParams struct {
 	GroupId string
 }
 
-func (a *PerformanceAdvisorApiService) EnableManagedSlowMsWithParams(ctx context.Context, args *EnableManagedSlowMsApiParams) EnableManagedSlowMsApiRequest {
+func (a *PerformanceAdvisorAPIService) EnableManagedSlowMsWithParams(ctx context.Context, args *EnableManagedSlowMsApiParams) EnableManagedSlowMsApiRequest {
 	return EnableManagedSlowMsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -414,7 +413,7 @@ Enables MongoDB Cloud to use its slow operation threshold for the specified proj
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return EnableManagedSlowMsApiRequest
 */
-func (a *PerformanceAdvisorApiService) EnableManagedSlowMs(ctx context.Context, groupId string) EnableManagedSlowMsApiRequest {
+func (a *PerformanceAdvisorAPIService) EnableManagedSlowMs(ctx context.Context, groupId string) EnableManagedSlowMsApiRequest {
 	return EnableManagedSlowMsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -423,14 +422,14 @@ func (a *PerformanceAdvisorApiService) EnableManagedSlowMs(ctx context.Context, 
 }
 
 // EnableManagedSlowMsExecute executes the request
-func (a *PerformanceAdvisorApiService) EnableManagedSlowMsExecute(r EnableManagedSlowMsApiRequest) (*http.Response, error) {
+func (a *PerformanceAdvisorAPIService) EnableManagedSlowMsExecute(r EnableManagedSlowMsApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.EnableManagedSlowMs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.EnableManagedSlowMs")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -482,7 +481,7 @@ func (a *PerformanceAdvisorApiService) EnableManagedSlowMsExecute(r EnableManage
 
 type GetManagedSlowMsApiRequest struct {
 	ctx        context.Context
-	ApiService PerformanceAdvisorApi
+	ApiService PerformanceAdvisorAPI
 	groupId    string
 }
 
@@ -490,7 +489,7 @@ type GetManagedSlowMsApiParams struct {
 	GroupId string
 }
 
-func (a *PerformanceAdvisorApiService) GetManagedSlowMsWithParams(ctx context.Context, args *GetManagedSlowMsApiParams) GetManagedSlowMsApiRequest {
+func (a *PerformanceAdvisorAPIService) GetManagedSlowMsWithParams(ctx context.Context, args *GetManagedSlowMsApiParams) GetManagedSlowMsApiRequest {
 	return GetManagedSlowMsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -511,7 +510,7 @@ Get whether the Managed Slow MS feature is enabled.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetManagedSlowMsApiRequest
 */
-func (a *PerformanceAdvisorApiService) GetManagedSlowMs(ctx context.Context, groupId string) GetManagedSlowMsApiRequest {
+func (a *PerformanceAdvisorAPIService) GetManagedSlowMs(ctx context.Context, groupId string) GetManagedSlowMsApiRequest {
 	return GetManagedSlowMsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -522,7 +521,7 @@ func (a *PerformanceAdvisorApiService) GetManagedSlowMs(ctx context.Context, gro
 // GetManagedSlowMsExecute executes the request
 //
 //	@return bool
-func (a *PerformanceAdvisorApiService) GetManagedSlowMsExecute(r GetManagedSlowMsApiRequest) (bool, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) GetManagedSlowMsExecute(r GetManagedSlowMsApiRequest) (bool, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -530,7 +529,7 @@ func (a *PerformanceAdvisorApiService) GetManagedSlowMsExecute(r GetManagedSlowM
 		localVarReturnValue bool
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.GetManagedSlowMs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.GetManagedSlowMs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -596,7 +595,7 @@ func (a *PerformanceAdvisorApiService) GetManagedSlowMsExecute(r GetManagedSlowM
 
 type GetServerlessAutoIndexingApiRequest struct {
 	ctx         context.Context
-	ApiService  PerformanceAdvisorApi
+	ApiService  PerformanceAdvisorAPI
 	groupId     string
 	clusterName string
 }
@@ -606,7 +605,7 @@ type GetServerlessAutoIndexingApiParams struct {
 	ClusterName string
 }
 
-func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingWithParams(ctx context.Context, args *GetServerlessAutoIndexingApiParams) GetServerlessAutoIndexingApiRequest {
+func (a *PerformanceAdvisorAPIService) GetServerlessAutoIndexingWithParams(ctx context.Context, args *GetServerlessAutoIndexingApiParams) GetServerlessAutoIndexingApiRequest {
 	return GetServerlessAutoIndexingApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -631,7 +630,7 @@ Get whether the Serverless Auto Indexing feature is enabled. This endpoint retur
 
 Deprecated
 */
-func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) GetServerlessAutoIndexingApiRequest {
+func (a *PerformanceAdvisorAPIService) GetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) GetServerlessAutoIndexingApiRequest {
 	return GetServerlessAutoIndexingApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -645,7 +644,7 @@ func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexing(ctx context.Con
 //	@return bool
 //
 // Deprecated
-func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingExecute(r GetServerlessAutoIndexingApiRequest) (bool, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) GetServerlessAutoIndexingExecute(r GetServerlessAutoIndexingApiRequest) (bool, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -653,7 +652,7 @@ func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingExecute(r GetSer
 		localVarReturnValue bool
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.GetServerlessAutoIndexing")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.GetServerlessAutoIndexing")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -723,7 +722,7 @@ func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingExecute(r GetSer
 
 type ListClusterSuggestedIndexesApiRequest struct {
 	ctx         context.Context
-	ApiService  PerformanceAdvisorApi
+	ApiService  PerformanceAdvisorAPI
 	groupId     string
 	clusterName string
 	processIds  *[]string
@@ -741,7 +740,7 @@ type ListClusterSuggestedIndexesApiParams struct {
 	Until       *int64
 }
 
-func (a *PerformanceAdvisorApiService) ListClusterSuggestedIndexesWithParams(ctx context.Context, args *ListClusterSuggestedIndexesApiParams) ListClusterSuggestedIndexesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexesWithParams(ctx context.Context, args *ListClusterSuggestedIndexesApiParams) ListClusterSuggestedIndexesApiRequest {
 	return ListClusterSuggestedIndexesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -792,7 +791,7 @@ Returns the indexes that the Performance Advisor suggests. The Performance Advis
 	@param clusterName Human-readable label that identifies the cluster.
 	@return ListClusterSuggestedIndexesApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListClusterSuggestedIndexes(ctx context.Context, groupId string, clusterName string) ListClusterSuggestedIndexesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexes(ctx context.Context, groupId string, clusterName string) ListClusterSuggestedIndexesApiRequest {
 	return ListClusterSuggestedIndexesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -804,7 +803,7 @@ func (a *PerformanceAdvisorApiService) ListClusterSuggestedIndexes(ctx context.C
 // ListClusterSuggestedIndexesExecute executes the request
 //
 //	@return PerformanceAdvisorResponse
-func (a *PerformanceAdvisorApiService) ListClusterSuggestedIndexesExecute(r ListClusterSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexesExecute(r ListClusterSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -812,7 +811,7 @@ func (a *PerformanceAdvisorApiService) ListClusterSuggestedIndexesExecute(r List
 		localVarReturnValue *PerformanceAdvisorResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListClusterSuggestedIndexes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListClusterSuggestedIndexes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -902,7 +901,7 @@ func (a *PerformanceAdvisorApiService) ListClusterSuggestedIndexesExecute(r List
 
 type ListDropIndexSuggestionsApiRequest struct {
 	ctx         context.Context
-	ApiService  PerformanceAdvisorApi
+	ApiService  PerformanceAdvisorAPI
 	groupId     string
 	clusterName string
 }
@@ -912,7 +911,7 @@ type ListDropIndexSuggestionsApiParams struct {
 	ClusterName string
 }
 
-func (a *PerformanceAdvisorApiService) ListDropIndexSuggestionsWithParams(ctx context.Context, args *ListDropIndexSuggestionsApiParams) ListDropIndexSuggestionsApiRequest {
+func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestionsWithParams(ctx context.Context, args *ListDropIndexSuggestionsApiParams) ListDropIndexSuggestionsApiRequest {
 	return ListDropIndexSuggestionsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -935,7 +934,7 @@ Returns the indexes that the Performance Advisor suggests to drop. The Performan
 	@param clusterName Human-readable label that identifies the cluster.
 	@return ListDropIndexSuggestionsApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListDropIndexSuggestions(ctx context.Context, groupId string, clusterName string) ListDropIndexSuggestionsApiRequest {
+func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestions(ctx context.Context, groupId string, clusterName string) ListDropIndexSuggestionsApiRequest {
 	return ListDropIndexSuggestionsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -947,7 +946,7 @@ func (a *PerformanceAdvisorApiService) ListDropIndexSuggestions(ctx context.Cont
 // ListDropIndexSuggestionsExecute executes the request
 //
 //	@return DropIndexSuggestionsResponse
-func (a *PerformanceAdvisorApiService) ListDropIndexSuggestionsExecute(r ListDropIndexSuggestionsApiRequest) (*DropIndexSuggestionsResponse, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestionsExecute(r ListDropIndexSuggestionsApiRequest) (*DropIndexSuggestionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -955,7 +954,7 @@ func (a *PerformanceAdvisorApiService) ListDropIndexSuggestionsExecute(r ListDro
 		localVarReturnValue *DropIndexSuggestionsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListDropIndexSuggestions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListDropIndexSuggestions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1025,7 +1024,7 @@ func (a *PerformanceAdvisorApiService) ListDropIndexSuggestionsExecute(r ListDro
 
 type ListPerformanceAdvisorNamespacesApiRequest struct {
 	ctx        context.Context
-	ApiService PerformanceAdvisorApi
+	ApiService PerformanceAdvisorAPI
 	groupId    string
 	processId  string
 	duration   *int64
@@ -1039,7 +1038,7 @@ type ListPerformanceAdvisorNamespacesApiParams struct {
 	Since     *int64
 }
 
-func (a *PerformanceAdvisorApiService) ListPerformanceAdvisorNamespacesWithParams(ctx context.Context, args *ListPerformanceAdvisorNamespacesApiParams) ListPerformanceAdvisorNamespacesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListPerformanceAdvisorNamespacesWithParams(ctx context.Context, args *ListPerformanceAdvisorNamespacesApiParams) ListPerformanceAdvisorNamespacesApiRequest {
 	return ListPerformanceAdvisorNamespacesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1076,7 +1075,7 @@ Returns up to 20 namespaces for collections experiencing slow queries on the spe
 	@param processId Combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return ListPerformanceAdvisorNamespacesApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListPerformanceAdvisorNamespaces(ctx context.Context, groupId string, processId string) ListPerformanceAdvisorNamespacesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListPerformanceAdvisorNamespaces(ctx context.Context, groupId string, processId string) ListPerformanceAdvisorNamespacesApiRequest {
 	return ListPerformanceAdvisorNamespacesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1088,7 +1087,7 @@ func (a *PerformanceAdvisorApiService) ListPerformanceAdvisorNamespaces(ctx cont
 // ListPerformanceAdvisorNamespacesExecute executes the request
 //
 //	@return Namespaces
-func (a *PerformanceAdvisorApiService) ListPerformanceAdvisorNamespacesExecute(r ListPerformanceAdvisorNamespacesApiRequest) (*Namespaces, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) ListPerformanceAdvisorNamespacesExecute(r ListPerformanceAdvisorNamespacesApiRequest) (*Namespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1096,7 +1095,7 @@ func (a *PerformanceAdvisorApiService) ListPerformanceAdvisorNamespacesExecute(r
 		localVarReturnValue *Namespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListPerformanceAdvisorNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListPerformanceAdvisorNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1172,7 +1171,7 @@ func (a *PerformanceAdvisorApiService) ListPerformanceAdvisorNamespacesExecute(r
 
 type ListSchemaAdviceApiRequest struct {
 	ctx         context.Context
-	ApiService  PerformanceAdvisorApi
+	ApiService  PerformanceAdvisorAPI
 	groupId     string
 	clusterName string
 }
@@ -1182,7 +1181,7 @@ type ListSchemaAdviceApiParams struct {
 	ClusterName string
 }
 
-func (a *PerformanceAdvisorApiService) ListSchemaAdviceWithParams(ctx context.Context, args *ListSchemaAdviceApiParams) ListSchemaAdviceApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSchemaAdviceWithParams(ctx context.Context, args *ListSchemaAdviceApiParams) ListSchemaAdviceApiRequest {
 	return ListSchemaAdviceApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1205,7 +1204,7 @@ Returns the schema suggestions that the Performance Advisor detects. The Perform
 	@param clusterName Human-readable label that identifies the cluster.
 	@return ListSchemaAdviceApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListSchemaAdvice(ctx context.Context, groupId string, clusterName string) ListSchemaAdviceApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSchemaAdvice(ctx context.Context, groupId string, clusterName string) ListSchemaAdviceApiRequest {
 	return ListSchemaAdviceApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1217,7 +1216,7 @@ func (a *PerformanceAdvisorApiService) ListSchemaAdvice(ctx context.Context, gro
 // ListSchemaAdviceExecute executes the request
 //
 //	@return SchemaAdvisorResponse
-func (a *PerformanceAdvisorApiService) ListSchemaAdviceExecute(r ListSchemaAdviceApiRequest) (*SchemaAdvisorResponse, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) ListSchemaAdviceExecute(r ListSchemaAdviceApiRequest) (*SchemaAdvisorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1225,7 +1224,7 @@ func (a *PerformanceAdvisorApiService) ListSchemaAdviceExecute(r ListSchemaAdvic
 		localVarReturnValue *SchemaAdvisorResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListSchemaAdvice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListSchemaAdvice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1295,7 +1294,7 @@ func (a *PerformanceAdvisorApiService) ListSchemaAdviceExecute(r ListSchemaAdvic
 
 type ListSlowQueryLogsApiRequest struct {
 	ctx                 context.Context
-	ApiService          PerformanceAdvisorApi
+	ApiService          PerformanceAdvisorAPI
 	groupId             string
 	processId           string
 	duration            *int64
@@ -1319,7 +1318,7 @@ type ListSlowQueryLogsApiParams struct {
 	IncludeOpType       *bool
 }
 
-func (a *PerformanceAdvisorApiService) ListSlowQueryLogsWithParams(ctx context.Context, args *ListSlowQueryLogsApiParams) ListSlowQueryLogsApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSlowQueryLogsWithParams(ctx context.Context, args *ListSlowQueryLogsApiParams) ListSlowQueryLogsApiRequest {
 	return ListSlowQueryLogsApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -1391,7 +1390,7 @@ Returns log lines for slow queries that the Performance Advisor and Query Profil
 	@param processId Combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return ListSlowQueryLogsApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListSlowQueryLogs(ctx context.Context, groupId string, processId string) ListSlowQueryLogsApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSlowQueryLogs(ctx context.Context, groupId string, processId string) ListSlowQueryLogsApiRequest {
 	return ListSlowQueryLogsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1403,7 +1402,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryLogs(ctx context.Context, gr
 // ListSlowQueryLogsExecute executes the request
 //
 //	@return PerformanceAdvisorSlowQueryList
-func (a *PerformanceAdvisorApiService) ListSlowQueryLogsExecute(r ListSlowQueryLogsApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) ListSlowQueryLogsExecute(r ListSlowQueryLogsApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1411,7 +1410,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryLogsExecute(r ListSlowQueryL
 		localVarReturnValue *PerformanceAdvisorSlowQueryList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListSlowQueryLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListSlowQueryLogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1522,7 +1521,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryLogsExecute(r ListSlowQueryL
 
 type ListSuggestedIndexesApiRequest struct {
 	ctx          context.Context
-	ApiService   PerformanceAdvisorApi
+	ApiService   PerformanceAdvisorAPI
 	groupId      string
 	processId    string
 	includeCount *bool
@@ -1548,7 +1547,7 @@ type ListSuggestedIndexesApiParams struct {
 	Since        *int64
 }
 
-func (a *PerformanceAdvisorApiService) ListSuggestedIndexesWithParams(ctx context.Context, args *ListSuggestedIndexesApiParams) ListSuggestedIndexesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSuggestedIndexesWithParams(ctx context.Context, args *ListSuggestedIndexesApiParams) ListSuggestedIndexesApiRequest {
 	return ListSuggestedIndexesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1627,7 +1626,7 @@ Returns the indexes that the Performance Advisor suggests. The Performance Advis
 	@param processId Combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return ListSuggestedIndexesApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListSuggestedIndexes(ctx context.Context, groupId string, processId string) ListSuggestedIndexesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSuggestedIndexes(ctx context.Context, groupId string, processId string) ListSuggestedIndexesApiRequest {
 	return ListSuggestedIndexesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1639,7 +1638,7 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexes(ctx context.Context,
 // ListSuggestedIndexesExecute executes the request
 //
 //	@return PerformanceAdvisorResponse
-func (a *PerformanceAdvisorApiService) ListSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) ListSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1647,7 +1646,7 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexesExecute(r ListSuggest
 		localVarReturnValue *PerformanceAdvisorResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListSuggestedIndexes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListSuggestedIndexes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1761,7 +1760,7 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexesExecute(r ListSuggest
 
 type SetServerlessAutoIndexingApiRequest struct {
 	ctx         context.Context
-	ApiService  PerformanceAdvisorApi
+	ApiService  PerformanceAdvisorAPI
 	groupId     string
 	clusterName string
 	enable      *bool
@@ -1773,7 +1772,7 @@ type SetServerlessAutoIndexingApiParams struct {
 	Enable      *bool
 }
 
-func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingWithParams(ctx context.Context, args *SetServerlessAutoIndexingApiParams) SetServerlessAutoIndexingApiRequest {
+func (a *PerformanceAdvisorAPIService) SetServerlessAutoIndexingWithParams(ctx context.Context, args *SetServerlessAutoIndexingApiParams) SetServerlessAutoIndexingApiRequest {
 	return SetServerlessAutoIndexingApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1805,7 +1804,7 @@ Set whether the Serverless Auto Indexing feature is enabled. This endpoint sets 
 
 Deprecated
 */
-func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) SetServerlessAutoIndexingApiRequest {
+func (a *PerformanceAdvisorAPIService) SetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) SetServerlessAutoIndexingApiRequest {
 	return SetServerlessAutoIndexingApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1816,14 +1815,14 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexing(ctx context.Con
 
 // SetServerlessAutoIndexingExecute executes the request
 // Deprecated
-func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (*http.Response, error) {
+func (a *PerformanceAdvisorAPIService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.SetServerlessAutoIndexing")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.SetServerlessAutoIndexing")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

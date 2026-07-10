@@ -1,12 +1,12 @@
-# \ClusterOutageSimulationApi
+# \ClusterOutageSimulationAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EndOutageSimulation**](ClusterOutageSimulationApi.md#EndOutageSimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | End One Outage Simulation
-[**GetOutageSimulation**](ClusterOutageSimulationApi.md#GetOutageSimulation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Return One Outage Simulation
-[**StartOutageSimulation**](ClusterOutageSimulationApi.md#StartOutageSimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Start One Outage Simulation
+[**EndOutageSimulation**](ClusterOutageSimulationAPI.md#EndOutageSimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | End One Outage Simulation
+[**GetOutageSimulation**](ClusterOutageSimulationAPI.md#GetOutageSimulation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Return One Outage Simulation
+[**StartOutageSimulation**](ClusterOutageSimulationAPI.md#StartOutageSimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Start One Outage Simulation
 
 
 
@@ -43,9 +43,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClusterOutageSimulationApi.EndOutageSimulation(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.ClusterOutageSimulationAPI.EndOutageSimulation(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.EndOutageSimulation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationAPI.EndOutageSimulation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -53,7 +53,7 @@ func main() {
         return
     }
     // response from `EndOutageSimulation`: ClusterOutageSimulation
-    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.EndOutageSimulation`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationAPI.EndOutageSimulation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -126,9 +126,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClusterOutageSimulationApi.GetOutageSimulation(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.ClusterOutageSimulationAPI.GetOutageSimulation(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.GetOutageSimulation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationAPI.GetOutageSimulation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -136,7 +136,7 @@ func main() {
         return
     }
     // response from `GetOutageSimulation`: ClusterOutageSimulation
-    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.GetOutageSimulation`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationAPI.GetOutageSimulation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -210,9 +210,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterOutageSimulation := *admin.NewClusterOutageSimulation() // ClusterOutageSimulation | 
 
-    resp, r, err := sdk.ClusterOutageSimulationApi.StartOutageSimulation(context.Background(), groupId, clusterName, &clusterOutageSimulation).Execute()
+    resp, r, err := sdk.ClusterOutageSimulationAPI.StartOutageSimulation(context.Background(), groupId, clusterName, &clusterOutageSimulation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.StartOutageSimulation`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationAPI.StartOutageSimulation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -220,7 +220,7 @@ func main() {
         return
     }
     // response from `StartOutageSimulation`: ClusterOutageSimulation
-    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.StartOutageSimulation`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationAPI.StartOutageSimulation`: %v (%v)\n", resp, r)
 }
 ```
 

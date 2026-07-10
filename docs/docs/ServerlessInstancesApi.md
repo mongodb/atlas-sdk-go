@@ -1,11 +1,11 @@
-# \ServerlessInstancesApi
+# \ServerlessInstancesAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetServerlessInstance**](ServerlessInstancesApi.md#GetServerlessInstance) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{name} | Return One Serverless Instance from One Project
-[**ListServerlessInstances**](ServerlessInstancesApi.md#ListServerlessInstances) | **Get** /api/atlas/v2/groups/{groupId}/serverless | Return All Serverless Instances in One Project
+[**GetServerlessInstance**](ServerlessInstancesAPI.md#GetServerlessInstance) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{name} | Return One Serverless Instance from One Project
+[**ListServerlessInstances**](ServerlessInstancesAPI.md#ListServerlessInstances) | **Get** /api/atlas/v2/groups/{groupId}/serverless | Return All Serverless Instances in One Project
 
 
 
@@ -42,9 +42,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
 
-    resp, r, err := sdk.ServerlessInstancesApi.GetServerlessInstance(context.Background(), groupId, name).Execute()
+    resp, r, err := sdk.ServerlessInstancesAPI.GetServerlessInstance(context.Background(), groupId, name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessInstancesApi.GetServerlessInstance`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessInstancesAPI.GetServerlessInstance`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -52,7 +52,7 @@ func main() {
         return
     }
     // response from `GetServerlessInstance`: ServerlessInstanceDescription
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessInstancesApi.GetServerlessInstance`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessInstancesAPI.GetServerlessInstance`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -127,9 +127,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ServerlessInstancesApi.ListServerlessInstances(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServerlessInstancesAPI.ListServerlessInstances(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessInstancesApi.ListServerlessInstances`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessInstancesAPI.ListServerlessInstances`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -137,7 +137,7 @@ func main() {
         return
     }
     // response from `ListServerlessInstances`: PaginatedServerlessInstanceDescription
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessInstancesApi.ListServerlessInstances`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessInstancesAPI.ListServerlessInstances`: %v (%v)\n", resp, r)
 }
 ```
 

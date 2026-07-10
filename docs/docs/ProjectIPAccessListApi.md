@@ -1,14 +1,14 @@
-# \ProjectIPAccessListApi
+# \ProjectIPAccessListAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAccessListEntry**](ProjectIPAccessListApi.md#CreateAccessListEntry) | **Post** /api/atlas/v2/groups/{groupId}/accessList | Add Entries to Project IP Access List
-[**DeleteAccessListEntry**](ProjectIPAccessListApi.md#DeleteAccessListEntry) | **Delete** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Remove One Entry from One Project IP Access List
-[**GetAccessListEntry**](ProjectIPAccessListApi.md#GetAccessListEntry) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Return One Project IP Access List Entry
-[**GetAccessListStatus**](ProjectIPAccessListApi.md#GetAccessListStatus) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status | Return Status of One Project IP Access List Entry
-[**ListAccessListEntries**](ProjectIPAccessListApi.md#ListAccessListEntries) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return All Project IP Access List Entries
+[**CreateAccessListEntry**](ProjectIPAccessListAPI.md#CreateAccessListEntry) | **Post** /api/atlas/v2/groups/{groupId}/accessList | Add Entries to Project IP Access List
+[**DeleteAccessListEntry**](ProjectIPAccessListAPI.md#DeleteAccessListEntry) | **Delete** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Remove One Entry from One Project IP Access List
+[**GetAccessListEntry**](ProjectIPAccessListAPI.md#GetAccessListEntry) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Return One Project IP Access List Entry
+[**GetAccessListStatus**](ProjectIPAccessListAPI.md#GetAccessListStatus) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status | Return Status of One Project IP Access List Entry
+[**ListAccessListEntries**](ProjectIPAccessListAPI.md#ListAccessListEntries) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return All Project IP Access List Entries
 
 
 
@@ -48,9 +48,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectIPAccessListApi.CreateAccessListEntry(context.Background(), groupId, &networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectIPAccessListAPI.CreateAccessListEntry(context.Background(), groupId, &networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.CreateAccessListEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListAPI.CreateAccessListEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -58,7 +58,7 @@ func main() {
         return
     }
     // response from `CreateAccessListEntry`: PaginatedNetworkAccess
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.CreateAccessListEntry`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListAPI.CreateAccessListEntry`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -133,9 +133,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
-    r, err := sdk.ProjectIPAccessListApi.DeleteAccessListEntry(context.Background(), groupId, entryValue).Execute()
+    r, err := sdk.ProjectIPAccessListAPI.DeleteAccessListEntry(context.Background(), groupId, entryValue).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.DeleteAccessListEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListAPI.DeleteAccessListEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -214,9 +214,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
-    resp, r, err := sdk.ProjectIPAccessListApi.GetAccessListEntry(context.Background(), groupId, entryValue).Execute()
+    resp, r, err := sdk.ProjectIPAccessListAPI.GetAccessListEntry(context.Background(), groupId, entryValue).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetAccessListEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListAPI.GetAccessListEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -224,7 +224,7 @@ func main() {
         return
     }
     // response from `GetAccessListEntry`: NetworkPermissionEntry
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetAccessListEntry`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListAPI.GetAccessListEntry`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -297,9 +297,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
-    resp, r, err := sdk.ProjectIPAccessListApi.GetAccessListStatus(context.Background(), groupId, entryValue).Execute()
+    resp, r, err := sdk.ProjectIPAccessListAPI.GetAccessListStatus(context.Background(), groupId, entryValue).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetAccessListStatus`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListAPI.GetAccessListStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -307,7 +307,7 @@ func main() {
         return
     }
     // response from `GetAccessListStatus`: NetworkPermissionEntryStatus
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetAccessListStatus`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListAPI.GetAccessListStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -382,9 +382,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectIPAccessListApi.ListAccessListEntries(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectIPAccessListAPI.ListAccessListEntries(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.ListAccessListEntries`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListAPI.ListAccessListEntries`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -392,7 +392,7 @@ func main() {
         return
     }
     // response from `ListAccessListEntries`: PaginatedNetworkAccess
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.ListAccessListEntries`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListAPI.ListAccessListEntries`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -1,12 +1,12 @@
-# \X509AuthenticationApi
+# \X509AuthenticationAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDatabaseUserCert**](X509AuthenticationApi.md#CreateDatabaseUserCert) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Create One X.509 Certificate for One Database User
-[**DisableSecurityCustomerX509**](X509AuthenticationApi.md#DisableSecurityCustomerX509) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/customerX509 | Disable Customer-Managed X.509
-[**ListDatabaseUserCerts**](X509AuthenticationApi.md#ListDatabaseUserCerts) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Return All X.509 Certificates Assigned to One Database User
+[**CreateDatabaseUserCert**](X509AuthenticationAPI.md#CreateDatabaseUserCert) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Create One X.509 Certificate for One Database User
+[**DisableSecurityCustomerX509**](X509AuthenticationAPI.md#DisableSecurityCustomerX509) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/customerX509 | Disable Customer-Managed X.509
+[**ListDatabaseUserCerts**](X509AuthenticationAPI.md#ListDatabaseUserCerts) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Return All X.509 Certificates Assigned to One Database User
 
 
 
@@ -44,9 +44,9 @@ func main() {
     username := "username_example" // string | 
     userCert := *admin.NewUserCert() // UserCert | 
 
-    resp, r, err := sdk.X509AuthenticationApi.CreateDatabaseUserCert(context.Background(), groupId, username, &userCert).Execute()
+    resp, r, err := sdk.X509AuthenticationAPI.CreateDatabaseUserCert(context.Background(), groupId, username, &userCert).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.CreateDatabaseUserCert`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationAPI.CreateDatabaseUserCert`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -54,7 +54,7 @@ func main() {
         return
     }
     // response from `CreateDatabaseUserCert`: string
-    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.CreateDatabaseUserCert`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationAPI.CreateDatabaseUserCert`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -127,9 +127,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.X509AuthenticationApi.DisableSecurityCustomerX509(context.Background(), groupId).Execute()
+    resp, r, err := sdk.X509AuthenticationAPI.DisableSecurityCustomerX509(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.DisableSecurityCustomerX509`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationAPI.DisableSecurityCustomerX509`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -137,7 +137,7 @@ func main() {
         return
     }
     // response from `DisableSecurityCustomerX509`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.DisableSecurityCustomerX509`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationAPI.DisableSecurityCustomerX509`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -211,9 +211,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.X509AuthenticationApi.ListDatabaseUserCerts(context.Background(), groupId, username).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.X509AuthenticationAPI.ListDatabaseUserCerts(context.Background(), groupId, username).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.ListDatabaseUserCerts`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationAPI.ListDatabaseUserCerts`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -221,7 +221,7 @@ func main() {
         return
     }
     // response from `ListDatabaseUserCerts`: PaginatedUserCert
-    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.ListDatabaseUserCerts`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationAPI.ListDatabaseUserCerts`: %v (%v)\n", resp, r)
 }
 ```
 

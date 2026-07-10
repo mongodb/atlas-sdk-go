@@ -11,7 +11,7 @@ To fetch the error object, execute the following:
 ```go
 // Surrounding code omitted for brevity
 
-projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
+projects, response, err := admin.ProjectsAPI.ListProjects(ctx).Execute()
 apiError, ok := admin.AsError(err)
 fmt.Println(apiError)
 ```
@@ -23,7 +23,7 @@ To check for the existence of a specific error code (e.g. `MAXIMUM_INDEXES_FOR_T
 ```go
 // Surrounding code omitted for brevity
 
-projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
+projects, response, err := admin.ProjectsAPI.ListProjects(ctx).Execute()
 if admin.IsErrorCode(err, "code"){
  // Do something
 }
@@ -36,7 +36,7 @@ To check for the existence of a specific HTTP response error code, execute the f
 ```go
 // Surrounding code omitted for brevity
 
-projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
+projects, response, err := admin.ProjectsAPI.ListProjects(ctx).Execute()
 apiError, ok := admin.AsError(err)
 if ok && apiError.GetError() == 404 {
  // Do something

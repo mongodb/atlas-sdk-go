@@ -1,17 +1,17 @@
-# \AlertConfigurationsApi
+# \AlertConfigurationsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAlertConfig**](AlertConfigurationsApi.md#CreateAlertConfig) | **Post** /api/atlas/v2/groups/{groupId}/alertConfigs | Create One Alert Configuration in One Project
-[**DeleteAlertConfig**](AlertConfigurationsApi.md#DeleteAlertConfig) | **Delete** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Remove One Alert Configuration from One Project
-[**GetAlertConfig**](AlertConfigurationsApi.md#GetAlertConfig) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Return One Alert Configuration from One Project
-[**GetAlertConfigs**](AlertConfigurationsApi.md#GetAlertConfigs) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs | Return All Alert Configurations Set for One Alert
-[**ListAlertConfigs**](AlertConfigurationsApi.md#ListAlertConfigs) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs | Return All Alert Configurations in One Project
-[**ListMatcherFieldNames**](AlertConfigurationsApi.md#ListMatcherFieldNames) | **Get** /api/atlas/v2/alertConfigs/matchers/fieldNames | Return All Alert Configuration Matchers Field Names
-[**ToggleAlertConfig**](AlertConfigurationsApi.md#ToggleAlertConfig) | **Patch** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Toggle State of One Alert Configuration in One Project
-[**UpdateAlertConfig**](AlertConfigurationsApi.md#UpdateAlertConfig) | **Put** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Update One Alert Configuration in One Project
+[**CreateAlertConfig**](AlertConfigurationsAPI.md#CreateAlertConfig) | **Post** /api/atlas/v2/groups/{groupId}/alertConfigs | Create One Alert Configuration in One Project
+[**DeleteAlertConfig**](AlertConfigurationsAPI.md#DeleteAlertConfig) | **Delete** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Remove One Alert Configuration from One Project
+[**GetAlertConfig**](AlertConfigurationsAPI.md#GetAlertConfig) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Return One Alert Configuration from One Project
+[**GetAlertConfigs**](AlertConfigurationsAPI.md#GetAlertConfigs) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs | Return All Alert Configurations Set for One Alert
+[**ListAlertConfigs**](AlertConfigurationsAPI.md#ListAlertConfigs) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs | Return All Alert Configurations in One Project
+[**ListMatcherFieldNames**](AlertConfigurationsAPI.md#ListMatcherFieldNames) | **Get** /api/atlas/v2/alertConfigs/matchers/fieldNames | Return All Alert Configuration Matchers Field Names
+[**ToggleAlertConfig**](AlertConfigurationsAPI.md#ToggleAlertConfig) | **Patch** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Toggle State of One Alert Configuration in One Project
+[**UpdateAlertConfig**](AlertConfigurationsAPI.md#UpdateAlertConfig) | **Put** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Update One Alert Configuration in One Project
 
 
 
@@ -48,9 +48,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupAlertsConfig := *admin.NewGroupAlertsConfig() // GroupAlertsConfig | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.CreateAlertConfig(context.Background(), groupId, &groupAlertsConfig).Execute()
+    resp, r, err := sdk.AlertConfigurationsAPI.CreateAlertConfig(context.Background(), groupId, &groupAlertsConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.CreateAlertConfig`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsAPI.CreateAlertConfig`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -58,7 +58,7 @@ func main() {
         return
     }
     // response from `CreateAlertConfig`: GroupAlertsConfig
-    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.CreateAlertConfig`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsAPI.CreateAlertConfig`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -130,9 +130,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.AlertConfigurationsApi.DeleteAlertConfig(context.Background(), groupId, alertConfigId).Execute()
+    r, err := sdk.AlertConfigurationsAPI.DeleteAlertConfig(context.Background(), groupId, alertConfigId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.DeleteAlertConfig`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsAPI.DeleteAlertConfig`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -211,9 +211,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.GetAlertConfig(context.Background(), groupId, alertConfigId).Execute()
+    resp, r, err := sdk.AlertConfigurationsAPI.GetAlertConfig(context.Background(), groupId, alertConfigId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.GetAlertConfig`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsAPI.GetAlertConfig`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -221,7 +221,7 @@ func main() {
         return
     }
     // response from `GetAlertConfig`: GroupAlertsConfig
-    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.GetAlertConfig`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsAPI.GetAlertConfig`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -297,9 +297,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.AlertConfigurationsApi.GetAlertConfigs(context.Background(), groupId, alertId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.AlertConfigurationsAPI.GetAlertConfigs(context.Background(), groupId, alertId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.GetAlertConfigs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsAPI.GetAlertConfigs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -307,7 +307,7 @@ func main() {
         return
     }
     // response from `GetAlertConfigs`: PaginatedAlertConfig
-    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.GetAlertConfigs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsAPI.GetAlertConfigs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -385,9 +385,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.AlertConfigurationsApi.ListAlertConfigs(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.AlertConfigurationsAPI.ListAlertConfigs(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ListAlertConfigs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsAPI.ListAlertConfigs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -395,7 +395,7 @@ func main() {
         return
     }
     // response from `ListAlertConfigs`: PaginatedAlertConfig
-    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ListAlertConfigs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsAPI.ListAlertConfigs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -467,9 +467,9 @@ func main() {
     }
 
 
-    resp, r, err := sdk.AlertConfigurationsApi.ListMatcherFieldNames(context.Background()).Execute()
+    resp, r, err := sdk.AlertConfigurationsAPI.ListMatcherFieldNames(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ListMatcherFieldNames`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsAPI.ListMatcherFieldNames`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -477,7 +477,7 @@ func main() {
         return
     }
     // response from `ListMatcherFieldNames`: []string
-    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ListMatcherFieldNames`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsAPI.ListMatcherFieldNames`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -541,9 +541,9 @@ func main() {
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
     alertsToggle := *admin.NewAlertsToggle() // AlertsToggle | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.ToggleAlertConfig(context.Background(), groupId, alertConfigId, &alertsToggle).Execute()
+    resp, r, err := sdk.AlertConfigurationsAPI.ToggleAlertConfig(context.Background(), groupId, alertConfigId, &alertsToggle).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ToggleAlertConfig`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsAPI.ToggleAlertConfig`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -551,7 +551,7 @@ func main() {
         return
     }
     // response from `ToggleAlertConfig`: GroupAlertsConfig
-    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ToggleAlertConfig`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsAPI.ToggleAlertConfig`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -626,9 +626,9 @@ func main() {
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
     groupAlertsConfig := *admin.NewGroupAlertsConfig() // GroupAlertsConfig | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.UpdateAlertConfig(context.Background(), groupId, alertConfigId, &groupAlertsConfig).Execute()
+    resp, r, err := sdk.AlertConfigurationsAPI.UpdateAlertConfig(context.Background(), groupId, alertConfigId, &groupAlertsConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.UpdateAlertConfig`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsAPI.UpdateAlertConfig`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -636,7 +636,7 @@ func main() {
         return
     }
     // response from `UpdateAlertConfig`: GroupAlertsConfig
-    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.UpdateAlertConfig`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsAPI.UpdateAlertConfig`: %v (%v)\n", resp, r)
 }
 ```
 

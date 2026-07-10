@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type OnlineArchiveApi interface {
+type OnlineArchiveAPI interface {
 
 	/*
 		CreateOnlineArchive Create One Online Archive
@@ -162,12 +161,12 @@ type OnlineArchiveApi interface {
 	UpdateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 }
 
-// OnlineArchiveApiService OnlineArchiveApi service
-type OnlineArchiveApiService service
+// OnlineArchiveAPIService OnlineArchiveAPI service
+type OnlineArchiveAPIService service
 
 type CreateOnlineArchiveApiRequest struct {
 	ctx                       context.Context
-	ApiService                OnlineArchiveApi
+	ApiService                OnlineArchiveAPI
 	groupId                   string
 	clusterName               string
 	backupOnlineArchiveCreate *BackupOnlineArchiveCreate
@@ -179,7 +178,7 @@ type CreateOnlineArchiveApiParams struct {
 	BackupOnlineArchiveCreate *BackupOnlineArchiveCreate
 }
 
-func (a *OnlineArchiveApiService) CreateOnlineArchiveWithParams(ctx context.Context, args *CreateOnlineArchiveApiParams) CreateOnlineArchiveApiRequest {
+func (a *OnlineArchiveAPIService) CreateOnlineArchiveWithParams(ctx context.Context, args *CreateOnlineArchiveApiParams) CreateOnlineArchiveApiRequest {
 	return CreateOnlineArchiveApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -203,7 +202,7 @@ Creates one online archive. This archive stores data from one cluster within one
 	@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
 	@return CreateOnlineArchiveApiRequest
 */
-func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchiveCreate *BackupOnlineArchiveCreate) CreateOnlineArchiveApiRequest {
+func (a *OnlineArchiveAPIService) CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchiveCreate *BackupOnlineArchiveCreate) CreateOnlineArchiveApiRequest {
 	return CreateOnlineArchiveApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -216,7 +215,7 @@ func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, group
 // CreateOnlineArchiveExecute executes the request
 //
 //	@return BackupOnlineArchive
-func (a *OnlineArchiveApiService) CreateOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
+func (a *OnlineArchiveAPIService) CreateOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -224,7 +223,7 @@ func (a *OnlineArchiveApiService) CreateOnlineArchiveExecute(r CreateOnlineArchi
 		localVarReturnValue *BackupOnlineArchive
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.CreateOnlineArchive")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveAPIService.CreateOnlineArchive")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -299,7 +298,7 @@ func (a *OnlineArchiveApiService) CreateOnlineArchiveExecute(r CreateOnlineArchi
 
 type DeleteOnlineArchiveApiRequest struct {
 	ctx         context.Context
-	ApiService  OnlineArchiveApi
+	ApiService  OnlineArchiveAPI
 	groupId     string
 	archiveId   string
 	clusterName string
@@ -311,7 +310,7 @@ type DeleteOnlineArchiveApiParams struct {
 	ClusterName string
 }
 
-func (a *OnlineArchiveApiService) DeleteOnlineArchiveWithParams(ctx context.Context, args *DeleteOnlineArchiveApiParams) DeleteOnlineArchiveApiRequest {
+func (a *OnlineArchiveAPIService) DeleteOnlineArchiveWithParams(ctx context.Context, args *DeleteOnlineArchiveApiParams) DeleteOnlineArchiveApiRequest {
 	return DeleteOnlineArchiveApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -336,7 +335,7 @@ Removes one online archive. This archive stores data from one cluster within one
 	@param clusterName Human-readable label that identifies the cluster that contains the collection from which you want to remove an online archive.
 	@return DeleteOnlineArchiveApiRequest
 */
-func (a *OnlineArchiveApiService) DeleteOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string) DeleteOnlineArchiveApiRequest {
+func (a *OnlineArchiveAPIService) DeleteOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string) DeleteOnlineArchiveApiRequest {
 	return DeleteOnlineArchiveApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -347,14 +346,14 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchive(ctx context.Context, group
 }
 
 // DeleteOnlineArchiveExecute executes the request
-func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (*http.Response, error) {
+func (a *OnlineArchiveAPIService) DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.DeleteOnlineArchive")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveAPIService.DeleteOnlineArchive")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -414,7 +413,7 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchi
 
 type DownloadQueryLogsApiRequest struct {
 	ctx         context.Context
-	ApiService  OnlineArchiveApi
+	ApiService  OnlineArchiveAPI
 	groupId     string
 	clusterName string
 	startDate   *int64
@@ -430,7 +429,7 @@ type DownloadQueryLogsApiParams struct {
 	ArchiveOnly *bool
 }
 
-func (a *OnlineArchiveApiService) DownloadQueryLogsWithParams(ctx context.Context, args *DownloadQueryLogsApiParams) DownloadQueryLogsApiRequest {
+func (a *OnlineArchiveAPIService) DownloadQueryLogsWithParams(ctx context.Context, args *DownloadQueryLogsApiParams) DownloadQueryLogsApiRequest {
 	return DownloadQueryLogsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -474,7 +473,7 @@ Downloads query logs for the specified online archive. The API does not support 
 	@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to return the query logs from one online archive.
 	@return DownloadQueryLogsApiRequest
 */
-func (a *OnlineArchiveApiService) DownloadQueryLogs(ctx context.Context, groupId string, clusterName string) DownloadQueryLogsApiRequest {
+func (a *OnlineArchiveAPIService) DownloadQueryLogs(ctx context.Context, groupId string, clusterName string) DownloadQueryLogsApiRequest {
 	return DownloadQueryLogsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -486,7 +485,7 @@ func (a *OnlineArchiveApiService) DownloadQueryLogs(ctx context.Context, groupId
 // DownloadQueryLogsExecute executes the request
 //
 //	@return io.ReadCloser
-func (a *OnlineArchiveApiService) DownloadQueryLogsExecute(r DownloadQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+func (a *OnlineArchiveAPIService) DownloadQueryLogsExecute(r DownloadQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -494,7 +493,7 @@ func (a *OnlineArchiveApiService) DownloadQueryLogsExecute(r DownloadQueryLogsAp
 		localVarReturnValue io.ReadCloser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.DownloadQueryLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveAPIService.DownloadQueryLogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -577,7 +576,7 @@ func (a *OnlineArchiveApiService) DownloadQueryLogsExecute(r DownloadQueryLogsAp
 
 type GetOnlineArchiveApiRequest struct {
 	ctx         context.Context
-	ApiService  OnlineArchiveApi
+	ApiService  OnlineArchiveAPI
 	groupId     string
 	archiveId   string
 	clusterName string
@@ -589,7 +588,7 @@ type GetOnlineArchiveApiParams struct {
 	ClusterName string
 }
 
-func (a *OnlineArchiveApiService) GetOnlineArchiveWithParams(ctx context.Context, args *GetOnlineArchiveApiParams) GetOnlineArchiveApiRequest {
+func (a *OnlineArchiveAPIService) GetOnlineArchiveWithParams(ctx context.Context, args *GetOnlineArchiveApiParams) GetOnlineArchiveApiRequest {
 	return GetOnlineArchiveApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -614,7 +613,7 @@ Returns one online archive for one cluster. This archive stores data from one cl
 	@param clusterName Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
 	@return GetOnlineArchiveApiRequest
 */
-func (a *OnlineArchiveApiService) GetOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string) GetOnlineArchiveApiRequest {
+func (a *OnlineArchiveAPIService) GetOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string) GetOnlineArchiveApiRequest {
 	return GetOnlineArchiveApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -627,7 +626,7 @@ func (a *OnlineArchiveApiService) GetOnlineArchive(ctx context.Context, groupId 
 // GetOnlineArchiveExecute executes the request
 //
 //	@return BackupOnlineArchive
-func (a *OnlineArchiveApiService) GetOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
+func (a *OnlineArchiveAPIService) GetOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -635,7 +634,7 @@ func (a *OnlineArchiveApiService) GetOnlineArchiveExecute(r GetOnlineArchiveApiR
 		localVarReturnValue *BackupOnlineArchive
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.GetOnlineArchive")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveAPIService.GetOnlineArchive")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -709,7 +708,7 @@ func (a *OnlineArchiveApiService) GetOnlineArchiveExecute(r GetOnlineArchiveApiR
 
 type ListOnlineArchivesApiRequest struct {
 	ctx          context.Context
-	ApiService   OnlineArchiveApi
+	ApiService   OnlineArchiveAPI
 	groupId      string
 	clusterName  string
 	includeCount *bool
@@ -725,7 +724,7 @@ type ListOnlineArchivesApiParams struct {
 	PageNum      *int
 }
 
-func (a *OnlineArchiveApiService) ListOnlineArchivesWithParams(ctx context.Context, args *ListOnlineArchivesApiParams) ListOnlineArchivesApiRequest {
+func (a *OnlineArchiveAPIService) ListOnlineArchivesWithParams(ctx context.Context, args *ListOnlineArchivesApiParams) ListOnlineArchivesApiRequest {
 	return ListOnlineArchivesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -769,7 +768,7 @@ Returns details of all online archives. This archive stores data from one cluste
 	@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to return the online archives.
 	@return ListOnlineArchivesApiRequest
 */
-func (a *OnlineArchiveApiService) ListOnlineArchives(ctx context.Context, groupId string, clusterName string) ListOnlineArchivesApiRequest {
+func (a *OnlineArchiveAPIService) ListOnlineArchives(ctx context.Context, groupId string, clusterName string) ListOnlineArchivesApiRequest {
 	return ListOnlineArchivesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -781,7 +780,7 @@ func (a *OnlineArchiveApiService) ListOnlineArchives(ctx context.Context, groupI
 // ListOnlineArchivesExecute executes the request
 //
 //	@return PaginatedOnlineArchive
-func (a *OnlineArchiveApiService) ListOnlineArchivesExecute(r ListOnlineArchivesApiRequest) (*PaginatedOnlineArchive, *http.Response, error) {
+func (a *OnlineArchiveAPIService) ListOnlineArchivesExecute(r ListOnlineArchivesApiRequest) (*PaginatedOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -789,7 +788,7 @@ func (a *OnlineArchiveApiService) ListOnlineArchivesExecute(r ListOnlineArchives
 		localVarReturnValue *PaginatedOnlineArchive
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.ListOnlineArchives")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveAPIService.ListOnlineArchives")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -880,7 +879,7 @@ func (a *OnlineArchiveApiService) ListOnlineArchivesExecute(r ListOnlineArchives
 
 type UpdateOnlineArchiveApiRequest struct {
 	ctx                 context.Context
-	ApiService          OnlineArchiveApi
+	ApiService          OnlineArchiveAPI
 	groupId             string
 	archiveId           string
 	clusterName         string
@@ -894,7 +893,7 @@ type UpdateOnlineArchiveApiParams struct {
 	BackupOnlineArchive *BackupOnlineArchive
 }
 
-func (a *OnlineArchiveApiService) UpdateOnlineArchiveWithParams(ctx context.Context, args *UpdateOnlineArchiveApiParams) UpdateOnlineArchiveApiRequest {
+func (a *OnlineArchiveAPIService) UpdateOnlineArchiveWithParams(ctx context.Context, args *UpdateOnlineArchiveApiParams) UpdateOnlineArchiveApiRequest {
 	return UpdateOnlineArchiveApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -920,7 +919,7 @@ Updates, pauses, or resumes one online archive. This archive stores data from on
 	@param clusterName Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
 	@return UpdateOnlineArchiveApiRequest
 */
-func (a *OnlineArchiveApiService) UpdateOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) UpdateOnlineArchiveApiRequest {
+func (a *OnlineArchiveAPIService) UpdateOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) UpdateOnlineArchiveApiRequest {
 	return UpdateOnlineArchiveApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -934,7 +933,7 @@ func (a *OnlineArchiveApiService) UpdateOnlineArchive(ctx context.Context, group
 // UpdateOnlineArchiveExecute executes the request
 //
 //	@return BackupOnlineArchive
-func (a *OnlineArchiveApiService) UpdateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
+func (a *OnlineArchiveAPIService) UpdateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -942,7 +941,7 @@ func (a *OnlineArchiveApiService) UpdateOnlineArchiveExecute(r UpdateOnlineArchi
 		localVarReturnValue *BackupOnlineArchive
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.UpdateOnlineArchive")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveAPIService.UpdateOnlineArchive")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

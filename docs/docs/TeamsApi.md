@@ -1,22 +1,22 @@
-# \TeamsApi
+# \TeamsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupTeams**](TeamsApi.md#AddGroupTeams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add Multiple Teams to One Project
-[**AddTeamUsers**](TeamsApi.md#AddTeamUsers) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users in One Organization to One Team
-[**CreateOrgTeam**](TeamsApi.md#CreateOrgTeam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization
-[**DeleteOrgTeam**](TeamsApi.md#DeleteOrgTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Remove One Team from One Organization
-[**GetGroupTeam**](TeamsApi.md#GetGroupTeam) | **Get** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Return One Team in One Project
-[**GetOrgTeam**](TeamsApi.md#GetOrgTeam) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Return One Team by ID
-[**GetTeamByName**](TeamsApi.md#GetTeamByName) | **Get** /api/atlas/v2/orgs/{orgId}/teams/byName/{teamName} | Return One Team by Name
-[**ListGroupTeams**](TeamsApi.md#ListGroupTeams) | **Get** /api/atlas/v2/groups/{groupId}/teams | Return All Teams in One Project
-[**ListOrgTeams**](TeamsApi.md#ListOrgTeams) | **Get** /api/atlas/v2/orgs/{orgId}/teams | Return All Teams in One Organization
-[**RemoveGroupTeam**](TeamsApi.md#RemoveGroupTeam) | **Delete** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Remove One Team from One Project
-[**RemoveUserFromTeam**](TeamsApi.md#RemoveUserFromTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId} | Remove One MongoDB Cloud User from One Team
-[**RenameOrgTeam**](TeamsApi.md#RenameOrgTeam) | **Patch** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Rename One Team
-[**UpdateGroupTeam**](TeamsApi.md#UpdateGroupTeam) | **Patch** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Update Team Roles in One Project
+[**AddGroupTeams**](TeamsAPI.md#AddGroupTeams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add Multiple Teams to One Project
+[**AddTeamUsers**](TeamsAPI.md#AddTeamUsers) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users in One Organization to One Team
+[**CreateOrgTeam**](TeamsAPI.md#CreateOrgTeam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization
+[**DeleteOrgTeam**](TeamsAPI.md#DeleteOrgTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Remove One Team from One Organization
+[**GetGroupTeam**](TeamsAPI.md#GetGroupTeam) | **Get** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Return One Team in One Project
+[**GetOrgTeam**](TeamsAPI.md#GetOrgTeam) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Return One Team by ID
+[**GetTeamByName**](TeamsAPI.md#GetTeamByName) | **Get** /api/atlas/v2/orgs/{orgId}/teams/byName/{teamName} | Return One Team by Name
+[**ListGroupTeams**](TeamsAPI.md#ListGroupTeams) | **Get** /api/atlas/v2/groups/{groupId}/teams | Return All Teams in One Project
+[**ListOrgTeams**](TeamsAPI.md#ListOrgTeams) | **Get** /api/atlas/v2/orgs/{orgId}/teams | Return All Teams in One Organization
+[**RemoveGroupTeam**](TeamsAPI.md#RemoveGroupTeam) | **Delete** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Remove One Team from One Project
+[**RemoveUserFromTeam**](TeamsAPI.md#RemoveUserFromTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId} | Remove One MongoDB Cloud User from One Team
+[**RenameOrgTeam**](TeamsAPI.md#RenameOrgTeam) | **Patch** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Rename One Team
+[**UpdateGroupTeam**](TeamsAPI.md#UpdateGroupTeam) | **Patch** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Update Team Roles in One Project
 
 
 
@@ -53,9 +53,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamRole := []admin.TeamRole{*admin.NewTeamRole([]string{"RoleNames_example"}, "32b6e34b3d91647abb20e7b8")} // []TeamRole | 
 
-    resp, r, err := sdk.TeamsApi.AddGroupTeams(context.Background(), groupId, &teamRole).Execute()
+    resp, r, err := sdk.TeamsAPI.AddGroupTeams(context.Background(), groupId, &teamRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddGroupTeams`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.AddGroupTeams`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -63,7 +63,7 @@ func main() {
         return
     }
     // response from `AddGroupTeams`: PaginatedTeamRole
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.AddGroupTeams`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.AddGroupTeams`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -136,9 +136,9 @@ func main() {
     teamId := "teamId_example" // string | 
     addUserToTeam := []admin.AddUserToTeam{*admin.NewAddUserToTeam("32b6e34b3d91647abb20e7b8")} // []AddUserToTeam | 
 
-    resp, r, err := sdk.TeamsApi.AddTeamUsers(context.Background(), orgId, teamId, &addUserToTeam).Execute()
+    resp, r, err := sdk.TeamsAPI.AddTeamUsers(context.Background(), orgId, teamId, &addUserToTeam).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddTeamUsers`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.AddTeamUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -146,7 +146,7 @@ func main() {
         return
     }
     // response from `AddTeamUsers`: PaginatedApiAppUser
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.AddTeamUsers`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.AddTeamUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -220,9 +220,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     team := *admin.NewTeam("Name_example", []string{"Usernames_example"}) // Team | 
 
-    resp, r, err := sdk.TeamsApi.CreateOrgTeam(context.Background(), orgId, &team).Execute()
+    resp, r, err := sdk.TeamsAPI.CreateOrgTeam(context.Background(), orgId, &team).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateOrgTeam`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.CreateOrgTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -230,7 +230,7 @@ func main() {
         return
     }
     // response from `CreateOrgTeam`: Team
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateOrgTeam`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.CreateOrgTeam`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -302,9 +302,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
 
-    r, err := sdk.TeamsApi.DeleteOrgTeam(context.Background(), orgId, teamId).Execute()
+    r, err := sdk.TeamsAPI.DeleteOrgTeam(context.Background(), orgId, teamId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteOrgTeam`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.DeleteOrgTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -383,9 +383,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamId := "teamId_example" // string | 
 
-    resp, r, err := sdk.TeamsApi.GetGroupTeam(context.Background(), groupId, teamId).Execute()
+    resp, r, err := sdk.TeamsAPI.GetGroupTeam(context.Background(), groupId, teamId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetGroupTeam`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.GetGroupTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -393,7 +393,7 @@ func main() {
         return
     }
     // response from `GetGroupTeam`: TeamRole
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetGroupTeam`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.GetGroupTeam`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -466,9 +466,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
 
-    resp, r, err := sdk.TeamsApi.GetOrgTeam(context.Background(), orgId, teamId).Execute()
+    resp, r, err := sdk.TeamsAPI.GetOrgTeam(context.Background(), orgId, teamId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetOrgTeam`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.GetOrgTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -476,7 +476,7 @@ func main() {
         return
     }
     // response from `GetOrgTeam`: TeamResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetOrgTeam`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.GetOrgTeam`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -549,9 +549,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     teamName := "teamName_example" // string | 
 
-    resp, r, err := sdk.TeamsApi.GetTeamByName(context.Background(), orgId, teamName).Execute()
+    resp, r, err := sdk.TeamsAPI.GetTeamByName(context.Background(), orgId, teamName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamByName`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.GetTeamByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -559,7 +559,7 @@ func main() {
         return
     }
     // response from `GetTeamByName`: TeamResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamByName`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.GetTeamByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -634,9 +634,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.TeamsApi.ListGroupTeams(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.TeamsAPI.ListGroupTeams(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListGroupTeams`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.ListGroupTeams`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -644,7 +644,7 @@ func main() {
         return
     }
     // response from `ListGroupTeams`: PaginatedTeamRole
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListGroupTeams`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.ListGroupTeams`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -720,9 +720,9 @@ func main() {
     includeCount := true // bool |  (optional) (default to true)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.TeamsApi.ListOrgTeams(context.Background(), orgId).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).PageNum(pageNum).Execute()
+    resp, r, err := sdk.TeamsAPI.ListOrgTeams(context.Background(), orgId).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListOrgTeams`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.ListOrgTeams`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -730,7 +730,7 @@ func main() {
         return
     }
     // response from `ListOrgTeams`: PaginatedTeam
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListOrgTeams`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.ListOrgTeams`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -804,9 +804,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamId := "teamId_example" // string | 
 
-    r, err := sdk.TeamsApi.RemoveGroupTeam(context.Background(), groupId, teamId).Execute()
+    r, err := sdk.TeamsAPI.RemoveGroupTeam(context.Background(), groupId, teamId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveGroupTeam`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.RemoveGroupTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -886,9 +886,9 @@ func main() {
     teamId := "teamId_example" // string | 
     userId := "userId_example" // string | 
 
-    r, err := sdk.TeamsApi.RemoveUserFromTeam(context.Background(), orgId, teamId, userId).Execute()
+    r, err := sdk.TeamsAPI.RemoveUserFromTeam(context.Background(), orgId, teamId, userId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveUserFromTeam`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.RemoveUserFromTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -970,9 +970,9 @@ func main() {
     teamId := "teamId_example" // string | 
     teamUpdate := *admin.NewTeamUpdate("Name_example") // TeamUpdate | 
 
-    resp, r, err := sdk.TeamsApi.RenameOrgTeam(context.Background(), orgId, teamId, &teamUpdate).Execute()
+    resp, r, err := sdk.TeamsAPI.RenameOrgTeam(context.Background(), orgId, teamId, &teamUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RenameOrgTeam`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.RenameOrgTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -980,7 +980,7 @@ func main() {
         return
     }
     // response from `RenameOrgTeam`: TeamResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.RenameOrgTeam`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.RenameOrgTeam`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1055,9 +1055,9 @@ func main() {
     teamId := "teamId_example" // string | 
     teamRole := *admin.NewTeamRole([]string{"RoleNames_example"}, "32b6e34b3d91647abb20e7b8") // TeamRole | 
 
-    resp, r, err := sdk.TeamsApi.UpdateGroupTeam(context.Background(), groupId, teamId, &teamRole).Execute()
+    resp, r, err := sdk.TeamsAPI.UpdateGroupTeam(context.Background(), groupId, teamId, &teamRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateGroupTeam`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsAPI.UpdateGroupTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1065,7 +1065,7 @@ func main() {
         return
     }
     // response from `UpdateGroupTeam`: PaginatedTeamRole
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateGroupTeam`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsAPI.UpdateGroupTeam`: %v (%v)\n", resp, r)
 }
 ```
 

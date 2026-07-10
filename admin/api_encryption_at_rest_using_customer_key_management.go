@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type EncryptionAtRestUsingCustomerKeyManagementApi interface {
+type EncryptionAtRestUsingCustomerKeyManagementAPI interface {
 
 	/*
 		CreateRestPrivateEndpoint Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
@@ -163,12 +162,12 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	UpdateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error)
 }
 
-// EncryptionAtRestUsingCustomerKeyManagementApiService EncryptionAtRestUsingCustomerKeyManagementApi service
-type EncryptionAtRestUsingCustomerKeyManagementApiService service
+// EncryptionAtRestUsingCustomerKeyManagementAPIService EncryptionAtRestUsingCustomerKeyManagementAPI service
+type EncryptionAtRestUsingCustomerKeyManagementAPIService service
 
 type CreateRestPrivateEndpointApiRequest struct {
 	ctx                context.Context
-	ApiService         EncryptionAtRestUsingCustomerKeyManagementApi
+	ApiService         EncryptionAtRestUsingCustomerKeyManagementAPI
 	groupId            string
 	cloudProvider      string
 	eARPrivateEndpoint *EARPrivateEndpoint
@@ -180,7 +179,7 @@ type CreateRestPrivateEndpointApiParams struct {
 	EARPrivateEndpoint *EARPrivateEndpoint
 }
 
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateRestPrivateEndpointWithParams(ctx context.Context, args *CreateRestPrivateEndpointApiParams) CreateRestPrivateEndpointApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) CreateRestPrivateEndpointWithParams(ctx context.Context, args *CreateRestPrivateEndpointApiParams) CreateRestPrivateEndpointApiRequest {
 	return CreateRestPrivateEndpointApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -204,7 +203,7 @@ Creates a private endpoint in the specified region for encryption at rest using 
 	@param cloudProvider Human-readable label that identifies the cloud provider for the private endpoint to create.
 	@return CreateRestPrivateEndpointApiRequest
 */
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateRestPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, eARPrivateEndpoint *EARPrivateEndpoint) CreateRestPrivateEndpointApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) CreateRestPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, eARPrivateEndpoint *EARPrivateEndpoint) CreateRestPrivateEndpointApiRequest {
 	return CreateRestPrivateEndpointApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -217,7 +216,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateRestPrivate
 // CreateRestPrivateEndpointExecute executes the request
 //
 //	@return EARPrivateEndpoint
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateRestPrivateEndpointExecute(r CreateRestPrivateEndpointApiRequest) (*EARPrivateEndpoint, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) CreateRestPrivateEndpointExecute(r CreateRestPrivateEndpointApiRequest) (*EARPrivateEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -225,7 +224,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateRestPrivate
 		localVarReturnValue *EARPrivateEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.CreateRestPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementAPIService.CreateRestPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -300,7 +299,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateRestPrivate
 
 type GetEncryptionAtRestApiRequest struct {
 	ctx        context.Context
-	ApiService EncryptionAtRestUsingCustomerKeyManagementApi
+	ApiService EncryptionAtRestUsingCustomerKeyManagementAPI
 	groupId    string
 }
 
@@ -308,7 +307,7 @@ type GetEncryptionAtRestApiParams struct {
 	GroupId string
 }
 
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestWithParams(ctx context.Context, args *GetEncryptionAtRestApiParams) GetEncryptionAtRestApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetEncryptionAtRestWithParams(ctx context.Context, args *GetEncryptionAtRestApiParams) GetEncryptionAtRestApiRequest {
 	return GetEncryptionAtRestApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -331,7 +330,7 @@ Returns the configuration for encryption at rest using the keys you manage throu
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetEncryptionAtRestApiRequest
 */
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRest(ctx context.Context, groupId string) GetEncryptionAtRestApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetEncryptionAtRest(ctx context.Context, groupId string) GetEncryptionAtRestApiRequest {
 	return GetEncryptionAtRestApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -342,7 +341,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 // GetEncryptionAtRestExecute executes the request
 //
 //	@return EncryptionAtRest
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -350,7 +349,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 		localVarReturnValue *EncryptionAtRest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.GetEncryptionAtRest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementAPIService.GetEncryptionAtRest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -416,7 +415,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 
 type GetRestPrivateEndpointApiRequest struct {
 	ctx           context.Context
-	ApiService    EncryptionAtRestUsingCustomerKeyManagementApi
+	ApiService    EncryptionAtRestUsingCustomerKeyManagementAPI
 	groupId       string
 	cloudProvider string
 	endpointId    string
@@ -428,7 +427,7 @@ type GetRestPrivateEndpointApiParams struct {
 	EndpointId    string
 }
 
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetRestPrivateEndpointWithParams(ctx context.Context, args *GetRestPrivateEndpointApiParams) GetRestPrivateEndpointApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetRestPrivateEndpointWithParams(ctx context.Context, args *GetRestPrivateEndpointApiParams) GetRestPrivateEndpointApiRequest {
 	return GetRestPrivateEndpointApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -453,7 +452,7 @@ Returns one private endpoint, identified by its ID, for encryption at rest using
 	@param endpointId Unique 24-hexadecimal digit string that identifies the private endpoint.
 	@return GetRestPrivateEndpointApiRequest
 */
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetRestPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) GetRestPrivateEndpointApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetRestPrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointId string) GetRestPrivateEndpointApiRequest {
 	return GetRestPrivateEndpointApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -466,7 +465,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetRestPrivateEnd
 // GetRestPrivateEndpointExecute executes the request
 //
 //	@return EARPrivateEndpoint
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetRestPrivateEndpointExecute(r GetRestPrivateEndpointApiRequest) (*EARPrivateEndpoint, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetRestPrivateEndpointExecute(r GetRestPrivateEndpointApiRequest) (*EARPrivateEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -474,7 +473,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetRestPrivateEnd
 		localVarReturnValue *EARPrivateEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.GetRestPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementAPIService.GetRestPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -548,7 +547,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetRestPrivateEnd
 
 type ListRestPrivateEndpointsApiRequest struct {
 	ctx           context.Context
-	ApiService    EncryptionAtRestUsingCustomerKeyManagementApi
+	ApiService    EncryptionAtRestUsingCustomerKeyManagementAPI
 	groupId       string
 	cloudProvider string
 	includeCount  *bool
@@ -564,7 +563,7 @@ type ListRestPrivateEndpointsApiParams struct {
 	PageNum       *int
 }
 
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) ListRestPrivateEndpointsWithParams(ctx context.Context, args *ListRestPrivateEndpointsApiParams) ListRestPrivateEndpointsApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) ListRestPrivateEndpointsWithParams(ctx context.Context, args *ListRestPrivateEndpointsApiParams) ListRestPrivateEndpointsApiRequest {
 	return ListRestPrivateEndpointsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -608,7 +607,7 @@ Returns the private endpoints of the specified cloud provider for encryption at 
 	@param cloudProvider Human-readable label that identifies the cloud provider for the private endpoints to return.
 	@return ListRestPrivateEndpointsApiRequest
 */
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) ListRestPrivateEndpoints(ctx context.Context, groupId string, cloudProvider string) ListRestPrivateEndpointsApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) ListRestPrivateEndpoints(ctx context.Context, groupId string, cloudProvider string) ListRestPrivateEndpointsApiRequest {
 	return ListRestPrivateEndpointsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -620,7 +619,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) ListRestPrivateEn
 // ListRestPrivateEndpointsExecute executes the request
 //
 //	@return PaginatedApiAtlasEARPrivateEndpoint
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) ListRestPrivateEndpointsExecute(r ListRestPrivateEndpointsApiRequest) (*PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) ListRestPrivateEndpointsExecute(r ListRestPrivateEndpointsApiRequest) (*PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -628,7 +627,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) ListRestPrivateEn
 		localVarReturnValue *PaginatedApiAtlasEARPrivateEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.ListRestPrivateEndpoints")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementAPIService.ListRestPrivateEndpoints")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -719,7 +718,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) ListRestPrivateEn
 
 type RequestPrivateEndpointDeletionApiRequest struct {
 	ctx           context.Context
-	ApiService    EncryptionAtRestUsingCustomerKeyManagementApi
+	ApiService    EncryptionAtRestUsingCustomerKeyManagementAPI
 	groupId       string
 	cloudProvider string
 	endpointId    string
@@ -731,7 +730,7 @@ type RequestPrivateEndpointDeletionApiParams struct {
 	EndpointId    string
 }
 
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestPrivateEndpointDeletionWithParams(ctx context.Context, args *RequestPrivateEndpointDeletionApiParams) RequestPrivateEndpointDeletionApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) RequestPrivateEndpointDeletionWithParams(ctx context.Context, args *RequestPrivateEndpointDeletionApiParams) RequestPrivateEndpointDeletionApiRequest {
 	return RequestPrivateEndpointDeletionApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -756,7 +755,7 @@ Deletes one private endpoint, identified by its ID, for encryption at rest using
 	@param endpointId Unique 24-hexadecimal digit string that identifies the private endpoint to delete.
 	@return RequestPrivateEndpointDeletionApiRequest
 */
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestPrivateEndpointDeletion(ctx context.Context, groupId string, cloudProvider string, endpointId string) RequestPrivateEndpointDeletionApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) RequestPrivateEndpointDeletion(ctx context.Context, groupId string, cloudProvider string, endpointId string) RequestPrivateEndpointDeletionApiRequest {
 	return RequestPrivateEndpointDeletionApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -767,14 +766,14 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestPrivateEnd
 }
 
 // RequestPrivateEndpointDeletionExecute executes the request
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestPrivateEndpointDeletionExecute(r RequestPrivateEndpointDeletionApiRequest) (*http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) RequestPrivateEndpointDeletionExecute(r RequestPrivateEndpointDeletionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.RequestPrivateEndpointDeletion")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementAPIService.RequestPrivateEndpointDeletion")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -834,7 +833,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestPrivateEnd
 
 type UpdateEncryptionAtRestApiRequest struct {
 	ctx              context.Context
-	ApiService       EncryptionAtRestUsingCustomerKeyManagementApi
+	ApiService       EncryptionAtRestUsingCustomerKeyManagementAPI
 	groupId          string
 	encryptionAtRest *EncryptionAtRest
 }
@@ -844,7 +843,7 @@ type UpdateEncryptionAtRestApiParams struct {
 	EncryptionAtRest *EncryptionAtRest
 }
 
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRestWithParams(ctx context.Context, args *UpdateEncryptionAtRestApiParams) UpdateEncryptionAtRestApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) UpdateEncryptionAtRestWithParams(ctx context.Context, args *UpdateEncryptionAtRestApiParams) UpdateEncryptionAtRestApiRequest {
 	return UpdateEncryptionAtRestApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -868,7 +867,7 @@ Updates the configuration for encryption at rest using the keys you manage throu
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateEncryptionAtRestApiRequest
 */
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRest(ctx context.Context, groupId string, encryptionAtRest *EncryptionAtRest) UpdateEncryptionAtRestApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) UpdateEncryptionAtRest(ctx context.Context, groupId string, encryptionAtRest *EncryptionAtRest) UpdateEncryptionAtRestApiRequest {
 	return UpdateEncryptionAtRestApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -880,7 +879,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 // UpdateEncryptionAtRestExecute executes the request
 //
 //	@return EncryptionAtRest
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) UpdateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -888,7 +887,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 		localVarReturnValue *EncryptionAtRest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.UpdateEncryptionAtRest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementAPIService.UpdateEncryptionAtRest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

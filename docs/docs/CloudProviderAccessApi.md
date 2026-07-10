@@ -1,14 +1,14 @@
-# \CloudProviderAccessApi
+# \CloudProviderAccessAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthorizeProviderAccessRole**](CloudProviderAccessApi.md#AuthorizeProviderAccessRole) | **Patch** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Authorize One Cloud Provider Access Role
-[**CreateCloudProviderAccess**](CloudProviderAccessApi.md#CreateCloudProviderAccess) | **Post** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Create One Cloud Provider Access Role
-[**DeauthorizeProviderAccessRole**](CloudProviderAccessApi.md#DeauthorizeProviderAccessRole) | **Delete** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId} | Deauthorize One Cloud Provider Access Role
-[**GetCloudProviderAccess**](CloudProviderAccessApi.md#GetCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Return One Cloud Provider Access Role
-[**ListCloudProviderAccess**](CloudProviderAccessApi.md#ListCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Return All Cloud Provider Access Roles
+[**AuthorizeProviderAccessRole**](CloudProviderAccessAPI.md#AuthorizeProviderAccessRole) | **Patch** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Authorize One Cloud Provider Access Role
+[**CreateCloudProviderAccess**](CloudProviderAccessAPI.md#CreateCloudProviderAccess) | **Post** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Create One Cloud Provider Access Role
+[**DeauthorizeProviderAccessRole**](CloudProviderAccessAPI.md#DeauthorizeProviderAccessRole) | **Delete** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId} | Deauthorize One Cloud Provider Access Role
+[**GetCloudProviderAccess**](CloudProviderAccessAPI.md#GetCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Return One Cloud Provider Access Role
+[**ListCloudProviderAccess**](CloudProviderAccessAPI.md#ListCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Return All Cloud Provider Access Roles
 
 
 
@@ -46,9 +46,9 @@ func main() {
     roleId := "roleId_example" // string | 
     cloudProviderAccessRoleRequestUpdate := *admin.NewCloudProviderAccessRoleRequestUpdate("ProviderName_example") // CloudProviderAccessRoleRequestUpdate | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessRoleRequestUpdate).Execute()
+    resp, r, err := sdk.CloudProviderAccessAPI.AuthorizeProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessRoleRequestUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.AuthorizeProviderAccessRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessAPI.AuthorizeProviderAccessRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -56,7 +56,7 @@ func main() {
         return
     }
     // response from `AuthorizeProviderAccessRole`: CloudProviderAccessRole
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.AuthorizeProviderAccessRole`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessAPI.AuthorizeProviderAccessRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -130,9 +130,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderAccessRoleRequest := *admin.NewCloudProviderAccessRoleRequest("ProviderName_example") // CloudProviderAccessRoleRequest | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccess(context.Background(), groupId, &cloudProviderAccessRoleRequest).Execute()
+    resp, r, err := sdk.CloudProviderAccessAPI.CreateCloudProviderAccess(context.Background(), groupId, &cloudProviderAccessRoleRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.CreateCloudProviderAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessAPI.CreateCloudProviderAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -140,7 +140,7 @@ func main() {
         return
     }
     // response from `CreateCloudProviderAccess`: CloudProviderAccessRole
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.CreateCloudProviderAccess`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessAPI.CreateCloudProviderAccess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -213,9 +213,9 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     roleId := "roleId_example" // string | 
 
-    r, err := sdk.CloudProviderAccessApi.DeauthorizeProviderAccessRole(context.Background(), groupId, cloudProvider, roleId).Execute()
+    r, err := sdk.CloudProviderAccessAPI.DeauthorizeProviderAccessRole(context.Background(), groupId, cloudProvider, roleId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.DeauthorizeProviderAccessRole`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessAPI.DeauthorizeProviderAccessRole`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -296,9 +296,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleId := "roleId_example" // string | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.GetCloudProviderAccess(context.Background(), groupId, roleId).Execute()
+    resp, r, err := sdk.CloudProviderAccessAPI.GetCloudProviderAccess(context.Background(), groupId, roleId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.GetCloudProviderAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessAPI.GetCloudProviderAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -306,7 +306,7 @@ func main() {
         return
     }
     // response from `GetCloudProviderAccess`: CloudProviderAccessRole
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.GetCloudProviderAccess`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessAPI.GetCloudProviderAccess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -378,9 +378,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.ListCloudProviderAccess(context.Background(), groupId).Execute()
+    resp, r, err := sdk.CloudProviderAccessAPI.ListCloudProviderAccess(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.ListCloudProviderAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessAPI.ListCloudProviderAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -388,7 +388,7 @@ func main() {
         return
     }
     // response from `ListCloudProviderAccess`: CloudProviderAccessRoles
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.ListCloudProviderAccess`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessAPI.ListCloudProviderAccess`: %v (%v)\n", resp, r)
 }
 ```
 

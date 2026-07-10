@@ -1,23 +1,23 @@
-# \ProgrammaticAPIKeysApi
+# \ProgrammaticAPIKeysAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupApiKey**](ProgrammaticAPIKeysApi.md#AddGroupApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Assign One Organization API Key to One Project
-[**CreateGroupApiKey**](ProgrammaticAPIKeysApi.md#CreateGroupApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys | Create and Assign One Organization API Key to One Project
-[**CreateOrgAccessEntry**](ProgrammaticAPIKeysApi.md#CreateOrgAccessEntry) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Create One Access List Entry for One Organization API Key
-[**CreateOrgApiKey**](ProgrammaticAPIKeysApi.md#CreateOrgApiKey) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys | Create One Organization API Key
-[**DeleteAccessEntry**](ProgrammaticAPIKeysApi.md#DeleteAccessEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Remove One Access List Entry for One Organization API Key
-[**DeleteOrgApiKey**](ProgrammaticAPIKeysApi.md#DeleteOrgApiKey) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Remove One Organization API Key
-[**GetOrgAccessEntry**](ProgrammaticAPIKeysApi.md#GetOrgAccessEntry) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Return One Access List Entry for One Organization API Key
-[**GetOrgApiKey**](ProgrammaticAPIKeysApi.md#GetOrgApiKey) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Return One Organization API Key
-[**ListGroupApiKeys**](ProgrammaticAPIKeysApi.md#ListGroupApiKeys) | **Get** /api/atlas/v2/groups/{groupId}/apiKeys | Return All Organization API Keys Assigned to One Project
-[**ListOrgAccessEntries**](ProgrammaticAPIKeysApi.md#ListOrgAccessEntries) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Return All Access List Entries for One Organization API Key
-[**ListOrgApiKeys**](ProgrammaticAPIKeysApi.md#ListOrgApiKeys) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys | Return All Organization API Keys
-[**RemoveGroupApiKey**](ProgrammaticAPIKeysApi.md#RemoveGroupApiKey) | **Delete** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Unassign One Organization API Key from One Project
-[**UpdateApiKeyRoles**](ProgrammaticAPIKeysApi.md#UpdateApiKeyRoles) | **Patch** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Update Organization API Key Roles for One Project
-[**UpdateOrgApiKey**](ProgrammaticAPIKeysApi.md#UpdateOrgApiKey) | **Patch** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Update One Organization API Key
+[**AddGroupApiKey**](ProgrammaticAPIKeysAPI.md#AddGroupApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Assign One Organization API Key to One Project
+[**CreateGroupApiKey**](ProgrammaticAPIKeysAPI.md#CreateGroupApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys | Create and Assign One Organization API Key to One Project
+[**CreateOrgAccessEntry**](ProgrammaticAPIKeysAPI.md#CreateOrgAccessEntry) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Create One Access List Entry for One Organization API Key
+[**CreateOrgApiKey**](ProgrammaticAPIKeysAPI.md#CreateOrgApiKey) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys | Create One Organization API Key
+[**DeleteAccessEntry**](ProgrammaticAPIKeysAPI.md#DeleteAccessEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Remove One Access List Entry for One Organization API Key
+[**DeleteOrgApiKey**](ProgrammaticAPIKeysAPI.md#DeleteOrgApiKey) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Remove One Organization API Key
+[**GetOrgAccessEntry**](ProgrammaticAPIKeysAPI.md#GetOrgAccessEntry) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Return One Access List Entry for One Organization API Key
+[**GetOrgApiKey**](ProgrammaticAPIKeysAPI.md#GetOrgApiKey) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Return One Organization API Key
+[**ListGroupApiKeys**](ProgrammaticAPIKeysAPI.md#ListGroupApiKeys) | **Get** /api/atlas/v2/groups/{groupId}/apiKeys | Return All Organization API Keys Assigned to One Project
+[**ListOrgAccessEntries**](ProgrammaticAPIKeysAPI.md#ListOrgAccessEntries) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Return All Access List Entries for One Organization API Key
+[**ListOrgApiKeys**](ProgrammaticAPIKeysAPI.md#ListOrgApiKeys) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys | Return All Organization API Keys
+[**RemoveGroupApiKey**](ProgrammaticAPIKeysAPI.md#RemoveGroupApiKey) | **Delete** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Unassign One Organization API Key from One Project
+[**UpdateApiKeyRoles**](ProgrammaticAPIKeysAPI.md#UpdateApiKeyRoles) | **Patch** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Update Organization API Key Roles for One Project
+[**UpdateOrgApiKey**](ProgrammaticAPIKeysAPI.md#UpdateOrgApiKey) | **Patch** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Update One Organization API Key
 
 
 
@@ -55,9 +55,9 @@ func main() {
     apiUserId := "apiUserId_example" // string | 
     userAccessRoleAssignment := []admin.UserAccessRoleAssignment{*admin.NewUserAccessRoleAssignment()} // []UserAccessRoleAssignment | 
 
-    r, err := sdk.ProgrammaticAPIKeysApi.AddGroupApiKey(context.Background(), groupId, apiUserId, &userAccessRoleAssignment).Execute()
+    r, err := sdk.ProgrammaticAPIKeysAPI.AddGroupApiKey(context.Background(), groupId, apiUserId, &userAccessRoleAssignment).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.AddGroupApiKey`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.AddGroupApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -137,9 +137,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     createAtlasProjectApiKey := *admin.NewCreateAtlasProjectApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasProjectApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateGroupApiKey(context.Background(), groupId, &createAtlasProjectApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.CreateGroupApiKey(context.Background(), groupId, &createAtlasProjectApiKey).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateGroupApiKey`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.CreateGroupApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -147,7 +147,7 @@ func main() {
         return
     }
     // response from `CreateGroupApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateGroupApiKey`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.CreateGroupApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -223,9 +223,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateOrgAccessEntry(context.Background(), orgId, apiUserId, &userAccessListRequest).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.CreateOrgAccessEntry(context.Background(), orgId, apiUserId, &userAccessListRequest).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateOrgAccessEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.CreateOrgAccessEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -233,7 +233,7 @@ func main() {
         return
     }
     // response from `CreateOrgAccessEntry`: PaginatedApiUserAccessListResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateOrgAccessEntry`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.CreateOrgAccessEntry`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -310,9 +310,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     createAtlasOrganizationApiKey := *admin.NewCreateAtlasOrganizationApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasOrganizationApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateOrgApiKey(context.Background(), orgId, &createAtlasOrganizationApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.CreateOrgApiKey(context.Background(), orgId, &createAtlasOrganizationApiKey).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateOrgApiKey`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.CreateOrgApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -320,7 +320,7 @@ func main() {
         return
     }
     // response from `CreateOrgApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateOrgApiKey`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.CreateOrgApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -393,9 +393,9 @@ func main() {
     apiUserId := "apiUserId_example" // string | 
     ipAddress := "192.0.2.0%2F24" // string | 
 
-    r, err := sdk.ProgrammaticAPIKeysApi.DeleteAccessEntry(context.Background(), orgId, apiUserId, ipAddress).Execute()
+    r, err := sdk.ProgrammaticAPIKeysAPI.DeleteAccessEntry(context.Background(), orgId, apiUserId, ipAddress).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.DeleteAccessEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.DeleteAccessEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -476,9 +476,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
 
-    r, err := sdk.ProgrammaticAPIKeysApi.DeleteOrgApiKey(context.Background(), orgId, apiUserId).Execute()
+    r, err := sdk.ProgrammaticAPIKeysAPI.DeleteOrgApiKey(context.Background(), orgId, apiUserId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.DeleteOrgApiKey`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.DeleteOrgApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -558,9 +558,9 @@ func main() {
     ipAddress := "192.0.2.0%2F24" // string | 
     apiUserId := "apiUserId_example" // string | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.GetOrgAccessEntry(context.Background(), orgId, ipAddress, apiUserId).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.GetOrgAccessEntry(context.Background(), orgId, ipAddress, apiUserId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.GetOrgAccessEntry`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.GetOrgAccessEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -568,7 +568,7 @@ func main() {
         return
     }
     // response from `GetOrgAccessEntry`: UserAccessListResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetOrgAccessEntry`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.GetOrgAccessEntry`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -643,9 +643,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.GetOrgApiKey(context.Background(), orgId, apiUserId).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.GetOrgApiKey(context.Background(), orgId, apiUserId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.GetOrgApiKey`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.GetOrgApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -653,7 +653,7 @@ func main() {
         return
     }
     // response from `GetOrgApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetOrgApiKey`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.GetOrgApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -728,9 +728,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.ListGroupApiKeys(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.ListGroupApiKeys(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListGroupApiKeys`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.ListGroupApiKeys`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -738,7 +738,7 @@ func main() {
         return
     }
     // response from `ListGroupApiKeys`: PaginatedApiApiUser
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListGroupApiKeys`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.ListGroupApiKeys`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -815,9 +815,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.ListOrgAccessEntries(context.Background(), orgId, apiUserId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.ListOrgAccessEntries(context.Background(), orgId, apiUserId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListOrgAccessEntries`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.ListOrgAccessEntries`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -825,7 +825,7 @@ func main() {
         return
     }
     // response from `ListOrgAccessEntries`: PaginatedApiUserAccessListResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListOrgAccessEntries`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.ListOrgAccessEntries`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -903,9 +903,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.ListOrgApiKeys(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.ListOrgApiKeys(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListOrgApiKeys`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.ListOrgApiKeys`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -913,7 +913,7 @@ func main() {
         return
     }
     // response from `ListOrgApiKeys`: PaginatedApiApiUser
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListOrgApiKeys`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.ListOrgApiKeys`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -987,9 +987,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
 
-    r, err := sdk.ProgrammaticAPIKeysApi.RemoveGroupApiKey(context.Background(), groupId, apiUserId).Execute()
+    r, err := sdk.ProgrammaticAPIKeysAPI.RemoveGroupApiKey(context.Background(), groupId, apiUserId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.RemoveGroupApiKey`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.RemoveGroupApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1072,9 +1072,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &updateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &updateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKeyRoles`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.UpdateApiKeyRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1082,7 +1082,7 @@ func main() {
         return
     }
     // response from `UpdateApiKeyRoles`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKeyRoles`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.UpdateApiKeyRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1160,9 +1160,9 @@ func main() {
     apiUserId := "apiUserId_example" // string | 
     updateAtlasOrganizationApiKey := *admin.NewUpdateAtlasOrganizationApiKey() // UpdateAtlasOrganizationApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateOrgApiKey(context.Background(), orgId, apiUserId, &updateAtlasOrganizationApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysAPI.UpdateOrgApiKey(context.Background(), orgId, apiUserId, &updateAtlasOrganizationApiKey).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateOrgApiKey`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysAPI.UpdateOrgApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1170,7 +1170,7 @@ func main() {
         return
     }
     // response from `UpdateOrgApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateOrgApiKey`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysAPI.UpdateOrgApiKey`: %v (%v)\n", resp, r)
 }
 ```
 

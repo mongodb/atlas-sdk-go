@@ -1,11 +1,11 @@
-# \ActivityFeedApi
+# \ActivityFeedAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetGroupActivityFeed**](ActivityFeedApi.md#GetGroupActivityFeed) | **Get** /api/atlas/v2/groups/{groupId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Project
-[**GetOrgActivityFeed**](ActivityFeedApi.md#GetOrgActivityFeed) | **Get** /api/atlas/v2/orgs/{orgId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Organization
+[**GetGroupActivityFeed**](ActivityFeedAPI.md#GetGroupActivityFeed) | **Get** /api/atlas/v2/groups/{groupId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Project
+[**GetOrgActivityFeed**](ActivityFeedAPI.md#GetOrgActivityFeed) | **Get** /api/atlas/v2/orgs/{orgId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Organization
 
 
 
@@ -45,9 +45,9 @@ func main() {
     minDate := time.Now() // time.Time |  (optional)
     clusterName := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.ActivityFeedApi.GetGroupActivityFeed(context.Background(), groupId).EventType(eventType).MaxDate(maxDate).MinDate(minDate).ClusterName(clusterName).Execute()
+    resp, r, err := sdk.ActivityFeedAPI.GetGroupActivityFeed(context.Background(), groupId).EventType(eventType).MaxDate(maxDate).MinDate(minDate).ClusterName(clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ActivityFeedApi.GetGroupActivityFeed`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ActivityFeedAPI.GetGroupActivityFeed`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -55,7 +55,7 @@ func main() {
         return
     }
     // response from `GetGroupActivityFeed`: ActivityFeedLinkResponse
-    fmt.Fprintf(os.Stdout, "Response from `ActivityFeedApi.GetGroupActivityFeed`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ActivityFeedAPI.GetGroupActivityFeed`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -132,9 +132,9 @@ func main() {
     maxDate := time.Now() // time.Time |  (optional)
     minDate := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.ActivityFeedApi.GetOrgActivityFeed(context.Background(), orgId).EventType(eventType).MaxDate(maxDate).MinDate(minDate).Execute()
+    resp, r, err := sdk.ActivityFeedAPI.GetOrgActivityFeed(context.Background(), orgId).EventType(eventType).MaxDate(maxDate).MinDate(minDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ActivityFeedApi.GetOrgActivityFeed`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ActivityFeedAPI.GetOrgActivityFeed`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -142,7 +142,7 @@ func main() {
         return
     }
     // response from `GetOrgActivityFeed`: ActivityFeedLinkResponse
-    fmt.Fprintf(os.Stdout, "Response from `ActivityFeedApi.GetOrgActivityFeed`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ActivityFeedAPI.GetOrgActivityFeed`: %v (%v)\n", resp, r)
 }
 ```
 

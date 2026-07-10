@@ -1,18 +1,18 @@
-# \PushBasedLogExportApi
+# \PushBasedLogExportAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupLogIntegration**](PushBasedLogExportApi.md#CreateGroupLogIntegration) | **Post** /api/atlas/v2/groups/{groupId}/logIntegrations | Create One Log Integration
-[**CreateLogExport**](PushBasedLogExportApi.md#CreateLogExport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project
-[**DeleteGroupLogIntegration**](PushBasedLogExportApi.md#DeleteGroupLogIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Remove One Log Integration
-[**DeleteLogExport**](PushBasedLogExportApi.md#DeleteLogExport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
-[**GetGroupLogIntegration**](PushBasedLogExportApi.md#GetGroupLogIntegration) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Return One Log Integration
-[**GetLogExport**](PushBasedLogExportApi.md#GetLogExport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project
-[**ListGroupLogIntegrations**](PushBasedLogExportApi.md#ListGroupLogIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations | Return All Active Log Integrations
-[**UpdateGroupLogIntegration**](PushBasedLogExportApi.md#UpdateGroupLogIntegration) | **Put** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Update One Log Integration
-[**UpdateLogExport**](PushBasedLogExportApi.md#UpdateLogExport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project
+[**CreateGroupLogIntegration**](PushBasedLogExportAPI.md#CreateGroupLogIntegration) | **Post** /api/atlas/v2/groups/{groupId}/logIntegrations | Create One Log Integration
+[**CreateLogExport**](PushBasedLogExportAPI.md#CreateLogExport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project
+[**DeleteGroupLogIntegration**](PushBasedLogExportAPI.md#DeleteGroupLogIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Remove One Log Integration
+[**DeleteLogExport**](PushBasedLogExportAPI.md#DeleteLogExport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
+[**GetGroupLogIntegration**](PushBasedLogExportAPI.md#GetGroupLogIntegration) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Return One Log Integration
+[**GetLogExport**](PushBasedLogExportAPI.md#GetLogExport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project
+[**ListGroupLogIntegrations**](PushBasedLogExportAPI.md#ListGroupLogIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations | Return All Active Log Integrations
+[**UpdateGroupLogIntegration**](PushBasedLogExportAPI.md#UpdateGroupLogIntegration) | **Put** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Update One Log Integration
+[**UpdateLogExport**](PushBasedLogExportAPI.md#UpdateLogExport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project
 
 
 
@@ -49,9 +49,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     logIntegrationRequest := *admin.NewLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // LogIntegrationRequest | 
 
-    resp, r, err := sdk.PushBasedLogExportApi.CreateGroupLogIntegration(context.Background(), groupId, &logIntegrationRequest).Execute()
+    resp, r, err := sdk.PushBasedLogExportAPI.CreateGroupLogIntegration(context.Background(), groupId, &logIntegrationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.CreateGroupLogIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.CreateGroupLogIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -59,7 +59,7 @@ func main() {
         return
     }
     // response from `CreateGroupLogIntegration`: LogIntegrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.CreateGroupLogIntegration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.CreateGroupLogIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -131,9 +131,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     createPushBasedLogExportProjectRequest := *admin.NewCreatePushBasedLogExportProjectRequest("BucketName_example", "32b6e34b3d91647abb20e7b8", "PrefixPath_example") // CreatePushBasedLogExportProjectRequest | 
 
-    r, err := sdk.PushBasedLogExportApi.CreateLogExport(context.Background(), groupId, &createPushBasedLogExportProjectRequest).Execute()
+    r, err := sdk.PushBasedLogExportAPI.CreateLogExport(context.Background(), groupId, &createPushBasedLogExportProjectRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.CreateLogExport`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.CreateLogExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -211,9 +211,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
 
-    r, err := sdk.PushBasedLogExportApi.DeleteGroupLogIntegration(context.Background(), groupId, id).Execute()
+    r, err := sdk.PushBasedLogExportAPI.DeleteGroupLogIntegration(context.Background(), groupId, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.DeleteGroupLogIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.DeleteGroupLogIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -291,9 +291,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.PushBasedLogExportApi.DeleteLogExport(context.Background(), groupId).Execute()
+    r, err := sdk.PushBasedLogExportAPI.DeleteLogExport(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.DeleteLogExport`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.DeleteLogExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -370,9 +370,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
 
-    resp, r, err := sdk.PushBasedLogExportApi.GetGroupLogIntegration(context.Background(), groupId, id).Execute()
+    resp, r, err := sdk.PushBasedLogExportAPI.GetGroupLogIntegration(context.Background(), groupId, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.GetGroupLogIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.GetGroupLogIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -380,7 +380,7 @@ func main() {
         return
     }
     // response from `GetGroupLogIntegration`: LogIntegrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.GetGroupLogIntegration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.GetGroupLogIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -452,9 +452,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.PushBasedLogExportApi.GetLogExport(context.Background(), groupId).Execute()
+    resp, r, err := sdk.PushBasedLogExportAPI.GetLogExport(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.GetLogExport`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.GetLogExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -462,7 +462,7 @@ func main() {
         return
     }
     // response from `GetLogExport`: PushBasedLogExportProject
-    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.GetLogExport`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.GetLogExport`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -536,9 +536,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     integrationType := "integrationType_example" // string |  (optional)
 
-    resp, r, err := sdk.PushBasedLogExportApi.ListGroupLogIntegrations(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IntegrationType(integrationType).Execute()
+    resp, r, err := sdk.PushBasedLogExportAPI.ListGroupLogIntegrations(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IntegrationType(integrationType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.ListGroupLogIntegrations`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.ListGroupLogIntegrations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -546,7 +546,7 @@ func main() {
         return
     }
     // response from `ListGroupLogIntegrations`: PaginatedLogIntegrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.ListGroupLogIntegrations`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.ListGroupLogIntegrations`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -622,9 +622,9 @@ func main() {
     id := "id_example" // string | 
     logIntegrationRequest := *admin.NewLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // LogIntegrationRequest | 
 
-    resp, r, err := sdk.PushBasedLogExportApi.UpdateGroupLogIntegration(context.Background(), groupId, id, &logIntegrationRequest).Execute()
+    resp, r, err := sdk.PushBasedLogExportAPI.UpdateGroupLogIntegration(context.Background(), groupId, id, &logIntegrationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.UpdateGroupLogIntegration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.UpdateGroupLogIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -632,7 +632,7 @@ func main() {
         return
     }
     // response from `UpdateGroupLogIntegration`: LogIntegrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.UpdateGroupLogIntegration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.UpdateGroupLogIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -706,9 +706,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pushBasedLogExportProject := *admin.NewPushBasedLogExportProject() // PushBasedLogExportProject | 
 
-    r, err := sdk.PushBasedLogExportApi.UpdateLogExport(context.Background(), groupId, &pushBasedLogExportProject).Execute()
+    r, err := sdk.PushBasedLogExportAPI.UpdateLogExport(context.Background(), groupId, &pushBasedLogExportProject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.UpdateLogExport`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.UpdateLogExport`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)

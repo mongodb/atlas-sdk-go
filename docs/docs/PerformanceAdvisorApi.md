@@ -1,20 +1,20 @@
-# \PerformanceAdvisorApi
+# \PerformanceAdvisorAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DisableManagedSlowMs**](PerformanceAdvisorApi.md#DisableManagedSlowMs) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold
-[**EnableManagedSlowMs**](PerformanceAdvisorApi.md#EnableManagedSlowMs) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold
-[**GetManagedSlowMs**](PerformanceAdvisorApi.md#GetManagedSlowMs) | **Get** /api/atlas/v2/groups/{groupId}/managedSlowMs | Return Managed Slow Operation Threshold Status
-[**GetServerlessAutoIndexing**](PerformanceAdvisorApi.md#GetServerlessAutoIndexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto-Indexing Status
-[**ListClusterSuggestedIndexes**](PerformanceAdvisorApi.md#ListClusterSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes | Return All Suggested Indexes
-[**ListDropIndexSuggestions**](PerformanceAdvisorApi.md#ListDropIndexSuggestions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions | Return All Suggested Indexes to Drop
-[**ListPerformanceAdvisorNamespaces**](PerformanceAdvisorApi.md#ListPerformanceAdvisorNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host
-[**ListSchemaAdvice**](PerformanceAdvisorApi.md#ListSchemaAdvice) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/schemaAdvice | Return Schema Advice
-[**ListSlowQueryLogs**](PerformanceAdvisorApi.md#ListSlowQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries
-[**ListSuggestedIndexes**](PerformanceAdvisorApi.md#ListSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return All Suggested Indexes
-[**SetServerlessAutoIndexing**](PerformanceAdvisorApi.md#SetServerlessAutoIndexing) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Set Serverless Auto-Indexing Status
+[**DisableManagedSlowMs**](PerformanceAdvisorAPI.md#DisableManagedSlowMs) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold
+[**EnableManagedSlowMs**](PerformanceAdvisorAPI.md#EnableManagedSlowMs) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold
+[**GetManagedSlowMs**](PerformanceAdvisorAPI.md#GetManagedSlowMs) | **Get** /api/atlas/v2/groups/{groupId}/managedSlowMs | Return Managed Slow Operation Threshold Status
+[**GetServerlessAutoIndexing**](PerformanceAdvisorAPI.md#GetServerlessAutoIndexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto-Indexing Status
+[**ListClusterSuggestedIndexes**](PerformanceAdvisorAPI.md#ListClusterSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes | Return All Suggested Indexes
+[**ListDropIndexSuggestions**](PerformanceAdvisorAPI.md#ListDropIndexSuggestions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions | Return All Suggested Indexes to Drop
+[**ListPerformanceAdvisorNamespaces**](PerformanceAdvisorAPI.md#ListPerformanceAdvisorNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host
+[**ListSchemaAdvice**](PerformanceAdvisorAPI.md#ListSchemaAdvice) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/schemaAdvice | Return Schema Advice
+[**ListSlowQueryLogs**](PerformanceAdvisorAPI.md#ListSlowQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries
+[**ListSuggestedIndexes**](PerformanceAdvisorAPI.md#ListSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return All Suggested Indexes
+[**SetServerlessAutoIndexing**](PerformanceAdvisorAPI.md#SetServerlessAutoIndexing) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Set Serverless Auto-Indexing Status
 
 
 
@@ -50,9 +50,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.PerformanceAdvisorApi.DisableManagedSlowMs(context.Background(), groupId).Execute()
+    r, err := sdk.PerformanceAdvisorAPI.DisableManagedSlowMs(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.DisableManagedSlowMs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.DisableManagedSlowMs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -128,9 +128,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.PerformanceAdvisorApi.EnableManagedSlowMs(context.Background(), groupId).Execute()
+    r, err := sdk.PerformanceAdvisorAPI.EnableManagedSlowMs(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.EnableManagedSlowMs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.EnableManagedSlowMs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -206,9 +206,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.PerformanceAdvisorApi.GetManagedSlowMs(context.Background(), groupId).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.GetManagedSlowMs(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetManagedSlowMs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.GetManagedSlowMs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -216,7 +216,7 @@ func main() {
         return
     }
     // response from `GetManagedSlowMs`: bool
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.GetManagedSlowMs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.GetManagedSlowMs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -287,9 +287,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.PerformanceAdvisorApi.GetServerlessAutoIndexing(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.GetServerlessAutoIndexing(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetServerlessAutoIndexing`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.GetServerlessAutoIndexing`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -297,7 +297,7 @@ func main() {
         return
     }
     // response from `GetServerlessAutoIndexing`: bool
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.GetServerlessAutoIndexing`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.GetServerlessAutoIndexing`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -374,9 +374,9 @@ func main() {
     since := int64(789) // int64 |  (optional)
     until := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListClusterSuggestedIndexes(context.Background(), groupId, clusterName).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListClusterSuggestedIndexes(context.Background(), groupId, clusterName).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListClusterSuggestedIndexes`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListClusterSuggestedIndexes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -384,7 +384,7 @@ func main() {
         return
     }
     // response from `ListClusterSuggestedIndexes`: PerformanceAdvisorResponse
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListClusterSuggestedIndexes`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListClusterSuggestedIndexes`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -461,9 +461,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListDropIndexSuggestions(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListDropIndexSuggestions(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListDropIndexSuggestions`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListDropIndexSuggestions`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -471,7 +471,7 @@ func main() {
         return
     }
     // response from `ListDropIndexSuggestions`: DropIndexSuggestionsResponse
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListDropIndexSuggestions`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListDropIndexSuggestions`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -546,9 +546,9 @@ func main() {
     duration := int64(789) // int64 |  (optional)
     since := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListPerformanceAdvisorNamespaces(context.Background(), groupId, processId).Duration(duration).Since(since).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListPerformanceAdvisorNamespaces(context.Background(), groupId, processId).Duration(duration).Since(since).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListPerformanceAdvisorNamespaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListPerformanceAdvisorNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -556,7 +556,7 @@ func main() {
         return
     }
     // response from `ListPerformanceAdvisorNamespaces`: Namespaces
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListPerformanceAdvisorNamespaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListPerformanceAdvisorNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -631,9 +631,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListSchemaAdvice(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListSchemaAdvice(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSchemaAdvice`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListSchemaAdvice`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -641,7 +641,7 @@ func main() {
         return
     }
     // response from `ListSchemaAdvice`: SchemaAdvisorResponse
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSchemaAdvice`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListSchemaAdvice`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -721,9 +721,9 @@ func main() {
     includeReplicaState := true // bool |  (optional) (default to false)
     includeOpType := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListSlowQueryLogs(context.Background(), groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).IncludeMetrics(includeMetrics).IncludeReplicaState(includeReplicaState).IncludeOpType(includeOpType).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListSlowQueryLogs(context.Background(), groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).IncludeMetrics(includeMetrics).IncludeReplicaState(includeReplicaState).IncludeOpType(includeOpType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueryLogs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListSlowQueryLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -731,7 +731,7 @@ func main() {
         return
     }
     // response from `ListSlowQueryLogs`: PerformanceAdvisorSlowQueryList
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueryLogs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListSlowQueryLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -819,9 +819,9 @@ func main() {
     nIndexes := int64(789) // int64 |  (optional)
     since := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListSuggestedIndexes(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Duration(duration).Namespaces(namespaces).NExamples(nExamples).NIndexes(nIndexes).Since(since).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListSuggestedIndexes(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Duration(duration).Namespaces(namespaces).NExamples(nExamples).NIndexes(nIndexes).Since(since).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSuggestedIndexes`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListSuggestedIndexes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -829,7 +829,7 @@ func main() {
         return
     }
     // response from `ListSuggestedIndexes`: PerformanceAdvisorResponse
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSuggestedIndexes`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListSuggestedIndexes`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -911,9 +911,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     enable := true // bool | 
 
-    r, err := sdk.PerformanceAdvisorApi.SetServerlessAutoIndexing(context.Background(), groupId, clusterName).Enable(enable).Execute()
+    r, err := sdk.PerformanceAdvisorAPI.SetServerlessAutoIndexing(context.Background(), groupId, clusterName).Enable(enable).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.SetServerlessAutoIndexing`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.SetServerlessAutoIndexing`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)

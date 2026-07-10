@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -12,7 +11,7 @@ import (
 	"time"
 )
 
-type MonitoringAndLogsApi interface {
+type MonitoringAndLogsAPI interface {
 
 	/*
 		DownloadClusterLog Download Logs for One Cluster Host in One Project
@@ -369,12 +368,12 @@ type MonitoringAndLogsApi interface {
 	ListProcessDisksExecute(r ListProcessDisksApiRequest) (*PaginatedDiskPartition, *http.Response, error)
 }
 
-// MonitoringAndLogsApiService MonitoringAndLogsApi service
-type MonitoringAndLogsApiService service
+// MonitoringAndLogsAPIService MonitoringAndLogsAPI service
+type MonitoringAndLogsAPIService service
 
 type DownloadClusterLogApiRequest struct {
 	ctx        context.Context
-	ApiService MonitoringAndLogsApi
+	ApiService MonitoringAndLogsAPI
 	groupId    string
 	hostName   string
 	logName    string
@@ -390,7 +389,7 @@ type DownloadClusterLogApiParams struct {
 	StartDate *int64
 }
 
-func (a *MonitoringAndLogsApiService) DownloadClusterLogWithParams(ctx context.Context, args *DownloadClusterLogApiParams) DownloadClusterLogApiRequest {
+func (a *MonitoringAndLogsAPIService) DownloadClusterLogWithParams(ctx context.Context, args *DownloadClusterLogApiParams) DownloadClusterLogApiRequest {
 	return DownloadClusterLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -429,7 +428,7 @@ Returns a compressed (.gz) log file that contains a range of log messages for th
 	@param logName Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project.
 	@return DownloadClusterLogApiRequest
 */
-func (a *MonitoringAndLogsApiService) DownloadClusterLog(ctx context.Context, groupId string, hostName string, logName string) DownloadClusterLogApiRequest {
+func (a *MonitoringAndLogsAPIService) DownloadClusterLog(ctx context.Context, groupId string, hostName string, logName string) DownloadClusterLogApiRequest {
 	return DownloadClusterLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -442,7 +441,7 @@ func (a *MonitoringAndLogsApiService) DownloadClusterLog(ctx context.Context, gr
 // DownloadClusterLogExecute executes the request
 //
 //	@return io.ReadCloser
-func (a *MonitoringAndLogsApiService) DownloadClusterLogExecute(r DownloadClusterLogApiRequest) (io.ReadCloser, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) DownloadClusterLogExecute(r DownloadClusterLogApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -450,7 +449,7 @@ func (a *MonitoringAndLogsApiService) DownloadClusterLogExecute(r DownloadCluste
 		localVarReturnValue io.ReadCloser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.DownloadClusterLog")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.DownloadClusterLog")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -530,7 +529,7 @@ func (a *MonitoringAndLogsApiService) DownloadClusterLogExecute(r DownloadCluste
 
 type GetDatabaseApiRequest struct {
 	ctx          context.Context
-	ApiService   MonitoringAndLogsApi
+	ApiService   MonitoringAndLogsAPI
 	groupId      string
 	databaseName string
 	processId    string
@@ -542,7 +541,7 @@ type GetDatabaseApiParams struct {
 	ProcessId    string
 }
 
-func (a *MonitoringAndLogsApiService) GetDatabaseWithParams(ctx context.Context, args *GetDatabaseApiParams) GetDatabaseApiRequest {
+func (a *MonitoringAndLogsAPIService) GetDatabaseWithParams(ctx context.Context, args *GetDatabaseApiParams) GetDatabaseApiRequest {
 	return GetDatabaseApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -567,7 +566,7 @@ Returns one database running on the specified host for the specified project.
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return GetDatabaseApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetDatabase(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseApiRequest {
+func (a *MonitoringAndLogsAPIService) GetDatabase(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseApiRequest {
 	return GetDatabaseApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -580,7 +579,7 @@ func (a *MonitoringAndLogsApiService) GetDatabase(ctx context.Context, groupId s
 // GetDatabaseExecute executes the request
 //
 //	@return MesurementsDatabase
-func (a *MonitoringAndLogsApiService) GetDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) GetDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -588,7 +587,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseExecute(r GetDatabaseApiRequest
 		localVarReturnValue *MesurementsDatabase
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDatabase")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.GetDatabase")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -662,7 +661,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseExecute(r GetDatabaseApiRequest
 
 type GetDatabaseMeasurementsApiRequest struct {
 	ctx          context.Context
-	ApiService   MonitoringAndLogsApi
+	ApiService   MonitoringAndLogsAPI
 	groupId      string
 	databaseName string
 	processId    string
@@ -684,7 +683,7 @@ type GetDatabaseMeasurementsApiParams struct {
 	End          *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsWithParams(ctx context.Context, args *GetDatabaseMeasurementsApiParams) GetDatabaseMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) GetDatabaseMeasurementsWithParams(ctx context.Context, args *GetDatabaseMeasurementsApiParams) GetDatabaseMeasurementsApiRequest {
 	return GetDatabaseMeasurementsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -744,7 +743,7 @@ Returns the measurements of one database for the specified host for the specifie
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return GetDatabaseMeasurementsApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetDatabaseMeasurements(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) GetDatabaseMeasurements(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseMeasurementsApiRequest {
 	return GetDatabaseMeasurementsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -757,7 +756,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurements(ctx context.Contex
 // GetDatabaseMeasurementsExecute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -765,7 +764,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsExecute(r GetDataba
 		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDatabaseMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.GetDatabaseMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -859,7 +858,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsExecute(r GetDataba
 
 type GetGroupProcessApiRequest struct {
 	ctx        context.Context
-	ApiService MonitoringAndLogsApi
+	ApiService MonitoringAndLogsAPI
 	groupId    string
 	processId  string
 }
@@ -869,7 +868,7 @@ type GetGroupProcessApiParams struct {
 	ProcessId string
 }
 
-func (a *MonitoringAndLogsApiService) GetGroupProcessWithParams(ctx context.Context, args *GetGroupProcessApiParams) GetGroupProcessApiRequest {
+func (a *MonitoringAndLogsAPIService) GetGroupProcessWithParams(ctx context.Context, args *GetGroupProcessApiParams) GetGroupProcessApiRequest {
 	return GetGroupProcessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -892,7 +891,7 @@ Returns the processes for the specified host for the specified project.
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return GetGroupProcessApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetGroupProcess(ctx context.Context, groupId string, processId string) GetGroupProcessApiRequest {
+func (a *MonitoringAndLogsAPIService) GetGroupProcess(ctx context.Context, groupId string, processId string) GetGroupProcessApiRequest {
 	return GetGroupProcessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -904,7 +903,7 @@ func (a *MonitoringAndLogsApiService) GetGroupProcess(ctx context.Context, group
 // GetGroupProcessExecute executes the request
 //
 //	@return ApiHostViewAtlas
-func (a *MonitoringAndLogsApiService) GetGroupProcessExecute(r GetGroupProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) GetGroupProcessExecute(r GetGroupProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -912,7 +911,7 @@ func (a *MonitoringAndLogsApiService) GetGroupProcessExecute(r GetGroupProcessAp
 		localVarReturnValue *ApiHostViewAtlas
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetGroupProcess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.GetGroupProcess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -982,7 +981,7 @@ func (a *MonitoringAndLogsApiService) GetGroupProcessExecute(r GetGroupProcessAp
 
 type GetIndexMeasurementsApiRequest struct {
 	ctx            context.Context
-	ApiService     MonitoringAndLogsApi
+	ApiService     MonitoringAndLogsAPI
 	processId      string
 	indexName      string
 	databaseName   string
@@ -1008,7 +1007,7 @@ type GetIndexMeasurementsApiParams struct {
 	End            *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) GetIndexMeasurementsWithParams(ctx context.Context, args *GetIndexMeasurementsApiParams) GetIndexMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) GetIndexMeasurementsWithParams(ctx context.Context, args *GetIndexMeasurementsApiParams) GetIndexMeasurementsApiRequest {
 	return GetIndexMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1072,7 +1071,7 @@ Returns the Atlas Search metrics data series within the provided time range for 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetIndexMeasurementsApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetIndexMeasurements(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) GetIndexMeasurements(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMeasurementsApiRequest {
 	return GetIndexMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1087,7 +1086,7 @@ func (a *MonitoringAndLogsApiService) GetIndexMeasurements(ctx context.Context, 
 // GetIndexMeasurementsExecute executes the request
 //
 //	@return MeasurementsIndexes
-func (a *MonitoringAndLogsApiService) GetIndexMeasurementsExecute(r GetIndexMeasurementsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) GetIndexMeasurementsExecute(r GetIndexMeasurementsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1095,7 +1094,7 @@ func (a *MonitoringAndLogsApiService) GetIndexMeasurementsExecute(r GetIndexMeas
 		localVarReturnValue *MeasurementsIndexes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetIndexMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.GetIndexMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1199,7 +1198,7 @@ func (a *MonitoringAndLogsApiService) GetIndexMeasurementsExecute(r GetIndexMeas
 
 type GetProcessDiskApiRequest struct {
 	ctx           context.Context
-	ApiService    MonitoringAndLogsApi
+	ApiService    MonitoringAndLogsAPI
 	partitionName string
 	groupId       string
 	processId     string
@@ -1211,7 +1210,7 @@ type GetProcessDiskApiParams struct {
 	ProcessId     string
 }
 
-func (a *MonitoringAndLogsApiService) GetProcessDiskWithParams(ctx context.Context, args *GetProcessDiskApiParams) GetProcessDiskApiRequest {
+func (a *MonitoringAndLogsAPIService) GetProcessDiskWithParams(ctx context.Context, args *GetProcessDiskApiParams) GetProcessDiskApiRequest {
 	return GetProcessDiskApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1236,7 +1235,7 @@ Returns measurement details for one disk or partition for the specified host for
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return GetProcessDiskApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetProcessDisk(ctx context.Context, partitionName string, groupId string, processId string) GetProcessDiskApiRequest {
+func (a *MonitoringAndLogsAPIService) GetProcessDisk(ctx context.Context, partitionName string, groupId string, processId string) GetProcessDiskApiRequest {
 	return GetProcessDiskApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1249,7 +1248,7 @@ func (a *MonitoringAndLogsApiService) GetProcessDisk(ctx context.Context, partit
 // GetProcessDiskExecute executes the request
 //
 //	@return MeasurementDiskPartition
-func (a *MonitoringAndLogsApiService) GetProcessDiskExecute(r GetProcessDiskApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) GetProcessDiskExecute(r GetProcessDiskApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1257,7 +1256,7 @@ func (a *MonitoringAndLogsApiService) GetProcessDiskExecute(r GetProcessDiskApiR
 		localVarReturnValue *MeasurementDiskPartition
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetProcessDisk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.GetProcessDisk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1331,7 +1330,7 @@ func (a *MonitoringAndLogsApiService) GetProcessDiskExecute(r GetProcessDiskApiR
 
 type GetProcessDiskMeasurementsApiRequest struct {
 	ctx           context.Context
-	ApiService    MonitoringAndLogsApi
+	ApiService    MonitoringAndLogsAPI
 	groupId       string
 	partitionName string
 	processId     string
@@ -1353,7 +1352,7 @@ type GetProcessDiskMeasurementsApiParams struct {
 	End           *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurementsWithParams(ctx context.Context, args *GetProcessDiskMeasurementsApiParams) GetProcessDiskMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) GetProcessDiskMeasurementsWithParams(ctx context.Context, args *GetProcessDiskMeasurementsApiParams) GetProcessDiskMeasurementsApiRequest {
 	return GetProcessDiskMeasurementsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1417,7 +1416,7 @@ Returns the measurements of one disk or partition for the specified host for the
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return GetProcessDiskMeasurementsApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetProcessDiskMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) GetProcessDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetProcessDiskMeasurementsApiRequest {
 	return GetProcessDiskMeasurementsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1430,7 +1429,7 @@ func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurements(ctx context.Con
 // GetProcessDiskMeasurementsExecute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurementsExecute(r GetProcessDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) GetProcessDiskMeasurementsExecute(r GetProcessDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1438,7 +1437,7 @@ func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurementsExecute(r GetPro
 		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetProcessDiskMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.GetProcessDiskMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1532,7 +1531,7 @@ func (a *MonitoringAndLogsApiService) GetProcessDiskMeasurementsExecute(r GetPro
 
 type GetProcessMeasurementsApiRequest struct {
 	ctx         context.Context
-	ApiService  MonitoringAndLogsApi
+	ApiService  MonitoringAndLogsAPI
 	groupId     string
 	processId   string
 	granularity *string
@@ -1552,7 +1551,7 @@ type GetProcessMeasurementsApiParams struct {
 	End         *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) GetProcessMeasurementsWithParams(ctx context.Context, args *GetProcessMeasurementsApiParams) GetProcessMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) GetProcessMeasurementsWithParams(ctx context.Context, args *GetProcessMeasurementsApiParams) GetProcessMeasurementsApiRequest {
 	return GetProcessMeasurementsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1615,7 +1614,7 @@ Returns disk, partition, or host measurements per process for the specified host
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return GetProcessMeasurementsApiRequest
 */
-func (a *MonitoringAndLogsApiService) GetProcessMeasurements(ctx context.Context, groupId string, processId string) GetProcessMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) GetProcessMeasurements(ctx context.Context, groupId string, processId string) GetProcessMeasurementsApiRequest {
 	return GetProcessMeasurementsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1627,7 +1626,7 @@ func (a *MonitoringAndLogsApiService) GetProcessMeasurements(ctx context.Context
 // GetProcessMeasurementsExecute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) GetProcessMeasurementsExecute(r GetProcessMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) GetProcessMeasurementsExecute(r GetProcessMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1635,7 +1634,7 @@ func (a *MonitoringAndLogsApiService) GetProcessMeasurementsExecute(r GetProcess
 		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetProcessMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.GetProcessMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1725,7 +1724,7 @@ func (a *MonitoringAndLogsApiService) GetProcessMeasurementsExecute(r GetProcess
 
 type ListDatabasesApiRequest struct {
 	ctx          context.Context
-	ApiService   MonitoringAndLogsApi
+	ApiService   MonitoringAndLogsAPI
 	groupId      string
 	processId    string
 	includeCount *bool
@@ -1741,7 +1740,7 @@ type ListDatabasesApiParams struct {
 	PageNum      *int
 }
 
-func (a *MonitoringAndLogsApiService) ListDatabasesWithParams(ctx context.Context, args *ListDatabasesApiParams) ListDatabasesApiRequest {
+func (a *MonitoringAndLogsAPIService) ListDatabasesWithParams(ctx context.Context, args *ListDatabasesApiParams) ListDatabasesApiRequest {
 	return ListDatabasesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1785,7 +1784,7 @@ Returns the list of databases running on the specified host for the specified pr
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return ListDatabasesApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListDatabases(ctx context.Context, groupId string, processId string) ListDatabasesApiRequest {
+func (a *MonitoringAndLogsAPIService) ListDatabases(ctx context.Context, groupId string, processId string) ListDatabasesApiRequest {
 	return ListDatabasesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1797,7 +1796,7 @@ func (a *MonitoringAndLogsApiService) ListDatabases(ctx context.Context, groupId
 // ListDatabasesExecute executes the request
 //
 //	@return PaginatedDatabase
-func (a *MonitoringAndLogsApiService) ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1805,7 +1804,7 @@ func (a *MonitoringAndLogsApiService) ListDatabasesExecute(r ListDatabasesApiReq
 		localVarReturnValue *PaginatedDatabase
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListDatabases")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.ListDatabases")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1896,7 +1895,7 @@ func (a *MonitoringAndLogsApiService) ListDatabasesExecute(r ListDatabasesApiReq
 
 type ListGroupProcessesApiRequest struct {
 	ctx          context.Context
-	ApiService   MonitoringAndLogsApi
+	ApiService   MonitoringAndLogsAPI
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -1910,7 +1909,7 @@ type ListGroupProcessesApiParams struct {
 	PageNum      *int
 }
 
-func (a *MonitoringAndLogsApiService) ListGroupProcessesWithParams(ctx context.Context, args *ListGroupProcessesApiParams) ListGroupProcessesApiRequest {
+func (a *MonitoringAndLogsAPIService) ListGroupProcessesWithParams(ctx context.Context, args *ListGroupProcessesApiParams) ListGroupProcessesApiRequest {
 	return ListGroupProcessesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1952,7 +1951,7 @@ Returns details of all processes for the specified project. A MongoDB process ca
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupProcessesApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListGroupProcesses(ctx context.Context, groupId string) ListGroupProcessesApiRequest {
+func (a *MonitoringAndLogsAPIService) ListGroupProcesses(ctx context.Context, groupId string) ListGroupProcessesApiRequest {
 	return ListGroupProcessesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1963,7 +1962,7 @@ func (a *MonitoringAndLogsApiService) ListGroupProcesses(ctx context.Context, gr
 // ListGroupProcessesExecute executes the request
 //
 //	@return PaginatedHostViewAtlas
-func (a *MonitoringAndLogsApiService) ListGroupProcessesExecute(r ListGroupProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) ListGroupProcessesExecute(r ListGroupProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1971,7 +1970,7 @@ func (a *MonitoringAndLogsApiService) ListGroupProcessesExecute(r ListGroupProce
 		localVarReturnValue *PaginatedHostViewAtlas
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListGroupProcesses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.ListGroupProcesses")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2058,7 +2057,7 @@ func (a *MonitoringAndLogsApiService) ListGroupProcessesExecute(r ListGroupProce
 
 type ListHostFtsMetricsApiRequest struct {
 	ctx        context.Context
-	ApiService MonitoringAndLogsApi
+	ApiService MonitoringAndLogsAPI
 	processId  string
 	groupId    string
 }
@@ -2068,7 +2067,7 @@ type ListHostFtsMetricsApiParams struct {
 	GroupId   string
 }
 
-func (a *MonitoringAndLogsApiService) ListHostFtsMetricsWithParams(ctx context.Context, args *ListHostFtsMetricsApiParams) ListHostFtsMetricsApiRequest {
+func (a *MonitoringAndLogsAPIService) ListHostFtsMetricsWithParams(ctx context.Context, args *ListHostFtsMetricsApiParams) ListHostFtsMetricsApiRequest {
 	return ListHostFtsMetricsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2091,7 +2090,7 @@ Returns all Atlas Search metric types available for one process in the specified
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListHostFtsMetricsApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListHostFtsMetrics(ctx context.Context, processId string, groupId string) ListHostFtsMetricsApiRequest {
+func (a *MonitoringAndLogsAPIService) ListHostFtsMetrics(ctx context.Context, processId string, groupId string) ListHostFtsMetricsApiRequest {
 	return ListHostFtsMetricsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2103,7 +2102,7 @@ func (a *MonitoringAndLogsApiService) ListHostFtsMetrics(ctx context.Context, pr
 // ListHostFtsMetricsExecute executes the request
 //
 //	@return CloudSearchMetrics
-func (a *MonitoringAndLogsApiService) ListHostFtsMetricsExecute(r ListHostFtsMetricsApiRequest) (*CloudSearchMetrics, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) ListHostFtsMetricsExecute(r ListHostFtsMetricsApiRequest) (*CloudSearchMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2111,7 +2110,7 @@ func (a *MonitoringAndLogsApiService) ListHostFtsMetricsExecute(r ListHostFtsMet
 		localVarReturnValue *CloudSearchMetrics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListHostFtsMetrics")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.ListHostFtsMetrics")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2181,7 +2180,7 @@ func (a *MonitoringAndLogsApiService) ListHostFtsMetricsExecute(r ListHostFtsMet
 
 type ListIndexMeasurementsApiRequest struct {
 	ctx            context.Context
-	ApiService     MonitoringAndLogsApi
+	ApiService     MonitoringAndLogsAPI
 	processId      string
 	databaseName   string
 	collectionName string
@@ -2205,7 +2204,7 @@ type ListIndexMeasurementsApiParams struct {
 	End            *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) ListIndexMeasurementsWithParams(ctx context.Context, args *ListIndexMeasurementsApiParams) ListIndexMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) ListIndexMeasurementsWithParams(ctx context.Context, args *ListIndexMeasurementsApiParams) ListIndexMeasurementsApiRequest {
 	return ListIndexMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -2267,7 +2266,7 @@ Returns the Atlas Search index metrics within the specified time range for one n
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListIndexMeasurementsApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListIndexMeasurements(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) ListIndexMeasurements(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMeasurementsApiRequest {
 	return ListIndexMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -2281,7 +2280,7 @@ func (a *MonitoringAndLogsApiService) ListIndexMeasurements(ctx context.Context,
 // ListIndexMeasurementsExecute executes the request
 //
 //	@return MeasurementsIndexes
-func (a *MonitoringAndLogsApiService) ListIndexMeasurementsExecute(r ListIndexMeasurementsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) ListIndexMeasurementsExecute(r ListIndexMeasurementsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2289,7 +2288,7 @@ func (a *MonitoringAndLogsApiService) ListIndexMeasurementsExecute(r ListIndexMe
 		localVarReturnValue *MeasurementsIndexes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListIndexMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.ListIndexMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2389,7 +2388,7 @@ func (a *MonitoringAndLogsApiService) ListIndexMeasurementsExecute(r ListIndexMe
 
 type ListMeasurementsApiRequest struct {
 	ctx         context.Context
-	ApiService  MonitoringAndLogsApi
+	ApiService  MonitoringAndLogsAPI
 	processId   string
 	groupId     string
 	granularity *string
@@ -2409,7 +2408,7 @@ type ListMeasurementsApiParams struct {
 	End         *time.Time
 }
 
-func (a *MonitoringAndLogsApiService) ListMeasurementsWithParams(ctx context.Context, args *ListMeasurementsApiParams) ListMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) ListMeasurementsWithParams(ctx context.Context, args *ListMeasurementsApiParams) ListMeasurementsApiRequest {
 	return ListMeasurementsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2467,7 +2466,7 @@ Returns the Atlas Search hardware and status data series within the provided tim
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListMeasurementsApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListMeasurements(ctx context.Context, processId string, groupId string) ListMeasurementsApiRequest {
+func (a *MonitoringAndLogsAPIService) ListMeasurements(ctx context.Context, processId string, groupId string) ListMeasurementsApiRequest {
 	return ListMeasurementsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2479,7 +2478,7 @@ func (a *MonitoringAndLogsApiService) ListMeasurements(ctx context.Context, proc
 // ListMeasurementsExecute executes the request
 //
 //	@return MeasurementsNonIndex
-func (a *MonitoringAndLogsApiService) ListMeasurementsExecute(r ListMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) ListMeasurementsExecute(r ListMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2487,7 +2486,7 @@ func (a *MonitoringAndLogsApiService) ListMeasurementsExecute(r ListMeasurements
 		localVarReturnValue *MeasurementsNonIndex
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.ListMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2579,7 +2578,7 @@ func (a *MonitoringAndLogsApiService) ListMeasurementsExecute(r ListMeasurements
 
 type ListProcessDisksApiRequest struct {
 	ctx          context.Context
-	ApiService   MonitoringAndLogsApi
+	ApiService   MonitoringAndLogsAPI
 	groupId      string
 	processId    string
 	includeCount *bool
@@ -2595,7 +2594,7 @@ type ListProcessDisksApiParams struct {
 	PageNum      *int
 }
 
-func (a *MonitoringAndLogsApiService) ListProcessDisksWithParams(ctx context.Context, args *ListProcessDisksApiParams) ListProcessDisksApiRequest {
+func (a *MonitoringAndLogsAPIService) ListProcessDisksWithParams(ctx context.Context, args *ListProcessDisksApiParams) ListProcessDisksApiRequest {
 	return ListProcessDisksApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -2639,7 +2638,7 @@ Returns the list of disks or partitions for the specified host for the specified
 	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return ListProcessDisksApiRequest
 */
-func (a *MonitoringAndLogsApiService) ListProcessDisks(ctx context.Context, groupId string, processId string) ListProcessDisksApiRequest {
+func (a *MonitoringAndLogsAPIService) ListProcessDisks(ctx context.Context, groupId string, processId string) ListProcessDisksApiRequest {
 	return ListProcessDisksApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2651,7 +2650,7 @@ func (a *MonitoringAndLogsApiService) ListProcessDisks(ctx context.Context, grou
 // ListProcessDisksExecute executes the request
 //
 //	@return PaginatedDiskPartition
-func (a *MonitoringAndLogsApiService) ListProcessDisksExecute(r ListProcessDisksApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
+func (a *MonitoringAndLogsAPIService) ListProcessDisksExecute(r ListProcessDisksApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2659,7 +2658,7 @@ func (a *MonitoringAndLogsApiService) ListProcessDisksExecute(r ListProcessDisks
 		localVarReturnValue *PaginatedDiskPartition
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListProcessDisks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsAPIService.ListProcessDisks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

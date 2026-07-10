@@ -1,11 +1,11 @@
-# \AWSClustersDNSApi
+# \AWSClustersDNSAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAwsCustomDns**](AWSClustersDNSApi.md#GetAwsCustomDns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS
-[**ToggleAwsCustomDns**](AWSClustersDNSApi.md#ToggleAwsCustomDns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Update State of One Custom DNS Configuration for Atlas Clusters on AWS
+[**GetAwsCustomDns**](AWSClustersDNSAPI.md#GetAwsCustomDns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS
+[**ToggleAwsCustomDns**](AWSClustersDNSAPI.md#ToggleAwsCustomDns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Update State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 
 
@@ -41,9 +41,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.AWSClustersDNSApi.GetAwsCustomDns(context.Background(), groupId).Execute()
+    resp, r, err := sdk.AWSClustersDNSAPI.GetAwsCustomDns(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.GetAwsCustomDns`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSAPI.GetAwsCustomDns`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -51,7 +51,7 @@ func main() {
         return
     }
     // response from `GetAwsCustomDns`: AWSCustomDNSEnabled
-    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.GetAwsCustomDns`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSAPI.GetAwsCustomDns`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -122,9 +122,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     aWSCustomDNSEnabled := *admin.NewAWSCustomDNSEnabled(false) // AWSCustomDNSEnabled | 
 
-    resp, r, err := sdk.AWSClustersDNSApi.ToggleAwsCustomDns(context.Background(), groupId, &aWSCustomDNSEnabled).Execute()
+    resp, r, err := sdk.AWSClustersDNSAPI.ToggleAwsCustomDns(context.Background(), groupId, &aWSCustomDNSEnabled).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.ToggleAwsCustomDns`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSAPI.ToggleAwsCustomDns`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -132,7 +132,7 @@ func main() {
         return
     }
     // response from `ToggleAwsCustomDns`: AWSCustomDNSEnabled
-    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.ToggleAwsCustomDns`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSAPI.ToggleAwsCustomDns`: %v (%v)\n", resp, r)
 }
 ```
 

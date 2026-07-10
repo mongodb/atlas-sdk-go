@@ -1,14 +1,14 @@
-# \GlobalClustersApi
+# \GlobalClustersAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomZoneMapping**](GlobalClustersApi.md#CreateCustomZoneMapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Custom Zone Mapping to One Global Cluster
-[**CreateManagedNamespace**](GlobalClustersApi.md#CreateManagedNamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Cluster
-[**DeleteCustomZoneMapping**](GlobalClustersApi.md#DeleteCustomZoneMapping) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster
-[**DeleteManagedNamespaces**](GlobalClustersApi.md#DeleteManagedNamespaces) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster
-[**GetClusterGlobalWrites**](GlobalClustersApi.md#GetClusterGlobalWrites) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Cluster
+[**CreateCustomZoneMapping**](GlobalClustersAPI.md#CreateCustomZoneMapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Custom Zone Mapping to One Global Cluster
+[**CreateManagedNamespace**](GlobalClustersAPI.md#CreateManagedNamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Cluster
+[**DeleteCustomZoneMapping**](GlobalClustersAPI.md#DeleteCustomZoneMapping) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster
+[**DeleteManagedNamespaces**](GlobalClustersAPI.md#DeleteManagedNamespaces) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster
+[**GetClusterGlobalWrites**](GlobalClustersAPI.md#GetClusterGlobalWrites) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Cluster
 
 
 
@@ -46,9 +46,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     customZoneMappings := *admin.NewCustomZoneMappings([]admin.ZoneMapping{*admin.NewZoneMapping("Location_example", "Zone_example")}) // CustomZoneMappings | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName, &customZoneMappings).Execute()
+    resp, r, err := sdk.GlobalClustersAPI.CreateCustomZoneMapping(context.Background(), groupId, clusterName, &customZoneMappings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateCustomZoneMapping`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersAPI.CreateCustomZoneMapping`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -56,7 +56,7 @@ func main() {
         return
     }
     // response from `CreateCustomZoneMapping`: GeoSharding20240805
-    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.CreateCustomZoneMapping`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersAPI.CreateCustomZoneMapping`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -131,9 +131,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     managedNamespaces := *admin.NewManagedNamespaces("Collection_example", "CustomShardKey_example", "Db_example") // ManagedNamespaces | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName, &managedNamespaces).Execute()
+    resp, r, err := sdk.GlobalClustersAPI.CreateManagedNamespace(context.Background(), groupId, clusterName, &managedNamespaces).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateManagedNamespace`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersAPI.CreateManagedNamespace`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -141,7 +141,7 @@ func main() {
         return
     }
     // response from `CreateManagedNamespace`: GeoSharding20240805
-    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.CreateManagedNamespace`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersAPI.CreateManagedNamespace`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -215,9 +215,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.GlobalClustersApi.DeleteCustomZoneMapping(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.GlobalClustersAPI.DeleteCustomZoneMapping(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.DeleteCustomZoneMapping`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersAPI.DeleteCustomZoneMapping`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -225,7 +225,7 @@ func main() {
         return
     }
     // response from `DeleteCustomZoneMapping`: GeoSharding20240805
-    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.DeleteCustomZoneMapping`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersAPI.DeleteCustomZoneMapping`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -300,9 +300,9 @@ func main() {
     db := "db_example" // string |  (optional)
     collection := "collection_example" // string |  (optional)
 
-    resp, r, err := sdk.GlobalClustersApi.DeleteManagedNamespaces(context.Background(), clusterName, groupId).Db(db).Collection(collection).Execute()
+    resp, r, err := sdk.GlobalClustersAPI.DeleteManagedNamespaces(context.Background(), clusterName, groupId).Db(db).Collection(collection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.DeleteManagedNamespaces`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersAPI.DeleteManagedNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -310,7 +310,7 @@ func main() {
         return
     }
     // response from `DeleteManagedNamespaces`: GeoSharding20240805
-    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.DeleteManagedNamespaces`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersAPI.DeleteManagedNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -385,9 +385,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.GlobalClustersApi.GetClusterGlobalWrites(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.GlobalClustersAPI.GetClusterGlobalWrites(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.GetClusterGlobalWrites`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersAPI.GetClusterGlobalWrites`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -395,7 +395,7 @@ func main() {
         return
     }
     // response from `GetClusterGlobalWrites`: GeoSharding20240805
-    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.GetClusterGlobalWrites`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `GlobalClustersAPI.GetClusterGlobalWrites`: %v (%v)\n", resp, r)
 }
 ```
 

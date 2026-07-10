@@ -1,24 +1,24 @@
-# \OrganizationsApi
+# \OrganizationsAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOrg**](OrganizationsApi.md#CreateOrg) | **Post** /api/atlas/v2/orgs | Create One Organization
-[**CreateOrgInvite**](OrganizationsApi.md#CreateOrgInvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Create Invitation for One MongoDB Cloud User in One Organization
-[**DeleteOrg**](OrganizationsApi.md#DeleteOrg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
-[**DeleteOrgInvite**](OrganizationsApi.md#DeleteOrgInvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Invitation from One Organization
-[**GetOrg**](OrganizationsApi.md#GetOrg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
-[**GetOrgGroups**](OrganizationsApi.md#GetOrgGroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
-[**GetOrgInvite**](OrganizationsApi.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID
-[**GetOrgSettings**](OrganizationsApi.md#GetOrgSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
-[**ListOrgInvites**](OrganizationsApi.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization
-[**ListOrgs**](OrganizationsApi.md#ListOrgs) | **Get** /api/atlas/v2/orgs | Return All Organizations
-[**UpdateOrg**](OrganizationsApi.md#UpdateOrg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
-[**UpdateOrgInviteById**](OrganizationsApi.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID
-[**UpdateOrgInvites**](OrganizationsApi.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization
-[**UpdateOrgSettings**](OrganizationsApi.md#UpdateOrgSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
-[**UpdateOrgUserRoles**](OrganizationsApi.md#UpdateOrgUserRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
+[**CreateOrg**](OrganizationsAPI.md#CreateOrg) | **Post** /api/atlas/v2/orgs | Create One Organization
+[**CreateOrgInvite**](OrganizationsAPI.md#CreateOrgInvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Create Invitation for One MongoDB Cloud User in One Organization
+[**DeleteOrg**](OrganizationsAPI.md#DeleteOrg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
+[**DeleteOrgInvite**](OrganizationsAPI.md#DeleteOrgInvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Invitation from One Organization
+[**GetOrg**](OrganizationsAPI.md#GetOrg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
+[**GetOrgGroups**](OrganizationsAPI.md#GetOrgGroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
+[**GetOrgInvite**](OrganizationsAPI.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID
+[**GetOrgSettings**](OrganizationsAPI.md#GetOrgSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
+[**ListOrgInvites**](OrganizationsAPI.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization
+[**ListOrgs**](OrganizationsAPI.md#ListOrgs) | **Get** /api/atlas/v2/orgs | Return All Organizations
+[**UpdateOrg**](OrganizationsAPI.md#UpdateOrg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
+[**UpdateOrgInviteById**](OrganizationsAPI.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID
+[**UpdateOrgInvites**](OrganizationsAPI.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization
+[**UpdateOrgSettings**](OrganizationsAPI.md#UpdateOrgSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
+[**UpdateOrgUserRoles**](OrganizationsAPI.md#UpdateOrgUserRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
 
 
 
@@ -54,9 +54,9 @@ func main() {
 
     createOrganizationRequest := *admin.NewCreateOrganizationRequest("Name_example") // CreateOrganizationRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.CreateOrg(context.Background(), &createOrganizationRequest).Execute()
+    resp, r, err := sdk.OrganizationsAPI.CreateOrg(context.Background(), &createOrganizationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrg`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.CreateOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -64,7 +64,7 @@ func main() {
         return
     }
     // response from `CreateOrg`: CreateOrganizationResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrg`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.CreateOrg`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -131,9 +131,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationInvitationRequest := *admin.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.CreateOrgInvite(context.Background(), orgId, &organizationInvitationRequest).Execute()
+    resp, r, err := sdk.OrganizationsAPI.CreateOrgInvite(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrgInvite`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.CreateOrgInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -141,7 +141,7 @@ func main() {
         return
     }
     // response from `CreateOrgInvite`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrgInvite`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.CreateOrgInvite`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -212,9 +212,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.OrganizationsApi.DeleteOrg(context.Background(), orgId).Execute()
+    r, err := sdk.OrganizationsAPI.DeleteOrg(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrg`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.DeleteOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -291,9 +291,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
 
-    r, err := sdk.OrganizationsApi.DeleteOrgInvite(context.Background(), orgId, invitationId).Execute()
+    r, err := sdk.OrganizationsAPI.DeleteOrgInvite(context.Background(), orgId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrgInvite`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.DeleteOrgInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -371,9 +371,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.OrganizationsApi.GetOrg(context.Background(), orgId).Execute()
+    resp, r, err := sdk.OrganizationsAPI.GetOrg(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrg`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -381,7 +381,7 @@ func main() {
         return
     }
     // response from `GetOrg`: AtlasOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrg`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrg`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -455,9 +455,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     name := "name_example" // string |  (optional)
 
-    resp, r, err := sdk.OrganizationsApi.GetOrgGroups(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
+    resp, r, err := sdk.OrganizationsAPI.GetOrgGroups(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrgGroups`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrgGroups`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -465,7 +465,7 @@ func main() {
         return
     }
     // response from `GetOrgGroups`: PaginatedAtlasGroup
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrgGroups`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrgGroups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -540,9 +540,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
 
-    resp, r, err := sdk.OrganizationsApi.GetOrgInvite(context.Background(), orgId, invitationId).Execute()
+    resp, r, err := sdk.OrganizationsAPI.GetOrgInvite(context.Background(), orgId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrgInvite`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrgInvite`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -550,7 +550,7 @@ func main() {
         return
     }
     // response from `GetOrgInvite`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrgInvite`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrgInvite`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -622,9 +622,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.OrganizationsApi.GetOrgSettings(context.Background(), orgId).Execute()
+    resp, r, err := sdk.OrganizationsAPI.GetOrgSettings(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrgSettings`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrgSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -632,7 +632,7 @@ func main() {
         return
     }
     // response from `GetOrgSettings`: OrganizationSettings
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrgSettings`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrgSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -703,9 +703,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     username := "username_example" // string |  (optional)
 
-    resp, r, err := sdk.OrganizationsApi.ListOrgInvites(context.Background(), orgId).Username(username).Execute()
+    resp, r, err := sdk.OrganizationsAPI.ListOrgInvites(context.Background(), orgId).Username(username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrgInvites`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.ListOrgInvites`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -713,7 +713,7 @@ func main() {
         return
     }
     // response from `ListOrgInvites`: []OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrgInvites`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.ListOrgInvites`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -787,9 +787,9 @@ func main() {
     pageNum := int(56) // int |  (optional) (default to 1)
     name := "name_example" // string |  (optional)
 
-    resp, r, err := sdk.OrganizationsApi.ListOrgs(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
+    resp, r, err := sdk.OrganizationsAPI.ListOrgs(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrgs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.ListOrgs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -797,7 +797,7 @@ func main() {
         return
     }
     // response from `ListOrgs`: PaginatedOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrgs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.ListOrgs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -867,9 +867,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     atlasOrganization := *admin.NewAtlasOrganization("Name_example") // AtlasOrganization | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrg(context.Background(), orgId, &atlasOrganization).Execute()
+    resp, r, err := sdk.OrganizationsAPI.UpdateOrg(context.Background(), orgId, &atlasOrganization).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrg`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.UpdateOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -877,7 +877,7 @@ func main() {
         return
     }
     // response from `UpdateOrg`: AtlasOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrg`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.UpdateOrg`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -950,9 +950,9 @@ func main() {
     invitationId := "invitationId_example" // string | 
     organizationInvitationUpdateRequest := *admin.NewOrganizationInvitationUpdateRequest() // OrganizationInvitationUpdateRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrgInviteById(context.Background(), orgId, invitationId, &organizationInvitationUpdateRequest).Execute()
+    resp, r, err := sdk.OrganizationsAPI.UpdateOrgInviteById(context.Background(), orgId, invitationId, &organizationInvitationUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgInviteById`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.UpdateOrgInviteById`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -960,7 +960,7 @@ func main() {
         return
     }
     // response from `UpdateOrgInviteById`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgInviteById`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.UpdateOrgInviteById`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1034,9 +1034,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationInvitationRequest := *admin.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrgInvites(context.Background(), orgId, &organizationInvitationRequest).Execute()
+    resp, r, err := sdk.OrganizationsAPI.UpdateOrgInvites(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgInvites`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.UpdateOrgInvites`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1044,7 +1044,7 @@ func main() {
         return
     }
     // response from `UpdateOrgInvites`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgInvites`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.UpdateOrgInvites`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1116,9 +1116,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationSettings := *admin.NewOrganizationSettings() // OrganizationSettings | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrgSettings(context.Background(), orgId, &organizationSettings).Execute()
+    resp, r, err := sdk.OrganizationsAPI.UpdateOrgSettings(context.Background(), orgId, &organizationSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgSettings`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.UpdateOrgSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1126,7 +1126,7 @@ func main() {
         return
     }
     // response from `UpdateOrgSettings`: OrganizationSettings
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgSettings`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.UpdateOrgSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1199,9 +1199,9 @@ func main() {
     userId := "userId_example" // string | 
     updateOrgRolesForUser := *admin.NewUpdateOrgRolesForUser() // UpdateOrgRolesForUser | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrgUserRoles(context.Background(), orgId, userId, &updateOrgRolesForUser).Execute()
+    resp, r, err := sdk.OrganizationsAPI.UpdateOrgUserRoles(context.Background(), orgId, userId, &updateOrgRolesForUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgUserRoles`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.UpdateOrgUserRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1209,7 +1209,7 @@ func main() {
         return
     }
     // response from `UpdateOrgUserRoles`: UpdateOrgRolesForUser
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgUserRoles`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.UpdateOrgUserRoles`: %v (%v)\n", resp, r)
 }
 ```
 

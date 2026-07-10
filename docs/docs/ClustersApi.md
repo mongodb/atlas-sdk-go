@@ -1,30 +1,30 @@
-# \ClustersApi
+# \ClustersAPI
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AutoScalingConfiguration**](ClustersApi.md#AutoScalingConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration | Return Auto Scaling Configuration for One Sharded Cluster
-[**CreateCluster**](ClustersApi.md#CreateCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster in One Project
-[**DeleteCluster**](ClustersApi.md#DeleteCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project
-[**GetCluster**](ClustersApi.md#GetCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project
-[**GetClusterStatus**](ClustersApi.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
-[**GetProcessArgs**](ClustersApi.md#GetProcessArgs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return Advanced Configuration Options for One Cluster
-[**GetSampleDatasetLoad**](ClustersApi.md#GetSampleDatasetLoad) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Return Status of Sample Dataset Load for One Cluster
-[**GrantMongoEmployeeAccess**](ClustersApi.md#GrantMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB Employee Cluster Access for One Cluster
-[**ListClusterDetails**](ClustersApi.md#ListClusterDetails) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects
-[**ListClusterProviderRegions**](ClustersApi.md#ListClusterProviderRegions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions
-[**ListClusters**](ClustersApi.md#ListClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project
-[**PinFeatureCompatibilityVersion**](ClustersApi.md#PinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion | Pin Feature Compatibility Version for One Cluster in One Project
-[**RequestSampleDatasetLoad**](ClustersApi.md#RequestSampleDatasetLoad) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset into One Cluster
-[**RestartPrimaries**](ClustersApi.md#RestartPrimaries) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster
-[**RevokeMongoEmployeeAccess**](ClustersApi.md#RevokeMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke MongoDB Employee Cluster Access for One Cluster
-[**UnpinFeatureCompatibilityVersion**](ClustersApi.md#UnpinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpin Feature Compatibility Version for One Cluster in One Project
-[**UpdateCluster**](ClustersApi.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Update One Cluster in One Project
-[**UpdateProcessArgs**](ClustersApi.md#UpdateProcessArgs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster
-[**UpgradeClusterToServerless**](ClustersApi.md#UpgradeClusterToServerless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance
-[**UpgradeTenantUpgrade**](ClustersApi.md#UpgradeTenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster
-[**ValidateGroupClusterConfigurations**](ClustersApi.md#ValidateGroupClusterConfigurations) | **Post** /api/atlas/v2/groups/{groupId}/clusterConfigurations:validate | Validate One Cluster Configuration
+[**AutoScalingConfiguration**](ClustersAPI.md#AutoScalingConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration | Return Auto Scaling Configuration for One Sharded Cluster
+[**CreateCluster**](ClustersAPI.md#CreateCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster in One Project
+[**DeleteCluster**](ClustersAPI.md#DeleteCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project
+[**GetCluster**](ClustersAPI.md#GetCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project
+[**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
+[**GetProcessArgs**](ClustersAPI.md#GetProcessArgs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return Advanced Configuration Options for One Cluster
+[**GetSampleDatasetLoad**](ClustersAPI.md#GetSampleDatasetLoad) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Return Status of Sample Dataset Load for One Cluster
+[**GrantMongoEmployeeAccess**](ClustersAPI.md#GrantMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB Employee Cluster Access for One Cluster
+[**ListClusterDetails**](ClustersAPI.md#ListClusterDetails) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects
+[**ListClusterProviderRegions**](ClustersAPI.md#ListClusterProviderRegions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions
+[**ListClusters**](ClustersAPI.md#ListClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project
+[**PinFeatureCompatibilityVersion**](ClustersAPI.md#PinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion | Pin Feature Compatibility Version for One Cluster in One Project
+[**RequestSampleDatasetLoad**](ClustersAPI.md#RequestSampleDatasetLoad) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset into One Cluster
+[**RestartPrimaries**](ClustersAPI.md#RestartPrimaries) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster
+[**RevokeMongoEmployeeAccess**](ClustersAPI.md#RevokeMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke MongoDB Employee Cluster Access for One Cluster
+[**UnpinFeatureCompatibilityVersion**](ClustersAPI.md#UnpinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpin Feature Compatibility Version for One Cluster in One Project
+[**UpdateCluster**](ClustersAPI.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Update One Cluster in One Project
+[**UpdateProcessArgs**](ClustersAPI.md#UpdateProcessArgs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster
+[**UpgradeClusterToServerless**](ClustersAPI.md#UpgradeClusterToServerless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance
+[**UpgradeTenantUpgrade**](ClustersAPI.md#UpgradeTenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster
+[**ValidateGroupClusterConfigurations**](ClustersAPI.md#ValidateGroupClusterConfigurations) | **Post** /api/atlas/v2/groups/{groupId}/clusterConfigurations:validate | Validate One Cluster Configuration
 
 
 
@@ -61,9 +61,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.AutoScalingConfiguration(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.ClustersAPI.AutoScalingConfiguration(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.AutoScalingConfiguration`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.AutoScalingConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -71,7 +71,7 @@ func main() {
         return
     }
     // response from `AutoScalingConfiguration`: ClusterDescriptionAutoScalingModeConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.AutoScalingConfiguration`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.AutoScalingConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -146,9 +146,9 @@ func main() {
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
     useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.CreateCluster(context.Background(), groupId, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
+    resp, r, err := sdk.ClustersAPI.CreateCluster(context.Background(), groupId, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.CreateCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.CreateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -156,7 +156,7 @@ func main() {
         return
     }
     // response from `CreateCluster`: ClusterDescription20240805
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.CreateCluster`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.CreateCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -231,9 +231,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     retainBackups := true // bool |  (optional)
 
-    r, err := sdk.ClustersApi.DeleteCluster(context.Background(), groupId, clusterName).RetainBackups(retainBackups).Execute()
+    r, err := sdk.ClustersAPI.DeleteCluster(context.Background(), groupId, clusterName).RetainBackups(retainBackups).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.DeleteCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.DeleteCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -315,9 +315,9 @@ func main() {
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
     useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.GetCluster(context.Background(), groupId, clusterName).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
+    resp, r, err := sdk.ClustersAPI.GetCluster(context.Background(), groupId, clusterName).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -325,7 +325,7 @@ func main() {
         return
     }
     // response from `GetCluster`: ClusterDescription20240805
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetCluster`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -400,9 +400,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.GetClusterStatus(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.ClustersAPI.GetClusterStatus(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetClusterStatus`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -410,7 +410,7 @@ func main() {
         return
     }
     // response from `GetClusterStatus`: ClusterStatus
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetClusterStatus`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -483,9 +483,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.GetProcessArgs(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.ClustersAPI.GetProcessArgs(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetProcessArgs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetProcessArgs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -493,7 +493,7 @@ func main() {
         return
     }
     // response from `GetProcessArgs`: ClusterDescriptionProcessArgs20240805
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetProcessArgs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetProcessArgs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -566,9 +566,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     sampleDatasetId := "sampleDatasetId_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.GetSampleDatasetLoad(context.Background(), groupId, sampleDatasetId).Execute()
+    resp, r, err := sdk.ClustersAPI.GetSampleDatasetLoad(context.Background(), groupId, sampleDatasetId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetSampleDatasetLoad`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetSampleDatasetLoad`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -576,7 +576,7 @@ func main() {
         return
     }
     // response from `GetSampleDatasetLoad`: SampleDatasetStatus
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetSampleDatasetLoad`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetSampleDatasetLoad`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -650,9 +650,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     employeeAccessGrant := *admin.NewEmployeeAccessGrant(time.Now(), "GrantType_example") // EmployeeAccessGrant | 
 
-    r, err := sdk.ClustersApi.GrantMongoEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
+    r, err := sdk.ClustersAPI.GrantMongoEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GrantMongoEmployeeAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GrantMongoEmployeeAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -733,9 +733,9 @@ func main() {
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ClustersApi.ListClusterDetails(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ClustersAPI.ListClusterDetails(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListClusterDetails`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListClusterDetails`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -743,7 +743,7 @@ func main() {
         return
     }
     // response from `ListClusterDetails`: PaginatedOrgGroup
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListClusterDetails`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListClusterDetails`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -816,9 +816,9 @@ func main() {
     providers := []string{"Inner_example"} // []string |  (optional)
     tier := "tier_example" // string |  (optional)
 
-    resp, r, err := sdk.ClustersApi.ListClusterProviderRegions(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Providers(providers).Tier(tier).Execute()
+    resp, r, err := sdk.ClustersAPI.ListClusterProviderRegions(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Providers(providers).Tier(tier).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListClusterProviderRegions`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListClusterProviderRegions`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -826,7 +826,7 @@ func main() {
         return
     }
     // response from `ListClusterProviderRegions`: PaginatedApiAtlasProviderRegions
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListClusterProviderRegions`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListClusterProviderRegions`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -906,9 +906,9 @@ func main() {
     includeDeletedWithRetainedBackups := true // bool |  (optional) (default to false)
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.ListClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
+    resp, r, err := sdk.ClustersAPI.ListClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).UseEffectiveInstanceFields(useEffectiveInstanceFields).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListClusters`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListClusters`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -916,7 +916,7 @@ func main() {
         return
     }
     // response from `ListClusters`: PaginatedClusterDescription20240805
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListClusters`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListClusters`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -993,9 +993,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     pinFCV := *admin.NewPinFCV() // PinFCV |  (optional)
 
-    r, err := sdk.ClustersApi.PinFeatureCompatibilityVersion(context.Background(), groupId, clusterName, &pinFCV).Execute()
+    r, err := sdk.ClustersAPI.PinFeatureCompatibilityVersion(context.Background(), groupId, clusterName, &pinFCV).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.PinFeatureCompatibilityVersion`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.PinFeatureCompatibilityVersion`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1075,9 +1075,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.RequestSampleDatasetLoad(context.Background(), groupId, name).Execute()
+    resp, r, err := sdk.ClustersAPI.RequestSampleDatasetLoad(context.Background(), groupId, name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RequestSampleDatasetLoad`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.RequestSampleDatasetLoad`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1085,7 +1085,7 @@ func main() {
         return
     }
     // response from `RequestSampleDatasetLoad`: SampleDatasetStatus
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.RequestSampleDatasetLoad`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.RequestSampleDatasetLoad`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1158,9 +1158,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    r, err := sdk.ClustersApi.RestartPrimaries(context.Background(), groupId, clusterName).Execute()
+    r, err := sdk.ClustersAPI.RestartPrimaries(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RestartPrimaries`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.RestartPrimaries`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1239,9 +1239,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    r, err := sdk.ClustersApi.RevokeMongoEmployeeAccess(context.Background(), groupId, clusterName).Execute()
+    r, err := sdk.ClustersAPI.RevokeMongoEmployeeAccess(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RevokeMongoEmployeeAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.RevokeMongoEmployeeAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1320,9 +1320,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    r, err := sdk.ClustersApi.UnpinFeatureCompatibilityVersion(context.Background(), groupId, clusterName).Execute()
+    r, err := sdk.ClustersAPI.UnpinFeatureCompatibilityVersion(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UnpinFeatureCompatibilityVersion`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UnpinFeatureCompatibilityVersion`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1404,9 +1404,9 @@ func main() {
     useEffectiveInstanceFields := true // bool |  (optional) (default to false)
     useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
+    resp, r, err := sdk.ClustersAPI.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescription20240805).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateCluster`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UpdateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1414,7 +1414,7 @@ func main() {
         return
     }
     // response from `UpdateCluster`: ClusterDescription20240805
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateCluster`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.UpdateCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1491,9 +1491,9 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterDescriptionProcessArgs20240805 := *admin.NewClusterDescriptionProcessArgs20240805() // ClusterDescriptionProcessArgs20240805 | 
 
-    resp, r, err := sdk.ClustersApi.UpdateProcessArgs(context.Background(), groupId, clusterName, &clusterDescriptionProcessArgs20240805).Execute()
+    resp, r, err := sdk.ClustersAPI.UpdateProcessArgs(context.Background(), groupId, clusterName, &clusterDescriptionProcessArgs20240805).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateProcessArgs`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UpdateProcessArgs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1501,7 +1501,7 @@ func main() {
         return
     }
     // response from `UpdateProcessArgs`: ClusterDescriptionProcessArgs20240805
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateProcessArgs`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.UpdateProcessArgs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1575,9 +1575,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     serverlessInstanceDescription := *admin.NewServerlessInstanceDescription(*admin.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescription | 
 
-    resp, r, err := sdk.ClustersApi.UpgradeClusterToServerless(context.Background(), groupId, &serverlessInstanceDescription).Execute()
+    resp, r, err := sdk.ClustersAPI.UpgradeClusterToServerless(context.Background(), groupId, &serverlessInstanceDescription).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeClusterToServerless`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UpgradeClusterToServerless`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1585,7 +1585,7 @@ func main() {
         return
     }
     // response from `UpgradeClusterToServerless`: ServerlessInstanceDescription
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpgradeClusterToServerless`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.UpgradeClusterToServerless`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1657,9 +1657,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     legacyAtlasTenantClusterUpgradeRequest := *admin.NewLegacyAtlasTenantClusterUpgradeRequest("Name_example") // LegacyAtlasTenantClusterUpgradeRequest | 
 
-    resp, r, err := sdk.ClustersApi.UpgradeTenantUpgrade(context.Background(), groupId, &legacyAtlasTenantClusterUpgradeRequest).Execute()
+    resp, r, err := sdk.ClustersAPI.UpgradeTenantUpgrade(context.Background(), groupId, &legacyAtlasTenantClusterUpgradeRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeTenantUpgrade`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UpgradeTenantUpgrade`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1667,7 +1667,7 @@ func main() {
         return
     }
     // response from `UpgradeTenantUpgrade`: LegacyAtlasCluster
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpgradeTenantUpgrade`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.UpgradeTenantUpgrade`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1739,9 +1739,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterConfigurationValidation := *admin.NewClusterConfigurationValidation(*admin.NewClusterDescription20240805(), false) // ClusterConfigurationValidation | 
 
-    resp, r, err := sdk.ClustersApi.ValidateGroupClusterConfigurations(context.Background(), groupId, &clusterConfigurationValidation).Execute()
+    resp, r, err := sdk.ClustersAPI.ValidateGroupClusterConfigurations(context.Background(), groupId, &clusterConfigurationValidation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ValidateGroupClusterConfigurations`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ValidateGroupClusterConfigurations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1749,7 +1749,7 @@ func main() {
         return
     }
     // response from `ValidateGroupClusterConfigurations`: ClusterConfigurationValidationResult
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ValidateGroupClusterConfigurations`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ValidateGroupClusterConfigurations`: %v (%v)\n", resp, r)
 }
 ```
 
