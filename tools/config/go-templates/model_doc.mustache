@@ -60,7 +60,6 @@ Set{{name}} sets {{name}} field to given value.
 
 Has{{name}} returns a boolean if a field has been set.
 
-{{^isArray}}
 {{^isAdditionalPropertiesTrue}}
 ### Set{{name}}Nil
 
@@ -69,7 +68,6 @@ Has{{name}} returns a boolean if a field has been set.
 Set{{name}}Nil sets {{name}} to an explicit JSON null when marshaled, overriding any value previously set with Set{{name}}. Calling Set{{name}} again clears the null override.
 
 {{/isAdditionalPropertiesTrue}}
-{{/isArray}}
 {{/required}}
 {{/vars}}
 {{#vendorExtensions.x-implements}}

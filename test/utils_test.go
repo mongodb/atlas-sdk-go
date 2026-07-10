@@ -224,4 +224,20 @@ func TestNullFieldsMarshalJSON(t *testing.T) {
 			t.Errorf("want Comment to appear once in NullFields, got %d (%v)", count, entry.NullFields)
 		}
 	})
+
+	t.Run("array-typed fields also support SetXxxNil", func(t *testing.T) {
+		entry := admin.NewNetworkPermissionEntry()
+		entry.SetLinks([]admin.Link{})
+		entry.SetLinksNil()
+
+		b, err := json.Marshal(entry)
+		if err != nil {
+			t.Fatalf("unexpected error: %v", err)
+		}
+
+		got := unmarshalToMap(t, b)
+		if v, ok := got["links"]; !ok || v != nil {
+			t.Errorf("want links null, got %v (present=%t)", v, ok)
+		}
+	})
 }

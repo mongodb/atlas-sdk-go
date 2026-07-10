@@ -33,8 +33,8 @@ type {{classname}} struct {
 {{/isAdditionalPropertiesTrue}}
 {{^isArray}}
 {{^isAdditionalPropertiesTrue}}
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
 {{/isAdditionalPropertiesTrue}}
 {{/isArray}}
@@ -190,14 +190,11 @@ func (o *{{classname}}) Has{{name}}() bool {
 {{/deprecated}}
 func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
 	o.{{name}} = {{^isFreeFormObject}}&{{/isFreeFormObject}}{{#isFreeFormObject}}{{#isMap}}&{{/isMap}}{{/isFreeFormObject}}v
-{{^isArray}}
 {{^isAdditionalPropertiesTrue}}
 	o.NullFields = removeNullField(o.NullFields, "{{name}}")
 {{/isAdditionalPropertiesTrue}}
-{{/isArray}}
 }
 
-{{^isArray}}
 {{^isAdditionalPropertiesTrue}}
 // Set{{name}}Nil sets {{name}} to an explicit JSON null when marshaled.
 func (o *{{classname}}) Set{{name}}Nil() {
@@ -206,7 +203,6 @@ func (o *{{classname}}) Set{{name}}Nil() {
 }
 
 {{/isAdditionalPropertiesTrue}}
-{{/isArray}}
 {{/required}}
 {{/vars}}
 {{#isArray}}
